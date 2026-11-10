@@ -14,7 +14,7 @@ public final class Diagnostics {
         if (!condition) throw new IllegalStateException("Vale startup check failed: " + message);
     }
     public static void verify() {
-        require(Gear.ITEMS.size() == 555, "expected 555 registered items for Core 0.3.7");
+        require(Gear.ITEMS.size() == 556, "expected 556 registered items for Core 0.3.8");
         int armor = 0, weapons = 0, specialists = 0, garments = 0, focus = 0;
         for (Item item : Gear.ITEMS.values()) {
             require(item.getRegistryName() != null, "missing item registry name");

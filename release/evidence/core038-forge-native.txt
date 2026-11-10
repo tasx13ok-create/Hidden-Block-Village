@@ -1,0 +1,122 @@
+2026-11-10 07:18:04,999 main WARN Disabling terminal, you're running in an unsupported environment.
+[07:18:05] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[07:18:05] [main/INFO] [FML]: Forge Mod Loader version 14.23.5.2859 for Minecraft 1.12.2 loading
+[07:18:05] [main/INFO] [FML]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_512, running on Linux:amd64:6.18.57, installed at /workspace/scratch/fa349c917106/toolchains/zulu8.98.0.111-ca-jdk8.0.512-linux_x64/jre
+[07:18:05] [main/INFO] [FML]: Searching /workspace/scratch/fa349c917106/native-forge038/./mods for mods
+[07:18:05] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in Vale-Forge-Damage-Compat-0.1.0.jar. This is not recommended, @Mods should be in a separate jar from the coremod.
+[07:18:05] [main/WARN] [FML]: The coremod Vale Forge Damage Compatibility (village.vale.damagecompat.DamageCompatPlugin) is not signed!
+[07:18:05] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in vale-orders-0.3.8.jar. This is not recommended, @Mods should be in a separate jar from the coremod.
+[07:18:05] [main/WARN] [FML]: The coremod Vale Run Pose (village.vale.PoseCorePlugin) is not signed!
+[07:18:05] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[07:18:05] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[07:18:06] [main/INFO] [FML]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557
+[07:18:06] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[07:18:06] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[07:18:06] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[07:18:06] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[07:18:06] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[07:18:06] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[07:18:07] [main/INFO] [STDOUT]: [village.vale.damagecompat.DamageCompatTransformer:transform:16]: VALE_DAMAGE_COMPAT_NOT_NEEDED: standard Forge damage path preserved.
+[07:18:07] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[07:18:09] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 1.12.2
+[07:18:09] [Server thread/INFO] [FML]: MinecraftForge v14.23.5.2859 Initialized
+[07:18:09] [Server thread/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients.
+[07:18:09] [Server thread/INFO] [FML]: Invalid recipe found with multiple oredict ingredients in the same ingredient...
+[07:18:09] [Server thread/INFO] [FML]: Replaced 1227 ore ingredients
+[07:18:09] [Server thread/INFO] [FML]: Searching /workspace/scratch/fa349c917106/native-forge038/./mods for mods
+[07:18:10] [Server thread/INFO] [FML]: Forge Mod Loader has identified 15 mods to load
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for FML: assets/fml/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valeencounters: assets/valeencounters/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valedamagecompat: assets/valedamagecompat/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valerack: assets/valerack/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valerecoverychecks: assets/valerecoverychecks/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for residentserverbridge: assets/residentserverbridge/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valeserverbridge: assets/valeserverbridge/lang/en_us.lang
+[07:18:10] [Server thread/WARN] [FML]: Missing English translation for valestandardschecks: assets/valestandardschecks/lang/en_us.lang
+[07:18:10] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, valeencounters, valedamagecompat, valeorders, valerack, valerecoverychecks, valeresidents, residentserverbridge, valeserverbridge, valestandardschecks, valeworldcompat, hvdungeonpictures] at CLIENT
+[07:18:10] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, valeencounters, valedamagecompat, valeorders, valerack, valerecoverychecks, valeresidents, residentserverbridge, valeserverbridge, valestandardschecks, valeworldcompat, hvdungeonpictures] at SERVER
+[07:18:10] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `waystones` for name `waystone`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:10] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `table`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:10] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `campfire`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:10] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `trading_block`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:10] [Server thread/INFO] [FML]: Processing ObjectHolder annotations
+[07:18:10] [Server thread/INFO] [FML]: Found 1168 ObjectHolder annotations
+[07:18:10] [Server thread/INFO] [FML]: Identifying ItemStackHolder annotations
+[07:18:10] [Server thread/INFO] [FML]: Found 0 ItemStackHolder annotations
+[07:18:10] [Server thread/INFO] [FML]: Configured a dormant chunk cache size of 0
+[07:18:10] [Forge Version Check/INFO] [forge.VersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `waystones` for name `waystone`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `table`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `campfire`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `trading_block`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/INFO] [FML]: Applying holder lookups
+[07:18:11] [Server thread/INFO] [FML]: Holder lookups applied
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `waystones` for name `waystone`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `table`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `campfire`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `variedcommodities` for name `trading_block`, expected `valeworldcompat`. This could be a intended override, but in most cases indicates a broken mod.
+[07:18:11] [Server thread/INFO] [FML]: Applying holder lookups
+[07:18:11] [Server thread/INFO] [FML]: Holder lookups applied
+[07:18:11] [Server thread/INFO] [FML]: Applying holder lookups
+[07:18:11] [Server thread/INFO] [FML]: Holder lookups applied
+[07:18:11] [Server thread/INFO] [FML]: Applying holder lookups
+[07:18:11] [Server thread/INFO] [FML]: Holder lookups applied
+[07:18:11] [Server thread/INFO] [FML]: Injecting itemstacks
+[07:18:11] [Server thread/INFO] [FML]: Itemstack injection complete
+[07:18:11] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
+[07:18:11] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
+[07:18:11] [Server thread/INFO] [minecraft/DedicatedServer]: Generating keypair
+[07:18:11] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on 127.0.0.1:25588
+[07:18:11] [Server thread/INFO] [minecraft/NetworkSystem]: Using epoll channel type
+Nov 10, 2026 7:18:11 AM io.netty.util.internal.MacAddressUtil defaultMachineId
+WARNING: Failed to find a usable hardware address from the network interfaces; using random bytes: d5:38:a4:f6:5b:35:81:d2
+[07:18:11] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[07:18:11] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
+[07:18:11] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[07:18:11] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
+[07:18:11] [Server thread/INFO] [FML]: Applying holder lookups
+[07:18:11] [Server thread/INFO] [FML]: Holder lookups applied
+[07:18:11] [Server thread/INFO] [FML]: Injecting itemstacks
+[07:18:11] [Server thread/INFO] [FML]: Itemstack injection complete
+[07:18:11] [Server thread/INFO] [ValeCatalog]: VALE_CATALOG_POLICY: 0 overlapping utility combat props quarantined; 0 recipes removed, 0 adapted, 0 custom dependent recipes require review. Registry IDs retained.
+[07:18:11] [Server thread/INFO] [FML]: Forge Mod Loader has successfully loaded 15 mods
+[07:18:11] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "vale-recovery-test"
+[07:18:11] [Server thread/INFO] [FML]: Loading dimension 0 (vale-recovery-test) (net.minecraft.server.dedicated.DedicatedServer@4306413f)
+[07:18:11] [Server thread/INFO] [minecraft/AdvancementList]: Loaded 510 advancements
+[07:18:12] [Server thread/INFO] [FML]: Loading dimension -1 (vale-recovery-test) (net.minecraft.server.dedicated.DedicatedServer@4306413f)
+[07:18:12] [Server thread/INFO] [FML]: Loading dimension 1 (vale-recovery-test) (net.minecraft.server.dedicated.DedicatedServer@4306413f)
+[07:18:12] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for level 0
+[07:18:12] [Server thread/INFO] [minecraft/DedicatedServer]: Done (0.834s)! For help, type "help" or "?"
+[07:18:12] [Server thread/INFO] [valeresidents]: Loaded dialogue for3 resident roles from /workspace/scratch/fa349c917106/native-forge038/config/valeresidents/dialogue.json. Existing entities and player data are unchanged.
+[07:18:12] [Server thread/INFO] [FML]: Unloading dimension -1
+[07:18:12] [Server thread/INFO] [FML]: Unloading dimension 1
+[07:18:12] [Server thread/INFO] [ValeOrders]: VALE_LEDGER_SELFTEST_PASS: 10003-row ledger round trip, receipts, owner queues and reload checks.
+[07:18:12] [Server thread/INFO] [ValeOrders]: VALE_REGISTRY_SELFTEST_PASS: 556 live Forge items, including 72 ward/resonance armor, 54 base weapons, 27 specialist weapons, 79 garments and 76 focus equipment.
+[07:18:12] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: 556 live registered items and current diagnostic category checks
+[07:18:12] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native result-slot pickup remains issued after expired preview timeout
+[07:18:12] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Stale proof is recomputed by native container before actual crafting
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native weapon cast, saved player logout/reload and longer per-specialist cooldown
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native Party Charter leave/rejoin preserves the existing expedition
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native companion distance cleanup, immediate redeploy, stale actor rejection and recall
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.ScrollNativeChecks038:run:134]: VALE_SCROLL038_NATIVE_PASS: 48 companion order, protection, recall, repair and expedition-support assertions
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native companion orders, target protection, unloaded recall, stale leases, repair and allied support
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.ClawNativeChecks:exercise:141]: VALE_CLAW038_NATIVE_PASS: 82 assertions (locks, windup, dodge, protection, rear melee, bleed, swept projectiles and ownership)
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.standards.StandardsNativeChecks:run:111]: VALE_STANDARDS_NATIVE_PASS: 362 assertions, all five pictures/four facings, placement/drop/NBT/cancellation/recovery
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:passed:76]: VALE_RECOVERY038_CHECK_PASS: Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery
+[07:18:13] [Server thread/INFO] [STDOUT]: [village.vale.arsenal.RecoveryNativeChecks:tick:154]: VALE_RECOVERY038_NATIVE_PASS: 656 assertions
+[07:18:13] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[07:18:13] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[07:18:13] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[07:18:13] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'vale-recovery-test'/overworld
+[07:18:13] [Server thread/INFO] [FML]: Unloading dimension 0
+[07:18:13] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[07:18:13] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving players
+[07:18:13] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving worlds

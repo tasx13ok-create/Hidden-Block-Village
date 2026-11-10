@@ -36,7 +36,7 @@ public abstract class ArsenalEntity extends Entity {
         return p instanceof EntityPlayerMP?(EntityPlayerMP)p:null;
     }
     public boolean ownedBy(EntityPlayerMP p) {return p!=null&&p.getUniqueID().equals(ownerId);}
-    protected boolean validOwner(EntityPlayerMP p) {return p!=null&&p.world==world&&spec()!=null&&ArsenalLogic.proof(p,issued,spec());}
+    protected boolean validOwner(EntityPlayerMP p) {return p!=null&&p.world==world&&spec()!=null&&ArsenalLogic.heldProof(p,issued,spec());}
     @Override protected void writeEntityToNBT(NBTTagCompound nbt) {
         if(ownerId!=null)nbt.setUniqueId("owner",ownerId);
         nbt.setTag("issued",issued.writeToNBT(new NBTTagCompound()));nbt.setInteger("spec",dataManager.get(SPEC));

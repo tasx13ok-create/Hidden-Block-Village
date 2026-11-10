@@ -11,6 +11,8 @@ public final class ClientApi {
     private ClientApi() {}
     /** True consumes the existing cast binding for the focused rail, even if blocked. */
     public static boolean castFocusedJutsu() { return JutsuInput.castFocused(); }
+    /** Optional combat input must yield while the player controls the focused rail. */
+    public static boolean ownsGameplayInput() { return JutsuInput.ownsGameplayInput(); }
     public static void openSettings(GuiScreen parent) {
         Minecraft mc=Minecraft.getMinecraft();Runnable open=()->mc.displayGuiScreen(new HudScreen(parent));
         if(mc.isCallingFromMinecraftThread())open.run();else mc.addScheduledTask(open);

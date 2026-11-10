@@ -53,6 +53,10 @@ public final class ArsenalBlade extends ItemSword implements CraftedArsenalWeapo
         if(hand!=EnumHand.MAIN_HAND)return new ActionResult<>(EnumActionResult.PASS,stack);
         ItemStack off=player.getHeldItemOffhand();
         if(!player.isSneaking()&&!off.isEmpty()&&off.getItem().isShield(off,player))return new ActionResult<>(EnumActionResult.PASS,stack);
+        if(spec.role==ArsenalSpec.Role.TALONS) {
+            boolean accepted=world.isRemote||player instanceof EntityPlayerMP&&ClawCombat.use((EntityPlayerMP)player,stack);
+            return new ActionResult<>(accepted?EnumActionResult.SUCCESS:EnumActionResult.FAIL,stack);
+        }
         if(!world.isRemote&&player instanceof EntityPlayerMP) {
             EntityPlayerMP owner=(EntityPlayerMP)player;
             if(spec.role==ArsenalSpec.Role.RETURN&&ArsenalLogic.recall(owner,stack))return new ActionResult<>(EnumActionResult.SUCCESS,stack);
@@ -66,10 +70,10 @@ public final class ArsenalBlade extends ItemSword implements CraftedArsenalWeapo
         return new ActionResult<>(EnumActionResult.SUCCESS,stack);
     }
     @Override public int getMaxItemUseDuration(ItemStack stack) { return 72000; }
-    @Override public EnumAction getItemUseAction(ItemStack stack) { return spec.shield()?EnumAction.BLOCK:EnumAction.BOW; }
+    @Override public EnumAction getItemUseAction(ItemStack stack) { return spec.role==ArsenalSpec.Role.TALONS?EnumAction.NONE:spec.shield()?EnumAction.BLOCK:EnumAction.BOW; }
     @Override public boolean isShield(ItemStack stack,@Nullable EntityLivingBase entity) { return spec.shield(); }
     @Override public void onPlayerStoppedUsing(ItemStack stack,World world,EntityLivingBase user,int remaining) {
-        if(!world.isRemote&&user instanceof EntityPlayerMP)ArsenalLogic.release((EntityPlayerMP)user,stack,spec,getMaxItemUseDuration(stack)-remaining);
+        if(spec.role!=ArsenalSpec.Role.TALONS&&!world.isRemote&&user instanceof EntityPlayerMP)ArsenalLogic.release((EntityPlayerMP)user,stack,spec,getMaxItemUseDuration(stack)-remaining);
     }
     @Override public void onUsingTick(ItemStack stack,EntityLivingBase user,int remaining) {
         if(!user.world.isRemote&&user instanceof EntityPlayerMP) {
@@ -82,6 +86,7 @@ public final class ArsenalBlade extends ItemSword implements CraftedArsenalWeapo
         if(!player.world.isRemote&&player instanceof EntityPlayerMP) {
             EntityPlayerMP owner=(EntityPlayerMP)player;
             if(spec.role==ArsenalSpec.Role.RETURN&&ArsenalLogic.inFlight(owner,stack))return true;
+            if(spec.role==ArsenalSpec.Role.TALONS&&ClawCombat.attack(owner,stack,target))return true;
             if(target instanceof EntityLivingBase)ArsenalLogic.beginSwing(owner,stack,(EntityLivingBase)target);
         }
         return false;
@@ -95,7 +100,13 @@ public final class ArsenalBlade extends ItemSword implements CraftedArsenalWeapo
     }
     @SideOnly(Side.CLIENT) @Override public void addInformation(ItemStack stack,@Nullable World world,List<String> lines,ITooltipFlag flag) {
         lines.add(spec.order.title+" specialist");
-        lines.add("Hold use, then release: "+ArsenalLogic.description(spec.role));
+        if(spec.role==ArsenalSpec.Role.TALONS) {
+            lines.add("Use or middle-click: lock a target within 5 blocks.");
+            lines.add("Use or attack again within 5s: lunge after a 1s dodge window.");
+            lines.add("Rear lock blinds for 5s; rear strikes deal +10% damage.");
+            lines.add("Every 5 landed hits adds a 17s bleed stack (maximum 3).");
+            lines.add("Sneak + use cancels. Switching weapons ends pending effects.");
+        } else lines.add("Hold use, then release: "+ArsenalLogic.description(spec.role));
         lines.add(spec.cost+" resolve / "+(spec.cooldown/20f)+"s recovery");
         lines.add("Powers require issued matching armor and this issued weapon.");
         if(spec.role==ArsenalSpec.Role.MARK)lines.add("Sneak + use: travel to your recent waymark.");

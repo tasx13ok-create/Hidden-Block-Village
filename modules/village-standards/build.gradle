@@ -2,53 +2,87 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import java.security.MessageDigest
 
-plugins { id 'base' }
-version = '0.2.0'
+plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
+group = 'village.standards'
+version = '0.3.0'
+base { archivesName = 'Village-Standards' }
+java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
+minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
+sourceSets {
+    main { resources.srcDirs = ['resources', 'src/main/resources'] }
+    checks {
+        java.srcDirs = ['tests']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+    nativeChecks {
+        java.srcDirs = ['worldchecks']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.incremental = false }
 
-// Recovered art and metadata only. The excluded renderer implementation is not
-// silently replaced, and this ZIP must never be represented as a complete mod.
+// Historical resources stay byte-identical. Only packaged display metadata is
+// updated; original Java below src/main/java is newly authored for this release.
 tasks.register('verifyRecoveredResources') {
-    inputs.dir('resources')
-    inputs.file('SOURCE-PROVENANCE.json')
+    inputs.dir('resources'); inputs.file('SOURCE-PROVENANCE.json')
     doLast {
         def provenance = new JsonSlurper().parse(file('SOURCE-PROVENANCE.json'))
         def records = provenance.files.findAll { it.path.startsWith('resources/') }
         def actual = fileTree('resources').files.collect { relativePath(it).replace('\\', '/') }.toSet()
-        if (actual != records.collect { it.path }.toSet()) {
-            throw new GradleException('Village Standards resource inventory differs from its recovered provenance.')
-        }
+        if (actual != records.collect { it.path }.toSet()) throw new GradleException('Recovered resource inventory changed')
         records.each { record ->
             byte[] bytes = file(record.path).bytes
             def sha = MessageDigest.getInstance('SHA-256').digest(bytes).encodeHex().toString()
-            if (bytes.length != record.bytes || sha != record.sha256) {
-                throw new GradleException("Changed recovered resource: ${record.path}")
-            }
+            if (bytes.length != record.bytes || sha != record.sha256) throw new GradleException("Changed recovered resource: ${record.path}")
         }
     }
 }
-tasks.named('check') { dependsOn tasks.named('verifyRecoveredResources') }
-def overlay = tasks.register('resourceOverlay', Zip) {
-    dependsOn tasks.named('verifyRecoveredResources')
-    archiveFileName.set("Village-Standards-${project.version}-resource-overlay.zip")
-    destinationDirectory.set(layout.buildDirectory.dir('distributions'))
-    preserveFileTimestamps = false
-    reproducibleFileOrder = true
-    from('resources')
-    from('LICENSE.txt')
-    from('README.txt')
-}
-tasks.register('writeValeBuildMetadata') {
-    dependsOn tasks.named('check'), overlay
-    def metadata = layout.buildDirectory.file('vale-build.json')
-    outputs.file(metadata)
-    outputs.upToDateWhen { false }
+tasks.named('processResources') {
+    inputs.property('runtimeVersion', project.version)
     doLast {
-        def output = metadata.get().asFile
-        output.parentFile.mkdirs()
-        output.text = JsonOutput.prettyPrint(JsonOutput.toJson([
-            schema: 1, module: project.name, version: project.version.toString(),
-            artifacts: [[role: 'resource_overlay', path: overlay.get().archiveFile.get().asFile.absolutePath]],
-            acceptance: 'RESOURCES_ONLY_RENDERER_SOURCE_UNAVAILABLE', minecraft_launched: false
-        ])) + '\n'
+        def metadata = file("${destinationDir}/mcmod.info")
+        def values = new JsonSlurper().parse(metadata)
+        values[0].version = project.version.toString()
+        values[0].description = 'Five original 5x5 village standards with recoverable saved display data.'
+        metadata.text = JsonOutput.prettyPrint(JsonOutput.toJson(values)) + '\n'
+        def lang = file("${destinationDir}/assets/hvdungeonpictures/lang/en_us.lang")
+        // Always derive output from the immutable recovered input. Re-running
+        // this task cannot append a second copy to a prior packaged language.
+        lang.setText(file('resources/assets/hvdungeonpictures/lang/en_us.lang').getText('UTF-8')
+            + '\nitem.hvdungeonpictures.unassigned_standard.name=Unassigned Village Standard\n', 'UTF-8')
     }
 }
+tasks.register('verifyStandards', JavaExec) {
+    dependsOn tasks.named('checksClasses')
+    classpath = sourceSets.checks.runtimeClasspath
+    mainClass.set('village.standards.StandardsChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyRecoveredResources'), tasks.named('verifyStandards') }
+
+// Private native acceptance helper; never packaged with the runtime/source JAR.
+def checksJar = tasks.register('standardsNativeChecksJar', Jar) {
+    dependsOn tasks.named('nativeChecksClasses')
+    from sourceSets.nativeChecks.output
+    archiveBaseName.set('vale-standards-checks'); archiveClassifier.set('dev')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-checks'))
+}
+def productionReobf = tasks.named('reobfJar', com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar)
+tasks.register('reobfStandardsNativeChecksJar', com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar) {
+    dependsOn productionReobf
+    setInputJarFromTask(checksJar)
+    archiveBaseName.set('vale-standards-checks'); archiveClassifier.set('')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-checks'))
+    mcVersion.set(productionReobf.flatMap { it.mcVersion })
+    srg.set(productionReobf.flatMap { it.srg })
+    fieldCsv.set(productionReobf.flatMap { it.fieldCsv })
+    methodCsv.set(productionReobf.flatMap { it.methodCsv })
+    exceptorCfg.set(productionReobf.flatMap { it.exceptorCfg })
+    recompMcJar.set(productionReobf.flatMap { it.recompMcJar })
+    extraSrgEntries.set(productionReobf.flatMap { it.extraSrgEntries })
+    extraSrgFiles.from(productionReobf.map { it.extraSrgFiles })
+    referenceClasspath.from(sourceSets.nativeChecks.compileClasspath)
+}
+apply from: file('../../gradle/vale-mod-build.gradle')

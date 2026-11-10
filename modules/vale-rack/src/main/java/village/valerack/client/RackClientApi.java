@@ -19,7 +19,8 @@ public final class RackClientApi{
     public static ItemStack stack(int index){return ready()&&index>=0&&index<6?stacks[index].copy():ItemStack.EMPTY;}
     public static int selectedSlot(){return ready()?selected:-1;}
     public static void select(int index){if(ready()&&index>=0&&index<6)selected=index;}
-    public static boolean requestEquip(int index){if(!ready()||index<0||index>=6||stacks[index].isEmpty()||tick<nextQueue)return false;nextQueue=tick+2;RackNetwork.CHANNEL.sendToServer(new RackNetwork.Request(0,index,nonce,revision));return true;}
+    /** Equip/swap a stored weapon; an empty selection stows the held weapon. */
+    public static boolean requestEquip(int index){if(!ready()||index<0||index>=6||tick<nextQueue)return false;nextQueue=tick+2;RackNetwork.CHANNEL.sendToServer(new RackNetwork.Request(0,index,nonce,revision));return true;}
     public static boolean requestOpen(){if(!ready()||tick<nextQueue)return false;nextQueue=tick+2;RackNetwork.CHANNEL.sendToServer(new RackNetwork.Request(1,255,nonce,revision));return true;}
     static void accept(RackNetwork.Snapshot message){context();Minecraft mc=Minecraft.getMinecraft();if(!message.valid||mc.player==null||mc.world==null||!mc.player.getUniqueID().equals(message.owner)||mc.player.dimension!=message.dimension)return;
         if(!hasSnapshot||nonce!=message.nonce)selected=0;owner=message.owner;dimension=message.dimension;nonce=message.nonce;revision=message.revision;locked=message.locked;for(int i=0;i<6;i++)stacks[i]=message.stacks[i].copy();received=tick;hasSnapshot=true;

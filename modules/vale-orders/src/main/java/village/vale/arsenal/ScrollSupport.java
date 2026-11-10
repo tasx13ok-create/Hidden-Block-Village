@@ -71,16 +71,55 @@ final class ScrollSupport {
  static NBTTagCompound companion(EntityPlayerMP p,ItemStack s){return ScrollJournal.get(p).companion(tag(s).getString("valeSerial"));}
  static boolean deploy(EntityPlayerMP p,ItemStack stack,String kind,BlockPos pos,EnumFacing face){
   if(face!=EnumFacing.UP||!p.world.getBlockState(pos).isSideSolid(p.world,pos,face)||PlayerState.level(p)<4||PlayerState.resolve(p)<20)return false;
-  NBTTagCompound n=companion(p,stack);if(n.getBoolean("deployed"))return false;if(n.hasKey("health")&&n.getFloat("health")<=0)return Scrolls.tell(p,"Companion destroyed. Repair with four iron ingots while sealed.");
-  if(kind.equals("summon"))kind="summon_"+Math.max(1,n.getInteger("variant"));
-  ScrollActor actor=ScrollActor.spawn(p,kind,new Vec3d(pos).add(.5,1,.5),null,12000,kind.startsWith("summon_")?6:4);if(actor==null)return false;if(n.hasKey("health"))actor.setHealth(Math.min(actor.getMaxHealth(),n.getFloat("health")));actor.sourceSerial=tag(stack).getString("valeSerial");n.setUniqueId("actor",actor.getUniqueID());n.setBoolean("deployed",true);n.setLong("actorExpires",actor.expires);PlayerState.setResolve(p,PlayerState.resolve(p)-20);ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;
+  NBTTagCompound n=companion(p,stack);if(n.getBoolean("deployed"))return false;if(n.hasKey("health")&&(!Float.isFinite(n.getFloat("health"))||n.getFloat("health")<=0))return Scrolls.tell(p,"Companion destroyed. Repair with four iron ingots while sealed.");
+  if(kind.equals("summon"))kind="summon_"+Math.max(1,Math.min(3,n.getInteger("variant")));
+  ScrollActor actor=ScrollActor.spawn(p,kind,new Vec3d(pos).add(.5,1,.5),null,12000,kind.startsWith("summon_")?6:4);if(actor==null)return false;if(n.hasKey("health"))actor.setHealth(Math.min(actor.getMaxHealth(),n.getFloat("health")));actor.sourceSerial=tag(stack).getString("valeSerial");actor.setOrder(n.getString("order"),false);ScrollJournal.get(p).deployCompanion(actor.sourceSerial,p.getUniqueID(),actor.getUniqueID(),p.dimension,actor.expires);tag(stack).setString("valeCompanionOrder",actor.order().title);PlayerState.setResolve(p,PlayerState.resolve(p)-20);ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;
  }
- static boolean recall(EntityPlayerMP p,ItemStack stack){NBTTagCompound n=companion(p,stack);if(!n.getBoolean("deployed")||!n.hasUniqueId("actor"))return false;ScrollActor a=ScrollActor.find(p,n.getUniqueId("actor"));if(a==null){if(p.world.getTotalWorldTime()<n.getLong("actorExpires"))return Scrolls.tell(p,"Linked companion is outside loaded range. Recall kept.");n.setFloat("health",0);}else{n.setFloat("health",a.getHealth());a.setDead();}n.setBoolean("deployed",false);ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;}
+ static ScrollActor linkedActor(EntityPlayerMP p,UUID id){
+  for(net.minecraft.world.WorldServer world:net.minecraftforge.common.DimensionManager.getWorlds())
+   for(Entity entity:world.loadedEntityList)if(entity instanceof ScrollActor&&entity.getUniqueID().equals(id)&&((ScrollActor)entity).owned(p)&&!entity.isDead)return (ScrollActor)entity;
+  return null;
+ }
+ static boolean recall(EntityPlayerMP p,ItemStack stack){
+  NBTTagCompound n=companion(p,stack);if(!n.getBoolean("deployed")||(n.hasUniqueId("owner")&&!p.getUniqueID().equals(n.getUniqueId("owner"))))return false;
+  ScrollJournal journal=ScrollJournal.get(p);ScrollActor actor=n.hasUniqueId("actor")?linkedActor(p,n.getUniqueId("actor")):null;
+  if(actor!=null){actor.recordCompanion(true);actor.setDead();}
+  // An unloaded actor loses its authoritative lease immediately and cannot act
+  // when its chunk returns. Its last recorded health survives recall.
+  journal.sealCompanion(tag(stack).getString("valeSerial"),p.getUniqueID());journal.flush(p);ArsenalAccess.save(p);return true;
+ }
+ static boolean cycleOrder(EntityPlayerMP p,ItemStack stack){
+  NBTTagCompound n=companion(p,stack);String next=ScrollCompanionOrders.next(n.getString("order")).key;
+  if(n.getBoolean("deployed")){
+   if(!n.hasUniqueId("actor"))return false;ScrollActor actor=linkedActor(p,n.getUniqueId("actor"));
+   if(actor==null||actor.world!=p.world||!ScrollJournal.get(p).activeCompanion(tag(stack).getString("valeSerial"),actor.getUniqueID(),p.getUniqueID(),p.dimension))return Scrolls.tell(p,"Recall the unloaded companion before changing its orders.");
+   actor.setOrder(next,true);
+  }
+  n.setString("order",next);tag(stack).setString("valeCompanionOrder",ScrollCompanionOrders.read(next).title);p.inventory.markDirty();
+  ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);Scrolls.tell(p,"Companion order: "+ScrollCompanionOrders.read(next).title+". Sneak + use cycles orders.");return true;
+ }
+ static boolean repair(EntityPlayerMP p,ItemStack stack){
+  NBTTagCompound n=companion(p,stack);if(n.getBoolean("deployed"))return false;
+  float health=n.getFloat("health");if(Float.isFinite(health)&&health>0)return false;
+  int found=0;for(int i=0;i<p.inventory.getSizeInventory()&&found<4;i++){ItemStack material=p.inventory.getStackInSlot(i);if(material.getItem()==net.minecraft.init.Items.IRON_INGOT)found+=Math.min(4-found,material.getCount());}
+  if(found<4)return Scrolls.tell(p,"Four iron ingots required; all materials kept.");
+  int left=4;for(int i=0;i<p.inventory.getSizeInventory()&&left>0;i++){ItemStack material=p.inventory.getStackInSlot(i);if(material.getItem()==net.minecraft.init.Items.IRON_INGOT){int used=Math.min(left,material.getCount());material.shrink(used);left-=used;}}
+  n.setFloat("health",30);p.inventory.markDirty();ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;
+ }
+ /** Seal loaded and unloaded owned deployments without forcing any chunk loads. */
+ static void closeOwner(EntityPlayerMP p){
+  ScrollJournal journal=ScrollJournal.get(p);
+  for(net.minecraft.world.WorldServer world:net.minecraftforge.common.DimensionManager.getWorlds())
+   for(Entity entity:new ArrayList<Entity>(world.loadedEntityList))if(entity instanceof ScrollActor&&((ScrollActor)entity).owned(p)){
+    ScrollActor actor=(ScrollActor)entity;actor.recordCompanion(true);actor.setDead();
+   }
+  journal.sealOwnerCompanions(p.getUniqueID());journal.flush(p);
+ }
  static final class Support extends Item {
   final String key;Support(String k){key=k;}
   @Override public String getItemStackDisplayName(ItemStack s){return title(key);}
   @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT) @Override public void addInformation(ItemStack stack,World world,List<String> lines,net.minecraft.client.util.ITooltipFlag flag){
-   if(key.startsWith("puppet")||key.equals("ancestral_seal")){lines.add("Level 4; use on solid upper face to deploy (20 resolve).");lines.add("Use in air to recall. Left-click foe to command; sneak-click clears.");lines.add("Destroyed companion: use with four iron ingots to repair.");}
+   if(key.startsWith("puppet")||key.equals("ancestral_seal")){lines.add("Level 4; use on solid upper face to deploy (20 resolve).");lines.add("Use in air to recall. Sneak + use: Assist / Follow / Guard / Hold.");lines.add("Combat roles: left-click foe for ten-second attack; sneak-click clears.");lines.add("Assist joins your recent combat; Guard protects its position from monsters.");if(stack.hasTagCompound()&&stack.getTagCompound().hasKey("valeCompanionOrder"))lines.add("Saved order: "+stack.getTagCompound().getString("valeCompanionOrder"));lines.add("Destroyed companion: use with four iron ingots to repair.");if(key.equals("ancestral_seal")){lines.add("While sealed, sneak + use selects guard, scout or expedition medic.");lines.add("Medics treat injured owner / expedition allies; they never attack.");}}
    else if(key.endsWith("loom")){lines.add("Level 4 + Calm Mending. Use with two compatible opened eyes in inventory.");lines.add("Donors must be distinct and online. Successful recipe consumes both inputs.");}
    else if(key.equals("party_charter")){lines.add("Aim at player and use to invite; use your charter to accept.");lines.add("Sneak + use leaves expedition. Existing outside teams are preserved.");}
    else if(key.endsWith("note"))lines.add("Hold learned technique in other hand; use consumes note for practice.");
@@ -92,14 +131,15 @@ final class ScrollSupport {
     else if(key.endsWith("loom"))ok=medical(p,s,key.equals("ember_loom"));
     else if(key.equals("party_charter"))ok=party(p);
     else if(key.startsWith("puppet")||key.equals("ancestral_seal")){
-     if(companion(p,s).getBoolean("deployed"))ok=recall(p,s);
-     else if(companion(p,s).hasKey("health")&&companion(p,s).getFloat("health")<=0){int slot=-1;for(int i=0;i<p.inventory.getSizeInventory();i++)if(p.inventory.getStackInSlot(i).getItem()==net.minecraft.init.Items.IRON_INGOT&&p.inventory.getStackInSlot(i).getCount()>=4){slot=i;break;}if(slot>=0){p.inventory.getStackInSlot(slot).shrink(4);companion(p,s).setFloat("health",30);ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);ok=true;}}
-     else if(key.equals("ancestral_seal")&&p.isSneaking()){NBTTagCompound row=companion(p,s);row.setInteger("variant",row.getInteger("variant")%3+1);ScrollJournal.get(p).flush(p);Scrolls.tell(p,"Sealed companion variant: "+row.getInteger("variant")+" (1 guard, 2 scout, 3 medic)");ok=true;}else Scrolls.tell(p,"Use on the top of solid ground to deploy. Use in air to recall.");
+     if(companion(p,s).getBoolean("deployed"))ok=p.isSneaking()?cycleOrder(p,s):recall(p,s);
+     else if(companion(p,s).hasKey("health")&&(!Float.isFinite(companion(p,s).getFloat("health"))||companion(p,s).getFloat("health")<=0))ok=repair(p,s);
+     else if(key.equals("ancestral_seal")&&p.isSneaking()){NBTTagCompound row=companion(p,s);row.setInteger("variant",Math.max(0,row.getInteger("variant"))%3+1);ScrollJournal.get(p).flush(p);Scrolls.tell(p,"Sealed companion variant: "+row.getInteger("variant")+" (1 guard, 2 scout, 3 expedition medic)");ok=true;}
+     else if(p.isSneaking())ok=cycleOrder(p,s);else Scrolls.tell(p,"Use on the top of solid ground to deploy. Use in air to recall.");
     }else if(key.startsWith("exam"))Scrolls.tell(p,"Exam token: retained until death; the cloud token drops on defeat.");
    }return new ActionResult<>(ok?EnumActionResult.SUCCESS:EnumActionResult.FAIL,s);
   }
   @Override public EnumActionResult onItemUse(EntityPlayer player,World w,BlockPos pos,EnumHand hand,EnumFacing face,float x,float y,float z){if(w.isRemote)return EnumActionResult.SUCCESS;if(!(player instanceof EntityPlayerMP))return EnumActionResult.FAIL;EntityPlayerMP p=(EntityPlayerMP)player;ItemStack s=p.getHeldItem(hand);return Scrolls.ready(p,s)&&(key.startsWith("puppet")||key.equals("ancestral_seal"))&&deploy(p,s,key.equals("ancestral_seal")?"summon":key,pos,face)?EnumActionResult.SUCCESS:EnumActionResult.FAIL;}
-  @Override public boolean onLeftClickEntity(ItemStack s,EntityPlayer player,Entity target){if(player instanceof EntityPlayerMP&&(key.startsWith("puppet")||key.equals("ancestral_seal"))){EntityPlayerMP p=(EntityPlayerMP)player;if(Scrolls.ready(p,s)&&companion(p,s).hasUniqueId("actor")){ScrollActor a=ScrollActor.find(p,companion(p,s).getUniqueId("actor"));if(a!=null&&target instanceof EntityLivingBase&&ArsenalAccess.allowed(p,(EntityLivingBase)target)){a.target=p.isSneaking()?null:target.getUniqueID();ArsenalAccess.save(p);}}return true;}return false;}
+  @Override public boolean onLeftClickEntity(ItemStack s,EntityPlayer player,Entity target){if(player instanceof EntityPlayerMP&&(key.startsWith("puppet")||key.equals("ancestral_seal"))){EntityPlayerMP p=(EntityPlayerMP)player;if(Scrolls.ready(p,s)&&companion(p,s).hasUniqueId("actor")){ScrollActor a=ScrollActor.find(p,companion(p,s).getUniqueId("actor"));if(a!=null&&(p.isSneaking()?a.command(p,null):target instanceof EntityLivingBase&&a.command(p,(EntityLivingBase)target))){Scrolls.tell(p,p.isSneaking()?"Companion target cleared.":"Companion attack ordered for ten seconds.");ArsenalAccess.save(p);}}return true;}return false;}
  }
  static final class Eye extends Item {
   final String key;Eye(String k){key=k;}

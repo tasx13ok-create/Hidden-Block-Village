@@ -51,7 +51,7 @@ CLASS_PREFIXES = {
     "damage-compat": ("village/vale/damagecompat/",),
     "server-bridge": ("village/vale/serverbridge/",),
     "server-bootstrap": ("village/deployment/",),
-    "village-standards": (),
+    "village-standards": ("village/standards/",),
 }
 ROLES = {"runtime_mod", "development_api", "sources", "bootstrap_library", "resource_overlay"}
 
@@ -286,7 +286,7 @@ def main(argv=None):
             command.append("-PvaleCoreDevJar=" + development_api(results, "vale-orders"))
         if module == "vale-residents-server-bridge":
             command.append("-PresidentApiJar=" + development_api(results, "vale-residents"))
-        if api and module not in {"server-bootstrap", "village-standards"}:
+        if api and module != "server-bootstrap":
             command.append("-PprebuiltMinecraft=" + str(api))
         command.append("writeValeBuildMetadata")
         print(f"Building {module}; log: {log.relative_to(ROOT)}", flush=True)

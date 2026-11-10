@@ -1,0 +1,79 @@
+{
+  "core_sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01",
+  "loaded_fixture_mods": {
+    "valeorders": {
+      "version": "0.3.8",
+      "file": "vale-orders-0.3.8.jar",
+      "sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01"
+    },
+    "valeencounters": {
+      "version": "0.3.6",
+      "file": "vale-encounters-0.3.6.jar",
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    "valedamagecompat": {
+      "version": "0.1.0",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    "valerack": {
+      "version": "0.1.2",
+      "file": "Vale-Rack-0.1.2.jar",
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    "hvdungeonpictures": {
+      "version": "0.3.0",
+      "file": "Village-Standards-0.3.0.jar",
+      "sha256": "3eb99f74a0586bb08a75758632c9b4400adfd5edc80b008ed58917239d91c76e"
+    },
+    "valestandardschecks": {
+      "version": "0.3.0",
+      "file": "vale-standards-checks-0.3.0.jar",
+      "sha256": "3ca8b23361e5fd58355f3d54c26d6bbc4b4076507e9d658a2e4b80edab1fe358"
+    },
+    "valerecoverychecks": {
+      "version": "0.3.8",
+      "file": "vale-recoverychecks-0.3.8.jar",
+      "sha256": "0f713fa430dbad2c6efaef8e171cbe7fa984686db0d5f8cdbdf25915048d37ee"
+    },
+    "valeresidents": {
+      "version": "0.2.0",
+      "file": "vale-residents-0.2.0.jar",
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    "residentserverbridge": {
+      "version": "0.1.0",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    "valeserverbridge": {
+      "version": "0.2.0",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    "valeworldcompat": {
+      "version": "1.0.0",
+      "file": "vale-world-compat-1.0.0.jar",
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    }
+  },
+  "minecraft_version": "1.12.2",
+  "forge_version": "14.23.5.2860",
+  "passed": true,
+  "schema": 1,
+  "fixture": "native-recovery-0.3.8",
+  "assertions": 656,
+  "checks": [
+    "556 live registered items and current diagnostic category checks",
+    "Native result-slot pickup remains issued after expired preview timeout",
+    "Stale proof is recomputed by native container before actual crafting",
+    "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+    "Native Party Charter leave/rejoin preserves the existing expedition",
+    "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+    "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+    "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+    "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+    "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+    "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery"
+  ]
+}

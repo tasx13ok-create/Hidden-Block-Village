@@ -37,6 +37,7 @@ public final class JutsuInput {
     private static boolean game(){return MC.player!=null&&MC.world!=null&&MC.player.isEntityAlive()&&!MC.player.isSpectator()&&MC.currentScreen==null&&MC.inGameHasFocus&&!MC.isGamePaused();}
     private static JutsuRailLayout layout(){ScaledResolution sr=new ScaledResolution(MC);return JutsuRail.layout(sr.getScaledWidth(),sr.getScaledHeight());}
     private static boolean focused(){return RackAccess.loaded()?RackAccess.MODEL.focused():JutsuAccess.MODEL.focused();}
+    static boolean ownsGameplayInput(){return focused();}
     private static void focus(boolean value){if(RackAccess.loaded())RackAccess.MODEL.focus(value,JutsuAccess.time(),HudConfig.motion);else JutsuAccess.MODEL.focus(value,JutsuAccess.time(),HudConfig.motion);}
     private static boolean eligible(){return game()&&JutsuRail.visible()&&(RackAccess.loaded()?RackAccess.ready():JutsuAccess.fresh()&&JutsuAccess.MODEL.hasAssignments())&&layout().box!=null;}
     private static void clearUse(){
@@ -66,7 +67,6 @@ public final class JutsuInput {
         if(RackAccess.loaded()){
             if(MC.player.isHandActive()){feedback("Finish using the held item first");return true;}
             int slot=RackAccess.MODEL.index();
-            if(RackAccess.stack(slot).isEmpty()){feedback("Empty weapon slot - open Storage in HUD settings");return true;}
             long now=Minecraft.getSystemTime();if(now-lastRequest<180)return true;lastRequest=now;
             if(!RackAccess.requestEquip(slot))feedback("Weapon storage is syncing");
             return true;

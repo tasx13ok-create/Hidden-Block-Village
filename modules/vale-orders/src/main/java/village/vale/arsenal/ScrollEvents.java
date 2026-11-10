@@ -35,10 +35,16 @@ public final class ScrollEvents {
   }
   String mode=s.getString("mode");if(s.getLong("modeUntil")>=ArsenalAccess.now(p)){if(mode.equals("lava"))e.setAmount(e.getAmount()*.7f);if(mode.equals("lightmode")){p.addPotionEffect(new PotionEffect(MobEffects.SPEED,30,1));e.setAmount(e.getAmount()*.85f);}}
  }
- @SubscribeEvent public static void death(LivingDeathEvent e){if(!(e.getEntityLiving() instanceof EntityPlayerMP)||e.isCanceled())return;EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();boolean slate=false,cloud=false;
+ @SubscribeEvent(priority=EventPriority.LOWEST) public static void death(LivingDeathEvent e){if(!(e.getEntityLiving() instanceof EntityPlayerMP)||e.isCanceled())return;EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();boolean slate=false,cloud=false;
   for(int i=0;i<p.inventory.getSizeInventory();i++){ItemStack s=p.inventory.getStackInSlot(i);if(!(s.getItem() instanceof ScrollSupport.Support)||!ArsenalAccess.issued(p,s))continue;String k=((ScrollSupport.Support)s.getItem()).key;if(k.equals("exam_slate")&&!slate){s.shrink(1);slate=true;}else if(k.equals("exam_cloud")&&!cloud){ItemStack drop=s.copy();drop.setCount(1);s.shrink(1);p.entityDropItem(drop,0);cloud=true;}}
-  NBTTagCompound st=Scrolls.state(p);st.removeTag("mode");st.setBoolean("replacement",false);ArsenalAccess.save(p);
  }
- @SubscribeEvent public static void clone(PlayerEvent.Clone e){if(e.getEntityPlayer().world.isRemote)return;NBTTagCompound old=PlayerState.data(e.getOriginal());if(old.hasKey("OriginalScrolls",10))PlayerState.data(e.getEntityPlayer()).setTag("OriginalScrolls",old.getCompoundTag("OriginalScrolls").copy());}
+ static void cleanup(EntityPlayerMP p,boolean changedDimension){
+  ScrollSupport.closeOwner(p);NBTTagCompound state=Scrolls.state(p);state.removeTag("mode");state.removeTag("modeUntil");state.setBoolean("replacement",false);state.removeTag("replacementUntil");
+  if(changedDimension){state.removeTag("markDim");state.removeTag("markX");state.removeTag("markY");state.removeTag("markZ");}
+  ArsenalAccess.save(p);
+ }
+ @SubscribeEvent public static void logout(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent e){if(e.player instanceof EntityPlayerMP)cleanup((EntityPlayerMP)e.player,false);}
+ @SubscribeEvent public static void dimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent e){if(e.player instanceof EntityPlayerMP)cleanup((EntityPlayerMP)e.player,true);}
+ @SubscribeEvent public static void clone(PlayerEvent.Clone e){if(e.getEntityPlayer().world.isRemote)return;/* Clone confirms death after every death-event canceller has run. */if(e.isWasDeath()&&e.getOriginal() instanceof EntityPlayerMP)cleanup((EntityPlayerMP)e.getOriginal(),false);NBTTagCompound old=PlayerState.data(e.getOriginal());if(old.hasKey("OriginalScrolls",10))PlayerState.data(e.getEntityPlayer()).setTag("OriginalScrolls",old.getCompoundTag("OriginalScrolls").copy());}
  @SubscribeEvent public static void login(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent e){if(!(e.player instanceof EntityPlayerMP))return;EntityPlayerMP p=(EntityPlayerMP)e.player;String team=Scrolls.state(p).getString("party");if(team.startsWith("vs")&&p.getTeam()==null&&p.world.getScoreboard().getTeam(team)!=null)p.world.getScoreboard().addPlayerToTeam(p.getName(),team);}
 }

@@ -17,6 +17,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.DamageSource;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -45,6 +49,12 @@ public final class ArsenalLogic {
                 &&stack.getCount()==1&&stack.getItem() instanceof ArsenalBlade
                 &&((ArsenalBlade)stack.getItem()).spec==spec&&ArsenalAccess.issued(p,stack)&&ArsenalAccess.fullSet(p)==spec.order;
     }
+    /** A detached issuance snapshot is insufficient once the real weapon is stowed. */
+    static boolean heldProof(EntityPlayerMP p,ItemStack snapshot,ArsenalSpec spec) {
+        if(p==null||snapshot==null||snapshot.isEmpty())return false;
+        ItemStack held=p.getHeldItemMainhand();
+        return !held.isEmpty()&&held.getItem()==snapshot.getItem()&&ItemStack.areItemStackTagsEqual(held,snapshot)&&proof(p,held,spec);
+    }
     public static boolean ready(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,boolean explain) {
         boolean ok=ArsenalMath.ready(!p.world.isRemote,p.isEntityAlive(),p.isSpectator(),p.getHeldItemMainhand()==stack,
                 proof(p,stack,spec),ArsenalAccess.fullSet(p)==spec.order,p.getCooldownTracker().hasCooldown(stack.getItem())||state(p).getBoolean("busy"),
@@ -57,14 +67,16 @@ public final class ArsenalLogic {
         ArsenalCooldowns.record(state(p),spec,time);
         PlayerState.data(p).setLong("lastCombat",time);
         for(Item item:Arsenal.items().values())if(!p.getCooldownTracker().hasCooldown(item))p.getCooldownTracker().setCooldown(item,ArsenalMath.SHARED_RECOVERY);
-        p.getCooldownTracker().setCooldown(stack.getItem(),spec.cooldown);
+        // Native cooldown suppresses right-click before the item can handle a lunge.
+        // Talons use the same persistent deadline for new locks; active locks need use.
+        p.getCooldownTracker().setCooldown(stack.getItem(),spec.role==ArsenalSpec.Role.TALONS?0:spec.cooldown);
         stack.damageItem(1,p);
         state(p).removeTag("busy");
         ArsenalAccess.gesture(p);ArsenalAccess.save(p);
         tell(p,spec.title+" / "+description(spec.role));
     }
     public static void release(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,int ticks) {
-        if(!ArsenalMath.released(ticks,spec.charge)||!ready(p,stack,spec,false))return;
+        if(spec.role==ArsenalSpec.Role.TALONS||!ArsenalMath.released(ticks,spec.charge)||!ready(p,stack,spec,false))return;
         // Reserve once before any native callback. Failed/cancelled casts refund it;
         // callbacks cannot recursively cast again before this transaction closes.
         state(p).setBoolean("busy",true);
@@ -301,12 +313,15 @@ public final class ArsenalLogic {
     static void beginSwing(EntityPlayerMP p,ItemStack stack,EntityLivingBase target) {
         if(!(stack.getItem() instanceof ArsenalBlade))return;
         ArsenalSpec spec=((ArsenalBlade)stack.getItem()).spec;
-        if(proof(p,stack,spec)&&ArsenalAccess.allowed(p,target))SWINGS.put(p.getUniqueID(),new Swing(target,ArsenalAccess.now(p),spec));
+        if(proof(p,stack,spec)&&ArsenalAccess.allowed(p,target))SWINGS.put(p.getUniqueID(),new Swing(target,stack,ArsenalAccess.now(p),spec));
     }
     static void meleeHit(EntityPlayerMP p,ItemStack stack,EntityLivingBase target) {
         Swing swing=SWINGS.remove(p.getUniqueID());
-        if(swing==null||swing.time!=ArsenalAccess.now(p)||swing.target!=target||!proof(p,stack,swing.spec)
-                ||!(target.getHealth()+target.getAbsorptionAmount()<swing.before))return;
+        if(swing==null||swing.time!=ArsenalAccess.now(p)||swing.target!=target||swing.stack!=stack||p.getHeldItemMainhand()!=stack
+                ||!proof(p,stack,swing.spec)||(target.isEntityAlive()&&!ArsenalAccess.allowed(p,target))
+                ||swing.attack==null||swing.hurt==null||swing.attack.isCanceled()||swing.hurt.isCanceled()
+                ||(swing.damage!=null&&swing.damage.isCanceled())||!(target.getHealth()+target.getAbsorptionAmount()<swing.before))return;
+        if(swing.spec.role==ArsenalSpec.Role.TALONS)ClawCombat.confirmedHit(p,stack,target);
         if(swing.spec.role==ArsenalSpec.Role.RESTORE)stack.setItemDamage(Math.max(0,stack.getItemDamage()-2));
         if(swing.spec.role==ArsenalSpec.Role.SWEEP&&state(p).getLong("sweepUntil")>=ArsenalAccess.now(p)
                 &&state(p).getLong("sweepNext")<=ArsenalAccess.now(p)) {
@@ -318,8 +333,31 @@ public final class ArsenalLogic {
             }
         }
     }
+    private static Swing observed(EntityLivingBase target,DamageSource source) {
+        if(!(source.getTrueSource() instanceof EntityPlayerMP)||source.getImmediateSource()!=source.getTrueSource())return null;
+        EntityPlayerMP p=(EntityPlayerMP)source.getTrueSource();Swing swing=SWINGS.get(p.getUniqueID());
+        return swing!=null&&swing.target==target&&swing.time==ArsenalAccess.now(p)?swing:null;
+    }
+    static void observe(LivingAttackEvent event) {
+        Swing swing=observed(event.getEntityLiving(),event.getSource());
+        if(swing!=null&&swing.attack==null) {swing.source=event.getSource();swing.attack=event;}
+    }
+    static void observe(LivingHurtEvent event) {
+        Swing swing=observed(event.getEntityLiving(),event.getSource());
+        if(swing==null||swing.source!=event.getSource())return;
+        swing.hurt=event;
+        EntityPlayerMP p=(EntityPlayerMP)event.getSource().getTrueSource();
+        if(!event.isCanceled()&&swing.spec.role==ArsenalSpec.Role.TALONS&&p.getHeldItemMainhand()==swing.stack
+                &&proof(p,swing.stack,swing.spec)&&ArsenalAccess.allowed(p,event.getEntityLiving())&&ClawCombat.rear(p,event.getEntityLiving()))
+            event.setAmount(ClawRules.nativeRearDamage(event.getAmount()));
+    }
+    static void observe(LivingDamageEvent event) {
+        Swing swing=observed(event.getEntityLiving(),event.getSource());
+        if(swing!=null&&swing.source==event.getSource())swing.damage=event;
+    }
     static void tick(EntityPlayerMP p) {
         long now=ArsenalAccess.now(p);
+        ClawCombat.tick(p);
         Swing swing=SWINGS.get(p.getUniqueID());if(swing!=null&&swing.time<now)SWINGS.remove(p.getUniqueID());
         if(state(p).getLong("overdriveRecovery")>0&&now>=state(p).getLong("overdriveRecovery")) {
             state(p).removeTag("overdriveRecovery");p.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,30,0));
@@ -328,7 +366,7 @@ public final class ArsenalLogic {
         Iterator<Effect> it=list.iterator();
         while(it.hasNext()) {
             Effect effect=it.next();Entity entity=((WorldServer)p.world).getEntityFromUuid(effect.target);
-            if(!(entity instanceof EntityLivingBase)||p.dimension!=effect.dimension||!proof(p,effect.stack,effect.spec)) {it.remove();continue;}
+            if(!(entity instanceof EntityLivingBase)||p.dimension!=effect.dimension||!heldProof(p,effect.stack,effect.spec)) {it.remove();continue;}
             EntityLivingBase target=(EntityLivingBase)entity;
             if(!ArsenalAccess.allowed(p,target)||!p.canEntityBeSeen(target)||p.getDistanceSq(target)>24*24||now>effect.until) {it.remove();continue;}
             if(effect.mode==Effect.TETHER) {
@@ -348,7 +386,7 @@ public final class ArsenalLogic {
         if(list.isEmpty())EFFECTS.remove(p.getUniqueID());
     }
     static void clear(EntityPlayerMP p) {
-        SWINGS.remove(p.getUniqueID());EFFECTS.remove(p.getUniqueID());
+        SWINGS.remove(p.getUniqueID());EFFECTS.remove(p.getUniqueID());ClawCombat.clear(p);
         NBTTagCompound s=state(p);
         // Cooldown/resolve remain persistent; travel, modes and guards never survive
         // death, dimension changes, logout or login into a fresh server process.
@@ -384,12 +422,16 @@ public final class ArsenalLogic {
             case MEND:return "cleanse and mend guard";case GUIDED:return "guided flux shot";case EMITTER:return "three-wave needle emitter";
             case VENOM:return "venom needle";case MIST:return "persistent mist";case FINISH:return "bounded prism finisher";case GUARD:return "timed crescent guard";
             case OVERDRIVE:return "brief overdrive with recovery";case SONIC:return "sonic cone / sneak: grapple";case SWEEP:return "temporary sweeping mode";
+            case TALONS:return "five-block lock / one-second lunge / accumulating bleed";
             default:return "short-lived proximity charge";
         }
     }
     static final class Swing {
-        final EntityLivingBase target;final long time;final float before;final ArsenalSpec spec;
-        Swing(EntityLivingBase target,long time,ArsenalSpec spec) {this.target=target;this.time=time;this.spec=spec;before=target.getHealth()+target.getAbsorptionAmount();}
+        final EntityLivingBase target;final ItemStack stack;final long time;final float before;final ArsenalSpec spec;
+        DamageSource source;LivingAttackEvent attack;LivingHurtEvent hurt;LivingDamageEvent damage;
+        Swing(EntityLivingBase target,ItemStack stack,long time,ArsenalSpec spec) {
+            this.target=target;this.stack=stack;this.time=time;this.spec=spec;before=target.getHealth()+target.getAbsorptionAmount();
+        }
     }
     static final class Effect {
         static final int BURN=0,VENOM=1,TETHER=2,BURST=3;

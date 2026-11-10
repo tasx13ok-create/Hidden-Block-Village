@@ -1,0 +1,101 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileInjectedInterfacesJava NO-SOURCE
+> Task :extractDependencyATs SKIPPED
+> Task :generateForgeSrgMappings SKIPPED
+> Task :downloadVanillaJars SKIPPED
+> Task :mergeVanillaSidedJars SKIPPED
+> Task :deobfuscateMergedJarToSrg SKIPPED
+> Task :downloadFernflower SKIPPED
+> Task :decompileSrgJar SKIPPED
+> Task :cleanupDecompSrgJar SKIPPED
+> Task :patchDecompiledJar SKIPPED
+> Task :applyJST SKIPPED
+> Task :remapDecompiledJar SKIPPED
+> Task :decompressDecompiledSources SKIPPED
+> Task :processInjectedInterfacesResources NO-SOURCE
+> Task :injectedInterfacesClasses UP-TO-DATE
+> Task :compilePatchedMcJava SKIPPED
+> Task :processPatchedMcResources SKIPPED
+> Task :patchedMcClasses UP-TO-DATE
+> Task :compileApiJava NO-SOURCE
+> Task :processApiResources NO-SOURCE
+> Task :apiClasses UP-TO-DATE
+> Task :injectTags UP-TO-DATE
+> Task :compileInjectedTagsJava NO-SOURCE
+> Task :extractNatives2 SKIPPED
+> Task :createMcLauncherFiles SKIPPED
+> Task :compileMcLauncherJava SKIPPED
+> Task :processInjectedTagsResources NO-SOURCE
+> Task :injectedTagsClasses UP-TO-DATE
+> Task :processMcLauncherResources NO-SOURCE
+> Task :mcLauncherClasses UP-TO-DATE
+> Task :stageValePreparedMinecraft SKIPPED
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :jar UP-TO-DATE
+> Task :sourcesJar UP-TO-DATE
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :compileRuleChecksJava UP-TO-DATE
+> Task :processRuleChecksResources NO-SOURCE
+> Task :ruleChecksClasses UP-TO-DATE
+
+> Task :verifyAbilities
+PASS: 30 immutable ability catalog and bounded S2C/C2S contract checks. No native action claim.
+
+> Task :verifyClawCombat
+PASS: 23 Crescent Talons boundary and protocol assertions. Native combat is a separate fixture.
+
+> Task :verifyClientAbilityRequests
+PASS: 24 actual client catalog routing, schema2 armor/flight, legacy fallback and explicit-equip separation checks.
+
+> Task :verifyCommands
+PASS: 15 actual non-op command-entry, public command and admin-denial/completion checks; no server or world needed.
+
+> Task :verifyGameplayRecovery
+PASS: 23 gameplay recovery state checks (saved cooldowns, party rejoin, companion journal). Native crafting/actor checks are separate.
+
+> Task :verifyHud
+PASS: 18 HUD schema, bounded payload, owner, cooldown and confirmed-cast round-trip checks.
+
+> Task :verifyLedger
+[07:21:44] [main/INFO]: VALE_LEDGER_SELFTEST_PASS: 10003-row ledger round trip, receipts, owner queues and reload checks.
+
+> Task :verifyLoadout
+PASS: 58 loadout schema, exact-weapon request, legacy-wire and version-gate checks. No native/C2S transport claim.
+
+> Task :verifyOriginalArmor
+ORIGINAL_ARMOR_HEADLESS_PASS assertions=215497 cuboids=895
+
+> Task :verifyOriginalArmorApi
+ORIGINAL_ARMOR_API_CONTRACT_PASS checks=112
+
+> Task :verifyPoses
+PASS: 1093 run-pose spring transition, frame-rate, repeated-pass and bounded-response checks.
+
+> Task :verifyRules
+PASS: 23 rule and receipt checks. Not a Forge runtime test.
+
+> Task :verifyScrollCompanions
+PASS: 36 companion order and saved-deployment checks. Native movement, support and item interactions are checked separately.
+
+> Task :check
+> Task :packageMcLauncher SKIPPED
+> Task :packagePatchedMc SKIPPED
+> Task :reobfJar UP-TO-DATE
+> Task :writeValeBuildMetadata
+
+[Incubating] Problems report is available at: file:///workspace/scratch/fa349c917106/hidden-block-village/modules/vale-orders/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 15s
+21 actionable tasks: 14 executed, 7 up-to-date

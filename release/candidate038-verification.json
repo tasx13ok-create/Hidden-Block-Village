@@ -1,0 +1,509 @@
+{
+  "schema": "vale.source-candidate-verification/v1",
+  "recorded_utc": "2026-11-10",
+  "status": "CORE038_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING",
+  "release_ready": false,
+  "source": {
+    "baseline_parent_commit": "81280bb78f02ed2eed15a598bc34f4010d5cfa75",
+    "canonical_file_list_sha256": "aead3701b34247aafb7de30065248e4afc513f26671ad67a1e4ff4915b6b625e",
+    "file_count": 1508,
+    "bytes": 3918300,
+    "manifest": {
+      "path": "release/candidate038-source-inputs.json",
+      "bytes": 329490,
+      "sha256": "486e06df27db37ff7b3e2d4ca0be300ca4b74b23f600bd6ccf217d2621ee045e"
+    },
+    "post_build_inputs_rechecked": true,
+    "publication_binding": "Read at the containing Git commit. The parent commit is historical; the file manifest identifies this candidate source."
+  },
+  "component_builds": {
+    "passed": true,
+    "source_areas": 11,
+    "artifacts": 36,
+    "source_changed_during_build": [],
+    "report": {
+      "path": "release/candidate038-component-builds.json",
+      "bytes": 28376,
+      "sha256": "f65c90db306826bb68fa65bebba9111f34cbc5fa83d32a3cfa4c4261bdef12c5"
+    },
+    "components": [
+      {
+        "module": "vale-orders",
+        "version": "0.3.8",
+        "checks": [
+          {
+            "task": "verifyAbilities",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyClawCombat",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyClientAbilityRequests",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyCommands",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyGameplayRecovery",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyHud",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyLedger",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyLoadout",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyOriginalArmor",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyOriginalArmorApi",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyPoses",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyRules",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyScrollCompanions",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core038-component-vale-orders.txt",
+          "bytes": 4253,
+          "sha256": "2dddc74faa011ea669ec89f0c9314e11c24e30fa9ba708af30979d76e95c8e69"
+        }
+      },
+      {
+        "module": "vale-encounters",
+        "version": "0.3.6",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-vale-encounters.txt",
+          "bytes": 2531,
+          "sha256": "62f7991c1caa780b2a577ffc79033cc88eaa08d4f8dcd2802b0f3724244a373b"
+        }
+      },
+      {
+        "module": "vale-rack",
+        "version": "0.1.2",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-vale-rack.txt",
+          "bytes": 2495,
+          "sha256": "6fdd40a762f0f260dc8d997c0bdb74d2fbce2bab16239bfaaac5933b867b3913"
+        }
+      },
+      {
+        "module": "vale-residents",
+        "version": "0.2.0",
+        "checks": [
+          {
+            "task": "verifyDialogue",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyResidents",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core038-component-vale-residents.txt",
+          "bytes": 2848,
+          "sha256": "0bed95e39917b42f7be6c1931d90c6eda7990eb1d1f2d1a6029ee24b932817c2"
+        }
+      },
+      {
+        "module": "vale-residents-server-bridge",
+        "version": "0.1.0",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-vale-residents-server-bridge.txt",
+          "bytes": 2513,
+          "sha256": "de525add2bba718f14e7210f287fb9f928307706591c09485d921e343d8b8c2c"
+        }
+      },
+      {
+        "module": "vale-world-compat",
+        "version": "1.0.0",
+        "checks": [
+          {
+            "task": "verifyCompatibility",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core038-component-vale-world-compat.txt",
+          "bytes": 3587,
+          "sha256": "9fa3b2f9927cc1ba1028350be0366e9263f33a8b95e21101e6fc8210bd8e7c5b"
+        }
+      },
+      {
+        "module": "field-hud",
+        "version": "0.14.1",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-field-hud.txt",
+          "bytes": 2525,
+          "sha256": "38308db0e648a84e26745b00afc077165a0ac4e5901b35333b4e88a479278c2f"
+        }
+      },
+      {
+        "module": "field-controls",
+        "version": "1.4.0-simple-candidate",
+        "checks": [
+          {
+            "task": "verifyControls",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyFocusedCast",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyJutsuFocus",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyMenus",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifySettings",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifySimpleMenus",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core038-component-field-controls.txt",
+          "bytes": 3291,
+          "sha256": "71cd1f7d4b509a180fe588468064d55d8815a283338a405f940731012fc7f980"
+        }
+      },
+      {
+        "module": "vale-compatibility-helpers",
+        "version": "source-adapters",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-vale-compatibility-helpers.txt",
+          "bytes": 7831,
+          "sha256": "2c93227e5f3775efca09d8d8e44dd600be3e59c986d0c806bf37fab27f6eb46f"
+        }
+      },
+      {
+        "module": "server-bootstrap",
+        "version": "0.3.7",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core038-component-server-bootstrap.txt",
+          "bytes": 1244,
+          "sha256": "cc2021fee4ee6041818e03471fa3101b1b6c3c2519b9833c44dd35a3ee9cd277"
+        }
+      },
+      {
+        "module": "village-standards",
+        "version": "0.3.0",
+        "checks": [
+          {
+            "task": "verifyStandards",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core038-component-village-standards.txt",
+          "bytes": 2795,
+          "sha256": "83f3c7be389d85b2c869cc8f806b53598c563f1dcd49bd489cc9fed0edec26c5"
+        }
+      }
+    ],
+    "all_class_major_versions": [
+      52
+    ],
+    "scope": "Compilation, component checks, deterministic archives, artifact class ownership; no graphical client or full installed package."
+  },
+  "tool_tests": {
+    "passed": true,
+    "tests": 91,
+    "skipped": 0,
+    "java_bootstrap_compiler": "Azul Java8u512",
+    "evidence": {
+      "path": "release/evidence/core038-release-tool-tests.txt",
+      "bytes": 13178,
+      "sha256": "e00029d1fb6e0970941f78008702f73cdff9eb9a35a7f70d16c6a5bd048c9f80"
+    }
+  },
+  "new_component_assertions": {
+    "claw_rules_and_wire": 23,
+    "companion_state": 36,
+    "standards_geometry_persistence": 341
+  },
+  "native_fixture": {
+    "production_core_sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01",
+    "breakdown": {
+      "retained_recovery": 86,
+      "companions": 48,
+      "claw_and_projectiles": 82,
+      "rack": 78,
+      "standards": 362
+    },
+    "total_per_runtime": 656,
+    "same_production_and_qa_jars_on_both_runtimes": true,
+    "qa_in_production": false,
+    "qa_sources": [
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ClawNativeChecks.java",
+        "bytes": 22040,
+        "sha256": "f50f30f53c011e7a01a82b183a5d447b8726be9c2f30f6e4b73be648b293e4a2"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+        "bytes": 24623,
+        "sha256": "666c59cb74a53a6c54ef513b1129acb0f335ddcbec5f621771eddb6f505fed25"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollNativeChecks038.java",
+        "bytes": 16130,
+        "sha256": "35efdcf204eee605ee3e8fff78dbd024f10682802787baf46cf35fc00229d728"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/valerack/RackNativeChecks038.java",
+        "bytes": 9294,
+        "sha256": "b3b65090705fbff559082fbc71c3f66cbc63ef0b7c62753cd69de033c62a9b89"
+      },
+      {
+        "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeChecks.java",
+        "bytes": 17170,
+        "sha256": "df112541a97fdb99739fbe12d93144b0cbfdf7220bf22e60587006a4719f1a9e"
+      }
+    ],
+    "forge": {
+      "passed": true,
+      "assertions": 656,
+      "minecraft": "1.12.2",
+      "forge": "14.23.5.2859",
+      "process_exit_code": 0,
+      "production_mods": 9,
+      "private_qa_mods": 2,
+      "result": {
+        "path": "release/evidence/core038-forge-result.json",
+        "bytes": 3407,
+        "sha256": "628c39a2387382e038db7ec626fcf2373e6421d080819c3416f7dcdf8fe90099"
+      },
+      "log": {
+        "path": "release/evidence/core038-forge-native.txt",
+        "bytes": 16520,
+        "sha256": "11e54b3bbba294e50746704b75d7f18fe99d5be917cd650cdeb29c847a6c936d"
+      },
+      "process": {
+        "path": "release/evidence/core038-forge-process.json",
+        "bytes": 2169,
+        "sha256": "d5cd0033f7dc4f3444ee525a46539eb3ce8320d04dd6fc8fda626da0116290d0"
+      },
+      "fixture_properties": {
+        "path": "release/evidence/core038-forge-server.properties",
+        "bytes": 850,
+        "sha256": "5664b933b6abd597c9b49588fbd2f03ac5f7a4968ae0422d7d0ac5df3bc06b6c"
+      }
+    },
+    "magma": {
+      "passed": true,
+      "assertions": 656,
+      "minecraft": "1.12.2",
+      "forge": "14.23.5.2860",
+      "process_exit_code": 0,
+      "production_mods": 9,
+      "private_qa_mods": 2,
+      "result": {
+        "path": "release/evidence/core038-magma-result.json",
+        "bytes": 3407,
+        "sha256": "ab8713e9d5190424bf11aeedc540f8f5d2bcb4f075970aea2e4432ec55dbab3a"
+      },
+      "log": {
+        "path": "release/evidence/core038-magma-native.txt",
+        "bytes": 24446,
+        "sha256": "b139ae5dc95b1663edd96c8c259185b2c3e22febb0297ce1ec2e87981d883c84"
+      },
+      "process": {
+        "path": "release/evidence/core038-magma-process.json",
+        "bytes": 2170,
+        "sha256": "b30e62f1e9993c3677b67c5b4c41fb85cd6e01815ea30739b507bc5f30603d00"
+      },
+      "fixture_properties": {
+        "path": "release/evidence/core038-magma-server.properties",
+        "bytes": 850,
+        "sha256": "f8f81b84ba68573ef329557f120fd9cfd389dd4fa0d8ed2de7c6a337c2afe1a8"
+      }
+    },
+    "magma_entrypoint": "Pinned upstream Magma1.12.2-8cc35ed directly, with updater disabled; no new wrapper plan is implied.",
+    "world": "vale-recovery-test",
+    "player": "Synthetic native EntityPlayerMP with an embedded connection; additional bounded fixture entities.",
+    "network_binding": "127.0.0.1",
+    "offline_mode_scope": "Only isolated disposable fixtures. Not a production configuration recommendation.",
+    "scope_limit": "Same656 assertions on each runtime, not1312 distinct scenarios. No actual Naruto.test, real graphical client, full historical external plugin roster, live Netty client session or Bisect acceptance."
+  },
+  "runtime_and_supporting_outputs": [
+    {
+      "module": "vale-orders",
+      "component": "vale-orders",
+      "role": "runtime_mod",
+      "filename": "vale-orders-0.3.8.jar",
+      "bytes": 1943933,
+      "sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01"
+    },
+    {
+      "module": "vale-encounters",
+      "component": "vale-encounters",
+      "role": "runtime_mod",
+      "filename": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "module": "vale-rack",
+      "component": "vale-rack",
+      "role": "runtime_mod",
+      "filename": "Vale-Rack-0.1.2.jar",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "module": "vale-residents",
+      "component": "vale-residents",
+      "role": "runtime_mod",
+      "filename": "vale-residents-0.2.0.jar",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "module": "vale-residents-server-bridge",
+      "component": "vale-residents-server-bridge",
+      "role": "runtime_mod",
+      "filename": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "module": "vale-world-compat",
+      "component": "vale-world-compat",
+      "role": "runtime_mod",
+      "filename": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "module": "field-hud",
+      "component": "field-hud",
+      "role": "runtime_mod",
+      "filename": "field-hud-0.14.1.jar",
+      "bytes": 182952,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "module": "field-controls",
+      "component": "field-controls",
+      "role": "runtime_mod",
+      "filename": "field-controls-1.4.0-simple-candidate.jar",
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "client-lifecycle",
+      "role": "runtime_mod",
+      "filename": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "damage-compat",
+      "role": "runtime_mod",
+      "filename": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "server-bridge",
+      "role": "runtime_mod",
+      "filename": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "module": "server-bootstrap",
+      "component": "server-bootstrap",
+      "role": "bootstrap_library",
+      "filename": "Vale-Server-Bootstrap-0.3.7.jar",
+      "bytes": 9025,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf"
+    },
+    {
+      "module": "village-standards",
+      "component": "village-standards",
+      "role": "runtime_mod",
+      "filename": "Village-Standards-0.3.0.jar",
+      "bytes": 36584,
+      "sha256": "3eb99f74a0586bb08a75758632c9b4400adfd5edc80b008ed58917239d91c76e"
+    }
+  ],
+  "changes": [
+    "Playable original Crescent Talons and native protection-aware combat",
+    "Persistent companion orders, allied support, recall and deployment authority",
+    "Six-slot quick stow/equip with charge and inventory preservation",
+    "Swept piercing/returning projectiles and held-weapon invalidation",
+    "Complete original Village Standards runtime with opaque-data recovery"
+  ],
+  "remaining_acceptance": {
+    "windows_stage_current_inventory": "BLOCKED_DISCONNECTED_FILE_LINK",
+    "full_matching_client": "NOT_RUN",
+    "actual_Naruto_test_start_save_restart": "NOT_RUN",
+    "full_current_external_plugin_roster": "NOT_RUN",
+    "historical_standards_entity_id_and_custom_NBT_migration": "UNVERIFIED",
+    "graphics_and_Solas": "NOT_RUN",
+    "final_complete_package_assembly": "NOT_RUN",
+    "Bisect_start_restart_client_connection": "NOT_RUN"
+  },
+  "graphics_attempt": {
+    "native_display_started": false,
+    "result": "Workspace display probe could not establish local listening sockets; no in-game render result."
+  },
+  "historical_coverage": {
+    "reference_item_rows": 485,
+    "mapped_rows": 461,
+    "distinct_targets": 353,
+    "unmapped_rows": 24,
+    "bounded_ability_obligations": 324,
+    "missing_ability_rows": 217,
+    "untested_ability_rows": 52,
+    "overall_completion_percentage": null,
+    "scope": "Historical bounded audit has not been recounted for these additions."
+  },
+  "publication_exclusions": [
+    "Compiled runtime distributions",
+    "Actual worlds/player records",
+    "Credentials",
+    "Reference decompilations",
+    "Approval-held artwork",
+    "Compiled private QA"
+  ]
+}

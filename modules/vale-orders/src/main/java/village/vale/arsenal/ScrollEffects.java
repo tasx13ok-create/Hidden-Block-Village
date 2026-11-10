@@ -34,7 +34,7 @@ final class ScrollEffects {
    case "charge":case "fireedge":case "windedge":case "spiral":case "lava":case "lightmode":return mode(p,k,200);
    case "size":if(p.isPotionActive(MobEffects.HEALTH_BOOST)||!spawn(p,"titan",p.getPositionVector(),null,200,2))return false;buff(p,MobEffects.HEALTH_BOOST,200,1);p.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,200,0));return true;
    case "disguise":t=ArsenalAccess.aimedTarget(p,20);if(t==null)return false;s.setString("disguiseName",t.getName());return spawn(p,"disguise",p.getPositionVector(),t,240,0);
-   case "puppetcontrol":for(ScrollActor a:p.world.getEntitiesWithinAABB(ScrollActor.class,p.getEntityBoundingBox().grow(5)))if(a.owned(p)&&a.kind.startsWith("puppet")){t=ArsenalAccess.aimedTarget(p,20);a.target=t==null?null:t.getUniqueID();return true;}return false;
+   case "puppetcontrol":for(ScrollActor a:p.world.getEntitiesWithinAABB(ScrollActor.class,p.getEntityBoundingBox().grow(5)))if(a.owned(p)&&a.kind.startsWith("puppet")){t=ArsenalAccess.aimedTarget(p,20);return a.command(p,t);}return false;
    case "golem":case "clone":if(ScrollActor.exists(p,k))return false;return spawn(p,k,p.getPositionVector().add(p.getLookVec().scale(2)),null,k.equals("clone")?400:600,k.equals("clone")?2:5);
    case "wall":at=ground(p,16);return at!=null&&spawn(p,"wall",at,null,200,0);
    case "ritual":

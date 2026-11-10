@@ -29,11 +29,12 @@ public enum ArsenalSpec {
     OVERDRIVE_BLADE("overdrive_blade", "Overdrive Blade", Order.EMBER, 6, 1.7f, 28, 160, 12, Role.OVERDRIVE),
     ECHO_GAUNTLET("echo_gauntlet", "Echo Gauntlet", Order.GALE, 5, 1.6f, 20, 90, 10, Role.SONIC),
     SWEEP_GLAIVE("sweep_glaive", "Sweep Glaive", Order.RIME, 7, 1.1f, 24, 120, 12, Role.SWEEP),
-    SEAL_CHARGE("seal_charge", "Seal Charge", Order.FLINT, 4, 1.2f, 20, 120, 6, Role.TRAP);
+    SEAL_CHARGE("seal_charge", "Seal Charge", Order.FLINT, 4, 1.2f, 20, 120, 6, Role.TRAP),
+    CRESCENT_TALONS("crescent_talons", "Crescent Talons", Order.DUSK, 5, 2.2f, 18, 100, 0, Role.TALONS);
 
     public enum Role { WIND, RETURN, MARK, DRAIN, CHAIN, SHOCK, SLAM, BREAK, RESTORE, DRAIN_BOLT,
         FIRE, BURST, RIME, BIND, EXTEND, MEND, GUIDED, EMITTER, VENOM, MIST, FINISH, GUARD,
-        OVERDRIVE, SONIC, SWEEP, TRAP }
+        OVERDRIVE, SONIC, SWEEP, TRAP, TALONS }
     public final String key, title;
     public final Order order;
     public final float damage, speed;

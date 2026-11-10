@@ -1,5 +1,8 @@
 package village.vale.arsenal;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -77,21 +80,30 @@ public final class ArsenalShot extends ArsenalEntity {
         if(!Double.isFinite(end.x)||!Double.isFinite(end.y)||!Double.isFinite(end.z)||!world.isBlockLoaded(new BlockPos(end))) {setDead();return;}
         RayTraceResult block=world.rayTraceBlocks(start,end,false,true,false);
         Vec3d stop=block==null?end:block.hitVec;
-        if(!returning) {
-            EntityLivingBase nearest=null;double distance=start.squareDistanceTo(stop);int checked=0;
-            for(EntityLivingBase candidate:world.getEntitiesWithinAABB(EntityLivingBase.class,getEntityBoundingBox().expand(motionX,motionY,motionZ).grow(.25))) {
-                if(checked++>=64)break;
-                if(candidate==p||contacts.contains(candidate.getUniqueID())||!candidate.isEntityAlive())continue;
-                RayTraceResult intersection=candidate.getEntityBoundingBox().grow(.15).calculateIntercept(start,stop);
-                if(intersection==null)continue;
-                double d=start.squareDistanceTo(intersection.hitVec);
-                if(d<=distance) {nearest=candidate;distance=d;}
-            }
-            if(nearest!=null) {
-                boolean permitted=ArsenalAccess.allowed(p,nearest)&&p.canEntityBeSeen(nearest);
-                boolean accepted=permitted&&contact(p,nearest);
-                if(mode()==RETURN)recall();
-                else if(mode()!=BIND||!accepted||contacts.size()>=3) {if(mode()==MIST&&accepted)mist(p,nearest.getPositionVector());setDead();return;}
+        // Sweep every contact in physical order. Piercing no longer jumps over
+        // a second victim (or a protected body) in the same movement segment.
+        List<Contact> swept=new ArrayList<>();int checked=0;
+        for(EntityLivingBase candidate:world.getEntitiesWithinAABB(EntityLivingBase.class,getEntityBoundingBox().expand(motionX,motionY,motionZ).grow(.25))) {
+            if(candidate==p||contacts.contains(candidate.getUniqueID())||!candidate.isEntityAlive()||(candidate instanceof net.minecraft.entity.player.EntityPlayer&&((net.minecraft.entity.player.EntityPlayer)candidate).isSpectator())||!candidate.canBeCollidedWith())continue;
+            if(checked++>=64) {setDead();return;}
+            net.minecraft.util.math.AxisAlignedBB box=candidate.getEntityBoundingBox().grow(.15);
+            boolean inside=start.x>=box.minX&&start.x<=box.maxX&&start.y>=box.minY&&start.y<=box.maxY&&start.z>=box.minZ&&start.z<=box.maxZ;
+            RayTraceResult intersection=box.calculateIntercept(start,stop);
+            if(inside||intersection!=null)swept.add(new Contact(candidate,inside?start:intersection.hitVec,start));
+        }
+        swept.sort(Comparator.comparingDouble((Contact hit)->hit.distance).thenComparingInt(hit->hit.target.getEntityId()));
+        for(Contact hit:swept) {
+            if(!validOwner(p)) {setDead();return;}
+            setPosition(hit.point.x,hit.point.y,hit.point.z);
+            boolean permitted=ArsenalAccess.allowed(p,hit.target)&&p.canEntityBeSeen(hit.target);
+            boolean accepted=permitted&&contact(p,hit.target);
+            if(!validOwner(p)) {setDead();return;}
+            if(mode()==RETURN) {
+                if(!returning) {recall();return;}
+                if(!accepted||contacts.size()>=3) {setDead();return;}
+            } else if(mode()!=BIND||!accepted||contacts.size()>=3) {
+                if(mode()==MIST&&accepted)mist(p,hit.target.getPositionVector());
+                setDead();return;
             }
         }
         if(block!=null) {
@@ -106,10 +118,15 @@ public final class ArsenalShot extends ArsenalEntity {
         setPosition(end.x,end.y,end.z);
         if(age%3==0)ArsenalLogic.particles(p,end,mode()==FIRE?EnumParticleTypes.FLAME:EnumParticleTypes.CRIT_MAGIC,1);
     }
+    private static final class Contact {
+        final EntityLivingBase target;final Vec3d point;final double distance;
+        Contact(EntityLivingBase target,Vec3d point,Vec3d start) {this.target=target;this.point=point;distance=start.squareDistanceTo(point);}
+    }
     private boolean contact(EntityPlayerMP p,EntityLivingBase target) {
         contacts.add(target.getUniqueID());
         float amount=mode()==GUIDED?7+power()*3:mode()==NEEDLE?2:4+power()*4;
         if(!ArsenalLogic.hit(p,target,amount))return false;
+        if(!validOwner(p))return true;
         switch(mode()) {
             case MARK:ArsenalLogic.mark(p,target.getPositionVector());break;
             case DRAIN:ArsenalLogic.drain(p,target,6);break;
@@ -119,7 +136,7 @@ public final class ArsenalShot extends ArsenalEntity {
                 ArsenalLogic.addEffect(p,target,issued,spec(),ArsenalLogic.Effect.TETHER,35);
                 target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,35,1));break;
             case GUIDED:
-                for(EntityLivingBase nearby:ArsenalLogic.near(p,target.getPositionVector(),2,3))if(nearby!=target)ArsenalLogic.hit(p,nearby,3);
+                for(EntityLivingBase nearby:ArsenalLogic.near(p,target.getPositionVector(),2,3))if(validOwner(p)&&nearby!=target)ArsenalLogic.hit(p,nearby,3);
                 ArsenalLogic.particles(p,target.getPositionVector(),EnumParticleTypes.EXPLOSION_NORMAL,6);break;
             default:break;
         }

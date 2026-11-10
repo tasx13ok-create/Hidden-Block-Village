@@ -31,16 +31,29 @@ public final class RackSessions {
         if(operation!=0||index<0||index>=6)return "Unknown rack slot.";
         RackData rack=RackData.of(p);if(rack.locked)return "Rack save needs a newer module.";
         if(revision!=rack.revision)return "Rack changed; try again.";
-        ItemStack stored=rack.getStackInSlot(index);if(stored.isEmpty())return "That rack slot is empty.";
-        if(!RackPolicy.accepts(p,stored))return "That stored weapon cannot be equipped.";
         int hand=p.inventory.currentItem;if(hand<0||hand>=9)return "Native hand selection is invalid.";
-        ItemStack held=p.inventory.mainInventory.get(hand);int free=-1;
+        ItemStack stored=rack.getStackInSlot(index),held=p.inventory.mainInventory.get(hand);
+        if(stored.isEmpty()){
+            if(held.isEmpty())return "Hold a weapon to store in this empty rack slot.";
+            if(!RackPolicy.accepts(p,held))return "Only an owned weapon can enter this rack slot.";
+            // Stow the physical stack, including all damage, enchantment and issued
+            // ownership data. A full inventory does not need a spare cell.
+            ItemStack nextRack=held.copy();
+            if(p.isHandActive()&&p.getActiveHand()==net.minecraft.util.EnumHand.MAIN_HAND)p.resetActiveHand();
+            p.inventory.mainInventory.set(hand,ItemStack.EMPTY);rack.raw(index,nextRack);
+            rack.markDirty();p.inventory.markDirty();p.openContainer.detectAndSendChanges();return "";
+        }
+        if(!RackPolicy.accepts(p,stored))return "That stored weapon cannot be equipped.";
+        int free=-1;
         if(!held.isEmpty()){
             if(RackPolicy.type(held)){if(!RackPolicy.accepts(p,held))return "The held weapon cannot enter this rack.";}
             else{for(int i=0;i<36;i++)if(i!=hand&&p.inventory.mainInventory.get(i).isEmpty()){free=i;break;}if(free<0)return "Free an inventory slot for the held item.";}
         }
         // Validate everything first, then publish the two/three assignments in one server task.
         ItemStack nextHand=stored.copy(),nextRack=held.isEmpty()||free>=0?ItemStack.EMPTY:held.copy();
+        // Replacing a charging stack cancels that use without releasing it. It
+        // must never fire a stale charged attack after leaving the active hand.
+        if(p.isHandActive()&&p.getActiveHand()==net.minecraft.util.EnumHand.MAIN_HAND)p.resetActiveHand();
         if(free>=0)p.inventory.mainInventory.set(free,held.copy());
         p.inventory.mainInventory.set(hand,nextHand);rack.raw(index,nextRack);rack.markDirty();p.inventory.markDirty();p.openContainer.detectAndSendChanges();return "";
     }

@@ -67,7 +67,7 @@ Additional wrapper arguments use `--gradle-arg=-Pname=value`.
 |---|---|
 | `vale-orders` | Production Core mod, development API and source archive; component tests run through `check`. |
 | `vale-encounters` | Production Encounters mod, development API and source archive, compiled against the current Core API. Historical native checks are separate evidence. |
-| `vale-rack` | Production Rack mod and development API. No recovered automated tests are included in this source module. |
+| `vale-rack` | Production Rack 0.1.2 mod and development API, including six-slot quick stow/equip. Its native integration checks belong to Core's separate private recovery fixture. |
 | `vale-residents` | Production Residents mod, development API and source archive; resident/dialogue component checks run. |
 | `vale-residents-server-bridge` | Separate server-only adapter compiled against the current Residents API. |
 | `vale-world-compat` | World compatibility mod and development/source artifacts. The newly implemented `CompatibilityChecks` verifies opaque NBT preservation, copy isolation, cooking progress, all legacy metadata values, and cleanup of restart state. It does not load the actual saved world. |
@@ -75,7 +75,7 @@ Additional wrapper arguments use `--gradle-arg=-Pname=value`.
 | `field-controls` | Client Controls mod and development/source artifacts; the six recovered component checks run. |
 | `vale-compatibility-helpers` | Three independently built adapters: client lifecycle, server damage compatibility, and server command bridge. They must remain separate JARs with their own side requirements. |
 | `server-bootstrap` | Java 8 wrapper library and source archive. It contains neither Magma nor an embedded deployment plan and is not a runnable server distribution. |
-| `village-standards` | Verified art/metadata overlay ZIP. The excluded renderer source is unavailable; this ZIP is not a complete mod and cannot replace the existing runtime JAR. |
+| `village-standards` | Complete newly authored 0.3.0 runtime mod, development API and source archive. Component checks cover geometry, saved records and exact recovered-resource hashes. The old binary's entity ID and custom NBT schema remain unverified; automatic migration of existing pictures is not established. |
 
 Each successful module writes `build/vale-build.json`. The orchestrator rejects
 outputs outside that module, duplicate declarations, invalid archives,
@@ -120,18 +120,87 @@ read-only task discovery remains available before dependencies are built.
 
 ## Isolated native acceptance fixture
 
-Core's recovery fixture is a separate mod under `recoverychecks/`:
+Core 0.3.8's recovery fixture is a separate mod under `recoverychecks/`. Its Rack
+checks compile against the actual current Rack development JAR. First build the
+production modules with the orchestrator, then use the development API path
+reported in `modules/vale-rack/build/vale-build.json`:
 
 ```sh
-./gradlew -p modules/vale-orders reobfRecoveryChecksJar
+./gradlew -p modules/vale-orders \
+  -PvaleRackDevJar=/absolute/path/to/current-rack-development.jar \
+  reobfRecoveryChecksJar
+./gradlew -p modules/village-standards reobfStandardsNativeChecksJar
 ```
 
-The reobfuscated fixture is written to `build/private-native-checks/`. It is not
-included in Core's production JAR, source JAR, default component metadata, or CI
-distribution artifacts. The fixture requires its explicit test flag and isolated
-world contract. Run it only in a disposable test instance with the exact Core
-production JAR. Its success cannot substitute for the saved-world, matching
-client, visual, or hosted tests.
+The `valeRackDevJar` input is required for this private Core fixture, not for
+production Core. It is a compile input only; Rack classes are not copied into
+the fixture or Core. The optional `prebuiltMinecraft` property described above
+can also be supplied to these commands.
+
+Each module writes its reobfuscated helper to its own
+`build/private-native-checks/` directory. Use the helpers without the `-dev`
+classifier when testing the reobfuscated runtime mods. The complete 0.3.8 server
+fixture roster contains these nine production mods:
+
+| Production server mod | Candidate runtime file |
+| --- | --- |
+| Core | `vale-orders-0.3.8.jar` |
+| Encounters | `vale-encounters-0.3.6.jar` |
+| Rack | `Vale-Rack-0.1.2.jar` |
+| Residents | `vale-residents-0.2.0.jar` |
+| Residents server bridge | `vale-residents-server-bridge-0.1.0.jar` |
+| World compatibility | `vale-world-compat-1.0.0.jar` |
+| Forge damage compatibility | `Vale-Forge-Damage-Compat-0.1.0.jar` |
+| Server bridge | `Vale-Server-Bridge-0.2.0.jar` |
+| Village Standards | `Village-Standards-0.3.0.jar` |
+
+Add both private QA mods to that disposable instance's `mods/` directory:
+
+- `vale-recoverychecks-0.3.8.jar`
+- `vale-standards-checks-0.3.0.jar`
+
+Use the exact production bytes from the candidate component build. The fixture
+records the loaded mod filenames, versions and SHA-256 digests; a matching name
+alone does not establish that the tested bytes are the release candidate. Field
+HUD, Controls, graphical client adapters and shader packs are not server fixture
+dependencies.
+
+Run the server with Java 8 in a separate disposable directory. Set these fixture
+properties in its `server.properties`:
+
+```properties
+level-name=vale-recovery-test
+spawn-monsters=true
+spawn-animals=true
+difficulty=1
+```
+
+The hostile and livestock fixtures require those spawn policies; Magma applies
+them to scripted entity spawning as well. Create an empty file named
+`.vale-recovery-test` in the server's working directory, and supply both JVM
+properties before the server launch entry point:
+
+```text
+-Dvaleorders.recoverycheck=true
+-Dvalestandards.nativecheck=true
+```
+
+The instance must have no real connected players. Core creates its synthetic
+player after checking that condition; the Standards helper permits that caller
+and rejects other connected players. The fixture modifies its disposable world
+and synthetic inventories, writes `native-recovery038-result.json`, then shuts
+the server down. Inspect the report's `passed` result and loaded artifact hashes
+before citing a native pass. Compiling the helpers or completing a component
+build does not establish that result.
+
+Neither helper is included in a production JAR, source JAR, default component
+metadata, or CI distribution artifact. They are not part of a normal server
+installation. A disposable native pass does not establish saved-world migration,
+matching graphical-client behavior, visual quality, or hosted acceptance. In
+particular, Standards' new runtime preserves opaque records that reach its new
+entity, but the historical entity registration and custom variant NBT still
+require checks against a copy of the actual old world. See the
+[Standards runtime contract](../modules/village-standards/README.md).
 
 ## Continuous integration
 

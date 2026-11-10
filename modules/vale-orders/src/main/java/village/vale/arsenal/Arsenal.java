@@ -40,6 +40,7 @@ public final class Arsenal {
     public static Map<String,ArsenalBlade> items() { return Collections.unmodifiableMap(ITEMS); }
     public static ArsenalBlade item(ArsenalSpec spec) { return spec==null?null:ITEMS.get(spec.key); }
     public static void registerEntities(Object mod) {
+        ClawNetwork.register();
         EntityRegistry.registerModEntity(new ResourceLocation("valeorders","arsenal_shot"),ArsenalShot.class,
                 "arsenal_shot",100,mod,64,2,true);
         EntityRegistry.registerModEntity(new ResourceLocation("valeorders","arsenal_field"),ArsenalField.class,

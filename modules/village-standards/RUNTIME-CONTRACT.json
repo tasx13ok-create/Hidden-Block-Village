@@ -1,0 +1,40 @@
+{
+  "module": "village-standards",
+  "version": "0.3.0",
+  "artifact_role": "runtime_mod",
+  "implementation": "New original Java runtime; not a reconstruction of the excluded reference code or historical binary.",
+  "authored_source_roots": ["src/main/java", "tests", "worldchecks"],
+  "historical_resource_provenance": "SOURCE-PROVENANCE.json",
+  "historical_resource_policy": "Keep resources/ byte-identical; modify only packaged mcmod.info display metadata and append the new recovery item language key during processResources.",
+  "mod_id": "hvdungeonpictures",
+  "item_ids": [
+    "hvdungeonpictures:stone_picture",
+    "hvdungeonpictures:sand_picture",
+    "hvdungeonpictures:mist_picture",
+    "hvdungeonpictures:leaf_picture",
+    "hvdungeonpictures:cloud_picture"
+  ],
+  "new_recovery_item_id": "hvdungeonpictures:unassigned_standard",
+  "entity_id": "hvdungeonpictures:dungeon_picture",
+  "entity_id_evidence": "Recovered entity language key only; historical binary registry and numeric entity ID are unverified.",
+  "width_blocks": 5,
+  "height_blocks": 5,
+  "depth_blocks": 0.0625,
+  "dimension_evidence": "Recovered mcmod.info specifies five 5x5 wall pictures.",
+  "schema": {
+    "ValeStandardSchema": 1,
+    "ValeStandardVariant": "stone|sand|mist|leaf|cloud; empty string is explicitly unassigned",
+    "ValeStandardUnassigned": "boolean status",
+    "ValeStandardOrigin": "stable UUID for bounded per-origin recovery archival",
+    "ValeStandardOwner": "UUID of the most recent placing player, informational only",
+    "ValeStandardItem": "one item with its original metadata and without nested ValeStandardHistory",
+    "ValeStandardHistory": "opaque history on dropped/recovery items",
+    "native_hanging_fields": ["TileX", "TileY", "TileZ", "Facing"]
+  },
+  "unknown_data_policy": "Retain unknown NBT without guessing its village; display a visible breakable unassigned panel, preserve history in a recovery item and a first-seen per-origin WorldSavedData archive on break, then permit explicit operator resolution.",
+  "archive": "overworld data/vale_standards_recovery.dat",
+  "archive_growth": "One first-seen record per stable original UUID; repeated item/entity cycles do not append or overwrite records.",
+  "migration_limit": "No actual old-world or old-binary entity/NBT contract is available; automatic legacy placement compatibility is not claimed.",
+  "private_native_helper": "village.standards.StandardsNativeChecks.run(net.minecraft.entity.player.EntityPlayerMP)",
+  "visual_acceptance": "Requires a real Minecraft client check; component and dedicated-server checks alone do not verify rendered appearance."
+}

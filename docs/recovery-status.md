@@ -1,10 +1,31 @@
 # Recovery and release status
 
-Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [candidate verification](../release/candidate037-verification.json) records current measured results. The [component lock](../release/component-lock.json) preserves historical source evidence, expected runtime pins and observation scope.
+Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [candidate verification](../release/candidate038-verification.json) records current measured results. The [component lock](../release/component-lock.json) preserves historical source evidence, expected runtime pins and observation scope.
 
-**Release state: `CORE037_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING`.** The source-built Core candidate passed its isolated native recovery checks on both runtimes. The complete Windows stage, actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final client/server download or overall completion percentage is established.
+**Release state: `CORE038_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING`.** The current source-built server candidates passed the same 656 native assertions on both runtimes, with nine owned server mods loaded together. The complete Windows stage, actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final client/server download or overall completion percentage is established.
 
-## Current continuation
+## Current continuation: 0.3.8
+
+| Changed runtime | Bytes | SHA-256 |
+| --- | ---: | --- |
+| Core 0.3.8 | 1,943,933 | `06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01` |
+| Rack 0.1.2 | 33,808 | `bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123` |
+| Field HUD 0.14.1 | 182,952 | `6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e` |
+| Village Standards 0.3.0 | 36,584 | `3eb99f74a0586bb08a75758632c9b4400adfd5edc80b008ed58917239d91c76e` |
+
+The new playable work comprises Crescent Talons with protected lock-on, rear attacks, a dodgeable one-second lunge and bounded bleed; saved companion orders and allied support; unloaded recall and stale-actor rejection; six-slot quick stow/equip with exact item metadata; physical-order projectile contacts; and a complete original five-picture hanging runtime. [Controls and behavior](gameplay-038.md)
+
+The final native suite passed **656 assertions on each runtime**, divided into 86 retained recovery checks, 48 companion checks, 82 claw/projectile checks, 78 rack checks and 362 picture checks. Both processes exited 0. The same nine production server JARs and two private QA JARs ran on Forge 14.23.5.2859 and Magma 8cc35ed/embedded Forge 14.23.5.2860. The Magma run uses the pinned upstream runtime directly; the earlier wrapper result below belongs to 0.3.7. These are 656 assertions repeated on two runtimes, not 1,312 distinct scenarios. The fixture still uses a marked disposable world and synthetic native players. [Version-bound evidence](../release/candidate038-verification.json)
+
+The complete source build checks eleven areas and 36 declared artifacts. The release/bootstrap tooling passes all 91 Python tests without skips. New component suites include 23 claw/packet assertions, 36 companion state assertions and 341 Standards geometry/persistence assertions. Production archives exclude private QA and upstream classes. Standards resources remain byte-identical to their reviewed recovered inputs.
+
+Village Standards 0.3.0 is a new complete implementation. Its five known item IDs are preserved; the old binary's actual entity registry and custom variant schema are still unverified. Unknown data reaching the new entity remains visible, breakable and recoverable, but an old entity with another ID cannot be migrated by that mechanism alone. The actual-world replacement decision remains open. [Runtime and migration contract](../modules/village-standards/README.md)
+
+The Windows File Link sessions remain disconnected, with saved protocol 1 clients against a protocol 2 service. No PC mutations or real-stage assembly occurred. The original archive and rollback remain preserved. A local graphical probe also could not establish a display in this workspace, so no new in-game rendering or Solas acceptance is claimed.
+
+## Previous continuation: 0.3.7
+
+The following results describe the earlier published checkpoint and remain unchanged historical evidence. Its overlay and artifact counts are superseded by the current 0.3.8 section above.
 
 Core 0.3.7 is 1,911,478 bytes, SHA-256:
 
@@ -63,13 +84,13 @@ The additional candidate client entries are HUD 0.14.0, Controls 1.4.0 simple, c
 
 The complete Core 0.3.6 source is recovered: 1,218 unchanged files, including 118 production Java files, nine test Java files and 1,087 resources. The source ZIP SHA-256 is `8ab84d16f8c810f339ed40f5a1c05a00f7a6d3da53754b1fc410f16403176f75`. Its `check reobfJar sourcesJar` build passed all ten custom verification tasks and reproduced the recorded production JAR SHA-256 exactly. This is a fresh source-to-binary reproduction; it does not mean the current PC runtime file was freshly rehashed or that the saved world ran. [Build instructions](build-core.md)
 
-The public workspace contains eleven reviewed source areas with recovery provenance. Core 0.3.6 remains available at baseline commit `ffa7d0a9f048f8fb2279ba4729a64f2fb6280701`; the current working source is 0.3.7. The current candidate result is described above and does not retroactively change the historical 0.3.6 receipts.
+The public workspace contains eleven reviewed source areas with recovery provenance. Core 0.3.6 remains available at baseline commit `ffa7d0a9f048f8fb2279ba4729a64f2fb6280701`; the current working source is 0.3.8. The current candidate result is described above and does not retroactively change the historical 0.3.6 receipts.
 
 Recovered server records target Java 8 and a named Magma 1.12.2 bootstrap. The bootstrap changed after the earlier staged startup receipts. Both bootstrap filenames, the final Core, Encounters, and the matching client must be included in the next exact-artifact check. A version filename is insufficient to choose between historical candidates.
 
 ## Historical assembly gaps and current fixes
 
-The historical Core 0.3.6 class-comparison receipt reports 219 unchanged production classes and one changed class, `village/vale/Quartermaster.class`. It corrected the Spirit provision page to enumerate original armor. That old receipt explicitly left supplemental native acceptance pending. The new 0.3.7 Forge run now verifies the current Spirit menu and paid-delivery behavior on the exact hash above; the historical receipt itself remains unchanged.
+The historical Core 0.3.6 class-comparison receipt reports 219 unchanged production classes and one changed class, `village/vale/Quartermaster.class`. It corrected the Spirit provision page to enumerate original armor. That old receipt explicitly left supplemental native acceptance pending. The version-bound 0.3.7 native runs verified the Spirit menu and paid-delivery behavior; the 0.3.8 suite retains those checks. The historical receipt itself remains unchanged.
 
 The class comparison's native gameplay base hash is `75aa6d67928c7208c0791afa69144d60f72b3ddae2de9fdef07d1f6f13d3305a`. Its final Core hash is the staged `54879901…` pin. A generic `passed` field in this comparison is evidence of the comparison result, not of the pending gameplay check.
 
@@ -92,7 +113,7 @@ The old recovered assembler moved files to deterministic backup names and replac
 | Bounded ability audit | 95 reference items / 324 obligations | A partial mechanics audit |
 | Missing / untested ability rows in that audit | 217 / 52 | Open baseline findings |
 
-The visual receipt states that new visuals were deferred with shared valid placeholders. Complete ability behavior, original art, animation, quest equivalents, and multiplayer balancing need their own evidence. The 320 legacy entity IDs are classification records: projectiles, effects, temporary controllers, icons, NPCs, summons, and actual living opponents must remain distinct. This repository snapshot does not assert that the complete entity classification manifest has been recovered.
+The historical visual receipt states that new visuals were deferred with shared valid placeholders. The new talon geometry and Standards renderer are additional source work; actual graphical acceptance remains open. Complete ability behavior, original art, animation, quest equivalents, and multiplayer balancing need their own evidence. The 320 legacy entity IDs are classification records: projectiles, effects, temporary controllers, icons, NPCs, summons, and actual living opponents must remain distinct. This repository snapshot does not assert that the complete entity classification manifest has been recovered.
 
 The HUD and Rack lineage reports six server-backed weapon storage slots; preserve that later lineage instead of reverting to the earlier shortcut rail. Final validation must cover transfers, full-inventory behavior, persistence, reconnect, and Controls/HUD input contexts using the accepted client and server.
 

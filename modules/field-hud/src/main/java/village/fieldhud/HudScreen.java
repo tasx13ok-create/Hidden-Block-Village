@@ -31,7 +31,7 @@ public final class HudScreen extends GuiScreen {
     }}
     private String help(int id){switch(id){
         case 0:return "Choose a full or quieter display. HUD preferences save immediately.";
-        case 17:return RackAccess.loaded()?"Show your six stored weapons beneath the minimap. Open Storage to move items into or out of these slots.":"Show six icon-only technique shortcuts. Edit their assignments in Loadout.";
+        case 17:return RackAccess.loaded()?"Show six weapon slots beneath the minimap. Focus and use a filled slot to equip; use an empty slot to stow your held weapon.":"Show six icon-only technique shortcuts. Edit their assignments in Loadout.";
         case 15:return "Choose frosted or clear HUD surfaces. Text and item icons remain sharp.";
         case 16:return "Subtle focus effects respond to actions. Turn them off for a calmer display.";
         case 1:return "Show your current area. Reload zones refreshes the local named-area definitions.";
@@ -47,7 +47,7 @@ public final class HudScreen extends GuiScreen {
         case 5:return "Play a short region-arrival chime. Off keeps arrivals silent.";
         case 19:return "Choose a full or slim status panel. This is the same width preference as the layout editor.";
         case 13:return "Drag the live status panel. Shift snaps to four pixels. Requires a world and Scroll HUD.";
-        case 18:return RackAccess.loaded()?(storageNotice.isEmpty()?"Six real weapon slots outside your inventory. Move items here; focused activation exchanges the chosen weapon with your held stack.":storageNotice):"Assign six learned actions and carried items. Requires a fresh server snapshot in a world.";
+        case 18:return RackAccess.loaded()?(storageNotice.isEmpty()?"Six real weapon slots outside your inventory. Focus + use equips a stored weapon or stows your held weapon in an empty slot.":storageNotice):"Assign six learned actions and carried items. Requires a fresh server snapshot in a world.";
         case 7:return Regions.error.isEmpty()?"Reload local named-zone definitions. Other preferences are preserved.":Regions.error;
         default:return "Changes save immediately. Tab moves focus; Enter changes a value. Escape returns.";
     }}

@@ -28,7 +28,7 @@ public final class ArsenalField extends ArsenalEntity {
         if(mode()==EMITTER) {
             if(age==1||age==13||age==25) {
                 int count=Math.min(3,ArsenalMath.MAX_SHOTS-ArsenalLogic.shotCount(p));
-                for(int i=0;i<count;i++)world.spawnEntity(new ArsenalShot(p,issued,spec(),ArsenalShot.NEEDLE,power(),(i-1)*9,getPositionVector()));
+                for(int i=0;i<count&&validOwner(p);i++)world.spawnEntity(new ArsenalShot(p,issued,spec(),ArsenalShot.NEEDLE,power(),(i-1)*9,getPositionVector()));
             }
             return;
         }
@@ -37,11 +37,11 @@ public final class ArsenalField extends ArsenalEntity {
         List<EntityLivingBase> targets=ArsenalLogic.near(p,getPositionVector(),mode()==TRAP?2:2.75,4);
         if(mode()==TRAP) {
             if(age>=10&&!targets.isEmpty()) {
-                for(EntityLivingBase target:targets)ArsenalLogic.hit(p,target,5+power()*3);
+                for(EntityLivingBase target:targets)if(validOwner(p))ArsenalLogic.hit(p,target,5+power()*3);
                 ArsenalLogic.particles(p,getPositionVector(),EnumParticleTypes.EXPLOSION_NORMAL,10);setDead();
             }
         } else for(EntityLivingBase target:targets) {
-            if(ArsenalLogic.hit(p,target,mode()==MIST?1:2)) {
+            if(validOwner(p)&&ArsenalLogic.hit(p,target,mode()==MIST?1:2)&&validOwner(p)) {
                 target.addPotionEffect(new PotionEffect(mode()==MIST?MobEffects.WEAKNESS:MobEffects.SLOWNESS,30,mode()==MIST?0:2));
                 if(mode()==SNARE)ArsenalLogic.addEffect(p,target,issued,spec(),ArsenalLogic.Effect.TETHER,15);
             }

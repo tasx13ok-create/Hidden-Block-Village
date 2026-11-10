@@ -1,0 +1,149 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :client-lifecycle:compileInjectedInterfacesJava NO-SOURCE
+> Task :client-lifecycle:extractDependencyATs SKIPPED
+> Task :client-lifecycle:generateForgeSrgMappings SKIPPED
+> Task :client-lifecycle:downloadVanillaJars SKIPPED
+> Task :client-lifecycle:mergeVanillaSidedJars SKIPPED
+> Task :client-lifecycle:deobfuscateMergedJarToSrg SKIPPED
+> Task :client-lifecycle:downloadFernflower SKIPPED
+> Task :client-lifecycle:decompileSrgJar SKIPPED
+> Task :client-lifecycle:cleanupDecompSrgJar SKIPPED
+> Task :client-lifecycle:patchDecompiledJar SKIPPED
+> Task :client-lifecycle:applyJST SKIPPED
+> Task :client-lifecycle:remapDecompiledJar SKIPPED
+> Task :client-lifecycle:decompressDecompiledSources SKIPPED
+> Task :client-lifecycle:processInjectedInterfacesResources NO-SOURCE
+> Task :client-lifecycle:injectedInterfacesClasses UP-TO-DATE
+> Task :client-lifecycle:compilePatchedMcJava SKIPPED
+> Task :client-lifecycle:processPatchedMcResources SKIPPED
+> Task :client-lifecycle:patchedMcClasses UP-TO-DATE
+> Task :client-lifecycle:compileApiJava NO-SOURCE
+> Task :client-lifecycle:processApiResources NO-SOURCE
+> Task :client-lifecycle:apiClasses UP-TO-DATE
+> Task :client-lifecycle:injectTags UP-TO-DATE
+> Task :client-lifecycle:compileInjectedTagsJava NO-SOURCE
+> Task :client-lifecycle:extractNatives2 SKIPPED
+> Task :client-lifecycle:createMcLauncherFiles SKIPPED
+> Task :client-lifecycle:compileMcLauncherJava SKIPPED
+> Task :client-lifecycle:processInjectedTagsResources NO-SOURCE
+> Task :client-lifecycle:injectedTagsClasses UP-TO-DATE
+> Task :client-lifecycle:processMcLauncherResources NO-SOURCE
+> Task :client-lifecycle:mcLauncherClasses UP-TO-DATE
+> Task :client-lifecycle:stageValePreparedMinecraft UP-TO-DATE
+> Task :client-lifecycle:compileJava UP-TO-DATE
+> Task :client-lifecycle:processResources NO-SOURCE
+> Task :client-lifecycle:classes UP-TO-DATE
+> Task :client-lifecycle:jar UP-TO-DATE
+> Task :client-lifecycle:sourcesJar UP-TO-DATE
+> Task :client-lifecycle:compileTestJava NO-SOURCE
+> Task :client-lifecycle:processTestResources NO-SOURCE
+> Task :client-lifecycle:testClasses UP-TO-DATE
+> Task :client-lifecycle:test NO-SOURCE
+> Task :client-lifecycle:check UP-TO-DATE
+> Task :client-lifecycle:packageMcLauncher SKIPPED
+> Task :client-lifecycle:packagePatchedMc SKIPPED
+> Task :client-lifecycle:reobfJar UP-TO-DATE
+> Task :client-lifecycle:writeValeBuildMetadata
+> Task :damage-compat:compileInjectedInterfacesJava NO-SOURCE
+> Task :damage-compat:extractDependencyATs SKIPPED
+> Task :damage-compat:generateForgeSrgMappings SKIPPED
+> Task :damage-compat:downloadVanillaJars SKIPPED
+> Task :damage-compat:mergeVanillaSidedJars SKIPPED
+> Task :damage-compat:deobfuscateMergedJarToSrg SKIPPED
+> Task :damage-compat:downloadFernflower SKIPPED
+> Task :damage-compat:decompileSrgJar SKIPPED
+> Task :damage-compat:cleanupDecompSrgJar SKIPPED
+> Task :damage-compat:patchDecompiledJar SKIPPED
+> Task :damage-compat:applyJST SKIPPED
+> Task :damage-compat:remapDecompiledJar SKIPPED
+> Task :damage-compat:decompressDecompiledSources SKIPPED
+> Task :damage-compat:processInjectedInterfacesResources NO-SOURCE
+> Task :damage-compat:injectedInterfacesClasses UP-TO-DATE
+> Task :damage-compat:compilePatchedMcJava SKIPPED
+> Task :damage-compat:processPatchedMcResources SKIPPED
+> Task :damage-compat:patchedMcClasses UP-TO-DATE
+> Task :damage-compat:compileApiJava NO-SOURCE
+> Task :damage-compat:processApiResources NO-SOURCE
+> Task :damage-compat:apiClasses UP-TO-DATE
+> Task :damage-compat:injectTags UP-TO-DATE
+> Task :damage-compat:compileInjectedTagsJava NO-SOURCE
+> Task :damage-compat:extractNatives2 SKIPPED
+> Task :damage-compat:createMcLauncherFiles SKIPPED
+> Task :damage-compat:compileMcLauncherJava SKIPPED
+> Task :damage-compat:processInjectedTagsResources NO-SOURCE
+> Task :damage-compat:injectedTagsClasses UP-TO-DATE
+> Task :damage-compat:processMcLauncherResources NO-SOURCE
+> Task :damage-compat:mcLauncherClasses UP-TO-DATE
+> Task :damage-compat:stageValePreparedMinecraft UP-TO-DATE
+> Task :damage-compat:compileJava UP-TO-DATE
+> Task :damage-compat:processResources NO-SOURCE
+> Task :damage-compat:classes UP-TO-DATE
+> Task :damage-compat:jar UP-TO-DATE
+> Task :damage-compat:sourcesJar UP-TO-DATE
+> Task :damage-compat:compileTestJava NO-SOURCE
+> Task :damage-compat:processTestResources NO-SOURCE
+> Task :damage-compat:testClasses UP-TO-DATE
+> Task :damage-compat:test NO-SOURCE
+> Task :damage-compat:check UP-TO-DATE
+> Task :damage-compat:packageMcLauncher SKIPPED
+> Task :damage-compat:packagePatchedMc SKIPPED
+> Task :damage-compat:reobfJar UP-TO-DATE
+> Task :damage-compat:writeValeBuildMetadata
+> Task :server-bridge:compileInjectedInterfacesJava NO-SOURCE
+> Task :server-bridge:extractDependencyATs SKIPPED
+> Task :server-bridge:generateForgeSrgMappings SKIPPED
+> Task :server-bridge:downloadVanillaJars SKIPPED
+> Task :server-bridge:mergeVanillaSidedJars SKIPPED
+> Task :server-bridge:deobfuscateMergedJarToSrg SKIPPED
+> Task :server-bridge:downloadFernflower SKIPPED
+> Task :server-bridge:decompileSrgJar SKIPPED
+> Task :server-bridge:cleanupDecompSrgJar SKIPPED
+> Task :server-bridge:patchDecompiledJar SKIPPED
+> Task :server-bridge:applyJST SKIPPED
+> Task :server-bridge:remapDecompiledJar SKIPPED
+> Task :server-bridge:decompressDecompiledSources SKIPPED
+> Task :server-bridge:processInjectedInterfacesResources NO-SOURCE
+> Task :server-bridge:injectedInterfacesClasses UP-TO-DATE
+> Task :server-bridge:compilePatchedMcJava SKIPPED
+> Task :server-bridge:processPatchedMcResources SKIPPED
+> Task :server-bridge:patchedMcClasses UP-TO-DATE
+> Task :server-bridge:compileApiJava NO-SOURCE
+> Task :server-bridge:processApiResources NO-SOURCE
+> Task :server-bridge:apiClasses UP-TO-DATE
+> Task :server-bridge:injectTags UP-TO-DATE
+> Task :server-bridge:compileInjectedTagsJava NO-SOURCE
+> Task :server-bridge:extractNatives2 SKIPPED
+> Task :server-bridge:createMcLauncherFiles SKIPPED
+> Task :server-bridge:compileMcLauncherJava SKIPPED
+> Task :server-bridge:processInjectedTagsResources NO-SOURCE
+> Task :server-bridge:injectedTagsClasses UP-TO-DATE
+> Task :server-bridge:processMcLauncherResources NO-SOURCE
+> Task :server-bridge:mcLauncherClasses UP-TO-DATE
+> Task :server-bridge:stageValePreparedMinecraft UP-TO-DATE
+> Task :server-bridge:compileJava UP-TO-DATE
+> Task :server-bridge:processResources NO-SOURCE
+> Task :server-bridge:classes UP-TO-DATE
+> Task :server-bridge:jar UP-TO-DATE
+> Task :server-bridge:sourcesJar UP-TO-DATE
+> Task :server-bridge:compileTestJava NO-SOURCE
+> Task :server-bridge:processTestResources NO-SOURCE
+> Task :server-bridge:testClasses UP-TO-DATE
+> Task :server-bridge:test NO-SOURCE
+> Task :server-bridge:check UP-TO-DATE
+> Task :server-bridge:packageMcLauncher SKIPPED
+> Task :server-bridge:packagePatchedMc SKIPPED
+> Task :server-bridge:reobfJar UP-TO-DATE
+> Task :server-bridge:writeValeBuildMetadata
+> Task :writeValeBuildMetadata
+
+[Incubating] Problems report is available at: file:///workspace/scratch/fa349c917106/hidden-block-village/modules/vale-compatibility-helpers/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 7s
+22 actionable tasks: 4 executed, 18 up-to-date

@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.7'
+version = '0.3.8'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -220,6 +220,23 @@ tasks.register('verifyGameplayRecovery', JavaExec) {
 }
 tasks.named('check') { dependsOn tasks.named('verifyGameplayRecovery') }
 
+// New gameplay rules are verified independently of the private native fixture.
+for (entry in [verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',
+               verifyClawCombat: 'village.vale.arsenal.ClawCombatChecks']) {
+    def testMain = entry.value
+    def taskName = entry.key
+    tasks.register(taskName, JavaExec) {
+        dependsOn tasks.named('ruleChecksClasses')
+        classpath = sourceSets.ruleChecks.runtimeClasspath
+        mainClass.set(testMain)
+        javaLauncher.set(javaToolchains.launcherFor {
+            languageVersion.set(JavaLanguageVersion.of(8))
+            vendor.set(JvmVendorSpec.AZUL)
+        })
+    }
+    tasks.named('check') { dependsOn tasks.named(taskName) }
+}
+
 // Explicit, isolated native acceptance mod. This source set is never part of
 // main, jar, reobfJar, sourcesJar, or the default component build metadata.
 sourceSets {
@@ -229,6 +246,12 @@ sourceSets {
         runtimeClasspath += output + compileClasspath
     }
 }
+// The optional integration API is private-test input only. Production Core has
+// no hard dependency on Rack; the disposable fixture requires the actual module.
+if (providers.gradleProperty('valeRackDevJar').isPresent()) {
+    dependencies { recoveryChecksCompileOnly files(providers.gradleProperty('valeRackDevJar').get()) }
+}
+
 def recoveryJar = tasks.register('recoveryChecksJar', Jar) {
     dependsOn tasks.named('recoveryChecksClasses')
     from sourceSets.recoveryChecks.output

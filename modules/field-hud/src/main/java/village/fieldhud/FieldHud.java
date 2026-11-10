@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid=FieldHud.ID, name="Field HUD", version="0.14.0", clientSideOnly=true, acceptableRemoteVersions="*")
+@Mod(modid=FieldHud.ID, name="Field HUD", version="0.14.1", clientSideOnly=true, acceptableRemoteVersions="*")
 public final class FieldHud {
     public static final String ID="fieldhud";
     @Mod.EventHandler public void init(FMLPreInitializationEvent event) {

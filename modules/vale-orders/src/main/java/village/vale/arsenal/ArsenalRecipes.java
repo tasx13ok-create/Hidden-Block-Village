@@ -21,7 +21,7 @@ public final class ArsenalRecipes {
             Items.GLOWSTONE_DUST,Items.BRICK,Items.FLINT,Items.IRON_INGOT,Items.BOW,Items.BLAZE_ROD,
             Items.FIRE_CHARGE,Items.SNOWBALL,Items.STRING,Items.SUGAR,Items.GHAST_TEAR,
             Items.ENDER_PEARL,Items.ARROW,Items.SPIDER_EYE,Items.GLASS_BOTTLE,Items.QUARTZ,Items.SHIELD,
-            Items.MAGMA_CREAM,Items.RABBIT_FOOT,Items.PRISMARINE_SHARD,Items.GUNPOWDER};
+            Items.MAGMA_CREAM,Items.RABBIT_FOOT,Items.PRISMARINE_SHARD,Items.GUNPOWDER,Items.RABBIT_HIDE};
         ArsenalSpec[] specs=ArsenalSpec.values();
         if(focus.length!=specs.length)throw new IllegalStateException("Specialist recipe catalog mismatch");
         for(int i=0;i<specs.length;i++) {

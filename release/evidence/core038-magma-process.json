@@ -1,0 +1,66 @@
+{
+  "runtime": "magma",
+  "runtime_jar_sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c",
+  "process_exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 15.346,
+  "inputs": [
+    {
+      "file": "vale-orders-0.3.8.jar",
+      "sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01",
+      "private_fixture": false
+    },
+    {
+      "file": "vale-encounters-0.3.6.jar",
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+      "private_fixture": false
+    },
+    {
+      "file": "Vale-Rack-0.1.2.jar",
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123",
+      "private_fixture": false
+    },
+    {
+      "file": "vale-residents-0.2.0.jar",
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b",
+      "private_fixture": false
+    },
+    {
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef",
+      "private_fixture": false
+    },
+    {
+      "file": "vale-world-compat-1.0.0.jar",
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd",
+      "private_fixture": false
+    },
+    {
+      "file": "Village-Standards-0.3.0.jar",
+      "sha256": "3eb99f74a0586bb08a75758632c9b4400adfd5edc80b008ed58917239d91c76e",
+      "private_fixture": false
+    },
+    {
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8",
+      "private_fixture": false
+    },
+    {
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d",
+      "private_fixture": false
+    },
+    {
+      "file": "vale-recoverychecks-0.3.8.jar",
+      "sha256": "0f713fa430dbad2c6efaef8e171cbe7fa984686db0d5f8cdbdf25915048d37ee",
+      "private_fixture": true
+    },
+    {
+      "file": "vale-standards-checks-0.3.0.jar",
+      "sha256": "3ca8b23361e5fd58355f3d54c26d6bbc4b4076507e9d658a2e4b80edab1fe358",
+      "private_fixture": true
+    }
+  ],
+  "native_result_present": true,
+  "passed": true
+}

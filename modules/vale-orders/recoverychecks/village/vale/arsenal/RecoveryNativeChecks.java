@@ -55,8 +55,8 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.7",
-     dependencies="required-after:valeorders", acceptableRemoteVersions="*", serverSideOnly=true)
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.8",
+     dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
     private int assertions;
@@ -73,7 +73,7 @@ public final class RecoveryNativeChecks {
     }
     private void passed(String message) {
         passed.add(message);
-        System.out.println("VALE_RECOVERY037_CHECK_PASS: " + message);
+        System.out.println("VALE_RECOVERY038_CHECK_PASS: " + message);
     }
     @SubscribeEvent public void tick(TickEvent.ServerTickEvent event) {
         if (ran || event.phase != TickEvent.Phase.END) return;
@@ -88,11 +88,21 @@ public final class RecoveryNativeChecks {
             }
             check(server.getPlayerList().getPlayers().isEmpty(), "Private fixture found real connected players");
             report.addProperty("core_sha256", sha256(net.minecraftforge.fml.common.Loader.instance().getIndexedModList().get(ValeOrders.ID).getSource()));
+            JsonObject loaded = new JsonObject();
+            for (net.minecraftforge.fml.common.ModContainer mod : net.minecraftforge.fml.common.Loader.instance().getModList()) {
+                File source = mod.getSource();
+                if (source != null && source.isFile() && source.getParentFile().getName().equals("mods")) {
+                    JsonObject identity = new JsonObject();identity.addProperty("version", mod.getVersion());
+                    identity.addProperty("file", source.getName());identity.addProperty("sha256", sha256(source));
+                    loaded.add(mod.getModId(), identity);
+                }
+            }
+            report.add("loaded_fixture_mods", loaded);
             report.addProperty("minecraft_version", server.getMinecraftVersion());
             report.addProperty("forge_version", net.minecraftforge.common.ForgeVersion.getVersion());
             Diagnostics.verify();
-            check(Gear.ITEMS.size() == 555, "Current item registry is not 555");
-            passed("555 live registered items and current diagnostic category checks");
+            check(Gear.ITEMS.size() == 556, "Current item registry is not 556");
+            passed("556 live registered items and current diagnostic category checks");
             player = login(server, false);
             ItemStack first = craftedWeapon(true, false);
             check(first.getItem() == Arsenal.item(ArsenalSpec.WARD_FAN), "Native delayed craft produced wrong weapon");
@@ -104,6 +114,22 @@ public final class RecoveryNativeChecks {
             nativePartyRejoin();
             nativeCompanionClosure();
             quartermaster();
+            assertions += ScrollNativeChecks038.run(player);
+            passed("Native companion orders, target protection, unloaded recall, stale leases, repair and allied support");
+            assertions += ClawNativeChecks.run(player);
+            passed("Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed");
+            assertions += village.valerack.RackNativeChecks038.run(player);
+            passed("Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops");
+            try {
+                assertions += (Integer)Class.forName("village.standards.StandardsNativeChecks")
+                    .getMethod("run", EntityPlayerMP.class).invoke(null, player);
+            } catch (java.lang.reflect.InvocationTargetException wrapped) {
+                Throwable cause = wrapped.getCause();
+                if (cause instanceof Exception) throw (Exception)cause;
+                if (cause instanceof Error) throw (Error)cause;
+                throw wrapped;
+            }
+            passed("Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery");
             report.addProperty("passed", true);
         } catch (Throwable error) {
             failure = error;
@@ -119,13 +145,13 @@ public final class RecoveryNativeChecks {
                 cleanup.printStackTrace();
             }
             report.addProperty("schema", 1);
-            report.addProperty("fixture", "native-recovery-0.3.7");
+            report.addProperty("fixture", "native-recovery-0.3.8");
             report.addProperty("assertions", assertions);
             JsonArray checks = new JsonArray();for (String value : passed) checks.add(value);report.add("checks", checks);
             try {
-                Files.write(new File("native-recovery037-result.json").toPath(), new GsonBuilder().setPrettyPrinting().create().toJson(report).getBytes(StandardCharsets.UTF_8));
+                Files.write(new File("native-recovery038-result.json").toPath(), new GsonBuilder().setPrettyPrinting().create().toJson(report).getBytes(StandardCharsets.UTF_8));
             } catch (Exception writing) { failure = writing; writing.printStackTrace(); }
-            System.out.println(failure == null ? "VALE_RECOVERY037_NATIVE_PASS: " + assertions + " assertions" : "VALE_RECOVERY037_NATIVE_FAIL");
+            System.out.println(failure == null ? "VALE_RECOVERY038_NATIVE_PASS: " + assertions + " assertions" : "VALE_RECOVERY038_NATIVE_FAIL");
             server.initiateShutdown();
         }
     }
@@ -178,7 +204,7 @@ public final class RecoveryNativeChecks {
         return output;
     }
     private ItemStack issue(String key, String receipt) {
-        RewardLedger ledger=RewardLedger.get(player);ledger.issue(player,key,1,"recovery037/"+receipt);
+        RewardLedger ledger=RewardLedger.get(player);ledger.issue(player,key,1,"recovery038/"+receipt);
         for (ItemStack stack : player.inventory.mainInventory)
             if (!stack.isEmpty() && stack.getItem()==Gear.ITEMS.get(key) && ledger.valid(player,stack)) return stack;
         throw new AssertionError("Missing issued fixture item " + key);
@@ -298,7 +324,7 @@ public final class RecoveryNativeChecks {
     }
     private static final class ProbePlayer extends EntityPlayerMP {
         final List<ITextComponent> messages=new ArrayList<>();
-        ProbePlayer(MinecraftServer server,WorldServer world){super(server,world,new GameProfile(UUID.fromString("43ec7807-821a-4a56-9c03-070037000001"),"Recovery037"),new PlayerInteractionManager(world));}
+        ProbePlayer(MinecraftServer server,WorldServer world){super(server,world,new GameProfile(UUID.fromString("43ec7807-821a-4a56-9c03-070038000001"),"Recovery038"),new PlayerInteractionManager(world));}
         @Override public void sendMessage(ITextComponent value){if(messages!=null)messages.add(value.createCopy());}
         @Override public void sendStatusMessage(ITextComponent value,boolean actionBar){if(messages!=null)messages.add(value.createCopy());}
     }
