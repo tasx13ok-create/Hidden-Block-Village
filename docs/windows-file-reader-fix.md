@@ -57,10 +57,29 @@ and the output-corruption fixture now matches Windows paths correctly.
 The unsafe ZIP fixture preserves a literal backslash on Windows instead of
 allowing `ZipInfo` to normalize the name before it can be tested.
 
-These are packaging checks with synthetic data. They do not establish a
-completed real Windows candidate, a saved-world start/restart, graphical client
-acceptance or hosted Bisect acceptance. Consult the workflow run associated
-with the repair commit for actual CI results.
+The complete [repair workflow](https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42866191408)
+at `ec7363f6ae8f845c3621f9b9db0c6a43493ef922` finished successfully on
+10 November 2026. Ubuntu / Python 3.12 passed 123 tests; Windows / Python 3.8,
+3.12 and 3.14 each passed 122 with the single case-sensitive filename skip.
+Each Windows job passed the twelve reader/snapshot regressions, twenty
+connected-preparation checks, twenty-four assembly checks and fifteen Java 8
+bootstrap checks, including actual symlink rejection.
+
+All eleven source components also built successfully. Both the original and
+repaired-commit CI artifact ZIPs were downloaded and verified: all 36 component
+files were byte-identical, including all thirteen runtime/support files already
+delivered to the PC. Every ZIP/JAR CRC passed. The
+[exact comparison receipt](../release/evidence/windows-repair-ci-rebuild-comparison.json)
+records the two commit IDs, artifact IDs, archive hashes, all component hashes
+and source-input differences. Only `tools/build_modules.py` changed among the
+1,510 build inputs, for Python 3.8-compatible suffix handling. The two artifact
+ZIPs have different hashes because their build reports identify different
+commits; their component files match.
+
+These are packaging and source-build results. They do not establish a completed
+real Windows candidate, a saved-world start/restart, graphical client acceptance
+or hosted Bisect acceptance. Runtime acceptance remains `NOT_RUN` for the new
+candidate until those separate checks occur.
 
 ## Retry boundary
 

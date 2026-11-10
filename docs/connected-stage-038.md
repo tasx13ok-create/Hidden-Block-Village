@@ -7,8 +7,19 @@ assembly. Its original files and the Downloads archive remain unchanged.
 The first local assembly attempt later stopped before output creation because
 the file reader compared incompatible Windows timestamp fields. The contract
 still matched its reviewed bytes. The [Windows reader correction](windows-file-reader-fix.md)
-retains the original inputs and adds native Windows CI coverage; the real
-candidate remains pending execution of the corrected handoff.
+retains the original inputs and adds native Windows CI coverage. Completion of
+the real candidate remains unverified until the corrected handoff's receipts
+are available.
+
+The [client and Bisect installation guide](client-and-bisect-038.md) identifies
+the expected completed outputs, exact mod split, first-install configuration
+steps and the actual runtime checks that follow successful assembly. Retained
+source-stage installation notes and logs do not establish those new results.
+
+If the complete-source check remains on screen and progress is unclear, the
+[separate Windows status checker](windows-assembly-status.md) samples only the
+known assembly processes and reads small receipts. Run it in a second window;
+keep the existing assembly window open until its result is understood.
 
 ## Measured source
 

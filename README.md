@@ -12,6 +12,8 @@ Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay syste
 | [Core build instructions](docs/build-core.md) | Reproduce the recovered Core source with the pinned wrapper and correct Java toolchains. |
 | [All component builds](docs/build-modules.md) | Build the recovered source areas in dependency order, inspect artifact roles and retain exact source/output hashes. |
 | [Candidate assembly](tools/ASSEMBLY.md) | Build a new full server/client candidate from the complete frozen input while preserving the original world and rollback. |
+| [Client and Bisect installation](docs/client-and-bisect-038.md) | Identify the completed output, import the matching client, prepare hosting settings on a separate copy and record actual world/client/server tests. |
+| [Windows assembly status](docs/windows-assembly-status.md) | Observe the current assembly in a second window without interrupting it or rehashing the saved world. |
 | [Connected-stage preparation](docs/connected-stage-038.md) | Current PC inventory, exact transfer inputs, historical picture compatibility and the one-command assembly handoff. |
 | [Connected preparation tools](tools/PREPARE-CONNECTED.md) | Verify bounded transfer pieces and an independently reviewed source contract before calling the complete assembler. |
 | [Core 0.3.8 verification](release/candidate038-verification.json) | Exact source/artifact identities and both 656-assertion native results. |

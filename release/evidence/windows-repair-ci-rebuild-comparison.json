@@ -1,0 +1,278 @@
+{
+  "actual_artifacts": [
+    {
+      "bytes": 123820,
+      "path": "field-controls/development_api/field-controls-1.4.0-simple-candidate-dev.jar",
+      "same_as_prior": true,
+      "sha256": "31b1d3b65f4fce7d5d8cf0753eb236baae2dbd773f348094707afa8b137fb087"
+    },
+    {
+      "bytes": 125420,
+      "path": "field-controls/runtime_mod/field-controls-1.4.0-simple-candidate.jar",
+      "same_as_prior": true,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "bytes": 52640,
+      "path": "field-controls/sources/field-controls-1.4.0-simple-candidate-sources.jar",
+      "same_as_prior": true,
+      "sha256": "21f2ebd80bc5f2aae0f9db7a0922ae5fe8ef702152563d94eda21bf772952bc0"
+    },
+    {
+      "bytes": 180381,
+      "path": "field-hud/development_api/field-hud-0.14.1-dev.jar",
+      "same_as_prior": true,
+      "sha256": "bb481a3daa4d720d2c745e065054871733a6e02117c88b16c1ba41b8f9259615"
+    },
+    {
+      "bytes": 182952,
+      "path": "field-hud/runtime_mod/field-hud-0.14.1.jar",
+      "same_as_prior": true,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "bytes": 88981,
+      "path": "field-hud/sources/field-hud-0.14.1-sources.jar",
+      "same_as_prior": true,
+      "sha256": "fda6d52818063dbc613ca87f90fff7286202f7446d00e15ae444ccc0e82912ab"
+    },
+    {
+      "bytes": 9025,
+      "path": "server-bootstrap/bootstrap_library/Vale-Server-Bootstrap-0.3.7.jar",
+      "same_as_prior": true,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf"
+    },
+    {
+      "bytes": 4436,
+      "path": "server-bootstrap/sources/Vale-Server-Bootstrap-0.3.7-sources.jar",
+      "same_as_prior": true,
+      "sha256": "687c2f4ad044a3fb272af202b9240f1ed9c31caa32a9d592bb14c3dc5f0a41a4"
+    },
+    {
+      "bytes": 8299,
+      "path": "vale-compatibility-helpers/development_api/Vale-Client-Lifecycle-Compat-0.1.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "c4421f5ea50f63b3353f2549471e9ea218928df605e8e1d7877fea5b463a0431"
+    },
+    {
+      "bytes": 5460,
+      "path": "vale-compatibility-helpers/development_api/Vale-Forge-Damage-Compat-0.1.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "4e6569437286343abfddcc047fb587918efa8c0d72e6b42e8998c833892bd5d9"
+    },
+    {
+      "bytes": 4647,
+      "path": "vale-compatibility-helpers/development_api/Vale-Server-Bridge-0.2.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "ad29b41db26396c14d1972b9220b649bc0aa6839f876dc1488ebccc8ea2c60ea"
+    },
+    {
+      "bytes": 8456,
+      "path": "vale-compatibility-helpers/runtime_mod/Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "same_as_prior": true,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "bytes": 5607,
+      "path": "vale-compatibility-helpers/runtime_mod/Vale-Forge-Damage-Compat-0.1.0.jar",
+      "same_as_prior": true,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "bytes": 4793,
+      "path": "vale-compatibility-helpers/runtime_mod/Vale-Server-Bridge-0.2.0.jar",
+      "same_as_prior": true,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "bytes": 3842,
+      "path": "vale-compatibility-helpers/sources/Vale-Client-Lifecycle-Compat-0.1.0-sources.jar",
+      "same_as_prior": true,
+      "sha256": "28b3c959a9a1d259e016275bbecfa12d0880b0371dbe4b7056bcda7b9309ed1a"
+    },
+    {
+      "bytes": 3328,
+      "path": "vale-compatibility-helpers/sources/Vale-Forge-Damage-Compat-0.1.0-sources.jar",
+      "same_as_prior": true,
+      "sha256": "1052ede382f122a1398f67e39d36281482af1ba10cc8ea0653d367a1e82d242d"
+    },
+    {
+      "bytes": 2467,
+      "path": "vale-compatibility-helpers/sources/Vale-Server-Bridge-0.2.0-sources.jar",
+      "same_as_prior": true,
+      "sha256": "36ff6fc8371992e863e8161ed608fb10628d535bc6ffbe527a5969ef9c450ed7"
+    },
+    {
+      "bytes": 29604,
+      "path": "vale-encounters/development_api/vale-encounters-0.3.6-dev.jar",
+      "same_as_prior": true,
+      "sha256": "780e74a18a795d6a1d0033532b3b8a9afe8dd71c1e85bc2c74405350684c648a"
+    },
+    {
+      "bytes": 30011,
+      "path": "vale-encounters/runtime_mod/vale-encounters-0.3.6.jar",
+      "same_as_prior": true,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "bytes": 11986,
+      "path": "vale-encounters/sources/vale-encounters-0.3.6-sources.jar",
+      "same_as_prior": true,
+      "sha256": "2c9373cbaf5d4e144fc75c469cc06a22b146d9a0f9fa6018fbafab00f6f15a5a"
+    },
+    {
+      "bytes": 1919976,
+      "path": "vale-orders/development_api/vale-orders-0.3.8-dev.jar",
+      "same_as_prior": true,
+      "sha256": "9c7e78de30f67cc6f68990c07b4461aaf68a0c352983ff86f6fdeedc20fc4d71"
+    },
+    {
+      "bytes": 1943933,
+      "path": "vale-orders/runtime_mod/vale-orders-0.3.8.jar",
+      "same_as_prior": true,
+      "sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01"
+    },
+    {
+      "bytes": 1610888,
+      "path": "vale-orders/sources/vale-orders-0.3.8-sources.jar",
+      "same_as_prior": true,
+      "sha256": "d7055860d3fc6641dc4836a151b34e18da0af9b1022d1a5c6b82934b0345ef2c"
+    },
+    {
+      "bytes": 33054,
+      "path": "vale-rack/development_api/Vale-Rack-0.1.2-dev.jar",
+      "same_as_prior": true,
+      "sha256": "e38e2dff3e6e29d3ccdaad8e36a9634b551350a3edbbfbd082beb06b63dbd73e"
+    },
+    {
+      "bytes": 33808,
+      "path": "vale-rack/runtime_mod/Vale-Rack-0.1.2.jar",
+      "same_as_prior": true,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "bytes": 2932,
+      "path": "vale-residents-server-bridge/development_api/vale-residents-server-bridge-0.1.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "f542d966da2049a3457e6a6a39b2cb710b6b8f98a7691d8f75385db81768d9a0"
+    },
+    {
+      "bytes": 3018,
+      "path": "vale-residents-server-bridge/runtime_mod/vale-residents-server-bridge-0.1.0.jar",
+      "same_as_prior": true,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "bytes": 45349,
+      "path": "vale-residents/development_api/vale-residents-0.2.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "bd79e30d3f79867889f3c0cfb38e1e14ed142dc4b78420b896c1bb42adc4c24b"
+    },
+    {
+      "bytes": 46071,
+      "path": "vale-residents/runtime_mod/vale-residents-0.2.0.jar",
+      "same_as_prior": true,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "bytes": 20123,
+      "path": "vale-residents/sources/vale-residents-0.2.0-sources.jar",
+      "same_as_prior": true,
+      "sha256": "1f3760ef2d56d8b00cd79642a472d5b7963495f42508df3fcf68dbe29b4d8dc2"
+    },
+    {
+      "bytes": 25368,
+      "path": "vale-world-compat/development_api/vale-world-compat-1.0.0-dev.jar",
+      "same_as_prior": true,
+      "sha256": "48c0b07332e3dea1af249ef242723822bc3809148f19c4e7d955922c56ad204e"
+    },
+    {
+      "bytes": 26332,
+      "path": "vale-world-compat/runtime_mod/vale-world-compat-1.0.0.jar",
+      "same_as_prior": true,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "bytes": 14140,
+      "path": "vale-world-compat/sources/vale-world-compat-1.0.0-sources.jar",
+      "same_as_prior": true,
+      "sha256": "9c39eb727d4089c9aca9ff428b807eaaccae28f241a0bd3a24007d11d5d6989f"
+    },
+    {
+      "bytes": 36716,
+      "path": "village-standards/development_api/Village-Standards-0.3.1-dev.jar",
+      "same_as_prior": true,
+      "sha256": "87942aaf785c126fc28914920bb72a7d75373b97b4a83a9f4052fa21e154319b"
+    },
+    {
+      "bytes": 37390,
+      "path": "village-standards/runtime_mod/Village-Standards-0.3.1.jar",
+      "same_as_prior": true,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    {
+      "bytes": 23671,
+      "path": "village-standards/sources/Village-Standards-0.3.1-sources.jar",
+      "same_as_prior": true,
+      "sha256": "45a6608278ec31d10eabbb817bc32728e470f5469c5050854246bac2aca35489"
+    }
+  ],
+  "all_artifact_bytes_match": true,
+  "artifact_count": 36,
+  "artifact_role_counts": {
+    "bootstrap_library": 1,
+    "development_api": 12,
+    "runtime_mod": 12,
+    "sources": 11
+  },
+  "component_crcs": "ALL_36_JARS_PASSED",
+  "current": {
+    "artifact_id": 13787493030,
+    "run_id": 42866191408,
+    "run_url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42866191408",
+    "source_commit": "ec7363f6ae8f845c3621f9b9db0c6a43493ef922",
+    "source_input_count": 1510,
+    "source_input_sha256": "64e06f827731d7b24efe8af22bd92996f87e15d228f4fd02837af789515356a0",
+    "zip": {
+      "bytes": 5954648,
+      "crc": "ALL_ENTRIES_PASSED",
+      "filename": "vale-ec7363f-source-components.zip",
+      "sha256": "9b274f8bfa908ae7d03b43118f4060d120397909cf7c149103e740c238fc5012"
+    }
+  },
+  "prior": {
+    "artifact_id": 13785252894,
+    "run_id": 42861260019,
+    "run_url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42861260019",
+    "source_commit": "a6298bdc8a95dd2de69fe3079bd529ef23a5a4cb",
+    "source_input_count": 1510,
+    "source_input_sha256": "a86ebd565131a3bcd8243aa6b2d268d8ec8cf4c8acab41658fe8f5f8da475005",
+    "zip": {
+      "bytes": 5954650,
+      "crc": "ALL_ENTRIES_PASSED",
+      "filename": "vale-a6298bd-source-components.zip",
+      "sha256": "f5c777581c34d918e51a6d7fe46c0aaf41ae20c31ed750aa9718e1a9fa5bec18"
+    }
+  },
+  "runtime_acceptance": "NOT_RUN",
+  "schema": "vale.ci-rebuild-artifact-comparison/v1",
+  "scope": "Actual downloaded CI artifact ZIPs and every component byte compared; no PC assembly or Minecraft execution.",
+  "source_input_changes": [
+    {
+      "new": {
+        "bytes": 16669,
+        "path": "tools/build_modules.py",
+        "sha256": "376cb24b9cc176e76bf6dd17ef6c5f9091b81947f508b10440850642e268b602"
+      },
+      "old": {
+        "bytes": 16593,
+        "path": "tools/build_modules.py",
+        "sha256": "7897258454ce80ec82d9c50c44c8dc3b07c1f13cc5440e846a924e1be5ad47c7"
+      },
+      "path": "tools/build_modules.py"
+    }
+  ],
+  "source_modules_passed": 11,
+  "status": "PASSED",
+  "verified_at_utc": "2026-11-10T20:35:29.177682+00:00"
+}

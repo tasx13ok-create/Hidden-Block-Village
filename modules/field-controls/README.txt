@@ -1,5 +1,16 @@
 FIELD SETTINGS & CONTROLS 1.4.0 — SIMPLE LAYOUT CANDIDATE
 
+CURRENT INTEGRATION
+
+field-controls-1.4.0-simple-candidate.jar is selected for the reviewed Vale 0.3.8 client and passes the integrated source build. Actual graphical input/settings verification and the Essential open/return handoff remain pending. Essential 1.5.1 is separately retained in the matching client package; it is not part of this component's source delivery.
+
+Current package and installation: ../../docs/client-and-bisect-038.md.
+Integrated build evidence: ../../release/candidate038-component-builds.json.
+
+HISTORICAL COMPONENT-DELIVERY NOTES
+
+The following text records the earlier standalone candidate. Its test-kit and 0.3.3 upload status describe that earlier delivery; current runtime acceptance is stated above and in the integration documentation.
+
 Built candidate, not activated in the verified test kit. Native visual/input verification and a live Essential handoff remain pending. No Minecraft/GPU process was launched for this revision.
 
 One shared navigation row: Controls / Game / Video / Sound / HUD. Options and F8 open the keybinds page directly. The overview grid and binding sidebars are removed from the active navigation. Category and filter selectors replace the long lists of navigation buttons. The keybind list takes the full width; F1 expands contextual help.
