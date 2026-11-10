@@ -1,0 +1,59 @@
+VALE 0.3.8 - COMPLETE SERVER CANDIDATE
+
+This server uses Core 0.3.8, Encounters 0.3.6, Rack 0.1.2,
+Residents 0.2.0, World Compatibility 1.0.0 and Village Standards 0.3.1.
+The supplied Magma 1.12.2-8cc35ed launcher requires Java 8.
+
+RELEASE STATE
+Assembly success means CANDIDATE_PENDING_ACCEPTANCE. Runtime acceptance is
+NOT_RUN until this exact candidate passes its saved-world, matching-client
+and hosted tests. Historical verification files do not establish those results.
+Use the successful PREPARATION.json and ASSEMBLY.json outside this server tree
+to identify the package. Keep incomplete outputs for inspection; do not upload
+them. Preserve the original candidate and test a separate complete copy.
+
+WORLD AND CONTENTS
+The server includes the complete reviewed Naruto.test world, nine server mod
+JARs, CrazyCrates 1.10.2.2 and its retained data/configuration, libraries, and
+the matching client-install/Client.zip. Keep level-name=Naruto.test and
+online-mode=true. Do not replace the recovered save with a new default world.
+Do not merge extra runtime JARs into the reviewed mod/plugin folders.
+
+FIRST INSTALLATION AND HOST SETTINGS
+1. Copy this complete server tree to a new deployment/test folder.
+2. Before editing its configuration, use an installed Java 8 executable from
+   that copy's server root:
+       java -jar server.jar --vale-upgrade-check-only
+3. Require successful exit and the VALE_DEPLOYMENT installation message.
+   This command verifies the initial pinned files and writes genuine
+   installation state. It can preserve explicitly retired files in its
+   rollback area. It does not start Minecraft or prove runtime acceptance.
+4. Apply only the required host port/bind changes to this deployment copy.
+   The reviewed defaults are server-port=25565 and an empty server-ip.
+   Compare them with the real Bisect allocation. Keep the genuine installation
+   state with the copy; never manufacture a marker or edit the original pack.
+5. Record configuration changes and a new complete file inventory. A derived
+   deployment ZIP needs its own filename, byte count and SHA-256.
+
+BISECT IMPORT
+Keep a recoverable backup and use a stopped, clean target instance.
+Use Minecraft Tools > Modloader > Custom and the custom-JAR choice for
+Minecraft 1.12.2. Upload the complete prepared deployment tree or its ZIP,
+including the genuine installation state and reviewed host settings from the
+steps above. Use SFTP and unarchive the ZIP directly into the server working
+root. server.jar,
+server.properties, mods, plugins, libraries and Naruto.test must be alongside
+one another, without an extra outer server folder. Set Server Jar File to
+server.jar and select the panel's managed Java 8 runtime. The retained
+CustomJAVA directory contains Linux files; it is not a Windows Java install.
+
+CLIENT AND ACCEPTANCE
+Give players the matching Client-Candidate.zip from the completed candidate,
+or this server's client-install/Client.zip. Import it as a NEW CurseForge
+profile; it targets Minecraft 1.12.2 and Forge 14.23.5.2859 with eleven mods.
+Check actual startup, Naruto.test/player state, clean save/stop/restart,
+matching-client connection, rack/controls, changed gameplay and graphics.
+Record failures and untested items explicitly. Keep logs from the tested copy.
+
+Detailed setup, exact roster and evidence requirements:
+https://github.com/tasx13ok-create/Hidden-Block-Village/blob/main/docs/client-and-bisect-038.md

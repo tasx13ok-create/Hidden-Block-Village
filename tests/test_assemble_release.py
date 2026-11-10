@@ -77,6 +77,9 @@ class AssemblyTests(unittest.TestCase):
         self.new_config = b"enabled: true\nmenu: corrected\n"
         self.manifest = {"version": "0.3.6", "minecraft": {"version": "1.12.2", "modLoaders": [{"id": "forge-14.23.5.2859", "primary": True}]},
                          "manifestType": "minecraftModpack", "manifestVersion": 1, "overrides": "overrides", "files": []}
+        self.old_server_note = b"Historical server instructions and acceptance claims.\n"
+        self.old_client_notes = {"START-HERE.txt": b"Historical client start instructions.\n",
+                                 "CLIENT-INSTALL.txt": b"Historical client install instructions.\n"}
         old_client = archive_bytes({
             "manifest.json": encoded(self.manifest),
             "CLIENT-PINS.json": encoded({"status": "OLD_READY_CLAIM"}),
@@ -84,8 +87,10 @@ class AssemblyTests(unittest.TestCase):
             "overrides/mods/encounters036.jar": self.old_encounters,
             "overrides/mods/client-only.jar": self.client_only,
             "overrides/optionsshaders.txt": b"shaderPack=Solas.zip\n",
+            **self.old_client_notes,
         })
         initial = {
+            "START-HERE.txt": self.old_server_note,
             "mods/core036.jar": self.old_core, "mods/encounters036.jar": self.old_encounters,
             "mods/server-only.jar": self.server_only,
             "plugins/CrazyCrates/config.yml": self.original_config,
@@ -183,6 +188,7 @@ class AssemblyTests(unittest.TestCase):
         self.assertFalse((out / "server/release/VERIFICATION.json").exists())
         self.assertTrue((out / "prior-evidence/server/release/VERIFICATION.json").is_file())
         self.assertTrue((out / "prior-evidence/client/CLIENT-PINS.json").is_file())
+        self.assertEqual((out / "server/START-HERE.txt").read_bytes(), self.old_server_note)
         zip_report = rp.audit(Path(result["archive"]))
         self.assertEqual(after["inventory_sha256"], zip_report["inventory_sha256"])
         self.assertEqual(zip_report["zip_crc_check"], "ALL_ENTRIES_PASSED")
@@ -191,6 +197,59 @@ class AssemblyTests(unittest.TestCase):
             self.assertNotIn("CLIENT-PINS.json", archive.namelist())
             self.assertEqual(archive.read("overrides/mods/core037.jar"), self.new_core)
             self.assertEqual(archive.read("overrides/optionsshaders.txt"), b"shaderPack=Solas.zip\n")
+            for path, raw in self.old_client_notes.items():
+                self.assertEqual(archive.read(path), raw)
+
+    def test_installation_note_changes_require_exact_bootstrap_pins(self):
+        original_plan = copy.deepcopy(self.plan)
+        for side in ("server", "client"):
+            with self.subTest(side=side):
+                self.plan = copy.deepcopy(original_plan)
+                old = self.old_server_note if side == "server" else self.old_client_notes["START-HERE.txt"]
+                change = self.change("START-HERE.txt", old, "START-HERE.txt", b"New candidate instructions.\n", side + "-note.txt")
+                rows = self.plan["replacements"] if side == "server" else self.plan["client"]["replacements"]
+                rows.append(change)
+                # The old fixture launcher pins neither the server note nor Client.zip.
+                name = side + "-missing-note-pin"
+                self.assert_failure("BOOTSTRAP_PLAN", name)
+                output = self.export / name
+                self.assertTrue((output / "INCOMPLETE.json").is_file())
+                self.assertFalse((output / "ASSEMBLY.json").exists())
+                self.assertEqual((output / "prior-evidence" / side / "START-HERE.txt").read_bytes(), old)
+                self.assertEqual(ar.world_identity(rp.audit(output / "server")["entries"], "Naruto.test"),
+                                 ar.world_identity(self.report["entries"], "Naruto.test"))
+
+    def test_installation_note_rename_removal_and_unknown_path_rejected_in_direct_plan(self):
+        original_plan = copy.deepcopy(self.plan)
+        base = self.change("START-HERE.txt", self.old_server_note, "START-HERE.txt", b"New candidate notes.\n", "notes.txt")
+        rows = []
+        renamed = copy.deepcopy(base)
+        renamed["new"]["path"] = "config/renamed-note.txt"
+        rows.append(renamed)
+        removed = copy.deepcopy(base)
+        removed["new"] = None
+        rows.append(removed)
+        unknown = copy.deepcopy(base)
+        unknown["new"]["path"] = "README.txt"
+        rows.append(unknown)
+        for change in rows:
+            with self.subTest(change=change):
+                self.plan = copy.deepcopy(original_plan)
+                self.plan["replacements"].append(change)
+                self.assert_failure("CHANGE_SCOPE")
+                self.assertFalse((self.export / self.plan["candidate_id"]).exists())
+
+    def test_installation_note_stale_input_pin_and_size_limit_rejected_in_direct_plan(self):
+        change = self.change("START-HERE.txt", self.old_server_note, "START-HERE.txt", b"Reviewed notes.\n", "notes.txt")
+        self.plan["replacements"].append(change)
+        (self.inputs / "notes.txt").write_bytes(b"Changed after review.\n")
+        self.assert_failure("PIN_MISMATCH")
+        self.assertFalse(self.export.exists())
+        oversized = b"x" * (ar.MAX_INSTALLATION_NOTE_BYTES + 1)
+        (self.inputs / "notes.txt").write_bytes(oversized)
+        change["new"].update(ident(oversized))
+        self.assert_failure("LIMIT")
+        self.assertFalse(self.export.exists())
 
     def test_same_input_and_plan_produce_identical_zip_bytes(self):
         first = self.run_assembly("first")

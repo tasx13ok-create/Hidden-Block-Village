@@ -63,9 +63,10 @@ require removing upstream data or extracting a guessed base runtime.
 
 ## Fixed review contract
 
-The contract has schema `vale.connected-release/v1`. All fields below are
-required and unknown fields are rejected. No source inventories or component
-rosters are discovered and silently accepted during execution.
+The contract has schema `vale.connected-release/v1`. All fields in the table
+below are required. The only optional top-level field is `installation_notes`,
+described after the table; unknown fields are rejected. No source inventories
+or component rosters are discovered and silently accepted during execution.
 
 | Field | Meaning |
 | --- | --- |
@@ -86,6 +87,17 @@ rosters are discovered and silently accepted during execution.
 | `bootstrap` | Exactly `aliases`, `wrapper_artifact`, `input`, described below. |
 | `prior_bootstrap_plan` | Exact `path`, `bytes`, `sha256` of the original `release/release-plan.properties`. Its bytes must also equal the embedded plan in both original launcher aliases. |
 | `required_configs` | Unique original paths under `config/` or the known CrazyCrates configuration/crate paths. CrazyCrates `config.yml` must be listed whenever present. All are pinned in the new bootstrap. |
+
+Optional `installation_notes` contains exact `server` and `client` arrays of
+same-path old/new replacements for the server's `START-HERE.txt` and the
+client's root `START-HERE.txt` / `CLIENT-INSTALL.txt`. Each row binds the
+original and new size/hash and a contract-relative new input. It cannot add,
+remove or rename files, select other paths, or widen the mod transfer roles.
+Old contracts preserve their original notes. The
+[installation-note contract](../docs/installation-notes.md) gives the complete
+shape, preservation locations and client/bootstrap binding sequence. Use a
+fresh handoff and candidate ID for this option; leave an active assembly's
+inputs and tools unchanged.
 
 Every mod roster row has exactly these fields:
 

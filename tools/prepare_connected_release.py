@@ -217,6 +217,17 @@ def changes_from_contract(rows, original, artifacts, client=False):
     return result, used
 
 
+def prepare_installation_notes(notes, contract_dir, preparation):
+    result = {"server": [], "client": []}
+    for side in result:
+        for change in notes[side]:
+            new = change["new"]
+            filename = "installation-notes/" + side + "/" + new["path"]
+            ar.copy_checked(contract_dir / new["file"], preparation / filename, new)
+            result[side].append({"old": dict(change["old"]), "new": {**new, "file": filename}})
+    return result
+
+
 def check_plugins(original, roster):
     rp.require(isinstance(roster, list), "INVALID_CONTRACT", "Plugin roster must be an array")
     expected = set()
@@ -268,7 +279,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     contract, contract_identity = rp.read_json(contract_path)
     rp.require(contract_identity["sha256"] == rp.sha(contract_sha256),
                "CONTRACT_MISMATCH", "Contract differs from its independently supplied reviewed SHA-256")
-    ar.fields(contract, CONTRACT_FIELDS)
+    ar.fields(contract, CONTRACT_FIELDS, ("installation_notes",))
     rp.require(contract["schema"] == SCHEMA, "INVALID_CONTRACT", "Wrong connected-release contract schema")
     candidate_id = rp.safe_relative(contract["candidate_id"], basename=True)
     rp.require(re.fullmatch(r"[A-Za-z0-9_-]{1,100}", candidate_id), "INVALID_CONTRACT", "Invalid candidate ID")
@@ -310,6 +321,10 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     client_report = rp.audit(source / client["path"])
     client_original = ar.files(client_report)
     exact(client_original.get("manifest.json"), client["manifest"], "original client manifest")
+    notes = contract.get("installation_notes", {"server": [], "client": []})
+    ar.fields(notes, ("server", "client"))
+    ar.validate_installation_notes(notes["server"], original, contract_path.parent)
+    ar.validate_installation_notes(notes["client"], client_original, contract_path.parent, client=True)
     transfer_path = reference(contract_path.parent, contract["transfer"])
     artifacts, transfer_identity = transfer_spec(transfer_path, contract["source_checkpoint"])
     exact(transfer_identity, contract["transfer"], "reviewed transfer manifest read")
@@ -382,7 +397,11 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     ar.copy_checked(contract_path, preparation / "reviewed-contract.json", contract_identity)
     ar.copy_checked(inventory_path, preparation / ("reviewed-source-inventory" + inventory_path.suffix.lower()), identity(inventory_ref))
     ar.copy_checked(transfer_path, preparation / "artifact-transfer.json", transfer_identity)
-    ar.validate_changes(server_changes, original, preparation, lambda p: bool(re.fullmatch(r"mods/(?:1\.12\.2/)?[^/]+\.jar", p)))
+    prepared_notes = prepare_installation_notes(notes, contract_path.parent, preparation)
+    server_changes.extend(prepared_notes["server"])
+    client_changes.extend(prepared_notes["client"])
+    ar.validate_changes(server_changes, original, preparation,
+                        lambda p: p in ar.SERVER_INSTALLATION_NOTES or bool(re.fullmatch(r"mods/(?:1\.12\.2/)?[^/]+\.jar", p)))
     predicted, server_ids = check_result_roster(original, server_changes, contract["server_mods"], source, preparation, "mods")
     preview = preparation / "client-preview"
     ar.copy_input(source / client["path"], client_report, preview)
@@ -397,8 +416,9 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     client_changes.append({"old": {"path": "manifest.json", **identity(client["manifest"])},
                            "new": {"path": "manifest.json", "file": "client-manifest.json", **manifest_identity}})
     ar.validate_changes(client_changes, client_original, preparation,
-                        lambda p: p == "manifest.json" or bool(re.fullmatch(r"overrides/mods/[^/]+\.jar", p)))
+                        lambda p: p == "manifest.json" or p in ar.CLIENT_INSTALLATION_NOTES or bool(re.fullmatch(r"overrides/mods/[^/]+\.jar", p)))
     ar.retire(preview, ar.CLIENT_EVIDENCE, preparation / "prior-client-evidence")
+    ar.preserve_installation_notes(preview, prepared_notes["client"], preparation / "prior-client-evidence")
     ar.apply_changes(preview, client_changes, preparation)
     client_final = rp.audit(preview)
     client_ids = ar.check_roster(preview, ar.files(client_final), contract["client_mods"], "overrides/mods")
@@ -417,6 +437,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     expected = {p: predicted[p]["sha256"] for p in prior["expected"] if p in predicted}
     expected.update({p: predicted[p]["sha256"] for p in configs + [row["path"] for row in contract["server_mods"]] +
                      [row["path"] for row in contract["source_plugins"]] + ["server.properties"]})
+    expected.update({change["new"]["path"]: change["new"]["sha256"] for change in prepared_notes["server"]})
     expected[client["path"]] = rp.hash_file(prepared_client)["sha256"]
     retired = dict(prior["retired"])
     retired.update({c["old"]["path"]: c["old"]["sha256"] for c in server_changes
@@ -453,6 +474,10 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     exact(rp.hash_file(contract_path), contract_identity, "reviewed contract after assembly")
     exact(rp.hash_file(inventory_path), inventory_ref, "reviewed inventory after assembly")
     exact(rp.hash_file(transfer_path), transfer_identity, "transfer manifest after assembly")
+    for side in notes:
+        for change in notes[side]:
+            new = change["new"]
+            exact(rp.hash_file(contract_path.parent / new["file"]), new, "reviewed installation note after assembly")
     receipt = {"schema": "vale.connected-preparation/v1", "status": ar.STATUS, "candidate_id": candidate_id,
                "contract_sha256": contract_identity["sha256"], "plan_sha256": plan_identity["sha256"],
                "prior_bootstrap_plan_sha256": prior_ref["sha256"], "prior_retirements_retained": len(prior["retired"]),

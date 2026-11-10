@@ -1,0 +1,189 @@
+{
+  "schema": "vale.windows-assembly-status-ci/v1",
+  "observed_utc": "2026-11-10 20:52:54 UTC",
+  "repository": "tasx13ok-create/Hidden-Block-Village",
+  "commit": "4eb96814772927770b339228b23f0a037bc07dcc",
+  "tree": "116e69954524c13a9f4a69cb9af2f9768f74f06a",
+  "run_id": 42899244144,
+  "run_url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144",
+  "release_tools_status": "ALL_FOUR_JOBS_PASSED",
+  "native_windows_status": "SMOKE_PASSED_ON_PYTHON_3_8_3_12_3_14",
+  "source_builds_status_at_observation": "in_progress",
+  "evidence_origin": "Decoded GitHub Actions job logs fetched through GitHub connector.",
+  "powershell": {
+    "executable": "powershell.exe",
+    "version": "NOT_CAPTURED",
+    "query": "Actual diagnostic query exercised by native isolated-fixture test."
+  },
+  "limits": [
+    "These tests ran on GitHub-hosted CI runners, not the owner's Windows PC.",
+    "The native smoke test uses an isolated temporary Python fixture; no actual Vale world or assembly was run.",
+    "No success is claimed for the current real Windows assembly or any Minecraft/Bisect acceptance.",
+    "Source component output artifacts were not downloaded or compared for this run."
+  ],
+  "jobs": [
+    {
+      "job_id": 130120476965,
+      "name": "Release tools (windows-latest, Python 3.14)",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144/job/130120476965",
+      "status": "completed",
+      "conclusion": "success",
+      "checked_out_commit_present": true,
+      "python_version": "3.14.10",
+      "java_distribution": "Zulu",
+      "java_version": "8.0.512+9",
+      "operating_system": [
+        "Microsoft Windows Server 2025",
+        "10.0.26100",
+        "Datacenter"
+      ],
+      "tests": {
+        "run": 133,
+        "passed": 132,
+        "skipped": 1,
+        "failures": 0,
+        "duration_seconds": 28.617,
+        "result_lines_found": 133
+      },
+      "diagnostic_tests": {
+        "run": 10,
+        "passed": 10,
+        "skipped": 0
+      },
+      "native_windows_cim_smoke": {
+        "result": "PASS",
+        "line": "2026-11-10T20:51:33.5353557Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... ok"
+      },
+      "evidence_lines": [
+        "2026-11-10T20:51:07.2656822Z Successfully set up CPython (3.14.10)",
+        "2026-11-10T20:51:07.6074270Z Downloading Java 8.0.512+9 (Zulu) from https://cdn.azul.com/zulu/bin/zulu8.98.0.111-ca-jdk8.0.512-win_x64.zip ...",
+        "2026-11-10T20:51:24.8806320Z test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks.test_case_duplicate_runtime_is_rejected) ... skipped 'Case-sensitive fixture requires Linux'",
+        "2026-11-10T20:51:33.5353557Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... ok",
+        "2026-11-10T20:51:43.8087455Z Ran 133 tests in 28.617s",
+        "2026-11-10T20:51:43.8087780Z OK (skipped=1)"
+      ]
+    },
+    {
+      "job_id": 130120476998,
+      "name": "Release tools (windows-latest, Python 3.12)",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144/job/130120476998",
+      "status": "completed",
+      "conclusion": "success",
+      "checked_out_commit_present": true,
+      "python_version": "3.12.10",
+      "java_distribution": "Zulu",
+      "java_version": "8.0.512+9",
+      "operating_system": [
+        "Microsoft Windows Server 2025",
+        "10.0.26100",
+        "Datacenter"
+      ],
+      "tests": {
+        "run": 133,
+        "passed": 132,
+        "skipped": 1,
+        "failures": 0,
+        "duration_seconds": 24.793,
+        "result_lines_found": 133
+      },
+      "diagnostic_tests": {
+        "run": 10,
+        "passed": 10,
+        "skipped": 0
+      },
+      "native_windows_cim_smoke": {
+        "result": "PASS",
+        "line": "2026-11-10T20:51:28.3340200Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... ok"
+      },
+      "evidence_lines": [
+        "2026-11-10T20:51:04.9752665Z Successfully set up CPython (3.12.10)",
+        "2026-11-10T20:51:05.8158838Z Downloading Java 8.0.512+9 (Zulu) from https://cdn.azul.com/zulu/bin/zulu8.98.0.111-ca-jdk8.0.512-win_x64.zip ...",
+        "2026-11-10T20:51:20.5354396Z test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks.test_case_duplicate_runtime_is_rejected) ... skipped 'Case-sensitive fixture requires Linux'",
+        "2026-11-10T20:51:28.3340200Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... ok",
+        "2026-11-10T20:51:36.1837321Z Ran 133 tests in 24.793s",
+        "2026-11-10T20:51:36.1837692Z OK (skipped=1)"
+      ]
+    },
+    {
+      "job_id": 130120477003,
+      "name": "Release tools (ubuntu-latest, Python 3.12)",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144/job/130120477003",
+      "status": "completed",
+      "conclusion": "success",
+      "checked_out_commit_present": true,
+      "python_version": "3.12.16",
+      "java_distribution": "Zulu",
+      "java_version": "8.0.512+9",
+      "operating_system": [
+        "Ubuntu",
+        "24.04.5",
+        "LTS"
+      ],
+      "tests": {
+        "run": 133,
+        "passed": 132,
+        "skipped": 1,
+        "failures": 0,
+        "duration_seconds": 6.622,
+        "result_lines_found": 133
+      },
+      "diagnostic_tests": {
+        "run": 10,
+        "passed": 9,
+        "skipped": 1
+      },
+      "native_windows_cim_smoke": {
+        "result": "SKIPPED",
+        "line": "2026-11-10T20:51:08.3236086Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... skipped 'Windows CIM smoke test; fixture only'"
+      },
+      "evidence_lines": [
+        "2026-11-10T20:50:59.5808851Z Successfully set up CPython (3.12.16)",
+        "2026-11-10T20:50:59.9962184Z Downloading Java 8.0.512+9 (Zulu) from https://cdn.azul.com/zulu/bin/zulu8.98.0.111-ca-jdk8.0.512-linux_x64.tar.gz ...",
+        "2026-11-10T20:51:08.3236086Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... skipped 'Windows CIM smoke test; fixture only'",
+        "2026-11-10T20:51:10.1195140Z Ran 133 tests in 6.622s",
+        "2026-11-10T20:51:10.1195441Z OK (skipped=1)"
+      ]
+    },
+    {
+      "job_id": 130120477074,
+      "name": "Release tools (windows-latest, Python 3.8)",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144/job/130120477074",
+      "status": "completed",
+      "conclusion": "success",
+      "checked_out_commit_present": true,
+      "python_version": "3.8.10",
+      "java_distribution": "Zulu",
+      "java_version": "8.0.512+9",
+      "operating_system": [
+        "Microsoft Windows Server 2025",
+        "10.0.26100",
+        "Datacenter"
+      ],
+      "tests": {
+        "run": 133,
+        "passed": 132,
+        "skipped": 1,
+        "failures": 0,
+        "duration_seconds": 20.373,
+        "result_lines_found": 133
+      },
+      "diagnostic_tests": {
+        "run": 10,
+        "passed": 10,
+        "skipped": 0
+      },
+      "native_windows_cim_smoke": {
+        "result": "PASS",
+        "line": "2026-11-10T20:51:59.8832138Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests) ... ok"
+      },
+      "evidence_lines": [
+        "2026-11-10T20:51:42.3986028Z Successfully set up CPython (3.8.10)",
+        "2026-11-10T20:51:42.8091839Z Downloading Java 8.0.512+9 (Zulu) from https://cdn.azul.com/zulu/bin/zulu8.98.0.111-ca-jdk8.0.512-win_x64.zip ...",
+        "2026-11-10T20:51:55.7426605Z test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks) ... skipped 'Case-sensitive fixture requires Linux'",
+        "2026-11-10T20:51:59.8832138Z test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests) ... ok",
+        "2026-11-10T20:52:07.0408868Z Ran 133 tests in 20.373s",
+        "2026-11-10T20:52:07.0409134Z OK (skipped=1)"
+      ]
+    }
+  ]
+}

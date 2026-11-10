@@ -1,28 +1,37 @@
 # Install the Vale 0.3.8 client and test the Bisect server
 
-This guide covers the matching client and complete server produced by the
-reviewed `vale-038-standards031-connected1` handoff. It provides the next steps
-after assembly finishes. The current candidate's runtime acceptance is
+This guide covers the matching client and complete server produced by a
+reviewed Core 0.3.8 / Standards 0.3.1 handoff. Use the candidate ID in its
+reviewed contract and matching completion receipts to select the output.
+It provides the next steps after assembly finishes. Runtime acceptance is
 `NOT_RUN`; actual saved-world, graphical-client and Bisect results remain to be
 recorded. [Assembly contract](../tools/ASSEMBLY.md) ·
 [Source inventory and evidence](connected-stage-038.md)
 
-Use this guide for the 0.3.8 handoff. Retained `START-HERE.txt` and client
-installation notes describe earlier stages; their old version and acceptance
-statements do not describe the new candidate.
+Use this guide for the 0.3.8 handoff. Older contracts retain historical
+`START-HERE.txt` and client installation notes. A reviewed contract using the
+installation-note extension replaces them with current instructions and keeps
+their exact historical copies outside the candidate. Neither form turns old
+acceptance statements into results for the new candidate.
 
 ## 1. Use the completed output
 
-The expected output directory is:
+The output directory is selected by `candidate_id`, which must agree in the
+reviewed contract, preparation receipt and assembly receipt:
 
 ```text
-D:\Codex\Vale-Export\vale-038-standards031-connected1
+D:\Codex\Vale-Export\<candidate_id>
 ```
+
+Replace `<candidate_id>` with that literal value, not the placeholder text.
+The original PC handoff uses `vale-038-standards031-connected1`; a fresh revised
+handoff must use its own reviewed ID. Do not select an older output just because
+it already exists.
 
 These names describe the requested outputs, not a claim that assembly has
 already completed. Require the successful `PREPARATION.json` in the sibling
-`vale-038-standards031-connected1-preparation` directory and `ASSEMBLY.json` in
-the candidate directory, with both `INCOMPLETE.json` markers absent. The final
+`<candidate_id>-preparation` directory and `ASSEMBLY.json` in the candidate
+directory, with both `INCOMPLETE.json` markers absent. The final
 receipt records `CANDIDATE_PENDING_ACCEPTANCE`, the server ZIP's byte count and
 SHA-256, and the complete preserved world identity. A ZIP that appears during
 an unfinished run is still incomplete; keep it for inspection and do not upload
@@ -31,7 +40,7 @@ it. [Completion checks](../tools/ASSEMBLY.md#output-and-evidence-invalidation)
 | Output | Use |
 | --- | --- |
 | `Client-Candidate.zip` | Import this matching profile into CurseForge. |
-| `vale-038-standards031-connected1-server-candidate.zip` | Complete server candidate for an isolated installation test. Its entries start at the server root. |
+| `<candidate_id>-server-candidate.zip` | Complete server candidate for an isolated installation test. Its entries start at the server root. |
 | `server/` | Expanded server candidate; make a separate copy before runtime tests or hosting edits. |
 | `server/client-install/Client.zip` | The same matching client bytes as `Client-Candidate.zip`. |
 | `ASSEMBLY.json`, `candidate-inventory.json`, `client-inventory.json` | Package identity, complete file inventories and the pending runtime checks. |
@@ -45,14 +54,26 @@ release plan; the old source client's hash identifies different bytes.
 
 ### Retained installation notes describe earlier stages
 
-The assembler preserves these original text files. Their contents were read
-from the source server and CRC-verified source client ZIP during review:
+The original connected1 contract leaves these text files in its output. Their
+contents were read from the source server and CRC-verified source client ZIP
+during review:
 
 | Retained file | Historical scope |
 | --- | --- |
 | Server root `START-HERE.txt` | Claims a prior integrated local actual-world startup/restart and refers to `release/VERIFICATION.json`. |
 | Client ZIP root `START-HERE.txt` | Describes an older Core 0.3.3 test upload, a fresh test world, separate runtime/shader inputs and an optional wing preview. |
 | Client ZIP root `CLIENT-INSTALL.txt` | Names Core 0.3.6 with Encounters 0.3.6 and discusses that stage's artwork and item-counterpart coverage. |
+
+A fresh contract can instead opt into three exact, reviewed note replacements.
+The updated instructions then appear at those same locations in the completed
+server/client packages. The original note bytes are retained outside the
+distribution ZIPs at `prior-evidence/server/START-HERE.txt`,
+`prior-evidence/client/START-HERE.txt` and
+`prior-evidence/client/CLIENT-INSTALL.txt`; `ASSEMBLY.json` records their hashes.
+The current [note templates](../release/installation-notes038/) and
+[note-replacement contract](installation-notes.md) describe this supported
+path. A fresh contract and output ID are required; existing running handoffs
+are not modified in place.
 
 Those notes do not establish acceptance for Core 0.3.8, Rack 0.1.2, HUD 0.14.1
 or Standards 0.3.1. Use the exact contents and preserved `Naruto.test` workflow

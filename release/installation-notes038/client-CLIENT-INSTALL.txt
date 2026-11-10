@@ -1,0 +1,22 @@
+VALE 0.3.8 CLIENT INSTALL
+
+Import the completed matching client ZIP as a NEW CurseForge profile:
+Minecraft 1.12.2, Forge 14.23.5.2859, compatible Java 8 client runtime.
+Use Import > Import Profile .zip > Choose .zip file. If bundled files are
+flagged, compare them with START-HERE.txt and the reviewed candidate inventory,
+then select All Files for this custom package after acknowledging the prompt.
+
+Expect eleven mod JARs. Shared modules are Core 0.3.8, Encounters 0.3.6,
+Rack 0.1.2, Residents 0.2.0, World Compatibility 1.0.0 and Standards 0.3.1.
+Client-only modules are HUD 0.14.1, Controls 1.4.0 simple candidate,
+Client Lifecycle Compatibility 0.1.0, Essential 1.5.1 and OptiFine G5.
+Solas 3.9 and the reviewed shader settings are included. Add the actual
+matching server address and port yourself; no servers.dat is supplied.
+
+The server package preserves Naruto.test. Do not follow older test-kit
+instructions that select a new world or substitute old Core versions.
+Runtime acceptance remains NOT_RUN until actual client/server tests are
+recorded. Check F8/settings, the six weapon slots, connection/persistence,
+models/armor and Solas on the real client. See START-HERE.txt for the full roster.
+
+https://github.com/tasx13ok-create/Hidden-Block-Village/blob/main/docs/client-and-bisect-038.md

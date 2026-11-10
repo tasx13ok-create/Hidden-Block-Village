@@ -136,11 +136,19 @@ This illustrates the schema only. The example's new size/hash are deliberately
 invalid placeholders and must never be treated as real build evidence.
 
 Server substitutions are restricted to the two declared bootstrap aliases,
-active mod/plugin JAR locations, `config/` and the known CrazyCrates config/crate
-paths. They cannot replace world files, server properties or arbitrary player
+active mod/plugin JAR locations, `config/`, the known CrazyCrates config/crate
+paths and the existing root `START-HERE.txt` under the stricter note rules
+below. They cannot replace world files, server properties or arbitrary player
 data. New destinations cannot collide with an unselected original file.
 Duplicates, traversal, symlinks, Windows reserved names, case collisions and
 Unicode path collisions fail. Output directories may not be inside the source.
+
+Installation-note changes require an existing same-path old/new pair with
+exact sizes/hashes; additions, removals and renames are refused. New notes
+contain 1–65,536 bytes. The assembler keeps exact historical copies outside
+the candidate and requires the new server-note and changed client-ZIP pins
+in the embedded bootstrap plan. See the
+[installation-note contract](../docs/installation-notes.md).
 
 ### Complete mod rosters
 
@@ -175,7 +183,7 @@ observed mod ID. The class reader is bounded and rejects malformed inputs.
 | --- | --- |
 | `path` | `client-install/Client.zip` |
 | `input_sha256` | Exact original nested ZIP hash. |
-| `replacements` | Same old/new schema, restricted to `manifest.json` and `overrides/mods/*.jar`. |
+| `replacements` | Same old/new schema, restricted to `manifest.json`, `overrides/mods/*.jar`, and existing root `START-HERE.txt` / `CLIENT-INSTALL.txt` under the same-path installation-note rules. |
 | `mods` | Complete final roster, with paths under `overrides/mods/`. |
 | `version` | Exact candidate version from the new client manifest. |
 | `forge` | Exact Forge version, such as the recovered `14.23.5.2859`. |

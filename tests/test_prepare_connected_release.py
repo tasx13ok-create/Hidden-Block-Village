@@ -66,13 +66,17 @@ class ConnectedPreparationTests(unittest.TestCase):
         self.manifest = {"name": "Synthetic client", "version": "0.3.6", "manifestType": "minecraftModpack", "manifestVersion": 1,
                          "minecraft": {"version": "1.12.2", "modLoaders": [{"id": "forge-14.23.5.2859", "primary": True}]},
                          "overrides": "overrides", "files": []}
+        self.old_server_note = b"Historical server acceptance claim; not a new result.\n"
+        self.old_client_notes = {"START-HERE.txt": b"Historical Core 0.3.3 client instructions.\n",
+                                 "CLIENT-INSTALL.txt": b"Historical Core 0.3.6 installation instructions.\n"}
         self.client = jar({"manifest.json": rp.canonical(self.manifest),
                            "overrides/mods/core036.jar": self.old_core,
                            "overrides/mods/encounters.jar": self.encounters,
                            "overrides/mods/client-only.jar": self.external_client,
                            "overrides/optionsshaders.txt": b"shaderPack=Solas.zip\n",
-                           "CLIENT-PINS.json": b"old acceptance must move aside"})
+                           "CLIENT-PINS.json": b"old acceptance must move aside", **self.old_client_notes})
         self.original_files = {
+            "START-HERE.txt": self.old_server_note,
             "mods/core036.jar": self.old_core, "mods/encounters.jar": self.encounters,
             "server.jar": self.launcher, "Magma-fixture-server.jar": self.launcher,
             "plugins/CrazyCrates.jar": b"bounded synthetic plugin fixture",
@@ -163,6 +167,21 @@ class ConnectedPreparationTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, code, str(caught.exception))
         self.assert_source_unchanged()
 
+    def installation_notes(self):
+        new_notes = {"server": {"START-HERE.txt": b"Core 0.3.8 candidate. Preserve Naruto.test. Runtime acceptance NOT_RUN.\n"},
+                     "client": {"START-HERE.txt": b"Import this matching Core 0.3.8 candidate client. Acceptance NOT_RUN.\n",
+                                "CLIENT-INSTALL.txt": b"Minecraft 1.12.2 and Forge 14.23.5.2859; use the included overrides.\n"}}
+        old_notes = {"server": {"START-HERE.txt": self.old_server_note}, "client": self.old_client_notes}
+        self.contract["installation_notes"] = {"server": [], "client": []}
+        for side, rows in new_notes.items():
+            for path, raw in rows.items():
+                filename = side + "-" + path
+                (self.inputs / filename).write_bytes(raw)
+                self.contract["installation_notes"][side].append({
+                    "old": {"path": path, **ident(old_notes[side][path])},
+                    "new": {"path": path, "file": filename, **ident(raw)}})
+        return new_notes
+
     def test_complete_preparation_preserves_originals_and_pins_actual_outputs(self):
         result = self.run_prepare()
         self.assertEqual(result["status"], ar.STATUS)
@@ -183,6 +202,11 @@ class ConnectedPreparationTests(unittest.TestCase):
             self.assertEqual(z.read("overrides/optionsshaders.txt"), b"shaderPack=Solas.zip\n")
             self.assertEqual(json.loads(z.read("manifest.json"))["version"], "0.3.8")
             self.assertEqual(z.read("overrides/mods/core038.jar"), self.new_core)
+            for path, raw in self.old_client_notes.items():
+                self.assertEqual(z.read(path), raw)
+        self.assertEqual((candidate / "server/START-HERE.txt").read_bytes(), self.old_server_note)
+        assembly = json.loads((candidate / "ASSEMBLY.json").read_bytes())
+        self.assertNotIn("prior_installation_notes_preserved_outside_candidate", assembly)
         self.assertEqual((candidate / "server/server.jar").read_bytes(), (candidate / "server/Magma-fixture-server.jar").read_bytes())
         with zipfile.ZipFile(candidate / "server/server.jar") as z:
             self.assertEqual(z.read("upstream/Retained.bin"), b"Exact untouched upstream payload")
@@ -193,6 +217,125 @@ class ConnectedPreparationTests(unittest.TestCase):
         self.assertEqual(embedded["retired"], {**self.prior_retired, "mods/core036.jar": ident(self.old_core)["sha256"]})
         self.assertTrue((candidate / "prior-evidence/server/release/OLD-ACCEPTANCE.json").is_file())
         self.assertTrue((candidate / "prior-evidence/client/CLIENT-PINS.json").is_file())
+
+    def test_installation_notes_preserve_originals_and_bind_client_wrapper_and_inventories(self):
+        notes = self.installation_notes()
+        result = self.run_prepare()
+        candidate, preparation = Path(result["output"]), Path(result["preparation"])
+        self.assert_source_unchanged()
+        self.assertEqual(result["runtime_acceptance"], "NOT_RUN")
+        self.assertEqual((candidate / "server/START-HERE.txt").read_bytes(), notes["server"]["START-HERE.txt"])
+        self.assertEqual((candidate / "prior-evidence/server/START-HERE.txt").read_bytes(), self.old_server_note)
+        client_bytes = (candidate / "Client-Candidate.zip").read_bytes()
+        self.assertEqual(client_bytes, (preparation / "Client-Prepared.zip").read_bytes())
+        self.assertEqual(client_bytes, (candidate / "server/client-install/Client.zip").read_bytes())
+        with zipfile.ZipFile(io.BytesIO(client_bytes)) as z:
+            for path, raw in notes["client"].items():
+                self.assertEqual(z.read(path), raw)
+                self.assertEqual((candidate / "prior-evidence/client" / path).read_bytes(), self.old_client_notes[path])
+                self.assertEqual((preparation / "prior-client-evidence" / path).read_bytes(), self.old_client_notes[path])
+            self.assertFalse(any(path.startswith("prior-evidence/") for path in z.namelist()))
+        for side, rows in notes.items():
+            for path, raw in rows.items():
+                self.assertEqual((preparation / "installation-notes" / side / path).read_bytes(), raw)
+        with zipfile.ZipFile(candidate / "server/server.jar") as z:
+            embedded = bp.validate_plan(z.read(bp.RESOURCE), self.contract["bootstrap"]["aliases"])
+        self.assertEqual((candidate / "server/server.jar").read_bytes(), (candidate / "server/Magma-fixture-server.jar").read_bytes())
+        self.assertEqual(embedded["expected"]["START-HERE.txt"], ident(notes["server"]["START-HERE.txt"])["sha256"])
+        self.assertEqual(embedded["expected"]["client-install/Client.zip"], ident(client_bytes)["sha256"])
+        self.assertEqual(embedded["retired"], {**self.prior_retired, "mods/core036.jar": ident(self.old_core)["sha256"]})
+        final_inventory = rp.audit(candidate / "server")
+        self.assertEqual(ar.world_identity(self.before["entries"], "Naruto.test"),
+                         ar.world_identity(final_inventory["entries"], "Naruto.test"))
+        self.assertEqual(final_inventory["entries"], json.loads((candidate / "candidate-inventory.json").read_bytes())["entries"])
+        self.assertEqual(final_inventory["entries"], rp.audit(Path(result["archive"]))["entries"])
+        client_inventory = json.loads((candidate / "client-inventory.json").read_bytes())
+        for path, raw in notes["client"].items():
+            self.assertEqual(ar.short_identity(ar.files(client_inventory)[path]), ident(raw))
+        assembly = json.loads((candidate / "ASSEMBLY.json").read_bytes())
+        preserved = assembly["prior_installation_notes_preserved_outside_candidate"]
+        self.assertEqual(preserved["server"], [{"path": "START-HERE.txt", **ident(self.old_server_note)}])
+        self.assertEqual(preserved["client"], [{"path": path, **ident(raw)} for path, raw in self.old_client_notes.items()])
+        self.assertEqual(assembly["payload_inventory_sha256"], final_inventory["payload_inventory_sha256"])
+        with zipfile.ZipFile(result["archive"]) as z:
+            self.assertEqual(z.read("START-HERE.txt"), notes["server"]["START-HERE.txt"])
+            self.assertFalse(any(path.startswith("prior-evidence/") for path in z.namelist()))
+        # A completed note-bearing handoff is no more resumable than any other.
+        before_outputs = rp.audit(candidate)["entries"], rp.audit(preparation)["entries"]
+        self.refuse("OUTPUT_CONFLICT")
+        self.assertEqual(before_outputs, (rp.audit(candidate)["entries"], rp.audit(preparation)["entries"]))
+
+    def test_installation_notes_update_a_prior_note_pin_without_losing_other_pins(self):
+        notes = self.installation_notes()
+        self.prior_plan = self.prior_plan.replace(b"expected.count=2", b"expected.count=3") + (
+            "expected.2.path=START-HERE.txt\nexpected.2.sha256=" + ident(self.old_server_note)["sha256"] + "\n").encode()
+        self.launcher_entries[bp.RESOURCE] = self.prior_plan
+        self.launcher = jar(self.launcher_entries)
+        for alias in self.contract["bootstrap"]["aliases"]:
+            (self.source / alias).write_bytes(self.launcher)
+        (self.source / "release/release-plan.properties").write_bytes(self.prior_plan)
+        self.contract["bootstrap"]["input"].update(ident(self.launcher))
+        self.contract["prior_bootstrap_plan"].update(ident(self.prior_plan))
+        self.refresh_reviewed_source()
+        result = self.run_prepare()
+        with zipfile.ZipFile(Path(result["output"]) / "server/server.jar") as z:
+            embedded = bp.validate_plan(z.read(bp.RESOURCE), self.contract["bootstrap"]["aliases"])
+        self.assertEqual(embedded["expected"]["START-HERE.txt"], ident(notes["server"]["START-HERE.txt"])["sha256"])
+        self.assertEqual(embedded["expected"]["mods/encounters.jar"], ident(self.encounters)["sha256"])
+        self.assertEqual(embedded["retired"], {**self.prior_retired, "mods/core036.jar": ident(self.old_core)["sha256"]})
+        self.assert_source_unchanged()
+
+    def test_installation_note_old_and_new_pins_are_exact_before_output(self):
+        self.installation_notes()
+        original = copy.deepcopy(self.contract["installation_notes"])
+        for side in ("server", "client"):
+            for version in ("old", "new"):
+                for field in ("bytes", "sha256"):
+                    with self.subTest(side=side, version=version, field=field):
+                        self.contract["installation_notes"] = copy.deepcopy(original)
+                        row = self.contract["installation_notes"][side][0][version]
+                        row[field] = row[field] + 1 if field == "bytes" else "0" * 64
+                        self.refuse("PIN_MISMATCH")
+                        self.assertFalse(self.export.exists())
+
+    def test_installation_note_scope_is_exact_and_replacement_only(self):
+        self.installation_notes()
+        original = copy.deepcopy(self.contract["installation_notes"])
+        forbidden = (("server", "CLIENT-INSTALL.txt"), ("server", "README.txt"),
+                     ("server", "Naruto.test/level.dat"), ("server", "config/vale.cfg"),
+                     ("server", "mods/core036.jar"), ("client", "overrides/START-HERE.txt"),
+                     ("client", "manifest.json"), ("client", "overrides/mods/core036.jar"),
+                     ("client", "start-here.txt"))
+        for side, path in forbidden:
+            with self.subTest(side=side, path=path):
+                self.contract["installation_notes"] = copy.deepcopy(original)
+                row = self.contract["installation_notes"][side][0]
+                row["old"]["path"] = row["new"]["path"] = path
+                self.refuse("CHANGE_SCOPE")
+                self.assertFalse(self.export.exists())
+        for side in ("server", "client"):
+            for missing in ("old", "new"):
+                with self.subTest(side=side, missing=missing):
+                    self.contract["installation_notes"] = copy.deepcopy(original)
+                    self.contract["installation_notes"][side][0][missing] = None
+                    self.refuse("CHANGE_SCOPE")
+            self.contract["installation_notes"] = copy.deepcopy(original)
+            self.contract["installation_notes"][side].append(copy.deepcopy(original[side][0]))
+            self.refuse("DUPLICATE_CHANGE")
+        self.contract["installation_notes"] = copy.deepcopy(original)
+        self.contract["installation_notes"]["client"][0]["new"]["path"] = "CLIENT-INSTALL.txt"
+        self.refuse("CHANGE_SCOPE")
+        self.assertFalse(self.export.exists())
+
+    def test_installation_notes_do_not_extend_jar_transfer_or_mod_change_scope(self):
+        self.installation_notes()
+        self.contract["server_changes"][0]["old"] = "START-HERE.txt"
+        self.refuse("CHANGE_SCOPE")
+        self.contract["server_changes"][0]["old"] = "mods/core036.jar"
+        self.transfer["artifacts"][0]["role"] = "installation_note"
+        self.write_transfer()
+        self.refuse("INVALID_TRANSFER")
+        self.assertFalse(self.export.exists())
 
     def test_changed_source_fails_without_learning_new_inventory(self):
         p = self.source / "Naruto.test/playerdata/player.dat"

@@ -24,6 +24,9 @@ VERSION = "1.0.0"
 STATUS = "CANDIDATE_PENDING_ACCEPTANCE"
 SERVER_EVIDENCE = "release"
 CLIENT_EVIDENCE = ("CLIENT-PINS.json", "CANDIDATE-ASSEMBLY.json")
+SERVER_INSTALLATION_NOTES = frozenset(("START-HERE.txt",))
+CLIENT_INSTALLATION_NOTES = frozenset(("START-HERE.txt", "CLIENT-INSTALL.txt"))
+MAX_INSTALLATION_NOTE_BYTES = 64 * 1024
 PENDING = ["exact-artifact build verification", "dedicated-server startup",
            "Naruto.test load/save/restart", "services and Quartermaster",
            "matching-client join", "visuals and shaders", "hosted Bisect test"]
@@ -203,13 +206,13 @@ def validate_changes(changes, original, plan_dir, allowed):
         rp.require(old is not None or new is not None, "INVALID_PLAN", "Empty replacement")
         if old is not None:
             file_identity(old)
-            rp.require(allowed(old["path"]), "CHANGE_SCOPE", "Replacement is outside allowed runtime/configuration paths: " + old["path"])
+            rp.require(allowed(old["path"]), "CHANGE_SCOPE", "Replacement is outside allowed file locations: " + old["path"])
             rp.require(old["path"] not in old_paths, "DUPLICATE_CHANGE", "Repeated original replacement")
             old_paths.add(old["path"])
             matches(original.get(old["path"]), old, old["path"])
         if new is not None:
             file_identity(new, source=True)
-            rp.require(allowed(new["path"]), "CHANGE_SCOPE", "Replacement is outside allowed runtime/configuration paths: " + new["path"])
+            rp.require(allowed(new["path"]), "CHANGE_SCOPE", "Replacement is outside allowed file locations: " + new["path"])
             rp.require(new["path"] not in new_paths, "DUPLICATE_CHANGE", "Repeated replacement destination")
             new_paths.add(new["path"])
             matches(rp.hash_file(rp.no_links(plan_dir / new["file"])), new, new["file"])
@@ -222,6 +225,40 @@ def validate_changes(changes, original, plan_dir, allowed):
             result[new["path"]] = {"path": new["path"], "kind": "file", **short_identity(new)}
     rp.check_names(list(result.values()))
     return result
+
+
+def installation_note_changes(changes, client=False):
+    """Select note rows after the complete replacement list has been validated."""
+    allowed = CLIENT_INSTALLATION_NOTES if client else SERVER_INSTALLATION_NOTES
+    return [change for change in changes
+            if any(row is not None and row["path"] in allowed for row in (change["old"], change["new"]))]
+
+
+def validate_installation_notes(changes, original, plan_dir, client=False):
+    allowed = CLIENT_INSTALLATION_NOTES if client else SERVER_INSTALLATION_NOTES
+    rp.require(isinstance(changes, list), "INVALID_PLAN", "Installation notes must be an array")
+    for change in changes:
+        fields(change, ("old", "new"))
+        old, new = change["old"], change["new"]
+        rp.require(old is not None and new is not None,
+                   "CHANGE_SCOPE", "Installation notes require an existing same-path replacement")
+        file_identity(old)
+        file_identity(new, source=True)
+        rp.require(old["path"] == new["path"] and old["path"] in allowed,
+                   "CHANGE_SCOPE", "Installation notes require an existing same-path replacement at a known note location")
+        rp.require(0 < new["bytes"] <= MAX_INSTALLATION_NOTE_BYTES,
+                   "LIMIT", "An installation note must contain 1 to 65536 bytes")
+    validate_changes(changes, original, plan_dir, lambda path: path in allowed)
+
+
+def preserve_installation_notes(root, changes, destination):
+    """Keep exact old note bytes outside the candidate before replacing its copy."""
+    preserved = []
+    for change in changes:
+        old = change["old"]
+        copy_checked(root / old["path"], destination / old["path"], old)
+        preserved.append({"path": old["path"], **short_identity(old)})
+    return preserved
 
 
 def apply_changes(root, changes, plan_dir):
@@ -420,7 +457,7 @@ def retire(root, names, destination):
     return retired
 
 
-def check_bootstrap(root, declaration, inventory, roster, required_configs):
+def check_bootstrap(root, declaration, inventory, roster, required_configs, required_files=()):
     fields(declaration, ("paths", "resource_sha256"))
     paths = declaration["paths"]
     rp.require(isinstance(paths, list) and len(paths) == 2 and "server.jar" in paths, "INVALID_PLAN", "Bootstrap requires server.jar and one named alias")
@@ -441,11 +478,11 @@ def check_bootstrap(root, declaration, inventory, roster, required_configs):
         rp.require(name in inventory and inventory[name]["sha256"] == fingerprint, "BOOTSTRAP_PLAN", "Bootstrap expects missing/different file: " + name)
     for name in embedded["retired"]:
         rp.require(name not in inventory, "BOOTSTRAP_PLAN", "Candidate still contains a file the bootstrap would retire: " + name)
-    required = {m["path"] for m in roster} | set(required_configs)
+    required = {m["path"] for m in roster} | set(required_configs) | set(required_files)
     required |= {p for p in inventory if re.fullmatch(r"(?:plugins|plugins/update)/[^/]+\.jar", p)}
     if "plugins/CrazyCrates/config.yml" in inventory:
         required.add("plugins/CrazyCrates/config.yml")
-    rp.require(required.issubset(expected), "BOOTSTRAP_PLAN", "Bootstrap omits active runtime/configuration pins: " + repr(sorted(required - set(expected))))
+    rp.require(required.issubset(expected), "BOOTSTRAP_PLAN", "Bootstrap omits required runtime/configuration/installation pins: " + repr(sorted(required - set(expected))))
     return raw, embedded["release"]
 
 
@@ -481,9 +518,12 @@ def assemble(source, plan_path, export_root, output_name=None):
     for path in bootstrap["paths"]:
         rp.safe_relative(path, basename=True)
     def allowed_server(path):
-        return (path in bootstrap["paths"] or bool(re.fullmatch(r"(?:mods|mods/1\.12\.2|plugins|plugins/update)/[^/]+\.jar", path)) or
+        return (path in bootstrap["paths"] or path in SERVER_INSTALLATION_NOTES or
+                bool(re.fullmatch(r"(?:mods|mods/1\.12\.2|plugins|plugins/update)/[^/]+\.jar", path)) or
                 path.startswith("config/") or bool(re.fullmatch(r"plugins/CrazyCrates/(?:config\.yml|Crates/[^/]+\.ya?ml)", path)))
     validate_changes(plan["replacements"], original, plan_path.parent, allowed_server)
+    server_notes = installation_note_changes(plan["replacements"])
+    validate_installation_notes(server_notes, original, plan_path.parent)
     configs = plan["required_configs"]
     rp.require(isinstance(configs, list) and len(configs) == len(set(configs)), "INVALID_PLAN", "required_configs must be a unique array")
     for path in configs:
@@ -505,14 +545,18 @@ def assemble(source, plan_path, export_root, output_name=None):
     check_world_selection(stage / "server.properties", plan["world"]["path"])
     prior = destination / "prior-evidence"
     retired_server = retire(stage, (SERVER_EVIDENCE,), prior / "server")
+    preserved_server_notes = preserve_installation_notes(stage, server_notes, prior / "server")
     apply_changes(stage, plan["replacements"], plan_path.parent)
     nested = stage / client["path"]
     nested_before = rp.audit(nested)
     client_stage = destination / "client-work"
     copy_input(nested, nested_before, client_stage)
-    allowed_client = lambda path: path == "manifest.json" or bool(re.fullmatch(r"overrides/mods/[^/]+\.jar", path))
+    allowed_client = lambda path: path == "manifest.json" or path in CLIENT_INSTALLATION_NOTES or bool(re.fullmatch(r"overrides/mods/[^/]+\.jar", path))
     validate_changes(client["replacements"], files(nested_before), plan_path.parent, allowed_client)
+    client_notes = installation_note_changes(client["replacements"], client=True)
+    validate_installation_notes(client_notes, files(nested_before), plan_path.parent, client=True)
     retired_client = retire(client_stage, CLIENT_EVIDENCE, prior / "client")
+    preserved_client_notes = preserve_installation_notes(client_stage, client_notes, prior / "client")
     apply_changes(client_stage, client["replacements"], plan_path.parent)
     manifest = rp.parse_json(read_small(client_stage / "manifest.json"))
     rp.require(manifest.get("version") == client["version"] and manifest.get("minecraft", {}).get("version") == "1.12.2", "CLIENT_VERSION", "Client manifest version differs")
@@ -536,7 +580,8 @@ def assemble(source, plan_path, export_root, output_name=None):
     nested.unlink()  # Owned incomplete output only; original nested ZIP is untouched.
     copy_checked(new_client, nested, rp.hash_file(new_client))
     server_report = rp.audit(stage)
-    raw_bootstrap, release_id = check_bootstrap(stage, bootstrap, files(server_report), plan["server_mods"], configs)
+    note_pins = [change["new"]["path"] for change in server_notes] + ([client["path"]] if client_notes else [])
+    raw_bootstrap, release_id = check_bootstrap(stage, bootstrap, files(server_report), plan["server_mods"], configs, note_pins)
     rp.require(release_id == candidate_id, "BOOTSTRAP_PLAN", "Embedded release ID must equal candidate_id")
     rp.require(not any((stage / ("vale-update-state/" + release_id + suffix)).exists() for suffix in (".done", ".pending")),
                "BOOTSTRAP_STATE", "Input contains an existing state marker for this candidate; use a new reviewed release ID")
@@ -577,6 +622,9 @@ def assemble(source, plan_path, export_root, output_name=None):
               "world_preservation": "ALL_FILE_HASHES_MATCH",
               "prior_server_evidence_moved_outside_candidate": retired_server,
               "prior_client_evidence_moved_outside_candidate": retired_client}
+    if preserved_server_notes or preserved_client_notes:
+        result["prior_installation_notes_preserved_outside_candidate"] = {
+            "server": preserved_server_notes, "client": preserved_client_notes}
     rp.atomic_json(destination / "ASSEMBLY.json", result)
     (destination / "INCOMPLETE.json").unlink()
     return {"status": STATUS, "output": str(destination), "archive": str(final_zip),

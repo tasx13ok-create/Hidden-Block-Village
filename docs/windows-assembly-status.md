@@ -55,3 +55,15 @@ a different process. Missing or decreasing counters are inconclusive. CPU counte
 use the Win32_Process 100-nanosecond qualifiers; read/write counters reflect process
 I/O, not necessarily physical disk transfers or completed source verification.
 See Microsoft's [Win32_Process reference](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process).
+
+## Native verification
+
+The [diagnostic CI run](https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42899244144)
+at `4eb96814772927770b339228b23f0a037bc07dcc` exercised the actual PowerShell
+query on Windows Server 2025 with Python 3.8, 3.12 and 3.14. All ten diagnostic
+tests passed on each Windows job, including its isolated temporary process
+fixture. Each full Windows suite passed 132 tests with the existing
+case-sensitive filename fixture skipped. Ubuntu passed 132 tests and skipped
+the Windows-only query. The [exact native result](../release/evidence/windows-assembly-status-ci.json)
+records the job IDs, versions and observed output. These runner results do not
+describe the process state or assembly outcome on the owner's PC.
