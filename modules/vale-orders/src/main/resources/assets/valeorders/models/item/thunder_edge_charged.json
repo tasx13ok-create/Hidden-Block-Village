@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/thunder_edge_charged"
+  }
+}

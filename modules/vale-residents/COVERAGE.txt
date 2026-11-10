@@ -1,0 +1,91 @@
+FUNCTIONAL COVERAGE — OWNED RESIDENTS VS RETAINED NOPPES FEATURES
+Evidence date:2026-11-09 America/Los_Angeles
+
+OWNED BASELINE
+Sealed Residents0.1.0 e042e6f6757f231a5b2d2491ae3b471122d7292e74ebaf5dab5dafe74d4eab9e
+already has3 independent persistent, protected villagers exposing the public
+owned academy/contracts/quartermaster. Prior exact Forge/Core030 evidence is
+76 first-run +77 restart +93 native menu/command assertions (246), plus54 NBT/
+capacity/component checks. It contains no Noppes implementation or assets.
+The retained third-party libraries were not a dependency of that owned module.
+
+CURRENT OPTIONAL INCREMENT
+Residents0.2 adds original bounded editable dialogue/page choices, actor/player-
+bound single-use sessions and validated native chat transport; op reload/title/
+safe loaded movement; preserves own entity ID, role data, UUIDs and home fields.
+Only owned Core APIs perform progression, contract acceptance/turn-in, merit
+spending and owner-bound receipt rewards. Exact0.2 native results/pins are in
+VERIFICATION.json; component checks do not substitute for native server tests.
+
+CAPABILITY -> CURRENT COVERAGE / CONCRETE GAP
+
+Persistent server NPC roles ->3 owned stationary roles with vanilla villager
+model/skins; does not require CustomNPCs/VC/AW. No arbitrary appearance or combat
+job clone, following/path/guard/trader/bank scripting or unlimited actor editor.
+
+Dialogue authoring -> schema1 JSON for3 roles,<=16 pages/role,<=6 choices/page,
+explicit owned action whitelist, last-good reload and protected click sessions.
+No Noppes scripts/events/API, skin files, dialogue IDs or authoring GUI imported.
+
+Missions/quests -> opens owned Core's original contract catalog; configured
+ACCEPT_CONTRACT and CLAIM_CONTRACT call the actual backend. Core033 has12
+contracts covering travel/combat/supplies/cooking/abilities/companions/trials.
+NPC native proof focuses on real supply acceptance/completion/reward/replay;
+it is not evidence that all12 objective types were retested by this addon.
+No Noppes quest categories/conditions/factions/scoreboards/script authoring parity,
+hosted quest state conversion, old reward tables or NPC data import is supplied.
+
+Provisions -> opens owned Core equipment/tools/spirit pages and lets its normal
+permission/cost/catalog/receipt rules decide purchases. Installed owned stock and
+level/study gates still apply. This is not Noppes per-NPC stock/barter/bank data.
+
+Carpentry -> NOT replaced by Residents. Independent compatibility adapter0.1
+ca479669 fixes supplied Noppes recipe matching/server take validation, but still
+requires CustomNPCs and its recipe/controller/bench implementation. It cannot be
+used as proof of a Noppes-free workstation. Removing both Noppes binaries also
+removes their distinct4x4 benches, VC anvil-mode model/label, recipes and editable
+books. A separately original workstation/recipe authoring/persistence system
+with deliberate new IDs is needed if those functions are required. Vanilla3x3
+crafting is not claimed equivalent. Native recipe.dat/Availability API is not
+implemented or migrated by this addon.
+
+VC furniture/items/blocks -> NOT replaced by Residents or the5 vanilla-only v16
+schematics. Those templates use vanilla block IDs and contain no NPC entities;
+they can be considered independently. Actual hosted VC blocks/items/inventories
+are unavailable, so retention/remapping/functional loss cannot be measured here.
+
+AW skins/cosmetic armor -> NOT replaced by Residents. Its actor renderer uses
+unbundled vanilla assets and no AW data/API. Owned armor work is a separate Root
+track; this module does not implement or convert AW skin formats/equipment data.
+
+Legacy NPC reflection/despawn -> owned EntityResident uses its own ID/data and
+native persistence, with no ModelDataShared or mod-entity reflection. It does not
+repair/convert saved customnpcs entities after their registry implementation is
+removed. The historical compatibility NPC JAR is still third-party-derived.
+
+LICENSING EVIDENCE / LIMIT
+Primary author pages checked2026-11-09:
+CustomNPCs05Jul20 file2996912; project/license lists CC BY-NC3.0:
+ https://www.curseforge.com/minecraft/mc-mods/custom-npcs/license
+ https://www.curseforge.com/minecraft/mc-mods/custom-npcs/files/2996912
+VariedCommodities31Mar23 file4466956; project/license lists CC BY-NC3.0:
+ https://www.curseforge.com/minecraft/mc-mods/varied-commodities/license
+ https://www.curseforge.com/minecraft/mc-mods/varied-commodities/files/4466956
+AW current license text lists CC BY-NC-SA3.0 (generic page badge says Custom License);
+exact0.51.0 file-specific provenance/terms remain Root's separate audit:
+ https://www.curseforge.com/minecraft/mc-mods/armourers-workshop/license
+
+Changing17 Naruto JARs or writing a dependent adapter does not establish public
+clearance for those retained libraries. User ownership was asserted for armor/
+pictures, not Noppes/AW. Original Residents code/format/strings are newly authored
+or retained from our original0.1 source; no Noppes implementation/scripts/skins
+were copied, and no compatibility API clone is claimed. The module's source
+license applies only to its original code. Full pack/distribution rights remain
+an artifact-by-artifact Root audit, including other retained dependencies.
+
+HOSTED DATA
+Bisect world/NPC/quest/player/key data is unavailable. Local fresh-world native
+persistence/authoring tests can be completed; hosted content inventory, rights,
+mapping rules, backups and migration correctness remain unverified. No hosted
+file was read/modified, no source IDs silently reassigned and no migration is
+invented. Old packs, builds, NPC patch, armor/reward runtimes remain preserved.

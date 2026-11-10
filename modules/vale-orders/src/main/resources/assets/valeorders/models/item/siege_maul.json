@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/siege_maul"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "valeorders:charged": 1
+      },
+      "model": "valeorders:item/siege_maul_charged"
+    }
+  ]
+}

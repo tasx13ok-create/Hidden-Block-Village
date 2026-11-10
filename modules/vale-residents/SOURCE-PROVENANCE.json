@@ -1,0 +1,203 @@
+{
+  "module": "vale-residents",
+  "archive": "vale-residents-0.2.0-source.zip",
+  "archive_bytes": 33577,
+  "archive_sha256": "dd6f8082baa14d6e86241cfb6f966d5301b2ae244084bfcad7c6176b39fb6f9e",
+  "license_notice_scope": "MIT",
+  "files": [
+    {
+      "archive_path": "src/main/java/village/residents/client/ClientProxy.java",
+      "path": "src/main/java/village/residents/client/ClientProxy.java",
+      "bytes": 500,
+      "sha256": "b28cdd2535ed0ec6416ff2ce13c4e516e3618542048a35bd21f9bc7d705914e0"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/client/ResidentRenderer.java",
+      "path": "src/main/java/village/residents/client/ResidentRenderer.java",
+      "bytes": 1245,
+      "sha256": "83b2ee5ba0ad44e468928f2d63ed8c96ef16691afe3adb7ce56ee8e2643a9904"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/CommonProxy.java",
+      "path": "src/main/java/village/residents/CommonProxy.java",
+      "bytes": 84,
+      "sha256": "df8a23e1cc5ccd66ae1b21066272f16fb30fcdfb1607caee4cc636123509ec7b"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/DialogueBook.java",
+      "path": "src/main/java/village/residents/DialogueBook.java",
+      "bytes": 8583,
+      "sha256": "d61e83b6a2553b657e3dc55b5423bd5a015ae125322f693a9608f3746b02ea80"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/DialogueSessions.java",
+      "path": "src/main/java/village/residents/DialogueSessions.java",
+      "bytes": 4725,
+      "sha256": "a6099aac97f8ae68fca1dc81414b59e1f4ff32ba44c936eff6ffcc5162c84a3f"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/EntityResident.java",
+      "path": "src/main/java/village/residents/EntityResident.java",
+      "bytes": 4380,
+      "sha256": "088f1fce4ac6495da3c6ee73163735b1b2d4311b3bcde807f0d9660310cb423c"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/InteractionWindow.java",
+      "path": "src/main/java/village/residents/InteractionWindow.java",
+      "bytes": 835,
+      "sha256": "94fc93b0e64de8b2eb2837102fa10e12fec1b149fd4ef118533ecb48861b8c77"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/Provisioning.java",
+      "path": "src/main/java/village/residents/Provisioning.java",
+      "bytes": 6036,
+      "sha256": "e23ee31428afbb70c90cada3e13ddb513a7d559171ace470f7d810afb940343c"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentAuthoring.java",
+      "path": "src/main/java/village/residents/ResidentAuthoring.java",
+      "bytes": 2077,
+      "sha256": "07579b9ad6b0153057f4d2db93f7231735c0a2281c47065b96ad0ed69cb27a69"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentChooseCommand.java",
+      "path": "src/main/java/village/residents/ResidentChooseCommand.java",
+      "bytes": 824,
+      "sha256": "ff43c4cde3024965e4ade96119ff4506cf520881c6df816b5f8b9e77db6160cb"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentEvents.java",
+      "path": "src/main/java/village/residents/ResidentEvents.java",
+      "bytes": 1730,
+      "sha256": "054f6b4ca7b4e81fed15f24bdf50ae48577f2717267edcb7d8f5c6a31a2a8c84"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentIdentity.java",
+      "path": "src/main/java/village/residents/ResidentIdentity.java",
+      "bytes": 1449,
+      "sha256": "6456b7ef80da8827cbffc0bbf8ba2e57f7e13fc5c1b09e56d8c99f72e6a00938"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentRole.java",
+      "path": "src/main/java/village/residents/ResidentRole.java",
+      "bytes": 693,
+      "sha256": "d5b6aad494bc92bc60da3b14220ee39552d1e29395d72b4fbe3c8eec8d9a8b7e"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentsCommand.java",
+      "path": "src/main/java/village/residents/ResidentsCommand.java",
+      "bytes": 3885,
+      "sha256": "a421cf98a20cc061715fa216fddcfc9efe0f4fcf5931a884f676ac307ae2062f"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentsData.java",
+      "path": "src/main/java/village/residents/ResidentsData.java",
+      "bytes": 1061,
+      "sha256": "1d1e3cd40377251239eadbfea7cb46c44771c4d8e9b7f996e66d0ca813d42071"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ResidentSlots.java",
+      "path": "src/main/java/village/residents/ResidentSlots.java",
+      "bytes": 4285,
+      "sha256": "0600397b31ae4151a182af07a37e2df57082da18e2caabdfeaf5fc330dad8a41"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/RoleMenus.java",
+      "path": "src/main/java/village/residents/RoleMenus.java",
+      "bytes": 1265,
+      "sha256": "9a75ed69fbeef6346a07c30041e6ddf1f6c7279fd73040fb4a0bdfcc9a782903"
+    },
+    {
+      "archive_path": "src/main/java/village/residents/ValeResidents.java",
+      "path": "src/main/java/village/residents/ValeResidents.java",
+      "bytes": 2849,
+      "sha256": "b1fc60e86e8910d3e986d24c66d8174d38ad88bfe8f306a61c1abea6f994d791"
+    },
+    {
+      "archive_path": "src/main/resources/assets/valeresidents/lang/en_us.lang",
+      "path": "src/main/resources/assets/valeresidents/lang/en_us.lang",
+      "bytes": 89,
+      "sha256": "79dfff27d82e86c26792db46c4e2a2ce332e3ace079e165ce379ee5aa6918aa1"
+    },
+    {
+      "archive_path": "src/main/resources/mcmod.info",
+      "path": "src/main/resources/mcmod.info",
+      "bytes": 282,
+      "sha256": "29cf3a7b0f3a59926afd410f13254294dec92af76e8fa6b7582f88763606eb14"
+    },
+    {
+      "archive_path": "tests/village/residents/DialogueChecks.java",
+      "path": "tests/village/residents/DialogueChecks.java",
+      "bytes": 3087,
+      "sha256": "43f5f89c4c503c8ec4c787469174b057f0ccbacd665fab85fd5ed3c31e0de8f2"
+    },
+    {
+      "archive_path": "tests/village/residents/ResidentChecks.java",
+      "path": "tests/village/residents/ResidentChecks.java",
+      "bytes": 10857,
+      "sha256": "1c5825312013a89fc1eec54b79ad52b7deb90392f3768ca84215fd9f3bbafb3d"
+    },
+    {
+      "archive_path": "examples/dialogue.json",
+      "path": "examples/dialogue.json",
+      "bytes": 1390,
+      "sha256": "e46138e2e77d3e87126ebeccf622436c18ccd1eab1ff9e38b21ba498bbd658e4"
+    },
+    {
+      "archive_path": "README.txt",
+      "path": "README.txt",
+      "bytes": 5247,
+      "sha256": "2bf8a1df936cf89f30f8bf0ba2413d5b72d435a6f05206d41389f197d5879ffa"
+    },
+    {
+      "archive_path": "LICENSE",
+      "path": "LICENSE",
+      "bytes": 1236,
+      "sha256": "50aa668aecc68721bff044f5aa06b275348e09a74a25707d8807b6f72d946e96"
+    },
+    {
+      "archive_path": "COVERAGE.txt",
+      "path": "COVERAGE.txt",
+      "bytes": 5677,
+      "sha256": "0ee0b01120cc38a76450d72f4e74c6c8b81bc747b90bd2a2f248a6ba01799c19"
+    },
+    {
+      "archive_path": "COVERAGE.json",
+      "path": "COVERAGE.json",
+      "bytes": 2000,
+      "sha256": "0441ea23eade9e24fde7ed5758cfb6f6cd7b334155b6bce71ce3239c2543c972"
+    },
+    {
+      "archive_path": "build.gradle",
+      "path": "build.gradle",
+      "bytes": 1847,
+      "sha256": "7ab74c637c43f899f333855bebacb5bd4a1271169de0ae3793c631f08d750151"
+    },
+    {
+      "archive_path": "settings.gradle",
+      "path": "settings.gradle",
+      "bytes": 291,
+      "sha256": "215a7505947d7a37a66b1f496e7890cba4fdc063d32c6535871b123e094fb1c3"
+    },
+    {
+      "archive_path": "gradle.properties",
+      "path": "gradle.properties",
+      "bytes": 128,
+      "sha256": "da9b7314715523d53c1ee6ba41b492c2a5813bec2953449aa2714958c3f02be1",
+      "original_sha256": "07a0909952a9b9095961aad7bc5ad9e468add527f0137a40ac0b4cbd1068615a"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [
+    {
+      "path": "gradle.properties",
+      "original_sha256": "07a0909952a9b9095961aad7bc5ad9e468add527f0137a40ac0b4cbd1068615a",
+      "staged_sha256": "da9b7314715523d53c1ee6ba41b492c2a5813bec2953449aa2714958c3f02be1",
+      "change": "Removed only the author-specific org.gradle.java.installations.paths property; all other settings, including auto-download=false, are unchanged. Configure an installed Azul Java 8 JDK through normal Gradle discovery or user-level properties."
+    }
+  ],
+  "staged_files": 30,
+  "staged_bytes": 78637,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Recovered project files; no build performed by this review lane."
+}

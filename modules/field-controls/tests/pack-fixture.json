@@ -1,0 +1,758 @@
+[
+  {
+    "raw": "key.attack",
+    "code": -100,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.use",
+    "code": -99,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.forward",
+    "code": 17,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.left",
+    "code": 30,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.back",
+    "code": 31,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.right",
+    "code": 32,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.jump",
+    "code": 57,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.sneak",
+    "code": 42,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.sprint",
+    "code": 29,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.drop",
+    "code": 16,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.inventory",
+    "code": 18,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.chat",
+    "code": 20,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.playerlist",
+    "code": 15,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.pickItem",
+    "code": -98,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.command",
+    "code": 53,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.screenshot",
+    "code": 60,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.togglePerspective",
+    "code": 63,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.smoothCamera",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.fullscreen",
+    "code": 87,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.spectatorOutlines",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.swapHands",
+    "code": 33,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.saveToolbarActivator",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.loadToolbarActivator",
+    "code": 45,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.advancements",
+    "code": 38,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.hotbar.1",
+    "code": 2,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.2",
+    "code": 3,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.3",
+    "code": 4,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.4",
+    "code": 5,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.5",
+    "code": 6,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.6",
+    "code": 7,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.7",
+    "code": 8,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.8",
+    "code": 9,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "key.hotbar.9",
+    "code": 10,
+    "mod": "NONE",
+    "group": "Movement"
+  },
+  {
+    "raw": "Open Friends Gui",
+    "code": 35,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Open Cosmetic Studio",
+    "code": 48,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.SCREENSHOT_MANAGER",
+    "code": 23,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Cosmetic Visibility Toggle",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Chat Peek",
+    "code": 44,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Invite Friends",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.MENU_ACCESS",
+    "code": 34,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_WHEEL",
+    "code": 19,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_1",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_2",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_3",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_4",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_5",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_6",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_7",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keybind.name.EMOTE_SLOT_8",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Zoom",
+    "code": 46,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "cos.key.opencosarmorinventory",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Scene1 start/pause",
+    "code": 79,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Scene2 start/pause",
+    "code": 80,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Scene3 start/pause",
+    "code": 81,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Scene reset",
+    "code": 82,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Quest Log",
+    "code": 38,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.ftbquests.quests",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.specialjutsu1",
+    "code": 19,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.specialjutsu2",
+    "code": 33,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.specialjutsu3",
+    "code": 46,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.powerincrease",
+    "code": 200,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.specialjutsu4",
+    "code": 36,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.specialjutsu5",
+    "code": 37,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.toggleOverlay",
+    "code": 24,
+    "mod": "CONTROL",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.focusSearch",
+    "code": 33,
+    "mod": "CONTROL",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.toggleCheatMode",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.toggleEditMode",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.showRecipe",
+    "code": 19,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.showUses",
+    "code": 22,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.recipeBack",
+    "code": 14,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.previousPage",
+    "code": 201,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.nextPage",
+    "code": 209,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.closeRecipeGui",
+    "code": 1,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.bookmark",
+    "code": 30,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.toggleBookmarkOverlay",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.copy.recipe.id",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.jei.pauseRecipeCycling",
+    "code": 42,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keys.armourers_workshop.undo",
+    "code": 44,
+    "mod": "CONTROL",
+    "group": "Advanced"
+  },
+  {
+    "raw": "keys.armourers_workshop.open-wardrobe",
+    "code": 25,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Rage Mode",
+    "code": 19,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Biju Trade",
+    "code": 48,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "Challenge mode",
+    "code": 37,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.specialjutsu1",
+    "code": 47,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.specialjutsu2",
+    "code": 48,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.specialjutsu3",
+    "code": 49,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.hvbijuu.activate",
+    "code": 34,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.chakra_charge_button",
+    "code": 45,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.special_jutsu_4",
+    "code": 46,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.special_jutsu_3",
+    "code": 46,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.special_jutsu_2",
+    "code": 33,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.special_jutsu_1",
+    "code": 19,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.mcreator.special_jutsu_5",
+    "code": 46,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.travelersbackpack.inventory",
+    "code": 48,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.travelersbackpack.toggle_tank",
+    "code": 49,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.travelersbackpack.cycle_tool",
+    "code": 44,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "WorldEdit Reference",
+    "code": 38,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_open_map",
+    "code": 50,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_open_settings",
+    "code": 27,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_world_map_server_settings",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_map_zoom_in",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_map_zoom_out",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_quick_confirm",
+    "code": 54,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_dimension",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_minimap_settings",
+    "code": 21,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_minimap_server_profiles",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_zoom_in",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_zoom_out",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_new_waypoint",
+    "code": 48,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_waypoints_key",
+    "code": 22,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_enlarge_map",
+    "code": 44,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_map",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_waypoints",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_map_waypoints",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_slime",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_grid",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_instant_waypoint",
+    "code": 78,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_switch_waypoint_set",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_display_all_sets",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_light_overlay",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_entity_radar",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_reverse_entity_radar",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_manual_cave_mode",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_alternative_list_players",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_tracked_players_on_map",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "gui.xaero_toggle_tracked_players_in_world",
+    "code": 0,
+    "mod": "NONE",
+    "group": "Advanced"
+  },
+  {
+    "raw": "key.portaitreposition",
+    "code": 52,
+    "mod": "NONE",
+    "group": "Advanced"
+  }
+]

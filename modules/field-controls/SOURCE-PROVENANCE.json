@@ -1,0 +1,243 @@
+{
+  "module": "field-controls",
+  "archive": "field-controls-1.4.0-simple-clean-source.zip",
+  "archive_bytes": 82252,
+  "archive_sha256": "b76850fd38e4196c34f95144fb741790058d8371fec46d7dc9b28ff0257b6e39",
+  "license_notice_scope": "MIT",
+  "files": [
+    {
+      "archive_path": "src/main/java/village/controls/Bindings.java",
+      "path": "src/main/java/village/controls/Bindings.java",
+      "bytes": 7622,
+      "sha256": "676279600c73a32a31131e7f03280a3dc374ab7fe2bca9b8b7eec91a79dba26e"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/ControlsScreen.java",
+      "path": "src/main/java/village/controls/ControlsScreen.java",
+      "bytes": 37703,
+      "sha256": "733b53a88acb15455a9de48ca751b2eaa70ffedc5aa4059953c65ac7ce2eb7a9"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/DraftJournal.java",
+      "path": "src/main/java/village/controls/DraftJournal.java",
+      "bytes": 1455,
+      "sha256": "c826fb61886a79b852cfd98b8ac8bf4504c92eab9054527eb6e967b7c2b2b2b1"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/EssentialBridge.java",
+      "path": "src/main/java/village/controls/EssentialBridge.java",
+      "bytes": 2286,
+      "sha256": "e47ab781fdf57c636d67c899dd3045bf218de50c949d6c962a658929bbffefc8"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/FieldControls.java",
+      "path": "src/main/java/village/controls/FieldControls.java",
+      "bytes": 11912,
+      "sha256": "941c8bef0c4ef838d79fc8153f504c6f5f688ffdc6f97e68a04f7d17b4baf934"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/FocusedCast.java",
+      "path": "src/main/java/village/controls/FocusedCast.java",
+      "bytes": 1314,
+      "sha256": "4764b394a7411c7a19601b420facdc862a682962c5139521fc5304b64f9e1bf3"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/HudBridge.java",
+      "path": "src/main/java/village/controls/HudBridge.java",
+      "bytes": 2414,
+      "sha256": "239307544fff47df42e6dd67e147e2be16adc36ad50c5b845e6c3ba80f164472"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/MenuDispatch.java",
+      "path": "src/main/java/village/controls/MenuDispatch.java",
+      "bytes": 482,
+      "sha256": "7241df9c29c6692786305da485053840ce4817a786776985a831472f1cf0af02"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/MenuFocus.java",
+      "path": "src/main/java/village/controls/MenuFocus.java",
+      "bytes": 941,
+      "sha256": "83729ca972f3257fbff7e000100c1bb25c912e0420cc9775dee83ba863da6609"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/MenuLayout.java",
+      "path": "src/main/java/village/controls/MenuLayout.java",
+      "bytes": 4828,
+      "sha256": "86eeeb652b7784037b33f9e035ed19d35a09eb5c998e3ed349aaa04401dd77a4"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/MenuMotion.java",
+      "path": "src/main/java/village/controls/MenuMotion.java",
+      "bytes": 865,
+      "sha256": "0f58022511c59b9bff6a37f41458124f3b2e65b4deddbc2d957b465567695d98"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/Metadata.java",
+      "path": "src/main/java/village/controls/Metadata.java",
+      "bytes": 10926,
+      "sha256": "d5b73e328ca6a4a8e08481a9543d89907ba1f75cd06e239ed295c6956812320d"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/Model.java",
+      "path": "src/main/java/village/controls/Model.java",
+      "bytes": 8605,
+      "sha256": "6c51550efc32e1cfa4a109a325781ec09cfcb703f12cac6bc80fe2499b224e1d"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/NativeSettings.java",
+      "path": "src/main/java/village/controls/NativeSettings.java",
+      "bytes": 15533,
+      "sha256": "c4b4d1ae28ed0f38b42f143208cf80f922c265f73bfa8903b72c73bfdf60229b"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/OptionalGuiRoute.java",
+      "path": "src/main/java/village/controls/OptionalGuiRoute.java",
+      "bytes": 1926,
+      "sha256": "d912f054dc491c261e967704c869673d96652f7a6e270895dd2ce3f475011924"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/ProfileStore.java",
+      "path": "src/main/java/village/controls/ProfileStore.java",
+      "bytes": 6246,
+      "sha256": "c1a0c0a6f8a09919b21ca72799fb3d6a19a70704b0e0da678a085a18a586c485"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/SettingsHub.java",
+      "path": "src/main/java/village/controls/SettingsHub.java",
+      "bytes": 25516,
+      "sha256": "4f5eb28e0f8da01002ac4162ecc59cd123c9c6848b804595c41f218295a2a4fc"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/SettingsModel.java",
+      "path": "src/main/java/village/controls/SettingsModel.java",
+      "bytes": 5819,
+      "sha256": "52417c69d1ef84c33ae59c9ad377e9b73f417ff3d2936250a9ea9e20834316bc"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/SimpleNavigation.java",
+      "path": "src/main/java/village/controls/SimpleNavigation.java",
+      "bytes": 1476,
+      "sha256": "326690a6cc300387dcdacf33ee9f9a7b5ba2d6d6d78616ec1ebc4d85c6543aa6"
+    },
+    {
+      "archive_path": "src/main/java/village/controls/Surface.java",
+      "path": "src/main/java/village/controls/Surface.java",
+      "bytes": 6315,
+      "sha256": "fb47eaeb03dfc72fe25b346305cae744f2fff2be5aae5f9699ba9b1c1f18a950"
+    },
+    {
+      "archive_path": "src/main/resources/assets/fieldcontrols/lang/en_us.lang",
+      "path": "src/main/resources/assets/fieldcontrols/lang/en_us.lang",
+      "bytes": 299,
+      "sha256": "86c1565f8dfc2f98ebb3fa6f2cfd9e0804f52efc6cf829ab41f18dfd3f63a378"
+    },
+    {
+      "archive_path": "src/main/resources/mcmod.info",
+      "path": "src/main/resources/mcmod.info",
+      "bytes": 294,
+      "sha256": "3d2a25ef065b2130ae4ee5a99246457f1bbc361527163a3bc7b446fb0cc4b19b"
+    },
+    {
+      "archive_path": "src/main/resources/pack.mcmeta",
+      "path": "src/main/resources/pack.mcmeta",
+      "bytes": 57,
+      "sha256": "6948b269a6b4eb3158bd818c738b35424ab99532cee0a863c26a5d54b39a3b70"
+    },
+    {
+      "archive_path": "tests/jutsu-fixtures/fresh-original.json",
+      "path": "tests/jutsu-fixtures/fresh-original.json",
+      "bytes": 33302,
+      "sha256": "a572cc8d43b4947aa8251a4626a1883e061ddfbe77396902d27108bb877ccd60"
+    },
+    {
+      "archive_path": "tests/jutsu-fixtures/legacy.json",
+      "path": "tests/jutsu-fixtures/legacy.json",
+      "bytes": 38351,
+      "sha256": "06eae7515950cb91886404bed03c531af8aff85e24edf03e81583c90ebb27b71"
+    },
+    {
+      "archive_path": "tests/pack-fixture.json",
+      "path": "tests/pack-fixture.json",
+      "bytes": 13778,
+      "sha256": "c1772e97e0e985807c3f8f99012dcf0b4fdb5667df9e79b47278853e511693a4"
+    },
+    {
+      "archive_path": "tests/village/controls/ControlsChecks.java",
+      "path": "tests/village/controls/ControlsChecks.java",
+      "bytes": 10280,
+      "sha256": "7f0c2b31ad9b0f210685e37145d3b96b83703bdbdc6f5afe36475beba6a78f7b"
+    },
+    {
+      "archive_path": "tests/village/controls/FocusedCastChecks.java",
+      "path": "tests/village/controls/FocusedCastChecks.java",
+      "bytes": 4942,
+      "sha256": "b7dfc6e838b8ff32ca52a3bb0202be4d36f315bb8766a095da53eea3f49a4b74"
+    },
+    {
+      "archive_path": "tests/village/controls/JutsuFocusChecks.java",
+      "path": "tests/village/controls/JutsuFocusChecks.java",
+      "bytes": 6561,
+      "sha256": "fb2ad708ba44d82b1a8c15e19a69f47905bf6ce13d51e94f74eedc62922f5f29"
+    },
+    {
+      "archive_path": "tests/village/controls/MenuChecks.java",
+      "path": "tests/village/controls/MenuChecks.java",
+      "bytes": 11076,
+      "sha256": "ca89d77312ed7e56640df6e6a57682898e30226061e91726801258e4b7720588"
+    },
+    {
+      "archive_path": "tests/village/controls/SettingsChecks.java",
+      "path": "tests/village/controls/SettingsChecks.java",
+      "bytes": 5924,
+      "sha256": "623ea7a4b76e112a267a4f872198496fc4c237edc62b05614344f8ac22480fa2"
+    },
+    {
+      "archive_path": "tests/village/controls/SimpleMenuChecks.java",
+      "path": "tests/village/controls/SimpleMenuChecks.java",
+      "bytes": 3423,
+      "sha256": "0132c20fc43f8647f011a02183325b3acf2c9a644fe8442d18b62ce50c900f0d"
+    },
+    {
+      "archive_path": "build.gradle",
+      "path": "build.gradle",
+      "bytes": 5042,
+      "sha256": "7f35f96d3214a042c34c67a5e0e40313f5af9c097bad816018851c8f6fc4abec"
+    },
+    {
+      "archive_path": "settings.gradle",
+      "path": "settings.gradle",
+      "bytes": 309,
+      "sha256": "cccd7530d8a3906543b7dc2be2393e6c69ed2fd1be4d940e06320c0b1f35b605"
+    },
+    {
+      "archive_path": "gradle.properties",
+      "path": "gradle.properties",
+      "bytes": 78,
+      "sha256": "183bd1dd84b9c944272df55ffd4fa3d578dab29c8f93343a588d4fac8c9f1aa9"
+    },
+    {
+      "archive_path": "README.txt",
+      "path": "README.txt",
+      "bytes": 2678,
+      "sha256": "770e63e181cadf74a86bee88aa477128c1665bbf90ea42df984b5d34fe39f27d"
+    },
+    {
+      "archive_path": "Design-References.txt",
+      "path": "Design-References.txt",
+      "bytes": 2777,
+      "sha256": "560e4b4ad950ea5035a34305b1c38e0cacb66d07121b152b11ea8e0b458957c1"
+    },
+    {
+      "archive_path": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "bytes": 1105,
+      "sha256": "706c568cdd3973750508717823a49a695f49a779764276b3f5522d4445012dad"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [],
+  "staged_files": 38,
+  "staged_bytes": 294460,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Recovered project files; no build performed by this review lane."
+}

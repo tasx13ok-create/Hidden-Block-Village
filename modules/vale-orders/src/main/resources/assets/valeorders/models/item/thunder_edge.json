@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/thunder_edge"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "valeorders:charged": 1
+      },
+      "model": "valeorders:item/thunder_edge_charged"
+    }
+  ]
+}

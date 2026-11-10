@@ -1,0 +1,754 @@
+{
+  "schema": 1,
+  "document_type": "recovered_component_identity_ledger",
+  "prepared_from_reconciliation_at_utc": "2026-11-10T06:37:59.347274+00:00",
+  "release_status": "CORE036_STAGED_NOT_PROMOTED_FINAL_ACCEPTANCE_PENDING",
+  "release_authorization": false,
+  "completion_percentage": null,
+  "purpose": "Record exact expected component identities and distinguish them from observed payload hashes. This document is not an installation manifest, runtime test receipt, or final release approval.",
+  "evidence_definitions": {
+    "recorded_expected_sha256": "Digest in a recovered pin or receipt; not a newly computed hash of the referenced runtime.",
+    "observed_payload_sha256": "Digest recomputed from the exact payload in the stated observation scope; null means not established here.",
+    "declared_zip_crc32": "CRC value read from the ZIP directory; the value alone does not establish successful payload decompression or CRC verification.",
+    "size_evidence": "Directory metadata and ZIP directories establish reported size and presence, not payload equality or native compatibility.",
+    "historical_test_receipt": "A recovered earlier test record; never a new test run or proof for changed final artifacts."
+  },
+  "evidence_sources": [
+    {
+      "id": "client-server-reconciliation",
+      "name": "client-server-reconciliation.json",
+      "prepared_at_utc": "2026-11-10T06:37:59.347274+00:00",
+      "record_sha256": "a2eaeff0961e32692f75b16cedbf6e698ca4e6228bde116a4b464f6b300799c8",
+      "publication": "Public summary and selected component metadata only; original recovery paths omitted."
+    },
+    {
+      "id": "github-intake",
+      "name": "github-intake-v2.json",
+      "observed_at_utc": "2026-11-10T06:31:11Z",
+      "record_sha256": "3306432a937c89f1ff24c34c4db1bf53a80eb166437018dd7cef11ca30f22c27",
+      "publication": "Public repository baseline only; private recovery details omitted."
+    }
+  ],
+  "repository_intake_baseline": {
+    "observed_at_utc": "2026-11-10T06:31:11Z",
+    "visibility": "public",
+    "branch": "main",
+    "head_sha": "f0625f3cdc559bf771ab72a0db95a9ccdee6a31a",
+    "tree_sha": "4daa9e3d7e103f5fd06b1868d99defc095f1d5e8",
+    "file_count": 1,
+    "release_count": 0,
+    "scope": "Historical baseline before publishing this recovery workspace; the tree contained only README.md."
+  },
+  "runtime_targets": {
+    "minecraft": "1.12.2",
+    "java_major": 8,
+    "client_forge": "14.23.5.2859",
+    "client_forge_evidence": "Recovered candidate manifest.json",
+    "server_bootstrap_filename": "Magma-1.12.2-8cc35ed-server.jar",
+    "server_bootstrap_evidence": "Recovered directory metadata and release records; exact final runtime acceptance pending."
+  },
+  "downloads035": {
+    "role": "Current requested Downloads archive, before promotion of staged 0.3.6",
+    "archive_filename": "archive-2026-11-09T202203Z.zip",
+    "archive_bytes": 3047208198,
+    "entry_count": 2176,
+    "declared_expanded_bytes": 6019099153,
+    "recorded_expected_archive_sha256": "52d8a14a8511a9c9f5b9f638c65612e33ade8f5c7cf13fd79b21b654f993e1ca",
+    "observed_payload_sha256": null,
+    "full_archive_hash_verified": false,
+    "central_directory_observed_sha256": "61d7b6a7b5c7928a9906574a5f0b939b0cc3e928aac3f958528df16c7667ec3f",
+    "central_directory_hash_scope": "ZIP central-directory bytes only, not the full archive",
+    "active_server_mod_count": 8,
+    "server_mods": [
+      {
+        "component": "Vale-Forge-Damage-Compat-0.1.0",
+        "path": "mods/Vale-Forge-Damage-Compat-0.1.0.jar",
+        "bytes": 5028,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "ea3875fe",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Core",
+        "path": "mods/vale-orders-0.3.5.jar",
+        "bytes": 1733524,
+        "recorded_expected_sha256": "4c95104a7df81a0f5e2fd16e4a9b19f54a8e6e921a8f9a8a0cdd39f5ca010a20",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "da4067d1",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "replacement version, different bytes/size"
+      },
+      {
+        "component": "Vale-Rack-0.1.1",
+        "path": "mods/Vale-Rack-0.1.1.jar",
+        "bytes": 32725,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "d5bb964b",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-residents-0.2.0",
+        "path": "mods/vale-residents-0.2.0.jar",
+        "bytes": 45915,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "53b6da3f",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-residents-server-bridge-0.1.0",
+        "path": "mods/vale-residents-server-bridge-0.1.0.jar",
+        "bytes": 3018,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "1f9c70bc",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Vale-Server-Bridge-0.2.0",
+        "path": "mods/Vale-Server-Bridge-0.2.0.jar",
+        "bytes": 4247,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "22707abe",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-world-compat-1.0.0",
+        "path": "mods/vale-world-compat-1.0.0.jar",
+        "bytes": 26332,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "ad809e03",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Village-Standards-Vale-0.2.0",
+        "path": "mods/Village-Standards-Vale-0.2.0.jar",
+        "bytes": 20030,
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current ZIP central directory; declared uncompressed bytes",
+        "declared_zip_crc32": "3055f252",
+        "entry_crc_verified": false,
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      }
+    ],
+    "nested_client": {
+      "path": "client-install/Client.zip",
+      "declared_uncompressed_bytes": 61077854,
+      "declared_zip_crc32": "c437eaba",
+      "current_jar_inventory_verified": false,
+      "pairing_rule": "Use this snapshot with its own matching client; do not substitute the staged 0.3.6 client without completing the promotion gates."
+    },
+    "world": {
+      "folder_name": "Naruto.test",
+      "declared_bytes": 5702809797,
+      "overworld_region_count": 1294,
+      "nether_region_count": 6,
+      "level_dat_observed_sha256": "6a4a8da32eba9a66dbc54b26fcaf0a215fde73783cccf1ce9b26b8cff1c2a670",
+      "level_dat_crc_verified": true,
+      "all_regions_revalidated": false,
+      "public_payload_included": false
+    },
+    "historical_receipt_status": "READY_FOR_HOSTED_TEST",
+    "hosted_bisect_tested_in_recovered_receipt": false,
+    "solas_gpu_verified_in_recovered_receipt": false
+  },
+  "stage036": {
+    "role": "Later local candidate; not promoted into the requested Downloads archive",
+    "promoted_into_downloads_archive": false,
+    "native_acceptance_for_exact_final_artifacts": "PENDING",
+    "active_server_mod_count": 9,
+    "server_mods": [
+      {
+        "component": "Vale-Forge-Damage-Compat-0.1.0",
+        "path": "mods/Vale-Forge-Damage-Compat-0.1.0.jar",
+        "bytes": 5028,
+        "recorded_expected_sha256": "f3a48ec5e400312a04ca689a1ee2a5d2ca788a4dfb84d9fbe3ba44d288c973ca",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Core",
+        "path": "mods/vale-orders-0.3.6.jar",
+        "bytes": 1907890,
+        "recorded_expected_sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "replacement version, different bytes/size"
+      },
+      {
+        "component": "Vale-Rack-0.1.1",
+        "path": "mods/Vale-Rack-0.1.1.jar",
+        "bytes": 32725,
+        "recorded_expected_sha256": "66a1eb96632167be6712ddeb066b7305ab3c1cdeec00742c7ec60b335fbf2ebe",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-residents-0.2.0",
+        "path": "mods/vale-residents-0.2.0.jar",
+        "bytes": 45915,
+        "recorded_expected_sha256": "3e646d404fea05fa11949959b98fb3c1284ead21dbae19300ebf947c0546f963",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-residents-server-bridge-0.1.0",
+        "path": "mods/vale-residents-server-bridge-0.1.0.jar",
+        "bytes": 3018,
+        "recorded_expected_sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Vale-Server-Bridge-0.2.0",
+        "path": "mods/Vale-Server-Bridge-0.2.0.jar",
+        "bytes": 4247,
+        "recorded_expected_sha256": "f1e78367ac7755c855c30adbb9075f7df643eee31edb6ea04e9daa09be0f0175",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "vale-world-compat-1.0.0",
+        "path": "mods/vale-world-compat-1.0.0.jar",
+        "bytes": 26332,
+        "recorded_expected_sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Village-Standards-Vale-0.2.0",
+        "path": "mods/Village-Standards-Vale-0.2.0.jar",
+        "bytes": 20030,
+        "recorded_expected_sha256": "98afde02c45ac1eb350c8ab57820bee4c90071c5fa6cc41a237c32059f9d9780",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "same name and size observed; current byte equality not established"
+      },
+      {
+        "component": "Encounters",
+        "path": "mods/vale-encounters-0.3.6.jar",
+        "bytes": 30011,
+        "recorded_expected_sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "size_evidence": "current file directory metadata",
+        "expected_hash_source": "recovered runtime036-pins.json",
+        "relationship_to_other_snapshot": "added in stage036; absent from current archive active mod roster"
+      }
+    ],
+    "plugins_and_configuration_expected_pins": [
+      {
+        "path": "plugins/CrazyCrates-1.10.2.2.jar",
+        "recorded_expected_sha256": "74a9764f3245712f3987b1682466a1bec12f461c02ca333be4db0dd245b8361c",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeArmor.yml",
+        "recorded_expected_sha256": "09fbe71dfb12a3ec8692afe46bc5f1e475811643ee823985c7a5d26ae8a5c9cf",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeArms.yml",
+        "recorded_expected_sha256": "ee5f190f79ad548c99163259f415dcc5a063a8da33f13acfdf987bb41028924d",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeBeastArmor.yml",
+        "recorded_expected_sha256": "664da67a75e60c31fc1f450b527077ec410954ac6b50ae3ebc72abe5361efb58",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeCodices.yml",
+        "recorded_expected_sha256": "288cd0fd65028a70c62e5a73265b6c42c58ded46234c015c87b86a213d669db4",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeFieldSupplies.yml",
+        "recorded_expected_sha256": "78a790c0af816696f224feb81570f43205ac14ab019637b0489e6fea7d719161",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeFocus.yml",
+        "recorded_expected_sha256": "eebe51d1430d6b521d0c069a6761b781622a88060828e3e384e7f51eefd39288",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeRelics.yml",
+        "recorded_expected_sha256": "177fcf1cd503de5cbec540654e7e447c2623152fb7861e49adeb012cd2dc51c4",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "plugins/CrazyCrates/Crates/ValeScrolls.yml",
+        "recorded_expected_sha256": "757193f9835072098eb3996669908c419ed38c8051ffe5759772278acdd91076",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "config/valeresidents/dialogue.json",
+        "recorded_expected_sha256": "3cdb6d04c046e69183310ca38bee295c64d2657754e3ecf1978d892e5549b339",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      },
+      {
+        "path": "config/valeworldcompat-destinations.tsv",
+        "recorded_expected_sha256": "982999425f9c26a6a2a356cc753445d9aba166cef043fc939b6caeb0a8fc1e99",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false,
+        "expected_hash_source": "recovered runtime036-pins.json"
+      }
+    ],
+    "known_missing_config_pin": {
+      "path": "plugins/CrazyCrates/config.yml",
+      "recorded_expected_sha256": null,
+      "observed_payload_sha256": null,
+      "status": "modified by recovered assembler; absent from expected pin set"
+    },
+    "client": {
+      "path": "client-install/Client.zip",
+      "bytes": 61196028,
+      "entry_count": 19,
+      "jar_count": 11,
+      "observed_payload_sha256": null,
+      "full_archive_hash_verified": false,
+      "manifest_minecraft": "1.12.2",
+      "manifest_forge": "14.23.5.2859",
+      "manifest_version": "0.3.6",
+      "components": [
+        {
+          "path": "overrides/mods/Essential_1-5-1_forge_1-12-2.jar",
+          "bytes": 55768993,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "8f08cace",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": null,
+          "recorded_client_server_pins_match": null
+        },
+        {
+          "path": "overrides/mods/field-controls-1.4.0-simple-candidate.jar",
+          "bytes": 125420,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "3aa719f5",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": null,
+          "recorded_client_server_pins_match": null
+        },
+        {
+          "path": "overrides/mods/field-hud-0.14.0.jar",
+          "bytes": 182980,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "da765348",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "93e48a7ccc0015f61df9dd3c6aa868734519d51c372d5804a6574a6d8f316f08",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": null,
+          "recorded_client_server_pins_match": null
+        },
+        {
+          "path": "overrides/mods/OptiFine_1.12.2_HD_U_G5.jar",
+          "bytes": 2669107,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "28dfe6aa",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": null,
+          "recorded_client_server_pins_match": null
+        },
+        {
+          "path": "overrides/mods/Vale-Client-Lifecycle-Compat-0.1.0.jar",
+          "bytes": 7832,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "15e681fd",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "0a3ba90aeec5711fe277044eadc621e0b6dfdd82123b0d0cebd59a230e231338",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": null,
+          "recorded_client_server_pins_match": null
+        },
+        {
+          "path": "overrides/mods/vale-encounters-0.3.6.jar",
+          "bytes": 30011,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "1fe3df0f",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/vale-encounters-0.3.6.jar",
+          "recorded_client_server_pins_match": true
+        },
+        {
+          "path": "overrides/mods/vale-orders-0.3.6.jar",
+          "bytes": 1907890,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "c38e263d",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/vale-orders-0.3.6.jar",
+          "recorded_client_server_pins_match": true
+        },
+        {
+          "path": "overrides/mods/Vale-Rack-0.1.1.jar",
+          "bytes": 32725,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "d5bb964b",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "66a1eb96632167be6712ddeb066b7305ab3c1cdeec00742c7ec60b335fbf2ebe",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/Vale-Rack-0.1.1.jar",
+          "recorded_client_server_pins_match": true
+        },
+        {
+          "path": "overrides/mods/vale-residents-0.2.0.jar",
+          "bytes": 45915,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "53b6da3f",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "3e646d404fea05fa11949959b98fb3c1284ead21dbae19300ebf947c0546f963",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/vale-residents-0.2.0.jar",
+          "recorded_client_server_pins_match": true
+        },
+        {
+          "path": "overrides/mods/vale-world-compat-1.0.0.jar",
+          "bytes": 26332,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "ad809e03",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/vale-world-compat-1.0.0.jar",
+          "recorded_client_server_pins_match": true
+        },
+        {
+          "path": "overrides/mods/Village-Standards-Vale-0.2.0.jar",
+          "bytes": 20030,
+          "size_evidence": "current candidate Client.zip central directory; declared uncompressed bytes",
+          "declared_zip_crc32": "3055f252",
+          "entry_crc_verified": false,
+          "recorded_expected_sha256": "98afde02c45ac1eb350c8ab57820bee4c90071c5fa6cc41a237c32059f9d9780",
+          "expected_hash_source": "recovered CLIENT-PINS.json text",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false,
+          "same_named_stage_server_path": "mods/Village-Standards-Vale-0.2.0.jar",
+          "recorded_client_server_pins_match": true
+        }
+      ],
+      "shared_module_count": 6,
+      "all_shared_recorded_pins_match": true,
+      "current_individual_jar_hashes_verified": false,
+      "shader_entries": [
+        {
+          "path": "overrides/optionsshaders.txt",
+          "bytes": 384,
+          "declared_zip_crc32": "281883e9",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false
+        },
+        {
+          "path": "overrides/shaderpacks/Solas-Shader-V3.9.zip",
+          "bytes": 1243081,
+          "declared_zip_crc32": "bfa4d139",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false
+        },
+        {
+          "path": "overrides/shaderpacks/Solas-Shader-V3.9.zip.txt",
+          "bytes": 66,
+          "declared_zip_crc32": "7360ae5b",
+          "observed_payload_sha256": null,
+          "payload_hash_verified": false
+        }
+      ]
+    },
+    "final_class_acceptance": {
+      "receipt_result": "class comparison passed; not supplemental native acceptance",
+      "native_gameplay_base_recorded_sha256": "75aa6d67928c7208c0791afa69144d60f72b3ddae2de9fdef07d1f6f13d3305a",
+      "final_core_recorded_sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc",
+      "unchanged_production_class_count": 219,
+      "changed_classes": [
+        "village/vale/Quartermaster.class"
+      ],
+      "supplemental_native_acceptance": "PENDING"
+    },
+    "acceptance_timing": {
+      "stage_first_receipt_last_modified_utc": "2026-11-10T00:06:09.751000+00:00",
+      "stage_restart_receipt_last_modified_utc": "2026-11-10T00:06:51.153000+00:00",
+      "final_core_last_modified_utc": "2026-11-10T00:12:57.130000+00:00",
+      "final_bootstrap_last_modified_utc": "2026-11-10T00:15:39.721000+00:00",
+      "conclusion": "Both staged native receipts precede final Core036 and bootstrap assembly and cannot attest to exact final runtime."
+    }
+  },
+  "bootstrap_files": [
+    {
+      "path": "Magma-1.12.2-8cc35ed-server.jar",
+      "downloads035": {
+        "bytes": 7068747,
+        "size_evidence": "ZIP central directory",
+        "declared_zip_crc32": "375af2e7",
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false
+      },
+      "stage036": {
+        "bytes": 7069115,
+        "size_evidence": "directory metadata",
+        "recorded_expected_sha256": "32fed477ef1c2b773d1c18764ddb5d1a79b530aba6ec982e9113b5384be40f9d",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false
+      },
+      "identity_status": "Assembler copies the named stage bootstrap to server.jar; equality is an intended/recorded relationship, not a new complete-byte comparison."
+    },
+    {
+      "path": "server.jar",
+      "downloads035": {
+        "bytes": 7068747,
+        "size_evidence": "ZIP central directory",
+        "declared_zip_crc32": "375af2e7",
+        "recorded_expected_sha256": null,
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false
+      },
+      "stage036": {
+        "bytes": 7069115,
+        "size_evidence": "directory metadata",
+        "recorded_expected_sha256": "32fed477ef1c2b773d1c18764ddb5d1a79b530aba6ec982e9113b5384be40f9d",
+        "observed_payload_sha256": null,
+        "payload_hash_verified": false
+      },
+      "identity_status": "Assembler copies the named stage bootstrap to server.jar; equality is an intended/recorded relationship, not a new complete-byte comparison."
+    }
+  ],
+  "observed_document_and_selected_entry_hashes": [
+    {
+      "scope": "Core035 ZIP release/VERIFICATION.json payload",
+      "bytes": 156904,
+      "observed_payload_sha256": "74cd7ce4997c244c630423a79c73a3bd3316c9f2e7ccef1ee7e22f8297e1b0a3",
+      "entry_crc_verified": true,
+      "meaning": "Integrity of the recovered historical receipt only; no new runtime execution."
+    },
+    {
+      "scope": "Recovered candidate source-directory CLIENT-PINS.json text",
+      "bytes": 1134,
+      "observed_payload_sha256": "52212e7e81cdeff3d5ca88bc7278c231497203f63b525bd4891c4aa7c695083d",
+      "declared_zip_size_crc_match": true,
+      "meaning": "Text hash and matching ZIP metadata do not verify all nested runtime payloads."
+    },
+    {
+      "scope": "Recovered candidate source-directory manifest.json text",
+      "bytes": 366,
+      "observed_payload_sha256": "d7aff2beb86a9469cd940f480216fbb56aff8e46f08b7a7bf6ac88670555cf6f",
+      "declared_zip_size_crc_match": true,
+      "meaning": "Text hash and matching ZIP metadata do not verify all nested runtime payloads."
+    }
+  ],
+  "coverage": {
+    "evidence_type": "recovered historical coverage receipt",
+    "item_reference_rows": 485,
+    "registered_counterpart_rows": 461,
+    "counterpart_coverage_percent": 95.1,
+    "distinct_counterpart_targets": 353,
+    "unmapped_reference_rows": 24,
+    "overall_completion_percent": null,
+    "full_legacy_mechanics_percent": null,
+    "visuals_status": "Deferred/shared placeholders in recovered coverage receipt",
+    "bounded_ability_audit_reference_item_count": 95,
+    "bounded_ability_obligations": 324,
+    "bounded_ability_missing_rows": 217,
+    "bounded_ability_untested_rows": 52,
+    "scope_note": "A registry counterpart is not proof of every associated ability, animation, acquisition path, quest, or balancing requirement."
+  },
+  "pending_acceptance_gates": [
+    {
+      "id": "G01",
+      "title": "Freeze exact candidate identities",
+      "status": "pending",
+      "required_evidence": "Complete paired server/client inventory and exact hashes, no duplicate mod IDs or unsupported extras; deviations explicitly resolved."
+    },
+    {
+      "id": "G02",
+      "title": "Finish final Quartermaster acceptance",
+      "status": "explicitly_pending",
+      "required_evidence": "Supplemental native receipt bound to final JAR plus relevant runtime/config hashes; no absent hvbijuu lookup and correct original armor enumeration/acquisition."
+    },
+    {
+      "id": "G03",
+      "title": "Validate complete server configuration",
+      "status": "pending",
+      "required_evidence": "All referenced IDs/actions/resources resolve; startup launcher accepts exact approved files; configuration included in final checksum inventory."
+    },
+    {
+      "id": "G04",
+      "title": "Bind world startup and restart to final build",
+      "status": "pending_final_artifacts",
+      "required_evidence": "Normal exits, complete logs and hashes; preserved player/world records and explicit migration overflow; no reuse of earlier pre-final receipts."
+    },
+    {
+      "id": "G05",
+      "title": "Validate matching client behavior",
+      "status": "pending",
+      "required_evidence": "Bounded real-client results linked to final artifacts; any untested ability/role remains in ledger. Fakeplayer-only tests do not satisfy visual/input/network claims."
+    },
+    {
+      "id": "G06",
+      "title": "Finish visual acceptance without releasing held art",
+      "status": "pending",
+      "required_evidence": "Actual renders/captures and identified runtime; held gu r3-r5 art remains excluded until its approval status is resolved."
+    },
+    {
+      "id": "G07",
+      "title": "Rebuild release evidence and package atomically",
+      "status": "pending",
+      "required_evidence": "New whole-ZIP SHA-256, complete contents, correct Naruto.test world and client, no partial extraction or private preview/probe/Discord contamination."
+    },
+    {
+      "id": "G08",
+      "title": "Verify Bisect start and matched client connection",
+      "status": "not_run",
+      "required_evidence": "Hosted logs/connection evidence. Keep status READY_FOR_HOSTED_TEST until this evidence exists."
+    }
+  ],
+  "source_workspace_status": {
+    "runtime_source_audit": "IN_PROGRESS",
+    "reproducible_native_build_verified": false,
+    "source_to_runtime_match_verified": false,
+    "note": "Source availability and build commands must be established from recovered original projects; filenames or pins alone do not establish a buildable workspace."
+  },
+  "publication_boundary": {
+    "runtime_binaries_included": false,
+    "world_payload_included": false,
+    "private_player_records_included": false,
+    "private_paths_included": false,
+    "held_artwork_included": false,
+    "reference_decompilations_included": false,
+    "legal_clearance_claimed": false,
+    "note": "References to component filenames and expected digests do not grant redistribution permission."
+  },
+  "fresh_core036_build": {
+    "status": "REPRODUCED_EXACT_RECORDED_PRODUCTION_PIN",
+    "source_archive_sha256": "8ab84d16f8c810f339ed40f5a1c05a00f7a6d3da53754b1fc410f16403176f75",
+    "source_files_unchanged": 1218,
+    "gradle": "9.5.0",
+    "gradle_java_major": 25,
+    "minecraft_java_major": 8,
+    "tasks": [
+      "check",
+      "reobfJar",
+      "sourcesJar"
+    ],
+    "custom_tasks_passed": 10,
+    "production_jar": {
+      "filename": "vale-orders-0.3.6.jar",
+      "bytes": 1907890,
+      "sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc"
+    },
+    "minecraft_launched": false,
+    "pc_runtime_rehashed": false
+  },
+  "fresh_configuration_reads": {
+    "plugins/CrazyCrates/config.yml": {
+      "bytes": 3350,
+      "sha256": "a019193cb8740888408d113882554f26b524ad5594656bc641103fe5228ec7fb",
+      "scope": "complete current UTF-8 text, hash verified",
+      "omitted_from_original_expected_pins": true
+    },
+    "overrides/optionsshaders.txt": {
+      "sha256": "d134deece0777c80080e7dfa32fb083e822d6eb2a3ceceba048dd1b864823490",
+      "gpu_verified": false
+    },
+    "overrides/shaderpacks/Solas-Shader-V3.9.zip.txt": {
+      "sha256": "8afad7fcd48eb061d6d5eb341c11d10035fd2f2729237cd838f0f89d4adeb88d",
+      "gpu_verified": false
+    }
+  }
+}

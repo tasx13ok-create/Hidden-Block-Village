@@ -1,0 +1,59 @@
+--- rack010/src/main/java/village/valerack/RackPolicy.java
++++ rack011/src/main/java/village/valerack/RackPolicy.java
+@@ -14,7 +14,12 @@
+         if(stack==null||stack.isEmpty())return false;
+         Item item=stack.getItem();ResourceLocation id=item.getRegistryName();
+         if(id==null)return false;
+-        if(id.getNamespace().equals("valeorders"))return item instanceof Gear.WardBlade||Arrays.asList("needle_fan","snap_disc","smoke_capsule").contains(id.getPath());
++        if(id.getNamespace().equals("valeorders")){
++            // A matching name alone is insufficient: both Core's map and native registry
++            // must point to this exact registered item object.
++            boolean registered=Gear.ITEMS.get(id.getPath())==item&&Item.REGISTRY.containsKey(id)&&Item.REGISTRY.getObject(id)==item;
++            return registered&&(item instanceof ItemSword||Arrays.asList("needle_fan","snap_disc","smoke_capsule").contains(id.getPath()));
++        }
+         return item instanceof ItemSword||item instanceof ItemAxe||item instanceof ItemBow||item instanceof ItemShield;
+     }
+     public static boolean accepts(EntityPlayer owner,ItemStack stack){
+--- rack010/src/main/java/village/valerack/RackMod.java
++++ rack011/src/main/java/village/valerack/RackMod.java
+@@ -6,9 +6,9 @@
+ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+ import net.minecraftforge.fml.common.network.NetworkRegistry;
+ 
+-@Mod(modid=RackMod.ID,name="Vale Rack",version=RackMod.VERSION,dependencies="required-after:valeorders",acceptableRemoteVersions="[0.1.0]")
++@Mod(modid=RackMod.ID,name="Vale Rack",version=RackMod.VERSION,dependencies="required-after:valeorders",acceptableRemoteVersions="[0.1.1]")
+ public final class RackMod {
+-    public static final String ID="valerack",VERSION="0.1.0";
++    public static final String ID="valerack",VERSION="0.1.1";
+     @Mod.Instance(ID) public static RackMod INSTANCE;
+     @SidedProxy(clientSide="village.valerack.client.ClientProxy",serverSide="village.valerack.CommonProxy") public static CommonProxy PROXY;
+     @Mod.EventHandler public void preInit(FMLPreInitializationEvent event){
+--- rack010/src/main/resources/mcmod.info
++++ rack011/src/main/resources/mcmod.info
+@@ -1 +1,12 @@
+-[{"modid": "valerack", "name": "Vale Rack", "version": "0.1.0", "mcversion": "1.12.2", "description": "Six real persistent weapon storage slots with owner-validated native swaps.", "dependencies": ["valeorders"]}]+[
++  {
++    "modid": "valerack",
++    "name": "Vale Rack",
++    "version": "0.1.1",
++    "mcversion": "1.12.2",
++    "description": "Six real persistent weapon storage slots with owner-validated native swaps.",
++    "dependencies": [
++      "valeorders"
++    ]
++  }
++]
+--- rack010/build.gradle
++++ rack011/build.gradle
+@@ -1,9 +1,9 @@
+ plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
+ group='village.valerack'
+-version='0.1.0'
++version='0.1.1'
+ java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) } }
+ minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39'); username.set('ValeRackBuilder') }
+-def coreDev=providers.gradleProperty('valeCoreDevJar').orElse('libs/vale-orders-0.3.3-dev.jar')
++def coreDev=providers.gradleProperty('valeCoreDevJar').orElse('libs/vale-orders-0.3.5-dev.jar')
+ dependencies { compileOnly files(coreDev.get()) }
+ tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.incremental=false }
+ tasks.named('jar') { archiveBaseName.set('Vale-Rack') }

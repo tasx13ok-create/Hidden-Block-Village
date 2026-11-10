@@ -1,0 +1,22 @@
+Original owned compatibility helper sources for Java8 / Forge1.12.2.
+These are separate production adapters, not a private test driver.
+Compile against an independently prepared Forge stable39 dev API and its ASM/FML
+libraries; no Minecraft, Forge, ASM or API binaries are included here.
+The frozen Core033 source archive is separate; do not build the current active
+Core034 development workspace as a substitute for the supplied033 runtime.
+
+Runtime families:
+clientcompat: ClientLifecyclePlugin,ClientLifecycleTransformer,ClientLifecycleMod,
+SafeShutdown (including nested classes); CLIENT only. FMLCorePlugin manifest is
+village.vale.clientcompat.ClientLifecyclePlugin with FMLCorePluginContainsFMLMod
+and ForceLoadAsMod true.
+damagecompat: DamageCompatPlugin,DamageCompatTransformer,DamageCompatMod; SERVER
+only. FMLCorePlugin manifest village.vale.damagecompat.DamageCompatPlugin with
+FMLCorePluginContainsFMLMod and ForceLoadAsMod true.
+serverbridge: ValeServerBridge; SERVER only, optional native command metadata
+adaptation for the tested Magma kernel. It does not grant administrative rights.
+
+The supplied frozen runtime hashes and native tests remain the authoritative
+executable receipt. This archive records the owned helper source files used by
+the final compatibility work; older helper copies inside historical archives
+are superseded. No claim of byte-reproducible third-party tooling/runtime.

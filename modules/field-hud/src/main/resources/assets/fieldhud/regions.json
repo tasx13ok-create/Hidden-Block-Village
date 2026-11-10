@@ -1,0 +1,82 @@
+[
+  {
+    "id": "mist",
+    "name": "Tidal Sanctuary",
+    "subtitle": "Mooring walks and tide archives",
+    "color": 8112326,
+    "dimensions": [
+      200,
+      148,
+      200
+    ],
+    "anchor": [
+      96,
+      21,
+      1
+    ]
+  },
+  {
+    "id": "sakura",
+    "name": "Sacred Sakura",
+    "subtitle": "Blossom galleries and quiet courtyards",
+    "color": 15245754,
+    "dimensions": [
+      192,
+      196,
+      192
+    ],
+    "anchor": [
+      96,
+      73,
+      1
+    ]
+  },
+  {
+    "id": "cloud",
+    "name": "Sky Monastery",
+    "subtitle": "High bridges and observation halls",
+    "color": 13161963,
+    "dimensions": [
+      192,
+      188,
+      192
+    ],
+    "anchor": [
+      96,
+      93,
+      1
+    ]
+  },
+  {
+    "id": "sand",
+    "name": "Windcarved Oasis",
+    "subtitle": "Carved vaults and shaded wind galleries",
+    "color": 14530679,
+    "dimensions": [
+      192,
+      152,
+      192
+    ],
+    "anchor": [
+      96,
+      69,
+      1
+    ]
+  },
+  {
+    "id": "nether",
+    "name": "Ember Citadel",
+    "subtitle": "Forge courts and the scriptorium",
+    "color": 15569258,
+    "dimensions": [
+      160,
+      118,
+      160
+    ],
+    "anchor": [
+      80,
+      43,
+      1
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "module": "server-bootstrap",
+  "source_kind": "verified-pc-text-read",
+  "source_name": "ServerBootstrap.java",
+  "source_sha256": "8701cb3fbeaa3fa1ecf9c502dda97f01130093f8683bf8d8755d2ee3d8933d25",
+  "license_notice_scope": "notice-absent-in-recovered-source-unit",
+  "files": [
+    {
+      "intake_file": "ServerBootstrap.java",
+      "path": "src/main/java/village/deployment/ServerBootstrap.java",
+      "bytes": 10500,
+      "sha256": "8701cb3fbeaa3fa1ecf9c502dda97f01130093f8683bf8d8755d2ee3d8933d25"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [],
+  "staged_files": 1,
+  "staged_bytes": 10500,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Original Java8 deployment wrapper source only. No upstream Magma binary, embedded release plan, compiled launcher or runtime execution is included."
+}

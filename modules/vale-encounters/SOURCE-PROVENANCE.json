@@ -1,0 +1,104 @@
+{
+  "module": "vale-encounters",
+  "archive": "vale-encounters-0.3.6-sources.jar",
+  "archive_bytes": 11986,
+  "archive_sha256": "2c9373cbaf5d4e144fc75c469cc06a22b146d9a0f9fa6018fbafab00f6f15a5a",
+  "license_notice_scope": "notice-absent-in-recovered-bundle",
+  "files": [
+    {
+      "archive_path": "META-INF/MANIFEST.MF",
+      "path": "recovered-sourcejar/META-INF/MANIFEST.MF",
+      "bytes": 25,
+      "sha256": "566ad1a80220026d05099562645ce968ff0e7c36cde22634332605bb34cc3eff"
+    },
+    {
+      "archive_path": "encounter-profiles.json",
+      "path": "src/main/resources/encounter-profiles.json",
+      "bytes": 53319,
+      "sha256": "b49cb8ac2d3d22b313a3dea7bd9de9819e5efd477b4c33cbc1815f1deb23a7d5"
+    },
+    {
+      "archive_path": "village/encounters/Actors.java",
+      "path": "src/main/java/village/encounters/Actors.java",
+      "bytes": 14792,
+      "sha256": "6e9400ef110720dd7a5c1b9bfb9dcaf8236b68a6509db434cfd40641206ceebe"
+    },
+    {
+      "archive_path": "village/encounters/ClientProxy.java",
+      "path": "src/main/java/village/encounters/ClientProxy.java",
+      "bytes": 865,
+      "sha256": "eee306bb37c7ea188001dfe1592457ead20ae2edfe35dea3cf2815dbf9238547"
+    },
+    {
+      "archive_path": "village/encounters/CommonProxy.java",
+      "path": "src/main/java/village/encounters/CommonProxy.java",
+      "bytes": 82,
+      "sha256": "3eb2016367aa523f25506c858f451ae96ebf021cf396662767585971f533edda"
+    },
+    {
+      "archive_path": "village/encounters/Encounters.java",
+      "path": "src/main/java/village/encounters/Encounters.java",
+      "bytes": 5653,
+      "sha256": "91fd652aab5d22828d84aacc16b461887d3253d2e3474f8aebd7f89b8851bd7c"
+    },
+    {
+      "archive_path": "village/encounters/Profiles.java",
+      "path": "src/main/java/village/encounters/Profiles.java",
+      "bytes": 1393,
+      "sha256": "44ae7d4169dbb7c65c5c4875eb9aa8462a7117f94febf40ae86a46dcf6dfefcf"
+    },
+    {
+      "intake_file": "encounters_build_gradle.txt",
+      "source_kind": "verified-pc-text-read",
+      "path": "build.gradle",
+      "bytes": 2025,
+      "sha256": "238feee65e493fe5257dbceb78a276886e689cb0e121c6c0281af40a334447b6",
+      "original_sha256": "238feee65e493fe5257dbceb78a276886e689cb0e121c6c0281af40a334447b6"
+    },
+    {
+      "intake_file": "encounters_settings_gradle.txt",
+      "source_kind": "verified-pc-text-read",
+      "path": "settings.gradle",
+      "bytes": 288,
+      "sha256": "32b72322daad2d40733b87c2e09268277101e9ade0ac2602a64a135959b99c1c",
+      "original_sha256": "32b72322daad2d40733b87c2e09268277101e9ade0ac2602a64a135959b99c1c"
+    },
+    {
+      "intake_file": "encounters_gradle_properties.txt",
+      "source_kind": "verified-pc-text-read",
+      "path": "gradle.properties",
+      "bytes": 75,
+      "sha256": "2ac018c4c4d5984943eb6fd48efb888fa5116fccc2d7d0811f604bae2732f438",
+      "original_sha256": "2ac018c4c4d5984943eb6fd48efb888fa5116fccc2d7d0811f604bae2732f438"
+    },
+    {
+      "intake_file": "encounters_README_md.txt",
+      "source_kind": "verified-pc-text-read",
+      "path": "README.md",
+      "bytes": 5549,
+      "sha256": "187f7b754ab105fcc2bb1c9f0c10a6182da4c0953480e60865b3b02be759d36f",
+      "original_sha256": "187f7b754ab105fcc2bb1c9f0c10a6182da4c0953480e60865b3b02be759d36f"
+    },
+    {
+      "intake_file": "encounters_CANDIDATE-MANIFEST_json.txt",
+      "source_kind": "verified-pc-text-read",
+      "path": "CANDIDATE-MANIFEST.json",
+      "bytes": 3877,
+      "sha256": "dbb52361c4c5b26b853441a08dde884e5cf82975fd80a205b0744d4e2e16f87e",
+      "original_sha256": "c908e6e52508daa92443dec7ffffcf2a3b8cd8c77c087a919c6525382405f0ae"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [
+    {
+      "path": "CANDIDATE-MANIFEST.json",
+      "original_sha256": "c908e6e52508daa92443dec7ffffcf2a3b8cd8c77c087a919c6525382405f0ae",
+      "staged_sha256": "dbb52361c4c5b26b853441a08dde884e5cf82975fd80a205b0744d4e2e16f87e",
+      "change": "Three private absolute artifact paths reduced to build/libs filenames; explicit historical-evidence note added. Original private intake is unchanged."
+    }
+  ],
+  "staged_files": 12,
+  "staged_bytes": 87943,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Source JAR bytes arranged into standard Gradle source roots. Authoritative build files are recovered below; legacy Core dev JAR and compile-only shim dependencies remain external/pending."
+}

@@ -1,0 +1,1 @@
+The MIT license in this bundle covers the newly authored Vale Rack code and project documents. Minecraft, Forge, RetroFuturaGradle, Gradle and the external Vale Core compile input are not included and retain their separate terms. No third-party source or artwork is included.

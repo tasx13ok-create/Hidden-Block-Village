@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=1": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=2": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=3": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=4": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=5": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=6": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=7": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=8": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=9": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=10": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=11": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=12": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=13": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=14": {
+      "model": "variedcommodities:table"
+    },
+    "legacy=15": {
+      "model": "variedcommodities:table"
+    }
+  }
+}

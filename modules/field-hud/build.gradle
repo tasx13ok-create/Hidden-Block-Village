@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+group = 'village.fieldhud'
+version = '0.14.0'
+base { archivesName = 'field-hud' }
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+    withSourcesJar()
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+    username.set('FieldHudTest')
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+jar { from('LICENSE.txt') }
+// Optional local compile shortcut. The supplied JAR must be an independently
+// prepared, deobfuscated Forge 1.12.2 stable-39 development API, never a mod JAR.
+// Fresh external builds omit this property and use the normal RFG pipeline.
+if (providers.gradleProperty('prebuiltMinecraft').isPresent()) {
+    def apiJar = file(providers.gradleProperty('prebuiltMinecraft').get())
+    sourceSets.main.compileClasspath += files(apiJar)
+    def prepared = ['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg',
+        'decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar',
+        'decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources',
+        'createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
+    tasks.matching { it.name in prepared }.configureEach { enabled = false }
+}

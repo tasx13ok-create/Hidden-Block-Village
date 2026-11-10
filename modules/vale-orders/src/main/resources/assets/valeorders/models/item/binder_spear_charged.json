@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/binder_spear_charged"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/needle_spool_charged"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=1": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=2": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=3": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=4": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=5": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=6": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=7": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=8": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=9": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=10": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=11": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=12": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=13": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=14": {
+      "model": "variedcommodities:campfire"
+    },
+    "legacy=15": {
+      "model": "variedcommodities:campfire"
+    }
+  }
+}

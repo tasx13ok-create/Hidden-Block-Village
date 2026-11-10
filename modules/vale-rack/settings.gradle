@@ -1,0 +1,2 @@
+pluginManagement { repositories { gradlePluginPortal(); maven { url = 'https://nexus.gtnewhorizons.com/repository/public/' } } }
+rootProject.name = 'vale-rack'

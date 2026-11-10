@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "utc": "2026-11-10T06:50:41.413374+00:00",
+  "status": "PASS",
+  "source_archive_sha256": "8ab84d16f8c810f339ed40f5a1c05a00f7a6d3da53754b1fc410f16403176f75",
+  "source_files_unchanged": 1218,
+  "source_files_changed": [],
+  "gradle_actionable_tasks": 34,
+  "gradle_actionable_tasks_executed": 34,
+  "gradle_reported_duration_seconds": 137,
+  "verification_tasks_passed": 10,
+  "assertion_total_excluding_ledger_rows": 216870,
+  "ledger_rows_not_counted_as_assertions": 10003,
+  "verification_results": {
+    "verifyAbilities": {
+      "assertions": 30,
+      "scope": "immutable catalog and S2C/C2S contracts"
+    },
+    "verifyClientAbilityRequests": {
+      "assertions": 24,
+      "scope": "client routing and equip policy"
+    },
+    "verifyCommands": {
+      "assertions": 15,
+      "scope": "non-operator command permissions"
+    },
+    "verifyHud": {
+      "assertions": 18,
+      "scope": "HUD schema and bounded payload"
+    },
+    "verifyLedger": {
+      "rows_round_tripped": 10003,
+      "scope": "ledger persistence, receipts, owner queues and reload"
+    },
+    "verifyLoadout": {
+      "assertions": 58,
+      "scope": "loadout and weapon request contracts"
+    },
+    "verifyOriginalArmor": {
+      "assertions": 215497,
+      "cuboids": 895,
+      "scope": "headless geometry and math"
+    },
+    "verifyOriginalArmorApi": {
+      "assertions": 112,
+      "scope": "armor API contract"
+    },
+    "verifyPoses": {
+      "assertions": 1093,
+      "scope": "pose springs, frame rates and transitions"
+    },
+    "verifyRules": {
+      "assertions": 23,
+      "scope": "rules and receipts"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "vale-orders-0.3.6-dev.jar",
+      "sha256": "d8d2cf0bbd14bae1f6ca13d1242d975a0bdc5258aea56896c2388a8126991b85",
+      "bytes": 1884411,
+      "zip_crc_ok": true,
+      "entry_count": 1338,
+      "duplicate_entries": [],
+      "class_count": 220,
+      "class_major_versions": {
+        "52": 220
+      },
+      "private_test_classes": [],
+      "bundled_game_forge_gradle_classes": [],
+      "manifest": "Manifest-Version: 1.0\r\nFMLCorePlugin: village.vale.PoseCorePlugin\r\nFMLCorePluginContainsFMLMod: true\r\nForceLoadAsMod: true\r\n\r\n",
+      "license_included": true
+    },
+    {
+      "path": "vale-orders-0.3.6-sources.jar",
+      "sha256": "f139225fe399b93af3f9cc118fcb24d7eb48768464be9d0ed70914b1fa70ed0b",
+      "bytes": 1593908,
+      "zip_crc_ok": true,
+      "entry_count": 1235,
+      "duplicate_entries": [],
+      "class_count": 0,
+      "class_major_versions": {},
+      "private_test_classes": [],
+      "bundled_game_forge_gradle_classes": [],
+      "manifest": "Manifest-Version: 1.0\r\n\r\n",
+      "license_included": false
+    },
+    {
+      "path": "vale-orders-0.3.6.jar",
+      "sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc",
+      "bytes": 1907890,
+      "zip_crc_ok": true,
+      "entry_count": 1338,
+      "duplicate_entries": [],
+      "class_count": 220,
+      "class_major_versions": {
+        "52": 220
+      },
+      "private_test_classes": [],
+      "bundled_game_forge_gradle_classes": [],
+      "manifest": "Manifest-Version: 1.0\r\nFMLCorePlugin: village.vale.PoseCorePlugin\r\nFMLCorePluginContainsFMLMod: true\r\nForceLoadAsMod: true\r\n\r\n",
+      "license_included": true,
+      "recovered_pc_runtime_sha256": "54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc",
+      "byte_identical_to_pc_runtime_pin": true,
+      "source_resources_total": 1087,
+      "missing_source_resources": [],
+      "changed_source_resources": []
+    }
+  ],
+  "minecraft_runtime_launched": false,
+  "native_acceptance": "pending; this is compilation, component tests and binary reproducibility only",
+  "log_sha256": "6dd059c19823615393cebbf913d2d9063b15e92bb8a32d2fadcc479244f42bec",
+  "source_note": "Recovered Core0.3.6 baseline; exact bytes and component checks only."
+}

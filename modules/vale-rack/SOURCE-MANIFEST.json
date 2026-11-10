@@ -1,0 +1,126 @@
+{
+  "status": "SOURCE_ONLY_NOT_BUILT_OR_VERIFIED",
+  "module_version": "0.1.1",
+  "api_version": "1.0.0",
+  "base_source_sha256": "56c52509c66175b0efca788715afe849b5b623f106bf7b2e75b9c4ccea9232b4",
+  "unchanged_api_and_network_sources": [
+    "src/main/java/village/valerack/client/RackClientApi.java",
+    "src/main/java/village/valerack/RackNetwork.java"
+  ],
+  "changed_java_files": [
+    "src/main/java/village/valerack/RackMod.java",
+    "src/main/java/village/valerack/RackPolicy.java"
+  ],
+  "files": [
+    {
+      "path": "API-CONTRACT.json",
+      "sha256": "fdae040544bedad676b2660c684a5441db3cc2d333a1bde9b8709bd8ff12794e",
+      "bytes": 2280
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "adbe91c6a3d62ef14af9e03670e0a5ffee817b4002a3f2c742ec17d76a017401",
+      "bytes": 1079
+    },
+    {
+      "path": "NOTICE.txt",
+      "sha256": "6adaf9d5bd543e4070e7bb98db86841814c45dbfe967fccf90afb5a15f045a41",
+      "bytes": 276
+    },
+    {
+      "path": "README.md",
+      "sha256": "719eac098bfb85b0d2d8446ef2315db7a9eb2d880b3399b2d9606e29f82ac54f",
+      "bytes": 1393
+    },
+    {
+      "path": "REQUIRED-VERIFICATION.json",
+      "sha256": "f3cd3b2eb51a0e866452c2eea72c6d2dd13d5dc16d1d40524827e682eab89522",
+      "bytes": 1801
+    },
+    {
+      "path": "Rack011-source-delta.patch",
+      "sha256": "56a7feedbe488eed996187f68f41ca165e244bca6402a61420b81002d6d3ab3a",
+      "bytes": 3575
+    },
+    {
+      "path": "build.gradle",
+      "sha256": "d725eaf4622932b8953934425f6608a331fd635852aad911aca2918cbe01c47c",
+      "bytes": 656
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "afde0724dc58ed7b66fcebd20b95d361bd815bd4113a5612e8d76dc59101a8f3",
+      "bytes": 53
+    },
+    {
+      "path": "settings.gradle",
+      "sha256": "82a1f5a37916b5ea242eb46e0c98be7778e9080410c4a362b9d97df5f76635db",
+      "bytes": 162
+    },
+    {
+      "path": "src/main/java/village/valerack/CommonProxy.java",
+      "sha256": "7d4291397bed77e9c9466f456256f2e3e84e71ac04f407986421ecf75c0514ea",
+      "bytes": 318
+    },
+    {
+      "path": "src/main/java/village/valerack/RackContainer.java",
+      "sha256": "de44ca4f130a3f6c3436189827a5cbff237f0acb486b1834001c55f8b7e53b21",
+      "bytes": 2625
+    },
+    {
+      "path": "src/main/java/village/valerack/RackData.java",
+      "sha256": "ad0ecb70164311c50a534b0e3500fd85284d50f2e8b4483e62620c559b0a78b5",
+      "bytes": 6517
+    },
+    {
+      "path": "src/main/java/village/valerack/RackGuiHandler.java",
+      "sha256": "4d6b07e9ecfee31affef2826121108d475b3e1fca171fb72fbcb0da61c2bb608",
+      "bytes": 570
+    },
+    {
+      "path": "src/main/java/village/valerack/RackLifecycle.java",
+      "sha256": "f6732453d3dc51cdb1e023c9aecbdc8d5d95cae00d79205de9832271b5c49fdd",
+      "bytes": 4399
+    },
+    {
+      "path": "src/main/java/village/valerack/RackMod.java",
+      "sha256": "535e37099477d94a854aac46ef020604bc3b3420df7d646c22eb1e1ded1c56ab",
+      "bytes": 1022
+    },
+    {
+      "path": "src/main/java/village/valerack/RackNetwork.java",
+      "sha256": "4fd53d0bf393e510b9a0dde2b25ee4650ea79117cc0c5d4d533b46a4fb911fa8",
+      "bytes": 3343
+    },
+    {
+      "path": "src/main/java/village/valerack/RackPolicy.java",
+      "sha256": "7700b733252ad12cf9049c354c67d0e76035e5dfe0999e6478909d3bd96f4711",
+      "bytes": 1672
+    },
+    {
+      "path": "src/main/java/village/valerack/RackSessions.java",
+      "sha256": "86168de92893917471a7873efdcfc78faf72570337e97b99faefebf50fa0493f",
+      "bytes": 4308
+    },
+    {
+      "path": "src/main/java/village/valerack/client/ClientProxy.java",
+      "sha256": "3255008a164f97b63b9f19900eccc88fa23ff222fe70e17e2e501a23fc82cf2c",
+      "bytes": 786
+    },
+    {
+      "path": "src/main/java/village/valerack/client/RackClientApi.java",
+      "sha256": "b9b3d06b69a1d36b4bdbce727161a87bef73b40a840c807a63a420c3d06b8017",
+      "bytes": 3138
+    },
+    {
+      "path": "src/main/java/village/valerack/client/RackScreen.java",
+      "sha256": "3c56ba2e6894a446f9a2a0a6b3671946720c3e51720ac1a0f06e0ebe1104bcae",
+      "bytes": 1294
+    },
+    {
+      "path": "src/main/resources/mcmod.info",
+      "sha256": "ca58cbeba164857b062b36d798525ddf02e2b04370198fc6848423d0a8765f69",
+      "bytes": 258
+    }
+  ]
+}

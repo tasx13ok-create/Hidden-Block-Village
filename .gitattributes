@@ -1,0 +1,4 @@
+# Preserve recovered source and resource bytes on every platform.
+* -text
+*.png binary
+*.jar binary

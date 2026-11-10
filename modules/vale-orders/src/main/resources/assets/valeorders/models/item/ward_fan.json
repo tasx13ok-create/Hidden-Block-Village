@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/ward_fan"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "valeorders:charged": 1
+      },
+      "model": "valeorders:item/ward_fan_charged"
+    }
+  ]
+}

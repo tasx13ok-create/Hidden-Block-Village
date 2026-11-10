@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/binder_spear"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "valeorders:charged": 1
+      },
+      "model": "valeorders:item/binder_spear_charged"
+    }
+  ]
+}

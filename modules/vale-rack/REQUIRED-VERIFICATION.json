@@ -1,0 +1,16 @@
+{
+  "status": "NOT_RUN",
+  "new_core_dev_required": "Core0.3.5 production/dev pins from Root, not available at candidate creation",
+  "cases": [
+    "All54 existing Core WardBlade identities still pass for the actual issued owner; all3 explicit throwables still pass with count16.",
+    "Each new Core035 Arsenal ItemSword subclass passes only when exact Item.REGISTRY and Gear.ITEMS identity agree and RewardLedger.valid accepts that actor/item/serial.",
+    "Missing/wrong Gear.ITEMS mapping, wrong native registry identity, foreign owner, unknown/forged serial, changed item ID, empty/oversized count and oversized NBT reject unchanged.",
+    "Core scroll/codex/armor/food/generic Item, native Core ItemBow/ItemShield/non-sword ItemAxe remain rejected; no learning focus enters a weapon slot.",
+    "Non-Core Sword/Axe/Bow/Shield behavior remains identical; do not mislabel ordinary-item admission as new Core ownership binding.",
+    "A genuine freshly crafted but unbound Arsenal sword is rejected. Only the new Core authoritative crafted-binding proof may make it admissible; no copied serial is accepted as a minting operation.",
+    "Native mouse/right-pick/shift/number/double-click conservation with the specialist items, all6 cells, count/damage/enchant/custom NBT and serial unchanged.",
+    "Native equip and full36/nonweapon rollback, free-cell return, cursor/foreign-container/owner/world/dimension/session/revision rejection.",
+    "Save/logout/restart/respawn, normal death exactly-once drops, keepInventory and Curse of Vanishing with new specialist items.",
+    "Actual newCore035+Rack011 client/server pair: genuine42-slot container, S2C fresh defensive snapshots, HUD selection/use/open, disconnect/reconnect and lifecycle. Existing033/010 receipts do not cover this pair."
+  ]
+}

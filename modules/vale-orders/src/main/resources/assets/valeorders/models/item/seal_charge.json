@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/seal_charge"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "valeorders:charged": 1
+      },
+      "model": "valeorders:item/seal_charge_charged"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "status": "ISOLATED_CANDIDATE_BUILT_AND_NATIVE_CHECKED_NOT_INSTALLED",
+  "version": "0.3.6",
+  "artifact": "build/libs/vale-encounters-0.3.6.jar",
+  "artifact_sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+  "artifact_bytes": 30011,
+  "dev_artifact": "build/libs/vale-encounters-0.3.6-dev.jar",
+  "sources_artifact": "build/libs/vale-encounters-0.3.6-sources.jar",
+  "profile_counts": {
+    "mob": 70,
+    "boss": 29,
+    "companion": 37
+  },
+  "runtime_entity_ids": [
+    "valeencounters:mob",
+    "valeencounters:boss",
+    "valeencounters:companion"
+  ],
+  "registered_class_count": 3,
+  "catalog": "source-profile-catalog.json",
+  "public_hooks": [
+    "Encounters.show(EntityPlayerMP)",
+    "Encounters.showList(ICommandSender,int)",
+    "Encounters.info(ICommandSender,String)",
+    "Encounters.create(World,String)",
+    "Encounters.summon(EntityPlayerMP,String) [trusted server ability caller must enforce lesson/cost/cooldown]"
+  ],
+  "commands": {
+    "public_read_only": "/valeencounter list [1..17] | info <profile>",
+    "op4_only": "/valeencounter spawn <profile>"
+  },
+  "boss_reward_hook": "boolean village.vale.EncounterRewards.award(WorldServer,EntityLivingBase,String,int,Map<UUID,Float>,Map<UUID,Long>)",
+  "boss_tier": "persisted Forge entity data valeEncounterTier1..5; actual profile health320..800",
+  "boss_reward_persistence": "EncounterRewarded true only after API true; actual-damage contributor +lastHit NBT; failed settlement retains corpse for idempotent retries; no direct loot/XP issuance by this mod",
+  "compile_api_shim_excluded_runtime": true,
+  "private_native_probe_excluded_production": true,
+  "native": {
+    "passed": true,
+    "checks": 501,
+    "all_profiles_construct_save_load": 136,
+    "boss_tiers_checked": 29,
+    "dedicated_headless": true,
+    "gpu_client": false,
+    "actor_class_bytes_match_native_probe": true,
+    "runtime_profile_payload_matches_native_probe": true,
+    "baseline_core": "0.3.5",
+    "core036_reward_settlement_and_missions_integration_tested": false
+  },
+  "dialogue": {
+    "path": "config/valeresidents/dialogue.json",
+    "roles": 3,
+    "original_pages": 11,
+    "actual_native_residents02_parser_passed": true,
+    "installed_actual_stage": false
+  },
+  "automatic_natural_spawns": false,
+  "automatic_entity_flood": false,
+  "rendering": "Vanilla biped/Steve texture reference stand-in only. No copied skins, no new visual-design claim. Client/GPU rendering untested and deferred.",
+  "limits": [
+    "Original functional counterparts use shared bounded engines;136profile entries do not prove136complete legacy behavior matches.",
+    "All unique legacy attacks, transformations, AI, species mechanics, drops, summons/ownership, inventories and quests remain explicit per-row unverified obligations.",
+    "Normal-player companion acquisition/cost/cooldown integration requires trusted Core036 ability hooks; OP spawn and bounded summon API are implemented.",
+    "Core036 EncounterRewards and Missions require Root combined native acceptance. Baseline native checks did not issue boss rewards.",
+    "No natural encounter distribution, spawn eggs, world replacement migration or saved-world profile assignment was installed.",
+    "No Core035, actual stage, parity095 files or original ZIP edits."
+  ],
+  "supersedes_artifact_sha256": "6dfb3ca33a843c341a476bbef14f0c7504061dfccfe156c4d41d4e2c36870c87",
+  "required_core_dependency": "required-after:valeorders@[0.3.6,)",
+  "packaging_fix": "Only required Core036 version metadata changed; actor bytecode and runtime profile payload unchanged. Clean production build/reobf succeeded; no duplicate501 native rerun.",
+  "recovery_scope": "Historical candidate author report. The recovered paths are normalized for publication; its installation/native-test assertions are not new evidence from this recovery."
+}

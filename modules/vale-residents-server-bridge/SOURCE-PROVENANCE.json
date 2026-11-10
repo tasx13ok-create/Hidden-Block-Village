@@ -1,0 +1,45 @@
+{
+  "module": "vale-residents-server-bridge",
+  "archive": "vale-residents-server-bridge-0.1.0-source.zip",
+  "archive_bytes": 3680,
+  "archive_sha256": "856d8475fe4b5e0fa5ce6db3b15cbe192a2933c4cf7757701f4c6c27a51ae89b",
+  "license_notice_scope": "MIT",
+  "files": [
+    {
+      "archive_path": "src/main/java/village/residentsbridge/ResidentServerBridge.java",
+      "path": "src/main/java/village/residentsbridge/ResidentServerBridge.java",
+      "bytes": 2800,
+      "sha256": "f44a4ffbee29a8d12df9ae4106f12446b7206a8621621f8c4612fcb116883336"
+    },
+    {
+      "archive_path": "README.txt",
+      "path": "README.txt",
+      "bytes": 1231,
+      "sha256": "b5200b223ac70fe14ddf8804025f47f20a41abca788738ace7e86c080cc9cc89"
+    },
+    {
+      "archive_path": "LICENSE",
+      "path": "LICENSE",
+      "bytes": 1236,
+      "sha256": "50aa668aecc68721bff044f5aa06b275348e09a74a25707d8807b6f72d946e96"
+    },
+    {
+      "archive_path": "build.gradle",
+      "path": "build.gradle",
+      "bytes": 535,
+      "sha256": "e800319245728f15fd18e815a46b447dc16db82275fa099fc06d57a855d8f881"
+    },
+    {
+      "archive_path": "settings.gradle",
+      "path": "settings.gradle",
+      "bytes": 168,
+      "sha256": "9f10e2013bd04b87048d58e11aed7244e2aa09376c1a8790fd2f5af447ef9d09"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [],
+  "staged_files": 5,
+  "staged_bytes": 5970,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Recovered project files; no build performed by this review lane."
+}

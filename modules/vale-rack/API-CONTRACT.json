@@ -1,0 +1,20 @@
+{
+  "status": "UNBUILT_SOURCE_CANDIDATE_FOR_NEW_CORE035",
+  "mod_id": "valerack",
+  "api_version": "1.0.0",
+  "api_class": "village.valerack.client.RackClientApi",
+  "methods": {
+    "ready()": "public static boolean",
+    "stack(int index)": "public static net.minecraft.item.ItemStack; defensive copy, EMPTY if not ready or index outside0..5",
+    "selectedSlot()": "public static int; local presentation index0..5 when ready, -1 otherwise",
+    "select(int index)": "public static void; local presentation selection only, valid0..5; no equip, mutation or server gameplay action",
+    "requestEquip(int index)": "public static boolean; true means a valid request was queued, never server success",
+    "requestOpen()": "public static boolean; true means a request for a genuine server-owned Container was queued, never locally fabricated GUI data"
+  },
+  "ready_guarantee": "A genuine received server snapshot matches the current connection, local player UUID, world identity/dimension, server-issued connection/dimension nonce, and has age<=100 local client ticks. Alive nonspectator player; unsupported future storage versions fail closed. Snapshots refresh at most20 server ticks while connected; clear on disconnect, world/connection/player replacement or dimension change.",
+  "selected_slot_semantics": "Local selection is not a server acknowledgement. Only requestEquip asks the server to atomically swap a stored weapon with native mainhand. No fabricated preview stacks.",
+  "hud_scope": "HUD renders exactly six actual stack copies and native count/glint/durability, uses wheel->select, existing use/R->requestEquip, button18->requestOpen; legacy shortcut/editor fallback only when module absent.",
+  "request_authority": "Authenticated sender only; payload opcode/index plus server nonce/revision for freshness, no client stack/count/owner/target. Server revalidates alive/spectator, owner identity, world/session, active container, cursor, current ownership and available normal space.",
+  "storage_semantics": "Six physical persistent server slots outside normal36. Equip moves stored weapon to native mainhand and swaps old weapon back. Nonweapon old hand goes to a free normal slot or operation rejects unchanged; no drops/clones.",
+  "module_version": "0.1.1"
+}

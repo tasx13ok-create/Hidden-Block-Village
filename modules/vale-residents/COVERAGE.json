@@ -1,0 +1,54 @@
+{
+  "owned0_1_runtime_sha256": "e042e6f6757f231a5b2d2491ae3b471122d7292e74ebaf5dab5dafe74d4eab9e",
+  "current_runtime_sha256": "3e646d404fea05fa11949959b98fb3c1284ead21dbae19300ebf947c0546f963",
+  "runs_without": [
+    "customnpcs",
+    "variedcommodities",
+    "armourers_workshop",
+    "valecarpentrycompat"
+  ],
+  "roles": [
+    "academy",
+    "contracts",
+    "quartermaster"
+  ],
+  "original_authoring": {
+    "schema": 1,
+    "roles": 3,
+    "max_pages_per_role": 16,
+    "max_choices_per_page": 6,
+    "max_lines_per_page": 4,
+    "max_file_bytes": 65536,
+    "token_ttl_ticks": 600,
+    "max_sessions": 256
+  },
+  "mission_backend": "Owned Core033;12-contract catalog exposed; actual supply acceptance/turn-in/reward/replay tested by this module",
+  "provisions_backend": "Owned Core033 with installed owned provider stock and original cost/level/receipt rules",
+  "carpentry_replaced": false,
+  "carpentry_adapter_is_noppes_dependent": true,
+  "vc_library_replaced": false,
+  "aw_skin_system_replaced": false,
+  "legacy_data_migrated": false,
+  "full_public_pack_clearance_asserted": false,
+  "primary_license_sources": [
+    {
+      "project": "CustomNPCs",
+      "license": "CC BY-NC3.0",
+      "file_id": 2996912,
+      "url": "https://www.curseforge.com/minecraft/mc-mods/custom-npcs/license",
+      "file": "https://www.curseforge.com/minecraft/mc-mods/custom-npcs/files/2996912"
+    },
+    {
+      "project": "Varied Commodities",
+      "license": "CC BY-NC3.0",
+      "file_id": 4466956,
+      "url": "https://www.curseforge.com/minecraft/mc-mods/varied-commodities/license",
+      "file": "https://www.curseforge.com/minecraft/mc-mods/varied-commodities/files/4466956"
+    },
+    {
+      "project": "Armourer's Workshop",
+      "license": "Current license text CC BY-NC-SA3.0; exact0.51.0 terms/provenance remain separate audit",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/armourers-workshop/license"
+    }
+  ]
+}

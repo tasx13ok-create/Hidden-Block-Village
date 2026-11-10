@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 4
+    }
+  ],
+  "result": {
+    "item": "valeorders:technique_codex",
+    "count": 1
+  }
+}

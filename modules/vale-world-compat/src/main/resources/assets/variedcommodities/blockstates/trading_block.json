@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=1": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=2": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=3": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=4": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=5": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=6": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=7": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=8": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=9": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=10": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=11": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=12": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=13": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=14": {
+      "model": "variedcommodities:trading_block"
+    },
+    "legacy=15": {
+      "model": "variedcommodities:trading_block"
+    }
+  }
+}

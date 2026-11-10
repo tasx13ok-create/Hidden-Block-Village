@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "valeworldcompat",
+    "name": "Vale World Furnishings",
+    "version": "1.0.0",
+    "mcversion": "1.12.2",
+    "description": "Original furnishings retaining four saved technical IDs. No legacy source or artwork included.",
+    "authorList": [
+      "Vale project contributors"
+    ]
+  }
+]

@@ -1,0 +1,221 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+group = 'village.vale'
+version = '0.3.6'
+base { archivesName = 'vale-orders' }
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+    withSourcesJar()
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+    username.set('ValeDeveloper')
+    extraRunJvmArguments.add('-Dvaleorders.selftest=true')
+    extraRunJvmArguments.add('-Dfml.coreMods.load=village.vale.PoseCorePlugin')
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    if(name in ['compileJava','compileRuleChecksJava','compileWorldChecksJava','compileClientChecksJava']) options.incremental = false
+}
+jar {
+    from('LICENSE.txt')
+    manifest { attributes('FMLCorePlugin':'village.vale.PoseCorePlugin','FMLCorePluginContainsFMLMod':'true','ForceLoadAsMod':'true') }
+}
+sourceSets {
+    ruleChecks {
+        java.srcDirs = ['tests']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.register('verifyRules', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.RulesTest')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyRules') }
+tasks.register('verifyPoses', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.PoseMathTest')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyPoses') }
+
+tasks.register('verifyHud', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.HudSnapshotTest')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyHud') }
+
+tasks.register('verifyAbilities', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.AbilityContractTest')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyAbilities') }
+
+tasks.register('verifyLoadout', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.LoadoutContractTest')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyLoadout') }
+
+tasks.register('verifyOriginalArmor', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.armor.OriginalArmorChecks')
+    args layout.buildDirectory.dir('verification/original-armor').get().asFile.absolutePath
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.register('verifyOriginalArmorApi', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.armor.api.ApiContractChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyOriginalArmor'),tasks.named('verifyOriginalArmorApi') }
+tasks.register('verifyLedger', JavaExec) {
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('village.vale.Diagnostics')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyLedger') }
+tasks.register('verifyCommands', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.CommandSecurityTest')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyCommands') }
+if (providers.gradleProperty('valeTestDir').isPresent()) {
+    tasks.named('runServer', JavaExec).configure {
+        workingDir = file(providers.gradleProperty('valeTestDir').get())
+        standardInput = System.in
+    }
+}
+sourceSets {
+    worldChecks {
+        java.srcDirs = ['worldchecks']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+sourceSets {
+    clientChecks {
+        java.srcDirs = ['clientchecks']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+sourceSets {
+    serverBridge {
+        java.srcDirs = ['serverbridge']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.register('clientChecksJar', Jar) {
+    dependsOn tasks.named('clientChecksClasses')
+    from sourceSets.clientChecks.output
+    archiveFileName.set('vale-clientchecks-dev.jar')
+    destinationDirectory.set(layout.buildDirectory.dir('clientchecks'))
+}
+// An explicitly requested private runtime probe. Never ship this variant.
+tasks.named('jar', Jar).configure {
+    def probe = providers.gradleProperty('valeProductionProbe').isPresent()
+    inputs.property('valeProductionProbe', probe)
+    if (probe) {
+        dependsOn tasks.named('clientChecksClasses'),tasks.named('worldChecksClasses'),tasks.named('serverBridgeClasses')
+        from sourceSets.clientChecks.output
+        from sourceSets.serverBridge.output
+        from(sourceSets.worldChecks.output) { exclude 'village/bijuu/**' }
+    }
+}
+if (providers.gradleProperty('valeClientDir').isPresent()) {
+    tasks.named('runClient', JavaExec).configure {
+        workingDir = file(providers.gradleProperty('valeClientDir').get())
+        dependsOn tasks.named('clientChecksJar')
+        doFirst { copy { from tasks.named('clientChecksJar').get().archiveFile; into new File(workingDir, 'mods') } }
+    }
+}
+if (providers.gradleProperty('valeSceneChecks').isPresent()) {
+    tasks.named('runClient', JavaExec).configure { jvmArgs '-Dvaleorders.scenecheck=true' }
+}
+tasks.register('worldChecksJar', Jar) {
+    dependsOn tasks.named('worldChecksClasses')
+    from sourceSets.worldChecks.output
+    archiveFileName.set('vale-worldchecks-dev.jar')
+    destinationDirectory.set(layout.buildDirectory.dir('worldchecks'))
+}
+if (providers.gradleProperty('valeQueueChecks').isPresent()) {
+    tasks.named('runServer', JavaExec).configure { jvmArgs '-Dvaleorders.queuecheck=true' }
+}
+if (providers.gradleProperty('valeAdventureChecks').isPresent()) {
+    tasks.named('runServer', JavaExec).configure { jvmArgs '-Dvaleorders.adventurecheck=true' }
+}
+if (providers.gradleProperty('valeOwnedChecks').isPresent()) {
+    tasks.named('runServer', JavaExec).configure { jvmArgs '-Dvaleorders.ownedcheck=true' }
+}
+if (providers.gradleProperty('valeOwnedBalancedChecks').isPresent()) {
+    tasks.named('runServer', JavaExec).configure { jvmArgs '-Dvaleorders.balancedcheck=true' }
+}
+if (providers.gradleProperty('valeWorldChecks').isPresent()) {
+    if (!providers.gradleProperty('valeTestDir').isPresent())
+        throw new GradleException('World checks require an explicit isolated valeTestDir.')
+    tasks.named('runServer', JavaExec).configure {
+        dependsOn tasks.named('worldChecksJar')
+        doFirst {
+            copy {
+                from tasks.named('worldChecksJar').get().archiveFile
+                into new File(workingDir, 'mods')
+            }
+        }
+    }
+}
+
+tasks.register('verifyClientAbilityRequests', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.client.AbilityRequestPolicyTest')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyClientAbilityRequests') }
+
+// Prepared API is a compile input only; no game binary is redistributed.
+if(providers.gradleProperty('prebuiltMinecraft').isPresent()) {
+    def input=file(providers.gradleProperty('prebuiltMinecraft').get())
+    def target=file('build/rfg/recompiled_minecraft-1.12.2.jar')
+    target.parentFile.mkdirs()
+    if(!target.exists())java.nio.file.Files.copy(input.toPath(),target.toPath())
+    sourceSets.main.compileClasspath+=files(input)
+    sourceSets.main.runtimeClasspath+=files(input)
+    sourceSets.ruleChecks.compileClasspath+=files(input)
+    sourceSets.ruleChecks.runtimeClasspath+=files(input)
+    def prepared=['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg','decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar','decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources','createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
+    tasks.matching { it.name in prepared }.configureEach { enabled=false }
+}
+if(providers.gradleProperty('valeProductionProbe').isPresent())throw new GradleException('Private runtime probes are excluded from this new production project.')

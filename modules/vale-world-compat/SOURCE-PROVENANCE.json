@@ -1,0 +1,147 @@
+{
+  "module": "vale-world-compat",
+  "archive": "Vale-World-Compatibility-Source.zip",
+  "archive_bytes": 13328,
+  "archive_sha256": "aa90e483110d6333d2a335370b25710df075780d90234f1a9713f8444e6ec9c2",
+  "license_notice_scope": "notice-absent-in-recovered-bundle",
+  "files": [
+    {
+      "archive_path": "src/main/resources/mcmod.info",
+      "path": "src/main/resources/mcmod.info",
+      "bytes": 322,
+      "sha256": "893b54e0b4b4facf36eb1aaf74a51449c60ffb4f384b180898ef1b3c700d1c6d"
+    },
+    {
+      "archive_path": "src/main/java/village/vale/worldcompat/ClientModels.java",
+      "path": "src/main/java/village/vale/worldcompat/ClientModels.java",
+      "bytes": 750,
+      "sha256": "b9894346ef5cd86293f7db371214b5963ad00b8f045bc11114f2fa200f6fd5e4"
+    },
+    {
+      "archive_path": "src/main/java/village/vale/worldcompat/WorldCompat.java",
+      "path": "src/main/java/village/vale/worldcompat/WorldCompat.java",
+      "bytes": 11178,
+      "sha256": "c76a2a6345f7f826354f4c39922c2b72147ea2824878e446aecae8c6fdc41f1a"
+    },
+    {
+      "archive_path": "src/main/resources/assets/valeworldcompat/lang/en_us.lang",
+      "path": "src/main/resources/assets/valeworldcompat/lang/en_us.lang",
+      "bytes": 222,
+      "sha256": "a613801f1003c2c3f9fb058f5ff01e5bc8cba99c21a7b111931c88293b941d0c"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/blockstates/campfire.json",
+      "path": "src/main/resources/assets/variedcommodities/blockstates/campfire.json",
+      "bytes": 1185,
+      "sha256": "593186940e6f853feaa147941e1bfad93dea78454c15aff9c584b52a0cb489a4"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/blockstates/table.json",
+      "path": "src/main/resources/assets/variedcommodities/blockstates/table.json",
+      "bytes": 1137,
+      "sha256": "d23dfc752030cc8a92d5a43da5ab2f39cd8176e76661ab1363556882904b1152"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/blockstates/trading_block.json",
+      "path": "src/main/resources/assets/variedcommodities/blockstates/trading_block.json",
+      "bytes": 1265,
+      "sha256": "2880d7ffc7c47cfc0e2878076940c8f9b4932ba1814a80f017bdf460007953aa"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/block/campfire.json",
+      "path": "src/main/resources/assets/variedcommodities/models/block/campfire.json",
+      "bytes": 4010,
+      "sha256": "e1bd170ef2ca258d71355bc1e25c4fc57cbde8acff712ce2285550b0e75a7f11"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/block/table.json",
+      "path": "src/main/resources/assets/variedcommodities/models/block/table.json",
+      "bytes": 2876,
+      "sha256": "f927864543212d94e7abb187892acb2a790e572c045ba4b8d61feb9c13153303"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/block/trading_block.json",
+      "path": "src/main/resources/assets/variedcommodities/models/block/trading_block.json",
+      "bytes": 2943,
+      "sha256": "275248317c3f82cac8ae4d2080e90f644a357ef6720e2ea9c36825c2de44bd79"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/item/campfire.json",
+      "path": "src/main/resources/assets/variedcommodities/models/item/campfire.json",
+      "bytes": 109,
+      "sha256": "19e12186031936c823aaa9df7bc939efe8ac366a7de1c2cd22b87c736cb68885"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/item/table.json",
+      "path": "src/main/resources/assets/variedcommodities/models/item/table.json",
+      "bytes": 106,
+      "sha256": "cc85be899027dad66623999bf4ddb2b0b6cb0201e27aff37272055d655abd491"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/models/item/trading_block.json",
+      "path": "src/main/resources/assets/variedcommodities/models/item/trading_block.json",
+      "bytes": 114,
+      "sha256": "ec6e5fb185aef90aa51232f2ac70d88352876aa4332e49db73db436a194ed587"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/textures/items/campfire.png",
+      "path": "src/main/resources/assets/variedcommodities/textures/items/campfire.png",
+      "bytes": 335,
+      "sha256": "93afefb098fcc60bd0a4c920d896da5af70f047c864437a20051a221c990babb"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/textures/items/table.png",
+      "path": "src/main/resources/assets/variedcommodities/textures/items/table.png",
+      "bytes": 306,
+      "sha256": "da28a083889feb6d8b01ebf04798b6f995bc89786169a984055f679aad57370a"
+    },
+    {
+      "archive_path": "src/main/resources/assets/variedcommodities/textures/items/trading_block.png",
+      "path": "src/main/resources/assets/variedcommodities/textures/items/trading_block.png",
+      "bytes": 211,
+      "sha256": "9edb4ef777adf3686d605813f32adc770053617cb3f5b9c01250da9b57c6ad99"
+    },
+    {
+      "archive_path": "src/main/resources/assets/waystones/blockstates/waystone.json",
+      "path": "src/main/resources/assets/waystones/blockstates/waystone.json",
+      "bytes": 1057,
+      "sha256": "cbddf68129827384238a72508f15a0582ca011d7d3f5a33b325bf36599158574"
+    },
+    {
+      "archive_path": "src/main/resources/assets/waystones/models/block/waystone.json",
+      "path": "src/main/resources/assets/waystones/models/block/waystone.json",
+      "bytes": 2355,
+      "sha256": "32190e09098ada39cd0074fbea45c103e465201278216834ade3741a48f1987f"
+    },
+    {
+      "archive_path": "src/main/resources/assets/waystones/models/item/waystone.json",
+      "path": "src/main/resources/assets/waystones/models/item/waystone.json",
+      "bytes": 101,
+      "sha256": "148bf17e8a2f4ac660c7802a3d13cbb6b730d61afb6c04365eca58ff435fd09c"
+    },
+    {
+      "archive_path": "src/main/resources/assets/waystones/textures/items/waystone.png",
+      "path": "src/main/resources/assets/waystones/textures/items/waystone.png",
+      "bytes": 213,
+      "sha256": "36e22e956826b17fe5a38a4c1d13dc51fa196bc1f82ca63e608f981c1cea98c3"
+    },
+    {
+      "archive_path": "build.gradle",
+      "path": "build.gradle",
+      "bytes": 1981,
+      "sha256": "47c5a25cec9cf21247bbba07dfd11aacf34f6ac221e37d42e644ab01ecae1ecd"
+    },
+    {
+      "archive_path": "settings.gradle",
+      "path": "settings.gradle",
+      "bytes": 288,
+      "sha256": "32b72322daad2d40733b87c2e09268277101e9ade0ac2602a64a135959b99c1c"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [],
+  "staged_files": 22,
+  "staged_bytes": 33064,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Recovered project files; no build performed by this review lane."
+}

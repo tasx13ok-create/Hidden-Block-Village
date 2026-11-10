@@ -1,0 +1,111 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+group = 'village.controls'
+version = '1.4.0-simple-candidate'
+base { archivesName = 'field-controls' }
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+    withSourcesJar()
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+    username.set('ControlsTest')
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+jar { from('LICENSE.txt') }
+// Optional local compile shortcut. The supplied JAR must be an independently
+// prepared, deobfuscated Forge 1.12.2 stable-39 development API, never a mod JAR.
+// Fresh external builds omit this property and use the normal RFG pipeline.
+if (providers.gradleProperty('prebuiltMinecraft').isPresent()) {
+    def apiJar = file(providers.gradleProperty('prebuiltMinecraft').get())
+    sourceSets.main.compileClasspath += files(apiJar)
+    def prepared = ['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg',
+        'decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar',
+        'decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources',
+        'createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
+    tasks.matching { it.name in prepared }.configureEach { enabled = false }
+    def stageApi = tasks.register('stagePrebuiltControlsApi', Copy) {
+        from(apiJar)
+        into(layout.buildDirectory.dir('rfg'))
+        rename { 'recompiled_minecraft-1.12.2.jar' }
+    }
+    tasks.named('reobfJar') { dependsOn(stageApi) }
+}
+
+sourceSets {
+    controlsChecks {
+        java.srcDirs = ['tests']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.register('verifyControls', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.ControlsChecks')
+    args layout.buildDirectory.dir('control-checks').get().asFile.absolutePath
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyControls') }
+tasks.register('verifySettings', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.SettingsChecks')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifySettings') }
+tasks.register('verifyFocusedCast', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.FocusedCastChecks')
+    args layout.buildDirectory.dir('focused-cast-checks').get().asFile.absolutePath
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.register('verifyJutsuFocus', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.JutsuFocusChecks')
+    args file('tests/jutsu-fixtures').absolutePath, layout.buildDirectory.file('jutsu-focus-checks.json').get().asFile.absolutePath
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyFocusedCast'), tasks.named('verifyJutsuFocus') }
+tasks.register('verifyMenus', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.MenuChecks')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyMenus') }
+tasks.register('verifySimpleMenus', JavaExec) {
+    dependsOn tasks.named('controlsChecksClasses')
+    classpath = sourceSets.controlsChecks.runtimeClasspath
+    mainClass.set('village.controls.SimpleMenuChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8));vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifySimpleMenus') }
+if (providers.gradleProperty('controlsCapture').isPresent()) {
+    sourceSets.main.java.srcDir('clientchecks')
+    version = '1.4.0-simple-candidate-capture-test'
+}

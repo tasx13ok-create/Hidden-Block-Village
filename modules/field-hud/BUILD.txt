@@ -1,0 +1,6 @@
+Field HUD0.14.0 production sources only. Java8 / Forge1.12.2 / MCP stable39 / RFG2.0.3.
+Build: gradle --no-daemon assemble reobfJar
+All src/main Java/resources match the verified original source byte-for-byte.
+Headless tests, preview tools, private native drivers, runtime binaries and game data are omitted.
+prebuiltMinecraft remains an optional local deobfuscated Forge API shortcut, never a mod JAR.
+This packaging variant was not rebuilt; runtime remains the separately verified93e48a7c JAR.

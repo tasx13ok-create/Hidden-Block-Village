@@ -1,0 +1,460 @@
+{
+  "module": "field-hud",
+  "archive": "Field-HUD-0.14.0-Production-Source.zip",
+  "archive_bytes": 93512,
+  "archive_sha256": "694907707b549320b0aa44fd2f51ab17eaab3a39809cc4daff92cd9a74ec84b7",
+  "license_notice_scope": "MIT",
+  "files": [
+    {
+      "archive_path": "BUILD.txt",
+      "path": "BUILD.txt",
+      "bytes": 496,
+      "sha256": "2a36f60a8bd857ea5a42d915a96cde9711ee796926ecc630b201098f3901c385"
+    },
+    {
+      "archive_path": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "bytes": 1105,
+      "sha256": "706c568cdd3973750508717823a49a695f49a779764276b3f5522d4445012dad"
+    },
+    {
+      "archive_path": "README.txt",
+      "path": "README.txt",
+      "bytes": 1320,
+      "sha256": "9c4f03a590505478db081b8c50b75be238a668b27d6bfeb1bb0ca981835dc96c"
+    },
+    {
+      "archive_path": "build.gradle",
+      "path": "build.gradle",
+      "bytes": 1470,
+      "sha256": "7adb0eb3084e52402371ffa778d15b5f74b4ebeec3179ff1ba726ad614115772"
+    },
+    {
+      "archive_path": "gradle.properties",
+      "path": "gradle.properties",
+      "bytes": 78,
+      "sha256": "183bd1dd84b9c944272df55ffd4fa3d578dab29c8f93343a588d4fac8c9f1aa9"
+    },
+    {
+      "archive_path": "settings.gradle",
+      "path": "settings.gradle",
+      "bytes": 295,
+      "sha256": "8b0e1a83cc2f81046435f75239c34beab3daaaf985000361a4d43be0ee869846"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ArmorHudBridge.java",
+      "path": "src/main/java/village/fieldhud/ArmorHudBridge.java",
+      "bytes": 1779,
+      "sha256": "895fb8a1b180000f427ea9abf0672f373f0296adf9ac59f8a6f127ae361e1cbe"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ArmorReservations.java",
+      "path": "src/main/java/village/fieldhud/ArmorReservations.java",
+      "bytes": 1083,
+      "sha256": "612ff835b1a4dc97b2c8db2d5559659b1866dcc1dd60713a004587fabfcb5bb7"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/CastReceipt.java",
+      "path": "src/main/java/village/fieldhud/CastReceipt.java",
+      "bytes": 931,
+      "sha256": "e3564162462db810edcd13b7662db755e44707bf9fdf52026a6685216c244338"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ChakraBridge.java",
+      "path": "src/main/java/village/fieldhud/ChakraBridge.java",
+      "bytes": 7637,
+      "sha256": "c6e4aac5598252ee5e82f4e8f8c1f8d4fb83a500bc6159c50b7ed3169e8abdda"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ClientApi.java",
+      "path": "src/main/java/village/fieldhud/ClientApi.java",
+      "bytes": 1145,
+      "sha256": "8c78516648b3edc4202b26e26418e86744787a6cdf924478ec9fa274d7e79d55"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ClientHud.java",
+      "path": "src/main/java/village/fieldhud/ClientHud.java",
+      "bytes": 10033,
+      "sha256": "c45d8374716bbb0b19c216c21bb22391f6f79443d1544bde6f5b92240d7cb974"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/EnergyFrames.java",
+      "path": "src/main/java/village/fieldhud/EnergyFrames.java",
+      "bytes": 1069,
+      "sha256": "cf4f5cc136f87529c896e3f2c3389f3593821c69c25f6eff3cc54773c3715960"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/EnergySlate.java",
+      "path": "src/main/java/village/fieldhud/EnergySlate.java",
+      "bytes": 2486,
+      "sha256": "0edc86ac40839598f194e34fbc653eda6fe9b6acbfa705c8d059bf2ee71d52b6"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/EyeMap.java",
+      "path": "src/main/java/village/fieldhud/EyeMap.java",
+      "bytes": 6431,
+      "sha256": "ad5f7e87325cb3a31412309fa883d230ef552da2897b768c52cf03d6443b9a2c"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/FieldHud.java",
+      "path": "src/main/java/village/fieldhud/FieldHud.java",
+      "bytes": 568,
+      "sha256": "a693cc04ee7752ebb36155d087296f3a677d148076df7dd16b1044ac018f36c3"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/FocusFx.java",
+      "path": "src/main/java/village/fieldhud/FocusFx.java",
+      "bytes": 2896,
+      "sha256": "f52283592c8cebe6efa8d9b3efc976b79ab0699667efcb5d83825bda1b854d23"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/GlassButton.java",
+      "path": "src/main/java/village/fieldhud/GlassButton.java",
+      "bytes": 2529,
+      "sha256": "f581b6278d5c6e804c33bd1ac0607cc9b44d23f6c0fa509199c33c10af4b4d52"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/GlassMaterial.java",
+      "path": "src/main/java/village/fieldhud/GlassMaterial.java",
+      "bytes": 9384,
+      "sha256": "7b7f15f759c4012507c03b48db2bd631441fa8344634d54475d8ad9317869e76"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudCommand.java",
+      "path": "src/main/java/village/fieldhud/HudCommand.java",
+      "bytes": 3739,
+      "sha256": "47033a73d686a5fc6f92a6bbfc19d1f58ebceef388c1e3dfd686917d90a968ea"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudConfig.java",
+      "path": "src/main/java/village/fieldhud/HudConfig.java",
+      "bytes": 4297,
+      "sha256": "32617a832f60605c094e5a7cacc6c134dbb207835e4da43cfed0b3bb94ecfbcc"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudLayers.java",
+      "path": "src/main/java/village/fieldhud/HudLayers.java",
+      "bytes": 1211,
+      "sha256": "4ec146ff754c0c0ccd9b69b969456867ae6a919fe561f01dbf9686e16fa7075a"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudLayoutScreen.java",
+      "path": "src/main/java/village/fieldhud/HudLayoutScreen.java",
+      "bytes": 4369,
+      "sha256": "aeade5573f77250b05a1b39d8105acbb8fb24a17ea4f73346f87169b357c63e2"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudMenuLayout.java",
+      "path": "src/main/java/village/fieldhud/HudMenuLayout.java",
+      "bytes": 1055,
+      "sha256": "d85936406440be832498094dfe2a2ea7908c7c8ffff53f052d3823860d43cf95"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudPlacement.java",
+      "path": "src/main/java/village/fieldhud/HudPlacement.java",
+      "bytes": 1850,
+      "sha256": "e0587a414da8fcb22221263f20e9ff7e84a700d7b42b3d12da331480777bb0d5"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudScreen.java",
+      "path": "src/main/java/village/fieldhud/HudScreen.java",
+      "bytes": 8390,
+      "sha256": "168e6573f002bda81002bee4b7094e24d369c2b1d9f2312f7f097b46a7d2d08c"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/HudSoundPulse.java",
+      "path": "src/main/java/village/fieldhud/HudSoundPulse.java",
+      "bytes": 2043,
+      "sha256": "795ca867f6cfc5c058c24ed171345dacab481292db20da29d13bce84cbc784b8"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuAccess.java",
+      "path": "src/main/java/village/fieldhud/JutsuAccess.java",
+      "bytes": 5576,
+      "sha256": "8aa0b27b4d1a5952bdb1d1efa2022c4926cad35165e1fac47cef11abf568faa9"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuControlsCapability.java",
+      "path": "src/main/java/village/fieldhud/JutsuControlsCapability.java",
+      "bytes": 861,
+      "sha256": "001f7ec9b2ef97b1d248549cfb62865bd1d2fcb4455e6c50c24f5bfd4297e8c1"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuEntry.java",
+      "path": "src/main/java/village/fieldhud/JutsuEntry.java",
+      "bytes": 3327,
+      "sha256": "b89ac402bd2824dc71ec754410a317f6d65a047188e8c13f957b6e0b40d19d80"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuInput.java",
+      "path": "src/main/java/village/fieldhud/JutsuInput.java",
+      "bytes": 8187,
+      "sha256": "f535ee34d262636980d540425d6cf2caf44b4976c0231ca6bbff9005e601b54a"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuLoadout.java",
+      "path": "src/main/java/village/fieldhud/JutsuLoadout.java",
+      "bytes": 1789,
+      "sha256": "a1000e44690c5f4d7f07296584a357b16050dbbe08fa62019a2d18d360d58427"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuLoadoutScreen.java",
+      "path": "src/main/java/village/fieldhud/JutsuLoadoutScreen.java",
+      "bytes": 8408,
+      "sha256": "66e710b658d06245401448f52aadec4de220b9ecbe8cb8ea9b730c431022a098"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuLoadoutStore.java",
+      "path": "src/main/java/village/fieldhud/JutsuLoadoutStore.java",
+      "bytes": 4986,
+      "sha256": "2dd0a297f389f3ec6c89a5dd59f37847445a429a9fe706fffa7307510d86f782"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuRail.java",
+      "path": "src/main/java/village/fieldhud/JutsuRail.java",
+      "bytes": 7114,
+      "sha256": "681956765cd93815bba0293896d0155a8a525218caef45c21c36b2edd783b83d"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuRailLayout.java",
+      "path": "src/main/java/village/fieldhud/JutsuRailLayout.java",
+      "bytes": 1708,
+      "sha256": "5f0110bba128ca8baf316bf4be782c5a6dd0cd648984a608f7186b13ca522b45"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuRailModel.java",
+      "path": "src/main/java/village/fieldhud/JutsuRailModel.java",
+      "bytes": 4796,
+      "sha256": "79ee136b75e8625e0ddffeb08a5923e2b2af2aae39b312ab658292835231ec26"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuSignals.java",
+      "path": "src/main/java/village/fieldhud/JutsuSignals.java",
+      "bytes": 4290,
+      "sha256": "7cf6c47ff3c7f3be3cf3df579f3f4cd600b650014e14b6c59a8f031e747bfe8e"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuSlot.java",
+      "path": "src/main/java/village/fieldhud/JutsuSlot.java",
+      "bytes": 1437,
+      "sha256": "96dd56447fc1b2362ecd6a3c3f77bf68e58a2d2397d23eeb868650afb785336b"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuSlotButton.java",
+      "path": "src/main/java/village/fieldhud/JutsuSlotButton.java",
+      "bytes": 1716,
+      "sha256": "ab856a46b4aae0e3b3a2de203f46b7a7fad061de978672d81c22172d46f8a6c2"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/JutsuSnapshotReader.java",
+      "path": "src/main/java/village/fieldhud/JutsuSnapshotReader.java",
+      "bytes": 3413,
+      "sha256": "ab3d881dd88098f103933d8516d88ef9719c6f26aac78d74bf7471297e7c9456"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/Layout.java",
+      "path": "src/main/java/village/fieldhud/Layout.java",
+      "bytes": 1255,
+      "sha256": "8628349aaa82d8a52245e34584dbfbee3486ab751e0d5dd81d0e984337cbda25"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/LegacyHealth.java",
+      "path": "src/main/java/village/fieldhud/LegacyHealth.java",
+      "bytes": 3245,
+      "sha256": "e38f719f8d547e04eac86a9f4ac46bfcfe9ca22fdcebc3115cbe4fda486ca130"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/MenuInk.java",
+      "path": "src/main/java/village/fieldhud/MenuInk.java",
+      "bytes": 2683,
+      "sha256": "9831c1bb985674158ef9cbc77bd6cf6c0de704e8932556b6de61b1bf03a88a3f"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/PanelSkin.java",
+      "path": "src/main/java/village/fieldhud/PanelSkin.java",
+      "bytes": 3921,
+      "sha256": "73e768605004c9a55aa18545710e96ee74ea536ca958833c6e11615ab2a4c74e"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/RackAccess.java",
+      "path": "src/main/java/village/fieldhud/RackAccess.java",
+      "bytes": 4574,
+      "sha256": "532d4cd87ba4ef7d43631f84270d58380563b3906f54f29dd0ebef5cfb38843a"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/RackContract.java",
+      "path": "src/main/java/village/fieldhud/RackContract.java",
+      "bytes": 1084,
+      "sha256": "688a02c7989a48b948851992de6922c49bb29fea50618bf7685691dc10ac4805"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/RackRailDraw.java",
+      "path": "src/main/java/village/fieldhud/RackRailDraw.java",
+      "bytes": 3547,
+      "sha256": "21a4a77f8f021a1adc8002649a2dcd640848e72d6823c404ec9cc6d707254b88"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/RackRailModel.java",
+      "path": "src/main/java/village/fieldhud/RackRailModel.java",
+      "bytes": 2107,
+      "sha256": "10a7b902a7307c3a75890fbf8f998110ff8e8a7691c026c67a404253239b85bc"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ReactiveMeter.java",
+      "path": "src/main/java/village/fieldhud/ReactiveMeter.java",
+      "bytes": 1464,
+      "sha256": "9c69958d2b95c5fc58d410aa198b928d99855d607718e0d4b9e15c8228b3375c"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ReadinessHud.java",
+      "path": "src/main/java/village/fieldhud/ReadinessHud.java",
+      "bytes": 4250,
+      "sha256": "f40a14c81a6d8a9c32cd1c3646f82d0b6c46806551cd96b0f19d4f7b327bb113"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ReadinessLayout.java",
+      "path": "src/main/java/village/fieldhud/ReadinessLayout.java",
+      "bytes": 664,
+      "sha256": "639c7843724fcd443b307de77ea98baddacaad4413d54bd519d04f0246e2e495"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ReadinessLine.java",
+      "path": "src/main/java/village/fieldhud/ReadinessLine.java",
+      "bytes": 1857,
+      "sha256": "592f085cab3564e49cff8ececb395aa113fec77f74b7d72965d8f14d37d2596d"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ReadyResponse.java",
+      "path": "src/main/java/village/fieldhud/ReadyResponse.java",
+      "bytes": 1320,
+      "sha256": "a2512a498f073c7ed191e4560f370b0971326304de464b8dc58fd3475b3ffdca"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/Regions.java",
+      "path": "src/main/java/village/fieldhud/Regions.java",
+      "bytes": 4503,
+      "sha256": "62dfee5e121291e01a9dbcb51433e098d7c8c263179e040da6f0b8bee87a68d8"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ScrollChrome.java",
+      "path": "src/main/java/village/fieldhud/ScrollChrome.java",
+      "bytes": 1779,
+      "sha256": "1b4af6da863a982f89346785ed53f5a552f5de776dd6160c9cc5fdb73c794b79"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ScrollGeometry.java",
+      "path": "src/main/java/village/fieldhud/ScrollGeometry.java",
+      "bytes": 943,
+      "sha256": "8ffefadb580a626de90631f8268f9c9c6996dcd56bd3f49a03abfaa458f4f2c4"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ScrollHotbar.java",
+      "path": "src/main/java/village/fieldhud/ScrollHotbar.java",
+      "bytes": 7002,
+      "sha256": "ae0b2b8d805a8257dc9e977d5a3ec29a15eeb4224fc34836b8c14b48cd6aea93"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/SealArt.java",
+      "path": "src/main/java/village/fieldhud/SealArt.java",
+      "bytes": 6044,
+      "sha256": "3bfe60885e96389da20b3b4f0fecf43940960823a9bd29d38bb7dfbb9122a458"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/SealDraw.java",
+      "path": "src/main/java/village/fieldhud/SealDraw.java",
+      "bytes": 1583,
+      "sha256": "e799a1934ab0c674ecad255d2cc7f71217408ebf94ebbaba4fbdd0d163d26e99"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ShinobiHud.java",
+      "path": "src/main/java/village/fieldhud/ShinobiHud.java",
+      "bytes": 14887,
+      "sha256": "5a6879d50ecd1b54c7197a616709607d6a6f27baebe9ccf30d706a483cbf90ec"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ShinobiLayout.java",
+      "path": "src/main/java/village/fieldhud/ShinobiLayout.java",
+      "bytes": 1881,
+      "sha256": "cca38db3d915137736d0fc788a19daa5ece83827284d2847ffcb66708a6730ad"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/SkinDraw.java",
+      "path": "src/main/java/village/fieldhud/SkinDraw.java",
+      "bytes": 4923,
+      "sha256": "25d4dd924b6e3f6cea1f0d2e253c4e81967cb7675efd51aa5fc19aa901deafac"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/SkinMath.java",
+      "path": "src/main/java/village/fieldhud/SkinMath.java",
+      "bytes": 1387,
+      "sha256": "5ed79ab3c7686bffae37843dd39f521d9e35c3cd3407f528d131f22ede7d0fef"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ValeBridge.java",
+      "path": "src/main/java/village/fieldhud/ValeBridge.java",
+      "bytes": 2678,
+      "sha256": "1d3483aab41fafaaffccb98a78007ddc744a2d497a10e8fe980956bf4f272c2c"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ValeHud.java",
+      "path": "src/main/java/village/fieldhud/ValeHud.java",
+      "bytes": 1766,
+      "sha256": "123e948e9a8923f9d181c3c16e1439b6047b7e5e0b784330240dc3a2a44611e2"
+    },
+    {
+      "archive_path": "src/main/java/village/fieldhud/ValeSnapshotReader.java",
+      "path": "src/main/java/village/fieldhud/ValeSnapshotReader.java",
+      "bytes": 3539,
+      "sha256": "640e7b2e474512a9aaa847f1f09fa5a2c2e688f9781e22fce35159a6a7beaff2"
+    },
+    {
+      "archive_path": "src/main/resources/assets/fieldhud/lang/en_us.lang",
+      "path": "src/main/resources/assets/fieldhud/lang/en_us.lang",
+      "bytes": 166,
+      "sha256": "24d328f34187c53df0ea812dec2c7be8ae988e473a2f67b43fd0cfe672cb42de"
+    },
+    {
+      "archive_path": "src/main/resources/assets/fieldhud/regions.json",
+      "path": "src/main/resources/assets/fieldhud/regions.json",
+      "bytes": 1306,
+      "sha256": "0b9e7bed4e911f36b1faa71fc846d5bd3befbc60c123d6a76bece2711c6d47f8"
+    },
+    {
+      "archive_path": "src/main/resources/assets/fieldhud/shaders/glass.fsh",
+      "path": "src/main/resources/assets/fieldhud/shaders/glass.fsh",
+      "bytes": 1555,
+      "sha256": "16f2f66952976d9687c25ebe8d62bbb196d149bb65e63f8756b2a8bd91214ea6"
+    },
+    {
+      "archive_path": "src/main/resources/assets/fieldhud/shaders/glass.vsh",
+      "path": "src/main/resources/assets/fieldhud/shaders/glass.vsh",
+      "bytes": 202,
+      "sha256": "406f04a712e3c31c7ad2d616a0dd1601cd586d944c3ba439271a6d4a49a681e2"
+    },
+    {
+      "archive_path": "src/main/resources/mcmod.info",
+      "path": "src/main/resources/mcmod.info",
+      "bytes": 241,
+      "sha256": "eafa687274d7fab63e04f59a86415a2bae2c01a3eecf6d6995308b65ed80664f"
+    },
+    {
+      "archive_path": "src/main/resources/pack.mcmeta",
+      "path": "src/main/resources/pack.mcmeta",
+      "bytes": 52,
+      "sha256": "8a4ac9fafd407b0a719b3badcf95a7775d4e2ca79e5063837b84b339123573ae"
+    }
+  ],
+  "excluded": [
+    {
+      "archive_path": "logs/latest.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Private runtime log is not public source."
+    }
+  ],
+  "normalizations": [],
+  "staged_files": 73,
+  "staged_bytes": 225705,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Recovered project files; no build performed by this review lane."
+}

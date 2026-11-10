@@ -1,0 +1,8 @@
+New Vale Orders source and generated artwork in this directory were authored for
+this project without copying the supplied Naruto mod code or assets. This file
+does not grant rights to Minecraft, Forge, Gradle, the Gradle wrapper, libraries,
+other installed mods, or third-party material. Their terms continue to apply.
+
+The project owner may use, modify, and distribute the newly authored source and
+generated artwork, including commercially. No claim of trademark clearance or
+rights clearance for the rest of the existing modpack is made.

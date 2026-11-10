@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "valeorders:chronicle_field_veteran"
+    },
+    "title": "Field Veteran",
+    "description": "Record this original Vale milestone through normal server progression.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "recorded": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "recorded"
+    ]
+  ],
+  "parent": "valeorders:chronicle/first_oath"
+}

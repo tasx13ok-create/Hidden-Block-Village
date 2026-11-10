@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "valeorders:smoke_capsule",
+    "count": 2
+  }
+}

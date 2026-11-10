@@ -1,0 +1,1278 @@
+{
+  "actions": [
+    {
+      "id": "key.categories.gameplay|key.attack|0",
+      "raw": "key.attack",
+      "label": "Attack / break",
+      "source": "Gameplay",
+      "group": "Combat & arts",
+      "context": "IN_GAME",
+      "key": "LMB",
+      "stroke": {
+        "code": -100,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|key.use|0",
+      "raw": "key.use",
+      "label": "Use item / interact",
+      "source": "Gameplay",
+      "group": "Combat & arts",
+      "context": "UNIVERSAL",
+      "key": "RMB",
+      "stroke": {
+        "code": -99,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.forward|0",
+      "raw": "key.forward",
+      "label": "Move forward",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "W",
+      "stroke": {
+        "code": 17,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.left|0",
+      "raw": "key.left",
+      "label": "Move left",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "A",
+      "stroke": {
+        "code": 30,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.back|0",
+      "raw": "key.back",
+      "label": "Move backward",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "S",
+      "stroke": {
+        "code": 31,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.right|0",
+      "raw": "key.right",
+      "label": "Move right",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "D",
+      "stroke": {
+        "code": 32,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.jump|0",
+      "raw": "key.jump",
+      "label": "Jump / ascend",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "SPACE",
+      "stroke": {
+        "code": 57,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.sneak|0",
+      "raw": "key.sneak",
+      "label": "Crouch / descend",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "L Ctrl",
+      "stroke": {
+        "code": 29,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.movement|key.sprint|0",
+      "raw": "key.sprint",
+      "label": "Sprint",
+      "source": "Movement",
+      "group": "Movement",
+      "context": "IN_GAME",
+      "key": "L Shift",
+      "stroke": {
+        "code": 42,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.drop|0",
+      "raw": "key.drop",
+      "label": "Drop item",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "DELETE",
+      "stroke": {
+        "code": 211,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.inventory|0",
+      "raw": "key.inventory",
+      "label": "Inventory",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "HOME",
+      "stroke": {
+        "code": 18,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.multiplayer|key.chat|0",
+      "raw": "key.chat",
+      "label": "Open Chat",
+      "source": "Multiplayer",
+      "group": "HUD & social",
+      "context": "IN_GAME",
+      "key": "T",
+      "stroke": {
+        "code": 20,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.multiplayer|key.playerlist|0",
+      "raw": "key.playerlist",
+      "label": "List Players",
+      "source": "Multiplayer",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "TAB",
+      "stroke": {
+        "code": 15,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|key.pickItem|0",
+      "raw": "key.pickItem",
+      "label": "Pick block",
+      "source": "Gameplay",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "MMB",
+      "stroke": {
+        "code": -98,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.multiplayer|key.command|0",
+      "raw": "key.command",
+      "label": "Open Command",
+      "source": "Multiplayer",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "SLASH",
+      "stroke": {
+        "code": 53,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.screenshot|0",
+      "raw": "key.screenshot",
+      "label": "Take Screenshot",
+      "source": "Miscellaneous",
+      "group": "HUD & social",
+      "context": "UNIVERSAL",
+      "key": "F2",
+      "stroke": {
+        "code": 60,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.togglePerspective|0",
+      "raw": "key.togglePerspective",
+      "label": "Camera perspective",
+      "source": "Miscellaneous",
+      "group": "HUD & social",
+      "context": "IN_GAME",
+      "key": "V",
+      "stroke": {
+        "code": 47,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.smoothCamera|0",
+      "raw": "key.smoothCamera",
+      "label": "Toggle Cinematic Camera",
+      "source": "Miscellaneous",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.fullscreen|0",
+      "raw": "key.fullscreen",
+      "label": "Toggle Fullscreen",
+      "source": "Miscellaneous",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "F11",
+      "stroke": {
+        "code": 87,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.spectatorOutlines|0",
+      "raw": "key.spectatorOutlines",
+      "label": "Highlight Players (Spectators)",
+      "source": "Miscellaneous",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.swapHands|0",
+      "raw": "key.swapHands",
+      "label": "Swap hands",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "IN_GAME",
+      "key": "X",
+      "stroke": {
+        "code": 45,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.creative|key.saveToolbarActivator|0",
+      "raw": "key.saveToolbarActivator",
+      "label": "Save Toolbar Activator",
+      "source": "Creative Mode",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.creative|key.loadToolbarActivator|0",
+      "raw": "key.loadToolbarActivator",
+      "label": "Load Toolbar Activator",
+      "source": "Creative Mode",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "GRAVE",
+      "stroke": {
+        "code": 41,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.misc|key.advancements|0",
+      "raw": "key.advancements",
+      "label": "Advancements",
+      "source": "Miscellaneous",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "BACKSLASH",
+      "stroke": {
+        "code": 43,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.1|0",
+      "raw": "key.hotbar.1",
+      "label": "Hotbar Slot 1",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "1",
+      "stroke": {
+        "code": 2,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.2|0",
+      "raw": "key.hotbar.2",
+      "label": "Hotbar Slot 2",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "2",
+      "stroke": {
+        "code": 3,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.3|0",
+      "raw": "key.hotbar.3",
+      "label": "Hotbar Slot 3",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "3",
+      "stroke": {
+        "code": 4,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.4|0",
+      "raw": "key.hotbar.4",
+      "label": "Hotbar Slot 4",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "4",
+      "stroke": {
+        "code": 5,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.5|0",
+      "raw": "key.hotbar.5",
+      "label": "Hotbar Slot 5",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "5",
+      "stroke": {
+        "code": 6,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.6|0",
+      "raw": "key.hotbar.6",
+      "label": "Hotbar Slot 6",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "6",
+      "stroke": {
+        "code": 7,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.7|0",
+      "raw": "key.hotbar.7",
+      "label": "Hotbar Slot 7",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "7",
+      "stroke": {
+        "code": 8,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.8|0",
+      "raw": "key.hotbar.8",
+      "label": "Hotbar Slot 8",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "8",
+      "stroke": {
+        "code": 9,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|key.hotbar.9|0",
+      "raw": "key.hotbar.9",
+      "label": "Hotbar Slot 9",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "9",
+      "stroke": {
+        "code": 10,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.inventory|cos.key.opencosarmorinventory|0",
+      "raw": "cos.key.opencosarmorinventory",
+      "label": "OpenCosmeticArmorInventory",
+      "source": "Inventory",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|Scene1 start/pause|0",
+      "raw": "Scene1 start/pause",
+      "label": "Scene1 start/pause",
+      "source": "Gameplay",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "NUMPAD1",
+      "stroke": {
+        "code": 79,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|Scene2 start/pause|0",
+      "raw": "Scene2 start/pause",
+      "label": "Scene2 start/pause",
+      "source": "Gameplay",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "NUMPAD2",
+      "stroke": {
+        "code": 80,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|Scene3 start/pause|0",
+      "raw": "Scene3 start/pause",
+      "label": "Scene3 start/pause",
+      "source": "Gameplay",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "NUMPAD3",
+      "stroke": {
+        "code": 81,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|Scene reset|0",
+      "raw": "Scene reset",
+      "label": "Scene reset",
+      "source": "Gameplay",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "NUMPAD0",
+      "stroke": {
+        "code": 82,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.gameplay|Quest Log|0",
+      "raw": "Quest Log",
+      "label": "NPC quest log",
+      "source": "Gameplay",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "LBRACKET",
+      "stroke": {
+        "code": 26,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.open|0",
+      "raw": "key.fieldcontrols.open",
+      "label": "Open settings",
+      "source": "Field Controls",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "F8",
+      "stroke": {
+        "code": 66,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldhud|key.fieldhud.settings|0",
+      "raw": "key.fieldhud.settings",
+      "label": "HUD settings & layout",
+      "source": "Field HUD",
+      "group": "HUD & social",
+      "context": "UNIVERSAL",
+      "key": "F6",
+      "stroke": {
+        "code": 64,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldhud|key.fieldhud.mode|0",
+      "raw": "key.fieldhud.mode",
+      "label": "Cycle HUD mode",
+      "source": "Field HUD",
+      "group": "HUD & social",
+      "context": "UNIVERSAL",
+      "key": "F7",
+      "stroke": {
+        "code": 65,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.ftbmods|key.ftbquests.quests|0",
+      "raw": "key.ftbquests.quests",
+      "label": "Quest book",
+      "source": "FTB Mods",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "U",
+      "stroke": {
+        "code": 22,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.toggleOverlay|0",
+      "raw": "key.jei.toggleOverlay",
+      "label": "Show/Hide JEI Overlays",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Ctrl + O",
+      "stroke": {
+        "code": 24,
+        "mod": "CONTROL"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.focusSearch|0",
+      "raw": "key.jei.focusSearch",
+      "label": "Select Search Bar",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Ctrl + F",
+      "stroke": {
+        "code": 33,
+        "mod": "CONTROL"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.toggleCheatMode|0",
+      "raw": "key.jei.toggleCheatMode",
+      "label": "Toggle Cheat Mode",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.toggleEditMode|0",
+      "raw": "key.jei.toggleEditMode",
+      "label": "Toggle Hide Ingredients Mode",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.showRecipe|0",
+      "raw": "key.jei.showRecipe",
+      "label": "Show Recipe",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "R",
+      "stroke": {
+        "code": 19,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.showUses|0",
+      "raw": "key.jei.showUses",
+      "label": "Show Uses",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "U",
+      "stroke": {
+        "code": 22,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.recipeBack|0",
+      "raw": "key.jei.recipeBack",
+      "label": "Previous Recipe",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "BACK",
+      "stroke": {
+        "code": 14,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.previousPage|0",
+      "raw": "key.jei.previousPage",
+      "label": "Previous Page",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "PgUp",
+      "stroke": {
+        "code": 201,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.nextPage|0",
+      "raw": "key.jei.nextPage",
+      "label": "Next Page",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "PgDn",
+      "stroke": {
+        "code": 209,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.closeRecipeGui|0",
+      "raw": "key.jei.closeRecipeGui",
+      "label": "Close Recipes GUI",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "ESCAPE",
+      "stroke": {
+        "code": 1,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.bookmark|0",
+      "raw": "key.jei.bookmark",
+      "label": "Add/Remove Bookmark",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "A",
+      "stroke": {
+        "code": 30,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.toggleBookmarkOverlay|0",
+      "raw": "key.jei.toggleBookmarkOverlay",
+      "label": "Show/Hide Bookmarked Ingredients",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.copy.recipe.id|0",
+      "raw": "key.jei.copy.recipe.id",
+      "label": "Copy Recipe ID to Clipboard",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "jei (Just Enough Items)|key.jei.pauseRecipeCycling|0",
+      "raw": "key.jei.pauseRecipeCycling",
+      "label": "Pause Recipe Cycling",
+      "source": "jei (Just Enough Items)",
+      "group": "Inventory",
+      "context": "GUI",
+      "key": "L Shift",
+      "stroke": {
+        "code": 42,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "keys.armourers_workshop:category|keys.armourers_workshop.undo|0",
+      "raw": "keys.armourers_workshop.undo",
+      "label": "Undo",
+      "source": "Armourer's Workshop",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "F",
+      "stroke": {
+        "code": 33,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "keys.armourers_workshop:category|keys.armourers_workshop.open-wardrobe|0",
+      "raw": "keys.armourers_workshop.open-wardrobe",
+      "label": "Open Wardrobe",
+      "source": "Armourer's Workshop",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "O",
+      "stroke": {
+        "code": 24,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.status|0",
+      "raw": "key.fieldcontrols.status",
+      "label": "Character status",
+      "source": "Field Controls",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "C",
+      "stroke": {
+        "code": 46,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.cast|0",
+      "raw": "key.fieldcontrols.cast",
+      "label": "Cast selected art",
+      "source": "Field Controls",
+      "group": "Combat & arts",
+      "context": "IN_GAME",
+      "key": "R",
+      "stroke": {
+        "code": 19,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.journal|0",
+      "raw": "key.fieldcontrols.journal",
+      "label": "Mission journal",
+      "source": "Field Controls",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "J",
+      "stroke": {
+        "code": 36,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.recall|0",
+      "raw": "key.fieldcontrols.recall",
+      "label": "Recall companion",
+      "source": "Field Controls",
+      "group": "Combat & arts",
+      "context": "IN_GAME",
+      "key": "N",
+      "stroke": {
+        "code": 49,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.fieldcontrols|key.fieldcontrols.arts|0",
+      "raw": "key.fieldcontrols.arts",
+      "label": "Browse learned arts",
+      "source": "Field Controls",
+      "group": "Advanced",
+      "context": "IN_GAME",
+      "key": "K",
+      "stroke": {
+        "code": 37,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.categories.hvbijuu|key.hvbijuu.activate|0",
+      "raw": "key.hvbijuu.activate",
+      "label": "Activate armor ability",
+      "source": "Hidden Village Bijuu Armor",
+      "group": "Combat & arts",
+      "context": "UNIVERSAL",
+      "key": "G",
+      "stroke": {
+        "code": 34,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.travelersbackpack.category|key.travelersbackpack.inventory|0",
+      "raw": "key.travelersbackpack.inventory",
+      "label": "Open backpack",
+      "source": "Traveler's Backpack",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "B",
+      "stroke": {
+        "code": 48,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.travelersbackpack.category|key.travelersbackpack.toggle_tank|0",
+      "raw": "key.travelersbackpack.toggle_tank",
+      "label": "Switch backpack tank",
+      "source": "Traveler's Backpack",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "L",
+      "stroke": {
+        "code": 38,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "key.travelersbackpack.category|key.travelersbackpack.cycle_tool|0",
+      "raw": "key.travelersbackpack.cycle_tool",
+      "label": "Cycle backpack tool",
+      "source": "Traveler's Backpack",
+      "group": "Inventory",
+      "context": "UNIVERSAL",
+      "key": "Z",
+      "stroke": {
+        "code": 44,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "WorldEdit|WorldEdit Reference|0",
+      "raw": "WorldEdit Reference",
+      "label": "WorldEdit Reference",
+      "source": "WorldEdit",
+      "group": "Advanced",
+      "context": "UNIVERSAL",
+      "key": "Q",
+      "stroke": {
+        "code": 16,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_open_map|0",
+      "raw": "gui.xaero_open_map",
+      "label": "World map",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "M",
+      "stroke": {
+        "code": 50,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_open_settings|0",
+      "raw": "gui.xaero_open_settings",
+      "label": "Open Settings",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "I",
+      "stroke": {
+        "code": 23,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_world_map_server_settings|0",
+      "raw": "gui.xaero_world_map_server_settings",
+      "label": "Open Server Settings",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_map_zoom_in|0",
+      "raw": "gui.xaero_map_zoom_in",
+      "label": "Zoom In (alternative)",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_map_zoom_out|0",
+      "raw": "gui.xaero_map_zoom_out",
+      "label": "Zoom Out (alternative)",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_quick_confirm|0",
+      "raw": "gui.xaero_quick_confirm",
+      "label": "Quick Manual Confirmation",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "R Shift",
+      "stroke": {
+        "code": 54,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's World Map|gui.xaero_toggle_dimension|0",
+      "raw": "gui.xaero_toggle_dimension",
+      "label": "Toggle Dimension",
+      "source": "Xaero's World Map",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_minimap_settings|0",
+      "raw": "gui.xaero_minimap_settings",
+      "label": "Minimap settings",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "RBRACKET",
+      "stroke": {
+        "code": 27,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_minimap_server_profiles|0",
+      "raw": "gui.xaero_minimap_server_profiles",
+      "label": "Minimap Server Settings",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_zoom_in|0",
+      "raw": "gui.xaero_zoom_in",
+      "label": "Zoom In Minimap",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_zoom_out|0",
+      "raw": "gui.xaero_zoom_out",
+      "label": "Zoom Out Minimap",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_new_waypoint|0",
+      "raw": "gui.xaero_new_waypoint",
+      "label": "Create waypoint",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "P",
+      "stroke": {
+        "code": 25,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_waypoints_key|0",
+      "raw": "gui.xaero_waypoints_key",
+      "label": "Waypoint list",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "H",
+      "stroke": {
+        "code": 35,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_enlarge_map|0",
+      "raw": "gui.xaero_enlarge_map",
+      "label": "Enlarge minimap",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Y",
+      "stroke": {
+        "code": 21,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_map|0",
+      "raw": "gui.xaero_toggle_map",
+      "label": "Toggle Minimap",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_waypoints|0",
+      "raw": "gui.xaero_toggle_waypoints",
+      "label": "Toggle In-World Waypoints",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_map_waypoints|0",
+      "raw": "gui.xaero_toggle_map_waypoints",
+      "label": "Toggle On-Map Waypoints",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_slime|0",
+      "raw": "gui.xaero_toggle_slime",
+      "label": "Toggle Slime Chunks",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_grid|0",
+      "raw": "gui.xaero_toggle_grid",
+      "label": "Toggle Chunk Grid",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_instant_waypoint|0",
+      "raw": "gui.xaero_instant_waypoint",
+      "label": "Quick Waypoint",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "ADD",
+      "stroke": {
+        "code": 78,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_switch_waypoint_set|0",
+      "raw": "gui.xaero_switch_waypoint_set",
+      "label": "Switch Waypoint Set",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_display_all_sets|0",
+      "raw": "gui.xaero_display_all_sets",
+      "label": "Toggle All WP Sets Render",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_light_overlay|0",
+      "raw": "gui.xaero_toggle_light_overlay",
+      "label": "Toggle Light Overlay",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_entity_radar|0",
+      "raw": "gui.xaero_toggle_entity_radar",
+      "label": "Toggle Entity Radar",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_reverse_entity_radar|0",
+      "raw": "gui.xaero_reverse_entity_radar",
+      "label": "Reverse Radar Render Order",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_manual_cave_mode|0",
+      "raw": "gui.xaero_toggle_manual_cave_mode",
+      "label": "Toggle Manual Cave Mode",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_alternative_list_players|0",
+      "raw": "gui.xaero_alternative_list_players",
+      "label": "\"List Players\" Alternative",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_tracked_players_on_map|0",
+      "raw": "gui.xaero_toggle_tracked_players_on_map",
+      "label": "Toggle Tracked Players On Map",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    },
+    {
+      "id": "Xaero's Minimap|gui.xaero_toggle_tracked_players_in_world|0",
+      "raw": "gui.xaero_toggle_tracked_players_in_world",
+      "label": "Toggle Tracked Players In World",
+      "source": "Xaero's Minimap",
+      "group": "World & map",
+      "context": "UNIVERSAL",
+      "key": "Unbound",
+      "stroke": {
+        "code": 0,
+        "mod": "NONE"
+      }
+    }
+  ]
+}

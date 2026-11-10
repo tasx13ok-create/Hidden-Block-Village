@@ -1,0 +1,81 @@
+{
+  "module": "vale-compatibility-helpers",
+  "archive": "Vale-Compatibility-Helpers-Source.zip",
+  "archive_bytes": 9797,
+  "archive_sha256": "2e9f5f52a9a5c573bbcb12d502d325115755707382f61a73437a874fa5344b85",
+  "license_notice_scope": "owner-distribution-permission",
+  "files": [
+    {
+      "archive_path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
+      "path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
+      "bytes": 297,
+      "sha256": "0abfe41fa42d97c255425c8810a040285759fe02c3901136332138e35e90029a"
+    },
+    {
+      "archive_path": "src/village/vale/clientcompat/ClientLifecyclePlugin.java",
+      "path": "src/village/vale/clientcompat/ClientLifecyclePlugin.java",
+      "bytes": 793,
+      "sha256": "efce34d6bfce2ef838b144890de01e2e91afeefe0a421f37e9de39437baf2366"
+    },
+    {
+      "archive_path": "src/village/vale/clientcompat/ClientLifecycleTransformer.java",
+      "path": "src/village/vale/clientcompat/ClientLifecycleTransformer.java",
+      "bytes": 2150,
+      "sha256": "d3d991498516e03e9427b15a8f55967507e010760aa9c100b1fa5b75ddd12e97"
+    },
+    {
+      "archive_path": "src/village/vale/clientcompat/SafeShutdown.java",
+      "path": "src/village/vale/clientcompat/SafeShutdown.java",
+      "bytes": 2456,
+      "sha256": "4cafe600953aeb89d204940053709ccba67cbcef606316140744f0bce22b81eb"
+    },
+    {
+      "archive_path": "src/village/vale/damagecompat/DamageCompatMod.java",
+      "path": "src/village/vale/damagecompat/DamageCompatMod.java",
+      "bytes": 289,
+      "sha256": "60f291595f31fc93596a3477f6429da2d19804bac9237472bae1fc8755da472c"
+    },
+    {
+      "archive_path": "src/village/vale/damagecompat/DamageCompatPlugin.java",
+      "path": "src/village/vale/damagecompat/DamageCompatPlugin.java",
+      "bytes": 880,
+      "sha256": "cb9bd4ba726d64fc661864e8f7e7117b83254cd7bd373bde478d4a5313b376e9"
+    },
+    {
+      "archive_path": "src/village/vale/damagecompat/DamageCompatTransformer.java",
+      "path": "src/village/vale/damagecompat/DamageCompatTransformer.java",
+      "bytes": 4154,
+      "sha256": "860fcae6c8fbc97fd50d9653f2abcb4083aa61fc9fb6aa6c8363165073249177"
+    },
+    {
+      "archive_path": "src/village/vale/serverbridge/ValeServerBridge.java",
+      "path": "src/village/vale/serverbridge/ValeServerBridge.java",
+      "bytes": 4627,
+      "sha256": "dc957adaeeff417da41c48b48b44e4ad93c56116b3f2641907c067d0a23ae3df"
+    },
+    {
+      "archive_path": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "bytes": 542,
+      "sha256": "4e84c9417fa6e1827e25ed3c84af93af6359b37f5cc43d311f95cb9ef3e240ba"
+    },
+    {
+      "archive_path": "BUILD.txt",
+      "path": "BUILD.txt",
+      "bytes": 1411,
+      "sha256": "4ad52cbad5d997c93e1a1e409bb190ee40c399e5fbea5bf9c6a5ab96a883857e"
+    },
+    {
+      "archive_path": "SOURCE-SHA256.json",
+      "path": "SOURCE-SHA256.json",
+      "bytes": 1279,
+      "sha256": "786e606c8a302d5f27361f7c6ab7a36e6462a8fb7d685ec2c15967c20077d711"
+    }
+  ],
+  "excluded": [],
+  "normalizations": [],
+  "staged_files": 11,
+  "staged_bytes": 18878,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Original adapter sources and BUILD.txt; external compile inputs are not included."
+}

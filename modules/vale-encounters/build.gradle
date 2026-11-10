@@ -1,0 +1,20 @@
+plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
+group='village.vale'; version='0.3.6'
+base { archivesName='vale-encounters' }
+java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
+minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
+dependencies { compileOnly files('../core-0.3.5-arsenal/build/libs/vale-orders-0.3.5-dev.jar','compile-api-shim.jar') }
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.incremental=false }
+if(providers.gradleProperty('prebuiltMinecraft').isPresent()) {
+ def input=file(providers.gradleProperty('prebuiltMinecraft').get()); def target=file('build/rfg/recompiled_minecraft-1.12.2.jar'); target.parentFile.mkdirs(); if(!target.exists())java.nio.file.Files.copy(input.toPath(),target.toPath())
+ sourceSets.main.compileClasspath+=files(input); sourceSets.main.runtimeClasspath+=files(input)
+ def prepared=['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg','decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar','decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources','createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
+ tasks.matching { it.name in prepared }.configureEach { enabled=false }
+}
+
+sourceSets { qa { java.srcDirs=['qa']; compileClasspath+=sourceSets.main.output+sourceSets.main.compileClasspath; runtimeClasspath+=output+compileClasspath } }
+tasks.register('qaJar',Jar) { dependsOn tasks.named('qaClasses'); from sourceSets.qa.output; archiveClassifier='qa-dev' }
+tasks.register('qaProductionJar',Jar) { dependsOn tasks.named('qaJar'); from sourceSets.qa.output; archiveClassifier='qa' }
+if(providers.gradleProperty('encounterProbe').isPresent()) {
+ tasks.named('jar',Jar).configure { dependsOn tasks.named('qaClasses'); from sourceSets.qa.output }
+}

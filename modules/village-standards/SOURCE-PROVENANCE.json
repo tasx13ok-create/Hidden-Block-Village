@@ -1,0 +1,166 @@
+{
+  "module": "village-standards",
+  "archive": "Village-Standards-0.2.0-Authoring-Source.zip",
+  "archive_bytes": 16898,
+  "archive_sha256": "14ace669eaf7dcd14fc477cec6c6d12cb74b865fea26597cfbf95e99ba7e903d",
+  "license_notice_scope": "owner-permission-for-new-art; reference-code-excluded",
+  "files": [
+    {
+      "archive_path": "resources/mcmod.info",
+      "path": "resources/mcmod.info",
+      "bytes": 284,
+      "sha256": "d7cec85bcaeeeb3e3a63f74646d499752ba7edc5df78e6d84775ac72990be342"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/models/item/stone_picture.json",
+      "path": "resources/assets/hvdungeonpictures/models/item/stone_picture.json",
+      "bytes": 93,
+      "sha256": "d3cc9473e178fa2395c93844759c44c6814f7d35c161eee9628432d97fab1366"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/models/item/sand_picture.json",
+      "path": "resources/assets/hvdungeonpictures/models/item/sand_picture.json",
+      "bytes": 92,
+      "sha256": "9d8230497132e08124f6a609a2065be7d0dcc3b31b27a339872e567a03b3da80"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/models/item/mist_picture.json",
+      "path": "resources/assets/hvdungeonpictures/models/item/mist_picture.json",
+      "bytes": 92,
+      "sha256": "71e8c99336a625e1621393fa262092cf2c5c77efbb366143619901a3c382070d"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/models/item/leaf_picture.json",
+      "path": "resources/assets/hvdungeonpictures/models/item/leaf_picture.json",
+      "bytes": 92,
+      "sha256": "808d9bebfa7e1c0ca93b63ea32744941693eb3243b1595e1d74ae7e07260175a"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/models/item/cloud_picture.json",
+      "path": "resources/assets/hvdungeonpictures/models/item/cloud_picture.json",
+      "bytes": 93,
+      "sha256": "8ef2ba2f7f7d25937c94b6b4e1efe794497783ea7c4abe018e328ebdf8629b06"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/lang/en_us.lang",
+      "path": "resources/assets/hvdungeonpictures/lang/en_us.lang",
+      "bytes": 417,
+      "sha256": "f6c2e893770224318de42a8c5c4cb4e16522db9329c48c2bb096bda80bd96405"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/pictures/sand.png",
+      "path": "resources/assets/hvdungeonpictures/textures/pictures/sand.png",
+      "bytes": 1524,
+      "sha256": "4fc621afa8aaa0138232e3ceda7ed716fb464c919f022a65b88837cf0eafb35a"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/pictures/stone.png",
+      "path": "resources/assets/hvdungeonpictures/textures/pictures/stone.png",
+      "bytes": 1436,
+      "sha256": "f220b146bf7994285f7ffe275e826a707d820261c306ccf461bc86e7fcac4024"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/pictures/cloud.png",
+      "path": "resources/assets/hvdungeonpictures/textures/pictures/cloud.png",
+      "bytes": 1447,
+      "sha256": "d5e407b06fa11965f5b89fc280c4319b7aedbc7b7b85d3d4d530c2214f8606f7"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/pictures/mist.png",
+      "path": "resources/assets/hvdungeonpictures/textures/pictures/mist.png",
+      "bytes": 1347,
+      "sha256": "76e5e49d5f60493460b566cec06fe8bd64635dee3caad4d483e6a12d55dfbd17"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/pictures/leaf.png",
+      "path": "resources/assets/hvdungeonpictures/textures/pictures/leaf.png",
+      "bytes": 1503,
+      "sha256": "b177c891e7b958af2f715928c59ff392fe0ab3b66c1bcb2d145bc4da1fa32fbd"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/items/mist_picture.png",
+      "path": "resources/assets/hvdungeonpictures/textures/items/mist_picture.png",
+      "bytes": 227,
+      "sha256": "796dda674fcba0b97e67626300b48cd3ac3a083855e40ffe145ea7293459490f"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/items/leaf_picture.png",
+      "path": "resources/assets/hvdungeonpictures/textures/items/leaf_picture.png",
+      "bytes": 227,
+      "sha256": "647fa439e71cd037ba73718053150c1be23bfec0f8c061f08194c17d6f572797"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/items/cloud_picture.png",
+      "path": "resources/assets/hvdungeonpictures/textures/items/cloud_picture.png",
+      "bytes": 227,
+      "sha256": "bcdfa52d3be7dda91f812bee2594a3158bb3ca5162734bec4f23f0b02547af49"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/items/stone_picture.png",
+      "path": "resources/assets/hvdungeonpictures/textures/items/stone_picture.png",
+      "bytes": 227,
+      "sha256": "568611920de0647c1a5e4f1e54c8c9107dbf0f4cb26ba675a6044387a0d73c5e"
+    },
+    {
+      "archive_path": "resources/assets/hvdungeonpictures/textures/items/sand_picture.png",
+      "path": "resources/assets/hvdungeonpictures/textures/items/sand_picture.png",
+      "bytes": 227,
+      "sha256": "66532e9c281c73317450ac35bbad9201cae64eadbbd8fbfcf367114f7b4e31d5"
+    },
+    {
+      "archive_path": "README.txt",
+      "path": "README.txt",
+      "bytes": 560,
+      "sha256": "9c236babccc6435a7822cf547b72da50f2edfd95d7e586d16a06da332e3a472d"
+    },
+    {
+      "archive_path": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "bytes": 542,
+      "sha256": "4e84c9417fa6e1827e25ed3c84af93af6359b37f5cc43d311f95cb9ef3e240ba"
+    }
+  ],
+  "excluded": [
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/ClientProxy.java",
+      "bytes": 1778,
+      "sha256": "41fd437e1b05ce3af98de55bbc0868fbf7aae1d647cc33c317b2e00f232b5a1d",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    },
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/CommonProxy.java",
+      "bytes": 124,
+      "sha256": "5a4d3fb9dca91410cc0993d1f82a104b92b3a8d073e3f98ba0f61d8388fd6643",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    },
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/DungeonPictures.java",
+      "bytes": 2586,
+      "sha256": "d260ef31538b4149a20ee594f5ac5237d050e56cac8556dd83ec3c388eede0be",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    },
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/EntityDungeonPicture.java",
+      "bytes": 4296,
+      "sha256": "0c91034c10b68c8ca8ede7f96ff90a71bcb6aad9a64cb79d3bfeba137d62d646",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    },
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/ItemDungeonPicture.java",
+      "bytes": 2912,
+      "sha256": "1f6b4cf6aa85622772aa466e054a4a48cac50b71c4eea3f1644638445b1d929e",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    },
+    {
+      "archive_path": "user-owned-base-reference/village/pictures/PictureRenderer.java",
+      "bytes": 5690,
+      "sha256": "45d91e7259b49ac04e1faa658e03ede39f220226725a81705fd7ccd06ca322f1",
+      "reason": "Archive explicitly identifies these as recovered reference records, not new rendering source."
+    }
+  ],
+  "normalizations": [],
+  "staged_files": 19,
+  "staged_bytes": 10657,
+  "byte_identical_java_and_resources": true,
+  "build_scope": "Original art and metadata only; excluded reference records do not form a reproducible complete renderer project."
+}

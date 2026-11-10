@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "waystones:waystone"
+    },
+    "legacy=1": {
+      "model": "waystones:waystone"
+    },
+    "legacy=2": {
+      "model": "waystones:waystone"
+    },
+    "legacy=3": {
+      "model": "waystones:waystone"
+    },
+    "legacy=4": {
+      "model": "waystones:waystone"
+    },
+    "legacy=5": {
+      "model": "waystones:waystone"
+    },
+    "legacy=6": {
+      "model": "waystones:waystone"
+    },
+    "legacy=7": {
+      "model": "waystones:waystone"
+    },
+    "legacy=8": {
+      "model": "waystones:waystone"
+    },
+    "legacy=9": {
+      "model": "waystones:waystone"
+    },
+    "legacy=10": {
+      "model": "waystones:waystone"
+    },
+    "legacy=11": {
+      "model": "waystones:waystone"
+    },
+    "legacy=12": {
+      "model": "waystones:waystone"
+    },
+    "legacy=13": {
+      "model": "waystones:waystone"
+    },
+    "legacy=14": {
+      "model": "waystones:waystone"
+    },
+    "legacy=15": {
+      "model": "waystones:waystone"
+    }
+  }
+}

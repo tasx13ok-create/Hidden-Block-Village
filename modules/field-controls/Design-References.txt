@@ -1,0 +1,47 @@
+FIELD MENU 1.3 / ORIGINAL IMPLEMENTATION / RESEARCHED 2026-11-09
+
+PRIMARY REFERENCES
+https://github.com/CaffeineMC/sodium
+https://github.com/CaffeineMC/sodium/pull/2837
+https://github.com/CaffeineMC/sodium/wiki/CaffeineMC-Maven-%26-Config-API
+https://github.com/CaffeineMC/sodium/blob/dev/common/src/api/java/net/caffeinemc/mods/sodium/api/config/USAGE.md
+https://github.com/CaffeineMC/sodium/blob/dev/LICENSE.md
+
+The current official project identifies PolyForm Shield 1.0.0 licensing. This
+candidate does not copy, translate, modify or bundle Sodium implementation,
+assets, icons, fonts or binaries. No Sodium dependency is introduced. Its public
+design discussion and API documentation inform only general interaction ideas.
+
+Research observations: groups organize real options; booleans, formatted numeric
+values and enum choices need clear affordances; external routes should open
+actual mod/native screens; an apply boundary keeps changes understandable.
+The public redesign discussion places Apply/Done on a stable bottom edge and
+calls out overflow, scrolling and contextual information. Those are useful
+usability goals for this independent Forge 1.12.2 UI, not a pixel-for-pixel copy.
+No official UI screenshot assets are reused in this package.
+
+PROJECT DESIGN DECISIONS
+One centered board (maximum 780 x 466 logical pixels); fixed footer; stable
+navigation/content columns; right help on wide screens and bottom help on narrow
+screens. Aligned option values are separate from their labels. Binding rows
+retain a separate reset target. Presets show actual installed-layout data and
+every change is reviewable. Dialogs isolate tab focus and restore the opener.
+
+Palette: ink #1B2428; paper #E1D1AF; muted #A8B1AD; pale teal #9DDDDC;
+brass #C0A779; cord #B26155. Cord is a decorative line only. Paper, brass and
+teal are readable against opaque ink; selected/error states also use text or
+geometry, so color is not the sole state signal. Native font and existing
+Minecraft item rendering remain supplied by the installed game.
+
+120 ms cubic color easing, 90 ms pressed underline, no layout movement or
+animated input target. The existing HUD Motion preference controls reduced
+motion. No extra persistent setting, telemetry, network request or gameplay
+automation is introduced by the menu design.
+
+MenuLayout.java, MenuMotion.java, MenuFocus.java, DraftJournal.java and the
+Surface renderer are original project code. The tiny seal is four pairs of
+geometric corner strokes plus a center square, drawn procedurally. It does not
+use a clan mark, named character, ripped texture, copied logo or held icon art.
+
+The project MIT license does not cover third-party mods or constitute broader
+IP clearance. Gameplay equivalence and pack-wide licensing are separate audits.

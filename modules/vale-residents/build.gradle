@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+group = 'village.residents'
+version = '0.2.0'
+base { archivesName = 'vale-residents' }
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+    withSourcesJar()
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+    username.set('ResidentDeveloper')
+}
+def valeApi = providers.gradleProperty('valeApiJar').orElse('deps/vale-orders-0.3.3-dev.jar')
+dependencies { compileOnly files(valeApi.get()) }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.incremental = false
+}
+sourceSets {
+    residentChecks {
+        java.srcDirs = ['tests']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.register('verifyResidents', JavaExec) {
+    dependsOn tasks.named('residentChecksClasses')
+    classpath = sourceSets.residentChecks.runtimeClasspath
+    mainClass.set('village.residents.ResidentChecks')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyResidents') }
+
+tasks.register('verifyDialogue', JavaExec) {
+    dependsOn tasks.named('residentChecksClasses')
+    classpath = sourceSets.residentChecks.runtimeClasspath
+    mainClass.set('village.residents.DialogueChecks')
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyDialogue') }

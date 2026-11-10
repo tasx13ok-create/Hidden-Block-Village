@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "valeorders:items/siphon_hook_charged"
+  }
+}

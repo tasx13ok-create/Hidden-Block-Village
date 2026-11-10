@@ -1,0 +1,34 @@
+[
+  {
+    "path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
+    "sha256": "0abfe41fa42d97c255425c8810a040285759fe02c3901136332138e35e90029a"
+  },
+  {
+    "path": "src/village/vale/clientcompat/ClientLifecyclePlugin.java",
+    "sha256": "efce34d6bfce2ef838b144890de01e2e91afeefe0a421f37e9de39437baf2366"
+  },
+  {
+    "path": "src/village/vale/clientcompat/ClientLifecycleTransformer.java",
+    "sha256": "d3d991498516e03e9427b15a8f55967507e010760aa9c100b1fa5b75ddd12e97"
+  },
+  {
+    "path": "src/village/vale/clientcompat/SafeShutdown.java",
+    "sha256": "4cafe600953aeb89d204940053709ccba67cbcef606316140744f0bce22b81eb"
+  },
+  {
+    "path": "src/village/vale/damagecompat/DamageCompatMod.java",
+    "sha256": "60f291595f31fc93596a3477f6429da2d19804bac9237472bae1fc8755da472c"
+  },
+  {
+    "path": "src/village/vale/damagecompat/DamageCompatPlugin.java",
+    "sha256": "cb9bd4ba726d64fc661864e8f7e7117b83254cd7bd373bde478d4a5313b376e9"
+  },
+  {
+    "path": "src/village/vale/damagecompat/DamageCompatTransformer.java",
+    "sha256": "860fcae6c8fbc97fd50d9653f2abcb4083aa61fc9fb6aa6c8363165073249177"
+  },
+  {
+    "path": "src/village/vale/serverbridge/ValeServerBridge.java",
+    "sha256": "dc957adaeeff417da41c48b48b44e4ad93c56116b3f2641907c067d0a23ae3df"
+  }
+]
