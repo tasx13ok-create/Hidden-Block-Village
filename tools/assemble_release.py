@@ -160,26 +160,31 @@ def check_world_selection(path, world):
     rp.require(values == [world], "WORLD_SELECTION", "server.properties must select exactly one " + world + " world")
 
 
-def copy_checked(source, destination, expected):
+def copy_checked(source, destination, expected, progress=None):
     destination.parent.mkdir(parents=True, exist_ok=True)
     with rp.stable_reader(source) as src, destination.open("xb") as dst:
-        actual = rp.hash_stream(src, writer=dst, max_bytes=expected["bytes"])
+        actual = rp.hash_stream(src, writer=dst, max_bytes=expected["bytes"], progress=progress)
         dst.flush()
         os.fsync(dst.fileno())
     matches(actual, expected, str(source))
-    matches(rp.hash_file(destination), expected, str(destination))
+    matches(rp.hash_file(destination, progress=progress), expected, str(destination))
 
 
-def copy_input(source, report, destination):
+def copy_input(source, report, destination, progress=None):
     """Copy every original entry; no filtering or writes to the source."""
     destination.mkdir()
+    counters = rp.ProgressCounters(progress, "Copying files and reading them back", report["file_count"],
+                                   2 * report["total_file_bytes"])
     if report["source_kind"] == "directory":
         for entry in report["entries"]:
             target = destination / entry["path"]
             if entry["kind"] == "directory":
                 target.mkdir(parents=True, exist_ok=True)
             else:
-                copy_checked(source / entry["path"], target, entry)
+                copy_checked(source / entry["path"], target, entry,
+                             progress=counters.read_bytes if progress is not None else None)
+                counters.file_done()
+        counters.finish()
         return
     with rp.stable_reader(source) as stream, zipfile.ZipFile(stream) as archive:
         for entry in report["entries"]:
@@ -189,11 +194,14 @@ def copy_input(source, report, destination):
                 continue
             target.parent.mkdir(parents=True, exist_ok=True)
             with archive.open(entry["path"]) as src, target.open("xb") as dst:
-                actual = rp.hash_stream(src, writer=dst, max_bytes=entry["bytes"])
+                actual = rp.hash_stream(src, writer=dst, max_bytes=entry["bytes"],
+                                        progress=counters.read_bytes if progress is not None else None)
                 dst.flush()
                 os.fsync(dst.fileno())
             matches(actual, entry, entry["path"])
-            matches(rp.hash_file(target), entry, str(target))
+            matches(rp.hash_file(target, progress=counters.read_bytes if progress is not None else None), entry, str(target))
+            counters.file_done()
+    counters.finish()
 
 
 def validate_changes(changes, original, plan_dir, allowed):
@@ -416,9 +424,10 @@ def check_roster(root, inventory, roster, prefix):
     return ids
 
 
-def write_zip(root, report, destination):
+def write_zip(root, report, destination, progress=None):
     """Deterministic metadata/order; verify every ZIP entry against the tree."""
     partial = destination.with_name(destination.name + ".partial")
+    counters = rp.ProgressCounters(progress, "Compressing ZIP payload", report["file_count"], report["total_file_bytes"])
     with partial.open("xb") as stream:
         with zipfile.ZipFile(stream, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6, allowZip64=True) as archive:
             for entry in report["entries"]:
@@ -431,10 +440,13 @@ def write_zip(root, report, destination):
                     archive.writestr(info, b"")
                 else:
                     with rp.stable_reader(root / entry["path"]) as src, archive.open(info, "w", force_zip64=True) as dst:
-                        matches(rp.hash_stream(src, writer=dst, max_bytes=entry["bytes"]), entry, entry["path"])
+                        matches(rp.hash_stream(src, writer=dst, max_bytes=entry["bytes"],
+                                               progress=counters.read_bytes if progress is not None else None), entry, entry["path"])
+                    counters.file_done()
         stream.flush()
         os.fsync(stream.fileno())
-    verified = rp.audit(partial)
+    counters.finish()
+    verified = rp.audit(partial, progress=rp.progress_scope(progress, "Verifying completed ZIP"))
     rp.require(verified["inventory_sha256"] == report["inventory_sha256"], "ZIP_MISMATCH", "ZIP inventory differs from candidate tree")
     identity = short_identity(verified["archive"])
     rp.promote_no_clobber(partial, destination, identity)
@@ -486,7 +498,7 @@ def check_bootstrap(root, declaration, inventory, roster, required_configs, requ
     return raw, embedded["release"]
 
 
-def assemble(source, plan_path, export_root, output_name=None):
+def assemble(source, plan_path, export_root, output_name=None, progress=None):
     source, plan_path, export_root = map(rp.no_links, (source, plan_path, export_root))
     plan, plan_hash = rp.read_json(plan_path)
     fields(plan, ("schema", "candidate_id", "source_checkpoint", "input_payload_inventory_sha256", "world", "replacements", "server_mods", "client", "bootstrap", "required_configs"))
@@ -500,8 +512,8 @@ def assemble(source, plan_path, export_root, output_name=None):
     rp.require(not destination.exists(), "OUTPUT_CONFLICT", "Candidate destination must be new; incomplete outputs are not resumed")
     rp.require(source != export_root and not (source.is_dir() and source in export_root.parents), "OUTPUT_SEPARATION", "Export root must be outside the source")
     rp.require(source != destination and plan_path != destination and destination not in plan_path.parents, "OUTPUT_SEPARATION", "Input plan/source must be outside candidate output")
-    snapshot = rp.tree_snapshot(source) if source.is_dir() else None
-    before = rp.audit(source)
+    snapshot = rp.tree_snapshot(source, progress=rp.progress_scope(progress, "Source identity snapshot")) if source.is_dir() else None
+    before = rp.audit(source, progress=rp.progress_scope(progress, "Source inventory"))
     rp.require(before["payload_inventory_sha256"] == plan["input_payload_inventory_sha256"], "INPUT_MISMATCH", "Complete source payload differs from reviewed input")
     world = validate_world(before["entries"], plan["world"])
     original = files(before)
@@ -541,16 +553,16 @@ def assemble(source, plan_path, export_root, output_name=None):
     destination.mkdir()
     rp.atomic_json(destination / "INCOMPLETE.json", {"status": "INCOMPLETE", "candidate_id": candidate_id})
     stage = destination / "server"
-    copy_input(source, before, stage)
+    copy_input(source, before, stage, progress=rp.progress_scope(progress, "Complete server copy"))
     check_world_selection(stage / "server.properties", plan["world"]["path"])
     prior = destination / "prior-evidence"
     retired_server = retire(stage, (SERVER_EVIDENCE,), prior / "server")
     preserved_server_notes = preserve_installation_notes(stage, server_notes, prior / "server")
     apply_changes(stage, plan["replacements"], plan_path.parent)
     nested = stage / client["path"]
-    nested_before = rp.audit(nested)
+    nested_before = rp.audit(nested, progress=rp.progress_scope(progress, "Original client inventory"))
     client_stage = destination / "client-work"
-    copy_input(nested, nested_before, client_stage)
+    copy_input(nested, nested_before, client_stage, progress=rp.progress_scope(progress, "Client extraction"))
     allowed_client = lambda path: path == "manifest.json" or path in CLIENT_INSTALLATION_NOTES or bool(re.fullmatch(r"overrides/mods/[^/]+\.jar", path))
     validate_changes(client["replacements"], files(nested_before), plan_path.parent, allowed_client)
     client_notes = installation_note_changes(client["replacements"], client=True)
@@ -562,9 +574,9 @@ def assemble(source, plan_path, export_root, output_name=None):
     rp.require(manifest.get("version") == client["version"] and manifest.get("minecraft", {}).get("version") == "1.12.2", "CLIENT_VERSION", "Client manifest version differs")
     rp.require(manifest.get("minecraft", {}).get("modLoaders") == [{"id": "forge-" + client["forge"], "primary": True}], "CLIENT_VERSION", "Client Forge loader differs")
     rp.require(manifest.get("overrides") == "overrides" and manifest.get("files") == [], "CLIENT_INCOMPLETE", "Client must contain its complete local overrides; unresolved remote files are unsupported")
-    client_report = rp.audit(client_stage)
+    client_report = rp.audit(client_stage, progress=rp.progress_scope(progress, "Client mod roster inventory"))
     client_ids = check_roster(client_stage, files(client_report), client["mods"], "overrides/mods")
-    server_report = rp.audit(stage)
+    server_report = rp.audit(stage, progress=rp.progress_scope(progress, "Server mod roster inventory"))
     server_ids = check_roster(stage, files(server_report), plan["server_mods"], "mods")
     rp.require({"valeorders", "valeencounters"}.issubset(server_ids) and {"valeorders", "valeencounters"}.issubset(client_ids), "CLIENT_MISMATCH", "Core and Encounters must exist on both sides")
     shared = sorted(set(server_ids) & set(client_ids))
@@ -574,12 +586,12 @@ def assemble(source, plan_path, export_root, output_name=None):
                    "candidate_id": candidate_id, "mods": client["mods"],
                    "source_checkpoint": plan["source_checkpoint"], "runtime_acceptance": "NOT_RUN"}
     rp.atomic_json(client_stage / "CANDIDATE-ASSEMBLY.json", client_note)
-    client_report = rp.audit(client_stage)
+    client_report = rp.audit(client_stage, progress=rp.progress_scope(progress, "Final client inventory"))
     new_client = destination / "Client-Candidate.zip"
-    write_zip(client_stage, client_report, new_client)
+    write_zip(client_stage, client_report, new_client, progress=rp.progress_scope(progress, "Matching client ZIP"))
     nested.unlink()  # Owned incomplete output only; original nested ZIP is untouched.
     copy_checked(new_client, nested, rp.hash_file(new_client))
-    server_report = rp.audit(stage)
+    server_report = rp.audit(stage, progress=rp.progress_scope(progress, "Bootstrap payload inventory"))
     note_pins = [change["new"]["path"] for change in server_notes] + ([client["path"]] if client_notes else [])
     raw_bootstrap, release_id = check_bootstrap(stage, bootstrap, files(server_report), plan["server_mods"], configs, note_pins)
     rp.require(release_id == candidate_id, "BOOTSTRAP_PLAN", "Embedded release ID must equal candidate_id")
@@ -596,7 +608,7 @@ def assemble(source, plan_path, export_root, output_name=None):
                  "shared_mod_ids": shared, "runtime_acceptance": "NOT_RUN",
                  "pending_checks": PENDING, "prior_evidence": "INVALIDATED_FOR_THIS_CANDIDATE"}
     rp.atomic_json(stage / "release/CANDIDATE-ASSEMBLY.json", candidate)
-    after = rp.audit(stage)
+    after = rp.audit(stage, progress=rp.progress_scope(progress, "Final candidate inventory"))
     validate_world(after["entries"], plan["world"])
     check_world_selection(stage / "server.properties", plan["world"]["path"])
     # Verify every unchanged file, not only the map. Only explicitly replaced
@@ -607,11 +619,15 @@ def assemble(source, plan_path, export_root, output_name=None):
         if path not in exempt and not under(path, SERVER_EVIDENCE):
             matches(final_files.get(path), expected, path)
     final_zip = destination / (candidate_id + "-server-candidate.zip")
-    zip_report = write_zip(stage, after, final_zip)
+    zip_report = write_zip(stage, after, final_zip, progress=rp.progress_scope(progress, "Complete server ZIP"))
     if snapshot is not None:
-        rp.require(snapshot == rp.tree_snapshot(source), "SOURCE_CHANGED", "Source tree changed during assembly")
+        rp.require(snapshot == rp.tree_snapshot(source, progress=rp.progress_scope(progress, "Final source identity snapshot")),
+                   "SOURCE_CHANGED", "Source tree changed during assembly")
     else:
-        matches(rp.hash_file(source), before["archive"], str(source))
+        counters = rp.ProgressCounters(progress, "Final source archive identity", 1, before["archive"]["bytes"])
+        matches(rp.hash_file(source, progress=counters.read_bytes if progress is not None else None), before["archive"], str(source))
+        counters.file_done()
+        counters.finish()
     rp.atomic_json(destination / "input-inventory.json", before)
     rp.atomic_json(destination / "candidate-inventory.json", after)
     rp.atomic_json(destination / "client-inventory.json", client_report)
@@ -637,9 +653,11 @@ def main(argv=None):
     parser.add_argument("--plan", type=Path, required=True, help="Reviewed exact-byte assembly plan")
     parser.add_argument("--export-root", type=Path, required=True, help="Output parent, e.g. D:\\Codex\\Vale-Export")
     parser.add_argument("--name", help="New output directory name; defaults to candidate_id")
+    parser.add_argument("--progress", action="store_true", help="Print aggregate progress on stdout before the final JSON result")
     args = parser.parse_args(argv)
     try:
-        result = assemble(args.source, args.plan, args.export_root, args.name)
+        result = assemble(args.source, args.plan, args.export_root, args.name,
+                          progress=rp.ConsoleProgress() if args.progress else None)
     except KeyboardInterrupt:
         print(json.dumps({"status": "INTERRUPTED", "runtime_acceptance": "NOT_RUN", "note": "Retain incomplete output; use a fresh directory after fixing the cause."}), file=sys.stderr)
         return 130

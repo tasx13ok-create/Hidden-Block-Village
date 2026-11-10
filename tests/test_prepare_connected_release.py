@@ -218,6 +218,38 @@ class ConnectedPreparationTests(unittest.TestCase):
         self.assertTrue((candidate / "prior-evidence/server/release/OLD-ACCEPTANCE.json").is_file())
         self.assertTrue((candidate / "prior-evidence/client/CLIENT-PINS.json").is_file())
 
+    def test_progress_reaches_initial_audit_and_assembly_without_changing_outputs(self):
+        quiet = self.run_prepare()
+        export = self.root / "with-progress" / "Vale-Export"
+        events = []
+        def observe(event):
+            if event["phase"].startswith("Preparation source inventory:"):
+                self.assertFalse(export.exists())
+            events.append(event)
+        observed = pr.prepare(self.source, self.contract_path, self.write_contract(), export, progress=observe)
+        self.assertEqual(Path(quiet["archive"]).read_bytes(), Path(observed["archive"]).read_bytes())
+        for filename in ("Client-Candidate.zip", "ASSEMBLY.json", "input-inventory.json",
+                         "candidate-inventory.json", "client-inventory.json"):
+            self.assertEqual((Path(quiet["output"]) / filename).read_bytes(),
+                             (Path(observed["output"]) / filename).read_bytes())
+        for filename in ("Client-Prepared.zip", "candidate-plan.json"):
+            self.assertEqual((Path(quiet["preparation"]) / filename).read_bytes(),
+                             (Path(observed["preparation"]) / filename).read_bytes())
+        receipts = [json.loads((Path(result["preparation"]) / "PREPARATION.json").read_bytes())
+                    for result in (quiet, observed)]
+        for receipt in receipts:
+            # Output locations differ; all identities and evidence must remain exact.
+            del receipt["assembly"]["output"]
+            del receipt["assembly"]["archive"]
+        self.assertEqual(*receipts)
+        self.assertTrue(events[0]["phase"].startswith("Preparation source inventory:"))
+        self.assertTrue(any(event["phase"].startswith("Assembly: Complete server copy:") for event in events))
+        self.assertTrue(any(event["phase"] == "Assembly: Complete server ZIP: Verifying completed ZIP: Inventory checks passed"
+                            for event in events))
+        self.assertNotIn(str(self.root), json.dumps(events))
+        self.assertNotIn("Naruto.test", json.dumps(events))
+        self.assert_source_unchanged()
+
     def test_installation_notes_preserve_originals_and_bind_client_wrapper_and_inventories(self):
         notes = self.installation_notes()
         result = self.run_prepare()

@@ -274,7 +274,7 @@ def check_result_roster(original, replacements, roster, source, preparation, pre
     return predicted, ids
 
 
-def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
+def prepare(source, contract_path, contract_sha256, export_root, launcher=None, progress=None):
     source, contract_path, export_root = map(rp.no_links, (source, contract_path, export_root))
     contract, contract_identity = rp.read_json(contract_path)
     rp.require(contract_identity["sha256"] == rp.sha(contract_sha256),
@@ -303,7 +303,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
                rp.digest([e for e in expected_entries if e["kind"] == "file"]) == rp.sha(inventory_ref["payload_inventory_sha256"]),
                "INVALID_INVENTORY", "Reviewed inventory digests disagree with its exact entries")
     print("Checking the complete source against the reviewed inventory.", flush=True)
-    before = rp.audit(source)
+    before = rp.audit(source, progress=rp.progress_scope(progress, "Preparation source inventory"))
     rp.require(before["entries"] == expected_entries, "SOURCE_INVENTORY_MISMATCH",
                "Source differs from the fixed reviewed inventory; no changed source is automatically approved")
     ar.validate_world(before["entries"], contract["world"])
@@ -318,7 +318,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     exact(original.get(client["path"]), client, client["path"])
     ar.fields(client["manifest"], ("bytes", "sha256"))
     rp.identity(client["manifest"])
-    client_report = rp.audit(source / client["path"])
+    client_report = rp.audit(source / client["path"], progress=rp.progress_scope(progress, "Preparation original client inventory"))
     client_original = ar.files(client_report)
     exact(client_original.get("manifest.json"), client["manifest"], "original client manifest")
     notes = contract.get("installation_notes", {"server": [], "client": []})
@@ -404,7 +404,8 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
                         lambda p: p in ar.SERVER_INSTALLATION_NOTES or bool(re.fullmatch(r"mods/(?:1\.12\.2/)?[^/]+\.jar", p)))
     predicted, server_ids = check_result_roster(original, server_changes, contract["server_mods"], source, preparation, "mods")
     preview = preparation / "client-preview"
-    ar.copy_input(source / client["path"], client_report, preview)
+    ar.copy_input(source / client["path"], client_report, preview,
+                  progress=rp.progress_scope(progress, "Preparation client extraction"))
     ar.check_roster(preview, client_original, client["mods"], "overrides/mods")
     manifest = rp.parse_json(ar.read_small(preview / "manifest.json"))
     rp.require(manifest.get("minecraft", {}).get("version") == "1.12.2" and
@@ -420,7 +421,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     ar.retire(preview, ar.CLIENT_EVIDENCE, preparation / "prior-client-evidence")
     ar.preserve_installation_notes(preview, prepared_notes["client"], preparation / "prior-client-evidence")
     ar.apply_changes(preview, client_changes, preparation)
-    client_final = rp.audit(preview)
+    client_final = rp.audit(preview, progress=rp.progress_scope(progress, "Preparation client mod inventory"))
     client_ids = ar.check_roster(preview, ar.files(client_final), contract["client_mods"], "overrides/mods")
     rp.require({"valeorders", "valeencounters"}.issubset(server_ids) and {"valeorders", "valeencounters"}.issubset(client_ids),
                "CLIENT_MISMATCH", "Core and Encounters must exist on both sides")
@@ -431,7 +432,8 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
                    "mods": contract["client_mods"], "source_checkpoint": contract["source_checkpoint"], "runtime_acceptance": "NOT_RUN"}
     rp.atomic_json(preview / "CANDIDATE-ASSEMBLY.json", client_note)
     prepared_client = preparation / "Client-Prepared.zip"
-    ar.write_zip(preview, rp.audit(preview), prepared_client)
+    ar.write_zip(preview, rp.audit(preview, progress=rp.progress_scope(progress, "Preparation final client inventory")),
+                 prepared_client, progress=rp.progress_scope(progress, "Preparation client ZIP"))
     # Keep the previously reviewed pin coverage. Explicit replacements can
     # change or retire those files, but unrelated prior pins must not disappear.
     expected = {p: predicted[p]["sha256"] for p in prior["expected"] if p in predicted}
@@ -469,7 +471,7 @@ def prepare(source, contract_path, contract_sha256, export_root, launcher=None):
     plan_path = preparation / "candidate-plan.json"
     plan_identity = rp.atomic_json(plan_path, plan)
     print("Assembling the complete new server and matching client; runtime acceptance remains pending.", flush=True)
-    result = ar.assemble(source, plan_path, export_root)
+    result = ar.assemble(source, plan_path, export_root, progress=rp.progress_scope(progress, "Assembly"))
     exact(rp.hash_file(candidate / "Client-Candidate.zip"), rp.hash_file(prepared_client), "prepared and assembled clients")
     exact(rp.hash_file(contract_path), contract_identity, "reviewed contract after assembly")
     exact(rp.hash_file(inventory_path), inventory_ref, "reviewed inventory after assembly")
@@ -498,9 +500,11 @@ def main(argv=None):
     parser.add_argument("--contract-sha256", required=True, help="Exact reviewed contract SHA-256; never inferred")
     parser.add_argument("--export-root", type=Path, required=True, help="Output parent named Vale-Export")
     parser.add_argument("--launcher", type=Path, help="Only for a contract selecting a separately pinned external base launcher")
+    parser.add_argument("--quiet-progress", action="store_true", help="Suppress aggregate progress lines; keep stage and result messages")
     args = parser.parse_args(argv)
     try:
-        result = prepare(args.source, args.contract, args.contract_sha256, args.export_root, args.launcher)
+        result = prepare(args.source, args.contract, args.contract_sha256, args.export_root, args.launcher,
+                         progress=None if args.quiet_progress else rp.ConsoleProgress())
     except KeyboardInterrupt:
         print(rp.canonical({"status": "INTERRUPTED", "runtime_acceptance": "NOT_RUN", "note": "Keep incomplete output for inspection; use a new reviewed candidate ID."}).decode(), file=sys.stderr)
         return 130

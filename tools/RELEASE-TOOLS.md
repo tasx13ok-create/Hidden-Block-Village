@@ -33,6 +33,16 @@ SHA-256. Empty directories are recorded. ZIP audits also hash the compressed ZIP
 itself and read **every entry to EOF** to check its CRC. Nothing is extracted.
 No versions, registry keys, sides, or compatibility are inferred from filenames.
 
+For a long inventory, add `--progress` to print aggregate `VALE_PROGRESS` lines
+on stdout before the final JSON result. Tree scans, file hashes, raw ZIP hashes
+and expanded ZIP-entry reads have separate counters. Updates occur at phase
+boundaries and at most once every two seconds during active reads. They contain
+no file paths, create no progress files and do not change the saved audit report.
+The default CLI remains JSON-only. The Python `audit(..., progress=callback)`
+argument is optional; callback errors abort the operation, and all existing
+input-identity and CRC failures still propagate. Progress counts processed
+bytes and is not a whole-job completion percentage or acceptance evidence.
+
 For directory/ZIP content, there are two deterministic digests:
 
 | Field | Meaning |

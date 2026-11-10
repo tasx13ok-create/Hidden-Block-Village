@@ -164,9 +164,9 @@ class AssemblyTests(unittest.TestCase):
     def roster(self, path, raw, modid, version):
         return {"path": path, **ident(raw), "mods": {modid: version}}
 
-    def run_assembly(self, name=None, source=None):
+    def run_assembly(self, name=None, source=None, progress=None):
         self.plan_path.write_bytes(encoded(self.plan))
-        return ar.assemble(source or self.source, self.plan_path, self.export, name)
+        return ar.assemble(source or self.source, self.plan_path, self.export, name, progress=progress)
 
     def assert_failure(self, code, name=None):
         with self.assertRaises(rp.PackError) as caught:
@@ -256,13 +256,48 @@ class AssemblyTests(unittest.TestCase):
         second = self.run_assembly("second")
         self.assertEqual(first["sha256"], second["sha256"])
 
+    def test_progress_preserves_complete_archives_and_receipts(self):
+        quiet = self.run_assembly("quiet")
+        events = []
+        observed = self.run_assembly("observed", progress=events.append)
+        self.assertEqual(Path(quiet["archive"]).read_bytes(), Path(observed["archive"]).read_bytes())
+        for filename in ("Client-Candidate.zip", "ASSEMBLY.json", "input-inventory.json",
+                         "candidate-inventory.json", "client-inventory.json"):
+            self.assertEqual((Path(quiet["output"]) / filename).read_bytes(),
+                             (Path(observed["output"]) / filename).read_bytes())
+        copied = [event for event in events if event["phase"].startswith("Complete server copy:") and event["complete"]]
+        self.assertEqual(1, len(copied))
+        self.assertEqual(self.report["file_count"], copied[0]["files_done"])
+        self.assertEqual(2 * self.report["total_file_bytes"], copied[0]["bytes_done"])
+        self.assertTrue(any(event["phase"] == "Complete server ZIP: Compressing ZIP payload" for event in events))
+        self.assertTrue(any(event["phase"] == "Complete server ZIP: Verifying completed ZIP: Inventory checks passed" for event in events))
+        self.assertEqual(self.report["entries"], rp.audit(self.source)["entries"])
+        self.assertNotIn("Naruto.test", json.dumps(events))
+        self.assertNotIn(str(self.base), json.dumps(events))
+
+    def test_progress_failure_preserves_incomplete_copy_and_original_source(self):
+        def fail(event):
+            if event["phase"].startswith("Complete server copy:") and event["bytes_done"]:
+                raise RuntimeError("synthetic copy observer failure")
+        with self.assertRaisesRegex(RuntimeError, "synthetic copy observer failure"):
+            self.run_assembly(progress=fail)
+        destination = self.export / self.plan["candidate_id"]
+        self.assertTrue((destination / "INCOMPLETE.json").is_file())
+        self.assertFalse((destination / "ASSEMBLY.json").exists())
+        self.assertFalse(list(destination.glob("*-server-candidate.zip")))
+        self.assertEqual(self.report["entries"], rp.audit(self.source)["entries"])
+
     def test_zip_source_is_read_only_and_complete(self):
         source_zip = self.base / "original-server.zip"
         ar.write_zip(self.source, self.report, source_zip)
         identity = rp.hash_file(source_zip)
-        result = self.run_assembly(source=source_zip)
+        events = []
+        result = self.run_assembly(source=source_zip, progress=events.append)
         self.assertEqual(result["status"], ar.STATUS)
         self.assertEqual(identity, rp.hash_file(source_zip))
+        self.assertEqual("Final source archive identity", events[-1]["phase"])
+        self.assertEqual(identity["bytes"], events[-1]["bytes_done"])
+        self.assertTrue(events[-1]["complete"])
 
     def test_existing_output_is_never_replaced_or_resumed(self):
         self.export.mkdir()
@@ -396,8 +431,8 @@ class AssemblyTests(unittest.TestCase):
 
     def test_copy_corruption_leaves_incomplete_candidate_without_archive(self):
         real_copy = ar.copy_checked
-        def corrupt(source, target, expected):
-            real_copy(source, target, expected)
+        def corrupt(source, target, expected, progress=None):
+            real_copy(source, target, expected, progress=progress)
             if target.as_posix().endswith("Naruto.test/level.dat"):
                 target.write_bytes(b"corrupted output")
         with mock.patch.object(ar, "copy_checked", side_effect=corrupt):
@@ -407,8 +442,8 @@ class AssemblyTests(unittest.TestCase):
 
     def test_source_mutation_during_copy_is_detected(self):
         real_copy_input = ar.copy_input
-        def mutate(source, report, target):
-            real_copy_input(source, report, target)
+        def mutate(source, report, target, progress=None):
+            real_copy_input(source, report, target, progress=progress)
             if source == self.source:
                 (self.source / "Naruto.test/region/r.0.0.mca").write_bytes(b"concurrent server save")
         with mock.patch.object(ar, "copy_input", side_effect=mutate):

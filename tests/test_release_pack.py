@@ -178,6 +178,82 @@ class StableReaderTests(unittest.TestCase):
                 self.assertNotEqual(rp.opened_signature(before), rp.opened_signature(after))
 
 
+class ProgressTests(unittest.TestCase):
+    """Progress observes real reads without changing hashes or validation."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.tree = self.root / "private-source-label"
+        self.tree.mkdir()
+        (self.tree / "empty").mkdir()
+        self.file = self.tree / "private-player-label.dat"
+        self.payload = b"source payload bytes" * 37
+        self.file.write_bytes(self.payload)
+
+    def test_tree_and_zip_progress_preserve_reports_and_exclude_paths(self):
+        archive = self.root / "private-archive-label.zip"
+        with zipfile.ZipFile(archive, "w") as z:
+            z.writestr("empty/", b"")
+            z.writestr(self.file.name, self.payload)
+        for source in (self.tree, archive):
+            with self.subTest(kind=source.name):
+                events = []
+                expected = rp.audit(source)
+                with mock.patch.object(rp, "CHUNK", 64):
+                    observed = rp.audit(source, progress=events.append)
+                self.assertEqual(expected, observed)
+                self.assertEqual("Inventory checks passed", events[-1]["phase"])
+                self.assertTrue(events[-1]["complete"])
+                self.assertEqual(expected["file_count"], events[-1]["files_done"])
+                self.assertEqual(expected["total_file_bytes"], events[-1]["bytes_done"])
+                self.assertTrue(any(0 < event["bytes_done"] < len(self.payload) and
+                                    event["files_done"] == 0 for event in events))
+                self.assertNotIn("private-", json.dumps(events))
+                self.assertNotIn(str(self.root), json.dumps(events))
+
+    def test_console_limits_repeated_updates_and_keeps_phase_boundaries(self):
+        stream = io.StringIO()
+        times = iter((0.0, 0.1, 1.99, 2.0, 2.01, 2.02))
+        printer = rp.ConsoleProgress(stream=stream, clock=lambda: next(times))
+        event = {"phase": "Hashing input files", "files_done": 0, "files_total": 3,
+                 "bytes_done": 0, "bytes_total": 300, "complete": False}
+        for count in range(5):
+            printer({**event, "bytes_done": count * 10})
+        printer({**event, "files_done": 3, "bytes_done": 300, "complete": True})
+        lines = stream.getvalue().splitlines()
+        self.assertEqual(3, len(lines))
+        self.assertIn("3/3 files", lines[-1])
+        self.assertIn("phase finished", lines[-1])
+
+    def test_progress_does_not_hide_source_change_during_hash(self):
+        events = []
+        changed = False
+        def observe(event):
+            nonlocal changed
+            events.append(event)
+            if not changed and event["phase"] == "Hashing input files" and event["bytes_done"]:
+                changed = True
+                self.file.write_bytes(b"changed")
+        with mock.patch.object(rp, "CHUNK", 64):
+            with self.assertRaises(rp.PackError) as caught:
+                rp.audit(self.tree, progress=observe)
+        self.assertEqual("SOURCE_CHANGED", caught.exception.code)
+        self.assertFalse(any(event["phase"] == "Inventory checks passed" for event in events))
+
+    def test_progress_failure_aborts_without_an_inventory_success(self):
+        events = []
+        def fail(event):
+            events.append(event)
+            if event["phase"] == "Hashing input files" and event["bytes_done"]:
+                raise RuntimeError("synthetic observer failure")
+        with self.assertRaisesRegex(RuntimeError, "synthetic observer failure"):
+            rp.audit(self.tree, progress=fail)
+        self.assertEqual(self.payload, self.file.read_bytes())
+        self.assertFalse(any(event["phase"] == "Inventory checks passed" for event in events))
+
+
 class ReleasePackTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -329,8 +405,10 @@ class ReleasePackTests(unittest.TestCase):
             offset = info.header_offset + 30 + len(info.filename.encode()) + len(info.extra)
         raw[offset] ^= 1
         self.archive.write_bytes(raw)
+        events = []
         with self.assertRaises(zipfile.BadZipFile):
-            rp.audit(self.archive)
+            rp.audit(self.archive, progress=events.append)
+        self.assertFalse(any(event["phase"] == "Inventory checks passed" for event in events))
 
     def test_zip_symlink_is_not_regular_content(self):
         path = self.root / "link.zip"
@@ -356,8 +434,8 @@ class ReleasePackTests(unittest.TestCase):
         (tree / "data").write_bytes(b"original")
         original_hash = rp.hash_file
 
-        def change_after_hash(path):
-            value = original_hash(path)
+        def change_after_hash(path, progress=None):
+            value = original_hash(path, progress=progress)
             if Path(path).name == "data":
                 (tree / "later").write_bytes(b"changed")
             return value

@@ -52,6 +52,14 @@ The equivalent command, also usable on Linux for verification, is:
 py -3 tools/assemble_release.py --source 'D:\Codex\2026-11-08\thi\work\actual-bisect-server-stage' --plan 'D:\Codex\Vale-Export\Inputs\candidate-plan.json' --export-root 'D:\Codex\Vale-Export'
 ```
 
+Add `--progress` to the Python command for bounded `VALE_PROGRESS` updates on
+stdout before its final JSON result. They show the current inventory, copy or
+ZIP phase and aggregate file/byte counts, without input paths. Copy byte totals
+include the source read and destination readback. Counts restart at each phase;
+they are not a whole-job percentage or a runtime acceptance result. The default
+standalone command retains its JSON-only output. Connected preparation enables
+these updates automatically; see [watching a long run](PREPARE-CONNECTED.md#watching-a-long-run).
+
 All output is beneath a **new** directory named by the plan's `candidate_id`,
 or by `--name`. Existing directories are never resumed or replaced, even if
 they contain apparently identical output. A failed run leaves its new output

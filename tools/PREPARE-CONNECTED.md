@@ -61,6 +61,30 @@ the complete source. `package_bootstrap.py` accepts an already owned wrapper
 and replaces only owned wrapper classes, its plan and `Main-Class`; it does not
 require removing upstream data or extracting a guessed base runtime.
 
+### Watching a long run
+
+The preparation command prints `VALE_PROGRESS` lines while it scans the complete
+source, hashes files, copies and reads them back, and builds and verifies the
+client/server ZIPs. A phase starts and finishes visibly; active reads update at
+most once every two seconds between those boundaries. Lines contain aggregate
+file counts and MiB read, without source paths or player filenames. The initial
+source inventory reports progress before any output directory is created.
+
+Counts restart for each named phase. Copy totals include both the input read and
+the output readback, so their byte total is twice the copied payload size.
+Repeated inventory and ZIP reads are part of the existing integrity checks.
+These are counts of bytes processed by the tool, not physical disk activity or
+a percentage of the complete job. A blocked operating-system read cannot emit
+new progress until the read returns; no background heartbeat is created.
+
+`phase finished` confirms that phase only. The final JSON result and the normal
+completion receipts still determine whether assembly completed; runtime
+acceptance remains `NOT_RUN`. Errors keep their existing failure behavior and
+incomplete outputs stay available for inspection. Add `--quiet-progress` when
+calling the Python command directly to suppress aggregate lines while retaining
+the existing stage and result messages. Python callers get no added progress
+unless they supply a callback.
+
 ## Fixed review contract
 
 The contract has schema `vale.connected-release/v1`. All fields in the table

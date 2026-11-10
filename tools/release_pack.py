@@ -17,6 +17,7 @@ import shutil
 import stat
 import sys
 import tempfile
+import time
 import unicodedata
 import zipfile
 
@@ -40,6 +41,68 @@ class PackError(Exception):
     def __init__(self, code, message):
         super().__init__(message)
         self.code = code
+
+
+class ConsoleProgress:
+    """Bounded human progress on stdout; never a release-readiness receipt."""
+    def __init__(self, interval=2.0, stream=None, clock=None):
+        self.interval = interval
+        self.stream = sys.stdout if stream is None else stream
+        self.clock = time.monotonic if clock is None else clock
+        self.previous_phase = None
+        self.previous_time = None
+
+    def __call__(self, event):
+        now = self.clock()
+        if (event["phase"] == self.previous_phase and not event["complete"] and
+                self.previous_time is not None and now - self.previous_time < self.interval):
+            return
+        self.previous_phase, self.previous_time = event["phase"], now
+        files = str(event["files_done"])
+        if event["files_total"] is not None:
+            files += "/" + str(event["files_total"])
+        line = "VALE_PROGRESS: " + event["phase"] + " - " + files + " files"
+        if event["bytes_total"] is not None:
+            line += "; %.1f/%.1f MiB read" % (event["bytes_done"] / 1024**2,
+                                             event["bytes_total"] / 1024**2)
+        if event["complete"]:
+            line += "; phase finished"
+        print(line, file=self.stream, flush=True)
+
+
+def progress_scope(callback, label):
+    """Prefix only a caller-supplied fixed phase label, never an input path."""
+    if callback is None:
+        return None
+    def scoped(event):
+        callback({**event, "phase": label + ": " + event["phase"]})
+    return scoped
+
+
+class ProgressCounters:
+    """Observe processed reads only; existing validators still decide success."""
+    def __init__(self, callback, phase, files_total=None, bytes_total=None):
+        self.callback, self.phase = callback, phase
+        self.files_total, self.bytes_total = files_total, bytes_total
+        self.files_done, self.bytes_done = 0, 0
+        self.emit()
+
+    def emit(self, complete=False):
+        if self.callback is not None:
+            self.callback({"phase": self.phase, "files_done": self.files_done,
+                           "files_total": self.files_total, "bytes_done": self.bytes_done,
+                           "bytes_total": self.bytes_total, "complete": complete})
+
+    def read_bytes(self, count):
+        self.bytes_done += count
+        self.emit()
+
+    def file_done(self):
+        self.files_done += 1
+        self.emit()
+
+    def finish(self):
+        self.emit(complete=True)
 
 
 def require(condition, code, message):
@@ -199,7 +262,7 @@ def stable_reader(path):
                 "SOURCE_CHANGED", "File replaced while reading: " + str(path))
 
 
-def hash_stream(stream, writer=None, aggregate=None, max_bytes=None):
+def hash_stream(stream, writer=None, aggregate=None, max_bytes=None, progress=None):
     h = hashlib.sha256()
     count = 0
     while True:
@@ -214,12 +277,14 @@ def hash_stream(stream, writer=None, aggregate=None, max_bytes=None):
         if writer is not None:
             writer.write(block)
         count += len(block)
+        if progress is not None:
+            progress(len(block))
     return {"bytes": count, "sha256": h.hexdigest()}
 
 
-def hash_file(path):
+def hash_file(path, progress=None):
     with stable_reader(path) as stream:
-        return hash_stream(stream)
+        return hash_stream(stream, progress=progress)
 
 
 def read_json(path):
@@ -284,9 +349,10 @@ def atomic_json(path, value):
     return expected
 
 
-def tree_snapshot(root):
+def tree_snapshot(root, progress=None, phase="Scanning input tree"):
     result = {}
     pending = [root]
+    counters = ProgressCounters(progress, phase)
     while pending:
         current = pending.pop()
         with os.scandir(str(current)) as children:
@@ -306,30 +372,44 @@ def tree_snapshot(root):
                 require(len(result) <= MAX_ENTRIES, "LIMIT", "Inventory exceeds 100,000 entries")
                 if stat.S_ISDIR(st.st_mode):
                     pending.append(p)
+                else:
+                    counters.file_done()
     check_names([{"path": name, "kind": value[0]} for name, value in result.items()])
+    counters.finish()
     return result
 
 
-def inventory_tree(root):
-    before = tree_snapshot(root)
+def inventory_tree(root, progress=None):
+    before = tree_snapshot(root, progress=progress)
     entries = []
     expanded = 0
+    counters = ProgressCounters(progress, "Hashing input files",
+                                files_total=sum(kind == "file" for kind, _ in before.values()),
+                                bytes_total=sum(sig[3] for kind, sig in before.values() if kind == "file"))
     for name, (kind, _) in sorted(before.items()):
         entry = {"path": name, "kind": kind}
         if kind == "file":
             require(expanded + before[name][1][3] <= MAX_EXPANDED_BYTES,
                     "LIMIT", "Inventory exceeds 64 GiB file bytes")
-            entry.update(hash_file(root / name))
+            entry.update(hash_file(root / name, progress=counters.read_bytes if progress is not None else None))
             expanded += entry["bytes"]
             require(expanded <= MAX_EXPANDED_BYTES, "LIMIT", "Inventory exceeds 64 GiB file bytes")
+            counters.file_done()
         entries.append(entry)
-    require(before == tree_snapshot(root), "SOURCE_CHANGED", "Directory tree changed during inventory")
+    counters.finish()
+    require(before == tree_snapshot(root, progress=progress, phase="Rechecking input tree"),
+            "SOURCE_CHANGED", "Directory tree changed during inventory")
     return entries, None
 
 
-def inventory_zip(path):
+def inventory_zip(path, progress=None):
     with stable_reader(path) as source:
-        archive = {"filename": safe_relative(path.name, basename=True), **hash_stream(source)}
+        counters = ProgressCounters(progress, "Hashing archive bytes", files_total=1,
+                                    bytes_total=os.fstat(source.fileno()).st_size)
+        archive = {"filename": safe_relative(path.name, basename=True),
+                   **hash_stream(source, progress=counters.read_bytes if progress is not None else None)}
+        counters.file_done()
+        counters.finish()
         source.seek(0)
         with zipfile.ZipFile(source) as z:
             infos = z.infolist()
@@ -353,13 +433,17 @@ def inventory_zip(path):
                 total += info.file_size
                 require(total <= MAX_EXPANDED_BYTES, "LIMIT", "ZIP exceeds 64 GiB expanded bytes")
             check_names(entries)
+            counters = ProgressCounters(progress, "Reading ZIP entries",
+                                        files_total=sum(x["kind"] == "file" for x in entries), bytes_total=total)
             for entry, info in zip(entries, infos):
                 # Read every entry to EOF, including empty directories: ZipFile validates CRC.
                 with z.open(info) as member:
-                    hashed = hash_stream(member)
+                    hashed = hash_stream(member, progress=counters.read_bytes if progress is not None else None)
                 require(hashed["bytes"] == info.file_size, "INVALID_ZIP", "Expanded size mismatch")
                 if entry["kind"] == "file":
                     entry.update(hashed)
+                    counters.file_done()
+            counters.finish()
             return sorted(entries, key=lambda x: x["path"]), archive
 
 
@@ -388,13 +472,13 @@ def declaration(path, entries):
     return {"verification": "DECLARED_NOT_RUNTIME_VERIFIED", "document": value, "document_identity": identity}
 
 
-def audit(source, declared=None):
+def audit(source, declared=None, progress=None):
     source = no_links(source)
     if source.is_dir():
-        entries, archive = inventory_tree(source)
+        entries, archive = inventory_tree(source, progress=progress)
         kind = "directory"
     else:
-        entries, archive = inventory_zip(source)
+        entries, archive = inventory_zip(source, progress=progress)
         kind = "zip"
     report = {
         "schema": "vale.pack-audit/v1", "tool_version": TOOL_VERSION,
@@ -411,6 +495,10 @@ def audit(source, declared=None):
     if archive is not None:
         report["archive"] = archive
         report["zip_crc_check"] = "ALL_ENTRIES_PASSED"
+    if progress is not None:
+        progress({"phase": "Inventory checks passed", "files_done": report["file_count"],
+                  "files_total": report["file_count"], "bytes_done": report["total_file_bytes"],
+                  "bytes_total": report["total_file_bytes"], "complete": True})
     return report
 
 
@@ -647,6 +735,7 @@ def main(argv=None):
     a.add_argument("source", type=Path)
     a.add_argument("--output", type=Path, required=True)
     a.add_argument("--declaration", type=Path)
+    a.add_argument("--progress", action="store_true", help="Print aggregate progress on stdout before the final JSON result")
     s = sub.add_parser("split", help="Split an accepted existing ZIP without recompression")
     s.add_argument("archive", type=Path)
     s.add_argument("--acceptance", type=Path, required=True)
@@ -663,7 +752,7 @@ def main(argv=None):
             output = no_links(args.output)
             require(source != output and not (source.is_dir() and source in output.parents),
                     "OUTPUT_SEPARATION", "Audit output must be outside the audited input")
-            report = audit(source, args.declaration)
+            report = audit(source, args.declaration, progress=ConsoleProgress() if args.progress else None)
             written = atomic_json(output, report)
             result = {"status": report["status"], "runtime_acceptance": "NOT_EVALUATED",
                       "file_count": report["file_count"], "inventory_sha256": report["inventory_sha256"],
