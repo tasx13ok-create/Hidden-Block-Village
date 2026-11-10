@@ -1,0 +1,173 @@
+VALE_DEPLOYMENT: installed fixture037_magma_native; preserved 0 superseded files in vale-update-backup. Saved worlds/player data were not moved.
+    __  ___                           
+   /  |/  /___ _____ _____ ___  ____ _
+  / /|_/ / __ `/ __ `/ __ `__ \/ __ `/
+ / /  / / /_/ / /_/ / / / / / / /_/ / 
+/_/  /_/\__,_/\__, /_/ /_/ /_/\__,_/  
+             /____/                   
+Copyright (c) 2026 MagmaFoundation.
+--------------------------------------
+Running on Java 1.8.0_512 (Azul Systems, Inc.)
+Magma version  1.12.2-8cc35ed
+Bukkit version v1_12_R1
+Forge version  1.12.2
+--------------------------------------
+Starting dependency checker...
+Library Version: 1.0
+Checking libraries...  75% [=================>     ] 27/36 (0:00:00 / 0:00:00) Checking libraries... 100% [=======================] 36/36 (0:00:00 / 0:00:00) 
+[02:18:56] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[02:18:56] [main/INFO] [FML]: Forge Mod Loader version 14.23.5.2860 for Minecraft 1.12.2 loading
+[02:18:56] [main/INFO] [FML]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_512, running on Linux:amd64:6.18.57, installed at /workspace/scratch/fa349c917106/toolchains/zulu8.98.0.111-ca-jdk8.0.512-linux_x64/jre
+[02:18:56] [main/WARN] [FML]: The coremod FMLCorePlugin (net.minecraftforge.fml.relauncher.FMLCorePlugin) is not signed!
+[02:18:56] [main/WARN] [FML]: The coremod FMLForgePlugin (net.minecraftforge.classloading.FMLForgePlugin) is not signed!
+[02:18:56] [main/WARN] [FML]: The coremod MagmaCorePlugin (org.magmafoundation.magma.MagmaCorePlugin) is not signed!
+[02:18:56] [main/INFO] [FML]: 4 mod patches loaded!
+[02:18:56] [main/INFO] [FML]: FirstAid loaded
+[02:18:56] [main/INFO] [FML]: FTB-Quest loaded
+[02:18:56] [main/INFO] [FML]: FastWorkBench loaded
+[02:18:56] [main/INFO] [FML]: naturessompass loaded
+[02:18:56] [main/INFO] [FML]: Searching /workspace/scratch/fa349c917106/native-magma-check/./mods for mods
+[02:18:56] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in vale-orders-0.3.7.jar. This is not recommended, @Mods should be in a separate jar from the coremod.
+[02:18:56] [main/WARN] [FML]: The coremod Vale Run Pose (village.vale.PoseCorePlugin) is not signed!
+[02:18:56] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[02:18:56] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[02:18:58] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[02:18:58] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[02:18:58] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[02:18:58] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[02:18:58] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[02:18:58] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[02:18:59] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[02:19:03] [main/INFO] [FML]: 3 patches loaded!
+[02:19:03] [main/INFO] [FML]: Essentials [Fixes Commands in Essentials] loaded
+[02:19:03] [main/INFO] [FML]: dynmap [Remaps BukkitVersionHelperCB and BukkitVersionHelperGeneric to support Magma version] loaded
+[02:19:03] [main/INFO] [FML]: CoreProtect [Changes Material to Magma's getBlockMaterial that has modded block materials ] loaded
+[02:19:03] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Starting minecraft server version 1.12.2
+[02:19:03] [Server thread/INFO] [FML]: MinecraftForge v14.23.5.2860 Initialized
+[02:19:03] [Server thread/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients.
+[02:19:03] [Server thread/INFO] [FML]: Invalid recipe found with multiple oredict ingredients in the same ingredient...
+[02:19:04] [Server thread/INFO] [FML]: Replaced 1227 ore ingredients
+[02:19:04] [Server thread/INFO] [FML]: Config directory created successfully
+[02:19:04] [Server thread/INFO] [FML]: Searching /workspace/scratch/fa349c917106/native-magma-check/./mods for mods
+[02:19:06] [Server thread/INFO] [FML]: Forge Mod Loader has identified 6 mods to load
+[02:19:06] [Server thread/WARN] [FML]: Missing English translation for FML: assets/fml/lang/en_us.lang
+[02:19:06] [Server thread/WARN] [FML]: Missing English translation for valerecoverychecks: assets/valerecoverychecks/lang/en_us.lang
+[02:19:06] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, valeorders, valerecoverychecks] at CLIENT
+[02:19:06] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, valeorders, valerecoverychecks] at SERVER
+[02:19:07] [Server thread/INFO] [FML]: Processing ObjectHolder annotations
+[02:19:07] [Server thread/INFO] [FML]: Found 1168 ObjectHolder annotations
+[02:19:07] [Server thread/INFO] [FML]: Identifying ItemStackHolder annotations
+[02:19:07] [Server thread/INFO] [FML]: Found 0 ItemStackHolder annotations
+[02:19:07] [Server thread/INFO] [FML]: Configured a dormant chunk cache size of 0
+[02:19:07] [Server thread/INFO] [FML]: Applying holder lookups
+[02:19:07] [Server thread/INFO] [FML]: Holder lookups applied
+[02:19:07] [Server thread/INFO] [FML]: Applying holder lookups
+[02:19:07] [Server thread/INFO] [FML]: Holder lookups applied
+[02:19:07] [Server thread/INFO] [FML]: Applying holder lookups
+[02:19:07] [Server thread/INFO] [FML]: Holder lookups applied
+[02:19:07] [Server thread/INFO] [FML]: Applying holder lookups
+[02:19:07] [Server thread/INFO] [FML]: Holder lookups applied
+[02:19:07] [Server thread/INFO] [FML]: Injecting itemstacks
+[02:19:07] [Server thread/INFO] [FML]: Itemstack injection complete
+[02:19:07] [Server thread/WARN] [FML]: Replacing net.minecraftforge.server.permission.DefaultPermissionHandler with org.magmafoundation.magma.commands.permission.BukkitPermissionsHandler
+[02:19:07] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Loading properties
+[02:19:07] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Default game type: SURVIVAL
+[02:19:07] [Server thread/INFO] [Minecraft]: This server is running Magma version 1.12.2-8cc35ed (MC: 1.12.2) (Implementing API version 1.12.2-R0.1-SNAPSHOT)
+[02:19:07] [Server thread/INFO] [Minecraft]: Using 4 threads for Netty based IO
+[02:19:07] [Server thread/INFO] [Spigot]: Server Ping Player Sample Count: 12
+[02:19:07] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Generating keypair
+[02:19:08] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Starting Minecraft server on 127.0.0.1:25598
+[02:19:08] [Server thread/INFO] [net.minecraft.network.NetworkSystem]: Using epoll channel type
+[02:19:08] [Server thread/WARN] [io.netty.util.internal.MacAddressUtil]: Failed to find a usable hardware address from the network interfaces; using random bytes: c9:54:38:9b:87:40:1c:1f
+[02:19:08] [Server thread/INFO] [FML]: Applying holder lookups
+[02:19:08] [Server thread/INFO] [FML]: Holder lookups applied
+[02:19:08] [Server thread/INFO] [FML]: Injecting itemstacks
+[02:19:08] [Server thread/INFO] [FML]: Itemstack injection complete
+[02:19:08] [Server thread/INFO] [ValeCatalog]: VALE_CATALOG_POLICY: 0 overlapping utility combat props quarantined; 0 recipes removed, 0 adapted, 0 custom dependent recipes require review. Registry IDs retained.
+[02:19:08] [Server thread/INFO] [FML]: Forge Mod Loader has successfully loaded 6 mods
+[02:19:08] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Preparing level "vale-recovery-test"
+[02:19:09] [Server thread/INFO] [Minecraft]: -------- World Settings For [vale-recovery-test] --------
+[02:19:09] [Server thread/INFO] [Minecraft]: Mob Spawn Range: 4
+[02:19:09] [Server thread/INFO] [Minecraft]: Cactus Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Cane Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Melon Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Mushroom Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Pumpkin Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Sapling Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Wheat Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: NetherWart Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Vine Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Cocoa Growth Modifier: 100%
+[02:19:09] [Server thread/INFO] [Minecraft]: Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+[02:19:09] [Server thread/INFO] [Minecraft]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+[02:19:09] [Server thread/INFO] [Minecraft]: Random Lighting Updates: false
+[02:19:09] [Server thread/INFO] [Minecraft]: Structure Info Saving: true
+[02:19:09] [Server thread/INFO] [Minecraft]: Custom Map Seeds:  Village: 10387312 Feature: 14357617 Monument: 10387313 Slime: 987234911
+[02:19:09] [Server thread/INFO] [Minecraft]: Max TNT Explosions: 100
+[02:19:09] [Server thread/INFO] [Minecraft]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[02:19:09] [Server thread/INFO] [Minecraft]: Zombie Aggressive Towards Villager: true
+[02:19:09] [Server thread/INFO] [Minecraft]: Experience Merge Radius: 3.0
+[02:19:09] [Server thread/INFO] [Minecraft]: Item Despawn Rate: 6000
+[02:19:09] [Server thread/INFO] [Minecraft]: Item Merge Radius: 2.5
+[02:19:09] [Server thread/INFO] [Minecraft]: View Distance: 2
+[02:19:09] [Server thread/INFO] [Minecraft]: Allow Zombie Pigmen to spawn from portal blocks: true
+[02:19:09] [Server thread/INFO] [Minecraft]: Nerfing mobs spawned from spawners: false
+[02:19:09] [Server thread/INFO] [Minecraft]: Arrow Despawn Rate: 1200
+[02:19:09] [Server thread/INFO] [Minecraft]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[02:19:09] [Server thread/INFO] [FML]: Loading dimension 0 (vale-recovery-test) (net.minecraft.server.dedicated.DedicatedServer@2b820f7c)
+[02:19:09] [Server thread/INFO] [net.minecraft.advancements.AdvancementList]: Loaded 510 advancements
+[02:19:10] [Server thread/INFO] [Minecraft]: -------- World Settings For [DIM1] --------
+[02:19:10] [Server thread/INFO] [Minecraft]: Mob Spawn Range: 4
+[02:19:10] [Server thread/INFO] [Minecraft]: Cactus Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Cane Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Melon Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Mushroom Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Pumpkin Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Sapling Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Wheat Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: NetherWart Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Vine Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Cocoa Growth Modifier: 100%
+[02:19:10] [Server thread/INFO] [Minecraft]: Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+[02:19:10] [Server thread/INFO] [Minecraft]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+[02:19:10] [Server thread/INFO] [Minecraft]: Random Lighting Updates: false
+[02:19:10] [Server thread/INFO] [Minecraft]: Structure Info Saving: true
+[02:19:10] [Server thread/INFO] [Minecraft]: Custom Map Seeds:  Village: 10387312 Feature: 14357617 Monument: 10387313 Slime: 987234911
+[02:19:10] [Server thread/INFO] [Minecraft]: Max TNT Explosions: 100
+[02:19:10] [Server thread/INFO] [Minecraft]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[02:19:10] [Server thread/INFO] [Minecraft]: Zombie Aggressive Towards Villager: true
+[02:19:10] [Server thread/INFO] [Minecraft]: Experience Merge Radius: 3.0
+[02:19:10] [Server thread/INFO] [Minecraft]: Item Despawn Rate: 6000
+[02:19:10] [Server thread/INFO] [Minecraft]: Item Merge Radius: 2.5
+[02:19:10] [Server thread/INFO] [Minecraft]: View Distance: 2
+[02:19:10] [Server thread/INFO] [Minecraft]: Allow Zombie Pigmen to spawn from portal blocks: true
+[02:19:10] [Server thread/INFO] [Minecraft]: Nerfing mobs spawned from spawners: false
+[02:19:10] [Server thread/INFO] [Minecraft]: Arrow Despawn Rate: 1200
+[02:19:10] [Server thread/INFO] [Minecraft]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[02:19:10] [Server thread/INFO] [FML]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@2b820f7c)
+[02:19:10] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Preparing start region for level 0 (Seed: -5432591334477126065)
+[02:19:10] [Server thread/INFO] [Minecraft]: Server permissions file permissions.yml is empty, ignoring it
+[02:19:10] [Server thread/INFO] [Minecraft]: Server permissions file permissions.yml is empty, ignoring it
+[02:19:10] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Done (1.890s)! For help, type "help" or "?"
+[02:19:10] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer]: Starting Minecraft server on 127.0.0.1:25598
+[02:19:10] [Server thread/INFO] [Minecraft]: Timings Reset
+[02:19:10] [Server thread/INFO] [FML]: Unloading dimension 1
+[02:19:10] [Server thread/INFO] [ValeOrders]: VALE_LEDGER_SELFTEST_PASS: 10003-row ledger round trip, receipts, owner queues and reload checks.
+[02:19:10] [Server thread/INFO] [ValeOrders]: VALE_REGISTRY_SELFTEST_PASS: 555 live Forge items, including 72 ward/resonance armor, 54 base weapons, 26 specialist weapons, 79 garments and 76 focus equipment.
+[02:19:10] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: 555 live registered items and current diagnostic category checks
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Native result-slot pickup remains issued after expired preview timeout
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Stale proof is recomputed by native container before actual crafting
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Native weapon cast, saved player logout/reload and longer per-specialist cooldown
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Native Party Charter leave/rejoin preserves the existing expedition
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Native companion distance cleanup, immediate redeploy, stale actor rejection and recall
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_CHECK_PASS: Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency
+[02:19:11] [Server thread/INFO] []: VALE_RECOVERY037_NATIVE_PASS: 86 assertions
+[02:19:11] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Stopping server
+[02:19:11] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving players
+[02:19:11] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving worlds
+[02:19:11] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving chunks for level 'vale-recovery-test'/overworld

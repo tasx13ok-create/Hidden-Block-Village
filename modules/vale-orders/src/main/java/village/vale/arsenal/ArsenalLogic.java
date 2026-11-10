@@ -48,13 +48,13 @@ public final class ArsenalLogic {
     public static boolean ready(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,boolean explain) {
         boolean ok=ArsenalMath.ready(!p.world.isRemote,p.isEntityAlive(),p.isSpectator(),p.getHeldItemMainhand()==stack,
                 proof(p,stack,spec),ArsenalAccess.fullSet(p)==spec.order,p.getCooldownTracker().hasCooldown(stack.getItem())||state(p).getBoolean("busy"),
-                ArsenalAccess.now(p),state(p).getLong("ready"),PlayerState.resolve(p),spec.cost);
+                ArsenalAccess.now(p),ArsenalCooldowns.readyAt(state(p),spec),PlayerState.resolve(p),spec.cost);
         if(!ok&&explain)tell(p,"Specialist technique needs your issued matching set, resolve and recovery.");
         return ok;
     }
     static void commit(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec) {
         long time=ArsenalAccess.now(p);
-        state(p).setLong("ready",time+ArsenalMath.SHARED_RECOVERY);
+        ArsenalCooldowns.record(state(p),spec,time);
         PlayerState.data(p).setLong("lastCombat",time);
         for(Item item:Arsenal.items().values())if(!p.getCooldownTracker().hasCooldown(item))p.getCooldownTracker().setCooldown(item,ArsenalMath.SHARED_RECOVERY);
         p.getCooldownTracker().setCooldown(stack.getItem(),spec.cooldown);
@@ -352,8 +352,15 @@ public final class ArsenalLogic {
         NBTTagCompound s=state(p);
         // Cooldown/resolve remain persistent; travel, modes and guards never survive
         // death, dimension changes, logout or login into a fresh server process.
-        for(String key:new String[]{"busy","flightMost","flightLeast","markUntil","markX","markY","markZ","markDimension",
-                "guardUntil","guardKey","counter","counterUntil","sweepUntil","sweepNext","overdriveRecovery"})s.removeTag(key);
+        ArsenalCooldowns.clearTransient(s);
+        // The native tracker is only a client-visible mirror; the persisted
+        // per-weapon deadline remains authoritative after a new player instance.
+        long now=ArsenalAccess.now(p);
+        for(ArsenalSpec spec:ArsenalSpec.values()) {
+            Item item=Arsenal.items().get(spec.key);
+            int remaining=ArsenalCooldowns.remaining(s,spec,now);
+            if(item!=null&&remaining>0)p.getCooldownTracker().setCooldown(item,remaining);
+        }
         for(ArsenalShot shot:p.world.getEntitiesWithinAABB(ArsenalShot.class,p.getEntityBoundingBox().grow(25)))if(shot.ownedBy(p))shot.setDead();
         for(ArsenalField field:p.world.getEntitiesWithinAABB(ArsenalField.class,p.getEntityBoundingBox().grow(25)))if(field.ownedBy(p))field.setDead();
     }

@@ -23,22 +23,6 @@ jar { from('LICENSE.txt') }
 // Optional local compile shortcut. The supplied JAR must be an independently
 // prepared, deobfuscated Forge 1.12.2 stable-39 development API, never a mod JAR.
 // Fresh external builds omit this property and use the normal RFG pipeline.
-if (providers.gradleProperty('prebuiltMinecraft').isPresent()) {
-    def apiJar = file(providers.gradleProperty('prebuiltMinecraft').get())
-    sourceSets.main.compileClasspath += files(apiJar)
-    def prepared = ['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg',
-        'decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar',
-        'decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources',
-        'createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
-    tasks.matching { it.name in prepared }.configureEach { enabled = false }
-    def stageApi = tasks.register('stagePrebuiltControlsApi', Copy) {
-        from(apiJar)
-        into(layout.buildDirectory.dir('rfg'))
-        rename { 'recompiled_minecraft-1.12.2.jar' }
-    }
-    tasks.named('reobfJar') { dependsOn(stageApi) }
-}
-
 sourceSets {
     controlsChecks {
         java.srcDirs = ['tests']
@@ -109,3 +93,5 @@ if (providers.gradleProperty('controlsCapture').isPresent()) {
     sourceSets.main.java.srcDir('clientchecks')
     version = '1.4.0-simple-candidate-capture-test'
 }
+
+apply from: file('../../gradle/vale-mod-build.gradle')

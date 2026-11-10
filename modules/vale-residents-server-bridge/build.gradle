@@ -7,5 +7,8 @@ version='0.1.0'
 base { archivesName='vale-residents-server-bridge' }
 java { toolchain {languageVersion.set(JavaLanguageVersion.of(8));vendor.set(JvmVendorSpec.AZUL)} }
 minecraft {mcVersion.set('1.12.2');mcpMappingChannel.set('stable');mcpMappingVersion.set('39')}
-dependencies {compileOnly files(providers.gradleProperty('residentApiJar').get())}
+apply from: file('../../gradle/vale-compile-inputs.gradle')
+dependencies { compileOnly files(valeCompileInput('residentApiJar', 'Current Vale Residents development API')) }
 tasks.withType(JavaCompile).configureEach {options.encoding='UTF-8'}
+
+apply from: file('../../gradle/vale-mod-build.gradle')

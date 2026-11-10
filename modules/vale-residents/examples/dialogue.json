@@ -1,8 +1,102 @@
 {
-  "schema":1,
-  "roles":{
-    "academy":{"start":"welcome","pages":[{"id":"welcome","lines":["The river academy is ready. Learn a technique, then practice it with care."],"choices":[{"id":"study","label":"Study techniques","action":"ACADEMY"},{"id":"advice","label":"How do I begin?","action":"PAGE","target":"advice"}]},{"id":"advice","lines":["Choose your order with /vale join, then earn experience through contracts. The academy enforces its own level and merit requirements."],"choices":[{"id":"back","label":"Back","action":"PAGE","target":"welcome"}]}]},
-    "contracts":{"start":"welcome","pages":[{"id":"welcome","lines":["The settlement needs reliable hands. Review a contract, deliver supplies, or turn in completed work."],"choices":[{"id":"journal","label":"Review contracts","action":"CONTRACTS"},{"id":"supplies","label":"Accept Granary Relief","action":"ACCEPT_CONTRACT","target":"supply_run"},{"id":"claim","label":"Turn in active contract","action":"CLAIM_CONTRACT"}]}]},
-    "quartermaster":{"start":"welcome","pages":[{"id":"welcome","lines":["Merit recognizes service. I can show equipment, field tools and spirit armor; every purchase follows the settlement's rules."],"choices":[{"id":"ward","label":"Order equipment","action":"QUARTERMASTER"},{"id":"tools","label":"Field tools","action":"TOOLS"},{"id":"spirit","label":"Spirit armor","action":"SPIRIT"}]}]}
+  "schema": 1,
+  "roles": {
+    "academy": {
+      "start": "welcome",
+      "pages": [
+        {
+          "id": "welcome",
+          "lines": [
+            "The river academy is ready. Learn a technique, then practice it with care."
+          ],
+          "choices": [
+            {
+              "id": "study",
+              "label": "Study techniques",
+              "action": "ACADEMY"
+            },
+            {
+              "id": "advice",
+              "label": "How do I begin?",
+              "action": "PAGE",
+              "target": "advice"
+            }
+          ]
+        },
+        {
+          "id": "advice",
+          "lines": [
+            "Choose your order with /vale join, then earn experience through contracts. The academy enforces its own level and merit requirements.",
+            "Open HUD settings > Storage for six separate weapon slots. Move a weapon into a slot, then select it to equip that stored weapon."
+          ],
+          "choices": [
+            {
+              "id": "back",
+              "label": "Back",
+              "action": "PAGE",
+              "target": "welcome"
+            }
+          ]
+        }
+      ]
+    },
+    "contracts": {
+      "start": "welcome",
+      "pages": [
+        {
+          "id": "welcome",
+          "lines": [
+            "The settlement needs reliable hands. Review a contract, deliver supplies, or turn in completed work."
+          ],
+          "choices": [
+            {
+              "id": "journal",
+              "label": "Review contracts",
+              "action": "CONTRACTS"
+            },
+            {
+              "id": "supplies",
+              "label": "Accept Granary Relief",
+              "action": "ACCEPT_CONTRACT",
+              "target": "supply_run"
+            },
+            {
+              "id": "claim",
+              "label": "Turn in active contract",
+              "action": "CLAIM_CONTRACT"
+            }
+          ]
+        }
+      ]
+    },
+    "quartermaster": {
+      "start": "welcome",
+      "pages": [
+        {
+          "id": "welcome",
+          "lines": [
+            "Merit recognizes service. I can show equipment, field tools and spirit armor; every purchase follows the settlement's rules.",
+            "If a paid item is queued because your inventory is full, free a slot and wait for delivery. You do not need to buy it again."
+          ],
+          "choices": [
+            {
+              "id": "ward",
+              "label": "Order equipment",
+              "action": "QUARTERMASTER"
+            },
+            {
+              "id": "tools",
+              "label": "Field tools",
+              "action": "TOOLS"
+            },
+            {
+              "id": "spirit",
+              "label": "Spirit armor",
+              "action": "SPIRIT"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

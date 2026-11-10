@@ -1,0 +1,18 @@
+{
+  "core_sha256": "ccb1e9b001e4beb416d6e9e06c56ecce659bd02c34f0c9d4280c6479ec0688b4",
+  "minecraft_version": "1.12.2",
+  "forge_version": "14.23.5.2859",
+  "passed": true,
+  "schema": 1,
+  "fixture": "native-recovery-0.3.7",
+  "assertions": 86,
+  "checks": [
+    "555 live registered items and current diagnostic category checks",
+    "Native result-slot pickup remains issued after expired preview timeout",
+    "Stale proof is recomputed by native container before actual crafting",
+    "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+    "Native Party Charter leave/rejoin preserves the existing expedition",
+    "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+    "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency"
+  ]
+}

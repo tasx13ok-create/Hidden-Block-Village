@@ -1,0 +1,15 @@
+plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
+group = 'village.vale'
+version = '0.2.0'
+base { archivesName = 'Vale-Server-Bridge' }
+java {
+    toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }
+    withSourcesJar()
+}
+minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
+sourceSets.main.java { srcDirs = ['../src']; include 'village/vale/serverbridge/**' }
+apply from: file('../../../gradle/vale-compile-inputs.gradle')
+dependencies { compileOnly files(valeCompileInput('valeCoreDevJar', 'Current Vale Core development API')) }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+jar { from('../LICENSE.txt') }
+apply from: file('../../../gradle/vale-mod-build.gradle')

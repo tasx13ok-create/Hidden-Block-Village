@@ -22,6 +22,7 @@ import village.vale.RewardLedger;
  */
 public final class ArsenalCrafting {
     public static final String PROOF_TAG = "valeCraftProof";
+    private static final long ORPHAN_TIMEOUT_NANOS = 10000000000L;
     private static final Map<InventoryCrafting, World> WORLDS = new WeakHashMap<>();
     private static final Map<String, Ticket> TICKETS = new LinkedHashMap<>();
     public ArsenalCrafting() {}
@@ -50,10 +51,57 @@ public final class ArsenalCrafting {
     }
     private static final class Ticket {
         final String nonce; final Recipe recipe; final InventoryCrafting matrix;
-        final World world; final long expires; final ItemStack snapshot;
-        EntityPlayerMP owner; Container container; boolean certified;
+        final World world; final ItemStack snapshot;
+        long expires; EntityPlayerMP owner; Container container; boolean certified;
         Ticket(String n,Recipe r,InventoryCrafting m,World w,ItemStack s) {
-            nonce=n;recipe=r;matrix=m;world=w;snapshot=s.copy();expires=System.nanoTime()+10000000000L;
+            nonce=n;recipe=r;matrix=m;world=w;snapshot=s.copy();expires=System.nanoTime()+ORPHAN_TIMEOUT_NANOS;
+            captureOwner(this);
+        }
+    }
+    private static void captureOwner(Ticket t) {
+        if(t.owner!=null||t.world.getMinecraftServer()==null)return;
+        for(EntityPlayerMP p:t.world.getMinecraftServer().getPlayerList().getPlayers()) {
+            if(p.world!=t.world)continue;
+            Container c=matrix(p.openContainer)==t.matrix?p.openContainer
+                :matrix(p.inventoryContainer)==t.matrix?p.inventoryContainer:null;
+            if(c!=null){t.owner=p;t.container=c;return;}
+        }
+    }
+    private static boolean livePreview(Ticket t) {
+        if(!server(t.world))return false;
+        captureOwner(t);EntityPlayerMP p=t.owner;
+        if(p==null||!p.isEntityAlive()||p.isSpectator()||p.world!=t.world
+                ||p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())!=p
+                ||(p.openContainer!=t.container&&p.inventoryContainer!=t.container)
+                ||matrix(t.container)!=t.matrix)return false;
+        IInventory preview=result(t.container);
+        return preview!=null&&t.nonce.equals(token(preview.getStackInSlot(0)))
+            &&ItemStack.areItemStacksEqual(t.snapshot,preview.getStackInSlot(0))
+            &&CraftingManager.REGISTRY.getObject(t.recipe.getRegistryName())==t.recipe;
+    }
+    private static void prune(long now) {
+        Iterator<Ticket> it=TICKETS.values().iterator();
+        while(it.hasNext()) {
+            Ticket t=it.next();
+            // A native result slot may be left open indefinitely. Only detached
+            // previews and unconsumed certifications expire after ten seconds.
+            if(now-t.expires>=0&&(t.certified||!livePreview(t)))it.remove();
+        }
+    }
+    @SubscribeEvent public void serverTick(TickEvent.ServerTickEvent e) {
+        if(e.phase==TickEvent.Phase.END)prune(System.nanoTime());
+    }
+    private static void refreshStalePreview(EntityPlayerMP p) {
+        Container c=p.openContainer;InventoryCrafting m=matrix(c);IInventory result=result(c);
+        if(m==null||result==null)return;
+        ItemStack preview=result.getStackInSlot(0);String nonce=token(preview);
+        if(nonce.isEmpty()||!eligible(preview)||preview.getTagCompound().hasKey("valeSerial"))return;
+        Ticket ticket=TICKETS.get(nonce);
+        if(ticket==null||ticket.matrix!=m||ticket.world!=p.world
+                ||!ItemStack.areItemStacksEqual(ticket.snapshot,preview)) {
+            // Ask the native container to recompute from its actual ingredients.
+            // Never turn a stale arbitrary stack into a certified output.
+            c.onCraftMatrixChanged(m);
         }
     }
     /** Register this wrapper instead of its delegate under the chosen recipe ID.
@@ -78,6 +126,7 @@ public final class ArsenalCrafting {
                     || !delegate.matches(m,w) || !eligible(s)) return s;
             if (s.hasTagCompound() && (s.getTagCompound().hasKey("valeSerial")
                     || s.getTagCompound().hasKey(PROOF_TAG))) return ItemStack.EMPTY;
+            prune(System.nanoTime());
             if (TICKETS.size() >= 4096) return ItemStack.EMPTY;
             String n=UUID.randomUUID().toString();
             NBTTagCompound tag=s.hasTagCompound()?s.getTagCompound().copy():new NBTTagCompound();
@@ -96,11 +145,12 @@ public final class ArsenalCrafting {
         EntityPlayerMP p=(EntityPlayerMP)e.player; Ticket t=TICKETS.get(token(e.crafting));
         if (t == null || t.world != p.world || !p.isEntityAlive() || p.isSpectator()
                 || matrix(p.openContainer) != t.matrix || e.craftMatrix != t.matrix
-                || System.nanoTime() > t.expires || !eligible(e.crafting)
+                || (t.owner != null && t.owner != p) || (t.container != null && t.container != p.openContainer)
+                || !eligible(e.crafting)
                 || CraftingManager.REGISTRY.getObject(t.recipe.getRegistryName()) != t.recipe
                 || !ItemStack.areItemStacksEqual(t.snapshot,e.crafting)) return;
         if (t.certified && (t.owner != p || t.container != p.openContainer)) return;
-        t.owner=p;t.container=p.openContainer;t.certified=true;
+        t.owner=p;t.container=p.openContainer;t.certified=true;t.expires=System.nanoTime()+ORPHAN_TIMEOUT_NANOS;
     }
     private static void add(Set<ItemStack> found,ItemStack s,Ticket t) {
         if (t.nonce.equals(token(s)) && ItemStack.areItemStacksEqual(t.snapshot,s)) found.add(s);
@@ -109,10 +159,11 @@ public final class ArsenalCrafting {
         if (e.phase != TickEvent.Phase.END || !(e.player instanceof EntityPlayerMP)
                 || !server(e.player.world)) return;
         EntityPlayerMP p=(EntityPlayerMP)e.player;
+        refreshStalePreview(p);
         Iterator<Ticket> it=TICKETS.values().iterator();
         while (it.hasNext()) {
             Ticket t=it.next();
-            if (!t.certified) { if (System.nanoTime()>t.expires) it.remove(); continue; }
+            if (!t.certified) continue;
             if (t.owner != p) continue;
             // Consume certification once, even on a failed/ambiguous resolution.
             it.remove();

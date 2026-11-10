@@ -1,0 +1,54 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import java.security.MessageDigest
+
+plugins { id 'base' }
+version = '0.2.0'
+
+// Recovered art and metadata only. The excluded renderer implementation is not
+// silently replaced, and this ZIP must never be represented as a complete mod.
+tasks.register('verifyRecoveredResources') {
+    inputs.dir('resources')
+    inputs.file('SOURCE-PROVENANCE.json')
+    doLast {
+        def provenance = new JsonSlurper().parse(file('SOURCE-PROVENANCE.json'))
+        def records = provenance.files.findAll { it.path.startsWith('resources/') }
+        def actual = fileTree('resources').files.collect { relativePath(it).replace('\\', '/') }.toSet()
+        if (actual != records.collect { it.path }.toSet()) {
+            throw new GradleException('Village Standards resource inventory differs from its recovered provenance.')
+        }
+        records.each { record ->
+            byte[] bytes = file(record.path).bytes
+            def sha = MessageDigest.getInstance('SHA-256').digest(bytes).encodeHex().toString()
+            if (bytes.length != record.bytes || sha != record.sha256) {
+                throw new GradleException("Changed recovered resource: ${record.path}")
+            }
+        }
+    }
+}
+tasks.named('check') { dependsOn tasks.named('verifyRecoveredResources') }
+def overlay = tasks.register('resourceOverlay', Zip) {
+    dependsOn tasks.named('verifyRecoveredResources')
+    archiveFileName.set("Village-Standards-${project.version}-resource-overlay.zip")
+    destinationDirectory.set(layout.buildDirectory.dir('distributions'))
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    from('resources')
+    from('LICENSE.txt')
+    from('README.txt')
+}
+tasks.register('writeValeBuildMetadata') {
+    dependsOn tasks.named('check'), overlay
+    def metadata = layout.buildDirectory.file('vale-build.json')
+    outputs.file(metadata)
+    outputs.upToDateWhen { false }
+    doLast {
+        def output = metadata.get().asFile
+        output.parentFile.mkdirs()
+        output.text = JsonOutput.prettyPrint(JsonOutput.toJson([
+            schema: 1, module: project.name, version: project.version.toString(),
+            artifacts: [[role: 'resource_overlay', path: overlay.get().archiveFile.get().asFile.absolutePath]],
+            acceptance: 'RESOURCES_ONLY_RENDERER_SOURCE_UNAVAILABLE', minecraft_launched: false
+        ])) + '\n'
+    }
+}

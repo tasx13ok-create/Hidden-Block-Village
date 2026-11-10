@@ -3,14 +3,11 @@ group='village.vale'; version='1.0.0'
 base { archivesName='vale-world-compat' }
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
 minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
-dependencies { compileOnly files('../core-0.3.5-arsenal/build/libs/vale-orders-0.3.5-dev.jar') }
+apply from: file('../../gradle/vale-compile-inputs.gradle')
+dependencies { compileOnly files(valeCompileInput('valeCoreDevJar', 'Current Vale Core development API')) }
 tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.incremental=false }
-if(providers.gradleProperty('prebuiltMinecraft').isPresent()) {
- def input=file(providers.gradleProperty('prebuiltMinecraft').get()); def target=file('build/rfg/recompiled_minecraft-1.12.2.jar'); target.parentFile.mkdirs(); if(!target.exists())java.nio.file.Files.copy(input.toPath(),target.toPath())
- sourceSets.main.compileClasspath+=files(input); sourceSets.main.runtimeClasspath+=files(input)
- def prepared=['downloadFernflower','mergeVanillaSidedJars','deobfuscateMergedJarToSrg','decompileSrgJar','cleanupDecompSrgJar','patchDecompiledJar','applyJST','remapDecompiledJar','decompressDecompiledSources','compilePatchedMcJava','processPatchedMcResources','createMcLauncherFiles','compileMcLauncherJava','packageMcLauncher','packagePatchedMc','extractNatives2']
- tasks.matching { it.name in prepared }.configureEach { enabled=false }
-}
 sourceSets { checks { java.srcDirs=['tests']; compileClasspath+=sourceSets.main.output+sourceSets.main.compileClasspath; runtimeClasspath+=output+compileClasspath } }
 tasks.register('verifyCompatibility',JavaExec) { dependsOn tasks.named('checksClasses'); classpath=sourceSets.checks.runtimeClasspath; mainClass.set('village.vale.worldcompat.CompatibilityChecks'); javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }) }
 tasks.named('check') { dependsOn tasks.named('verifyCompatibility') }
+
+apply from: file('../../gradle/vale-mod-build.gradle')

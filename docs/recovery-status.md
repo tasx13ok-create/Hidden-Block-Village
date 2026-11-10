@@ -1,8 +1,28 @@
 # Recovery and release status
 
-Evidence snapshot: **10 November 2026**. This page is a public summary of the recovered client/server reconciliation and repository intake. The companion [component lock](../release/component-lock.json) records the source evidence document hashes, exact component pins, and the scope of each observation without exposing private recovery locations.
+Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [candidate verification](../release/candidate037-verification.json) records current measured results. The [component lock](../release/component-lock.json) preserves historical source evidence, expected runtime pins and observation scope.
 
-**Release state: `CORE036_STAGED_NOT_PROMOTED_FINAL_ACCEPTANCE_PENDING`.** The later source and runtime candidate still needs final acceptance before it can replace the existing complete package. No overall completion percentage or final client/server download is established by this snapshot.
+**Release state: `CORE037_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING`.** The source-built Core candidate passed its isolated native recovery checks on both runtimes. The complete Windows stage, actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final client/server download or overall completion percentage is established.
+
+## Current continuation
+
+Core 0.3.7 is 1,911,478 bytes, SHA-256:
+
+```text
+ccb1e9b001e4beb416d6e9e06c56ecce659bd02c34f0c9d4280c6479ec0688b4
+```
+
+Its five fixes address certification of delayed crafting results, persistent specialist cooldowns, rejoining one's existing expedition, closing out-of-range companion deployments, and diagnostics for the current 555-item registry. Residents' academy and quartermaster dialogue now explains the six separate weapon storage slots and the paid delivery queue.
+
+The exact Core passed **the same 86 assertions on a real Forge 1.12.2 / 14.23.5.2859 dedicated server and on Magma 1.12.2-8cc35ed**, whose embedded Forge reports 14.23.5.2860. Both processes exited successfully. The isolated native fixture exercises result-slot crafting, actual specialist weapon use, player NBT save/logout/reload, expedition charter use, companion lifecycle, 36 eligible Spirit provisions, paid purchases and full-inventory receipt replay without duplicate rewards. It uses a synthetic player with a native server handler and a disposable `vale-recovery-test` world. It does not connect a graphical client or load `Naruto.test`. The separate persistent-state component suite passes 23 assertions. [Exact evidence and scope](../release/candidate037-verification.json)
+
+The Magma check used the real upstream 8cc35ed JAR plus the final owned bootstrap wrapper and an isolated fixture plan. All unowned upstream file payloads are preserved. A subsequent `--vale-upgrade-check-only` also passed and revalidated the runtime fingerprints. This is bootstrap/native fixture evidence; it is not a test of the complete PC plugin/mod roster or a second saved-world gameplay session.
+
+The source workspace now has portable dependency-ordered builds. All eleven source areas and 34 declared artifacts passed; the source manifest covers 1,483 files and remained unchanged during the run. The Python release/bootstrap suite passed 91 tests. The outputs include production mods, separate compatibility adapters, an owned bootstrap wrapper library and the Village Standards art/metadata overlay. The overlay lacks the six unavailable renderer Java files and cannot replace the existing Village Standards mod. Rebuilt candidates whose hashes differ from the historical lock retain their new identities; they are not described as byte-identical recoveries. [Build instructions and artifact roles](build-modules.md)
+
+The revised bootstrap binds installation markers to the embedded plan, revalidates runtime JARs on every start, rejects extra or reintroduced retired runtime JARs, preserves checked rollback files and requires launch from the server's own folder. The full assembler copies the selected complete source into a new destination, verifies all saved-world bytes, updates the matching nested client, pins changed configuration including CrazyCrates, and removes stale acceptance receipts from the candidate runtime. Its successful status is always `CANDIDATE_PENDING_ACCEPTANCE`. [Assembly procedure](../tools/ASSEMBLY.md)
+
+Both remembered Windows File Link sessions are disconnected at this snapshot. The browser link also needs protocol 2 for complete export operations. No current Windows files have been changed or exported during this continuation. Reconnect the complete source folders and the intended writable destination before generating the real assembly plan; the previously incomplete extraction cannot substitute for the complete stage or original archive.
 
 ## Existing package and later candidate
 
@@ -43,21 +63,21 @@ The additional candidate client entries are HUD 0.14.0, Controls 1.4.0 simple, c
 
 The complete Core 0.3.6 source is recovered: 1,218 unchanged files, including 118 production Java files, nine test Java files and 1,087 resources. The source ZIP SHA-256 is `8ab84d16f8c810f339ed40f5a1c05a00f7a6d3da53754b1fc410f16403176f75`. Its `check reobfJar sourcesJar` build passed all ten custom verification tasks and reproduced the recorded production JAR SHA-256 exactly. This is a fresh source-to-binary reproduction; it does not mean the current PC runtime file was freshly rehashed or that the saved world ran. [Build instructions](build-core.md)
 
-The public workspace contains eleven reviewed source modules with recovery provenance. A separate 0.3.7 source candidate addresses delayed crafting issuance, specialist cooldown persistence, expedition rejoin, companion distance closure and stale registry self-tests. Its eleven custom component tasks pass; native checks remain in progress. The recovered 0.3.6 module is kept intact in this baseline commit for a clear subsequent fix history.
+The public workspace contains eleven reviewed source areas with recovery provenance. Core 0.3.6 remains available at baseline commit `ffa7d0a9f048f8fb2279ba4729a64f2fb6280701`; the current working source is 0.3.7. The current candidate result is described above and does not retroactively change the historical 0.3.6 receipts.
 
 Recovered server records target Java 8 and a named Magma 1.12.2 bootstrap. The bootstrap changed after the earlier staged startup receipts. Both bootstrap filenames, the final Core, Encounters, and the matching client must be included in the next exact-artifact check. A version filename is insufficient to choose between historical candidates.
 
-## Final acceptance gap
+## Historical assembly gaps and current fixes
 
-The final Core class-comparison receipt reports 219 unchanged production classes and one changed class, `village/vale/Quartermaster.class`. The changed class corrects the Spirit provision page to enumerate original armor instead of looking up absent retired armor content. Its **supplemental native acceptance is explicitly `PENDING`**.
+The historical Core 0.3.6 class-comparison receipt reports 219 unchanged production classes and one changed class, `village/vale/Quartermaster.class`. It corrected the Spirit provision page to enumerate original armor. That old receipt explicitly left supplemental native acceptance pending. The new 0.3.7 Forge run now verifies the current Spirit menu and paid-delivery behavior on the exact hash above; the historical receipt itself remains unchanged.
 
 The class comparison's native gameplay base hash is `75aa6d67928c7208c0791afa69144d60f72b3ddae2de9fdef07d1f6f13d3305a`. Its final Core hash is the staged `54879901…` pin. A generic `passed` field in this comparison is evidence of the comparison result, not of the pending gameplay check.
 
 The staged first-start and restart receipts precede both the final Core JAR and the changed bootstrap. The staged verification and payload hash documents also predate final assembly. New final-artifact results and refreshed package evidence are required.
 
-`plugins/CrazyCrates/config.yml` was modified by the recovered assembler but omitted from its expected pins. That configuration must join the final verification set. Eight staged crate definitions, dialogue schema and actions, world destinations, and launcher expectations must resolve against the accepted registries.
+`plugins/CrazyCrates/config.yml` was modified by the recovered assembler but omitted from its expected pins. The new assembler requires that pin when the file exists and requires every changed configuration to be declared. The actual eight staged crate definitions, configured dialogue/actions, world destinations and launcher expectations still need reconciliation with the final current files.
 
-The recovered assembler also moves files to deterministic backup names and replaces nested archives without an atomic transaction. Resume from the actual stage using a reviewed recoverable procedure; a blind repeat can damage the intermediate state. [Lock: pending acceptance gates](../release/component-lock.json)
+The old recovered assembler moved files to deterministic backup names and replaced nested archives without an atomic transaction. The new tooling builds a separate candidate, refuses existing output destinations, checks source and output inventories and binds the bootstrap's pending/done markers to its exact plan. Real stage assembly and acceptance remain unperformed while PC access is disconnected. [Historical pending gates](../release/component-lock.json)
 
 ## Coverage and scope
 
@@ -82,22 +102,22 @@ Residents' recovered scope covers the academy, contracts, and quartermaster role
 
 These are reconciliation gates G01–G08. They summarize the open work; the release tool's own acceptance schema may use additional identifiers.
 
-| Gate | Required result |
+| Gate | Current result and remaining requirement |
 | --- | --- |
-| G01 — Exact identities | Full hashes for all final server/client runtimes, both bootstrap filenames, and nested client files; all discrepancies resolved. |
-| G02 — Quartermaster | A successful supplemental native result for Spirit provisions on the exact final Core and relevant configuration. |
-| G03 — Configuration | Resolved registry/action/resource references; nine server mod entries, eight crates, dialogue, destinations, launcher rules, and the previously omitted crate config covered. |
-| G04 — World lifecycle | Isolated first-start, save, and restart of the intended saved world on the exact final server; preserved saved records and explicit migration results. |
-| G05 — Matching client | Real client connection and bounded checks for progression, specialist weapons, scroll roles, rack behavior, dialogue, armor, and input contexts. |
-| G06 — Visuals | Actual icon/model/armor and Solas inspection on the final client; approval holds honored. |
-| G07 — Final package | Refreshed verification and payload hashes, complete archive validation, correct saved world and matching client, preserved rollback, and atomic promotion. |
-| G08 — Hosted acceptance | Bisect start/restart and actual matching-client connection evidence. |
+| G01 — Exact identities | Current source-build outputs are hashed. The full Windows server/client roster, both final bootstrap aliases and nested client still need fresh hashes and reconciliation. |
+| G02 — Quartermaster | Current Core passes isolated native Forge and Magma Spirit eligibility, purchase, owner binding, queued delivery and duplicate-prevention checks. Retain this exact hash and verify the final configured server package. |
+| G03 — Configuration | Bootstrap/assembler checks and Residents guidance are implemented. Actual staged crates, configured actions, destinations and all final configuration pins remain to verify. |
+| G04 — World lifecycle | Still requires first-start, save and restart of the actual `Naruto.test` world on the exact final server, with saved records checked. |
+| G05 — Matching client | Still requires a real client connection and bounded progression, weapons, scrolls, rack, dialogue, armor and input checks. |
+| G06 — Visuals | Still requires icon/model/armor and Solas inspection on the final graphical client. Static resource checks do not establish appearance. |
+| G07 — Final package | Assembly machinery is checked; the real complete package has not been assembled or promoted. It still requires refreshed evidence, complete archive validation and matching client/world. |
+| G08 — Hosted acceptance | Still requires Bisect start/restart and actual matching-client connection evidence. |
 
 Local acceptance can support `READY_FOR_HOSTED_TEST`. A successful hosted connection requires separate evidence; it cannot be inferred from compilation, unit checks, or local fake-player fixtures.
 
 ## Publication and provenance
 
-Repository intake on 10 November 2026 found a public repository at commit `f0625f3cdc559bf771ab72a0db95a9ccdee6a31a`, with a single 22-byte README and no releases. That is the historical intake baseline, before this workspace is published.
+Initial repository intake found commit `f0625f3cdc559bf771ab72a0db95a9ccdee6a31a`, containing a single 22-byte README and no releases. The recovered Core 0.3.6 source baseline was subsequently published as `ffa7d0a9f048f8fb2279ba4729a64f2fb6280701`. This continuation builds on that baseline; neither source publication is a full runtime release.
 
 The public workspace is intended for selected technical metadata and reviewed source/tooling. Keep full server backups, private saved-player records, credentials, reference decompilations, private preview worlds, and approval-held artwork outside public publication. Preserve the existing local server state while reviewing a separate distributable contents list. Component names and hashes establish identity, not redistribution permission or legal clearance.
 

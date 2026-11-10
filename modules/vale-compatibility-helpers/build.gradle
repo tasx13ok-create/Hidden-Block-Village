@@ -1,0 +1,23 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+plugins { id 'base' }
+
+tasks.register('writeValeBuildMetadata') {
+    dependsOn subprojects.collect { "${it.path}:writeValeBuildMetadata" }
+    def metadata = layout.buildDirectory.file('vale-build.json')
+    outputs.file(metadata)
+    outputs.upToDateWhen { false }
+    doLast {
+        def parts = subprojects.collect {
+            new JsonSlurper().parse(it.layout.buildDirectory.file('vale-build.json').get().asFile)
+        }
+        def output = metadata.get().asFile
+        output.parentFile.mkdirs()
+        output.text = JsonOutput.prettyPrint(JsonOutput.toJson([
+            schema: 1, module: project.name, version: 'source-adapters',
+            artifacts: parts.collectMany { part -> part.artifacts.collect { it + [component: part.module, version: part.version] } },
+            acceptance: 'COMPONENT_BUILD_ONLY', minecraft_launched: false
+        ])) + '\n'
+    }
+}

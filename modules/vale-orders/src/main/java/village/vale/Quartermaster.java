@@ -50,7 +50,7 @@ public final class Quartermaster {
             if(key.startsWith("hvbijuu:"))RewardLedger.get(p).issueOwned(p,key.substring(8),row.getString("receipt"));
             else RewardLedger.get(p).issue(p,key,1,row.getString("receipt"));
         }catch(IllegalArgumentException e){return Adventures.tell(p,"A paid provision remains queued for retry when its item is available. No further merit charged.");}
-        s.removeTag("purchasePending");Adventures.save(p);return Adventures.tell(p,"Provision recorded. Inventory overflow waits in your reward queue.",true);
+        s.removeTag("purchasePending");Adventures.save(p);return Adventures.tell(p,"Provision paid and recorded. If your inventory is full, free a slot and wait for the queued item; do not buy it again.",true);
     }
     public static void show(EntityPlayerMP p,String page){
         p.sendMessage(new TextComponentString("Quartermaster | Merit "+PlayerState.data(p).getInteger("merit")+" | /vale provisions ward|spirit|tools|<studied order>"));

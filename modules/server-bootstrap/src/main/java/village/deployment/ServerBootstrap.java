@@ -22,59 +22,67 @@ public final class ServerBootstrap {
         Path jar=Paths.get(ServerBootstrap.class.getProtectionDomain().getCodeSource().getLocation().toURI()).toRealPath();
         if(!Files.isRegularFile(jar,LinkOption.NOFOLLOW_LINKS))throw new IOException("Launch the packaged server JAR, not a loose class directory.");
         Path root=jar.getParent().toRealPath();
-        Properties plan=new Properties();
+        if(!Paths.get("").toRealPath().equals(root))
+            throw new IOException("Start this server from its own folder so the validated runtime and saved world are used.");
+        Properties plan=new Properties();byte[] planBytes;
         try(InputStream input=ServerBootstrap.class.getClassLoader().getResourceAsStream(RESOURCE)) {
             if(input==null)throw new IOException("The embedded release plan is missing.");
-            plan.load(new InputStreamReader(input,StandardCharsets.UTF_8));
+            ByteArrayOutputStream bytes=new ByteArrayOutputStream();byte[] buffer=new byte[8192];
+            for(int read;(read=input.read(buffer))!=-1;) {
+                if(bytes.size()+read>1024*1024)throw new IOException("The embedded release plan exceeds its size limit.");
+                bytes.write(buffer,0,read);
+            }
+            planBytes=bytes.toByteArray();
+            plan.load(new InputStreamReader(new ByteArrayInputStream(planBytes),StandardCharsets.UTF_8));
         }
         String release=plan.getProperty("release","");
         if(!release.matches("[A-Za-z0-9_-]{1,100}"))throw new IOException("Invalid release identifier.");
         Path state=resolve(root,"vale-update-state/"+release+".done");
-        String marker="VALE_RELEASE="+release+"\n";
-        if(Files.exists(state,LinkOption.NOFOLLOW_LINKS)) {
+        String marker="VALE_RELEASE="+release+"\nVALE_PLAN_SHA256="+sha(planBytes)+"\n";
+        boolean installed=Files.exists(state,LinkOption.NOFOLLOW_LINKS);
+        if(installed) {
             if(!sameMarker(state,marker))
                 throw new IOException("Release marker is invalid; no files were changed.");
-            System.out.println("VALE_DEPLOYMENT: release already installed; normal startup.");
+        }
+        int expected=bounded(plan,"expected.count",1,2000),retired=bounded(plan,"retired.count",0,5000);
+        Set<String> protectedPaths=new HashSet<>(),retiredPaths=new HashSet<>();
+        // Every launch revalidates the code that is about to execute. Editable
+        // configuration is pinned during installation and may change afterward.
+        for(int i=0;i<expected;i++) {
+            String rel=plan.getProperty("expected."+i+".path","");String hash=requiredHash(plan,"expected."+i+".sha256");
+            Path file=resolve(root,rel);
+            if(!protectedPaths.add(rel.toLowerCase(Locale.ROOT)))throw new IOException("Duplicate expected path: "+rel);
+            if((!installed||runtimeJar(rel))&&(!Files.isRegularFile(file,LinkOption.NOFOLLOW_LINKS)||!hash.equals(sha(file))))
+                throw new IOException("Release file is missing or changed: "+rel+". Re-extract the complete update before starting.");
+        }
+        for(int i=0;i<retired;i++) {
+            String rel=plan.getProperty("retired."+i+".path","");requiredHash(plan,"retired."+i+".sha256");resolve(root,rel);
+            if(!allowedRetired(rel)||protectedPaths.contains(rel.toLowerCase(Locale.ROOT))||!retiredPaths.add(rel.toLowerCase(Locale.ROOT)))
+                throw new IOException("Invalid retirement path: "+rel);
+        }
+        checkRuntimeRoster(root,protectedPaths,installed?Collections.<String>emptySet():retiredPaths);
+        if(installed) {
+            System.out.println("VALE_DEPLOYMENT: release already installed; runtime fingerprints revalidated.");
         } else {
-            int expected=bounded(plan,"expected.count",1,2000),retired=bounded(plan,"retired.count",0,5000);
-            // Validate the whole expected release before moving any old file.
-            Set<String> protectedPaths=new HashSet<>();
-            for(int i=0;i<expected;i++) {
-                String rel=plan.getProperty("expected."+i+".path","");String hash=requiredHash(plan,"expected."+i+".sha256");
-                Path file=resolve(root,rel);protectedPaths.add(rel.toLowerCase(Locale.ROOT));
-                if(!Files.isRegularFile(file,LinkOption.NOFOLLOW_LINKS)||!hash.equals(sha(file)))
-                    throw new IOException("Release file is missing or changed: "+rel+". Re-extract the complete update before starting.");
-            }
             Path pending=resolve(root,"vale-update-state/"+release+".pending");
             if(Files.exists(pending,LinkOption.NOFOLLOW_LINKS)&&!sameMarker(pending,marker))throw new IOException("Unexpected pending deployment marker.");
-            List<Move> moves=new ArrayList<>();Set<String> retiredPaths=new HashSet<>();
+            List<Move> moves=new ArrayList<>();
             for(int i=0;i<retired;i++) {
                 String rel=plan.getProperty("retired."+i+".path","");String hash=requiredHash(plan,"retired."+i+".sha256");
-                if(!allowedRetired(rel)||protectedPaths.contains(rel.toLowerCase(Locale.ROOT))||!retiredPaths.add(rel.toLowerCase(Locale.ROOT)))
-                    throw new IOException("Invalid retirement path: "+rel);
                 Path from=resolve(root,rel),to=resolve(root,"vale-update-backup/"+release+"/"+rel);
-                if(!Files.exists(from,LinkOption.NOFOLLOW_LINKS))continue;
+                if(!Files.exists(from,LinkOption.NOFOLLOW_LINKS)) {
+                    if(Files.exists(to,LinkOption.NOFOLLOW_LINKS)&&(!Files.isRegularFile(to,LinkOption.NOFOLLOW_LINKS)||!hash.equals(sha(to))))
+                        throw new IOException("An interrupted deployment backup differs from its audited fingerprint: "+rel);
+                    continue;
+                }
                 if(!Files.isRegularFile(from,LinkOption.NOFOLLOW_LINKS)||!hash.equals(sha(from)))
                     throw new IOException("Old file differs from the audited server download: "+rel+". It was not removed.");
                 if(Files.exists(to,LinkOption.NOFOLLOW_LINKS))
                     throw new IOException("A rollback destination already exists: "+rel+". It was not overwritten.");
                 moves.add(new Move(from,to,hash));
             }
-            // Do not quietly launch an additional unreviewed mod/plugin from an
-            // old live installation that was absent from the downloaded archive.
-            for(String folder:new String[]{"mods","mods/1.12.2","plugins","plugins/update"}) {
-                Path directory=resolve(root,folder);
-                if(!Files.isDirectory(directory,LinkOption.NOFOLLOW_LINKS))continue;
-                try(DirectoryStream<Path> files=Files.newDirectoryStream(directory)) {
-                    for(Path file:files) {
-                        if(Files.isSymbolicLink(file))throw new IOException("Symlink in runtime folder: "+folder);
-                        if(!file.getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".jar"))continue;
-                        String rel=folder+"/"+file.getFileName();String key=rel.toLowerCase(Locale.ROOT);
-                        if(!protectedPaths.contains(key)&&!retiredPaths.contains(key))
-                            throw new IOException("An extra runtime JAR is not in this release: "+rel+". Move it outside "+folder+" before the first start.");
-                    }
-                }
-            }
+            Files.createDirectories(state.getParent());
+            if(!Files.exists(pending,LinkOption.NOFOLLOW_LINKS))Files.write(pending,marker.getBytes(StandardCharsets.UTF_8),StandardOpenOption.CREATE_NEW);
             for(Move move:moves) {
                 Files.createDirectories(move.to.getParent());
                 // Re-check containment/symlinks and bytes immediately before a
@@ -85,11 +93,8 @@ public final class ServerBootstrap {
                 Files.move(move.from,move.to);
                 System.out.println("VALE_DEPLOYMENT: preserved superseded file outside runtime: "+root.relativize(move.from));
             }
-            Files.createDirectories(state.getParent());
-            if(Files.exists(pending,LinkOption.NOFOLLOW_LINKS)) {
-                if(!sameMarker(pending,marker))
-                    throw new IOException("Unexpected pending deployment marker.");
-            } else Files.write(pending,marker.getBytes(StandardCharsets.UTF_8),StandardOpenOption.CREATE_NEW);
+            checkRuntimeRoster(root,protectedPaths,Collections.<String>emptySet());
+            if(!sameMarker(pending,marker))throw new IOException("Unexpected pending deployment marker.");
             Files.move(pending,state);
             System.out.println("VALE_DEPLOYMENT: installed "+release+"; preserved "+moves.size()+" superseded files in vale-update-backup. Saved worlds/player data were not moved.");
         }
@@ -100,6 +105,26 @@ public final class ServerBootstrap {
         try { Class.forName(DELEGATE).getMethod("main",String[].class).invoke(null,(Object)launch.toArray(new String[0])); }
         catch(InvocationTargetException failure) {
             Throwable cause=failure.getCause();if(cause instanceof Exception)throw (Exception)cause;if(cause instanceof Error)throw (Error)cause;throw failure;
+        }
+    }
+    private static boolean runtimeJar(String rel) {
+        return rel.toLowerCase(Locale.ROOT).endsWith(".jar");
+    }
+    private static void checkRuntimeRoster(Path root,Set<String> expected,Set<String> retired)throws IOException {
+        Set<String> seen=new HashSet<>();
+        for(String folder:new String[]{"mods","mods/1.12.2","plugins","plugins/update"}) {
+            Path directory=resolve(root,folder);
+            if(!Files.isDirectory(directory,LinkOption.NOFOLLOW_LINKS))continue;
+            try(DirectoryStream<Path> files=Files.newDirectoryStream(directory)) {
+                for(Path file:files) {
+                    if(Files.isSymbolicLink(file))throw new IOException("Symlink in runtime folder: "+folder);
+                    if(!runtimeJar(file.getFileName().toString()))continue;
+                    String rel=folder+"/"+file.getFileName();String key=rel.toLowerCase(Locale.ROOT);
+                    if(!seen.add(key))throw new IOException("Case-colliding runtime JAR: "+rel);
+                    if(!Files.isRegularFile(file,LinkOption.NOFOLLOW_LINKS)||(!expected.contains(key)&&!retired.contains(key)))
+                        throw new IOException("An extra runtime JAR is not in this release: "+rel+". Move it outside "+folder+" before starting.");
+                }
+            }
         }
     }
     private static boolean allowedRetired(String rel) {
@@ -119,7 +144,7 @@ public final class ServerBootstrap {
         String value=p.getProperty(key,"");if(!value.matches("[0-9a-f]{64}"))throw new IOException("Invalid deployment fingerprint.");return value;
     }
     private static Path resolve(Path root,String rel)throws IOException {
-        if(rel.length()==0||rel.indexOf(':')>=0||rel.startsWith("/")||rel.startsWith("\\"))throw new IOException("Invalid deployment path.");
+        if(rel.length()==0||rel.indexOf(':')>=0||rel.indexOf('\\')>=0||rel.startsWith("/"))throw new IOException("Invalid deployment path.");
         for(int i=0;i<rel.length();i++)if(rel.charAt(i)<32)throw new IOException("Control character in deployment path.");
         String[] parts=rel.replace('\\','/').split("/",-1);Path path=root;
         for(String part:parts) {
@@ -134,6 +159,13 @@ public final class ServerBootstrap {
             MessageDigest digest=MessageDigest.getInstance("SHA-256");byte[] buffer=new byte[65536];
             try(InputStream input=Files.newInputStream(file)) { for(int read;(read=input.read(buffer))!=-1;)digest.update(buffer,0,read); }
             StringBuilder result=new StringBuilder(64);for(byte b:digest.digest())result.append(String.format(Locale.ROOT,"%02x",b&255));return result.toString();
+        } catch(NoSuchAlgorithmException unavailable) { throw new IOException(unavailable); }
+    }
+    private static String sha(byte[] bytes)throws IOException {
+        try {
+            StringBuilder result=new StringBuilder(64);
+            for(byte b:MessageDigest.getInstance("SHA-256").digest(bytes))result.append(String.format(Locale.ROOT,"%02x",b&255));
+            return result.toString();
         } catch(NoSuchAlgorithmException unavailable) { throw new IOException(unavailable); }
     }
     private static final class Move {

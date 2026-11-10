@@ -1,0 +1,16 @@
+plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
+group = 'village.vale'
+version = '0.1.0'
+base { archivesName = 'Vale-Forge-Damage-Compat' }
+java {
+    toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }
+    withSourcesJar()
+}
+minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
+sourceSets.main.java { srcDirs = ['../src']; include 'village/vale/damagecompat/**' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+jar {
+    from('../LICENSE.txt')
+    manifest { attributes('FMLCorePlugin': 'village.vale.damagecompat.DamageCompatPlugin', 'FMLCorePluginContainsFMLMod': 'true', 'ForceLoadAsMod': 'true') }
+}
+apply from: file('../../../gradle/vale-mod-build.gradle')

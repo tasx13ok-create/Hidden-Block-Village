@@ -1,0 +1,16 @@
+// Resolve external development APIs lazily, so `help` and task discovery work
+// before the upstream module is built. Never package these compile-only inputs.
+ext.valeCompileInput = { String propertyName, String description, String legacyProperty = null ->
+    providers.provider {
+        def configured = providers.gradleProperty(propertyName).orNull
+        if (!configured && legacyProperty) configured = providers.gradleProperty(legacyProperty).orNull
+        if (!configured) {
+            throw new GradleException("${description} is required. Build the upstream module first and pass -P${propertyName}=<absolute development JAR path>, or run python tools/build_modules.py from the repository root.")
+        }
+        def input = file(configured)
+        if (!input.isFile() || !input.name.endsWith('.jar')) {
+            throw new GradleException("${description} is not an existing JAR: ${input}")
+        }
+        input
+    }
+}

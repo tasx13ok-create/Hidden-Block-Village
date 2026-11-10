@@ -53,11 +53,20 @@ final class ScrollSupport {
   }
   EntityPlayerMP target=null;Vec3d eye=p.getPositionEyes(1),end=eye.add(p.getLookVec().scale(8));double distance=64;for(EntityPlayer x:p.world.playerEntities)if(x instanceof EntityPlayerMP&&x!=p&&x.getEntityBoundingBox().grow(.5).calculateIntercept(eye,end)!=null&&p.getDistanceSq(x)<distance){target=(EntityPlayerMP)x;distance=p.getDistanceSq(x);}
   if(p.getTeam()!=null&&!p.getTeam().getName().startsWith("vs"))return false;
-  String team="vs"+p.getUniqueID().toString().replace("-","").substring(0,12);ScorePlayerTeam existing=board.getTeam(team);
-  if(existing==null){existing=board.createTeam(team);existing.setDisplayName(p.getName()+" expedition");existing.setAllowFriendlyFire(false);board.addPlayerToTeam(p.getName(),team);}
-  if(!existing.getMembershipCollection().contains(p.getName()))return false;s.setString("party",team);
+  ScorePlayerTeam existing=ownParty(board,p.getUniqueID(),p.getName());if(existing==null)return false;
+  String team=existing.getName();s.setString("party",team);
   if(target!=null){if(target.getTeam()!=null)return false;NBTTagCompound theirs=Scrolls.state(target);theirs.setString("partyInvite",team);theirs.setLong("partyInviteUntil",ArsenalAccess.now(target)+1200);Scrolls.tell(target,"Expedition invite from "+p.getName()+". Use your Party Charter to accept.");ArsenalAccess.save(target);}
   ArsenalAccess.save(p);return true;
+ }
+ /** Re-enter an existing owned expedition without stealing an outside team. */
+ static ScorePlayerTeam ownParty(Scoreboard board,UUID owner,String playerName){
+  String key="vs"+owner.toString().replace("-","").substring(0,12);
+  ScorePlayerTeam current=board.getPlayersTeam(playerName);
+  if(current!=null&&!key.equals(current.getName()))return null;
+  ScorePlayerTeam team=board.getTeam(key);
+  if(team==null){team=board.createTeam(key);team.setDisplayName(playerName+" expedition");team.setAllowFriendlyFire(false);}
+  if(current==null&&!board.addPlayerToTeam(playerName,key))return null;
+  return team.getMembershipCollection().contains(playerName)?team:null;
  }
  static NBTTagCompound companion(EntityPlayerMP p,ItemStack s){return ScrollJournal.get(p).companion(tag(s).getString("valeSerial"));}
  static boolean deploy(EntityPlayerMP p,ItemStack stack,String kind,BlockPos pos,EnumFacing face){

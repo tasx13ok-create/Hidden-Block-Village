@@ -38,13 +38,13 @@ public final class ScrollActor extends EntityCreature {
  EntityLivingBase target(){if(target==null)return null;for(Entity e:world.loadedEntityList)if(e.getUniqueID().equals(target)&&e instanceof EntityLivingBase&&!e.isDead)return(EntityLivingBase)e;return null;}
  @Override public AxisAlignedBB getCollisionBoundingBox(){return kind.equals("wall")?getEntityBoundingBox():null;}
  @Override public boolean attackEntityFrom(DamageSource source,float amount){if(world.isRemote)return false;Entity attacker=source.getTrueSource();EntityPlayerMP p=owner==null?null:world.getMinecraftServer().getPlayerList().getPlayerByUUID(owner);if(p==null||!(attacker instanceof EntityLivingBase)||!(attacker instanceof EntityPlayerMP?ArsenalAccess.allowed((EntityPlayerMP)attacker,p):ArsenalAccess.allowed(p,(EntityLivingBase)attacker)))return false;return super.attackEntityFrom(source,amount);}
- void recordCompanion(boolean closed){if(world.isRemote||sourceSerial.isEmpty()||owner==null)return;EntityPlayerMP p=world.getMinecraftServer().getPlayerList().getPlayerByUUID(owner);if(p==null)return;ScrollJournal j=ScrollJournal.get(p);NBTTagCompound n=j.companion(sourceSerial);if(n.hasUniqueId("actor")&&!getUniqueID().equals(n.getUniqueId("actor")))return;n.setFloat("health",Math.max(0,getHealth()));if(closed)n.setBoolean("deployed",false);j.markDirty();if(closed)j.flush(p);}
+ void recordCompanion(boolean closed){if(world.isRemote||sourceSerial.isEmpty()||owner==null)return;EntityPlayerMP p=world.getMinecraftServer().getPlayerList().getPlayerByUUID(owner);if(p==null)return;ScrollJournal j=ScrollJournal.get(p);if(j.recordCompanion(sourceSerial,getUniqueID(),getHealth(),closed)&&closed)j.flush(p);}
  @Override public void onDeath(DamageSource source){recordCompanion(true);super.onDeath(source);}
  @Override public void onLivingUpdate(){
   super.onLivingUpdate();if(world.isRemote){kind=dataManager.get(KIND);return;}
   if(owner==null||world.getTotalWorldTime()>=expires){recordCompanion(true);setDead();return;}if(ticksExisted%20==0)recordCompanion(false);
   EntityPlayerMP p=world.getMinecraftServer().getPlayerList().getPlayerByUUID(owner);if(p==null||p.world!=world||!p.isEntityAlive()){motionX=motionY=motionZ=0;return;}
-  if(getDistanceSq(p)>4096){setDead();return;}
+  if(getDistanceSq(p)>4096){recordCompanion(true);setDead();return;}
   EntityLivingBase t=target();
   if(kind.equals("wall")){motionX=motionY=motionZ=0;setPosition(anchorX,anchorY,anchorZ);return;}
   if(kind.equals("disguise")){setPosition(p.posX,p.posY,p.posZ);p.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY,25,0));if(t!=null){setCustomNameTag(t.getName());dataManager.set(MIRROR,t.getEntityId());}return;}

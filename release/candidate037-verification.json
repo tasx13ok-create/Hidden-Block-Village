@@ -1,0 +1,264 @@
+{
+  "schema": "vale.source-candidate-verification/v1",
+  "recorded_utc": "2026-11-10",
+  "status": "CORE037_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING",
+  "release_ready": false,
+  "source": {
+    "baseline_parent_commit": "ffa7d0a9f048f8fb2279ba4729a64f2fb6280701",
+    "canonical_file_list_sha256": "dbb424137cc472aa8cbca63943035ddf45fb9374f62e1f4aa504be66d2f122c6",
+    "file_count": 1483,
+    "bytes": 3784780,
+    "manifest_path": "release/candidate037-source-inputs.json",
+    "manifest_file_sha256": "42b9d581ba3064c4954104e3b12ebe6e1b48ca13c2f4e41bd45d1ddc2f3b31ed",
+    "post_build_inputs_rechecked": true,
+    "publication_binding": "Read this record at its containing Git commit. Its source file inventory is the authoritative exact source identity; the baseline parent is not the candidate source commit."
+  },
+  "component_builds": {
+    "passed": true,
+    "source_areas": 11,
+    "artifacts": 34,
+    "source_changed_during_build": [],
+    "report_path": "release/candidate037-component-builds.json",
+    "report_file_sha256": "77cdbc80be01c64c0946279e7382f5a5c82ed5a21382dfd908d3240b446ca69f",
+    "all_class_major_versions": [
+      52
+    ],
+    "build_scope": "Compilation, component checks, archive integrity and declared artifact ownership; not a full runtime installation."
+  },
+  "tool_tests": {
+    "passed": true,
+    "tests": 91,
+    "java_bootstrap_compiler": "Azul Java 8u512",
+    "evidence": {
+      "path": "release/evidence/core037-release-tool-tests.txt",
+      "bytes": 13178,
+      "sha256": "0c75df9e2e878daff3fbc5f40f964de88d6f975a14f4f005d9eb7b7caba08bf1"
+    }
+  },
+  "component_assertions": {
+    "gameplay_persistent_state": 23,
+    "world_compatibility": 108,
+    "residents_dialogue": 21,
+    "residents_persistence": 54,
+    "core_custom_tasks": 11,
+    "controls_custom_tasks": 6
+  },
+  "native_fixture": {
+    "production_core_sha256": "ccb1e9b001e4beb416d6e9e06c56ecce659bd02c34f0c9d4280c6479ec0688b4",
+    "qa_jar_sha256": "563f94ff2a27853f00b02b5fc07119b7eb0715d64150022bb157c48d3fbfbf6f",
+    "qa_source_path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+    "qa_source_sha256": "83a13976c5f78c77c92feb914302721d21dc8a4d015a21e4c1bec1553f32a2cb",
+    "qa_in_production_jar": false,
+    "world": "vale-recovery-test",
+    "player": "synthetic native EntityPlayerMP with embedded connection",
+    "network_binding": "127.0.0.1",
+    "forge": {
+      "passed": true,
+      "assertions": 86,
+      "minecraft": "1.12.2",
+      "forge": "14.23.5.2859",
+      "exit_code": 0,
+      "result": {
+        "path": "release/evidence/core037-forge-result.json",
+        "bytes": 869,
+        "sha256": "2aeea042de971553ce4ee3c468e45c6426a3f1e7c54df30e585df22b3b51e768"
+      },
+      "log": {
+        "path": "release/evidence/core037-forge-native.txt",
+        "bytes": 10392,
+        "sha256": "a1ead64d950be9d6a4805b42aca7cec44fc347cdddf4a7f01c0e4c6a01d7910f"
+      }
+    },
+    "magma": {
+      "passed": true,
+      "assertions": 86,
+      "magma": "1.12.2-8cc35ed",
+      "embedded_forge": "14.23.5.2860",
+      "upstream_sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c",
+      "wrapper_library_sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf",
+      "fixture_server_sha256": "5fa013573e3e4b2f09d3092c40005f3242cb6d65e1ea95400dc8d33fe3a1fa78",
+      "embedded_plan_sha256": "a76486e7dd1ba38f034f3a2ea232dd8cd6b3ef451d036f57f27d31c3c320bc21",
+      "exit_code": 0,
+      "result": {
+        "path": "release/evidence/core037-magma-result.json",
+        "bytes": 869,
+        "sha256": "73d489d28a53298cbf36a20ec44ca459b6c0a34e071d8a4ef0c6022ab7306c33"
+      },
+      "log": {
+        "path": "release/evidence/core037-magma-native.txt",
+        "bytes": 16046,
+        "sha256": "3e2649ff8da3265323bf1d8db8ff961028856149b48466d8d6cad241ba4bb17d"
+      },
+      "process": {
+        "path": "release/evidence/core037-magma-process.json",
+        "bytes": 106,
+        "sha256": "0f6747608ea5a6d3333d802d5c19da587a000e0930369129338f53bc8b7c6549"
+      },
+      "packaging": {
+        "path": "release/evidence/core037-magma-package-receipt.json",
+        "bytes": 1449,
+        "sha256": "20e96efec178dd049752a42e45520275ac39048cd21bd3d066d0b60a690cda29"
+      },
+      "subsequent_bootstrap_preflight": {
+        "passed": true,
+        "exit_code": 0,
+        "evidence": {
+          "path": "release/evidence/core037-magma-restart-preflight.txt",
+          "bytes": 78,
+          "sha256": "ef2ee0318a5cf68780cf558f6d76efc4e7ce45cf9e83075ffcd5985c1dc2fa1a"
+        },
+        "full_minecraft_restart": false
+      }
+    },
+    "checks": [
+      "555 live registered items and current diagnostic category checks",
+      "Native result-slot pickup remains issued after expired preview timeout",
+      "Stale proof is recomputed by native container before actual crafting",
+      "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+      "Native Party Charter leave/rejoin preserves the existing expedition",
+      "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+      "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency"
+    ],
+    "scope_limit": "Same 86-assertion suite executed on each runtime; this is not 172 distinct scenarios. No real client, full installed mod/plugin roster, actual Naruto.test world, GPU or hosted session was exercised."
+  },
+  "runtime_and_supporting_outputs": [
+    {
+      "module": "vale-orders",
+      "role": "runtime_mod",
+      "filename": "vale-orders-0.3.7.jar",
+      "bytes": 1911478,
+      "sha256": "ccb1e9b001e4beb416d6e9e06c56ecce659bd02c34f0c9d4280c6479ec0688b4",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "vale-encounters",
+      "role": "runtime_mod",
+      "filename": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+      "comparison": "EXACT_HISTORICAL_PIN_REPRODUCED"
+    },
+    {
+      "module": "vale-rack",
+      "role": "runtime_mod",
+      "filename": "Vale-Rack-0.1.1.jar",
+      "bytes": 33593,
+      "sha256": "8e4a1423a47c1c27a2134d0f99dfdb2d09932aa985df360d2d9e654d78853868",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "vale-residents",
+      "role": "runtime_mod",
+      "filename": "vale-residents-0.2.0.jar",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "vale-residents-server-bridge",
+      "role": "runtime_mod",
+      "filename": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef",
+      "comparison": "EXACT_HISTORICAL_PIN_REPRODUCED"
+    },
+    {
+      "module": "vale-world-compat",
+      "role": "runtime_mod",
+      "filename": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd",
+      "comparison": "EXACT_HISTORICAL_PIN_REPRODUCED"
+    },
+    {
+      "module": "field-hud",
+      "role": "runtime_mod",
+      "filename": "field-hud-0.14.0.jar",
+      "bytes": 182980,
+      "sha256": "93e48a7ccc0015f61df9dd3c6aa868734519d51c372d5804a6574a6d8f316f08",
+      "comparison": "EXACT_HISTORICAL_PIN_REPRODUCED"
+    },
+    {
+      "module": "field-controls",
+      "role": "runtime_mod",
+      "filename": "field-controls-1.4.0-simple-candidate.jar",
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce",
+      "comparison": "EXACT_HISTORICAL_PIN_REPRODUCED"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "role": "runtime_mod",
+      "filename": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "role": "runtime_mod",
+      "filename": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "role": "runtime_mod",
+      "filename": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d",
+      "comparison": "NEW_SOURCE_BUILT_CANDIDATE"
+    },
+    {
+      "module": "server-bootstrap",
+      "role": "bootstrap_library",
+      "filename": "Vale-Server-Bootstrap-0.3.7.jar",
+      "bytes": 9025,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf",
+      "comparison": "OWNED_WRAPPER_LIBRARY_ONLY"
+    },
+    {
+      "module": "village-standards",
+      "role": "resource_overlay",
+      "filename": "Village-Standards-0.2.0-resource-overlay.zip",
+      "bytes": 10184,
+      "sha256": "9624bd3a709c021b2dca9de124e8582b9cc00c05a84de8ed37c6deed62670c8a",
+      "comparison": "RESOURCE_OVERLAY_ONLY_RENDERER_SOURCE_UNAVAILABLE"
+    }
+  ],
+  "historical_comparison_limitations": [
+    "Rack and the three compatibility adapters differ from recorded runtime hashes; the old runtime bytes are unavailable here for comparison.",
+    "Residents includes revised dialogue text and has a new candidate hash.",
+    "Village Standards output is an art/metadata overlay, not a complete replacement mod.",
+    "The Magma fixture embeds a synthetic test plan and private QA pin; its server.jar is not the final user package."
+  ],
+  "remaining_acceptance": {
+    "windows_stage_current_inventory": "BLOCKED_DISCONNECTED_FILE_LINK",
+    "full_matching_client": "NOT_RUN",
+    "actual_Naruto_test_start_save_restart": "NOT_RUN",
+    "full_current_mod_plugin_roster": "NOT_RUN",
+    "graphics_and_Solas": "NOT_RUN",
+    "final_complete_package_assembly": "NOT_RUN",
+    "Bisect_start_restart_client_connection": "NOT_RUN"
+  },
+  "historical_coverage": {
+    "reference_item_rows": 485,
+    "mapped_rows": 461,
+    "distinct_targets": 353,
+    "unmapped_rows": 24,
+    "bounded_ability_obligations": 324,
+    "missing_ability_rows": 217,
+    "untested_ability_rows": 52,
+    "overall_completion_percentage": null,
+    "scope": "Historical bounded audit; these mechanics fixes do not certify overall coverage."
+  },
+  "publication_exclusions": [
+    "Runtime distributions",
+    "Saved worlds and actual player records",
+    "Reference decompilations",
+    "Credentials",
+    "Approval-held artwork",
+    "Compiled private native QA artifacts"
+  ]
+}

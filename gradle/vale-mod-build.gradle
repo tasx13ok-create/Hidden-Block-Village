@@ -1,0 +1,71 @@
+import groovy.json.JsonOutput
+
+// This script is applied only to a Java/RFG mod project after its own tasks are
+// declared. Metadata names actual task outputs; it never selects a stale JAR by
+// globbing build/libs or by guessing the current Core version.
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+// Optional, explicitly supplied Forge 1.12.2 stable-39 development API. The
+// default path still runs RFG's full preparation pipeline. The API is compile
+// input only and is never copied into a production archive.
+if (providers.gradleProperty('prebuiltMinecraft').isPresent()) {
+    def api = providers.provider {
+        def input = file(providers.gradleProperty('prebuiltMinecraft').get())
+        if (!input.isFile()) throw new GradleException("Prepared Minecraft API not found: ${input}")
+        input
+    }
+    sourceSets.configureEach {
+        compileClasspath += files(api)
+        runtimeClasspath += files(api)
+    }
+    def prepared = ['downloadFernflower', 'mergeVanillaSidedJars',
+        'deobfuscateMergedJarToSrg', 'decompileSrgJar', 'cleanupDecompSrgJar',
+        'patchDecompiledJar', 'applyJST', 'remapDecompiledJar',
+        'decompressDecompiledSources', 'compilePatchedMcJava',
+        'processPatchedMcResources', 'createMcLauncherFiles',
+        'compileMcLauncherJava', 'packageMcLauncher', 'packagePatchedMc',
+        'extractNatives2']
+    tasks.matching { it.name in prepared }.configureEach { enabled = false }
+    def stage = tasks.register('stageValePreparedMinecraft', Copy) {
+        from(api)
+        into(layout.buildDirectory.dir('rfg'))
+        rename { 'recompiled_minecraft-1.12.2.jar' }
+        onlyIf { api.get().canonicalFile != layout.buildDirectory.file('rfg/recompiled_minecraft-1.12.2.jar').get().asFile.canonicalFile }
+    }
+    tasks.named('compileJava') { dependsOn(stage) }
+    tasks.named('reobfJar') { dependsOn(stage) }
+}
+
+tasks.register('writeValeBuildMetadata') {
+    group = 'verification'
+    description = 'Build and record the exact component artifacts; does not launch Minecraft.'
+    dependsOn tasks.named('check'), tasks.named('reobfJar')
+    if (tasks.findByName('sourcesJar') != null) dependsOn tasks.named('sourcesJar')
+    def metadata = layout.buildDirectory.file('vale-build.json')
+    outputs.file(metadata)
+    outputs.upToDateWhen { false }
+    doLast {
+        def production = tasks.named('reobfJar').get().archiveFile.get().asFile
+        if (!production.isFile()) throw new GradleException("Missing reobfJar output: ${production}")
+        def artifacts = [
+            [role: 'runtime_mod', path: production.absolutePath],
+            [role: 'development_api', path: tasks.named('jar').get().archiveFile.get().asFile.absolutePath]
+        ]
+        if (tasks.findByName('sourcesJar') != null) {
+            artifacts << [role: 'sources', path: tasks.named('sourcesJar').get().archiveFile.get().asFile.absolutePath]
+        }
+        def output = metadata.get().asFile
+        output.parentFile.mkdirs()
+        output.text = JsonOutput.prettyPrint(JsonOutput.toJson([
+            schema: 1, module: project.name, version: project.version.toString(),
+            artifacts: artifacts, acceptance: 'COMPONENT_BUILD_ONLY', minecraft_launched: false,
+            component_checks: tasks.withType(JavaExec).findAll { it.name.startsWith('verify') }.collect {
+                [task: it.name, state: it.state.upToDate ? 'UP_TO_DATE' : it.state.skipped ? 'SKIPPED' : it.state.executed ? 'EXECUTED' : 'NOT_REQUESTED']
+            },
+            unavailable_checks: project.hasProperty('valeUnavailableChecks') ? project.valeUnavailableChecks : []
+        ])) + '\n'
+    }
+}

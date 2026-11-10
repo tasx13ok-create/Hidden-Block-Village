@@ -1,6 +1,7 @@
 # Local build and dependency output
 .gradle/
 **/build/
+**/run/
 **/target/
 /out/
 /dist/

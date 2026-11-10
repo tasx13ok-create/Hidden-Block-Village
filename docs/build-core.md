@@ -4,6 +4,9 @@ The repository includes the standard Gradle Wrapper at its root. Use it with
 `-p modules/vale-orders` to build Core. This command produces the Core mod and
 its source JAR; it does not assemble a client/server pack or launch Minecraft.
 
+For the dependent modules, checked output inventory, and continuous integration,
+use the [complete source build instructions](build-modules.md).
+
 ## Required Java versions
 
 | Purpose | Requirement |

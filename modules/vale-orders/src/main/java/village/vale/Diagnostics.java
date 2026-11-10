@@ -14,21 +14,26 @@ public final class Diagnostics {
         if (!condition) throw new IllegalStateException("Vale startup check failed: " + message);
     }
     public static void verify() {
-        require(Gear.ITEMS.size() == 152, "expected 152 registered items");
-        int armor = 0, weapons = 0;
+        require(Gear.ITEMS.size() == 555, "expected 555 registered items for Core 0.3.7");
+        int armor = 0, weapons = 0, specialists = 0, garments = 0, focus = 0;
         for (Item item : Gear.ITEMS.values()) {
             require(item.getRegistryName() != null, "missing item registry name");
             require(ForgeRegistries.ITEMS.getValue(item.getRegistryName()) == item, "item absent from live Forge registry");
             ItemStack stack = new ItemStack(item);
             require(!stack.isEmpty() && stack.getCount() == 1, "invalid item stack");
-            require(stack.getMaxStackSize() >= 1 && stack.getMaxStackSize() <= 16, "unexpected reward stack limit");
+            require(stack.getMaxStackSize() >= 1 && stack.getMaxStackSize() <= 64, "unexpected native item stack limit");
             if (item instanceof Gear.WardArmor || item instanceof OriginalArmorRegistry.Armor) armor++;
             if (item instanceof Gear.WardBlade) weapons++;
+            if (item instanceof village.vale.arsenal.ArsenalBlade) specialists++;
+            if (item instanceof OriginalOutfits.Garment) garments++;
+            if (item instanceof OriginalFocusGear.Focus) focus++;
         }
-        require(armor == 72 && weapons == 54, "unexpected armor/weapon registrations");
+        require(armor == 72 && weapons == 54, "unexpected ward/resonance armor or base weapon registrations");
+        require(specialists == village.vale.arsenal.ArsenalSpec.values().length, "missing specialist weapons");
+        require(garments == OriginalOutfits.SPECS.length && focus == OriginalFocusGear.SPECS.length, "missing outfit/focus registrations");
         verifyLedger();
         org.apache.logging.log4j.LogManager.getLogger("ValeOrders").info(
-            "VALE_REGISTRY_SELFTEST_PASS: 152 live Forge items, including 72 armor pieces, 54 melee weapons, food and adventure tools.");
+            "VALE_REGISTRY_SELFTEST_PASS: " + Gear.ITEMS.size() + " live Forge items, including " + armor + " ward/resonance armor, " + weapons + " base weapons, " + specialists + " specialist weapons, " + garments + " garments and " + focus + " focus equipment.");
     }
     public static void main(String[] args) { verifyLedger(); }
     private static void verifyLedger() {

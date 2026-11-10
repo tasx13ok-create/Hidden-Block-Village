@@ -18,8 +18,8 @@ minecraft {
     mcpMappingVersion.set('39')
     username.set('ResidentDeveloper')
 }
-def valeApi = providers.gradleProperty('valeApiJar').orElse('deps/vale-orders-0.3.3-dev.jar')
-dependencies { compileOnly files(valeApi.get()) }
+apply from: file('../../gradle/vale-compile-inputs.gradle')
+dependencies { compileOnly files(valeCompileInput('valeCoreDevJar', 'Current Vale Core development API', 'valeApiJar')) }
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.incremental = false
@@ -52,3 +52,5 @@ tasks.register('verifyDialogue', JavaExec) {
     })
 }
 tasks.named('check') { dependsOn tasks.named('verifyDialogue') }
+
+apply from: file('../../gradle/vale-mod-build.gradle')

@@ -1,0 +1,34 @@
+import groovy.json.JsonOutput
+
+plugins { id 'java' }
+group = 'village.deployment'
+version = '0.3.7'
+base { archivesName = 'Vale-Server-Bootstrap' }
+java {
+    toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }
+    withSourcesJar()
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+// A source-built wrapper library, not the Magma server or a deployable launcher.
+// No Main-Class or embedded release plan is invented by this build.
+tasks.register('writeValeBuildMetadata') {
+    dependsOn tasks.named('check'), tasks.named('jar'), tasks.named('sourcesJar')
+    def metadata = layout.buildDirectory.file('vale-build.json')
+    outputs.file(metadata)
+    outputs.upToDateWhen { false }
+    doLast {
+        def output = metadata.get().asFile
+        output.parentFile.mkdirs()
+        output.text = JsonOutput.prettyPrint(JsonOutput.toJson([
+            schema: 1, module: project.name, version: project.version.toString(),
+            artifacts: [
+                [role: 'bootstrap_library', path: tasks.named('jar').get().archiveFile.get().asFile.absolutePath],
+                [role: 'sources', path: tasks.named('sourcesJar').get().archiveFile.get().asFile.absolutePath]
+            ], acceptance: 'WRAPPER_LIBRARY_ONLY', minecraft_launched: false
+        ])) + '\n'
+    }
+}

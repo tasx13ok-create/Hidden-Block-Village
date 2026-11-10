@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "loopback_only": true,
+  "fixture": "native-recovery-0.3.7"
+}

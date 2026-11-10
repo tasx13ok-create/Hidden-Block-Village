@@ -2,7 +2,7 @@
 
 Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay systems, a matching Forge client, and a Magma server package intended for Bisect Hosting. This workspace brings the recovered component identities, source recovery work, and release checks into one place.
 
-**Current state: the exact Core 0.3.6 build is recovered; final package acceptance is in progress.** The latest located server candidate is Core 0.3.6 with Encounters 0.3.6. The existing Downloads package still contains Core 0.3.5. Promotion of the later candidate, a verified final download, and a hosted client connection remain pending. [Recovery status](docs/recovery-status.md)
+**Current state: Core 0.3.7 passes its isolated native Forge and Magma recovery checks; the complete client/server export is still pending.** This continuation adds the five gameplay fixes, portable companion builds, a checked deployment bootstrap, and complete-package assembly tooling. The exact Core candidate passed the same 86 assertions on Forge 14.23.5.2859 and Magma 1.12.2-8cc35ed. The Windows stage still needs reconciliation and acceptance with the actual saved world. [Recovery status](docs/recovery-status.md)
 
 ## Start here
 
@@ -10,6 +10,9 @@ Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay syste
 | --- | --- |
 | [Recovery status](docs/recovery-status.md) | Distinguishes the existing package, later candidate, historical evidence, and remaining acceptance work. |
 | [Core build instructions](docs/build-core.md) | Reproduce the recovered Core source with the pinned wrapper and correct Java toolchains. |
+| [All component builds](docs/build-modules.md) | Build the recovered source areas in dependency order, inspect artifact roles and retain exact source/output hashes. |
+| [Candidate assembly](tools/ASSEMBLY.md) | Build a new full server/client candidate from the complete frozen input while preserving the original world and rollback. |
+| [Core 0.3.7 verification](release/candidate037-verification.json) | Version-bound results and limitations for the current continuation. |
 | [Component lock](release/component-lock.json) | Exact recovered filenames, byte counts, expected SHA-256 pins, evidence scope, and unresolved checks. |
 | [Release tools](tools/release_pack.py) | Local archive inventory and transport tooling. Run `python tools/release_pack.py --help` for its current commands. |
 | [Tool tests](tests/test_release_pack.py) | Checks for the release tooling; these do not exercise Minecraft gameplay or establish hosting compatibility. |
@@ -25,7 +28,9 @@ Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay syste
 | Whole package | 3,047,208,198 compressed bytes; 6,019,099,153 declared expanded bytes | Final complete archive pending |
 | Release state | Historical receipt: `READY_FOR_HOSTED_TEST` | Final acceptance pending; not promoted |
 
-The candidate client manifest targets **Minecraft 1.12.2, Forge 14.23.5.2859**. Recovered server records target **Java 8** and `Magma-1.12.2-8cc35ed-server.jar`. These are the recovered targets; execution against the exact final artifacts still needs validation. Keep each server snapshot paired with its matching client. [Component lock](release/component-lock.json)
+These two runtime snapshots are the recovered PC artifacts, not a claim that the new 0.3.7 source has already been installed there. The current source-built Core is `vale-orders-0.3.7.jar`, SHA-256 `ccb1e9b001e4beb416d6e9e06c56ecce659bd02c34f0c9d4280c6479ec0688b4`.
+
+The candidate client manifest targets **Minecraft 1.12.2, Forge 14.23.5.2859**. Recovered server records target **Java 8** and `Magma-1.12.2-8cc35ed-server.jar`. Keep each server snapshot paired with its matching client. The isolated Core fixture is narrower evidence than running the complete saved-world package. [Component lock](release/component-lock.json)
 
 The candidate includes the HUD 0.14.0 and Rack 0.1.1 lineage for six separate weapon storage slots, Controls 1.4.0 simple, Residents 0.2.0 with its server bridge, and Solas 3.9 configuration. Their presence and recorded identities are established at the scope described in the lock. Final input, persistence, networking, and graphics checks remain open. [Component and acceptance detail](docs/recovery-status.md)
 
@@ -37,11 +42,13 @@ A separate, bounded audit of 95 reference items records 324 ability obligations,
 
 ## Development and release work
 
-The complete Core 0.3.6 source has been recovered and built successfully with Gradle 9.5.0, Java 25 for Gradle and an Azul Java 8 Minecraft toolchain. All ten custom verification tasks passed, and the 1,907,890-byte production JAR exactly matches the recorded staged SHA-256 `54879901cc9e5caed778ef3cf4ff7034d1951adad7dc7a94ee82466b78762acc`. See [the portable build instructions](docs/build-core.md).
+The Core 0.3.6 source and its recorded byte-identical reproduction remain in the baseline history. This continuation builds Core 0.3.7 using Gradle 9.5.0, Java 25 for Gradle and an Azul Java 8 Minecraft toolchain. The current changes preserve a reviewable diff from that baseline. See [the portable build instructions](docs/build-core.md).
 
-Eleven reviewed source modules are included under `modules/`, with per-file recovery provenance. Some companion bundles still require external compile inputs; their source presence is not a claim that every companion was rebuilt. A separate 0.3.7 candidate fixes five concrete crafting, cooldown, expedition, companion and diagnostic defects and has passed its component build; native acceptance is in progress. This first recovery commit retains the exact 0.3.6 baseline so later fixes have a reviewable history.
+The five Core fixes cover delayed crafting certification, saved specialist cooldowns, expedition rejoining, companion distance cleanup and current registry diagnostics. Native verification also covers the previously pending Spirit provision menu, actual paid purchase, full-inventory delivery and receipt replay without duplication. The private test mod is separate from production Core.
 
-The release sequence is to freeze and hash the exact candidate, close its final native acceptance gaps, validate the matching client and saved world, refresh the package evidence, and produce one verified server ZIP with its matching client. Hosted start, restart, and client connection are separate acceptance steps. [Open gates](docs/recovery-status.md#remaining-release-gates)
+All eleven reviewed source areas and their 34 declared artifacts passed the integrated build, with no source inputs changing during the run. The Python release/bootstrap suite passed 91 tests. Artifact roles matter: Village Standards produces an art/metadata overlay because its renderer Java source is unavailable; the bootstrap module produces the owned wrapper library and does not include Magma. Neither output is a complete replacement runtime on its own. [Build scope](docs/build-modules.md)
+
+The next release sequence is to reconcile the current complete Windows stage, bind the new source-built artifacts and configuration in a reviewed plan, validate the matching client and saved world, refresh package evidence, and produce one verified server ZIP with its matching client. The assembler preserves original inputs, checks the whole copied world, and labels its output `CANDIDATE_PENDING_ACCEPTANCE`. Hosted start, restart, and client connection remain separate acceptance steps. [Open gates](docs/recovery-status.md#remaining-release-gates)
 
 For the Python release tooling, the local help command is:
 
