@@ -34,12 +34,18 @@ unchanged. This is a correction to file handling, not a new runtime release.
 The existing contract continues to identify the original verified component
 build; the tool repair has its own Git commit and delivery receipt.
 
+The first native Windows CI runs exposed a second false positive in the full
+directory inventory: cached `DirEntry.stat()` metadata can differ after the
+same unchanged file is opened, and Windows directory enumeration omits the
+device/inode fields. Tree snapshots now obtain fresh no-follow `lstat()` data
+for every entry, retaining each actual file identity in both snapshots.
+
 ## Regression coverage
 
-Eleven new reader tests cover rewritten JSON, executable filename extensions,
+Twelve new reader tests cover rewritten JSON, executable filename extensions,
 read-only executable files, mismatched Windows ctime views, old Python creation
 time behavior, real changes during reads, changed handle and path identities,
-reparse handles and retained POSIX checks. Native-file cases execute in every
+reparse handles, fresh tree identities and retained POSIX checks. Native-file cases execute in every
 CI job alongside the complete preparation, assembly and Java 8 bootstrap suite.
 
 CI now runs the full Python suite on Ubuntu / Python 3.12 and Windows / Python
@@ -48,6 +54,8 @@ coverage when supported; the case-sensitive duplicate-file fixture remains on
 Linux because the normal Windows filesystem cannot represent that fixture.
 The source-builder's suffix handling also uses Python 3.8-compatible syntax,
 and the output-corruption fixture now matches Windows paths correctly.
+The unsafe ZIP fixture preserves a literal backslash on Windows instead of
+allowing `ZipInfo` to normalize the name before it can be tested.
 
 These are packaging checks with synthetic data. They do not establish a
 completed real Windows candidate, a saved-world start/restart, graphical client

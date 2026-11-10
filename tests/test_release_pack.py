@@ -160,6 +160,16 @@ class StableReaderTests(unittest.TestCase):
                 rp.hash_file(self.path)
         self.assertEqual("UNSUPPORTED_FILE", caught.exception.code)
 
+    def test_tree_snapshot_retains_current_file_identity(self):
+        current = self.path.lstat()
+        snapshot = rp.tree_snapshot(self.root)
+        recorded = snapshot[self.path.name][1]
+        self.assertEqual((current.st_dev, current.st_ino), recorded[:2])
+        self.assertEqual(rp.signature(current), recorded)
+        # Reading an unchanged file must not alter the apparent tree identity.
+        rp.hash_file(self.path)
+        self.assertEqual(snapshot, rp.tree_snapshot(self.root))
+
     def test_posix_cross_view_keeps_full_change_time_and_mode_checks(self):
         before = self.metadata(self.path.stat())
         with mock.patch.object(rp, "WINDOWS", False):
@@ -304,7 +314,11 @@ class ReleasePackTests(unittest.TestCase):
             path = self.root / ("unsafe-%d.zip" % i)
             with zipfile.ZipFile(path, "w") as z:
                 for name in names:
-                    z.writestr(name, b"x")
+                    # ZipInfo(name) normalizes Windows separators on Windows.
+                    # Preserve the actual unsafe bytes this fixture must test.
+                    info = zipfile.ZipInfo()
+                    info.filename = info.orig_filename = name
+                    z.writestr(info, b"x")
             with self.subTest(names=names):
                 self.expect_pack_error(code, rp.audit, path)
 

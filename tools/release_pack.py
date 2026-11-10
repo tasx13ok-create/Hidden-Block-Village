@@ -292,7 +292,11 @@ def tree_snapshot(root):
         with os.scandir(str(current)) as children:
             for child in children:
                 p = Path(child.path)
-                st = child.stat(follow_symlinks=False)
+                # Windows DirEntry uses cached directory-enumeration metadata,
+                # which can lag the file's current timestamps and omits its
+                # device/inode identity. Compare fresh path metadata in both
+                # snapshots, using the same no-follow API as file validation.
+                st = p.lstat()
                 require(not is_link(st), "SYMLINK", "Symlink/reparse point refused: " + str(p))
                 require(stat.S_ISREG(st.st_mode) or stat.S_ISDIR(st.st_mode),
                         "UNSUPPORTED_FILE", "Special file refused: " + str(p))

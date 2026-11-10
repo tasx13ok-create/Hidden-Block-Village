@@ -226,7 +226,9 @@ The corrected shared `release_pack.py` compares compatible fields between these
 APIs, then compares each API's complete metadata against its own initial result.
 File identity, size, modification time, creation time, read/write permissions,
 link rejection and the independently reviewed SHA-256 remain checked. A real
-modification or replacement still fails. See the
+modification or replacement still fails. Complete directory snapshots also use
+fresh no-follow path metadata instead of Windows' cached enumeration results.
+See the
 [diagnosis and regression coverage](../docs/windows-file-reader-fix.md).
 
 Do not change the contract digest or skip source checks to resolve this error.
