@@ -22,6 +22,7 @@ import zipfile
 
 
 TOOL_VERSION = "1.0.0"
+WINDOWS = os.name == "nt"
 CHUNK = 1024 * 1024
 DEFAULT_PART_BYTES = 1_899_000_000
 PART_LIMIT_EXCLUSIVE = 1_900_000_000
@@ -163,6 +164,21 @@ def signature(st):
     return (st.st_dev, st.st_ino, st.st_mode, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
 
 
+def opened_signature(st):
+    """Compare path and handle metadata without Windows API-only differences.
+
+    Windows path stat adds execute bits for executable filename extensions.
+    On Python 3.12+, its ctime is creation time while fstat can expose NTFS
+    ChangeTime. Neither difference means the opened file was replaced. Keep
+    the real file identity, read/write mode, size, mtime and creation time;
+    stable_reader separately compares each API's full signature over time.
+    """
+    if not WINDOWS:
+        return signature(st)
+    return (st.st_dev, st.st_ino, st.st_mode & ~0o111, st.st_size,
+            st.st_mtime_ns, getattr(st, "st_birthtime_ns", st.st_ctime_ns))
+
+
 @contextlib.contextmanager
 def stable_reader(path):
     path = no_links(path)
@@ -171,10 +187,13 @@ def stable_reader(path):
     flags = os.O_RDONLY | getattr(os, "O_BINARY", 0) | getattr(os, "O_NOFOLLOW", 0)
     fd = os.open(str(path), flags)
     with os.fdopen(fd, "rb") as stream:
-        require(signature(os.fstat(stream.fileno())) == signature(before),
+        opened = os.fstat(stream.fileno())
+        require(stat.S_ISREG(opened.st_mode) and not is_link(opened),
+                "UNSUPPORTED_FILE", "Opened handle is not a regular file: " + str(path))
+        require(opened_signature(opened) == opened_signature(before),
                 "SOURCE_CHANGED", "File changed while opening: " + str(path))
         yield stream
-        require(signature(os.fstat(stream.fileno())) == signature(before),
+        require(signature(os.fstat(stream.fileno())) == signature(opened),
                 "SOURCE_CHANGED", "File changed while reading: " + str(path))
         require(signature(no_links(path).stat()) == signature(before),
                 "SOURCE_CHANGED", "File replaced while reading: " + str(path))

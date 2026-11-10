@@ -14,22 +14,35 @@ concurrency:
 
 jobs:
   release-tools:
-    runs-on: ubuntu-latest
+    name: Release tools (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.8'
+          - os: windows-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.14'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python }}
       - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
         with:
           distribution: zulu
           java-version: '8'
-      - name: Set the bootstrap test compiler
-        run: echo "VALE_JAVA8_HOME=$JAVA_HOME" >> "$GITHUB_ENV"
       - name: Release and bootstrap regression checks
+        env:
+          VALE_JAVA8_HOME: ${{ env.JAVA_HOME }}
         run: python -m unittest discover -s tests -p 'test_*.py' -v
 
   source-builds:

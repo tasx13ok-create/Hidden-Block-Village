@@ -4,6 +4,12 @@ The PC connection was restored with protocol 2 on 10 November 2026. The
 complete `actual-bisect-server-stage` was read and hashed before any candidate
 assembly. Its original files and the Downloads archive remain unchanged.
 
+The first local assembly attempt later stopped before output creation because
+the file reader compared incompatible Windows timestamp fields. The contract
+still matched its reviewed bytes. The [Windows reader correction](windows-file-reader-fix.md)
+retains the original inputs and adds native Windows CI coverage; the real
+candidate remains pending execution of the corrected handoff.
+
 ## Measured source
 
 | Input | Fresh result |

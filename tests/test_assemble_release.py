@@ -339,7 +339,7 @@ class AssemblyTests(unittest.TestCase):
         real_copy = ar.copy_checked
         def corrupt(source, target, expected):
             real_copy(source, target, expected)
-            if str(target).endswith("Naruto.test/level.dat"):
+            if target.as_posix().endswith("Naruto.test/level.dat"):
                 target.write_bytes(b"corrupted output")
         with mock.patch.object(ar, "copy_checked", side_effect=corrupt):
             self.assert_failure("WORLD_MISMATCH")

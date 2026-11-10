@@ -138,7 +138,9 @@ def inspect_artifact(path, role, module):
             if name.endswith(".class"):
                 if not name.startswith(CLASS_PREFIXES[module]):
                     raise BuildError(f"Unexpected bundled class in {path.name}: {name}")
-                simple = name.rsplit("/", 1)[-1].split("$", 1)[0].removesuffix(".class")
+                simple = name.rsplit("/", 1)[-1].split("$", 1)[0]
+                if simple.endswith(".class"):
+                    simple = simple[:-len(".class")]
                 if any(word in simple for word in ("NativeChecks", "WorldChecks", "RecoveryChecks", "RecoveryNativeChecks", "GameplayRecoveryChecks", "ClientChecks")):
                     raise BuildError(f"Private test class in production output: {name}")
                 raw = archive.read(name)

@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import stat
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 import zipfile
@@ -19,6 +20,152 @@ SPEC = importlib.util.spec_from_file_location(
     "release_pack", Path(__file__).resolve().parents[1] / "tools" / "release_pack.py")
 rp = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(rp)
+
+
+class StableReaderTests(unittest.TestCase):
+    """Exercise real files plus the two Windows stat views that caused #038."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.path = self.root / "connected-contract.json"
+        self.path.write_bytes(b"created")
+        self.path.write_bytes(b"reviewed contract bytes after creation")
+
+    @staticmethod
+    def metadata(st, **changes):
+        fields = ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")
+        values = {name: getattr(st, name) for name in fields}
+        values["st_birthtime_ns"] = getattr(st, "st_birthtime_ns", st.st_ctime_ns)
+        values["st_file_attributes"] = getattr(st, "st_file_attributes", 0)
+        values.update(changes)
+        return SimpleNamespace(**values)
+
+    def assert_source_changed(self, operation):
+        with self.assertRaises(rp.PackError) as caught:
+            operation()
+        self.assertEqual("SOURCE_CHANGED", caught.exception.code)
+
+    def test_native_modified_json_and_executable_extensions_hash_exactly(self):
+        # Windows path stat synthesizes execute bits; handle fstat does not.
+        # These checks run on native Windows as well as POSIX CI.
+        for suffix in (".json", ".cmd", ".bat", ".exe", ".com"):
+            with self.subTest(suffix=suffix):
+                path = self.root / ("unchanged" + suffix)
+                path.write_bytes(b"created")
+                payload = b"modified after creation: " + suffix.encode("ascii")
+                path.write_bytes(payload)
+                self.assertEqual({"bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest()},
+                                 rp.hash_file(path))
+
+    def test_native_readonly_executable_is_read_without_changing_it(self):
+        path = self.root / "readonly.cmd"
+        payload = b"@echo off\r\n"
+        path.write_bytes(payload)
+        path.chmod(stat.S_IREAD)
+        try:
+            self.assertEqual(hashlib.sha256(payload).hexdigest(), rp.hash_file(path)["sha256"])
+        finally:
+            path.chmod(stat.S_IREAD | stat.S_IWRITE)
+
+    def test_windows_creation_time_and_change_time_are_not_confused(self):
+        real_fstat = os.fstat
+
+        def handle_stat(fd):
+            st = real_fstat(fd)
+            return self.metadata(st, st_ctime_ns=st.st_ctime_ns + 123456789)
+
+        expected = hashlib.sha256(self.path.read_bytes()).hexdigest()
+        with mock.patch.object(rp, "WINDOWS", True), mock.patch.object(rp.os, "fstat", side_effect=handle_stat):
+            self.assertEqual(expected, rp.hash_file(self.path)["sha256"])
+
+    def test_windows_handle_change_time_change_during_read_is_rejected(self):
+        real_fstat = os.fstat
+        calls = []
+
+        def handle_stat(fd):
+            st = real_fstat(fd)
+            calls.append(fd)
+            return self.metadata(st, st_ctime_ns=st.st_ctime_ns + len(calls))
+
+        with mock.patch.object(rp, "WINDOWS", True), mock.patch.object(rp.os, "fstat", side_effect=handle_stat):
+            self.assert_source_changed(lambda: rp.hash_file(self.path))
+
+    def test_windows_open_identity_retains_every_meaningful_field(self):
+        before = self.metadata(self.path.stat())
+        with mock.patch.object(rp, "WINDOWS", True):
+            for field in ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_birthtime_ns"):
+                with self.subTest(field=field):
+                    after = self.metadata(before, **{field: getattr(before, field) + 1})
+                    self.assertNotEqual(rp.opened_signature(before), rp.opened_signature(after))
+            self.assertNotEqual(rp.opened_signature(before),
+                                rp.opened_signature(self.metadata(before, st_mode=before.st_mode ^ stat.S_IWRITE)))
+            self.assertEqual(rp.opened_signature(before),
+                             rp.opened_signature(self.metadata(before, st_mode=before.st_mode ^ 0o111)))
+
+    def test_windows_older_python_uses_matching_creation_ctime(self):
+        before = self.metadata(self.path.stat())
+        del before.st_birthtime_ns
+        after = SimpleNamespace(**vars(before))
+        after.st_mode ^= 0o111
+        with mock.patch.object(rp, "WINDOWS", True):
+            self.assertEqual(rp.opened_signature(before), rp.opened_signature(after))
+            after.st_ctime_ns += 1
+            self.assertNotEqual(rp.opened_signature(before), rp.opened_signature(after))
+
+    def test_windows_different_opened_file_identity_is_rejected(self):
+        real_fstat = os.fstat
+
+        def wrong_file(fd):
+            st = real_fstat(fd)
+            return self.metadata(st, st_ino=st.st_ino + 1)
+
+        with mock.patch.object(rp, "WINDOWS", True), mock.patch.object(rp.os, "fstat", side_effect=wrong_file):
+            self.assert_source_changed(lambda: rp.hash_file(self.path))
+
+    def test_native_content_change_during_read_is_rejected(self):
+        with self.assertRaises(rp.PackError) as caught:
+            with rp.stable_reader(self.path) as source:
+                source.read()
+                self.path.write_bytes(b"changed")
+        self.assertEqual("SOURCE_CHANGED", caught.exception.code)
+
+    def test_replaced_path_identity_after_read_is_rejected(self):
+        real_stat = Path.stat
+        read_finished = []
+
+        def path_stat(path, *args, **kwargs):
+            st = real_stat(path, *args, **kwargs)
+            if path == self.path and read_finished:
+                return self.metadata(st, st_ino=st.st_ino + 1)
+            return st
+
+        with mock.patch.object(Path, "stat", new=path_stat):
+            with self.assertRaises(rp.PackError) as caught:
+                with rp.stable_reader(self.path) as source:
+                    source.read()
+                    read_finished.append(True)
+        self.assertEqual("SOURCE_CHANGED", caught.exception.code)
+
+    def test_opened_reparse_handle_is_rejected(self):
+        real_fstat = os.fstat
+
+        def reparse_stat(fd):
+            st = real_fstat(fd)
+            return self.metadata(st, st_file_attributes=getattr(st, "st_file_attributes", 0) | 0x400)
+
+        with mock.patch.object(rp.os, "fstat", side_effect=reparse_stat):
+            with self.assertRaises(rp.PackError) as caught:
+                rp.hash_file(self.path)
+        self.assertEqual("UNSUPPORTED_FILE", caught.exception.code)
+
+    def test_posix_cross_view_keeps_full_change_time_and_mode_checks(self):
+        before = self.metadata(self.path.stat())
+        with mock.patch.object(rp, "WINDOWS", False):
+            for field in ("st_ctime_ns", "st_mode"):
+                after = self.metadata(before, **{field: getattr(before, field) + 1})
+                self.assertNotEqual(rp.opened_signature(before), rp.opened_signature(after))
 
 
 class ReleasePackTests(unittest.TestCase):

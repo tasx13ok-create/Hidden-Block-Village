@@ -206,11 +206,33 @@ same client receipt and deterministic ZIP as the assembler and checks their
 equality, avoiding a circular plan hash. Existing client shader files remain
 unchanged.
 
-Existing output directories are never resumed or overwritten. A failure keeps
-an `INCOMPLETE.json` marker and any partial preparation for inspection. Resolve
-the failure, review a new candidate ID/contract and use new output directories.
+Existing output directories are never resumed or overwritten. A failure after
+preparation starts keeps an `INCOMPLETE.json` marker and partial preparation for
+inspection. Resolve the failure, review a new candidate ID/contract and use new
+output directories. If validation failed before either output directory was
+created, confirm both are absent before retrying the same reviewed contract.
 The utility does not delete incomplete or original data. A partial preparation,
 old runtime log or an assembly receipt is never a runtime pass.
+
+### Windows `SOURCE_CHANGED` during the first contract read
+
+The initial connected handoff compared complete path-based `stat` metadata with
+complete handle-based `fstat` metadata. Python 3.12 through 3.14 can report
+creation time for the first and metadata change time for the second on Windows,
+even when the file is unchanged. Windows also adds executable permission bits
+to path-based results for `.exe`, `.cmd`, `.bat` and `.com` filenames.
+
+The corrected shared `release_pack.py` compares compatible fields between these
+APIs, then compares each API's complete metadata against its own initial result.
+File identity, size, modification time, creation time, read/write permissions,
+link rejection and the independently reviewed SHA-256 remain checked. A real
+modification or replacement still fails. See the
+[diagnosis and regression coverage](../docs/windows-file-reader-fix.md).
+
+Do not change the contract digest or skip source checks to resolve this error.
+For the first reported failure, the contract still matched its reviewed digest
+and no output directory existed. Updating the shared reader is sufficient to
+retry that same handoff; no source or payload download is required.
 
 ## Verification
 

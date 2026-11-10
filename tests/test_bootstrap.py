@@ -176,12 +176,14 @@ class BootstrapChecks(unittest.TestCase):
         self.assertIn("Invalid retirement path", self.run_wrapper(False))
         self.assertEqual((self.root / "Naruto.test/region/r.0.0.mca").read_bytes(), b"preserved-world-fixture")
 
-    @unittest.skipIf(os.name == "nt", "Unprivileged Windows symlink creation is not guaranteed")
     def test_runtime_symlink_is_rejected(self):
         self.run_wrapper()
         target = self.root / "outside.jar"
         target.write_bytes(b"outside")
-        (self.root / "mods/link.jar").symlink_to(target)
+        try:
+            (self.root / "mods/link.jar").symlink_to(target)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest("Symlink creation unavailable on this host: " + str(exc))
         self.assertIn("Symlink", self.run_wrapper(False))
 
 
