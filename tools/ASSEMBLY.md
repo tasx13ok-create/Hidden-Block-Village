@@ -28,9 +28,11 @@ changes; it does not take an operating-system snapshot or stop a process.
 It does not download dependencies, install a remote execution service, handle
 credentials or change PowerShell execution policy.
 
-**No populated plan for the disconnected Windows PC is supplied here.** Its
-current full inventory and replacement build hashes must be recovered before
-an actual package is assembled. The tests use explicitly synthetic fixtures.
+The connected PC now has a complete hash inventory and exact replacement
+inputs. Its populated private contract stays with those PC files, outside this
+public repository. [Connected preparation](PREPARE-CONNECTED.md) validates that
+contract and creates the fully populated assembly plan. The public tests use
+explicitly synthetic fixtures; they do not certify the user's saved world.
 
 ## Run on Windows
 

@@ -1,0 +1,60 @@
+{
+  "schema": "vale.standards031-native/v1",
+  "production": {
+    "file": "Village-Standards-0.3.1.jar",
+    "bytes": 37390,
+    "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+  },
+  "private_helper": {
+    "file": "vale-standards-checks-0.3.1.jar",
+    "bytes": 18405,
+    "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+  },
+  "runtimes": {
+    "forge": {
+      "passed": true,
+      "assertions": 601,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 10.364,
+      "runtime_jar_sha256": "bd8314729d787e35164476d75afb337afb9783917e4f6fa1f77f049adba22f2d",
+      "forge_versions_observed": [
+        "14.23.5.2859"
+      ],
+      "production_mods": 9,
+      "private_mods": 1
+    },
+    "actual-magma": {
+      "passed": true,
+      "assertions": 601,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 14.261,
+      "runtime_jar_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+      "forge_versions_observed": [
+        "14.23.5.2860"
+      ],
+      "production_mods": 9,
+      "private_mods": 1
+    }
+  },
+  "scope": "The same 601 Standards assertions passed on two disposable synthetic native worlds with nine production mods and one private checker. These runs do not rerun the Core 0.3.8 gameplay suite and do not establish actual Naruto.test load/save/restart, matching network-client, GPU/rendering, complete external-plugin roster or hosted Bisect acceptance.",
+  "unique_assertion_count": 601,
+  "java": "Azul 8.98.0.111 / OpenJDK 1.8.0_512",
+  "fixture_flags": [
+    "-Dvalestandards.nativecheck=true",
+    "-Dvalestandards.nativecheck.standalone=true"
+  ],
+  "fixture_world": "vale-recovery-test",
+  "fixture_marker": ".vale-recovery-test",
+  "all_loaded_input_hashes_matched": true,
+  "actual_pc_magma_base": {
+    "bytes": 7056996,
+    "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "fresh_pc_hash_verified": true,
+    "download_hash_verified": true,
+    "zip_crc_passed": true,
+    "zip_entries": 3201,
+    "recovered_read_only": true
+  }
+}

@@ -4,7 +4,7 @@ import java.security.MessageDigest
 
 plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
 group = 'village.standards'
-version = '0.3.0'
+version = '0.3.1'
 base { archivesName = 'Village-Standards' }
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
 minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
@@ -51,7 +51,8 @@ tasks.named('processResources') {
         // Always derive output from the immutable recovered input. Re-running
         // this task cannot append a second copy to a prior packaged language.
         lang.setText(file('resources/assets/hvdungeonpictures/lang/en_us.lang').getText('UTF-8')
-            + '\nitem.hvdungeonpictures.unassigned_standard.name=Unassigned Village Standard\n', 'UTF-8')
+            + '\nitem.hvdungeonpictures.unassigned_standard.name=Unassigned Village Standard\n'
+            + 'entity.hvdungeonpictures.dungeon_picture_030.name=Village Standard\n', 'UTF-8')
     }
 }
 tasks.register('verifyStandards', JavaExec) {

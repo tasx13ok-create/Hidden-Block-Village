@@ -3,7 +3,7 @@
 This continuation adds Crescent Talons, companion orders and support behavior,
 six-slot quick stow/equip, projectile fixes, and a complete Village Standards
 runtime. The matching changed modules are Core 0.3.8, Rack 0.1.2, Field HUD
-0.14.1, and Village Standards 0.3.0. These are source-built candidates; the
+0.14.1, and Village Standards 0.3.1. These are source-built candidates; the
 actual saved-world, matching graphical client, and hosted release gates remain
 separate from the disposable native checks.
 
@@ -109,7 +109,7 @@ contacts so a callback that stows a weapon stops later hits in the same tick.
 
 ## Village Standards
 
-Village Standards 0.3.0 supplies the five known picture item identifiers with
+Village Standards 0.3.1 supplies the five known picture item identifiers with
 an original hanging entity and client renderer. Each picture occupies a five
 by five wall area. Placement checks all supporting faces, loaded/editable
 positions, collision and overlap; survival consumption follows accepted spawn.
@@ -118,10 +118,14 @@ Save/reload and breaking retain item names and reward metadata.
 Unrecognized custom records reaching the new entity remain visible and
 breakable as unassigned panels. Their opaque data is kept in a recovery item
 and a saved-world archive. Operator tools can inspect, explicitly assign, or
-recover those records. The old binary's entity registration and custom NBT
-schema remain unverified, so this is not a claim of automatic migration of
-every historically placed picture. See the [module's runtime and recovery
-contract](../modules/village-standards/README.md).
+recover those records. Read-only inspection of the actual historical binary
+confirmed `hvdungeonpictures:picture` and the integer `Village` values
+0=mist, 1=leaf, 2=sand, 3=cloud, 4=stone. Version 0.3.1 accepts those exact
+values and preserves the distinct identifier published by 0.3.0. Invalid or
+wrongly typed values remain recoverable; current schema fields take priority.
+Synthetic native loading and save/reload pass on Forge and the actual PC
+Magma base. The actual saved world still needs its own lifecycle check. See
+the [module's runtime and recovery contract](../modules/village-standards/README.md).
 
 ## Acceptance boundaries
 

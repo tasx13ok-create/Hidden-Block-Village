@@ -18,9 +18,13 @@ public final class StandardRecord {
     public static StandardRecord read(NBTTagCompound source) {
         StandardRecord record = new StandardRecord();
         record.opaque = source.copy();
-        // No ordinal or guessed legacy key mapping: the previous custom schema
-        // has not been recovered. Unknown data remains explicitly unassigned.
-        record.variant = StandardVariant.byKey(source.getString(VARIANT));
+        // These are the exact saved values verified in the user's 0.2.0
+        // runtime. Never infer a village from a missing/wrongly typed field,
+        // clamp a corrupt value, or override an explicit newer schema.
+        boolean current = source.hasKey("ValeStandardSchema") || source.hasKey(VARIANT)
+            || source.hasKey("ValeStandardUnassigned");
+        record.variant = current ? StandardVariant.byKey(source.getString(VARIANT))
+            : source.hasKey("Village", 3) ? StandardVariant.byLegacyVillage(source.getInteger("Village")) : null;
         if (source.hasUniqueId("ValeStandardOrigin")) record.origin = source.getUniqueId("ValeStandardOrigin");
         else if (source.hasUniqueId("UUID")) record.origin = source.getUniqueId("UUID");
         if (source.hasKey(STACK, 10)) record.item = cleanItem(source.getCompoundTag(STACK));

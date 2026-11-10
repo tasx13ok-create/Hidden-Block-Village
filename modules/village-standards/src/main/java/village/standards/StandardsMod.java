@@ -18,7 +18,9 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 @Mod.EventBusSubscriber(modid = StandardsMod.ID)
 public final class StandardsMod {
     public static final String ID = "hvdungeonpictures";
-    public static final String VERSION = "0.3.0";
+    public static final String VERSION = "0.3.1";
+    public static final ResourceLocation ENTITY_ID = new ResourceLocation(ID, "picture");
+    public static final ResourceLocation V030_ENTITY_ID = new ResourceLocation(ID, "dungeon_picture");
     @Mod.Instance(ID) public static StandardsMod instance;
     @SidedProxy(clientSide = "village.standards.client.ClientProxy", serverSide = "village.standards.CommonProxy")
     public static CommonProxy proxy;
@@ -36,8 +38,12 @@ public final class StandardsMod {
     public static ItemStandard item(StandardVariant variant) { return variant == null ? unassigned : ITEMS.get(variant); }
     public static Map<StandardVariant, ItemStandard> items() { return Collections.unmodifiableMap(ITEMS); }
     @Mod.EventHandler public void preInit(FMLPreInitializationEvent event) {
-        EntityRegistry.registerModEntity(new ResourceLocation(ID, "dungeon_picture"), EntityStandard.class,
+        EntityRegistry.registerModEntity(ENTITY_ID, EntityStandard.class,
             "dungeon_picture", 0, instance, 64, 20, false);
+        // The historical runtime used "picture". Keep the distinct identifier
+        // published by 0.3.0 readable without registering one class twice.
+        EntityRegistry.registerModEntity(V030_ENTITY_ID, EntityStandard030.class,
+            "dungeon_picture_030", 1, instance, 64, 20, false);
         proxy.initialize();
     }
     @Mod.EventHandler public void starting(FMLServerStartingEvent event) {

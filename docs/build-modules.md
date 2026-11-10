@@ -75,7 +75,7 @@ Additional wrapper arguments use `--gradle-arg=-Pname=value`.
 | `field-controls` | Client Controls mod and development/source artifacts; the six recovered component checks run. |
 | `vale-compatibility-helpers` | Three independently built adapters: client lifecycle, server damage compatibility, and server command bridge. They must remain separate JARs with their own side requirements. |
 | `server-bootstrap` | Java 8 wrapper library and source archive. It contains neither Magma nor an embedded deployment plan and is not a runnable server distribution. |
-| `village-standards` | Complete newly authored 0.3.0 runtime mod, development API and source archive. Component checks cover geometry, saved records and exact recovered-resource hashes. The old binary's entity ID and custom NBT schema remain unverified; automatic migration of existing pictures is not established. |
+| `village-standards` | Complete newly authored 0.3.1 runtime mod, development API and source archive. Component checks cover geometry, saved records, the verified historical entity ID and integer village format, and exact recovered-resource hashes. Actual saved-world and graphical acceptance remain separate. |
 
 Each successful module writes `build/vale-build.json`. The orchestrator rejects
 outputs outside that module, duplicate declarations, invalid archives,
@@ -140,7 +140,10 @@ can also be supplied to these commands.
 Each module writes its reobfuscated helper to its own
 `build/private-native-checks/` directory. Use the helpers without the `-dev`
 classifier when testing the reobfuscated runtime mods. The complete 0.3.8 server
-fixture roster contains these nine production mods:
+fixture roster contains these nine production mods. The frozen 656-check result
+used Standards 0.3.0; the current source builds 0.3.1. Its later focused
+601-check native results are recorded separately and do not claim that the
+whole Core suite was rerun.
 
 | Production server mod | Candidate runtime file |
 | --- | --- |
@@ -152,12 +155,12 @@ fixture roster contains these nine production mods:
 | World compatibility | `vale-world-compat-1.0.0.jar` |
 | Forge damage compatibility | `Vale-Forge-Damage-Compat-0.1.0.jar` |
 | Server bridge | `Vale-Server-Bridge-0.2.0.jar` |
-| Village Standards | `Village-Standards-0.3.0.jar` |
+| Village Standards | `Village-Standards-0.3.1.jar` |
 
 Add both private QA mods to that disposable instance's `mods/` directory:
 
 - `vale-recoverychecks-0.3.8.jar`
-- `vale-standards-checks-0.3.0.jar`
+- `vale-standards-checks-0.3.1.jar`
 
 Use the exact production bytes from the candidate component build. The fixture
 records the loaded mod filenames, versions and SHA-256 digests; a matching name
@@ -197,10 +200,19 @@ Neither helper is included in a production JAR, source JAR, default component
 metadata, or CI distribution artifact. They are not part of a normal server
 installation. A disposable native pass does not establish saved-world migration,
 matching graphical-client behavior, visual quality, or hosted acceptance. In
-particular, Standards' new runtime preserves opaque records that reach its new
-entity, but the historical entity registration and custom variant NBT still
-require checks against a copy of the actual old world. See the
+particular, Standards 0.3.1 handles the verified historical entity ID and
+variant NBT, while actual saved records still require checks against a copy
+of the real world. See the
 [Standards runtime contract](../modules/village-standards/README.md).
+
+For the focused Standards-only native run, retain the same nine production
+mods, include only `vale-standards-checks-0.3.1.jar` as private QA, and use
+`-Dvalestandards.nativecheck=true -Dvalestandards.nativecheck.standalone=true`.
+The marker, disposable world name and absence of real players remain required.
+This mode writes `vale-standards-native-result.json` and shuts down after the
+single checked run. The exact PC Magma base used for the 0.3.1 evidence has
+SHA-256 `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce`;
+the same version filename from a fresh upstream download has different bytes.
 
 ## Continuous integration
 

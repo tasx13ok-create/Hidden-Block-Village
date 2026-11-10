@@ -1,0 +1,30 @@
+{
+  "actual_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+  "official_sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c",
+  "actual_entries": 3201,
+  "official_entries": 3201,
+  "only_actual": [],
+  "only_official": [],
+  "changed_payloads": [
+    "META-INF/MANIFEST.MF",
+    "binpatches.pack.lzma",
+    "magma_libs.json",
+    "net/minecraftforge/event/ForgeEventFactory.class",
+    "net/minecraftforge/event/world/BlockEvent$BreakEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$CreateFluidSourceEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$CropGrowEvent$Post.class",
+    "net/minecraftforge/event/world/BlockEvent$CropGrowEvent$Pre.class",
+    "net/minecraftforge/event/world/BlockEvent$CropGrowEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$EntityMultiPlaceEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$EntityPlaceEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$FarmlandTrampleEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$FluidPlaceBlockEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$HarvestDropsEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$MultiPlaceEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$NeighborNotifyEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$PlaceEvent.class",
+    "net/minecraftforge/event/world/BlockEvent$PortalSpawnEvent.class"
+  ],
+  "unchanged_payloads": 2947,
+  "changed_payload_count": 18
+}

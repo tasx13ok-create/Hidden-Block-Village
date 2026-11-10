@@ -1,0 +1,93 @@
+{
+  "suite": "Village Standards 0.3.1",
+  "passed": true,
+  "started_epoch_ms": 1794329996979,
+  "loaded_artifacts": [
+    {
+      "mod_id": "FML",
+      "version": "8.0.99.99",
+      "file": "Magma-1.12.2-8cc35ed-server.jar",
+      "bytes": 7056996,
+      "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce"
+    },
+    {
+      "mod_id": "forge",
+      "version": "14.23.5.2860",
+      "file": "Magma-1.12.2-8cc35ed-server.jar",
+      "bytes": 7056996,
+      "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce"
+    },
+    {
+      "mod_id": "valeorders",
+      "version": "0.3.8",
+      "file": "vale-orders-0.3.8.jar",
+      "bytes": 1943933,
+      "sha256": "06b183bbdd0a866ec039b7318fc1542717ecf138bfea5f1c62f76fce21d6ac01"
+    },
+    {
+      "mod_id": "valeencounters",
+      "version": "0.3.6",
+      "file": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "mod_id": "valedamagecompat",
+      "version": "0.1.0",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "mod_id": "valerack",
+      "version": "0.1.2",
+      "file": "Vale-Rack-0.1.2.jar",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "mod_id": "valeresidents",
+      "version": "0.2.0",
+      "file": "vale-residents-0.2.0.jar",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "mod_id": "residentserverbridge",
+      "version": "0.1.0",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "mod_id": "valeserverbridge",
+      "version": "0.2.0",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "mod_id": "hvdungeonpictures",
+      "version": "0.3.1",
+      "file": "Village-Standards-0.3.1.jar",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    {
+      "mod_id": "valestandardschecks",
+      "version": "0.3.1",
+      "file": "vale-standards-checks-0.3.1.jar",
+      "bytes": 18405,
+      "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+    },
+    {
+      "mod_id": "valeworldcompat",
+      "version": "1.0.0",
+      "file": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    }
+  ],
+  "assertions": 601,
+  "finished_epoch_ms": 1794329997546
+}

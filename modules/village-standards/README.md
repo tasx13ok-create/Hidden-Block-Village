@@ -1,8 +1,8 @@
-# Village Standards 0.3.0
+# Village Standards 0.3.1
 
 This module now builds a complete, newly authored Minecraft 1.12.2 Forge mod.
 It provides five placeable, persistent village pictures with their own hanging
-entity and client renderer. Install `Village-Standards-0.3.0.jar` on the client
+entity and client renderer. Install `Village-Standards-0.3.1.jar` on the client
 and server. The `-dev` and `-sources` JARs are development artifacts.
 
 The original village art is reused without changing its bytes. The six excluded
@@ -44,12 +44,41 @@ horizontal-facing transforms, and light samples for each of its 25 blocks.
 
 ## Saved data and earlier worlds
 
-The new entity is registered as `hvdungeonpictures:dungeon_picture`, matching
-the entity language key in the recovered resources. The old binary's actual
-entity registration and custom variant NBT schema have not been verified.
-The language key alone does not prove that an old world uses this entity ID.
-This release therefore does **not** claim automatic compatibility with every
-previously placed picture or permission to overwrite an existing server save.
+The actual historical `Village-Standards-Vale-0.2.0.jar` was read from the
+user's complete Bisect staging folder. Its SHA-256 matches the original
+provenance record. Inspection verified that its registry identifier is
+`hvdungeonpictures:picture`; `dungeon_picture` was its display/entity name,
+not its registry path. Version 0.3.1 uses that verified historical identifier
+for newly placed pictures and keeps the exact `hvdungeonpictures:dungeon_picture`
+identifier published by 0.3.0 through a small compatibility subclass. Both
+identifiers load through the native entity factory. No guessed aliases are used.
+
+The old runtime writes an integer NBT field named `Village`, with this exact
+mapping, independent of the new Java enum's order:
+
+| Historical `Village` | Village key | Item identifier |
+| --- | --- | --- |
+| 0 | `mist` | `hvdungeonpictures:mist_picture` |
+| 1 | `leaf` | `hvdungeonpictures:leaf_picture` |
+| 2 | `sand` | `hvdungeonpictures:sand_picture` |
+| 3 | `cloud` | `hvdungeonpictures:cloud_picture` |
+| 4 | `stone` | `hvdungeonpictures:stone_picture` |
+
+A record with that exact integer field and no current schema markers is
+migrated to its named village. The original integer, UUID, and other opaque
+fields remain present. A current schema, explicit current village field, or
+unassigned marker always takes precedence over retained legacy data. Missing,
+wrongly typed, and out-of-range values remain unassigned; they are never
+clamped or silently converted to another village. The old item registry
+identifiers remain unchanged. The historical item runtime did not transfer
+arbitrary item tags into its placed entity; this release cannot reconstruct
+tags that the old runtime had already discarded.
+
+`LEGACY-COMPATIBILITY.json` records the inspected binary identity and exact
+contract. It contains facts about the interface, not the historical class
+files or reference implementation. The native tests construct records of that
+verified contract; they are not a first-start or restart of the actual user's
+world.
 
 New pictures store an explicit schema version and a string village key. They
 use the native hanging-entity `TileX`, `TileY`, `TileZ`, and `Facing` fields for
@@ -58,7 +87,8 @@ native position fields take precedence over historical coordinates when an
 item is placed at a new location. Saved item history is flattened so repeated
 placement and breaking do not create nested, ever-growing copies.
 
-When a record reaches this new entity but has no recognized new village key,
+When a record has neither a recognized current village key nor valid verified
+legacy data,
 it becomes an **unassigned** picture. It is visible as a neutral panel with a
 cross, can be targeted and broken, and never silently becomes another village.
 Its drop is `hvdungeonpictures:unassigned_standard`, with the opaque saved
@@ -84,11 +114,11 @@ Operator commands (permission level 2):
   an empty inventory slot. This is an explicit administrative copy, like an
   item grant; it does not search for or remove other copies.
 
-Use a copy of an actual old world to establish its entity ID, old custom NBT,
-orientation, and inventory behavior before replacing the historical mod.
-An old entity with a different ID cannot enter this recovery path merely by
-installing the new JAR. No guessed entity aliases or guessed numeric variant
-mappings are included.
+Use a copy of the actual old world to verify its first start, save/restart,
+orientation, inventory behavior, and complete mod roster before replacing the
+historical installation. The inspected binary establishes its own contract;
+it does not prove that every entity in a particular save uses that contract.
+Unrelated entity identifiers are not remapped.
 
 ## Building and checks
 
@@ -104,7 +134,7 @@ The shared `prebuiltMinecraft` property can point to an API JAR prepared by the
 Core module. `check` verifies the exact recovered-resource inventory and SHA-256
 digests, plus geometric support coverage, string variant identity, compressed
 NBT persistence, opaque field preservation, bounded item history, and archive
-deduplication. These component checks do not prove GPU rendering or a full
+deduplication, plus strict legacy integer migration and current-schema precedence. These component checks do not prove GPU rendering or a full
 historical-world migration.
 
 The separate `worldchecks` source set produces a private helper via
@@ -115,9 +145,15 @@ number of passing assertions. It runs only with
 `.vale-recovery-test` marker in the working directory, and no other connected
 players. The fixture places all five variants in all four wall directions,
 uses real entity/item APIs, checks cancellation/permissions/support loss,
-survival/creative drops, native NBT and spawn-data round trips, and unassigned
-recovery cycles. It restores its blocks and removes its fixture entities.
+survival/creative drops, native NBT and spawn-data round trips, unassigned
+recovery cycles, both verified identifiers, all five historical values in all
+four directions, old inventory item NBT, and malformed legacy recovery. It restores its blocks and removes its fixture entities.
 It is excluded from production artifacts and release installation instructions.
+A private standalone runner additionally requires
+`-Dvalestandards.nativecheck.standalone=true`. It runs once at the end of a
+server tick in the same marked, empty disposable world, records the actual
+loaded artifact hashes and result in `vale-standards-native-result.json`, then
+stops the server. No fixture or runner class is packaged in the production JAR.
 
 A native server pass establishes server-side placement/persistence behavior;
 the renderer still requires an actual Minecraft client visual check. The

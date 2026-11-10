@@ -33,8 +33,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Explicit disposable-world helper; excluded from every production artifact. */
-@Mod(modid = "valestandardschecks", name = "Private Village Standards Checks", version = "0.3.0",
-     acceptableRemoteVersions = "*", dependencies = "required-after:hvdungeonpictures@[0.3.0]")
+@Mod(modid = "valestandardschecks", name = "Private Village Standards Checks", version = "0.3.1",
+     acceptableRemoteVersions = "*", dependencies = "required-after:hvdungeonpictures@[0.3.1]")
 public final class StandardsNativeChecks {
     private static int assertions;
     private static void check(boolean value, String why) { assertions++; if (!value) throw new AssertionError(why); }
@@ -52,7 +52,8 @@ public final class StandardsNativeChecks {
         String drops = world.getGameRules().getString("doEntityDrops");
         world.getGameRules().setOrCreateGameRule("doEntityDrops", "true");
         try {
-            check(EntityList.getClass(new ResourceLocation(StandardsMod.ID, "dungeon_picture")) == EntityStandard.class, "Registered display entity key is absent");
+            check(EntityList.getClass(StandardsMod.ENTITY_ID) == EntityStandard.class, "Verified historical display entity key is absent");
+            check(EntityList.getClass(StandardsMod.V030_ENTITY_ID) == EntityStandard030.class, "Published 0.3.0 display entity key is absent");
             for (StandardVariant variant : StandardVariant.values())
                 check(Item.REGISTRY.getObject(new ResourceLocation(StandardsMod.ID, variant.itemKey())) == StandardsMod.item(variant), "Historic standard item ID changed");
             check(StandardsMod.item(null) != null, "Unassigned recovery item is missing");
@@ -108,13 +109,89 @@ public final class StandardsNativeChecks {
             }
             failureCases(world, player, original, fixtureEntities);
             unresolvedRecovery(world, player, original, fixtureEntities);
-            System.out.println("VALE_STANDARDS_NATIVE_PASS: " + assertions + " assertions, all five pictures/four facings, placement/drop/NBT/cancellation/recovery");
+            legacyCompatibility(world, player, original, fixtureEntities);
+            System.out.println("VALE_STANDARDS_NATIVE_PASS: " + assertions + " assertions, all five pictures/four facings, placement/drop/NBT/cancellation/recovery/legacy-identifiers");
             return assertions;
         } finally {
             for (Entity entity : fixtureEntities) { entity.setDead(); world.removeEntityDangerously(entity); }
             for (Map.Entry<BlockPos, IBlockState> entry : original.entrySet()) world.setBlockState(entry.getKey(), entry.getValue(), 2);
             world.getGameRules().setOrCreateGameRule("doEntityDrops", drops);
         }
+    }
+    private static void legacyCompatibility(WorldServer world, PlacementPlayer player, Map<BlockPos, IBlockState> original, List<Entity> entities) {
+        String[] keys = {"mist", "leaf", "sand", "cloud", "stone"};
+        int count = 0;
+        for (EnumFacing face : EnumFacing.HORIZONTALS) for (int value = 0; value < keys.length; value++) {
+            BlockPos center = new BlockPos(800 + (count % 5) * 12, 110, 800 + (count / 5) * 12); count++;
+            buildWall(world, center, face, original);
+            UUID origin = UUID.randomUUID();
+            NBTTagCompound legacy = legacyEntity(center.offset(face), face, origin);
+            legacy.setInteger("Village", value); legacy.setString("UnrecognizedLegacyField", "legacy-contract-" + value);
+            Entity decoded = EntityList.createEntityFromNBT(legacy, world);
+            check(decoded instanceof EntityStandard && decoded.getClass() == EntityStandard.class, "Historical identifier must load the canonical display class");
+            EntityStandard picture = (EntityStandard) decoded; entities.add(picture);
+            check(picture.variant() == StandardVariant.byKey(keys[value]), "Actual NBT entity load must migrate the exact historical village");
+            check(picture.getUniqueID().equals(origin) && picture.facing() == face && picture.anchor().equals(center.offset(face)), "Historical UUID/wall position/facing must survive loading");
+            check(picture.onValidSurface() && world.spawnEntity(picture), "Migrated historical panel must retain valid bounds and spawn");
+            NBTTagCompound saved = new NBTTagCompound();
+            check(picture.writeToNBTOptional(saved), "Migrated panel must pass the native chunk-save serialization gate");
+            check(saved.getString("id").equals("hvdungeonpictures:picture") && saved.getInteger("Village") == value
+                && saved.getString(StandardRecord.VARIANT).equals(keys[value]), "Historical panel must save its canonical ID, original integer and migrated string");
+            picture.setDead(); world.removeEntityDangerously(picture);
+            EntityStandard restored = (EntityStandard) EntityList.createEntityFromNBT(saved, world); entities.add(restored);
+            check(restored.variant() == StandardVariant.byKey(keys[value]) && restored.getUniqueID().equals(origin)
+                && restored.anchor().equals(center.offset(face)) && restored.facing() == face, "Migrated historical panel must survive the native entity factory reload");
+            check(world.spawnEntity(restored), "Reloaded migrated panel must spawn once");
+            check(restored.attackEntityFrom(DamageSource.causePlayerDamage(player), 1), "Migrated historical panel must remain breakable");
+            List<EntityItem> drops = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(center).grow(5));
+            check(drops.size() == 1 && drops.get(0).getItem().getItem() == StandardsMod.item(StandardVariant.byKey(keys[value])), "Migrated panel must drop the correct historical village item");
+            ItemStack dropped = drops.get(0).getItem();
+            check(dropped.getSubCompound(StandardRecord.HISTORY).getString("UnrecognizedLegacyField").equals("legacy-contract-" + value), "Legacy opaque data must survive a migrated panel's item drop");
+            entities.add(drops.get(0)); world.removeEntityDangerously(drops.get(0));
+        }
+        for (String key : keys) {
+            NBTTagCompound serialized = new NBTTagCompound(); serialized.setString("id", "hvdungeonpictures:" + key + "_picture");
+            serialized.setByte("Count", (byte) 2); serialized.setShort("Damage", (short) 0);
+            NBTTagCompound tag = new NBTTagCompound(); tag.setString("valeSerial", "legacy-inventory-" + key); serialized.setTag("tag", tag);
+            ItemStack stack = new ItemStack(serialized);
+            check(stack.getItem() == StandardsMod.item(StandardVariant.byKey(key)) && stack.getCount() == 2, "Historical inventory item identifier/count must deserialize unchanged");
+            check(new ItemStack(stack.writeToNBT(new NBTTagCompound())).getTagCompound().getString("valeSerial").equals("legacy-inventory-" + key), "Historical inventory tags must survive current item serialization");
+        }
+        BlockPos center = new BlockPos(880, 110, 800); EnumFacing face = EnumFacing.WEST;
+        buildWall(world, center, face, original);
+        NBTTagCompound prior = legacyEntity(center.offset(face), face, UUID.randomUUID());
+        prior.setString("id", "hvdungeonpictures:dungeon_picture"); prior.setInteger("ValeStandardSchema", 1);
+        prior.setString(StandardRecord.VARIANT, "cloud"); prior.setInteger("Village", 0);
+        EntityStandard compatible = (EntityStandard) EntityList.createEntityFromNBT(prior, world); entities.add(compatible);
+        check(compatible instanceof EntityStandard030 && compatible.variant() == StandardVariant.CLOUD, "Exact published 0.3.0 identifier and string schema must still load");
+        check(compatible.onValidSurface() && world.spawnEntity(compatible), "Published 0.3.0 compatibility entity must retain valid hanging geometry");
+        NBTTagCompound saved = new NBTTagCompound();
+        check(compatible.writeToNBTOptional(saved), "Published 0.3.0 compatibility entity must pass native chunk-save serialization");
+        check(saved.getString("id").equals("hvdungeonpictures:dungeon_picture") && StandardRecord.read(saved).variant() == StandardVariant.CLOUD,
+            "Published 0.3.0 entity must retain its readable identifier and explicit assignment");
+        ByteBuf packet = Unpooled.buffer();
+        try {
+            compatible.writeSpawnData(packet); EntityStandard030 tracked = new EntityStandard030(world); tracked.readSpawnData(packet);
+            check(tracked.variant() == compatible.variant() && tracked.getEntityBoundingBox().equals(compatible.getEntityBoundingBox()), "Compatibility subclass must preserve tracked variant and geometry");
+        } finally { packet.release(); }
+        compatible.setDead(); world.removeEntityDangerously(compatible);
+        NBTTagCompound malformed = legacyEntity(center.offset(face), face, UUID.randomUUID()); malformed.setInteger("Village", 99);
+        EntityStandard unassigned = (EntityStandard) EntityList.createEntityFromNBT(malformed, world); entities.add(unassigned);
+        check(unassigned.variant() == null && world.spawnEntity(unassigned), "Out-of-range historical data must load as an unassigned panel");
+        int archiveBefore = StandardsArchive.get(world).size(); unassigned.attackEntityFrom(DamageSource.causePlayerDamage(player), 1);
+        List<EntityItem> drops = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(center).grow(5));
+        check(drops.size() == 1 && drops.get(0).getItem().getItem() == StandardsMod.item(null)
+            && drops.get(0).getItem().getSubCompound(StandardRecord.HISTORY).getInteger("Village") == 99, "Malformed historical value must survive in the unassigned recovery item");
+        check(StandardsArchive.get(world).size() == archiveBefore + 1
+            && StandardsArchive.get(world).copy(unassigned.getUniqueID()).getInteger("Village") == 99, "Malformed historical value must also be archived before its item can be lost");
+        entities.addAll(drops);
+    }
+    private static NBTTagCompound legacyEntity(BlockPos anchor, EnumFacing face, UUID origin) {
+        NBTTagCompound legacy = new NBTTagCompound(); legacy.setString("id", "hvdungeonpictures:picture");
+        legacy.setUniqueId("UUID", origin); legacy.setInteger("TileX", anchor.getX());
+        legacy.setInteger("TileY", anchor.getY()); legacy.setInteger("TileZ", anchor.getZ());
+        legacy.setByte("Facing", (byte) face.getHorizontalIndex());
+        return legacy;
     }
     private static void failureCases(WorldServer world, PlacementPlayer player, Map<BlockPos, IBlockState> original, List<Entity> entities) {
         BlockPos center = new BlockPos(680, 100, 600); EnumFacing face = EnumFacing.SOUTH;

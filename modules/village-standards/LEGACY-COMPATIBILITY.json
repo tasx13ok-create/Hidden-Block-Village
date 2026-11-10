@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "inspection_date": "2026-11-10",
+  "source_kind": "Read-only bytecode inspection of the actual PC staging runtime; binary is not redistributed",
+  "binary": {
+    "filename": "Village-Standards-Vale-0.2.0.jar",
+    "bytes": 20030,
+    "sha256": "98afde02c45ac1eb350c8ab57820bee4c90071c5fa6cc41a237c32059f9d9780",
+    "source_relative_to_selected_codex": "2026-11-08/thi/work/actual-bisect-server-stage/mods/Village-Standards-Vale-0.2.0.jar",
+    "archive_crc_verified": true
+  },
+  "registry": {
+    "entity_id": "hvdungeonpictures:picture",
+    "entity_name": "dungeon_picture",
+    "mod_local_numeric_id": 0,
+    "class": "village.pictures.EntityDungeonPicture",
+    "evidence": "DungeonPictures.pre passes ResourceLocation(hvdungeonpictures, picture), class, dungeon_picture, 0, this, 128, 10, false to EntityRegistry.registerModEntity."
+  },
+  "saved_contract": {
+    "parent": "net.minecraft.entity.EntityHanging",
+    "custom_field": "Village",
+    "nbt_type": "TAG_Int",
+    "mapping": {
+      "0": "mist",
+      "1": "leaf",
+      "2": "sand",
+      "3": "cloud",
+      "4": "stone"
+    },
+    "evidence": "EntityDungeonPicture writes Village with NBTTagCompound.func_74768_a(String,int), reads with func_74762_e(String), and DungeonPictures.<clinit> creates this exact village array.",
+    "historical_invalid_behavior": "The historical setter clamps 0..4 and integer reads default absent/wrong-type fields; 0.3.1 deliberately preserves such records as unassigned instead of guessing."
+  },
+  "geometry": {
+    "width_pixels": 80,
+    "height_pixels": 80,
+    "parent_orientation_and_coordinates": "EntityHanging NBT methods are invoked without replacement."
+  },
+  "items": {
+    "registry_names": [
+      "hvdungeonpictures:mist_picture",
+      "hvdungeonpictures:leaf_picture",
+      "hvdungeonpictures:sand_picture",
+      "hvdungeonpictures:cloud_picture",
+      "hvdungeonpictures:stone_picture"
+    ],
+    "stack_limit": 16,
+    "old_placement_transfers_arbitrary_item_tags": false,
+    "evidence": "Item constructor forms village + _picture under hvdungeonpictures. Placement constructs EntityDungeonPicture(world, anchor, face, village) without an item-tag argument."
+  },
+  "acceptance_boundary": "Binary contract inspection and synthetic native loading do not prove actual user-world restart or client visual acceptance."
+}

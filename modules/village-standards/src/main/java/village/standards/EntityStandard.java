@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 /** Original five-block hanging display, including a visible recoverable unassigned state. */
-public final class EntityStandard extends EntityHanging implements IEntityAdditionalSpawnData {
+public class EntityStandard extends EntityHanging implements IEntityAdditionalSpawnData {
     private static final DataParameter<String> VARIANT = EntityDataManager.createKey(EntityStandard.class, DataSerializers.STRING);
     private StandardRecord record = StandardRecord.read(new NBTTagCompound());
     private boolean broken;

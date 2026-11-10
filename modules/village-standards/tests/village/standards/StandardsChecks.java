@@ -42,6 +42,7 @@ public final class StandardsChecks {
             check(variant.texture().toString().equals("hvdungeonpictures:textures/pictures/" + variant.key + ".png"), "Reviewed texture path must stay stable");
         }
         check(StandardVariant.byKey("unknown") == null && StandardVariant.byKey("0") == null, "Unknown/ordinal data must not silently choose a village");
+        legacyRecords();
 
         NBTTagCompound old = new NBTTagCompound();
         old.setInteger("TileX", 4); old.setInteger("TileY", 80); old.setInteger("TileZ", 11);
@@ -87,5 +88,51 @@ public final class StandardsChecks {
         restored.readFromNBT(duplicateArchive);
         check(restored.size() == 1 && restored.copy(original).equals(assigned), "Duplicate saved archive keys keep the first original");
         System.out.println("PASS: " + checks + " Village Standards geometry and persistence checks; actual placement/rendering are separate.");
+    }
+    private static void legacyRecords() throws Exception {
+        String[] keys = {"mist", "leaf", "sand", "cloud", "stone"};
+        UUID origin = UUID.fromString("36a74519-83b8-483f-b61a-64500950d19d");
+        for (int value = 0; value < keys.length; value++) {
+            NBTTagCompound legacy = new NBTTagCompound();
+            legacy.setString("id", "hvdungeonpictures:picture");
+            legacy.setInteger("Village", value); legacy.setUniqueId("UUID", origin);
+            legacy.setByteArray("PreservedOpaque", new byte[] {12, -17, (byte) value});
+            StandardRecord record = StandardRecord.read(reload(legacy));
+            check(record.variant() == StandardVariant.byKey(keys[value]), "Verified legacy Village integer must use its historical mapping");
+            check(record.origin().equals(origin), "Legacy migration must preserve the original UUID");
+            NBTTagCompound saved = reload(record.write(new NBTTagCompound()));
+            check(saved.getInteger("Village") == value && saved.hasKey("Village", 3), "Legacy integer must be retained without coercion");
+            check(saved.getByteArray("PreservedOpaque")[1] == -17, "Legacy migration must preserve opaque metadata");
+            check(StandardRecord.read(saved).variant() == record.variant(), "Migrated string schema must survive compressed reload");
+        }
+        for (int value : new int[] {Integer.MIN_VALUE, -1, 5, Integer.MAX_VALUE}) {
+            NBTTagCompound invalid = new NBTTagCompound(); invalid.setInteger("Village", value);
+            NBTTagCompound saved = reload(StandardRecord.read(invalid).write(new NBTTagCompound()));
+            check(StandardRecord.read(saved).variant() == null && saved.getInteger("Village") == value,
+                "Out-of-range legacy values remain unassigned and unchanged; never clamp to another village");
+        }
+        NBTTagCompound[] wrongTypes = new NBTTagCompound[6];
+        for (int i = 0; i < wrongTypes.length; i++) wrongTypes[i] = new NBTTagCompound();
+        wrongTypes[0].setByte("Village", (byte) 0); wrongTypes[1].setShort("Village", (short) 1);
+        wrongTypes[2].setLong("Village", 2); wrongTypes[3].setFloat("Village", 3);
+        wrongTypes[4].setDouble("Village", 4); wrongTypes[5].setString("Village", "0");
+        for (NBTTagCompound invalid : wrongTypes) {
+            StandardRecord record = StandardRecord.read(invalid);
+            check(record.variant() == null, "Wrongly typed Village fields cannot be interpreted as the historical contract");
+            check(record.write(new NBTTagCompound()).getTag("Village").equals(invalid.getTag("Village")), "Malformed legacy fields must be preserved verbatim");
+        }
+        NBTTagCompound missing = new NBTTagCompound();
+        check(StandardRecord.read(missing).variant() == null, "A missing legacy Village must not default to mist");
+        NBTTagCompound current = new NBTTagCompound(); current.setInteger("Village", 0); current.setInteger("ValeStandardSchema", 1);
+        current.setString(StandardRecord.VARIANT, "stone");
+        check(StandardRecord.read(current).variant() == StandardVariant.STONE, "A newer string assignment must take precedence over retained legacy values");
+        current.setString(StandardRecord.VARIANT, ""); current.setBoolean("ValeStandardUnassigned", true);
+        check(StandardRecord.read(current).variant() == null, "Explicit current unassigned records must not be assigned by retained legacy values");
+        current.removeTag(StandardRecord.VARIANT);
+        check(StandardRecord.read(current).variant() == null, "A current schema with a missing variant stays unassigned");
+        current.removeTag("ValeStandardSchema");
+        check(StandardRecord.read(current).variant() == null, "An explicit unassigned marker alone prevents legacy fallback");
+        current.removeTag("ValeStandardUnassigned"); current.setInteger(StandardRecord.VARIANT, 0);
+        check(StandardRecord.read(current).variant() == null, "A malformed explicit variant prevents legacy fallback");
     }
 }

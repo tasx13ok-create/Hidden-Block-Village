@@ -1,10 +1,18 @@
 # Recovery and release status
 
-Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [candidate verification](../release/candidate038-verification.json) records current measured results. The [component lock](../release/component-lock.json) preserves historical source evidence, expected runtime pins and observation scope.
+Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [connected-stage verification](../release/connected038-verification.json) records the current PC inventory, transfer and Standards 0.3.1 results. The [Core 0.3.8 verification](../release/candidate038-verification.json) and [component lock](../release/component-lock.json) preserve earlier evidence without changing its scope.
 
-**Release state: `CORE038_NATIVE_FORGE_MAGMA_PASSED_COMPLETE_PACKAGE_PENDING`.** The current source-built server candidates passed the same 656 native assertions on both runtimes, with nine owned server mods loaded together. The complete Windows stage, actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final client/server download or overall completion percentage is established.
+**Release state: `CONNECTED038_INPUTS_PREPARED_COMPLETE_PACKAGE_PENDING`.** The complete Windows stage has a fresh hash inventory and the checked replacement payload is transferred to a separate writable directory. Standards 0.3.1 passes 601 focused native assertions on Forge and the exact PC Magma base. The actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final complete client/server download or overall completion percentage is established.
 
-## Current continuation: 0.3.8
+## Current connected-stage continuation
+
+The complete stage contains 2,184 files, 251 directories and 6,020,781,875 bytes. Its `Naruto.test` world contains 1,771 files, 5,702,815,313 bytes, 1,294 overworld regions and 6 Nether regions. The source remains unchanged. Twenty transferred files supply thirteen exact runtime/bootstrap artifacts; the larger Core JAR uses eight checked pieces.
+
+Read-only inspection of the historical Standards binary established the actual `hvdungeonpictures:picture` entity ID and exact integer `Village` mapping. Standards 0.3.1 implements that contract and retains the distinct authored 0.3.0 identifier. It passes 388 component assertions and the same 601 native assertions on Forge 2859 and the actual PC Magma base, SHA-256 `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce`. Both processes exited 0 with the same nine production mods and one private checker. These focused runs do not rerun the complete earlier Core suite.
+
+The connected preparation utility verifies an independently reviewed contract, fixed source inventory, exact pieces and full original/final rosters before invoking the existing assembler. It preserves all 56 prior retirement pins and adds the three newly superseded mod filenames. The release and preparation tools pass 111 Python tests without skips. A Windows command is still needed to execute the real complete assembly: the connected browser provides file operations, not process execution. [Current evidence and handoff](connected-stage-038.md)
+
+## Prior Core 0.3.8 gameplay evidence
 
 | Changed runtime | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -19,9 +27,9 @@ The final native suite passed **656 assertions on each runtime**, divided into 8
 
 The complete source build checks eleven areas and 36 declared artifacts. The release/bootstrap tooling passes all 91 Python tests without skips. New component suites include 23 claw/packet assertions, 36 companion state assertions and 341 Standards geometry/persistence assertions. Production archives exclude private QA and upstream classes. Standards resources remain byte-identical to their reviewed recovered inputs.
 
-Village Standards 0.3.0 is a new complete implementation. Its five known item IDs are preserved; the old binary's actual entity registry and custom variant schema are still unverified. Unknown data reaching the new entity remains visible, breakable and recoverable, but an old entity with another ID cannot be migrated by that mechanism alone. The actual-world replacement decision remains open. [Runtime and migration contract](../modules/village-standards/README.md)
+Village Standards 0.3.0 was the new complete implementation used in that earlier suite. Its old-binary registry and variant schema were not yet verified at that checkpoint. The connected-stage 0.3.1 work above closes that binary-contract gap; actual saved-world and graphical acceptance remain open. [Runtime and migration contract](../modules/village-standards/README.md)
 
-The Windows File Link sessions remain disconnected, with saved protocol 1 clients against a protocol 2 service. No PC mutations or real-stage assembly occurred. The original archive and rollback remain preserved. A local graphical probe also could not establish a display in this workspace, so no new in-game rendering or Solas acceptance is claimed.
+PC access was disconnected during the earlier 0.3.8 gameplay work. The later connected-stage inventory and transfer above supersede that connection status. The original archive and rollback remain preserved. No new in-game rendering or Solas acceptance is claimed.
 
 ## Previous continuation: 0.3.7
 
@@ -98,7 +106,7 @@ The staged first-start and restart receipts precede both the final Core JAR and 
 
 `plugins/CrazyCrates/config.yml` was modified by the recovered assembler but omitted from its expected pins. The new assembler requires that pin when the file exists and requires every changed configuration to be declared. The actual eight staged crate definitions, configured dialogue/actions, world destinations and launcher expectations still need reconciliation with the final current files.
 
-The old recovered assembler moved files to deterministic backup names and replaced nested archives without an atomic transaction. The new tooling builds a separate candidate, refuses existing output destinations, checks source and output inventories and binds the bootstrap's pending/done markers to its exact plan. Real stage assembly and acceptance remain unperformed while PC access is disconnected. [Historical pending gates](../release/component-lock.json)
+The old recovered assembler moved files to deterministic backup names and replaced nested archives without an atomic transaction. The new tooling builds a separate candidate, refuses existing output destinations, checks source and output inventories and binds the bootstrap's pending/done markers to its exact plan. The connected source is now inventoried and replacement inputs are transferred; executing the Windows assembly and subsequent runtime acceptance remains pending. [Historical pending gates](../release/component-lock.json)
 
 ## Coverage and scope
 
@@ -125,13 +133,13 @@ These are reconciliation gates G01–G08. They summarize the open work; the rele
 
 | Gate | Current result and remaining requirement |
 | --- | --- |
-| G01 — Exact identities | Current source-build outputs are hashed. The full Windows server/client roster, both final bootstrap aliases and nested client still need fresh hashes and reconciliation. |
+| G01 — Exact identities | Replacement artifacts, complete Windows source and embedded client have fresh identities. The private contract binds the measured old rosters and final replacements; the Windows preparation run must produce and verify both new launcher aliases and the new matching client. |
 | G02 — Quartermaster | Current Core passes isolated native Forge and Magma Spirit eligibility, purchase, owner binding, queued delivery and duplicate-prevention checks. Retain this exact hash and verify the final configured server package. |
-| G03 — Configuration | Bootstrap/assembler checks and Residents guidance are implemented. Actual staged crates, configured actions, destinations and all final configuration pins remain to verify. |
+| G03 — Configuration | The complete source scan includes the eight crates, dialogue, destinations and CrazyCrates config. Preparation preserves their exact bytes and all historical retirement pins. Final in-game configured actions still need acceptance. |
 | G04 — World lifecycle | Still requires first-start, save and restart of the actual `Naruto.test` world on the exact final server, with saved records checked. |
 | G05 — Matching client | Still requires a real client connection and bounded progression, weapons, scrolls, rack, dialogue, armor and input checks. |
 | G06 — Visuals | Still requires icon/model/armor and Solas inspection on the final graphical client. Static resource checks do not establish appearance. |
-| G07 — Final package | Assembly machinery is checked; the real complete package has not been assembled or promoted. It still requires refreshed evidence, complete archive validation and matching client/world. |
+| G07 — Final package | Preparation/assembly machinery passes 111 tests and exact update inputs are on the PC. The real complete candidate must still be assembled, with its full archive and matching client/world reverified; it has not been promoted. |
 | G08 — Hosted acceptance | Still requires Bisect start/restart and actual matching-client connection evidence. |
 
 Local acceptance can support `READY_FOR_HOSTED_TEST`. A successful hosted connection requires separate evidence; it cannot be inferred from compilation, unit checks, or local fake-player fixtures.

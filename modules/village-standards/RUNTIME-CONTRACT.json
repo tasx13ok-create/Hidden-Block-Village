@@ -1,11 +1,15 @@
 {
   "module": "village-standards",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "artifact_role": "runtime_mod",
   "implementation": "New original Java runtime; not a reconstruction of the excluded reference code or historical binary.",
-  "authored_source_roots": ["src/main/java", "tests", "worldchecks"],
+  "authored_source_roots": [
+    "src/main/java",
+    "tests",
+    "worldchecks"
+  ],
   "historical_resource_provenance": "SOURCE-PROVENANCE.json",
-  "historical_resource_policy": "Keep resources/ byte-identical; modify only packaged mcmod.info display metadata and append the new recovery item language key during processResources.",
+  "historical_resource_policy": "Keep resources/ byte-identical; modify only packaged mcmod.info display metadata and append new recovery-item and compatibility-entity language keys during processResources.",
   "mod_id": "hvdungeonpictures",
   "item_ids": [
     "hvdungeonpictures:stone_picture",
@@ -15,8 +19,8 @@
     "hvdungeonpictures:cloud_picture"
   ],
   "new_recovery_item_id": "hvdungeonpictures:unassigned_standard",
-  "entity_id": "hvdungeonpictures:dungeon_picture",
-  "entity_id_evidence": "Recovered entity language key only; historical binary registry and numeric entity ID are unverified.",
+  "entity_id": "hvdungeonpictures:picture",
+  "entity_id_evidence": "Verified registry ResourceLocation in actual-stage historical Village-Standards-Vale-0.2.0.jar; identity and NBT contract in LEGACY-COMPATIBILITY.json.",
   "width_blocks": 5,
   "height_blocks": 5,
   "depth_blocks": 0.0625,
@@ -29,12 +33,33 @@
     "ValeStandardOwner": "UUID of the most recent placing player, informational only",
     "ValeStandardItem": "one item with its original metadata and without nested ValeStandardHistory",
     "ValeStandardHistory": "opaque history on dropped/recovery items",
-    "native_hanging_fields": ["TileX", "TileY", "TileZ", "Facing"]
+    "native_hanging_fields": [
+      "TileX",
+      "TileY",
+      "TileZ",
+      "Facing"
+    ]
   },
-  "unknown_data_policy": "Retain unknown NBT without guessing its village; display a visible breakable unassigned panel, preserve history in a recovery item and a first-seen per-origin WorldSavedData archive on break, then permit explicit operator resolution.",
+  "unknown_data_policy": "Retain unknown NBT without guessing its village; migrate only exact valid historical Village integers when current schema markers are absent; otherwise display a visible breakable unassigned panel, preserve history in a recovery item and a first-seen per-origin WorldSavedData archive on break, then permit explicit operator resolution.",
   "archive": "overworld data/vale_standards_recovery.dat",
   "archive_growth": "One first-seen record per stable original UUID; repeated item/entity cycles do not append or overwrite records.",
-  "migration_limit": "No actual old-world or old-binary entity/NBT contract is available; automatic legacy placement compatibility is not claimed.",
+  "migration_limit": "Synthetic records of the verified historical binary contract pass component/native checks; the actual user world and complete historical mod roster still require first-start/save/restart acceptance.",
   "private_native_helper": "village.standards.StandardsNativeChecks.run(net.minecraft.entity.player.EntityPlayerMP)",
-  "visual_acceptance": "Requires a real Minecraft client check; component and dedicated-server checks alone do not verify rendered appearance."
+  "visual_acceptance": "Requires a real Minecraft client check; component and dedicated-server checks alone do not verify rendered appearance.",
+  "compatibility_entity_id": "hvdungeonpictures:dungeon_picture",
+  "compatibility_entity_scope": "Exact identifier published by authored 0.3.0; registered through a distinct compatibility subclass, with the same rendering and current schema.",
+  "legacy_schema": {
+    "Village": {
+      "type": "TAG_Int",
+      "mapping": {
+        "0": "mist",
+        "1": "leaf",
+        "2": "sand",
+        "3": "cloud",
+        "4": "stone"
+      }
+    },
+    "precedence": "Current schema/variant/unassigned fields suppress legacy fallback.",
+    "invalid": "Missing, wrong-type or out-of-range Village values remain unassigned and retained without coercion or clamping."
+  }
 }

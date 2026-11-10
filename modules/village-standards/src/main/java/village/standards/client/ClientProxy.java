@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import village.standards.CommonProxy;
 import village.standards.EntityStandard;
+import village.standards.EntityStandard030;
 import village.standards.ItemStandard;
 import village.standards.StandardsMod;
 
@@ -18,6 +19,7 @@ public final class ClientProxy extends CommonProxy {
     @Override public void initialize() {
         MinecraftForge.EVENT_BUS.register(this);
         RenderingRegistry.registerEntityRenderingHandler(EntityStandard.class, StandardRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityStandard030.class, StandardRenderer::new);
     }
     @SubscribeEvent public void models(ModelRegistryEvent event) {
         for (ItemStandard item : StandardsMod.items().values()) register(item);

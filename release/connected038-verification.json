@@ -1,0 +1,158 @@
+{
+  "schema": "vale.connected038-verification/v1",
+  "date": "2026-11-10",
+  "status": "CONNECTED038_INPUTS_PREPARED_COMPLETE_PACKAGE_PENDING",
+  "base_source_commit": "9df746800b8521400708e0c8c2ba8eca9632954c",
+  "source_input_sha256": "a86ebd565131a3bcd8243aa6b2d268d8ec8cf4c8acab41658fe8f5f8da475005",
+  "source_input_files": 1510,
+  "changed_source_inputs": [
+    "modules/village-standards/LEGACY-COMPATIBILITY.json",
+    "modules/village-standards/README.md",
+    "modules/village-standards/RUNTIME-CONTRACT.json",
+    "modules/village-standards/build.gradle",
+    "modules/village-standards/src/main/java/village/standards/EntityStandard.java",
+    "modules/village-standards/src/main/java/village/standards/EntityStandard030.java",
+    "modules/village-standards/src/main/java/village/standards/StandardRecord.java",
+    "modules/village-standards/src/main/java/village/standards/StandardVariant.java",
+    "modules/village-standards/src/main/java/village/standards/StandardsMod.java",
+    "modules/village-standards/src/main/java/village/standards/client/ClientProxy.java",
+    "modules/village-standards/tests/village/standards/StandardsChecks.java"
+  ],
+  "prior_core_gameplay_evidence": "candidate038-verification.json",
+  "artifact_build_scope": "The prior exact CI artifacts are reused for unchanged source areas. Standards0.3.1 was newly built; the new publication CI independently rebuilds all areas. No fresh all-component CI pass is asserted in this record.",
+  "standards_artifacts": [
+    {
+      "role": "runtime_mod",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077",
+      "file": "Village-Standards-0.3.1.jar"
+    },
+    {
+      "role": "development_api",
+      "bytes": 36716,
+      "sha256": "87942aaf785c126fc28914920bb72a7d75373b97b4a83a9f4052fa21e154319b",
+      "file": "Village-Standards-0.3.1-dev.jar"
+    },
+    {
+      "role": "sources",
+      "bytes": 23671,
+      "sha256": "45a6608278ec31d10eabbb817bc32728e470f5469c5050854246bac2aca35489",
+      "file": "Village-Standards-0.3.1-sources.jar"
+    }
+  ],
+  "standards_component_assertions": 388,
+  "native": {
+    "schema": "vale.standards031-native/v1",
+    "production": {
+      "file": "Village-Standards-0.3.1.jar",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    "private_helper": {
+      "file": "vale-standards-checks-0.3.1.jar",
+      "bytes": 18405,
+      "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+    },
+    "runtimes": {
+      "forge": {
+        "passed": true,
+        "assertions": 601,
+        "process_exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 10.364,
+        "runtime_jar_sha256": "bd8314729d787e35164476d75afb337afb9783917e4f6fa1f77f049adba22f2d",
+        "forge_versions_observed": [
+          "14.23.5.2859"
+        ],
+        "production_mods": 9,
+        "private_mods": 1
+      },
+      "actual-magma": {
+        "passed": true,
+        "assertions": 601,
+        "process_exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 14.261,
+        "runtime_jar_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+        "forge_versions_observed": [
+          "14.23.5.2860"
+        ],
+        "production_mods": 9,
+        "private_mods": 1
+      }
+    },
+    "scope": "The same 601 Standards assertions passed on two disposable synthetic native worlds with nine production mods and one private checker. These runs do not rerun the Core 0.3.8 gameplay suite and do not establish actual Naruto.test load/save/restart, matching network-client, GPU/rendering, complete external-plugin roster or hosted Bisect acceptance.",
+    "unique_assertion_count": 601,
+    "java": "Azul 8.98.0.111 / OpenJDK 1.8.0_512",
+    "fixture_flags": [
+      "-Dvalestandards.nativecheck=true",
+      "-Dvalestandards.nativecheck.standalone=true"
+    ],
+    "fixture_world": "vale-recovery-test",
+    "fixture_marker": ".vale-recovery-test",
+    "all_loaded_input_hashes_matched": true,
+    "actual_pc_magma_base": {
+      "bytes": 7056996,
+      "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+      "fresh_pc_hash_verified": true,
+      "download_hash_verified": true,
+      "zip_crc_passed": true,
+      "zip_entries": 3201,
+      "recovered_read_only": true
+    }
+  },
+  "python_tests": {
+    "passed": true,
+    "tests": 111,
+    "skipped": 0,
+    "log": "evidence/connected038-release-tool-tests.txt"
+  },
+  "pc_source": {
+    "source_files": 2184,
+    "source_directories": 251,
+    "source_bytes": 6020781875,
+    "source_payload_sha256": "01106c79132783e6d271e67bfea617b49e0a60ae094ce77837babe638a2c11c2",
+    "world_files": 1771,
+    "world_bytes": 5702815313,
+    "world_payload_sha256": "430234be5aee1fc8077ae6c375bb08ea9a8e275f73338d6d075f7935d8c2a686",
+    "overworld_regions": 1294,
+    "nether_regions": 6
+  },
+  "pc_source_roster": {
+    "server_mod_jars": 9,
+    "active_plugin_jars": 1,
+    "client_mod_jars": 11,
+    "client_zip_bytes": 61196028,
+    "client_zip_sha256": "bd701f570a5fcf77595ec122f4b2e40701afac44c375237fb4e1cdbec26c8a0c"
+  },
+  "pc_transfer": {
+    "protocol": 2,
+    "payload_files": 20,
+    "runtime_and_bootstrap_artifacts": 13,
+    "bytes": 2456816,
+    "all_file_write_receipts_completed": true,
+    "each_file_sha256_verified": true,
+    "standards031_write_sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077",
+    "source_stage_mutated": false,
+    "downloads_archive_mutated": false,
+    "world_mutated": false,
+    "private_qa_transferred": false
+  },
+  "preparation": {
+    "expected_prior_retirement_pins": 56,
+    "newly_retired_mod_paths": 3,
+    "source_inventory_is_fixed": true,
+    "contract_hash_is_independent": true,
+    "output_parent": "D:\\Codex\\Vale-Export",
+    "actual_windows_command_executed": false,
+    "actual_candidate_archive_created": false
+  },
+  "not_established": [
+    "Actual Naruto.test startup/save/restart",
+    "Matching graphical client join and controls",
+    "Original armor and Solas visuals",
+    "Complete external plugin gameplay",
+    "Hosted Bisect startup/restart/client connection",
+    "Overall gameplay completion percentage"
+  ]
+}

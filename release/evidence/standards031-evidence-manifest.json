@@ -1,0 +1,52 @@
+[
+  {
+    "file": "standards031-actual-magma-base-comparison.json",
+    "bytes": 1519,
+    "sha256": "79a1a751f68a11396d485eccd023d260de34a79e879cfa9e8101c1a11bdbe964"
+  },
+  {
+    "file": "standards031-actual-magma-native.txt",
+    "bytes": 21969,
+    "sha256": "2dcecd713b4bd5338aa88b46d1e86e5a2b2d225eca1f2125d0188a0ed0dfb812"
+  },
+  {
+    "file": "standards031-actual-magma-process.json",
+    "bytes": 2443,
+    "sha256": "4f54279d5ae5c5fe2a979c1d7da96bd4f9bee3749abc72494fb87c5ae6de98aa"
+  },
+  {
+    "file": "standards031-actual-magma-result.json",
+    "bytes": 2873,
+    "sha256": "2a445407a6bd442ccdba9355f9d8bf3daf6ffc399b27f0adb0819595419ed5fa"
+  },
+  {
+    "file": "standards031-actual-magma-server.properties",
+    "bytes": 850,
+    "sha256": "eb3fc5e4085c3d80a12d12e02b05a3321d6458616fccd9c76b40dd628bbe10b9"
+  },
+  {
+    "file": "standards031-forge-native.txt",
+    "bytes": 13185,
+    "sha256": "1b0656de19762b60bbfcd20d587fe9a01cd76108bd33f99aff4847d0acc47b47"
+  },
+  {
+    "file": "standards031-forge-process.json",
+    "bytes": 2441,
+    "sha256": "dad238f607fa66d488f3e7b18acccc1422c35bff8b6a8c3eab6ae2180ec74f87"
+  },
+  {
+    "file": "standards031-forge-result.json",
+    "bytes": 2869,
+    "sha256": "07e137afa12a0abb3cd206ad7c4ce041e18b49c568e551865590361d6d1e95f9"
+  },
+  {
+    "file": "standards031-forge-server.properties",
+    "bytes": 850,
+    "sha256": "840075474107a5d179a831ba6f73c42a8967430dae33f937d0d6836d6fe2dfb5"
+  },
+  {
+    "file": "standards031-native-verification.json",
+    "bytes": 2142,
+    "sha256": "4af9ee897f1f55da603075d4c321d26c9b752149b0b466cdfbb7b31be17bf2c4"
+  }
+]

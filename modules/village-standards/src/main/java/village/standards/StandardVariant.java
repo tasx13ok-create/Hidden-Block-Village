@@ -15,4 +15,15 @@ public enum StandardVariant {
         for (StandardVariant value : values()) if (value.key.equals(key)) return value;
         return null;
     }
+    /** Exact 0.2.0 NBT contract; deliberately independent of this enum's order. */
+    public static StandardVariant byLegacyVillage(int value) {
+        switch (value) {
+            case 0: return MIST;
+            case 1: return LEAF;
+            case 2: return SAND;
+            case 3: return CLOUD;
+            case 4: return STONE;
+            default: return null;
+        }
+    }
 }
