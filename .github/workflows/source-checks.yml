@@ -44,6 +44,11 @@ jobs:
         env:
           VALE_JAVA8_HOME: ${{ env.JAVA_HOME }}
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: PC companion file, relay and Windows ABI checks
+        working-directory: tools/pc_companion
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          python -m unittest -v test_vale_windows
 
   source-builds:
     runs-on: ubuntu-latest

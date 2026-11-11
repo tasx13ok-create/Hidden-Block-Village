@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "component": "vale-pc-companion",
+  "version": "0.1.0",
+  "source_base": "5431437e872206a9e425ee4e1358331a64b8abc6",
+  "runtime_acceptance": "NOT_RUN",
+  "files": [
+    {
+      "path": "tools/pc_companion/README.md",
+      "size": 16058,
+      "sha256": "589979ca512a16acaa9038d750c5b15cc9b0b85b231a538e99538f81e02ffda1"
+    },
+    {
+      "path": "tools/pc_companion/PRIMARY-SOURCES.md",
+      "size": 6434,
+      "sha256": "23e2349ed2275899a966d013213afa7825a9bd874068683ecb24e3358663406b"
+    },
+    {
+      "path": "tools/pc_companion/START_VALE_COMPANION.cmd",
+      "size": 432,
+      "sha256": "93cc23d9366286f74c99d845399647e52f8dc0cbcf68f1d5ca9ee02cfcbdadce"
+    },
+    {
+      "path": "tools/pc_companion/vale_companion.py",
+      "size": 40960,
+      "sha256": "91b6c0fcd51525b2a5a794111291e6af387c4983137651782e7fb4015daaafd0"
+    },
+    {
+      "path": "tools/pc_companion/vale_windows.py",
+      "size": 47112,
+      "sha256": "6f14a740b02cbe06448f62fd19927c14810aec8a3b46330666f5cec7313e29e0"
+    },
+    {
+      "path": "tools/pc_companion/test_vale_windows.py",
+      "size": 21176,
+      "sha256": "8543cc232e998771d08c93c7fae04accc4e953ca2875a6b5de5d765f1a777754"
+    },
+    {
+      "path": "tools/pc_companion/tests/test_companion.py",
+      "size": 22424,
+      "sha256": "237f140e2b831089855315a18af51c94e4d803852367054f1d809d74847e6cff"
+    }
+  ]
+}
