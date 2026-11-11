@@ -1,0 +1,24 @@
+{
+  "url": "https://hub.spigotmc.org/nexus/content/groups/public/net/md-5/bungeecord-chat/1.12-SNAPSHOT/bungeecord-chat-1.12-20180712.114550-97.jar",
+  "request_count": 1,
+  "ordinary_curl": true,
+  "redirects_followed": false,
+  "curl_exit": 0,
+  "http_status": "403",
+  "declaration": {
+    "name": "net.md-5:bungeecord-chat:1.12-SNAPSHOT:20180712.114550-97",
+    "repo": "https://hub.spigotmc.org/nexus/content/groups/public",
+    "md5": "3227092125953bd4b82e80958e24695f"
+  },
+  "verified": false,
+  "bytes": 25,
+  "sha256": "870d84f11d07934098167265fdbe64f27821a0e5d7843d66b6a27efe8a02461b",
+  "md5": "9ccabba20b9f4ec7d18bd6644579e5bf",
+  "body_preview": "Your request was blocked.",
+  "diagnostic_headers": [
+    "HTTP/1.1 200 OK",
+    "HTTP/2 403 ",
+    "content-type: text/plain",
+    "server: envoy"
+  ]
+}

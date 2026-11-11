@@ -1,0 +1,243 @@
+{
+  "schema": 1,
+  "scope": "DISPOSABLE_FORGE_NATIVE_CHECKS",
+  "fixture": "native-recovery-0.3.9",
+  "passed": true,
+  "started_utc": "2026-11-11T00:14:15.953004+00:00",
+  "minecraft_process_invoked": true,
+  "saved_world_tested": false,
+  "graphical_client_tested": false,
+  "network_protocol_tested": false,
+  "hosted_acceptance": false,
+  "bisect_deployed": false,
+  "runtime_removed": true,
+  "steps": [
+    {
+      "name": "verify java8",
+      "log": "java8.log",
+      "timeout_seconds": 30,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 0.165
+    },
+    {
+      "name": "verify java25",
+      "log": "java25.log",
+      "timeout_seconds": 30,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 0.064
+    },
+    {
+      "name": "compile vale-orders private fixture",
+      "log": "vale-orders-private-build.log",
+      "timeout_seconds": 300,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 13.944
+    },
+    {
+      "name": "compile village-standards private fixture",
+      "log": "village-standards-private-build.log",
+      "timeout_seconds": 300,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 12.271
+    },
+    {
+      "name": "install official Forge",
+      "log": "forge-install.log",
+      "timeout_seconds": 600,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 34.55
+    },
+    {
+      "name": "run private Core and Standards fixture",
+      "log": "native-server.log",
+      "timeout_seconds": 600,
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 14.145
+    }
+  ],
+  "source_build_report": {
+    "bytes": 30427,
+    "sha256": "7c7651e598f33d106dea382595ef1fd7553c75d2d77d93c1bc4f0047f155bfa9"
+  },
+  "source_snapshot": {
+    "sha256": "19432a6b1be7e2706be8b176e1cda9461d8ec2b51fbd7c639504714b1ece9790",
+    "git_commit": "a567ebc39b54a88985c51d657a1b9940ef5de3ec"
+  },
+  "private_fixture_inputs": {
+    "files": [
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ClawNativeChecks.java",
+        "bytes": 22040,
+        "sha256": "f50f30f53c011e7a01a82b183a5d447b8726be9c2f30f6e4b73be648b293e4a2"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+        "bytes": 24991,
+        "sha256": "8f4b64b3d182f47a9a311822165af454d18b83183ca48f4ca05e4c367c51c9a8"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ReedEscapeNativeChecks039.java",
+        "bytes": 20910,
+        "sha256": "3646bcc70c9e05464591a973e3ac2c28c7b8a75acf866a0a75e47e719fa5176a"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollCastNativeChecks039.java",
+        "bytes": 36528,
+        "sha256": "a81f4c750f68dde54a253a53647d4851009f5d67ee3b7e8926723988f453ad93"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollNativeChecks038.java",
+        "bytes": 16130,
+        "sha256": "35efdcf204eee605ee3e8fff78dbd024f10682802787baf46cf35fc00229d728"
+      },
+      {
+        "path": "modules/vale-orders/recoverychecks/village/valerack/RackNativeChecks038.java",
+        "bytes": 9294,
+        "sha256": "b3b65090705fbff559082fbc71c3f66cbc63ef0b7c62753cd69de033c62a9b89"
+      },
+      {
+        "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeChecks.java",
+        "bytes": 25192,
+        "sha256": "f5ee924800975a29173a48f039f25aeab41b2053ee26d5c51b552f99cc1b5695"
+      },
+      {
+        "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeRunner.java",
+        "bytes": 4036,
+        "sha256": "29e4b71eecd79897f76f3ca8b4dd91b69be7c4b4d5038127c95335c9aea7a1c7"
+      },
+      {
+        "path": "tools/run_native_checks.py",
+        "bytes": 26629,
+        "sha256": "e244ef8f8f6710aee547a95590335cfb1ff17edce58ab8bde1f86966f1591554"
+      }
+    ],
+    "sha256": "ab9b68fe691645215a9a3bfb125e3b0f5d583836ab5f524b5faa04ab6e3f3096"
+  },
+  "compile_inputs": {
+    "vale-orders": {
+      "file": "vale-orders-0.3.9-dev.jar",
+      "bytes": 1929472,
+      "sha256": "5ad19c5e0b2c37eb11b587f4fbd737def923ac8cb1f6b976860bdcaed62909f7"
+    },
+    "vale-rack": {
+      "file": "Vale-Rack-0.1.2-dev.jar",
+      "bytes": 33054,
+      "sha256": "e38e2dff3e6e29d3ccdaad8e36a9634b551350a3edbbfbd082beb06b63dbd73e"
+    },
+    "village-standards": {
+      "file": "Village-Standards-0.3.1-dev.jar",
+      "bytes": 36716,
+      "sha256": "87942aaf785c126fc28914920bb72a7d75373b97b4a83a9f4052fa21e154319b"
+    }
+  },
+  "prepared_minecraft_api_sha256": "bb7c86e893e668f3aa5402b146eaeccc7474b24317d54b22d1ceb3902744d59b",
+  "installer": {
+    "url": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar",
+    "bytes": 4681890,
+    "sha256": "dbba1cd1bf34a4b82148bac50a6150f63ffcb2d5dc7d88a0508c27fdcff15b76",
+    "official_sha1": "6b3d5be8b58d5385fda9c4d285367f4cb6e697b2",
+    "input": "reviewed_local_file"
+  },
+  "forge_runtime": {
+    "version": "14.23.5.2859",
+    "file": "forge-1.12.2-14.23.5.2859.jar",
+    "bytes": 4466108,
+    "sha256": "bd8314729d787e35164476d75afb337afb9783917e4f6fa1f77f049adba22f2d"
+  },
+  "expected_loaded_mods": {
+    "valeorders": {
+      "version": "0.3.9",
+      "file": "vale-orders-0.3.9.jar",
+      "sha256": "68dd939b58db0850f8d49d454f10b4f017d716c40db43e2e2861f45b13fc9f43"
+    },
+    "valeencounters": {
+      "version": "0.3.6",
+      "file": "vale-encounters-0.3.6.jar",
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    "valerack": {
+      "version": "0.1.2",
+      "file": "Vale-Rack-0.1.2.jar",
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    "valeresidents": {
+      "version": "0.2.0",
+      "file": "vale-residents-0.2.0.jar",
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    "residentserverbridge": {
+      "version": "0.1.0",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    "valeworldcompat": {
+      "version": "1.0.0",
+      "file": "vale-world-compat-1.0.0.jar",
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    "valedamagecompat": {
+      "version": "0.1.0",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    "valeserverbridge": {
+      "version": "0.2.0",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    "hvdungeonpictures": {
+      "version": "0.3.1",
+      "file": "Village-Standards-0.3.1.jar",
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    "valerecoverychecks": {
+      "version": "0.3.9",
+      "file": "vale-recoverychecks-0.3.9.jar",
+      "sha256": "e1b726c51860323d8ed4f118b25ebec5b1d6033c2b2d977244b0a5f8812691f1"
+    },
+    "valestandardschecks": {
+      "version": "0.3.1",
+      "file": "vale-standards-checks-0.3.1.jar",
+      "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+    }
+  },
+  "production_mod_ids": [
+    "valeorders",
+    "valeencounters",
+    "valerack",
+    "valeresidents",
+    "residentserverbridge",
+    "valeworldcompat",
+    "valedamagecompat",
+    "valeserverbridge",
+    "hvdungeonpictures"
+  ],
+  "private_qa_mod_ids": [
+    "valerecoverychecks",
+    "valestandardschecks"
+  ],
+  "assertions": 1158,
+  "checks": [
+    "556 live registered items and current diagnostic category checks",
+    "Native result-slot pickup remains issued after expired preview timeout",
+    "Stale proof is recomputed by native container before actual crafting",
+    "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+    "Native Party Charter leave/rejoin preserves the existing expedition",
+    "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+    "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+    "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+    "Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport",
+    "Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup",
+    "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+    "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+    "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery"
+  ],
+  "finished_utc": "2026-11-11T00:15:32.180049+00:00",
+  "status": "PASS"
+}

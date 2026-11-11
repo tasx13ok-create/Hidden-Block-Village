@@ -47,7 +47,7 @@ jobs:
 
   source-builds:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -66,7 +66,11 @@ jobs:
           distribution: zulu
           java-version: '25'
       - name: Build declared source components
+        timeout-minutes: 45
         run: python tools/build_modules.py
+      - name: Run private Forge runtime checks
+        timeout-minutes: 40
+        run: python tools/run_native_checks.py
       - name: Upload component reports and checked source-built outputs
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -75,5 +79,17 @@ jobs:
           path: |
             build/source-build-report.json
             build/source-builds/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload native reports and logs only
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-checks-${{ github.sha }}
+          path: |
+            build/native-check-report.json
+            build/native-checks/*/report.json
+            build/native-checks/*/native-recovery039-result.json
+            build/native-checks/*/*.log
           if-no-files-found: warn
           retention-days: 14

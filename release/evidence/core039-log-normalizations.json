@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "policy": "Original byte identities are retained. Published complete logs normalize private host paths and omit inherited JVM configuration; no execution outcomes are changed.",
+  "logs": [
+    {
+      "label": "component vale-orders",
+      "original": {
+        "bytes": 4369,
+        "sha256": "1be164d2b1523a25f9d5e5c487c12df227563bdde5533c903e6bb5d1867b2e0b"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-orders.txt",
+        "bytes": 4330,
+        "sha256": "1bea1773bb0d72fa9924037ab1599e17f790d4b2fe79f7065b79966ec8f1025e"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-encounters",
+      "original": {
+        "bytes": 2499,
+        "sha256": "582d07cf30713c6a4715816d4a7a5d5a89adcf7df6b578bbbd5a26bd4b5d19b9"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-encounters.txt",
+        "bytes": 2460,
+        "sha256": "e02c346b0a6cbd7822468246d62a2978c0880ffa82a8ba7540a334282c79d16a"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-rack",
+      "original": {
+        "bytes": 2463,
+        "sha256": "2b8b4ea4e1b95fcebb1094b5fd9a2d40d502ec8ab1358571720caebea9f493d4"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-rack.txt",
+        "bytes": 2424,
+        "sha256": "737d512dd9f96a4e5463842ff5591b4466c7e2a07a2e2b646ed6fa69d4ad5c7d"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-residents",
+      "original": {
+        "bytes": 2794,
+        "sha256": "124e94efe68e959c27204c654b4d17e0d74588910cd69575609bd75f2dd9ec6e"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-residents.txt",
+        "bytes": 2755,
+        "sha256": "c34d67c9755782b3fe7e701bcd33ff2d3bbc937959cc756f9a1ff01298d1ead5"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-residents-server-bridge",
+      "original": {
+        "bytes": 2513,
+        "sha256": "04ca9b86c7fed001c5efccf9e0402892061d36cd15ec6bfd6c4a02878296e525"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-residents-server-bridge.txt",
+        "bytes": 2474,
+        "sha256": "fdc89e1c871a95528bc18332b10958d89cb4320b0ecb891d3f52ac5aa2f375ff"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-world-compat",
+      "original": {
+        "bytes": 3996,
+        "sha256": "15801aab2876a833026fbeac6324fef4c2b3e0c1404508f3f30a10e472a895a3"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-world-compat.txt",
+        "bytes": 3879,
+        "sha256": "680e2a44f7cd0efb47d12edc3852a4a1056f8df18990e0b933caad721d51d77f"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 3
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component field-hud",
+      "original": {
+        "bytes": 2525,
+        "sha256": "2412b0fbd38a942755f4dd3f1f5ae000915c7b7575224d4db8d370d568f8e191"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-field-hud.txt",
+        "bytes": 2486,
+        "sha256": "0b5b8631282d87b7dbf4673e6d75b3a8344accb4d4a05d58b34059a44a4a5794"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component field-controls",
+      "original": {
+        "bytes": 3292,
+        "sha256": "3c1fdafeec5ea49d8dde80d2a3c9646bec71204be34a53b012bd3b9921928eb4"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-field-controls.txt",
+        "bytes": 3253,
+        "sha256": "b713b5c315096ce05c5aa1a1c0ec78a786fbb9fdecda08d0a5af02597c523b40"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component vale-compatibility-helpers",
+      "original": {
+        "bytes": 7821,
+        "sha256": "68bbece34c8ef9061a66086e6de75e390edf8f11c99928fd34bfd4f2fe00fc2a"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-vale-compatibility-helpers.txt",
+        "bytes": 7782,
+        "sha256": "f70070776f99885812e713097538f6164bfbfc0f3f5451e2bf5e2b659d5a8f0c"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component server-bootstrap",
+      "original": {
+        "bytes": 1244,
+        "sha256": "1f42176fb2a8ed54d03ce06c0b6f9c15cc847eed7902bfb2652a73533bb6228c"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-server-bootstrap.txt",
+        "bytes": 1205,
+        "sha256": "5e75655ad5789e091293ab98b9bcf9eb496085d62152f30bb56c8c74cf7722af"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "component village-standards",
+      "original": {
+        "bytes": 2796,
+        "sha256": "be2de92d0e91a32035c662a726d7683dd053d577e1c0a72ea4803c35aa1fdd46"
+      },
+      "published": {
+        "path": "release/evidence/core039-component-village-standards.txt",
+        "bytes": 2757,
+        "sha256": "9183eddccb0f52ede8ddfff480561532fdb860de4cc37c35e2cec70c7c5e447a"
+      },
+      "normalizations": {
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native verify java8",
+      "original": {
+        "bytes": 323,
+        "sha256": "c1533ef676fd9263e37090ea1b5345f2ad1a5aedae0ba96cd22f21e7c2fc19a5"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-java8.txt",
+        "bytes": 263,
+        "sha256": "dad88b5962a3f393298de1e3c3dd3e493cced074319b6e8971b14de5682faf55"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native verify java25",
+      "original": {
+        "bytes": 333,
+        "sha256": "a14f160f79536868fd183e77377310a2c35c73d5d7e04f5ef8e21110e8a72d51"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-java25.txt",
+        "bytes": 273,
+        "sha256": "6bd814b4a172109b4a51fa8142efba19abe7256451b98c0f4af7a338da66aa25"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native compile vale-orders private fixture",
+      "original": {
+        "bytes": 2782,
+        "sha256": "86ddcc12ca8979b4f022a94a998c8ebe925cd00b24e61bf8a29eb613cb2f084f"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-vale-orders-private-build.txt",
+        "bytes": 2683,
+        "sha256": "e2b918768b453b469f72b5c1ea814f9610361449a8891fe16dd1d4df07958628"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 1,
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native compile village-standards private fixture",
+      "original": {
+        "bytes": 2910,
+        "sha256": "05df289d82f43578515a1240beb95e6637171e0695b93eadc95d72f1fc9ab1f0"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-village-standards-private-build.txt",
+        "bytes": 2751,
+        "sha256": "0a744c75efedd7b7ec1820033d86b1a04bd1f4d6ec0e2e5e6f7b34284769bd48"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 2,
+        "repository_absolute_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native install official Forge",
+      "original": {
+        "bytes": 6194,
+        "sha256": "9fdc4c7c933670bf9c6ff573257760e08f991568f197bbb5d0377988c7290873"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-forge-install.txt",
+        "bytes": 6126,
+        "sha256": "d565c5f2887cea7eb340d7fe3c2c59464fe34d7a0d655bf1548c0b2b98b74474"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 1,
+        "disposable_runtime_paths_normalized": 1
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "native run private Core and Standards fixture",
+      "original": {
+        "bytes": 23594,
+        "sha256": "17084a6aad94d0d9d97aaa49f703263045ae94d88442cb1d78cd22d9e9cc2575"
+      },
+      "published": {
+        "path": "release/evidence/core039-forge-native-server.txt",
+        "bytes": 23490,
+        "sha256": "fa3f6dd33e3fac454dc7bd8d7231376d6c1b06794e959e2f92640aeba7c5aad2"
+      },
+      "normalizations": {
+        "inherited_jvm_options_lines_omitted": 1,
+        "workspace_absolute_paths_normalized": 1,
+        "disposable_runtime_paths_normalized": 3
+      },
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "release tools with Java 8 compiler",
+      "original": {
+        "bytes": 29730,
+        "sha256": "12767ca23087ccbc2c0bc6ef565a1f9fe29ae4d36464c843fe8e39f3b0e0a8f5"
+      },
+      "published": {
+        "path": "release/evidence/core039-release-tool-tests.txt",
+        "bytes": 29730,
+        "sha256": "12767ca23087ccbc2c0bc6ef565a1f9fe29ae4d36464c843fe8e39f3b0e0a8f5"
+      },
+      "normalizations": {},
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    },
+    {
+      "label": "blocked prior1027 upstream Magma launcher",
+      "original": {
+        "bytes": 10638,
+        "sha256": "b2e4d8a889ee1ad5eb4e6e7a423263be0a3c57f044d43a0c8f7e6e4ebe380d16"
+      },
+      "published": {
+        "path": "release/evidence/core039-upstream-magma-prior1027-native.txt",
+        "bytes": 10638,
+        "sha256": "b2e4d8a889ee1ad5eb4e6e7a423263be0a3c57f044d43a0c8f7e6e4ebe380d16"
+      },
+      "normalizations": {},
+      "content_policy": "Complete log; only the declared host-path/JVM-configuration normalization is applied."
+    }
+  ]
+}

@@ -55,7 +55,7 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.8",
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.9",
      dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
@@ -73,7 +73,7 @@ public final class RecoveryNativeChecks {
     }
     private void passed(String message) {
         passed.add(message);
-        System.out.println("VALE_RECOVERY038_CHECK_PASS: " + message);
+        System.out.println("VALE_RECOVERY039_CHECK_PASS: " + message);
     }
     @SubscribeEvent public void tick(TickEvent.ServerTickEvent event) {
         if (ran || event.phase != TickEvent.Phase.END) return;
@@ -116,6 +116,10 @@ public final class RecoveryNativeChecks {
             quartermaster();
             assertions += ScrollNativeChecks038.run(player);
             passed("Native companion orders, target protection, unloaded recall, stale leases, repair and allied support");
+            assertions += ScrollCastNativeChecks039.run(player);
+            passed("Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport");
+            assertions += ReedEscapeNativeChecks039.run(player);
+            passed("Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup");
             assertions += ClawNativeChecks.run(player);
             passed("Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed");
             assertions += village.valerack.RackNativeChecks038.run(player);
@@ -145,13 +149,13 @@ public final class RecoveryNativeChecks {
                 cleanup.printStackTrace();
             }
             report.addProperty("schema", 1);
-            report.addProperty("fixture", "native-recovery-0.3.8");
+            report.addProperty("fixture", "native-recovery-0.3.9");
             report.addProperty("assertions", assertions);
             JsonArray checks = new JsonArray();for (String value : passed) checks.add(value);report.add("checks", checks);
             try {
-                Files.write(new File("native-recovery038-result.json").toPath(), new GsonBuilder().setPrettyPrinting().create().toJson(report).getBytes(StandardCharsets.UTF_8));
+                Files.write(new File("native-recovery039-result.json").toPath(), new GsonBuilder().setPrettyPrinting().create().toJson(report).getBytes(StandardCharsets.UTF_8));
             } catch (Exception writing) { failure = writing; writing.printStackTrace(); }
-            System.out.println(failure == null ? "VALE_RECOVERY038_NATIVE_PASS: " + assertions + " assertions" : "VALE_RECOVERY038_NATIVE_FAIL");
+            System.out.println(failure == null ? "VALE_RECOVERY039_NATIVE_PASS: " + assertions + " assertions" : "VALE_RECOVERY039_NATIVE_FAIL");
             server.initiateShutdown();
         }
     }
@@ -204,7 +208,7 @@ public final class RecoveryNativeChecks {
         return output;
     }
     private ItemStack issue(String key, String receipt) {
-        RewardLedger ledger=RewardLedger.get(player);ledger.issue(player,key,1,"recovery038/"+receipt);
+        RewardLedger ledger=RewardLedger.get(player);ledger.issue(player,key,1,"recovery039/"+receipt);
         for (ItemStack stack : player.inventory.mainInventory)
             if (!stack.isEmpty() && stack.getItem()==Gear.ITEMS.get(key) && ledger.valid(player,stack)) return stack;
         throw new AssertionError("Missing issued fixture item " + key);

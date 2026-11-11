@@ -120,7 +120,12 @@ read-only task discovery remains available before dependencies are built.
 
 ## Isolated native acceptance fixture
 
-Core 0.3.8's recovery fixture is a separate mod under `recoverychecks/`. Its Rack
+The [disposable Forge runner](native-checks.md) compiles the separate helpers,
+verifies exact production inputs, launches a fresh synthetic world and retains
+its measured result. CI runs it after a successful component build. The
+following manual steps describe the same private fixture boundaries.
+
+Core 0.3.9's recovery fixture is a separate mod under `recoverychecks/`. Its Rack
 checks compile against the actual current Rack development JAR. First build the
 production modules with the orchestrator, then use the development API path
 reported in `modules/vale-rack/build/vale-build.json`:
@@ -139,15 +144,15 @@ can also be supplied to these commands.
 
 Each module writes its reobfuscated helper to its own
 `build/private-native-checks/` directory. Use the helpers without the `-dev`
-classifier when testing the reobfuscated runtime mods. The complete 0.3.8 server
-fixture roster contains these nine production mods. The frozen 656-check result
-used Standards 0.3.0; the current source builds 0.3.1. Its later focused
-601-check native results are recorded separately and do not claim that the
-whole Core suite was rerun.
+classifier when testing the reobfuscated runtime mods. The current Core 0.3.9 server fixture roster contains these nine production
+mods. Its exact version-bound results belong in the current verification
+record. The historical Core 0.3.8 656-check result used Standards 0.3.0;
+Standards 0.3.1 later passed its own 601-check native suite. Those historical
+records remain unchanged.
 
 | Production server mod | Candidate runtime file |
 | --- | --- |
-| Core | `vale-orders-0.3.8.jar` |
+| Core | `vale-orders-0.3.9.jar` |
 | Encounters | `vale-encounters-0.3.6.jar` |
 | Rack | `Vale-Rack-0.1.2.jar` |
 | Residents | `vale-residents-0.2.0.jar` |
@@ -159,7 +164,7 @@ whole Core suite was rerun.
 
 Add both private QA mods to that disposable instance's `mods/` directory:
 
-- `vale-recoverychecks-0.3.8.jar`
+- `vale-recoverychecks-0.3.9.jar`
 - `vale-standards-checks-0.3.1.jar`
 
 Use the exact production bytes from the candidate component build. The fixture
@@ -191,7 +196,7 @@ properties before the server launch entry point:
 The instance must have no real connected players. Core creates its synthetic
 player after checking that condition; the Standards helper permits that caller
 and rejects other connected players. The fixture modifies its disposable world
-and synthetic inventories, writes `native-recovery038-result.json`, then shuts
+and synthetic inventories, writes `native-recovery039-result.json`, then shuts
 the server down. Inspect the report's `passed` result and loaded artifact hashes
 before citing a native pass. Compiling the helpers or completing a component
 build does not establish that result.

@@ -1,5 +1,8 @@
 package village.vale.arsenal;
 
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import village.vale.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
@@ -14,6 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.*;
 
 public final class ScrollEvents {
  private static final ThreadLocal<Boolean> EXTRA=new ThreadLocal<>();
+ private static final Map<UUID,EscapeAttempt> ESCAPES=new ConcurrentHashMap<>();
  @SubscribeEvent(priority=EventPriority.LOWEST) public static void damage(LivingDamageEvent e){
   if(e.isCanceled()||e.getAmount()<=0||Boolean.TRUE.equals(EXTRA.get())||e.getEntityLiving().world.isRemote)return;
   Entity attacker=e.getSource().getTrueSource();if(!(attacker instanceof EntityPlayerMP))return;EntityPlayerMP p=(EntityPlayerMP)attacker;NBTTagCompound s=Scrolls.state(p);String mode=s.getString("mode");if(s.getLong("modeUntil")<ArsenalAccess.now(p)||!ArsenalAccess.allowed(p,e.getEntityLiving()))return;
@@ -27,13 +31,81 @@ public final class ScrollEvents {
   }}finally{EXTRA.remove();}
  }
  @SubscribeEvent(priority=EventPriority.LOWEST) public static void hurt(LivingHurtEvent e){
-  if(e.isCanceled()||e.getAmount()<=0||!(e.getEntityLiving() instanceof EntityPlayerMP))return;EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();NBTTagCompound s=Scrolls.state(p);
-  if(s.getBoolean("replacement")&&s.getLong("replacementUntil")>=ArsenalAccess.now(p)){
-   Vec3d from=p.getPositionVector();for(int i=2;i<=5;i++){Vec3d to=from.subtract(p.getLookVec().scale(i));if(ScrollEffects.safe(p,to)){
-    if(ScrollActor.spawn(p,"clone",from,null,60,0)==null)return;p.connection.setPlayerLocation(to.x,to.y,to.z,p.rotationYaw,p.rotationPitch);s.setBoolean("replacement",false);e.setCanceled(true);ArsenalAccess.save(p);return;
-   }}
+  if(e.isCanceled()||!Float.isFinite(e.getAmount())||e.getAmount()<=0||!(e.getEntityLiving() instanceof EntityPlayerMP))return;
+  EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();if(p.world.isRemote||!p.isEntityAlive()||p.isSpectator()||p instanceof net.minecraftforge.common.util.FakePlayer)return;
+  net.minecraft.world.World world=p.world;int dimension=p.dimension;NBTTagCompound s=currentScrolls(p);
+  if(s.getBoolean("replacement")&&s.getLong("replacementUntil")>=ArsenalAccess.now(p)&&escape(p,e,s))return;
+  if(e.isCanceled()||!Float.isFinite(e.getAmount())||e.getAmount()<=0||p.world!=world||p.dimension!=dimension||!p.isEntityAlive()||p.isSpectator())return;
+  // A rejected escape may still have changed the canonical state in a callback.
+  // Never apply a defensive mode from the displaced compound.
+  s=currentScrolls(p);String mode=s.getString("mode");if(s.getLong("modeUntil")>=ArsenalAccess.now(p)){if(mode.equals("lava"))e.setAmount(e.getAmount()*.7f);if(mode.equals("lightmode")){p.addPotionEffect(new PotionEffect(MobEffects.SPEED,30,1));e.setAmount(e.getAmount()*.85f);}}
+ }
+ private static NBTTagCompound currentAccount(EntityPlayerMP p){
+  return p.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG).getCompoundTag("ValeOrders");
+ }
+ private static NBTTagCompound currentScrolls(EntityPlayerMP p){return currentAccount(p).getCompoundTag("OriginalScrolls");}
+ private static boolean escape(EntityPlayerMP p,LivingHurtEvent hurt,NBTTagCompound state){
+  // Entity UUID is mutable during native callbacks; keep the live player
+  // instance locked as well as the owner whose activation was captured.
+  for(EscapeAttempt active:ESCAPES.values())if(active.player==p)return false;
+  EscapeAttempt attempt=new EscapeAttempt(p,hurt,state);
+  if(ESCAPES.putIfAbsent(attempt.owner,attempt)!=null)return false;
+  ScrollActor clone=null;boolean escaped=false;
+  try{
+   if(!attempt.valid())return false;
+   Vec3d destination=null;
+   for(int i=2;i<=5;i++){
+    Vec3d candidate=attempt.origin.subtract(p.getLookVec().scale(i));boolean safe=attempt.safe(candidate);
+    if(!attempt.valid())return false;
+    if(safe){destination=candidate;break;}
+   }
+   if(destination==null)return false;
+   EnderTeleportEvent teleport=new EnderTeleportEvent(p,destination.x,destination.y,destination.z,0);
+   if(net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(teleport)||!attempt.valid())return false;
+   destination=new Vec3d(teleport.getTargetX(),teleport.getTargetY(),teleport.getTargetZ());
+   if(!attempt.safe(destination)||!attempt.valid())return false;
+   clone=ScrollActor.spawn(p,"clone",attempt.origin,null,60,0);
+   if(clone==null||!attempt.valid()||!clone.isEntityAlive()||clone.world!=attempt.world||!clone.owned(p)
+      ||!clone.kind.equals("clone")||!clone.sourceSerial.isEmpty())return false;
+   // Spawn subscribers can change geometry as well as the player/activation.
+   if(!attempt.safe(destination)||!attempt.valid())return false;
+   try{p.connection.setPlayerLocation(destination.x,destination.y,destination.z,p.rotationYaw,p.rotationPitch);}
+   finally{
+    if(attempt.moved()){
+     escaped=true;
+     // Movement already happened. Consume only the captured activation, never
+     // a new one installed by a connection callback, and preserve its position.
+     attempt.consume();hurt.setCanceled(true);
+     if(p.world==attempt.world&&p.dimension==attempt.dimension&&p.getPositionVector().squareDistanceTo(destination)<=1.0e-8)p.fallDistance=0;
+     ArsenalAccess.save(p);
+    }
+   }
+   return escaped;
+  }finally{
+   try{if(!escaped&&clone!=null){clone.setDead();clone.world.removeEntity(clone);}}
+   finally{ESCAPES.remove(attempt.owner,attempt);}
   }
-  String mode=s.getString("mode");if(s.getLong("modeUntil")>=ArsenalAccess.now(p)){if(mode.equals("lava"))e.setAmount(e.getAmount()*.7f);if(mode.equals("lightmode")){p.addPotionEffect(new PotionEffect(MobEffects.SPEED,30,1));e.setAmount(e.getAmount()*.85f);}}
+ }
+ private static final class EscapeAttempt{
+  final EntityPlayerMP player;final UUID owner;final LivingHurtEvent hurt;final NBTTagCompound account,state;
+  final net.minecraft.world.World world;final int dimension;final Vec3d origin;final long until;
+  EscapeAttempt(EntityPlayerMP player,LivingHurtEvent hurt,NBTTagCompound state){
+   this.player=player;owner=player.getUniqueID();this.hurt=hurt;this.state=state;account=currentAccount(player);world=player.world;
+   dimension=player.dimension;origin=player.getPositionVector();until=state.getLong("replacementUntil");
+  }
+  boolean valid(){
+   return hurt.getEntityLiving()==player&&owner.equals(player.getUniqueID())&&!hurt.isCanceled()&&Float.isFinite(hurt.getAmount())&&hurt.getAmount()>0
+     &&player.world==world&&player.dimension==dimension&&!world.isRemote&&player.isEntityAlive()&&!player.isSpectator()
+     &&currentAccount(player)==account&&account.getCompoundTag("OriginalScrolls")==state
+     &&state.getBoolean("replacement")&&state.getLong("replacementUntil")==until&&until>=ArsenalAccess.now(player)
+     &&player.posX==origin.x&&player.posY==origin.y&&player.posZ==origin.z;
+  }
+  boolean safe(Vec3d destination){
+   double distance=destination.squareDistanceTo(origin);
+   return Double.isFinite(distance)&&distance>1.0e-8&&distance<=25&&ScrollEffects.safe(player,destination);
+  }
+  boolean moved(){return player.world!=world||player.dimension!=dimension||player.posX!=origin.x||player.posY!=origin.y||player.posZ!=origin.z;}
+  void consume(){if(state.getBoolean("replacement")&&state.getLong("replacementUntil")==until){state.setBoolean("replacement",false);state.removeTag("replacementUntil");}}
  }
  @SubscribeEvent(priority=EventPriority.LOWEST) public static void death(LivingDeathEvent e){if(!(e.getEntityLiving() instanceof EntityPlayerMP)||e.isCanceled())return;EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();boolean slate=false,cloud=false;
   for(int i=0;i<p.inventory.getSizeInventory();i++){ItemStack s=p.inventory.getStackInSlot(i);if(!(s.getItem() instanceof ScrollSupport.Support)||!ArsenalAccess.issued(p,s))continue;String k=((ScrollSupport.Support)s.getItem()).key;if(k.equals("exam_slate")&&!slate){s.shrink(1);slate=true;}else if(k.equals("exam_cloud")&&!cloud){ItemStack drop=s.copy();drop.setCount(1);s.shrink(1);p.entityDropItem(drop,0);cloud=true;}}

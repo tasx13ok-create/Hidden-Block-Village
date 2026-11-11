@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.8'
+version = '0.3.9'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -222,6 +222,7 @@ tasks.named('check') { dependsOn tasks.named('verifyGameplayRecovery') }
 
 // New gameplay rules are verified independently of the private native fixture.
 for (entry in [verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',
+               verifyScrollCasts: 'village.vale.arsenal.ScrollCastChecks039',
                verifyClawCombat: 'village.vale.arsenal.ClawCombatChecks']) {
     def testMain = entry.value
     def taskName = entry.key

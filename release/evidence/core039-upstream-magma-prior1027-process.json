@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "runtime_scope": "UPSTREAM_MAGMA",
+  "checkpoint": "prior_1027_assertion_checkpoint",
+  "passed": false,
+  "started_utc": "2026-11-10T23:46:35.037212+00:00",
+  "magma": {
+    "file": "Magma-1.12.2-8cc35ed-server.jar",
+    "bytes": 7057102,
+    "sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c"
+  },
+  "pc_runtime_tested": false,
+  "saved_world_tested": false,
+  "graphical_client_tested": false,
+  "hosted_acceptance": false,
+  "final_reed039_checkpoint_tested": false,
+  "expected_loaded_mods": {
+    "valeorders": {
+      "file": "vale-orders-0.3.9.jar",
+      "version": "0.3.9",
+      "sha256": "5df71a4676ee581cde33e2f3b318b032cb0e2ba440f144d12f0456c57e702b1f"
+    },
+    "valeencounters": {
+      "file": "vale-encounters-0.3.6.jar",
+      "version": "0.3.6",
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    "valerack": {
+      "file": "Vale-Rack-0.1.2.jar",
+      "version": "0.1.2",
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    "valeresidents": {
+      "file": "vale-residents-0.2.0.jar",
+      "version": "0.2.0",
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    "residentserverbridge": {
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "version": "0.1.0",
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    "valeworldcompat": {
+      "file": "vale-world-compat-1.0.0.jar",
+      "version": "1.0.0",
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    "valedamagecompat": {
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "version": "0.1.0",
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    "valeserverbridge": {
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "version": "0.2.0",
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    "hvdungeonpictures": {
+      "file": "Village-Standards-0.3.1.jar",
+      "version": "0.3.1",
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    "valerecoverychecks": {
+      "file": "vale-recoverychecks-0.3.9.jar",
+      "version": "0.3.9",
+      "sha256": "e1c709997268de114272290ee83c029b4f426072296884176e52905e4463f8af"
+    },
+    "valestandardschecks": {
+      "file": "vale-standards-checks-0.3.1.jar",
+      "version": "0.3.1",
+      "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+    }
+  },
+  "prior_artifact_manifest": {
+    "bytes": 4508,
+    "sha256": "b8981c24f9a452a894f9bdc65203efa5fa33a67b46bf5db501802803a4ea9e2f"
+  },
+  "prior_native_result": {
+    "bytes": 3517,
+    "sha256": "713848ab68deabef439610f3a7a7d44de0acd7c807d550e7ada1c2ec65ef33db"
+  },
+  "prior_assertions": 1027,
+  "session_jvm_proxy_options": true,
+  "jvm_default_trust_store_with_session_ca": true,
+  "updater_disabled_argument": "-dau",
+  "timeout_seconds": 600,
+  "steps": [
+    {
+      "name": "UPSTREAM_MAGMA checkpoint native run",
+      "log": "console.log",
+      "timeout_seconds": 600,
+      "exit_code": 255,
+      "timed_out": false,
+      "seconds": 30.989
+    }
+  ],
+  "base_libraries_inventory_sha256": "8ff70539617082381a6b6224c61edfad2fd3e4f7d29f7d677195235ad22159d5",
+  "minecraft_server_jar": {
+    "bytes": 30222121,
+    "sha256": "fe1f9274e6dad9191bf6e6e8e36ee6ebc737f373603df0946aafcded0d53167e"
+  },
+  "error": "NativeError: UPSTREAM_MAGMA checkpoint native run exited with status 255; see console.log",
+  "original_and_staged_mods_unchanged": true,
+  "magma_jar_unchanged": true,
+  "finished_utc": "2026-11-10T23:47:08.449261+00:00",
+  "status": "FAIL",
+  "publication_note": "Prior 1027-assertion checkpoint only. Failed before mod loading/native checks; final Core039 bytes were not run."
+}

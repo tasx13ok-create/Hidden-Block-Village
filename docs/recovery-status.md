@@ -1,12 +1,24 @@
 # Recovery and release status
 
-Evidence snapshot: **10 November 2026**. This page distinguishes the current source continuation from the previously located Windows packages. The [connected-stage verification](../release/connected038-verification.json) records the current PC inventory, transfer and Standards 0.3.1 results. The [Core 0.3.8 verification](../release/candidate038-verification.json) and [component lock](../release/component-lock.json) preserve earlier evidence without changing its scope.
+Evidence snapshot: **10 November 2026 (Pacific time)**. This page distinguishes the current source continuation from the previously located Windows packages. The [Core 0.3.9 verification](../release/candidate039-verification.json) records the current source and Forge fixture. The [connected-stage verification](../release/connected038-verification.json) records the earlier PC inventory, transfer and Standards 0.3.1 results. The [Core 0.3.8 verification](../release/candidate038-verification.json) and [component lock](../release/component-lock.json) preserve earlier evidence without changing its scope.
 
-**Release state: `CONNECTED038_INPUTS_PREPARED_COMPLETE_PACKAGE_PENDING`.** The complete Windows stage has a fresh hash inventory and the checked replacement payload is transferred to a separate writable directory. Standards 0.3.1 passes 601 focused native assertions on Forge and the exact PC Magma base. The actual saved world, matching graphical client and hosted installation have not been accepted on these new artifacts. No final complete client/server download or overall completion percentage is established.
+**Release state: `CORE039_FORGE_NATIVE_PASSED_COMPLETE_PACKAGE_PENDING`.** The current Core has source-bound component and disposable Forge evidence. The existing Windows handoff still contains Core 0.3.8 inputs. Its reported `SOURCE_CHANGED` reader defect was repaired separately, but a successful complete assembly has not been observed. File Link currently reports the PC disconnected. No final complete client/server download or overall completion percentage is established.
 
-## Current connected-stage continuation
+## Current Core 0.3.9 continuation
 
-The complete stage contains 2,184 files, 251 directories and 6,020,781,875 bytes. Its `Naruto.test` world contains 1,771 files, 5,702,815,313 bytes, 1,294 overworld regions and 6 Nether regions. The source remains unchanged. Twenty transferred files supply thirteen exact runtime/bootstrap artifacts; the larger Core JAR uses eight checked pieces.
+The current changes cover scroll cost reservation, callback reentry, owner and held-stack changes, protected Waymark Step and Reed Escape movement, and ward armor's first/stale snapshot and wing reset behavior. The source build checks eleven areas and 36 artifacts. The dedicated Forge fixture uses the exact nine production and two private QA JARs in a new synthetic world; it includes current scroll/reaction cases and retained crafting, progression, companions, claws, rack and Standards checks. Read the exact count, hashes, source manifest and process result in the [0.3.9 verification](../release/candidate039-verification.json).
+
+The new [native CI runner](native-checks.md) verifies the current source/build relationship, compiles private helpers against checked development artifacts, installs pinned Forge 2859, validates all loaded mod identities and both new check groups, and removes its temporary runtime. CI publishes only its reports and logs. Component and dedicated-server results still leave graphical appearance, live client networking and the actual saved world untested.
+
+An upstream Magma precheck using an earlier 0.3.9 checkpoint stopped during dependency setup. The required Spigot BungeeCord Chat dependency returned HTTP 403; no mod loading or native gameplay result occurred. That upstream launcher has different bytes from the actual PC Magma base. Earlier 0.3.8 and focused Standards Magma results below remain valid only for their recorded artifacts.
+
+Assembly now prints throttled progress for source checks, copies, client rebuilding, archive creation and verification. Completed Windows Python 3.8, 3.12 and 3.14 checks verify this change without weakening source or ZIP integrity guards. [Progress CI evidence](../release/evidence/assembly-progress-windows-ci.json)
+
+A fresh Core 0.3.9 handoff must preserve the fixed reviewed source inventory, old roster and world pins, use a new candidate ID, and include the matching installation-note replacements. The original `actual-stage-before.jsonl` is currently required from the PC handoff; the cloud workspace does not contain it. No replacement inventory is synthesized. Keep the existing handoff and any incomplete output for inspection. [Client and Bisect contents/instructions](client-and-bisect-039.md)
+
+## Earlier connected-stage inventory and 0.3.8 handoff
+
+The recorded complete stage contains 2,184 files, 251 directories and 6,020,781,875 bytes. Its `Naruto.test` world contains 1,771 files, 5,702,815,313 bytes, 1,294 overworld regions and 6 Nether regions. The source was left unchanged. Twenty transferred files supply thirteen exact runtime/bootstrap artifacts for that earlier handoff; the larger Core JAR uses eight checked pieces.
 
 Read-only inspection of the historical Standards binary established the actual `hvdungeonpictures:picture` entity ID and exact integer `Village` mapping. Standards 0.3.1 implements that contract and retains the distinct authored 0.3.0 identifier. It passes 388 component assertions and the same 601 native assertions on Forge 2859 and the actual PC Magma base, SHA-256 `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce`. Both processes exited 0 with the same nine production mods and one private checker. These focused runs do not rerun the complete earlier Core suite.
 
@@ -29,7 +41,7 @@ The complete source build checks eleven areas and 36 declared artifacts. The rel
 
 Village Standards 0.3.0 was the new complete implementation used in that earlier suite. Its old-binary registry and variant schema were not yet verified at that checkpoint. The connected-stage 0.3.1 work above closes that binary-contract gap; actual saved-world and graphical acceptance remain open. [Runtime and migration contract](../modules/village-standards/README.md)
 
-PC access was disconnected during the earlier 0.3.8 gameplay work. The later connected-stage inventory and transfer above supersede that connection status. The original archive and rollback remain preserved. No new in-game rendering or Solas acceptance is claimed.
+PC access was disconnected during the earlier 0.3.8 gameplay work, then reconnected for the inventory and transfer above. It is disconnected again at the current 0.3.9 snapshot. The original archive and rollback remain preserved. No new in-game rendering or Solas acceptance is claimed.
 
 ## Previous continuation: 0.3.7
 
@@ -133,13 +145,13 @@ These are reconciliation gates G01–G08. They summarize the open work; the rele
 
 | Gate | Current result and remaining requirement |
 | --- | --- |
-| G01 — Exact identities | Replacement artifacts, complete Windows source and embedded client have fresh identities. The private contract binds the measured old rosters and final replacements; the Windows preparation run must produce and verify both new launcher aliases and the new matching client. |
-| G02 — Quartermaster | Current Core passes isolated native Forge and Magma Spirit eligibility, purchase, owner binding, queued delivery and duplicate-prevention checks. Retain this exact hash and verify the final configured server package. |
+| G01 — Exact identities | Core 0.3.9 outputs have current source-bound identities. Preserve the previously reviewed full Windows source inventory and bind a fresh contract to the final published source and artifacts; preparation must verify both launcher aliases and the matching client. |
+| G02 — Quartermaster | Current Core retains the isolated Forge Spirit eligibility, purchase, owner binding, queued delivery and duplicate-prevention checks. Earlier Magma results belong to earlier Core hashes. Verify the final configured server package. |
 | G03 — Configuration | The complete source scan includes the eight crates, dialogue, destinations and CrazyCrates config. Preparation preserves their exact bytes and all historical retirement pins. Final in-game configured actions still need acceptance. |
 | G04 — World lifecycle | Still requires first-start, save and restart of the actual `Naruto.test` world on the exact final server, with saved records checked. |
 | G05 — Matching client | Still requires a real client connection and bounded progression, weapons, scrolls, rack, dialogue, armor and input checks. |
 | G06 — Visuals | Still requires icon/model/armor and Solas inspection on the final graphical client. Static resource checks do not establish appearance. |
-| G07 — Final package | Preparation/assembly machinery passes 111 tests and exact update inputs are on the PC. The real complete candidate must still be assembled, with its full archive and matching client/world reverified; it has not been promoted. |
+| G07 — Final package | Release tooling and bounded progress checks pass their recorded regression suites. Earlier 0.3.8 inputs are on the PC; the fresh 0.3.9 handoff still requires its reviewed inventory and delivery. Complete assembly and its final client/world/archive verification remain pending. |
 | G08 — Hosted acceptance | Still requires Bisect start/restart and actual matching-client connection evidence. |
 
 Local acceptance can support `READY_FOR_HOSTED_TEST`. A successful hosted connection requires separate evidence; it cannot be inferred from compilation, unit checks, or local fake-player fixtures.

@@ -57,6 +57,7 @@ public final class OriginalArmorChecks {
                         ok(Float.isFinite(v.x)&&Float.isFinite(v.y)&&Float.isFinite(v.z)&&Float.isFinite(v.u)&&Float.isFinite(v.v),"Baked vertices remain finite");
                         near(v.nx*v.nx+v.ny*v.ny+v.nz*v.nz,1,1e-5,"Baked physical face normals stay normalized");
                     }
+                    verifyFaceWinding(batch);
                 }
                 ok(baseVertices==mesh.boxes.size()*24&&emissionVertices==expectedEmission,"Batching preserves every closed face and emission face");
                 ok(batches.size()<=28&&MeshBatcher.get(profile)==batches,"Bounded cached draw groups replace per-cuboid draw calls");
@@ -91,7 +92,7 @@ public final class OriginalArmorChecks {
         }
         ok(wards.size()==9&&keys.size()==9,"Complete independently keyed roster");
         ok(ArmorProfile.byKey("unissued")==null,"Unknown identity rejected");
-        verifyStamina();verifyBuilderRejection();verifyFold();
+        verifyStamina();verifyBuilderRejection();verifyFold();verifyPresentationState();verifyWingHinges();
         try(PrintWriter report=new PrintWriter(new File(output,"java-checks.json"),"UTF-8")){
             report.println("{\"status\":\"PASS\",\"assertions\":"+assertions+",\"profiles\":9,\"cuboids\":"+cuboids+",\"native_tested\":false,\"server_integrated\":false}");
         }
@@ -156,11 +157,85 @@ public final class OriginalArmorChecks {
         ok(rejected,"Non-finite rig rejected");
     }
     private static void verifyFold(){
-        float reference=0;for(int i=0;i<30;i++)reference=RigPose.approach(reference,1,20.0/30);
-        for(int fps:new int[]{30,60,120,240}){
-            float value=0;for(int i=0;i<fps;i++){float prior=value;value=RigPose.approach(value,1,20.0/fps);ok(value>=prior&&value<=1,"Wing spread is monotone and bounded");}
-            near(value,reference,2e-6,"Wing spread is frame-rate independent at "+fps+" FPS");
+        for(boolean opening:new boolean[]{true,false}){
+            float initial=opening?0:1,target=opening?1:0,reference=initial;
+            for(int i=0;i<30;i++)reference=RigPose.approachWing(reference,target,20.0/30);
+            for(int fps:new int[]{30,60,120,240}){
+                float value=initial;
+                for(int i=0;i<fps;i++){
+                    float prior=value;value=RigPose.approachWing(value,target,20.0/fps);
+                    ok(value>=0&&value<=1&&(opening?value>=prior:value<=prior),"Wing transition is monotone and bounded");
+                    near(RigPose.approachWing(value,target,0),value,0,"Repeated armor passes cannot accelerate wings");
+                }
+                near(value,reference,2e-6,"Actual wing transition is frame-rate independent at "+fps+" FPS");
+            }
         }
-        near(RigPose.approach(.5f,1,Double.NaN),.5,0,"Invalid frame delta cannot poison the rig");
+        near(RigPose.approachWing(.5f,1,Double.NaN),.5,0,"Invalid frame delta cannot poison the wing rig");
+        near(RigPose.approachWing(.5f,1,-1),.5,0,"A backwards frame cannot advance wings");
+        ok(1-RigPose.approachWing(1,0,1)<RigPose.approachWing(0,1,1),"Landing folds more slowly than takeoff deploys");
+    }
+    private static void verifyPresentationState(){
+        ArmorPresentationState beforePacket=new ArmorPresentationState();
+        beforePacket.fold(100,100,false);
+        ok(!beforePacket.flying(100),"A rendered model cannot invent flight authority");
+        beforePacket.receive(100,37,true);
+        near(beforePacket.strike(105,0),0,0,"First snapshot after rendering is a baseline, not a phantom strike");
+        ok(beforePacket.flying(140)&&!beforePacket.flying(141),"Network flight expires after its snapshot window");
+        beforePacket.receive(110,38,false);
+        near(beforePacket.strike(115,0),1,1e-6,"A new sequence drives a complete contact strike");
+        beforePacket.receive(116,38,false);
+        near(beforePacket.strike(119,0),Math.sin(Math.PI*.9),1e-6,"Repeated snapshots cannot restart the same strike");
+        near(beforePacket.strike(120,0),0,0,"Contact strike finishes after ten ticks");
+        beforePacket.fold(157,157,false);
+        beforePacket.receive(157,90,true);
+        near(beforePacket.strike(162,0),0,0,"Rendering through a tracking gap does not replay missed strikes");
+        beforePacket.receive(158,91,true);
+        near(beforePacket.strike(163,Float.NaN),1,1e-6,"Invalid partial time cannot poison the strike pose");
+        ok(!beforePacket.flying(157),"A snapshot from a later clock cannot grant current flight");
+        beforePacket.receive(10,1,false);
+        near(beforePacket.strike(15,0),0,0,"A backwards world clock establishes a fresh baseline");
+
+        ArmorPresentationState packetFirst=new ArmorPresentationState();
+        packetFirst.receive(100,37,true);
+        near(packetFirst.strike(105,0),0,0,"A packet received before rendering is also a baseline");
+        ok(!packetFirst.expired(140)&&packetFirst.expired(141),"An unrendered stale snapshot is collectible");
+        packetFirst.fold(150,150,true);
+        ok(!packetFirst.expired(170)&&packetFirst.expired(171),"Rendering keeps only a bounded local pose lifetime");
+
+        ArmorPresentationState pose=new ArmorPresentationState();
+        near(pose.fold(100,100,true),0,0,"Wing animation starts folded");
+        float opened=pose.fold(101,101,true);
+        ok(opened>0&&opened<1,"Successive frames ease the wings open");
+        for(int pass=0;pass<8;pass++)near(pose.fold(101,101,true),opened,0,"Multiple equipped pieces share one frame transition");
+        near(pose.fold(101,Double.NaN,true),opened,0,"Invalid render time preserves the last valid pose");
+        ok(pose.fold(102,102,false)<opened,"Landing begins a closing transition");
+        near(pose.fold(103,1,true),0,0,"Respawn tick reset discards a stale open pose");
+        pose.fold(104,2,true);
+        near(pose.fold(200,100,true),0,0,"A long render absence discards a stale open pose");
+    }
+    private static void verifyWingHinges(){
+        ArmorMesh mesh=OriginalModels.get(ArmorProfile.AURIC_SKIMMER);
+        for(int i=0;i<=20;i++){
+            float spread=i/20f;
+            RigPose.Rotation left=RigPose.at("wing_left",.37,.8f,spread,0),right=RigPose.at("wing_right",.37,.8f,spread,0);
+            near(left.x,right.x,1e-6,"Wing pitch is shared");
+            near(left.y,-right.y,1e-6,"Wing hinges deploy with mirrored yaw");
+            near(left.z,-right.z,1e-6,"Wing strokes stay mirrored");
+            for(String name:new String[]{"wing_left","wing_right"}){
+                ArmorMesh.Rig rig=mesh.rigs.get(name);RigPose.Rotation pose=RigPose.at(name,0,0,spread,0);
+                double tipX=name.endsWith("left")?14.8:-14.8;
+                double tipZ=rig.z-tipX*Math.sin(pose.y);
+                ok(tipZ>rig.z,"Wing tips remain behind their body hinges while deploying");
+            }
+        }
+    }
+    private static void verifyFaceWinding(MeshBatcher.Batch batch){
+        ok(batch.vertices.size()%4==0,"Each draw batch contains complete quads");
+        for(int i=0;i<batch.vertices.size();i+=4){
+            MeshBatcher.Vertex a=batch.vertices.get(i),b=batch.vertices.get(i+1),c=batch.vertices.get(i+2);
+            double ux=b.x-a.x,uy=b.y-a.y,uz=b.z-a.z,vx=c.x-a.x,vy=c.y-a.y,vz=c.z-a.z;
+            double outward=(uy*vz-uz*vy)*a.nx+(uz*vx-ux*vz)*a.ny+(ux*vy-uy*vx)*a.nz;
+            ok(outward>0,"Every baked front, side and back face winds toward its outward normal under culling");
+        }
     }
 }

@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "scope": "ASSEMBLY_PROGRESS_REGRESSION_CI",
+  "recorded_utc": "2026-11-10 23:48:25 UTC",
+  "source_commit": "a567ebc39b54a88985c51d657a1b9940ef5de3ec",
+  "source_tree": "3340ffb5a781234120214475668cb0bdae6e352d",
+  "workflow": {
+    "id": 42923443205,
+    "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42923443205",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "release_tool_jobs": [
+    {
+      "id": 130203777061,
+      "os": "windows-latest",
+      "python": "3.8",
+      "conclusion": "success",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42923443205/job/130203777061",
+      "tests_run": 148,
+      "tests_passed": 147,
+      "tests_skipped": 1,
+      "elapsed_seconds": 63.031,
+      "progress_checks": [
+        "test_progress_failure_preserves_incomplete_copy_and_original_source (test_assemble_release.AssemblyTests) ... ok",
+        "test_progress_preserves_complete_archives_and_receipts (test_assemble_release.AssemblyTests) ... ok",
+        "test_progress_reaches_initial_audit_and_assembly_without_changing_outputs (test_prepare_connected_release.ConnectedPreparationTests) ... ok",
+        "test_console_limits_repeated_updates_and_keeps_phase_boundaries (test_release_pack.ProgressTests) ... ok",
+        "test_progress_does_not_hide_source_change_during_hash (test_release_pack.ProgressTests) ... ok",
+        "test_progress_failure_aborts_without_an_inventory_success (test_release_pack.ProgressTests) ... ok",
+        "test_tree_and_zip_progress_preserve_reports_and_exclude_paths (test_release_pack.ProgressTests) ... ok"
+      ],
+      "skips": [
+        "test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks) ... skipped 'Case-sensitive fixture requires Linux'"
+      ]
+    },
+    {
+      "id": 130203777041,
+      "os": "windows-latest",
+      "python": "3.12",
+      "conclusion": "success",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42923443205/job/130203777041",
+      "tests_run": 148,
+      "tests_passed": 147,
+      "tests_skipped": 1,
+      "elapsed_seconds": 40.072,
+      "progress_checks": [
+        "test_progress_failure_preserves_incomplete_copy_and_original_source (test_assemble_release.AssemblyTests.test_progress_failure_preserves_incomplete_copy_and_original_source) ... ok",
+        "test_progress_preserves_complete_archives_and_receipts (test_assemble_release.AssemblyTests.test_progress_preserves_complete_archives_and_receipts) ... ok",
+        "test_progress_reaches_initial_audit_and_assembly_without_changing_outputs (test_prepare_connected_release.ConnectedPreparationTests.test_progress_reaches_initial_audit_and_assembly_without_changing_outputs) ... ok",
+        "test_console_limits_repeated_updates_and_keeps_phase_boundaries (test_release_pack.ProgressTests.test_console_limits_repeated_updates_and_keeps_phase_boundaries) ... ok",
+        "test_progress_does_not_hide_source_change_during_hash (test_release_pack.ProgressTests.test_progress_does_not_hide_source_change_during_hash) ... ok",
+        "test_progress_failure_aborts_without_an_inventory_success (test_release_pack.ProgressTests.test_progress_failure_aborts_without_an_inventory_success) ... ok",
+        "test_tree_and_zip_progress_preserve_reports_and_exclude_paths (test_release_pack.ProgressTests.test_tree_and_zip_progress_preserve_reports_and_exclude_paths) ... ok"
+      ],
+      "skips": [
+        "test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks.test_case_duplicate_runtime_is_rejected) ... skipped 'Case-sensitive fixture requires Linux'"
+      ]
+    },
+    {
+      "id": 130203777101,
+      "os": "windows-latest",
+      "python": "3.14",
+      "conclusion": "success",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42923443205/job/130203777101",
+      "tests_run": 148,
+      "tests_passed": 147,
+      "tests_skipped": 1,
+      "elapsed_seconds": 27.609,
+      "progress_checks": [
+        "test_progress_failure_preserves_incomplete_copy_and_original_source (test_assemble_release.AssemblyTests.test_progress_failure_preserves_incomplete_copy_and_original_source) ... ok",
+        "test_progress_preserves_complete_archives_and_receipts (test_assemble_release.AssemblyTests.test_progress_preserves_complete_archives_and_receipts) ... ok",
+        "test_progress_reaches_initial_audit_and_assembly_without_changing_outputs (test_prepare_connected_release.ConnectedPreparationTests.test_progress_reaches_initial_audit_and_assembly_without_changing_outputs) ... ok",
+        "test_console_limits_repeated_updates_and_keeps_phase_boundaries (test_release_pack.ProgressTests.test_console_limits_repeated_updates_and_keeps_phase_boundaries) ... ok",
+        "test_progress_does_not_hide_source_change_during_hash (test_release_pack.ProgressTests.test_progress_does_not_hide_source_change_during_hash) ... ok",
+        "test_progress_failure_aborts_without_an_inventory_success (test_release_pack.ProgressTests.test_progress_failure_aborts_without_an_inventory_success) ... ok",
+        "test_tree_and_zip_progress_preserve_reports_and_exclude_paths (test_release_pack.ProgressTests.test_tree_and_zip_progress_preserve_reports_and_exclude_paths) ... ok"
+      ],
+      "skips": [
+        "test_case_duplicate_runtime_is_rejected (test_bootstrap.BootstrapChecks.test_case_duplicate_runtime_is_rejected) ... skipped 'Case-sensitive fixture requires Linux'"
+      ]
+    },
+    {
+      "id": 130203777372,
+      "os": "ubuntu-latest",
+      "python": "3.12",
+      "conclusion": "success",
+      "url": "https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/42923443205/job/130203777372",
+      "tests_run": 148,
+      "tests_passed": 147,
+      "tests_skipped": 1,
+      "elapsed_seconds": 8.163,
+      "progress_checks": [
+        "test_progress_failure_preserves_incomplete_copy_and_original_source (test_assemble_release.AssemblyTests.test_progress_failure_preserves_incomplete_copy_and_original_source) ... ok",
+        "test_progress_preserves_complete_archives_and_receipts (test_assemble_release.AssemblyTests.test_progress_preserves_complete_archives_and_receipts) ... ok",
+        "test_progress_reaches_initial_audit_and_assembly_without_changing_outputs (test_prepare_connected_release.ConnectedPreparationTests.test_progress_reaches_initial_audit_and_assembly_without_changing_outputs) ... ok",
+        "test_console_limits_repeated_updates_and_keeps_phase_boundaries (test_release_pack.ProgressTests.test_console_limits_repeated_updates_and_keeps_phase_boundaries) ... ok",
+        "test_progress_does_not_hide_source_change_during_hash (test_release_pack.ProgressTests.test_progress_does_not_hide_source_change_during_hash) ... ok",
+        "test_progress_failure_aborts_without_an_inventory_success (test_release_pack.ProgressTests.test_progress_failure_aborts_without_an_inventory_success) ... ok",
+        "test_tree_and_zip_progress_preserve_reports_and_exclude_paths (test_release_pack.ProgressTests.test_tree_and_zip_progress_preserve_reports_and_exclude_paths) ... ok"
+      ],
+      "skips": [
+        "test_native_windows_query_finds_only_its_temporary_fixture (test_check_assembly_status.AssemblyStatusTests.test_native_windows_query_finds_only_its_temporary_fixture) ... skipped 'Windows CIM smoke test; fixture only'"
+      ]
+    }
+  ],
+  "source_build_job": {
+    "id": 130203776798,
+    "conclusion": "success",
+    "source_areas": 11,
+    "declared_artifacts": 36,
+    "artifact_id": 13813750120
+  },
+  "scope_limits": [
+    "Synthetic files and bounded fixture inputs; not the user's complete Windows assembly.",
+    "Exact ZIP/report equivalence, source-change and CRC guards are tested; progress is not a runtime receipt.",
+    "No saved world, graphical client or Bisect acceptance."
+  ],
+  "pc_files_modified_by_this_update": false
+}

@@ -48,12 +48,17 @@ public final class AbilityCarriers036 {
  static boolean use(EntityPlayerMP p,ItemStack s,Profile profile,EnumHand hand){
   NBTTagCompound r=canonical(p,s);if(r==null)return Scrolls.tell(p,"Only the issued owner's held codex can act.");if(p.isSneaking())return cycle(p,s,profile,r);if(hand==EnumHand.OFF_HAND)return practice(p,s,profile,r);String key=selected(profile,r);Scrolls.Lesson l=lesson(key);
   if(!authorizedCast(p,s,key))return Scrolls.tell(p,"Codex cast unavailable: learn, train, meet its level and wait for cooldown.");
-  if(!Scrolls.castFromCarrier036(p,s,key))return false;r.getCompoundTag("cooldowns").setLong(key,CarrierRules036.next(ArsenalAccess.now(p),l.cooldown));mirror(s,profile,r,p);CarrierJournal036.get(p).flush(p);ArsenalAccess.save(p);return true;
+  if(!Scrolls.castFromCarrier036(p,s,key))return false;
+  NBTTagCompound cooldowns=r.getCompoundTag("cooldowns");cooldowns.setLong(key,Math.max(cooldowns.getLong(key),CarrierRules036.next(ArsenalAccess.now(p),l.cooldown)));
+  // Effect callbacks may remove the carrier or change the held stack. Its saved
+  // deadline remains, but never write its display mirror onto a replacement.
+  if(issuedHeld(p,s)&&canonical(p,s)==r)mirror(s,profile,r,p);
+  CarrierJournal036.get(p).flush(p);ArsenalAccess.save(p);return true;
  }
  public static final class CarrierItem extends Item {
   public final Profile profile;CarrierItem(Profile p){profile=p;}
   @Override public String getItemStackDisplayName(ItemStack s){return profile.title;}
-  @Override public ActionResult<ItemStack> onItemRightClick(World w,EntityPlayer entity,EnumHand hand){ItemStack s=entity.getHeldItem(hand);if(w.isRemote)return new ActionResult<>(EnumActionResult.SUCCESS,s);boolean ok=entity instanceof EntityPlayerMP&&s.getItem()==this&&use((EntityPlayerMP)entity,s,profile,hand);return new ActionResult<>(ok?EnumActionResult.SUCCESS:EnumActionResult.FAIL,s);}
+  @Override public ActionResult<ItemStack> onItemRightClick(World w,EntityPlayer entity,EnumHand hand){ItemStack s=entity.getHeldItem(hand);if(w.isRemote)return new ActionResult<>(EnumActionResult.SUCCESS,s);boolean ok=entity instanceof EntityPlayerMP&&s.getItem()==this&&use((EntityPlayerMP)entity,s,profile,hand);return new ActionResult<>(ok?EnumActionResult.SUCCESS:EnumActionResult.FAIL,entity.getHeldItem(hand));}
   @SideOnly(Side.CLIENT) @Override public void addInformation(ItemStack s,World w,List<String> lines,net.minecraft.client.util.ITooltipFlag flag){lines.add("Main hand: cast. Offhand: practice. Sneak-use: cycle learned techniques.");lines.add(""+profile.lessons.length+" original techniques; learn their lessons first.");if(s.hasTagCompound()&&s.getTagCompound().hasKey("ValeCarrier036View",10)){NBTTagCompound n=s.getTagCompound().getCompoundTag("ValeCarrier036View");lines.add(n.getString("selected").replace('_',' ')+" — "+n.getInteger("mastery")+"/"+n.getInteger("required"));lines.add(n.getBoolean("affinity")?"Resonant training:1x":"Other discipline:2.5x training");}lines.add("Each issued codex keeps its own training.");}
  }
  static final class VowItem extends Item {

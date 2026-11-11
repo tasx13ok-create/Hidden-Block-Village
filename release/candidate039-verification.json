@@ -1,0 +1,692 @@
+{
+  "schema": "vale.source-candidate-verification/v1",
+  "recorded_utc": "2026-11-11T00:18:59.385042+00:00",
+  "status": "CORE039_FORGE_NATIVE_PASSED_COMPLETE_PACKAGE_PENDING",
+  "release_ready": false,
+  "source": {
+    "baseline_parent_commit": "a567ebc39b54a88985c51d657a1b9940ef5de3ec",
+    "canonical_file_list_sha256": "19432a6b1be7e2706be8b176e1cda9461d8ec2b51fbd7c639504714b1ece9790",
+    "file_count": 1512,
+    "bytes": 3955249,
+    "manifest": {
+      "path": "release/candidate039-source-inputs.json",
+      "bytes": 330316,
+      "sha256": "52a7816b7256eead547c1853e7278c406e837765aa6de4712bd2e6b994b7bf61"
+    },
+    "original_manifest": {
+      "bytes": 330316,
+      "sha256": "52a7816b7256eead547c1853e7278c406e837765aa6de4712bd2e6b994b7bf61"
+    },
+    "post_build_inputs_rechecked": true,
+    "publication_binding": "Read at the containing Git commit. The recorded Git commit is the historical worktree base, not a claim that the new Core039 source was already committed there. The complete canonical file manifest identifies the tested source."
+  },
+  "component_builds": {
+    "passed": true,
+    "source_areas": 11,
+    "artifacts": 36,
+    "source_changed_during_build": [],
+    "report": {
+      "path": "release/candidate039-component-builds.json",
+      "bytes": 28466,
+      "sha256": "fafea4114d3946ec880494cd4466f9f0f0607abd58d56107e906e5a75c2f8ab1"
+    },
+    "original_report": {
+      "bytes": 30427,
+      "sha256": "7c7651e598f33d106dea382595ef1fd7553c75d2d77d93c1bc4f0047f155bfa9"
+    },
+    "components": [
+      {
+        "module": "vale-orders",
+        "version": "0.3.9",
+        "checks": [
+          {
+            "task": "verifyAbilities",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyClawCombat",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyClientAbilityRequests",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyCommands",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyGameplayRecovery",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyHud",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyLedger",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyLoadout",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyOriginalArmor",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyOriginalArmorApi",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyPoses",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyRules",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyScrollCasts",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyScrollCompanions",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core039-component-vale-orders.txt",
+          "bytes": 4330,
+          "sha256": "1bea1773bb0d72fa9924037ab1599e17f790d4b2fe79f7065b79966ec8f1025e"
+        }
+      },
+      {
+        "module": "vale-encounters",
+        "version": "0.3.6",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-vale-encounters.txt",
+          "bytes": 2460,
+          "sha256": "e02c346b0a6cbd7822468246d62a2978c0880ffa82a8ba7540a334282c79d16a"
+        }
+      },
+      {
+        "module": "vale-rack",
+        "version": "0.1.2",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-vale-rack.txt",
+          "bytes": 2424,
+          "sha256": "737d512dd9f96a4e5463842ff5591b4466c7e2a07a2e2b646ed6fa69d4ad5c7d"
+        }
+      },
+      {
+        "module": "vale-residents",
+        "version": "0.2.0",
+        "checks": [
+          {
+            "task": "verifyDialogue",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyResidents",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core039-component-vale-residents.txt",
+          "bytes": 2755,
+          "sha256": "c34d67c9755782b3fe7e701bcd33ff2d3bbc937959cc756f9a1ff01298d1ead5"
+        }
+      },
+      {
+        "module": "vale-residents-server-bridge",
+        "version": "0.1.0",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-vale-residents-server-bridge.txt",
+          "bytes": 2474,
+          "sha256": "fdc89e1c871a95528bc18332b10958d89cb4320b0ecb891d3f52ac5aa2f375ff"
+        }
+      },
+      {
+        "module": "vale-world-compat",
+        "version": "1.0.0",
+        "checks": [
+          {
+            "task": "verifyCompatibility",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core039-component-vale-world-compat.txt",
+          "bytes": 3879,
+          "sha256": "680e2a44f7cd0efb47d12edc3852a4a1056f8df18990e0b933caad721d51d77f"
+        }
+      },
+      {
+        "module": "field-hud",
+        "version": "0.14.1",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-field-hud.txt",
+          "bytes": 2486,
+          "sha256": "0b5b8631282d87b7dbf4673e6d75b3a8344accb4d4a05d58b34059a44a4a5794"
+        }
+      },
+      {
+        "module": "field-controls",
+        "version": "1.4.0-simple-candidate",
+        "checks": [
+          {
+            "task": "verifyControls",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyFocusedCast",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyJutsuFocus",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifyMenus",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifySettings",
+            "state": "EXECUTED"
+          },
+          {
+            "task": "verifySimpleMenus",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core039-component-field-controls.txt",
+          "bytes": 3253,
+          "sha256": "b713b5c315096ce05c5aa1a1c0ec78a786fbb9fdecda08d0a5af02597c523b40"
+        }
+      },
+      {
+        "module": "vale-compatibility-helpers",
+        "version": "source-adapters",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-vale-compatibility-helpers.txt",
+          "bytes": 7782,
+          "sha256": "f70070776f99885812e713097538f6164bfbfc0f3f5451e2bf5e2b659d5a8f0c"
+        }
+      },
+      {
+        "module": "server-bootstrap",
+        "version": "0.3.7",
+        "checks": [],
+        "log": {
+          "path": "release/evidence/core039-component-server-bootstrap.txt",
+          "bytes": 1205,
+          "sha256": "5e75655ad5789e091293ab98b9bcf9eb496085d62152f30bb56c8c74cf7722af"
+        }
+      },
+      {
+        "module": "village-standards",
+        "version": "0.3.1",
+        "checks": [
+          {
+            "task": "verifyStandards",
+            "state": "EXECUTED"
+          }
+        ],
+        "log": {
+          "path": "release/evidence/core039-component-village-standards.txt",
+          "bytes": 2757,
+          "sha256": "9183eddccb0f52ede8ddfff480561532fdb860de4cc37c35e2cec70c7c5e447a"
+        }
+      }
+    ],
+    "all_class_major_versions": [
+      52
+    ],
+    "scope": "Source compilation, component checks and checked archive identities; no installed complete package or graphical client."
+  },
+  "tool_tests": {
+    "passed": true,
+    "tests": 161,
+    "passed_tests": 160,
+    "skipped": 1,
+    "java_bootstrap_compiler": "Azul Java 8u512",
+    "evidence": {
+      "path": "release/evidence/core039-release-tool-tests.txt",
+      "bytes": 29730,
+      "sha256": "12767ca23087ccbc2c0bc6ef565a1f9fe29ae4d36464c843fe8e39f3b0e0a8f5"
+    }
+  },
+  "native_fixture": {
+    "production_core_sha256": "68dd939b58db0850f8d49d454f10b4f017d716c40db43e2e2861f45b13fc9f43",
+    "qa_in_production": false,
+    "private_fixture_inputs": {
+      "files": [
+        {
+          "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ClawNativeChecks.java",
+          "bytes": 22040,
+          "sha256": "f50f30f53c011e7a01a82b183a5d447b8726be9c2f30f6e4b73be648b293e4a2"
+        },
+        {
+          "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+          "bytes": 24991,
+          "sha256": "8f4b64b3d182f47a9a311822165af454d18b83183ca48f4ca05e4c367c51c9a8"
+        },
+        {
+          "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ReedEscapeNativeChecks039.java",
+          "bytes": 20910,
+          "sha256": "3646bcc70c9e05464591a973e3ac2c28c7b8a75acf866a0a75e47e719fa5176a"
+        },
+        {
+          "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollCastNativeChecks039.java",
+          "bytes": 36528,
+          "sha256": "a81f4c750f68dde54a253a53647d4851009f5d67ee3b7e8926723988f453ad93"
+        },
+        {
+          "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollNativeChecks038.java",
+          "bytes": 16130,
+          "sha256": "35efdcf204eee605ee3e8fff78dbd024f10682802787baf46cf35fc00229d728"
+        },
+        {
+          "path": "modules/vale-orders/recoverychecks/village/valerack/RackNativeChecks038.java",
+          "bytes": 9294,
+          "sha256": "b3b65090705fbff559082fbc71c3f66cbc63ef0b7c62753cd69de033c62a9b89"
+        },
+        {
+          "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeChecks.java",
+          "bytes": 25192,
+          "sha256": "f5ee924800975a29173a48f039f25aeab41b2053ee26d5c51b552f99cc1b5695"
+        },
+        {
+          "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeRunner.java",
+          "bytes": 4036,
+          "sha256": "29e4b71eecd79897f76f3ca8b4dd91b69be7c4b4d5038127c95335c9aea7a1c7"
+        },
+        {
+          "path": "tools/run_native_checks.py",
+          "bytes": 26629,
+          "sha256": "e244ef8f8f6710aee547a95590335cfb1ff17edce58ab8bde1f86966f1591554"
+        }
+      ],
+      "sha256": "ab9b68fe691645215a9a3bfb125e3b0f5d583836ab5f524b5faa04ab6e3f3096"
+    },
+    "forge": {
+      "passed": true,
+      "assertions": 1158,
+      "checks": [
+        "556 live registered items and current diagnostic category checks",
+        "Native result-slot pickup remains issued after expired preview timeout",
+        "Stale proof is recomputed by native container before actual crafting",
+        "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+        "Native Party Charter leave/rejoin preserves the existing expedition",
+        "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+        "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+        "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+        "Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport",
+        "Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup",
+        "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+        "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+        "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery"
+      ],
+      "minecraft": "1.12.2",
+      "forge": "14.23.5.2859",
+      "process_exit_code": 0,
+      "production_mods": 9,
+      "private_qa_mods": 2,
+      "loaded_mods": {
+        "valeorders": {
+          "version": "0.3.9",
+          "file": "vale-orders-0.3.9.jar",
+          "sha256": "68dd939b58db0850f8d49d454f10b4f017d716c40db43e2e2861f45b13fc9f43"
+        },
+        "valeencounters": {
+          "version": "0.3.6",
+          "file": "vale-encounters-0.3.6.jar",
+          "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+        },
+        "valedamagecompat": {
+          "version": "0.1.0",
+          "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+          "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+        },
+        "valerack": {
+          "version": "0.1.2",
+          "file": "Vale-Rack-0.1.2.jar",
+          "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+        },
+        "hvdungeonpictures": {
+          "version": "0.3.1",
+          "file": "Village-Standards-0.3.1.jar",
+          "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+        },
+        "valestandardschecks": {
+          "version": "0.3.1",
+          "file": "vale-standards-checks-0.3.1.jar",
+          "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+        },
+        "valerecoverychecks": {
+          "version": "0.3.9",
+          "file": "vale-recoverychecks-0.3.9.jar",
+          "sha256": "e1b726c51860323d8ed4f118b25ebec5b1d6033c2b2d977244b0a5f8812691f1"
+        },
+        "valeresidents": {
+          "version": "0.2.0",
+          "file": "vale-residents-0.2.0.jar",
+          "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+        },
+        "residentserverbridge": {
+          "version": "0.1.0",
+          "file": "vale-residents-server-bridge-0.1.0.jar",
+          "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+        },
+        "valeserverbridge": {
+          "version": "0.2.0",
+          "file": "Vale-Server-Bridge-0.2.0.jar",
+          "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+        },
+        "valeworldcompat": {
+          "version": "1.0.0",
+          "file": "vale-world-compat-1.0.0.jar",
+          "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+        }
+      },
+      "runtime_removed": true,
+      "result": {
+        "path": "release/evidence/core039-forge-result.json",
+        "bytes": 3615,
+        "sha256": "54345d7df8f6883f4838534e99dcaf139f8dc2bbcb44c7a84168e77833c6b286"
+      },
+      "original_result": {
+        "bytes": 3614,
+        "sha256": "90e822783d0e679f7054e71918f388290ac075f8d606c5b3b9ebb63d34c8965f"
+      },
+      "process": {
+        "path": "release/evidence/core039-forge-process.json",
+        "bytes": 9025,
+        "sha256": "e0795319ced6aa6f478c12733816ff0c388b3465a336d53e98bba537e3bdc08b"
+      },
+      "original_process": {
+        "bytes": 9025,
+        "sha256": "e0795319ced6aa6f478c12733816ff0c388b3465a336d53e98bba537e3bdc08b"
+      },
+      "logs": [
+        {
+          "step": "verify java8",
+          "original_filename": "java8.log",
+          "original": {
+            "bytes": 323,
+            "sha256": "c1533ef676fd9263e37090ea1b5345f2ad1a5aedae0ba96cd22f21e7c2fc19a5"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-java8.txt",
+            "bytes": 263,
+            "sha256": "dad88b5962a3f393298de1e3c3dd3e493cced074319b6e8971b14de5682faf55"
+          }
+        },
+        {
+          "step": "verify java25",
+          "original_filename": "java25.log",
+          "original": {
+            "bytes": 333,
+            "sha256": "a14f160f79536868fd183e77377310a2c35c73d5d7e04f5ef8e21110e8a72d51"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-java25.txt",
+            "bytes": 273,
+            "sha256": "6bd814b4a172109b4a51fa8142efba19abe7256451b98c0f4af7a338da66aa25"
+          }
+        },
+        {
+          "step": "compile vale-orders private fixture",
+          "original_filename": "vale-orders-private-build.log",
+          "original": {
+            "bytes": 2782,
+            "sha256": "86ddcc12ca8979b4f022a94a998c8ebe925cd00b24e61bf8a29eb613cb2f084f"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-vale-orders-private-build.txt",
+            "bytes": 2683,
+            "sha256": "e2b918768b453b469f72b5c1ea814f9610361449a8891fe16dd1d4df07958628"
+          }
+        },
+        {
+          "step": "compile village-standards private fixture",
+          "original_filename": "village-standards-private-build.log",
+          "original": {
+            "bytes": 2910,
+            "sha256": "05df289d82f43578515a1240beb95e6637171e0695b93eadc95d72f1fc9ab1f0"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-village-standards-private-build.txt",
+            "bytes": 2751,
+            "sha256": "0a744c75efedd7b7ec1820033d86b1a04bd1f4d6ec0e2e5e6f7b34284769bd48"
+          }
+        },
+        {
+          "step": "install official Forge",
+          "original_filename": "forge-install.log",
+          "original": {
+            "bytes": 6194,
+            "sha256": "9fdc4c7c933670bf9c6ff573257760e08f991568f197bbb5d0377988c7290873"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-forge-install.txt",
+            "bytes": 6126,
+            "sha256": "d565c5f2887cea7eb340d7fe3c2c59464fe34d7a0d655bf1548c0b2b98b74474"
+          }
+        },
+        {
+          "step": "run private Core and Standards fixture",
+          "original_filename": "native-server.log",
+          "original": {
+            "bytes": 23594,
+            "sha256": "17084a6aad94d0d9d97aaa49f703263045ae94d88442cb1d78cd22d9e9cc2575"
+          },
+          "published": {
+            "path": "release/evidence/core039-forge-native-server.txt",
+            "bytes": 23490,
+            "sha256": "fa3f6dd33e3fac454dc7bd8d7231376d6c1b06794e959e2f92640aeba7c5aad2"
+          }
+        }
+      ]
+    },
+    "upstream_magma_prior_checkpoint_precheck": {
+      "status": "BLOCKED_BEFORE_NATIVE_EXECUTION",
+      "passed": false,
+      "runtime_scope": "UPSTREAM_MAGMA",
+      "final_candidate_tested": false,
+      "checkpoint": "prior_1027_assertion_checkpoint",
+      "prior_core_sha256": "5df71a4676ee581cde33e2f3b318b032cb0e2ba440f144d12f0456c57e702b1f",
+      "prior_assertions": 1027,
+      "final_core_sha256": "68dd939b58db0850f8d49d454f10b4f017d716c40db43e2e2861f45b13fc9f43",
+      "process_exit_code": 255,
+      "magma": {
+        "file": "Magma-1.12.2-8cc35ed-server.jar",
+        "bytes": 7057102,
+        "sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c"
+      },
+      "pc_runtime_tested": false,
+      "reason": "Required Spigot dependency returned HTTP 403. One ordinary curl GET to the same public URL also returned 403; denial layer is undetermined. No accepted dependency artifact or native result was produced.",
+      "original_process_report": {
+        "bytes": 3976,
+        "sha256": "48d814d3aee083951c12090fbc1a72d46db2e8cfaf133b325ba6914b9d02a724"
+      },
+      "original_probe_report": {
+        "bytes": 815,
+        "sha256": "7ec27e9a61fdb6c10632d70841631c1ebb60dac6b8e651c9d85729ddcf5ef42e"
+      },
+      "report_omissions": [
+        "Private disposable run directory",
+        "Unrelated actual PC runtime hash"
+      ],
+      "process": {
+        "path": "release/evidence/core039-upstream-magma-prior1027-process.json",
+        "bytes": 3902,
+        "sha256": "76abe2922ec6b920ff4589eee47fd73353fbc6f437b4998a682b32aec5cf4934"
+      },
+      "log": {
+        "path": "release/evidence/core039-upstream-magma-prior1027-native.txt",
+        "bytes": 10638,
+        "sha256": "b2e4d8a889ee1ad5eb4e6e7a423263be0a3c57f044d43a0c8f7e6e4ebe380d16"
+      },
+      "dependency_probe": {
+        "path": "release/evidence/core039-upstream-magma-prior1027-dependency-block.json",
+        "bytes": 815,
+        "sha256": "7ec27e9a61fdb6c10632d70841631c1ebb60dac6b8e651c9d85729ddcf5ef42e"
+      }
+    },
+    "world": "Fresh disposable flat vale-recovery-test fixture",
+    "network_binding": "127.0.0.1:0",
+    "scope_limit": "Forge synthetic fixture only. No final-candidate Magma result, saved-world migration, graphical client, real network protocol session, complete client/server package, or Bisect acceptance."
+  },
+  "runtime_and_supporting_outputs": [
+    {
+      "module": "vale-orders",
+      "component": "vale-orders",
+      "role": "runtime_mod",
+      "filename": "vale-orders-0.3.9.jar",
+      "bytes": 1953662,
+      "sha256": "68dd939b58db0850f8d49d454f10b4f017d716c40db43e2e2861f45b13fc9f43"
+    },
+    {
+      "module": "vale-encounters",
+      "component": "vale-encounters",
+      "role": "runtime_mod",
+      "filename": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "module": "vale-rack",
+      "component": "vale-rack",
+      "role": "runtime_mod",
+      "filename": "Vale-Rack-0.1.2.jar",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "module": "vale-residents",
+      "component": "vale-residents",
+      "role": "runtime_mod",
+      "filename": "vale-residents-0.2.0.jar",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "module": "vale-residents-server-bridge",
+      "component": "vale-residents-server-bridge",
+      "role": "runtime_mod",
+      "filename": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "module": "vale-world-compat",
+      "component": "vale-world-compat",
+      "role": "runtime_mod",
+      "filename": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "module": "field-hud",
+      "component": "field-hud",
+      "role": "runtime_mod",
+      "filename": "field-hud-0.14.1.jar",
+      "bytes": 182952,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "module": "field-controls",
+      "component": "field-controls",
+      "role": "runtime_mod",
+      "filename": "field-controls-1.4.0-simple-candidate.jar",
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "client-lifecycle",
+      "role": "runtime_mod",
+      "filename": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "damage-compat",
+      "role": "runtime_mod",
+      "filename": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "component": "server-bridge",
+      "role": "runtime_mod",
+      "filename": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "module": "server-bootstrap",
+      "component": "server-bootstrap",
+      "role": "bootstrap_library",
+      "filename": "Vale-Server-Bootstrap-0.3.7.jar",
+      "bytes": 9025,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf"
+    },
+    {
+      "module": "village-standards",
+      "component": "village-standards",
+      "role": "runtime_mod",
+      "filename": "Village-Standards-0.3.1.jar",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    }
+  ],
+  "historical_standards_contract": {
+    "status": "BINARY_CONTRACT_VERIFIED",
+    "version": "0.3.1",
+    "production_sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077",
+    "evidence": {
+      "path": "release/connected038-verification.json",
+      "bytes": 6289,
+      "sha256": "82d612e2a88d804782d8b163570e51d188c2a106d0a8665792d194432d8589d2"
+    },
+    "scope": "The historical entity identity and variant binary contract was already verified for this exact Standards 0.3.1 binary. Actual saved-world migration remains unrun."
+  },
+  "log_normalizations": {
+    "path": "release/evidence/core039-log-normalizations.json",
+    "bytes": 11883,
+    "sha256": "9c9449a343f25a57626d39d1e747a3a86ce74433bfc956618eb84b8d589472cc"
+  },
+  "remaining_acceptance": {
+    "final_candidate_magma": "NOT_RUN_DEPENDENCY_PRECHECK_BLOCKED",
+    "windows_stage_current_inventory": "BLOCKED_DISCONNECTED_FILE_LINK",
+    "full_matching_client": "NOT_RUN",
+    "actual_Naruto_test_start_save_restart": "NOT_RUN",
+    "full_current_external_plugin_roster": "NOT_RUN",
+    "actual_standards_saved_world_migration": "NOT_RUN",
+    "graphics_and_Solas": "NOT_RUN",
+    "final_complete_package_assembly": "NOT_RUN",
+    "Bisect_start_restart_client_connection": "NOT_RUN"
+  },
+  "publication_exclusions": [
+    "Compiled runtime distributions",
+    "Upstream runtime and dependency JARs",
+    "Worlds and player records",
+    "Private PC contract",
+    "Credentials and session proxy endpoints",
+    "Reference decompilations",
+    "Approval-held artwork",
+    "Compiled private QA"
+  ]
+}

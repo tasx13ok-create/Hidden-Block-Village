@@ -1,0 +1,4 @@
+[Inherited JVM configuration omitted; original log identity retained.]
+openjdk version "1.8.0_512"
+OpenJDK Runtime Environment (Zulu 8.98.0.111-CA-linux64) (build 1.8.0_512-b09)
+OpenJDK 64-Bit Server VM (Zulu 8.98.0.111-CA-linux64) (build 25.512-b09, mixed mode)

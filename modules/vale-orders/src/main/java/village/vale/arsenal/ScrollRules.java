@@ -13,6 +13,11 @@ public final class ScrollRules {
         if(practice<required)return Failure.PRACTICE;if(now<next)return Failure.COOLDOWN;
         if(cost<1||cost>100||resolve<cost)return Failure.RESOURCE;return Failure.NONE;
     }
+    /** River Serpent pays its dry-land surcharge in the same reservation. */
+    public static int cost(int base,boolean practicing,boolean drySerpent) {
+        if(base<1||base>100)throw new IllegalArgumentException("Invalid technique cost.");
+        return practicing?2:base*(drySerpent?3:1);
+    }
     public static int advance(int current,int amount,int cap) {
         if(amount<0||cap<1)throw new IllegalArgumentException("Invalid progression.");
         return(int)Math.min(cap,Math.max(0L,(long)current)+amount);

@@ -1,0 +1,4 @@
+[Inherited JVM configuration omitted; original log identity retained.]
+openjdk version "25.0.5.0.3" 2026-10-24 LTS
+OpenJDK Runtime Environment Zulu25.38+109-CA (build 25.0.5.0.3+1-LTS)
+OpenJDK 64-Bit Server VM Zulu25.38+109-CA (build 25.0.5.0.3+1-LTS, mixed mode, sharing)

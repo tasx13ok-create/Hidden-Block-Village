@@ -1,0 +1,54 @@
+VALE 0.3.9 - MATCHING CLIENT CANDIDATE
+
+Import this ZIP as a NEW CurseForge profile for Minecraft 1.12.2,
+Forge 14.23.5.2859 and a compatible Java 8 client runtime.
+Use the matching server produced by the same completed candidate assembly.
+
+INSTALL
+1. Choose Import > Import Profile .zip > Choose .zip file in CurseForge.
+2. Select the completed Client-Candidate.zip, or the matching server's
+   client-install/Client.zip. They contain the same reviewed client bytes.
+3. If bundled files are flagged, review the expected roster below and the
+   candidate's file identities. Select All Files for this reviewed custom
+   package after acknowledging the prompt. Its manifest has files: [] and
+   bundles the JARs in overrides/mods; CurseForge Files Only can omit them.
+4. Confirm all eleven JARs, Minecraft 1.12.2 and Forge 14.23.5.2859.
+5. Launch the new profile and add the actual server address and port in
+   Multiplayer. This profile contains no preconfigured servers.dat.
+
+SIX SHARED MODS - EXACT SAME VERSIONS/BYTES ON CLIENT AND SERVER
+vale-orders-0.3.9.jar
+vale-encounters-0.3.6.jar
+Vale-Rack-0.1.2.jar
+vale-residents-0.2.0.jar
+vale-world-compat-1.0.0.jar
+Village-Standards-0.3.1.jar
+
+FIVE CLIENT-ONLY MODS
+field-hud-0.14.1.jar
+field-controls-1.4.0-simple-candidate.jar
+Vale-Client-Lifecycle-Compat-0.1.0.jar
+Essential_1-5-1_forge_1-12-2.jar
+OptiFine_1.12.2_HD_U_G5.jar
+
+The profile also retains Solas-Shader-V3.9.zip, its shader settings and
+the world-destination configuration. It contains no player world or separate
+resource pack. The server package carries the preserved Naruto.test save.
+Keep the client-only mods and shader files on the client.
+
+CHECK ON THE ACTUAL CLIENT
+F8 opens the controls/settings screen. The rack has six server-owned weapon
+slots; verify stow/equip/swap, full-inventory handling and reconnect persistence.
+Check the settings return flow, models/armor and intended Solas rendering on
+the actual GPU. These observations remain unverified until recorded for this
+client and its matching server. Source-build and packaging checks alone do
+not establish graphical, multiplayer or saved-world acceptance.
+
+RELEASE STATE
+CANDIDATE_PENDING_ACCEPTANCE; runtime_acceptance: NOT_RUN until actual tests
+are recorded. The historical item-counterpart percentage is not an overall
+gameplay or visual completion percentage. Earlier test-kit instructions and
+their version/acceptance claims do not describe this client.
+
+Detailed setup, exact roster and evidence requirements:
+https://github.com/tasx13ok-create/Hidden-Block-Village/blob/main/docs/client-and-bisect-039.md
