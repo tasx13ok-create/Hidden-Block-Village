@@ -2,7 +2,7 @@
   "format": 1,
   "component": "vale-pc-companion",
   "version": "0.1.0",
-  "source_base": "5431437e872206a9e425ee4e1358331a64b8abc6",
+  "source_base": "05097ff1b1249d57a33b8f55ada4383ebd8bb676",
   "runtime_acceptance": "NOT_RUN",
   "files": [
     {
@@ -37,8 +37,8 @@
     },
     {
       "path": "tools/pc_companion/tests/test_companion.py",
-      "size": 22424,
-      "sha256": "237f140e2b831089855315a18af51c94e4d803852367054f1d809d74847e6cff"
+      "size": 23328,
+      "sha256": "3099e17b77c1e8909d792acbcc6fdf228207a605959729f0ad2c485099ec5726"
     }
   ]
 }

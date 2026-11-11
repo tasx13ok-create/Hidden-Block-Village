@@ -161,22 +161,32 @@ class FileGuards(Fixture):
         self.assertEqual(len(result["entries"]), 3)
 
     def test_swap_between_path_inspection_and_open_is_rejected(self):
-        target = self.root / "swap.txt"
-        replacement = self.root / "replacement.txt"
+        # Windows TEMP may use an 8.3 alias (RUNNER~1), while RootGrant uses
+        # the resolved long path. Inject at the same canonical path used by
+        # read_range so the mock actually swaps the file on every platform.
+        target = (self.root / "swap.txt").resolve()
+        replacement = (self.root / "replacement.txt").resolve()
         original_open = vc.os.open
-        for operation in [lambda: vc.stable_hash(target), lambda: self.files.read_range(self.args("swap.txt"))]:
-            target.write_text("old")
-            replacement.write_text("replacement")
-            swapped = [False]
+        operations = [("stable_hash", lambda: vc.stable_hash(target)),
+                      ("read_range", lambda: self.files.read_range(self.args("swap.txt")))]
+        for name, operation in operations:
+            with self.subTest(operation=name):
+                target.write_text("old")
+                replacement.write_text("replacement")
+                swapped = [False]
 
-            def swap_then_open(path, flags, *args, **kwargs):
-                if str(path) == str(target) and not swapped[0]:
-                    swapped[0] = True
-                    os.replace(str(replacement), str(target))
-                return original_open(path, flags, *args, **kwargs)
+                def swap_then_open(path, flags, *args, **kwargs):
+                    if str(path) == str(target) and not swapped[0]:
+                        swapped[0] = True
+                        os.replace(str(replacement), str(target))
+                    return original_open(path, flags, *args, **kwargs)
 
-            with mock.patch.object(vc.os, "open", side_effect=swap_then_open):
-                self.assert_code("SOURCE_CHANGED", operation)
+                with mock.patch.object(vc.os, "open", side_effect=swap_then_open):
+                    try:
+                        self.assert_code("SOURCE_CHANGED", operation)
+                    finally:
+                        self.assertTrue(swapped[0], "The fixture must swap the file before this operation opens it")
+                self.assertEqual(target.read_text(), "replacement")
 
     def test_windows_birthtime_identity_does_not_confuse_legacy_ctime(self):
         class Entry:
@@ -186,7 +196,11 @@ class FileGuards(Fixture):
         second.st_ctime_ns = 99
         with mock.patch.object(vc.os, "name", "nt"):
             self.assertEqual(vc.identity(first), vc.identity(second))
-        self.assertNotEqual(vc.identity(first), vc.identity(second))
+            second.st_birthtime_ns = 7
+            self.assertNotEqual(vc.identity(first), vc.identity(second))
+        second.st_birthtime_ns = 5
+        with mock.patch.object(vc.os, "name", "posix"):
+            self.assertNotEqual(vc.identity(first), vc.identity(second))
 
     @unittest.skipUnless(hasattr(os, "symlink"), "Symlinks unavailable")
     def test_never_follows_symlink_outside_root(self):
@@ -336,7 +350,7 @@ class NamedLaunchGuards(Fixture):
             repeated = actions.launch({"action_id": "launcher"})
             self.assertTrue(repeated["already_running"])
             self.assertEqual(launch.call_count, 1)
-            self.assertEqual(launch.call_args.args[0], [str(executable), "reviewed-profile"])
+            self.assertEqual(launch.call_args.args[0], [str(executable.resolve(strict=True)), "reviewed-profile"])
             self.assertIs(launch.call_args.kwargs["shell"], False)
 
 
