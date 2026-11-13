@@ -38,7 +38,7 @@ def require(ok, message):
 
 def profile(memory='2G', port=PORT):
     require(memory in ('2G', '4G'), 'Copied-world memory must be 2G or 4G')
-    require(port in (PORT, 25583, 25585), 'Unsupported version-pinned copied-world port')
+    require(port in (PORT, 25583, 25585, 25586), 'Unsupported version-pinned copied-world port')
     return dict(smoke.PROPERTIES, **{'level-name': LEVEL, 'level-type': 'DEFAULT', 'generator-settings': '', 'server-port': str(port)})
 
 
@@ -367,6 +367,13 @@ def seal(candidate, recovery, script_review, runtime_level, memory='2G'):
         names = {name for ids in saved_registries(candidate / LEVEL / 'level.dat').values() for name in ids}
         prior = json.loads((candidate / 'PRIVATE-BASELINE-0311-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
         legacy_registry_scope(upgrade['profile_release'], names, prior['added'], upgrade['added'])
+    elif upgrade.get('profile_release') == '0.3.14':
+        from tools.everything_runtime import validate_flat, binding
+        reference = pack.no_links(upgrade['registry_reference_runtime'])
+        validate_flat(reference)
+        require(pack.no_links(runtime_level) == reference / smoke.LEVEL / 'level.dat', 'Wrong Everything registry reference world')
+        require(pack.hash_file(runtime_level)['sha256'] == upgrade['registry_reference_level_sha256'], 'Everything registry reference changed')
+        require(binding(reference) == binding(candidate), 'Everything registry reference uses different tested production components')
     registries = registry_review(candidate / LEVEL / 'level.dat', runtime_level)
     registries['reference_scope'] = upgrade.get('registry_reference_scope', 'Exact already booted 0.3.11 enhanced runtime')
     save(candidate / 'PRIVATE-WORLD-REGISTRY-REVIEW.json', registries)

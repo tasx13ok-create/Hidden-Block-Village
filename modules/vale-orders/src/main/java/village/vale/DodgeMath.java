@@ -34,5 +34,10 @@ public final class DodgeMath {
     public static double tuck(double age){if(!Double.isFinite(age))return 0;double u=Math.max(0,Math.min(1,age/ANIM_TICKS)),in=Math.min(1,u*4),out=Math.min(1,(1-u)*2.5);return Math.sin(Math.PI/2*Math.min(in,out));}
     public static double[] lean(int direction,double age){double k=tuck(age);switch(direction){case FRONT:return new double[]{38*k,0};case BACK:return new double[]{-22*k,0};case LEFT:return new double[]{8*k,-28*k};default:return new double[]{8*k,28*k};}}
     public static double ghostAlpha(int index,double age){if(index<0||index>=3||!Double.isFinite(age))return 0;return .34*(1-index/3.0)*Math.max(0,Math.min(1,1-age/ANIM_TICKS));}
+    /** Native WorldBorder.contains(AABB) means overlap; require the complete swept box with a collision margin. */
+    public static boolean insideBorder(double minX,double maxX,double minZ,double maxZ,double borderMinX,double borderMaxX,double borderMinZ,double borderMaxZ){
+        for(double value:new double[]{minX,maxX,minZ,maxZ,borderMinX,borderMaxX,borderMinZ,borderMaxZ})if(!Double.isFinite(value))return false;
+        double margin=.0001;return minX<maxX&&minZ<maxZ&&borderMinX<borderMaxX&&borderMinZ<borderMaxZ&&minX>=borderMinX+margin&&maxX<=borderMaxX-margin&&minZ>=borderMinZ+margin&&maxZ<=borderMaxZ-margin;
+    }
     public static double retain(double motion,double fraction){return Math.max(-1.2,Math.min(1.2,motion))*fraction;}
 }

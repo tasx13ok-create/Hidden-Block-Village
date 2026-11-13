@@ -41,6 +41,7 @@ public final class Dodge {
     public static void request(int direction,int dimension){if(channel!=null&&DodgeMath.valid(direction))channel.sendToServer(new Request(direction,dimension));}
     static NBTTagCompound state(EntityPlayerMP p){NBTTagCompound account=PlayerState.data(p);if(!account.hasKey("Dodge")){NBTTagCompound value=new NBTTagCompound();value.setInteger("schema",1);account.setTag("Dodge",value);}return account.getCompoundTag("Dodge");}
     private static boolean basic(EntityPlayerMP p){return p!=null&&!p.world.isRemote&&p.world instanceof WorldServer&&!(p instanceof FakePlayer)&&p.isEntityAlive()&&!p.isSpectator()&&!p.isRiding()&&!p.isElytraFlying()&&!p.capabilities.isFlying&&!p.isPlayerSleeping()&&!p.noClip&&Float.isFinite(p.rotationYaw)&&Float.isFinite(p.rotationPitch)&&Double.isFinite(p.posX)&&Double.isFinite(p.posY)&&Double.isFinite(p.posZ)&&Double.isFinite(p.motionX)&&Double.isFinite(p.motionY)&&Double.isFinite(p.motionZ)&&p.getServer()!=null&&p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())==p;}
+    private static boolean safeSweep(EntityPlayerMP p,AxisAlignedBB sweep){net.minecraft.world.border.WorldBorder border=p.world.getWorldBorder();return DodgeMath.insideBorder(sweep.minX,sweep.maxX,sweep.minZ,sweep.maxZ,border.minX(),border.maxX(),border.minZ(),border.maxZ())&&p.world.isAreaLoaded(new BlockPos(sweep.minX,sweep.minY,sweep.minZ),new BlockPos(sweep.maxX,sweep.maxY,sweep.maxZ));}
     private static boolean ground(EntityPlayerMP p){return p.onGround&&!p.world.getCollisionBoxes(null,p.getEntityBoundingBox().offset(0,-.08,0)).isEmpty();}
     private static final class Window {
         final EntityPlayerMP player;final World world;final int dimension;final NBTTagCompound account,state;final long sequence,started;
@@ -68,13 +69,13 @@ public final class Dodge {
             double[] base=DodgeMath.velocity(direction,p.rotationYaw);double keep=grounded?.2:.4;
             double dx=base[0]+DodgeMath.retain(p.motionX,keep),dy=base[1]+DodgeMath.retain(Math.max(-.6,p.motionY),.3),dz=base[2]+DodgeMath.retain(p.motionZ,keep);
             AxisAlignedBB box=p.getEntityBoundingBox(),sweep=box.expand(dx,dy,dz);
-            if(!p.world.getWorldBorder().contains(sweep)||!p.world.isAreaLoaded(new BlockPos(sweep.minX,sweep.minY,sweep.minZ),new BlockPos(sweep.maxX,sweep.maxY,sweep.maxZ)))return false;
+            if(!safeSweep(p,sweep))return false;
             List<AxisAlignedBB> collisions=p.world.getCollisionBoxes(p,sweep);if(!attempt.valid())return false;
             for(AxisAlignedBB obstacle:collisions)dy=obstacle.calculateYOffset(box,dy);box=box.offset(0,dy,0);
             for(AxisAlignedBB obstacle:collisions)dx=obstacle.calculateXOffset(box,dx);box=box.offset(dx,0,0);
             for(AxisAlignedBB obstacle:collisions)dz=obstacle.calculateZOffset(box,dz);
             if(dx*dx+dz*dz<.0225)return false;
-            Pre event=new Pre(p,direction,dx,dy,dz);MinecraftForge.EVENT_BUS.post(event);if(event.isCanceled()||!attempt.valid())return false;
+            Pre event=new Pre(p,direction,dx,dy,dz);MinecraftForge.EVENT_BUS.post(event);if(event.isCanceled()||!attempt.valid()||!safeSweep(p,sweep))return false;
             if(WINDOWS.size()>=256&&!WINDOWS.containsKey(p.getUniqueID()))return false;
             value.setBoolean("airUsed",!grounded);attempt.committed=true;p.motionX=dx;p.motionY=dy;p.motionZ=dz;p.velocityChanged=true;WINDOWS.put(p.getUniqueID(),new Window(attempt));
             // Native tracker sends velocity to the owner and observers. No direct position write, no fall reset.

@@ -38,6 +38,11 @@ def legacy_registry_scope(release, source_names, prior_rows, current_rows):
 
 def world_port(candidate, upgrade):
     release = upgrade.get('profile_release', '0.3.11')
+    if release == '0.3.14':
+        from tools.everything_runtime import validate_release_binding, WORLD_PORT
+        validate_release_binding(candidate, upgrade)
+        smoke.require(upgrade['port'] == WORLD_PORT, 'Everything copied-world port changed')
+        return WORLD_PORT
     if release == '0.3.11':
         smoke.require(upgrade['core_sha256'] == smoke.CORE_SHA256, '0.3.11 Core pin changed')
         return 25581

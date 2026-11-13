@@ -366,7 +366,7 @@ def validate_native_result(value, expected, log):
         require("Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity" in value["checks"], "Core 0.3.13 expedition acceptance did not complete")
     if expected["valeorders"]["version"] == "0.3.14":
         for check in ("Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death", "Native six mastered techniques cast from the switched physical combat hotbar"):
-            require(check in value["checks"], "Core 0.3.13 combat-hotbar acceptance did not complete: " + check)
+            require(check in value["checks"], "Core 0.3.14 combat-hotbar acceptance did not complete: " + check)
     if expected["valeorders"]["version"] == "0.3.14":
         for check in ("Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle", "Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership"):
             require(check in value["checks"], "Core 0.3.14 acceptance did not complete: " + check)

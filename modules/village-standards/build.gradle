@@ -23,22 +23,98 @@ sourceSets {
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.incremental = false }
 
-// Historical resources stay byte-identical. Only packaged display metadata is
-// updated; original Java below src/main/java is newly authored for this release.
-tasks.register('verifyRecoveredResources') {
-    inputs.dir('resources'); inputs.file('SOURCE-PROVENANCE.json')
-    doLast {
-        def provenance = new JsonSlurper().parse(file('SOURCE-PROVENANCE.json'))
-        def records = provenance.files.findAll { it.path.startsWith('resources/') }
-        def actual = fileTree('resources').files.collect { relativePath(it).replace('\\', '/') }.toSet()
-        if (actual != records.collect { it.path }.toSet()) throw new GradleException('Recovered resource inventory changed')
-        records.each { record ->
-            byte[] bytes = file(record.path).bytes
-            def sha = MessageDigest.getInstance('SHA-256').digest(bytes).encodeHex().toString()
-            if (bytes.length != record.bytes || sha != record.sha256) throw new GradleException("Changed recovered resource: ${record.path}")
-        }
+// Recovered metadata remains immutable. Exactly five reviewed inventory icons
+// may use separately pinned owner artwork; the five 256x256 wall pictures do not.
+def recoveredProvenanceSha = '8000b9518c68b2160897f3bf8edb7b79655a478430f6b9d6aa6ea149af033ce4'
+def approvedRecoveredOverrides = ['mist','leaf','cloud','stone','sand'].collect {
+    "resources/assets/hvdungeonpictures/textures/items/${it}_picture.png".toString()
+}.toSet()
+def resourceSha = { byte[] bytes -> MessageDigest.getInstance('SHA-256').digest(bytes).encodeHex().toString() }
+def requireRecovered = { boolean condition, String reason -> if (!condition) throw new GradleException(reason) }
+def verifyRecovered = { String provenanceSha, Map ledger, List records, Map actual ->
+    requireRecovered(provenanceSha == recoveredProvenanceSha, 'Recovered SOURCE-PROVENANCE.json changed')
+    requireRecovered(ledger.schema == 1 && ledger.original_provenance_sha256 == recoveredProvenanceSha, 'Reviewed override provenance identity changed')
+    requireRecovered(ledger.source instanceof Map && ledger.source.archive == 'naruto_icons_v3.zip'
+        && ledger.source.bytes == 2412020 && ledger.source.sha256 == '6a45fdcffff3336eb0833da7d914a499a761755f1f0569cc2b7977acda1715c7', 'Reviewed icon archive identity changed')
+    requireRecovered(ledger.overrides instanceof List && ledger.overrides.size() == 5, 'Expected exactly five reviewed inventory overrides')
+    requireRecovered(ledger.overrides.collect { it.path }.toSet() == approvedRecoveredOverrides, 'Unapproved or duplicate recovered resource override')
+    def recordsByPath = records.collectEntries { [(it.path): it] }
+    requireRecovered(actual.keySet() == recordsByPath.keySet(), 'Recovered resource inventory changed')
+    def overrides = ledger.overrides.collectEntries { [(it.path): it] }
+    overrides.each { path, row ->
+        def original = recordsByPath[path]
+        requireRecovered(original != null && row.recovered instanceof Map && row.replacement instanceof Map, 'Malformed recovered resource override')
+        requireRecovered(row.recovered.bytes == original.bytes && row.recovered.sha256 == original.sha256, "Recovered original pin changed: ${path}")
+        requireRecovered(row.replacement.bytes instanceof Integer && row.replacement.bytes > 0 && row.replacement.bytes <= 1048576
+            && row.replacement.sha256 instanceof String && row.replacement.sha256 ==~ /[0-9a-f]{64}/
+            && row.replacement.source_member == path.tokenize('/').last(), "Malformed reviewed replacement pin: ${path}")
+    }
+    records.each { record ->
+        def pin = overrides.containsKey(record.path) ? overrides[record.path].replacement : record
+        byte[] bytes = actual[record.path]
+        requireRecovered(bytes.length == pin.bytes && resourceSha(bytes) == pin.sha256, "Changed recovered/reviewed resource: ${record.path}")
     }
 }
+
+tasks.register('verifyRecoveredResources') {
+    inputs.dir('resources'); inputs.file('SOURCE-PROVENANCE.json'); inputs.file('REVIEWED-RESOURCE-OVERRIDES.json')
+    doLast {
+        def provenanceFile = file('SOURCE-PROVENANCE.json')
+        def provenance = new JsonSlurper().parse(provenanceFile)
+        def ledger = new JsonSlurper().parse(file('REVIEWED-RESOURCE-OVERRIDES.json'))
+        def records = provenance.files.findAll { it.path.startsWith('resources/') }
+        def actual = fileTree('resources').files.collectEntries { [(relativePath(it).replace('\\', '/')): it.bytes] }
+        verifyRecovered(resourceSha(provenanceFile.bytes), ledger, records, actual)
+    }
+}
+
+// These fixtures execute the same guard over synthetic byte maps, never files.
+tasks.register('verifyRecoveredResourceGuardTests') {
+    doLast {
+        def paths = approvedRecoveredOverrides.toList().sort()
+        def unmodified = 'resources/assets/hvdungeonpictures/textures/pictures/mist.png'
+        def originals = (paths + [unmodified]).collectEntries { [(it): ("original:${it}".toString().getBytes('UTF-8'))] }
+        def replacements = paths.collectEntries { [(it): ("reviewed:${it}".toString().getBytes('UTF-8'))] }
+        def records = originals.collect { path, bytes -> [path: path, bytes: bytes.length, sha256: resourceSha(bytes)] }
+        def ledger = [schema:1, original_provenance_sha256:recoveredProvenanceSha,
+            source:[archive:'naruto_icons_v3.zip', bytes:2412020, sha256:'6a45fdcffff3336eb0833da7d914a499a761755f1f0569cc2b7977acda1715c7'],
+            overrides:paths.collect { path -> [path:path,
+                recovered:[bytes:originals[path].length, sha256:resourceSha(originals[path])],
+                replacement:[bytes:replacements[path].length, sha256:resourceSha(replacements[path]), source_member:path.tokenize('/').last()]] }]
+        def actual = originals + replacements
+        verifyRecovered(recoveredProvenanceSha, ledger, records, actual)
+        int assertions = 1
+        def rejects = { String name, Closure mutate ->
+            def trial = [provenance:recoveredProvenanceSha,
+                ledger:new JsonSlurper().parseText(JsonOutput.toJson(ledger)),
+                records:new JsonSlurper().parseText(JsonOutput.toJson(records)),
+                actual:actual.collectEntries { k,v -> [(k):v.clone()] }]
+            mutate(trial)
+            boolean failed = false
+            try { verifyRecovered(trial.provenance, trial.ledger, trial.records, trial.actual) }
+            catch (GradleException expected) { failed = true }
+            requireRecovered(failed, "Guard fixture unexpectedly accepted ${name}")
+            assertions++
+        }
+        rejects('approved PNG tamper') { it.actual[paths[0]] = 'tampered'.getBytes('UTF-8') }
+        rejects('unapproved wall picture tamper') { it.actual[unmodified] = 'tampered'.getBytes('UTF-8') }
+        rejects('missing recovered resource') { it.actual.remove(unmodified) }
+        rejects('extra recovered resource') { it.actual['resources/unreviewed.txt'] = new byte[0] }
+        rejects('changed original pin') { it.ledger.overrides[0].recovered.sha256 = '0' * 64 }
+        rejects('changed original record') { it.records[0].sha256 = '0' * 64 }
+        rejects('unapproved overlay target') { it.ledger.overrides[0].path = unmodified }
+        rejects('duplicate overlay target') { it.ledger.overrides[4] = it.ledger.overrides[0] }
+        rejects('missing overlay ledger') { it.ledger.overrides = [] }
+        rejects('changed recovered provenance') { it.provenance = '0' * 64 }
+        rejects('changed overlay provenance anchor') { it.ledger.original_provenance_sha256 = '0' * 64 }
+        rejects('changed source archive identity') { it.ledger.source.sha256 = '0' * 64 }
+        rejects('malformed replacement hash') { it.ledger.overrides[0].replacement.sha256 = 'invalid' }
+        rejects('wrong replacement size') { it.ledger.overrides[0].replacement.bytes++ }
+        rejects('wrong archive member') { it.ledger.overrides[0].replacement.source_member = '../other.png' }
+        println "RECOVERED_RESOURCE_GUARD_PASS: ${assertions}"
+    }
+}
+
 tasks.named('processResources') {
     inputs.property('runtimeVersion', project.version)
     doLast {
@@ -61,7 +137,7 @@ tasks.register('verifyStandards', JavaExec) {
     mainClass.set('village.standards.StandardsChecks')
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
 }
-tasks.named('check') { dependsOn tasks.named('verifyRecoveredResources'), tasks.named('verifyStandards') }
+tasks.named('check') { dependsOn tasks.named('verifyRecoveredResources'), tasks.named('verifyRecoveredResourceGuardTests'), tasks.named('verifyStandards') }
 
 // Private native acceptance helper; never packaged with the runtime/source JAR.
 def checksJar = tasks.register('standardsNativeChecksJar', Jar) {

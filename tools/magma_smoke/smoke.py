@@ -61,6 +61,9 @@ def properties(text):
 def validate_profile(candidate):
     candidate = pack.no_links(candidate)
     marker = (candidate / MARKER).read_text(encoding='ascii').strip()
+    if marker == 'EVERYTHING0314_PRODUCTION_FLAT_ONLY':
+        from tools.everything_runtime import validate_flat
+        return validate_flat(candidate)
     if marker == 'COPIED_WORLD_REVIEWED_ONLY':
         from .world_profile import validate_world
         return validate_world(candidate)

@@ -3,6 +3,7 @@ package village.fieldhud;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,8 @@ import org.lwjgl.input.Mouse;
 public final class CombatInventoryOverlay extends Gui {
     private static final Minecraft MC=Minecraft.getMinecraft();
     private Object screen;
+    private static final FreshSlotLookup NATIVE_SLOTS=new FreshSlotLookup(GuiContainer.class,"getSlotAtPosition","func_146975_c");
+    private net.minecraft.inventory.Slot freshSlot(int x,int y){Object hit=NATIVE_SLOTS.at(screen,x,y);return hit instanceof net.minecraft.inventory.Slot?(net.minecraft.inventory.Slot)hit:null;}
     private int pressSlot=-1,pressButton=-1;
     private int deferredSlot=-1,deferredButton,pressTicket,deferredTicket,deferredWindow;
     private void clearIntent(){pressSlot=pressButton=deferredSlot=-1;pressTicket=deferredTicket=0;}
@@ -23,7 +26,8 @@ public final class CombatInventoryOverlay extends Gui {
     private static Layout.Box box(int w,int h){int row=Math.min(24,Math.max(18,(h-24)/6));return new Layout.Box(w-row-8,Math.max(12,(h-row*6)/2),row,row*6);}
     private static int slot(Layout.Box b,int x,int y){return x>=b.x&&x<b.x+b.w&&y>=b.y&&y<b.y+b.h?(y-b.y)/b.w:-1;}
     private boolean available(Object gui){return gui instanceof GuiInventory&&MC.player!=null&&MC.player.openContainer==MC.player.inventoryContainer&&RackAccess.ready()&&RackAccess.switchSupported();}
-    @SubscribeEvent(priority=EventPriority.HIGHEST) public void mouse(GuiScreenEvent.MouseInputEvent.Pre event){
+    @SubscribeEvent(priority=EventPriority.HIGHEST,receiveCanceled=true) public void mouse(GuiScreenEvent.MouseInputEvent.Pre event){
+        if(event.isCanceled()){clearIntent();return;}
         if(screen!=event.getGui()){screen=event.getGui();clearIntent();}
         if(!available(screen)){clearIntent();return;}
         int button=Mouse.getEventButton();if(button<0||button>1)return;
@@ -32,7 +36,7 @@ public final class CombatInventoryOverlay extends Gui {
         int x=Mouse.getEventX()*event.getGui().width/MC.displayWidth,y=event.getGui().height-Mouse.getEventY()*event.getGui().height/MC.displayHeight-1;
         int target=slot(box(event.getGui().width,event.getGui().height),x,y);
         if(RackAccess.pending()){
-            if(!Mouse.getEventButtonState()&&button==pressButton&&pressSlot>=0&&target<0){net.minecraft.inventory.Slot hovered=((GuiInventory)screen).getSlotUnderMouse();if(hovered!=null){deferredSlot=hovered.slotNumber;deferredButton=button;deferredTicket=pressTicket;deferredWindow=MC.player.openContainer.windowId;}}
+            if(!Mouse.getEventButtonState()&&button==pressButton&&pressSlot>=0&&target<0){net.minecraft.inventory.Slot hovered=freshSlot(x,y);if(hovered!=null){deferredSlot=hovered.slotNumber;deferredButton=button;deferredTicket=pressTicket;deferredWindow=MC.player.openContainer.windowId;}}
             if(!Mouse.getEventButtonState()&&button==pressButton)pressSlot=pressButton=-1;
             event.setCanceled(true);return;
         }
@@ -47,7 +51,7 @@ public final class CombatInventoryOverlay extends Gui {
                 if(pressSlot<0&&pressButton==button&&!MC.player.inventory.getItemStack().isEmpty())RackAccess.requestCursor(target,MC.player.openContainer.windowId,button);
             }else if(pressSlot>=0&&button==pressButton){
                 // A rail pickup can be released over a native inventory cell.
-                net.minecraft.inventory.Slot hovered=((GuiInventory)screen).getSlotUnderMouse();
+                net.minecraft.inventory.Slot hovered=freshSlot(x,y);
                 if(hovered!=null&&RackAccess.cursorAccepted(pressTicket)&&!MC.player.inventory.getItemStack().isEmpty()){
                     MC.playerController.windowClick(MC.player.openContainer.windowId,hovered.slotNumber,button,net.minecraft.inventory.ClickType.PICKUP,MC.player);event.setCanceled(true);
                 }

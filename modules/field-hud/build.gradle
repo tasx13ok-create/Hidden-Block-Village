@@ -55,3 +55,19 @@ tasks.register('verifyNarutoMenus', JavaExec) {
     javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
 }
 tasks.named('check') { dependsOn 'verifyNarutoMenus' }
+
+// Fresh release coordinates delegate to the native private slot lookup, not the drawn hover cache.
+def freshSlotClasses = layout.buildDirectory.dir('fresh-slot-checks')
+tasks.register('compileFreshSlotLookupChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/FreshSlotLookup.java', 'tests/village/fieldhud/FreshSlotLookupChecks.java')
+    classpath = files()
+    destinationDirectory = freshSlotClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifyFreshSlotLookup', JavaExec) {
+    dependsOn 'compileFreshSlotLookupChecks'
+    classpath = files(freshSlotClasses)
+    mainClass = 'village.fieldhud.FreshSlotLookupChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifyFreshSlotLookup' }
