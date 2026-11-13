@@ -1,0 +1,117 @@
+{
+  "scope": "FIVE_REFERENCE_JAR_IDENTITIES_FOR_PRIVATE_CLAUDE_BRIDGE",
+  "reference_inventory_sha256": "7d413e181061b3f5da753a81a0d5997de0c36428f9e6705ddde2d548292b40c8",
+  "jars": [
+    {
+      "file": "ahznb weapons plus 1.2.1.jar",
+      "bytes": 2568601,
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "declared_mods": [
+        {
+          "modid": "ahznbswordsplus",
+          "name": "AHZNB swords plus",
+          "version": "1.2.1",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "'narutomod'"
+          ],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "zip_crc_verified": true,
+      "zip_entries": 117,
+      "classes": 44
+    },
+    {
+      "file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "bytes": 1803175,
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "declared_mods": [
+        {
+          "modid": "borutomodaddononero",
+          "name": "borutomodaddononero",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://mcreator.nete"
+        }
+      ],
+      "zip_crc_verified": true,
+      "zip_entries": 221,
+      "classes": 117
+    },
+    {
+      "file": "kabutoaddon 5.5.8-beta.jar",
+      "bytes": 3357299,
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "declared_mods": [
+        {
+          "modid": "kabutoaddon",
+          "name": "Kabutoaddon",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "zip_crc_verified": true,
+      "zip_entries": 673,
+      "classes": 484
+    },
+    {
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "bytes": 29778441,
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "declared_mods": [
+        {
+          "modid": "narutomod",
+          "name": "NarutoMod",
+          "version": "0.3.1-beta",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://www.youtube.com/c/AHZNB"
+        }
+      ],
+      "zip_crc_verified": true,
+      "zip_entries": 3429,
+      "classes": 2253
+    },
+    {
+      "file": "SpringAddon7.0.jar",
+      "bytes": 24349345,
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "declared_mods": [
+        {
+          "modid": "ahznbcursemarkaddon",
+          "name": "AhznbCursemarkAddon",
+          "version": "5.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "https://www.curseforge.com/minecraft/mc-mods/cursemarkaddon"
+        }
+      ],
+      "zip_crc_verified": true,
+      "zip_entries": 900,
+      "classes": 531
+    }
+  ],
+  "reference_hashes_all_matched": true,
+  "private_bundle_created": true,
+  "third_party_payloads_published": false,
+  "decompiled_source_copied": false,
+  "artwork_extracted": false
+}

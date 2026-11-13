@@ -1,6 +1,6 @@
 # Naruto licensing direction and current evidence
 
-Owner direction, 2026-11-13: retain Naruto designs, characters and names, and seek the appropriate license. Do not replace the franchise identity with generic names merely because the license is pending.
+Owner direction, 2026-11-13: retain Naruto designs, characters and names; public distribution is intended to be free and fan-made. Remove Vale from public branding. The owner previously stated an intention to obtain the appropriate license; no executed grant is verified. Do not replace the franchise identity with generic names merely because the license is pending.
 
 Current recorded status: **planned / pending**. No executed franchise license or scope document has been provided or verified. The project does not claim official authorization, ownership of the Naruto franchise, or a numerical copyright-clearance percentage.
 

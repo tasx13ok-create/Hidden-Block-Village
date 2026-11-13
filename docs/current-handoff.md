@@ -1,5 +1,16 @@
 # Current project handoff
 
+## Naruto-only direction and urgent Claude interoperability handoff
+
+Latest owner direction: the game is Naruto, with Naruto designs, characters, names, villages/clans/jutsu and free fan-made distribution. The owner says they intend to obtain the franchise license. Public Vale-facing branding is being removed; internal registry/save/wire IDs stay stable. Licensing evidence remains separately planned/pending. These authoring changes do not replace the owner's active015 session.
+
+Claude can start the optional shared chakra adapter now. Read `collaboration/claude-naruto-bridge/START-HERE.md`, `CHAKRA-AND-COMBAT-API.md` and `BOSS-NPC-FACTS.md`. Five exact existing49-pack JARs (61,856,861bytes) are privately available under the original shared checkout's ignored `local/claude-naruto-bridge-intake/20261113-pinned49-01/jars/`, with SHA/CRC manifest, metadata and a private START-HERE copy. No upload is needed if Claude Desktop has that local-file connector; otherwise the owner must attach the actual files. JARs and original code/art are not published.
+
+Critical observed API traps: `consume(float)` is fraction-of-max; double overload is absolute and itsboolean is over-cap policy, notsimulation. Exact-zero use requires publicclear+verification. `isInitialized(player)` is CLIENT-only, so isnota server readiness gate. Additiverefund creditsatmostactualreserveddebit and preservesindependent changes; no stale snapshot restore. SpringAddon has a separatecache sharingthe same rootNBTkey: base Naruto is thesoledefaultbackend, no dualpoolspend/sync assumptions. Thirdpartycast observationmustnot cast/recharge again. 67boss/NPC IDs/publicABI andcustomNpc eventbus/XP/clone risks are documented.
+
+The adapter andcaller/mapping/event/reward integration are NOTyetimplemented or accepted by these facts. Claude ownsnewChakraResource adapter/tests; Codex owns theexisting62spending/escrow callers and subsequent integrations. Targetnewsourcecheckout is `vale-campaigns/Hidden-Block-Village`, separatefrom thefrozenaccepted015 andolderoriginal-checkoutWIP. Live015 remainsuntouched. Root'spublicname/metadata/language patchesareworkingchanges pendingthe nextfullbuild; noidentifier migrationisintended.
+
+
 ## New 58-mod client connected; owner actively playing
 
 All authored 0.3.15 source/artwork/tools are verified on GitHub main at `82b2df1036e774e7e5c2b125547c3471b28cc466`; the unchanged eleven-area/36-artifact build and 3,422-assertion native acceptance remain the source/runtime authority. A new separate copied Naruto/v17 world with 54 server JARs and a matching 58-JAR graphical client is now connected. See `docs/everything-0315-runtime.md` and `release/evidence/everything0315-runtime.json` for exact safe evidence.
