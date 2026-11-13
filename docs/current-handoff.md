@@ -1,5 +1,17 @@
 # Current project handoff
 
+## New 58-mod client connected; owner actively playing
+
+All authored 0.3.15 source/artwork/tools are verified on GitHub main at `82b2df1036e774e7e5c2b125547c3471b28cc466`; the unchanged eleven-area/36-artifact build and 3,422-assertion native acceptance remain the source/runtime authority. A new separate copied Naruto/v17 world with 54 server JARs and a matching 58-JAR graphical client is now connected. See `docs/everything-0315-runtime.md` and `release/evidence/everything0315-runtime.json` for exact safe evidence.
+
+The first client joined, then received a Netty read timeout and closed itself; the cause remains unproven. One authorized retry retained the same 58 JAR bytes and added only the verified `fml.readTimeout=120` diagnostic tolerance. That retry is connected and responsive. Root's bounded graphical observations confirmed the shaded 3D Sakura world, upper-right minimap, Naruto paper inventory with many v3 icons and six populated technique slots. Manual owner movement was observed. These are now observed results, superseding the preceding join/inventory/shader-pending notes for this copied session.
+
+Physical Dodge, settings/rebinding, the three-second F hold, actual Quest/Factions tab clicks and activated Lightning worn visuals have NOT been accepted. Native getters, logged GUI hook markers and loaded textures do not prove those interactive checks. The owner is actively playing: do not take UI control, teleport, change time/world state, spawn targets or relaunch over this session. Continue independent work without interrupting it.
+
+Naruto designs, characters and names remain the owner's direction. Franchise licensing stays planned/pending; no verified license grant or numerical clearance percentage is claimed. Private worlds, original mod distributions and the derived reference-art ZIP remain excluded from GitHub. Full 49-mod/five-dungeon feature completion remains unfinished.
+
+Historical checkpoint notes follow.
+
 ## Verified Core 0.3.15 saved source; fresh copied-client acceptance next
 
 The owner's current instruction is to save all completed work to GitHub and load the new test copy. The 0.3.15 cohort is frozen in `C:/Users/Steal/.codex/worktrees/vale-worn-armor/Hidden-Block-Village`; the accepted 0.3.14 source, original worlds, older previews and concurrent original-checkout work remain preserved.
