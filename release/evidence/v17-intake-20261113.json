@@ -1,0 +1,472 @@
+{
+  "schema": 1,
+  "scope": "SCHEMATIC_METADATA_AND_PRIVATE_WORLD_RECOVERY",
+  "third_party_or_world_payloads_published": false,
+  "schematics": [
+    {
+      "file": "cloud_v17.schematic",
+      "bytes": 265954,
+      "sha256": "a59a1b4e0a56c35f832cbac0404de76a6bae73f2bc0825476438989b145a70fa",
+      "width": 288,
+      "height": 209,
+      "length": 288,
+      "blocks_length": 17335296,
+      "data_length": 17335296,
+      "expected_cells": 17335296,
+      "nonair": 2437607,
+      "tile_entities": 23,
+      "entities": 0,
+      "mod_block_ids": [],
+      "top_blocks": [
+        [
+          0,
+          14897689
+        ],
+        [
+          1,
+          1954107
+        ],
+        [
+          4,
+          176175
+        ],
+        [
+          3,
+          97341
+        ],
+        [
+          2,
+          55919
+        ],
+        [
+          159,
+          44850
+        ],
+        [
+          98,
+          33842
+        ],
+        [
+          5,
+          27534
+        ],
+        [
+          155,
+          15445
+        ],
+        [
+          18,
+          7959
+        ],
+        [
+          180,
+          6057
+        ],
+        [
+          95,
+          4546
+        ]
+      ]
+    },
+    {
+      "file": "mist_v17.schematic",
+      "bytes": 67600,
+      "sha256": "40d6fbdbaf2d2c4b858e2bd2ea840ff5b2c32e373deaad255c928fe0edcdbe51",
+      "width": 200,
+      "height": 148,
+      "length": 200,
+      "blocks_length": 5920000,
+      "data_length": 5920000,
+      "expected_cells": 5920000,
+      "nonair": 775257,
+      "tile_entities": 28,
+      "entities": 0,
+      "mod_block_ids": [],
+      "top_blocks": [
+        [
+          0,
+          5144743
+        ],
+        [
+          9,
+          427086
+        ],
+        [
+          1,
+          157491
+        ],
+        [
+          98,
+          51562
+        ],
+        [
+          5,
+          31100
+        ],
+        [
+          168,
+          29160
+        ],
+        [
+          12,
+          28813
+        ],
+        [
+          17,
+          17782
+        ],
+        [
+          13,
+          7171
+        ],
+        [
+          159,
+          6400
+        ],
+        [
+          95,
+          5480
+        ],
+        [
+          44,
+          3090
+        ]
+      ]
+    },
+    {
+      "file": "nether_v17.schematic",
+      "bytes": 131956,
+      "sha256": "55867e4fb7774ef40bcf0f658be30eb9daf2786f3b3c49af1be0d177a9177f72",
+      "width": 256,
+      "height": 126,
+      "length": 256,
+      "blocks_length": 8257536,
+      "data_length": 8257536,
+      "expected_cells": 8257536,
+      "nonair": 410756,
+      "tile_entities": 29,
+      "entities": 0,
+      "mod_block_ids": [],
+      "top_blocks": [
+        [
+          0,
+          7846780
+        ],
+        [
+          159,
+          146590
+        ],
+        [
+          49,
+          116629
+        ],
+        [
+          112,
+          69019
+        ],
+        [
+          173,
+          21727
+        ],
+        [
+          215,
+          14312
+        ],
+        [
+          44,
+          8009
+        ],
+        [
+          5,
+          5886
+        ],
+        [
+          114,
+          4898
+        ],
+        [
+          87,
+          4759
+        ],
+        [
+          95,
+          4011
+        ],
+        [
+          41,
+          3538
+        ]
+      ]
+    },
+    {
+      "file": "sakura_v17.schematic",
+      "bytes": 323010,
+      "sha256": "5f0eb66c2998b156a8fcc2af503e16bcedbe8ee446d503e1d04a76b2f2e46a24",
+      "width": 288,
+      "height": 217,
+      "length": 288,
+      "blocks_length": 17998848,
+      "data_length": 17998848,
+      "expected_cells": 17998848,
+      "nonair": 2473005,
+      "tile_entities": 23,
+      "entities": 0,
+      "mod_block_ids": [],
+      "top_blocks": [
+        [
+          0,
+          15525843
+        ],
+        [
+          1,
+          2042098
+        ],
+        [
+          3,
+          128517
+        ],
+        [
+          35,
+          73424
+        ],
+        [
+          4,
+          50402
+        ],
+        [
+          17,
+          49036
+        ],
+        [
+          2,
+          45108
+        ],
+        [
+          98,
+          27717
+        ],
+        [
+          5,
+          19631
+        ],
+        [
+          18,
+          10033
+        ],
+        [
+          159,
+          6902
+        ],
+        [
+          48,
+          4883
+        ]
+      ]
+    },
+    {
+      "file": "sand_v17.schematic",
+      "bytes": 176966,
+      "sha256": "7ea2cb4fd47c8d73305ab9713984b280f776cb791f5f04f492bc25d2de9015ec",
+      "width": 288,
+      "height": 153,
+      "length": 288,
+      "blocks_length": 12690432,
+      "data_length": 12690432,
+      "expected_cells": 12690432,
+      "nonair": 2445592,
+      "tile_entities": 41,
+      "entities": 0,
+      "mod_block_ids": [],
+      "top_blocks": [
+        [
+          0,
+          10244840
+        ],
+        [
+          24,
+          2197511
+        ],
+        [
+          179,
+          183116
+        ],
+        [
+          12,
+          41262
+        ],
+        [
+          95,
+          4427
+        ],
+        [
+          159,
+          4161
+        ],
+        [
+          18,
+          3492
+        ],
+        [
+          44,
+          3212
+        ],
+        [
+          5,
+          1442
+        ],
+        [
+          171,
+          896
+        ],
+        [
+          3,
+          885
+        ],
+        [
+          128,
+          833
+        ]
+      ]
+    }
+  ],
+  "structural_scan": [
+    {
+      "file": "cloud_v17.schematic",
+      "metadata_max": 14,
+      "nbt_origin": {
+        "WEOriginX": 96,
+        "WEOriginY": 93,
+        "WEOriginZ": 1,
+        "WEOffsetX": -144,
+        "WEOffsetY": -123,
+        "WEOffsetZ": -49
+      },
+      "tile_entity_types": {
+        "minecraft:flower_pot": 17,
+        "minecraft:chest": 6
+      },
+      "duplicate_tile_positions": 0,
+      "out_of_bounds_tiles": 0,
+      "command_blocks": 0,
+      "gravity_over_air": 0,
+      "water_blocks": 0,
+      "lava_blocks": 0,
+      "top_occupied_y": 206
+    },
+    {
+      "file": "mist_v17.schematic",
+      "metadata_max": 15,
+      "nbt_origin": {
+        "WEOriginX": 96,
+        "WEOriginY": 21,
+        "WEOriginZ": 1,
+        "WEOffsetX": -96,
+        "WEOffsetY": -21,
+        "WEOffsetZ": -1
+      },
+      "tile_entity_types": {
+        "minecraft:flower_pot": 23,
+        "minecraft:chest": 5
+      },
+      "duplicate_tile_positions": 0,
+      "out_of_bounds_tiles": 0,
+      "command_blocks": 0,
+      "gravity_over_air": 0,
+      "water_blocks": 427086,
+      "lava_blocks": 0,
+      "top_occupied_y": 94
+    },
+    {
+      "file": "nether_v17.schematic",
+      "metadata_max": 15,
+      "nbt_origin": {
+        "WEOriginX": 80,
+        "WEOriginY": 43,
+        "WEOriginZ": 1,
+        "WEOffsetX": -128,
+        "WEOffsetY": -51,
+        "WEOffsetZ": -49
+      },
+      "tile_entity_types": {
+        "minecraft:furnace": 1,
+        "minecraft:flower_pot": 21,
+        "minecraft:chest": 7
+      },
+      "duplicate_tile_positions": 0,
+      "out_of_bounds_tiles": 0,
+      "command_blocks": 0,
+      "gravity_over_air": 0,
+      "water_blocks": 0,
+      "lava_blocks": 538,
+      "top_occupied_y": 123
+    },
+    {
+      "file": "sakura_v17.schematic",
+      "metadata_max": 15,
+      "nbt_origin": {
+        "WEOriginX": 96,
+        "WEOriginY": 73,
+        "WEOriginZ": 1,
+        "WEOffsetX": -144,
+        "WEOffsetY": -99,
+        "WEOffsetZ": -49
+      },
+      "tile_entity_types": {
+        "minecraft:flower_pot": 19,
+        "minecraft:chest": 4
+      },
+      "duplicate_tile_positions": 0,
+      "out_of_bounds_tiles": 0,
+      "command_blocks": 0,
+      "gravity_over_air": 0,
+      "water_blocks": 822,
+      "lava_blocks": 0,
+      "top_occupied_y": 214
+    },
+    {
+      "file": "sand_v17.schematic",
+      "metadata_max": 15,
+      "nbt_origin": {
+        "WEOriginX": 96,
+        "WEOriginY": 69,
+        "WEOriginZ": 1,
+        "WEOffsetX": -144,
+        "WEOffsetY": -107,
+        "WEOffsetZ": -49
+      },
+      "tile_entity_types": {
+        "minecraft:flower_pot": 28,
+        "minecraft:chest": 12,
+        "minecraft:furnace": 1
+      },
+      "duplicate_tile_positions": 0,
+      "out_of_bounds_tiles": 0,
+      "command_blocks": 0,
+      "gravity_over_air": 0,
+      "water_blocks": 708,
+      "lava_blocks": 0,
+      "top_occupied_y": 150
+    }
+  ],
+  "world_archive": {
+    "archive_bytes": 5672236404,
+    "archive_sha256": "089ee21b9574f1a4dcbf0ad6eab836eaa56976d9eff6d6b243e1d88cb1aa3a16",
+    "entries": 1746,
+    "uncompressed_bytes": 5671922660,
+    "crc_verified_during_copy": true,
+    "manifest_sha256": "4280f08a87ed8d9eb83e3c09cb5e858d9fbef22d65a56fa92a3182174bb55aee",
+    "source_unmodified": true,
+    "world_started": false,
+    "server_package": false
+  },
+  "customnpcs_present": {
+    "dialogs": 3,
+    "clones": 1,
+    "scripts_data_files": 1,
+    "reviewed_for_runtime_or_publication": false
+  },
+  "full_server_download": "owner_will_provide_path_when_complete",
+  "world_merged": false,
+  "native_geometry_verified": false,
+  "visual_reviewed": false
+}
