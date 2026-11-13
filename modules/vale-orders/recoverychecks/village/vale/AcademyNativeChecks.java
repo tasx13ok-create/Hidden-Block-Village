@@ -77,8 +77,8 @@ public final class AcademyNativeChecks {
             interact("contracts");choose("courier","deliver");choose("courier","missionclaim");int completedXp=PlayerState.data(p).getInteger("xp");check(completedXp==425&&!Missions.claim(p),"Dispatch reward mismatch/replay");
             choose("courier","ambush");check(actors()==2,"Ambush did not spawn two owned raiders");choose("courier","ambush");check(actors()==2,"Ambush resume duplicated actors");
             killOne();check(PlayerState.data(p).getInteger("missionProgress")==1,"Native raider kill not credited");choose("courier","ambush");check(actors()==1,"Partial ambush respawned a defeated raider");
-            server.getPlayerList().playerLoggedOut(p);p=login(server,true);check(PlayerState.data(p).getInteger("missionProgress")==1&&AcademyCampaign.basicsComplete(p),"Saved academy/mission reload failed");
-            choose("courier","ambush");check(actors()==1,"Reconnect resume did not respect earned progress");killOne();choose("courier","missionclaim");AcademyCampaign.tick(p);
+            server.getPlayerList().playerLoggedOut(p);check(!AcademyCampaign.state(p).hasUniqueId("ambush0")&&!AcademyCampaign.state(p).hasUniqueId("ambush1")&&!AcademyCampaign.state(p).hasUniqueId("target"),"Logout retained UUID pair tags");p=login(server,true);check(PlayerState.data(p).getInteger("missionProgress")==1&&AcademyCampaign.basicsComplete(p),"Saved academy/mission reload failed");
+            choose("courier","ambush");check(actors()==1,"Reconnect resume did not respect earned progress: live="+actors());killOne();choose("courier","missionclaim");AcademyCampaign.tick(p);
             check(actors()==0&&PlayerState.data(p).getInteger("missionsCompleted")==2&&PlayerState.data(p).getInteger("xp")==650,"Ambush settlement or cleanup failed");
             check(!Missions.claim(p)&&PlayerState.data(p).getInteger("xp")==650,"Final reward replay");
             return assertions;

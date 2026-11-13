@@ -2,6 +2,8 @@
 
 The owner requests a deeply immersive Naruto-inspired shinobi game that still plays as Minecraft, with original implementations of the supplied mod pack's functionality, substantial enhancements, and much more ambitious dungeons. This is a production specification and execution queue, not a claim that the requested game is complete.
 
+Read [the updated Naruto identity and fun brief](NARUTO-FUN-BRIEF.md) first for combat, equipment, world reactions or progression decisions. It updates the earlier pacing priorities and connects the research to concrete implementation criteria.
+
 Read in this order:
 
 1. [Master plan](MASTER-PLAN.md): experience, scope, architecture, content delivery and acceptance.

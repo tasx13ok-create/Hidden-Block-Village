@@ -133,7 +133,7 @@ public final class AcademyCampaign {
         AcademyCourse c=course(p);if(!eligible(p)||(state(p).getInteger("stage")!=3&&state(p).getInteger("stage")!=4))return false;
         EntityIronGolem existing=target(p);if(existing!=null){tell(p,"Your construct is ready at "+c.at(0,8)+". The floor ring is the practice area.");return true;}
         if(!p.world.isAreaLoaded(c.at(0,8),8)){tell(p,"Load the practice ring before preparing a construct.");return false;}
-        state(p).removeTag("target");
+        AcademyProgress.forgetActor(state(p),"target");
         if(!p.world.getEntitiesWithinAABB(EntityIronGolem.class,new AxisAlignedBB(c.at(0,8)).grow(8)).isEmpty()){tell(p,"The practice ring is occupied. Learners take turns; wait for its current owner to finish.");return false;}
         EntityIronGolem dummy=new EntityIronGolem(p.world);dummy.setPosition(c.at(0,8).getX()+.5,c.at(0,8).getY(),c.at(0,8).getZ()+.5);dummy.setNoAI(true);dummy.setPlayerCreated(true);dummy.enablePersistence();
         dummy.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200);dummy.setHealth(200);dummy.setCustomNameTag(p.getName()+" - Academy Construct");dummy.setAlwaysRenderNameTag(true);
@@ -180,14 +180,14 @@ public final class AcademyCampaign {
             }else s.removeTag("strikeAt");
         }
     }
-    public static void removeTarget(EntityPlayerMP p){EntityIronGolem target=target(p);if(target!=null){target.setDead();p.world.removeEntity(target);}state(p).removeTag("target");state(p).removeTag("strikeAt");}
+    public static void removeTarget(EntityPlayerMP p){EntityIronGolem target=target(p);if(target!=null){target.setDead();p.world.removeEntity(target);}AcademyProgress.forgetActor(state(p),"target");state(p).removeTag("strikeAt");}
     public static void logout(EntityPlayerMP p){SESSIONS.remove(p.getUniqueID());removeTarget(p);removeAmbush(p);Adventures.save(p);}
     public static void clearSession(EntityPlayerMP p){
         SESSIONS.remove(p.getUniqueID());WorldServer world=p.getServer().getWorld(0);
         for(String key:new String[]{"target","ambush0","ambush1"})if(state(p).hasUniqueId(key)){
             Entity actor=world.getEntityFromUuid(state(p).getUniqueId(key));
             if(actor!=null&&actor.getEntityData().hasUniqueId(ACTOR_OWNER)&&actor.getEntityData().getUniqueId(ACTOR_OWNER).equals(p.getUniqueID())){actor.setDead();world.removeEntity(actor);}
-            state(p).removeTag(key);
+            AcademyProgress.forgetActor(state(p),key);
         }
         state(p).removeTag("strikeAt");Adventures.save(p);
     }
@@ -202,7 +202,7 @@ public final class AcademyCampaign {
         NBTTagCompound s=state(p);long run=PlayerState.data(p).getLong("missionRun");
         if(s.getLong("ambushRun")!=run){removeAmbush(p);s.setLong("ambushRun",run);}
         int remaining=2-PlayerState.data(p).getInteger("missionProgress"),live=0;
-        for(int i=0;i<2;i++){String slot="ambush"+i;if(s.hasUniqueId(slot)){Entity existing=p.getServerWorld().getEntityFromUuid(s.getUniqueId(slot));if(existing!=null&&existing.isEntityAlive())live++;else s.removeTag(slot);}}
+        for(int i=0;i<2;i++){String slot="ambush"+i;if(s.hasUniqueId(slot)){Entity existing=p.getServerWorld().getEntityFromUuid(s.getUniqueId(slot));if(existing!=null&&existing.isEntityAlive())live++;else AcademyProgress.forgetActor(s,slot);}}
         for(int i=0;i<2&&live<remaining;i++){
             String slot="ambush"+i;if(s.hasUniqueId(slot))continue;
             FieldRogue rogue=new FieldRogue(p.world);BlockPos at=c.at(12+i*5,34);rogue.setPosition(at.getX()+.5,at.getY(),at.getZ()+.5);rogue.configure(i);rogue.enablePersistence();
@@ -213,6 +213,6 @@ public final class AcademyCampaign {
         }
         Adventures.save(p);tell(p,"Roadside Ambush is active in the far yard. Defeat your two raiders, then claim at Ren. Leaving the server clears your actors and keeps earned mission progress.");return true;
     }
-    private static void removeAmbush(EntityPlayerMP p){for(int i=0;i<2;i++){String key="ambush"+i;if(state(p).hasUniqueId(key)){Entity e=p.getServerWorld().getEntityFromUuid(state(p).getUniqueId(key));if(e!=null){e.setDead();p.world.removeEntity(e);}state(p).removeTag(key);}}}
+    private static void removeAmbush(EntityPlayerMP p){for(int i=0;i<2;i++){String key="ambush"+i;if(state(p).hasUniqueId(key)){Entity e=p.getServerWorld().getEntityFromUuid(state(p).getUniqueId(key));if(e!=null){e.setDead();p.world.removeEntity(e);}AcademyProgress.forgetActor(state(p),key);}}}
     public static boolean ambushMatches(EntityPlayerMP p,EntityLivingBase target){return target.getEntityData().hasUniqueId(ACTOR_OWNER)&&target.getEntityData().getUniqueId(ACTOR_OWNER).equals(p.getUniqueID())&&"ambush".equals(target.getEntityData().getString(ACTOR_KIND))&&target.getEntityData().getLong("academyRun")==PlayerState.data(p).getLong("missionRun");}
 }

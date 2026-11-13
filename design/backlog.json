@@ -1020,7 +1020,8 @@
         "docs/academy-0310.md",
         "release/evidence/academy0310-verification.json"
       ],
-      "implementation_scope": "Six playable introductory exercises and dispatch/ambush contract prototypes. Full A07-A10 branching, distinct nature lessons, final presentation and two-client acceptance remain open."
+      "implementation_scope": "Six playable introductory exercises and dispatch/ambush contract prototypes. Full A07-A10 branching, distinct nature lessons, final presentation and two-client acceptance remain open.",
+      "verified_scope": "Core 0.3.10 native introductory route: 103 academy assertions within 1261 total. Full story/identity/presentation remains incomplete; prioritize the fun brief over extra mandatory onboarding."
     },
     {
       "id": "SYS-COMBAT",
@@ -1081,7 +1082,7 @@
       "id": "SYS-INTERACTIONS",
       "title": "Bounded nature/environment interaction table",
       "owner": "techniques",
-      "priority": "P1",
+      "priority": "P0",
       "status": "planned",
       "depends_on": [
         "SYS-NATURES"
@@ -1153,7 +1154,7 @@
       "id": "SYS-WARDS",
       "title": "Nine distinct original ward transformation paths",
       "owner": "ward renderer",
-      "priority": "P1",
+      "priority": "P0",
       "status": "planned",
       "depends_on": [
         "SYS-CLANS"
@@ -1281,7 +1282,7 @@
       "id": "SYS-NPCS",
       "title": "Living original residents and friend-content migration",
       "owner": "residents",
-      "priority": "P1",
+      "priority": "P0",
       "status": "planned",
       "depends_on": [
         "SYS-ACADEMY"
@@ -1355,7 +1356,7 @@
       "id": "SYS-ART",
       "title": "Original equipment, actor, icon, sound and animation production",
       "owner": "art",
-      "priority": "P1",
+      "priority": "P0",
       "status": "planned",
       "depends_on": [
         "SYS-UI"
@@ -1618,6 +1619,58 @@
       "acceptance": [
         "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
         "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    },
+    {
+      "id": "SYS-POWER-KIT",
+      "title": "Ship a distinctive Naruto power kit with normal acquisition, preview and complete moveset",
+      "owner": "vale-orders combat and presentation",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "design/NARUTO-FUN-BRIEF.md implemented in connected runtime content",
+        "normal-player route and version-bound evidence"
+      ],
+      "acceptance": [
+        "Equipped power changes attacks, mobility/defense and active decisions; identity is recognizable beyond labels.",
+        "Actual damage/protection, resource settlement, original first/third-person feedback and reconnect pass."
+      ]
+    },
+    {
+      "id": "SYS-WORLD-REACTIONS",
+      "title": "Connect settled power use to plausible local resident and guard responses",
+      "owner": "residents and encounters",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "design/NARUTO-FUN-BRIEF.md implemented in connected runtime content",
+        "normal-player route and version-bound evidence"
+      ],
+      "acceptance": [
+        "A player action causes a bounded, understandable response; ownership, witnesses, de-escalation and persistence are verified."
+      ]
+    },
+    {
+      "id": "UX-FIRST-FUN",
+      "title": "Compress compulsory onboarding and prove early exciting play",
+      "owner": "progression, controls and content",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-ACADEMY"
+      ],
+      "deliverables": [
+        "design/NARUTO-FUN-BRIEF.md implemented in connected runtime content",
+        "normal-player route and version-bound evidence"
+      ],
+      "acceptance": [
+        "Observe a fresh player reach meaningful combat and an exciting preview without forced repeated errands; timings are measured, not assumed."
       ]
     }
   ],

@@ -9,6 +9,8 @@ public final class AcademyProgress {
     private AcademyProgress() {}
     public static boolean readable(NBTTagCompound s){return s.getInteger("schema")==VERSION&&s.getInteger("stage")>=0&&s.getInteger("stage")<=COMPLETE;}
     public static NBTTagCompound fresh(){NBTTagCompound s=new NBTTagCompound();s.setInteger("schema",VERSION);return s;}
+    /** Minecraft 1.12 stores UUIDs as two long tags, not the unsuffixed key. */
+    public static void forgetActor(NBTTagCompound s,String key){s.removeTag(key);s.removeTag(key+"Most");s.removeTag(key+"Least");}
     public static boolean advance(NBTTagCompound s,int expected){
         if(!readable(s)||expected<0||expected>=COMPLETE||s.getInteger("stage")!=expected)return false;
         s.setInteger("stage",expected+1);s.setInteger("objective",0);return true;

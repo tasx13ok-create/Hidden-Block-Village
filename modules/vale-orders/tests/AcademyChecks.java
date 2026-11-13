@@ -28,6 +28,7 @@ public final class AcademyChecks {
         s.setInteger("schema",999);check(!AcademyProgress.advance(s,0)&&!AcademyProgress.readable(s),"Future player schema preserved");
         AcademyCourse course=new AcademyCourse();NBTTagCompound future=new NBTTagCompound();future.setInteger("schema",999);future.setString("future","preserve");course.readFromNBT(future);
         check(course.readOnly&&!course.active&&course.writeToNBT(new NBTTagCompound()).equals(future),"Future world schema preserved");
+        for(String key:new String[]{"target","ambush0","ambush1"}){NBTTagCompound actor=new NBTTagCompound();actor.setUniqueId(key,java.util.UUID.randomUUID());actor.setInteger("stage",4);AcademyProgress.forgetActor(actor,key);check(!actor.hasUniqueId(key)&&actor.getSize()==1&&actor.getInteger("stage")==4,"UUID pair cleanup "+key);}
         System.out.println("Academy progress checks passed: "+assertions);
     }
 }

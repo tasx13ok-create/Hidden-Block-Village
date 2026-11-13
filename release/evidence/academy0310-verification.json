@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "candidate": "Core 0.3.10 introductory academy",
-  "scope": "LOCAL_SOURCE_AND_NETWORK_CLIENT",
-  "source_snapshot_sha256": "1548956006b3814dddd8e8038362d0df8d7c1f9cc9334984720947b63d924372",
+  "scope": "LOCAL_SOURCE_AND_NATIVE_WITH_EARLIER_NETWORK_SMOKE",
+  "source_snapshot_sha256": "0afcf1cf26b6f75caf3ee8adee5f8cb90574a061c1cfdb0ab11052df1d6b1e67",
   "source_build_passed": true,
   "source_areas": 11,
   "artifacts": [
@@ -10,22 +10,22 @@
       "component": "vale-orders",
       "role": "runtime_mod",
       "file": "vale-orders-0.3.10.jar",
-      "bytes": 1981424,
-      "sha256": "dd3aae3ca12b7125e10ce75905bf2a95e29091c724228822039a75d994d53008"
+      "bytes": 1981617,
+      "sha256": "b77fab44ed9bb1b07a3e4845e81195c3c70ea07103b2d929170c7d3ec96e1187"
     },
     {
       "component": "vale-orders",
       "role": "development_api",
       "file": "vale-orders-0.3.10-dev.jar",
-      "bytes": 1956897,
-      "sha256": "e918bae148c3df87e00b16245bafd0daea5e08395d569a97336bfe223ed5b355"
+      "bytes": 1957091,
+      "sha256": "9719406d29c90d4078f8c02c42e279656cc117d61d79c13b0ffcb7465be0eb3a"
     },
     {
       "component": "vale-orders",
       "role": "sources",
       "file": "vale-orders-0.3.10-sources.jar",
-      "bytes": 1629380,
-      "sha256": "9fadc7be04db09c5488b23b12e9d01fb78e545f613a014b9563501cfac0649e0"
+      "bytes": 1629490,
+      "sha256": "08e382b688ce719fabf86effbbbcabdb3f7fc8ba1b974f36417f924634e806fc"
     },
     {
       "component": "vale-encounters",
@@ -264,7 +264,7 @@
     "skipped": 4,
     "passed": true
   },
-  "academy_progress_checks": 34,
+  "academy_progress_checks": 37,
   "jei_bridge_regressions_passed": true,
   "network_client": {
     "minecraft": "1.12.2",
@@ -322,10 +322,38 @@
         "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
       }
     ],
-    "visible_human_walkthrough": false
+    "visible_human_walkthrough": false,
+    "source_snapshot_sha256": "1548956006b3814dddd8e8038362d0df8d7c1f9cc9334984720947b63d924372",
+    "latest_reconnect_cleanup_fix_loaded": false,
+    "scope_note": "Earlier candidate opened and observed; live player session preserved. Final server-only UUID cleanup fix has exact-hash native acceptance and packaged client, but no final-hash graphical walkthrough."
   },
   "native_acceptance": {
-    "status": "pending_rerun"
+    "status": "PASS",
+    "assertions": 1261,
+    "academy_assertions": 103,
+    "checks": [
+      "556 live registered items and current diagnostic category checks",
+      "Native result-slot pickup remains issued after expired preview timeout",
+      "Stale proof is recomputed by native container before actual crafting",
+      "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+      "Native Party Charter leave/rejoin preserves the existing expedition",
+      "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+      "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+      "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+      "Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport",
+      "Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup",
+      "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+      "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+      "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery",
+      "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect"
+    ],
+    "source_snapshot_sha256": "0afcf1cf26b6f75caf3ee8adee5f8cb90574a061c1cfdb0ab11052df1d6b1e67",
+    "runtime_removed": true,
+    "private_fixture_inputs_sha256": "f850d27d6b39e90b5b42d584adcd02b19a30288f87fd3a30fdf256f455746a5e",
+    "core_sha256": "b77fab44ed9bb1b07a3e4845e81195c3c70ea07103b2d929170c7d3ec96e1187",
+    "minecraft": "1.12.2",
+    "forge": "14.23.5.2859",
+    "fresh_fixture_result_sha256": "f2fa7e1371aac75f02d30f1dba7df492734b63ad49748c9c5144782a04ee115c"
   },
   "production_world_tested": false,
   "magma_plugins_tested": false,
@@ -335,5 +363,11 @@
     "Existing ward lance engines used; final distinct nature lessons remain incomplete.",
     "Vanilla villager guides and original Minecraft graybox; final NPC art/animation and friend CustomNPCs import are separate.",
     "Desktop control tool failed to initialize; no visual/input walkthrough claimed."
-  ]
+  ],
+  "personal_client_archive": {
+    "file": "Vale-Core0310-Academy.zip",
+    "bytes": 60741020,
+    "sha256": "6e3d1b3f018b6af8047199272bdd7e5f9cf01f3bb1e52ac3f961ef4787a0ac9f",
+    "archive_crc_verified": true
+  }
 }

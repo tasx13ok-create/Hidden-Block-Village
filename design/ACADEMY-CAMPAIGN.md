@@ -14,7 +14,7 @@ Tone: inhabitants have jobs and understandable stakes. Ren's mistake has a repai
 
 ## Mission graph and runtime contract
 
-Default chain is A01 â†’ A02 â†’ A03 â†’ A04 â†’ A05 â†’ A06 â†’ A07 â†’ A08 â†’ A09 â†’ A10. A07 has two authored branches that rejoin. Returning players can resume completed stages without repeating unique rewards. Replays explicitly distinguish practice credit from first completion.
+Default chain is A01 Ã¢â€ â€™ A02 Ã¢â€ â€™ A03 Ã¢â€ â€™ A04 Ã¢â€ â€™ A05 Ã¢â€ â€™ A06 Ã¢â€ â€™ A07 Ã¢â€ â€™ A08 Ã¢â€ â€™ A09 Ã¢â€ â€™ A10. A07 has two authored branches that rejoin. Returning players can resume completed stages without repeating unique rewards. Replays explicitly distinguish practice credit from first completion.
 
 Each state transition checks authoritative player identity, mission version, prerequisite state, target/anchor ID and eligibility. Objective events include a sequence/run ID and must be accepted at most once. If a required actor or item disappears, a mission service reconstructs the pending objective from state instead of resetting the whole character. No client button or screenshot constitutes completion.
 
@@ -47,7 +47,7 @@ If one of these engines is unfinished, the campaign stage remains blocked for th
 
 Set numerical XP/Ryo rewards only after measuring the route; proposed progression is graduation plus starter equipment/provisions and an understandable next training choice. The chain must not instantly unlock advanced eyes, beast forms or all nine wards. Currency granted during the tutorial cannot support an exploitably profitable replay loop. A normal player can buy the missing ration ingredient without paying real money or using an OP command.
 
-Target 30â€“45 minutes for an exploratory first completion and a shorter returning-player route. Measure actual play rather than forcing timers. Keep optional dialogue, practice and discoveries available for players who enjoy them. A journal breadcrumb says current action, destination and reason; the environment supplies the corresponding landmark. No quest stage requires remembering an unexplained coordinate string from chat.
+Target 30Ã¢â‚¬â€œ45 minutes for an exploratory first completion and a shorter returning-player route. Measure actual play rather than forcing timers. Keep optional dialogue, practice and discoveries available for players who enjoy them. A journal breadcrumb says current action, destination and reason; the environment supplies the corresponding landmark. No quest stage requires remembering an unexplained coordinate string from chat.
 
 Give players a first meaningful specialization choice after graduation, with a preview/practice route and a bounded respec policy. Expose the first dungeon's prerequisite through a resident conversation and map discovery, not a debug inventory item. The Missing Dispatch thread seeds future village/harbor stories without requiring that all later campaign content already be shipped.
 

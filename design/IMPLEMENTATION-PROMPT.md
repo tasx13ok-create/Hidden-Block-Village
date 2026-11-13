@@ -6,13 +6,23 @@ Use this prompt with the `hidden-block-village` project skill and the current re
 
 You are continuing Hidden Block Village / Vale, an existing Minecraft Java shinobi game project. Build an immersive Naruto-inspired experience that retains Minecraft's movement, building, crafting, tangible world and persistent multiplayer. The owner wants feature-level replacements for the supplied 49-mod reference pack and substantial enhancements: complete chakra combat, progression, clans/eyes/natures, transformations, weapons, companions, original NPCs and quests, village life, co-op, and five exceptionally detailed dungeon campaigns. Do actual implementation work as well as design. Preserve the accumulated work across PCs.
 
+## Naruto-first fun contract
+
+The owner's updated direction is `design/NARUTO-FUN-BRIEF.md`: build recognizably Naruto gameplay, powerful armor/modes with distinctive moves, enjoyable weapon combos, world reactions and fast access to fun. Read it before selecting combat, progression, NPC or content work. Its pacing priorities supersede earlier long compulsory academy targets. Keep its proposed tuning distinct from measured current behavior.
+
+Deliver a connected player experience: acquire or preview a power, understand a small configurable action set, use it in an interesting encounter, see physical feedback and a plausible world reaction, earn a useful reward, and resume after failure/reconnect. Existing ward names/shared lances/static vanilla guides are interim implementations. Public-facing Naruto identity must be supported by mechanics and presentation; changing an item's label alone does not satisfy the request. Preserve technical IDs and existing progress.
+
+A featured armor/mode needs changed attacks, active techniques, mobility/defense, a signature moment, readable cost/recovery, first/third-person presentation and actual opponent/world responses. Let strong PvE characters feel strong. Challenge them with encounter decisions, not blanket immunity or constant hidden scaling. Keep advanced trial loaners explicitly temporary and safe for the real loadout. Do not lock every exciting action behind repeated dialogue, travel or grinding.
+
+For each selected package, challenge whether it is recognizably Naruto without its label, whether the first few minutes are fun, whether the weapon/mode changes decisions, and whether world reactions follow witnesses and causes. Use the research ledger's direct evidence honestly; do not turn a few advertisements or one forum complaint into a claim about all players. During a bounded build sprint, record the deadline in the handoff, prioritize implementation/verification, and continue shipping useful checkpoints.
+
 ## Establish the real starting point
 
 Locate the checkout whose remote is `tasx13ok-create/Hidden-Block-Village`. Read its `AGENTS.md`, `docs/current-handoff.md` and `design/README.md`; inspect worktree state and fetch/integrate remote changes without discarding local work. If the workspace opens in the older parent dungeon folder, follow its routing `AGENTS.md` into the current checkout. Do not treat an older v9 folder or a prior chat summary as the current source.
 
 Read `design/MASTER-PLAN.md`, then only the relevant sections of `SYSTEMS-SPEC.md`, `DUNGEON-ATLAS.md`, `MOD-REBUILD-MATRIX.md` and `backlog.json` for the work you are doing. The full pack inventory is `design/reference-mod-inventory.json`. Match exact bytes and declared mod identity; several reference filenames contain misleading versions. The archive is reference input, not owned source or a public distribution asset.
 
-Current verified base is Core 0.3.9 with eleven source areas and 36 artifacts, a six-slot weapon rack, original ward geometry, original Residents, three shared encounter engines with 136 profiles, and documented Forge native checks. A real local OptiFine client has joined a separate inspection world. Respect the exact scope of those results. Current item counts and historical item-counterpart percentages do not establish ability parity, unique AI, finished visuals, a tested production world or hosted readiness.
+Read the current handoff and exact-hash evidence for the real baseline. Core 0.3.10 now has an introductory academy and two contract prototypes; later Naruto identity, complete distinct nature moves and final NPC presentation remain open. Existing source covers eleven areas and 36 build artifacts. Item/profile counts and native assertions establish only their stated scopes, not a finished production world or game.
 
 ## Translate the fantasy into observable gameplay
 
@@ -48,7 +58,7 @@ Use Iceeman's public IceeRamen videos and creator-published material to study ex
 
 ## Dungeon production direction
 
-Use the detailed atlas. Mist remains a real-water 200×200 waterfront settlement with seabed/piles, clear boat channels, layered usable interiors and coherent roofs. Earth/Leaf, Cloud and Sand have irregular fractured torn-ground bases, not rounded cones. Fire/Nether remains excluded from that treatment and gets a proposed monumental 320×320 district/citadel expansion. Preserve the existing baseline and compare recovered v17 before replacing it.
+Use the detailed atlas. Mist remains a real-water 200Ã—200 waterfront settlement with seabed/piles, clear boat channels, layered usable interiors and coherent roofs. Earth/Leaf, Cloud and Sand have irregular fractured torn-ground bases, not rounded cones. Fire/Nether remains excluded from that treatment and gets a proposed monumental 320Ã—320 district/citadel expansion. Preserve the existing baseline and compare recovered v17 before replacing it.
 
 Each campaign needs a room/route graph, narrative purpose, functioning puzzle, distinct encounter language, multi-phase boss, fair solo/co-op routes, meaningful reward and short recovery/exit. Detail supports material, navigation, story and atmosphere. Validate native stairs/slabs/doors/tile entities, support, roofs, gravity blocks, water, illumination, collision and landing points before offline glamour renders. Actual dimension atmosphere and BSL/Solas gameplay require real client review. Offline rendering cannot stand in for an in-game walkthrough.
 
@@ -62,7 +72,7 @@ The private `Naruto.test` stage and reviewed inventory are not present in the in
 
 ## Verify, deliver and continue
 
-Evidence ladder: component behavior → native runtime → actual local client/server handshake → visible gameplay/graphics → copied production-world save/restart/migration → actual Magma/plugin roster → hosted Bisect start/restart/client connection. Report only steps actually run, with their exact identities and limits. Keep a live user inspection session available unless the task requires restarting that specific session or the owner asks.
+Evidence ladder: component behavior â†’ native runtime â†’ actual local client/server handshake â†’ visible gameplay/graphics â†’ copied production-world save/restart/migration â†’ actual Magma/plugin roster â†’ hosted Bisect start/restart/client connection. Report only steps actually run, with their exact identities and limits. Keep a live user inspection session available unless the task requires restarting that specific session or the owner asks.
 
 Update the backlog task and related design if behavior changed. Record changed files, meaningful checks/results, artifact hashes, known defects and the exact next executable action in `docs/current-handoff.md`. Commit and push completed authorized checkpoints; verify the remote commit. Keep private outputs local. Final communication should lead with the actual result and usable artifact or game state, then material limits. Do not claim the entire game is finished when only this slice is complete, and do not replace execution with another vague promise to continue.
 
