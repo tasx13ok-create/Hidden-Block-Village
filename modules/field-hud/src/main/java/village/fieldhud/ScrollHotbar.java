@@ -26,6 +26,9 @@ public final class ScrollHotbar extends Gui {
         else focus=SkinMath.ease(focus,selected,Math.min(4,time-lastTime),.8);
         lastTime=time;
         double stamp=motion?Math.max(0,1-(time-changedAt)/7):0;
+        HotbarFx.frame(time,motion);HotbarFx.slots(selected,focus);
+        HotbarFx.pushBody(b,time,motion,1);
+        try{
 
         // Parchment is restricted to borders; the item wells retain high-contrast ink.
         SkinDraw.rounded(x,y+2,b.w,30,3,0xC510161A);
@@ -34,13 +37,14 @@ public final class ScrollHotbar extends Gui {
         SkinDraw.line(x+17,y+2.5,x+b.w-17,y+2.5,.7,0xFFE9DDC2);
         SkinDraw.line(x+17,y+30,x+b.w-17,y+30,.6,0xFF796D57);
         for(int i=0;i<9;i++){
-            int sx=ScrollGeometry.slotX(b,i),sy=ScrollGeometry.slotY(b,i,HudConfig.curve);
+            int sx=ScrollGeometry.slotX(b,i),sy=ScrollGeometry.slotY(b,i,HudConfig.curve)-HotbarFx.lift(i);
             SkinDraw.rounded(sx,sy,19,22,1.5,0xF4141F24);
             SkinDraw.outline(sx+.25,sy+.25,18.5,21.5,1.5,.45,0x827E7969);
             SkinDraw.line(sx+3,sy+.6,sx+16,sy+.6,.6,0x78596665);
             SkinDraw.line(sx+4,sy+21,sx+15,sy+21,.5,0x706D5148);
         }
-        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,HudConfig.curve);
+        HotbarFx.ghosts(b,focus,0xE9BB79);
+        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,HudConfig.curve)-FableHudMath.lift(0);
         SkinDraw.rounded(sx,sy,19,22,1.5,SkinDraw.alpha(0x663B35,(int)(90*priority)));
         SkinDraw.outline(sx-.4,sy-.4,19.8,22.8,1.6,.8,SkinDraw.alpha(0xBD6E5E,(int)(245*priority)));
         ScrollChrome.corners(sx,sy,19,22,SkinDraw.alpha(0xF0DCB7,(int)(235*priority)));
@@ -54,7 +58,7 @@ public final class ScrollHotbar extends Gui {
         cap(x+2,y,selected==0,route);cap(x+b.w-17,y,selected==8,route);
 
         RenderHelper.enableGUIStandardItemLighting();GlStateManager.enableDepth();
-        for(int i=0;i<9;i++)item(MC.player.inventory.mainInventory.get(i),ScrollGeometry.itemX(b,i),ScrollGeometry.itemY(b,i,HudConfig.curve));
+        for(int i=0;i<9;i++)HotbarFx.item(i,MC.player.inventory.mainInventory.get(i),ScrollGeometry.itemX(b,i),ScrollGeometry.itemY(b,i,HudConfig.curve),i==selected,time);
         RenderHelper.disableStandardItemLighting();GlStateManager.disableDepth();GlStateManager.disableLighting();
         ItemStack off=MC.player.getHeldItemOffhand();
         if(!off.isEmpty()){
@@ -86,6 +90,10 @@ public final class ScrollHotbar extends Gui {
                 MC.fontRenderer.drawStringWithShadow(label,cx-MC.fontRenderer.getStringWidth(label)/2,y-13,0xFFE8D5AB);
             }
         }
+        HotbarFx.tint(x+10,y+1,b.w-20,30,time);
+        HotbarFx.weather(x+10,y+1,b.w-20,30,time);
+        }finally{HotbarFx.pop();}
+        HotbarFx.particles();
         GlStateManager.color(1,1,1,1);
     }
     private static void cap(int x,int y,boolean selected,double route){

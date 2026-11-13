@@ -189,9 +189,9 @@ public final class VfxShots {
         if (t == 123) shot(mc, "hud_06_damage_lowhealth");
         if (t == 130) run.accept(p -> { for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) for (int dy = 0; dy <= 2; dy++) p.world.setBlockState(new net.minecraft.util.math.BlockPos(dx, 4 + dy, dz), net.minecraft.init.Blocks.WATER.getDefaultState()); p.heal(20); });
         if (t == 170) shot(mc, "hud_07_underwater");
-        if (t == 175) run.accept(p -> { for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) for (int dy = 0; dy <= 2; dy++) p.world.setBlockToAir(new net.minecraft.util.math.BlockPos(dx, 4 + dy, dz)); p.setFire(5); p.world.setWorldTime(18000); });
+        if (t == 175) run.accept(p -> { for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) for (int dy = 0; dy <= 2; dy++) p.world.setBlockToAir(new net.minecraft.util.math.BlockPos(dx, 4 + dy, dz)); p.setFire(5); p.world.setWorldTime(18000); p.connection.setPlayerLocation(12.5, 4, 12.5, 0, 10); });
         if (t == 200) shot(mc, "hud_08_night_burning");
-        if (t == 210) run.accept(p -> { p.extinguish(); p.world.setWorldTime(6000); p.connection.setPlayerLocation(0.5, 9, 0.5, 0, 10); });
+        if (t == 210) run.accept(p -> { p.extinguish(); p.world.setWorldTime(6000); p.connection.setPlayerLocation(12.5, 9, 12.5, 0, 10); });
         if (t == 226) shot(mc, "hud_09_landing_squash");
         if (t == 240) mc.shutdown();
     }

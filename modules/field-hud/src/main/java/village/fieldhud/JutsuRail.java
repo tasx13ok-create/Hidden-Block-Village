@@ -25,18 +25,22 @@ public final class JutsuRail extends Gui {
     public static void hint(String value){}
     public static void draw(HudLayers.Frame frame){
         if(RackAccess.loaded()){if(visible())RackRailDraw.draw(frame);return;}
-        if(HudConfig.skin==1){FableRail.draw(frame);return;}
-        if(!visible()||!JutsuAccess.MODEL.initialized())return;
+        if(!visible()||!JutsuAccess.MODEL.initialized()){HotbarFx.railFrame(frame.time,false,false);return;}
         JutsuRailLayout rail=layout(frame.resolution.getScaledWidth(),frame.resolution.getScaledHeight());if(rail.box==null)return;
         Layout.Box b=rail.box;double time=frame.time;JutsuRailModel model=JutsuAccess.MODEL;
         boolean motion=HudConfig.motion&&HudConfig.mode!=2,fresh=JutsuAccess.fresh();
         double focus=model.focus(time,motion),elapsed=model.elapsed(time);
         boolean alphaTest=GL11.glIsEnabled(GL11.GL_ALPHA_TEST);
+        FableEnv.update(time);HotbarFx.railFrame(time,motion,true);
         try{
             for(int row=0;row<JutsuLoadout.SIZE;row++){
                 int y=rail.slotY(row),cx=b.x+b.w/2,cy=y+rail.slotHeight/2;
                 int iconX=cx-8,iconY=cy-8;boolean selected=row==model.index();JutsuEntry entry=model.display(row);
                 boolean enabled=fresh&&entry!=null&&entry.enabled;double ready=entry==null?0:model.ready(entry.id,time,motion);
+                double cooling=entry==null?0:entry.fraction(elapsed);
+                double[] flash=HotbarFx.railState(row,entry,entry!=null&&fresh&&entry.canCast&&cooling<=0,cooling,time);
+                HotbarFx.pushRow(row,selected,focus,time,motion);
+                try{
                 SkinDraw.rounded(b.x+.5,y+1.5,b.w-1,rail.slotHeight-2,2,0xA8071014);
                 SkinDraw.rounded(b.x+1,y+1,b.w-2,rail.slotHeight-3,2,selected?0xF22D3330:0xE51B2428);
                 SkinDraw.outline(b.x+1.2,y+1.2,b.w-2.4,rail.slotHeight-3.4,2,.55,enabled?0xA08F907B:0x70748182);
@@ -51,7 +55,11 @@ public final class JutsuRail extends Gui {
                 if(fraction>0){
                     SkinDraw.rounded(iconX,iconY,16,16*fraction,1,0xB9091218);
                     SkinDraw.arc(cx,cy,8.3,.9,-Math.PI/2,-Math.PI/2+Math.PI*2*fraction,0xD9D9BE85);
+                    HotbarFx.perimeter(b.x+1,y+1,b.w-2,rail.slotHeight-3,1-fraction,0xE6D9BE85);
                 }
+                if(flash[1]>0){GlStateManager.disableAlpha();SkinDraw.outline(b.x,y,b.w,rail.slotHeight-1,2,1,SkinDraw.alpha(0xFFFFFF,(int)(230*flash[1])));}
+                if(flash[0]>0){GlStateManager.disableAlpha();double g=flash[0]*3;SkinDraw.outline(b.x-g,y-g,b.w+2*g,rail.slotHeight-1+2*g,2.5,.8,SkinDraw.alpha(0x9DDDDC,(int)(230*flash[0])));}
+                if(HotbarFx.justReady(row,time))HotbarFx.sparkle(cx,cy,0xFF9DDDDC,8);
                 if(entry.itemCount>1)quantity(entry.itemCount,iconX+15.5,iconY+11);
                 if(!enabled){
                     SkinDraw.line(iconX+3,iconY+13,iconX+13,iconY+3,.85,0xB9C3A298);
@@ -60,12 +68,20 @@ public final class JutsuRail extends Gui {
                 if(ready>0&&fresh){
                     GlStateManager.disableAlpha();SkinDraw.outline(b.x+1,y+1,b.w-2,rail.slotHeight-3,2,.8,SkinDraw.alpha(0x9DDDDC,(int)(ready*200)));
                 }
+                if(selected)HotbarFx.tint(b.x+1,y+1,b.w-2,rail.slotHeight-3,time);
+                }finally{HotbarFx.pop();}
             }
             double selectedY=rail.slotY(0)+model.selectedRow(JutsuLoadout.SIZE,time,motion)*rail.slotHeight;
             GlStateManager.disableAlpha();
+            GlStateManager.pushMatrix();GlStateManager.translate(FableHudMath.snap(HotbarFx.rowOut(model.index())),0,0);
+            try{
             int tone=model.focused()?0x9DDDDC:0xD3B582;
             ScrollChrome.corners(b.x+.7,selectedY+.7,b.w-1.4,rail.slotHeight-2,SkinDraw.alpha(tone,fresh?170+(int)(focus*70):95));
             if(focus>0)SkinDraw.outline(b.x+.7,selectedY+.7,b.w-1.4,rail.slotHeight-2,2,.6,SkinDraw.alpha(0x9DDDDC,(int)(focus*110)));
+            if(focus>0)SkinDraw.outline(b.x-1.5,selectedY-1.5,b.w+3,rail.slotHeight+2,2.5,.6,SkinDraw.alpha(0x9DDDDC,(int)(focus*80*(.7+.3*Math.sin(time*.3)))));
+            }finally{GlStateManager.popMatrix();}
+            HotbarFx.weather(b.x,b.y,b.w,b.h,time);
+            HotbarFx.particles();
         }finally{
             if(alphaTest)GlStateManager.enableAlpha();else GlStateManager.disableAlpha();GlStateManager.color(1,1,1,1);
         }
