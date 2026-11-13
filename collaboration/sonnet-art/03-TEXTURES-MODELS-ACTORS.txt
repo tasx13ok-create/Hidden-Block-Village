@@ -1,0 +1,308 @@
+FULL ART PASS: NON-ICON TEXTURES, WORLD MODELS AND ACTORS
+
+These are not flat inventory icons. Preserve UV layouts, animation metadata and existing dimensions.
+A flat PNG does not replace a worn armor model, entity model, animation or procedural effect.
+
+EXISTING NON-ITEM PNGS
+
+[ ] assets/hvdungeonpictures/textures/pictures/cloud.png | 256x256
+[ ] assets/hvdungeonpictures/textures/pictures/leaf.png | 256x256
+[ ] assets/hvdungeonpictures/textures/pictures/mist.png | 256x256
+[ ] assets/hvdungeonpictures/textures/pictures/sand.png | 256x256
+[ ] assets/hvdungeonpictures/textures/pictures/stone.png | 256x256
+[ ] assets/valearmor/textures/armor/auric_skimmer.png | 256x128
+[ ] assets/valearmor/textures/armor/auric_skimmer_e.png | 256x128
+[ ] assets/valearmor/textures/armor/auric_skimmer_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/auric_skimmer_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/auric_skimmer_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/auric_skimmer_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/auric_skimmer_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/auric_skimmer_n.png | 256x128
+[ ] assets/valearmor/textures/armor/auric_skimmer_s.png | 256x128
+[ ] assets/valearmor/textures/armor/bellbloom.png | 256x128
+[ ] assets/valearmor/textures/armor/bellbloom_e.png | 256x128
+[ ] assets/valearmor/textures/armor/bellbloom_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/bellbloom_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/bellbloom_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/bellbloom_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/bellbloom_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/bellbloom_n.png | 256x128
+[ ] assets/valearmor/textures/armor/bellbloom_s.png | 256x128
+[ ] assets/valearmor/textures/armor/cairnroot.png | 256x128
+[ ] assets/valearmor/textures/armor/cairnroot_e.png | 256x128
+[ ] assets/valearmor/textures/armor/cairnroot_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/cairnroot_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/cairnroot_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/cairnroot_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/cairnroot_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/cairnroot_n.png | 256x128
+[ ] assets/valearmor/textures/armor/cairnroot_s.png | 256x128
+[ ] assets/valearmor/textures/armor/glasschime.png | 256x128
+[ ] assets/valearmor/textures/armor/glasschime_e.png | 256x128
+[ ] assets/valearmor/textures/armor/glasschime_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/glasschime_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/glasschime_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/glasschime_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/glasschime_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/glasschime_n.png | 256x128
+[ ] assets/valearmor/textures/armor/glasschime_s.png | 256x128
+[ ] assets/valearmor/textures/armor/hushvault.png | 256x128
+[ ] assets/valearmor/textures/armor/hushvault_e.png | 256x128
+[ ] assets/valearmor/textures/armor/hushvault_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/hushvault_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/hushvault_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/hushvault_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/hushvault_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/hushvault_n.png | 256x128
+[ ] assets/valearmor/textures/armor/hushvault_s.png | 256x128
+[ ] assets/valearmor/textures/armor/kilnback.png | 256x128
+[ ] assets/valearmor/textures/armor/kilnback_e.png | 256x128
+[ ] assets/valearmor/textures/armor/kilnback_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/kilnback_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/kilnback_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/kilnback_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/kilnback_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/kilnback_n.png | 256x128
+[ ] assets/valearmor/textures/armor/kilnback_s.png | 256x128
+[ ] assets/valearmor/textures/armor/reedrunner.png | 256x128
+[ ] assets/valearmor/textures/armor/reedrunner_e.png | 256x128
+[ ] assets/valearmor/textures/armor/reedrunner_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/reedrunner_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/reedrunner_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/reedrunner_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/reedrunner_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/reedrunner_n.png | 256x128
+[ ] assets/valearmor/textures/armor/reedrunner_s.png | 256x128
+[ ] assets/valearmor/textures/armor/shoalglass.png | 256x128
+[ ] assets/valearmor/textures/armor/shoalglass_e.png | 256x128
+[ ] assets/valearmor/textures/armor/shoalglass_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/shoalglass_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/shoalglass_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/shoalglass_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/shoalglass_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/shoalglass_n.png | 256x128
+[ ] assets/valearmor/textures/armor/shoalglass_s.png | 256x128
+[ ] assets/valearmor/textures/armor/stormloom.png | 256x128
+[ ] assets/valearmor/textures/armor/stormloom_e.png | 256x128
+[ ] assets/valearmor/textures/armor/stormloom_hot.png | 256x128
+[ ] assets/valearmor/textures/armor/stormloom_layer_1.png | 128x64
+[ ] assets/valearmor/textures/armor/stormloom_layer_1_e.png | 128x64
+[ ] assets/valearmor/textures/armor/stormloom_layer_2.png | 128x64
+[ ] assets/valearmor/textures/armor/stormloom_layer_2_e.png | 128x64
+[ ] assets/valearmor/textures/armor/stormloom_n.png | 256x128
+[ ] assets/valearmor/textures/armor/stormloom_s.png | 256x128
+[ ] assets/valeorders/textures/entity/colossus.png | 64x64
+[ ] assets/valeorders/textures/entity/companion_0.png | 64x64
+[ ] assets/valeorders/textures/entity/companion_1.png | 64x64
+[ ] assets/valeorders/textures/entity/companion_2.png | 64x64
+[ ] assets/valeorders/textures/entity/companion_3.png | 64x64
+[ ] assets/valeorders/textures/entity/duelist.png | 64x64
+[ ] assets/valeorders/textures/entity/form_overlay.png | 64x64
+[ ] assets/valeorders/textures/entity/rogue_0.png | 64x64
+[ ] assets/valeorders/textures/entity/rogue_1.png | 64x64
+[ ] assets/valeorders/textures/entity/rogue_2.png | 64x64
+[ ] assets/valeorders/textures/entity/sage.png | 64x64
+[ ] assets/valeorders/textures/entity/sentinel.png | 64x64
+[ ] assets/valeorders/textures/models/armor/bloom_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/bloom_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/current_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/current_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/dawn_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/dawn_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/dusk_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/dusk_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/ember_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/ember_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/flint_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/flint_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/gale_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/gale_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/rime_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/rime_layer_2.png | 64x32
+[ ] assets/valeorders/textures/models/armor/storm_layer_1.png | 64x32
+[ ] assets/valeorders/textures/models/armor/storm_layer_2.png | 64x32
+
+WORLD/BLOCK MODEL ART CONTRACTS (current texture references)
+
+[ ] valeorders:block/kitchen_boiler | all=minecraft:blocks/furnace_top
+[ ] valeorders:block/kitchen_kelp | cross=minecraft:blocks/reeds
+[ ] valeorders:block/kitchen_mill | all=minecraft:blocks/furnace_top
+[ ] valeorders:block/kitchen_redbean_crop_0 | crop=minecraft:blocks/wheat_stage_0
+[ ] valeorders:block/kitchen_redbean_crop_1 | crop=minecraft:blocks/wheat_stage_1
+[ ] valeorders:block/kitchen_redbean_crop_2 | crop=minecraft:blocks/wheat_stage_2
+[ ] valeorders:block/kitchen_redbean_crop_3 | crop=minecraft:blocks/wheat_stage_3
+[ ] valeorders:block/kitchen_redbean_crop_4 | crop=minecraft:blocks/wheat_stage_4
+[ ] valeorders:block/kitchen_redbean_crop_5 | crop=minecraft:blocks/wheat_stage_5
+[ ] valeorders:block/kitchen_redbean_crop_6 | crop=minecraft:blocks/wheat_stage_6
+[ ] valeorders:block/kitchen_redbean_crop_7 | crop=minecraft:blocks/wheat_stage_7
+[ ] valeorders:block/kitchen_rice_crop_0 | crop=minecraft:blocks/wheat_stage_0
+[ ] valeorders:block/kitchen_rice_crop_1 | crop=minecraft:blocks/wheat_stage_1
+[ ] valeorders:block/kitchen_rice_crop_2 | crop=minecraft:blocks/wheat_stage_2
+[ ] valeorders:block/kitchen_rice_crop_3 | crop=minecraft:blocks/wheat_stage_3
+[ ] valeorders:block/kitchen_rice_crop_4 | crop=minecraft:blocks/wheat_stage_4
+[ ] valeorders:block/kitchen_rice_crop_5 | crop=minecraft:blocks/wheat_stage_5
+[ ] valeorders:block/kitchen_rice_crop_6 | crop=minecraft:blocks/wheat_stage_6
+[ ] valeorders:block/kitchen_rice_crop_7 | crop=minecraft:blocks/wheat_stage_7
+[ ] valeorders:block/kitchen_roller | all=minecraft:blocks/furnace_top
+[ ] valeorders:block/kitchen_soybean_crop_0 | crop=minecraft:blocks/wheat_stage_0
+[ ] valeorders:block/kitchen_soybean_crop_1 | crop=minecraft:blocks/wheat_stage_1
+[ ] valeorders:block/kitchen_soybean_crop_2 | crop=minecraft:blocks/wheat_stage_2
+[ ] valeorders:block/kitchen_soybean_crop_3 | crop=minecraft:blocks/wheat_stage_3
+[ ] valeorders:block/kitchen_soybean_crop_4 | crop=minecraft:blocks/wheat_stage_4
+[ ] valeorders:block/kitchen_soybean_crop_5 | crop=minecraft:blocks/wheat_stage_5
+[ ] valeorders:block/kitchen_soybean_crop_6 | crop=minecraft:blocks/wheat_stage_6
+[ ] valeorders:block/kitchen_soybean_crop_7 | crop=minecraft:blocks/wheat_stage_7
+[ ] valeorders:block/kitchen_steamer | all=minecraft:blocks/furnace_top
+[ ] variedcommodities:block/campfire | stone=minecraft:blocks/cobblestone, coal=minecraft:blocks/coal_block, ember=minecraft:blocks/magma, particle=minecraft:blocks/cobblestone
+[ ] variedcommodities:block/table | wood=minecraft:blocks/planks_oak, top=minecraft:blocks/crafting_table_top, particle=minecraft:blocks/planks_oak
+[ ] variedcommodities:block/trading_block | wood=minecraft:blocks/planks_spruce, paper=minecraft:blocks/wool_colored_white, trim=minecraft:blocks/gold_block, particle=minecraft:blocks/planks_spruce
+[ ] waystones:block/waystone | stone=minecraft:blocks/stonebrick, trim=minecraft:blocks/gold_block, particle=minecraft:blocks/stonebrick
+
+ENCOUNTER CHARACTER ROSTER: 136 profiles, not 136 existing portrait files
+All currently share the vanilla Steve/biped render path. Unique skins/models/portraits require renderer routing.
+For optional portraits use assets/valeencounters/textures/portraits/<profile_key>.png (proposed), 64x64 RGBA.
+Do not reuse a portrait PNG as a Minecraft skin; author skin/UV assets against the selected model.
+
+[ ] Ash Watcher | mob_ash_watcher | mob
+[ ] Bracken Watcher | mob_bracken_watcher | mob
+[ ] Copper Watcher | mob_copper_watcher | mob
+[ ] Slate Watcher | mob_slate_watcher | mob
+[ ] Amber Watcher | mob_amber_watcher | mob
+[ ] Fen Watcher | mob_fen_watcher | mob
+[ ] Quarry Watcher | mob_quarry_watcher | mob
+[ ] Reed Watcher | mob_reed_watcher | mob
+[ ] Lantern Watcher | mob_lantern_watcher | mob
+[ ] Ember Watcher | mob_ember_watcher | mob
+[ ] Flint Watcher | mob_flint_watcher | mob
+[ ] Cairn Watcher | mob_cairn_watcher | mob
+[ ] Willow Watcher | mob_willow_watcher | mob
+[ ] Silver Watcher | mob_silver_watcher | mob
+[ ] Cobalt Watcher | mob_cobalt_watcher | mob
+[ ] Moss Watcher | mob_moss_watcher | mob
+[ ] Birch Watcher | mob_birch_watcher | mob
+[ ] Dawn Watcher | mob_dawn_watcher | mob
+[ ] Rain Watcher | mob_rain_watcher | mob
+[ ] Hearth Watcher | mob_hearth_watcher | mob
+[ ] Ash Skirmisher | mob_ash_skirmisher | mob
+[ ] Bracken Skirmisher | mob_bracken_skirmisher | mob
+[ ] Copper Skirmisher | mob_copper_skirmisher | mob
+[ ] Slate Skirmisher | mob_slate_skirmisher | mob
+[ ] Amber Skirmisher | mob_amber_skirmisher | mob
+[ ] Fen Skirmisher | mob_fen_skirmisher | mob
+[ ] Quarry Skirmisher | mob_quarry_skirmisher | mob
+[ ] Reed Skirmisher | mob_reed_skirmisher | mob
+[ ] Lantern Skirmisher | mob_lantern_skirmisher | mob
+[ ] Ember Skirmisher | mob_ember_skirmisher | mob
+[ ] Flint Skirmisher | mob_flint_skirmisher | mob
+[ ] Cairn Skirmisher | mob_cairn_skirmisher | mob
+[ ] Willow Skirmisher | mob_willow_skirmisher | mob
+[ ] Silver Skirmisher | mob_silver_skirmisher | mob
+[ ] Cobalt Skirmisher | mob_cobalt_skirmisher | mob
+[ ] Moss Skirmisher | mob_moss_skirmisher | mob
+[ ] Birch Skirmisher | mob_birch_skirmisher | mob
+[ ] Dawn Skirmisher | mob_dawn_skirmisher | mob
+[ ] Rain Skirmisher | mob_rain_skirmisher | mob
+[ ] Hearth Skirmisher | mob_hearth_skirmisher | mob
+[ ] Ash Sentry | mob_ash_sentry | mob
+[ ] Bracken Sentry | mob_bracken_sentry | mob
+[ ] Copper Sentry | mob_copper_sentry | mob
+[ ] Slate Sentry | mob_slate_sentry | mob
+[ ] Amber Sentry | mob_amber_sentry | mob
+[ ] Fen Sentry | mob_fen_sentry | mob
+[ ] Quarry Sentry | mob_quarry_sentry | mob
+[ ] Reed Sentry | mob_reed_sentry | mob
+[ ] Lantern Sentry | mob_lantern_sentry | mob
+[ ] Ember Sentry | mob_ember_sentry | mob
+[ ] Flint Sentry | mob_flint_sentry | mob
+[ ] Cairn Sentry | mob_cairn_sentry | mob
+[ ] Willow Sentry | mob_willow_sentry | mob
+[ ] Silver Sentry | mob_silver_sentry | mob
+[ ] Cobalt Sentry | mob_cobalt_sentry | mob
+[ ] Moss Sentry | mob_moss_sentry | mob
+[ ] Birch Sentry | mob_birch_sentry | mob
+[ ] Dawn Sentry | mob_dawn_sentry | mob
+[ ] Rain Sentry | mob_rain_sentry | mob
+[ ] Hearth Sentry | mob_hearth_sentry | mob
+[ ] Ash Binder | mob_ash_binder | mob
+[ ] Bracken Binder | mob_bracken_binder | mob
+[ ] Copper Binder | mob_copper_binder | mob
+[ ] Slate Binder | mob_slate_binder | mob
+[ ] Amber Binder | mob_amber_binder | mob
+[ ] Fen Binder | mob_fen_binder | mob
+[ ] Quarry Binder | mob_quarry_binder | mob
+[ ] Reed Binder | mob_reed_binder | mob
+[ ] Lantern Binder | mob_lantern_binder | mob
+[ ] Ember Binder | mob_ember_binder | mob
+[ ] Ash Regent | boss_ash_regent | boss
+[ ] Bracken Regent | boss_bracken_regent | boss
+[ ] Copper Regent | boss_copper_regent | boss
+[ ] Slate Regent | boss_slate_regent | boss
+[ ] Amber Regent | boss_amber_regent | boss
+[ ] Fen Regent | boss_fen_regent | boss
+[ ] Quarry Regent | boss_quarry_regent | boss
+[ ] Reed Regent | boss_reed_regent | boss
+[ ] Lantern Regent | boss_lantern_regent | boss
+[ ] Ember Regent | boss_ember_regent | boss
+[ ] Flint Regent | boss_flint_regent | boss
+[ ] Cairn Regent | boss_cairn_regent | boss
+[ ] Willow Regent | boss_willow_regent | boss
+[ ] Silver Regent | boss_silver_regent | boss
+[ ] Cobalt Regent | boss_cobalt_regent | boss
+[ ] Moss Regent | boss_moss_regent | boss
+[ ] Birch Regent | boss_birch_regent | boss
+[ ] Dawn Regent | boss_dawn_regent | boss
+[ ] Rain Regent | boss_rain_regent | boss
+[ ] Hearth Regent | boss_hearth_regent | boss
+[ ] Ash Marshal | boss_ash_marshal | boss
+[ ] Bracken Marshal | boss_bracken_marshal | boss
+[ ] Copper Marshal | boss_copper_marshal | boss
+[ ] Slate Marshal | boss_slate_marshal | boss
+[ ] Amber Marshal | boss_amber_marshal | boss
+[ ] Fen Marshal | boss_fen_marshal | boss
+[ ] Quarry Marshal | boss_quarry_marshal | boss
+[ ] Reed Marshal | boss_reed_marshal | boss
+[ ] Lantern Marshal | boss_lantern_marshal | boss
+[ ] Ash Companion | companion_ash_companion | companion
+[ ] Bracken Companion | companion_bracken_companion | companion
+[ ] Copper Companion | companion_copper_companion | companion
+[ ] Slate Companion | companion_slate_companion | companion
+[ ] Amber Companion | companion_amber_companion | companion
+[ ] Fen Companion | companion_fen_companion | companion
+[ ] Quarry Companion | companion_quarry_companion | companion
+[ ] Reed Companion | companion_reed_companion | companion
+[ ] Lantern Companion | companion_lantern_companion | companion
+[ ] Ember Companion | companion_ember_companion | companion
+[ ] Flint Companion | companion_flint_companion | companion
+[ ] Cairn Companion | companion_cairn_companion | companion
+[ ] Willow Companion | companion_willow_companion | companion
+[ ] Silver Companion | companion_silver_companion | companion
+[ ] Cobalt Companion | companion_cobalt_companion | companion
+[ ] Moss Companion | companion_moss_companion | companion
+[ ] Birch Companion | companion_birch_companion | companion
+[ ] Dawn Companion | companion_dawn_companion | companion
+[ ] Rain Companion | companion_rain_companion | companion
+[ ] Hearth Companion | companion_hearth_companion | companion
+[ ] Ash Keeper | companion_ash_keeper | companion
+[ ] Bracken Keeper | companion_bracken_keeper | companion
+[ ] Copper Keeper | companion_copper_keeper | companion
+[ ] Slate Keeper | companion_slate_keeper | companion
+[ ] Amber Keeper | companion_amber_keeper | companion
+[ ] Fen Keeper | companion_fen_keeper | companion
+[ ] Quarry Keeper | companion_quarry_keeper | companion
+[ ] Reed Keeper | companion_reed_keeper | companion
+[ ] Lantern Keeper | companion_lantern_keeper | companion
+[ ] Ember Keeper | companion_ember_keeper | companion
+[ ] Flint Keeper | companion_flint_keeper | companion
+[ ] Cairn Keeper | companion_cairn_keeper | companion
+[ ] Willow Keeper | companion_willow_keeper | companion
+[ ] Silver Keeper | companion_silver_keeper | companion
+[ ] Cobalt Keeper | companion_cobalt_keeper | companion
+[ ] Moss Keeper | companion_moss_keeper | companion
+[ ] Birch Keeper | companion_birch_keeper | companion
+
+OTHER ART WORK
+[ ] Residents: guide, clerk and merchant roles currently use vanilla villager textures; bespoke skins and portrait mappings require code.
+[ ] The 76 focus garments and 79 outfit pieces need worn-material/UV designs in addition to their item icons; current code uses vanilla armor textures.
+[ ] Nine original armor profiles: preserve original_roster.json attachment geometry/UVs; use each profile's existing atlas, layer and shader-map dimensions above.
+[ ] Hand-technique and weapon VFX: inspect current renderers and JutsuMath/WeaponMath before proposing sprite sheets. Many effects are procedural geometry and particles.
+[ ] Full entity motions, weapon poses, armor attachments, chakra cloaks and dungeon environmental art are separate deliverables; the icon checklist does not complete them.

@@ -1,0 +1,2895 @@
+ORIGINAL 49-MOD PACK: COMPLETE TOP-LEVEL assets/ PNG INDEX
+
+Filenames and canvas dimensions only. Includes item sprites, armor/skins, GUI atlases, particles, blocks, logos and library examples.
+An atlas may contain many symbols; its regions are not enumerated here. Nested library archives/dynamically generated resources are outside this static scan.
+Not every dependency logo or existing working texture needs replacement. Prioritize game content, then deliberately choose UI reskins.
+Original 3D models and UV contracts must be reviewed before replacing skin/armor texture files. Do not copy source artwork.
+
+!mixinbooter-11.18.jar (1 PNGs)
+[ ] assets/mixinbooter/icon.png | 400x400
+
+[1.12.2]DamageIndicatorsMod-3.5.1.jar (28 PNGs)
+[ ] assets/damageindicatorsmod/cape/donatorcape.png | 64x32
+[ ] assets/defaultskins/default/DIFrameSkin.png | 350x128
+[ ] assets/defaultskins/default/DITypeIcons.png | 256x64
+[ ] assets/defaultskins/default/NamePlate.png | 1x1
+[ ] assets/defaultskins/default/background.png | 64x64
+[ ] assets/defaultskins/default/centerPotions.png | 2x64
+[ ] assets/defaultskins/default/damage.png | 2x32
+[ ] assets/defaultskins/default/health.png | 64x32
+[ ] assets/defaultskins/default/leftPotions.png | 8x32
+[ ] assets/defaultskins/default/rightPotions.png | 8x32
+[ ] assets/defaultskins/minimal/DIFrameSkin.png | 272x71
+[ ] assets/defaultskins/minimal/DITypeIcons.png | 256x64
+[ ] assets/defaultskins/minimal/NamePlate.png | 1x1
+[ ] assets/defaultskins/minimal/background.png | 1x1
+[ ] assets/defaultskins/minimal/centerPotions.png | 1x1
+[ ] assets/defaultskins/minimal/damage.png | 2x32
+[ ] assets/defaultskins/minimal/health.png | 64x32
+[ ] assets/defaultskins/minimal/leftPotions.png | 1x1
+[ ] assets/defaultskins/minimal/rightPotions.png | 1x1
+[ ] assets/defaultskins/wowlike/DIFrameSkin.png | 274x128
+[ ] assets/defaultskins/wowlike/DITypeIcons.png | 256x64
+[ ] assets/defaultskins/wowlike/NamePlate.png | 119x20
+[ ] assets/defaultskins/wowlike/background.png | 61x61
+[ ] assets/defaultskins/wowlike/centerPotions.png | 1x24
+[ ] assets/defaultskins/wowlike/damage.png | 117x10
+[ ] assets/defaultskins/wowlike/health.png | 117x10
+[ ] assets/defaultskins/wowlike/leftPotions.png | 10x24
+[ ] assets/defaultskins/wowlike/rightPotions.png | 10x24
+
+ahznb weapons plus 1.2.1.jar (31 PNGs)
+[ ] assets/ahznbswordsplus/textures/2021_10_05_tobirama-1-19063706.png | 64x64
+[ ] assets/ahznbswordsplus/textures/2024_02_07_ginkaku-22316219.png | 64x64
+[ ] assets/ahznbswordsplus/textures/638156430524570014.png | 500x500
+[ ] assets/ahznbswordsplus/textures/bloodtext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/bloodtexture.png | 16x16
+[ ] assets/ahznbswordsplus/textures/download.png | 1000x1000
+[ ] assets/ahznbswordsplus/textures/ginkakutext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/idktext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/image.png | 168x163
+[ ] assets/ahznbswordsplus/textures/items/6path_chestplate.png | 16x16
+[ ] assets/ahznbswordsplus/textures/items/6path_leggings.png | 16x16
+[ ] assets/ahznbswordsplus/textures/items/bijucloak.png | 64x64
+[ ] assets/ahznbswordsplus/textures/items/bijucloak_kurama.png | 1024x512
+[ ] assets/ahznbswordsplus/textures/items/bijucloakl2.png | 1024x512
+[ ] assets/ahznbswordsplus/textures/items/flyingthundergodtext.png | 50x50
+[ ] assets/ahznbswordsplus/textures/items/ginkakrtext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/items/sevenstatbladetexture.png | 50x50
+[ ] assets/ahznbswordsplus/textures/items/shuriken.png | 64x64
+[ ] assets/ahznbswordsplus/textures/items/shuritext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/mob_effect/bleeding.png | 16x16
+[ ] assets/ahznbswordsplus/textures/mob_effect/shocked.png | 16x16
+[ ] assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_1.png | 1024x512
+[ ] assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_2.png | 64x64
+[ ] assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_1.png | 512x512
+[ ] assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_2.png | 64x64
+[ ] assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_1.png | 64x64
+[ ] assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_2.png | 1024x512
+[ ] assets/ahznbswordsplus/textures/outsutsukicloak.png | 64x64
+[ ] assets/ahznbswordsplus/textures/shocktext.png | 16x16
+[ ] assets/ahznbswordsplus/textures/shocktexture.png | 16x16
+[ ] assets/ahznbswordsplus/textures/shuriken.png | 64x64
+
+ahznbstweaks-2.0.jar (0 PNGs)
+
+almirioncore-1.1.jar (0 PNGs)
+
+AnbuBingoBook - 1.6.1.jar (11 PNGs)
+[ ] assets/anbubingobook/textures/items/amaterasu.png | 64x64
+[ ] assets/anbubingobook/textures/items/anbumask1_item.png | 64x64
+[ ] assets/anbubingobook/textures/items/ems.png | 64x64
+[ ] assets/anbubingobook/textures/items/fcs.png | 309x310
+[ ] assets/anbubingobook/textures/items/itembingo_book.png | 256x256
+[ ] assets/anbubingobook/textures/items/kamui.png | 64x64
+[ ] assets/anbubingobook/textures/items/logo.png | 119x119
+[ ] assets/anbubingobook/textures/items/rinnegan.png | 64x64
+[ ] assets/anbubingobook/textures/items/seal.png | 119x119
+[ ] assets/anbubingobook/textures/items/sharingan.png | 64x64
+[ ] assets/anbubingobook/textures/items/tenseigan.png | 64x64
+
+AppleSkin-mc1.12-1.0.14.jar (1 PNGs)
+[ ] assets/appleskin/textures/icons.png | 256x256
+
+Armourers-Workshop-1.12.2-0.51.0.jar (174 PNGs)
+[ ] assets/armourers_workshop/textures/armour/cube.png | 256x256
+[ ] assets/armourers_workshop/textures/aw_logo_small.png | 256x256
+[ ] assets/armourers_workshop/textures/blocks/advanced-skin-builder/dev-temp.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/armourer/armourer-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/armourer/armourer-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/armourer/armourer-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colour-mixer/colour-mixer-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colour-mixer/colour-mixer-side-overlay.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colour-mixer/colour-mixer-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colour-mixer/colour-mixer-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colourable/colourable-glass.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colourable/colourable.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colourable/marker - Copy.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colourable/marker.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/colourable/noTexture.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/cube.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/dye-table/cyanfluid.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/dye-table/dye-table-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/dye-table/dye-table-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/dye-table/dye-table-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/dye-table/dyetable1.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/dye-table/greenfluid.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/dye-table/magentafluid.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/dye-table/multicolor_water.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/dye-table/redfluid.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/dye-table/yellowfluid.png | 16x512 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/global-skin-library-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/global-skin-library-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/global-skin-library-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/globalskinlibrary1.png | 32x128 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/globalskinlibrary2.png | 32x480 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/global-skin-library/globalskinlibrary3.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/guide.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/hologram-projector/hologram-projector-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/hologram-projector/hologram-projector-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/hologram-projector/hologram-projector-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-back.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-front.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-left.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-right.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit-maker-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/outfit-maker/outfit_maker.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/skin-library/creativelibrary1.png | 32x3872 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/blocks/skin-library/creativelibrary2.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/skin-library/libraryblock1.png | 32x32
+[ ] assets/armourers_workshop/textures/blocks/skin-library/skin-library-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skin-library/skin-library-creative-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skin-library/skin-library-normal-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skin-library/skin-library-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skinnable.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skinning-table/skinning-table-bottom.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skinning-table/skinning-table-side.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skinning-table/skinning-table-top.png | 16x16
+[ ] assets/armourers_workshop/textures/blocks/skinning-table/skinningtable1.png | 32x32
+[ ] assets/armourers_workshop/textures/environment/clouds.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/buttons.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/help.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/list.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/rating.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/scrollbar.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/skin-panel.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/slider-hue.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/tab_icons.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/_controls/tabs.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/advanced_skin_builder/advanced-skin-builder.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/armourer/armourer.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/colour_mixer/colour-mixer.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/common.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/dye_table/dye-table.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/global_library/global-library.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/guide_book/guide-book-page.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/guide_book/guide-book.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/hologram_projector/hologram-projector.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/outfit_maker/outfit-maker.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/player_inventory.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/skin-preview.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/skin_library/armour-library.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/skinning_table/skinning-table.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/wardrobe/wardrobe-1.png | 256x256
+[ ] assets/armourers_workshop/textures/gui/wardrobe/wardrobe-2.png | 256x256
+[ ] assets/armourers_workshop/textures/items/armour-container-chest.png | 16x16
+[ ] assets/armourers_workshop/textures/items/armour-container-feet.png | 16x16
+[ ] assets/armourers_workshop/textures/items/armour-container-head.png | 16x16
+[ ] assets/armourers_workshop/textures/items/armour-container-legs.png | 16x16
+[ ] assets/armourers_workshop/textures/items/armour-container.png | 16x16
+[ ] assets/armourers_workshop/textures/items/armourers-hammer.png | 16x16
+[ ] assets/armourers_workshop/textures/items/blend-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/block-marker.png | 16x16
+[ ] assets/armourers_workshop/textures/items/burn-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/colour-noise-tool-small.png | 16x16
+[ ] assets/armourers_workshop/textures/items/colour-noise-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/colour-picker-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/colour-picker.png | 16x16
+[ ] assets/armourers_workshop/textures/items/debug-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/dodge-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/dye-bottle-paint.png | 16x16
+[ ] assets/armourers_workshop/textures/items/dye-bottle.png | 16x16
+[ ] assets/armourers_workshop/textures/items/gift-sack-dyable-ribbon.png | 16x16
+[ ] assets/armourers_workshop/textures/items/gift-sack-dyable.png | 16x16
+[ ] assets/armourers_workshop/textures/items/gift-sack.png | 16x16
+[ ] assets/armourers_workshop/textures/items/guide-book.png | 16x16
+[ ] assets/armourers_workshop/textures/items/hue-tool-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/hue-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/linking-tool-link.png | 16x16
+[ ] assets/armourers_workshop/textures/items/linking-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/mannequin-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/outfit.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paint-roller-face-mode-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paint-roller-face-mode.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paint-roller-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paint-roller.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintball-gun-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintball-gun.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintbrush-face-mode-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintbrush-face-mode.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintbrush-tip.png | 16x16
+[ ] assets/armourers_workshop/textures/items/paintbrush.png | 16x16
+[ ] assets/armourers_workshop/textures/items/palette.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-chest.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-feet.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-head.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-outfit.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-pants.png | 16x16
+[ ] assets/armourers_workshop/textures/items/scroll-wings.png | 16x16
+[ ] assets/armourers_workshop/textures/items/shade-noise-tool-small.png | 16x16
+[ ] assets/armourers_workshop/textures/items/shade-noise-tool.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-arrow.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-axe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-block.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-bow.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-chest.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-feet.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-head.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-hoe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-item.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-legs.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-loading.png | 16x128 | animated .mcmeta exists
+[ ] assets/armourers_workshop/textures/items/skin/template-outfit.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-part.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-pickaxe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-shield.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-shovel.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-skirt.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-sword.png | 16x16
+[ ] assets/armourers_workshop/textures/items/skin/template-wings.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/dye-bottle.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-arrow.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-axe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-bow.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-chest.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-feet.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-head.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-hoe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-legs.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-outfit.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-part.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-pickaxe.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-shield.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-shovel.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-skirt.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-sword.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/skin-wings.png | 16x16
+[ ] assets/armourers_workshop/textures/items/slot/slot-advanced.png | 16x16
+[ ] assets/armourers_workshop/textures/items/soap-clean.png | 16x16
+[ ] assets/armourers_workshop/textures/items/soap.png | 16x16
+[ ] assets/armourers_workshop/textures/items/template-blank.png | 16x16
+[ ] assets/armourers_workshop/textures/items/wand-of-style.png | 16x16
+[ ] assets/armourers_workshop/textures/models/mini-armourer.png | 64x64
+[ ] assets/armourers_workshop/textures/models/model-block-skinnable.png | 32x16
+[ ] assets/armourers_workshop/textures/other/nanoha-circle.png | 512x512
+[ ] assets/armourers_workshop/textures/particles/particles.png | 128x128
+[ ] assets/armourers_workshop/textures/tile-entities/global-skin-library.png | 64x32
+[ ] assets/armourers_workshop/textures/tile-entities/markers.png | 128x128
+
+Baryon Expansion_beta2.jar (16 PNGs)
+[ ] assets/baryonexpansion/textures/baryonchoumei_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryongyuki_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonisobu_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonkokou_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonmatatabi_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonsaiken_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonshukaku_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/baryonsongoku_mode.png | 512x512
+[ ] assets/baryonexpansion/textures/items/baryonchoumeicloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryongyukicloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonisobucloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonkokoucloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonmatatabicloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonsaikencloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonshukakucloak.png | 64x64
+[ ] assets/baryonexpansion/textures/items/baryonsongokucloak.png | 64x64
+
+biju_unleashing-1.7.3.jar (26 PNGs)
+[ ] assets/biju_unleashing/textures/biju/ninetailskcm_orange_intense.png | 512x512
+[ ] assets/biju_unleashing/textures/bijucloak_kcm2.png | 1024x512
+[ ] assets/biju_unleashing/textures/bijucloak_kurama.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_choumei.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_gyuki.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_isobu.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_kokuo.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_matatabi.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_orange_intense_nostripes.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_saiken.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_shukaku.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kcm2_songoku.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_choumei.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_gyuki.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_isobu.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_kokuo.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_matatabi.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_orange_intense_nostripes.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_saiken.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_shukaku.png | 1024x512
+[ ] assets/biju_unleashing/textures/cloak/bijucloak_kurama_songoku.png | 1024x512
+[ ] assets/biju_unleashing/textures/items/icon_defeated_biju.png | 256x256
+[ ] assets/biju_unleashing/textures/items/icon_p1_400_xp.png | 256x256
+[ ] assets/biju_unleashing/textures/items/icon_phase2_4800_xp.png | 256x256
+[ ] assets/biju_unleashing/textures/items/icon_phase2_first_activation.png | 256x256
+[ ] assets/biju_unleashing/textures/items/icon_root.png | 256x256
+
+BorutoMod Addon byAnimeSupremeTeam v1.0.jar (40 PNGs)
+[ ] assets/borutomodaddononero/textures/armor_boruto_texture.png | 1266x633
+[ ] assets/borutomodaddononero/textures/blocks/chakra_axe_texture.png | 480x480
+[ ] assets/borutomodaddononero/textures/blocks/chakra_knife_texture.png | 480x480
+[ ] assets/borutomodaddononero/textures/blocks/chakra_spear_texture.png | 480x480
+[ ] assets/borutomodaddononero/textures/blocks/chakra_thimble_texture.png | 480x480
+[ ] assets/borutomodaddononero/textures/blocks/icon_karma_boruto_stage_2_texture.png | 250x250
+[ ] assets/borutomodaddononero/textures/blocks/icon_karma_kawaki_stage_2_texture.png | 250x250
+[ ] assets/borutomodaddononero/textures/boro_start.png | 64x64
+[ ] assets/borutomodaddononero/textures/cloack_isshiki.png | 512x512
+[ ] assets/borutomodaddononero/textures/electric_armor.png | 128x128
+[ ] assets/borutomodaddononero/textures/entity/daikokutencube.png | 256x256
+[ ] assets/borutomodaddononero/textures/isshiki_boss_texture.png | 64x64
+[ ] assets/borutomodaddononero/textures/isshiki_dojutsu_texture.png | 2048x512
+[ ] assets/borutomodaddononero/textures/items/antidote_icon.png | 128x128
+[ ] assets/borutomodaddononero/textures/items/arsenal_otsutsuki.png | 768x768
+[ ] assets/borutomodaddononero/textures/items/boro_core_icon.png | 480x480
+[ ] assets/borutomodaddononero/textures/items/chakra_axe_icon.png | 768x768
+[ ] assets/borutomodaddononero/textures/items/chakra_spear_icon.png | 768x768
+[ ] assets/borutomodaddononero/textures/items/chakra_thimble_icon.png | 768x768
+[ ] assets/borutomodaddononero/textures/items/hotdog.png | 180x180
+[ ] assets/borutomodaddononero/textures/items/icon_boruto_season_1_body.png | 16x16
+[ ] assets/borutomodaddononero/textures/items/icon_boruto_season_1_legs.png | 16x16
+[ ] assets/borutomodaddononero/textures/items/isshiki_dojutsu_icon.png | 70x70
+[ ] assets/borutomodaddononero/textures/items/isshikicloackitem.png | 64x64
+[ ] assets/borutomodaddononero/textures/items/jogan_dojutsu_icon.png | 256x256
+[ ] assets/borutomodaddononero/textures/items/karma_boruto_icon.png | 250x250
+[ ] assets/borutomodaddononero/textures/items/karma_icon_advancement.png | 32x64 | animated .mcmeta exists
+[ ] assets/borutomodaddononero/textures/items/karma_kawaki_icon.png | 250x250
+[ ] assets/borutomodaddononero/textures/items/nue_icon_tab.png | 256x256
+[ ] assets/borutomodaddononero/textures/items/senrigan_icon.png | 320x320
+[ ] assets/borutomodaddononero/textures/jogan_dojutsu_texture.png | 2048x512
+[ ] assets/borutomodaddononero/textures/karma_boruto_stage_2_texture.png | 2048x2048
+[ ] assets/borutomodaddononero/textures/karma_kawaki_stage_2_texture.png | 2048x2048
+[ ] assets/borutomodaddononero/textures/models/armor/testing_layer_1.png | 64x32
+[ ] assets/borutomodaddononero/textures/models/armor/testing_layer_2.png | 64x32
+[ ] assets/borutomodaddononero/textures/momoshiki_boss_texture.png | 64x64
+[ ] assets/borutomodaddononero/textures/samidare_spear.png | 128x128
+[ ] assets/borutomodaddononero/textures/samidare_speівфіфвar.png | 128x128
+[ ] assets/borutomodaddononero/textures/senrigan_texture.png | 2048x512
+[ ] assets/borutomodaddononero/textures/texture_boro_core.png | 16x16
+
+Clumps-3.1.2.jar (0 PNGs)
+
+colorfulhealthbar-0.0.4a.jar (2 PNGs)
+[ ] assets/colorfulhealthbar/textures/gui/absorption.png | 256x256
+[ ] assets/colorfulhealthbar/textures/gui/health.png | 256x256
+
+Controlling-3.0.12.4.jar (0 PNGs)
+
+CosmeticArmorReworked-1.12.2-v5a.jar (1 PNGs)
+[ ] assets/cosmeticarmorreworked/textures/gui/cosarmorinventory.png | 256x256
+
+CustomNPCs_1.12.2-(05Jul20).jar (593 PNGs)
+[ ] assets/customnpcs/textures/armor/assassin_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/assassin_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/commissar_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/commissar_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/cowleather_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/cowleather_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/crown1_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/crown2_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/demonic_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/demonic_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullbronze_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullbronze_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullcloth_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fulldiamond_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullemerald_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullemerald_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullgold_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fulliron_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullwood_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/fullwood_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/infantry_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/mask_1.png | 128x64
+[ ] assets/customnpcs/textures/armor/mithril_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/mithril_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/nanorum_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/nanorum_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/ninja_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/ninja_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/officer_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/papercrown_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/soldier_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/soldier_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/tactical_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/tuxido_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/tuxido_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/wizard_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/wizard_2.png | 64x32
+[ ] assets/customnpcs/textures/armor/x407_1.png | 64x32
+[ ] assets/customnpcs/textures/armor/x407_2.png | 64x32
+[ ] assets/customnpcs/textures/blocks/border.png | 16x16
+[ ] assets/customnpcs/textures/blocks/builder_block.png | 16x16
+[ ] assets/customnpcs/textures/blocks/copy_block.png | 16x16
+[ ] assets/customnpcs/textures/blocks/npcredstoneactiveblock.png | 16x16
+[ ] assets/customnpcs/textures/blocks/npcredstoneblock.png | 16x16
+[ ] assets/customnpcs/textures/blocks/npcscriptedblock.png | 16x16
+[ ] assets/customnpcs/textures/blocks/npcscripteddoor_lower.png | 16x16
+[ ] assets/customnpcs/textures/blocks/npcscripteddoor_upper.png | 16x16
+[ ] assets/customnpcs/textures/blocks/waypoint.png | 16x16
+[ ] assets/customnpcs/textures/cloak/baconcape.png | 64x32
+[ ] assets/customnpcs/textures/cloak/bloodycape.png | 64x32
+[ ] assets/customnpcs/textures/cloak/enderdragoncape.png | 64x32
+[ ] assets/customnpcs/textures/cloak/mojang.png | 64x32
+[ ] assets/customnpcs/textures/cloak/raggedbrowncloak.png | 64x32
+[ ] assets/customnpcs/textures/cloak/raggeddarkbrowncloak.png | 64x32
+[ ] assets/customnpcs/textures/cloak/raggeddarkcloak.png | 64x32
+[ ] assets/customnpcs/textures/cloak/raggedgreycloak.png | 64x32
+[ ] assets/customnpcs/textures/cloak/raggedpurplecloak.png | 64x32
+[ ] assets/customnpcs/textures/cloak/skullcape.png | 64x32
+[ ] assets/customnpcs/textures/cloak/translatorcape.png | 64x32
+[ ] assets/customnpcs/textures/entity/alex_skins/alex_2.png | 64x64
+[ ] assets/customnpcs/textures/entity/crystal/aquacrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/aquacrystalfloating.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/bank.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/burningcrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/burningcrystalfloating.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/corruptcrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/corruptfloatingcrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/crystalblackfloating.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/electriccrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/electriccrystalfloating.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/elemental lava.png | 64x32
+[ ] assets/customnpcs/textures/entity/crystal/elemental psycic.png | 64x32
+[ ] assets/customnpcs/textures/entity/crystal/endercrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/enderfloatingcrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/marionoteblock.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/mckbr.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/naturecrystal.png | 128x64
+[ ] assets/customnpcs/textures/entity/crystal/naturecrystalfloating.png | 128x64
+[ ] assets/customnpcs/textures/entity/dragon/blackdragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/bluedragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/bronzedragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/cyandragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/emeralddragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/goldendragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/graydragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/greendragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/magentadragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/orangedragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/pinkdragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/purpledragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/reddragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/reddragon2.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/seadragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/skeleton dragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dragon/yellowdragon.png | 256x256
+[ ] assets/customnpcs/textures/entity/dwarffemale/blonddwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarffemale/gingerdwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarffemale/gingerdwarf2.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarffemale/ignir.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarffemale/simone.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/beardeddwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/blacksmith.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarf_blacksmith.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarf_keeper.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarf_leader.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarfking.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/dwarfstatue.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/elderlydwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/gingerking.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/gingerknight.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/goblin.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/high_class_dwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/high_class_dwarf_2.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/hobbit.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/miner.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/moustacheddwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/one_eye_blind_dwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/simon.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/somedwarf.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/throrin.png | 64x64
+[ ] assets/customnpcs/textures/entity/dwarfmale/viking.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/darkelffemale.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elffemale.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfmage.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfqueen.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfqueenformal.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfsoldier.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfsoldierhelmet.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/elfwarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/elffemale/woodelffemale.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/blondelf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/blood_elf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/blood_elf_mage.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/dark_elf knight.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/dark_elf librarian.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/dark_elf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/darkelfcitizen.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/elf_asassin_2.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/elfknight.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/elfmale.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/engineer_elf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/forestelf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/high_class_knight_elf.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/link.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/therit.png | 64x64
+[ ] assets/customnpcs/textures/entity/elfmale/woodelf.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/albinochibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/enderghost.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/friendlyenderchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/iceenderchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/mrenderchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/msenderchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/netherchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderchibi/slenderchibi.png | 64x64
+[ ] assets/customnpcs/textures/entity/enderman/apparation.png | 64x32
+[ ] assets/customnpcs/textures/entity/enderman/ender mage.png | 64x32
+[ ] assets/customnpcs/textures/entity/enderman/enderman.png | 64x32
+[ ] assets/customnpcs/textures/entity/enderman/slenderman.png | 64x32
+[ ] assets/customnpcs/textures/entity/furryfemale/angelblonde.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/bunnyfemale.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/leopard female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/leopard hunter female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/leopard straw hat female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/leopard trader female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/leopard warrior female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/snow leopard female hunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/snow leopard female straw hat.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/snow leopard female trader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/snow leopard female warrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/snow leopard female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/tiger female hunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/tiger female straw hat.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/tiger female trader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/tiger female warrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/tiger female.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfblack.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfblackhunter .png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfblacksteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfblacktrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfblackwarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfbrown.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfbrownhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfbrownsteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfbrowntrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfbrownwarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfgrey.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfgreyhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfgreysteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfgreytrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolfgreywarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolflightgrey.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolflightgreyhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolflightgreysteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolflightgreytrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furryfemale/wolflightgreywarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/bunny.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/dragongreen.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/leopard hunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/leopard straw hat.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/leopard trader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/leopard warrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/leopard.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/reaper.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/snow leopard hunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/snow leopard straw hat.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/snow leopard trader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/snow leopard warrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/snowleopard.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/tiger hunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/tiger straw hat.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/tiger trader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/tiger warrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/tiger.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfblack.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfblackhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfblacksteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfblacktrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfblackwarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfbrown.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfbrownhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfbrownsteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfbrowntrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfbrownwarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfgrey.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfgreyhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfgreysteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfgreytraderwolf.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolfgreywarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolflightgrey.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolflightgreyhunter.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolflightgreymodelsteampunk.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolflightgreyrader.png | 64x64
+[ ] assets/customnpcs/textures/entity/furrymale/wolflightgreywarrior.png | 64x64
+[ ] assets/customnpcs/textures/entity/golem/castle knight.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/ender brute.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/iron golem.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/loader.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/nether golem.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/police golem.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/sand monster.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/securitron v2.png | 128x128
+[ ] assets/customnpcs/textures/entity/golem/stone guardian.png | 128x128
+[ ] assets/customnpcs/textures/entity/humanfemale/bodyguardstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/camoradiostephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/chefstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/doctorstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/magestephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/mailmanstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/mcdstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/minerstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/pinstripesstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/raggedybardstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/robesblackstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/robesbrownstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/robeswhiteshepanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/roseta.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/steampunkstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/stephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/townsmanstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/traderstepahnie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/tribeelderwoman.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/tribegirl.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/tribewoman1.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/tribewoman2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/tribewoman3.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/waitressstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/wizardstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanfemale/woundedstephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/arcticsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/bodyguardsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/camoradiosteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/camospecopssteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/camosteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/casualsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/chefsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/doctorsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/elderlysteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/evil_gold_knight.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/firesteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/gangstersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/guardsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/guardsteve2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/king.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/kingsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/knightsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/kungfusteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/londonguard.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/magesteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/mailmansteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/mcdsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/mercenarysteve 2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/mercenarysteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/minersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/pinstripessteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/prieststeve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/prisonersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/raggedybardsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/robesblacksteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/robesbrownsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/robeswhitesteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/steampunksteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/steve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/steve64x32.png | 64x32
+[ ] assets/customnpcs/textures/entity/humanmale/townsmansteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tradersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribeboy.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribeelder.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribehunter1.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribehunter2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribekimba.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tribeman.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/tuxedosteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/villageroldsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/villagersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/villagersteve2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/waitersteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/white_knight.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/white_knight_2.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/wizardsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/humanmale/woundedsteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/monsterfemale/herobrine.png | 64x64
+[ ] assets/customnpcs/textures/entity/monsterfemale/zombiestephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/classy_zombie.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/death.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/demonsalesman.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/desertzombie.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/disfiguredzombie.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/endermage.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/flesh.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/frozencorpse.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/ghost king.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/ghostgrey.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/ghostred.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/ghostyellow.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/herobrine.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/ogre.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/sandmonster.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/securitron.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/skull_mage.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/stonegolem.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/teczombie.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/undead king.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/undead_monster.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/zombiebloody.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/zombiemage.png | 64x64
+[ ] assets/customnpcs/textures/entity/monstermale/zombiesteve.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagafemale/claire.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagafemale/creepsnake.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagafemale/ender snake.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagafemale/naga stephanie pink.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagafemale/naga stephanie.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/cobra.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/creepersneeper.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/endersnake.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/finsample.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga black.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga blue.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga gray.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga green.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga red.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 1.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 2.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 3.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 4.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 5.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 6.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga steve 7.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga white.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/naga yellow.png | 64x64
+[ ] assets/customnpcs/textures/entity/nagamale/snake.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/genericfemaleorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/genericfemaleorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/genericfemaleorc3.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/guardfemaleorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/guardfemaleorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/leatherarmoredfemaleorc.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/mercenaryfemaleorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/mercenaryfemaleorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/mercenaryfemaleorc3.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcfemale/strandedfemaleorc.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/genericorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/genericorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/genericorc3.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/giant.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/giant_2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/giant_3.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/guardorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/guardorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/leatherarmoredorc.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/mercenaryorc1.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/mercenaryorc2.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/mercenaryorc3.png | 64x64
+[ ] assets/customnpcs/textures/entity/orcmale/strandedorc.png | 64x64
+[ ] assets/customnpcs/textures/entity/ponies/minelp aloe.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp apple bloom.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp applejack (with hat).png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp applejack.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp bat pony dee dee.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp bat pony echo.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp bat ponyosina.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp berry punch.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp big mac.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp blueberry muffin.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp bon bon.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp brolly.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp caramel.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp carrot top.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp cheerilee.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp cherries jubilee.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp cherry.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp chocolate sun.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp cloud kicker.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp colgate.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp crescent.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp derpy hooves.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp dj pon3.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp doctor whooves.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp endless clouds.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp fluttershy.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp golden harvest.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp heartstrings.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp holly dash.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp lemon hearts.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp lemon tart.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp lotus.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp lyra.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp north pole.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp nurse redheart.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp octavia.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp orange box.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp orange wafer.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp orchid dew.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp pegasus guard.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp pinkie pie.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp princess celestia.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp princess luna s2.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp rainbow dash.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp raindrop.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp rarity.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp roseluck.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp roy g bow.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp scootaloo.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp soarin.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp sparkler.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp spitfire.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp star sparkle.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp sweetie belle.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp trixie.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp twilight sparkle.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp under d weather.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp unicorn guard.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/minelp velvet hooves.png | 64x32
+[ ] assets/customnpcs/textures/entity/ponies/normalhorse.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/ancient skeleton.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/bloody skeleton.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/golden skeleton.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton archer.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton king.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton mage.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton priest 2.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton priest.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton villager.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton warrior.png | 64x32
+[ ] assets/customnpcs/textures/entity/skeleton/skeleton.png | 64x32
+[ ] assets/customnpcs/textures/entity/slime/chest.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/coal_ore.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/cobblestone.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/diamond_ore.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/dirt.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/gold_ore.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/grass.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/iron_ore.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/magmaslime.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/redstone_ore.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/slime.png | 64x64
+[ ] assets/customnpcs/textures/entity/slime/stone.png | 64x64
+[ ] assets/customnpcs/textures/entity/villagers/bearded.png | 64x64
+[ ] assets/customnpcs/textures/entity/villagers/companion.png | 64x64
+[ ] assets/customnpcs/textures/entity/villagers/fisher.png | 64x64
+[ ] assets/customnpcs/textures/entity/villagers/oldfarmer.png | 64x64
+[ ] assets/customnpcs/textures/entity/villagers/shopkeeper.png | 64x64
+[ ] assets/customnpcs/textures/gui/arrowbuttons.png | 256x256
+[ ] assets/customnpcs/textures/gui/bankchest.png | 256x256
+[ ] assets/customnpcs/textures/gui/bgfilled.png | 256x256
+[ ] assets/customnpcs/textures/gui/carpentry.png | 256x256
+[ ] assets/customnpcs/textures/gui/color.png | 1024x1024
+[ ] assets/customnpcs/textures/gui/companion.png | 256x256
+[ ] assets/customnpcs/textures/gui/companion_empty.png | 256x256
+[ ] assets/customnpcs/textures/gui/companioninv.png | 256x256
+[ ] assets/customnpcs/textures/gui/extrasmallbg.png | 256x256
+[ ] assets/customnpcs/textures/gui/follower.png | 256x256
+[ ] assets/customnpcs/textures/gui/followerhire.png | 256x256
+[ ] assets/customnpcs/textures/gui/followersetup.png | 256x256
+[ ] assets/customnpcs/textures/gui/indicator.png | 512x512
+[ ] assets/customnpcs/textures/gui/info.png | 256x256
+[ ] assets/customnpcs/textures/gui/inventorymenu.png | 256x256
+[ ] assets/customnpcs/textures/gui/invisible.png | 16x16
+[ ] assets/customnpcs/textures/gui/largebg.png | 256x256
+[ ] assets/customnpcs/textures/gui/logo.png | 252x70
+[ ] assets/customnpcs/textures/gui/menubg.png | 256x256
+[ ] assets/customnpcs/textures/gui/menusidebutton.png | 256x256
+[ ] assets/customnpcs/textures/gui/menutopbutton.png | 256x256
+[ ] assets/customnpcs/textures/gui/misc.png | 256x256
+[ ] assets/customnpcs/textures/gui/npcbanksetup.png | 256x256
+[ ] assets/customnpcs/textures/gui/npcinv.png | 256x256
+[ ] assets/customnpcs/textures/gui/npcitemgiver.png | 256x256
+[ ] assets/customnpcs/textures/gui/questreward.png | 256x256
+[ ] assets/customnpcs/textures/gui/questtypeitem.png | 256x256
+[ ] assets/customnpcs/textures/gui/recipes.png | 256x256
+[ ] assets/customnpcs/textures/gui/scroll.png | 256x256
+[ ] assets/customnpcs/textures/gui/slot.png | 256x256
+[ ] assets/customnpcs/textures/gui/smallbg.png | 256x256
+[ ] assets/customnpcs/textures/gui/standardbg.png | 256x256
+[ ] assets/customnpcs/textures/gui/talent.png | 256x256
+[ ] assets/customnpcs/textures/gui/trader.png | 256x256
+[ ] assets/customnpcs/textures/gui/tradersetup.png | 256x256
+[ ] assets/customnpcs/textures/gui/tradingblock.png | 256x256
+[ ] assets/customnpcs/textures/gui/wheel.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel1.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel2.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel3.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel4.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel5.png | 512x512
+[ ] assets/customnpcs/textures/gui/wheel6.png | 512x512
+[ ] assets/customnpcs/textures/items/npcscripteddoor.png | 16x16
+[ ] assets/customnpcs/textures/items/npcsoulstoneempty.png | 16x16
+[ ] assets/customnpcs/textures/items/npcsoulstonefilled.png | 16x16
+[ ] assets/customnpcs/textures/items/scripted_item.png | 16x16
+[ ] assets/customnpcs/textures/marks/cross.png | 32x32
+[ ] assets/customnpcs/textures/marks/exclamation.png | 32x32
+[ ] assets/customnpcs/textures/marks/pointer.png | 32x32
+[ ] assets/customnpcs/textures/marks/question.png | 32x32
+[ ] assets/customnpcs/textures/marks/skull.png | 32x32
+[ ] assets/customnpcs/textures/marks/star.png | 32x32
+[ ] assets/customnpcs/textures/models/carpentrybench.png | 128x64
+[ ] assets/customnpcs/textures/models/mailbox1.png | 128x256
+[ ] assets/customnpcs/textures/models/mailbox2.png | 256x128
+[ ] assets/customnpcs/textures/models/mailbox3.png | 256x128
+[ ] assets/customnpcs/textures/overlays/ender_eyes.png | 64x64
+[ ] assets/customnpcs/textures/overlays/evil_eyes.png | 64x64
+[ ] assets/customnpcs/textures/overlays/ghost_eyes.png | 64x32
+[ ] assets/customnpcs/textures/overlays/goggles.png | 64x64
+[ ] assets/customnpcs/textures/overlays/herobrine_eyes.png | 64x64
+[ ] assets/customnpcs/textures/overlays/old_ender_eyes.png | 64x64
+[ ] assets/customnpcs/textures/overlays/teczombie_eyes.png | 64x64
+[ ] assets/moreplayermodels/textures/beard/0.png | 64x64
+[ ] assets/moreplayermodels/textures/beard/1.png | 64x64
+[ ] assets/moreplayermodels/textures/beard/2.png | 64x64
+[ ] assets/moreplayermodels/textures/beard/3.png | 64x64
+[ ] assets/moreplayermodels/textures/claws/0.png | 64x64
+[ ] assets/moreplayermodels/textures/ears/0.png | 64x64
+[ ] assets/moreplayermodels/textures/ears/1.png | 64x64
+[ ] assets/moreplayermodels/textures/fin/0.png | 64x64
+[ ] assets/moreplayermodels/textures/fin/1.png | 64x64
+[ ] assets/moreplayermodels/textures/gui/arrowbuttons.png | 256x256
+[ ] assets/moreplayermodels/textures/gui/color.png | 1024x1024
+[ ] assets/moreplayermodels/textures/gui/color_gui.png | 256x256
+[ ] assets/moreplayermodels/textures/gui/misc.png | 256x256
+[ ] assets/moreplayermodels/textures/hair/0.png | 64x64
+[ ] assets/moreplayermodels/textures/hair/1.png | 64x64
+[ ] assets/moreplayermodels/textures/hair/2.png | 64x64
+[ ] assets/moreplayermodels/textures/hair/3.png | 64x64
+[ ] assets/moreplayermodels/textures/horns/0.png | 64x64
+[ ] assets/moreplayermodels/textures/horns/1.png | 64x64
+[ ] assets/moreplayermodels/textures/horns/2.png | 64x64
+[ ] assets/moreplayermodels/textures/legs/1.png | 64x64
+[ ] assets/moreplayermodels/textures/legs/2.png | 64x64
+[ ] assets/moreplayermodels/textures/legs/3.png | 128x128
+[ ] assets/moreplayermodels/textures/legs/4.png | 64x64
+[ ] assets/moreplayermodels/textures/legs/5.png | 64x64
+[ ] assets/moreplayermodels/textures/mohawk/0.png | 13x13
+[ ] assets/moreplayermodels/textures/mohawk/1.png | 13x13
+[ ] assets/moreplayermodels/textures/particles/0.png | 64x32
+[ ] assets/moreplayermodels/textures/particles/1.png | 64x32
+[ ] assets/moreplayermodels/textures/skirt/0.png | 256x256
+[ ] assets/moreplayermodels/textures/snout/0.png | 64x64
+[ ] assets/moreplayermodels/textures/snout/1.png | 64x64
+[ ] assets/moreplayermodels/textures/snout/2.png | 64x64
+[ ] assets/moreplayermodels/textures/snout/3.png | 64x64
+[ ] assets/moreplayermodels/textures/snout/4.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/0-1.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/0.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/1.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/2.png | 32x32
+[ ] assets/moreplayermodels/textures/tail/3.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/4.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/5.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/6.png | 64x64
+[ ] assets/moreplayermodels/textures/tail/7.png | 64x64
+[ ] assets/moreplayermodels/textures/wings/0.png | 64x64
+[ ] assets/moreplayermodels/textures/wings/1.png | 64x64
+[ ] assets/moreplayermodels/textures/wings/2.png | 64x64
+
+Essential_1-5-1_forge_1-12-2.jar (0 PNGs)
+
+Fluidlogged-API-v3.3.3-mc1.12.2.jar (0 PNGs)
+
+FTBLib-5.4.7.2.jar (83 PNGs)
+[ ] assets/ftblib/textures/blocks/no_texture.png | 16x16
+[ ] assets/ftblib/textures/gui/background_squares.png | 256x256
+[ ] assets/ftblib/textures/gui/entity.png | 32x32 | animated .mcmeta exists
+[ ] assets/ftblib/textures/gui/missing_image.png | 128x128
+[ ] assets/ftblib/textures/gui/teams.png | 256x256
+[ ] assets/ftblib/textures/icons/accept.png | 16x16
+[ ] assets/ftblib/textures/icons/accept_gray.png | 16x16
+[ ] assets/ftblib/textures/icons/add.png | 16x16
+[ ] assets/ftblib/textures/icons/add_gray.png | 16x16
+[ ] assets/ftblib/textures/icons/art.png | 16x16
+[ ] assets/ftblib/textures/icons/back.png | 16x16
+[ ] assets/ftblib/textures/icons/beacon.png | 16x16
+[ ] assets/ftblib/textures/icons/bed.png | 16x16
+[ ] assets/ftblib/textures/icons/bell.png | 16x16
+[ ] assets/ftblib/textures/icons/bin.png | 16x16
+[ ] assets/ftblib/textures/icons/blank.png | 16x16
+[ ] assets/ftblib/textures/icons/blank_blue.png | 16x16
+[ ] assets/ftblib/textures/icons/blue_button.png | 16x16
+[ ] assets/ftblib/textures/icons/blue_grid.png | 16x16
+[ ] assets/ftblib/textures/icons/bug.png | 16x16
+[ ] assets/ftblib/textures/icons/camera.png | 16x16
+[ ] assets/ftblib/textures/icons/cancel.png | 16x16
+[ ] assets/ftblib/textures/icons/chat.png | 16x16
+[ ] assets/ftblib/textures/icons/check.png | 16x16
+[ ] assets/ftblib/textures/icons/close.png | 16x16
+[ ] assets/ftblib/textures/icons/color_blank.png | 16x16
+[ ] assets/ftblib/textures/icons/color_hsb.png | 16x16
+[ ] assets/ftblib/textures/icons/color_rgb.png | 16x16
+[ ] assets/ftblib/textures/icons/compass.png | 16x16
+[ ] assets/ftblib/textures/icons/controller.png | 16x16
+[ ] assets/ftblib/textures/icons/diamond.png | 16x16
+[ ] assets/ftblib/textures/icons/dice.png | 16x16
+[ ] assets/ftblib/textures/icons/down.png | 16x16
+[ ] assets/ftblib/textures/icons/feather.png | 16x16
+[ ] assets/ftblib/textures/icons/friends.png | 16x16
+[ ] assets/ftblib/textures/icons/globe.png | 16x16
+[ ] assets/ftblib/textures/icons/heart.png | 16x16
+[ ] assets/ftblib/textures/icons/info.png | 16x16
+[ ] assets/ftblib/textures/icons/info_gray.png | 16x16
+[ ] assets/ftblib/textures/icons/inv_in.png | 16x16
+[ ] assets/ftblib/textures/icons/inv_io.png | 16x16
+[ ] assets/ftblib/textures/icons/inv_none.png | 16x16
+[ ] assets/ftblib/textures/icons/inv_out.png | 16x16
+[ ] assets/ftblib/textures/icons/jacket.png | 16x16
+[ ] assets/ftblib/textures/icons/left.png | 16x16
+[ ] assets/ftblib/textures/icons/lock.png | 16x16
+[ ] assets/ftblib/textures/icons/lock_open.png | 16x16
+[ ] assets/ftblib/textures/icons/map.png | 16x16
+[ ] assets/ftblib/textures/icons/marker.png | 16x16
+[ ] assets/ftblib/textures/icons/money.png | 16x16
+[ ] assets/ftblib/textures/icons/money_bag.png | 16x16
+[ ] assets/ftblib/textures/icons/notes.png | 16x16
+[ ] assets/ftblib/textures/icons/offline.png | 16x16
+[ ] assets/ftblib/textures/icons/online.png | 16x16
+[ ] assets/ftblib/textures/icons/online_red.png | 16x16
+[ ] assets/ftblib/textures/icons/player.png | 16x16
+[ ] assets/ftblib/textures/icons/player_gray.png | 16x16
+[ ] assets/ftblib/textures/icons/refresh.png | 16x16
+[ ] assets/ftblib/textures/icons/remove.png | 16x16
+[ ] assets/ftblib/textures/icons/remove_gray.png | 16x16
+[ ] assets/ftblib/textures/icons/right.png | 16x16
+[ ] assets/ftblib/textures/icons/rs_high.png | 16x16
+[ ] assets/ftblib/textures/icons/rs_low.png | 16x16
+[ ] assets/ftblib/textures/icons/rs_none.png | 16x16
+[ ] assets/ftblib/textures/icons/rs_pulse.png | 16x16
+[ ] assets/ftblib/textures/icons/security_friends.png | 16x16
+[ ] assets/ftblib/textures/icons/security_private.png | 16x16
+[ ] assets/ftblib/textures/icons/security_public.png | 16x16
+[ ] assets/ftblib/textures/icons/security_team.png | 16x16
+[ ] assets/ftblib/textures/icons/settings.png | 16x16
+[ ] assets/ftblib/textures/icons/settings_red.png | 16x16
+[ ] assets/ftblib/textures/icons/shield.png | 16x16
+[ ] assets/ftblib/textures/icons/sort_az.png | 16x16
+[ ] assets/ftblib/textures/icons/star.png | 16x16
+[ ] assets/ftblib/textures/icons/support.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftblib/textures/icons/time.png | 16x16
+[ ] assets/ftblib/textures/icons/toggle_day.png | 32x32 | animated .mcmeta exists
+[ ] assets/ftblib/textures/icons/toggle_gamemode.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftblib/textures/icons/toggle_night.png | 32x32 | animated .mcmeta exists
+[ ] assets/ftblib/textures/icons/toggle_rain.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftblib/textures/icons/up.png | 16x16
+[ ] assets/ftblib/textures/logo.png | 256x256
+[ ] assets/ftblib/textures/logo_small.png | 128x128 | animated .mcmeta exists
+
+FTBQuests-1202.9.0.15.jar (74 PNGs)
+[ ] assets/ftbquests/textures/blocks/barrier.png | 16x256 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/blocks/barrier_completed.png | 16x16
+[ ] assets/ftbquests/textures/blocks/blank_detector.png | 16x16
+[ ] assets/ftbquests/textures/blocks/chest_front.png | 16x16
+[ ] assets/ftbquests/textures/blocks/chest_side.png | 16x16
+[ ] assets/ftbquests/textures/blocks/chest_top.png | 16x16
+[ ] assets/ftbquests/textures/blocks/loot_crate_opener.png | 16x16
+[ ] assets/ftbquests/textures/blocks/loot_crate_storage.png | 16x16
+[ ] assets/ftbquests/textures/blocks/player_detector.png | 16x16
+[ ] assets/ftbquests/textures/blocks/progress_detector.png | 16x16
+[ ] assets/ftbquests/textures/blocks/redstone_detector.png | 16x16
+[ ] assets/ftbquests/textures/blocks/reward_collector.png | 16x16
+[ ] assets/ftbquests/textures/blocks/screen_front.png | 16x16
+[ ] assets/ftbquests/textures/blocks/screen_front_input.png | 16x144 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/blocks/screen_side.png | 16x16
+[ ] assets/ftbquests/textures/gui/alert.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/arrow_left.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/arrow_right.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/chest.png | 256x256
+[ ] assets/ftbquests/textures/gui/close.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/collect_rewards.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/dependency.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/emergency_items.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/guide.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/info.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/jei/quest.png | 256x256
+[ ] assets/ftbquests/textures/gui/pin.png | 64x64 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/search.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/settings.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/gui/shop.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/items/book.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/front.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/front_outline.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/side.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/side_outline.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/top.png | 16x16
+[ ] assets/ftbquests/textures/items/lootcrate/top_outline.png | 16x16
+[ ] assets/ftbquests/textures/logo.png | 512x512
+[ ] assets/ftbquests/textures/logotransparent.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/circle/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/circle/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/circle/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/diamond/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/diamond/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/diamond/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/gear/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/gear/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/gear/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/heart/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/heart/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/heart/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/hexagon/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/hexagon/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/hexagon/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/octagon/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/octagon/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/octagon/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/pentagon/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/pentagon/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/pentagon/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/rsquare/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/rsquare/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/rsquare/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/square/background.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/square/outline.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/shapes/square/shape.png | 128x128 | animated .mcmeta exists
+[ ] assets/ftbquests/textures/tasks/botania_mana_empty.png | 32x32
+[ ] assets/ftbquests/textures/tasks/botania_mana_full.png | 32x32
+[ ] assets/ftbquests/textures/tasks/fe_empty.png | 32x32
+[ ] assets/ftbquests/textures/tasks/fe_full.png | 32x32
+[ ] assets/ftbquests/textures/tasks/ic2_empty.png | 32x32
+[ ] assets/ftbquests/textures/tasks/ic2_full.png | 32x32
+[ ] assets/ftbquests/textures/tasks/reskillable.png | 32x32
+[ ] assets/ftbquests/textures/tasks/tank.png | 32x32
+
+geckolib-forge-1.12.2-3.0.31.jar (23 PNGs)
+[ ] assets/geckolib3/textures/blank.png | 64x64
+[ ] assets/geckolib3/textures/block/botarium.png | 128x128
+[ ] assets/geckolib3/textures/block/botarium_side.png | 16x16
+[ ] assets/geckolib3/textures/block/default_box_side.png | 16x16
+[ ] assets/geckolib3/textures/block/default_box_top.png | 16x16
+[ ] assets/geckolib3/textures/block/fertilizer.png | 128x128
+[ ] assets/geckolib3/textures/item/jack.png | 80x80
+[ ] assets/geckolib3/textures/item/potato_armor.png | 256x256
+[ ] assets/geckolib3/textures/item/potato_boots.png | 16x16
+[ ] assets/geckolib3/textures/item/potato_chestplate.png | 16x16
+[ ] assets/geckolib3/textures/item/potato_head.png | 16x16
+[ ] assets/geckolib3/textures/item/potato_leggings.png | 16x16
+[ ] assets/geckolib3/textures/model/entity/bat.png | 256x256
+[ ] assets/geckolib3/textures/model/entity/bike.png | 64x64
+[ ] assets/geckolib3/textures/model/entity/botarium.png | 128x128
+[ ] assets/geckolib3/textures/model/entity/cocoloco.png | 80x80
+[ ] assets/geckolib3/textures/model/entity/creeper.png | 64x40
+[ ] assets/geckolib3/textures/model/entity/ice_bee_tex.png | 64x64
+[ ] assets/geckolib3/textures/model/entity/le.png | 64x64
+[ ] assets/geckolib3/textures/model/entity/le_glasses.png | 64x64
+[ ] assets/geckolib3/textures/model/entity/magma_spider.png | 64x64
+[ ] assets/geckolib3/textures/model/entity/optimus.png | 4096x2048
+[ ] assets/geckolib3/textures/model/entity/race_car.png | 256x256
+
+HiddenVillage-BijuuArmor-0.16.2-rc1.jar (111 PNGs)
+[ ] assets/hvbijuu/textures/armor/chomei.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/chomei_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/chomei_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/gyuki.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/gyuki_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/gyuki_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/isobu.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/isobu_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/isobu_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kokuo.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kokuo_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kokuo_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kurama.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kurama_cage.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kurama_cage_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kurama_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/kurama_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/matatabi.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/matatabi_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/matatabi_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/saiken.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/saiken_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/saiken_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/shukaku.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/shukaku_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/shukaku_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/son_goku.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/son_goku_n.png | 1024x1024
+[ ] assets/hvbijuu/textures/armor/son_goku_s.png | 1024x1024
+[ ] assets/hvbijuu/textures/items/chomei_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/chomei_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/chomei_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/chomei_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/chomei_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/gui/chomei_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/chomei_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/chomei_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/chomei_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/gyuki_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/gyuki_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/gyuki_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/gyuki_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/isobu_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/isobu_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/isobu_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/isobu_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kokuo_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kokuo_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kokuo_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kokuo_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kurama_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kurama_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kurama_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/kurama_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/matatabi_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/matatabi_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/matatabi_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/matatabi_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/saiken_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/saiken_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/saiken_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/saiken_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/shukaku_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/shukaku_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/shukaku_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/shukaku_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/son_goku_boots.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/son_goku_chestplate.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/son_goku_helmet.png | 64x64
+[ ] assets/hvbijuu/textures/items/gui/son_goku_leggings.png | 64x64
+[ ] assets/hvbijuu/textures/items/gyuki_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/gyuki_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/gyuki_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/gyuki_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/gyuki_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/isobu_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/isobu_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/isobu_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/isobu_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/isobu_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/kokuo_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/kokuo_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/kokuo_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/kokuo_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/kokuo_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/kurama_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/kurama_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/kurama_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/kurama_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/kurama_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/matatabi_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/matatabi_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/matatabi_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/matatabi_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/matatabi_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/saiken_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/saiken_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/saiken_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/saiken_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/saiken_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/shukaku_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/shukaku_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/shukaku_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/shukaku_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/shukaku_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/items/son_goku_boots.png | 128x128
+[ ] assets/hvbijuu/textures/items/son_goku_chestplate.png | 128x128
+[ ] assets/hvbijuu/textures/items/son_goku_crafted.png | 64x64
+[ ] assets/hvbijuu/textures/items/son_goku_helmet.png | 128x128
+[ ] assets/hvbijuu/textures/items/son_goku_leggings.png | 128x128
+[ ] assets/hvbijuu/textures/particles/blue_fire.png | 16x16
+
+ItemFilters-1.0.4.2.jar (11 PNGs)
+[ ] assets/itemfilters/textures/filters/and.png | 16x16
+[ ] assets/itemfilters/textures/filters/creative_tab.png | 16x16
+[ ] assets/itemfilters/textures/filters/mod.png | 16x16
+[ ] assets/itemfilters/textures/filters/not.png | 16x16
+[ ] assets/itemfilters/textures/filters/or.png | 16x16
+[ ] assets/itemfilters/textures/filters/ore.png | 16x16
+[ ] assets/itemfilters/textures/filters/xor.png | 16x16
+[ ] assets/itemfilters/textures/gui/select_filter.png | 256x256
+[ ] assets/itemfilters/textures/items/filter.png | 16x16
+[ ] assets/itemfilters/textures/items/missing.png | 16x16
+[ ] assets/itemfilters/textures/logo.png | 256x256
+
+jei_1.12.2-4.22.0.1034.jar (22 PNGs)
+[ ] assets/jei/textures/gui/button_disabled.png | 20x20
+[ ] assets/jei/textures/gui/button_enabled.png | 20x20
+[ ] assets/jei/textures/gui/button_highlight.png | 20x20
+[ ] assets/jei/textures/gui/catalyst_tab.png | 28x28
+[ ] assets/jei/textures/gui/debug.png | 256x256
+[ ] assets/jei/textures/gui/gui_background.png | 64x64
+[ ] assets/jei/textures/gui/gui_vanilla.png | 256x256
+[ ] assets/jei/textures/gui/icons/arrow_next.png | 9x9
+[ ] assets/jei/textures/gui/icons/arrow_previous.png | 9x9
+[ ] assets/jei/textures/gui/icons/bookmark_button_disabled.png | 16x16
+[ ] assets/jei/textures/gui/icons/bookmark_button_enabled.png | 16x16
+[ ] assets/jei/textures/gui/icons/config_button.png | 16x16
+[ ] assets/jei/textures/gui/icons/config_button_cheat.png | 16x16
+[ ] assets/jei/textures/gui/icons/flame.png | 14x14
+[ ] assets/jei/textures/gui/icons/info.png | 16x16
+[ ] assets/jei/textures/gui/icons/recipe_transfer.png | 7x7
+[ ] assets/jei/textures/gui/icons/shapeless_icon.png | 36x36
+[ ] assets/jei/textures/gui/search_background.png | 20x20
+[ ] assets/jei/textures/gui/single_recipe_background.png | 64x64
+[ ] assets/jei/textures/gui/slot.png | 18x18
+[ ] assets/jei/textures/gui/tab_selected.png | 24x24
+[ ] assets/jei/textures/gui/tab_unselected.png | 24x24
+
+JustEnoughResources-1.12.2-0.9.2.60.jar (7 PNGs)
+[ ] assets/jeresources/textures/gui/dungeon.png | 256x256
+[ ] assets/jeresources/textures/gui/enchantment.png | 256x256
+[ ] assets/jeresources/textures/gui/mob.png | 256x256
+[ ] assets/jeresources/textures/gui/plant.png | 256x256
+[ ] assets/jeresources/textures/gui/tabs.png | 256x256
+[ ] assets/jeresources/textures/gui/villager.png | 256x256
+[ ] assets/jeresources/textures/gui/world_gen.png | 256x256
+
+JutsuAddon v1.0.jar (0 PNGs)
+
+kabutoaddon 5.5.8-beta.jar (105 PNGs)
+[ ] assets/kabutoaddon/textures/2mantia_sasuke_the_last.png | 512x512
+[ ] assets/kabutoaddon/textures/Wasabi-Izuno-on-planetminecraft-com.png | 64x64
+[ ] assets/kabutoaddon/textures/akatsukirobe.png | 512x512
+[ ] assets/kabutoaddon/textures/anbu.png | 64x64
+[ ] assets/kabutoaddon/textures/ay.png | 64x64
+[ ] assets/kabutoaddon/textures/bandit.png | 64x64
+[ ] assets/kabutoaddon/textures/bijuarmfist.png | 128x128
+[ ] assets/kabutoaddon/textures/bijucloak_kurama.png | 1024x512
+[ ] assets/kabutoaddon/textures/blocks/katana1.png | 64x64
+[ ] assets/kabutoaddon/textures/boruto_blue_karma.png | 2048x2048
+[ ] assets/kabutoaddon/textures/c.png | 64x64
+[ ] assets/kabutoaddon/textures/chojiwings.png | 1024x512
+[ ] assets/kabutoaddon/textures/cloudheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/darui.png | 64x64
+[ ] assets/kabutoaddon/textures/dna_reroll.png | 16x16
+[ ] assets/kabutoaddon/textures/dna_syringe.png | 16x16
+[ ] assets/kabutoaddon/textures/drip_merchant.png | 64x64
+[ ] assets/kabutoaddon/textures/earthscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/edotensei_nagato.png | 64x64
+[ ] assets/kabutoaddon/textures/edotenseihood.png | 512x512
+[ ] assets/kabutoaddon/textures/explosive_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/explosivetag.png | 128x128
+[ ] assets/kabutoaddon/textures/hakuclothing.png | 512x512
+[ ] assets/kabutoaddon/textures/hatake_kakashi.png | 64x64
+[ ] assets/kabutoaddon/textures/heavenscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/items/Katana.png | 779x779
+[ ] assets/kabutoaddon/textures/items/PaperWings.png | 661x661
+[ ] assets/kabutoaddon/textures/items/akamichi_pill.png | 32x32
+[ ] assets/kabutoaddon/textures/items/akamichiwings.png | 676x676
+[ ] assets/kabutoaddon/textures/items/akatsukirobe.png | 800x800
+[ ] assets/kabutoaddon/textures/items/arankscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/items/belt.png | 512x512
+[ ] assets/kabutoaddon/textures/items/cloudheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/coffin.png | 246x246
+[ ] assets/kabutoaddon/textures/items/crescentstaff.png | 64x64
+[ ] assets/kabutoaddon/textures/items/dna_reroll.png | 16x16
+[ ] assets/kabutoaddon/textures/items/dna_syringe.png | 16x16
+[ ] assets/kabutoaddon/textures/items/earthscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/items/edotenseirobe.png | 64x64
+[ ] assets/kabutoaddon/textures/items/edotenseiscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/items/hakurobe.png | 446x446
+[ ] assets/kabutoaddon/textures/items/heavenscroll.png | 128x128
+[ ] assets/kabutoaddon/textures/items/itemcoffin.png | 1024x1024
+[ ] assets/kabutoaddon/textures/items/kabutoarmor.png | 325x325
+[ ] assets/kabutoaddon/textures/items/kabutohood.png | 64x64
+[ ] assets/kabutoaddon/textures/items/kakashiarmor.png | 388x388
+[ ] assets/kabutoaddon/textures/items/karma.png | 1000x1000
+[ ] assets/kabutoaddon/textures/items/katana1.png | 64x64
+[ ] assets/kabutoaddon/textures/items/leafheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/obibelt.png | 506x506
+[ ] assets/kabutoaddon/textures/items/paper_release.png | 220x220
+[ ] assets/kabutoaddon/textures/items/rainheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/rinne_sharingan.png | 64x64
+[ ] assets/kabutoaddon/textures/items/ryo10000.png | 512x512
+[ ] assets/kabutoaddon/textures/items/saijacket.png | 320x320
+[ ] assets/kabutoaddon/textures/items/sandheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/shinojacket.png | 64x64
+[ ] assets/kabutoaddon/textures/items/soundheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/stoneheadband.png | 41x41
+[ ] assets/kabutoaddon/textures/items/sumirehime.png | 32x32
+[ ] assets/kabutoaddon/textures/items/whiterobe_item.png | 64x64
+[ ] assets/kabutoaddon/textures/items/xp_gem.png | 180x180
+[ ] assets/kabutoaddon/textures/iwa_rogue.png | 64x64
+[ ] assets/kabutoaddon/textures/jiraiya.png | 256x256
+[ ] assets/kabutoaddon/textures/jiraiya_sagemode.png | 64x64
+[ ] assets/kabutoaddon/textures/kabuto.png | 64x64
+[ ] assets/kabutoaddon/textures/kabutoarmor.png | 512x512
+[ ] assets/kabutoaddon/textures/kabutodna.png | 16x16
+[ ] assets/kabutoaddon/textures/kabutohood.png | 512x512
+[ ] assets/kabutoaddon/textures/kakashiarmor.png | 512x512
+[ ] assets/kabutoaddon/textures/katana1.png | 64x64
+[ ] assets/kabutoaddon/textures/kimimaro.png | 64x64
+[ ] assets/kabutoaddon/textures/lava_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/leafheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/medicalnin.png | 64x64
+[ ] assets/kabutoaddon/textures/naruto.png | 64x64
+[ ] assets/kabutoaddon/textures/obi_layer_1.png | 32x32
+[ ] assets/kabutoaddon/textures/obibelt.png | 512x512
+[ ] assets/kabutoaddon/textures/obito.png | 64x64
+[ ] assets/kabutoaddon/textures/obitonooverlay.png | 64x64
+[ ] assets/kabutoaddon/textures/otsutsuki.png | 64x64
+[ ] assets/kabutoaddon/textures/paper.png | 32x32
+[ ] assets/kabutoaddon/textures/paper_arrow.png | 128x128
+[ ] assets/kabutoaddon/textures/paperwing.png | 256x128
+[ ] assets/kabutoaddon/textures/paperwing_old.png | 512x512
+[ ] assets/kabutoaddon/textures/puppetninja.png | 64x64
+[ ] assets/kabutoaddon/textures/rainheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/rinnesharingan_obito_tomoe.png | 2048x512
+[ ] assets/kabutoaddon/textures/rogue_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/rouge_pupper_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/s_rank_missing_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/saijacket.png | 512x512
+[ ] assets/kabutoaddon/textures/sandheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/shino_hood.png | 512x512
+[ ] assets/kabutoaddon/textures/shinobi.png | 64x64
+[ ] assets/kabutoaddon/textures/shinobi1.png | 64x64
+[ ] assets/kabutoaddon/textures/shinobi2.png | 64x64
+[ ] assets/kabutoaddon/textures/shinobi3.png | 64x64
+[ ] assets/kabutoaddon/textures/sound_ninja.png | 64x64
+[ ] assets/kabutoaddon/textures/soundheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/stoneheadband.png | 512x512
+[ ] assets/kabutoaddon/textures/storm_rogue.png | 64x64
+[ ] assets/kabutoaddon/textures/syringe.png | 16x16
+[ ] assets/kabutoaddon/textures/whiterobe.png | 512x512
+[ ] assets/kabutoaddon/textures/xp_gem.png | 16x16
+
+Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar (10 PNGs)
+[ ] assets/hvdungeonpictures/textures/items/cloud_picture.png | 64x64
+[ ] assets/hvdungeonpictures/textures/items/leaf_picture.png | 64x64
+[ ] assets/hvdungeonpictures/textures/items/mist_picture.png | 64x64
+[ ] assets/hvdungeonpictures/textures/items/sand_picture.png | 64x64
+[ ] assets/hvdungeonpictures/textures/items/stone_picture.png | 64x64
+[ ] assets/hvdungeonpictures/textures/pictures/cloud.png | 1254x1254
+[ ] assets/hvdungeonpictures/textures/pictures/leaf.png | 1254x1254
+[ ] assets/hvdungeonpictures/textures/pictures/mist.png | 1254x1254
+[ ] assets/hvdungeonpictures/textures/pictures/sand.png | 1254x1254
+[ ] assets/hvdungeonpictures/textures/pictures/stone.png | 1254x1254
+
+NarutoMod-1.12.2-0.3.1.beta.jar (463 PNGs)
+[ ] assets/narutomod/textures/adamintine_prison.png | 64x64
+[ ] assets/narutomod/textures/amearmor.png | 512x512
+[ ] assets/narutomod/textures/anbuarmor.png | 512x512
+[ ] assets/narutomod/textures/armfist.png | 128x128
+[ ] assets/narutomod/textures/arrow_right.png | 256x256
+[ ] assets/narutomod/textures/asura_path.png | 64x32
+[ ] assets/narutomod/textures/beam.png | 32x32
+[ ] assets/narutomod/textures/beam_gold.png | 16x256
+[ ] assets/narutomod/textures/beetle.png | 256x256
+[ ] assets/narutomod/textures/bijucloak_kcm2.png | 1024x512
+[ ] assets/narutomod/textures/bijucloak_kurama.png | 1024x512
+[ ] assets/narutomod/textures/bijucloak_sand.png | 1024x512
+[ ] assets/narutomod/textures/bijucloakl1.png | 1024x512
+[ ] assets/narutomod/textures/bijucloakl2.png | 1024x512
+[ ] assets/narutomod/textures/bijudama.png | 64x64
+[ ] assets/narutomod/textures/bijudama1.png | 32x32
+[ ] assets/narutomod/textures/black.png | 16x16
+[ ] assets/narutomod/textures/black_fireball.png | 32x32
+[ ] assets/narutomod/textures/black_trans.png | 16x16
+[ ] assets/narutomod/textures/blackcat.png | 128x128
+[ ] assets/narutomod/textures/blank.png | 256x256
+[ ] assets/narutomod/textures/blocks/8gates.png | 256x256
+[ ] assets/narutomod/textures/blocks/all_black.png | 16x16
+[ ] assets/narutomod/textures/blocks/armfist.png | 128x128
+[ ] assets/narutomod/textures/blocks/ashbone.png | 32x32
+[ ] assets/narutomod/textures/blocks/asura_canon.png | 256x256
+[ ] assets/narutomod/textures/blocks/axe.png | 512x512
+[ ] assets/narutomod/textures/blocks/bakuton.png | 70x70
+[ ] assets/narutomod/textures/blocks/black_portal.png | 16x800 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/black_stick.png | 32x32
+[ ] assets/narutomod/textures/blocks/black_trans.png | 16x16
+[ ] assets/narutomod/textures/blocks/blackhole.png | 32x384 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/blank.png | 16x16
+[ ] assets/narutomod/textures/blocks/bomb.png | 128x128
+[ ] assets/narutomod/textures/blocks/bonearmor.png | 64x64
+[ ] assets/narutomod/textures/blocks/bonesword.png | 512x512
+[ ] assets/narutomod/textures/blocks/byakugan.png | 64x64
+[ ] assets/narutomod/textures/blocks/chakrablade.png | 16x16
+[ ] assets/narutomod/textures/blocks/claw.png | 256x256
+[ ] assets/narutomod/textures/blocks/cleaver.png | 512x512
+[ ] assets/narutomod/textures/blocks/concrete_light_blue.png | 16x16
+[ ] assets/narutomod/textures/blocks/doton.png | 100x100
+[ ] assets/narutomod/textures/blocks/explosivetag.png | 128x128
+[ ] assets/narutomod/textures/blocks/fire_black_layer_0.png | 16x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/fire_black_layer_1.png | 16x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/fire_layer_0.png | 16x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/fire_layer_1.png | 16x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/flowerstaff_1.png | 512x512
+[ ] assets/narutomod/textures/blocks/foldingfan.png | 128x128
+[ ] assets/narutomod/textures/blocks/fumashuriken.png | 320x320
+[ ] assets/narutomod/textures/blocks/futon.png | 100x100
+[ ] assets/narutomod/textures/blocks/futton.png | 70x70
+[ ] assets/narutomod/textures/blocks/gaunlet_sound.png | 256x256
+[ ] assets/narutomod/textures/blocks/gauntlet_metal.png | 512x512
+[ ] assets/narutomod/textures/blocks/gunbai.png | 128x128
+[ ] assets/narutomod/textures/blocks/hammer.png | 1024x1024
+[ ] assets/narutomod/textures/blocks/hiramekarei.png | 64x64
+[ ] assets/narutomod/textures/blocks/hiruzen_1.png | 16x16
+[ ] assets/narutomod/textures/blocks/hyoton.png | 70x70
+[ ] assets/narutomod/textures/blocks/inton.png | 100x100
+[ ] assets/narutomod/textures/blocks/ishiken.png | 128x128
+[ ] assets/narutomod/textures/blocks/jinton.png | 100x100
+[ ] assets/narutomod/textures/blocks/jiton.png | 70x70
+[ ] assets/narutomod/textures/blocks/kamuishuriken64.png | 64x64
+[ ] assets/narutomod/textures/blocks/katon.png | 100x100
+[ ] assets/narutomod/textures/blocks/kibablade.png | 512x512
+[ ] assets/narutomod/textures/blocks/kunai_256.png | 256x256
+[ ] assets/narutomod/textures/blocks/kunai_3prong.png | 256x256
+[ ] assets/narutomod/textures/blocks/kunai_blade.png | 128x128
+[ ] assets/narutomod/textures/blocks/kunai_hiraishin.png | 256x256
+[ ] assets/narutomod/textures/blocks/kusanag512.png | 512x512
+[ ] assets/narutomod/textures/blocks/kusanagi128.png | 128x128
+[ ] assets/narutomod/textures/blocks/kusanagi_oroch.png | 416x416
+[ ] assets/narutomod/textures/blocks/mangekyosharingan_eterna.png | 64x64
+[ ] assets/narutomod/textures/blocks/mangekyosharingan_obito.png | 64x64
+[ ] assets/narutomod/textures/blocks/mangekyosharingan_sasuke.png | 64x64
+[ ] assets/narutomod/textures/blocks/medical-ninja-symbol.png | 64x64
+[ ] assets/narutomod/textures/blocks/medical_scroll_64.png | 64x64
+[ ] assets/narutomod/textures/blocks/mokuton_symbol.png | 220x220
+[ ] assets/narutomod/textures/blocks/mud_flow.png | 32x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/mud_still.png | 16x320 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/ninjutsu.png | 64x64
+[ ] assets/narutomod/textures/blocks/nuibari.png | 512x512
+[ ] assets/narutomod/textures/blocks/poisonbomb.png | 128x128
+[ ] assets/narutomod/textures/blocks/raiton.png | 72x72
+[ ] assets/narutomod/textures/blocks/ranton.png | 70x70
+[ ] assets/narutomod/textures/blocks/rinnegan.png | 64x64
+[ ] assets/narutomod/textures/blocks/rinnesharingan128.png | 128x128
+[ ] assets/narutomod/textures/blocks/ryo10000.png | 512x512
+[ ] assets/narutomod/textures/blocks/sagestaff.png | 16x16
+[ ] assets/narutomod/textures/blocks/samehada.png | 512x512
+[ ] assets/narutomod/textures/blocks/scroll_3rdkazekage_item.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_a.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_b.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_c.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_closed.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_d.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_hiruko_item.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_karasu_item.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_map.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_medical.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_s.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_sanshouo_item.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_sealed.png | 128x128
+[ ] assets/narutomod/textures/blocks/scroll_summoning.png | 128x128
+[ ] assets/narutomod/textures/blocks/scythe_1blade_black.png | 256x256
+[ ] assets/narutomod/textures/blocks/scythe_3blade_red.png | 256x256
+[ ] assets/narutomod/textures/blocks/senbon_arm.png | 64x64
+[ ] assets/narutomod/textures/blocks/senbon_posion.png | 64x64
+[ ] assets/narutomod/textures/blocks/senjutsu.png | 70x70
+[ ] assets/narutomod/textures/blocks/shakuton.png | 70x70
+[ ] assets/narutomod/textures/blocks/sharingan.png | 64x64
+[ ] assets/narutomod/textures/blocks/shibuki.png | 512x512
+[ ] assets/narutomod/textures/blocks/shikotsumyaku.png | 70x70
+[ ] assets/narutomod/textures/blocks/shuriken.png | 64x64
+[ ] assets/narutomod/textures/blocks/silver.png | 16x16
+[ ] assets/narutomod/textures/blocks/sixpaths.png | 70x70
+[ ] assets/narutomod/textures/blocks/spike_ice.png | 64x64
+[ ] assets/narutomod/textures/blocks/suiton.png | 100x100
+[ ] assets/narutomod/textures/blocks/sword_anbu.png | 736x736
+[ ] assets/narutomod/textures/blocks/tenseigan_item.png | 64x64
+[ ] assets/narutomod/textures/blocks/truthhseekerball.png | 32x32
+[ ] assets/narutomod/textures/blocks/water_still.png | 16x512 | animated .mcmeta exists
+[ ] assets/narutomod/textures/blocks/weapons/hiramekarei.png | 64x64
+[ ] assets/narutomod/textures/blocks/white_trans.png | 16x16
+[ ] assets/narutomod/textures/blocks/yooton.png | 70x70
+[ ] assets/narutomod/textures/blocks/yoton.png | 100x100
+[ ] assets/narutomod/textures/blocks/zabuza_sword2.png | 512x512
+[ ] assets/narutomod/textures/bonearmor.png | 64x64
+[ ] assets/narutomod/textures/brainmatterog.png | 256x256
+[ ] assets/narutomod/textures/budha1000.png | 512x512
+[ ] assets/narutomod/textures/byakuganhelmet.png | 2048x512
+[ ] assets/narutomod/textures/byakurinnesharingan_helmet.png | 2048x512
+[ ] assets/narutomod/textures/c3.png | 64x64
+[ ] assets/narutomod/textures/chainlink_gold.png | 16x16
+[ ] assets/narutomod/textures/chen_.png | 103x114
+[ ] assets/narutomod/textures/chou_.png | 102x112
+[ ] assets/narutomod/textures/corrosion.png | 64x64
+[ ] assets/narutomod/textures/crow.png | 64x64
+[ ] assets/narutomod/textures/deidara256.png | 256x256
+[ ] assets/narutomod/textures/dirt.png | 512x512
+[ ] assets/narutomod/textures/disk.png | 128x128
+[ ] assets/narutomod/textures/dog.png | 1024x512
+[ ] assets/narutomod/textures/dome_ice.png | 64x64
+[ ] assets/narutomod/textures/dragon_blue.png | 256x256
+[ ] assets/narutomod/textures/dragon_lightning.png | 256x256
+[ ] assets/narutomod/textures/dragon_purple.png | 256x256
+[ ] assets/narutomod/textures/dragon_red.png | 256x256
+[ ] assets/narutomod/textures/dui_li_.png | 108x108
+[ ] assets/narutomod/textures/eight_trigrams.png | 4096x1024
+[ ] assets/narutomod/textures/eighttails.png | 512x512
+[ ] assets/narutomod/textures/electric_armor.png | 128x128
+[ ] assets/narutomod/textures/enma.png | 512x512
+[ ] assets/narutomod/textures/explosion.png | 64x64
+[ ] assets/narutomod/textures/feather.png | 64x64
+[ ] assets/narutomod/textures/fingerbone.png | 128x128
+[ ] assets/narutomod/textures/fire_black_0.png | 256x256
+[ ] assets/narutomod/textures/fire_black_10.png | 16x16
+[ ] assets/narutomod/textures/fire_black_2.png | 16x16
+[ ] assets/narutomod/textures/fireball.png | 64x64
+[ ] assets/narutomod/textures/fireball2.png | 64x64
+[ ] assets/narutomod/textures/fishnetarmor.png | 512x512
+[ ] assets/narutomod/textures/fivetails.png | 512x512
+[ ] assets/narutomod/textures/flames_green.png | 400x680
+[ ] assets/narutomod/textures/flames_red.png | 400x680
+[ ] assets/narutomod/textures/flight.png | 64x64
+[ ] assets/narutomod/textures/fourtails.png | 512x512
+[ ] assets/narutomod/textures/fuuin_beam_10tails.png | 16x256
+[ ] assets/narutomod/textures/fuuin_beam_blue.png | 16x256
+[ ] assets/narutomod/textures/fuuin_beam_red.png | 16x256
+[ ] assets/narutomod/textures/gaara.png | 128x128
+[ ] assets/narutomod/textures/gamabunta.png | 512x512
+[ ] assets/narutomod/textures/gas256.png | 256x256
+[ ] assets/narutomod/textures/gauntlet_chain.png | 24x24
+[ ] assets/narutomod/textures/gauntlet_metal_entity.png | 512x512
+[ ] assets/narutomod/textures/gedomazo.png | 512x512
+[ ] assets/narutomod/textures/golem_rock.png | 256x256
+[ ] assets/narutomod/textures/gourd_iron.png | 64x64
+[ ] assets/narutomod/textures/gourd_sand.png | 64x64
+[ ] assets/narutomod/textures/gray_dark.png | 16x16
+[ ] assets/narutomod/textures/hai_.png | 103x114
+[ ] assets/narutomod/textures/haku.png | 64x64
+[ ] assets/narutomod/textures/handseal_clone.png | 100x101
+[ ] assets/narutomod/textures/heaviness.png | 64x64
+[ ] assets/narutomod/textures/hidan.png | 256x256
+[ ] assets/narutomod/textures/hiraishin_formula.png | 512x512
+[ ] assets/narutomod/textures/hiruko.png | 512x512
+[ ] assets/narutomod/textures/iruka64x64.png | 64x64
+[ ] assets/narutomod/textures/itachi.png | 256x128
+[ ] assets/narutomod/textures/items/6path_chestplate.png | 16x16
+[ ] assets/narutomod/textures/items/6path_leggings.png | 16x16
+[ ] assets/narutomod/textures/items/akatsukihatitem.png | 64x64
+[ ] assets/narutomod/textures/items/akatsukirobeitem.png | 64x64
+[ ] assets/narutomod/textures/items/amearmoritempants.png | 64x64
+[ ] assets/narutomod/textures/items/anbumask1_item.png | 64x64
+[ ] assets/narutomod/textures/items/anbumask2_item.png | 64x64
+[ ] assets/narutomod/textures/items/anbumask3_item.png | 64x64
+[ ] assets/narutomod/textures/items/asura_canon_item.png | 16x16
+[ ] assets/narutomod/textures/items/asura_chestplate.png | 16x16
+[ ] assets/narutomod/textures/items/bijucloak.png | 64x64
+[ ] assets/narutomod/textures/items/black_stick.png | 32x32
+[ ] assets/narutomod/textures/items/bone_armor_item.png | 64x64
+[ ] assets/narutomod/textures/items/byakurinnesharingan.png | 256x256
+[ ] assets/narutomod/textures/items/chakrafruit.png | 16x16
+[ ] assets/narutomod/textures/items/coin_gold.png | 64x64
+[ ] assets/narutomod/textures/items/coin_silver.png | 64x64
+[ ] assets/narutomod/textures/items/curry_and_rice.png | 250x250
+[ ] assets/narutomod/textures/items/curry_of_life.png | 250x250
+[ ] assets/narutomod/textures/items/fishnetarmoritem.png | 64x64
+[ ] assets/narutomod/textures/items/gourd_chestplate.png | 16x16
+[ ] assets/narutomod/textures/items/ichiraku_ramen.png | 350x350
+[ ] assets/narutomod/textures/items/jiraiyaheadbanditem.png | 64x64
+[ ] assets/narutomod/textures/items/jiraiyajacketitem.png | 64x64
+[ ] assets/narutomod/textures/items/jiraiyapantsitem.png | 64x64
+[ ] assets/narutomod/textures/items/jumpsuitarmoritem.png | 64x64
+[ ] assets/narutomod/textures/items/kamuishuriken.png | 48x48
+[ ] assets/narutomod/textures/items/konohaheadband2.png | 64x64
+[ ] assets/narutomod/textures/items/kusanagi128.png | 128x128
+[ ] assets/narutomod/textures/items/mask_anbu4_item.png | 64x64
+[ ] assets/narutomod/textures/items/mask_obito1_item.png | 64x64
+[ ] assets/narutomod/textures/items/mask_obito3_item.png | 64x64
+[ ] assets/narutomod/textures/items/military_rations_pill.png | 32x32
+[ ] assets/narutomod/textures/items/military_rations_pill_gold.png | 32x32
+[ ] assets/narutomod/textures/items/narutoshippitemchest.png | 64x64
+[ ] assets/narutomod/textures/items/narutoshippitemlegs.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_ame_helmet_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_anbu_boots_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_anbu_pants_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_anbu_vest_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_body_item.png | 16x16
+[ ] assets/narutomod/textures/items/ninjaarmor_boots_item.png | 16x16
+[ ] assets/narutomod/textures/items/ninjaarmor_headband_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_iwa_boots_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_iwa_headband_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_iwa_pants_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_iwa_vest_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kiri_boots_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kiri_headband_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kiri_pants_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kiri_vest_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kumo_boots_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kumo_headband_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kumo_pants_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_kumo_vest_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_pants_item.png | 16x16
+[ ] assets/narutomod/textures/items/ninjaarmor_suna_boots_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_suna_headband_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_suna_pants_item.png | 64x64
+[ ] assets/narutomod/textures/items/ninjaarmor_suna_vest_item.png | 64x64
+[ ] assets/narutomod/textures/items/obitowararmoritemchest.png | 64x64
+[ ] assets/narutomod/textures/items/onigiri.png | 250x250
+[ ] assets/narutomod/textures/items/otoarmoritemchest.png | 64x64
+[ ] assets/narutomod/textures/items/otoarmoritemhelmet.png | 64x64
+[ ] assets/narutomod/textures/items/otoarmoritempants.png | 64x64
+[ ] assets/narutomod/textures/items/rice.png | 250x250
+[ ] assets/narutomod/textures/items/robe_anbu_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_hokage_hat_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_kage2_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_kage_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_kazekage_hat_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_mizukage_hat_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_raikage_het_item.png | 64x64
+[ ] assets/narutomod/textures/items/robe_tsuchikage_hat_item.png | 64x64
+[ ] assets/narutomod/textures/items/robejiraiyaitem.png | 64x64
+[ ] assets/narutomod/textures/items/ryo10000.png | 512x512
+[ ] assets/narutomod/textures/items/sake.png | 128x128
+[ ] assets/narutomod/textures/items/sakuraclothingitem.png | 64x64
+[ ] assets/narutomod/textures/items/sakuraleggingsitem.png | 64x64
+[ ] assets/narutomod/textures/items/samehada.png | 128x128
+[ ] assets/narutomod/textures/items/samuraiarmoritemchest.png | 64x64
+[ ] assets/narutomod/textures/items/samuraiarmoritemhelmet.png | 64x64
+[ ] assets/narutomod/textures/items/samuraiarmoritemlegs.png | 64x64
+[ ] assets/narutomod/textures/items/sasuke-boots.png | 128x128
+[ ] assets/narutomod/textures/items/sasuke-chestplate.png | 128x128
+[ ] assets/narutomod/textures/items/sasuke-leggings.png | 128x128
+[ ] assets/narutomod/textures/items/scroll_c.png | 128x128
+[ ] assets/narutomod/textures/items/sound5clothingitem.png | 64x64
+[ ] assets/narutomod/textures/items/sound5headitem.png | 64x64
+[ ] assets/narutomod/textures/items/steamarmor_body_item.png | 64x64
+[ ] assets/narutomod/textures/items/steamarmor_hat_item.png | 64x64
+[ ] assets/narutomod/textures/items/steamarmor_leggings_item.png | 64x64
+[ ] assets/narutomod/textures/items/tea.png | 200x200
+[ ] assets/narutomod/textures/items/tenseigan_chakrachest_item.png | 16x16
+[ ] assets/narutomod/textures/items/tenseigan_chakrapants_item.png | 16x16
+[ ] assets/narutomod/textures/items/war1armoritem.png | 64x64
+[ ] assets/narutomod/textures/items/white_zetsu_flesh.png | 16x16
+[ ] assets/narutomod/textures/items/yag.png | 116x116
+[ ] assets/narutomod/textures/iwaarmor.png | 512x512
+[ ] assets/narutomod/textures/jashin_symbol.png | 192x192
+[ ] assets/narutomod/textures/jiraiyaarmor.png | 512x512
+[ ] assets/narutomod/textures/jumpsuitarmor.png | 512x512
+[ ] assets/narutomod/textures/kaiten.png | 96x96
+[ ] assets/narutomod/textures/kakashi.png | 64x64
+[ ] assets/narutomod/textures/kakuzu.png | 256x256
+[ ] assets/narutomod/textures/kankuro.png | 64x64
+[ ] assets/narutomod/textures/karasu.png | 64x64
+[ ] assets/narutomod/textures/kingofhell.png | 576x576
+[ ] assets/narutomod/textures/kiriarmor.png | 512x512
+[ ] assets/narutomod/textures/kisamefinal.png | 256x256
+[ ] assets/narutomod/textures/konohaarmor.png | 512x512
+[ ] assets/narutomod/textures/kumoarmor.png | 512x512
+[ ] assets/narutomod/textures/kurotsuchi.png | 64x64
+[ ] assets/narutomod/textures/lava.png | 64x64
+[ ] assets/narutomod/textures/lavacloak1.png | 64x64
+[ ] assets/narutomod/textures/longcube_white.png | 32x32
+[ ] assets/narutomod/textures/madara_jinchuriki.png | 512x512
+[ ] assets/narutomod/textures/magmaball.png | 64x64
+[ ] assets/narutomod/textures/mangekyosharinganhelmet_eternal.png | 2048x512
+[ ] assets/narutomod/textures/mangekyosharinganhelmet_obito.png | 2048x512
+[ ] assets/narutomod/textures/mangekyosharinganhelmet_sasuke.png | 2048x512
+[ ] assets/narutomod/textures/mao_.png | 103x114
+[ ] assets/narutomod/textures/map_icons.png | 128x128
+[ ] assets/narutomod/textures/mask_anbu1.png | 256x256
+[ ] assets/narutomod/textures/mask_anbu2.png | 256x256
+[ ] assets/narutomod/textures/mask_anbu3.png | 256x256
+[ ] assets/narutomod/textures/mask_anbu4.png | 256x256
+[ ] assets/narutomod/textures/mask_obito1.png | 256x256
+[ ] assets/narutomod/textures/mask_obito3.png | 256x256
+[ ] assets/narutomod/textures/medical-ninja-symbol.png | 256x256
+[ ] assets/narutomod/textures/medicalscrollgui.png | 176x175
+[ ] assets/narutomod/textures/meteor2.png | 32x32
+[ ] assets/narutomod/textures/might_guy.png | 64x64
+[ ] assets/narutomod/textures/military_rations_pill_gold.png | 32x32
+[ ] assets/narutomod/textures/mindswitchseal.png | 120x100
+[ ] assets/narutomod/textures/mob_effect/amaterasuflame.png | 256x256
+[ ] assets/narutomod/textures/mob_effect/chakra_enhanced_strength.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/chakra_regeneration.png | 32x32
+[ ] assets/narutomod/textures/mob_effect/corrosion.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/feather_falling.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/flight.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/heaviness.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/instant_damage.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/paralysis.png | 64x64
+[ ] assets/narutomod/textures/mob_effect/reach.png | 16x16
+[ ] assets/narutomod/textures/models/armor/sasuke__layer_1.png | 1024x512
+[ ] assets/narutomod/textures/models/armor/sasuke__layer_2.png | 1024x512
+[ ] assets/narutomod/textures/narutoshippudenarmor.png | 512x512
+[ ] assets/narutomod/textures/ninetails.png | 512x512
+[ ] assets/narutomod/textures/ninetailskcm.png | 512x512
+[ ] assets/narutomod/textures/ninja_anbu.png | 64x64
+[ ] assets/narutomod/textures/ninja_generic.png | 64x64
+[ ] assets/narutomod/textures/ninja_iwa.png | 64x64
+[ ] assets/narutomod/textures/ninja_kiri.png | 64x64
+[ ] assets/narutomod/textures/ninja_konoha.png | 64x64
+[ ] assets/narutomod/textures/ninja_kumo.png | 64x64
+[ ] assets/narutomod/textures/ninja_suna.png | 64x64
+[ ] assets/narutomod/textures/obitowararmor.png | 512x512
+[ ] assets/narutomod/textures/onetail.png | 512x512
+[ ] assets/narutomod/textures/otoarmor.png | 512x512
+[ ] assets/narutomod/textures/paralysis.png | 64x64
+[ ] assets/narutomod/textures/particles.png | 64x64
+[ ] assets/narutomod/textures/phantom1.png | 64x64
+[ ] assets/narutomod/textures/primary.png | 256x256
+[ ] assets/narutomod/textures/puppet_3rdkazekage.png | 512x512
+[ ] assets/narutomod/textures/puppet_hundred1.png | 256x256
+[ ] assets/narutomod/textures/puppet_hundred2.png | 256x256
+[ ] assets/narutomod/textures/puppet_hundred3.png | 256x256
+[ ] assets/narutomod/textures/rasenshuriken.png | 128x128
+[ ] assets/narutomod/textures/reach.png | 16x16
+[ ] assets/narutomod/textures/red_flames_128.png | 128x128
+[ ] assets/narutomod/textures/ring_green.png | 128x128
+[ ] assets/narutomod/textures/ring_lightning.png | 128x128
+[ ] assets/narutomod/textures/rinneganhelmet.png | 2048x512
+[ ] assets/narutomod/textures/rinnesharinganhelmet.png | 2048x512
+[ ] assets/narutomod/textures/robe_akatsuki.png | 512x512
+[ ] assets/narutomod/textures/robe_akatsuki_half.png | 512x512
+[ ] assets/narutomod/textures/robe_hokage.png | 512x512
+[ ] assets/narutomod/textures/robe_hood.png | 512x512
+[ ] assets/narutomod/textures/robe_jiraiya.png | 512x512
+[ ] assets/narutomod/textures/robe_kazekage.png | 512x512
+[ ] assets/narutomod/textures/robe_mizukage.png | 512x512
+[ ] assets/narutomod/textures/robe_raikage.png | 512x512
+[ ] assets/narutomod/textures/robe_tsuchikage.png | 512x512
+[ ] assets/narutomod/textures/sageslughelmet.png | 2048x512
+[ ] assets/narutomod/textures/sagesnakehelmet.png | 2048x512
+[ ] assets/narutomod/textures/sagetoadhelmet.png | 2048x512
+[ ] assets/narutomod/textures/sakura_slim_256.png | 256x256
+[ ] assets/narutomod/textures/sakurashippudenarmor.png | 512x512
+[ ] assets/narutomod/textures/samuraiarmor.png | 512x512
+[ ] assets/narutomod/textures/sandpyramid.png | 256x256
+[ ] assets/narutomod/textures/sanshouo.png | 1024x1024
+[ ] assets/narutomod/textures/sasori2.png | 512x512
+[ ] assets/narutomod/textures/sasori_core.png | 256x256
+[ ] assets/narutomod/textures/scoll_screen.png | 512x512
+[ ] assets/narutomod/textures/scroll_3rdkazekage.png | 512x512
+[ ] assets/narutomod/textures/scroll_empty.png | 512x512
+[ ] assets/narutomod/textures/scroll_hiruko.png | 512x512
+[ ] assets/narutomod/textures/scroll_hundred.png | 512x512
+[ ] assets/narutomod/textures/scroll_karasu.png | 512x512
+[ ] assets/narutomod/textures/scroll_sanshouo.png | 512x512
+[ ] assets/narutomod/textures/seal_black_512.png | 512x512
+[ ] assets/narutomod/textures/seal_blank1.png | 256x256
+[ ] assets/narutomod/textures/seal_blank_small.png | 256x256
+[ ] assets/narutomod/textures/sealing_circle.png | 2048x512
+[ ] assets/narutomod/textures/secondary.png | 256x256
+[ ] assets/narutomod/textures/seventails.png | 512x512
+[ ] assets/narutomod/textures/sharinganhelmet.png | 2048x512
+[ ] assets/narutomod/textures/shark.png | 64x64
+[ ] assets/narutomod/textures/shen_.png | 103x114
+[ ] assets/narutomod/textures/shield_generic.png | 32x32
+[ ] assets/narutomod/textures/shinobi_craft-min.png | 500x500
+[ ] assets/narutomod/textures/si_.png | 103x114
+[ ] assets/narutomod/textures/silver.png | 612x612
+[ ] assets/narutomod/textures/sixtails.png | 512x512
+[ ] assets/narutomod/textures/slug.png | 512x512
+[ ] assets/narutomod/textures/snake_8h.png | 512x512
+[ ] assets/narutomod/textures/snake_8h1.png | 256x256
+[ ] assets/narutomod/textures/snake_blue.png | 256x256
+[ ] assets/narutomod/textures/snake_purple.png | 256x256
+[ ] assets/narutomod/textures/snake_white.png | 256x256
+[ ] assets/narutomod/textures/sonicboom.png | 64x64
+[ ] assets/narutomod/textures/sound5armor.png | 512x512
+[ ] assets/narutomod/textures/spike.png | 64x64
+[ ] assets/narutomod/textures/spike_bone.png | 64x64
+[ ] assets/narutomod/textures/spike_ice.png | 64x64
+[ ] assets/narutomod/textures/spike_stone.png | 64x64
+[ ] assets/narutomod/textures/steamarmor.png | 512x512
+[ ] assets/narutomod/textures/strength.png | 64x64
+[ ] assets/narutomod/textures/sunaarmor.png | 512x512
+[ ] assets/narutomod/textures/susanoo_clothed.png | 512x512
+[ ] assets/narutomod/textures/susanoo_winged.png | 512x512
+[ ] assets/narutomod/textures/susanooskeleton.png | 512x512
+[ ] assets/narutomod/textures/swirl_white_2.png | 128x128
+[ ] assets/narutomod/textures/temari.png | 64x64
+[ ] assets/narutomod/textures/tenseigan_chakramode.png | 512x512
+[ ] assets/narutomod/textures/tenseiganhelmet.png | 2048x512
+[ ] assets/narutomod/textures/tentails.png | 256x256
+[ ] assets/narutomod/textures/tentails_minion.png | 256x256
+[ ] assets/narutomod/textures/tentailsl1.png | 512x512
+[ ] assets/narutomod/textures/tenten.png | 64x64
+[ ] assets/narutomod/textures/threetails.png | 512x512
+[ ] assets/narutomod/textures/toad1.png | 512x512
+[ ] assets/narutomod/textures/toad2.png | 512x512
+[ ] assets/narutomod/textures/toadcloakf.png | 128x128
+[ ] assets/narutomod/textures/toadcloaks.png | 128x128
+[ ] assets/narutomod/textures/toadfukasaku.png | 256x256
+[ ] assets/narutomod/textures/toadshima.png | 256x256
+[ ] assets/narutomod/textures/truthhseekerball.png | 32x32
+[ ] assets/narutomod/textures/twotails.png | 512x512
+[ ] assets/narutomod/textures/twotailsflames.png | 512x512
+[ ] assets/narutomod/textures/vacuumwave.png | 128x128
+[ ] assets/narutomod/textures/vex1.png | 64x64
+[ ] assets/narutomod/textures/wa1armor.png | 512x512
+[ ] assets/narutomod/textures/water1.png | 128x128
+[ ] assets/narutomod/textures/water_ball.png | 16x16
+[ ] assets/narutomod/textures/wei_.png | 103x114
+[ ] assets/narutomod/textures/white_orb.png | 64x64
+[ ] assets/narutomod/textures/white_sqr_gray_lines.png | 64x64
+[ ] assets/narutomod/textures/white_square.png | 16x16
+[ ] assets/narutomod/textures/white_trans.png | 16x16
+[ ] assets/narutomod/textures/whitetiger.png | 256x256
+[ ] assets/narutomod/textures/wolf_lightning.png | 64x32
+[ ] assets/narutomod/textures/woodblock.png | 64x64
+[ ] assets/narutomod/textures/woodfist.png | 128x128
+[ ] assets/narutomod/textures/woodgolem.png | 512x512
+[ ] assets/narutomod/textures/wu_.png | 103x114
+[ ] assets/narutomod/textures/xu_.png | 103x114
+[ ] assets/narutomod/textures/yasaka_magatama.png | 64x64
+[ ] assets/narutomod/textures/yin_.png | 103x114
+[ ] assets/narutomod/textures/you_.png | 103x114
+[ ] assets/narutomod/textures/zabuzamomochi.png | 256x256
+[ ] assets/narutomod/textures/zetsu_white_256.png | 256x256
+[ ] assets/narutomod/textures/zi_.png | 103x114
+
+NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar (97 PNGs)
+[ ] assets/narutomodaddononero/textures/armor_chojuro_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_gaara_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_haku_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/armor_konohamaru_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_naruto_the_last_texture.png | 1280x640
+[ ] assets/narutomodaddononero/textures/armor_neji_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_onoki_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_orochimaru_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_sasuke_the_last_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_shisui_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/armor_zabuza_texture.png | 1024x512
+[ ] assets/narutomodaddononero/textures/belt_raikage_texture.png | 1024x1024
+[ ] assets/narutomodaddononero/textures/blocks/bo_staff_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/crystal_senbon.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/crystal_spike.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/custom_block_1_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/default_katana_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/dragon_blade_texture.png | 512x512
+[ ] assets/narutomodaddononero/textures/blocks/fire_sword_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/garian_sword_texture.png | 1024x1024
+[ ] assets/narutomodaddononero/textures/blocks/kkg_paper_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/knight_sword_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/konoha_chakra_blade_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/kurosawa_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/kusarigama_hanzo_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/nodati_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/nunoboko_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/paper_wings_armor.png | 1024x512
+[ ] assets/narutomodaddononero/textures/blocks/sai_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/sandaikitechu_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/scythe_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/shoton_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/spear_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/statue_onero_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/supervibrato_lightning_release_swords_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/sword_blue_white_texture.png | 512x512
+[ ] assets/narutomodaddononero/textures/blocks/sword_of_the_thunder_god_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/tonfa_texture.png | 64x64
+[ ] assets/narutomodaddononero/textures/blocks/umbrella_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/blocks/weaknessless_soaring_shortswords_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/blocks/wlcs_texture.png | 128x128
+[ ] assets/narutomodaddononero/textures/crystal_prison.png | 256x256
+[ ] assets/narutomodaddononero/textures/crystal_senbon.png | 256x256
+[ ] assets/narutomodaddononero/textures/crystal_spike.png | 256x256
+[ ] assets/narutomodaddononero/textures/easter_bandana_texture.png | 512x512
+[ ] assets/narutomodaddononero/textures/entity/crystal_dragon.png | 512x512
+[ ] assets/narutomodaddononero/textures/first_hokage_necklace_texture.png | 256x256
+[ ] assets/narutomodaddononero/textures/gas256.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/cooked_meat.png | 128x128
+[ ] assets/narutomodaddononero/textures/items/dango.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/easter2024_easter_egg.png | 320x320
+[ ] assets/narutomodaddononero/textures/items/easter_bandana_icon.png | 32x32
+[ ] assets/narutomodaddononero/textures/items/first_hokage_necklace_icon.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/garian_sword_icon.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/icon_belt.png | 160x160
+[ ] assets/narutomodaddononero/textures/items/icon_body_haku.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_body_naruto_the_last.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_body_neji.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_body_sasuke_the_last.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_body_shisui.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_chest_chojuro.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_chest_gaara.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_chest_konohamaru.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_chest_onoki.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_chest_zabuza.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_empty_body.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_empty_legs.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_head_chojuro.png | 48x48
+[ ] assets/narutomodaddononero/textures/items/icon_head_shisui.png | 32x32
+[ ] assets/narutomodaddononero/textures/items/icon_head_zabuza.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_chojuro.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_gaara.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_haku.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_konohamaru.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_naruto_the_last.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_neji.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_onoki.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_sasuke_the_last.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_shisui.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_legs_zabuza.png | 16x16
+[ ] assets/narutomodaddononero/textures/items/icon_nunoboko.png | 265x265
+[ ] assets/narutomodaddononero/textures/items/icon_supervibrato_lightning_release_swords.png | 64x64
+[ ] assets/narutomodaddononero/textures/items/icon_sword_blue_white.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/icon_sword_dragon.png | 32x32
+[ ] assets/narutomodaddononero/textures/items/kamaboko.png | 128x128
+[ ] assets/narutomodaddononero/textures/items/kunai_blade_icon.png | 64x64
+[ ] assets/narutomodaddononero/textures/items/meat.png | 128x128
+[ ] assets/narutomodaddononero/textures/items/noodles.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/paper_wings_armor_item.png | 64x64
+[ ] assets/narutomodaddononero/textures/items/potato_chips.png | 128x128
+[ ] assets/narutomodaddononero/textures/items/sai_icon.png | 256x256
+[ ] assets/narutomodaddononero/textures/items/tab_icon.png | 128x128
+[ ] assets/narutomodaddononero/textures/items/test_item_texture.png | 512x512
+[ ] assets/narutomodaddononero/textures/models/armor/testing_layer_1.png | 64x32
+[ ] assets/narutomodaddononero/textures/models/armor/testing_layer_2.png | 64x32
+[ ] assets/narutomodaddononero/textures/paper_wings_armor.png | 1024x512
+[ ] assets/narutomodaddononero/textures/utakata_cloak_texture.png | 512x512
+
+NarutoModAddon-0.3.1- V1.3.jar (24 PNGs)
+[ ] assets/narutomodaddon/textures/chakrablocked.png | 128x128
+[ ] assets/narutomodaddon/textures/chakracharge.png | 64x64
+[ ] assets/narutomodaddon/textures/items/chakracharge.png | 64x64
+[ ] assets/narutomodaddon/textures/items/chomei.png | 128x128
+[ ] assets/narutomodaddon/textures/items/four_symbols_seal.png | 128x128
+[ ] assets/narutomodaddon/textures/items/gyuki.png | 128x128
+[ ] assets/narutomodaddon/textures/items/isobu.png | 128x128
+[ ] assets/narutomodaddon/textures/items/kokuo.png | 128x128
+[ ] assets/narutomodaddon/textures/items/kurama.png | 128x128
+[ ] assets/narutomodaddon/textures/items/matatabi.png | 128x128
+[ ] assets/narutomodaddon/textures/items/ninjutsu.png | 128x128
+[ ] assets/narutomodaddon/textures/items/saiken.png | 128x128
+[ ] assets/narutomodaddon/textures/items/sakura.png | 32x32
+[ ] assets/narutomodaddon/textures/items/scroll_c.png | 128x128
+[ ] assets/narutomodaddon/textures/items/shukaku.png | 128x128
+[ ] assets/narutomodaddon/textures/items/son_goku.png | 128x128
+[ ] assets/narutomodaddon/textures/mob_effect/chakra_block_item.png | 128x128
+[ ] assets/narutomodaddon/textures/mob_effect/chakra_charge_effect.png | 64x64
+[ ] assets/narutomodaddon/textures/mob_effect/chakra_charge_potion.png | 64x64
+[ ] assets/narutomodaddon/textures/mob_effect/chakrablocked.png | 128x128
+[ ] assets/narutomodaddon/textures/mob_effect/chakracharge.png | 64x64
+[ ] assets/narutomodaddon/textures/options.png | 90x100
+[ ] assets/narutomodaddon/textures/screens/chakrablocked.png | 128x128
+[ ] assets/narutomodaddon/textures/screens/chakracharge.png | 64x64
+
+nmee-0.2.2-beta.jar (0 PNGs)
+
+OptiFine_1.12.2_HD_U_G5.jar (2 PNGs)
+[ ] assets/minecraft/mcpatcher/ctm/default/empty.png | 16x16
+[ ] assets/minecraft/optifine/textures/icons.png | 256x256
+
+Patchouli-1.0-23.6.jar (17 PNGs)
+[ ] assets/patchouli/textures/gui/book_blue.png | 512x256
+[ ] assets/patchouli/textures/gui/book_brown.png | 512x256
+[ ] assets/patchouli/textures/gui/book_cyan.png | 512x256
+[ ] assets/patchouli/textures/gui/book_gray.png | 512x256
+[ ] assets/patchouli/textures/gui/book_green.png | 512x256
+[ ] assets/patchouli/textures/gui/book_purple.png | 512x256
+[ ] assets/patchouli/textures/gui/book_red.png | 512x256
+[ ] assets/patchouli/textures/gui/crafting.png | 128x128
+[ ] assets/patchouli/textures/gui/inventory_button.png | 64x64
+[ ] assets/patchouli/textures/gui/page_filler.png | 128x128
+[ ] assets/patchouli/textures/items/book_blue.png | 16x16
+[ ] assets/patchouli/textures/items/book_brown.png | 16x16
+[ ] assets/patchouli/textures/items/book_cyan.png | 16x16
+[ ] assets/patchouli/textures/items/book_gray.png | 16x16
+[ ] assets/patchouli/textures/items/book_green.png | 16x16
+[ ] assets/patchouli/textures/items/book_purple.png | 16x16
+[ ] assets/patchouli/textures/items/book_red.png | 16x16
+
+RinneganAddon v1.3.jar (9 PNGs)
+[ ] assets/narutomod/textures/environment/rinnegan_1.png | 87x88
+[ ] assets/narutomod/textures/environment/rinnegan_2.png | 87x88
+[ ] assets/narutomod/textures/environment/rinnegan_3.png | 87x88
+[ ] assets/narutomod/textures/environment/rinnegan_4.png | 87x88
+[ ] assets/narutomod/textures/environment/sun.png | 87x88
+[ ] assets/narutomod/textures/items/rinnegansharinganobito.png | 64x64
+[ ] assets/narutomod/textures/items/rinnegantomoe.png | 64x64
+[ ] assets/narutomod/textures/rinneems.png | 2048x512
+[ ] assets/narutomod/textures/rinneems_obito.png | 2048x512
+
+SealsAddon v1.0.jar (0 PNGs)
+
+SharinganAddon v1.0.jar (13 PNGs)
+[ ] assets/narutomod/models/itahtexture.png | 512x512
+[ ] assets/narutomod/models/steve.png | 64x64
+[ ] assets/narutomod/textures/environment/kotoamatsukami/sun - Copy (2).png | 128x128
+[ ] assets/narutomod/textures/environment/kotoamatsukami/sun.png | 128x128
+[ ] assets/narutomod/textures/itachi2.png | 64x64
+[ ] assets/narutomod/textures/items/mangekyo_sharingan_itachi.png | 64x64
+[ ] assets/narutomod/textures/items/mangekyo_sharingan_shisui.png | 64x64
+[ ] assets/narutomod/textures/mangekyosharinganhelmet_itachi.png | 7045x1760
+[ ] assets/narutomod/textures/mangekyosharinganhelmet_shisui.png | 7045x1760
+[ ] assets/narutomod/textures/shisui.png | 64x64
+[ ] assets/narutomod/textures/tsukuyomi.png | 512x512
+[ ] assets/narutomod/textures/tsukuyomi_floor.png | 16x16
+[ ] assets/narutomod/textures/tsukuyomi_sky.png | 500x500
+
+shinobiculinary-1.2.0.jar (68 PNGs)
+[ ] assets/shinobiculinary/models/block/chakra_boiler.png | 256x256
+[ ] assets/shinobiculinary/textures/block/chakra_boiler.png | 256x256
+[ ] assets/shinobiculinary/textures/block/chakra_mill.png | 512x512
+[ ] assets/shinobiculinary/textures/block/chakra_roller.png | 512x512
+[ ] assets/shinobiculinary/textures/block/chakra_steamer.png | 256x256
+[ ] assets/shinobiculinary/textures/block/kelp.png | 32x32
+[ ] assets/shinobiculinary/textures/block/redbean_stage0.png | 16x16
+[ ] assets/shinobiculinary/textures/block/redbean_stage1.png | 16x16
+[ ] assets/shinobiculinary/textures/block/redbean_stage2.png | 16x16
+[ ] assets/shinobiculinary/textures/block/redbean_stage3.png | 16x16
+[ ] assets/shinobiculinary/textures/block/redbean_stage4.png | 16x16
+[ ] assets/shinobiculinary/textures/block/redbean_stage5.png | 16x16
+[ ] assets/shinobiculinary/textures/block/rice_stage0.png | 16x16
+[ ] assets/shinobiculinary/textures/block/rice_stage1.png | 16x16
+[ ] assets/shinobiculinary/textures/block/rice_stage2.png | 16x16
+[ ] assets/shinobiculinary/textures/block/rice_stage3.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage0.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage1.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage2.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage3.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage4.png | 16x16
+[ ] assets/shinobiculinary/textures/block/soybean_stage5.png | 16x16
+[ ] assets/shinobiculinary/textures/gui/chakramachine.png | 256x256
+[ ] assets/shinobiculinary/textures/gui/chakramachine_arrow.png | 41x28
+[ ] assets/shinobiculinary/textures/item/anpan.png | 64x64
+[ ] assets/shinobiculinary/textures/item/boiled_kelp.png | 64x64
+[ ] assets/shinobiculinary/textures/item/chakra_pill_1.png | 16x16
+[ ] assets/shinobiculinary/textures/item/chakra_pill_2.png | 16x16
+[ ] assets/shinobiculinary/textures/item/chakra_pill_3.png | 16x16
+[ ] assets/shinobiculinary/textures/item/chakra_shard.png | 16x16
+[ ] assets/shinobiculinary/textures/item/cooked_rice.png | 64x64
+[ ] assets/shinobiculinary/textures/item/cooked_soybean.png | 64x64
+[ ] assets/shinobiculinary/textures/item/daifuku_mochi.png | 64x64
+[ ] assets/shinobiculinary/textures/item/dango.png | 64x64
+[ ] assets/shinobiculinary/textures/item/dashi_soup.png | 64x64
+[ ] assets/shinobiculinary/textures/item/donburi.png | 64x64
+[ ] assets/shinobiculinary/textures/item/ground_kelp.png | 64x64
+[ ] assets/shinobiculinary/textures/item/miso_soup.png | 64x64
+[ ] assets/shinobiculinary/textures/item/mochi.png | 64x64
+[ ] assets/shinobiculinary/textures/item/moromi.png | 64x64
+[ ] assets/shinobiculinary/textures/item/ninja_xp_potion.png | 16x16
+[ ] assets/shinobiculinary/textures/item/noodles.png | 128x128
+[ ] assets/shinobiculinary/textures/item/okayu.png | 64x64
+[ ] assets/shinobiculinary/textures/item/okonomiyaki.png | 64x64
+[ ] assets/shinobiculinary/textures/item/onigiri.png | 32x32
+[ ] assets/shinobiculinary/textures/item/ramen.png | 64x64
+[ ] assets/shinobiculinary/textures/item/redbean.png | 16x16
+[ ] assets/shinobiculinary/textures/item/redbean2.png | 16x16
+[ ] assets/shinobiculinary/textures/item/redbean_seed.png | 32x32
+[ ] assets/shinobiculinary/textures/item/rice.png | 16x16
+[ ] assets/shinobiculinary/textures/item/rice_flour.png | 64x64
+[ ] assets/shinobiculinary/textures/item/rice_seed.png | 32x32
+[ ] assets/shinobiculinary/textures/item/soy_milk.png | 64x64
+[ ] assets/shinobiculinary/textures/item/soy_sauce.png | 64x64
+[ ] assets/shinobiculinary/textures/item/soybean.png | 16x16
+[ ] assets/shinobiculinary/textures/item/soybean2.png | 16x16
+[ ] assets/shinobiculinary/textures/item/soybean_seed.png | 32x32
+[ ] assets/shinobiculinary/textures/item/suika.png | 64x64
+[ ] assets/shinobiculinary/textures/item/tofu.png | 64x64
+[ ] assets/shinobiculinary/textures/item/tofu_curry.png | 64x64
+[ ] assets/shinobiculinary/textures/item/tofu_soup.png | 64x64
+[ ] assets/shinobiculinary/textures/item/wheat_flour.png | 64x64
+[ ] assets/shinobiculinary/textures/item/yakisoba.png | 64x64
+[ ] assets/shinobiculinary/textures/item/yokan.png | 64x64
+[ ] assets/shinobiculinary/textures/item/zenzai.png | 64x64
+[ ] assets/shinobiculinary/textures/potions/chakra_drain.png | 16x16
+[ ] assets/shinobiculinary/textures/potions/chakra_regen.png | 16x16
+[ ] assets/shinobiculinary/textures/potions/poison_immunity.png | 16x16
+
+SpringAddon7.0.jar (182 PNGs)
+[ ] assets/ahznbcursemarkaddon/textures/afawe.png | 176x166
+[ ] assets/ahznbcursemarkaddon/textures/amateurasuspike.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/arrow.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/bow.png | 32x32
+[ ] assets/ahznbcursemarkaddon/textures/blocks/byaku_sharingan.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/byakushari.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/blocks/chakra_axe_texture.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/blocks/concrete_black_red.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/blocks/concrete_light_blue.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/blocks/cursemark.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/blocks/kiba.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/blocks/kidomaru.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/madara_rinnegan.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/medical.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/blocks/steel.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/blocks/stgeel.png | 2000x2000
+[ ] assets/ahznbcursemarkaddon/textures/blocks/vinesword.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/byaku_sharinganhelmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/cursemark.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/darkscreen.png | 2500x2000
+[ ] assets/ahznbcursemarkaddon/textures/dog1.png | 256x256
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/base/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/base/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/boruto/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/code/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/dourado/helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/dourado/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/glass/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/glass/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jigen/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jougan/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jougan/helmet2.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jougan/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/kawaki/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/boruto/kawaki/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/itachi/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/itachi/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/madara/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/madara/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/obito/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/obito/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/sasuke/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/sasuke/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/shisui/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ems/shisui/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet2.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/item2.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/fugaku/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/fugaku/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/itachi/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/itachi/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/jb/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/jb/item.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/kinzo/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/kinzo/item.png | 1024x1024
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/madara/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/madara/item.png | 120x120
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/obito/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/obito/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/2/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/2/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/ems/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/ems/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/one/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/one/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/saber/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/saber/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/sasuke/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/sasuke/item.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/shisui/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/shisui/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/snow/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/snow/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/spring/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/spring/helmet2.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/spring/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/spring/item2.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet2.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/warden/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/warden/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/whyhellothere/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/ms/whyhellothere/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/random/byakugou2helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/random/byakugouhelmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/random/yashi/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/random/yashi/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/blue/helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/blue/item.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/dudu/helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/dudu/item.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/red/helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/red/item.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/byakusharingan/helmet.png | 2048x512
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/byakusharingan/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/item2.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_1/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_1/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_2/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_2/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_3/helmet.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/tomoe_3/item.png | 200x200
+[ ] assets/ahznbcursemarkaddon/textures/edo_remasterizado.png | 256x256
+[ ] assets/ahznbcursemarkaddon/textures/fireball.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/flames_red1.png | 400x680
+[ ] assets/ahznbcursemarkaddon/textures/flames_white1.png | 400x680
+[ ] assets/ahznbcursemarkaddon/textures/gas256.png | 256x256
+[ ] assets/ahznbcursemarkaddon/textures/hashirama_edo.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/CoralRelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/bublerelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/byaku_sharingan.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/byakugouitem.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/chakra_axe_texture.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/items/coralarmor.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/cursemark.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/fsfefsffse.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/inkrelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/insectrelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/ishiki_core_code.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/items/ishiki_core_jigen.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/items/ishiki_core_kawaki.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/items/item.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/item2.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/item4.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/kiba.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/items/kidomaru.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/madara.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/items/medical-ninja-symbol.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/momoshiki_core.png | 480x480
+[ ] assets/ahznbcursemarkaddon/textures/items/rinnegan.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/rinnesharingan128.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/items/steel.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/items/steelclaw.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/items/susanoocloak.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/items/test_body.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/items/test_boots.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/items/test_head.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/items/test_leggings.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/items/vinesword.png | 16x16
+[ ] assets/ahznbcursemarkaddon/textures/jirobo2_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/jirobo_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/kaiten.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/kiba.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/kidomaru2_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/kidomaru_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/kimimaru_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/madara.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/madara_edo.png | 1024x1024
+[ ] assets/ahznbcursemarkaddon/textures/medical_scroll_gui.png | 176x166
+[ ] assets/ahznbcursemarkaddon/textures/models/armor/test_layer_1.png | 64x32
+[ ] assets/ahznbcursemarkaddon/textures/models/armor/test_layer_2.png | 64x32
+[ ] assets/ahznbcursemarkaddon/textures/mspider.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/orochimaru_naruto_shippuden_villain_great_white_snake_snake_sannin_ninja_boy_anime_1.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/pasted.png | 2048x2048
+[ ] assets/ahznbcursemarkaddon/textures/rashamonrework.png | 2048x2048
+[ ] assets/ahznbcursemarkaddon/textures/rashomon.png | 2048x2048
+[ ] assets/ahznbcursemarkaddon/textures/red_flames_128.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/redscreen.png | 2500x2000
+[ ] assets/ahznbcursemarkaddon/textures/releases/bubblerelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/releases/coralrelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/releases/infernorelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/releases/inkrelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/releases/insectrelease.png | 300x300
+[ ] assets/ahznbcursemarkaddon/textures/releases/kiba.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/releases/steel.png | 70x70
+[ ] assets/ahznbcursemarkaddon/textures/sakon_ukon2_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/sakon_ukon_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/sasuke2_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/sasuke_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/steel_ball.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/steelblock.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/susanoo.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/susanooglow.png | 128x128
+[ ] assets/ahznbcursemarkaddon/textures/tayuya2_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/tayuya_cursemark1.png | 7045x1760
+[ ] assets/ahznbcursemarkaddon/textures/threetails.png | 512x512
+[ ] assets/ahznbcursemarkaddon/textures/tsunade_senju.png | 64x64
+[ ] assets/ahznbcursemarkaddon/textures/whitescreen.png | 2500x2000
+
+stg-1.12.2-1.2.3.jar (0 PNGs)
+
+supermartijn642configlib-1.1.8-forge-mc1.12.jar (0 PNGs)
+
+TravelersBackpack-1.12.2-1.0.35.jar (93 PNGs)
+[ ] assets/travelersbackpack/textures/backpacks/bat.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/black.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/blaze.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/blue.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/bookshelf.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/brown.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/brownmushroom.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/cactus.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/cake.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/carrot.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/chest.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/chicken.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/coal.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/cookie.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/cow.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/creeper.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/cyan.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/deluxe.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/diamond.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/dragon.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/egg.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/electric.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/emerald.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/end.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/enderman.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/ghast.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/glowstone.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/gold.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/gray.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/green.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/haybale.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/horse.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/iron.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/irongolem.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/lapis.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/leather.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/lightblue.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/lightgray.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/lime.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/magenta.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/magmacube.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/melon.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/moddednetwork.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/mooshroom.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/nether.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/obsidian.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/ocelot.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/orange.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/overworld.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/pig.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/pigman.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/pink.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/pumpkin.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/purple.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/quartz.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/rainbow.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/red.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/redmushroom.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/redstone.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/sandstone.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/sheep.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/silverfish.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/skeleton.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/slime.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/snow.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/spider.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/sponge.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/squid.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/standard.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/sunflower.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/villager.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/white.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/wither.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/witherskeleton.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/wolf.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/yellow.png | 128x64
+[ ] assets/travelersbackpack/textures/backpacks/zombie.png | 128x64
+[ ] assets/travelersbackpack/textures/blocks/milk_flow.png | 16x512 | animated .mcmeta exists
+[ ] assets/travelersbackpack/textures/blocks/milk_still.png | 16x512 | animated .mcmeta exists
+[ ] assets/travelersbackpack/textures/blocks/potion_flow.png | 32x512 | animated .mcmeta exists
+[ ] assets/travelersbackpack/textures/blocks/potion_still.png | 16x320 | animated .mcmeta exists
+[ ] assets/travelersbackpack/textures/blocks/sleeping_bag_block.png | 16x16
+[ ] assets/travelersbackpack/textures/blocks/sleeping_bag_bottom.png | 16x16
+[ ] assets/travelersbackpack/textures/blocks/sleeping_bag_extras.png | 16x16
+[ ] assets/travelersbackpack/textures/blocks/sleeping_bag_top.png | 16x16
+[ ] assets/travelersbackpack/textures/gui/overlay.png | 256x256
+[ ] assets/travelersbackpack/textures/gui/travelers_backpack.png | 256x256
+[ ] assets/travelersbackpack/textures/items/backpack_tank.png | 16x16
+[ ] assets/travelersbackpack/textures/items/hose_drink.png | 16x16
+[ ] assets/travelersbackpack/textures/items/hose_nozzle.png | 16x16
+[ ] assets/travelersbackpack/textures/items/hose_spill.png | 16x16
+[ ] assets/travelersbackpack/textures/items/hose_suck.png | 16x16
+[ ] assets/travelersbackpack/textures/items/sleeping_bag.png | 16x16
+
+VariedCommodities_1.12.2-(31Mar23).jar (425 PNGs)
+[ ] assets/variedcommodities/textures/blocks/blood_block_0.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/blood_block_1.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/blood_block_2.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/crystal_block.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_0.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_1.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_10.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_11.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_12.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_13.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_14.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_15.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_2.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_3.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_4.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_5.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_6.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_7.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_8.png | 16x16
+[ ] assets/variedcommodities/textures/blocks/placeholder_9.png | 16x16
+[ ] assets/variedcommodities/textures/gui/bgfilled.png | 256x256
+[ ] assets/variedcommodities/textures/gui/carpentry.png | 256x256
+[ ] assets/variedcommodities/textures/gui/info.png | 256x256
+[ ] assets/variedcommodities/textures/gui/misc.png | 256x256
+[ ] assets/variedcommodities/textures/gui/recipes.png | 256x256
+[ ] assets/variedcommodities/textures/gui/slot.png | 256x256
+[ ] assets/variedcommodities/textures/gui/tradingblock.png | 256x256
+[ ] assets/variedcommodities/textures/invisible.png | 16x16
+[ ] assets/variedcommodities/textures/items/ancient_coin.png | 16x16
+[ ] assets/variedcommodities/textures/items/ancient_scroll.png | 16x16
+[ ] assets/variedcommodities/textures/items/artifact.png | 16x16
+[ ] assets/variedcommodities/textures/items/assassin_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/assassin_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/assassin_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/assassin_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/bag.png | 16x16
+[ ] assets/variedcommodities/textures/items/bandit_mask.png | 16x16
+[ ] assets/variedcommodities/textures/items/banjo.png | 16x16
+[ ] assets/variedcommodities/textures/items/baseball_bat.png | 16x16
+[ ] assets/variedcommodities/textures/items/batton.png | 16x16
+[ ] assets/variedcommodities/textures/items/bear_claw.png | 16x16
+[ ] assets/variedcommodities/textures/items/blueprint.png | 16x16
+[ ] assets/variedcommodities/textures/items/bo_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/broken_arrow.png | 16x16
+[ ] assets/variedcommodities/textures/items/broken_bottle.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/bronze_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/bullet.png | 16x16
+[ ] assets/variedcommodities/textures/items/car_key.png | 16x16
+[ ] assets/variedcommodities/textures/items/chain_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/chicken_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/clarinet.png | 32x32
+[ ] assets/variedcommodities/textures/items/cleaver.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_bronze.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_diamond.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_emerald.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_gold.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_iron.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_stone.png | 16x16
+[ ] assets/variedcommodities/textures/items/coin_wood.png | 16x16
+[ ] assets/variedcommodities/textures/items/combat_knive.png | 16x16
+[ ] assets/variedcommodities/textures/items/commissar_bottom.png | 16x16
+[ ] assets/variedcommodities/textures/items/commissar_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/commissar_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/commissar_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/cow_leather_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/cow_leather_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/cow_leather_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/cow_leather_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/crescent_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/crossbow.png | 16x16
+[ ] assets/variedcommodities/textures/items/crossbow_bolt.png | 16x16
+[ ] assets/variedcommodities/textures/items/crowbar.png | 16x16
+[ ] assets/variedcommodities/textures/items/crown.png | 16x16
+[ ] assets/variedcommodities/textures/items/crown2.png | 16x16
+[ ] assets/variedcommodities/textures/items/crystal.png | 16x16
+[ ] assets/variedcommodities/textures/items/cursed_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/demonic_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/diamond_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/element_air.png | 16x16
+[ ] assets/variedcommodities/textures/items/element_earth.png | 16x16
+[ ] assets/variedcommodities/textures/items/element_fire.png | 16x16
+[ ] assets/variedcommodities/textures/items/element_water.png | 16x16
+[ ] assets/variedcommodities/textures/items/elemental_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/emerald_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/excalibur.png | 16x16
+[ ] assets/variedcommodities/textures/items/french_horn.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/frost_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_bronze_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_bronze_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_bronze_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_bronze_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_diamond_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_diamond_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_emerald_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_emerald_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_emerald_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_emerald_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_golden_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_golden_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_iron_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_iron_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_leather_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_leather_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_wooden_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_wooden_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_wooden_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/full_wooden_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/gem_amethyst.png | 16x16
+[ ] assets/variedcommodities/textures/items/gem_ruby.png | 16x16
+[ ] assets/variedcommodities/textures/items/gem_sapphire.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/golden_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/golf_club.png | 16x16
+[ ] assets/variedcommodities/textures/items/guitar.png | 16x16
+[ ] assets/variedcommodities/textures/items/gunchainsaw.png | 16x16
+[ ] assets/variedcommodities/textures/items/hammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/handcuffs.png | 16x16
+[ ] assets/variedcommodities/textures/items/harp.png | 16x16
+[ ] assets/variedcommodities/textures/items/heart.png | 16x16
+[ ] assets/variedcommodities/textures/items/heater_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/hockeystick.png | 16x16
+[ ] assets/variedcommodities/textures/items/holyhandgrenade.png | 32x32
+[ ] assets/variedcommodities/textures/items/holyhandgrenadeicon.png | 16x16
+[ ] assets/variedcommodities/textures/items/infantry_helmet.png | 16x16
+[ ] assets/variedcommodities/textures/items/ingot_bronze.png | 16x16
+[ ] assets/variedcommodities/textures/items/ingot_demonic.png | 16x16
+[ ] assets/variedcommodities/textures/items/ingot_mithril.png | 16x16
+[ ] assets/variedcommodities/textures/items/ingot_steel.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/iron_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/katana.png | 16x16
+[ ] assets/variedcommodities/textures/items/katar.png | 16x16
+[ ] assets/variedcommodities/textures/items/key.png | 16x16
+[ ] assets/variedcommodities/textures/items/key2.png | 16x16
+[ ] assets/variedcommodities/textures/items/kukri.png | 16x16
+[ ] assets/variedcommodities/textures/items/kunai.png | 16x16
+[ ] assets/variedcommodities/textures/items/kunai_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/lead_pipe.png | 16x16
+[ ] assets/variedcommodities/textures/items/leaf_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/leather_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/letter.png | 16x16
+[ ] assets/variedcommodities/textures/items/lighter.png | 16x16
+[ ] assets/variedcommodities/textures/items/locket.png | 16x16
+[ ] assets/variedcommodities/textures/items/machine_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/macuahuitl.png | 16x16
+[ ] assets/variedcommodities/textures/items/magic_wand.png | 16x16
+[ ] assets/variedcommodities/textures/items/mana.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_skirt.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_sword.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/mithril_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/money.png | 16x16
+[ ] assets/variedcommodities/textures/items/musket.png | 16x16
+[ ] assets/variedcommodities/textures/items/nanorum_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/nanorum_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/nanorum_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/nanorum_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/necklace.png | 16x16
+[ ] assets/variedcommodities/textures/items/ninja_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/ninja_claw.png | 16x16
+[ ] assets/variedcommodities/textures/items/ninja_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/ninja_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/ocarina.png | 16x16
+[ ] assets/variedcommodities/textures/items/officer_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/orb.png | 16x16
+[ ] assets/variedcommodities/textures/items/orb_broken.png | 16x16
+[ ] assets/variedcommodities/textures/items/paper_crown.png | 16x16
+[ ] assets/variedcommodities/textures/items/pendant.png | 16x16
+[ ] assets/variedcommodities/textures/items/phone.png | 16x16
+[ ] assets/variedcommodities/textures/items/pipe_wrench.png | 16x16
+[ ] assets/variedcommodities/textures/items/plans.png | 16x16
+[ ] assets/variedcommodities/textures/items/rapier.png | 16x16
+[ ] assets/variedcommodities/textures/items/ring.png | 16x16
+[ ] assets/variedcommodities/textures/items/saber.png | 16x16
+[ ] assets/variedcommodities/textures/items/safe_key.png | 16x16
+[ ] assets/variedcommodities/textures/items/sai.png | 16x16
+[ ] assets/variedcommodities/textures/items/satchel.png | 16x16
+[ ] assets/variedcommodities/textures/items/scutum_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/severed_ear.png | 16x16
+[ ] assets/variedcommodities/textures/items/shuriken.png | 16x16
+[ ] assets/variedcommodities/textures/items/shuriken_giant.png | 16x16
+[ ] assets/variedcommodities/textures/items/silk.png | 16x16
+[ ] assets/variedcommodities/textures/items/skull.png | 16x16
+[ ] assets/variedcommodities/textures/items/sledge_hammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/slingshot.png | 16x16
+[ ] assets/variedcommodities/textures/items/soldier_bottom.png | 16x16
+[ ] assets/variedcommodities/textures/items/soldier_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/soldier_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/soldier_legs.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_arcane.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_dark.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_fire.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_holy.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_ice.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_lightning.png | 16x16
+[ ] assets/variedcommodities/textures/items/spell_nature.png | 16x16
+[ ] assets/variedcommodities/textures/items/statuette.png | 16x16
+[ ] assets/variedcommodities/textures/items/steel_claw.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/stone_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/swiss_army_knife.png | 16x16
+[ ] assets/variedcommodities/textures/items/tablet.png | 16x16
+[ ] assets/variedcommodities/textures/items/tactical_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/tactical_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/tower_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/tuxedo_bottom.png | 16x16
+[ ] assets/variedcommodities/textures/items/tuxedo_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/tuxedo_pants.png | 16x16
+[ ] assets/variedcommodities/textures/items/usb_stick.png | 16x16
+[ ] assets/variedcommodities/textures/items/usbstick.png | 16x16
+[ ] assets/variedcommodities/textures/items/violin.png | 16x16
+[ ] assets/variedcommodities/textures/items/violin_bow.png | 16x16
+[ ] assets/variedcommodities/textures/items/wateringcan_clay_fired.png | 16x16
+[ ] assets/variedcommodities/textures/items/wateringcan_clay_unfired.png | 16x16
+[ ] assets/variedcommodities/textures/items/wateringcan_diamond.png | 16x16
+[ ] assets/variedcommodities/textures/items/wateringcan_gold.png | 16x16
+[ ] assets/variedcommodities/textures/items/wateringcan_iron.png | 16x16
+[ ] assets/variedcommodities/textures/items/wizard_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/wizard_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/wizard_pants.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_battleaxe.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_broadsword.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_dagger.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_dagger_reversed.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_glaive.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_gun.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_halberd.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_mace.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_scythe.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_shield.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_shield_round.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_spear.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_staff.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_trident.png | 16x16
+[ ] assets/variedcommodities/textures/items/wooden_warhammer.png | 16x16
+[ ] assets/variedcommodities/textures/items/wrench.png | 16x16
+[ ] assets/variedcommodities/textures/items/x407_boots.png | 16x16
+[ ] assets/variedcommodities/textures/items/x407_chest.png | 16x16
+[ ] assets/variedcommodities/textures/items/x407_head.png | 16x16
+[ ] assets/variedcommodities/textures/items/x407_legs.png | 16x16
+[ ] assets/variedcommodities/textures/models/armor/assassin_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/assassin_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/bandit_mask_1.png | 128x64
+[ ] assets/variedcommodities/textures/models/armor/commissar_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/commissar_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/cow_leather_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/cow_leather_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/crown1_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/crown2_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/demonic_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/demonic_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_bronze_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_bronze_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_cloth_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_diamond_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_emerald_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_emerald_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_golden_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_iron_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_wooden_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/full_wooden_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/infantry_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/mithril_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/mithril_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/nanorum_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/nanorum_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/ninja_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/ninja_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/officer_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/paper_crown_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/paper_crown_1_overlay.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/soldier_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/soldier_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/tactical_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/tuxedo_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/tuxedo_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/wizard_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/wizard_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/x407_1.png | 64x32
+[ ] assets/variedcommodities/textures/models/armor/x407_2.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/banner_flag.png | 32x32
+[ ] assets/variedcommodities/textures/models/block/barrel.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/big_sign.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/candle.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/carpentry_bench.png | 128x64
+[ ] assets/variedcommodities/textures/models/block/ink.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/lamp.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/pedestal.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/steel.png | 64x32
+[ ] assets/variedcommodities/textures/models/block/trading_arrows.png | 32x32
+[ ] assets/variedcommodities/textures/models/block/trading_table.png | 32x32
+
+warpmod-1.12.2-1.0.1.jar (0 PNGs)
+
+Waystones_1.12.2-4.1.0.jar (7 PNGs)
+[ ] assets/waystones/textures/entity/waystone.png | 256x256
+[ ] assets/waystones/textures/entity/waystone_active.png | 256x256
+[ ] assets/waystones/textures/entity/waystone_mossy.png | 256x256
+[ ] assets/waystones/textures/items/bound_scroll.png | 16x16
+[ ] assets/waystones/textures/items/return_scroll.png | 16x16
+[ ] assets/waystones/textures/items/warp_scroll.png | 16x16
+[ ] assets/waystones/textures/items/warp_stone.png | 16x16
+
+worldedit-forge-mc1.12.2-6.1.10-dist.jar (1 PNGs)
+[ ] assets/worldedit/textures/gui/reference.png | 512x512
+
+xaerolib-forge-1.12.2-1.7.3.jar (0 PNGs)
+
+xaerominimap-forge-1.12.2-26.6.0.jar (14 PNGs)
+[ ] assets/xaerobetterpvp/gui/guis.png | 256x256
+[ ] assets/xaerobetterpvp/gui/minimap_frame.png | 256x256
+[ ] assets/xaerominimap/textures/mob_effect/no_cave_maps.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_cave_maps_beneficial.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_cave_maps_harmful.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_entity_radar.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_entity_radar_beneficial.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_entity_radar_harmful.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_minimap.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_minimap_beneficial.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_minimap_harmful.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_waypoints.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_waypoints_beneficial.png | 18x18
+[ ] assets/xaerominimap/textures/mob_effect/no_waypoints_harmful.png | 18x18
+
+xaeroworldmap-forge-1.12.2-1.47.0.jar (6 PNGs)
+[ ] assets/xaeroworldmap/gui/gui.png | 256x256
+[ ] assets/xaeroworldmap/textures/mob_effect/no_cave_maps.png | 18x18
+[ ] assets/xaeroworldmap/textures/mob_effect/no_cave_maps_harmful.png | 18x18
+[ ] assets/xaeroworldmap/textures/mob_effect/no_world_map.png | 18x18
+[ ] assets/xaeroworldmap/textures/mob_effect/no_world_map_beneficial.png | 18x18
+[ ] assets/xaeroworldmap/textures/mob_effect/no_world_map_harmful.png | 18x18

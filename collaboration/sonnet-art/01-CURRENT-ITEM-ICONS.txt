@@ -1,0 +1,1583 @@
+CURRENT VALE: COMPLETE ITEM / INVENTORY ART CHECKLIST
+
+Each checkbox is one model/visual state. The 26 charged strips are alternate states, not extra weapons.
+PNG sizes are pixels. Use transparent RGBA. Existing dedicated art is included for the requested full redesign.
+For shared icons, the output path is proposed and the model needs rewiring. Preserve registry IDs.
+
+ARMOR INVENTORY ICONS (72)
+
+[ ] Auric Skimmer Boots | valeorders:auric_skimmer_boots
+    PNG: assets/valeorders/textures/items/auric_skimmer_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Auric Skimmer Chestplate | valeorders:auric_skimmer_chestplate
+    PNG: assets/valeorders/textures/items/auric_skimmer_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Auric Skimmer Helmet | valeorders:auric_skimmer_helmet
+    PNG: assets/valeorders/textures/items/auric_skimmer_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Auric Skimmer Leggings | valeorders:auric_skimmer_leggings
+    PNG: assets/valeorders/textures/items/auric_skimmer_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bellbloom Boots | valeorders:bellbloom_boots
+    PNG: assets/valeorders/textures/items/bellbloom_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bellbloom Chestplate | valeorders:bellbloom_chestplate
+    PNG: assets/valeorders/textures/items/bellbloom_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bellbloom Helmet | valeorders:bellbloom_helmet
+    PNG: assets/valeorders/textures/items/bellbloom_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bellbloom Leggings | valeorders:bellbloom_leggings
+    PNG: assets/valeorders/textures/items/bellbloom_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bloom Ward Boots | valeorders:bloom_boots
+    PNG: assets/valeorders/textures/items/bloom_boots.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Chestplate | valeorders:bloom_chestplate
+    PNG: assets/valeorders/textures/items/bloom_chestplate.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Helmet | valeorders:bloom_helmet
+    PNG: assets/valeorders/textures/items/bloom_helmet.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Leggings | valeorders:bloom_leggings
+    PNG: assets/valeorders/textures/items/bloom_leggings.png | 32x32 | existing dedicated texture
+[ ] Cairnroot Boots | valeorders:cairnroot_boots
+    PNG: assets/valeorders/textures/items/cairnroot_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cairnroot Chestplate | valeorders:cairnroot_chestplate
+    PNG: assets/valeorders/textures/items/cairnroot_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cairnroot Helmet | valeorders:cairnroot_helmet
+    PNG: assets/valeorders/textures/items/cairnroot_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cairnroot Leggings | valeorders:cairnroot_leggings
+    PNG: assets/valeorders/textures/items/cairnroot_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Current Ward Boots | valeorders:current_boots
+    PNG: assets/valeorders/textures/items/current_boots.png | 32x32 | existing dedicated texture
+[ ] Current Ward Chestplate | valeorders:current_chestplate
+    PNG: assets/valeorders/textures/items/current_chestplate.png | 32x32 | existing dedicated texture
+[ ] Current Ward Helmet | valeorders:current_helmet
+    PNG: assets/valeorders/textures/items/current_helmet.png | 32x32 | existing dedicated texture
+[ ] Current Ward Leggings | valeorders:current_leggings
+    PNG: assets/valeorders/textures/items/current_leggings.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Boots | valeorders:dawn_boots
+    PNG: assets/valeorders/textures/items/dawn_boots.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Chestplate | valeorders:dawn_chestplate
+    PNG: assets/valeorders/textures/items/dawn_chestplate.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Helmet | valeorders:dawn_helmet
+    PNG: assets/valeorders/textures/items/dawn_helmet.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Leggings | valeorders:dawn_leggings
+    PNG: assets/valeorders/textures/items/dawn_leggings.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Boots | valeorders:dusk_boots
+    PNG: assets/valeorders/textures/items/dusk_boots.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Chestplate | valeorders:dusk_chestplate
+    PNG: assets/valeorders/textures/items/dusk_chestplate.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Helmet | valeorders:dusk_helmet
+    PNG: assets/valeorders/textures/items/dusk_helmet.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Leggings | valeorders:dusk_leggings
+    PNG: assets/valeorders/textures/items/dusk_leggings.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Boots | valeorders:ember_boots
+    PNG: assets/valeorders/textures/items/ember_boots.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Chestplate | valeorders:ember_chestplate
+    PNG: assets/valeorders/textures/items/ember_chestplate.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Helmet | valeorders:ember_helmet
+    PNG: assets/valeorders/textures/items/ember_helmet.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Leggings | valeorders:ember_leggings
+    PNG: assets/valeorders/textures/items/ember_leggings.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Boots | valeorders:flint_boots
+    PNG: assets/valeorders/textures/items/flint_boots.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Chestplate | valeorders:flint_chestplate
+    PNG: assets/valeorders/textures/items/flint_chestplate.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Helmet | valeorders:flint_helmet
+    PNG: assets/valeorders/textures/items/flint_helmet.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Leggings | valeorders:flint_leggings
+    PNG: assets/valeorders/textures/items/flint_leggings.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Boots | valeorders:gale_boots
+    PNG: assets/valeorders/textures/items/gale_boots.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Chestplate | valeorders:gale_chestplate
+    PNG: assets/valeorders/textures/items/gale_chestplate.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Helmet | valeorders:gale_helmet
+    PNG: assets/valeorders/textures/items/gale_helmet.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Leggings | valeorders:gale_leggings
+    PNG: assets/valeorders/textures/items/gale_leggings.png | 32x32 | existing dedicated texture
+[ ] Glasschime Boots | valeorders:glasschime_boots
+    PNG: assets/valeorders/textures/items/glasschime_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Glasschime Chestplate | valeorders:glasschime_chestplate
+    PNG: assets/valeorders/textures/items/glasschime_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Glasschime Helmet | valeorders:glasschime_helmet
+    PNG: assets/valeorders/textures/items/glasschime_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Glasschime Leggings | valeorders:glasschime_leggings
+    PNG: assets/valeorders/textures/items/glasschime_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hushvault Boots | valeorders:hushvault_boots
+    PNG: assets/valeorders/textures/items/hushvault_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hushvault Chestplate | valeorders:hushvault_chestplate
+    PNG: assets/valeorders/textures/items/hushvault_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hushvault Helmet | valeorders:hushvault_helmet
+    PNG: assets/valeorders/textures/items/hushvault_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hushvault Leggings | valeorders:hushvault_leggings
+    PNG: assets/valeorders/textures/items/hushvault_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kilnback Boots | valeorders:kilnback_boots
+    PNG: assets/valeorders/textures/items/kilnback_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kilnback Chestplate | valeorders:kilnback_chestplate
+    PNG: assets/valeorders/textures/items/kilnback_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kilnback Helmet | valeorders:kilnback_helmet
+    PNG: assets/valeorders/textures/items/kilnback_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kilnback Leggings | valeorders:kilnback_leggings
+    PNG: assets/valeorders/textures/items/kilnback_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedrunner Boots | valeorders:reedrunner_boots
+    PNG: assets/valeorders/textures/items/reedrunner_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedrunner Chestplate | valeorders:reedrunner_chestplate
+    PNG: assets/valeorders/textures/items/reedrunner_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedrunner Helmet | valeorders:reedrunner_helmet
+    PNG: assets/valeorders/textures/items/reedrunner_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedrunner Leggings | valeorders:reedrunner_leggings
+    PNG: assets/valeorders/textures/items/reedrunner_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rime Ward Boots | valeorders:rime_boots
+    PNG: assets/valeorders/textures/items/rime_boots.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Chestplate | valeorders:rime_chestplate
+    PNG: assets/valeorders/textures/items/rime_chestplate.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Helmet | valeorders:rime_helmet
+    PNG: assets/valeorders/textures/items/rime_helmet.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Leggings | valeorders:rime_leggings
+    PNG: assets/valeorders/textures/items/rime_leggings.png | 32x32 | existing dedicated texture
+[ ] Shoalglass Boots | valeorders:shoalglass_boots
+    PNG: assets/valeorders/textures/items/shoalglass_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Shoalglass Chestplate | valeorders:shoalglass_chestplate
+    PNG: assets/valeorders/textures/items/shoalglass_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Shoalglass Helmet | valeorders:shoalglass_helmet
+    PNG: assets/valeorders/textures/items/shoalglass_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Shoalglass Leggings | valeorders:shoalglass_leggings
+    PNG: assets/valeorders/textures/items/shoalglass_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Storm Ward Boots | valeorders:storm_boots
+    PNG: assets/valeorders/textures/items/storm_boots.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Chestplate | valeorders:storm_chestplate
+    PNG: assets/valeorders/textures/items/storm_chestplate.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Helmet | valeorders:storm_helmet
+    PNG: assets/valeorders/textures/items/storm_helmet.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Leggings | valeorders:storm_leggings
+    PNG: assets/valeorders/textures/items/storm_leggings.png | 32x32 | existing dedicated texture
+[ ] Stormloom Boots | valeorders:stormloom_boots
+    PNG: assets/valeorders/textures/items/stormloom_boots.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Stormloom Chestplate | valeorders:stormloom_chestplate
+    PNG: assets/valeorders/textures/items/stormloom_chestplate.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Stormloom Helmet | valeorders:stormloom_helmet
+    PNG: assets/valeorders/textures/items/stormloom_helmet.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Stormloom Leggings | valeorders:stormloom_leggings
+    PNG: assets/valeorders/textures/items/stormloom_leggings.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+CHARGED WEAPON ANIMATION STRIPS (26)
+
+[ ] Binder Spear (charged) | valeorders:binder_spear_charged
+    PNG: assets/valeorders/textures/items/binder_spear_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Breakaxe (charged) | valeorders:breakaxe_charged
+    PNG: assets/valeorders/textures/items/breakaxe_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Cinder Burst (charged) | valeorders:cinder_burst_charged
+    PNG: assets/valeorders/textures/items/cinder_burst_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Crescent Guard (charged) | valeorders:crescent_guard_charged
+    PNG: assets/valeorders/textures/items/crescent_guard_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Echo Gauntlet (charged) | valeorders:echo_gauntlet_charged
+    PNG: assets/valeorders/textures/items/echo_gauntlet_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Emberbrand (charged) | valeorders:emberbrand_charged
+    PNG: assets/valeorders/textures/items/emberbrand_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Flux Cannon (charged) | valeorders:flux_cannon_charged
+    PNG: assets/valeorders/textures/items/flux_cannon_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Lens Bow (charged) | valeorders:lens_bow_charged
+    PNG: assets/valeorders/textures/items/lens_bow_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Mendguard Staff (charged) | valeorders:mendguard_staff_charged
+    PNG: assets/valeorders/textures/items/mendguard_staff_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Mist Censer (charged) | valeorders:mist_censer_charged
+    PNG: assets/valeorders/textures/items/mist_censer_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Needle Spool (charged) | valeorders:needle_spool_charged
+    PNG: assets/valeorders/textures/items/needle_spool_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Overdrive Blade (charged) | valeorders:overdrive_blade_charged
+    PNG: assets/valeorders/textures/items/overdrive_blade_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Prism Lance (charged) | valeorders:prism_lance_charged
+    PNG: assets/valeorders/textures/items/prism_lance_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Returning Sickle (charged) | valeorders:returning_sickle_charged
+    PNG: assets/valeorders/textures/items/returning_sickle_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Rime Pin (charged) | valeorders:rime_pin_charged
+    PNG: assets/valeorders/textures/items/rime_pin_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Seal Charge (charged) | valeorders:seal_charge_charged
+    PNG: assets/valeorders/textures/items/seal_charge_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Siege Maul (charged) | valeorders:siege_maul_charged
+    PNG: assets/valeorders/textures/items/siege_maul_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Siphon Hook (charged) | valeorders:siphon_hook_charged
+    PNG: assets/valeorders/textures/items/siphon_hook_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Storm Pair (charged) | valeorders:storm_pair_charged
+    PNG: assets/valeorders/textures/items/storm_pair_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Sweep Glaive (charged) | valeorders:sweep_glaive_charged
+    PNG: assets/valeorders/textures/items/sweep_glaive_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Tempered Cleaver (charged) | valeorders:tempered_cleaver_charged
+    PNG: assets/valeorders/textures/items/tempered_cleaver_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Thorn Staff (charged) | valeorders:thorn_staff_charged
+    PNG: assets/valeorders/textures/items/thorn_staff_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Thunder Edge (charged) | valeorders:thunder_edge_charged
+    PNG: assets/valeorders/textures/items/thunder_edge_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Venom Needle (charged) | valeorders:venom_needle_charged
+    PNG: assets/valeorders/textures/items/venom_needle_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Ward Fan (charged) | valeorders:ward_fan_charged
+    PNG: assets/valeorders/textures/items/ward_fan_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+[ ] Waymark Knife (charged) | valeorders:waymark_knife_charged
+    PNG: assets/valeorders/textures/items/waymark_knife_charged.png | 32x64 | existing dedicated texture
+    Keep existing .png.mcmeta: two 32x32 frames stacked vertically, frametime 5, interpolate false.
+
+CHRONICLES AND ACHIEVEMENTS (22)
+
+[ ] Dungeon 1 Chronicle | valeorders:chronicle_dungeon_1
+    PNG: assets/valeorders/textures/items/chronicle_dungeon_1.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dungeon 2 Chronicle | valeorders:chronicle_dungeon_2
+    PNG: assets/valeorders/textures/items/chronicle_dungeon_2.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dungeon 3 Chronicle | valeorders:chronicle_dungeon_3
+    PNG: assets/valeorders/textures/items/chronicle_dungeon_3.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dungeon 4 Chronicle | valeorders:chronicle_dungeon_4
+    PNG: assets/valeorders/textures/items/chronicle_dungeon_4.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dungeon 5 Chronicle | valeorders:chronicle_dungeon_5
+    PNG: assets/valeorders/textures/items/chronicle_dungeon_5.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Field Adept Chronicle | valeorders:chronicle_field_adept
+    PNG: assets/valeorders/textures/items/chronicle_field_adept.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Field Master Chronicle | valeorders:chronicle_field_master
+    PNG: assets/valeorders/textures/items/chronicle_field_master.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Field Veteran Chronicle | valeorders:chronicle_field_veteran
+    PNG: assets/valeorders/textures/items/chronicle_field_veteran.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] First Contract Chronicle | valeorders:chronicle_first_contract
+    PNG: assets/valeorders/textures/items/chronicle_first_contract.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] First Keeper Chronicle | valeorders:chronicle_first_keeper
+    PNG: assets/valeorders/textures/items/chronicle_first_keeper.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] First Oath Chronicle | valeorders:chronicle_first_oath
+    PNG: assets/valeorders/textures/items/chronicle_first_oath.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] First Resonance Chronicle | valeorders:chronicle_first_resonance
+    PNG: assets/valeorders/textures/items/chronicle_first_resonance.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Auric Skimmer Chronicle | valeorders:chronicle_resonance_auric_skimmer
+    PNG: assets/valeorders/textures/items/chronicle_resonance_auric_skimmer.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Bellbloom Chronicle | valeorders:chronicle_resonance_bellbloom
+    PNG: assets/valeorders/textures/items/chronicle_resonance_bellbloom.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Cairnroot Chronicle | valeorders:chronicle_resonance_cairnroot
+    PNG: assets/valeorders/textures/items/chronicle_resonance_cairnroot.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Glasschime Chronicle | valeorders:chronicle_resonance_glasschime
+    PNG: assets/valeorders/textures/items/chronicle_resonance_glasschime.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Hushvault Chronicle | valeorders:chronicle_resonance_hushvault
+    PNG: assets/valeorders/textures/items/chronicle_resonance_hushvault.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Kilnback Chronicle | valeorders:chronicle_resonance_kilnback
+    PNG: assets/valeorders/textures/items/chronicle_resonance_kilnback.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Reedrunner Chronicle | valeorders:chronicle_resonance_reedrunner
+    PNG: assets/valeorders/textures/items/chronicle_resonance_reedrunner.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Shoalglass Chronicle | valeorders:chronicle_resonance_shoalglass
+    PNG: assets/valeorders/textures/items/chronicle_resonance_shoalglass.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resonance Stormloom Chronicle | valeorders:chronicle_resonance_stormloom
+    PNG: assets/valeorders/textures/items/chronicle_resonance_stormloom.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Trusted Runner Chronicle | valeorders:chronicle_trusted_runner
+    PNG: assets/valeorders/textures/items/chronicle_trusted_runner.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+CODICES AND RESONANCE (24)
+
+[ ] Apiary Codex | valeorders:apiary_codex
+    PNG: assets/valeorders/textures/items/apiary_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Bond Codex | valeorders:bond_codex
+    PNG: assets/valeorders/textures/items/bond_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Brush Codex | valeorders:brush_codex
+    PNG: assets/valeorders/textures/items/brush_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Cinder Codex | valeorders:cinder_codex
+    PNG: assets/valeorders/textures/items/cinder_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Dusk Codex | valeorders:dusk_codex
+    PNG: assets/valeorders/textures/items/dusk_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Ferrum Codex | valeorders:ferrum_codex
+    PNG: assets/valeorders/textures/items/ferrum_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Filament Codex | valeorders:filament_codex
+    PNG: assets/valeorders/textures/items/filament_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Foam Codex | valeorders:foam_codex
+    PNG: assets/valeorders/textures/items/foam_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Folio Codex | valeorders:folio_codex
+    PNG: assets/valeorders/textures/items/folio_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Horizon Codex | valeorders:horizon_codex
+    PNG: assets/valeorders/textures/items/horizon_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Kiln Codex | valeorders:kiln_codex
+    PNG: assets/valeorders/textures/items/kiln_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Molten Codex | valeorders:molten_codex
+    PNG: assets/valeorders/textures/items/molten_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Pack Codex | valeorders:pack_codex
+    PNG: assets/valeorders/textures/items/pack_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Reef Codex | valeorders:reef_codex
+    PNG: assets/valeorders/textures/items/reef_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Resonance Vow | valeorders:resonance_vow
+    PNG: assets/valeorders/textures/items/resonance_vow.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Restoration Codex | valeorders:restoration_codex
+    PNG: assets/valeorders/textures/items/restoration_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] River Codex | valeorders:river_codex
+    PNG: assets/valeorders/textures/items/river_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Stillwater Codex | valeorders:stillwater_codex
+    PNG: assets/valeorders/textures/items/stillwater_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Storm Codex | valeorders:storm_codex
+    PNG: assets/valeorders/textures/items/storm_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Technique Codex | valeorders:technique_codex
+    PNG: assets/valeorders/textures/items/technique_codex.png | 32x32 | existing dedicated texture
+[ ] Terrace Codex | valeorders:terrace_codex
+    PNG: assets/valeorders/textures/items/terrace_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Vital Codex | valeorders:vital_codex
+    PNG: assets/valeorders/textures/items/vital_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Wayfarer Codex | valeorders:wayfarer_codex
+    PNG: assets/valeorders/textures/items/wayfarer_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+[ ] Zephyr Codex | valeorders:zephyr_codex
+    PNG: assets/valeorders/textures/items/zephyr_codex.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+    Check AbilityCarriers036.registerRenderers, which explicitly binds minecraft:book, as well as ClientModels.
+
+EYES (7)
+
+[ ] Awakened Eye | valeorders:awakened_eye
+    PNG: assets/valeorders/textures/items/awakened_eye.png | 32x32 | existing dedicated texture
+[ ] Awakening Eye | valeorders:awakening_eye
+    PNG: assets/valeorders/textures/items/awakening_eye.png | 32x32 | existing dedicated texture
+[ ] Eternal Eye | valeorders:eternal_eye
+    PNG: assets/valeorders/textures/items/eternal_eye.png | 32x32 | existing dedicated texture
+[ ] Hollow Eye | valeorders:hollow_eye
+    PNG: assets/valeorders/textures/items/hollow_eye.png | 32x32 | existing dedicated texture
+[ ] Inferno Eye | valeorders:inferno_eye
+    PNG: assets/valeorders/textures/items/inferno_eye.png | 32x32 | existing dedicated texture
+[ ] Sight Eye | valeorders:sight_eye
+    PNG: assets/valeorders/textures/items/sight_eye.png | 32x32 | existing dedicated texture
+[ ] Void Eye | valeorders:void_eye
+    PNG: assets/valeorders/textures/items/void_eye.png | 32x32 | existing dedicated texture
+
+FIELD FOOD AND DRINKS (12)
+
+[ ] Cloud Tea | valeorders:cloud_tea
+    PNG: assets/valeorders/textures/items/cloud_tea.png | 32x32 | existing dedicated texture
+[ ] Dried Berries | valeorders:dried_berries
+    PNG: assets/valeorders/textures/items/dried_berries.png | 32x32 | existing dedicated texture
+[ ] Herb Broth | valeorders:herb_broth
+    PNG: assets/valeorders/textures/items/herb_broth.png | 32x32 | existing dedicated texture
+[ ] Orchard Flatbread | valeorders:orchard_flatbread
+    PNG: assets/valeorders/textures/items/orchard_flatbread.png | 32x32 | existing dedicated texture
+[ ] River Skewer | valeorders:river_skewer
+    PNG: assets/valeorders/textures/items/river_skewer.png | 32x32 | existing dedicated texture
+[ ] Root Stew | valeorders:root_stew
+    PNG: assets/valeorders/textures/items/root_stew.png | 32x32 | existing dedicated texture
+[ ] Seared Fillet | valeorders:seared_fillet
+    PNG: assets/valeorders/textures/items/seared_fillet.png | 32x32 | existing dedicated texture
+[ ] Smoked Mushrooms | valeorders:smoked_mushrooms
+    PNG: assets/valeorders/textures/items/smoked_mushrooms.png | 32x32 | existing dedicated texture
+[ ] Spice Curry | valeorders:spice_curry
+    PNG: assets/valeorders/textures/items/spice_curry.png | 32x32 | existing dedicated texture
+[ ] Sunrice Bowl | valeorders:sunrice_bowl
+    PNG: assets/valeorders/textures/items/sunrice_bowl.png | 32x32 | existing dedicated texture
+[ ] Trail Biscuit | valeorders:trail_biscuit
+    PNG: assets/valeorders/textures/items/trail_biscuit.png | 32x32 | existing dedicated texture
+[ ] Travel Ration | valeorders:travel_ration
+    PNG: assets/valeorders/textures/items/travel_ration.png | 32x32 | existing dedicated texture
+
+FOCUS GARMENTS (76)
+
+[ ] Amber Crest Lens | valeorders:focus_amber_crest_lens
+    PNG: assets/valeorders/textures/items/focus_amber_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Amber Haven Lens | valeorders:focus_amber_haven_lens
+    PNG: assets/valeorders/textures/items/focus_amber_haven_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Amber Hollow Lens | valeorders:focus_amber_hollow_lens
+    PNG: assets/valeorders/textures/items/focus_amber_hollow_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Amber Wake Lens | valeorders:focus_amber_wake_lens
+    PNG: assets/valeorders/textures/items/focus_amber_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Birch Crest Lens | valeorders:focus_birch_crest_lens
+    PNG: assets/valeorders/textures/items/focus_birch_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Birch Haven Mantle | valeorders:focus_birch_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_birch_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Birch Hollow Greaves | valeorders:focus_birch_hollow_greaves
+    PNG: assets/valeorders/textures/items/focus_birch_hollow_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Birch Wake Lens | valeorders:focus_birch_wake_lens
+    PNG: assets/valeorders/textures/items/focus_birch_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Copper Crest Mantle | valeorders:focus_copper_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_copper_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Copper Haven Lens | valeorders:focus_copper_haven_lens
+    PNG: assets/valeorders/textures/items/focus_copper_haven_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Copper Hollow Lens | valeorders:focus_copper_hollow_lens
+    PNG: assets/valeorders/textures/items/focus_copper_hollow_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Copper Wake Mantle | valeorders:focus_copper_wake_mantle
+    PNG: assets/valeorders/textures/items/focus_copper_wake_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dusk Crest Lens | valeorders:focus_dusk_crest_lens
+    PNG: assets/valeorders/textures/items/focus_dusk_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dusk Haven Greaves | valeorders:focus_dusk_haven_greaves
+    PNG: assets/valeorders/textures/items/focus_dusk_haven_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dusk Hollow Mantle | valeorders:focus_dusk_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_dusk_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dusk Wake Lens | valeorders:focus_dusk_wake_lens
+    PNG: assets/valeorders/textures/items/focus_dusk_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Elm Crest Greaves | valeorders:focus_elm_crest_greaves
+    PNG: assets/valeorders/textures/items/focus_elm_crest_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Elm Haven Lens | valeorders:focus_elm_haven_lens
+    PNG: assets/valeorders/textures/items/focus_elm_haven_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Elm Hollow Mantle | valeorders:focus_elm_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_elm_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Elm Wake Lens | valeorders:focus_elm_wake_lens
+    PNG: assets/valeorders/textures/items/focus_elm_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Flint Crest Mantle | valeorders:focus_flint_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_flint_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Flint Haven Mantle | valeorders:focus_flint_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_flint_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Flint Hollow Mantle | valeorders:focus_flint_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_flint_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Flint Wake Lens | valeorders:focus_flint_wake_lens
+    PNG: assets/valeorders/textures/items/focus_flint_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Gale Crest Mantle | valeorders:focus_gale_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_gale_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Gale Haven Lens | valeorders:focus_gale_haven_lens
+    PNG: assets/valeorders/textures/items/focus_gale_haven_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Gale Hollow Mantle | valeorders:focus_gale_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_gale_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Gale Wake Lens | valeorders:focus_gale_wake_lens
+    PNG: assets/valeorders/textures/items/focus_gale_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Heather Crest Mantle | valeorders:focus_heather_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_heather_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Heather Haven Greaves | valeorders:focus_heather_haven_greaves
+    PNG: assets/valeorders/textures/items/focus_heather_haven_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Heather Hollow Mantle | valeorders:focus_heather_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_heather_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Heather Wake Lens | valeorders:focus_heather_wake_lens
+    PNG: assets/valeorders/textures/items/focus_heather_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ivory Crest Mantle | valeorders:focus_ivory_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_ivory_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ivory Haven Mantle | valeorders:focus_ivory_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_ivory_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ivory Hollow Mantle | valeorders:focus_ivory_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_ivory_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ivory Wake Lens | valeorders:focus_ivory_wake_lens
+    PNG: assets/valeorders/textures/items/focus_ivory_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Juniper Crest Mantle | valeorders:focus_juniper_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_juniper_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Juniper Haven Treads | valeorders:focus_juniper_haven_treads
+    PNG: assets/valeorders/textures/items/focus_juniper_haven_treads.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Juniper Hollow Mantle | valeorders:focus_juniper_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_juniper_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Juniper Wake Lens | valeorders:focus_juniper_wake_lens
+    PNG: assets/valeorders/textures/items/focus_juniper_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kiln Crest Lens | valeorders:focus_kiln_crest_lens
+    PNG: assets/valeorders/textures/items/focus_kiln_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kiln Haven Greaves | valeorders:focus_kiln_haven_greaves
+    PNG: assets/valeorders/textures/items/focus_kiln_haven_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kiln Hollow Mantle | valeorders:focus_kiln_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_kiln_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kiln Wake Lens | valeorders:focus_kiln_wake_lens
+    PNG: assets/valeorders/textures/items/focus_kiln_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Lantern Crest Greaves | valeorders:focus_lantern_crest_greaves
+    PNG: assets/valeorders/textures/items/focus_lantern_crest_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Lantern Haven Mantle | valeorders:focus_lantern_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_lantern_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Lantern Hollow Mantle | valeorders:focus_lantern_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_lantern_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Lantern Wake Lens | valeorders:focus_lantern_wake_lens
+    PNG: assets/valeorders/textures/items/focus_lantern_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moss Crest Mantle | valeorders:focus_moss_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_moss_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moss Haven Lens | valeorders:focus_moss_haven_lens
+    PNG: assets/valeorders/textures/items/focus_moss_haven_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moss Hollow Mantle | valeorders:focus_moss_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_moss_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moss Wake Lens | valeorders:focus_moss_wake_lens
+    PNG: assets/valeorders/textures/items/focus_moss_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Night Crest Lens | valeorders:focus_night_crest_lens
+    PNG: assets/valeorders/textures/items/focus_night_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Night Haven Mantle | valeorders:focus_night_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_night_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Night Hollow Greaves | valeorders:focus_night_hollow_greaves
+    PNG: assets/valeorders/textures/items/focus_night_hollow_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Night Wake Lens | valeorders:focus_night_wake_lens
+    PNG: assets/valeorders/textures/items/focus_night_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Crest Mantle | valeorders:focus_ochre_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_ochre_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Haven Mantle | valeorders:focus_ochre_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_ochre_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Hollow Mantle | valeorders:focus_ochre_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_ochre_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Wake Lens | valeorders:focus_ochre_wake_lens
+    PNG: assets/valeorders/textures/items/focus_ochre_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearl Crest Lens | valeorders:focus_pearl_crest_lens
+    PNG: assets/valeorders/textures/items/focus_pearl_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearl Haven Mantle | valeorders:focus_pearl_haven_mantle
+    PNG: assets/valeorders/textures/items/focus_pearl_haven_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearl Hollow Lens | valeorders:focus_pearl_hollow_lens
+    PNG: assets/valeorders/textures/items/focus_pearl_hollow_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearl Wake Lens | valeorders:focus_pearl_wake_lens
+    PNG: assets/valeorders/textures/items/focus_pearl_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Quartz Crest Mantle | valeorders:focus_quartz_crest_mantle
+    PNG: assets/valeorders/textures/items/focus_quartz_crest_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Quartz Hollow Mantle | valeorders:focus_quartz_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_quartz_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Quartz Wake Lens | valeorders:focus_quartz_wake_lens
+    PNG: assets/valeorders/textures/items/focus_quartz_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reed Crest Lens | valeorders:focus_reed_crest_lens
+    PNG: assets/valeorders/textures/items/focus_reed_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reed Hollow Lens | valeorders:focus_reed_hollow_lens
+    PNG: assets/valeorders/textures/items/focus_reed_hollow_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reed Wake Lens | valeorders:focus_reed_wake_lens
+    PNG: assets/valeorders/textures/items/focus_reed_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Slate Crest Greaves | valeorders:focus_slate_crest_greaves
+    PNG: assets/valeorders/textures/items/focus_slate_crest_greaves.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Slate Hollow Mantle | valeorders:focus_slate_hollow_mantle
+    PNG: assets/valeorders/textures/items/focus_slate_hollow_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Slate Wake Lens | valeorders:focus_slate_wake_lens
+    PNG: assets/valeorders/textures/items/focus_slate_wake_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Thistle Crest Lens | valeorders:focus_thistle_crest_lens
+    PNG: assets/valeorders/textures/items/focus_thistle_crest_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Thistle Hollow Lens | valeorders:focus_thistle_hollow_lens
+    PNG: assets/valeorders/textures/items/focus_thistle_hollow_lens.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Thistle Wake Mantle | valeorders:focus_thistle_wake_mantle
+    PNG: assets/valeorders/textures/items/focus_thistle_wake_mantle.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+JUTSU LESSON SCROLLS (49)
+
+[ ] Ash Refuge Lesson | valeorders:scroll_ash_refuge
+    PNG: assets/valeorders/textures/items/scroll_ash_refuge.png | 32x32 | existing dedicated texture
+[ ] Bitter Haze Lesson | valeorders:scroll_bitter_haze
+    PNG: assets/valeorders/textures/items/scroll_bitter_haze.png | 32x32 | existing dedicated texture
+[ ] Borrowed Silhouette Lesson | valeorders:scroll_borrowed_silhouette
+    PNG: assets/valeorders/textures/items/scroll_borrowed_silhouette.png | 32x32 | existing dedicated texture
+[ ] Breeze Burst Lesson | valeorders:scroll_breeze_burst
+    PNG: assets/valeorders/textures/items/scroll_breeze_burst.png | 32x32 | existing dedicated texture
+[ ] Calm Mending Lesson | valeorders:scroll_calm_mending
+    PNG: assets/valeorders/textures/items/scroll_calm_mending.png | 32x32 | existing dedicated texture
+[ ] Cinder Edge Lesson | valeorders:scroll_cinder_edge
+    PNG: assets/valeorders/textures/items/scroll_cinder_edge.png | 32x32 | existing dedicated texture
+[ ] Cinder Front Lesson | valeorders:scroll_cinder_front
+    PNG: assets/valeorders/textures/items/scroll_cinder_front.png | 32x32 | existing dedicated texture
+[ ] Clay Warden Lesson | valeorders:scroll_clay_warden
+    PNG: assets/valeorders/textures/items/scroll_clay_warden.png | 32x32 | existing dedicated texture
+[ ] Copper Bonds Lesson | valeorders:scroll_copper_bonds
+    PNG: assets/valeorders/textures/items/scroll_copper_bonds.png | 32x32 | existing dedicated texture
+[ ] Drowsing Glance Lesson | valeorders:scroll_drowsing_glance
+    PNG: assets/valeorders/textures/items/scroll_drowsing_glance.png | 32x32 | existing dedicated texture
+[ ] Dusk Fork Lesson | valeorders:scroll_dusk_fork
+    PNG: assets/valeorders/textures/items/scroll_dusk_fork.png | 32x32 | existing dedicated texture
+[ ] Echo Companion Lesson | valeorders:scroll_echo_companion
+    PNG: assets/valeorders/textures/items/scroll_echo_companion.png | 32x32 | existing dedicated texture
+[ ] Ember Orb Lesson | valeorders:scroll_ember_orb
+    PNG: assets/valeorders/textures/items/scroll_ember_orb.png | 32x32 | existing dedicated texture
+[ ] Ember Thread Lesson | valeorders:scroll_ember_thread
+    PNG: assets/valeorders/textures/items/scroll_ember_thread.png | 32x32 | existing dedicated texture
+[ ] Gale Arc Lesson | valeorders:scroll_gale_arc
+    PNG: assets/valeorders/textures/items/scroll_gale_arc.png | 32x32 | existing dedicated texture
+[ ] Gale Edge Lesson | valeorders:scroll_gale_edge
+    PNG: assets/valeorders/textures/items/scroll_gale_edge.png | 32x32 | existing dedicated texture
+[ ] Hearth Ring Lesson | valeorders:scroll_hearth_ring
+    PNG: assets/valeorders/textures/items/scroll_hearth_ring.png | 32x32 | existing dedicated texture
+[ ] Hollow Dart Lesson | valeorders:scroll_hollow_dart
+    PNG: assets/valeorders/textures/items/scroll_hollow_dart.png | 32x32 | existing dedicated texture
+[ ] Iron Focus Lesson | valeorders:scroll_iron_focus
+    PNG: assets/valeorders/textures/items/scroll_iron_focus.png | 32x32 | existing dedicated texture
+[ ] Mind Tether Lesson | valeorders:scroll_mind_tether
+    PNG: assets/valeorders/textures/items/scroll_mind_tether.png | 32x32 | existing dedicated texture
+[ ] Mire Circle Lesson | valeorders:scroll_mire_circle
+    PNG: assets/valeorders/textures/items/scroll_mire_circle.png | 32x32 | existing dedicated texture
+[ ] Molten Mantle Lesson | valeorders:scroll_molten_mantle
+    PNG: assets/valeorders/textures/items/scroll_molten_mantle.png | 32x32 | existing dedicated texture
+[ ] Mote Orbit Lesson | valeorders:scroll_mote_orbit
+    PNG: assets/valeorders/textures/items/scroll_mote_orbit.png | 32x32 | existing dedicated texture
+[ ] Night Pounce Lesson | valeorders:scroll_night_pounce
+    PNG: assets/valeorders/textures/items/scroll_night_pounce.png | 32x32 | existing dedicated texture
+[ ] Pearl Cage Lesson | valeorders:scroll_pearl_cage
+    PNG: assets/valeorders/textures/items/scroll_pearl_cage.png | 32x32 | existing dedicated texture
+[ ] Quarter Ritual Lesson | valeorders:scroll_quarter_ritual
+    PNG: assets/valeorders/textures/items/scroll_quarter_ritual.png | 32x32 | existing dedicated texture
+[ ] Reed Escape Lesson | valeorders:scroll_reed_escape
+    PNG: assets/valeorders/textures/items/scroll_reed_escape.png | 32x32 | existing dedicated texture
+[ ] Ripple Crown Lesson | valeorders:scroll_ripple_crown
+    PNG: assets/valeorders/textures/items/scroll_ripple_crown.png | 32x32 | existing dedicated texture
+[ ] River Serpent Lesson | valeorders:scroll_river_serpent
+    PNG: assets/valeorders/textures/items/scroll_river_serpent.png | 32x32 | existing dedicated texture
+[ ] Shade Veil Lesson | valeorders:scroll_shade_veil
+    PNG: assets/valeorders/textures/items/scroll_shade_veil.png | 32x32 | existing dedicated texture
+[ ] Shadow Tether Lesson | valeorders:scroll_shadow_tether
+    PNG: assets/valeorders/textures/items/scroll_shadow_tether.png | 32x32 | existing dedicated texture
+[ ] Shale Thorns Lesson | valeorders:scroll_shale_thorns
+    PNG: assets/valeorders/textures/items/scroll_shale_thorns.png | 32x32 | existing dedicated texture
+[ ] Silver Fog Lesson | valeorders:scroll_silver_fog
+    PNG: assets/valeorders/textures/items/scroll_silver_fog.png | 32x32 | existing dedicated texture
+[ ] Slate Clasp Lesson | valeorders:scroll_slate_clasp
+    PNG: assets/valeorders/textures/items/scroll_slate_clasp.png | 32x32 | existing dedicated texture
+[ ] Spark Hound Lesson | valeorders:scroll_spark_hound
+    PNG: assets/valeorders/textures/items/scroll_spark_hound.png | 32x32 | existing dedicated texture
+[ ] Rasengan Lesson | valeorders:scroll_spiral_palm
+    PNG: assets/valeorders/textures/items/scroll_spiral_palm.png | 32x32 | existing dedicated texture
+[ ] Stone Refuge Lesson | valeorders:scroll_stone_refuge
+    PNG: assets/valeorders/textures/items/scroll_stone_refuge.png | 32x32 | existing dedicated texture
+[ ] Chidori Lesson | valeorders:scroll_storm_lance
+    PNG: assets/valeorders/textures/items/scroll_storm_lance.png | 32x32 | existing dedicated texture
+[ ] Storm Stride Lesson | valeorders:scroll_storm_stride
+    PNG: assets/valeorders/textures/items/scroll_storm_stride.png | 32x32 | existing dedicated texture
+[ ] Terrace Guard Lesson | valeorders:scroll_terrace_guard
+    PNG: assets/valeorders/textures/items/scroll_terrace_guard.png | 32x32 | existing dedicated texture
+[ ] Thread Command Lesson | valeorders:scroll_thread_command
+    PNG: assets/valeorders/textures/items/scroll_thread_command.png | 32x32 | existing dedicated texture
+[ ] Thunder Crown Lesson | valeorders:scroll_thunder_crown
+    PNG: assets/valeorders/textures/items/scroll_thunder_crown.png | 32x32 | existing dedicated texture
+[ ] Tide Hunter Lesson | valeorders:scroll_tide_hunter
+    PNG: assets/valeorders/textures/items/scroll_tide_hunter.png | 32x32 | existing dedicated texture
+[ ] Titan Stance Lesson | valeorders:scroll_titan_stance
+    PNG: assets/valeorders/textures/items/scroll_titan_stance.png | 32x32 | existing dedicated texture
+[ ] Torrent Cannon Lesson | valeorders:scroll_torrent_cannon
+    PNG: assets/valeorders/textures/items/scroll_torrent_cannon.png | 32x32 | existing dedicated texture
+[ ] Torrent Needle Lesson | valeorders:scroll_torrent_needle
+    PNG: assets/valeorders/textures/items/scroll_torrent_needle.png | 32x32 | existing dedicated texture
+[ ] Vital Cycle Lesson | valeorders:scroll_vital_cycle
+    PNG: assets/valeorders/textures/items/scroll_vital_cycle.png | 32x32 | existing dedicated texture
+[ ] Waymark Step Lesson | valeorders:scroll_waymark_step
+    PNG: assets/valeorders/textures/items/scroll_waymark_step.png | 32x32 | existing dedicated texture
+[ ] Zephyr Blade Lesson | valeorders:scroll_zephyr_blade
+    PNG: assets/valeorders/textures/items/scroll_zephyr_blade.png | 32x32 | existing dedicated texture
+
+JUTSU TECHNIQUE ICONS (49)
+
+[ ] Ash Refuge Technique | valeorders:technique_ash_refuge
+    PNG: assets/valeorders/textures/items/technique_ash_refuge.png | 32x32 | existing dedicated texture
+[ ] Bitter Haze Technique | valeorders:technique_bitter_haze
+    PNG: assets/valeorders/textures/items/technique_bitter_haze.png | 32x32 | existing dedicated texture
+[ ] Borrowed Silhouette Technique | valeorders:technique_borrowed_silhouette
+    PNG: assets/valeorders/textures/items/technique_borrowed_silhouette.png | 32x32 | existing dedicated texture
+[ ] Breeze Burst Technique | valeorders:technique_breeze_burst
+    PNG: assets/valeorders/textures/items/technique_breeze_burst.png | 32x32 | existing dedicated texture
+[ ] Calm Mending Technique | valeorders:technique_calm_mending
+    PNG: assets/valeorders/textures/items/technique_calm_mending.png | 32x32 | existing dedicated texture
+[ ] Cinder Edge Technique | valeorders:technique_cinder_edge
+    PNG: assets/valeorders/textures/items/technique_cinder_edge.png | 32x32 | existing dedicated texture
+[ ] Cinder Front Technique | valeorders:technique_cinder_front
+    PNG: assets/valeorders/textures/items/technique_cinder_front.png | 32x32 | existing dedicated texture
+[ ] Clay Warden Technique | valeorders:technique_clay_warden
+    PNG: assets/valeorders/textures/items/technique_clay_warden.png | 32x32 | existing dedicated texture
+[ ] Copper Bonds Technique | valeorders:technique_copper_bonds
+    PNG: assets/valeorders/textures/items/technique_copper_bonds.png | 32x32 | existing dedicated texture
+[ ] Drowsing Glance Technique | valeorders:technique_drowsing_glance
+    PNG: assets/valeorders/textures/items/technique_drowsing_glance.png | 32x32 | existing dedicated texture
+[ ] Dusk Fork Technique | valeorders:technique_dusk_fork
+    PNG: assets/valeorders/textures/items/technique_dusk_fork.png | 32x32 | existing dedicated texture
+[ ] Echo Companion Technique | valeorders:technique_echo_companion
+    PNG: assets/valeorders/textures/items/technique_echo_companion.png | 32x32 | existing dedicated texture
+[ ] Ember Orb Technique | valeorders:technique_ember_orb
+    PNG: assets/valeorders/textures/items/technique_ember_orb.png | 32x32 | existing dedicated texture
+[ ] Ember Thread Technique | valeorders:technique_ember_thread
+    PNG: assets/valeorders/textures/items/technique_ember_thread.png | 32x32 | existing dedicated texture
+[ ] Gale Arc Technique | valeorders:technique_gale_arc
+    PNG: assets/valeorders/textures/items/technique_gale_arc.png | 32x32 | existing dedicated texture
+[ ] Gale Edge Technique | valeorders:technique_gale_edge
+    PNG: assets/valeorders/textures/items/technique_gale_edge.png | 32x32 | existing dedicated texture
+[ ] Hearth Ring Technique | valeorders:technique_hearth_ring
+    PNG: assets/valeorders/textures/items/technique_hearth_ring.png | 32x32 | existing dedicated texture
+[ ] Hollow Dart Technique | valeorders:technique_hollow_dart
+    PNG: assets/valeorders/textures/items/technique_hollow_dart.png | 32x32 | existing dedicated texture
+[ ] Iron Focus Technique | valeorders:technique_iron_focus
+    PNG: assets/valeorders/textures/items/technique_iron_focus.png | 32x32 | existing dedicated texture
+[ ] Mind Tether Technique | valeorders:technique_mind_tether
+    PNG: assets/valeorders/textures/items/technique_mind_tether.png | 32x32 | existing dedicated texture
+[ ] Mire Circle Technique | valeorders:technique_mire_circle
+    PNG: assets/valeorders/textures/items/technique_mire_circle.png | 32x32 | existing dedicated texture
+[ ] Molten Mantle Technique | valeorders:technique_molten_mantle
+    PNG: assets/valeorders/textures/items/technique_molten_mantle.png | 32x32 | existing dedicated texture
+[ ] Mote Orbit Technique | valeorders:technique_mote_orbit
+    PNG: assets/valeorders/textures/items/technique_mote_orbit.png | 32x32 | existing dedicated texture
+[ ] Night Pounce Technique | valeorders:technique_night_pounce
+    PNG: assets/valeorders/textures/items/technique_night_pounce.png | 32x32 | existing dedicated texture
+[ ] Pearl Cage Technique | valeorders:technique_pearl_cage
+    PNG: assets/valeorders/textures/items/technique_pearl_cage.png | 32x32 | existing dedicated texture
+[ ] Quarter Ritual Technique | valeorders:technique_quarter_ritual
+    PNG: assets/valeorders/textures/items/technique_quarter_ritual.png | 32x32 | existing dedicated texture
+[ ] Reed Escape Technique | valeorders:technique_reed_escape
+    PNG: assets/valeorders/textures/items/technique_reed_escape.png | 32x32 | existing dedicated texture
+[ ] Ripple Crown Technique | valeorders:technique_ripple_crown
+    PNG: assets/valeorders/textures/items/technique_ripple_crown.png | 32x32 | existing dedicated texture
+[ ] River Serpent Technique | valeorders:technique_river_serpent
+    PNG: assets/valeorders/textures/items/technique_river_serpent.png | 32x32 | existing dedicated texture
+[ ] Shade Veil Technique | valeorders:technique_shade_veil
+    PNG: assets/valeorders/textures/items/technique_shade_veil.png | 32x32 | existing dedicated texture
+[ ] Shadow Tether Technique | valeorders:technique_shadow_tether
+    PNG: assets/valeorders/textures/items/technique_shadow_tether.png | 32x32 | existing dedicated texture
+[ ] Shale Thorns Technique | valeorders:technique_shale_thorns
+    PNG: assets/valeorders/textures/items/technique_shale_thorns.png | 32x32 | existing dedicated texture
+[ ] Silver Fog Technique | valeorders:technique_silver_fog
+    PNG: assets/valeorders/textures/items/technique_silver_fog.png | 32x32 | existing dedicated texture
+[ ] Slate Clasp Technique | valeorders:technique_slate_clasp
+    PNG: assets/valeorders/textures/items/technique_slate_clasp.png | 32x32 | existing dedicated texture
+[ ] Spark Hound Technique | valeorders:technique_spark_hound
+    PNG: assets/valeorders/textures/items/technique_spark_hound.png | 32x32 | existing dedicated texture
+[ ] Rasengan Technique | valeorders:technique_spiral_palm
+    PNG: assets/valeorders/textures/items/technique_spiral_palm.png | 32x32 | existing dedicated texture
+[ ] Stone Refuge Technique | valeorders:technique_stone_refuge
+    PNG: assets/valeorders/textures/items/technique_stone_refuge.png | 32x32 | existing dedicated texture
+[ ] Chidori Technique | valeorders:technique_storm_lance
+    PNG: assets/valeorders/textures/items/technique_storm_lance.png | 32x32 | existing dedicated texture
+[ ] Storm Stride Technique | valeorders:technique_storm_stride
+    PNG: assets/valeorders/textures/items/technique_storm_stride.png | 32x32 | existing dedicated texture
+[ ] Terrace Guard Technique | valeorders:technique_terrace_guard
+    PNG: assets/valeorders/textures/items/technique_terrace_guard.png | 32x32 | existing dedicated texture
+[ ] Thread Command Technique | valeorders:technique_thread_command
+    PNG: assets/valeorders/textures/items/technique_thread_command.png | 32x32 | existing dedicated texture
+[ ] Thunder Crown Technique | valeorders:technique_thunder_crown
+    PNG: assets/valeorders/textures/items/technique_thunder_crown.png | 32x32 | existing dedicated texture
+[ ] Tide Hunter Technique | valeorders:technique_tide_hunter
+    PNG: assets/valeorders/textures/items/technique_tide_hunter.png | 32x32 | existing dedicated texture
+[ ] Titan Stance Technique | valeorders:technique_titan_stance
+    PNG: assets/valeorders/textures/items/technique_titan_stance.png | 32x32 | existing dedicated texture
+[ ] Torrent Cannon Technique | valeorders:technique_torrent_cannon
+    PNG: assets/valeorders/textures/items/technique_torrent_cannon.png | 32x32 | existing dedicated texture
+[ ] Torrent Needle Technique | valeorders:technique_torrent_needle
+    PNG: assets/valeorders/textures/items/technique_torrent_needle.png | 32x32 | existing dedicated texture
+[ ] Vital Cycle Technique | valeorders:technique_vital_cycle
+    PNG: assets/valeorders/textures/items/technique_vital_cycle.png | 32x32 | existing dedicated texture
+[ ] Waymark Step Technique | valeorders:technique_waymark_step
+    PNG: assets/valeorders/textures/items/technique_waymark_step.png | 32x32 | existing dedicated texture
+[ ] Zephyr Blade Technique | valeorders:technique_zephyr_blade
+    PNG: assets/valeorders/textures/items/technique_zephyr_blade.png | 32x32 | existing dedicated texture
+
+KITCHEN INGREDIENTS, MEALS, MEDICINES AND STATIONS (53)
+
+[ ] Anpan | valeorders:kitchen_anpan
+    PNG: assets/valeorders/textures/items/kitchen_anpan.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Antidote | valeorders:kitchen_antidote
+    PNG: assets/valeorders/textures/items/kitchen_antidote.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Boiled Kelp | valeorders:kitchen_boiled_kelp
+    PNG: assets/valeorders/textures/items/kitchen_boiled_kelp.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Boiler | valeorders:kitchen_boiler
+    PNG: assets/valeorders/textures/items/kitchen_boiler.png | 32x32 | 3D inventory model; separate flat icon optional
+    Preserve the current 3D held model; GUI-only flat art needs a separate model/perspective binding.
+[ ] Cooked Noodles | valeorders:kitchen_cooked_noodles
+    PNG: assets/valeorders/textures/items/kitchen_cooked_noodles.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cooked Rice | valeorders:kitchen_cooked_rice
+    PNG: assets/valeorders/textures/items/kitchen_cooked_rice.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cooked Soybean | valeorders:kitchen_cooked_soybean
+    PNG: assets/valeorders/textures/items/kitchen_cooked_soybean.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Daifuku Mochi | valeorders:kitchen_daifuku_mochi
+    PNG: assets/valeorders/textures/items/kitchen_daifuku_mochi.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dango | valeorders:kitchen_dango
+    PNG: assets/valeorders/textures/items/kitchen_dango.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dashi Soup | valeorders:kitchen_dashi_soup
+    PNG: assets/valeorders/textures/items/kitchen_dashi_soup.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Donburi | valeorders:kitchen_donburi
+    PNG: assets/valeorders/textures/items/kitchen_donburi.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Experience Draught | valeorders:kitchen_experience_draught
+    PNG: assets/valeorders/textures/items/kitchen_experience_draught.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Fish Cake | valeorders:kitchen_fish_cake
+    PNG: assets/valeorders/textures/items/kitchen_fish_cake.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Fortune Fruit | valeorders:kitchen_fortune_fruit
+    PNG: assets/valeorders/textures/items/kitchen_fortune_fruit.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ground Kelp | valeorders:kitchen_ground_kelp
+    PNG: assets/valeorders/textures/items/kitchen_ground_kelp.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hotdog | valeorders:kitchen_hotdog
+    PNG: assets/valeorders/textures/items/kitchen_hotdog.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kelp | valeorders:kitchen_kelp
+    PNG: assets/valeorders/textures/items/kitchen_kelp.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Mill | valeorders:kitchen_mill
+    PNG: assets/valeorders/textures/items/kitchen_mill.png | 32x32 | 3D inventory model; separate flat icon optional
+    Preserve the current 3D held model; GUI-only flat art needs a separate model/perspective binding.
+[ ] Miso Soup | valeorders:kitchen_miso_soup
+    PNG: assets/valeorders/textures/items/kitchen_miso_soup.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Mochi | valeorders:kitchen_mochi
+    PNG: assets/valeorders/textures/items/kitchen_mochi.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moromi | valeorders:kitchen_moromi
+    PNG: assets/valeorders/textures/items/kitchen_moromi.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Noodles | valeorders:kitchen_noodles
+    PNG: assets/valeorders/textures/items/kitchen_noodles.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Okayu | valeorders:kitchen_okayu
+    PNG: assets/valeorders/textures/items/kitchen_okayu.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Okonomiyaki | valeorders:kitchen_okonomiyaki
+    PNG: assets/valeorders/textures/items/kitchen_okonomiyaki.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Onigiri | valeorders:kitchen_onigiri
+    PNG: assets/valeorders/textures/items/kitchen_onigiri.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Potato Chips | valeorders:kitchen_potato_chips
+    PNG: assets/valeorders/textures/items/kitchen_potato_chips.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ramen | valeorders:kitchen_ramen
+    PNG: assets/valeorders/textures/items/kitchen_ramen.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ramen Egg | valeorders:kitchen_ramen_egg
+    PNG: assets/valeorders/textures/items/kitchen_ramen_egg.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Recovery Curry | valeorders:kitchen_recovery_curry
+    PNG: assets/valeorders/textures/items/kitchen_recovery_curry.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Redbean | valeorders:kitchen_redbean
+    PNG: assets/valeorders/textures/items/kitchen_redbean.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Redbean Seed | valeorders:kitchen_redbean_seed
+    PNG: assets/valeorders/textures/items/kitchen_redbean_seed.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resolve Pill 1 | valeorders:kitchen_resolve_pill_1
+    PNG: assets/valeorders/textures/items/kitchen_resolve_pill_1.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resolve Pill 2 | valeorders:kitchen_resolve_pill_2
+    PNG: assets/valeorders/textures/items/kitchen_resolve_pill_2.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resolve Pill 3 | valeorders:kitchen_resolve_pill_3
+    PNG: assets/valeorders/textures/items/kitchen_resolve_pill_3.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Resolve Shard | valeorders:kitchen_resolve_shard
+    PNG: assets/valeorders/textures/items/kitchen_resolve_shard.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rice | valeorders:kitchen_rice
+    PNG: assets/valeorders/textures/items/kitchen_rice.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rice Flour | valeorders:kitchen_rice_flour
+    PNG: assets/valeorders/textures/items/kitchen_rice_flour.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rice Seed | valeorders:kitchen_rice_seed
+    PNG: assets/valeorders/textures/items/kitchen_rice_seed.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Roller | valeorders:kitchen_roller
+    PNG: assets/valeorders/textures/items/kitchen_roller.png | 32x32 | 3D inventory model; separate flat icon optional
+    Preserve the current 3D held model; GUI-only flat art needs a separate model/perspective binding.
+[ ] Sake | valeorders:kitchen_sake
+    PNG: assets/valeorders/textures/items/kitchen_sake.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Soy Milk | valeorders:kitchen_soy_milk
+    PNG: assets/valeorders/textures/items/kitchen_soy_milk.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Soy Sauce | valeorders:kitchen_soy_sauce
+    PNG: assets/valeorders/textures/items/kitchen_soy_sauce.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Soybean | valeorders:kitchen_soybean
+    PNG: assets/valeorders/textures/items/kitchen_soybean.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Soybean Seed | valeorders:kitchen_soybean_seed
+    PNG: assets/valeorders/textures/items/kitchen_soybean_seed.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Steamer | valeorders:kitchen_steamer
+    PNG: assets/valeorders/textures/items/kitchen_steamer.png | 32x32 | 3D inventory model; separate flat icon optional
+    Preserve the current 3D held model; GUI-only flat art needs a separate model/perspective binding.
+[ ] Suika | valeorders:kitchen_suika
+    PNG: assets/valeorders/textures/items/kitchen_suika.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Tofu | valeorders:kitchen_tofu
+    PNG: assets/valeorders/textures/items/kitchen_tofu.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Tofu Curry | valeorders:kitchen_tofu_curry
+    PNG: assets/valeorders/textures/items/kitchen_tofu_curry.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Tofu Soup | valeorders:kitchen_tofu_soup
+    PNG: assets/valeorders/textures/items/kitchen_tofu_soup.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Wheat Flour | valeorders:kitchen_wheat_flour
+    PNG: assets/valeorders/textures/items/kitchen_wheat_flour.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Yakisoba | valeorders:kitchen_yakisoba
+    PNG: assets/valeorders/textures/items/kitchen_yakisoba.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Yokan | valeorders:kitchen_yokan
+    PNG: assets/valeorders/textures/items/kitchen_yokan.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Zenzai | valeorders:kitchen_zenzai
+    PNG: assets/valeorders/textures/items/kitchen_zenzai.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+OUTFITS (79)
+
+[ ] Ambermoss Hood | valeorders:outfit_ambermoss_hood
+    PNG: assets/valeorders/textures/items/outfit_ambermoss_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ashfield Hood | valeorders:outfit_ashfield_hood
+    PNG: assets/valeorders/textures/items/outfit_ashfield_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bellstone Trousers | valeorders:outfit_bellstone_trousers
+    PNG: assets/valeorders/textures/items/outfit_bellstone_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Bracken Coat | valeorders:outfit_bracken_coat
+    PNG: assets/valeorders/textures/items/outfit_bracken_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Brightcairn Coat | valeorders:outfit_brightcairn_coat
+    PNG: assets/valeorders/textures/items/outfit_brightcairn_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Brightcairn Trousers | valeorders:outfit_brightcairn_trousers
+    PNG: assets/valeorders/textures/items/outfit_brightcairn_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Brookstone Coat | valeorders:outfit_brookstone_coat
+    PNG: assets/valeorders/textures/items/outfit_brookstone_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Brookstone Hood | valeorders:outfit_brookstone_hood
+    PNG: assets/valeorders/textures/items/outfit_brookstone_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Brookstone Trousers | valeorders:outfit_brookstone_trousers
+    PNG: assets/valeorders/textures/items/outfit_brookstone_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cairn Coat | valeorders:outfit_cairn_coat
+    PNG: assets/valeorders/textures/items/outfit_cairn_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cinderleaf Coat | valeorders:outfit_cinderleaf_coat
+    PNG: assets/valeorders/textures/items/outfit_cinderleaf_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cinderleaf Hood | valeorders:outfit_cinderleaf_hood
+    PNG: assets/valeorders/textures/items/outfit_cinderleaf_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cinderleaf Trousers | valeorders:outfit_cinderleaf_trousers
+    PNG: assets/valeorders/textures/items/outfit_cinderleaf_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cloudmere Coat | valeorders:outfit_cloudmere_coat
+    PNG: assets/valeorders/textures/items/outfit_cloudmere_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cloudmere Hood | valeorders:outfit_cloudmere_hood
+    PNG: assets/valeorders/textures/items/outfit_cloudmere_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Cloudmere Trousers | valeorders:outfit_cloudmere_trousers
+    PNG: assets/valeorders/textures/items/outfit_cloudmere_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Coastfern Coat | valeorders:outfit_coastfern_coat
+    PNG: assets/valeorders/textures/items/outfit_coastfern_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Coastfern Trousers | valeorders:outfit_coastfern_trousers
+    PNG: assets/valeorders/textures/items/outfit_coastfern_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Copperleaf Hood | valeorders:outfit_copperleaf_hood
+    PNG: assets/valeorders/textures/items/outfit_copperleaf_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Deepcopper Coat | valeorders:outfit_deepcopper_coat
+    PNG: assets/valeorders/textures/items/outfit_deepcopper_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Deepcopper Trousers | valeorders:outfit_deepcopper_trousers
+    PNG: assets/valeorders/textures/items/outfit_deepcopper_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Dunestone Hood | valeorders:outfit_dunestone_hood
+    PNG: assets/valeorders/textures/items/outfit_dunestone_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Duskmere Coat | valeorders:outfit_duskmere_coat
+    PNG: assets/valeorders/textures/items/outfit_duskmere_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Frostpine Coat | valeorders:outfit_frostpine_coat
+    PNG: assets/valeorders/textures/items/outfit_frostpine_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Frostpine Hood | valeorders:outfit_frostpine_hood
+    PNG: assets/valeorders/textures/items/outfit_frostpine_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Frostpine Trousers | valeorders:outfit_frostpine_trousers
+    PNG: assets/valeorders/textures/items/outfit_frostpine_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Galecrest Hood | valeorders:outfit_galecrest_hood
+    PNG: assets/valeorders/textures/items/outfit_galecrest_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Goldenrush Coat | valeorders:outfit_goldenrush_coat
+    PNG: assets/valeorders/textures/items/outfit_goldenrush_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Goldenrush Hood | valeorders:outfit_goldenrush_hood
+    PNG: assets/valeorders/textures/items/outfit_goldenrush_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Highridge Coat | valeorders:outfit_highridge_coat
+    PNG: assets/valeorders/textures/items/outfit_highridge_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Hollowreed Trousers | valeorders:outfit_hollowreed_trousers
+    PNG: assets/valeorders/textures/items/outfit_hollowreed_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ironbark Coat | valeorders:outfit_ironbark_coat
+    PNG: assets/valeorders/textures/items/outfit_ironbark_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Kilnward Hood | valeorders:outfit_kilnward_hood
+    PNG: assets/valeorders/textures/items/outfit_kilnward_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Mistroot Hood | valeorders:outfit_mistroot_hood
+    PNG: assets/valeorders/textures/items/outfit_mistroot_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Moonfern Hood | valeorders:outfit_moonfern_hood
+    PNG: assets/valeorders/textures/items/outfit_moonfern_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Mosslight Hood | valeorders:outfit_mosslight_hood
+    PNG: assets/valeorders/textures/items/outfit_mosslight_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Nightbloom Hood | valeorders:outfit_nightbloom_hood
+    PNG: assets/valeorders/textures/items/outfit_nightbloom_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Coat | valeorders:outfit_ochre_coat
+    PNG: assets/valeorders/textures/items/outfit_ochre_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ochre Hood | valeorders:outfit_ochre_hood
+    PNG: assets/valeorders/textures/items/outfit_ochre_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearlwood Hood | valeorders:outfit_pearlwood_hood
+    PNG: assets/valeorders/textures/items/outfit_pearlwood_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Pearlwood Trousers | valeorders:outfit_pearlwood_trousers
+    PNG: assets/valeorders/textures/items/outfit_pearlwood_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rainbloom Coat | valeorders:outfit_rainbloom_coat
+    PNG: assets/valeorders/textures/items/outfit_rainbloom_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rainbloom Hood | valeorders:outfit_rainbloom_hood
+    PNG: assets/valeorders/textures/items/outfit_rainbloom_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rainbloom Trousers | valeorders:outfit_rainbloom_trousers
+    PNG: assets/valeorders/textures/items/outfit_rainbloom_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Redwillow Coat | valeorders:outfit_redwillow_coat
+    PNG: assets/valeorders/textures/items/outfit_redwillow_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Redwillow Trousers | valeorders:outfit_redwillow_trousers
+    PNG: assets/valeorders/textures/items/outfit_redwillow_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedbank Hood | valeorders:outfit_reedbank_hood
+    PNG: assets/valeorders/textures/items/outfit_reedbank_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedstone Coat | valeorders:outfit_reedstone_coat
+    PNG: assets/valeorders/textures/items/outfit_reedstone_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Reedstone Hood | valeorders:outfit_reedstone_hood
+    PNG: assets/valeorders/textures/items/outfit_reedstone_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rimeglass Coat | valeorders:outfit_rimeglass_coat
+    PNG: assets/valeorders/textures/items/outfit_rimeglass_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Riverflint Hood | valeorders:outfit_riverflint_hood
+    PNG: assets/valeorders/textures/items/outfit_riverflint_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rosequartz Coat | valeorders:outfit_rosequartz_coat
+    PNG: assets/valeorders/textures/items/outfit_rosequartz_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Rosequartz Trousers | valeorders:outfit_rosequartz_trousers
+    PNG: assets/valeorders/textures/items/outfit_rosequartz_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sablewood Coat | valeorders:outfit_sablewood_coat
+    PNG: assets/valeorders/textures/items/outfit_sablewood_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sablewood Hood | valeorders:outfit_sablewood_hood
+    PNG: assets/valeorders/textures/items/outfit_sablewood_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sagewood Coat | valeorders:outfit_sagewood_coat
+    PNG: assets/valeorders/textures/items/outfit_sagewood_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sagewood Trousers | valeorders:outfit_sagewood_trousers
+    PNG: assets/valeorders/textures/items/outfit_sagewood_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Saltbloom Coat | valeorders:outfit_saltbloom_coat
+    PNG: assets/valeorders/textures/items/outfit_saltbloom_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Saltbloom Hood | valeorders:outfit_saltbloom_hood
+    PNG: assets/valeorders/textures/items/outfit_saltbloom_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Saltbloom Trousers | valeorders:outfit_saltbloom_trousers
+    PNG: assets/valeorders/textures/items/outfit_saltbloom_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Shadowpine Coat | valeorders:outfit_shadowpine_coat
+    PNG: assets/valeorders/textures/items/outfit_shadowpine_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Shadowpine Trousers | valeorders:outfit_shadowpine_trousers
+    PNG: assets/valeorders/textures/items/outfit_shadowpine_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Silverfen Hood | valeorders:outfit_silverfen_hood
+    PNG: assets/valeorders/textures/items/outfit_silverfen_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Silverfen Trousers | valeorders:outfit_silverfen_trousers
+    PNG: assets/valeorders/textures/items/outfit_silverfen_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Stormreed Coat | valeorders:outfit_stormreed_coat
+    PNG: assets/valeorders/textures/items/outfit_stormreed_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sunfen Hood | valeorders:outfit_sunfen_hood
+    PNG: assets/valeorders/textures/items/outfit_sunfen_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sunstone Coat | valeorders:outfit_sunstone_coat
+    PNG: assets/valeorders/textures/items/outfit_sunstone_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Sunstone Trousers | valeorders:outfit_sunstone_trousers
+    PNG: assets/valeorders/textures/items/outfit_sunstone_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Thistle Coat | valeorders:outfit_thistle_coat
+    PNG: assets/valeorders/textures/items/outfit_thistle_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Thistle Hood | valeorders:outfit_thistle_hood
+    PNG: assets/valeorders/textures/items/outfit_thistle_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Tidebound Hood | valeorders:outfit_tidebound_hood
+    PNG: assets/valeorders/textures/items/outfit_tidebound_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Violetfen Coat | valeorders:outfit_violetfen_coat
+    PNG: assets/valeorders/textures/items/outfit_violetfen_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Violetfen Hood | valeorders:outfit_violetfen_hood
+    PNG: assets/valeorders/textures/items/outfit_violetfen_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Violetfen Trousers | valeorders:outfit_violetfen_trousers
+    PNG: assets/valeorders/textures/items/outfit_violetfen_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Wildrime Coat | valeorders:outfit_wildrime_coat
+    PNG: assets/valeorders/textures/items/outfit_wildrime_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Wildrime Trousers | valeorders:outfit_wildrime_trousers
+    PNG: assets/valeorders/textures/items/outfit_wildrime_trousers.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Willow Coat | valeorders:outfit_willow_coat
+    PNG: assets/valeorders/textures/items/outfit_willow_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Willow Hood | valeorders:outfit_willow_hood
+    PNG: assets/valeorders/textures/items/outfit_willow_hood.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Windglass Coat | valeorders:outfit_windglass_coat
+    PNG: assets/valeorders/textures/items/outfit_windglass_coat.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+SUMMONING TOKENS (3)
+
+[ ] Summon Cairnling | valeorders:summon_cairnling
+    PNG: assets/valeorders/textures/items/summon_cairnling.png | 32x32 | existing dedicated texture
+[ ] Summon Lantern | valeorders:summon_lantern
+    PNG: assets/valeorders/textures/items/summon_lantern.png | 32x32 | existing dedicated texture
+[ ] Summon Reedling | valeorders:summon_reedling
+    PNG: assets/valeorders/textures/items/summon_reedling.png | 32x32 | existing dedicated texture
+
+TOOLS, TRAINING, PUPPETS AND CONSUMABLES (25)
+
+[ ] Ancestral Seal | valeorders:ancestral_seal
+    PNG: assets/valeorders/textures/items/ancestral_seal.png | 32x32 | existing dedicated texture
+[ ] Body Trial Charm | valeorders:body_trial_charm
+    PNG: assets/valeorders/textures/items/body_trial_charm.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Companion Covenant | valeorders:companion_covenant
+    PNG: assets/valeorders/textures/items/companion_covenant.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Ember Loom | valeorders:ember_loom
+    PNG: assets/valeorders/textures/items/ember_loom.png | 32x32 | existing dedicated texture
+[ ] Encounter Dossier | valeorders:encounter_dossier
+    PNG: assets/valeorders/textures/items/encounter_dossier.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Exam Cloud | valeorders:exam_cloud
+    PNG: assets/valeorders/textures/items/exam_cloud.png | 32x32 | existing dedicated texture
+[ ] Exam Slate | valeorders:exam_slate
+    PNG: assets/valeorders/textures/items/exam_slate.png | 32x32 | existing dedicated texture
+[ ] Order Field Manual | valeorders:field_manual
+    PNG: assets/valeorders/textures/items/field_manual.png | 32x32 | existing dedicated texture
+[ ] Focus Talisman | valeorders:focus_talisman
+    PNG: assets/valeorders/textures/items/focus_talisman.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Medical Loom | valeorders:medical_loom
+    PNG: assets/valeorders/textures/items/medical_loom.png | 32x32 | existing dedicated texture
+[ ] Mission Journal | valeorders:mission_journal
+    PNG: assets/valeorders/textures/items/mission_journal.png | 32x32 | existing dedicated texture
+[ ] Needle Fan | valeorders:needle_fan
+    PNG: assets/valeorders/textures/items/needle_fan.png | 32x32 | existing dedicated texture
+[ ] Party Charter | valeorders:party_charter
+    PNG: assets/valeorders/textures/items/party_charter.png | 32x32 | existing dedicated texture
+[ ] Practice Note | valeorders:practice_note
+    PNG: assets/valeorders/textures/items/practice_note.png | 32x32 | existing dedicated texture
+[ ] Puppet Furnace | valeorders:puppet_furnace
+    PNG: assets/valeorders/textures/items/puppet_furnace.png | 32x32 | existing dedicated texture
+[ ] Puppet Sentinel | valeorders:puppet_sentinel
+    PNG: assets/valeorders/textures/items/puppet_sentinel.png | 32x32 | existing dedicated texture
+[ ] Puppet Spindle | valeorders:puppet_spindle
+    PNG: assets/valeorders/textures/items/puppet_spindle.png | 32x32 | existing dedicated texture
+[ ] Puppet Wisp | valeorders:puppet_wisp
+    PNG: assets/valeorders/textures/items/puppet_wisp.png | 32x32 | existing dedicated texture
+[ ] Resolve Well | valeorders:resolve_well
+    PNG: assets/valeorders/textures/items/resolve_well.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Scroll Actor Glyph | valeorders:scroll_actor_glyph
+    PNG: assets/valeorders/textures/items/scroll_actor_glyph.png | 32x32 | existing dedicated texture
+[ ] Smoke Capsule | valeorders:smoke_capsule
+    PNG: assets/valeorders/textures/items/smoke_capsule.png | 32x32 | existing dedicated texture
+[ ] Snap Disc | valeorders:snap_disc
+    PNG: assets/valeorders/textures/items/snap_disc.png | 32x32 | existing dedicated texture
+[ ] Study Note | valeorders:study_note
+    PNG: assets/valeorders/textures/items/study_note.png | 32x32 | existing dedicated texture
+[ ] Trial Writ | valeorders:trial_writ
+    PNG: assets/valeorders/textures/items/trial_writ.png | 32x32 | existing dedicated texture
+[ ] Wayfarer Atlas | valeorders:wayfarer_atlas
+    PNG: assets/valeorders/textures/items/wayfarer_atlas.png | 32x32 | shared placeholder or shared family art
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+
+TRANSFORMATION TOKENS (4)
+
+[ ] Form Bastion | valeorders:form_bastion
+    PNG: assets/valeorders/textures/items/form_bastion.png | 32x32 | existing dedicated texture
+[ ] Form Eclipse | valeorders:form_eclipse
+    PNG: assets/valeorders/textures/items/form_eclipse.png | 32x32 | existing dedicated texture
+[ ] Form Oracle | valeorders:form_oracle
+    PNG: assets/valeorders/textures/items/form_oracle.png | 32x32 | existing dedicated texture
+[ ] Form Zephyr | valeorders:form_zephyr
+    PNG: assets/valeorders/textures/items/form_zephyr.png | 32x32 | existing dedicated texture
+
+VILLAGE STANDARDS AND WORLD UTILITIES (10)
+
+[ ] Skylark Rise Standard (5 x 5) | hvdungeonpictures:cloud_picture
+    PNG: assets/hvdungeonpictures/textures/items/cloud_picture.png | 32x32 | existing dedicated texture
+[ ] Canopy Hold Standard (5 x 5) | hvdungeonpictures:leaf_picture
+    PNG: assets/hvdungeonpictures/textures/items/leaf_picture.png | 32x32 | existing dedicated texture
+[ ] Tidewatch Standard (5 x 5) | hvdungeonpictures:mist_picture
+    PNG: assets/hvdungeonpictures/textures/items/mist_picture.png | 32x32 | existing dedicated texture
+[ ] Dunehaven Standard (5 x 5) | hvdungeonpictures:sand_picture
+    PNG: assets/hvdungeonpictures/textures/items/sand_picture.png | 32x32 | existing dedicated texture
+[ ] Ridgecrest Standard (5 x 5) | hvdungeonpictures:stone_picture
+    PNG: assets/hvdungeonpictures/textures/items/stone_picture.png | 32x32 | existing dedicated texture
+[ ] Unassigned Standard | hvdungeonpictures:unassigned_standard
+    PNG: assets/hvdungeonpictures/textures/items/unassigned_standard.png | 32x32 | vanilla placeholder
+    Point model to the new per-item texture; adding a PNG alone is insufficient.
+[ ] Campfire | variedcommodities:campfire
+    PNG: assets/variedcommodities/textures/items/campfire.png | 32x32 | existing dedicated texture
+[ ] Table | variedcommodities:table
+    PNG: assets/variedcommodities/textures/items/table.png | 32x32 | existing dedicated texture
+[ ] Trading Block | variedcommodities:trading_block
+    PNG: assets/variedcommodities/textures/items/trading_block.png | 32x32 | existing dedicated texture
+[ ] Waystone | waystones:waystone
+    PNG: assets/waystones/textures/items/waystone.png | 32x32 | existing dedicated texture
+
+WEAPONS (81)
+
+[ ] Binder Spear | valeorders:binder_spear
+    PNG: assets/valeorders/textures/items/binder_spear.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Axe | valeorders:bloom_axe
+    PNG: assets/valeorders/textures/items/bloom_axe.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Dagger | valeorders:bloom_dagger
+    PNG: assets/valeorders/textures/items/bloom_dagger.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Glaive | valeorders:bloom_glaive
+    PNG: assets/valeorders/textures/items/bloom_glaive.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Saber | valeorders:bloom_saber
+    PNG: assets/valeorders/textures/items/bloom_saber.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Spear | valeorders:bloom_spear
+    PNG: assets/valeorders/textures/items/bloom_spear.png | 32x32 | existing dedicated texture
+[ ] Bloom Ward Staff | valeorders:bloom_staff
+    PNG: assets/valeorders/textures/items/bloom_staff.png | 32x32 | existing dedicated texture
+[ ] Breakaxe | valeorders:breakaxe
+    PNG: assets/valeorders/textures/items/breakaxe.png | 32x32 | existing dedicated texture
+[ ] Cinder Burst | valeorders:cinder_burst
+    PNG: assets/valeorders/textures/items/cinder_burst.png | 32x32 | existing dedicated texture
+[ ] Crescent Guard | valeorders:crescent_guard
+    PNG: assets/valeorders/textures/items/crescent_guard.png | 32x32 | existing dedicated texture
+[ ] Crescent Talons | valeorders:crescent_talons
+    PNG: assets/valeorders/textures/items/crescent_talons.png | 32x32 | 3D inventory model; separate flat icon optional
+    Preserve the current 3D held model; GUI-only flat art needs a separate model/perspective binding.
+[ ] Current Ward Axe | valeorders:current_axe
+    PNG: assets/valeorders/textures/items/current_axe.png | 32x32 | existing dedicated texture
+[ ] Current Ward Dagger | valeorders:current_dagger
+    PNG: assets/valeorders/textures/items/current_dagger.png | 32x32 | existing dedicated texture
+[ ] Current Ward Glaive | valeorders:current_glaive
+    PNG: assets/valeorders/textures/items/current_glaive.png | 32x32 | existing dedicated texture
+[ ] Current Ward Saber | valeorders:current_saber
+    PNG: assets/valeorders/textures/items/current_saber.png | 32x32 | existing dedicated texture
+[ ] Current Ward Spear | valeorders:current_spear
+    PNG: assets/valeorders/textures/items/current_spear.png | 32x32 | existing dedicated texture
+[ ] Current Ward Staff | valeorders:current_staff
+    PNG: assets/valeorders/textures/items/current_staff.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Axe | valeorders:dawn_axe
+    PNG: assets/valeorders/textures/items/dawn_axe.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Dagger | valeorders:dawn_dagger
+    PNG: assets/valeorders/textures/items/dawn_dagger.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Glaive | valeorders:dawn_glaive
+    PNG: assets/valeorders/textures/items/dawn_glaive.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Saber | valeorders:dawn_saber
+    PNG: assets/valeorders/textures/items/dawn_saber.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Spear | valeorders:dawn_spear
+    PNG: assets/valeorders/textures/items/dawn_spear.png | 32x32 | existing dedicated texture
+[ ] Dawn Ward Staff | valeorders:dawn_staff
+    PNG: assets/valeorders/textures/items/dawn_staff.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Axe | valeorders:dusk_axe
+    PNG: assets/valeorders/textures/items/dusk_axe.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Dagger | valeorders:dusk_dagger
+    PNG: assets/valeorders/textures/items/dusk_dagger.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Glaive | valeorders:dusk_glaive
+    PNG: assets/valeorders/textures/items/dusk_glaive.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Saber | valeorders:dusk_saber
+    PNG: assets/valeorders/textures/items/dusk_saber.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Spear | valeorders:dusk_spear
+    PNG: assets/valeorders/textures/items/dusk_spear.png | 32x32 | existing dedicated texture
+[ ] Dusk Ward Staff | valeorders:dusk_staff
+    PNG: assets/valeorders/textures/items/dusk_staff.png | 32x32 | existing dedicated texture
+[ ] Echo Gauntlet | valeorders:echo_gauntlet
+    PNG: assets/valeorders/textures/items/echo_gauntlet.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Axe | valeorders:ember_axe
+    PNG: assets/valeorders/textures/items/ember_axe.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Dagger | valeorders:ember_dagger
+    PNG: assets/valeorders/textures/items/ember_dagger.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Glaive | valeorders:ember_glaive
+    PNG: assets/valeorders/textures/items/ember_glaive.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Saber | valeorders:ember_saber
+    PNG: assets/valeorders/textures/items/ember_saber.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Spear | valeorders:ember_spear
+    PNG: assets/valeorders/textures/items/ember_spear.png | 32x32 | existing dedicated texture
+[ ] Ember Ward Staff | valeorders:ember_staff
+    PNG: assets/valeorders/textures/items/ember_staff.png | 32x32 | existing dedicated texture
+[ ] Emberbrand | valeorders:emberbrand
+    PNG: assets/valeorders/textures/items/emberbrand.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Axe | valeorders:flint_axe
+    PNG: assets/valeorders/textures/items/flint_axe.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Dagger | valeorders:flint_dagger
+    PNG: assets/valeorders/textures/items/flint_dagger.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Glaive | valeorders:flint_glaive
+    PNG: assets/valeorders/textures/items/flint_glaive.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Saber | valeorders:flint_saber
+    PNG: assets/valeorders/textures/items/flint_saber.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Spear | valeorders:flint_spear
+    PNG: assets/valeorders/textures/items/flint_spear.png | 32x32 | existing dedicated texture
+[ ] Flint Ward Staff | valeorders:flint_staff
+    PNG: assets/valeorders/textures/items/flint_staff.png | 32x32 | existing dedicated texture
+[ ] Flux Cannon | valeorders:flux_cannon
+    PNG: assets/valeorders/textures/items/flux_cannon.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Axe | valeorders:gale_axe
+    PNG: assets/valeorders/textures/items/gale_axe.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Dagger | valeorders:gale_dagger
+    PNG: assets/valeorders/textures/items/gale_dagger.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Glaive | valeorders:gale_glaive
+    PNG: assets/valeorders/textures/items/gale_glaive.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Saber | valeorders:gale_saber
+    PNG: assets/valeorders/textures/items/gale_saber.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Spear | valeorders:gale_spear
+    PNG: assets/valeorders/textures/items/gale_spear.png | 32x32 | existing dedicated texture
+[ ] Gale Ward Staff | valeorders:gale_staff
+    PNG: assets/valeorders/textures/items/gale_staff.png | 32x32 | existing dedicated texture
+[ ] Lens Bow | valeorders:lens_bow
+    PNG: assets/valeorders/textures/items/lens_bow.png | 32x32 | existing dedicated texture
+[ ] Mendguard Staff | valeorders:mendguard_staff
+    PNG: assets/valeorders/textures/items/mendguard_staff.png | 32x32 | existing dedicated texture
+[ ] Mist Censer | valeorders:mist_censer
+    PNG: assets/valeorders/textures/items/mist_censer.png | 32x32 | existing dedicated texture
+[ ] Needle Spool | valeorders:needle_spool
+    PNG: assets/valeorders/textures/items/needle_spool.png | 32x32 | existing dedicated texture
+[ ] Overdrive Blade | valeorders:overdrive_blade
+    PNG: assets/valeorders/textures/items/overdrive_blade.png | 32x32 | existing dedicated texture
+[ ] Prism Lance | valeorders:prism_lance
+    PNG: assets/valeorders/textures/items/prism_lance.png | 32x32 | existing dedicated texture
+[ ] Returning Sickle | valeorders:returning_sickle
+    PNG: assets/valeorders/textures/items/returning_sickle.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Axe | valeorders:rime_axe
+    PNG: assets/valeorders/textures/items/rime_axe.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Dagger | valeorders:rime_dagger
+    PNG: assets/valeorders/textures/items/rime_dagger.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Glaive | valeorders:rime_glaive
+    PNG: assets/valeorders/textures/items/rime_glaive.png | 32x32 | existing dedicated texture
+[ ] Rime Pin | valeorders:rime_pin
+    PNG: assets/valeorders/textures/items/rime_pin.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Saber | valeorders:rime_saber
+    PNG: assets/valeorders/textures/items/rime_saber.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Spear | valeorders:rime_spear
+    PNG: assets/valeorders/textures/items/rime_spear.png | 32x32 | existing dedicated texture
+[ ] Rime Ward Staff | valeorders:rime_staff
+    PNG: assets/valeorders/textures/items/rime_staff.png | 32x32 | existing dedicated texture
+[ ] Seal Charge | valeorders:seal_charge
+    PNG: assets/valeorders/textures/items/seal_charge.png | 32x32 | existing dedicated texture
+[ ] Siege Maul | valeorders:siege_maul
+    PNG: assets/valeorders/textures/items/siege_maul.png | 32x32 | existing dedicated texture
+[ ] Siphon Hook | valeorders:siphon_hook
+    PNG: assets/valeorders/textures/items/siphon_hook.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Axe | valeorders:storm_axe
+    PNG: assets/valeorders/textures/items/storm_axe.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Dagger | valeorders:storm_dagger
+    PNG: assets/valeorders/textures/items/storm_dagger.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Glaive | valeorders:storm_glaive
+    PNG: assets/valeorders/textures/items/storm_glaive.png | 32x32 | existing dedicated texture
+[ ] Storm Pair | valeorders:storm_pair
+    PNG: assets/valeorders/textures/items/storm_pair.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Saber | valeorders:storm_saber
+    PNG: assets/valeorders/textures/items/storm_saber.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Spear | valeorders:storm_spear
+    PNG: assets/valeorders/textures/items/storm_spear.png | 32x32 | existing dedicated texture
+[ ] Storm Ward Staff | valeorders:storm_staff
+    PNG: assets/valeorders/textures/items/storm_staff.png | 32x32 | existing dedicated texture
+[ ] Sweep Glaive | valeorders:sweep_glaive
+    PNG: assets/valeorders/textures/items/sweep_glaive.png | 32x32 | existing dedicated texture
+[ ] Tempered Cleaver | valeorders:tempered_cleaver
+    PNG: assets/valeorders/textures/items/tempered_cleaver.png | 32x32 | existing dedicated texture
+[ ] Thorn Staff | valeorders:thorn_staff
+    PNG: assets/valeorders/textures/items/thorn_staff.png | 32x32 | existing dedicated texture
+[ ] Thunder Edge | valeorders:thunder_edge
+    PNG: assets/valeorders/textures/items/thunder_edge.png | 32x32 | existing dedicated texture
+[ ] Venom Needle | valeorders:venom_needle
+    PNG: assets/valeorders/textures/items/venom_needle.png | 32x32 | existing dedicated texture
+[ ] Ward Fan | valeorders:ward_fan
+    PNG: assets/valeorders/textures/items/ward_fan.png | 32x32 | existing dedicated texture
+[ ] Waymark Knife | valeorders:waymark_knife
+    PNG: assets/valeorders/textures/items/waymark_knife.png | 32x32 | existing dedicated texture

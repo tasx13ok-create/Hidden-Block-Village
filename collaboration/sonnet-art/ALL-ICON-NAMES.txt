@@ -1,0 +1,1937 @@
+EVERY INDEXED ICON / ITEM NAME: CURRENT PROJECT + ORIGINAL 49 MODS
+
+Read START-HERE-SONNET.txt for instructions. Current and reference lists overlap; do not add them as unique designs.
+Current model slots include charged alternatives. Original model entries may include GUI, pulling and other alternatives.
+
+CURRENT VALE ITEM MODELS
+
+ARMOR INVENTORY ICONS
+[ ] Auric Skimmer Boots | valeorders:auric_skimmer_boots | auric_skimmer_boots.png
+[ ] Auric Skimmer Chestplate | valeorders:auric_skimmer_chestplate | auric_skimmer_chestplate.png
+[ ] Auric Skimmer Helmet | valeorders:auric_skimmer_helmet | auric_skimmer_helmet.png
+[ ] Auric Skimmer Leggings | valeorders:auric_skimmer_leggings | auric_skimmer_leggings.png
+[ ] Bellbloom Boots | valeorders:bellbloom_boots | bellbloom_boots.png
+[ ] Bellbloom Chestplate | valeorders:bellbloom_chestplate | bellbloom_chestplate.png
+[ ] Bellbloom Helmet | valeorders:bellbloom_helmet | bellbloom_helmet.png
+[ ] Bellbloom Leggings | valeorders:bellbloom_leggings | bellbloom_leggings.png
+[ ] Bloom Ward Boots | valeorders:bloom_boots | bloom_boots.png
+[ ] Bloom Ward Chestplate | valeorders:bloom_chestplate | bloom_chestplate.png
+[ ] Bloom Ward Helmet | valeorders:bloom_helmet | bloom_helmet.png
+[ ] Bloom Ward Leggings | valeorders:bloom_leggings | bloom_leggings.png
+[ ] Cairnroot Boots | valeorders:cairnroot_boots | cairnroot_boots.png
+[ ] Cairnroot Chestplate | valeorders:cairnroot_chestplate | cairnroot_chestplate.png
+[ ] Cairnroot Helmet | valeorders:cairnroot_helmet | cairnroot_helmet.png
+[ ] Cairnroot Leggings | valeorders:cairnroot_leggings | cairnroot_leggings.png
+[ ] Current Ward Boots | valeorders:current_boots | current_boots.png
+[ ] Current Ward Chestplate | valeorders:current_chestplate | current_chestplate.png
+[ ] Current Ward Helmet | valeorders:current_helmet | current_helmet.png
+[ ] Current Ward Leggings | valeorders:current_leggings | current_leggings.png
+[ ] Dawn Ward Boots | valeorders:dawn_boots | dawn_boots.png
+[ ] Dawn Ward Chestplate | valeorders:dawn_chestplate | dawn_chestplate.png
+[ ] Dawn Ward Helmet | valeorders:dawn_helmet | dawn_helmet.png
+[ ] Dawn Ward Leggings | valeorders:dawn_leggings | dawn_leggings.png
+[ ] Dusk Ward Boots | valeorders:dusk_boots | dusk_boots.png
+[ ] Dusk Ward Chestplate | valeorders:dusk_chestplate | dusk_chestplate.png
+[ ] Dusk Ward Helmet | valeorders:dusk_helmet | dusk_helmet.png
+[ ] Dusk Ward Leggings | valeorders:dusk_leggings | dusk_leggings.png
+[ ] Ember Ward Boots | valeorders:ember_boots | ember_boots.png
+[ ] Ember Ward Chestplate | valeorders:ember_chestplate | ember_chestplate.png
+[ ] Ember Ward Helmet | valeorders:ember_helmet | ember_helmet.png
+[ ] Ember Ward Leggings | valeorders:ember_leggings | ember_leggings.png
+[ ] Flint Ward Boots | valeorders:flint_boots | flint_boots.png
+[ ] Flint Ward Chestplate | valeorders:flint_chestplate | flint_chestplate.png
+[ ] Flint Ward Helmet | valeorders:flint_helmet | flint_helmet.png
+[ ] Flint Ward Leggings | valeorders:flint_leggings | flint_leggings.png
+[ ] Gale Ward Boots | valeorders:gale_boots | gale_boots.png
+[ ] Gale Ward Chestplate | valeorders:gale_chestplate | gale_chestplate.png
+[ ] Gale Ward Helmet | valeorders:gale_helmet | gale_helmet.png
+[ ] Gale Ward Leggings | valeorders:gale_leggings | gale_leggings.png
+[ ] Glasschime Boots | valeorders:glasschime_boots | glasschime_boots.png
+[ ] Glasschime Chestplate | valeorders:glasschime_chestplate | glasschime_chestplate.png
+[ ] Glasschime Helmet | valeorders:glasschime_helmet | glasschime_helmet.png
+[ ] Glasschime Leggings | valeorders:glasschime_leggings | glasschime_leggings.png
+[ ] Hushvault Boots | valeorders:hushvault_boots | hushvault_boots.png
+[ ] Hushvault Chestplate | valeorders:hushvault_chestplate | hushvault_chestplate.png
+[ ] Hushvault Helmet | valeorders:hushvault_helmet | hushvault_helmet.png
+[ ] Hushvault Leggings | valeorders:hushvault_leggings | hushvault_leggings.png
+[ ] Kilnback Boots | valeorders:kilnback_boots | kilnback_boots.png
+[ ] Kilnback Chestplate | valeorders:kilnback_chestplate | kilnback_chestplate.png
+[ ] Kilnback Helmet | valeorders:kilnback_helmet | kilnback_helmet.png
+[ ] Kilnback Leggings | valeorders:kilnback_leggings | kilnback_leggings.png
+[ ] Reedrunner Boots | valeorders:reedrunner_boots | reedrunner_boots.png
+[ ] Reedrunner Chestplate | valeorders:reedrunner_chestplate | reedrunner_chestplate.png
+[ ] Reedrunner Helmet | valeorders:reedrunner_helmet | reedrunner_helmet.png
+[ ] Reedrunner Leggings | valeorders:reedrunner_leggings | reedrunner_leggings.png
+[ ] Rime Ward Boots | valeorders:rime_boots | rime_boots.png
+[ ] Rime Ward Chestplate | valeorders:rime_chestplate | rime_chestplate.png
+[ ] Rime Ward Helmet | valeorders:rime_helmet | rime_helmet.png
+[ ] Rime Ward Leggings | valeorders:rime_leggings | rime_leggings.png
+[ ] Shoalglass Boots | valeorders:shoalglass_boots | shoalglass_boots.png
+[ ] Shoalglass Chestplate | valeorders:shoalglass_chestplate | shoalglass_chestplate.png
+[ ] Shoalglass Helmet | valeorders:shoalglass_helmet | shoalglass_helmet.png
+[ ] Shoalglass Leggings | valeorders:shoalglass_leggings | shoalglass_leggings.png
+[ ] Storm Ward Boots | valeorders:storm_boots | storm_boots.png
+[ ] Storm Ward Chestplate | valeorders:storm_chestplate | storm_chestplate.png
+[ ] Storm Ward Helmet | valeorders:storm_helmet | storm_helmet.png
+[ ] Storm Ward Leggings | valeorders:storm_leggings | storm_leggings.png
+[ ] Stormloom Boots | valeorders:stormloom_boots | stormloom_boots.png
+[ ] Stormloom Chestplate | valeorders:stormloom_chestplate | stormloom_chestplate.png
+[ ] Stormloom Helmet | valeorders:stormloom_helmet | stormloom_helmet.png
+[ ] Stormloom Leggings | valeorders:stormloom_leggings | stormloom_leggings.png
+
+CHARGED WEAPON ANIMATION STRIPS
+[ ] Binder Spear (charged) | valeorders:binder_spear_charged | binder_spear_charged.png
+[ ] Breakaxe (charged) | valeorders:breakaxe_charged | breakaxe_charged.png
+[ ] Cinder Burst (charged) | valeorders:cinder_burst_charged | cinder_burst_charged.png
+[ ] Crescent Guard (charged) | valeorders:crescent_guard_charged | crescent_guard_charged.png
+[ ] Echo Gauntlet (charged) | valeorders:echo_gauntlet_charged | echo_gauntlet_charged.png
+[ ] Emberbrand (charged) | valeorders:emberbrand_charged | emberbrand_charged.png
+[ ] Flux Cannon (charged) | valeorders:flux_cannon_charged | flux_cannon_charged.png
+[ ] Lens Bow (charged) | valeorders:lens_bow_charged | lens_bow_charged.png
+[ ] Mendguard Staff (charged) | valeorders:mendguard_staff_charged | mendguard_staff_charged.png
+[ ] Mist Censer (charged) | valeorders:mist_censer_charged | mist_censer_charged.png
+[ ] Needle Spool (charged) | valeorders:needle_spool_charged | needle_spool_charged.png
+[ ] Overdrive Blade (charged) | valeorders:overdrive_blade_charged | overdrive_blade_charged.png
+[ ] Prism Lance (charged) | valeorders:prism_lance_charged | prism_lance_charged.png
+[ ] Returning Sickle (charged) | valeorders:returning_sickle_charged | returning_sickle_charged.png
+[ ] Rime Pin (charged) | valeorders:rime_pin_charged | rime_pin_charged.png
+[ ] Seal Charge (charged) | valeorders:seal_charge_charged | seal_charge_charged.png
+[ ] Siege Maul (charged) | valeorders:siege_maul_charged | siege_maul_charged.png
+[ ] Siphon Hook (charged) | valeorders:siphon_hook_charged | siphon_hook_charged.png
+[ ] Storm Pair (charged) | valeorders:storm_pair_charged | storm_pair_charged.png
+[ ] Sweep Glaive (charged) | valeorders:sweep_glaive_charged | sweep_glaive_charged.png
+[ ] Tempered Cleaver (charged) | valeorders:tempered_cleaver_charged | tempered_cleaver_charged.png
+[ ] Thorn Staff (charged) | valeorders:thorn_staff_charged | thorn_staff_charged.png
+[ ] Thunder Edge (charged) | valeorders:thunder_edge_charged | thunder_edge_charged.png
+[ ] Venom Needle (charged) | valeorders:venom_needle_charged | venom_needle_charged.png
+[ ] Ward Fan (charged) | valeorders:ward_fan_charged | ward_fan_charged.png
+[ ] Waymark Knife (charged) | valeorders:waymark_knife_charged | waymark_knife_charged.png
+
+CHRONICLES AND ACHIEVEMENTS
+[ ] Dungeon 1 Chronicle | valeorders:chronicle_dungeon_1 | chronicle_dungeon_1.png
+[ ] Dungeon 2 Chronicle | valeorders:chronicle_dungeon_2 | chronicle_dungeon_2.png
+[ ] Dungeon 3 Chronicle | valeorders:chronicle_dungeon_3 | chronicle_dungeon_3.png
+[ ] Dungeon 4 Chronicle | valeorders:chronicle_dungeon_4 | chronicle_dungeon_4.png
+[ ] Dungeon 5 Chronicle | valeorders:chronicle_dungeon_5 | chronicle_dungeon_5.png
+[ ] Field Adept Chronicle | valeorders:chronicle_field_adept | chronicle_field_adept.png
+[ ] Field Master Chronicle | valeorders:chronicle_field_master | chronicle_field_master.png
+[ ] Field Veteran Chronicle | valeorders:chronicle_field_veteran | chronicle_field_veteran.png
+[ ] First Contract Chronicle | valeorders:chronicle_first_contract | chronicle_first_contract.png
+[ ] First Keeper Chronicle | valeorders:chronicle_first_keeper | chronicle_first_keeper.png
+[ ] First Oath Chronicle | valeorders:chronicle_first_oath | chronicle_first_oath.png
+[ ] First Resonance Chronicle | valeorders:chronicle_first_resonance | chronicle_first_resonance.png
+[ ] Resonance Auric Skimmer Chronicle | valeorders:chronicle_resonance_auric_skimmer | chronicle_resonance_auric_skimmer.png
+[ ] Resonance Bellbloom Chronicle | valeorders:chronicle_resonance_bellbloom | chronicle_resonance_bellbloom.png
+[ ] Resonance Cairnroot Chronicle | valeorders:chronicle_resonance_cairnroot | chronicle_resonance_cairnroot.png
+[ ] Resonance Glasschime Chronicle | valeorders:chronicle_resonance_glasschime | chronicle_resonance_glasschime.png
+[ ] Resonance Hushvault Chronicle | valeorders:chronicle_resonance_hushvault | chronicle_resonance_hushvault.png
+[ ] Resonance Kilnback Chronicle | valeorders:chronicle_resonance_kilnback | chronicle_resonance_kilnback.png
+[ ] Resonance Reedrunner Chronicle | valeorders:chronicle_resonance_reedrunner | chronicle_resonance_reedrunner.png
+[ ] Resonance Shoalglass Chronicle | valeorders:chronicle_resonance_shoalglass | chronicle_resonance_shoalglass.png
+[ ] Resonance Stormloom Chronicle | valeorders:chronicle_resonance_stormloom | chronicle_resonance_stormloom.png
+[ ] Trusted Runner Chronicle | valeorders:chronicle_trusted_runner | chronicle_trusted_runner.png
+
+CODICES AND RESONANCE
+[ ] Apiary Codex | valeorders:apiary_codex | apiary_codex.png
+[ ] Bond Codex | valeorders:bond_codex | bond_codex.png
+[ ] Brush Codex | valeorders:brush_codex | brush_codex.png
+[ ] Cinder Codex | valeorders:cinder_codex | cinder_codex.png
+[ ] Dusk Codex | valeorders:dusk_codex | dusk_codex.png
+[ ] Ferrum Codex | valeorders:ferrum_codex | ferrum_codex.png
+[ ] Filament Codex | valeorders:filament_codex | filament_codex.png
+[ ] Foam Codex | valeorders:foam_codex | foam_codex.png
+[ ] Folio Codex | valeorders:folio_codex | folio_codex.png
+[ ] Horizon Codex | valeorders:horizon_codex | horizon_codex.png
+[ ] Kiln Codex | valeorders:kiln_codex | kiln_codex.png
+[ ] Molten Codex | valeorders:molten_codex | molten_codex.png
+[ ] Pack Codex | valeorders:pack_codex | pack_codex.png
+[ ] Reef Codex | valeorders:reef_codex | reef_codex.png
+[ ] Resonance Vow | valeorders:resonance_vow | resonance_vow.png
+[ ] Restoration Codex | valeorders:restoration_codex | restoration_codex.png
+[ ] River Codex | valeorders:river_codex | river_codex.png
+[ ] Stillwater Codex | valeorders:stillwater_codex | stillwater_codex.png
+[ ] Storm Codex | valeorders:storm_codex | storm_codex.png
+[ ] Technique Codex | valeorders:technique_codex | technique_codex.png
+[ ] Terrace Codex | valeorders:terrace_codex | terrace_codex.png
+[ ] Vital Codex | valeorders:vital_codex | vital_codex.png
+[ ] Wayfarer Codex | valeorders:wayfarer_codex | wayfarer_codex.png
+[ ] Zephyr Codex | valeorders:zephyr_codex | zephyr_codex.png
+
+EYES
+[ ] Awakened Eye | valeorders:awakened_eye | awakened_eye.png
+[ ] Awakening Eye | valeorders:awakening_eye | awakening_eye.png
+[ ] Eternal Eye | valeorders:eternal_eye | eternal_eye.png
+[ ] Hollow Eye | valeorders:hollow_eye | hollow_eye.png
+[ ] Inferno Eye | valeorders:inferno_eye | inferno_eye.png
+[ ] Sight Eye | valeorders:sight_eye | sight_eye.png
+[ ] Void Eye | valeorders:void_eye | void_eye.png
+
+FIELD FOOD AND DRINKS
+[ ] Cloud Tea | valeorders:cloud_tea | cloud_tea.png
+[ ] Dried Berries | valeorders:dried_berries | dried_berries.png
+[ ] Herb Broth | valeorders:herb_broth | herb_broth.png
+[ ] Orchard Flatbread | valeorders:orchard_flatbread | orchard_flatbread.png
+[ ] River Skewer | valeorders:river_skewer | river_skewer.png
+[ ] Root Stew | valeorders:root_stew | root_stew.png
+[ ] Seared Fillet | valeorders:seared_fillet | seared_fillet.png
+[ ] Smoked Mushrooms | valeorders:smoked_mushrooms | smoked_mushrooms.png
+[ ] Spice Curry | valeorders:spice_curry | spice_curry.png
+[ ] Sunrice Bowl | valeorders:sunrice_bowl | sunrice_bowl.png
+[ ] Trail Biscuit | valeorders:trail_biscuit | trail_biscuit.png
+[ ] Travel Ration | valeorders:travel_ration | travel_ration.png
+
+FOCUS GARMENTS
+[ ] Amber Crest Lens | valeorders:focus_amber_crest_lens | focus_amber_crest_lens.png
+[ ] Amber Haven Lens | valeorders:focus_amber_haven_lens | focus_amber_haven_lens.png
+[ ] Amber Hollow Lens | valeorders:focus_amber_hollow_lens | focus_amber_hollow_lens.png
+[ ] Amber Wake Lens | valeorders:focus_amber_wake_lens | focus_amber_wake_lens.png
+[ ] Birch Crest Lens | valeorders:focus_birch_crest_lens | focus_birch_crest_lens.png
+[ ] Birch Haven Mantle | valeorders:focus_birch_haven_mantle | focus_birch_haven_mantle.png
+[ ] Birch Hollow Greaves | valeorders:focus_birch_hollow_greaves | focus_birch_hollow_greaves.png
+[ ] Birch Wake Lens | valeorders:focus_birch_wake_lens | focus_birch_wake_lens.png
+[ ] Copper Crest Mantle | valeorders:focus_copper_crest_mantle | focus_copper_crest_mantle.png
+[ ] Copper Haven Lens | valeorders:focus_copper_haven_lens | focus_copper_haven_lens.png
+[ ] Copper Hollow Lens | valeorders:focus_copper_hollow_lens | focus_copper_hollow_lens.png
+[ ] Copper Wake Mantle | valeorders:focus_copper_wake_mantle | focus_copper_wake_mantle.png
+[ ] Dusk Crest Lens | valeorders:focus_dusk_crest_lens | focus_dusk_crest_lens.png
+[ ] Dusk Haven Greaves | valeorders:focus_dusk_haven_greaves | focus_dusk_haven_greaves.png
+[ ] Dusk Hollow Mantle | valeorders:focus_dusk_hollow_mantle | focus_dusk_hollow_mantle.png
+[ ] Dusk Wake Lens | valeorders:focus_dusk_wake_lens | focus_dusk_wake_lens.png
+[ ] Elm Crest Greaves | valeorders:focus_elm_crest_greaves | focus_elm_crest_greaves.png
+[ ] Elm Haven Lens | valeorders:focus_elm_haven_lens | focus_elm_haven_lens.png
+[ ] Elm Hollow Mantle | valeorders:focus_elm_hollow_mantle | focus_elm_hollow_mantle.png
+[ ] Elm Wake Lens | valeorders:focus_elm_wake_lens | focus_elm_wake_lens.png
+[ ] Flint Crest Mantle | valeorders:focus_flint_crest_mantle | focus_flint_crest_mantle.png
+[ ] Flint Haven Mantle | valeorders:focus_flint_haven_mantle | focus_flint_haven_mantle.png
+[ ] Flint Hollow Mantle | valeorders:focus_flint_hollow_mantle | focus_flint_hollow_mantle.png
+[ ] Flint Wake Lens | valeorders:focus_flint_wake_lens | focus_flint_wake_lens.png
+[ ] Gale Crest Mantle | valeorders:focus_gale_crest_mantle | focus_gale_crest_mantle.png
+[ ] Gale Haven Lens | valeorders:focus_gale_haven_lens | focus_gale_haven_lens.png
+[ ] Gale Hollow Mantle | valeorders:focus_gale_hollow_mantle | focus_gale_hollow_mantle.png
+[ ] Gale Wake Lens | valeorders:focus_gale_wake_lens | focus_gale_wake_lens.png
+[ ] Heather Crest Mantle | valeorders:focus_heather_crest_mantle | focus_heather_crest_mantle.png
+[ ] Heather Haven Greaves | valeorders:focus_heather_haven_greaves | focus_heather_haven_greaves.png
+[ ] Heather Hollow Mantle | valeorders:focus_heather_hollow_mantle | focus_heather_hollow_mantle.png
+[ ] Heather Wake Lens | valeorders:focus_heather_wake_lens | focus_heather_wake_lens.png
+[ ] Ivory Crest Mantle | valeorders:focus_ivory_crest_mantle | focus_ivory_crest_mantle.png
+[ ] Ivory Haven Mantle | valeorders:focus_ivory_haven_mantle | focus_ivory_haven_mantle.png
+[ ] Ivory Hollow Mantle | valeorders:focus_ivory_hollow_mantle | focus_ivory_hollow_mantle.png
+[ ] Ivory Wake Lens | valeorders:focus_ivory_wake_lens | focus_ivory_wake_lens.png
+[ ] Juniper Crest Mantle | valeorders:focus_juniper_crest_mantle | focus_juniper_crest_mantle.png
+[ ] Juniper Haven Treads | valeorders:focus_juniper_haven_treads | focus_juniper_haven_treads.png
+[ ] Juniper Hollow Mantle | valeorders:focus_juniper_hollow_mantle | focus_juniper_hollow_mantle.png
+[ ] Juniper Wake Lens | valeorders:focus_juniper_wake_lens | focus_juniper_wake_lens.png
+[ ] Kiln Crest Lens | valeorders:focus_kiln_crest_lens | focus_kiln_crest_lens.png
+[ ] Kiln Haven Greaves | valeorders:focus_kiln_haven_greaves | focus_kiln_haven_greaves.png
+[ ] Kiln Hollow Mantle | valeorders:focus_kiln_hollow_mantle | focus_kiln_hollow_mantle.png
+[ ] Kiln Wake Lens | valeorders:focus_kiln_wake_lens | focus_kiln_wake_lens.png
+[ ] Lantern Crest Greaves | valeorders:focus_lantern_crest_greaves | focus_lantern_crest_greaves.png
+[ ] Lantern Haven Mantle | valeorders:focus_lantern_haven_mantle | focus_lantern_haven_mantle.png
+[ ] Lantern Hollow Mantle | valeorders:focus_lantern_hollow_mantle | focus_lantern_hollow_mantle.png
+[ ] Lantern Wake Lens | valeorders:focus_lantern_wake_lens | focus_lantern_wake_lens.png
+[ ] Moss Crest Mantle | valeorders:focus_moss_crest_mantle | focus_moss_crest_mantle.png
+[ ] Moss Haven Lens | valeorders:focus_moss_haven_lens | focus_moss_haven_lens.png
+[ ] Moss Hollow Mantle | valeorders:focus_moss_hollow_mantle | focus_moss_hollow_mantle.png
+[ ] Moss Wake Lens | valeorders:focus_moss_wake_lens | focus_moss_wake_lens.png
+[ ] Night Crest Lens | valeorders:focus_night_crest_lens | focus_night_crest_lens.png
+[ ] Night Haven Mantle | valeorders:focus_night_haven_mantle | focus_night_haven_mantle.png
+[ ] Night Hollow Greaves | valeorders:focus_night_hollow_greaves | focus_night_hollow_greaves.png
+[ ] Night Wake Lens | valeorders:focus_night_wake_lens | focus_night_wake_lens.png
+[ ] Ochre Crest Mantle | valeorders:focus_ochre_crest_mantle | focus_ochre_crest_mantle.png
+[ ] Ochre Haven Mantle | valeorders:focus_ochre_haven_mantle | focus_ochre_haven_mantle.png
+[ ] Ochre Hollow Mantle | valeorders:focus_ochre_hollow_mantle | focus_ochre_hollow_mantle.png
+[ ] Ochre Wake Lens | valeorders:focus_ochre_wake_lens | focus_ochre_wake_lens.png
+[ ] Pearl Crest Lens | valeorders:focus_pearl_crest_lens | focus_pearl_crest_lens.png
+[ ] Pearl Haven Mantle | valeorders:focus_pearl_haven_mantle | focus_pearl_haven_mantle.png
+[ ] Pearl Hollow Lens | valeorders:focus_pearl_hollow_lens | focus_pearl_hollow_lens.png
+[ ] Pearl Wake Lens | valeorders:focus_pearl_wake_lens | focus_pearl_wake_lens.png
+[ ] Quartz Crest Mantle | valeorders:focus_quartz_crest_mantle | focus_quartz_crest_mantle.png
+[ ] Quartz Hollow Mantle | valeorders:focus_quartz_hollow_mantle | focus_quartz_hollow_mantle.png
+[ ] Quartz Wake Lens | valeorders:focus_quartz_wake_lens | focus_quartz_wake_lens.png
+[ ] Reed Crest Lens | valeorders:focus_reed_crest_lens | focus_reed_crest_lens.png
+[ ] Reed Hollow Lens | valeorders:focus_reed_hollow_lens | focus_reed_hollow_lens.png
+[ ] Reed Wake Lens | valeorders:focus_reed_wake_lens | focus_reed_wake_lens.png
+[ ] Slate Crest Greaves | valeorders:focus_slate_crest_greaves | focus_slate_crest_greaves.png
+[ ] Slate Hollow Mantle | valeorders:focus_slate_hollow_mantle | focus_slate_hollow_mantle.png
+[ ] Slate Wake Lens | valeorders:focus_slate_wake_lens | focus_slate_wake_lens.png
+[ ] Thistle Crest Lens | valeorders:focus_thistle_crest_lens | focus_thistle_crest_lens.png
+[ ] Thistle Hollow Lens | valeorders:focus_thistle_hollow_lens | focus_thistle_hollow_lens.png
+[ ] Thistle Wake Mantle | valeorders:focus_thistle_wake_mantle | focus_thistle_wake_mantle.png
+
+JUTSU LESSON SCROLLS
+[ ] Ash Refuge Lesson | valeorders:scroll_ash_refuge | scroll_ash_refuge.png
+[ ] Bitter Haze Lesson | valeorders:scroll_bitter_haze | scroll_bitter_haze.png
+[ ] Borrowed Silhouette Lesson | valeorders:scroll_borrowed_silhouette | scroll_borrowed_silhouette.png
+[ ] Breeze Burst Lesson | valeorders:scroll_breeze_burst | scroll_breeze_burst.png
+[ ] Calm Mending Lesson | valeorders:scroll_calm_mending | scroll_calm_mending.png
+[ ] Cinder Edge Lesson | valeorders:scroll_cinder_edge | scroll_cinder_edge.png
+[ ] Cinder Front Lesson | valeorders:scroll_cinder_front | scroll_cinder_front.png
+[ ] Clay Warden Lesson | valeorders:scroll_clay_warden | scroll_clay_warden.png
+[ ] Copper Bonds Lesson | valeorders:scroll_copper_bonds | scroll_copper_bonds.png
+[ ] Drowsing Glance Lesson | valeorders:scroll_drowsing_glance | scroll_drowsing_glance.png
+[ ] Dusk Fork Lesson | valeorders:scroll_dusk_fork | scroll_dusk_fork.png
+[ ] Echo Companion Lesson | valeorders:scroll_echo_companion | scroll_echo_companion.png
+[ ] Ember Orb Lesson | valeorders:scroll_ember_orb | scroll_ember_orb.png
+[ ] Ember Thread Lesson | valeorders:scroll_ember_thread | scroll_ember_thread.png
+[ ] Gale Arc Lesson | valeorders:scroll_gale_arc | scroll_gale_arc.png
+[ ] Gale Edge Lesson | valeorders:scroll_gale_edge | scroll_gale_edge.png
+[ ] Hearth Ring Lesson | valeorders:scroll_hearth_ring | scroll_hearth_ring.png
+[ ] Hollow Dart Lesson | valeorders:scroll_hollow_dart | scroll_hollow_dart.png
+[ ] Iron Focus Lesson | valeorders:scroll_iron_focus | scroll_iron_focus.png
+[ ] Mind Tether Lesson | valeorders:scroll_mind_tether | scroll_mind_tether.png
+[ ] Mire Circle Lesson | valeorders:scroll_mire_circle | scroll_mire_circle.png
+[ ] Molten Mantle Lesson | valeorders:scroll_molten_mantle | scroll_molten_mantle.png
+[ ] Mote Orbit Lesson | valeorders:scroll_mote_orbit | scroll_mote_orbit.png
+[ ] Night Pounce Lesson | valeorders:scroll_night_pounce | scroll_night_pounce.png
+[ ] Pearl Cage Lesson | valeorders:scroll_pearl_cage | scroll_pearl_cage.png
+[ ] Quarter Ritual Lesson | valeorders:scroll_quarter_ritual | scroll_quarter_ritual.png
+[ ] Reed Escape Lesson | valeorders:scroll_reed_escape | scroll_reed_escape.png
+[ ] Ripple Crown Lesson | valeorders:scroll_ripple_crown | scroll_ripple_crown.png
+[ ] River Serpent Lesson | valeorders:scroll_river_serpent | scroll_river_serpent.png
+[ ] Shade Veil Lesson | valeorders:scroll_shade_veil | scroll_shade_veil.png
+[ ] Shadow Tether Lesson | valeorders:scroll_shadow_tether | scroll_shadow_tether.png
+[ ] Shale Thorns Lesson | valeorders:scroll_shale_thorns | scroll_shale_thorns.png
+[ ] Silver Fog Lesson | valeorders:scroll_silver_fog | scroll_silver_fog.png
+[ ] Slate Clasp Lesson | valeorders:scroll_slate_clasp | scroll_slate_clasp.png
+[ ] Spark Hound Lesson | valeorders:scroll_spark_hound | scroll_spark_hound.png
+[ ] Rasengan Lesson | valeorders:scroll_spiral_palm | scroll_spiral_palm.png
+[ ] Stone Refuge Lesson | valeorders:scroll_stone_refuge | scroll_stone_refuge.png
+[ ] Chidori Lesson | valeorders:scroll_storm_lance | scroll_storm_lance.png
+[ ] Storm Stride Lesson | valeorders:scroll_storm_stride | scroll_storm_stride.png
+[ ] Terrace Guard Lesson | valeorders:scroll_terrace_guard | scroll_terrace_guard.png
+[ ] Thread Command Lesson | valeorders:scroll_thread_command | scroll_thread_command.png
+[ ] Thunder Crown Lesson | valeorders:scroll_thunder_crown | scroll_thunder_crown.png
+[ ] Tide Hunter Lesson | valeorders:scroll_tide_hunter | scroll_tide_hunter.png
+[ ] Titan Stance Lesson | valeorders:scroll_titan_stance | scroll_titan_stance.png
+[ ] Torrent Cannon Lesson | valeorders:scroll_torrent_cannon | scroll_torrent_cannon.png
+[ ] Torrent Needle Lesson | valeorders:scroll_torrent_needle | scroll_torrent_needle.png
+[ ] Vital Cycle Lesson | valeorders:scroll_vital_cycle | scroll_vital_cycle.png
+[ ] Waymark Step Lesson | valeorders:scroll_waymark_step | scroll_waymark_step.png
+[ ] Zephyr Blade Lesson | valeorders:scroll_zephyr_blade | scroll_zephyr_blade.png
+
+JUTSU TECHNIQUE ICONS
+[ ] Ash Refuge Technique | valeorders:technique_ash_refuge | technique_ash_refuge.png
+[ ] Bitter Haze Technique | valeorders:technique_bitter_haze | technique_bitter_haze.png
+[ ] Borrowed Silhouette Technique | valeorders:technique_borrowed_silhouette | technique_borrowed_silhouette.png
+[ ] Breeze Burst Technique | valeorders:technique_breeze_burst | technique_breeze_burst.png
+[ ] Calm Mending Technique | valeorders:technique_calm_mending | technique_calm_mending.png
+[ ] Cinder Edge Technique | valeorders:technique_cinder_edge | technique_cinder_edge.png
+[ ] Cinder Front Technique | valeorders:technique_cinder_front | technique_cinder_front.png
+[ ] Clay Warden Technique | valeorders:technique_clay_warden | technique_clay_warden.png
+[ ] Copper Bonds Technique | valeorders:technique_copper_bonds | technique_copper_bonds.png
+[ ] Drowsing Glance Technique | valeorders:technique_drowsing_glance | technique_drowsing_glance.png
+[ ] Dusk Fork Technique | valeorders:technique_dusk_fork | technique_dusk_fork.png
+[ ] Echo Companion Technique | valeorders:technique_echo_companion | technique_echo_companion.png
+[ ] Ember Orb Technique | valeorders:technique_ember_orb | technique_ember_orb.png
+[ ] Ember Thread Technique | valeorders:technique_ember_thread | technique_ember_thread.png
+[ ] Gale Arc Technique | valeorders:technique_gale_arc | technique_gale_arc.png
+[ ] Gale Edge Technique | valeorders:technique_gale_edge | technique_gale_edge.png
+[ ] Hearth Ring Technique | valeorders:technique_hearth_ring | technique_hearth_ring.png
+[ ] Hollow Dart Technique | valeorders:technique_hollow_dart | technique_hollow_dart.png
+[ ] Iron Focus Technique | valeorders:technique_iron_focus | technique_iron_focus.png
+[ ] Mind Tether Technique | valeorders:technique_mind_tether | technique_mind_tether.png
+[ ] Mire Circle Technique | valeorders:technique_mire_circle | technique_mire_circle.png
+[ ] Molten Mantle Technique | valeorders:technique_molten_mantle | technique_molten_mantle.png
+[ ] Mote Orbit Technique | valeorders:technique_mote_orbit | technique_mote_orbit.png
+[ ] Night Pounce Technique | valeorders:technique_night_pounce | technique_night_pounce.png
+[ ] Pearl Cage Technique | valeorders:technique_pearl_cage | technique_pearl_cage.png
+[ ] Quarter Ritual Technique | valeorders:technique_quarter_ritual | technique_quarter_ritual.png
+[ ] Reed Escape Technique | valeorders:technique_reed_escape | technique_reed_escape.png
+[ ] Ripple Crown Technique | valeorders:technique_ripple_crown | technique_ripple_crown.png
+[ ] River Serpent Technique | valeorders:technique_river_serpent | technique_river_serpent.png
+[ ] Shade Veil Technique | valeorders:technique_shade_veil | technique_shade_veil.png
+[ ] Shadow Tether Technique | valeorders:technique_shadow_tether | technique_shadow_tether.png
+[ ] Shale Thorns Technique | valeorders:technique_shale_thorns | technique_shale_thorns.png
+[ ] Silver Fog Technique | valeorders:technique_silver_fog | technique_silver_fog.png
+[ ] Slate Clasp Technique | valeorders:technique_slate_clasp | technique_slate_clasp.png
+[ ] Spark Hound Technique | valeorders:technique_spark_hound | technique_spark_hound.png
+[ ] Rasengan Technique | valeorders:technique_spiral_palm | technique_spiral_palm.png
+[ ] Stone Refuge Technique | valeorders:technique_stone_refuge | technique_stone_refuge.png
+[ ] Chidori Technique | valeorders:technique_storm_lance | technique_storm_lance.png
+[ ] Storm Stride Technique | valeorders:technique_storm_stride | technique_storm_stride.png
+[ ] Terrace Guard Technique | valeorders:technique_terrace_guard | technique_terrace_guard.png
+[ ] Thread Command Technique | valeorders:technique_thread_command | technique_thread_command.png
+[ ] Thunder Crown Technique | valeorders:technique_thunder_crown | technique_thunder_crown.png
+[ ] Tide Hunter Technique | valeorders:technique_tide_hunter | technique_tide_hunter.png
+[ ] Titan Stance Technique | valeorders:technique_titan_stance | technique_titan_stance.png
+[ ] Torrent Cannon Technique | valeorders:technique_torrent_cannon | technique_torrent_cannon.png
+[ ] Torrent Needle Technique | valeorders:technique_torrent_needle | technique_torrent_needle.png
+[ ] Vital Cycle Technique | valeorders:technique_vital_cycle | technique_vital_cycle.png
+[ ] Waymark Step Technique | valeorders:technique_waymark_step | technique_waymark_step.png
+[ ] Zephyr Blade Technique | valeorders:technique_zephyr_blade | technique_zephyr_blade.png
+
+KITCHEN INGREDIENTS, MEALS, MEDICINES AND STATIONS
+[ ] Anpan | valeorders:kitchen_anpan | kitchen_anpan.png
+[ ] Antidote | valeorders:kitchen_antidote | kitchen_antidote.png
+[ ] Boiled Kelp | valeorders:kitchen_boiled_kelp | kitchen_boiled_kelp.png
+[ ] Boiler | valeorders:kitchen_boiler | kitchen_boiler.png
+[ ] Cooked Noodles | valeorders:kitchen_cooked_noodles | kitchen_cooked_noodles.png
+[ ] Cooked Rice | valeorders:kitchen_cooked_rice | kitchen_cooked_rice.png
+[ ] Cooked Soybean | valeorders:kitchen_cooked_soybean | kitchen_cooked_soybean.png
+[ ] Daifuku Mochi | valeorders:kitchen_daifuku_mochi | kitchen_daifuku_mochi.png
+[ ] Dango | valeorders:kitchen_dango | kitchen_dango.png
+[ ] Dashi Soup | valeorders:kitchen_dashi_soup | kitchen_dashi_soup.png
+[ ] Donburi | valeorders:kitchen_donburi | kitchen_donburi.png
+[ ] Experience Draught | valeorders:kitchen_experience_draught | kitchen_experience_draught.png
+[ ] Fish Cake | valeorders:kitchen_fish_cake | kitchen_fish_cake.png
+[ ] Fortune Fruit | valeorders:kitchen_fortune_fruit | kitchen_fortune_fruit.png
+[ ] Ground Kelp | valeorders:kitchen_ground_kelp | kitchen_ground_kelp.png
+[ ] Hotdog | valeorders:kitchen_hotdog | kitchen_hotdog.png
+[ ] Kelp | valeorders:kitchen_kelp | kitchen_kelp.png
+[ ] Mill | valeorders:kitchen_mill | kitchen_mill.png
+[ ] Miso Soup | valeorders:kitchen_miso_soup | kitchen_miso_soup.png
+[ ] Mochi | valeorders:kitchen_mochi | kitchen_mochi.png
+[ ] Moromi | valeorders:kitchen_moromi | kitchen_moromi.png
+[ ] Noodles | valeorders:kitchen_noodles | kitchen_noodles.png
+[ ] Okayu | valeorders:kitchen_okayu | kitchen_okayu.png
+[ ] Okonomiyaki | valeorders:kitchen_okonomiyaki | kitchen_okonomiyaki.png
+[ ] Onigiri | valeorders:kitchen_onigiri | kitchen_onigiri.png
+[ ] Potato Chips | valeorders:kitchen_potato_chips | kitchen_potato_chips.png
+[ ] Ramen | valeorders:kitchen_ramen | kitchen_ramen.png
+[ ] Ramen Egg | valeorders:kitchen_ramen_egg | kitchen_ramen_egg.png
+[ ] Recovery Curry | valeorders:kitchen_recovery_curry | kitchen_recovery_curry.png
+[ ] Redbean | valeorders:kitchen_redbean | kitchen_redbean.png
+[ ] Redbean Seed | valeorders:kitchen_redbean_seed | kitchen_redbean_seed.png
+[ ] Resolve Pill 1 | valeorders:kitchen_resolve_pill_1 | kitchen_resolve_pill_1.png
+[ ] Resolve Pill 2 | valeorders:kitchen_resolve_pill_2 | kitchen_resolve_pill_2.png
+[ ] Resolve Pill 3 | valeorders:kitchen_resolve_pill_3 | kitchen_resolve_pill_3.png
+[ ] Resolve Shard | valeorders:kitchen_resolve_shard | kitchen_resolve_shard.png
+[ ] Rice | valeorders:kitchen_rice | kitchen_rice.png
+[ ] Rice Flour | valeorders:kitchen_rice_flour | kitchen_rice_flour.png
+[ ] Rice Seed | valeorders:kitchen_rice_seed | kitchen_rice_seed.png
+[ ] Roller | valeorders:kitchen_roller | kitchen_roller.png
+[ ] Sake | valeorders:kitchen_sake | kitchen_sake.png
+[ ] Soy Milk | valeorders:kitchen_soy_milk | kitchen_soy_milk.png
+[ ] Soy Sauce | valeorders:kitchen_soy_sauce | kitchen_soy_sauce.png
+[ ] Soybean | valeorders:kitchen_soybean | kitchen_soybean.png
+[ ] Soybean Seed | valeorders:kitchen_soybean_seed | kitchen_soybean_seed.png
+[ ] Steamer | valeorders:kitchen_steamer | kitchen_steamer.png
+[ ] Suika | valeorders:kitchen_suika | kitchen_suika.png
+[ ] Tofu | valeorders:kitchen_tofu | kitchen_tofu.png
+[ ] Tofu Curry | valeorders:kitchen_tofu_curry | kitchen_tofu_curry.png
+[ ] Tofu Soup | valeorders:kitchen_tofu_soup | kitchen_tofu_soup.png
+[ ] Wheat Flour | valeorders:kitchen_wheat_flour | kitchen_wheat_flour.png
+[ ] Yakisoba | valeorders:kitchen_yakisoba | kitchen_yakisoba.png
+[ ] Yokan | valeorders:kitchen_yokan | kitchen_yokan.png
+[ ] Zenzai | valeorders:kitchen_zenzai | kitchen_zenzai.png
+
+OUTFITS
+[ ] Ambermoss Hood | valeorders:outfit_ambermoss_hood | outfit_ambermoss_hood.png
+[ ] Ashfield Hood | valeorders:outfit_ashfield_hood | outfit_ashfield_hood.png
+[ ] Bellstone Trousers | valeorders:outfit_bellstone_trousers | outfit_bellstone_trousers.png
+[ ] Bracken Coat | valeorders:outfit_bracken_coat | outfit_bracken_coat.png
+[ ] Brightcairn Coat | valeorders:outfit_brightcairn_coat | outfit_brightcairn_coat.png
+[ ] Brightcairn Trousers | valeorders:outfit_brightcairn_trousers | outfit_brightcairn_trousers.png
+[ ] Brookstone Coat | valeorders:outfit_brookstone_coat | outfit_brookstone_coat.png
+[ ] Brookstone Hood | valeorders:outfit_brookstone_hood | outfit_brookstone_hood.png
+[ ] Brookstone Trousers | valeorders:outfit_brookstone_trousers | outfit_brookstone_trousers.png
+[ ] Cairn Coat | valeorders:outfit_cairn_coat | outfit_cairn_coat.png
+[ ] Cinderleaf Coat | valeorders:outfit_cinderleaf_coat | outfit_cinderleaf_coat.png
+[ ] Cinderleaf Hood | valeorders:outfit_cinderleaf_hood | outfit_cinderleaf_hood.png
+[ ] Cinderleaf Trousers | valeorders:outfit_cinderleaf_trousers | outfit_cinderleaf_trousers.png
+[ ] Cloudmere Coat | valeorders:outfit_cloudmere_coat | outfit_cloudmere_coat.png
+[ ] Cloudmere Hood | valeorders:outfit_cloudmere_hood | outfit_cloudmere_hood.png
+[ ] Cloudmere Trousers | valeorders:outfit_cloudmere_trousers | outfit_cloudmere_trousers.png
+[ ] Coastfern Coat | valeorders:outfit_coastfern_coat | outfit_coastfern_coat.png
+[ ] Coastfern Trousers | valeorders:outfit_coastfern_trousers | outfit_coastfern_trousers.png
+[ ] Copperleaf Hood | valeorders:outfit_copperleaf_hood | outfit_copperleaf_hood.png
+[ ] Deepcopper Coat | valeorders:outfit_deepcopper_coat | outfit_deepcopper_coat.png
+[ ] Deepcopper Trousers | valeorders:outfit_deepcopper_trousers | outfit_deepcopper_trousers.png
+[ ] Dunestone Hood | valeorders:outfit_dunestone_hood | outfit_dunestone_hood.png
+[ ] Duskmere Coat | valeorders:outfit_duskmere_coat | outfit_duskmere_coat.png
+[ ] Frostpine Coat | valeorders:outfit_frostpine_coat | outfit_frostpine_coat.png
+[ ] Frostpine Hood | valeorders:outfit_frostpine_hood | outfit_frostpine_hood.png
+[ ] Frostpine Trousers | valeorders:outfit_frostpine_trousers | outfit_frostpine_trousers.png
+[ ] Galecrest Hood | valeorders:outfit_galecrest_hood | outfit_galecrest_hood.png
+[ ] Goldenrush Coat | valeorders:outfit_goldenrush_coat | outfit_goldenrush_coat.png
+[ ] Goldenrush Hood | valeorders:outfit_goldenrush_hood | outfit_goldenrush_hood.png
+[ ] Highridge Coat | valeorders:outfit_highridge_coat | outfit_highridge_coat.png
+[ ] Hollowreed Trousers | valeorders:outfit_hollowreed_trousers | outfit_hollowreed_trousers.png
+[ ] Ironbark Coat | valeorders:outfit_ironbark_coat | outfit_ironbark_coat.png
+[ ] Kilnward Hood | valeorders:outfit_kilnward_hood | outfit_kilnward_hood.png
+[ ] Mistroot Hood | valeorders:outfit_mistroot_hood | outfit_mistroot_hood.png
+[ ] Moonfern Hood | valeorders:outfit_moonfern_hood | outfit_moonfern_hood.png
+[ ] Mosslight Hood | valeorders:outfit_mosslight_hood | outfit_mosslight_hood.png
+[ ] Nightbloom Hood | valeorders:outfit_nightbloom_hood | outfit_nightbloom_hood.png
+[ ] Ochre Coat | valeorders:outfit_ochre_coat | outfit_ochre_coat.png
+[ ] Ochre Hood | valeorders:outfit_ochre_hood | outfit_ochre_hood.png
+[ ] Pearlwood Hood | valeorders:outfit_pearlwood_hood | outfit_pearlwood_hood.png
+[ ] Pearlwood Trousers | valeorders:outfit_pearlwood_trousers | outfit_pearlwood_trousers.png
+[ ] Rainbloom Coat | valeorders:outfit_rainbloom_coat | outfit_rainbloom_coat.png
+[ ] Rainbloom Hood | valeorders:outfit_rainbloom_hood | outfit_rainbloom_hood.png
+[ ] Rainbloom Trousers | valeorders:outfit_rainbloom_trousers | outfit_rainbloom_trousers.png
+[ ] Redwillow Coat | valeorders:outfit_redwillow_coat | outfit_redwillow_coat.png
+[ ] Redwillow Trousers | valeorders:outfit_redwillow_trousers | outfit_redwillow_trousers.png
+[ ] Reedbank Hood | valeorders:outfit_reedbank_hood | outfit_reedbank_hood.png
+[ ] Reedstone Coat | valeorders:outfit_reedstone_coat | outfit_reedstone_coat.png
+[ ] Reedstone Hood | valeorders:outfit_reedstone_hood | outfit_reedstone_hood.png
+[ ] Rimeglass Coat | valeorders:outfit_rimeglass_coat | outfit_rimeglass_coat.png
+[ ] Riverflint Hood | valeorders:outfit_riverflint_hood | outfit_riverflint_hood.png
+[ ] Rosequartz Coat | valeorders:outfit_rosequartz_coat | outfit_rosequartz_coat.png
+[ ] Rosequartz Trousers | valeorders:outfit_rosequartz_trousers | outfit_rosequartz_trousers.png
+[ ] Sablewood Coat | valeorders:outfit_sablewood_coat | outfit_sablewood_coat.png
+[ ] Sablewood Hood | valeorders:outfit_sablewood_hood | outfit_sablewood_hood.png
+[ ] Sagewood Coat | valeorders:outfit_sagewood_coat | outfit_sagewood_coat.png
+[ ] Sagewood Trousers | valeorders:outfit_sagewood_trousers | outfit_sagewood_trousers.png
+[ ] Saltbloom Coat | valeorders:outfit_saltbloom_coat | outfit_saltbloom_coat.png
+[ ] Saltbloom Hood | valeorders:outfit_saltbloom_hood | outfit_saltbloom_hood.png
+[ ] Saltbloom Trousers | valeorders:outfit_saltbloom_trousers | outfit_saltbloom_trousers.png
+[ ] Shadowpine Coat | valeorders:outfit_shadowpine_coat | outfit_shadowpine_coat.png
+[ ] Shadowpine Trousers | valeorders:outfit_shadowpine_trousers | outfit_shadowpine_trousers.png
+[ ] Silverfen Hood | valeorders:outfit_silverfen_hood | outfit_silverfen_hood.png
+[ ] Silverfen Trousers | valeorders:outfit_silverfen_trousers | outfit_silverfen_trousers.png
+[ ] Stormreed Coat | valeorders:outfit_stormreed_coat | outfit_stormreed_coat.png
+[ ] Sunfen Hood | valeorders:outfit_sunfen_hood | outfit_sunfen_hood.png
+[ ] Sunstone Coat | valeorders:outfit_sunstone_coat | outfit_sunstone_coat.png
+[ ] Sunstone Trousers | valeorders:outfit_sunstone_trousers | outfit_sunstone_trousers.png
+[ ] Thistle Coat | valeorders:outfit_thistle_coat | outfit_thistle_coat.png
+[ ] Thistle Hood | valeorders:outfit_thistle_hood | outfit_thistle_hood.png
+[ ] Tidebound Hood | valeorders:outfit_tidebound_hood | outfit_tidebound_hood.png
+[ ] Violetfen Coat | valeorders:outfit_violetfen_coat | outfit_violetfen_coat.png
+[ ] Violetfen Hood | valeorders:outfit_violetfen_hood | outfit_violetfen_hood.png
+[ ] Violetfen Trousers | valeorders:outfit_violetfen_trousers | outfit_violetfen_trousers.png
+[ ] Wildrime Coat | valeorders:outfit_wildrime_coat | outfit_wildrime_coat.png
+[ ] Wildrime Trousers | valeorders:outfit_wildrime_trousers | outfit_wildrime_trousers.png
+[ ] Willow Coat | valeorders:outfit_willow_coat | outfit_willow_coat.png
+[ ] Willow Hood | valeorders:outfit_willow_hood | outfit_willow_hood.png
+[ ] Windglass Coat | valeorders:outfit_windglass_coat | outfit_windglass_coat.png
+
+SUMMONING TOKENS
+[ ] Summon Cairnling | valeorders:summon_cairnling | summon_cairnling.png
+[ ] Summon Lantern | valeorders:summon_lantern | summon_lantern.png
+[ ] Summon Reedling | valeorders:summon_reedling | summon_reedling.png
+
+TOOLS, TRAINING, PUPPETS AND CONSUMABLES
+[ ] Ancestral Seal | valeorders:ancestral_seal | ancestral_seal.png
+[ ] Body Trial Charm | valeorders:body_trial_charm | body_trial_charm.png
+[ ] Companion Covenant | valeorders:companion_covenant | companion_covenant.png
+[ ] Ember Loom | valeorders:ember_loom | ember_loom.png
+[ ] Encounter Dossier | valeorders:encounter_dossier | encounter_dossier.png
+[ ] Exam Cloud | valeorders:exam_cloud | exam_cloud.png
+[ ] Exam Slate | valeorders:exam_slate | exam_slate.png
+[ ] Order Field Manual | valeorders:field_manual | field_manual.png
+[ ] Focus Talisman | valeorders:focus_talisman | focus_talisman.png
+[ ] Medical Loom | valeorders:medical_loom | medical_loom.png
+[ ] Mission Journal | valeorders:mission_journal | mission_journal.png
+[ ] Needle Fan | valeorders:needle_fan | needle_fan.png
+[ ] Party Charter | valeorders:party_charter | party_charter.png
+[ ] Practice Note | valeorders:practice_note | practice_note.png
+[ ] Puppet Furnace | valeorders:puppet_furnace | puppet_furnace.png
+[ ] Puppet Sentinel | valeorders:puppet_sentinel | puppet_sentinel.png
+[ ] Puppet Spindle | valeorders:puppet_spindle | puppet_spindle.png
+[ ] Puppet Wisp | valeorders:puppet_wisp | puppet_wisp.png
+[ ] Resolve Well | valeorders:resolve_well | resolve_well.png
+[ ] Scroll Actor Glyph | valeorders:scroll_actor_glyph | scroll_actor_glyph.png
+[ ] Smoke Capsule | valeorders:smoke_capsule | smoke_capsule.png
+[ ] Snap Disc | valeorders:snap_disc | snap_disc.png
+[ ] Study Note | valeorders:study_note | study_note.png
+[ ] Trial Writ | valeorders:trial_writ | trial_writ.png
+[ ] Wayfarer Atlas | valeorders:wayfarer_atlas | wayfarer_atlas.png
+
+TRANSFORMATION TOKENS
+[ ] Form Bastion | valeorders:form_bastion | form_bastion.png
+[ ] Form Eclipse | valeorders:form_eclipse | form_eclipse.png
+[ ] Form Oracle | valeorders:form_oracle | form_oracle.png
+[ ] Form Zephyr | valeorders:form_zephyr | form_zephyr.png
+
+VILLAGE STANDARDS AND WORLD UTILITIES
+[ ] Skylark Rise Standard (5 x 5) | hvdungeonpictures:cloud_picture | cloud_picture.png
+[ ] Canopy Hold Standard (5 x 5) | hvdungeonpictures:leaf_picture | leaf_picture.png
+[ ] Tidewatch Standard (5 x 5) | hvdungeonpictures:mist_picture | mist_picture.png
+[ ] Dunehaven Standard (5 x 5) | hvdungeonpictures:sand_picture | sand_picture.png
+[ ] Ridgecrest Standard (5 x 5) | hvdungeonpictures:stone_picture | stone_picture.png
+[ ] Unassigned Standard | hvdungeonpictures:unassigned_standard | unassigned_standard.png
+[ ] Campfire | variedcommodities:campfire | campfire.png
+[ ] Table | variedcommodities:table | table.png
+[ ] Trading Block | variedcommodities:trading_block | trading_block.png
+[ ] Waystone | waystones:waystone | waystone.png
+
+WEAPONS
+[ ] Binder Spear | valeorders:binder_spear | binder_spear.png
+[ ] Bloom Ward Axe | valeorders:bloom_axe | bloom_axe.png
+[ ] Bloom Ward Dagger | valeorders:bloom_dagger | bloom_dagger.png
+[ ] Bloom Ward Glaive | valeorders:bloom_glaive | bloom_glaive.png
+[ ] Bloom Ward Saber | valeorders:bloom_saber | bloom_saber.png
+[ ] Bloom Ward Spear | valeorders:bloom_spear | bloom_spear.png
+[ ] Bloom Ward Staff | valeorders:bloom_staff | bloom_staff.png
+[ ] Breakaxe | valeorders:breakaxe | breakaxe.png
+[ ] Cinder Burst | valeorders:cinder_burst | cinder_burst.png
+[ ] Crescent Guard | valeorders:crescent_guard | crescent_guard.png
+[ ] Crescent Talons | valeorders:crescent_talons | crescent_talons.png
+[ ] Current Ward Axe | valeorders:current_axe | current_axe.png
+[ ] Current Ward Dagger | valeorders:current_dagger | current_dagger.png
+[ ] Current Ward Glaive | valeorders:current_glaive | current_glaive.png
+[ ] Current Ward Saber | valeorders:current_saber | current_saber.png
+[ ] Current Ward Spear | valeorders:current_spear | current_spear.png
+[ ] Current Ward Staff | valeorders:current_staff | current_staff.png
+[ ] Dawn Ward Axe | valeorders:dawn_axe | dawn_axe.png
+[ ] Dawn Ward Dagger | valeorders:dawn_dagger | dawn_dagger.png
+[ ] Dawn Ward Glaive | valeorders:dawn_glaive | dawn_glaive.png
+[ ] Dawn Ward Saber | valeorders:dawn_saber | dawn_saber.png
+[ ] Dawn Ward Spear | valeorders:dawn_spear | dawn_spear.png
+[ ] Dawn Ward Staff | valeorders:dawn_staff | dawn_staff.png
+[ ] Dusk Ward Axe | valeorders:dusk_axe | dusk_axe.png
+[ ] Dusk Ward Dagger | valeorders:dusk_dagger | dusk_dagger.png
+[ ] Dusk Ward Glaive | valeorders:dusk_glaive | dusk_glaive.png
+[ ] Dusk Ward Saber | valeorders:dusk_saber | dusk_saber.png
+[ ] Dusk Ward Spear | valeorders:dusk_spear | dusk_spear.png
+[ ] Dusk Ward Staff | valeorders:dusk_staff | dusk_staff.png
+[ ] Echo Gauntlet | valeorders:echo_gauntlet | echo_gauntlet.png
+[ ] Ember Ward Axe | valeorders:ember_axe | ember_axe.png
+[ ] Ember Ward Dagger | valeorders:ember_dagger | ember_dagger.png
+[ ] Ember Ward Glaive | valeorders:ember_glaive | ember_glaive.png
+[ ] Ember Ward Saber | valeorders:ember_saber | ember_saber.png
+[ ] Ember Ward Spear | valeorders:ember_spear | ember_spear.png
+[ ] Ember Ward Staff | valeorders:ember_staff | ember_staff.png
+[ ] Emberbrand | valeorders:emberbrand | emberbrand.png
+[ ] Flint Ward Axe | valeorders:flint_axe | flint_axe.png
+[ ] Flint Ward Dagger | valeorders:flint_dagger | flint_dagger.png
+[ ] Flint Ward Glaive | valeorders:flint_glaive | flint_glaive.png
+[ ] Flint Ward Saber | valeorders:flint_saber | flint_saber.png
+[ ] Flint Ward Spear | valeorders:flint_spear | flint_spear.png
+[ ] Flint Ward Staff | valeorders:flint_staff | flint_staff.png
+[ ] Flux Cannon | valeorders:flux_cannon | flux_cannon.png
+[ ] Gale Ward Axe | valeorders:gale_axe | gale_axe.png
+[ ] Gale Ward Dagger | valeorders:gale_dagger | gale_dagger.png
+[ ] Gale Ward Glaive | valeorders:gale_glaive | gale_glaive.png
+[ ] Gale Ward Saber | valeorders:gale_saber | gale_saber.png
+[ ] Gale Ward Spear | valeorders:gale_spear | gale_spear.png
+[ ] Gale Ward Staff | valeorders:gale_staff | gale_staff.png
+[ ] Lens Bow | valeorders:lens_bow | lens_bow.png
+[ ] Mendguard Staff | valeorders:mendguard_staff | mendguard_staff.png
+[ ] Mist Censer | valeorders:mist_censer | mist_censer.png
+[ ] Needle Spool | valeorders:needle_spool | needle_spool.png
+[ ] Overdrive Blade | valeorders:overdrive_blade | overdrive_blade.png
+[ ] Prism Lance | valeorders:prism_lance | prism_lance.png
+[ ] Returning Sickle | valeorders:returning_sickle | returning_sickle.png
+[ ] Rime Ward Axe | valeorders:rime_axe | rime_axe.png
+[ ] Rime Ward Dagger | valeorders:rime_dagger | rime_dagger.png
+[ ] Rime Ward Glaive | valeorders:rime_glaive | rime_glaive.png
+[ ] Rime Pin | valeorders:rime_pin | rime_pin.png
+[ ] Rime Ward Saber | valeorders:rime_saber | rime_saber.png
+[ ] Rime Ward Spear | valeorders:rime_spear | rime_spear.png
+[ ] Rime Ward Staff | valeorders:rime_staff | rime_staff.png
+[ ] Seal Charge | valeorders:seal_charge | seal_charge.png
+[ ] Siege Maul | valeorders:siege_maul | siege_maul.png
+[ ] Siphon Hook | valeorders:siphon_hook | siphon_hook.png
+[ ] Storm Ward Axe | valeorders:storm_axe | storm_axe.png
+[ ] Storm Ward Dagger | valeorders:storm_dagger | storm_dagger.png
+[ ] Storm Ward Glaive | valeorders:storm_glaive | storm_glaive.png
+[ ] Storm Pair | valeorders:storm_pair | storm_pair.png
+[ ] Storm Ward Saber | valeorders:storm_saber | storm_saber.png
+[ ] Storm Ward Spear | valeorders:storm_spear | storm_spear.png
+[ ] Storm Ward Staff | valeorders:storm_staff | storm_staff.png
+[ ] Sweep Glaive | valeorders:sweep_glaive | sweep_glaive.png
+[ ] Tempered Cleaver | valeorders:tempered_cleaver | tempered_cleaver.png
+[ ] Thorn Staff | valeorders:thorn_staff | thorn_staff.png
+[ ] Thunder Edge | valeorders:thunder_edge | thunder_edge.png
+[ ] Venom Needle | valeorders:venom_needle | venom_needle.png
+[ ] Ward Fan | valeorders:ward_fan | ward_fan.png
+[ ] Waymark Knife | valeorders:waymark_knife | waymark_knife.png
+
+CURRENT ACTION / STATUS / HUD ART (new PNG wiring required)
+[ ] Fire Release: Flame Burst | art/ember_lance
+[ ] Furnace Fan | art/ember_fan
+[ ] Cinder Seal | art/ember_seal
+[ ] Water Release: Surging Wave | art/current_lance
+[ ] Undertow Sweep | art/current_fan
+[ ] Tidal Seal | art/current_seal
+[ ] Wind Release: Gale Palm | art/gale_lance
+[ ] Crosswind | art/gale_fan
+[ ] Gale Seal | art/gale_seal
+[ ] Earth Release: Earth Wall | art/flint_lance
+[ ] Faultline | art/flint_fan
+[ ] Cairn Seal | art/flint_seal
+[ ] Briar Thorn | art/bloom_lance
+[ ] Petal Sweep | art/bloom_fan
+[ ] Verdant Seal | art/bloom_seal
+[ ] Hail Shard | art/rime_lance
+[ ] Winter Fan | art/rime_fan
+[ ] Hoarfrost Seal | art/rime_seal
+[ ] Lightning Release: Focused Strike | art/storm_lance
+[ ] Thunder Fan | art/storm_fan
+[ ] Storm Seal | art/storm_seal
+[ ] Shade Needle | art/dusk_lance
+[ ] Gloam Sweep | art/dusk_fan
+[ ] Twilight Seal | art/dusk_seal
+[ ] Sun Dart | art/dawn_lance
+[ ] Radiant Fan | art/dawn_fan
+[ ] Daybreak Seal | art/dawn_seal
+[ ] Lightning Chakra Armor | art/lightning_chakra_armor
+[ ] Lariat | art/lightning_lariat
+[ ] Lightning Step | art/lightning_step
+[ ] Thunder Counter | art/lightning_counter
+[ ] Guillotine Drop | art/guillotine_drop
+[ ] Release Lightning Armor | art/lightning_release
+[ ] Binding Script | art/binding_script
+[ ] Damping Script | art/damping_script
+[ ] Ward Circle | art/ward_circle
+[ ] Phase Step | art/phase_step
+[ ] Focus Sight | art/focus_sight
+[ ] Second Wind | art/second_wind
+[ ] Gravitic Pulse | art/gravitic_pulse
+[ ] Recall Mark | art/recall_mark
+[ ] Echo Double | art/echo_double
+[ ] Cinder Arc | order/ember
+[ ] Flowstep | order/current
+[ ] Windstride | order/gale
+[ ] Stoneguard | order/flint
+[ ] Mending Breath | order/bloom
+[ ] Stillwinter | order/rime
+[ ] Skybreak | order/storm
+[ ] Quiet Veil | order/dusk
+[ ] Firstlight | order/dawn
+[ ] Patient Guard | weapon_role/saber
+[ ] Long Thrust | weapon_role/spear
+[ ] Sidestep | weapon_role/dagger
+[ ] Fan Cut | weapon_role/glaive
+[ ] Centering Breath | weapon_role/staff
+[ ] Crushing Strike | weapon_role/axe
+[ ] Bastion Form | status/bastion
+[ ] Zephyr Form | status/zephyr
+[ ] Oracle Form | status/oracle
+[ ] Eclipse Form | status/eclipse
+[ ] Lightning Chakra Armor | status/lightning_chakra_armor
+[ ] Ember Ward | seal/ember
+[ ] Current Ward | seal/current
+[ ] Gale Ward | seal/gale
+[ ] Flint Ward | seal/flint
+[ ] Bloom Ward | seal/bloom
+[ ] Rime Ward | seal/rime
+[ ] Storm Ward | seal/storm
+[ ] Dusk Ward | seal/dusk
+[ ] Dawn Ward | seal/dawn
+[ ] Scroll | seal/scroll
+[ ] Weapon | seal/weapon
+[ ] Seal | seal/seal
+
+ORIGINAL 49-MOD REFERENCE ITEM MODELS (not a current Vale mapping)
+
+!mixinbooter-11.18.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+[1.12.2]DamageIndicatorsMod-3.5.1.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+ahznb weapons plus 1.2.1.jar
+[ ] Infinite Shurikan | ahznbswordsplus:item/infiniteshurikan
+[ ] Seven Star Blade | ahznbswordsplus:item/sevenstarblade
+[ ] Shuriken | ahznbswordsplus:item/shuriken
+[ ] Sword Of The Thunder God | ahznbswordsplus:item/swordofthethundergod
+
+ahznbstweaks-2.0.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+almirioncore-1.1.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+AnbuBingoBook - 1.6.1.jar
+[ ] Bingo Book | anbubingobook:item/bingo_book
+[ ] Dna | anbubingobook:item/dna
+
+AppleSkin-mc1.12-1.0.14.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+Armourers-Workshop-1.12.2-0.51.0.jar
+[ ] Item.Armour-Container | armourers_workshop:item/item.armour-container
+[ ] Item.Armour-Container-Chest | armourers_workshop:item/item.armour-container-chest
+[ ] Item.Armour-Container-Feet | armourers_workshop:item/item.armour-container-feet
+[ ] Item.Armour-Container-Head | armourers_workshop:item/item.armour-container-head
+[ ] Item.Armour-Container-Legs | armourers_workshop:item/item.armour-container-legs
+[ ] Item.Armourers-Hammer | armourers_workshop:item/item.armourers-hammer
+[ ] Item.Blending-Tool | armourers_workshop:item/item.blending-tool
+[ ] Item.Block-Marker | armourers_workshop:item/item.block-marker
+[ ] Item.Burn-Tool | armourers_workshop:item/item.burn-tool
+[ ] Item.Colour-Noise-Tool | armourers_workshop:item/item.colour-noise-tool
+[ ] Item.Colour-Noise-Tool-Small | armourers_workshop:item/item.colour-noise-tool-small
+[ ] Item.Colour-Picker | armourers_workshop:item/item.colour-picker
+[ ] Item.Colour-Picker-Empty | armourers_workshop:item/item.colour-picker-empty
+[ ] Item.Debug-Tool | armourers_workshop:item/item.debug-tool
+[ ] Item.Dodge-Tool | armourers_workshop:item/item.dodge-tool
+[ ] Item.Dye-Bottle | armourers_workshop:item/item.dye-bottle
+[ ] Item.Dye-Bottle-Empty | armourers_workshop:item/item.dye-bottle-empty
+[ ] Item.Gift-Sack | armourers_workshop:item/item.gift-sack
+[ ] Item.Guide-Book | armourers_workshop:item/item.guide-book
+[ ] Item.Hue-Tool | armourers_workshop:item/item.hue-tool
+[ ] Item.Linking-Tool | armourers_workshop:item/item.linking-tool
+[ ] Item.Linking-Tool-Link | armourers_workshop:item/item.linking-tool-link
+[ ] Item.Mannequin | armourers_workshop:item/item.mannequin
+[ ] Item.Mannequin-Tool | armourers_workshop:item/item.mannequin-tool
+[ ] Item.Paint-Roller | armourers_workshop:item/item.paint-roller
+[ ] Item.Paint-Roller-Small | armourers_workshop:item/item.paint-roller-small
+[ ] Item.Paintbrush | armourers_workshop:item/item.paintbrush
+[ ] Item.Paintbrush-Small | armourers_workshop:item/item.paintbrush-small
+[ ] Item.Palette | armourers_workshop:item/item.palette
+[ ] Item.Shade-Noise-Tool | armourers_workshop:item/item.shade-noise-tool
+[ ] Item.Shade-Noise-Tool-Small | armourers_workshop:item/item.shade-noise-tool-small
+[ ] Item.Skin | armourers_workshop:item/item.skin
+[ ] Item.Skin-Template | armourers_workshop:item/item.skin-template
+[ ] Item.Skin-Unlock-Chest | armourers_workshop:item/item.skin-unlock-chest
+[ ] Item.Skin-Unlock-Feet | armourers_workshop:item/item.skin-unlock-feet
+[ ] Item.Skin-Unlock-Head | armourers_workshop:item/item.skin-unlock-head
+[ ] Item.Skin-Unlock-Legs | armourers_workshop:item/item.skin-unlock-legs
+[ ] Item.Skin-Unlock-Outfit | armourers_workshop:item/item.skin-unlock-outfit
+[ ] Item.Skin-Unlock-Wings | armourers_workshop:item/item.skin-unlock-wings
+[ ] Item.Soap | armourers_workshop:item/item.soap
+[ ] Item.Wand-Of-Style | armourers_workshop:item/item.wand-of-style
+
+Baryon Expansion_beta2.jar
+[ ] Baryon Choumei Cloak | baryonexpansion:item/baryonchoumei_cloakbody
+[ ] Baryon Gyuki Cloak | baryonexpansion:item/baryongyuki_cloakbody
+[ ] Baryon Isobu Cloak | baryonexpansion:item/baryonisobu_cloakbody
+[ ] Baryon Kokou Cloak | baryonexpansion:item/baryonkokou_cloakbody
+[ ] Baryon Matatabi Cloak | baryonexpansion:item/baryonmatatabi_cloakbody
+[ ] Baryon Saiken Cloak | baryonexpansion:item/baryonsaiken_cloakbody
+[ ] Baryon Shukaku Cloak | baryonexpansion:item/baryonshukaku_cloakbody
+[ ] Baryon Son Goku Cloak | baryonexpansion:item/baryonsongoku_cloakbody
+
+biju_unleashing-1.7.3.jar
+[ ] Icon Defeated Biju | biju_unleashing:item/icon_defeated_biju
+[ ] Icon P1 400 Xp | biju_unleashing:item/icon_p1_400_xp
+[ ] Icon Phase2 4800 Xp | biju_unleashing:item/icon_phase2_4800_xp
+[ ] Icon Phase2 First Activation | biju_unleashing:item/icon_phase2_first_activation
+[ ] Icon Root | biju_unleashing:item/icon_root
+
+BorutoMod Addon byAnimeSupremeTeam v1.0.jar
+[ ] Antidote | borutomodaddononero:item/antidote
+[ ] Boro Core | borutomodaddononero:item/boro_corebody
+[ ] Boruto (Season 1) Body | borutomodaddononero:item/boruto_armor_season_1body
+[ ] Boruto (Season 1) Leggings | borutomodaddononero:item/boruto_armor_season_1legs
+[ ] Chakra Axe | borutomodaddononero:item/chakra_axe
+[ ] Chakra Knife | borutomodaddononero:item/chakra_knife
+[ ] Chakra Spear | borutomodaddononero:item/chakra_spear
+[ ] Chakra Thimble | borutomodaddononero:item/chakra_thimble
+[ ] Hot dog | borutomodaddononero:item/hotdog
+[ ] Icon Karma Advancement | borutomodaddononero:item/icon_karma_advancement
+[ ] Isshiki Cloack | borutomodaddononero:item/isshiki_cloackbody
+[ ] Karma Boruto (Stage 2) | borutomodaddononero:item/item_karma_boruto_stage_2
+[ ] Karma Kawaki (Stage 2) | borutomodaddononero:item/item_karma_kawaki_stage_2
+[ ] Jogan | borutomodaddononero:item/joganhelmet
+[ ] Karma Boruto Stage 2 (Body) | borutomodaddononero:item/karma_boruto_stage_2body
+[ ] Karma Boruto Stage 2 (Helmet) | borutomodaddononero:item/karma_boruto_stage_2helmet
+[ ] Karma Kawaki Stage 2 (Body) | borutomodaddononero:item/karma_kawaki_stage_2body
+[ ] Karma Kawaki Stage 2 (Helmet) | borutomodaddononero:item/karma_kawaki_stage_2helmet
+[ ] Kokugan | borutomodaddononero:item/kokuganhelmet
+[ ] Nue | borutomodaddononero:item/nue_icon_tab
+[ ] Senrigan | borutomodaddononero:item/senriganhelmet
+
+Clumps-3.1.2.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+colorfulhealthbar-0.0.4a.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+Controlling-3.0.12.4.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+CosmeticArmorReworked-1.12.2-v5a.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+CustomNPCs_1.12.2-(05Jul20).jar
+[ ] NBT Tags Book | customnpcs:item/nbt_book
+[ ] Border | customnpcs:item/npcborder
+[ ] Builder Block | customnpcs:item/npcbuilderblock
+[ ] Carpentry Bench | customnpcs:item/npccarpentybench
+[ ] Copy Block | customnpcs:item/npccopyblock
+[ ] Mailbox | customnpcs:item/npcmailbox
+[ ] Mob Cloner | customnpcs:item/npcmobcloner
+[ ] Mounter | customnpcs:item/npcmounter
+[ ] Npc Pather | customnpcs:item/npcmovingpath
+[ ] Redstone Block | customnpcs:item/npcredstoneblock
+[ ] Scripted Block | customnpcs:item/npcscripted
+[ ] Npcscripteddoor | customnpcs:item/npcscripteddoor
+[ ] Scripted Door | customnpcs:item/npcscripteddoortool
+[ ] Scripter | customnpcs:item/npcscripter
+[ ] Soulstone Empty | customnpcs:item/npcsoulstoneempty
+[ ] Soulstone Filled | customnpcs:item/npcsoulstonefilled
+[ ] Teleporter | customnpcs:item/npcteleporter
+[ ] Npc Wand | customnpcs:item/npcwand
+[ ] Location Quest Block | customnpcs:item/npcwaypoint
+[ ] Scripted Item | customnpcs:item/scripted_item
+
+Essential_1-5-1_forge_1-12-2.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+Fluidlogged-API-v3.3.3-mc1.12.2.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+FTBLib-5.4.7.2.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+FTBQuests-1202.9.0.15.jar
+[ ] Quest Book | ftbquests:item/book
+[ ] Custom Icon | ftbquests:item/custom_icon
+[ ] Loot Crate | ftbquests:item/lootcrate
+
+geckolib-forge-1.12.2-3.0.31.jar
+[ ] Botarium | geckolib3:item/botarium
+[ ] Botarium | geckolib3:item/botariumblock
+[ ] Fertilizer | geckolib3:item/fertilizer
+[ ] Fertilizer | geckolib3:item/fertilizerblock
+[ ] Jack In The Box | geckolib3:item/jackintheboxitem
+[ ] Potato Armor Boots | geckolib3:item/potato_boots
+[ ] Potato Armor Chestplate | geckolib3:item/potato_chest
+[ ] Potato Armor Helmet | geckolib3:item/potato_head
+[ ] Potato Armor Leggings | geckolib3:item/potato_leggings
+
+HiddenVillage-BijuuArmor-0.16.2-rc1.jar
+[ ] Chomei Boots | hvbijuu:item/chomei_boots
+[ ] Chomei Boots Gui | hvbijuu:item/chomei_boots_gui
+[ ] Chomei Chestplate | hvbijuu:item/chomei_chestplate
+[ ] Chomei Chestplate Gui | hvbijuu:item/chomei_chestplate_gui
+[ ] Chomei Helmet | hvbijuu:item/chomei_helmet
+[ ] Chomei Helmet Gui | hvbijuu:item/chomei_helmet_gui
+[ ] Chomei Leggings | hvbijuu:item/chomei_leggings
+[ ] Chomei Leggings Gui | hvbijuu:item/chomei_leggings_gui
+[ ] Gyuki Boots | hvbijuu:item/gyuki_boots
+[ ] Gyuki Boots Gui | hvbijuu:item/gyuki_boots_gui
+[ ] Gyuki Chestplate | hvbijuu:item/gyuki_chestplate
+[ ] Gyuki Chestplate Gui | hvbijuu:item/gyuki_chestplate_gui
+[ ] Gyuki Helmet | hvbijuu:item/gyuki_helmet
+[ ] Gyuki Helmet Gui | hvbijuu:item/gyuki_helmet_gui
+[ ] Gyuki Leggings | hvbijuu:item/gyuki_leggings
+[ ] Gyuki Leggings Gui | hvbijuu:item/gyuki_leggings_gui
+[ ] Isobu Boots | hvbijuu:item/isobu_boots
+[ ] Isobu Boots Gui | hvbijuu:item/isobu_boots_gui
+[ ] Isobu Chestplate | hvbijuu:item/isobu_chestplate
+[ ] Isobu Chestplate Gui | hvbijuu:item/isobu_chestplate_gui
+[ ] Isobu Helmet | hvbijuu:item/isobu_helmet
+[ ] Isobu Helmet Gui | hvbijuu:item/isobu_helmet_gui
+[ ] Isobu Leggings | hvbijuu:item/isobu_leggings
+[ ] Isobu Leggings Gui | hvbijuu:item/isobu_leggings_gui
+[ ] Kokuo Boots | hvbijuu:item/kokuo_boots
+[ ] Kokuo Boots Gui | hvbijuu:item/kokuo_boots_gui
+[ ] Kokuo Chestplate | hvbijuu:item/kokuo_chestplate
+[ ] Kokuo Chestplate Gui | hvbijuu:item/kokuo_chestplate_gui
+[ ] Kokuo Helmet | hvbijuu:item/kokuo_helmet
+[ ] Kokuo Helmet Gui | hvbijuu:item/kokuo_helmet_gui
+[ ] Kokuo Leggings | hvbijuu:item/kokuo_leggings
+[ ] Kokuo Leggings Gui | hvbijuu:item/kokuo_leggings_gui
+[ ] Kurama Boots | hvbijuu:item/kurama_boots
+[ ] Kurama Boots Gui | hvbijuu:item/kurama_boots_gui
+[ ] Kurama Chestplate | hvbijuu:item/kurama_chestplate
+[ ] Kurama Chestplate Gui | hvbijuu:item/kurama_chestplate_gui
+[ ] Kurama Helmet | hvbijuu:item/kurama_helmet
+[ ] Kurama Helmet Gui | hvbijuu:item/kurama_helmet_gui
+[ ] Kurama Leggings | hvbijuu:item/kurama_leggings
+[ ] Kurama Leggings Gui | hvbijuu:item/kurama_leggings_gui
+[ ] Matatabi Boots | hvbijuu:item/matatabi_boots
+[ ] Matatabi Boots Gui | hvbijuu:item/matatabi_boots_gui
+[ ] Matatabi Chestplate | hvbijuu:item/matatabi_chestplate
+[ ] Matatabi Chestplate Gui | hvbijuu:item/matatabi_chestplate_gui
+[ ] Matatabi Helmet | hvbijuu:item/matatabi_helmet
+[ ] Matatabi Helmet Gui | hvbijuu:item/matatabi_helmet_gui
+[ ] Matatabi Leggings | hvbijuu:item/matatabi_leggings
+[ ] Matatabi Leggings Gui | hvbijuu:item/matatabi_leggings_gui
+[ ] Saiken Boots | hvbijuu:item/saiken_boots
+[ ] Saiken Boots Gui | hvbijuu:item/saiken_boots_gui
+[ ] Saiken Chestplate | hvbijuu:item/saiken_chestplate
+[ ] Saiken Chestplate Gui | hvbijuu:item/saiken_chestplate_gui
+[ ] Saiken Helmet | hvbijuu:item/saiken_helmet
+[ ] Saiken Helmet Gui | hvbijuu:item/saiken_helmet_gui
+[ ] Saiken Leggings | hvbijuu:item/saiken_leggings
+[ ] Saiken Leggings Gui | hvbijuu:item/saiken_leggings_gui
+[ ] Shukaku Boots | hvbijuu:item/shukaku_boots
+[ ] Shukaku Boots Gui | hvbijuu:item/shukaku_boots_gui
+[ ] Shukaku Chestplate | hvbijuu:item/shukaku_chestplate
+[ ] Shukaku Chestplate Gui | hvbijuu:item/shukaku_chestplate_gui
+[ ] Shukaku Helmet | hvbijuu:item/shukaku_helmet
+[ ] Shukaku Helmet Gui | hvbijuu:item/shukaku_helmet_gui
+[ ] Shukaku Leggings | hvbijuu:item/shukaku_leggings
+[ ] Shukaku Leggings Gui | hvbijuu:item/shukaku_leggings_gui
+[ ] Son Goku Boots | hvbijuu:item/son_goku_boots
+[ ] Son Goku Boots Gui | hvbijuu:item/son_goku_boots_gui
+[ ] Son Goku Chestplate | hvbijuu:item/son_goku_chestplate
+[ ] Son Goku Chestplate Gui | hvbijuu:item/son_goku_chestplate_gui
+[ ] Son Goku Helmet | hvbijuu:item/son_goku_helmet
+[ ] Son Goku Helmet Gui | hvbijuu:item/son_goku_helmet_gui
+[ ] Son Goku Leggings | hvbijuu:item/son_goku_leggings
+[ ] Son Goku Leggings Gui | hvbijuu:item/son_goku_leggings_gui
+
+ItemFilters-1.0.4.2.jar
+[ ] Item Filter | itemfilters:item/filter
+[ ] Missing Item | itemfilters:item/missing
+
+jei_1.12.2-4.22.0.1034.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+JustEnoughResources-1.12.2-0.9.2.60.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+JutsuAddon v1.0.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+kabutoaddon 5.5.8-beta.jar
+[ ] Akatsuki Robes | kabutoaddon:item/akatsuki_robes
+[ ] Biju Cloakbody | kabutoaddon:item/biju_cloakbody
+[ ] Biju Cloakhelmet | kabutoaddon:item/biju_cloakhelmet
+[ ] Biju Cloaklegs | kabutoaddon:item/biju_cloaklegs
+[ ] Butterfly Mode | kabutoaddon:item/choji_wings
+[ ] Cloudheadband | kabutoaddon:item/cloudheadband
+[ ] Coffin | kabutoaddon:item/coffin
+[ ] Crescent Staff | kabutoaddon:item/crescentstaff
+[ ] DNA | kabutoaddon:item/dna
+[ ] Earthscroll | kabutoaddon:item/earthscroll
+[ ] Edo Tensei | kabutoaddon:item/edo_tensei
+[ ] Edo Tensei Robe | kabutoaddon:item/edo_tensei_robe
+[ ] Edo Tensei Scroll | kabutoaddon:item/edo_tensei_scroll
+[ ] Haku Robe | kabutoaddon:item/haku_robe
+[ ] Heavenscroll | kabutoaddon:item/heavenscroll
+[ ] Item Scroll Lava Chakra Mode | kabutoaddon:item/item_scroll_lava_chakra_mode
+[ ] Kabuto Armor Pt 1 | kabutoaddon:item/kabuto_armor_pt_1
+[ ] Kabutohood | kabutoaddon:item/kabutohood
+[ ] Kakashi Armor | kabutoaddon:item/kakashi_armor
+[ ] Karma Seal | kabutoaddon:item/karma_seal
+[ ] Katana | kabutoaddon:item/katana
+[ ] KG Remover | kabutoaddon:item/kg_remover
+[ ] KG Reroll | kabutoaddon:item/kg_reroll
+[ ] Leafheadband | kabutoaddon:item/leafheadband
+[ ] Ninja Headband | kabutoaddon:item/ninja_headband
+[ ] Obi Belt | kabutoaddon:item/obi_belt
+[ ] Obibelt | kabutoaddon:item/obibelt
+[ ] Paper Ninjutsu | kabutoaddon:item/paper_release
+[ ] Rainheadband | kabutoaddon:item/rainheadband
+[ ] Red Chakra Pill | kabutoaddon:item/red_chakra_pill
+[ ] Rinne Sharingan | kabutoaddon:item/rinne_sharingan
+[ ] Rinne Sharingan Helmet | kabutoaddon:item/rinne_sharingan_helmet
+[ ] Ryo 100,000 | kabutoaddon:item/ryo_100000
+[ ] Sai Jacket | kabutoaddon:item/sai_jacket
+[ ] Sandheadband | kabutoaddon:item/sandheadband
+[ ] Scroll Lava Chakra Mode | kabutoaddon:item/scroll_lava_chakra_mode
+[ ] Shino Hood | kabutoaddon:item/shino_hood
+[ ] Soundheadband | kabutoaddon:item/soundheadband
+[ ] Stoneheadband | kabutoaddon:item/stoneheadband
+[ ] Sumirehime | kabutoaddon:item/sumirehime
+[ ] Tb Armor | kabutoaddon:item/tb_armor
+[ ] XP Gem | kabutoaddon:item/xp_gem
+
+Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar
+[ ] Hidden Cloud Dungeon Picture (5 x 5) | hvdungeonpictures:item/cloud_picture
+[ ] Hidden Leaf Dungeon Picture (5 x 5) | hvdungeonpictures:item/leaf_picture
+[ ] Hidden Mist Dungeon Picture (5 x 5) | hvdungeonpictures:item/mist_picture
+[ ] Hidden Sand Dungeon Picture (5 x 5) | hvdungeonpictures:item/sand_picture
+[ ] Hidden Stone Dungeon Picture (5 x 5) | hvdungeonpictures:item/stone_picture
+
+NarutoMod-1.12.2-0.3.1.beta.jar
+[ ] Adamantine Nyoi | narutomod:item/adamantine_nyoi
+[ ] Akatsuki Robe | narutomod:item/akatsuki_robebody
+[ ] Akatsuki Hat | narutomod:item/akatsuki_robehelmet
+[ ] Amaterasu Flame | narutomod:item/amaterasublock
+[ ] Anbu Robe Body | narutomod:item/anbu_robebody
+[ ] Anbu Sword | narutomod:item/anbu_sword
+[ ] All-Killing Ash Bones | narutomod:item/ashbones
+[ ] Asura Canon | narutomod:item/asuracanon
+[ ] Asura Path Bodygear | narutomod:item/asurapatharmorbody
+[ ] Explosion Release | narutomod:item/bakuton
+[ ] Biju Cloak Body | narutomod:item/biju_cloakbody
+[ ] Biju Cloak Helmet | narutomod:item/biju_cloakhelmet
+[ ] Biju Cloak Leggings | narutomod:item/biju_cloaklegs
+[ ] Tailed Beast Map | narutomod:item/biju_map
+[ ] Black Receiver | narutomod:item/black_receiver
+[ ] Bone Armor | narutomod:item/bone_armorbody
+[ ] Bone Drill | narutomod:item/bone_drill
+[ ] Bone Sword | narutomod:item/bone_sword
+[ ] Byakugan | narutomod:item/byakuganhelmet
+[ ] Fake Rinne Sharingan | narutomod:item/byakurinnesharinganhelmet
+[ ] Chakra Blades | narutomod:item/chakra_blades
+[ ] Chakra Fruit | narutomod:item/chakrafruit
+[ ] Chokuto | narutomod:item/chokuto
+[ ] Triple bladed claw | narutomod:item/claw
+[ ] Cleaver Sword | narutomod:item/cleaver
+[ ] Hokage Robe | narutomod:item/clothes_hokagebody
+[ ] Hokage Hat | narutomod:item/clothes_hokagehelmet
+[ ] Kage Robe | narutomod:item/clothes_kazekagebody
+[ ] Kazekage Hat | narutomod:item/clothes_kazekagehelmet
+[ ] Mizukage Hat | narutomod:item/clothes_mizukagehelmet
+[ ] Raikage Hat | narutomod:item/clothes_raikagehelmet
+[ ] Tsuchikage Hat | narutomod:item/clothes_tsuchikagehelmet
+[ ] Curry and Rice | narutomod:item/curryand_rice
+[ ] Curry of Life | narutomod:item/curryof_life
+[ ] Dojutsu | narutomod:item/dojutsu
+[ ] Earth Release | narutomod:item/doton
+[ ] Eight Gates Release | narutomod:item/eightgates
+[ ] Explosive Tag | narutomod:item/explosive_tag
+[ ] Folding Fan 0 | narutomod:item/folding_fan_0
+[ ] Folding Fan 1 | narutomod:item/folding_fan_1
+[ ] Fuma Shuriken | narutomod:item/fuma_shuriken
+[ ] Wind Release | narutomod:item/futon
+[ ] Boil Release | narutomod:item/futton
+[ ] Metal Gauntlet | narutomod:item/gaunlet
+[ ] Metal Gauntlet | narutomod:item/gauntlet_thrown
+[ ] Iron Sand Gourd | narutomod:item/gourdbody
+[ ] Gunbai | narutomod:item/gunbai
+[ ] Gunbai Blocking | narutomod:item/gunbai_blocking
+[ ] Gunbai Thrown | narutomod:item/gunbai_thrown
+[ ] Hiramekarei Sword | narutomod:item/hiramekarei_sword
+[ ] Ice Release | narutomod:item/hyoton
+[ ] Ice Senbon | narutomod:item/ice_senbon
+[ ] Ichiraku Ramen | narutomod:item/ichiraku_ramen
+[ ] Yin Release | narutomod:item/inton
+[ ] Medical Ninjutsu | narutomod:item/iryo_jutsu
+[ ] Ishiken | narutomod:item/ishiken
+[ ] Dust Release | narutomod:item/jinton
+[ ] Magnet Release | narutomod:item/jiton
+[ ] Jutsu | narutomod:item/jutsu
+[ ] Kabutowari | narutomod:item/kabutowari
+[ ] Kabutowari Axe | narutomod:item/kabutowari_axe
+[ ] Kabutowari Hammer | narutomod:item/kabutowari_hammer
+[ ] Kagutsuchi Sword | narutomod:item/kagutsuchiswordranged
+[ ] Kamui Block | narutomod:item/kamuiblock
+[ ] Kamui Shuriken | narutomod:item/kamuishuriken
+[ ] Fire Release | narutomod:item/katon
+[ ] Kekkei Mora | narutomod:item/kekkei_mora
+[ ] Kiba Blades | narutomod:item/kiba_blades
+[ ] Kunai | narutomod:item/kunai
+[ ] 3-prong Kunai | narutomod:item/kunai_3prong
+[ ] Kunai Blade | narutomod:item/kunai_blade
+[ ] Kunai Explosive | narutomod:item/kunai_explosive
+[ ] Kunai Hiraishin | narutomod:item/kunai_hiraishin
+[ ] Kusanagi Sword | narutomod:item/kusanagi_sword
+[ ] Light Source | narutomod:item/light_source
+[ ] Eternal Mangekyo Sharingan | narutomod:item/mangekyosharinganeternalhelmet
+[ ] Mangekyo Sharingan - Amaterasu | narutomod:item/mangekyosharinganhelmet
+[ ] Mangekyo Sharingan - Kamui | narutomod:item/mangekyosharinganobitohelmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_1helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_2helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_3helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_4helmet
+[ ] Mask Obito | narutomod:item/mask_obito_1helmet
+[ ] Mask Obito (4th Ninja War) | narutomod:item/mask_obito_warhelmet
+[ ] Medical Scroll | narutomod:item/medical_scroll
+[ ] Military Rations Pill | narutomod:item/military_rations_pill
+[ ] Military Rations Pill - Gold | narutomod:item/military_rations_pill_gold
+[ ] Wood Release | narutomod:item/mokuton
+[ ] Ninja Armor | narutomod:item/ninja_armor
+[ ] Forehead Protector (Amegakure) | narutomod:item/ninja_armor_amehelmet
+[ ] Ninja Suit (Amegakure) | narutomod:item/ninja_armor_amelegs
+[ ] Chest Armor (Anbu) | narutomod:item/ninja_armor_anbubody
+[ ] Ninja Boots (Anbu) | narutomod:item/ninja_armor_anbuboots
+[ ] Ninja Pants (Anbu) | narutomod:item/ninja_armor_anbulegs
+[ ] Ninja Fishnets Shirt and Pants | narutomod:item/ninja_armor_fishnetslegs
+[ ] Flak Jacket (Iwagakure) | narutomod:item/ninja_armor_iwabody
+[ ] Ninja Boots (Iwagakure) | narutomod:item/ninja_armor_iwaboots
+[ ] Forehead Protector (Iwagakure) | narutomod:item/ninja_armor_iwahelmet
+[ ] Ninja Pants (Iwagakure) | narutomod:item/ninja_armor_iwalegs
+[ ] Jiraiya Jacket | narutomod:item/ninja_armor_jiraiyabody
+[ ] Jiraiya Forehead Protector | narutomod:item/ninja_armor_jiraiyahelmet
+[ ] Jiraiya Clothes | narutomod:item/ninja_armor_jiraiyalegs
+[ ] Jumpsuit | narutomod:item/ninja_armor_jumpsuitlegs
+[ ] Flak Jacket (Kirigakure) | narutomod:item/ninja_armor_kiribody
+[ ] Ninja Boots (Kirigakure) | narutomod:item/ninja_armor_kiriboots
+[ ] Forehead Protector (Kirigakure) | narutomod:item/ninja_armor_kirihelmet
+[ ] Ninja Pants (Kirigakure) | narutomod:item/ninja_armor_kirilegs
+[ ] Flak Jacket (Konoha) | narutomod:item/ninja_armor_konohabody
+[ ] Forehead Protector (Konoha) | narutomod:item/ninja_armor_konohahelmet
+[ ] Ninja Pants (Konoha) | narutomod:item/ninja_armor_konohalegs
+[ ] Flak Jacket (Kumogakure) | narutomod:item/ninja_armor_kumobody
+[ ] Ninja Boots (Kumogakure) | narutomod:item/ninja_armor_kumoboots
+[ ] Forehead Protector (Kumogakure) | narutomod:item/ninja_armor_kumohelmet
+[ ] Ninja Pants (Kumogakure) | narutomod:item/ninja_armor_kumolegs
+[ ] Naruto Jacket | narutomod:item/ninja_armor_naruto_sbody
+[ ] Naruto Pants | narutomod:item/ninja_armor_naruto_slegs
+[ ] Obito Suit (4th Ninja War) | narutomod:item/ninja_armor_obito_warbody
+[ ] Ninja Outfit (Otogakure) | narutomod:item/ninja_armor_otobody
+[ ] Ninja Mask (Otogakure) | narutomod:item/ninja_armor_otohelmet
+[ ] Ninja Leggings (Otogakure) | narutomod:item/ninja_armor_otolegs
+[ ] Sakura Vest | narutomod:item/ninja_armor_sakura_1body
+[ ] Sakura Leggings | narutomod:item/ninja_armor_sakura_1legs
+[ ] Ninja Armor Sound Body | narutomod:item/ninja_armor_soundbody
+[ ] Ninja Armor Sound Helmet | narutomod:item/ninja_armor_soundhelmet
+[ ] Flak Jacket (Sunagakure) | narutomod:item/ninja_armor_sunabody
+[ ] Ninja Boots (Sunagakure) | narutomod:item/ninja_armor_sunaboots
+[ ] Forehead Protector (Sunagakure) | narutomod:item/ninja_armor_sunahelmet
+[ ] Ninja Pants (Sunagakure) | narutomod:item/ninja_armor_sunalegs
+[ ] 1st Ninja War Body Armor | narutomod:item/ninja_armor_war_1body
+[ ] Facial Protector (Konoha) | narutomod:item/ninja_armor_war_1helmet
+[ ] Ninjutsu | narutomod:item/ninjutsu
+[ ] Nuibari Sword | narutomod:item/nuibari_sword
+[ ] Nuibari Sword | narutomod:item/nuibari_thrown
+[ ] On Body | narutomod:item/on_body
+[ ] Onigiri | narutomod:item/onigiri
+[ ] Poison Senbons | narutomod:item/poison_senbon
+[ ] Poison Bomb | narutomod:item/poisonbomb
+[ ] Portal Block | narutomod:item/portalblock
+[ ] Lightning Release | narutomod:item/raiton
+[ ] Storm Release | narutomod:item/ranton
+[ ] Rice | narutomod:item/rice
+[ ] Rinne Sharingan Body | narutomod:item/rinneganbody
+[ ] Rinnegan  | narutomod:item/rinneganhelmet
+[ ] Rinne Sharingan Leggings | narutomod:item/rinneganlegs
+[ ] Robe | narutomod:item/robe
+[ ] Jiraiya Robe | narutomod:item/robe_jiraiyabody
+[ ] 100 Ryo | narutomod:item/ryo_100
+[ ] Ryo 1,000 | narutomod:item/ryo_1000
+[ ] Ryo 10,000 | narutomod:item/ryo_10000
+[ ] Ryo 1,000,000 | narutomod:item/ryo_1_m
+[ ] Truth Seeking Shakujo | narutomod:item/sage_staff
+[ ] Sake | narutomod:item/sake
+[ ] Samehada | narutomod:item/samehada
+[ ] Samurai Armor | narutomod:item/samurai_armorbody
+[ ] Samurai Helmet | narutomod:item/samurai_armorhelmet
+[ ] Samurai Leggings | narutomod:item/samurai_armorlegs
+[ ] 3rd Kazekage puppet scroll | narutomod:item/scroll_3rd_kazekage
+[ ] Wind Release - Great Breakthrough | narutomod:item/scroll_big_blow
+[ ] Body Replacement jutsu | narutomod:item/scroll_body_replacement
+[ ] Medical Ninjutsu - Cellular Activation jutsu | narutomod:item/scroll_cellular_activation
+[ ] Lightning Release - Chidori | narutomod:item/scroll_chidori
+[ ] Earth Release: Golem Jutsu | narutomod:item/scroll_earth_golem
+[ ] Earth Release - Mountain sandwich | narutomod:item/scroll_earth_sandwich
+[ ] Earth Release - Earth Flow Spears | narutomod:item/scroll_earth_spears
+[ ] Earth Release - Earth Wall jutsu scroll | narutomod:item/scroll_earth_wall
+[ ] Medical Ninjutsu - Chakra Enhanced Strength | narutomod:item/scroll_enhanced_strength
+[ ] Lightning Release - False Darkness | narutomod:item/scroll_false_darkness
+[ ] Fire Release - Great Fire Annihilation | narutomod:item/scroll_fire_annihilation
+[ ] Fire Release - Great Flame | narutomod:item/scroll_fire_stream
+[ ] Fire Release: Uchiha Flame Formation | narutomod:item/scroll_flame_formation
+[ ] Fire Release: Cloud Style Flame Slice | narutomod:item/scroll_flame_slice
+[ ] Wind Release - Chakra Flow | narutomod:item/scroll_futon_chakra_flow
+[ ] Wind Release - Air Bullets | narutomod:item/scroll_futon_vacuum
+[ ] Genjutsu scroll | narutomod:item/scroll_genjutsu
+[ ] Fire Release - Great Fireball jutsu | narutomod:item/scroll_great_fireball
+[ ] Medical Ninjutsu - Healing jutsu | narutomod:item/scroll_healing
+[ ] Fire Release - Hiding In Ash | narutomod:item/scroll_hiding_in_ash
+[ ] Hiding In Camouflage jutsu | narutomod:item/scroll_hiding_in_camouflage
+[ ] Water Release - Hiding In Mist | narutomod:item/scroll_hiding_in_mist
+[ ] Earth Release - Hiding In Rock scroll | narutomod:item/scroll_hiding_in_rock
+[ ] Flying Thunder God Jutsu | narutomod:item/scroll_hiraishin
+[ ] Hiruko Puppet Scroll | narutomod:item/scroll_hiruko
+[ ] Shadow Clone jutsu | narutomod:item/scroll_kage_bunshin
+[ ] Karasu Puppet Scroll | narutomod:item/scroll_karasu
+[ ] Hiden Technique: Kikaichu Sphere | narutomod:item/scroll_kikaichu_sphere
+[ ] Lightning Release - Kirin | narutomod:item/scroll_kirin
+[ ] Lightning Release: Lightning Beast | narutomod:item/scroll_lightning_beast
+[ ] Lightning Release - Lightning Chakra Mode scroll | narutomod:item/scroll_lightning_chakra_mode
+[ ] Lightning Release: Black Panther | narutomod:item/scroll_lightning_panther
+[ ] Mind Body Transfer scroll | narutomod:item/scroll_mind_transfer
+[ ] Yang Release - Multi-Size jutsu | narutomod:item/scroll_multi_size
+[ ] Medical Ninjutsu - Poison Mist jutsu | narutomod:item/scroll_poison_mist
+[ ] Puppet Jutsu | narutomod:item/scroll_puppet
+[ ] Rasengan | narutomod:item/scroll_rasengan
+[ ] Sansh?uo Puppet Scroll | narutomod:item/scroll_sanshouo
+[ ] Four Symbols Sealing Jutsu | narutomod:item/scroll_sealing_4_symbols
+[ ] Adamantine Sealing Chains | narutomod:item/scroll_sealing_chains
+[ ] Shadow Imitation Scroll | narutomod:item/scroll_shadow_imitation
+[ ] Earth Release: Hell Swamp | narutomod:item/scroll_swamp_pit
+[ ] Transformation Jutsu | narutomod:item/scroll_transformation
+[ ] Wind Release: Vacuum Wave | narutomod:item/scroll_vacuum_wave
+[ ] Water Release - Water Cannon Ball | narutomod:item/scroll_water_cannon
+[ ] Water Release - Water Dragon Bullet | narutomod:item/scroll_water_dragon
+[ ] Water Release - Water Prison jutsu | narutomod:item/scroll_water_prison
+[ ] Water Release - Water Shark Bullet jutsu | narutomod:item/scroll_water_shark
+[ ] Water Release - Water Shockwave | narutomod:item/scroll_water_shockwave
+[ ] Water Release - Water Bullet | narutomod:item/scroll_water_stream
+[ ] Wind Release: Blade of Wind | narutomod:item/scroll_wind_blade
+[ ] Scythe 3-blade | narutomod:item/scythe_hidan
+[ ] Scythe 3-blade | narutomod:item/scythe_hidan_thrown
+[ ] Scythe Madara | narutomod:item/scythe_madara
+[ ] Scythe Madara Thrown | narutomod:item/scythe_madara_thrown
+[ ] Senbon | narutomod:item/senbon
+[ ] Puppet poison senbon arm canon | narutomod:item/senbon_arm
+[ ] Senjutsu | narutomod:item/senjutsu
+[ ] Scorch Release | narutomod:item/shakuton
+[ ] Sharingan | narutomod:item/sharinganhelmet
+[ ] Shibuki Sword | narutomod:item/shibuki_sword
+[ ] Skeletal Control | narutomod:item/shikotsumyaku
+[ ] Shuriken | narutomod:item/shuriken
+[ ] Six Path Senjutsu | narutomod:item/six_path_senjutsu
+[ ] Smoke Bomb | narutomod:item/smoke_bomb
+[ ] Sound Reflecting Gauntlet | narutomod:item/sound_gaunlet
+[ ] Spear Retractable 0 | narutomod:item/spear_retractable_0
+[ ] Spear Retractable 1 | narutomod:item/spear_retractable_1
+[ ] Spear Retractable 2 | narutomod:item/spear_retractable_2
+[ ] Spear Retractable 3 | narutomod:item/spear_retractable_3
+[ ] Spear Retractable 4 | narutomod:item/spear_retractable_4
+[ ] Spear Retractable 5 | narutomod:item/spear_retractable_5
+[ ] Spear Retractable 6 | narutomod:item/spear_retractable_6
+[ ] Spear Retractable 7 | narutomod:item/spear_retractable_7
+[ ] Steam Armor Shirt | narutomod:item/steam_armorbody
+[ ] Steam Armor Hat | narutomod:item/steam_armorhelmet
+[ ] Steam Armor Leggings | narutomod:item/steam_armorlegs
+[ ] Water Release | narutomod:item/suiton
+[ ] Summoning Contract | narutomod:item/summoning_contract
+[ ] Tea | narutomod:item/tea
+[ ] Team Scroll | narutomod:item/team_scroll
+[ ] Tenseigan Chakra Mode | narutomod:item/tenseigan_chakra_mode
+[ ] Tenseigan Chakra | narutomod:item/tenseiganbody
+[ ] Tenseigan | narutomod:item/tenseiganhelmet
+[ ] Tenseigan Chakra | narutomod:item/tenseiganlegs
+[ ] Totsuka Sword | narutomod:item/totsuka_sword
+[ ] Uchiha Body | narutomod:item/uchihabody
+[ ] Ninja Sandles | narutomod:item/uchihaboots
+[ ] Uchiha Leggings | narutomod:item/uchihalegs
+[ ] Water Still | narutomod:item/water_still
+[ ] White Zetsu Flesh | narutomod:item/whitezetsuflesh
+[ ] Yagura Staff | narutomod:item/yagura_staff
+[ ] Lava Release | narutomod:item/yooton
+[ ] Yang Release | narutomod:item/yoton
+[ ] Kubikiribocho | narutomod:item/zabuza_sword
+[ ] Zzz | narutomod:item/zzz
+
+NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar
+[ ] Chojuro Body | narutomodaddononero:item/armor_chojurobody
+[ ] Chojuro Helmet | narutomodaddononero:item/armor_chojurohelmet
+[ ] Chojuro Leggings | narutomodaddononero:item/armor_chojurolegs
+[ ] Gaara Body | narutomodaddononero:item/armor_gaarabody
+[ ] Gaara Leggings | narutomodaddononero:item/armor_gaaralegs
+[ ] Haku Body | narutomodaddononero:item/armor_hakubody
+[ ] Haku Leggings | narutomodaddononero:item/armor_hakulegs
+[ ] Konohamaru Body | narutomodaddononero:item/armor_konohamarubody
+[ ] Konohamaru Leggings | narutomodaddononero:item/armor_konohamarulegs
+[ ] Naruto The Last Body | narutomodaddononero:item/armor_naruto_the_lastbody
+[ ] Naruto The Last Leggings | narutomodaddononero:item/armor_naruto_the_lastlegs
+[ ] Neji Body | narutomodaddononero:item/armor_nejibody
+[ ] Neji Leggings | narutomodaddononero:item/armor_nejilegs
+[ ] Onoki Body | narutomodaddononero:item/armor_onokibody
+[ ] Onoki Leggings | narutomodaddononero:item/armor_onokilegs
+[ ] Orochimaru Body | narutomodaddononero:item/armor_orochimarubody
+[ ] Orochimaru Leggings | narutomodaddononero:item/armor_orochimarulegs
+[ ] Sasuke The Last Body | narutomodaddononero:item/armor_sasuke_the_lastbody
+[ ] Sasuke The Last Leggings | narutomodaddononero:item/armor_sasuke_the_lastlegs
+[ ] Shisui Body | narutomodaddononero:item/armor_shisuibody
+[ ] Shisui Helmet | narutomodaddononero:item/armor_shisuihelmet
+[ ] Shisui Leggings | narutomodaddononero:item/armor_shisuilegs
+[ ] Zabuza Body | narutomodaddononero:item/armor_zabuzabody
+[ ] Zabuza Helmet | narutomodaddononero:item/armor_zabuzahelmet
+[ ] Zabuza Leggings | narutomodaddononero:item/armor_zabuzalegs
+[ ] Belt Raikage | narutomodaddononero:item/belt_raikagebody
+[ ] Bo Staff | narutomodaddononero:item/bo_staff
+[ ] Cooked Meat | narutomodaddononero:item/cooked_meat
+[ ] Crystal Senbon | narutomodaddononero:item/crystal_senbon
+[ ] Custom Block | narutomodaddononero:item/custom_block_1
+[ ] Dango | narutomodaddononero:item/dango
+[ ] Default Katana | narutomodaddononero:item/default_katana_1
+[ ] Default Katana | narutomodaddononero:item/default_katana_2
+[ ] Dragon Blade | narutomodaddononero:item/dragon_blade
+[ ] Easter Protector | narutomodaddononero:item/easter_bandanahelmet
+[ ] Easter Egg | narutomodaddononero:item/easter_egg
+[ ] Fire Sword | narutomodaddononero:item/fire_sword
+[ ] First Hokage Necklace | narutomodaddononero:item/first_hokage_necklacebody
+[ ] Garian Sword | narutomodaddononero:item/garian_sword
+[ ] Kamaboko | narutomodaddononero:item/kamaboko
+[ ] Paper Release | narutomodaddononero:item/kkg_paper
+[ ] Knight Sword | narutomodaddononero:item/knight_sword
+[ ] Konoha Chakra Blade | narutomodaddononero:item/konoha_chakra_blade
+[ ] Kurosawa | narutomodaddononero:item/kurosawa
+[ ] Kusarigama Hanzo | narutomodaddononero:item/kusarigama_hanzo
+[ ] Meat | narutomodaddononero:item/meat
+[ ] Nodati | narutomodaddononero:item/nodati
+[ ] Noodles | narutomodaddononero:item/noodles
+[ ] Nunoboko | narutomodaddononero:item/nunoboko
+[ ] Paper Wings | narutomodaddononero:item/paper_wings_armorbody
+[ ] Potato Chips | narutomodaddononero:item/potato_chips
+[ ] Sai | narutomodaddononero:item/sai
+[ ] Sand Aikitechu | narutomodaddononero:item/sand_aikitechu
+[ ] Scythe | narutomodaddononero:item/scythe
+[ ] Crystal Release | narutomodaddononero:item/shoton
+[ ] Spear | narutomodaddononero:item/spear
+[ ] Statue OneRo | narutomodaddononero:item/statue_one_ro
+[ ] Supervibrato Lightning Release Swords | narutomodaddononero:item/supervibrato_lightning_release_swords
+[ ] Sword Blue White | narutomodaddononero:item/sword_blue
+[ ] Sword of the Thunder God | narutomodaddononero:item/swordofthe_thunder_god
+[ ] Tab Icon | narutomodaddononero:item/tab_icon
+[ ] Tonfa | narutomodaddononero:item/tonfa
+[ ] Umbrella | narutomodaddononero:item/umbrella
+[ ] Utakata Cloak Body | narutomodaddononero:item/utakata_cloakbody
+[ ] Weaknessless Soaring Shortswords | narutomodaddononero:item/weaknessless_soaring_shortswordsv_1
+[ ] Weaknessless Soaring Shortswordsv | narutomodaddononero:item/weaknessless_soaring_shortswordsv_2
+[ ] White Ligth Chakra Sword | narutomodaddononero:item/wlcs
+
+NarutoModAddon-0.3.1- V1.3.jar
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_chomei
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_gyuki
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_isobu
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_jinchuriki
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_jinchuriki_levels
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_kokuo
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_kurama
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_matatabi
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_saiken
+[ ] Advancement Sakura | narutomodaddon:item/advancement_sakura
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_shukaku
+[ ] Advancement Shukaku | narutomodaddon:item/advancement_songoku
+[ ] Chakra Charge | narutomodaddon:item/chakra_charge
+[ ] Jutsu Experience Scroll | narutomodaddon:item/jutsu_exp
+
+nmee-0.2.2-beta.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+OptiFine_1.12.2_HD_U_G5.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+Patchouli-1.0-23.6.jar
+[ ] Book Blue | patchouli:item/book_blue
+[ ] Book Brown | patchouli:item/book_brown
+[ ] Book Completion | patchouli:item/book_completion
+[ ] Book Cyan | patchouli:item/book_cyan
+[ ] Book Gray | patchouli:item/book_gray
+[ ] Book Green | patchouli:item/book_green
+[ ] Book Purple | patchouli:item/book_purple
+[ ] Book Red | patchouli:item/book_red
+
+RinneganAddon v1.3.jar
+[ ] Obito's Eternal Mangekyou Sharingan Rinnegan | narutomod:item/rinnegansharinganobitohelmet
+[ ] Rinnegan Tomoe | narutomod:item/rinnegantomoehelmet
+
+SealsAddon v1.0.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+SharinganAddon v1.0.jar
+[ ] Mangekyo Sharingan - Tsukuyomi | narutomod:item/mangekyosharinganitachihelmet
+[ ] Mangekyo Sharingan - Kotoamatsukami | narutomod:item/mangekyosharinganshisuihelmet
+
+shinobiculinary-1.2.0.jar
+[ ] Anpan | shinobiculinary:item/anpan
+[ ] Boiled Kelp | shinobiculinary:item/boiled_kelp
+[ ] Bol Basic | shinobiculinary:item/bol_basic
+[ ] Chakra Boiler | shinobiculinary:item/chakra_boiler
+[ ] Chakra Mill | shinobiculinary:item/chakra_mill
+[ ] Chakra Pill I | shinobiculinary:item/chakra_pill_1
+[ ] Chakra Pill II | shinobiculinary:item/chakra_pill_2
+[ ] Chakra Pill III | shinobiculinary:item/chakra_pill_3
+[ ] Chakra Roller | shinobiculinary:item/chakra_roller
+[ ] Chakra Shard | shinobiculinary:item/chakra_shard
+[ ] Chakra Steamer | shinobiculinary:item/chakra_steamer
+[ ] Cooked Rice | shinobiculinary:item/cooked_rice
+[ ] Cooked Soybean | shinobiculinary:item/cooked_soybean
+[ ] Daifuku Mochi | shinobiculinary:item/daifuku_mochi
+[ ] Dango | shinobiculinary:item/dango
+[ ] Dashi Soup | shinobiculinary:item/dashi_soup
+[ ] Donburi | shinobiculinary:item/donburi
+[ ] Ground Kelp | shinobiculinary:item/ground_kelp
+[ ] Kelp | shinobiculinary:item/kelp
+[ ] Miso Soup | shinobiculinary:item/miso_soup
+[ ] Mochi | shinobiculinary:item/mochi
+[ ] Moromi | shinobiculinary:item/moromi
+[ ] Potion of Ninja XP | shinobiculinary:item/ninja_xp_potion
+[ ] Noodles | shinobiculinary:item/noodles
+[ ] Okayu | shinobiculinary:item/okayu
+[ ] Okonomiyaki | shinobiculinary:item/okonomiyaki
+[ ] Onigiri | shinobiculinary:item/onigiri
+[ ] Ramen | shinobiculinary:item/ramen
+[ ] Ramen Egg | shinobiculinary:item/ramen_egg
+[ ] Red Bean | shinobiculinary:item/redbean
+[ ] Red Bean Seed | shinobiculinary:item/redbean_seed
+[ ] Rice | shinobiculinary:item/rice
+[ ] Rice Flour | shinobiculinary:item/rice_flour
+[ ] Rice Seed | shinobiculinary:item/rice_seed
+[ ] Soy Milk | shinobiculinary:item/soy_milk
+[ ] Soy Sauce | shinobiculinary:item/soy_sauce
+[ ] Soybean | shinobiculinary:item/soybean
+[ ] Soybean Seed | shinobiculinary:item/soybean_seed
+[ ] Suika | shinobiculinary:item/suika
+[ ] Tofu | shinobiculinary:item/tofu
+[ ] Tofu Curry | shinobiculinary:item/tofu_curry
+[ ] Tofu Soup | shinobiculinary:item/tofu_soup
+[ ] Wheat Flour | shinobiculinary:item/wheat_flour
+[ ] Yakisoba | shinobiculinary:item/yakisoba
+[ ] Yokan | shinobiculinary:item/yokan
+[ ] Zenzai | shinobiculinary:item/zenzai
+
+SpringAddon7.0.jar
+[ ] Bubble Release | ahznbcursemarkaddon:item/baburu
+[ ] Blue Rinnegan | ahznbcursemarkaddon:item/blue_rinneganhelmet
+[ ] Byakugou | ahznbcursemarkaddon:item/byakugou
+[ ] Byakugou Jutsu | ahznbcursemarkaddon:item/byakugou_jutsu
+[ ] ByakuSharingan | ahznbcursemarkaddon:item/byakusharinganhelmet
+[ ] Coral Armor | ahznbcursemarkaddon:item/coral_armorbody
+[ ] Cursemarkmode | ahznbcursemarkaddon:item/cursemarkmode
+[ ] Dudu Rinnegan | ahznbcursemarkaddon:item/dudu_rinneganhelmet
+[ ] Eternal Mangekyo Sharingan Inferno | ahznbcursemarkaddon:item/e_mangekyo_sharingan_infernohelmet
+[ ] Blaze Release | ahznbcursemarkaddon:item/enjo
+[ ] Eye | ahznbcursemarkaddon:item/eyehelmet
+[ ] Fake Kokugan | ahznbcursemarkaddon:item/fake_kokuganhelmet
+[ ] Glass Eye | ahznbcursemarkaddon:item/glass_eyehelmet
+[ ] Halfsharinganhelmet | ahznbcursemarkaddon:item/halfsharinganhelmet
+[ ] Ink Release | ahznbcursemarkaddon:item/inku
+[ ] Inuzuka | ahznbcursemarkaddon:item/inuzuka
+[ ] Iryo Jutsu Add | ahznbcursemarkaddon:item/iryo_jutsu_add
+[ ] Ishiki Core ( Code ) | ahznbcursemarkaddon:item/ishiki_core_code
+[ ] Ishiki Core ( Jigen ) | ahznbcursemarkaddon:item/ishiki_core_jigen
+[ ] Ishiki Core ( Kawaki ) | ahznbcursemarkaddon:item/ishiki_core_kawaki
+[ ] Jougan | ahznbcursemarkaddon:item/jouganhelmet
+[ ] Ketsuryugan | ahznbcursemarkaddon:item/ketsuryugan_onhelmet
+[ ] Ketsuryugan | ahznbcursemarkaddon:item/ketsuryuganoffhelmet
+[ ] Kingan | ahznbcursemarkaddon:item/kinganhelmet
+[ ] Kokugan Block | ahznbcursemarkaddon:item/kokugan_block
+[ ] Insect Release | ahznbcursemarkaddon:item/konchu
+[ ] Coral Release | ahznbcursemarkaddon:item/koraru
+[ ] Steel Release | ahznbcursemarkaddon:item/kouton
+[ ] Kumo Nenkin | ahznbcursemarkaddon:item/kumo_nenkin
+[ ] Kumo Nenkin Bow | ahznbcursemarkaddon:item/kumo_nenkin_bow
+[ ] Madara Rinnegan | ahznbcursemarkaddon:item/madara_rinneganhelmet
+[ ] Mangekyo Sharingan Inferno | ahznbcursemarkaddon:item/mangekyo_sharingan_infernohelmet
+[ ] Mangekyo Sharingan Madara | ahznbcursemarkaddon:item/mangekyo_sharingan_madarahelmet
+[ ] Mangekyo Sharingan Magicians | ahznbcursemarkaddon:item/mangekyo_sharingan_magicianshelmet
+[ ] Mangekyo Sharingan Preta | ahznbcursemarkaddon:item/mangekyo_sharingan_pretahelmet
+[ ] Mangekyosharinganspringhelmet | ahznbcursemarkaddon:item/mangekyosharinganspringhelmet
+[ ] OP Jougan | ahznbcursemarkaddon:item/mike_jouganhelmet
+[ ] Momoshiki Core | ahznbcursemarkaddon:item/momoshiki_core
+[ ] Ratja's Eye | ahznbcursemarkaddon:item/ratja_eyehelmet
+[ ] Red Rinnegan | ahznbcursemarkaddon:item/red_rinneganhelmet
+[ ] Steel | ahznbcursemarkaddon:item/steel
+[ ] Steel Claw | ahznbcursemarkaddon:item/steel_claw
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorbody
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorhelmet
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorlegs
+[ ] Clemantis Dance: Vine | ahznbcursemarkaddon:item/vine_sword
+[ ] Whip | ahznbcursemarkaddon:item/whip
+[ ] Yashi Eye  | ahznbcursemarkaddon:item/yashi_eyehelmet
+
+stg-1.12.2-1.2.3.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+supermartijn642configlib-1.1.8-forge-mc1.12.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+TravelersBackpack-1.12.2-1.0.35.jar
+[ ] Backpack Tank | travelersbackpack:item/backpack_tank
+[ ] Hose | travelersbackpack:item/hose
+[ ] Hose Drink | travelersbackpack:item/hose_drink
+[ ] Hose nozzle | travelersbackpack:item/hose_nozzle
+[ ] Hose Spill | travelersbackpack:item/hose_spill
+[ ] Hose Suck | travelersbackpack:item/hose_suck
+[ ] Sleeping bag | travelersbackpack:item/sleeping_bag_bottom
+[ ] Traveler's Backpack | travelersbackpack:item/travelers_backpack
+
+VariedCommodities_1.12.2-(31Mar23).jar
+[ ] Ancient Coin | variedcommodities:item/ancient_coin
+[ ] Ancient Scroll | variedcommodities:item/ancient_scroll
+[ ] Artifact | variedcommodities:item/artifact
+[ ] Assassins Boots | variedcommodities:item/assassin_boots
+[ ] Assassins ChestPlate | variedcommodities:item/assassin_chest
+[ ] Assassins Helmet | variedcommodities:item/assassin_head
+[ ] Assassins Leggings | variedcommodities:item/assassin_legs
+[ ] Bag | variedcommodities:item/bag
+[ ] Bandit Mask | variedcommodities:item/bandit_mask
+[ ] Banjo | variedcommodities:item/banjo
+[ ] Banner | variedcommodities:item/banner
+[ ] Barrel | variedcommodities:item/barrel
+[ ] Baseball Bat | variedcommodities:item/baseball_bat
+[ ] Basic Battleaxe | variedcommodities:item/basic_battleaxe
+[ ] Basic Broadsword | variedcommodities:item/basic_broadsword
+[ ] Basic Claw | variedcommodities:item/basic_claw
+[ ] Basic Dagger | variedcommodities:item/basic_dagger
+[ ] Basic Dagger Reversed | variedcommodities:item/basic_dagger_reversed
+[ ] Basic Glaive | variedcommodities:item/basic_glaive
+[ ] Basic Gun | variedcommodities:item/basic_gun
+[ ] Basic Scythe | variedcommodities:item/basic_scythe
+[ ] Basic Shield | variedcommodities:item/basic_shield
+[ ] Basic Shield Blocking | variedcommodities:item/basic_shield_blocking
+[ ] Basic Spear | variedcommodities:item/basic_spear
+[ ] Basic Staff | variedcommodities:item/basic_staff
+[ ] Basic Warhammer | variedcommodities:item/basic_warhammer
+[ ] Baton | variedcommodities:item/batton
+[ ] Beam | variedcommodities:item/beam
+[ ] Bear Claw | variedcommodities:item/bear_claw
+[ ] Big Sign | variedcommodities:item/big_sign
+[ ] Blood Block 0 | variedcommodities:item/blood_block_0
+[ ] Blood Block 1 | variedcommodities:item/blood_block_1
+[ ] Blood Block 2 | variedcommodities:item/blood_block_2
+[ ] Blueprint | variedcommodities:item/blueprint
+[ ] Bo Staff | variedcommodities:item/bo_staff
+[ ] Book | variedcommodities:item/book
+[ ] Broken Arrow | variedcommodities:item/broken_arrow
+[ ] Broken Bottle | variedcommodities:item/broken_bottle
+[ ] Bronze Battle Axe | variedcommodities:item/bronze_battleaxe
+[ ] Bronze Broadsword | variedcommodities:item/bronze_broadsword
+[ ] Bronze Dagger | variedcommodities:item/bronze_dagger
+[ ] Reversed Bronze Dagger | variedcommodities:item/bronze_dagger_reversed
+[ ] Bronze Glaive | variedcommodities:item/bronze_glaive
+[ ] Bronze Gun | variedcommodities:item/bronze_gun
+[ ] Bronze Halberd | variedcommodities:item/bronze_halberd
+[ ] Bronze Mace | variedcommodities:item/bronze_mace
+[ ] Bronze Scythe | variedcommodities:item/bronze_scythe
+[ ] Bronze Shield | variedcommodities:item/bronze_shield
+[ ] Bronze Shield Blocking | variedcommodities:item/bronze_shield_blocking
+[ ] Round Bronze Shield | variedcommodities:item/bronze_shield_round
+[ ] Bronze Shield Round Blocking | variedcommodities:item/bronze_shield_round_blocking
+[ ] Bronze Skirt | variedcommodities:item/bronze_skirt
+[ ] Bronze Spear | variedcommodities:item/bronze_spear
+[ ] Bronze Staff | variedcommodities:item/bronze_staff
+[ ] Bronze Sword | variedcommodities:item/bronze_sword
+[ ] Bronze Trident | variedcommodities:item/bronze_trident
+[ ] Bronze Warhammer | variedcommodities:item/bronze_warhammer
+[ ] Bullet | variedcommodities:item/bullet
+[ ] Campfire | variedcommodities:item/campfire
+[ ] Campfire Unlit | variedcommodities:item/campfire_unlit
+[ ] Candle | variedcommodities:item/candle
+[ ] Candle Unlit | variedcommodities:item/candle_unlit
+[ ] Car Key | variedcommodities:item/car_key
+[ ] Carpentry Bench | variedcommodities:item/carpentry_bench
+[ ] Chain Skirt | variedcommodities:item/chain_skirt
+[ ] GunChainsaw | variedcommodities:item/chainsaw_gun
+[ ] Chair | variedcommodities:item/chair
+[ ] Chicken Sword | variedcommodities:item/chicken_sword
+[ ] Clarinet | variedcommodities:item/clarinet
+[ ] Cleaver | variedcommodities:item/cleaver
+[ ] Bronze Coin | variedcommodities:item/coin_bronze
+[ ] Diamond Coin | variedcommodities:item/coin_diamond
+[ ] Emerald Coin | variedcommodities:item/coin_emerald
+[ ] Golden Coin | variedcommodities:item/coin_gold
+[ ] Iron Coin | variedcommodities:item/coin_iron
+[ ] Stone Coin | variedcommodities:item/coin_stone
+[ ] Wooden Coin | variedcommodities:item/coin_wood
+[ ] Combat Knife | variedcommodities:item/combat_knive
+[ ] Commissar Trenchcoat | variedcommodities:item/commissar_bottom
+[ ] Commissar ChestPlate | variedcommodities:item/commissar_chest
+[ ] Commissar Helmet | variedcommodities:item/commissar_head
+[ ] Commissar Leggings | variedcommodities:item/commissar_legs
+[ ] Wooden Couch | variedcommodities:item/couch_wood
+[ ] Wool Couch | variedcommodities:item/couch_wool
+[ ] Cowleather Boots | variedcommodities:item/cow_leather_boots
+[ ] Cowleather ChestPlate | variedcommodities:item/cow_leather_chest
+[ ] Cowleather Helmet | variedcommodities:item/cow_leather_head
+[ ] Cowleather Leggings | variedcommodities:item/cow_leather_legs
+[ ] Crate | variedcommodities:item/crate
+[ ] Steel Cryscent Shield | variedcommodities:item/crescent_shield
+[ ] Crescent Shield Blocking | variedcommodities:item/crescent_shield_blocking
+[ ] Crossbow | variedcommodities:item/crossbow
+[ ] Crossbow Bolt | variedcommodities:item/crossbow_bolt
+[ ] Crowbar | variedcommodities:item/crowbar
+[ ] Crown | variedcommodities:item/crown
+[ ] Crown | variedcommodities:item/crown2
+[ ] Crystal | variedcommodities:item/crystal
+[ ] Crystal Block | variedcommodities:item/crystal_block
+[ ] Cursed Trident | variedcommodities:item/cursed_trident
+[ ] Demonic Battle Axe | variedcommodities:item/demonic_battleaxe
+[ ] Demonic Boots | variedcommodities:item/demonic_boots
+[ ] Demonic Broadsword | variedcommodities:item/demonic_broadsword
+[ ] Demonic ChestPlate | variedcommodities:item/demonic_chest
+[ ] Demonic Dagger | variedcommodities:item/demonic_dagger
+[ ] Reversed Demonic Dagger | variedcommodities:item/demonic_dagger_reversed
+[ ] Demonic Glaive | variedcommodities:item/demonic_glaive
+[ ] Demonic Halberd | variedcommodities:item/demonic_halberd
+[ ] Demonic Helmet | variedcommodities:item/demonic_head
+[ ] Demonic Leggings | variedcommodities:item/demonic_legs
+[ ] Demonic Mace | variedcommodities:item/demonic_mace
+[ ] Demonic Scythe | variedcommodities:item/demonic_scythe
+[ ] Demonic Shield | variedcommodities:item/demonic_shield_round
+[ ] Demonic Shield Round Blocking | variedcommodities:item/demonic_shield_round_blocking
+[ ] Demonic Skirt | variedcommodities:item/demonic_skirt
+[ ] Demonic Spear | variedcommodities:item/demonic_spear
+[ ] Demonic Staff | variedcommodities:item/demonic_staff
+[ ] Demonic Sword | variedcommodities:item/demonic_sword
+[ ] Demonic Trident | variedcommodities:item/demonic_trident
+[ ] Demonic Warhammer | variedcommodities:item/demonic_warhammer
+[ ] Diamond Battle Axe | variedcommodities:item/diamond_battleaxe
+[ ] Diamond Broadsword | variedcommodities:item/diamond_broadsword
+[ ] Diamond Dagger | variedcommodities:item/diamond_dagger
+[ ] Reversed Diamond Dagger | variedcommodities:item/diamond_dagger_reversed
+[ ] Diamond Glaive | variedcommodities:item/diamond_glaive
+[ ] Diamond Gun | variedcommodities:item/diamond_gun
+[ ] Diamond Halberd | variedcommodities:item/diamond_halberd
+[ ] Diamond Mace | variedcommodities:item/diamond_mace
+[ ] Diamond Scythe | variedcommodities:item/diamond_scythe
+[ ] Diamond Shield | variedcommodities:item/diamond_shield
+[ ] Diamond Shield Blocking | variedcommodities:item/diamond_shield_blocking
+[ ] Round Diamond Shield | variedcommodities:item/diamond_shield_round
+[ ] Diamond Shield Round Blocking | variedcommodities:item/diamond_shield_round_blocking
+[ ] Diamond Skirt | variedcommodities:item/diamond_skirt
+[ ] Diamond Spear | variedcommodities:item/diamond_spear
+[ ] Diamond Staff | variedcommodities:item/diamond_staff
+[ ] Diamond Trident | variedcommodities:item/diamond_trident
+[ ] Diamond Warhammer | variedcommodities:item/diamond_warhammer
+[ ] Air Element | variedcommodities:item/element_air
+[ ] Earth Element | variedcommodities:item/element_earth
+[ ] Fire Element | variedcommodities:item/element_fire
+[ ] Water Element | variedcommodities:item/element_water
+[ ] Elemental Staff | variedcommodities:item/elemental_staff
+[ ] Emerald Battle Axe | variedcommodities:item/emerald_battleaxe
+[ ] Emerald Broadsword | variedcommodities:item/emerald_broadsword
+[ ] Emerald Dagger | variedcommodities:item/emerald_dagger
+[ ] Reversed Emerald Dagger | variedcommodities:item/emerald_dagger_reversed
+[ ] Emerald Glaive | variedcommodities:item/emerald_glaive
+[ ] Emerald Gun | variedcommodities:item/emerald_gun
+[ ] Emerald Halberd | variedcommodities:item/emerald_halberd
+[ ] Emerald Mace | variedcommodities:item/emerald_mace
+[ ] Emerald Scythe | variedcommodities:item/emerald_scythe
+[ ] Emerald Shield | variedcommodities:item/emerald_shield
+[ ] Emerald Shield Blocking | variedcommodities:item/emerald_shield_blocking
+[ ] Round Emerald Shield | variedcommodities:item/emerald_shield_round
+[ ] Emerald Shield Round Blocking | variedcommodities:item/emerald_shield_round_blocking
+[ ] Emerald Skirt | variedcommodities:item/emerald_skirt
+[ ] Emerald Spear | variedcommodities:item/emerald_spear
+[ ] Emerald Staff | variedcommodities:item/emerald_staff
+[ ] Emerald Sword | variedcommodities:item/emerald_sword
+[ ] Emerald Trident | variedcommodities:item/emerald_trident
+[ ] Emerald Warhammer | variedcommodities:item/emerald_warhammer
+[ ] Excalibur | variedcommodities:item/excalibur
+[ ] French Horn | variedcommodities:item/french_horn
+[ ] Frost Battle Axe | variedcommodities:item/frost_battleaxe
+[ ] Frost Broadsword | variedcommodities:item/frost_broadsword
+[ ] Frost Dagger | variedcommodities:item/frost_dagger
+[ ] Reversed Frost Dagger | variedcommodities:item/frost_dagger_reversed
+[ ] Frost Glaive | variedcommodities:item/frost_glaive
+[ ] Frost Halberd | variedcommodities:item/frost_halberd
+[ ] Frost Mace | variedcommodities:item/frost_mace
+[ ] Frost Scythe | variedcommodities:item/frost_scythe
+[ ] Frost Shield | variedcommodities:item/frost_shield
+[ ] Frost Shield Blocking | variedcommodities:item/frost_shield_blocking
+[ ] Frost Spear | variedcommodities:item/frost_spear
+[ ] Frost Staff | variedcommodities:item/frost_staff
+[ ] Frost Sword | variedcommodities:item/frost_sword
+[ ] Frost Trident | variedcommodities:item/frost_trident
+[ ] Frost Warhammer | variedcommodities:item/frost_warhammer
+[ ] Full Bronze Boots | variedcommodities:item/full_bronze_boots
+[ ] Full Bronze ChestPlate | variedcommodities:item/full_bronze_chest
+[ ] Full Bronze Helmet | variedcommodities:item/full_bronze_head
+[ ] Full Bronze Leggings | variedcommodities:item/full_bronze_legs
+[ ] Full Diamond ChestPlate | variedcommodities:item/full_diamond_chest
+[ ] Full Diamond Helmet | variedcommodities:item/full_diamond_head
+[ ] Full Emerald Boots | variedcommodities:item/full_emerald_boots
+[ ] Full Emerald ChestPlate | variedcommodities:item/full_emerald_chest
+[ ] Full Emerald Helmet | variedcommodities:item/full_emerald_head
+[ ] Full Emerald Leggings | variedcommodities:item/full_emerald_legs
+[ ] Full Gold ChestPlate | variedcommodities:item/full_golden_chest
+[ ] Full Gold Helmet | variedcommodities:item/full_golden_head
+[ ] Full Iron ChestPlate | variedcommodities:item/full_iron_chest
+[ ] Full Iron Helmet | variedcommodities:item/full_iron_head
+[ ] Full Leather ChestPlate | variedcommodities:item/full_leather_chest
+[ ] Full Leather Helmet | variedcommodities:item/full_leather_head
+[ ] Full Wooden Boots | variedcommodities:item/full_wooden_boots
+[ ] Full Wooden ChestPlate | variedcommodities:item/full_wooden_chest
+[ ] Full Wooden Helmet | variedcommodities:item/full_wooden_head
+[ ] Full Wooden Leggings | variedcommodities:item/full_wooden_legs
+[ ] Amethyst | variedcommodities:item/gem_amethyst
+[ ] Ruby | variedcommodities:item/gem_ruby
+[ ] Sapphire | variedcommodities:item/gem_sapphire
+[ ] Golden Battle Axe | variedcommodities:item/golden_battleaxe
+[ ] Golden Broadsword | variedcommodities:item/golden_broadsword
+[ ] Golden Dagger | variedcommodities:item/golden_dagger
+[ ] Reversed Golden Dagger | variedcommodities:item/golden_dagger_reversed
+[ ] Golden Glaive | variedcommodities:item/golden_glaive
+[ ] Golden Gun | variedcommodities:item/golden_gun
+[ ] Golden Halberd | variedcommodities:item/golden_halberd
+[ ] Golden Mace | variedcommodities:item/golden_mace
+[ ] Golden Scythe | variedcommodities:item/golden_scythe
+[ ] Golden Shield | variedcommodities:item/golden_shield
+[ ] Golden Shield Blocking | variedcommodities:item/golden_shield_blocking
+[ ] Round Golden Shield | variedcommodities:item/golden_shield_round
+[ ] Golden Shield Round Blocking | variedcommodities:item/golden_shield_round_blocking
+[ ] Golden Skirt | variedcommodities:item/golden_skirt
+[ ] Golden Spear | variedcommodities:item/golden_spear
+[ ] Golden Staff | variedcommodities:item/golden_staff
+[ ] Golden Trident | variedcommodities:item/golden_trident
+[ ] Golden Warhammer | variedcommodities:item/golden_warhammer
+[ ] Golf Club | variedcommodities:item/golf_club
+[ ] Guitar | variedcommodities:item/guitar
+[ ] Hammer | variedcommodities:item/hammer
+[ ] Handcuffs | variedcommodities:item/handcuffs
+[ ] Harp | variedcommodities:item/harp
+[ ] Heart | variedcommodities:item/heart
+[ ] Steel Heater Shield | variedcommodities:item/heater_shield
+[ ] Heater Shield Blocking | variedcommodities:item/heater_shield_blocking
+[ ] Hockey Stick | variedcommodities:item/hockey_stick
+[ ] Holy Hand Grenade | variedcommodities:item/holyhandgrenade
+[ ] Infantry Helmet | variedcommodities:item/infantry_helmet
+[ ] Bronze Ingot | variedcommodities:item/ingot_bronze
+[ ] Demonic Ingot | variedcommodities:item/ingot_demonic
+[ ] Mithril Ingot | variedcommodities:item/ingot_mithril
+[ ] Steel Ingot | variedcommodities:item/ingot_steel
+[ ] Iron Battle Axe | variedcommodities:item/iron_battleaxe
+[ ] Iron Broadsword | variedcommodities:item/iron_broadsword
+[ ] Iron Dagger | variedcommodities:item/iron_dagger
+[ ] Reversed Iron Dagger | variedcommodities:item/iron_dagger_reversed
+[ ] Iron Glaive | variedcommodities:item/iron_glaive
+[ ] Iron Gun | variedcommodities:item/iron_gun
+[ ] Iron Halberd | variedcommodities:item/iron_halberd
+[ ] Iron Mace | variedcommodities:item/iron_mace
+[ ] Iron Scythe | variedcommodities:item/iron_scythe
+[ ] Iron Shield | variedcommodities:item/iron_shield
+[ ] Iron Shield Blocking | variedcommodities:item/iron_shield_blocking
+[ ] Round Iron Shield | variedcommodities:item/iron_shield_round
+[ ] Iron Shield Round Blocking | variedcommodities:item/iron_shield_round_blocking
+[ ] Iron Skirt | variedcommodities:item/iron_skirt
+[ ] Iron Spear | variedcommodities:item/iron_spear
+[ ] Iron Staff | variedcommodities:item/iron_staff
+[ ] Iron Trident | variedcommodities:item/iron_trident
+[ ] Iron Warhammer | variedcommodities:item/iron_warhammer
+[ ] Katana | variedcommodities:item/katana
+[ ] Katar | variedcommodities:item/katar
+[ ] Key | variedcommodities:item/key
+[ ] Key | variedcommodities:item/key2
+[ ] Kukri | variedcommodities:item/kukri
+[ ] Kunai | variedcommodities:item/kunai
+[ ] Reverse Kunai | variedcommodities:item/kunai_reversed
+[ ] Lamp | variedcommodities:item/lamp
+[ ] Lamp Unlit | variedcommodities:item/lamp_unlit
+[ ] Lead Pipe | variedcommodities:item/lead_pipe
+[ ] Leaf Blade | variedcommodities:item/leaf_sword
+[ ] Leather Skirt | variedcommodities:item/leather_skirt
+[ ] Letter | variedcommodities:item/letter
+[ ] Lighter | variedcommodities:item/lighter
+[ ] Locket | variedcommodities:item/locket
+[ ] Machine Gun | variedcommodities:item/machine_gun
+[ ] Macuahuitl | variedcommodities:item/macuahuitl
+[ ] Magic Wand | variedcommodities:item/magic_wand
+[ ] Mana | variedcommodities:item/mana
+[ ] Mithril Battle Axe | variedcommodities:item/mithril_battleaxe
+[ ] Mithril Boots | variedcommodities:item/mithril_boots
+[ ] Mithril Broadsword | variedcommodities:item/mithril_broadsword
+[ ] Mithril ChestPlate | variedcommodities:item/mithril_chest
+[ ] Mithril Dagger | variedcommodities:item/mithril_dagger
+[ ] Reversed Mithril Dagger | variedcommodities:item/mithril_dagger_reversed
+[ ] Mithril Glaive | variedcommodities:item/mithril_glaive
+[ ] Mithril Halberd | variedcommodities:item/mithril_halberd
+[ ] Mithril Helmet | variedcommodities:item/mithril_head
+[ ] Mithril Leggings | variedcommodities:item/mithril_legs
+[ ] Mithril Mace | variedcommodities:item/mithril_mace
+[ ] Mithril Scythe | variedcommodities:item/mithril_scythe
+[ ] Mithril Shield | variedcommodities:item/mithril_shield_round
+[ ] Mithril Shield Round Blocking | variedcommodities:item/mithril_shield_round_blocking
+[ ] Mithril Skirt | variedcommodities:item/mithril_skirt
+[ ] Mithril Spear | variedcommodities:item/mithril_spear
+[ ] Mithril Staff | variedcommodities:item/mithril_staff
+[ ] Mithril Sword | variedcommodities:item/mithril_sword
+[ ] Mithril Trident | variedcommodities:item/mithril_trident
+[ ] Mithril Warhammer | variedcommodities:item/mithril_warhammer
+[ ] Money | variedcommodities:item/money
+[ ] Musket | variedcommodities:item/musket
+[ ] Nanorum Boots | variedcommodities:item/nanorum_boots
+[ ] Nanorum ChestPlate | variedcommodities:item/nanorum_chest
+[ ] Nanorum Helmet | variedcommodities:item/nanorum_head
+[ ] Nanorum Leggings | variedcommodities:item/nanorum_legs
+[ ] Necklace | variedcommodities:item/necklace
+[ ] Ninja Chest | variedcommodities:item/ninja_chest
+[ ] Ninja Claw | variedcommodities:item/ninja_claw
+[ ] Ninja Head | variedcommodities:item/ninja_head
+[ ] Ninja Leggings | variedcommodities:item/ninja_legs
+[ ] Ocarina | variedcommodities:item/ocarina
+[ ] Officer ChestPlate | variedcommodities:item/officer_chest
+[ ] Orb | variedcommodities:item/orb
+[ ] BrokenOrb | variedcommodities:item/orb_broken
+[ ] Paper Crown | variedcommodities:item/paper_crown
+[ ] Pedestal | variedcommodities:item/pedestal
+[ ] Pendant | variedcommodities:item/pendant
+[ ] Phone | variedcommodities:item/phone
+[ ] Pipe Wrench | variedcommodities:item/pipe_wrench
+[ ] Placeholder | variedcommodities:item/placeholder_0
+[ ] Placeholder | variedcommodities:item/placeholder_1
+[ ] Placeholder | variedcommodities:item/placeholder_10
+[ ] Placeholder | variedcommodities:item/placeholder_11
+[ ] Placeholder | variedcommodities:item/placeholder_12
+[ ] Placeholder | variedcommodities:item/placeholder_13
+[ ] Placeholder | variedcommodities:item/placeholder_14
+[ ] Placeholder | variedcommodities:item/placeholder_15
+[ ] Placeholder | variedcommodities:item/placeholder_2
+[ ] Placeholder | variedcommodities:item/placeholder_3
+[ ] Placeholder | variedcommodities:item/placeholder_4
+[ ] Placeholder | variedcommodities:item/placeholder_5
+[ ] Placeholder | variedcommodities:item/placeholder_6
+[ ] Placeholder | variedcommodities:item/placeholder_7
+[ ] Placeholder | variedcommodities:item/placeholder_8
+[ ] Placeholder | variedcommodities:item/placeholder_9
+[ ] Plans | variedcommodities:item/plans
+[ ] Rapier | variedcommodities:item/rapier
+[ ] Ring | variedcommodities:item/ring
+[ ] Saber | variedcommodities:item/saber
+[ ] Sai Blade | variedcommodities:item/sai
+[ ] Satchel | variedcommodities:item/satchel
+[ ] Steel Scutum Shield | variedcommodities:item/scutum_shield
+[ ] Scutum Shield Blocking | variedcommodities:item/scutum_shield_blocking
+[ ] Severed Ear | variedcommodities:item/severed_ear
+[ ] Shelf | variedcommodities:item/shelf
+[ ] Shuriken | variedcommodities:item/shuriken
+[ ] Giant Shuriken | variedcommodities:item/shuriken_giant
+[ ] Sign | variedcommodities:item/sign
+[ ] Silk | variedcommodities:item/silk
+[ ] Skull | variedcommodities:item/skull
+[ ] Sledgehammer | variedcommodities:item/sledge_hammer
+[ ] Slingshot | variedcommodities:item/slingshot
+[ ] Soldier Trenchcoat | variedcommodities:item/soldier_bottom
+[ ] Soldier ChestPlate | variedcommodities:item/soldier_chest
+[ ] Soldier Helmet | variedcommodities:item/soldier_head
+[ ] Soldier Leggings | variedcommodities:item/soldier_legs
+[ ] Arcane Spell | variedcommodities:item/spell_arcane
+[ ] Dark Spell | variedcommodities:item/spell_dark
+[ ] Fire Spell | variedcommodities:item/spell_fire
+[ ] Holy Spell | variedcommodities:item/spell_holy
+[ ] Ice Spell | variedcommodities:item/spell_ice
+[ ] Lightning Spell | variedcommodities:item/spell_lightning
+[ ] Nature Spell | variedcommodities:item/spell_nature
+[ ] Statuette | variedcommodities:item/statuette
+[ ] Steel Claw | variedcommodities:item/steel_claw
+[ ] Stone Battle Axe | variedcommodities:item/stone_battleaxe
+[ ] Stone Broadsword | variedcommodities:item/stone_broadsword
+[ ] Stone Dagger | variedcommodities:item/stone_dagger
+[ ] Reversed Stone Dagger | variedcommodities:item/stone_dagger_reversed
+[ ] Stone Glaive | variedcommodities:item/stone_glaive
+[ ] Stone Gun | variedcommodities:item/stone_gun
+[ ] Stone Halberd | variedcommodities:item/stone_halberd
+[ ] Stone Mace | variedcommodities:item/stone_mace
+[ ] Stone Scythe | variedcommodities:item/stone_scythe
+[ ] Stone Shield | variedcommodities:item/stone_shield
+[ ] Stone Shield Blocking | variedcommodities:item/stone_shield_blocking
+[ ] Round Stone Shield | variedcommodities:item/stone_shield_round
+[ ] Stone Shield Round Blocking | variedcommodities:item/stone_shield_round_blocking
+[ ] Stone Spear | variedcommodities:item/stone_spear
+[ ] Stone Staff | variedcommodities:item/stone_staff
+[ ] Stone Trident | variedcommodities:item/stone_trident
+[ ] Stone Warhammer | variedcommodities:item/stone_warhammer
+[ ] Stool | variedcommodities:item/stool
+[ ] Swiss Army Knife | variedcommodities:item/swiss_army_knife
+[ ] Wooden Table | variedcommodities:item/table
+[ ] Tablet | variedcommodities:item/tablet
+[ ] Tactical Vest | variedcommodities:item/tactical_chest
+[ ] Tactical Helmet | variedcommodities:item/tactical_head
+[ ] Tall Lamp | variedcommodities:item/tall_lamp
+[ ] Tombstone | variedcommodities:item/tombstone
+[ ] Steel Tower Shield | variedcommodities:item/tower_shield
+[ ] Tower Shield Blocking | variedcommodities:item/tower_shield_blocking
+[ ] Trading Block | variedcommodities:item/trading_block
+[ ] Tuxedo Trenchcoat | variedcommodities:item/tuxedo_bottom
+[ ] Tuxedo Chest | variedcommodities:item/tuxedo_chest
+[ ] Tuxedo Pants | variedcommodities:item/tuxedo_pants
+[ ] USB-Stick | variedcommodities:item/usb_stick
+[ ] VariedCommodities Recipe Book | variedcommodities:item/vcrecipes_book
+[ ] Violin | variedcommodities:item/violin
+[ ] Violin Bow | variedcommodities:item/violin_bow
+[ ] Wall Banner | variedcommodities:item/wall_banner
+[ ] Weapon Rack | variedcommodities:item/weapon_rack
+[ ] Wizard Chest | variedcommodities:item/wizard_chest
+[ ] Wizard Head | variedcommodities:item/wizard_head
+[ ] Wizard Leggings | variedcommodities:item/wizard_pants
+[ ] Wooden Battle Axe | variedcommodities:item/wooden_battleaxe
+[ ] Wooden Broadsword | variedcommodities:item/wooden_broadsword
+[ ] Wooden Dagger | variedcommodities:item/wooden_dagger
+[ ] Reversed Wooden Dagger | variedcommodities:item/wooden_dagger_reversed
+[ ] Wooden Glaive | variedcommodities:item/wooden_glaive
+[ ] Wooden Gun | variedcommodities:item/wooden_gun
+[ ] Wooden Halberd | variedcommodities:item/wooden_halberd
+[ ] Wooden Mace | variedcommodities:item/wooden_mace
+[ ] Wooden Scythe | variedcommodities:item/wooden_scythe
+[ ] Wooden Shield | variedcommodities:item/wooden_shield
+[ ] Wooden Shield Blocking | variedcommodities:item/wooden_shield_blocking
+[ ] Round Wooden Shield | variedcommodities:item/wooden_shield_round
+[ ] Wooden Shield Round Blocking | variedcommodities:item/wooden_shield_round_blocking
+[ ] Wooden Spear | variedcommodities:item/wooden_spear
+[ ] Wooden Staff | variedcommodities:item/wooden_staff
+[ ] Wooden Trident | variedcommodities:item/wooden_trident
+[ ] Wooden Warhammer | variedcommodities:item/wooden_warhammer
+[ ] Wrench | variedcommodities:item/wrench
+[ ] X407 Prototype Boots | variedcommodities:item/x407_boots
+[ ] X407 Prototype ChestPlate | variedcommodities:item/x407_chest
+[ ] X407 Prototype Helmet | variedcommodities:item/x407_head
+[ ] X407 Prototype Leggings | variedcommodities:item/x407_legs
+
+warpmod-1.12.2-1.0.1.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+Waystones_1.12.2-4.1.0.jar
+[ ] Bound Scroll | waystones:item/bound_scroll
+[ ] Return Scroll | waystones:item/return_scroll
+[ ] Warp Scroll | waystones:item/warp_scroll
+[ ] Warp Stone | waystones:item/warp_stone
+[ ] Waystone | waystones:item/waystone
+
+worldedit-forge-mc1.12.2-6.1.10-dist.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+xaerolib-forge-1.12.2-1.7.3.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+xaerominimap-forge-1.12.2-26.6.0.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
+
+xaeroworldmap-forge-1.12.2-1.47.0.jar
+No top-level JSON item-model entries; see texture index for GUI/atlas resources.
