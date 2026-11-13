@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "canvas": [
+    64,
+    32
+  ],
+  "asset_pixels": [
+    256,
+    128
+  ],
+  "native_uv_normalization": [
+    64,
+    32
+  ],
+  "authored_detail_step": 0.25,
+  "layers": {
+    "1": {
+      "model_inflation": 1.0,
+      "slots": [
+        "HEAD",
+        "CHEST",
+        "FEET"
+      ],
+      "headwear": "transparent",
+      "mirrored_left_arm_leg": true
+    },
+    "2": {
+      "model_inflation": 0.5,
+      "slots": [
+        "LEGS"
+      ],
+      "body": "waist only",
+      "mirrored_left_leg": true
+    }
+  },
+  "parts": {
+    "head": {
+      "texture_offset": [
+        0,
+        0
+      ],
+      "box_size": [
+        8,
+        8,
+        8
+      ],
+      "faces": {
+        "east": [
+          16,
+          8,
+          8,
+          8
+        ],
+        "west": [
+          0,
+          8,
+          8,
+          8
+        ],
+        "top": [
+          8,
+          0,
+          8,
+          8
+        ],
+        "bottom": [
+          16,
+          0,
+          8,
+          8
+        ],
+        "front": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "back": [
+          24,
+          8,
+          8,
+          8
+        ]
+      }
+    },
+    "headwear": {
+      "texture_offset": [
+        32,
+        0
+      ],
+      "box_size": [
+        8,
+        8,
+        8
+      ],
+      "faces": {
+        "east": [
+          48,
+          8,
+          8,
+          8
+        ],
+        "west": [
+          32,
+          8,
+          8,
+          8
+        ],
+        "top": [
+          40,
+          0,
+          8,
+          8
+        ],
+        "bottom": [
+          48,
+          0,
+          8,
+          8
+        ],
+        "front": [
+          40,
+          8,
+          8,
+          8
+        ],
+        "back": [
+          56,
+          8,
+          8,
+          8
+        ]
+      }
+    },
+    "body": {
+      "texture_offset": [
+        16,
+        16
+      ],
+      "box_size": [
+        8,
+        12,
+        4
+      ],
+      "faces": {
+        "east": [
+          28,
+          20,
+          4,
+          12
+        ],
+        "west": [
+          16,
+          20,
+          4,
+          12
+        ],
+        "top": [
+          20,
+          16,
+          8,
+          4
+        ],
+        "bottom": [
+          28,
+          16,
+          8,
+          4
+        ],
+        "front": [
+          20,
+          20,
+          8,
+          12
+        ],
+        "back": [
+          32,
+          20,
+          8,
+          12
+        ]
+      }
+    },
+    "arm": {
+      "texture_offset": [
+        40,
+        16
+      ],
+      "box_size": [
+        4,
+        12,
+        4
+      ],
+      "faces": {
+        "east": [
+          48,
+          20,
+          4,
+          12
+        ],
+        "west": [
+          40,
+          20,
+          4,
+          12
+        ],
+        "top": [
+          44,
+          16,
+          4,
+          4
+        ],
+        "bottom": [
+          48,
+          16,
+          4,
+          4
+        ],
+        "front": [
+          44,
+          20,
+          4,
+          12
+        ],
+        "back": [
+          52,
+          20,
+          4,
+          12
+        ]
+      }
+    },
+    "leg": {
+      "texture_offset": [
+        0,
+        16
+      ],
+      "box_size": [
+        4,
+        12,
+        4
+      ],
+      "faces": {
+        "east": [
+          8,
+          20,
+          4,
+          12
+        ],
+        "west": [
+          0,
+          20,
+          4,
+          12
+        ],
+        "top": [
+          4,
+          16,
+          4,
+          4
+        ],
+        "bottom": [
+          8,
+          16,
+          4,
+          4
+        ],
+        "front": [
+          4,
+          20,
+          4,
+          12
+        ],
+        "back": [
+          12,
+          20,
+          4,
+          12
+        ]
+      }
+    }
+  },
+  "source_contract": "Prepared MCP stable39 ModelBiped/ModelBox/LayerBipedArmor; native getArmorTexture preserved"
+}

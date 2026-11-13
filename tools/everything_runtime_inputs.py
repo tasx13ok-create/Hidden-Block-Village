@@ -41,7 +41,7 @@ def promoted_gui_patch(path):
             'runtime_hook_and_manual_gui_acceptance': False}
 
 
-def validate(frozen_root, build_path, native_path, *, source_pin, build_pin, native_pin):
+def validate(frozen_root, build_path, native_path, *, source_pin, build_pin, native_pin, release='0.3.14'):
     """All pins must come from root's approved new build; no latest-output inference."""
     frozen_root, build_path, native_path = map(pack.no_links, (frozen_root, build_path, native_path))
     build, bid = pack.read_json(build_path)
@@ -68,9 +68,15 @@ def validate(frozen_root, build_path, native_path, *, source_pin, build_pin, nat
                 need(native['expected_loaded_mods'][SERVER[component]]['sha256'] == row['sha256'], 'Runtime differs from actual native loaded proof')
             rows[component] = dict(provider=str(path), file=path.name, **actual)
     need(set(rows) == set(SERVER) | GRAPHICS, 'Need all nine server components and three graphical adapters')
+    need(release in ('0.3.14', '0.3.15'), 'Unsupported explicit Everything release')
     core = jar_identity(Path(rows['vale-orders']['provider']), rows['vale-orders']['file'])
-    need(not core['warnings'] and any(d['modid'] == 'valeorders' and d.get('version') == '0.3.14' for d in core['mod_declarations']), 'Everything requires new Core0.3.14, not a relabeled prior build')
+    need(not core['warnings'] and any(d['modid'] == 'valeorders' and d.get('version') == release for d in core['mod_declarations']), 'Everything Core release differs')
     patch = promoted_gui_patch(Path(rows['client-lifecycle']['provider']))
+    if release == '0.3.15':
+        with zipfile.ZipFile(rows['client-lifecycle']['provider']) as archive:
+            source = archive.read('village/vale/clientcompat/SupportedNpcSource.class')
+            transformer = archive.read('village/vale/clientcompat/NpcGuiThreadTransformer.class')
+            need(b'InventoryTabFactions' in transformer and b'caec4cc2f949776fe1332f1c9cbe50452cb4e09076fd9d3f017de953b4dee8a4' in source, 'Exact Factions thread patch missing')
     return {'status': 'PINNED0314_INPUTS_REVIEWED_NOT_STAGED_NOT_LAUNCHED', 'source_snapshot_sha256': source_pin,
             'source_build_report': bid, 'native_report': nid, 'native_assertions': native['assertions'],
             'runtime_components': rows, 'server_components': sorted(SERVER),

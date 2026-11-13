@@ -10,8 +10,8 @@ clientcompat: ClientLifecyclePlugin,ClientLifecycleTransformer,ClientLifecycleMo
 SafeShutdown (including nested classes); CLIENT only. FMLCorePlugin manifest is
 village.vale.clientcompat.ClientLifecyclePlugin with FMLCorePluginContainsFMLMod
 and ForceLoadAsMod true.
-Client lifecycle0.1.1 also includes the original NpcGuiThreadTransformer,
-NpcGuiThreadDispatch and SupportedNpcSource; one exact quest-tab Runnable is
+Client lifecycle0.1.2 also includes the original NpcGuiThreadTransformer,
+NpcGuiThreadDispatch and SupportedNpcSource; the two exact Quest/Factions tab Runnables are
 dispatched completely on the Minecraft client thread. The shutdown transformer
 is preserved. See GUI-THREAD-COMPATIBILITY.md for supported identity and scope.
 damagecompat: DamageCompatPlugin,DamageCompatTransformer,DamageCompatMod; SERVER

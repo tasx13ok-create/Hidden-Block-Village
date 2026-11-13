@@ -61,7 +61,8 @@ def run_checks(args):
            + [fixture / 'checks/village/vale/clientcompat/GuiThreadDispatchChecks.java'])
     dispatch_result = invoke([java, '-Xverify:all', '-cp', cp([dispatch, classes] + libraries),
                              'village.vale.clientcompat.GuiThreadDispatchChecks',
-                             dispatch / 'micdoodle8/mods/galacticraft/api/client/tabs/InventoryTabQuests.class'])
+                             dispatch / 'micdoodle8/mods/galacticraft/api/client/tabs/InventoryTabQuests.class',
+                             dispatch / 'micdoodle8/mods/galacticraft/api/client/tabs/InventoryTabFactions.class'])
     bytecode_count = re.search(r'GUI_THREAD_DRAFT_BYTECODE_PASS assertions=(\d+)', bytecode_result)
     dispatch_count = re.search(r'GUI_THREAD_DRAFT_DISPATCH_PASS assertions=(\d+)', dispatch_result)
     if not bytecode_count or not dispatch_count:

@@ -11,9 +11,17 @@ import java.util.zip.*;
 final class SupportedNpcSource {
     static final String JAR_SHA256 = "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b";
     static final String CLASS_SHA256 = "d5a51df78c0a0917a50f88ffd9cb76c0490388ee50c6337ce33f0a60069ff4a9";
+    static final String FACTIONS_SHA256 = "caec4cc2f949776fe1332f1c9cbe50452cb4e09076fd9d3f017de953b4dee8a4";
     static final String VERSION = "CustomNPCs 1.12.2-(05Jul20)-SpringAddon-compat-r1; mcmod.info version 1.12";
     private SupportedNpcSource() {}
     static void verify(URL resource) {
+        verify(resource, NpcGuiThreadTransformer.TARGET);
+    }
+    static void verify(URL resource, String target) {
+        String classHash;
+        if (NpcGuiThreadTransformer.TARGET.equals(target)) classHash = CLASS_SHA256;
+        else if (NpcGuiThreadTransformer.FACTIONS.equals(target)) classHash = FACTIONS_SHA256;
+        else throw new IllegalStateException("Unsupported CustomNPCs GUI target identity");
         try {
             if (resource == null || !"jar".equals(resource.getProtocol()))
                 throw new IllegalStateException("CustomNPCs GUI hook requires the reviewed local source JAR");
@@ -25,9 +33,9 @@ final class SupportedNpcSource {
             if (!Files.isRegularFile(jar, LinkOption.NOFOLLOW_LINKS) || !JAR_SHA256.equals(hash(Files.newInputStream(jar))))
                 throw new IllegalStateException("Unsupported CustomNPCs GUI source JAR hash/version");
             try (ZipFile zip = new ZipFile(jar.toFile())) {
-                String entryName = NpcGuiThreadTransformer.TARGET.replace('.', '/') + ".class";
+                String entryName = target.replace('.', '/') + ".class";
                 ZipEntry entry = zip.getEntry(entryName);
-                if (!entryName.equals(connection.getEntryName()) || entry == null || !CLASS_SHA256.equals(hash(zip.getInputStream(entry))))
+                if (!entryName.equals(connection.getEntryName()) || entry == null || !classHash.equals(hash(zip.getInputStream(entry))))
                     throw new IllegalStateException("Unsupported CustomNPCs GUI source class hash");
             }
         } catch (IllegalStateException unsupported) { throw unsupported; }

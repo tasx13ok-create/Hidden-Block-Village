@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.14'
+version = '0.3.15'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -293,3 +293,12 @@ apply from: file('../../gradle/vale-mod-build.gradle')
 tasks.named('processResources') { from('../../content/expeditions') { include '**/*.json'; into 'assets/valeorders/expeditions' } }
 
 tasks.named('verifyGateContent') { args file('../../content/expeditions/gates.json').absolutePath }
+
+tasks.register('verifyWornArmor', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.WornArmorChecks')
+    args file('../..').absolutePath
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyWornArmor') }

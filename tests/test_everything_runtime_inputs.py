@@ -71,6 +71,20 @@ class InputChecks(unittest.TestCase):
         with self.assertRaises(ValueError):
             inputs.promoted_gui_patch(self.paths['client-lifecycle'])
 
+    def test_explicit_0315_cannot_accept_0314_core(self):
+        with patch.object(inputs, 'jar_identity', return_value={'warnings': [], 'mod_declarations': [{'modid': 'valeorders', 'version': '0.3.14'}]}):
+            with self.assertRaisesRegex(ValueError, 'Core release'):
+                inputs.validate(self.root, self.bp, self.np, release='0.3.15', **self.pins)
+
+    def test_0315_rejects_quest_only_adapter_even_with_prior_patch_check(self):
+        with patch.object(inputs, 'jar_identity', return_value={'warnings': [], 'mod_declarations': [{'modid': 'valeorders', 'version': '0.3.15'}]}), patch.object(inputs, 'promoted_gui_patch', return_value={}):
+            with self.assertRaises(KeyError):
+                inputs.validate(self.root, self.bp, self.np, release='0.3.15', **self.pins)
+
+    def test_unknown_future_release_cannot_reuse_current_pins(self):
+        with self.assertRaisesRegex(ValueError, 'Unsupported explicit'):
+            inputs.validate(self.root, self.bp, self.np, release='0.3.99', **self.pins)
+
 
 if __name__ == '__main__':
     unittest.main()

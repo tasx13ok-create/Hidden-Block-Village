@@ -1,0 +1,3162 @@
+{
+  "schema": 1,
+  "scope": "STATIC_CURRENT_PROJECT_WORN_VISUAL_BINDINGS_NOT_RUNTIME_ITEM_ENUMERATION",
+  "total": 227,
+  "rows": [
+    {
+      "id": "valeorders:auric_skimmer_boots",
+      "name": "Auric Skimmer Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/auric_skimmer.png",
+      "emission": "valearmor:textures/armor/auric_skimmer_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:auric_skimmer_chestplate",
+      "name": "Auric Skimmer Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/auric_skimmer.png",
+      "emission": "valearmor:textures/armor/auric_skimmer_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:auric_skimmer_helmet",
+      "name": "Auric Skimmer Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/auric_skimmer.png",
+      "emission": "valearmor:textures/armor/auric_skimmer_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:auric_skimmer_leggings",
+      "name": "Auric Skimmer Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/auric_skimmer.png",
+      "emission": "valearmor:textures/armor/auric_skimmer_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:bellbloom_boots",
+      "name": "Bellbloom Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/bellbloom.png",
+      "emission": "valearmor:textures/armor/bellbloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:bellbloom_chestplate",
+      "name": "Bellbloom Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/bellbloom.png",
+      "emission": "valearmor:textures/armor/bellbloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:bellbloom_helmet",
+      "name": "Bellbloom Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/bellbloom.png",
+      "emission": "valearmor:textures/armor/bellbloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:bellbloom_leggings",
+      "name": "Bellbloom Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/bellbloom.png",
+      "emission": "valearmor:textures/armor/bellbloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:bloom_boots",
+      "name": "Bloom Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/bloom_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:bloom_chestplate",
+      "name": "Bloom Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/bloom_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:bloom_helmet",
+      "name": "Bloom Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/bloom_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:bloom_leggings",
+      "name": "Bloom Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/bloom_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:cairnroot_boots",
+      "name": "Cairnroot Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/cairnroot.png",
+      "emission": "valearmor:textures/armor/cairnroot_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:cairnroot_chestplate",
+      "name": "Cairnroot Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/cairnroot.png",
+      "emission": "valearmor:textures/armor/cairnroot_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:cairnroot_helmet",
+      "name": "Cairnroot Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/cairnroot.png",
+      "emission": "valearmor:textures/armor/cairnroot_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:cairnroot_leggings",
+      "name": "Cairnroot Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/cairnroot.png",
+      "emission": "valearmor:textures/armor/cairnroot_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:current_boots",
+      "name": "Current Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/current_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:current_chestplate",
+      "name": "Current Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/current_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:current_helmet",
+      "name": "Current Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/current_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:current_leggings",
+      "name": "Current Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/current_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dawn_boots",
+      "name": "Dawn Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dawn_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dawn_chestplate",
+      "name": "Dawn Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dawn_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dawn_helmet",
+      "name": "Dawn Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dawn_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dawn_leggings",
+      "name": "Dawn Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dawn_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dusk_boots",
+      "name": "Dusk Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dusk_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dusk_chestplate",
+      "name": "Dusk Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dusk_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dusk_helmet",
+      "name": "Dusk Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dusk_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:dusk_leggings",
+      "name": "Dusk Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/dusk_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:ember_boots",
+      "name": "Ember Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/ember_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:ember_chestplate",
+      "name": "Ember Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/ember_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:ember_helmet",
+      "name": "Ember Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/ember_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:ember_leggings",
+      "name": "Ember Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/ember_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:flint_boots",
+      "name": "Flint Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/flint_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:flint_chestplate",
+      "name": "Flint Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/flint_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:flint_helmet",
+      "name": "Flint Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/flint_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:flint_leggings",
+      "name": "Flint Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/flint_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_amber_crest_lens",
+      "name": "Amber Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_amber_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_amber_haven_lens",
+      "name": "Amber Haven Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_amber_haven_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_amber_hollow_lens",
+      "name": "Amber Hollow Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_amber_hollow_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_amber_wake_lens",
+      "name": "Amber Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_amber_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_birch_crest_lens",
+      "name": "Birch Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_birch_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_birch_haven_mantle",
+      "name": "Birch Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_birch_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_birch_hollow_greaves",
+      "name": "Birch Hollow Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_birch_hollow_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_birch_wake_lens",
+      "name": "Birch Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_birch_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_copper_crest_mantle",
+      "name": "Copper Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_copper_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_copper_haven_lens",
+      "name": "Copper Haven Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_copper_haven_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_copper_hollow_lens",
+      "name": "Copper Hollow Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_copper_hollow_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_copper_wake_mantle",
+      "name": "Copper Wake Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_copper_wake_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_dusk_crest_lens",
+      "name": "Dusk Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_dusk_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_dusk_haven_greaves",
+      "name": "Dusk Haven Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_dusk_haven_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_dusk_hollow_mantle",
+      "name": "Dusk Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_dusk_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_dusk_wake_lens",
+      "name": "Dusk Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_dusk_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_elm_crest_greaves",
+      "name": "Elm Crest Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_elm_crest_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_elm_haven_lens",
+      "name": "Elm Haven Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_elm_haven_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_elm_hollow_mantle",
+      "name": "Elm Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_elm_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_elm_wake_lens",
+      "name": "Elm Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_elm_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_flint_crest_mantle",
+      "name": "Flint Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_flint_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_flint_haven_mantle",
+      "name": "Flint Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_flint_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_flint_hollow_mantle",
+      "name": "Flint Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_flint_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_flint_wake_lens",
+      "name": "Flint Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_flint_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_gale_crest_mantle",
+      "name": "Gale Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_gale_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_gale_haven_lens",
+      "name": "Gale Haven Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_gale_haven_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_gale_hollow_mantle",
+      "name": "Gale Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_gale_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_gale_wake_lens",
+      "name": "Gale Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_gale_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_heather_crest_mantle",
+      "name": "Heather Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_heather_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_heather_haven_greaves",
+      "name": "Heather Haven Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_heather_haven_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_heather_hollow_mantle",
+      "name": "Heather Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_heather_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_heather_wake_lens",
+      "name": "Heather Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_heather_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ivory_crest_mantle",
+      "name": "Ivory Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ivory_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ivory_haven_mantle",
+      "name": "Ivory Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ivory_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ivory_hollow_mantle",
+      "name": "Ivory Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ivory_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ivory_wake_lens",
+      "name": "Ivory Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ivory_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_juniper_crest_mantle",
+      "name": "Juniper Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_juniper_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_juniper_haven_treads",
+      "name": "Juniper Haven Treads",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_juniper_haven_treads_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_juniper_hollow_mantle",
+      "name": "Juniper Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_juniper_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_juniper_wake_lens",
+      "name": "Juniper Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_juniper_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_kiln_crest_lens",
+      "name": "Kiln Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_kiln_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_kiln_haven_greaves",
+      "name": "Kiln Haven Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_kiln_haven_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_kiln_hollow_mantle",
+      "name": "Kiln Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_kiln_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_kiln_wake_lens",
+      "name": "Kiln Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_kiln_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_lantern_crest_greaves",
+      "name": "Lantern Crest Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_lantern_crest_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_lantern_haven_mantle",
+      "name": "Lantern Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_lantern_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_lantern_hollow_mantle",
+      "name": "Lantern Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_lantern_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_lantern_wake_lens",
+      "name": "Lantern Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_lantern_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_moss_crest_mantle",
+      "name": "Moss Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_moss_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_moss_haven_lens",
+      "name": "Moss Haven Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_moss_haven_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_moss_hollow_mantle",
+      "name": "Moss Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_moss_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_moss_wake_lens",
+      "name": "Moss Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_moss_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_night_crest_lens",
+      "name": "Night Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_night_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_night_haven_mantle",
+      "name": "Night Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_night_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_night_hollow_greaves",
+      "name": "Night Hollow Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_night_hollow_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_night_wake_lens",
+      "name": "Night Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_night_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ochre_crest_mantle",
+      "name": "Ochre Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ochre_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ochre_haven_mantle",
+      "name": "Ochre Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ochre_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ochre_hollow_mantle",
+      "name": "Ochre Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ochre_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_ochre_wake_lens",
+      "name": "Ochre Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_ochre_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_pearl_crest_lens",
+      "name": "Pearl Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_pearl_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_pearl_haven_mantle",
+      "name": "Pearl Haven Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_pearl_haven_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_pearl_hollow_lens",
+      "name": "Pearl Hollow Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_pearl_hollow_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_pearl_wake_lens",
+      "name": "Pearl Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_pearl_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_quartz_crest_mantle",
+      "name": "Quartz Crest Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_quartz_crest_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_quartz_hollow_mantle",
+      "name": "Quartz Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_quartz_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_quartz_wake_lens",
+      "name": "Quartz Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_quartz_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_reed_crest_lens",
+      "name": "Reed Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_reed_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_reed_hollow_lens",
+      "name": "Reed Hollow Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_reed_hollow_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_reed_wake_lens",
+      "name": "Reed Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_reed_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_slate_crest_greaves",
+      "name": "Slate Crest Greaves",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_slate_crest_greaves_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_slate_hollow_mantle",
+      "name": "Slate Hollow Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_slate_hollow_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_slate_wake_lens",
+      "name": "Slate Wake Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_slate_wake_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_thistle_crest_lens",
+      "name": "Thistle Crest Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_thistle_crest_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_thistle_hollow_lens",
+      "name": "Thistle Hollow Lens",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_thistle_hollow_lens_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:focus_thistle_wake_mantle",
+      "name": "Thistle Wake Mantle",
+      "category": "Focus garments",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/focus/focus_thistle_wake_mantle_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:gale_boots",
+      "name": "Gale Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/gale_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:gale_chestplate",
+      "name": "Gale Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/gale_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:gale_helmet",
+      "name": "Gale Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/gale_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:gale_leggings",
+      "name": "Gale Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/gale_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:glasschime_boots",
+      "name": "Glasschime Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/glasschime.png",
+      "emission": "valearmor:textures/armor/glasschime_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:glasschime_chestplate",
+      "name": "Glasschime Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/glasschime.png",
+      "emission": "valearmor:textures/armor/glasschime_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:glasschime_helmet",
+      "name": "Glasschime Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/glasschime.png",
+      "emission": "valearmor:textures/armor/glasschime_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:glasschime_leggings",
+      "name": "Glasschime Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/glasschime.png",
+      "emission": "valearmor:textures/armor/glasschime_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:hushvault_boots",
+      "name": "Hushvault Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/hushvault.png",
+      "emission": "valearmor:textures/armor/hushvault_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:hushvault_chestplate",
+      "name": "Hushvault Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/hushvault.png",
+      "emission": "valearmor:textures/armor/hushvault_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:hushvault_helmet",
+      "name": "Hushvault Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/hushvault.png",
+      "emission": "valearmor:textures/armor/hushvault_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:hushvault_leggings",
+      "name": "Hushvault Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/hushvault.png",
+      "emission": "valearmor:textures/armor/hushvault_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:kilnback_boots",
+      "name": "Kilnback Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/kilnback.png",
+      "emission": "valearmor:textures/armor/kilnback_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:kilnback_chestplate",
+      "name": "Kilnback Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/kilnback.png",
+      "emission": "valearmor:textures/armor/kilnback_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:kilnback_helmet",
+      "name": "Kilnback Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/kilnback.png",
+      "emission": "valearmor:textures/armor/kilnback_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:kilnback_leggings",
+      "name": "Kilnback Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/kilnback.png",
+      "emission": "valearmor:textures/armor/kilnback_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:outfit_ambermoss_hood",
+      "name": "Ambermoss Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_ambermoss_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_ashfield_hood",
+      "name": "Ashfield Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_ashfield_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_bellstone_trousers",
+      "name": "Bellstone Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_bellstone_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_bracken_coat",
+      "name": "Bracken Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_bracken_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_brightcairn_coat",
+      "name": "Brightcairn Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_brightcairn_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_brightcairn_trousers",
+      "name": "Brightcairn Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_brightcairn_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_brookstone_coat",
+      "name": "Brookstone Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_brookstone_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_brookstone_hood",
+      "name": "Brookstone Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_brookstone_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_brookstone_trousers",
+      "name": "Brookstone Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_brookstone_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cairn_coat",
+      "name": "Cairn Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cairn_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cinderleaf_coat",
+      "name": "Cinderleaf Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cinderleaf_hood",
+      "name": "Cinderleaf Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cinderleaf_trousers",
+      "name": "Cinderleaf Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cloudmere_coat",
+      "name": "Cloudmere Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cloudmere_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cloudmere_hood",
+      "name": "Cloudmere Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cloudmere_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_cloudmere_trousers",
+      "name": "Cloudmere Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_cloudmere_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_coastfern_coat",
+      "name": "Coastfern Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_coastfern_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_coastfern_trousers",
+      "name": "Coastfern Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_coastfern_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_copperleaf_hood",
+      "name": "Copperleaf Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_copperleaf_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_deepcopper_coat",
+      "name": "Deepcopper Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_deepcopper_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_deepcopper_trousers",
+      "name": "Deepcopper Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_deepcopper_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_dunestone_hood",
+      "name": "Dunestone Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_dunestone_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_duskmere_coat",
+      "name": "Duskmere Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_duskmere_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_frostpine_coat",
+      "name": "Frostpine Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_frostpine_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_frostpine_hood",
+      "name": "Frostpine Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_frostpine_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_frostpine_trousers",
+      "name": "Frostpine Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_frostpine_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_galecrest_hood",
+      "name": "Galecrest Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_galecrest_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_goldenrush_coat",
+      "name": "Goldenrush Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_goldenrush_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_goldenrush_hood",
+      "name": "Goldenrush Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_goldenrush_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_highridge_coat",
+      "name": "Highridge Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_highridge_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_hollowreed_trousers",
+      "name": "Hollowreed Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_hollowreed_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_ironbark_coat",
+      "name": "Ironbark Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_ironbark_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_kilnward_hood",
+      "name": "Kilnward Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_kilnward_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_mistroot_hood",
+      "name": "Mistroot Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_mistroot_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_moonfern_hood",
+      "name": "Moonfern Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_moonfern_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_mosslight_hood",
+      "name": "Mosslight Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_mosslight_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_nightbloom_hood",
+      "name": "Nightbloom Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_nightbloom_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_ochre_coat",
+      "name": "Ochre Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_ochre_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_ochre_hood",
+      "name": "Ochre Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_ochre_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_pearlwood_hood",
+      "name": "Pearlwood Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_pearlwood_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_pearlwood_trousers",
+      "name": "Pearlwood Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_pearlwood_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rainbloom_coat",
+      "name": "Rainbloom Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rainbloom_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rainbloom_hood",
+      "name": "Rainbloom Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rainbloom_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rainbloom_trousers",
+      "name": "Rainbloom Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rainbloom_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_redwillow_coat",
+      "name": "Redwillow Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_redwillow_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_redwillow_trousers",
+      "name": "Redwillow Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_redwillow_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_reedbank_hood",
+      "name": "Reedbank Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_reedbank_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_reedstone_coat",
+      "name": "Reedstone Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_reedstone_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_reedstone_hood",
+      "name": "Reedstone Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_reedstone_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rimeglass_coat",
+      "name": "Rimeglass Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rimeglass_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_riverflint_hood",
+      "name": "Riverflint Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_riverflint_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rosequartz_coat",
+      "name": "Rosequartz Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rosequartz_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_rosequartz_trousers",
+      "name": "Rosequartz Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_rosequartz_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sablewood_coat",
+      "name": "Sablewood Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sablewood_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sablewood_hood",
+      "name": "Sablewood Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sablewood_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sagewood_coat",
+      "name": "Sagewood Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sagewood_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sagewood_trousers",
+      "name": "Sagewood Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sagewood_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_saltbloom_coat",
+      "name": "Saltbloom Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_saltbloom_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_saltbloom_hood",
+      "name": "Saltbloom Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_saltbloom_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_saltbloom_trousers",
+      "name": "Saltbloom Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_saltbloom_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_shadowpine_coat",
+      "name": "Shadowpine Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_shadowpine_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_shadowpine_trousers",
+      "name": "Shadowpine Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_shadowpine_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_silverfen_hood",
+      "name": "Silverfen Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_silverfen_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_silverfen_trousers",
+      "name": "Silverfen Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_silverfen_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_stormreed_coat",
+      "name": "Stormreed Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_stormreed_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sunfen_hood",
+      "name": "Sunfen Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sunfen_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sunstone_coat",
+      "name": "Sunstone Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sunstone_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_sunstone_trousers",
+      "name": "Sunstone Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_sunstone_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_thistle_coat",
+      "name": "Thistle Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_thistle_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_thistle_hood",
+      "name": "Thistle Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_thistle_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_tidebound_hood",
+      "name": "Tidebound Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_tidebound_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_violetfen_coat",
+      "name": "Violetfen Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_violetfen_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_violetfen_hood",
+      "name": "Violetfen Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_violetfen_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_violetfen_trousers",
+      "name": "Violetfen Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_violetfen_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_wildrime_coat",
+      "name": "Wildrime Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_wildrime_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_wildrime_trousers",
+      "name": "Wildrime Trousers",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_wildrime_trousers_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_willow_coat",
+      "name": "Willow Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_willow_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_willow_hood",
+      "name": "Willow Hood",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_willow_hood_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:outfit_windglass_coat",
+      "name": "Windglass Coat",
+      "category": "Outfits",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/outfits/outfit_windglass_coat_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:reedrunner_boots",
+      "name": "Reedrunner Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/reedrunner.png",
+      "emission": "valearmor:textures/armor/reedrunner_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:reedrunner_chestplate",
+      "name": "Reedrunner Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/reedrunner.png",
+      "emission": "valearmor:textures/armor/reedrunner_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:reedrunner_helmet",
+      "name": "Reedrunner Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/reedrunner.png",
+      "emission": "valearmor:textures/armor/reedrunner_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:reedrunner_leggings",
+      "name": "Reedrunner Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/reedrunner.png",
+      "emission": "valearmor:textures/armor/reedrunner_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:rime_boots",
+      "name": "Rime Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/rime_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:rime_chestplate",
+      "name": "Rime Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/rime_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:rime_helmet",
+      "name": "Rime Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/rime_layer_1.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:rime_leggings",
+      "name": "Rime Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/rime_layer_2.png",
+      "new_worn_art_status": "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE"
+    },
+    {
+      "id": "valeorders:shoalglass_boots",
+      "name": "Shoalglass Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/shoalglass.png",
+      "emission": "valearmor:textures/armor/shoalglass_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:shoalglass_chestplate",
+      "name": "Shoalglass Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/shoalglass.png",
+      "emission": "valearmor:textures/armor/shoalglass_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:shoalglass_helmet",
+      "name": "Shoalglass Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/shoalglass.png",
+      "emission": "valearmor:textures/armor/shoalglass_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:shoalglass_leggings",
+      "name": "Shoalglass Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/shoalglass.png",
+      "emission": "valearmor:textures/armor/shoalglass_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:storm_boots",
+      "name": "Storm Ward Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/storm_layer_1.png",
+      "new_worn_art_status": "CONDITIONAL_LIGHTNING_ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE",
+      "active_albedo": "valeorders:textures/models/armor/lightning_chakra_layer_1.png",
+      "inactive_original_retained": true
+    },
+    {
+      "id": "valeorders:storm_chestplate",
+      "name": "Storm Ward Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/storm_layer_1.png",
+      "new_worn_art_status": "CONDITIONAL_LIGHTNING_ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE",
+      "active_albedo": "valeorders:textures/models/armor/lightning_chakra_layer_1.png",
+      "inactive_original_retained": true
+    },
+    {
+      "id": "valeorders:storm_helmet",
+      "name": "Storm Ward Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/storm_layer_1.png",
+      "new_worn_art_status": "CONDITIONAL_LIGHTNING_ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE",
+      "active_albedo": "valeorders:textures/models/armor/lightning_chakra_layer_1.png",
+      "inactive_original_retained": true
+    },
+    {
+      "id": "valeorders:storm_leggings",
+      "name": "Storm Ward Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "native LayerBipedArmor ModelBiped",
+      "uv_contract": [
+        64,
+        32
+      ],
+      "albedo": "valeorders:textures/models/armor/storm_layer_2.png",
+      "new_worn_art_status": "CONDITIONAL_LIGHTNING_ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE",
+      "active_albedo": "valeorders:textures/models/armor/lightning_chakra_layer_2.png",
+      "inactive_original_retained": true
+    },
+    {
+      "id": "valeorders:stormloom_boots",
+      "name": "Stormloom Boots",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "FEET",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/stormloom.png",
+      "emission": "valearmor:textures/armor/stormloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:stormloom_chestplate",
+      "name": "Stormloom Chestplate",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "CHEST",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/stormloom.png",
+      "emission": "valearmor:textures/armor/stormloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:stormloom_helmet",
+      "name": "Stormloom Helmet",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "HEAD",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/stormloom.png",
+      "emission": "valearmor:textures/armor/stormloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    },
+    {
+      "id": "valeorders:stormloom_leggings",
+      "name": "Stormloom Leggings",
+      "category": "Armor inventory icons",
+      "inventory_icon_not_worn_texture": true,
+      "slot": "LEGS",
+      "renderer": "OriginalArmorModels.WardModel + TexturedArmorRenderer",
+      "uv_contract": "AtlasUv 8 material tiles in256x128",
+      "native_mesh": "OriginalModels procedural closed cuboids; textured at runtime, not only RGB blockout",
+      "albedo": "valearmor:textures/armor/stormloom.png",
+      "emission": "valearmor:textures/armor/stormloom_e.png",
+      "new_worn_art_status": "NOT_REDESIGNED_BY_THIS_DRAFT"
+    }
+  ],
+  "summary": {
+    "NOT_REDESIGNED_BY_THIS_DRAFT": 36,
+    "ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE": 187,
+    "CONDITIONAL_LIGHTNING_ORIGINAL_UV_SOURCE_INTEGRATED_PENDING_NATIVE": 4
+  }
+}

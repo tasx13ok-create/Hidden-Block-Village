@@ -1,5 +1,23 @@
 # Current project handoff
 
+## Verified Core 0.3.15 saved source; fresh copied-client acceptance next
+
+The owner's current instruction is to save all completed work to GitHub and load the new test copy. The 0.3.15 cohort is frozen in `C:/Users/Steal/.codex/worktrees/vale-worn-armor/Hidden-Block-Village`; the accepted 0.3.14 source, original worlds, older previews and concurrent original-checkout work remain preserved.
+
+All eleven source areas / 36 artifacts PASS with no source drift: `build/source-builds/20261113T230336Z-e1552932/report.json`, SHA256 `0ccec5515d12252c134f61e7bc44cf0719246df3c06e2b1703031a7f1750258a`. Exact source `767ca4b88d0e6b7755f04eac1750e7998f7ba5250d0e006a71106ce21c8d0be7`; Core 0.3.15 `a75f07ecff7fc94f55e5912c7dbf14059ce9daeb3de09c519d564d5538af9f95`; client-lifecycle 0.1.2 `39b253ed6d2c96310d132b888c20d9639b9726e50f85f32c79c3ba01d8efbccb`. The 1,779 worn resource/mask/selection checks pass.
+
+Disposable Forge native acceptance PASSES 3,422 assertions: `build/native-checks/20261113T230643Z-c8b0fa92/report.json`, SHA256 `ea52718c53032471574e440bfb7928e40edcf8e628328166b38fe0bc32c47a7e`. Runtime exited 0 and was removed. New actual registered-getter, conditional-Lightning and packaged-worn-resource checks run after the existing Academy/Lightning fixtures restore state. Every prior weapon, gate, hand-technique, dodge and hotbar requirement remains mandatory. See `release/evidence/core0315-verification.json`.
+
+This cohort adds 173 original worn PNGs and 173 editable SVG masters, with 656 offline native-contract model views. It supplies new applicable-state art for 191 equipped pieces and preserves all 36 independent custom-mesh pieces. These are worn UV resources, not resized inventory icons. Actual Minecraft worn rendering, shaders and the fresh full-pack join remain pending; offline views and native getters do not establish graphical acceptance. All 256 file08 reference worn paths remain tracked obligations rather than claimed parity.
+
+The 0.3.14 full client did join with shaders, then hung in a concrete CustomNPCs Factions GUI off-thread path involving Essential's window-title manager. Its source and stack evidence are retained below. Client-lifecycle 0.1.2 now dispatches both exact supported Quest/Factions tab Runnables wholly to the client thread; 57 actual-class/ASM and 40 dispatch checks pass. A separate fresh 0.3.15 copied client is being prepared; verify its Factions/Quest GUI and worn models before calling graphical acceptance complete. Do not replace or relaunch older profiles over the owner's session.
+
+Owner direction: Naruto designs, characters and names stay; a license is planned/pending. No executed franchise license or scope document has been verified, and no numerical copyright-clearance percentage is claimed. Franchise rights and individual third-party code/art/mod permissions are separate. See `design/IP-LICENSING-STATUS.md`.
+
+The separate private reference-art ZIP maps 724 supported reference model states and preserves 382 complex/dependent contracts. Its public mapper/tests/count receipts are saved; the ZIP contains observed third-party transform JSON and MUST NOT be published. No world/player data, credentials, raw reference JARs or runtime archives belong in this public checkpoint. Full 49-mod/five-dungeon gameplay completion remains active and unfinished.
+
+Historical checkpoint notes follow; this section supersedes older 0.3.15 build/native-pending statements.
+
 ## Full014 world/client observation;015 correction underway
 
 Core0.3.14 source/native and both complete Claude v3 art ZIPs are VERIFIED on GitHub main `6193483a2dd1356ddbe5d0ba188f8898eece26aa` (tree19c9216393badf12a2d0fcabbbd29215fd112459), with2,739 native assertions. The actual54-JAR Magma preflight and two copied-v17 world boots/save/exit passed. Matching58-JAR client joined, BSLworld0 programs compiled and its shaded world/HUD were visually observed. Read `release/evidence/everything0314-client-observation-20261113.json` for exact boundaries.

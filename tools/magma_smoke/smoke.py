@@ -64,6 +64,9 @@ def validate_profile(candidate):
     if marker == 'EVERYTHING0314_PRODUCTION_FLAT_ONLY':
         from tools.everything_runtime import validate_flat
         return validate_flat(candidate)
+    if marker == 'EVERYTHING0315_PRODUCTION_FLAT_ONLY':
+        from tools.everything_runtime_0315 import validate_flat
+        return validate_flat(candidate)
     if marker == 'COPIED_WORLD_REVIEWED_ONLY':
         from .world_profile import validate_world
         return validate_world(candidate)

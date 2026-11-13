@@ -117,7 +117,7 @@ public final class OriginalOutfits {
         public final Spec spec;Garment(Spec s,ArmorMaterial material){super(material,0,s.slot);spec=s;setCreativeTab(CreativeTabs.COMBAT);}
         @Override public Order order(){return spec.order;}
         @Override public String getItemStackDisplayName(ItemStack stack){return spec.title;}
-        @Override public String getArmorTexture(ItemStack stack,Entity entity,EntityEquipmentSlot slot,String type){return "minecraft:textures/models/armor/iron_layer_"+(slot==EntityEquipmentSlot.LEGS?2:1)+".png";}
+        @Override public String getArmorTexture(ItemStack stack,Entity entity,EntityEquipmentSlot slot,String type){return ArmorSkinPaths.garment("outfits",spec.key,slot==EntityEquipmentSlot.LEGS);}
         @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
         @Override public void addInformation(ItemStack stack,net.minecraft.world.World world,List<String> lines,net.minecraft.client.util.ITooltipFlag flag){lines.add("Field garment | "+spec.order.title);lines.add("Standard armor; freely tradable. Does not grant resonance powers.");lines.add("Visual design pending: standard Minecraft armor appearance.");}
     }

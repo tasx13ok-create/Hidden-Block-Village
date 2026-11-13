@@ -8,22 +8,23 @@ import org.objectweb.asm.*;
 /** Original narrow hook. No client game classes are resolved by this transformer. */
 public final class NpcGuiThreadTransformer implements IClassTransformer {
     static final String TARGET = "micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabQuests";
+    static final String FACTIONS = "micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabFactions";
     static final String METHOD = "onTabClicked";
     static final String SCHEDULER = "noppes/npcs/util/CustomNPCsScheduler";
     static final String RUNNABLE = "(Ljava/lang/Runnable;)V";
     static final String HELPER = "village/vale/clientcompat/NpcGuiThreadDispatch";
 
     @Override public byte[] transform(String name, String transformedName, byte[] original) {
-        if (original == null || !TARGET.equals(transformedName)) return original;
+        if (original == null || !supported(transformedName)) return original;
         if (!FMLLaunchHandler.side().isClient()) return original;
-        SupportedNpcSource.verify(Launch.classLoader.getResource(TARGET.replace('.', '/') + ".class"));
+        SupportedNpcSource.verify(Launch.classLoader.getResource(transformedName.replace('.', '/') + ".class"), transformedName);
         return rewrite(original);
     }
 
     // Package-private fixture seam; production always passes the side/source checks above.
     static byte[] rewrite(byte[] original) {
         ClassReader reader = new ClassReader(original);
-        if (!TARGET.replace('.', '/').equals(reader.getClassName()))
+        if (!supported(reader.getClassName().replace('/', '.')))
             throw new IllegalStateException("Unexpected CustomNPCs GUI class identity");
         ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
         final int[] methods = {0}, calls = {0};
@@ -48,7 +49,9 @@ public final class NpcGuiThreadTransformer implements IClassTransformer {
         }, 0);
         if (methods[0] != 1 || calls[0] != 1)
             throw new IllegalStateException("Unsupported CustomNPCs quest-tab layout: " + methods[0] + " callbacks, " + calls[0] + " scheduler calls");
-        System.out.println("VALE_NPC_GUI_THREAD_HOOK: one supported quest-tab Runnable dispatched entirely to the client thread.");
+        System.out.println("VALE_NPC_GUI_THREAD_HOOK: " + reader.getClassName() + " one supported tab Runnable dispatched entirely to the client thread.");
         return writer.toByteArray();
     }
+
+    static boolean supported(String name) { return TARGET.equals(name) || FACTIONS.equals(name); }
 }

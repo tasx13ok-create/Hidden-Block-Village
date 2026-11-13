@@ -123,5 +123,42 @@
       "passed": true,
       "runtime_gui_acceptance": false
     }
+  },
+  "subsequent_original_factions_thread_change": {
+    "component": "client-lifecycle",
+    "version": "0.1.2",
+    "authorship": "Original Hidden Block Village adapter change; no third-party source/class payload copied",
+    "source_jar_sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b",
+    "factions_class_sha256": "caec4cc2f949776fe1332f1c9cbe50452cb4e09076fd9d3f017de953b4dee8a4",
+    "scope": "Exact Factions onTabClicked()V one static runTack(Runnable)V call redirects unchanged entire Runnable; Quest and shutdown preserved",
+    "historical_archive_and_011_records_preserved": true,
+    "files": [
+      {
+        "path": "src/village/vale/clientcompat/NpcGuiThreadTransformer.java",
+        "bytes": 3683,
+        "sha256": "22594fc935b7deca10772719721f6f89736947ab7e58f7643b468ebab8054f7b"
+      },
+      {
+        "path": "src/village/vale/clientcompat/SupportedNpcSource.java",
+        "bytes": 3224,
+        "sha256": "0a9bff3aa2ded3b8c6be147f7ed64ea07477194bfb4a2991395f4ec859edcbc2"
+      },
+      {
+        "path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
+        "bytes": 297,
+        "sha256": "4abfb81b32a4c32dad7649ee7329a9f12307daad717afc557622d2af0968dc49"
+      },
+      {
+        "path": "client-lifecycle/build.gradle",
+        "bytes": 816,
+        "sha256": "6e3f7a0b029c8d6ce28da26b581a7382e946f375f338d276f14934be4c0703a6"
+      }
+    ],
+    "standalone_checks": {
+      "bytecode_and_source": 57,
+      "dispatch_and_integration": 40,
+      "passed": true,
+      "runtime_gui_acceptance": false
+    }
   }
 }

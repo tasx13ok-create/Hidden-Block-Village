@@ -14,8 +14,11 @@ public final class GuiThreadDraftChecks {
     static void check(boolean value) { assertions++; if (!value) throw new AssertionError("check " + assertions); }
     static void rejects(Runnable value) { boolean rejected=false;try { value.run(); } catch (IllegalStateException expected) { rejected=true; } check(rejected); }
     static byte[] fixture(String method, String desc, String schedulerMethod, int count, int access) {
+        return fixture(NpcGuiThreadTransformer.TARGET,method,desc,schedulerMethod,count,access);
+    }
+    static byte[] fixture(String target,String method, String desc, String schedulerMethod, int count, int access) {
         ClassWriter out=new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        out.visit(Opcodes.V1_8,Opcodes.ACC_PUBLIC,NpcGuiThreadTransformer.TARGET.replace('.','/'),null,"java/lang/Object",null);
+        out.visit(Opcodes.V1_8,Opcodes.ACC_PUBLIC,target.replace('.','/'),null,"java/lang/Object",null);
         for (String name : new String[]{method,"untouchedOtherMethod"}) {
             MethodVisitor mv=out.visitMethod(access,name,name.equals(method)?desc:"()V",null,null);mv.visitCode();
             for(int i=0;i<(name.equals(method)?count:1);i++) {
@@ -72,6 +75,12 @@ public final class GuiThreadDraftChecks {
         rejects(()->NpcGuiThreadTransformer.rewrite(fixture(NpcGuiThreadTransformer.METHOD,"()V","unexpectedCall",1,flags)));
         rejects(()->NpcGuiThreadTransformer.rewrite(fixture(NpcGuiThreadTransformer.METHOD,"()V","runTack",1,flags|Opcodes.ACC_STATIC)));
         rejects(()->NpcGuiThreadTransformer.rewrite(fixture(NpcGuiThreadTransformer.METHOD,"()V","runTack",1,Opcodes.ACC_PRIVATE)));
+        byte[] factionsFixture=fixture(NpcGuiThreadTransformer.FACTIONS,NpcGuiThreadTransformer.METHOD,"()V","runTack",1,flags);
+        byte[] factionsOutput=NpcGuiThreadTransformer.rewrite(factionsFixture);
+        verify(factionsOutput);unchangedOtherMethods(factionsFixture,factionsOutput);
+        check(count(factionsOutput,NpcGuiThreadTransformer.METHOD,NpcGuiThreadTransformer.HELPER,"run")==1);
+        rejects(()->NpcGuiThreadTransformer.rewrite(factionsOutput));
+        rejects(()->NpcGuiThreadTransformer.rewrite(fixture("unrelated/InventoryTab",NpcGuiThreadTransformer.METHOD,"()V","runTack",1,flags)));
         NpcGuiThreadTransformer transformer=new NpcGuiThreadTransformer();byte[] unrelated=new byte[]{1,2};
         check(transformer.transform("other","other",unrelated)==unrelated);check(transformer.transform(null,null,null)==null);
         URL source=new URL("jar:"+Paths.get(args[0]).toUri()+"!/"+NpcGuiThreadTransformer.TARGET.replace('.','/')+".class");
@@ -81,17 +90,24 @@ public final class GuiThreadDraftChecks {
         rejects(()->{try{SupportedNpcSource.verify(new URL("jar:https://invalid.example/npc.jar!/x.class"));}catch(java.net.MalformedURLException bad){throw new AssertionError(bad);}});
         rejects(()->{try{SupportedNpcSource.verify(new URL("jar:"+Paths.get(args[1]).toUri()+"!/x.class"));}catch(java.net.MalformedURLException bad){throw new AssertionError(bad);}});
         try(ZipFile zip=new ZipFile(args[0])) {
+          for(String target:new String[]{NpcGuiThreadTransformer.TARGET,NpcGuiThreadTransformer.FACTIONS}) {
+            URL targetSource=new URL("jar:"+Paths.get(args[0]).toUri()+"!/"+target.replace('.','/')+".class");
+            SupportedNpcSource.verify(targetSource,target);assertions++;
+            rejects(()->SupportedNpcSource.verify(targetSource,"unsupported.Target"));
+            String other=target.equals(NpcGuiThreadTransformer.TARGET)?NpcGuiThreadTransformer.FACTIONS:NpcGuiThreadTransformer.TARGET;
+            rejects(()->SupportedNpcSource.verify(targetSource,other));
             byte[] raw;
-            try(java.io.InputStream stream=zip.getInputStream(zip.getEntry(NpcGuiThreadTransformer.TARGET.replace('.','/')+".class"));java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream()) {
+            try(java.io.InputStream stream=zip.getInputStream(zip.getEntry(target.replace('.','/')+".class"));java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream()) {
                 byte[] buffer=new byte[4096];int n;while((n=stream.read(buffer))!=-1)out.write(buffer,0,n);raw=out.toByteArray();
             }
             byte[] output=NpcGuiThreadTransformer.rewrite(raw);verify(output);
             check(count(raw,NpcGuiThreadTransformer.METHOD,NpcGuiThreadTransformer.SCHEDULER,"runTack")==1);
             check(count(output,NpcGuiThreadTransformer.METHOD,NpcGuiThreadTransformer.HELPER,"run")==1);
             check(count(output,NpcGuiThreadTransformer.METHOD,NpcGuiThreadTransformer.SCHEDULER,"runTack")==0);
-            check(count(output,"lambda$onTabClicked$0","noppes/npcs/client/gui/player/GuiQuestLog","<init>")==1);
+            check(count(output,"lambda$onTabClicked$0","noppes/npcs/client/gui/player/"+(target.equals(NpcGuiThreadTransformer.TARGET)?"GuiQuestLog":"GuiFaction"),"<init>")==1);
             check(count(output,"lambda$onTabClicked$0","net/minecraft/client/Minecraft","func_147108_a")==1);
             unchangedOtherMethods(raw,output);
+          }
         }
         System.out.println("GUI_THREAD_DRAFT_BYTECODE_PASS assertions="+assertions);
     }

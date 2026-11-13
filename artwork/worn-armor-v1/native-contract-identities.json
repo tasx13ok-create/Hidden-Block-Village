@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source_facts_only_no_reference_source_copied": true,
+  "prepared_mcp_sources": {
+    "net/minecraft/client/model/ModelBiped.java": "7b57d8a199d6c130c90be41947712520eafb78609a0d2dd8f69ce95a66f76e56",
+    "net/minecraft/client/model/ModelBox.java": "ec823093c1cfb9154bec70d61dd940fdbd51132e5e2821b5ce23655d21afd4a3",
+    "net/minecraft/client/model/TexturedQuad.java": "efa13e2d325f8488a25d43df26a056fb4e567e12fe15643c2ae8874f7cd69372",
+    "net/minecraft/client/renderer/entity/layers/LayerBipedArmor.java": "90a099ebe6158379d32149173fc0e1812b9e934ac9983947582750b527c57c72"
+  },
+  "project_sources": {
+    "modules/vale-orders/src/main/java/village/vale/Gear.java": "193ca3186743dd18f330db0fcf9d2a2acb506c0d0aaa6993b8f8272b6df7df11",
+    "modules/vale-orders/src/main/java/village/vale/LightningLayers.java": "98b3be442a8c682258dded64cb4e22e632d3e700edb10d2455fc2e08e01c5126",
+    "modules/vale-orders/src/main/java/village/vale/armor/AtlasUv.java": "e3c15a82d8e2e9e177b9bdf7e71a72d71f5f70b7df0a221f1a41582033349725",
+    "modules/vale-orders/src/main/java/village/vale/armor/client/TexturedArmorRenderer.java": "00d411a4dae54183767700dc9aa0afc8e7d42d53e8031d33edb2affadd787d31"
+  }
+}
