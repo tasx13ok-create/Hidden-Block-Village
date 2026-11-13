@@ -31,6 +31,7 @@ import village.vale.arsenal.HandTechnique;
 public final class JutsuVfx extends Render<HandTechnique> {
     /** 0 = reduced, 1 = normal, 2 = high. */
     public static int detail = 1;
+    private boolean firstPerson;
 
     public JutsuVfx(RenderManager manager) {
         super(manager);
@@ -94,6 +95,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
         byte state = e.state();
         double t = e.ticksExisted + partial, age = e.stateAge() + partial;
         double[] at;
+        firstPerson = false;
         Entity ownerEntity = e.world.getEntityByID(e.ownerId());
         EntityPlayer owner = ownerEntity instanceof EntityPlayer ? (EntityPlayer) ownerEntity : null;
         if (state == HandTechnique.IMPACT || owner == null) {
@@ -113,13 +115,20 @@ public final class JutsuVfx extends Render<HandTechnique> {
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
             GlStateManager.depthMask(false);
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240f, 240f);
-            double scale = JutsuMath.scale(state, (int) age);
+            double scale = JutsuMath.scale(state, (int) age) * (firstPerson ? 0.55 : 1);
             switch (style) {
                 case "spiral": spiral(state, t, age, scale); break;
                 case "charge": lightning(e, state, t, age, scale, 7, 0.75, false); break;
                 case "lightmode": if (state == HandTechnique.IMPACT) lightning(e, state, t, age, 1, 6, 1.2, false); else bodyArcs(e, owner, t, scale); break;
                 case "fireedge": flame(state, t, age, scale, 0xFF9A2E, 0xFFE27A); break;
-                case "lava": flame(state, t, age, scale, 0xE8411A, 0xFF8A2A); lavaGlobs(t, scale); break;
+                case "lava":
+                    flame(state, t, age, scale * 0.8, 0xE8411A, 0xFF8A2A); lavaGlobs(t, scale);
+                    if (owner != null && state != HandTechnique.IMPACT && !firstPerson) {
+                        double[] other = leftPalm(owner, partial);
+                        GlStateManager.translate(other[0] - at[0], other[1] - at[1], other[2] - at[2]);
+                        flame(state, t + 7, age, scale * 0.8, 0xE8411A, 0xFF8A2A); lavaGlobs(t + 11, scale);
+                    }
+                    break;
                 case "windedge": wind(state, t, age, scale); break;
                 default: break;
             }
@@ -140,6 +149,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
         if (style.equals("lightmode")) return new double[] {px, py + 0.95, pz};
         boolean self = p == mc.getRenderViewEntity() && mc.gameSettings.thirdPersonView == 0;
         if (self) {
+            firstPerson = true;
             float yaw = p.prevRotationYaw + (p.rotationYaw - p.prevRotationYaw) * partial;
             float pitch = p.prevRotationPitch + (p.rotationPitch - p.prevRotationPitch) * partial;
             return JutsuMath.firstPerson(px, py + p.getEyeHeight(), pz, yaw, pitch);
@@ -148,7 +158,19 @@ public final class JutsuVfx extends Render<HandTechnique> {
         return JutsuMath.palm(px, py, pz, body, armPitch(style), p.isSneaking(), true);
     }
 
+    private static double[] leftPalm(EntityPlayer p, float partial) {
+        double px = p.lastTickPosX + (p.posX - p.lastTickPosX) * partial;
+        double py = p.lastTickPosY + (p.posY - p.lastTickPosY) * partial;
+        double pz = p.lastTickPosZ + (p.posZ - p.lastTickPosZ) * partial;
+        float body = p.prevRenderYawOffset + (p.renderYawOffset - p.prevRenderYawOffset) * partial;
+        return JutsuMath.palm(px, py, pz, body, armPitch("lava"), p.isSneaking(), false);
+    }
+
     // ---- primitives --------------------------------------------------------------------------
+    /** Glow that adds light (reads on dark scenes). */
+    private static void additive() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE); }
+    /** Coloured translucency that keeps saturation against bright daylight sky. */
+    private static void normal() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA); }
     private static void color(BufferBuilder b, double x, double y, double z, int rgb, float a) {
         b.pos(x, y, z).color((rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255, (int) (Math.max(0, Math.min(1, a)) * 255)).endVertex();
     }
@@ -205,22 +227,26 @@ public final class JutsuVfx extends Render<HandTechnique> {
         double pulse = 1 + 0.04 * Math.sin(t * 1.7);
         double R = r * scale * pulse;
         if (R <= 0.002) return;
-        // Outer wind envelope, translucent shell, bright core.
-        sphere(R * 1.28, 0x5AA8FF, 0.08f, 10);
-        sphere(R, 0x7FC8FF, 0.22f, 12);
-        sphere(R * 0.62, 0xBFE8FF, 0.35f, 10);
-        sphere(R * 0.34, 0xFFFFFF, 0.85f, 8);
+        // Saturated blue shell (normal blend keeps colour in daylight), additive core glow.
+        normal();
+        sphere(R * 1.22, 0x3F8CFF, 0.16f, 12);
+        sphere(R, 0x2F6FE8, 0.42f, 14);
+        sphere(R * 0.72, 0x58A6FF, 0.45f, 12);
+        additive();
+        sphere(R * 0.42, 0xDDF2FF, 0.75f, 10);
+        sphere(R * 0.26, 0xFFFFFF, 0.95f, 8);
+        normal();
         // Many spiral bands precessing on different axes = visible multi-directional rotation.
         for (int band = 0; band < bands; band++) {
             double[][] pts = new double[26][];
             for (int i = 0; i < pts.length; i++) pts[i] = JutsuMath.spiralBand(band, bands, i / 25.0, t);
-            int col = band % 3 == 0 ? 0xFFFFFF : band % 3 == 1 ? 0x9BD7FF : 0x4C9DFF;
-            line(pts, R * (0.82 + 0.16 * (band % 4) / 3.0), col, 0.0f, 0.85f, detail == 0 ? 1.5f : 2.5f);
+            int col = band % 3 == 0 ? 0xF2FAFF : band % 3 == 1 ? 0x7CC2FF : 0x1E5BD8;
+            line(pts, R * (0.84 + 0.18 * (band % 4) / 3.0), col, 0.1f, 0.95f, detail == 0 ? 1.5f : firstPerson ? 2f : 3f);
         }
         // Wind motes orbit (and spiral inward while charging).
         for (int i = 0; i < motes; i++) {
             double[] m = JutsuMath.mote(i, t, charge);
-            billboard(m[0] * R, m[1] * R, m[2] * R, 0.018 + 0.012 * (i % 3), i % 4 == 0 ? 0xFFFFFF : 0x8CCBFF, 0.55f);
+            billboard(m[0] * R, m[1] * R, m[2] * R, (0.007 + 0.005 * (i % 3)) * (firstPerson ? 0.6 : 1), i % 4 == 0 ? 0xFFFFFF : 0x6FB6FF, 0.8f);
         }
         // Thin precessing rings sell the spin from any camera angle.
         for (int ring = 0; ring < 2; ring++) {
@@ -231,15 +257,20 @@ public final class JutsuVfx extends Render<HandTechnique> {
                 double cx = Math.cos(a) * 1.12, cz = Math.sin(a) * 1.12;
                 pts[i] = new double[] {cx, cz * Math.sin(tilt), cz * Math.cos(tilt)};
             }
-            line(pts, R, 0xD6F0FF, 0.35f, 0.35f, 1.5f);
+            line(pts, R, 0xBFE3FF, 0.55f, 0.55f, 1.5f);
         }
     }
 
     private void spiralBurst(double t, double age) {
         double f = Math.min(1, age / JutsuMath.IMPACT_TICKS), fade = 1 - f;
         double radius = 0.4 + 2.9 * JutsuMath.easeOut(f);
-        sphere(0.55 * (1 - f) + 0.05, 0xFFFFFF, (float) (0.9 * fade), 10);
-        sphere(0.9 * JutsuMath.easeOut(f * 1.6) * fade + 0.05, 0x8CCBFF, (float) (0.3 * fade), 10);
+        normal();
+        double shell = 0.35 + 0.8 * JutsuMath.easeOut(f * 1.6);
+        sphere(shell * 1.15, 0x3F8CFF, (float) (0.22 * fade), 12);
+        sphere(shell, 0x2F6FE8, (float) (0.5 * fade), 12);
+        additive();
+        sphere(0.28 * (1 - f) + 0.04, 0xDDF2FF, (float) (0.7 * fade), 10);
+        normal();
         int arms = detail == 0 ? 6 : 10;
         for (int arm = 0; arm < arms; arm++) {
             double[][] pts = new double[20][];
@@ -247,11 +278,11 @@ public final class JutsuVfx extends Render<HandTechnique> {
                 double s = i / 19.0, a = arm * Math.PI * 2 / arms + s * 2.6 + age * 0.55;
                 pts[i] = new double[] {Math.cos(a) * s * radius, (s - 0.5) * 0.25 * fade, Math.sin(a) * s * radius};
             }
-            line(pts, 1, arm % 2 == 0 ? 0xFFFFFF : 0x7FC8FF, (float) (0.9 * fade), 0f, 3f);
+            line(pts, 1, arm % 2 == 0 ? 0xF2FAFF : 0x3F8CFF, (float) (0.95 * fade), 0f, 3.5f);
         }
         double[][] ring = new double[41][];
         for (int i = 0; i <= 40; i++) { double a = i * Math.PI / 20; ring[i] = new double[] {Math.cos(a) * radius, 0, Math.sin(a) * radius}; }
-        line(ring, 1, 0xD6F0FF, (float) (0.7 * fade), (float) (0.7 * fade), 2.5f);
+        line(ring, 1, 0x9DD1FF, (float) (0.8 * fade), (float) (0.8 * fade), 3f);
     }
 
     // ---- Storm Lance / Storm Stride: crackling lightning --------------------------------------
@@ -270,24 +301,31 @@ public final class JutsuVfx extends Render<HandTechnique> {
             double theta = u * Math.PI * 2, phi = Math.acos(2 * v - 1);
             double[] dir = {Math.sin(phi) * Math.cos(theta), Math.cos(phi), Math.sin(phi) * Math.sin(theta)};
             double[][] pts = JutsuMath.bolt(seed, dir, len * (0.55 + 0.45 * u), 7, 0.07 * len);
-            line(pts, 1, 0xEAF6FF, (float) fade, (float) (0.2 * fade), 2.5f);
-            line(pts, 1, 0x4FA3FF, (float) (0.5 * fade), 0f, 5f);
+            normal();
+            line(pts, 1, 0x3F8CFF, (float) (0.6 * fade), 0f, 5f);
+            line(pts, 1, 0xF2F9FF, (float) fade, (float) (0.25 * fade), 2.5f);
         }
     }
 
     private void bodyArcs(HandTechnique e, EntityPlayer owner, double t, double scale) {
         long flicker = detail == 0 ? (long) (t / 4) : (long) (t / 2);
-        int n = detail == 0 ? 3 : detail == 2 ? 9 : 6;
+        int n = detail == 0 ? 5 : detail == 2 ? 16 : 11;
+        normal();
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(1, 2.2, 1);
+        sphere(0.46 * scale, 0x7FC4FF, 0.07f, 10);           // faint electric aura around the body
+        GlStateManager.popMatrix();
         for (int i = 0; i < n; i++) {
             long seed = e.getEntityId() * 131L + i * 7L + flicker * 104729L;
             double u = ((seed * 0x9E3779B97F4A7C15L) >>> 40) / (double) (1L << 24);
             double v = ((seed * 0xC2B2AE3D27D4EB4FL) >>> 40) / (double) (1L << 24);
             double a = u * Math.PI * 2, h = (v - 0.5) * 1.6;
             double[] dir = {Math.cos(a + 1.4), (v - 0.5) * 0.6, Math.sin(a + 1.4)};
-            double[][] pts = JutsuMath.bolt(seed, dir, 0.38 * scale, 5, 0.05);
+            double[][] pts = JutsuMath.bolt(seed, dir, (0.45 + 0.25 * u) * scale, 6, 0.07);
             GlStateManager.pushMatrix();
-            GlStateManager.translate(Math.cos(a) * 0.36, h, Math.sin(a) * 0.36);
-            line(pts, 1, 0xEAF6FF, 0.9f, 0.1f, 2f);
+            GlStateManager.translate(Math.cos(a) * 0.38, h, Math.sin(a) * 0.38);
+            line(pts, 1, 0x3F8CFF, 0.6f, 0.0f, 5f);
+            line(pts, 1, 0xF2F9FF, 1.0f, 0.2f, 2.5f);
             GlStateManager.popMatrix();
         }
     }
@@ -317,13 +355,21 @@ public final class JutsuVfx extends Render<HandTechnique> {
 
     private void lavaGlobs(double t, double scale) {
         int globs = detail == 0 ? 3 : 6;
+        normal();
+        sphere(0.16 * scale, 0x5A1206, 0.55f, 8);           // dark cooling crust around the fist
+        additive();
+        sphere(0.12 * scale, 0xFF5A1A, 0.6f, 8);            // molten glow under the crust
         for (int i = 0; i < globs; i++) {
-            double a = t * 0.12 + i * Math.PI * 2 / globs, r = 0.24 * scale;
+            double a = t * 0.12 + i * Math.PI * 2 / globs, r = 0.26 * scale;
             GlStateManager.pushMatrix();
-            GlStateManager.translate(Math.cos(a) * r, 0.05 * Math.sin(t * 0.3 + i), Math.sin(a) * r);
-            sphere(0.035 + 0.01 * (i % 2), i % 2 == 0 ? 0xFF5A1A : 0xFFB03A, 0.85f, 5);
+            GlStateManager.translate(Math.cos(a) * r, 0.06 * Math.sin(t * 0.3 + i), Math.sin(a) * r);
+            normal();
+            sphere(0.055 + 0.015 * (i % 2), 0x6B1A08, 0.8f, 6);
+            additive();
+            sphere(0.04 + 0.012 * (i % 2), i % 2 == 0 ? 0xFF6A1A : 0xFFB03A, 0.9f, 6);
             GlStateManager.popMatrix();
         }
+        normal();
     }
 
     // ---- Gale Edge: spinning wind crescents ---------------------------------------------------
@@ -331,16 +377,17 @@ public final class JutsuVfx extends Render<HandTechnique> {
         boolean impact = state == HandTechnique.IMPACT;
         double fade = impact ? 1 - Math.min(1, age / JutsuMath.IMPACT_TICKS) : 1;
         double radius = (impact ? 0.4 + 2.2 * JutsuMath.easeOut(age / JutsuMath.IMPACT_TICKS) : 0.36) * (impact ? 1 : scale);
-        int blades = detail == 0 ? 2 : 3;
+        int blades = detail == 0 ? 3 : 5;
+        normal();
         for (int k = 0; k < blades; k++) {
             double start = t * 0.75 + k * Math.PI * 2 / blades;
             double[][] pts = new double[14][];
             for (int i = 0; i < 14; i++) {
                 double a = start + i * 0.17, rr = radius * (0.75 + 0.25 * Math.sin(i / 13.0 * Math.PI));
-                pts[i] = new double[] {Math.cos(a) * rr, (k - 1) * 0.07, Math.sin(a) * rr};
+                pts[i] = new double[] {Math.cos(a) * rr, (k - blades / 2) * 0.06, Math.sin(a) * rr};
             }
-            line(pts, 1, 0xE8FFF4, 0f, (float) (0.9 * fade), 3f);
-            line(pts, 1, 0x9DFFD5, 0f, (float) (0.35 * fade), 6f);
+            line(pts, 1, 0x7FE8C0, 0f, (float) (0.55 * fade), 7f);
+            line(pts, 1, 0xF4FFFA, 0f, (float) (0.95 * fade), 3f);
         }
     }
 }

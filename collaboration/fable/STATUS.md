@@ -63,3 +63,12 @@ Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeo
 ## Sync state
 
 The first push attempt from this cloud session got HTTP 403. After GitHub access was re-attached, the branch pushed to `origin/claude/upbeat-ride-nyxq23` (package 1 `3de0d34`, package 2 `d580641`, plus this status commit). Codex has not reviewed it yet.
+
+## Jutsu VFX engine (owner request: "Rasengan needs to look like a moving Rasengan")
+
+- Branch `claude/upbeat-ride-nyxq23`. New files: `JutsuMath.java` (pure math, 1002 checks in `tests/village/vale/JutsuMathTest.java`), `arsenal/HandTechnique.java` (server-owned, never-saved carrier entity id 121), `client/JutsuVfx.java` (renderer + arm poses).
+- Styles: spiral (rotating multi-band sphere, charge-in motes, spiral burst on hit), charge (crackling bolts), fireedge (procedural flame), windedge (rotating crescents), lava (crusted molten globs on both fists), lightmode (body arcs + aura).
+- Verified in a real 1.12.2 client (Xvfb + Mesa, private probe not committed): front, back, first-person and impact shots for all six styles; `release/evidence/vfx-hand-techniques-20261113.png` is the contact sheet. Forge `check` passes.
+- Hooks touched Codex-owned files (small, reviewable): `Scrolls` (entity + renderer registration), `ScrollEffects.mode` (begin), `ScrollEvents` (impact), `RunPoses.finish` (arm pose), `ClientProxy.preInit` (config). Client option `jutsuDetail` 0–2 in valeorders-client.cfg.
+- Proposed for Codex: a `verifyJutsu` Gradle task running `JutsuMathTest` (build.gradle is shared, so not edited here).
+- Next: real shapes for ScrollActor projectiles (all currently `RenderSnowball`), then weapon visuals through the same engine.

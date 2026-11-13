@@ -29,6 +29,7 @@ public final class HandTechnique extends Entity {
     /** Client lookup: owner entity id -> live technique (for arm poses). */
     public static final Map<Integer, HandTechnique> CLIENT_BY_OWNER = new java.util.concurrent.ConcurrentHashMap<>();
     private int stateAge, dying = -1;
+    private java.util.UUID ownerUuid;
     public float impactX, impactY, impactZ;
 
     public HandTechnique(World world) {
@@ -40,7 +41,7 @@ public final class HandTechnique extends Entity {
     }
 
     @Override protected void entityInit() {
-        dataManager.register(OWNER, 0);
+        dataManager.register(OWNER, -1);
         dataManager.register(STYLE, "");
         dataManager.register(STATE, HELD);
     }
@@ -58,7 +59,7 @@ public final class HandTechnique extends Entity {
 
     static HandTechnique find(EntityPlayerMP p) {
         for (HandTechnique h : p.world.getEntities(HandTechnique.class, h -> h != null && !h.isDead))
-            if (h.ownerId() == p.getEntityId() && h.state() == HELD) return h;
+            if (p.getUniqueID().equals(h.ownerUuid) && h.state() == HELD) return h;
         return null;
     }
 
@@ -69,9 +70,11 @@ public final class HandTechnique extends Entity {
         if (old != null) old.finish(FIZZLE);
         HandTechnique h = new HandTechnique(p.world);
         h.dataManager.set(OWNER, p.getEntityId());
+        h.ownerUuid = p.getUniqueID();
         h.dataManager.set(STYLE, style);
         h.setPosition(p.posX, p.posY + 1.2, p.posZ);
-        if (p.world.spawnEntity(h)) {
+        boolean spawned = p.world.spawnEntity(h);
+        if (spawned) {
             p.world.playSound(null, p.posX, p.posY + 1.2, p.posZ, startSound(style), SoundCategory.PLAYERS, 0.8f, startPitch(style));
         }
     }
@@ -104,15 +107,15 @@ public final class HandTechnique extends Entity {
         super.onUpdate();
         stateAge++;
         if (world.isRemote) {
-            if (state() == HELD && ownerId() != 0) CLIENT_BY_OWNER.put(ownerId(), this);
+            if (state() == HELD && ownerId() >= 0) CLIENT_BY_OWNER.put(ownerId(), this);
             else CLIENT_BY_OWNER.remove(ownerId(), this);
             clientParticles();
             return;
         }
         if (dying >= 0) { if (--dying <= 0) setDead(); return; }
-        Entity owner = world.getEntityByID(ownerId());
-        if (!(owner instanceof EntityPlayerMP) || !owner.isEntityAlive() || ((EntityPlayer) owner).isSpectator()) { finish(FIZZLE); return; }
-        EntityPlayerMP p = (EntityPlayerMP) owner;
+        EntityPlayerMP p = ownerUuid == null || world.getMinecraftServer() == null ? null : world.getMinecraftServer().getPlayerList().getPlayerByUUID(ownerUuid);
+        if (p == null || p.world != world || !p.isEntityAlive() || p.isSpectator()) { finish(FIZZLE); return; }
+        if (p.getEntityId() != ownerId()) dataManager.set(OWNER, p.getEntityId());
         NBTTagCompound s = Scrolls.state(p);
         if (!style().equals(s.getString("mode")) || s.getLong("modeUntil") < ArsenalAccess.now(p)) { finish(FIZZLE); return; }
         // Follow the owner so tracking/chunk visibility match; rendering anchors to the animated arm.
@@ -124,13 +127,14 @@ public final class HandTechnique extends Entity {
     private void clientParticles() {
         String s = style();
         if (state() == IMPACT && stateAge == 1) {
-            net.minecraft.util.EnumParticleTypes main = s.equals("fireedge") || s.equals("lava") ? net.minecraft.util.EnumParticleTypes.FLAME
-                : s.equals("charge") || s.equals("lightmode") ? net.minecraft.util.EnumParticleTypes.CRIT_MAGIC : net.minecraft.util.EnumParticleTypes.CLOUD;
-            for (int i = 0; i < 28; i++) {
-                double a = i * Math.PI * 2 / 28, v = 0.35 + rand.nextDouble() * 0.25;
-                world.spawnParticle(main, posX, posY, posZ, Math.cos(a) * v, (rand.nextDouble() - 0.3) * 0.15, Math.sin(a) * v);
+            boolean fire = s.equals("fireedge") || s.equals("lava"), bolt = s.equals("charge") || s.equals("lightmode");
+            net.minecraft.util.EnumParticleTypes spark = fire ? net.minecraft.util.EnumParticleTypes.FLAME
+                : bolt ? net.minecraft.util.EnumParticleTypes.CRIT_MAGIC : net.minecraft.util.EnumParticleTypes.FIREWORKS_SPARK;
+            for (int i = 0; i < 18; i++) {
+                double a = i * Math.PI * 2 / 18, v = 0.10 + rand.nextDouble() * 0.08;
+                world.spawnParticle(spark, posX, posY, posZ, Math.cos(a) * v, (rand.nextDouble() - 0.4) * 0.06, Math.sin(a) * v);
             }
-            for (int i = 0; i < 6; i++) world.spawnParticle(net.minecraft.util.EnumParticleTypes.EXPLOSION_NORMAL, posX, posY, posZ, (rand.nextDouble() - 0.5) * 0.4, 0.05, (rand.nextDouble() - 0.5) * 0.4);
+            for (int i = 0; i < 3; i++) world.spawnParticle(net.minecraft.util.EnumParticleTypes.CLOUD, posX, posY - 0.3, posZ, (rand.nextDouble() - 0.5) * 0.06, 0.01, (rand.nextDouble() - 0.5) * 0.06);
             return;
         }
         if (state() != HELD || ticksExisted % 3 != 0) return;
@@ -140,7 +144,6 @@ public final class HandTechnique extends Entity {
         double[] palm = village.vale.JutsuMath.palm(o.posX, o.posY, o.posZ, o.renderYawOffset, s.equals("spiral") ? 1.45 : s.equals("charge") ? 0.95 : 1.15, o.isSneaking(), true);
         if (s.equals("fireedge")) world.spawnParticle(net.minecraft.util.EnumParticleTypes.FLAME, palm[0], palm[1], palm[2], 0, 0.02, 0);
         else if (s.equals("lava")) world.spawnParticle(net.minecraft.util.EnumParticleTypes.DRIP_LAVA, o.posX + (rand.nextDouble() - 0.5) * 0.6, o.posY + 0.8, o.posZ + (rand.nextDouble() - 0.5) * 0.6, 0, 0, 0);
-        else if (s.equals("windedge")) world.spawnParticle(net.minecraft.util.EnumParticleTypes.SWEEP_ATTACK, palm[0], palm[1], palm[2], 0, 0, 0);
     }
 
     @Override public void setDead() {

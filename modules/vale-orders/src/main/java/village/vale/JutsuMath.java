@@ -55,9 +55,9 @@ public final class JutsuMath {
         double[] l = look(yaw, pitch), r = right(yaw);
         double[] up = cross(r, l);
         return new double[] {
-            eyeX + l[0] * 0.62 + r[0] * 0.30 + up[0] * -0.22,
-            eyeY + l[1] * 0.62 + r[1] * 0.30 + up[1] * -0.22,
-            eyeZ + l[2] * 0.62 + r[2] * 0.30 + up[2] * -0.22};
+            eyeX + l[0] * 0.95 + r[0] * 0.36 + up[0] * -0.30,
+            eyeY + l[1] * 0.95 + r[1] * 0.36 + up[1] * -0.30,
+            eyeZ + l[2] * 0.95 + r[2] * 0.36 + up[2] * -0.30};
     }
 
     static double[] cross(double[] a, double[] b) {

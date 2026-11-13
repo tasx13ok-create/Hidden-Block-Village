@@ -37,7 +37,7 @@ public final class JutsuMathTest {
             double[] rel = {fp[0] - eye[0], fp[1] - eye[1], fp[2] - eye[2]};
             check(dot(rel, JutsuMath.look(30, pitch)) > 0.55, "first-person anchor in front of camera at pitch " + pitch);
             check(dot(rel, JutsuMath.right(30)) > 0.25, "first-person anchor to the right at pitch " + pitch);
-            check(len(rel) < 0.8, "first-person anchor close to the camera");
+            check(len(rel) < 1.2, "first-person anchor close to the camera");
         }
 
         for (int band = 0; band < 16; band++) {
