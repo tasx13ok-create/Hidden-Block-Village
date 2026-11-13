@@ -2,6 +2,16 @@
 
 Updated: 2026-11-13 UTC.
 
+## Full server recovered; parallel gameplay build active
+
+The full Bisect archive is now available at `D:/archive-2026-11-09T202203Z.zip`; do not ask the owner for it again. All 6,873 entries were recovered into a new private tree at `D:/HiddenBlockVillage-Sprint-20261113/server-intake-verified`, with every ZIP CRC and independent output SHA-256 verified. Archive SHA-256 is `bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b`. Both genuinely different config case-collision groups are preserved in quarantine. Read `docs/server-intake-current.md` and `release/evidence/server-intake-20261113.json` for exact safe metadata and startup prerequisites. Original archives/worlds and the earlier failed extraction remain intact.
+
+The archive has exactly 49 mod JARs, one plugin JAR, Linux Java 8u252 and a Magma JAR whose manifest version differs from its filename. Eleven declared Magma classpath files are absent. These are observed packaging facts, not proof of a successful start. No recovered server/world has been executed or merged. `tools/server_intake` has 12 passing fixture tests and passes stricter preflight against the real archive. Raw worlds, private configs, player/NPC data and third-party JARs stay outside Git.
+
+The owner explicitly authorized subagents. Internal assignments cover nature jutsu, six native weapon chains, server recovery/NPC intake, local playtest assembly and integration checks, with distinct file ownership. Core 0.3.11 Lightning Armor/trial/reactive-witness work is being built and tested in the main working tree; it is not yet a verified release. The first dedicated test found a common melee tooltip listener loading a client-only class; it was split into a client-only subscriber and the combined rebuild is running. Existing live servers are preserved. The full requested game and the active 20-hour sprint remain unfinished.
+
+Fable's actual remote branch `claude/upbeat-ride-nyxq23` at `1450679d58cd729b231b6a8a826e6f1535fc0dd5` was fetched and its new files restored for integration review. Its 37 world-tool and 12 content-validator tests pass on Windows. The five actual v17 schematics have now been audited offline; no original schematic/world was modified. Dungeon mission JSON still needs runtime wiring and measured anchors. Review found concrete copy/paste/rollback safety defects; hardening is in progress before any real-world paste. This supersedes older statements below that Fable had not been observed pushing or that the full archive path was still pending.
+
 
 ## Active Core 0.3.10 academy checkpoint
 
