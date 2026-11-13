@@ -7,7 +7,6 @@ import java.util.UUID;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -60,8 +59,6 @@ public final class Dodge {
         p.hurtResistantTime = Math.max(p.hurtResistantTime, DodgeMath.IFRAME_TICKS + p.maxHurtResistantTime / 2);
         p.addExhaustion(0.3f);
         p.world.playSound(null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.PLAYERS, 0.35f, 1.7f + p.getRNG().nextFloat() * 0.2f);
-        if (p.world instanceof WorldServer)
-            ((WorldServer) p.world).spawnParticle(net.minecraft.util.EnumParticleTypes.CLOUD, p.posX, p.posY + 0.1, p.posZ, 6, 0.25, 0.05, 0.25, 0.02);
         Anim msg = new Anim(p.getEntityId(), dir);
         channel.sendToAllTracking(msg, p);
         channel.sendTo(msg, p);

@@ -41,6 +41,7 @@ public final class DodgeClient {
     public static void initialize() {
         ClientRegistry.registerKeyBinding(DODGE);
         MinecraftForge.EVENT_BUS.register(new DodgeClient());
+        VoxelBits.install();
     }
 
     private static double now(float partial) {
@@ -55,9 +56,40 @@ public final class DodgeClient {
             ACTIVE.put(id, new double[] {dir, now(0)});
             Entity e = Minecraft.getMinecraft().world.getEntityByID(id);
             if (e != null) { java.util.ArrayDeque<double[]> t = new java.util.ArrayDeque<>(); t.add(new double[] {e.posX, e.posY, e.posZ}); TRAIL.put(id, t); }
-            if (e != null) for (int i = 0; i < 8; i++)
-                e.world.spawnParticle(EnumParticleTypes.CLOUD, e.posX + (e.world.rand.nextDouble() - 0.5) * 0.6, e.posY + 0.1, e.posZ + (e.world.rand.nextDouble() - 0.5) * 0.6, 0, 0.02, 0);
+            if (e != null) takeoff(e, dir);
         });
+    }
+
+    /** Shunshin-style take-off: ground chips burst out and a ring of smoke cubes puffs up. */
+    private static void takeoff(Entity e, int dir) {
+        java.util.Random r = VoxelBits.RNG;
+        int ground = VoxelBits.groundColor(e);
+        double[] v = DodgeMath.velocity(dir, e.rotationYaw);
+        if (ground >= 0) for (int i = 0; i < 16; i++) {
+            double a = r.nextDouble() * Math.PI * 2, sp = 0.08 + r.nextDouble() * 0.14;
+            VoxelBits.spawn(e.posX + Math.cos(a) * 0.3, e.posY + 0.08, e.posZ + Math.sin(a) * 0.3,
+                    Math.cos(a) * sp - v[0] * 0.12, 0.18 + r.nextDouble() * 0.2, Math.sin(a) * sp - v[2] * 0.12,
+                    1 + r.nextInt(3), VoxelBits.vary(ground), 1f, 20 + r.nextInt(12), 0.04, 0.97, true);
+        }
+        for (int i = 0; i < 14; i++) {
+            double a = i * Math.PI * 2 / 14 + r.nextDouble() * 0.3, rad = 0.35 + r.nextDouble() * 0.2;
+            int grey = r.nextInt(3) == 0 ? 0xBDBDBD : r.nextBoolean() ? 0xE6E6E6 : 0xF7F7F7;
+            VoxelBits.spawn(e.posX + Math.cos(a) * rad, e.posY + 0.2 + r.nextDouble() * 1.2, e.posZ + Math.sin(a) * rad,
+                    Math.cos(a) * 0.05, 0.02 + r.nextDouble() * 0.03, Math.sin(a) * 0.05,
+                    2 + r.nextInt(2), grey, 0.85f, 12 + r.nextInt(8), -0.003, 0.9, false);
+        }
+    }
+
+    /** Skid stop: a low puff of smoke cubes and a few chips at the feet. */
+    private static void landing(Entity e) {
+        java.util.Random r = VoxelBits.RNG;
+        int ground = VoxelBits.groundColor(e);
+        for (int i = 0; i < 8; i++) {
+            double a = r.nextDouble() * Math.PI * 2;
+            VoxelBits.spawn(e.posX + Math.cos(a) * 0.4, e.posY + 0.1, e.posZ + Math.sin(a) * 0.4, Math.cos(a) * 0.06, 0.01, Math.sin(a) * 0.06,
+                    2 + r.nextInt(3), r.nextBoolean() ? 0xE6E6E6 : 0xC8C8C8, 0.8f, 10 + r.nextInt(6), -0.002, 0.88, false);
+            if (ground >= 0) VoxelBits.spawn(e.posX, e.posY + 0.06, e.posZ, Math.cos(a) * 0.1, 0.12, Math.sin(a) * 0.1, 1, VoxelBits.vary(ground), 1f, 14, 0.04, 0.97, true);
+        }
     }
 
     /** Age in ticks of an active dodge, or -1. */
@@ -89,13 +121,27 @@ public final class DodgeClient {
             while (t.size() > DodgeMath.AFTERIMAGES + 3) t.removeFirst();
         }
         TRAIL.keySet().retainAll(ACTIVE.keySet());
-        // Dust kicked up along the dash.
+        // Ground chips skidding off the feet, and afterimages crumbling into pixels.
         for (Map.Entry<Integer, double[]> a : ACTIVE.entrySet()) {
             Entity en = mc.world.getEntityByID(a.getKey());
             if (en == null) continue;
             double age = mc.world.getTotalWorldTime() - a.getValue()[1];
-            if (age >= 0 && age < DodgeMath.ANIM_TICKS * 0.75 && ((long) age) % 2 == 0)
-                mc.world.spawnParticle(EnumParticleTypes.CLOUD, en.posX, en.posY + 0.4, en.posZ, -en.motionX * 0.2, 0.01, -en.motionZ * 0.2);
+            if (age < 0 || age > DodgeMath.ANIM_TICKS) continue;
+            java.util.Random r = VoxelBits.RNG;
+            int ground = VoxelBits.groundColor(en);
+            if (ground >= 0 && age < DodgeMath.ANIM_TICKS * 0.8) for (int i = 0; i < 3; i++)
+                VoxelBits.spawn(en.posX + (r.nextDouble() - 0.5) * 0.5, en.posY + 0.06, en.posZ + (r.nextDouble() - 0.5) * 0.5,
+                        -en.motionX * 0.25 + (r.nextDouble() - 0.5) * 0.06, 0.08 + r.nextDouble() * 0.12, -en.motionZ * 0.25 + (r.nextDouble() - 0.5) * 0.06,
+                        1 + r.nextInt(2), VoxelBits.vary(ground), 1f, 14 + r.nextInt(8), 0.035, 0.96, true);
+            java.util.ArrayDeque<double[]> t = TRAIL.get(a.getKey());
+            if (t != null && t.size() > 2) {
+                double[] g = t.peekFirst();
+                for (int i = 0; i < 4; i++)
+                    VoxelBits.spawn(g[0] + (r.nextDouble() - 0.5) * 0.6, g[1] + r.nextDouble() * 1.8, g[2] + (r.nextDouble() - 0.5) * 0.6,
+                            (r.nextDouble() - 0.5) * 0.02, 0.01 + r.nextDouble() * 0.03, (r.nextDouble() - 0.5) * 0.02,
+                            1 + r.nextInt(2), r.nextBoolean() ? 0x8CD2FF : 0xD8F0FF, 0.75f, 10 + r.nextInt(8), -0.002, 0.95, false);
+            }
+            if ((long) age == DodgeMath.ANIM_TICKS - 1) landing(en);
         }
     }
 
@@ -163,15 +209,18 @@ public final class DodgeClient {
         float fade = (float) (1 - age / (DodgeMath.ANIM_TICKS * 0.75));
         VfxDraw.begin(e.getX(), e.getY(), e.getZ());
         try {
+            net.minecraft.client.renderer.GlStateManager.depthMask(true);
             for (int k = 0; k < 9; k++) {
                 double side = (village.vale.WeaponMath.hash(p.getEntityId(), k) - 0.5) * 1.1, h = 0.15 + 1.6 * village.vale.WeaponMath.hash(p.getEntityId(), k + 20);
                 double len = 1.2 + 1.8 * village.vale.WeaponMath.hash(p.getEntityId(), k + 40), back = 0.3 + 0.4 * village.vale.WeaponMath.hash((long) age, k);
                 double ox = -vz * side, oz = vx * side;
-                double[] a0 = {ox - vx * back, h, oz - vz * back}, a1 = {ox - vx * (back + len), h, oz - vz * (back + len)};
-                VfxDraw.normal();
-                VfxDraw.line(new double[][] {a0, a1}, 0x7FC4FF, 0.6f * fade, 0f, 4f);
-                VfxDraw.additive();
-                VfxDraw.line(new double[][] {a0, a1}, 0xFFFFFF, 0.9f * fade, 0f, 1.5f);
+                // A streak is a row of single-pixel cubes snapped to the pixel grid, fading toward its tail.
+                int steps = (int) (len / (VoxelBits.PX * 3));
+                for (int q = 0; q < steps; q++) {
+                    double d = back + q * VoxelBits.PX * 3, f = 1 - q / (double) steps;
+                    double cx = VfxDraw.pixel(ox - vx * d), cy = VfxDraw.pixel(h), cz = VfxDraw.pixel(oz - vz * d);
+                    VfxDraw.cube(cx, cy, cz, VoxelBits.PX * (q < steps / 3 ? 2 : 1), q % 4 == 0 ? 0x9DD6FF : 0xFFFFFF, (float) (fade * f * 0.9));
+                }
             }
         } finally {
             VfxDraw.end();

@@ -47,3 +47,10 @@ Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not commit
 - Hooks in shared files: `ValeOrders.preInit` calls `Dodge.register()`. `CommonProxy` and `ClientProxy` get `dodgeAnim`. `ClientProxy.preInit` calls `DodgeClient.initialize()`. `RunPoses.finish` calls `DodgeClient.pose`. Lang keys added.
 - Tuning to agree with Codex's combat: cooldown 16 ticks, speed 1.55, i-frames ~6 ticks. Should it also cost resolve or stamina?
 - Evidence: `release/evidence/dodge-4way-20261113.png`. Probe flag: `-Dvaleorders.vfxshots.dodge=true`.
+
+## Blocky / pixel style pass
+- `VfxDraw.voxel` mode: every weapon line, orb, slash and glow is rebuilt from face-shaded cubes (Minecraft block shading: top 100%, sides 80%/60%, bottom 50%) snapped to a 1/16-block grid.
+- New `client/VoxelBits.java`: capped (600) client-only pixel particles with gravity, ground bounce and whole-pixel shrink. Uses:
+  - Dodge: take-off chips coloured from the block underfoot, smoke cubes, skid chips, landing puff, and afterimages crumbling into blue pixels. Speed lines are pixel dashes.
+  - Weapons: Siege Maul ground debris, strike shards, frost, sparks, and Emberbrand embers.
+- Jutsu hand techniques keep the smooth style for now.

@@ -27,6 +27,40 @@ public final class WeaponVfx extends Render<WeaponPulse> {
     public WeaponVfx(RenderManager manager) {
         super(manager);
         shadowSize = 0;
+        VoxelBits.install();
+    }
+
+    private static final java.util.Set<Integer> BURST = java.util.Collections.newSetFromMap(new java.util.WeakHashMap<Integer, Boolean>());
+
+    /** One-time pixel debris for a pulse: ground chips, shards, embers, frost, sparks. */
+    private static void debris(WeaponPulse e, ArsenalSpec spec, double[] origin, int[] pal) {
+        if (!BURST.add(e.getEntityId())) return;
+        java.util.Random r = VoxelBits.RNG;
+        double ex = e.endX(), ey = e.endY(), ez = e.endZ();
+        switch (spec.role) {
+            case SLAM: {
+                int g = VoxelBits.groundColor(e);
+                if (g < 0) g = 0x7F7F7F;
+                for (int i = 0; i < 40; i++) {
+                    double a = r.nextDouble() * Math.PI * 2, sp = 0.1 + r.nextDouble() * 0.3;
+                    VoxelBits.spawn(origin[0] + Math.cos(a) * 0.5, origin[1] + 0.1, origin[2] + Math.sin(a) * 0.5, Math.cos(a) * sp, 0.25 + r.nextDouble() * 0.3, Math.sin(a) * sp,
+                            2 + r.nextInt(3), VoxelBits.vary(g), 1f, 24 + r.nextInt(14), 0.045, 0.97, true);
+                }
+                break;
+            }
+            case BREAK: case SHOCK: case RIME: case DRAIN: case RESTORE: case FINISH: case BURST: case CHAIN: case EXTEND: {
+                int n = spec.role == ArsenalSpec.Role.BREAK ? 22 : 12;
+                for (int i = 0; i < n; i++) {
+                    double vx = (r.nextDouble() - 0.5) * 0.3, vy = r.nextDouble() * 0.25, vz = (r.nextDouble() - 0.5) * 0.3;
+                    int c = spec.role == ArsenalSpec.Role.BREAK && i % 3 == 0 ? 0xD8D8D8 : (i % 2 == 0 ? pal[0] : pal[1]);
+                    VoxelBits.spawn(ex, ey, ez, vx, vy, vz, 1 + r.nextInt(2), c, 1f, 14 + r.nextInt(10), spec.role == ArsenalSpec.Role.RIME ? 0.03 : 0.02, 0.95, true);
+                }
+                break;
+            }
+            default:
+                for (int i = 0; i < 6; i++)
+                    VoxelBits.spawn(origin[0], origin[1] - 0.2, origin[2], (r.nextDouble() - 0.5) * 0.12, r.nextDouble() * 0.08, (r.nextDouble() - 0.5) * 0.12, 1, pal[i % 2], 1f, 10 + r.nextInt(6), 0.01, 0.92, false);
+        }
     }
 
     @Override protected ResourceLocation getEntityTexture(WeaponPulse entity) { return null; }
@@ -77,7 +111,9 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         double[] endRel = sub(new double[] {e.endX(), e.endY(), e.endZ()}, origin);
         int[] pal = WeaponMath.palette(spec.role.name());
         double f = WeaponMath.clamp01(age / life), fade = WeaponMath.fade(age, life);
+        if (e.kind() == WeaponPulse.CAST) debris(e, spec, origin, pal);
         VfxDraw.begin(x, y, z);
+        VfxDraw.voxel = true;
         try {
             switch (e.kind()) {
                 case WeaponPulse.ARC: chainBolt(new double[3], endRel, e.getEntityId() * 31L + (long) (age / 2), pal, fade, 1.0); break;
@@ -86,6 +122,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: cast(e, spec, owner, origin, handRel, endRel, age, f, fade, pal); break;
             }
         } finally {
+            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
@@ -498,6 +535,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         boolean still = len(v) < 1e-3;
         if (still) v = new double[] {0, 0, 1};
         VfxDraw.begin(x, y + 0.12, z);
+        VfxDraw.voxel = true;
         try {
             int mode = s.mode();
             EntityPlayer owner = player(s, s.ownerEntityId());
@@ -553,6 +591,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                     }
                     break;
                 case ArsenalShot.FIRE:
+                    if (s.ticksExisted % 2 == 0) { double[] o = interp(s, partial); VoxelBits.spawn(o[0], o[1] + 0.12, o[2], (VoxelBits.RNG.nextDouble() - 0.5) * 0.03, 0.03, (VoxelBits.RNG.nextDouble() - 0.5) * 0.03, 1, VoxelBits.RNG.nextBoolean() ? 0xFFB03A : 0xFF6A1A, 1f, 10, -0.002, 0.9, false); }
                     VfxDraw.normal();
                     for (int i = 0; i < 9; i++) {
                         double[] p = WeaponMath.trail(v, i, 0.16, 0.06, t * 2);
@@ -570,6 +609,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: break;
             }
         } finally {
+            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
@@ -621,6 +661,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         int[] pal = WeaponMath.palette(spec.role.name());
         double t = f.ticksExisted + partial;
         VfxDraw.begin(x, y, z);
+        VfxDraw.voxel = true;
         try {
             switch (f.mode()) {
                 case ArsenalField.EMITTER: {
@@ -682,6 +723,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: break;
             }
         } finally {
+            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
