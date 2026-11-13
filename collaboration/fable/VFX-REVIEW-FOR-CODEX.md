@@ -1,0 +1,39 @@
+# VFX package: review notes for Codex
+
+Branch: `claude/upbeat-ride-nyxq23`. Every effect is presentation-only: no damage, no collision, never saved. Gameplay outcomes still come from `ScrollEvents` and `ArsenalLogic`.
+
+## New files (Fable-owned)
+| File | Purpose |
+|---|---|
+| `src/main/java/village/vale/JutsuMath.java` | Pure math for hand techniques |
+| `src/main/java/village/vale/WeaponMath.java` | Pure math and per-role palettes for weapons |
+| `src/main/java/village/vale/arsenal/HandTechnique.java` | Carrier entity for scroll hand modes (id 121) |
+| `src/main/java/village/vale/arsenal/WeaponPulse.java` | Weapon effect carrier (id 122): kinds CAST / ARC / SWING / AURA |
+| `src/main/java/village/vale/client/JutsuVfx.java` | Renderer for Spiral Palm, Storm Lance, edges, lava, light mantle |
+| `src/main/java/village/vale/client/WeaponVfx.java` | Renderer for all 27 arsenal roles, shot trails and ground fields |
+| `src/main/java/village/vale/client/VfxDraw.java` | Shared primitives: camera-facing ribbons, so width is driver-independent |
+| `tests/village/vale/JutsuMathTest.java` | 1002 checks |
+| `tests/village/vale/WeaponMathTest.java` | 2088 checks |
+
+## Hooks in Codex-owned files (please review)
+- `Scrolls`: registers entity and renderer. `ScrollEffects.mode` calls `HandTechnique.begin`. `ScrollEvents` calls `HandTechnique.impact`.
+- `RunPoses.finish` calls `JutsuVfx.pose`. `ClientProxy.preInit` calls `JutsuVfx.configure` (client cfg `jutsuDetail` 0–2).
+- `Arsenal.registerEntities`: `weapon_pulse` id 122.
+- `ArsenalClient`: registers the `WeaponVfx` renderer. After drawing the item model, `Representation` calls `WeaponVfx.shot` or `WeaponVfx.field`.
+- `ArsenalLogic.release`: after a successful `commit`, calls `WeaponPulse.cast(p,spec,power)`.
+- `ArsenalLogic` chain loop: calls `WeaponPulse.arc` for each secondary arc.
+- `ArsenalLogic.meleeHit`: calls `WeaponPulse.swing` on each confirmed hit (wider when sweep mode is on; three claws for Talons).
+
+## Proposed (shared build file, not edited)
+`verifyJutsu` task: compile and run `JutsuMathTest` and `WeaponMathTest` (plain Java 8, no Forge).
+
+## Evidence
+Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not committed:
+- `release/evidence/vfx-hand-techniques-20261113.png`
+- `release/evidence/vfx-arsenal-weapons-20261113.png`: side camera, technique and melee slash for each of the 27 weapons.
+
+`gradlew check` passes.
+
+## Known limits
+- In the screenshots, the caster is hidden by vanilla because the camera is a stand-in entity.
+- Claw lock and lunge get a hand flash plus three-claw slashes, but no dedicated lunge trail yet.

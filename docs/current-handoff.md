@@ -2,6 +2,18 @@
 
 Updated: 2026-11-13 UTC.
 
+## Combat hotbar and complete character-equipment art supplement
+
+Rack 0.1.3 / Field HUD 0.15.0 implement the owner's normal nine-slot <-> separate six-slot combat loadouts. Hold F for three seconds to switch the whole active bar; both loadouts and selections persist. The survival inventory right rail supports real server cursor pickup/place/merge/swap and drag back into native inventory. Reward-bound gear retains ownership checks; ordinary items and crafted garments/meals/tonics are accepted. Different hand modes now replace the old mode instead of charging only to dismiss it. HUD item/NBT copies refresh on snapshot generation changes instead of every frame/tick.
+
+Final isolated candidate: all eleven source areas / 36 artifacts PASS, 2,392 native Forge assertions PASS, 13 hold-gesture checks PASS. Source SHA256 `940775d1cbdbc2de4be0ef82d4c9d1a31e25a363dc44c0cf7a581893c719b6e4`. Read `docs/combat-hotbar-013.md` and `release/evidence/combat-hotbar-013-verification.json`. The candidate includes concurrent Core 0.3.13 weapon/gate work; this independent checkpoint owns only Rack/HUD, the mode fix, its private checks and art metadata. Preserve all other workers' changes and staged files. The shared RecoveryNativeChecks direct CombatHotbarNativeChecks call duplicates coverage already invoked through RackNativeChecks038; its owning worker should remove that duplicate.
+
+The separate 12-client/9-server-JAR preview on loopback 25584 joined with JEI's empty catalog check passing. Six-slot bottom bar and Cinder Edge were visibly observed; full physical F timing and drag-in/out were not manually accepted. The live preview uses the preceding 2,391-check candidate. The final crafted-garment admission fix is built/tested separately; no JARs were replaced in the owner's running session. Next: new-session or owner-chosen restart with final artifacts, graphical drag/F/key/wheel checks, and restart with each bank active. Full original-pack/world/hosted acceptance remains separate.
+
+The Sonnet supplement is `collaboration/sonnet-art/SONNET-EQUIPMENT-ADDENDUM.txt`. File 06 explicitly lists 342 armor/wearable and 331 weapon model/visual states (673 rows), absent by name from the generic current-Vale list but already in the earlier full reference appendix. File 07 supplies nine corrected display-name/base aliases; file 08 includes 256 worn-armor texture paths and held-art work. `equipment-inventory.json` adds provenance/overlap/classification evidence; `tools/build_equipment_handoff.py` verifies all 49 supplied JAR hashes and regenerates it. Alternate forms are not extra unique weapons. The five-file ignored ZIP passed CRC/exact-byte checks; see `docs/sonnet-equipment-addendum.md`. No reference art, JARs or private world data were copied into source control.
+
+Verified source checkpoint: 850ae32c23cd7da3055199cc3e84de1eb4788902 on GitHub; fresh fetch matched tree 4568c4d707936feda8187aef30efdef2df0afbd8. GitHub continuation branch: `codex/combat-hotbar-equipment-20261113`. The connected Git Data path can save the complete art + hotbar checkpoint despite absent local Git credentials. The original art-only commits remain on the shared checkout; do not reset it or overwrite the other worker's index. Integrate the checkpoint deliberately with the ongoing Core release, preserving both sets of changes.
+
 ## Complete Sonnet art inventory requested by owner
 
 The owner is preparing a full art pass in Sonnet, including existing icons, weapons, scrolls, chakra, armor and all other mod artwork. `collaboration/sonnet-art/START-HERE-SONNET.txt` is the brief; `ALL-ICON-NAMES.txt` is the compact complete name checklist. Five detailed lists and `asset-inventory.json` provide exact paths, sizes, source references and integration notes. `tools/build_icon_handoff.py` regenerates the package from current source and an explicitly supplied original-mod directory.
@@ -15,6 +27,14 @@ Validation passed for unique current IDs/output paths, all inventory counts, all
 GitHub sync for this art checkpoint is pending: the local Git credential manager has no usable GitHub credential, and a noninteractive push failed with "could not read Username". The complete bundle and commits are retained locally. Push these commits once authenticated; no remote-save claim has been made.
 
 Next art step: give Sonnet the brief and inventory, produce original PNG batches with a completion manifest, then review and wire shared models/HUD/status paths. Keep `spiral_palm` and `storm_lance` save/file keys for Rasengan and Chidori. Preserve worn-model UVs and 3D held geometry; inventory icons alone do not replace armor, actors or procedural VFX. The active gameplay sprint and its separate acceptance work remain ongoing.
+
+## Verified Core 0.3.13; Everything test copy next
+
+Core0.3.13 is accepted in the isolated release worktree: all11sourceareas/36artifacts,2,305nativeassertions,2,088weaponmath/1,002handmath/50gatechecks. Exactsource aacf8985dc408704cba269daa5a4ef488635030a5e25d938462fbed7f5c0d096; Core c2db8c4d472aec9f38a3c1d7b44b4ac31c93dfd0bbfb6373908de1af8c049352. Read `release/evidence/core0313-verification.json` and `docs/weapon-and-gate-runtime-0313.md`. Cohort remainsHUD0.14.1/Rack0.1.2/Residents0.2.1. TwoMagma/v17copyboots on25585also passed; runtime stopped,5givers/7propsstillunapplied.
+
+Latestownerrequest: save everythingmade intoGitHub and create a NEW separatecopy withtheNarutoworld/allmods/dodge/remappable settings/Naruto-themedinventoryandmenus/shaders. Claude explicitly OWNS HOTBARS, includingthe6-slotbarplacementandstyling; do notoverwrite itsactivework. Root owns repo/runtime integration; internalworkershandleDodge andsurroundingsettings/inventorytheme, excludinghotbarfiles. Existingoriginal-checkout HUD/Rack/CoreWIP stayspreservedforEverything0.3.14 integration; it isnotdeclaredacceptedbythis0.3.13receipt. Icon/modelZIPs areowner-attributedClaude WIP snapshots, flatitemplatesnotfinished3Darmor; preserve andlabelthem honestly.
+
+Available BSL10.1.8 is aprivateinput (SHA36b0a50ff7918bf10e9422c401d93779f9d0088a26acea975b435243f96930b5); RTX2070actual8GiB supportsitsGLrequirements, butnewcandidate shadercompile/FPSmustbeobserved. Plannednewtestcopy `D:/HiddenBlockVillage-Sprint-20261113/Hidden-Block-Village-Everything-0314`; port25586mustberechecked. Keep25584hotbarpreviewuntouched;25583oldMagma and25582handserverarepreserved. Full312TabGuardclientjoinedthenloggedshutdown; do notautolauncholdprofiles. Finish thefull49mod/fiveenhanceddungeon scope; sprintdeadline2026-11-14 13:32:41UTC, goalactive.
 
 ## Full58 world join, asset WIP and isolated next release
 

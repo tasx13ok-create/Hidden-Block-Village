@@ -72,3 +72,7 @@ The first push attempt from this cloud session got HTTP 403. After GitHub access
 - Hooks touched Codex-owned files (small, reviewable): `Scrolls` (entity + renderer registration), `ScrollEffects.mode` (begin), `ScrollEvents` (impact), `RunPoses.finish` (arm pose), `ClientProxy.preInit` (config). Client option `jutsuDetail` 0–2 in valeorders-client.cfg.
 - Proposed for Codex: a `verifyJutsu` Gradle task running `JutsuMathTest` (build.gradle is shared, so not edited here).
 - Next: real shapes for ScrollActor projectiles (all currently `RenderSnowball`), then weapon visuals through the same engine.
+
+## Arsenal weapon VFX (all 27 weapons)
+- `WeaponPulse` (id 122) + `WeaponVfx` + `VfxDraw` + `WeaponMath` (2088 checks). Every role has a cast effect, every confirmed melee hit a coloured slash, auras for guard/mend/overdrive/sweep, trails for all 10 shot modes, ground visuals for all 4 field modes.
+- Verified in client: `release/evidence/vfx-arsenal-weapons-20261113.png`. Review notes: `collaboration/fable/VFX-REVIEW-FOR-CODEX.md`.

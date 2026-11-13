@@ -1,0 +1,456 @@
+{
+  "schema": 1,
+  "candidate": "Core 0.3.13 weapon presentation and original expedition runtime",
+  "scope": "SOURCE_COMPONENT_BUILDS_AND_DISPOSABLE_FORGE_NATIVE_CHECKS",
+  "verified_utc": "2026-11-13T21:28:15.740778+00:00",
+  "base_git_commit": "d59ddd24f64cf404032fb9e497896bb5d3d26358",
+  "base_commit_is_not_the_uncommitted_release_source": true,
+  "source_snapshot_sha256": "aacf8985dc408704cba269daa5a4ef488635030a5e25d938462fbed7f5c0d096",
+  "cohort_reconstruction": {
+    "accepted_source_sha256": "373fdb10595f53a83b31f5798f89ff16fc0fe2600a0f9ab0202e5e1ef4a86ba3",
+    "verified_files": 1561,
+    "from_hash_verified_sources_jars": 1398,
+    "from_pinned_git_worktree": 157,
+    "from_original_files_matching_accepted_hash": 6,
+    "production_changes_after_reconstruction": [
+      "modules/vale-orders/src/main/java/village/vale/expedition/GateSkiff.java",
+      "modules/vale-orders/src/main/java/village/vale/expedition/GateEvents.java"
+    ],
+    "original_working_tree_preserved": true
+  },
+  "source_build_passed": true,
+  "source_areas": 11,
+  "artifact_count": 36,
+  "artifacts": [
+    {
+      "component": "vale-orders",
+      "component_version": "0.3.13",
+      "role": "runtime_mod",
+      "file": "vale-orders-0.3.13.jar",
+      "bytes": 2165496,
+      "sha256": "c2db8c4d472aec9f38a3c1d7b44b4ac31c93dfd0bbfb6373908de1af8c049352"
+    },
+    {
+      "component": "vale-orders",
+      "component_version": "0.3.13",
+      "role": "development_api",
+      "file": "vale-orders-0.3.13-dev.jar",
+      "bytes": 2139045,
+      "sha256": "5a7f0e27520e15a3f76edda90e98ec93ca1cfa21d5b9e2796116691c5a3c0540"
+    },
+    {
+      "component": "vale-orders",
+      "component_version": "0.3.13",
+      "role": "sources",
+      "file": "vale-orders-0.3.13-sources.jar",
+      "bytes": 1711192,
+      "sha256": "a4faf99a15263e4ecfbca560855185244572e1cd82e73f47720ababeecb5590c"
+    },
+    {
+      "component": "vale-encounters",
+      "component_version": "0.3.6",
+      "role": "runtime_mod",
+      "file": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "component": "vale-encounters",
+      "component_version": "0.3.6",
+      "role": "development_api",
+      "file": "vale-encounters-0.3.6-dev.jar",
+      "bytes": 29604,
+      "sha256": "780e74a18a795d6a1d0033532b3b8a9afe8dd71c1e85bc2c74405350684c648a"
+    },
+    {
+      "component": "vale-encounters",
+      "component_version": "0.3.6",
+      "role": "sources",
+      "file": "vale-encounters-0.3.6-sources.jar",
+      "bytes": 11986,
+      "sha256": "2c9373cbaf5d4e144fc75c469cc06a22b146d9a0f9fa6018fbafab00f6f15a5a"
+    },
+    {
+      "component": "vale-rack",
+      "component_version": "0.1.2",
+      "role": "runtime_mod",
+      "file": "Vale-Rack-0.1.2.jar",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "component": "vale-rack",
+      "component_version": "0.1.2",
+      "role": "development_api",
+      "file": "Vale-Rack-0.1.2-dev.jar",
+      "bytes": 33054,
+      "sha256": "e38e2dff3e6e29d3ccdaad8e36a9634b551350a3edbbfbd082beb06b63dbd73e"
+    },
+    {
+      "component": "vale-residents",
+      "component_version": "0.2.1",
+      "role": "runtime_mod",
+      "file": "vale-residents-0.2.1.jar",
+      "bytes": 46128,
+      "sha256": "e733e15c9184f2ec5d98dd7b012ed5890919a4637d8dd1305adb01d7aabef209"
+    },
+    {
+      "component": "vale-residents",
+      "component_version": "0.2.1",
+      "role": "development_api",
+      "file": "vale-residents-0.2.1-dev.jar",
+      "bytes": 45405,
+      "sha256": "2f47e5e391572b2435b8ea68c9199e630b4b7de5ade4ca0afcbb9c6f609a2350"
+    },
+    {
+      "component": "vale-residents",
+      "component_version": "0.2.1",
+      "role": "sources",
+      "file": "vale-residents-0.2.1-sources.jar",
+      "bytes": 20152,
+      "sha256": "a8001fe2993562532a39cbb7e179ffea7f034af0fce7ef2a714c7960fe4d9f2d"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "component_version": "0.1.0",
+      "role": "runtime_mod",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "component_version": "0.1.0",
+      "role": "development_api",
+      "file": "vale-residents-server-bridge-0.1.0-dev.jar",
+      "bytes": 2932,
+      "sha256": "f542d966da2049a3457e6a6a39b2cb710b6b8f98a7691d8f75385db81768d9a0"
+    },
+    {
+      "component": "vale-world-compat",
+      "component_version": "1.0.0",
+      "role": "runtime_mod",
+      "file": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "component": "vale-world-compat",
+      "component_version": "1.0.0",
+      "role": "development_api",
+      "file": "vale-world-compat-1.0.0-dev.jar",
+      "bytes": 25368,
+      "sha256": "48c0b07332e3dea1af249ef242723822bc3809148f19c4e7d955922c56ad204e"
+    },
+    {
+      "component": "vale-world-compat",
+      "component_version": "1.0.0",
+      "role": "sources",
+      "file": "vale-world-compat-1.0.0-sources.jar",
+      "bytes": 14140,
+      "sha256": "9c39eb727d4089c9aca9ff428b807eaaccae28f241a0bd3a24007d11d5d6989f"
+    },
+    {
+      "component": "field-hud",
+      "component_version": "0.14.1",
+      "role": "runtime_mod",
+      "file": "field-hud-0.14.1.jar",
+      "bytes": 182952,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "component": "field-hud",
+      "component_version": "0.14.1",
+      "role": "development_api",
+      "file": "field-hud-0.14.1-dev.jar",
+      "bytes": 180381,
+      "sha256": "bb481a3daa4d720d2c745e065054871733a6e02117c88b16c1ba41b8f9259615"
+    },
+    {
+      "component": "field-hud",
+      "component_version": "0.14.1",
+      "role": "sources",
+      "file": "field-hud-0.14.1-sources.jar",
+      "bytes": 88981,
+      "sha256": "fda6d52818063dbc613ca87f90fff7286202f7446d00e15ae444ccc0e82912ab"
+    },
+    {
+      "component": "field-controls",
+      "component_version": "1.4.0-simple-candidate",
+      "role": "runtime_mod",
+      "file": "field-controls-1.4.0-simple-candidate.jar",
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "component": "field-controls",
+      "component_version": "1.4.0-simple-candidate",
+      "role": "development_api",
+      "file": "field-controls-1.4.0-simple-candidate-dev.jar",
+      "bytes": 123820,
+      "sha256": "31b1d3b65f4fce7d5d8cf0753eb236baae2dbd773f348094707afa8b137fb087"
+    },
+    {
+      "component": "field-controls",
+      "component_version": "1.4.0-simple-candidate",
+      "role": "sources",
+      "file": "field-controls-1.4.0-simple-candidate-sources.jar",
+      "bytes": 52640,
+      "sha256": "21f2ebd80bc5f2aae0f9db7a0922ae5fe8ef702152563d94eda21bf772952bc0"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "runtime_mod",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "development_api",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0-dev.jar",
+      "bytes": 8299,
+      "sha256": "c4421f5ea50f63b3353f2549471e9ea218928df605e8e1d7877fea5b463a0431"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "sources",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0-sources.jar",
+      "bytes": 3842,
+      "sha256": "28b3c959a9a1d259e016275bbecfa12d0880b0371dbe4b7056bcda7b9309ed1a"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "runtime_mod",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "development_api",
+      "file": "Vale-Forge-Damage-Compat-0.1.0-dev.jar",
+      "bytes": 5460,
+      "sha256": "4e6569437286343abfddcc047fb587918efa8c0d72e6b42e8998c833892bd5d9"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "sources",
+      "file": "Vale-Forge-Damage-Compat-0.1.0-sources.jar",
+      "bytes": 3328,
+      "sha256": "1052ede382f122a1398f67e39d36281482af1ba10cc8ea0653d367a1e82d242d"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "runtime_mod",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "development_api",
+      "file": "Vale-Server-Bridge-0.2.0-dev.jar",
+      "bytes": 4647,
+      "sha256": "ad29b41db26396c14d1972b9220b649bc0aa6839f876dc1488ebccc8ea2c60ea"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "component_version": "source-adapters",
+      "role": "sources",
+      "file": "Vale-Server-Bridge-0.2.0-sources.jar",
+      "bytes": 2467,
+      "sha256": "36ff6fc8371992e863e8161ed608fb10628d535bc6ffbe527a5969ef9c450ed7"
+    },
+    {
+      "component": "server-bootstrap",
+      "component_version": "0.3.7",
+      "role": "bootstrap_library",
+      "file": "Vale-Server-Bootstrap-0.3.7.jar",
+      "bytes": 9025,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf"
+    },
+    {
+      "component": "server-bootstrap",
+      "component_version": "0.3.7",
+      "role": "sources",
+      "file": "Vale-Server-Bootstrap-0.3.7-sources.jar",
+      "bytes": 4436,
+      "sha256": "687c2f4ad044a3fb272af202b9240f1ed9c31caa32a9d592bb14c3dc5f0a41a4"
+    },
+    {
+      "component": "village-standards",
+      "component_version": "0.3.1",
+      "role": "runtime_mod",
+      "file": "Village-Standards-0.3.1.jar",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    {
+      "component": "village-standards",
+      "component_version": "0.3.1",
+      "role": "development_api",
+      "file": "Village-Standards-0.3.1-dev.jar",
+      "bytes": 36716,
+      "sha256": "87942aaf785c126fc28914920bb72a7d75373b97b4a83a9f4052fa21e154319b"
+    },
+    {
+      "component": "village-standards",
+      "component_version": "0.3.1",
+      "role": "sources",
+      "file": "Village-Standards-0.3.1-sources.jar",
+      "bytes": 23671,
+      "sha256": "45a6608278ec31d10eabbb817bc32728e470f5469c5050854246bac2aca35489"
+    }
+  ],
+  "immutable_receipts": {
+    "source_build": {
+      "path": "build/source-builds/20261113T211951Z-839fa5e2/report.json",
+      "bytes": 32982,
+      "sha256": "33df3e878588866bec95b8e8970655d3ed681457b11975aab77e58e885ac9732"
+    },
+    "native": {
+      "path": "build/native-checks/20261113T212712Z-415af95a/report.json",
+      "bytes": 11825,
+      "sha256": "79704422c5e655df53686822102c7461be3866573e94aee4f62a7fbece560818"
+    },
+    "core_component_log": {
+      "path": "build/source-builds/20261113T211951Z-839fa5e2/vale-orders.log",
+      "sha256": "1abd3af90fe7666f062e7a06d506d0344b25e64a0802f776a3f31b40e182f570"
+    }
+  },
+  "pure_checks": {
+    "weapon_presentation": {
+      "task": "verifyWeaponVfx",
+      "assertions": 2088,
+      "passed": true
+    },
+    "gate_content": {
+      "task": "verifyGateContent",
+      "assertions": 20,
+      "passed": true
+    },
+    "gate_authority_cadence": {
+      "task": "verifyGates",
+      "assertions": 30,
+      "passed": true
+    },
+    "gate_total_assertions": 50,
+    "hand_technique_presentation": {
+      "task": "verifyJutsu",
+      "assertions": 1002,
+      "passed": true
+    }
+  },
+  "native": {
+    "passed": true,
+    "assertions": 2305,
+    "minecraft": "1.12.2",
+    "forge": "14.23.5.2859",
+    "forge_sha256": "bd8314729d787e35164476d75afb337afb9783917e4f6fa1f77f049adba22f2d",
+    "runtime_removed": true,
+    "core_runtime_sha256": "c2db8c4d472aec9f38a3c1d7b44b4ac31c93dfd0bbfb6373908de1af8c049352",
+    "checks": [
+      "556 live registered items and current diagnostic category checks",
+      "Native result-slot pickup remains issued after expired preview timeout",
+      "Stale proof is recomputed by native container before actual crafting",
+      "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+      "Native Party Charter leave/rejoin preserves the existing expedition",
+      "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+      "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+      "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+      "Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport",
+      "Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup",
+      "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+      "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+      "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery",
+      "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+      "Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation",
+      "Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup",
+      "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+      "Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity",
+      "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+      "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"
+    ],
+    "private_fixture_inputs_sha256": "d32dd5a7422b0afdf97bd1f7dc68ec78e5e72b94e72bf83cfbcf7be9a64926ec",
+    "gate_fixture_source_sha256": "ae6340b2b7779835ec30915fdda5d97632d8c09b90611b21ed999a5f97c58b27",
+    "weapon_fixture_source_sha256": "6ba42f79e2c9014a2fab1000288bf09062a211a551e6ab76364d503a1172418c",
+    "private_qa_mods": [
+      {
+        "id": "valerecoverychecks",
+        "version": "0.3.13",
+        "file": "vale-recoverychecks-0.3.13.jar",
+        "sha256": "960ac9f904ba2b9f98c63ad24bd5d351e06febe75aa7cad6a026932315d0d2eb"
+      },
+      {
+        "id": "valestandardschecks",
+        "version": "0.3.1",
+        "file": "vale-standards-checks-0.3.1.jar",
+        "sha256": "e90185039a32e131ad2a4862c6a0ff4bb86904afb42119f1dc5bfefce9a1c24a"
+      }
+    ],
+    "route_scope": "Actual runtime actors and interactions on an isolated synthetic measured platform; not real-v17 gameplay"
+  },
+  "tooling_checks": {
+    "test_run_native_checks": {
+      "run": 16,
+      "skipped": 1,
+      "passed": true
+    },
+    "test_build_modules": {
+      "run": 12,
+      "passed": true
+    }
+  },
+  "implemented_authority": {
+    "skiff_boarding": "Only the matching live owner is admitted through native canFitPassenger; owner boarding/dismount and foreign refusal observed in native fixture",
+    "courier_interaction": "Native EntityInteract canceled for tagged friendly escort villagers; no vanilla trade GUI",
+    "content_identity": "Canonical semantic hash of authored gates, private sites and referenced dialogue binds active runs, actors and pending rewards"
+  },
+  "native_fixture_corrections": [
+    "Real World.updateEntityWithOptionalForce and required 32-block loaded neighborhood replace direct onUpdate age assumptions",
+    "Only already-dead synthetic owned actors detach through native cleanup; zero-health orphan corpses advance actual native death updates until isDead",
+    "Pinned baseline Rack 0.1.2 helper restores its 18-byte wire expectations; unreviewed 27-byte WIP expectations remain in the original checkout",
+    "Only WIP CombatHotbar/CombatAbility helper calls and guards are excluded from this cohort; baseline and strict WeaponPulse/Gate requirements remain"
+  ],
+  "versions_kept": {
+    "valeorders": "0.3.13",
+    "valeresidents": "0.2.1",
+    "fieldhud": "0.14.1",
+    "valerack": "0.1.2"
+  },
+  "concurrent_work_excluded": [
+    "FieldHUD0.15 changes",
+    "Rack0.1.3 combat hotbar and ability switching",
+    "Concurrent original-checkout CoreScrollEffects edits and unaccepted art/UI/assets changes"
+  ],
+  "real_gate_content": {
+    "authored_anchor_count": 28,
+    "measured_private_draft_available": true,
+    "measured_bindings_applied": false,
+    "actual_giver_uuid_bindings_applied": false,
+    "new_physical_marker_props_applied": false,
+    "default_gates_enabled": false
+  },
+  "graphical_client_tested": false,
+  "network_protocol_tested": false,
+  "saved_production_world_tested": false,
+  "magma_tested": false,
+  "hosted_acceptance": false,
+  "bisect_deployed": false,
+  "full_reference_pack_parity_claimed": false,
+  "notes": [
+    "27 weapons receive presentation carriers; that count does not assert27 new distinct mechanics.",
+    "Native and math checks do not establish camera readability, rendering quality or visible gameplay.",
+    "Real measured v17 geometry and proposed resident bindings remain a separate reviewed integration step.",
+    "Private worlds, player data, runtime JARs, authentication and raw native logs are not published in this receipt."
+  ]
+}

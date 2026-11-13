@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.12'
+version = '0.3.13'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -225,6 +225,9 @@ for (entry in [verifyAcademy: 'village.vale.AcademyChecks',
                verifyMelee: 'village.vale.melee.MeleeComboChecks',
                verifyNature: 'village.vale.nature.NatureRulesTest',
                verifyJutsu: 'village.vale.JutsuMathTest',
+               verifyWeaponVfx: 'village.vale.WeaponMathTest',
+               verifyGates: 'village.vale.expedition.GateRulesChecks',
+               verifyGateContent: 'village.vale.expedition.GateBookChecks',
                verifyJeiCatalog: 'village.vale.JeiCatalogChecks',
                verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',
                verifyScrollCasts: 'village.vale.arsenal.ScrollCastChecks039',
@@ -284,3 +287,8 @@ tasks.register('reobfRecoveryChecksJar', com.gtnewhorizons.retrofuturagradle.mcp
 }
 
 apply from: file('../../gradle/vale-mod-build.gradle')
+
+// Original authored gate data is packaged with the adapter, including its five dialogue files.
+tasks.named('processResources') { from('../../content/expeditions') { include '**/*.json'; into 'assets/valeorders/expeditions' } }
+
+tasks.named('verifyGateContent') { args file('../../content/expeditions/gates.json').absolutePath }

@@ -40,7 +40,7 @@ public final class Missions {
     private static final List<Death> deaths=new ArrayList<>();
     private Missions(){}
     private static void add(String k,String t,String type,int l,int goal,int xp,int merit){ALL.put(k,new Contract(k,t,type,l,goal,xp,merit));}
-    public static void queueDeath(LivingDeathEvent e){if(e.getSource().getTrueSource() instanceof EntityPlayerMP&&Targets.hostile(e.getEntityLiving()))deaths.add(new Death(e));}
+    public static void queueDeath(LivingDeathEvent e){if(village.vale.expedition.GateRuntime.managedActor(e.getEntityLiving()))return;if(e.getSource().getTrueSource() instanceof EntityPlayerMP&&Targets.hostile(e.getEntityLiving()))deaths.add(new Death(e));}
     public static void flushDeaths(MinecraftServer server){
         Iterator<Death> it=deaths.iterator();while(it.hasNext()){
             Death d=it.next();EntityLivingBase target=d.event.getEntityLiving();
@@ -52,6 +52,7 @@ public final class Missions {
         }
     }
     public static void credit(EntityPlayerMP p,EntityLivingBase target){
+        if(village.vale.expedition.GateRuntime.managedActor(target))return;
         if(target.getEntityData().getBoolean("valeDeathCredited"))return;target.getEntityData().setBoolean("valeDeathCredited",true);
         int before=PlayerState.level(p);PlayerState.addXp(p,target instanceof TrialKeeper||EncounterRewards.boss(target)?150:25);
         if(PlayerState.level(p)>before){p.sendMessage(new TextComponentString("Vale level "+PlayerState.level(p)+" reached."));Progression.unlock(p);}
@@ -65,6 +66,7 @@ public final class Missions {
     }
     public static boolean accept(EntityPlayerMP p,String key){
         Contract c=ALL.get(key);if(c==null)return Adventures.tell(p,"Unknown contract. /vale missions lists contracts.");NBTTagCompound s=PlayerState.data(p);
+        if(village.vale.expedition.GateRuntime.hasActive(p))return Adventures.tell(p,"Finish or abandon your gate expedition with its keeper before accepting a field contract.");
         if(c.type.startsWith("academy")&&!AcademyCampaign.basicsComplete(p))return Adventures.tell(p,"Finish the six academy basics before accepting this mission.");
         if(c.type.equals("academyCombat")&&!AcademyCampaign.state(p).getBoolean("dispatchCompleted"))return Adventures.tell(p,"Complete and claim your first dispatch delivery before the ambush mission.");
         if(c.type.equals("academyCombat")&&Adventures.now(p)<s.getLong("academyAmbushReady"))return Adventures.tell(p,"The ambush yard is preparing. Retry in a minute; abandoning cannot farm new raiders.");
@@ -101,13 +103,14 @@ public final class Missions {
         s.removeTag("mission");s.setInteger("missionProgress",0);s.setDouble("missionFraction",0);
         s.setInteger("merit",Math.min(1000000,s.getInteger("merit")+c.merit));s.setInteger("missionsCompleted",Math.min(1000000,s.getInteger("missionsCompleted")+1));
         NBTTagCompound cooldowns=s.getCompoundTag("missionCooldowns");cooldowns.setLong(c.key,Adventures.now(p)+(c.type.startsWith("boss")?12000:6000));s.setTag("missionCooldowns",cooldowns);
-        PlayerState.addXp(p,c.xp);if(c.type.equals("academyDelivery"))AcademyCampaign.state(p).setBoolean("dispatchCompleted",true);if(c.type.equals("lightningTrial"))LightningTrial.claimed(p);Adventures.save(p);
+        PlayerState.addXp(p,c.xp);if(c.type.equals("academyDelivery"))AcademyCampaign.state(p).setBoolean("dispatchCompleted",true);if(c.type.equals("lightningTrial"))LightningTrial.claimed(p);village.vale.expedition.GateRuntime.contractCompleted(p,c.key,receipt);Adventures.save(p);
         RewardLedger.get(p).issue(p,"travel_ration",2,receipt);Progression.unlock(p);return Adventures.tell(p,"Completed "+c.title+": "+c.xp+" XP, "+c.merit+" merit, two queued travel rations.",true);
     }
     public static void show(EntityPlayerMP p){
         if(p.dimension==0&&AcademyCampaign.course(p).active)AcademyCampaign.show(p);
         NBTTagCompound s=PlayerState.data(p);Contract c=ALL.get(s.getString("mission"));int completed=s.getInteger("missionsCompleted");
         p.sendMessage(new TextComponentString("Field journal | "+(completed>=12?"Keeper":completed>=6?"Warden":completed>=2?"Scout":"Initiate")+" | Merit "+s.getInteger("merit")+" | Contracts "+completed));
+        village.vale.expedition.GateRuntime.show(p);
         TextComponentString provisions=new TextComponentString("[Quartermaster] Spend earned merit on equipment and training tools.");provisions.getStyle().setColor(TextFormatting.AQUA).setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/vale provisions"));p.sendMessage(provisions);
         if(c!=null)p.sendMessage(new TextComponentString(c.title+" | "+(c.type.equals("supplies")?Math.min(c.goal,wheat(p)):s.getInteger("missionProgress"))+"/"+c.goal+" | /vale mission claim"));
         for(Contract row:ALL.values()){
