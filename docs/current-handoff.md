@@ -2,6 +2,18 @@
 
 Updated: 2026-11-13 UTC.
 
+## Complete Sonnet art inventory requested by owner
+
+The owner is preparing a full art pass in Sonnet, including existing icons, weapons, scrolls, chakra, armor and all other mod artwork. `collaboration/sonnet-art/START-HERE-SONNET.txt` is the brief; `ALL-ICON-NAMES.txt` is the compact complete name checklist. Five detailed lists and `asset-inventory.json` provide exact paths, sizes, source references and integration notes. `tools/build_icon_handoff.py` regenerates the package from current source and an explicitly supplied original-mod directory.
+
+Observed static scope: **592 current item-model slots** (566 base models plus 26 charged weapon strips), **74 proposed HUD/action/status/seal PNG slots**, 116 existing non-item PNGs, 33 block models and 136 encounter profiles. The current model categories include 81 weapon bases, 49 lesson scrolls, 49 technique icons, 72 armor icons, 76 focus garments and 79 outfit pieces. There are 291 shared-art model bindings, one vanilla paper binding, 295 dedicated texture bindings and five 3D inventory models. Dedicated existing images are included for redesign, not claimed missing.
+
+All **49 original reference JARs** were found in the existing client mods directory and SHA256-matched to `design/reference-mod-inventory.json`; their top-level `assets/` metadata contains **1,106 JSON item-model entries and 2,791 PNG entries**. Only names, dimensions, hashes and resource references are exported. These are model/resource counts, not unique runtime item counts or complete atlas-region coverage. Original and Vale inventories overlap; no unverified one-to-one mapping is claimed. No third-party artwork, JAR payloads, world/player data or private NPC assets were added.
+
+Validation passed for unique current IDs/output paths, all inventory counts, all 26 charged 32x64 strips and existing animation metadata, actor-kind totals, private-path checks and the eight-file ZIP's byte/CRC integrity. Local bundle: ignored `exports/Sonnet-Art-Handoff/Hidden-Block-Village-All-Art.zip`, SHA256 `ee935e1ced0521b9826f7d32d246dc02f8ff838ecc11da14e1c6cad05347218e`. No gameplay/build/runtime changes or new artwork were made. Concurrent gameplay/server changes were preserved and excluded from this checkpoint.
+
+Next art step: give Sonnet the brief and inventory, produce original PNG batches with a completion manifest, then review and wire shared models/HUD/status paths. Keep `spiral_palm` and `storm_lance` save/file keys for Rasengan and Chidori. Preserve worn-model UVs and 3D held geometry; inventory icons alone do not replace armor, actors or procedural VFX. The active gameplay sprint and its separate acceptance work remain ongoing.
+
 ## Core 0.3.12 hand-technique preview is live
 
 Fable/Claude's original hand VFX through `e837307e1d40b6a74733d1b303d7f48b8c8bcf0e` is integrated and hardened: six styles, lifecycle/cache/render restoration, irrevocable mode charge before cosmetic callbacks, native direct-contact bonus and deferred accepted aftermath. Rasengan and Chidori are display titles with stable `spiral_palm`/`storm_lance` save keys. Absorption-only hits, late final cancellation, later source overwrites, healing/direct academy reset and callback-rearmed carriers have actual regression coverage. All eleven source areas/36 artifacts PASS; 2,058 native assertions (354 new) and 1,002 VFX math checks pass. Read `docs/hand-techniques-0312.md` and `release/evidence/core0312-verification.json` for exact hashes/scopes.

@@ -1,0 +1,46 @@
+SONNET HANDOFF: COMPLETE HIDDEN BLOCK VILLAGE / VALE ART PASS
+
+OWNER REQUEST
+Create a cohesive original Naruto-inspired art set for EVERYTHING in the supplied mod project: weapons, lesson scrolls, technique icons, chakra and nature symbols, eyes, transformations, summoning, armor, outfits, food, medicines, tools, achievements, world utilities and HUD. Include existing assets in the redesign, not only absent PNGs.
+
+READ THESE ATTACHMENTS
+01-CURRENT-ITEM-ICONS.txt: exact current item names, IDs, output filenames, sizes and wiring notes.
+02-CHAKRA-JUTSU-HUD.txt: action/status/seal icons and proposed chakra/UI art.
+03-TEXTURES-MODELS-ACTORS.txt: existing non-icon PNGs, block model contracts and full encounter roster.
+04-REFERENCE-49-MOD-ITEMS.txt: every JSON item-model name found across the 49 pinned original mods.
+05-REFERENCE-49-MOD-TEXTURES.txt: all top-level assets/ PNG names and sizes across those mods.
+asset-inventory.json: exact machine-readable lists, provenance, model references and counts.
+
+VERIFIED STATIC COUNTS
+current_item_model_slots: 592
+current_base_item_models: 566
+charged_weapon_strips: 26
+hud_art_slots_requiring_wiring: 74
+existing_non_item_pngs: 116
+source_block_models: 33
+encounter_profiles: 136
+reference_jars_verified: 49
+reference_item_model_entries: 1106
+reference_png_entries: 2791
+
+HOW TO EXECUTE
+1. Read the current list and original reference index. Build a coverage manifest before drawing. Current and reference entries overlap; do not silently double-count them or invent one-to-one mappings.
+2. Preserve exact registry/save IDs and filenames. Public display names can be Naruto-facing when behavior supports them. Rasengan uses spiral_palm and Chidori uses storm_lance; deliver both their scroll_ and technique_ files using those stable keys.
+3. Produce ORIGINAL art: strong silhouettes, readable at a 16-pixel on-screen icon, consistent outline weight/palette/lighting, transparent RGBA PNG. No baked background, border, label text, watermark or contact-sheet grid inside individual icons.
+4. Default inventory export is 32x32. Editable 128x128 masters are welcome. Keep each existing charged weapon at 32x64: two 32x32 frames stacked vertically, existing animation frametime 5/interpolate false. A sheet preview is supplementary; deliver individual files too.
+5. Make every weapon visually identifiable. Lesson scroll and cast-technique pairs share a motif but have different silhouettes (physical scroll versus technique symbol). Nature families should be distinguishable by shape as well as color. Eyes, modes, summons and chakra effects should communicate their specific identity.
+6. Preserve existing armor/entity UVs and texture sizes. Inventory armor icons, worn armor textures, attachment atlases, normal/specular/emissive maps and 3D models are different jobs. Never replace a skin with a square icon. Avoid painting over third-party art; create fresh assets.
+7. Work in manageable named batches and mark every row pending/completed/needs-design/needs-wiring. Deliver real PNGs when image/filesystem tooling is available. If only text is available, provide executable generation code or per-asset art prompts and honestly mark unrendered files; do not claim files exist.
+8. For shared placeholders, create unique PNGs and supply a separate model-binding patch proposal. HUD and status paths in file 02 are proposed and require renderer changes. Preserve 3D held weapon geometry when adding GUI icons. Do not silently change gameplay, saves, live mod JARs or the owner's running client.
+9. Do not treat all 49 dependency mods as needing fresh logos. Their metadata is included for complete coverage; prioritize Naruto/gameplay assets and flag infrastructure/UI choices separately. Do not claim complete runtime coverage from this static index: metadata variants, GUI atlas regions, generated resources and private NPC skins can require another pass.
+10. Return an assets/ folder, editable masters if available, labeled previews, a per-file manifest with dimensions/status/source-ID and a ZIP. List all unresolved design mappings and wiring work. No third-party artwork/JARs/world/player data in the output bundle.
+
+START WITH THESE BATCHES
+A. All 49 technique motifs and their 49 lesson scrolls, including Rasengan and Chidori.
+B. 81 weapon base entries (54 ward weapons + 27 arsenal weapons), then 26 charged-state strips; Crescent Talons currently uses 3D geometry.
+C. Chakra/nature/action/status icons, seven eyes, four form tokens, three summon tokens, all codices.
+D. Armor, focus garments, outfits, tools, food, medicines, chronicles and world utilities.
+E. Worn textures/models, actors, world art, UI and the remaining unmapped original-pack content.
+
+SCOPE
+This package is an art specification and static inventory, not a new gameplay build or proof every reference mechanic has been implemented. Existing source work and the user's live sessions remain untouched.
