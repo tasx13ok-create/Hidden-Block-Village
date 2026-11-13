@@ -24,6 +24,7 @@ public final class ArsenalClient {
     public static void renderers() {
         RenderingRegistry.registerEntityRenderingHandler(ArsenalShot.class,manager->new Representation<ArsenalShot>(manager));
         RenderingRegistry.registerEntityRenderingHandler(ArsenalField.class,manager->new Representation<ArsenalField>(manager));
+        RenderingRegistry.registerEntityRenderingHandler(WeaponPulse.class,village.vale.client.WeaponVfx::new);
     }
     @SubscribeEvent public static void models(ModelRegistryEvent event) {
         for(ArsenalBlade blade:Arsenal.items().values())ModelLoader.setCustomModelResourceLocation(blade,0,
@@ -44,6 +45,8 @@ public final class ArsenalClient {
                 bindEntityTexture(entity);
                 Minecraft.getMinecraft().getRenderItem().renderItem(new ItemStack(item),ItemCameraTransforms.TransformType.GROUND);
             } finally {GlStateManager.popMatrix();}
+            if(entity instanceof ArsenalShot)village.vale.client.WeaponVfx.shot((ArsenalShot)entity,x,y,z,partial,renderManager);
+            else if(entity instanceof ArsenalField)village.vale.client.WeaponVfx.field((ArsenalField)entity,x,y,z,partial,renderManager);
         }
     }
 }

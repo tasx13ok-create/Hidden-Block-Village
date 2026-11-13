@@ -45,6 +45,8 @@ public final class Arsenal {
                 "arsenal_shot",100,mod,64,2,true);
         EntityRegistry.registerModEntity(new ResourceLocation("valeorders","arsenal_field"),ArsenalField.class,
                 "arsenal_field",101,mod,64,5,false);
+        EntityRegistry.registerModEntity(new ResourceLocation("valeorders","weapon_pulse"),WeaponPulse.class,
+                "weapon_pulse",122,mod,64,2,false);
     }
     @SideOnly(Side.CLIENT) public static void registerRenderers() { ArsenalClient.renderers(); }
 }

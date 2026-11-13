@@ -141,7 +141,7 @@ public final class ArsenalLogic {
                     used=true;int count=0;
                     for(EntityLivingBase next:near(p,target.getPositionVector(),3,4)) {
                         if(next==target||count>=2)continue;
-                        if(hit(p,next,4)) {line(p,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0),EnumParticleTypes.CRIT_MAGIC);count++;}
+                        if(hit(p,next,4)) {line(p,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0),EnumParticleTypes.CRIT_MAGIC);WeaponPulse.arc(p,spec,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0));count++;}
                     }
                 }
                 break;
@@ -175,7 +175,7 @@ public final class ArsenalLogic {
                     }
                 }
         }
-        if(used) {commit(p,stack,spec);chargeCue(p,spec,40);}
+        if(used) {commit(p,stack,spec);chargeCue(p,spec,40);WeaponPulse.cast(p,spec,power);}
         else tell(p,"No permitted effect: check aim, range, ground or your active field limit.");
         } finally {
             state(p).removeTag("busy");
@@ -323,6 +323,8 @@ public final class ArsenalLogic {
                 ||(swing.damage!=null&&swing.damage.isCanceled())||!(target.getHealth()+target.getAbsorptionAmount()<swing.before))return;
         if(swing.spec.role==ArsenalSpec.Role.TALONS)ClawCombat.confirmedHit(p,stack,target);
         if(swing.spec.role==ArsenalSpec.Role.RESTORE)stack.setItemDamage(Math.max(0,stack.getItemDamage()-2));
+        boolean sweeping=swing.spec.role==ArsenalSpec.Role.SWEEP&&state(p).getLong("sweepUntil")>=ArsenalAccess.now(p);
+        WeaponPulse.swing(p,swing.spec,sweeping);
         if(swing.spec.role==ArsenalSpec.Role.SWEEP&&state(p).getLong("sweepUntil")>=ArsenalAccess.now(p)
                 &&state(p).getLong("sweepNext")<=ArsenalAccess.now(p)) {
             state(p).setLong("sweepNext",ArsenalAccess.now(p)+16);
