@@ -167,7 +167,7 @@ public final class AcademyCampaign {
         }
         if(!"academy_ambush".equals(PlayerState.data(p).getString("mission")))removeAmbush(p);
         EntityIronGolem dummy=target(p);if(dummy!=null){
-            dummy.extinguish();dummy.setHealth(dummy.getMaxHealth());
+            village.vale.arsenal.ScrollEvents.beforeHealthReset(dummy);dummy.extinguish();dummy.setHealth(dummy.getMaxHealth());
             if(c.near(p,0,8,9))s.setLong("targetSeen",now);
             if(now-s.getLong("targetSeen")>600){removeTarget(p);tell(p,"Your unused practice construct was cleared. Ask Aki to prepare another.");return;}
             if(stage!=3&&stage!=4){removeTarget(p);}

@@ -229,6 +229,23 @@ class NativeOrchestrationTests(unittest.TestCase):
                 altered["checks"].remove(missing)
                 native.validate_native_result(altered, expected, log)
 
+    def test_core0312_requires_hand_technique_native_result(self):
+        expected = {"valeorders": {"version": "0.3.12", "file": "core.jar", "sha256": "a" * 64}}
+        checks = list(native.REQUIRED_CHECKS) + [
+            "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+            "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+            "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+            "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 1704,
+                  "checks": checks, "minecraft_version": "1.12.2", "forge_version": native.FORGE_VERSION,
+                  "loaded_fixture_mods": expected, "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0312.log"
+        log.write_text(native.PASS_MARKER + " 1704 assertions\n", encoding="utf-8")
+        with self.assertRaisesRegex(native.NativeError, "0.3.12 hand-technique"):
+            native.validate_native_result(result, expected, log)
+        result["checks"].append("Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup")
+        native.validate_native_result(result, expected, log)
+
     def test_nonzero_process_exit_cannot_pass(self):
         steps = []
         with contextlib.redirect_stdout(io.StringIO()), self.assertRaisesRegex(native.NativeError, "exited with status 7"):

@@ -58,9 +58,11 @@ public final class Scrolls {
         item.setRegistryName(new ResourceLocation("valeorders",key));item.setTranslationKey("valeorders."+key);item.setMaxStackSize(1);
         Gear.ITEMS.put(key,item);event.getRegistry().register(item);MODELS.add(item);
     }
-    public static void registerEntities(Object mod) { net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity(new ResourceLocation("valeorders","scroll_actor"),ScrollActor.class,"vale_scroll_actor",120,mod,64,2,true); }
+    public static void registerEntities(Object mod) { net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity(new ResourceLocation("valeorders","scroll_actor"),ScrollActor.class,"vale_scroll_actor",120,mod,64,2,true);
+        net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity(new ResourceLocation("valeorders","hand_technique"),HandTechnique.class,"vale_hand_technique",121,mod,64,1,false); }
     @SideOnly(Side.CLIENT) public static void registerRenderers() {
         ScrollActor.registerRenderer();
+        net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(HandTechnique.class,village.vale.client.JutsuVfx::new);
         AbilityCarriers036.registerRenderers();
         for(Item item:MODELS)net.minecraftforge.client.model.ModelLoader.setCustomModelResourceLocation(item,0,new net.minecraft.client.renderer.block.model.ModelResourceLocation(item.getRegistryName(),"inventory"));
     }

@@ -159,7 +159,7 @@ def load_build_inputs(report_path, root=ROOT):
         require(api["version"] == production["version"] and
                 assembly.jar_mods(api["path"]) == {production["mod_id"]: production["version"]},
                 "Development API and production mod versions differ: " + module)
-    require(apis["vale-orders"]["version"] in ("0.3.9", "0.3.10", "0.3.11"), "This native fixture requires Core 0.3.9, 0.3.10 or 0.3.11")
+    require(apis["vale-orders"]["version"] in ("0.3.9", "0.3.10", "0.3.11", "0.3.12"), "This native fixture requires Core 0.3.9 through 0.3.12")
     require(apis["village-standards"]["version"] == "0.3.1", "This native fixture requires Standards 0.3.1")
     prepared = report.get("prepared_minecraft_api", {})
     api = builds.prepared_api(pack.no_links(Path(prepared["path"])))
@@ -262,11 +262,13 @@ def verify_private_jar(path, module, source_dir, mod_id, version, root):
         for name in ("ScrollCastNativeChecks039", "ReedEscapeNativeChecks039"):
             require("village/vale/arsenal/" + name + ".class" in classes,
                     "The new Core 0.3.9 native callback checks are missing: " + name)
-        if version in ("0.3.10", "0.3.11"):
+        if version in ("0.3.10", "0.3.11", "0.3.12"):
             require("village/vale/AcademyNativeChecks.class" in classes, "Core 0.3.10 academy fixture class is missing")
-        if version == "0.3.11":
+        if version in ("0.3.11", "0.3.12"):
             for helper in ("village/vale/LightningNativeChecks.class", "village/vale/nature/NatureNativeChecks.class", "village/vale/melee/MeleeNativeChecks.class"):
                 require(helper in classes, "Core 0.3.11 gameplay fixture class missing: " + helper)
+        if version == "0.3.12":
+            require("village/vale/arsenal/HandTechniqueNativeChecks.class" in classes, "Core 0.3.12 hand-technique fixture class is missing")
     return {"mod_id": mod_id, "version": version, "file": path.name, "path": path, **pack.hash_file(path)}
 
 
@@ -343,14 +345,16 @@ def validate_native_result(value, expected, log):
     require(type(value.get("assertions")) is int and value["assertions"] > 0, "Native fixture reported no assertions")
     require(isinstance(value.get("checks"), list) and all(check in value["checks"] for check in REQUIRED_CHECKS),
             "Core 0.3.9 scroll and Reed Escape callback checks did not complete")
-    if expected["valeorders"]["version"] in ("0.3.10", "0.3.11"):
+    if expected["valeorders"]["version"] in ("0.3.10", "0.3.11", "0.3.12"):
         require("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect" in value["checks"],
                 "Core 0.3.10 academy acceptance did not complete")
-    if expected["valeorders"]["version"] == "0.3.11":
+    if expected["valeorders"]["version"] in ("0.3.11", "0.3.12"):
         for check in ("Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
                       "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
                       "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"):
             require(check in value["checks"], "Core 0.3.11 acceptance did not complete: " + check)
+    if expected["valeorders"]["version"] == "0.3.12":
+        require("Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup" in value["checks"], "Core 0.3.12 hand-technique acceptance did not complete")
     require(value.get("minecraft_version") == "1.12.2" and value.get("forge_version") == FORGE_VERSION,
             "Native result names a different Minecraft/Forge runtime")
     require(value.get("loaded_fixture_mods") == expected, "Loaded native mod names, versions, or hashes differ from the exact staged roster")

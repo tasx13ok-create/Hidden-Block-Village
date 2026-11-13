@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.11'
+version = '0.3.12'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -224,6 +224,7 @@ tasks.named('check') { dependsOn tasks.named('verifyGameplayRecovery') }
 for (entry in [verifyAcademy: 'village.vale.AcademyChecks',
                verifyMelee: 'village.vale.melee.MeleeComboChecks',
                verifyNature: 'village.vale.nature.NatureRulesTest',
+               verifyJutsu: 'village.vale.JutsuMathTest',
                verifyJeiCatalog: 'village.vale.JeiCatalogChecks',
                verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',
                verifyScrollCasts: 'village.vale.arsenal.ScrollCastChecks039',
