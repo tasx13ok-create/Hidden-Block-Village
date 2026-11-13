@@ -1,5 +1,15 @@
 # Current project handoff
 
+## Full014 world/client observation;015 correction underway
+
+Core0.3.14 source/native and both complete Claude v3 art ZIPs are VERIFIED on GitHub main `6193483a2dd1356ddbe5d0ba188f8898eece26aa` (tree19c9216393badf12a2d0fcabbbd29215fd112459), with2,739 native assertions. The actual54-JAR Magma preflight and two copied-v17 world boots/save/exit passed. Matching58-JAR client joined, BSLworld0 programs compiled and its shaded world/HUD were visually observed. Read `release/evidence/everything0314-client-observation-20261113.json` for exact boundaries.
+
+The first inventory input timed out. Two immediate Java8 thread dumps proved a persistent lock chain: client Keyboard.isKeyDown waits on the LWJGL monitor held by the worker opening InventoryTabFactions through Essential.WindowTitleManager's native title update. The0.1.1 adapter handles Quests only; its marker loaded correctly. Factions is another actual off-thread path. Only the NEW hungclient23404 was stopped after evidence; server25586 and other previews remain preserved. No inventory/rebind/Dodge/shader-FPS acceptance is claimed. Extend the narrowly pinned whole-Runnable adapter for Factions and audit sister tabs, rather than disabling those menus.
+
+Next isolated source is `C:/Users/Steal/.codex/worktrees/vale-worn-armor/Hidden-Block-Village`, base6193483, Core0.3.15. Its original worn-UV implementation currently contains173PNG/editableSVG masters covering191 equipped pieces, exactnativeUV templates and656 offline model views;36 existing custom-mesh pieces remain unchanged. Resource/reconstruction checks passed, actual Minecraft worn rendering pending. Internal worker is wiring the actual-getter native helper; compatibility worker owns client-lifecycle0.1.2 +Factions fix. Wait for both freezes before building. Keep accepted014 source/artifacts unchanged.
+
+A private client-only reference art resource pack now safely overrides724 reference model states while retaining382 complex/dependent contracts.42 mapper tests pass; original49 JARs were byte-preserved. Public mapper/evidence documents coverage. Its private ZIP includes observed third-party model transforms and MUST NOT be published. Fullsource ownerartZIPs are public; inventory icons still do not satisfy wornUV work. All256file08referenceworn paths remain tracked as a separate obligation.
+
 ## Everything integration and worn-armor scope (latest)
 
 The owner supplied Claude v3 icons and 32px Blockbench sources. Complete original ZIPs and all 3,559 member identities are verified on GitHub WIP branch `codex/everything-0314`, commit `a0f9e903171b08ce52c404c8724166ba63f0f540`, preserving the separate combat-hotbar source history as a parent. That earlier integration snapshot remains preserved. The following Core0.3.14 source/native cohort is now verified; full-pack graphical and hosted acceptance remain separate. See `docs/everything-0314-integration.md` and `artwork/claude-v3/README.md`.

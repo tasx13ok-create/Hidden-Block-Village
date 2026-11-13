@@ -1,0 +1,460 @@
+{
+  "schema": 1,
+  "scope": "STATIC_PRIVATE_REFERENCE_FLAT_ICON_RESOURCE_PACK_NOT_GAMEPLAY_OR_GUI_ACCEPTANCE",
+  "created_utc_date": "2026-11-13",
+  "game_launched_by_mapper": false,
+  "frozen_production_modules_changed": false,
+  "mapping": {
+    "reference_jars_verified": 49,
+    "reference_model_rows": 1106,
+    "applied_models": 724,
+    "skipped_models": 382,
+    "dispositions": {
+      "animated_texture_retained": 1,
+      "applied": 724,
+      "block_parent": 46,
+      "current_project_model_preserved": 9,
+      "custom_builtin_renderer": 28,
+      "custom_model_contract": 2,
+      "explicit_or_inherited_3d_geometry": 255,
+      "invalid_model_json": 1,
+      "missing_source_resource": 2,
+      "multiple_or_missing_sprite_layers": 20,
+      "oversized_source_resource": 11,
+      "shared_parent_or_world_model_retained": 7
+    },
+    "applied_unique_rgba": 284,
+    "equipment_scope": {
+      "raw_model_states": 685,
+      "excluding_infrastructure": 673,
+      "claimed_base_equipment_601": "classification-dependent claim; not a runtime registry count"
+    },
+    "new_texture_namespace": "vale_reference_art",
+    "original_jars_and_textures_unchanged": true,
+    "custom_geometry_worn_entity_block_assets_replaced": false,
+    "model_state_changed_only_at_layer0": true
+  },
+  "equipment_raw_state_coverage": {
+    "applied": 538,
+    "skipped": 147
+  },
+  "equipment_count_scope": "685 raw model-state rows minus12 infrastructure reproduces673;601 authored base-form classification claim is distinct from model-state and runtime registry counts. No contradictory base-item count inferred.",
+  "named_catalogue": {
+    "current_item_model_slots": 592,
+    "proposed_hud_slots": 74,
+    "reference_model_slots": 1106,
+    "total_named_slots": 1772,
+    "not_unique_runtime_items": true,
+    "all1772_rendered_claim": false
+  },
+  "pack": {
+    "file": "Vale-Reference-Flat-Icons-v3.zip",
+    "bytes": 828165,
+    "sha256": "ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e",
+    "entries": 1449
+  },
+  "private_coverage_report": {
+    "file": "coverage.json",
+    "sha256": "8b94d80e35527d208181308930c0dfab86a369b91fd7dce7608310dbc6c959f5",
+    "bytes": 1280002
+  },
+  "private_output_relative_path": "private/reference-art-draft/final-20261113",
+  "inputs": [
+    {
+      "file": "collaboration/sonnet-art/asset-inventory.json",
+      "sha256": "09bfa84802f884a4df78d77f953c929d2063b35253b84cf4ef6cac09ec38d919"
+    },
+    {
+      "file": "collaboration/sonnet-art/equipment-inventory.json",
+      "sha256": "eb6ab2cda47b84b50ee01a353272d0e25940cb85e04fd0e426c48bc9d84dea53"
+    },
+    {
+      "file": "artwork/claude-v3/naruto_icons_v3.zip",
+      "sha256": "6a45fdcffff3336eb0833da7d914a499a761755f1f0569cc2b7977acda1715c7"
+    },
+    {
+      "file": "artwork/claude-v3/provenance-manifest.json",
+      "sha256": "6be25550258d2347063f997d0b9599570331d5675c288c03af390049098e674a"
+    },
+    {
+      "file": "tools/reference_item_art.py",
+      "sha256": "bdc1d73f0cbf7c97d3352ad4c01b94666f714c0be7ba1faa906ca7f1a99156ff"
+    },
+    {
+      "file": "tests/test_reference_item_art.py",
+      "sha256": "070ccdc03f60036d7dc9e1baefa4bfcc5ba72c628e65d5fc0136e01ed8edc281"
+    }
+  ],
+  "source_jars": [
+    {
+      "file": "!mixinbooter-11.18.jar",
+      "sha256": "ac6779132ca4df1a4f6319f3edc605c9d9b6c8ff6889e851472e2b41ecce273e",
+      "bytes": 2451781
+    },
+    {
+      "file": "[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "sha256": "4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808",
+      "bytes": 285416
+    },
+    {
+      "file": "ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "bytes": 2568601
+    },
+    {
+      "file": "ahznbstweaks-2.0.jar",
+      "sha256": "06d387874f26ae0566e6f881af313f6b13796e8b07b1795d8277e0e8c6b26243",
+      "bytes": 74214
+    },
+    {
+      "file": "almirioncore-1.1.jar",
+      "sha256": "50e10d3542e12fa949d22ba257779d1601dfc49c58e005c8e029fe84b2f48e42",
+      "bytes": 2924
+    },
+    {
+      "file": "AnbuBingoBook - 1.6.1.jar",
+      "sha256": "50448009137a6fe29857c4cd33c841db8ecf67ff85fbf6c48e08541f2cd329a4",
+      "bytes": 307996
+    },
+    {
+      "file": "AppleSkin-mc1.12-1.0.14.jar",
+      "sha256": "4bbd37edecff0b420ab0eea166b5d7b4b41a9870bfb8647bf243140dc57f101e",
+      "bytes": 33683
+    },
+    {
+      "file": "Armourers-Workshop-1.12.2-0.51.0.jar",
+      "sha256": "0abc8622e3a40c822a603e54065dbd0670c77bf73993487da8ef8c209e5afbe0",
+      "bytes": 2678747
+    },
+    {
+      "file": "Baryon Expansion_beta2.jar",
+      "sha256": "58f311849ad3d26e3c82115550d912633577e95891e75067d24df983465a8ee1",
+      "bytes": 887254
+    },
+    {
+      "file": "biju_unleashing-1.7.3.jar",
+      "sha256": "40c8f324e30f4305b1da35d4d31206643749ce8f6b04168bd8c6794df0c0e984",
+      "bytes": 42902905
+    },
+    {
+      "file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "bytes": 1803175
+    },
+    {
+      "file": "Clumps-3.1.2.jar",
+      "sha256": "f3ce670e0087f4c6b770fd05ae5c3dfd8462f74c62397932ea72954d1c6c8df4",
+      "bytes": 13792
+    },
+    {
+      "file": "colorfulhealthbar-0.0.4a.jar",
+      "sha256": "a80cf48a1e29b22f20d250b36de663e75346d44e7a3c16f3c133aac1b9828824",
+      "bytes": 16447
+    },
+    {
+      "file": "Controlling-3.0.12.4.jar",
+      "sha256": "f5edd4793f96cd5a6f31aecbd3030093b367a51afba5d6f7281756d0f9c03786",
+      "bytes": 34383
+    },
+    {
+      "file": "CosmeticArmorReworked-1.12.2-v5a.jar",
+      "sha256": "a1dac96cf2168015255f4cad8748e8b969e99bd0919e9cb78deb9198ee9753e8",
+      "bytes": 72111
+    },
+    {
+      "file": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "sha256": "2759356b95ffb6a88c14997ff508dfe30f66abaa8e2d8029e18e02dcb57bc8cc",
+      "bytes": 9911871
+    },
+    {
+      "file": "Essential_1-5-1_forge_1-12-2.jar",
+      "sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e",
+      "bytes": 55768993
+    },
+    {
+      "file": "Fluidlogged-API-v3.3.3-mc1.12.2.jar",
+      "sha256": "2f9ae6c9e534c8c33fe2c87ea64c06553bd1ec74ce5cac16e793b983ea2b3b3f",
+      "bytes": 808179
+    },
+    {
+      "file": "FTBLib-5.4.7.2.jar",
+      "sha256": "623fc574f0227fec6cc9e26c3879a605f9b4499c0078ff085291901a5495a6ac",
+      "bytes": 934370
+    },
+    {
+      "file": "FTBQuests-1202.9.0.15.jar",
+      "sha256": "3f6a674ac0d8678fd0b127e6930199f32848fe47d1689e44c72976bfb24c7385",
+      "bytes": 1091954
+    },
+    {
+      "file": "geckolib-forge-1.12.2-3.0.31.jar",
+      "sha256": "b00bc9de4e3e94cea0455f8d58b295c1464272135e842bdf3170c2c955c871a5",
+      "bytes": 3702893
+    },
+    {
+      "file": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "sha256": "9a9772dd99397c17ce2bd2acdafc098ead8fa8202c2998ce199555410c41d215",
+      "bytes": 1056024
+    },
+    {
+      "file": "ItemFilters-1.0.4.2.jar",
+      "sha256": "cdffbb810f75db50afce9681374f0604e4c1ed2dcfe768cff5b4e17d5384166b",
+      "bytes": 78935
+    },
+    {
+      "file": "jei_1.12.2-4.22.0.1034.jar",
+      "sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2",
+      "bytes": 715518
+    },
+    {
+      "file": "JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "sha256": "9ea4d7df19c0a53880aae5e745ef1e886854bea5c533878688587a5e3fdaebdd",
+      "bytes": 222270
+    },
+    {
+      "file": "JutsuAddon v1.0.jar",
+      "sha256": "badda88ba357c0fe78e069e2f6b57566ecdaa7718b03c7452902f3172d3338e0",
+      "bytes": 216559
+    },
+    {
+      "file": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "bytes": 3357299
+    },
+    {
+      "file": "Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "sha256": "c1078a0897359bf09a58c95ff367f4d77c3eef7e9802f468789a43453cce6948",
+      "bytes": 2093107
+    },
+    {
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "bytes": 29778441
+    },
+    {
+      "file": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "sha256": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05",
+      "bytes": 2843222
+    },
+    {
+      "file": "NarutoModAddon-0.3.1- V1.3.jar",
+      "sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+      "bytes": 1903408
+    },
+    {
+      "file": "nmee-0.2.2-beta.jar",
+      "sha256": "efcf8e1a85a7bb94c72f43e36692f329a6ce990f7f9782fcbd4686b860851f13",
+      "bytes": 10113
+    },
+    {
+      "file": "OptiFine_1.12.2_HD_U_G5.jar",
+      "sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e",
+      "bytes": 2669107
+    },
+    {
+      "file": "Patchouli-1.0-23.6.jar",
+      "sha256": "8fcceac75c71e0d041db734111200205d03431b7e8646f8209cf2c4de9afef7b",
+      "bytes": 472464
+    },
+    {
+      "file": "RinneganAddon v1.3.jar",
+      "sha256": "bcb143c7dc6ee501774be39d66ce294b6135cbf555e9130205db814411a5f9c0",
+      "bytes": 412281
+    },
+    {
+      "file": "SealsAddon v1.0.jar",
+      "sha256": "9bdefc7b778148736ab11b9fadfefd09e01c3bfc9860f682c1eec6fff7354cee",
+      "bytes": 177819
+    },
+    {
+      "file": "SharinganAddon v1.0.jar",
+      "sha256": "fe7682724edeb5898a0fb65f624a12f3d9990bca0fa9ba625c9d1ad5d2dad8f3",
+      "bytes": 1054445
+    },
+    {
+      "file": "shinobiculinary-1.2.0.jar",
+      "sha256": "3b212998b35451ed76b96e68548167a0e59a4e5a8023b8896aa0ed90b697b637",
+      "bytes": 1423453
+    },
+    {
+      "file": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "bytes": 24349345
+    },
+    {
+      "file": "stg-1.12.2-1.2.3.jar",
+      "sha256": "0ab0cb80822dd58ed83393edff83ac0497e1f12cbf4ceb9dacd963e2a949d2cb",
+      "bytes": 24024
+    },
+    {
+      "file": "supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "sha256": "9f15755020a966023eae8e9d1446441d175a88c09b1e458a47fcb3024d5e57f8",
+      "bytes": 204829
+    },
+    {
+      "file": "TravelersBackpack-1.12.2-1.0.35.jar",
+      "sha256": "39a7914b5a55b7d5ad5d1192c38a66b926895317e0426a359a529de2f8028581",
+      "bytes": 397467
+    },
+    {
+      "file": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+      "bytes": 1766394
+    },
+    {
+      "file": "warpmod-1.12.2-1.0.1.jar",
+      "sha256": "f582a6ea518e3bbde565c181a5588f0248a63703647b63a9406d075dbc304f4a",
+      "bytes": 413872
+    },
+    {
+      "file": "Waystones_1.12.2-4.1.0.jar",
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15",
+      "bytes": 178994
+    },
+    {
+      "file": "worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75",
+      "bytes": 1479535
+    },
+    {
+      "file": "xaerolib-forge-1.12.2-1.7.3.jar",
+      "sha256": "6c0cab56a6f56e94eff537f0fdfa6f6f69b9d651caf221e44a837027a6d9b1c0",
+      "bytes": 617566
+    },
+    {
+      "file": "xaerominimap-forge-1.12.2-26.6.0.jar",
+      "sha256": "efb30f0904bb8e3744bb62f77ad4f7c9e7613e063aa9900498cbb5a6e1b6d882",
+      "bytes": 2030024
+    },
+    {
+      "file": "xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "sha256": "a00a7d95dc8d19427d989d43968fea0d645b508fdc15bd568389e6b18bd17b6b",
+      "bytes": 943127
+    },
+    {
+      "file": "minecraft-1.12.2-client",
+      "sha256": "8ada07da5ee77dad3527bd7278fbd05ee1fc8a597813b216a871a2d7d64cc64f",
+      "bytes": 10180113
+    }
+  ],
+  "per_jar_state_coverage": {
+    "ahznb weapons plus 1.2.1.jar": {
+      "applied": 3,
+      "skipped": 1
+    },
+    "AnbuBingoBook - 1.6.1.jar": {
+      "applied": 2,
+      "skipped": 0
+    },
+    "Armourers-Workshop-1.12.2-0.51.0.jar": {
+      "applied": 31,
+      "skipped": 10
+    },
+    "Baryon Expansion_beta2.jar": {
+      "applied": 8,
+      "skipped": 0
+    },
+    "biju_unleashing-1.7.3.jar": {
+      "applied": 5,
+      "skipped": 0
+    },
+    "BorutoMod Addon byAnimeSupremeTeam v1.0.jar": {
+      "applied": 14,
+      "skipped": 7
+    },
+    "CustomNPCs_1.12.2-(05Jul20).jar": {
+      "applied": 11,
+      "skipped": 9
+    },
+    "FTBQuests-1202.9.0.15.jar": {
+      "applied": 2,
+      "skipped": 1
+    },
+    "geckolib-forge-1.12.2-3.0.31.jar": {
+      "applied": 4,
+      "skipped": 5
+    },
+    "HiddenVillage-BijuuArmor-0.16.2-rc1.jar": {
+      "applied": 72,
+      "skipped": 0
+    },
+    "ItemFilters-1.0.4.2.jar": {
+      "applied": 2,
+      "skipped": 0
+    },
+    "kabutoaddon 5.5.8-beta.jar": {
+      "applied": 30,
+      "skipped": 12
+    },
+    "Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar": {
+      "applied": 0,
+      "skipped": 5
+    },
+    "NarutoMod-1.12.2-0.3.1.beta.jar": {
+      "applied": 95,
+      "skipped": 158
+    },
+    "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar": {
+      "applied": 38,
+      "skipped": 29
+    },
+    "NarutoModAddon-0.3.1- V1.3.jar": {
+      "applied": 14,
+      "skipped": 0
+    },
+    "Patchouli-1.0-23.6.jar": {
+      "applied": 7,
+      "skipped": 1
+    },
+    "RinneganAddon v1.3.jar": {
+      "applied": 2,
+      "skipped": 0
+    },
+    "SharinganAddon v1.0.jar": {
+      "applied": 2,
+      "skipped": 0
+    },
+    "shinobiculinary-1.2.0.jar": {
+      "applied": 9,
+      "skipped": 37
+    },
+    "SpringAddon7.0.jar": {
+      "applied": 9,
+      "skipped": 39
+    },
+    "TravelersBackpack-1.12.2-1.0.35.jar": {
+      "applied": 7,
+      "skipped": 1
+    },
+    "VariedCommodities_1.12.2-(31Mar23).jar": {
+      "applied": 353,
+      "skipped": 66
+    },
+    "Waystones_1.12.2-4.1.0.jar": {
+      "applied": 4,
+      "skipped": 1
+    }
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -p test_reference_item_art.py",
+    "passed": 42,
+    "synthetic_original_fixtures_only": true
+  },
+  "preservation_checks": [
+    "Exact49JAR hash pins before mapping and all source JAR hashes after mapping",
+    "ZIP CRC, member set, output bytes and exact/case-insensitive uniqueness",
+    "Original model values identical except textures.layer0; all original display,parent,predicate/override state retained",
+    "No original PNG overwritten; unique owned namespace texture per model/art identity",
+    "No blockstate/block/worn/entity resource paths written",
+    "Referenced parent/world models retained; malformed lenient dependency metadata scanned conservatively",
+    "New-empty output and original mods-directory output refusal"
+  ],
+  "remaining": [
+    "Actual copied-client resource reload and graphical acceptance",
+    "Unsupported3D/custom/multilayer/animated models retained",
+    "74 proposed HUD slots remain separate owner-hotbar integration work",
+    "Worn armor UV and entity artwork require their actual contracts",
+    "Item registry/model binding can differ from static catalogue; no all1772 runtime appearance claim"
+  ],
+  "distribution": "Private ZIP contains observed third-party model JSON transforms and must not be published; public original mapper/tests and metadata contain no third-party model/art/JAR payload."
+}

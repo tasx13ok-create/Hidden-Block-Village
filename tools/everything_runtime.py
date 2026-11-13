@@ -6,6 +6,7 @@ Private runtime distributions/worlds/receipts remain outside the repository.
 from pathlib import Path
 import argparse
 import json
+import subprocess
 
 from tools.server_intake.intake import pack, save
 from tools import everything_runtime_inputs as inputs
@@ -251,6 +252,48 @@ def assemble_client(root, frozen_root, build_report, native_report, pins, donor)
     return result
 
 
+def launch_client(root):
+    """Launch only the exact new reviewed client into its owned live local server."""
+    root = pack.no_links(root)
+    receipt = json.loads((root / 'PRIVATE-FULL-CLIENT-RECEIPT.json').read_text())
+    smoke.require(receipt['status'] == 'ASSEMBLED_NOT_LAUNCHED', 'Preserve a previous launch attempt; do not silently relaunch')
+    server, client = root / 'server', root / 'client'
+    live = json.loads((server / 'PRIVATE-LIVE-CONSOLE-SESSION.json').read_text())
+    smoke.require(live['status'] == 'RUNNING' and live['done'] and live['port'] == WORLD_PORT, 'Owned Everything server is not live/ready')
+    upgrade = json.loads((server / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text())
+    checked = validate_release_binding(server, upgrade)
+    smoke.require(receipt['source_snapshot_sha256'] == checked['source_snapshot_sha256'] and receipt['native_report'] == checked['native_report'], 'Graphical/server build binding differs')
+    smoke.require(len(list((client / 'mods').glob('*.jar'))) == 58, 'Graphical JAR count changed')
+    server_rows = {row['component']: row for row in upgrade['added']}
+    for row in receipt['mods']:
+        smoke.require(pack.hash_file(client / 'mods' / row['file']) == {k: row[k] for k in ('bytes', 'sha256')}, 'Graphical JAR changed')
+        if row.get('component') in inputs.SHARED:
+            smoke.require(row['sha256'] == server_rows[row['component']]['sha256'], 'Shared server/client component differs')
+    for field, file in (('options_after_sha256', 'options.txt'), ('profile_after_sha256', 'config/field-controls/profiles.json')):
+        smoke.require(pack.hash_file(client / file)['sha256'] == receipt['controls'][field], 'Transactional key profile changed')
+    from tools.everything_shader import safe_zip, BSL_NAME, BSL_SHA256
+    safe_zip(client / 'shaderpacks' / BSL_NAME, BSL_SHA256)
+    smoke.require('shaderPack=' + BSL_NAME in (client / 'optionsshaders.txt').read_text(), 'Requested private BSL pack is not selected')
+    smoke.require((client / 'config/CustomNpcs.cfg').read_text().count('InventoryGuiEnabled=true') == 1, 'New GUI patch inventory-tab setting differs')
+    recipe = json.loads((root / 'PRIVATE-CLIENT-LAUNCH-RECIPE.json').read_text())
+    graphical.check_external_inputs(recipe)
+    smoke.require(recipe['cwd'] == str(client) and recipe['argv'][recipe['argv'].index('--port') + 1] == str(WORLD_PORT), 'Launch destination changed')
+    log = root / 'client-console.log'
+    smoke.require(not log.exists(), 'Preserve earlier client logs')
+    with log.open('xb') as output:
+        process = subprocess.Popen(recipe['argv'], cwd=str(client), stdout=output, stderr=subprocess.STDOUT,
+                                   creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+    result = {'schema': 1, 'status': 'LAUNCHED_RUNTIME_ACCEPTANCE_PENDING', 'pid': process.pid,
+              'profile': str(root), 'server_port': WORLD_PORT, 'username': receipt['synthetic_name'],
+              'client_recipe': pack.hash_file(root / 'PRIVATE-CLIENT-LAUNCH-RECIPE.json'),
+              'full_client_receipt': pack.hash_file(root / 'PRIVATE-FULL-CLIENT-RECEIPT.json'),
+              'shader_selected': BSL_NAME, 'window_title': 'Pending native window observation',
+              'launched_utc': smoke.utc(), 'minecraft_process_invoked': True, 'network_joined': False,
+              'shader_compiled_in_game': False, 'manual_ui_or_dodge_acceptance': False}
+    save(root / 'PRIVATE-CLIENT-LAUNCH-OBSERVATION.json', result)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='action', required=True)
@@ -262,13 +305,17 @@ def main():
     copied = sub.add_parser('install-copied')
     for name in ('candidate', 'flat', 'recovery'):
         copied.add_argument('--' + name, type=Path, required=True)
+    launching = sub.add_parser('launch-client')
+    launching.add_argument('--root', type=Path, required=True)
     args = parser.parse_args()
     if args.action == 'stage-flat':
         pins = {key: getattr(args, key) for key in ('source_pin', 'build_pin', 'native_pin')}
         value = stage_flat(args.candidate, args.recovery, args.baseline, args.frozen_root, args.build_report, args.native_report, pins)
-    else:
+    elif args.action == 'install-copied':
         value = install_copied_runtime(args.candidate, args.flat, args.recovery)
-    print(json.dumps({'status': value['status'], 'port': value['port']}))
+    else:
+        value = launch_client(args.root)
+    print(json.dumps({key: value[key] for key in ('status', 'port', 'pid', 'server_port') if key in value}))
 
 
 if __name__ == '__main__':
