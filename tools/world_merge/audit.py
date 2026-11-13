@@ -371,6 +371,27 @@ class RouteGraph:
             if (climb[i] or swim[i] or climb[k] or swim[k]) and self.node[k]:
                 yield k
 
+    def weak_components(self):
+        """Node groups connected when every move is treated as two-way (union-find)."""
+        nodes = [m.start() for m in re.finditer(b'\x01', self.node)]
+        parent = {i: i for i in nodes}
+
+        def find(a):
+            while parent[a] != a:
+                parent[a] = parent[parent[a]]
+                a = parent[a]
+            return a
+        for i in nodes:
+            for j in self.neighbors(i):
+                if j in parent:
+                    ra, rb = find(i), find(j)
+                    if ra != rb:
+                        parent[ra] = rb
+        groups = {}
+        for i in nodes:
+            groups.setdefault(find(i), []).append(i)
+        return list(groups.values())
+
     def bfs(self, seeds, limit=None):
         seen = set()
         queue = deque()
@@ -449,22 +470,19 @@ def audit_routes(schem, entrances=None, targets=None, component_report=8):
             target_results.append({'pos': p, 'reachable': False, 'problem': 'not_a_route_node'})
         else:
             target_results.append({'pos': p, 'reachable': g.idx(*p) in reached})
-    # Isolated standable regions of meaningful size (possible stranded rooms).
+    # Stranded regions: weakly connected walk components (moves are one-way, e.g. drops) that
+    # contain no reached cell. Each region is counted once.
     islands = []
-    remaining = set(stand_cells) - reached
-    budget = 0
-    while remaining and len(islands) < 2000 and budget < 2_000_000:
-        start = remaining.pop()
-        comp = rg.bfs([start])
-        budget += len(comp)
-        remaining -= comp
-        stand_count = sum(1 for c in comp if rg.stand[c])
-        if stand_count >= 16:
-            xs = [g.xyz(c) for c in comp]
-            islands.append({'stand_cells': stand_count,
+    for comp in rg.weak_components():
+        if any(c in reached for c in comp):
+            continue
+        stand_cells_c = [c for c in comp if rg.stand[c]]
+        if len(stand_cells_c) >= 16:
+            xs = [g.xyz(c) for c in stand_cells_c]
+            islands.append({'stand_cells': len(stand_cells_c),
                             'bbox': [[min(p[a] for p in xs) for a in range(3)],
                                      [max(p[a] for p in xs) for a in range(3)]],
-                            'example': xs[0]})
+                            'example': xs[len(xs) // 2]})
     islands.sort(key=lambda c: -c['stand_cells'])
     reached_stand = sum(1 for i in reached if rg.stand[i])
     return {
