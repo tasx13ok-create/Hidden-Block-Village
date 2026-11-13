@@ -542,6 +542,40 @@ class AnchorTests(unittest.TestCase):
             self.assertIsNone(json.loads(src.read_text())['anchors']['gate']['local_pos'])
 
 
+class DoorwayTests(unittest.TestCase):
+    def test_bricked_doorway_is_proposed_minimally_and_fix_restores_route(self):
+        from tools.world_merge import doorways
+        s = house()
+        s.set_block(7, 1, 10, 95)      # the v17 defect: stained glass sealing the doorway
+        s.set_block(7, 2, 10, 95)
+        r = doorways.propose(s)
+        self.assertEqual(1, len(r['proposals']))
+        p = r['proposals'][0]
+        self.assertEqual([[6, 1, 6]], [list(c) for c in p['containers']])
+        self.assertEqual(2, p['cost'])
+        self.assertEqual({(7, 1, 10), (7, 2, 10)}, {tuple(e['pos']) for e in p['edits']})
+        sets = {tuple(e['pos']): (e['set']['block'], e['set']['data']) for e in p['edits']}
+        self.assertEqual((OAK_DOOR, 1), sets[(7, 1, 10)])    # walking south (+z) out of the room
+        self.assertEqual((OAK_DOOR, 8), sets[(7, 2, 10)])
+        for e in p['edits']:
+            self.assertEqual({'block': 95, 'data': 0}, e['expect'])
+            s.set_block(*e['pos'], block=e['set']['block'], data=e['set']['data'])
+        self.assertEqual(0, audit.audit_access(s)['door_orphan_halves']['count'])
+        routes, _, _ = audit.audit_routes(s, entrances=[(1, 1, 1)])
+        self.assertEqual(0, routes['unreachable_containers']['count'])
+
+    def test_tile_and_fluid_cells_are_never_cleared(self):
+        from tools.world_merge import doorways
+        s = house()
+        s.set_block(7, 1, 10, CHEST)
+        add_tile(s, 'minecraft:chest', 7, 1, 10)
+        s.set_block(7, 2, 10, STONE)
+        fill(s, (4, 1, 4), (4, 2, 10), STONE)  # keep other walls intact
+        r = doorways.propose(s, max_cost=2)
+        for prop in r['proposals']:
+            self.assertNotIn([7, 1, 10], [e['pos'] for e in prop['edits']])
+
+
 class NpcInventoryTests(unittest.TestCase):
     def test_nbt_json_dialect_and_metadata_only_report(self):
         from tools.world_merge import npcs

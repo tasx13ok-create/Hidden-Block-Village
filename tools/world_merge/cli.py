@@ -203,6 +203,12 @@ def build_parser():
     bt.add_argument('--output-dir', required=True)
     bt.add_argument('--replace-report', action='store_true')
     bt.set_defaults(func=cmd_batch)
+    dw = sub.add_parser('doorways', help='propose minimal door/opening edits for closed chest rooms (plan only)')
+    dw.add_argument('--input', required=True)
+    dw.add_argument('--output', help='write the PROPOSED edit plan here (use apply after review)')
+    dw.add_argument('--replace-report', action='store_true')
+    dw.add_argument('--no-doors', action='store_true', help='propose air openings instead of oak doors')
+    dw.set_defaults(func=cmd_doorways)
     ni = sub.add_parser('npc-inventory', help='metadata-only CustomNPCs intake report (nothing executed)')
     ni.add_argument('--world', required=True)
     ni.add_argument('--output')
@@ -253,6 +259,17 @@ def cmd_batch(args):
             'needs_review': report['needs_review']})
     _write_json(out / 'summary.json', summary, args.replace_report)
     _emit(argparse.Namespace(output=None), summary)
+    return 0
+
+
+def cmd_doorways(args):
+    from . import doorways
+    schem = Schematic.load(args.input)
+    result = doorways.propose(schem, door=not args.no_doors)
+    plan = doorways.plan(schem, result, sha256_file(args.input))
+    plan['proposals'] = [{k: v for k, v in p.items() if k != 'edits'} for p in result['proposals']]
+    plan['skipped'] = result['skipped']
+    _emit(args, plan)
     return 0
 
 
