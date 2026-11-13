@@ -1,6 +1,6 @@
 # Actual Magma baseline startup and restart — November 13, 2026
 
-The exact archived Magma JAR **started and cleanly restarted three separate candidates**: an original-roster flat baseline, a Vale Core 0.3.11 flat enhancement and a verified copy of the frozen v17 world. All six runs reached `Done`, saved chunks and exited `0` without forced termination. The copied-world result remains separate from matching-client gameplay and native visits to all five dungeon sites.
+The exact archived Magma JAR **passed eight completed boot/save/stop runs across four separate candidates**, including frozen v17 world copies with Core 0.3.11 and 0.3.12. The 0.3.12 server is now available on loopback25583 through a guarded console controller, and its matching full58 client is assembled and launched by root for handshake observation. No client-join or dungeon-visit result is inferred from assembly or startup.
 
 ## Observed runs
 
@@ -61,7 +61,7 @@ No runtime failure was hidden by replacing Magma or removing registry owners. Or
 
 ## Tools, tests and next step
 
-`tools/magma_smoke/` implements new-only staging, exact source/dependency checks, fixed local settings, Windows Java 8 checks and hidden bounded boot/stop observation. The original ten flat/enhanced fixtures passed at their checkpoint; the current suite has **15 passing fixtures**, including copied-world guards described below. They cover source preservation, registry-owner retention, original world/script/config omission, changed-input failure receipts, dependency pins/overwrite protection, network/world profile rejection, Java/memory limits and endpoint allowlisting. Unit tests do not execute a server; the runs in this document are separate real runtime evidence.
+`tools/magma_smoke/` implements new-only staging, exact source/dependency checks, fixed local settings, Windows Java 8 checks and hidden bounded boot/stop observation. Earlier checkpoints had ten flat/enhanced and15 copied-world fixtures; the current suite has **23 passing fixtures**, including release-pin, graphical-recipe and console-command guards. Unit tests do not execute a server; the runs in this document are separate real runtime evidence.
 
 The next gate is a **new copied-world candidate**, not modifying or relaunching the verified recovery in place. Preserve all original registry owners, select the intended config/loose-class profile explicitly, retain private NPC/quest/assets dependencies and resolve the known recipe/hook/Fluidlogged issues where their behavior matters. Then perform first copied-world boot, missing-mapping checks, clean stop/restart and matching normal-client acceptance. Vale-enhanced artifacts need their own exact assembly manifest and gameplay evidence. Neither this flat-world smoke nor its clean restart authorizes production migration or hosted deployment claims.
 
@@ -106,3 +106,47 @@ After both boots, all **13 copied player-related files** remain byte-identical. 
 The distinct copied-world guard requires its FROZEN receipt, exact verified copy, complete script review, zero missing registry names, loopback/offline/query/RCON settings, the nine pinned artifacts and reviewed global NPC data. It verifies the initial or last clean world snapshot before each boot. Failed boots remain preserved and cannot be silently resumed through a mapping discard. Current **15 synthetic fixtures pass**, including inline scripted-tile detection without execution, pending-world rejection, source-pin/missing-registry rejection, credential redaction and changed-world protection.
 
 Safe aggregate evidence: `release/evidence/magma-v17-copied-world-20261113.json`. The next gate is a matching full 58-JAR Core 0.3.11 client using this profile's legacy catalog setting, then actual player/NPC/jutsu/dungeon visits, relog/restart and measured native lighting/water behavior at all five sites. The stopped candidate must not be confused with the separate newer-version tryout client/server.
+
+## Core 0.3.12 frozen world and full58 graphical assembly
+
+The next world profile is a **new** directory, `D:/HiddenBlockVillage-Sprint-20261113/magma-v17-copied-world-0312-01/`, on **127.0.0.1:25583**. Port25582 and both existing previews were preserved. All0.3.11 profiles remain intact. Before staging, the current production source matched `58958edc9eb2a776a250ef8e0a73a97e26e8c479e7cd45433ad24a952c71ccc1`; nine exact JARs and receipts were copied into private immutable inputs so later0.3.13 work cannot silently change this profile.
+
+Core0.3.12 is SHA-256 `7c8c91e0677a2e54cccc52459479bf57587fbd790347558c0786ee3e5d0fa8c8`. Its exact build receipt is `7bf23439d3d63fb43a05e8fe352ec9c2ab7ebbdfee0101456f4b7723b0c2f35b`; the passing **2,058-assertion** native receipt is `c95e7c2165fa1892cdd46ade6d3a490bebba5963488a32f83567be5c18cd3c26`. The published source/native proof was read from verified commit `d59ddd24f64cf404032fb9e497896bb5d3d26358`. No mutable module-build paths were used after freezing inputs.
+
+The server still has54 active JARs:45 unchanged originals plus nine selected server components. The old copied0.3.11 components are retained outside active mods. Eight non-Core additions are byte-identical across releases; only Core differs. Because the frozen original world contains no `valeorders` saved names, the unchanged legacy registry-owner baseline can supply a bounded preflight. Its scope is recorded; it is not mislabeled as a prior0.3.12 registry dump. The actual0.3.12 world saved all original registry names after loading, with no confirmation/discard command.
+
+The1,771-file frozen world was copied afresh. The completed1,311-region/1,249,484-chunk script-absence review was reused only after verifying identical frozen file/region manifests and rechecking NPC source hashes. This avoids pretending another full scan occurred. The same128 reviewed dependencies/config files and canonical catalogfalse were retained.
+
+| 0.3.12 copied-world run | Observed result | Elapsed |
+| --- | --- | ---: |
+| `copied-world-0312-boot-01` | Done/save/clean exit0 | 36.187 s |
+| `copied-world-0312-boot-02-restart` | Same-world Done/save/clean exit0 | 35.094 s |
+
+Both runs use2GB,60 FML identities and the archived CrazyCrates plugin. The inherited invalid recipe/hook/mailbox defects remain labeled. Safe aggregate world evidence is `release/evidence/magma0312-v17-copied-world-20261113.json`.
+
+The matching graphical profile at `D:/HiddenBlockVillage-Sprint-20261113/Vale-0312-All-Mods-Client/` was assembled separately: **49 originals − old pictures + nine client components + OptiFine =58 JARs**. There are55 statically declared mod IDs, zero duplicates and no server-only bridge JARs. Orders/Encounters/Rack/Residents/World Compat/Standards are the six byte-exact shared components; HUD, Controls and Client Lifecycle are the three graphical adapters. Essential and JEI retain their original identical pins rather than being duplicated.
+
+Assembly verified all68 external launcher input files and **1,305 vanilla asset entries** against their pins. It reused the approved0.3.12 donor's synthetic/offline launch recipe, changed gameDir/endpoint/identity, capped memory at4GB and selected `ValeFullPack` with its proper offline UUID. Only reviewed client-relevant configs/resources were copied; no worlds, account files, player data, server scripts, old startup scripts or old filters/bookmarks were copied. Client `canonicalEquipmentCatalog=false` matches the server. Fresh JER `general { B:diyData=false }` avoids the observed legacy DIYtrue-without-JSON gap.
+
+The client uses installed Forge2859 while Magma embeds2860. Root launched the assembled client. Its console records the modded connection at15:49:10 and joined-game chat at15:49:13 local time. That establishes an actual handshake/join; it does not establish stable play. The process subsequently hung and Windows closed it. Safe assembly and bounded runtime evidence is `release/evidence/vale0312-full58-client-assembly-20261113.json`.
+
+The live25583 server is controlled by `tools/magma_smoke/live_console.py`, with private status in `PRIVATE-LIVE-CONSOLE-SESSION.json` and atomic JSON command requests under `fullpack-live-0312-requests/`. A `list` request was sent through the controller; clean `save-all`/`stop` uses the same mechanism and preserves a final world snapshot. Root owns the client and subsequent interaction evidence. This helper does not launch clients or disturb the existing hand preview.
+
+The separately reviewed Killer Bi recipe has a concrete bad field at `key/3/item`: `minecraft:redstone_wire`; the registered ingredient is `minecraft:redstone`. No legacy JAR or recipe was patched during these exact-identity tests. Any fix needs a separately recorded variant and client/server recipe acceptance.
+
+### Full58 first-client hang and isolated inventory-tab workaround
+
+Windows recorded Application Hang1002 at15:51:28 and WER1001/AppHangB1 at15:51:26 on November13,2026, for JavaW8u512. Exit `0xCFFFFFFF` is Microsoft's documented `STATUS_APPLICATION_HANG` ([official exception reference](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/specific-exceptions)). No matching JVM fatal-error file, Forge crash report or resource-exhaustion event was found in the inspected target locations/window. This identifies a Windows hang closure; it does not prove a JVM/native crash, heap exhaustion or a particular deadlock.
+
+At15:50:41 the client explicitly logged an unsafe screen-open call from `pool-12-thread-1`. Static bytecode review identifies the owner as CustomNPCs SpringAddon compat JAR SHA-256 `9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b`. `InventoryTabQuests.onTabClicked()V` schedules a Runnable through `CustomNPCsScheduler.runTack(Ljava/lang/Runnable;)V`; `InventoryTabQuests.lambda$onTabClicked$0()V` directly calls `Minecraft.func_147108_a(Lnet/minecraft/client/gui/GuiScreen;)V`. `ClientProxy` registers this inventory-tab integration only when `CustomNpcs.InventoryGuiEnabled` is true. This is a concrete thread-safety defect and a plausible hang trigger; no hung-thread dump was captured, so the exact terminal dependency remains unproven. Earlier OptiFine/RegistryDelegate signer warnings preceded successful login and are not established as the terminal cause. All third-party JARs remain unchanged.
+
+A NEW profile, `D:/HiddenBlockVillage-Sprint-20261113/Vale-0312-All-Mods-Client-TabGuard-01`, retains all58 identical JARs, the same synthetic identity/loopback25583/max4GB recipe and every other reviewed configuration. Its sole content adjustment is client `CustomNpcs.cfg` `InventoryGuiEnabled=true`→`false`; the original bytes are retained outside the active client. The100 other dependencies/configs and three generated files were verified unchanged. The option suppresses CustomNPCs inventory/faction/quest tabs; it is a temporary compatibility workaround, not a fix for the underlying dispatch and not a claim of full UI parity. The original failed profile/logs remain intact. At this checkpoint the variant is assembled and not launched; root owns launch and actual liveness/interaction evidence.
+
+The private variant receipt is SHA-256 `821606f3a8802cad25a6a7f686a7e9264aef95caa292cba7e3bce8cf93bdd387`; launch recipe `99b3674f61e31f377e059f41efbe6040ae8af6596ad4782e74e3f3b8ade0babd`. The matching Magma server/controller stays running. All25 Magma tooling fixtures pass, including exact-byte option editing and fail-closed handling of duplicate/unknown forms. No client UI was automated by this agent.
+
+
+### Controlled TabGuard client run observed
+
+Root launched the unchanged-58-JAR TabGuard variant after independently checking all mod, six shared server, dependency, generated-config and launcher-input hashes. Its client logged a successful world join at 16:06:38 local time; the server later logged a clean `Disconnected` at 16:12:49. Minecraft logged `Stopping!` and sound shutdown at 16:15:12, and its process was subsequently absent. A numeric exit code was not retained, so these observations are not an exit-0 attestation or a manual GUI acceptance claim. The old failing client and its Windows-hang evidence remain separate. The 25583 server stays running; the client is now closed. This supersedes the earlier unlaunched-variant status.
+
+The temporary inventory-tab option remains disabled only in this variant. A private original compatibility draft dispatches the entire original quest Runnable onto Minecraft's thread and has separate compilation/bytecode checks; it has not been promoted or accepted in-game. Full functional parity, visuals, the five authored mission routes and hosted deployment remain open.

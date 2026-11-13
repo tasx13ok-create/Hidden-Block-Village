@@ -36,9 +36,10 @@ def require(ok, message):
     smoke.require(ok, message)
 
 
-def profile(memory='2G'):
+def profile(memory='2G', port=PORT):
     require(memory in ('2G', '4G'), 'Copied-world memory must be 2G or 4G')
-    return dict(smoke.PROPERTIES, **{'level-name': LEVEL, 'level-type': 'DEFAULT', 'generator-settings': '', 'server-port': str(PORT)})
+    require(port in (PORT, 25583), 'Unsupported version-pinned copied-world port')
+    return dict(smoke.PROPERTIES, **{'level-name': LEVEL, 'level-type': 'DEFAULT', 'generator-settings': '', 'server-port': str(port)})
 
 
 def tree_rows(root):
@@ -300,16 +301,28 @@ def seal(candidate, recovery, script_review, runtime_level, memory='2G'):
                     require(not path.read_text(encoding='utf-8').strip(), 'Nonempty standalone script requires a dedicated reviewed-script profile')
     observed_sources = {row['path']: {key: row[key] for key in ('bytes', 'sha256')} for row in review.get('script_sources', [])}
     require(observed_sources == required_sources, 'Global/world NPC script/export review source set differs')
+    from .release_profile import world_port
+    upgrade = json.loads((candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
+    port = world_port(candidate, upgrade)
+    if upgrade.get('profile_release') == '0.3.12':
+        require(pack.hash_file(runtime_level)['sha256'] == upgrade['registry_reference_level_sha256'], 'Wrong pinned legacy registry reference')
+        names = {name for ids in saved_registries(candidate / LEVEL / 'level.dat').values() for name in ids}
+        require(not any(name.startswith('valeorders:') for name in names), 'Saved Core namespace requires an exact new-runtime registry inventory')
+        prior = json.loads((candidate / 'PRIVATE-BASELINE-0311-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
+        prior_hashes = {row['component']: row['sha256'] for row in prior['added']}
+        require(all(row['sha256'] == prior_hashes[row['component']] for row in upgrade['added'] if row['component'] != 'vale-orders'), 'Changed registry-reference owners')
     registries = registry_review(candidate / LEVEL / 'level.dat', runtime_level)
+    registries['reference_scope'] = upgrade.get('registry_reference_scope', 'Exact already booted 0.3.11 enhanced runtime')
     save(candidate / 'PRIVATE-WORLD-REGISTRY-REVIEW.json', registries)
     require(registries['missing_saved_names'] == 0, 'Missing saved registry IDs: do not accept or discard mappings')
     dependencies = stage_dependencies(candidate, recovery)
-    result = {'schema': 1, 'status': 'COPIED_WORLD_VERIFIED_NOT_STARTED', 'level': LEVEL, 'port': PORT, 'memory_limit': memory,
+    result = {'schema': 1, 'status': 'COPIED_WORLD_VERIFIED_NOT_STARTED', 'level': LEVEL, 'port': port, 'memory_limit': memory,
+              'profile_release': upgrade.get('profile_release', '0.3.11'),
               'source_manifest_sha256': prep['source_manifest_sha256'], 'source_frozen_receipt_sha256': identity['sha256'],
               'initial_world_files': prep['files'], 'script_review': review_id, 'script_review_regions': review['region_files'],
               'script_review_chunks': review['chunks'], 'missing_saved_registry_names': 0, 'dependency_file_count': len(dependencies['files']),
               'mapping_discard_authorized': False, 'normal_client_joined': False, 'hosted_deployment': False}
-    profile(memory)
+    profile(memory, port=port)
     if pack.no_links(script_review) != candidate / REVIEW:
         smoke.copy_verified(script_review, candidate / REVIEW, review_id['sha256'])
     save(candidate / READY, result)
@@ -322,15 +335,18 @@ def validate_world(candidate):
     candidate = pack.no_links(candidate)
     ready = json.loads((candidate / READY).read_text(encoding='utf-8'))
     require(ready.get('status') == 'COPIED_WORLD_VERIFIED_NOT_STARTED' and ready.get('missing_saved_registry_names') == 0, 'Copied-world acceptance seal invalid')
-    require(ready['level'] == LEVEL and ready['port'] == PORT, 'Copied-world target changed')
-    expected = profile(ready['memory_limit'])
+    upgrade = json.loads((candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
+    from .release_profile import world_port
+    port = world_port(candidate, upgrade)
+    require(ready['level'] == LEVEL and ready['port'] == port, 'Copied-world target changed')
+    require(ready.get('profile_release', '0.3.11') == upgrade.get('profile_release', '0.3.11'), 'Release profile changed')
+    expected = profile(ready['memory_limit'], port=port)
     actual = smoke.properties((candidate / 'server.properties').read_text(encoding='ascii'))
     for key in ('level-name', 'level-type', 'server-ip', 'server-port', 'online-mode', 'enable-rcon', 'enable-query'):
         require(actual.get(key) == expected[key], 'Unsafe copied-world setting: ' + key)
     require((candidate / LEVEL / 'level.dat').is_file(), 'Copied saved world is missing')
     require(pack.hash_file(candidate / smoke.MAGMA)['sha256'] == smoke.MAGMA_SHA256, 'Magma identity changed')
-    upgrade = json.loads((candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
-    require(upgrade['core_sha256'] == smoke.CORE_SHA256 and len(upgrade['added']) == 9, 'Copied-world enhanced checkpoint differs')
+    require(len(upgrade['added']) == 9, 'Copied-world enhanced component count differs')
     for row in upgrade['added']:
         require(pack.hash_file(candidate / row['path'])['sha256'] == row['sha256'], 'Enhanced artifact changed')
     require(not (candidate / smoke.OLD_PICTURES).exists(), 'Duplicate registry owner is active')

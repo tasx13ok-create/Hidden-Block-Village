@@ -71,6 +71,7 @@ def validate_profile(candidate):
     if enhanced_file.exists():
         enhanced = json.loads(enhanced_file.read_text(encoding='utf-8'))
         require(enhanced.get('status') == 'STAGED_ENHANCED_NOT_STARTED', 'Unverified enhancement manifest')
+        require(enhanced.get('profile_release', '0.3.11') == '0.3.11' and enhanced['core_sha256'] == CORE_SHA256, 'Flat enhanced profile must retain its 0.3.11 Core pin')
         expected['server-port'] = str(ENHANCED_PORT)
         for artifact in enhanced['added']:
             require(pack.hash_file(candidate / artifact['path'])['sha256'] == artifact['sha256'], 'Enhanced artifact changed')
@@ -334,6 +335,15 @@ def main(argv=None):
     world.add_argument('--receipt-sha256', required=True)
     world.add_argument('--candidate', type=Path, required=True)
     world.add_argument('--memory', choices=('2G', '4G'), default='2G')
+    world312 = sub.add_parser('world-stage-0312')
+    world312.add_argument('--runtime', type=Path, required=True)
+    world312.add_argument('--world-source', type=Path, required=True)
+    world312.add_argument('--frozen-receipt', type=Path, required=True)
+    world312.add_argument('--receipt-sha256', required=True)
+    world312.add_argument('--candidate', type=Path, required=True)
+    world312.add_argument('--frozen-inputs', type=Path, required=True)
+    world312.add_argument('--script-review-donor', type=Path, required=True)
+    world312.add_argument('--memory', choices=('2G', '4G'), default='2G')
     reviewing = sub.add_parser('world-review')
     reviewing.add_argument('--candidate', type=Path, required=True)
     reviewing.add_argument('--recovery', type=Path, required=True)
@@ -361,6 +371,12 @@ def main(argv=None):
         from .world_profile import prepare
         result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.memory)
         print(json.dumps({'status': result['status'], 'world_files': len(result['files']), 'port': result['port']}))
+        return 0
+    if args.action == 'world-stage-0312':
+        from .release_profile import prepare, reuse_script_review
+        result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.frozen_inputs, args.memory)
+        reuse_script_review(args.candidate, args.script_review_donor)
+        print(json.dumps({'status': result['status'], 'world_files': len(result['files']), 'port': result['port'], 'release': result['profile_release']}))
         return 0
     if args.action == 'world-seal':
         from .world_profile import seal

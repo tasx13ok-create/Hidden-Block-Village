@@ -1,0 +1,44 @@
+name: Recover reviewed local art history
+on:
+  push:
+    branches: [main]
+    paths: ['collaboration/sonnet-art/history-20261113.bundle']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: reviewed-art-history-recovery
+  cancel-in-progress: false
+jobs:
+  preserve-history:
+    if: github.repository == 'tasx13ok-create/Hidden-Block-Village' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # existing project pin, v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Verify and merge the exact reviewed history
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'c63ff9fad0a338f189a659eb24326f77c2d32a1e9308168940698c2a7dbe7945  collaboration/sonnet-art/history-20261113.bundle' | sha256sum --check --strict
+          git bundle verify collaboration/sonnet-art/history-20261113.bundle
+          git fetch ./collaboration/sonnet-art/history-20261113.bundle refs/heads/preserved/sonnet-art-20261113:refs/remotes/reviewed-art/original
+          test "$(git rev-parse refs/remotes/reviewed-art/original)" = dca6fc0f46115dcc065f88c95faa6fef7d559b87
+          if git merge-base --is-ancestor refs/remotes/reviewed-art/original HEAD; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          set +e
+          git merge --no-ff --no-commit refs/remotes/reviewed-art/original
+          merge_result=$?
+          set -e
+          if [ "$merge_result" -gt 1 ]; then exit "$merge_result"; fi
+          # The current handoff already contains these reviewed art notes and newer runtime evidence.
+          for conflict in $(git diff --name-only --diff-filter=U); do
+            test "$conflict" = docs/current-handoff.md || { echo "Unexpected merge conflict: $conflict"; exit 1; }
+          done
+          git checkout HEAD -- docs/current-handoff.md
+          git add docs/current-handoff.md
+          git diff --check --cached
+          git commit -m 'Preserve original Sonnet art checklist commits and authorship'
+          git push origin HEAD:main

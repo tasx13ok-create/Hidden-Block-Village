@@ -13,6 +13,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.server_intake.intake import recover
 from tools.magma_smoke import smoke
 from tools.magma_smoke import world_profile as world
+from tools.magma_smoke import release_profile as release
+from tools.magma_smoke import all_mods_client as graphical
+from tools.magma_smoke import live_console
 
 
 def jar(entries):
@@ -169,9 +172,10 @@ class MagmaSmokeTests(unittest.TestCase):
         self.assertFalse((candidate / smoke.OLD_PICTURES).exists())
         self.assertTrue((candidate / ('retained-originals/' + smoke.OLD_PICTURES)).exists())
         self.assertEqual(smoke.properties((candidate / 'server.properties').read_text())['server-port'], '25580')
-        self.assertEqual(smoke.validate_profile(candidate), candidate)
+        with patch.object(smoke, 'CORE_SHA256', core):
+            self.assertEqual(smoke.validate_profile(candidate), candidate)
         (candidate / 'config/valeorders.cfg').write_text('adventure {\nB:canonicalEquipmentCatalog=true\n}\n')
-        with self.assertRaises(ValueError):
+        with patch.object(smoke, 'CORE_SHA256', core), self.assertRaises(ValueError):
             smoke.validate_profile(candidate)
 
     def test_enhancement_refuses_unbound_native_receipt_before_creating_candidate(self):
@@ -278,6 +282,118 @@ class MagmaSmokeTests(unittest.TestCase):
         self.assertEqual(review['status'], 'REVIEW_REQUIRED')
         self.assertEqual(len(review['script_bodies']), 1)
         self.assertFalse(review['scripts_executed'])
+
+    def test_release312_upgrade_uses_frozen_receipts_new_port_and_retains0311(self):
+        recovery = self.fixture_recovery(include_script=False)
+        source_root, old_build, old_native, old_core = self.fixture_build()
+        source_world, frozen, frozen_id = self.fixture_frozen_world()
+        frozen_inputs = self.root / 'frozen312'
+        build = json.loads(old_build.read_text())
+        build['source_snapshot'] = {'sha256': 'fixture-source-312'}
+        new_core = None
+        for result in build['results'].values():
+            for row in result['artifacts']:
+                target = frozen_inputs / row['copied_path']
+                target.parent.mkdir(parents=True, exist_ok=True)
+                data = (source_root / row['copied_path']).read_bytes()
+                if row['component'] == 'vale-orders':
+                    data = jar([('fixture.txt', b'new312-vfx')])
+                target.write_bytes(data)
+                row.update(smoke.pack.hash_file(target))
+                if row['component'] == 'vale-orders':
+                    new_core = row['sha256']
+        build_path = frozen_inputs / 'build/source-build-report.json'
+        build_path.parent.mkdir(exist_ok=True)
+        build_path.write_text(json.dumps(build))
+        qa = json.loads(old_native.read_text())
+        qa['source_build_report'] = smoke.pack.hash_file(build_path)
+        qa['assertions'] = 2058
+        qa['expected_loaded_mods']['valeorders']['sha256'] = new_core
+        qa_path = frozen_inputs / 'build/native-check-report.json'
+        qa_path.write_text(json.dumps(qa))
+        with patch.object(smoke, 'CORE_SHA256', old_core), patch.object(release, 'CORE_SHA256', new_core), patch.object(release, 'SOURCE_SHA256', 'fixture-source-312'), patch.object(release, 'BUILD_SHA256', smoke.pack.hash_file(build_path)['sha256']), patch.object(release, 'NATIVE_SHA256', smoke.pack.hash_file(qa_path)['sha256']):
+            runtime = self.root / 'runtime'
+            smoke.enhance(recovery, runtime, [], source_root, old_build, old_native)
+            reference = runtime / 'magma-smoke-flat/level.dat'
+            reference.parent.mkdir()
+            reference.write_bytes((source_world / 'level.dat').read_bytes())
+            donor = self.root / 'donor'
+            world.prepare(runtime, source_world, frozen, frozen_id, donor)
+            world.review_scripts(donor, recovery)
+            candidate = self.root / 'new312'
+            prep = release.prepare(runtime, source_world, frozen, frozen_id, candidate, frozen_inputs)
+            self.assertEqual(prep['port'], 25583)
+            release.reuse_script_review(candidate, donor)
+            sealed = world.seal(candidate, recovery, candidate / world.REVIEW, reference)
+            self.assertEqual(sealed['profile_release'], '0.3.12')
+            self.assertEqual(smoke.validate_profile(candidate), candidate)
+            self.assertEqual(len(list((candidate / 'retained-vale-0311/mods').glob('*.jar'))), 9)
+            self.assertEqual(smoke.pack.hash_file(runtime / 'mods/vale-orders.jar')['sha256'], old_core)
+            properties = (candidate / 'server.properties').read_text()
+            (candidate / 'server.properties').write_text(properties.replace('25583', '25582'))
+            with self.assertRaises(ValueError):
+                smoke.validate_profile(candidate)
+
+    def test_unknown_release_or_changed_core_pin_is_not_a_guard_fallback(self):
+        with self.assertRaises(ValueError):
+            release.world_port(self.root, {'profile_release': '0.3.13', 'core_sha256': 'anything'})
+        with self.assertRaises(ValueError):
+            release.world_port(self.root, {'profile_release': '0.3.12', 'core_sha256': 'wrong', 'source_snapshot_sha256': release.SOURCE_SHA256})
+
+    def test_script_review_reuse_requires_identical_frozen_file_rows(self):
+        for name, digest in (('donor', 'old'), ('new', 'changed')):
+            root = self.root / name
+            root.mkdir()
+            (root / world.PREP).write_text(json.dumps({'files': [{'path': 'level.dat', 'sha256': digest, 'bytes': 1}], 'source_manifest_sha256': digest}))
+        with self.assertRaises(ValueError):
+            release.reuse_script_review(self.root / 'new', self.root / 'donor')
+
+    def test_graphical_recipe_is_synthetic_distinct_capped_and_does_not_mutate_donor(self):
+        recipe = {'argv': ['javaw.exe', '-Xms1G', '-Xmx5G', '--accessToken', '0', '--userType', 'legacy', '--username', 'OldPreview', '--uuid', 'old',
+                           '--gameDir', 'old-dir', '--server', '127.0.0.1', '--port', '25582'], 'cwd': 'old-dir', 'external_inputs': []}
+        changed = graphical.client_recipe(recipe, self.root / 'new-client')
+        self.assertIn('-Xmx4G', changed['argv'])
+        self.assertNotIn('-Xmx5G', changed['argv'])
+        self.assertIn('ValeFullPack', changed['argv'])
+        self.assertIn('25583', changed['argv'])
+        self.assertIn('OldPreview', recipe['argv'])
+        identity = graphical.uuid.UUID(hex=changed['argv'][changed['argv'].index('--uuid') + 1])
+        self.assertEqual(identity.version, 3)
+        self.assertNotEqual(graphical.offline_uuid('ValeFullPack'), graphical.offline_uuid('OldPreview'))
+
+    def test_graphical_recipe_rejects_account_token_and_invalid_username(self):
+        with self.assertRaises(ValueError):
+            graphical.client_recipe({'argv': ['--accessToken', 'real-token']}, self.root)
+        with self.assertRaises(ValueError):
+            graphical.offline_uuid('../invalid-name')
+
+    def test_graphical_dependency_allowlist_excludes_world_scripts_and_account_state(self):
+        for path in ('server.properties', 'ops.json', 'world/playerdata/user.dat', 'config/accounts.json', 'config/worldedit/sessions/user.json', 'customnpcs/clones/1/private.json', 'customnpcs/scripts/code.js'):
+            self.assertFalse(graphical.eligible_dependency(path))
+        self.assertTrue(graphical.eligible_dependency('config/CustomNpcs.cfg'))
+        self.assertTrue(graphical.eligible_dependency('customnpcs/assets/customnpcs/textures/skin.png'))
+
+    def test_live_console_preserves_command_order_without_shell_execution(self):
+        value = {'commands': ['list', 'op ValeFullPack', 'save-all', 'stop']}
+        self.assertEqual(live_console.commands(value), value['commands'])
+
+    def test_inventory_tab_workaround_preserves_other_bytes_and_line_endings(self):
+        before = b'# private unrelated config\r\nEnableScripting=true\r\nInventoryGuiEnabled=true\r\nOpsOnly=false\r\n'
+        after = graphical.disable_inventory_tabs(before)
+        self.assertEqual(after, before.replace(b'InventoryGuiEnabled=true', b'InventoryGuiEnabled=false'))
+        self.assertIn(b'EnableScripting=true\r\n', after)
+
+    def test_inventory_tab_workaround_rejects_ambiguous_disabled_or_unknown_forms(self):
+        for data in (b'', b'InventoryGuiEnabled=false\n', b'InventoryGuiEnabled=true\nInventoryGuiEnabled=false\n',
+                     b'InventoryGuiEnabled=true\nInventoryGuiEnabled=true\n', b'# InventoryGuiEnabled=true\n',
+                     b'InventoryGuiEnabled=true extra\n'):
+            with self.assertRaises(ValueError):
+                graphical.disable_inventory_tabs(data)
+
+    def test_live_console_rejects_mapping_discard_multiline_and_invalid_requests(self):
+        for value in ([], {'commands': 'stop'}, {'commands': ['list\nstop']}, {'commands': ['/fml   confirm']}, {'commands': ['yes']}):
+            with self.assertRaises(ValueError):
+                live_console.commands(value)
 
 
 if __name__ == '__main__':
