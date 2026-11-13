@@ -45,4 +45,4 @@ Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeo
 
 ## Sync state
 
-Push from this cloud session to `origin claude/upbeat-ride-nyxq23` was refused with HTTP 403 ("Claude doesn't have GitHub access to tasx13ok-create/Hidden-Block-Village for your organization"). Until GitHub access is fixed, these commits exist only in this session's container. A `git format-patch` bundle of the branch is the fallback for the owner to apply on the PC.
+The first push attempt from this cloud session got HTTP 403. After GitHub access was re-attached, the branch pushed to `origin/claude/upbeat-ride-nyxq23` (package 1 `3de0d34`, package 2 `d580641`, plus this status commit). Codex has not reviewed it yet.
