@@ -1,0 +1,2013 @@
+{
+  "counts": {
+    "entity_types": 67,
+    "named_characters": 37,
+    "other_combat_npcs": 20,
+    "tailed_beasts": 10,
+    "unique_pngs": 78,
+    "entity_png_bindings": 79
+  },
+  "scope": "Direct PNG resource literals in each curated legacy entity and nested classes; includes explicitly labeled related forms/overlays/effects. Not a private CustomNPC skin inventory or rendered 3D views.",
+  "jars": {
+    "BorutoMod Addon byAnimeSupremeTeam v1.0.jar": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+    "NarutoMod-1.12.2-0.3.1.beta.jar": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+    "SpringAddon7.0.jar": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+    "ahznb weapons plus 1.2.1.jar": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+    "kabutoaddon 5.5.8-beta.jar": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59"
+  },
+  "images": [
+    {
+      "texture": "narutomod:textures/itachi.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/itachi.png",
+      "path": "originals/narutomod/textures/itachi.png",
+      "bytes": 22743,
+      "sha256": "a11b7ba9ce2e6c689f69fb45caa014f1049c25a0ca99996b688301edf6b6a146",
+      "width": 256,
+      "height": 128,
+      "owners": [
+        {
+          "entity_id": "narutomod:itachi",
+          "name": "Itachi Uchiha",
+          "category": "Named characters"
+        },
+        {
+          "entity_id": "kabutoaddon:edotensei_itachi",
+          "name": "Edotensei Itachi",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbcursemarkaddon:textures/madara.png",
+      "source_jar": "SpringAddon7.0.jar",
+      "asset_path": "assets/ahznbcursemarkaddon/textures/madara.png",
+      "path": "originals/ahznbcursemarkaddon/textures/madara.png",
+      "bytes": 926,
+      "sha256": "db59b0bd58a4a9afe6c62a250ccf9fe5b424b851cbd05a8ee8e1be55be16c3c3",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "ahznbcursemarkaddon:edotensei_madara",
+          "name": "Edotensei Madara",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/obito.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/obito.png",
+      "path": "originals/kabutoaddon/textures/obito.png",
+      "bytes": 2732,
+      "sha256": "2d793f0bbf6374aed72baf13a2dec27606849b4c7b1b4c8747c6530a2abc92e4",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:uchiha_obito",
+          "name": "Uchiha Obito",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/naruto.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/naruto.png",
+      "path": "originals/kabutoaddon/textures/naruto.png",
+      "bytes": 1399,
+      "sha256": "2808cd7f73585220637242d27c7184f8e2a761ee206b465142f38df85d5b3274",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:uzumaki_naruto",
+          "name": "Uzumaki Naruto",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/kisamefinal.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/kisamefinal.png",
+      "path": "originals/narutomod/textures/kisamefinal.png",
+      "bytes": 34858,
+      "sha256": "2797f56abd688b13b6cac6f06c0ebc9c35363724771e9a8735c1eed6188d53cc",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:kisame_hoshigaki",
+          "name": "Kisame Hoshigaki",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/deidara256.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/deidara256.png",
+      "path": "originals/narutomod/textures/deidara256.png",
+      "bytes": 35957,
+      "sha256": "67c05a11421de97d93bd3d89ee2f7e39963faeb616dff73dd723d192d676a831",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:deidara",
+          "name": "Deidara",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/hidan.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/hidan.png",
+      "path": "originals/narutomod/textures/hidan.png",
+      "bytes": 44036,
+      "sha256": "504def8f1b2ee44a8e6c9802bbb77b9a1c178784d1ef34d0047a2634ad22d5a8",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:hidan",
+          "name": "Hidan",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/jashin_symbol.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/jashin_symbol.png",
+      "path": "originals/narutomod/textures/jashin_symbol.png",
+      "bytes": 8551,
+      "sha256": "95c7bbb9cc7dfd3cbcad6065ebb1a74d20eb23826ae54ca16f9925c242c7abde",
+      "width": 192,
+      "height": 192,
+      "owners": [
+        {
+          "entity_id": "narutomod:hidan",
+          "name": "Hidan",
+          "category": "Named characters"
+        }
+      ],
+      "role": "ritual symbol"
+    },
+    {
+      "texture": "narutomod:textures/kakuzu.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/kakuzu.png",
+      "path": "originals/narutomod/textures/kakuzu.png",
+      "bytes": 47295,
+      "sha256": "2928315a8e2d6d1cf59dcea81e05973ae3737f69a4099a04f002a7f382555f88",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:kakuzu",
+          "name": "Kakuzu",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/ay.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/ay.png",
+      "path": "originals/kabutoaddon/textures/ay.png",
+      "bytes": 7840,
+      "sha256": "16a2a124726bb120fe26bd1d5aebc73c04f1177bdb5a85b294f2e736daa06cb1",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:ay",
+          "name": "Ay",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "borutomodaddononero:textures/boro_start.png",
+      "source_jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "asset_path": "assets/borutomodaddononero/textures/boro_start.png",
+      "path": "originals/borutomodaddononero/textures/boro_start.png",
+      "bytes": 3463,
+      "sha256": "4e57c34619d5e3c86b9bde1f076804de0f9e785eba59e4ca8fecc641fb1fb8fc",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "borutomodaddononero:boro",
+          "name": "Boro",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/c.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/c.png",
+      "path": "originals/kabutoaddon/textures/c.png",
+      "bytes": 9940,
+      "sha256": "88bb3a60036c85049d128cfabfb667304310525f8da83777d83c8ca965a90c99",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:c",
+          "name": "C",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/darui.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/darui.png",
+      "path": "originals/kabutoaddon/textures/darui.png",
+      "bytes": 9925,
+      "sha256": "42b07c77d16bdc46982c899cea32d83790120dae56a8b6a4ca81a17d14f64405",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:darui",
+          "name": "Darui",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbcursemarkaddon:textures/hashirama_edo.png",
+      "source_jar": "SpringAddon7.0.jar",
+      "asset_path": "assets/ahznbcursemarkaddon/textures/hashirama_edo.png",
+      "path": "originals/ahznbcursemarkaddon/textures/hashirama_edo.png",
+      "bytes": 2952,
+      "sha256": "ec1fe1c76f71c519baac4bc6f93d583357606ca4f9e54c93f2f0fe9ecbb43463",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "ahznbcursemarkaddon:edotensei_hashirama",
+          "name": "Edotensei Hashirama",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/edotensei_nagato.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/edotensei_nagato.png",
+      "path": "originals/kabutoaddon/textures/edotensei_nagato.png",
+      "bytes": 3127,
+      "sha256": "e9f01278f90b62d1ef6991de4b17362a05cee13b5507b73ed720f1c22b699850",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:edotensei_nagato",
+          "name": "Edotensei Nagato",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/gaara.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/gaara.png",
+      "path": "originals/narutomod/textures/gaara.png",
+      "bytes": 3960,
+      "sha256": "acd735c60b3c951d8b9070a2210698292113b1accf31b1e16843fba0acfcd01b",
+      "width": 128,
+      "height": 128,
+      "owners": [
+        {
+          "entity_id": "narutomod:gaara",
+          "name": "Gaara",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbswordsplus:textures/2024_02_07_ginkaku-22316219.png",
+      "source_jar": "ahznb weapons plus 1.2.1.jar",
+      "asset_path": "assets/ahznbswordsplus/textures/2024_02_07_ginkaku-22316219.png",
+      "path": "originals/ahznbswordsplus/textures/2024_02_07_ginkaku-22316219.png",
+      "bytes": 2694,
+      "sha256": "e9e3feee344e6b5e475bf09b013080c5df682bfb3cacb858dfdd5fe38fcbcde1",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "ahznbswordsplus:ginkaku",
+          "name": "Ginkaku",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/haku.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/haku.png",
+      "path": "originals/narutomod/textures/haku.png",
+      "bytes": 2239,
+      "sha256": "b74db68ed9ca87d668f00ce85a58d5981b1fbc88c71bc74714b25442484d2846",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:haku",
+          "name": "Haku",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/hatake_kakashi.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/hatake_kakashi.png",
+      "path": "originals/kabutoaddon/textures/hatake_kakashi.png",
+      "bytes": 3982,
+      "sha256": "69f7b5638e82642119a218db8e4ffdd1286789ae42b91b796ed634a55bffc3fc",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:hatake_kakashi",
+          "name": "Hatake Kakashi",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/iruka64x64.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/iruka64x64.png",
+      "path": "originals/narutomod/textures/iruka64x64.png",
+      "bytes": 1654,
+      "sha256": "7d9004985fc21603b1e1d8baffb66c0dd2f15389f75dc1cb54858125b7f0176d",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:iruka_sensei",
+          "name": "Iruka Sensei",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "borutomodaddononero:textures/isshiki_boss_texture.png",
+      "source_jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "asset_path": "assets/borutomodaddononero/textures/isshiki_boss_texture.png",
+      "path": "originals/borutomodaddononero/textures/isshiki_boss_texture.png",
+      "bytes": 1701,
+      "sha256": "e8177dd87130699da4bdf6a2fde8642d1729eb07c6ba00b4fa3aa859a764a8c2",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "borutomodaddononero:isshiki_boss",
+          "name": "Isshiki",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/jiraiya.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/jiraiya.png",
+      "path": "originals/kabutoaddon/textures/jiraiya.png",
+      "bytes": 10605,
+      "sha256": "eca334946c2af8b91b942b798ab0d61db2bcb33f8921ad67728403a862b4fdde",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:jiraiya",
+          "name": "Jiraiya",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/jiraiya_sagemode.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/jiraiya_sagemode.png",
+      "path": "originals/kabutoaddon/textures/jiraiya_sagemode.png",
+      "bytes": 1699,
+      "sha256": "4e4646992818e6b294a751262f966cf7376b9356761cfce9b21075f4427ee1d0",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:jiraiya",
+          "name": "Jiraiya",
+          "category": "Named characters"
+        }
+      ],
+      "role": "Sage Mode skin"
+    },
+    {
+      "texture": "narutomod:textures/kakashi.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/kakashi.png",
+      "path": "originals/narutomod/textures/kakashi.png",
+      "bytes": 2241,
+      "sha256": "c2de1dd47490a8d9a6d6d428f816ab362f1467afc9f78fc305b7fc0bf2482441",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:kakashi",
+          "name": "Kakashi",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/kankuro.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/kankuro.png",
+      "path": "originals/narutomod/textures/kankuro.png",
+      "bytes": 1620,
+      "sha256": "b5e949007bbeac3e4327eb9da31c75a83e5d820ea3b2795af68a0f3a49b7b471",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:kankuro",
+          "name": "Kankuro",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/kimimaro.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/kimimaro.png",
+      "path": "originals/kabutoaddon/textures/kimimaro.png",
+      "bytes": 951,
+      "sha256": "ad18e390b7a78faa0a6fc1119290af3aee99edee2a3ec661dd1acd17dee04d48",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:kimimaro",
+          "name": "Kimimaro",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/kurotsuchi.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/kurotsuchi.png",
+      "path": "originals/narutomod/textures/kurotsuchi.png",
+      "bytes": 1936,
+      "sha256": "cc8a3b8cefe3bab7185ecaf4e4fc4f9dfc04a7d781a71768b41a5ec3ae035baa",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:kurotsuchi",
+          "name": "Kurotsuchi",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/might_guy.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/might_guy.png",
+      "path": "originals/narutomod/textures/might_guy.png",
+      "bytes": 1732,
+      "sha256": "6366876bd7200eb05ae0644cd7438d226e62fe25fb59ccca0c4ada58b02b4c38",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:mightguy",
+          "name": "Might Guy",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "borutomodaddononero:textures/momoshiki_boss_texture.png",
+      "source_jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "asset_path": "assets/borutomodaddononero/textures/momoshiki_boss_texture.png",
+      "path": "originals/borutomodaddononero/textures/momoshiki_boss_texture.png",
+      "bytes": 3735,
+      "sha256": "824a6c9b3bf5421941b0682f72dd87897930dc52904d3603779adea42ab65f08",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "borutomodaddononero:momoshiki_boss",
+          "name": "Momoshiki",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbcursemarkaddon:textures/orochimaru_naruto_shippuden_villain_great_white_snake_snake_sannin_ninja_boy_anime_1.png",
+      "source_jar": "SpringAddon7.0.jar",
+      "asset_path": "assets/ahznbcursemarkaddon/textures/orochimaru_naruto_shippuden_villain_great_white_snake_snake_sannin_ninja_boy_anime_1.png",
+      "path": "originals/ahznbcursemarkaddon/textures/orochimaru_naruto_shippuden_villain_great_white_snake_snake_sannin_ninja_boy_anime_1.png",
+      "bytes": 8797,
+      "sha256": "dd7e4b8f6c8b589a59728c0c62acf683c2ad3b33615c48be04c0e244335f7a35",
+      "width": 128,
+      "height": 128,
+      "owners": [
+        {
+          "entity_id": "ahznbcursemarkaddon:orochimaru",
+          "name": "Orochimaru",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/sakura_slim_256.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/sakura_slim_256.png",
+      "path": "originals/narutomod/textures/sakura_slim_256.png",
+      "bytes": 14141,
+      "sha256": "38748352aa4e391323e76f14c8243d65a1d29add4eb0f56884479e158d93416d",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:sakura_haruno",
+          "name": "Sakura Haruno",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/sasori2.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/sasori2.png",
+      "path": "originals/narutomod/textures/sasori2.png",
+      "bytes": 152115,
+      "sha256": "8fd00d8dd0f35c88bcf59508e530d4e57a3100516965078fcc98e946c994b792",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:sasori",
+          "name": "Sasori of the Red Sand",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/sasori_core.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/sasori_core.png",
+      "path": "originals/narutomod/textures/sasori_core.png",
+      "bytes": 5881,
+      "sha256": "ab79f6ee9a2bf1c9f186c7cb572fcacf1274a34593c608f8b894871c894afff6",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:sasori",
+          "name": "Sasori of the Red Sand",
+          "category": "Named characters"
+        }
+      ],
+      "role": "Sasori core form"
+    },
+    {
+      "texture": "narutomod:textures/temari.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/temari.png",
+      "path": "originals/narutomod/textures/temari.png",
+      "bytes": 2065,
+      "sha256": "f310212a272f18f1cc18fe500b088484f5f282d0c37fe1e9cd421487afa0b1de",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:temari",
+          "name": "Temari",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/tenten.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/tenten.png",
+      "path": "originals/narutomod/textures/tenten.png",
+      "bytes": 2521,
+      "sha256": "07c422a8d7fed900afdcb862b4f11fa9d950872cfd650cfdce53bd8d39d08ccb",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:tenten",
+          "name": "Tenten",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbswordsplus:textures/2021_10_05_tobirama-1-19063706.png",
+      "source_jar": "ahznb weapons plus 1.2.1.jar",
+      "asset_path": "assets/ahznbswordsplus/textures/2021_10_05_tobirama-1-19063706.png",
+      "path": "originals/ahznbswordsplus/textures/2021_10_05_tobirama-1-19063706.png",
+      "bytes": 3987,
+      "sha256": "734284685dafb3d68115e955de3bf7ed01d106711a1fd4c72957150a2cbe63dd",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "ahznbswordsplus:tobirama",
+          "name": "Tobirama",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "ahznbcursemarkaddon:textures/tsunade_senju.png",
+      "source_jar": "SpringAddon7.0.jar",
+      "asset_path": "assets/ahznbcursemarkaddon/textures/tsunade_senju.png",
+      "path": "originals/ahznbcursemarkaddon/textures/tsunade_senju.png",
+      "bytes": 1183,
+      "sha256": "55bfae150963ad55c3b870be2046be92450e187b2eefacf865aae2af3d49408d",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "ahznbcursemarkaddon:tsunade",
+          "name": "Tsunade",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/kabuto.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/kabuto.png",
+      "path": "originals/kabutoaddon/textures/kabuto.png",
+      "bytes": 1927,
+      "sha256": "a1ba577a511897c1915e7b122948a5b7661bc8407af031afb679c37936dbd5d3",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:yakushi_kabuto",
+          "name": "Yakushi Kabuto",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/zabuzamomochi.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/zabuzamomochi.png",
+      "path": "originals/narutomod/textures/zabuzamomochi.png",
+      "bytes": 66972,
+      "sha256": "00246df6891ca3fada44439f00d8aed3edba2d8e4dc6603e27c78018dc27efde",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:zabuza_momochi",
+          "name": "Zabuza Momochi",
+          "category": "Named characters"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_anbu.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_anbu.png",
+      "path": "originals/narutomod/textures/ninja_anbu.png",
+      "bytes": 4331,
+      "sha256": "626c3429cbb6e68fed5c45d2180ca38bd38982bf37c941b8d8b69fd2c6b80711",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:anbu",
+          "name": "Anbu",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/explosive_ninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/explosive_ninja.png",
+      "path": "originals/kabutoaddon/textures/explosive_ninja.png",
+      "bytes": 2017,
+      "sha256": "b196f61418fafddd587fcbed4d29c2b08542cf21605c314e42d455edef421650",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:explosive_ninja",
+          "name": "Explosive Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/iwa_rogue.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/iwa_rogue.png",
+      "path": "originals/kabutoaddon/textures/iwa_rogue.png",
+      "bytes": 1378,
+      "sha256": "278f15a7a323222acba0287e373dbe6520bce70221892b08d182fc342c9134ce",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:iwa_rogue",
+          "name": "Iwa Rogue",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/lava_ninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/lava_ninja.png",
+      "path": "originals/kabutoaddon/textures/lava_ninja.png",
+      "bytes": 4222,
+      "sha256": "dc48b6b879f23155278c1b101479544df7cf2a8694b9ae0d477161d5956c54a8",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:lava_ninja",
+          "name": "Lava Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/medicalnin.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/medicalnin.png",
+      "path": "originals/kabutoaddon/textures/medicalnin.png",
+      "bytes": 604,
+      "sha256": "c24f249bedae90c713de0b3036193266b20a7f055d781ad6bd50fe3b419ff1f1",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:medical_ninja",
+          "name": "Medical Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_iwa.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_iwa.png",
+      "path": "originals/narutomod/textures/ninja_iwa.png",
+      "bytes": 3171,
+      "sha256": "9932e8e09cc9ee2204612fc7529520f8ce7d04f01fe015beb58a9ad192e539a0",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:ninja_iwa",
+          "name": "Ninja Iwa",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_kiri.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_kiri.png",
+      "path": "originals/narutomod/textures/ninja_kiri.png",
+      "bytes": 2601,
+      "sha256": "ce97ecb5c3380d9a7c6cfe24a2fa26411f370588f7cdeb9c8e141666e9aec0d8",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:ninja_kiri",
+          "name": "Ninja Kiri",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_konoha.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_konoha.png",
+      "path": "originals/narutomod/textures/ninja_konoha.png",
+      "bytes": 3374,
+      "sha256": "a560dbd38380829c4fa497091eb937710e5237b3b132d5ec787fd4f9ca7dd6c6",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:ninja_konoha",
+          "name": "Ninja Konoha",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_kumo.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_kumo.png",
+      "path": "originals/narutomod/textures/ninja_kumo.png",
+      "bytes": 4934,
+      "sha256": "d8347d59e526efbcef0cfa620b11170bc3ed806267f821d52c62ccb439c62351",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:ninja_kumo",
+          "name": "Ninja Kumo",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninja_suna.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninja_suna.png",
+      "path": "originals/narutomod/textures/ninja_suna.png",
+      "bytes": 3353,
+      "sha256": "bf0efcfe94c2617fbc3035fde5cee8957adf82a02670db3058acee53a6ac02b2",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:ninja_suna",
+          "name": "Ninja Suna",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/bandit.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/bandit.png",
+      "path": "originals/kabutoaddon/textures/bandit.png",
+      "bytes": 1753,
+      "sha256": "0485f9130dffc3c883150af69b2c871fe0fc90bd43db670dcff3a815a126f38e",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:ninjabandit",
+          "name": "Ninjabandit",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/otsutsuki.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/otsutsuki.png",
+      "path": "originals/kabutoaddon/textures/otsutsuki.png",
+      "bytes": 2647,
+      "sha256": "945c3c2c435336035c1f07bf09046cd05e538c79831221024df3c34cef888d5e",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:otsutsuki",
+          "name": "Otsutsuki",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/anbu.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/anbu.png",
+      "path": "originals/kabutoaddon/textures/anbu.png",
+      "bytes": 986,
+      "sha256": "c9a45e3aec28cc972b2715d4800b332952e1a6884ab11da303d6e9dee031f81c",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:anbu",
+          "name": "Rogue Anbu",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/rogue_ninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/rogue_ninja.png",
+      "path": "originals/kabutoaddon/textures/rogue_ninja.png",
+      "bytes": 1862,
+      "sha256": "2773b541f11387525f3ce2140e0ca7efa0f7b665f04c40e98f8b28f45c165fd5",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:rogue_ninja",
+          "name": "Rogue Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/puppetninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/puppetninja.png",
+      "path": "originals/kabutoaddon/textures/puppetninja.png",
+      "bytes": 1057,
+      "sha256": "033bda3b63486cbcc6349f9e321564c1bad1a49a5a2d50aa3372b31c1fe4de3e",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:rogue_puppet_master",
+          "name": "Rogue Puppet Master",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/s_rank_missing_ninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/s_rank_missing_ninja.png",
+      "path": "originals/kabutoaddon/textures/s_rank_missing_ninja.png",
+      "bytes": 1102,
+      "sha256": "c50a835c077a4f4ebe832daefb2d76b0616619034c7324dfddf8486251159b2a",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:s_rank_missing_ninja",
+          "name": "S Rank Missing Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/shinobi.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/shinobi.png",
+      "path": "originals/kabutoaddon/textures/shinobi.png",
+      "bytes": 2530,
+      "sha256": "2c47a81bc929e3d613e75556286a5362cebca5146471bfc1364a5ec46d563365",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:shinobi",
+          "name": "Shinobi",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/shinobi1.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/shinobi1.png",
+      "path": "originals/kabutoaddon/textures/shinobi1.png",
+      "bytes": 5094,
+      "sha256": "358ec0c51a793719656ecbb84987adb98635ab7d6e4ae3921f82128f88ca3d30",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:shinobi",
+          "name": "Shinobi",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/shinobi2.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/shinobi2.png",
+      "path": "originals/kabutoaddon/textures/shinobi2.png",
+      "bytes": 1047,
+      "sha256": "e9c80319ecf499ae06395a698ea9448d476cbd85bc938b28305d34e73245478e",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:shinobi",
+          "name": "Shinobi",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/shinobi3.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/shinobi3.png",
+      "path": "originals/kabutoaddon/textures/shinobi3.png",
+      "bytes": 1991,
+      "sha256": "96dfe099308dea92c6b775c33e5eb01841b993b14b94cb206ebe056284affa94",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:shinobi",
+          "name": "Shinobi",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/sound_ninja.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/sound_ninja.png",
+      "path": "originals/kabutoaddon/textures/sound_ninja.png",
+      "bytes": 1227,
+      "sha256": "ed0f94375a4fb3790198ac9786b8027d6ff1fe5e92b2bdbdf0f5759c9327aac1",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:sound_ninja",
+          "name": "Sound Ninja",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "kabutoaddon:textures/storm_rogue.png",
+      "source_jar": "kabutoaddon 5.5.8-beta.jar",
+      "asset_path": "assets/kabutoaddon/textures/storm_rogue.png",
+      "path": "originals/kabutoaddon/textures/storm_rogue.png",
+      "bytes": 2762,
+      "sha256": "fb6d3b37d885abd1b1ab6110020b3dfd02c5680db1efc47425ab0833d40998d0",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "kabutoaddon:storm_rogue",
+          "name": "Storm Rogue",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/zetsu_white_256.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/zetsu_white_256.png",
+      "path": "originals/narutomod/textures/zetsu_white_256.png",
+      "bytes": 33805,
+      "sha256": "39073bc09c6b50a592217a675f4fd86c48cb05b5c89357044531024560a4d9a1",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:whitezetsu",
+          "name": "White Zetsu",
+          "category": "Other legacy combat NPCs"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/seventails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/seventails.png",
+      "path": "originals/narutomod/textures/seventails.png",
+      "bytes": 128979,
+      "sha256": "ee6892b1f1a539237ccd56bb59c51b070d36c63a356ff19e2c5a05edeeda3e85",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:seven_tails",
+          "name": "Chomei",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/bijudama.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/bijudama.png",
+      "path": "originals/narutomod/textures/bijudama.png",
+      "bytes": 6105,
+      "sha256": "01e18c65de08608187cd308e26c0b9ca33fa6228752532f93796bfd5a1d152db",
+      "width": 64,
+      "height": 64,
+      "owners": [
+        {
+          "entity_id": "narutomod:eight_tails",
+          "name": "Gyuuki",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "projectile texture"
+    },
+    {
+      "texture": "narutomod:textures/eighttails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/eighttails.png",
+      "path": "originals/narutomod/textures/eighttails.png",
+      "bytes": 138294,
+      "sha256": "178bf2d9dcde4265ddc9ff2ce062cea4e2927f8b9b456963f60ed952cbb64364",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:eight_tails",
+          "name": "Gyuuki",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/threetails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/threetails.png",
+      "path": "originals/narutomod/textures/threetails.png",
+      "bytes": 122163,
+      "sha256": "226eeccbc9c76ad34d78f9e1268db4621efd5075832bfb35846544f5edee893a",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:three_tails",
+          "name": "Isobu",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/fivetails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/fivetails.png",
+      "path": "originals/narutomod/textures/fivetails.png",
+      "bytes": 94242,
+      "sha256": "7bfb112f66228c889880cec991e8f50df5712b0fbb29c271fc34ca4fc7f8af66",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:five_tails",
+          "name": "Kokuo",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/beam_gold.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/beam_gold.png",
+      "path": "originals/narutomod/textures/beam_gold.png",
+      "bytes": 7326,
+      "sha256": "2c9b10b4d1ec00f6ca036621ec0994bf6e22aff29e78263400b7a3ef38d0274c",
+      "width": 16,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:nine_tails",
+          "name": "Kurama",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "beam texture"
+    },
+    {
+      "texture": "narutomod:textures/ninetails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninetails.png",
+      "path": "originals/narutomod/textures/ninetails.png",
+      "bytes": 169679,
+      "sha256": "1fc71f5b6e43c0d449285226e37380afb096231a2114aefed74b1b0e8e3bbf33",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:nine_tails",
+          "name": "Kurama",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/ninetailskcm.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/ninetailskcm.png",
+      "path": "originals/narutomod/textures/ninetailskcm.png",
+      "bytes": 257739,
+      "sha256": "1b95ee89848d974a035ffc2ddd3499798a8bd634207ccc20a37d9b1026a56c6f",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:nine_tails",
+          "name": "Kurama",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "chakra-mode skin"
+    },
+    {
+      "texture": "narutomod:textures/twotails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/twotails.png",
+      "path": "originals/narutomod/textures/twotails.png",
+      "bytes": 60673,
+      "sha256": "8748909d5650c32a5c46eea0ab13f1eaf685c325907ea8a980728aa64be893f2",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:two_tails",
+          "name": "Matatabi",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/twotailsflames.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/twotailsflames.png",
+      "path": "originals/narutomod/textures/twotailsflames.png",
+      "bytes": 302805,
+      "sha256": "e96a76a0b1bee21040f1797afecb9619973ed90ee763e2aff453fdeeab77c9a4",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:two_tails",
+          "name": "Matatabi",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "flame overlay"
+    },
+    {
+      "texture": "narutomod:textures/sixtails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/sixtails.png",
+      "path": "originals/narutomod/textures/sixtails.png",
+      "bytes": 98077,
+      "sha256": "2b1e6ba85eeefc94097ccd4ec671807974fed3ca3efeeff5cd70a56c793179f1",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:six_tails",
+          "name": "Saiken",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/onetail.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/onetail.png",
+      "path": "originals/narutomod/textures/onetail.png",
+      "bytes": 245091,
+      "sha256": "204463b7d1460bf3912b97369b6afedb6f5f02f61397125c4930ae4b6c3386ba",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:one_tail",
+          "name": "Shukaku",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/fourtails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/fourtails.png",
+      "path": "originals/narutomod/textures/fourtails.png",
+      "bytes": 183136,
+      "sha256": "6f34a0579b13366bbecf630f946cfe9a2c0017a610ae317281e2dc7f45b81f6f",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:four_tails",
+          "name": "Son Goku",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/tentails.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/tentails.png",
+      "path": "originals/narutomod/textures/tentails.png",
+      "bytes": 32355,
+      "sha256": "ebfa80a3808daa8132142b90a58f74ee7d4159d0d1c5f128b56f594eb502bf52",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:ten_tails",
+          "name": "Ten Tails",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "skin / model texture"
+    },
+    {
+      "texture": "narutomod:textures/tentails_minion.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/tentails_minion.png",
+      "path": "originals/narutomod/textures/tentails_minion.png",
+      "bytes": 29844,
+      "sha256": "d17de2500bb0cb1519cbf5cf0b4f5c9fc29c2d593c669b85f0a4abc90e52ad44",
+      "width": 256,
+      "height": 256,
+      "owners": [
+        {
+          "entity_id": "narutomod:ten_tails",
+          "name": "Ten Tails",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "Ten Tails minion skin"
+    },
+    {
+      "texture": "narutomod:textures/tentailsl1.png",
+      "source_jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "asset_path": "assets/narutomod/textures/tentailsl1.png",
+      "path": "originals/narutomod/textures/tentailsl1.png",
+      "bytes": 79716,
+      "sha256": "52208469705be0d4ebd8ec2651e116a751ca5113a4d195b203beb03204761563",
+      "width": 512,
+      "height": 512,
+      "owners": [
+        {
+          "entity_id": "narutomod:ten_tails",
+          "name": "Ten Tails",
+          "category": "Tailed beasts"
+        }
+      ],
+      "role": "alternate form"
+    }
+  ],
+  "bindings": [
+    {
+      "entity_id": "narutomod:itachi",
+      "name": "Itachi Uchiha",
+      "category": "Named characters",
+      "texture": "narutomod:textures/itachi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbcursemarkaddon:edotensei_madara",
+      "name": "Edotensei Madara",
+      "category": "Named characters",
+      "texture": "ahznbcursemarkaddon:textures/madara.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:uchiha_obito",
+      "name": "Uchiha Obito",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/obito.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:uzumaki_naruto",
+      "name": "Uzumaki Naruto",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/naruto.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:kisame_hoshigaki",
+      "name": "Kisame Hoshigaki",
+      "category": "Named characters",
+      "texture": "narutomod:textures/kisamefinal.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:deidara",
+      "name": "Deidara",
+      "category": "Named characters",
+      "texture": "narutomod:textures/deidara256.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:hidan",
+      "name": "Hidan",
+      "category": "Named characters",
+      "texture": "narutomod:textures/hidan.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:hidan",
+      "name": "Hidan",
+      "category": "Named characters",
+      "texture": "narutomod:textures/jashin_symbol.png",
+      "role": "ritual symbol"
+    },
+    {
+      "entity_id": "narutomod:kakuzu",
+      "name": "Kakuzu",
+      "category": "Named characters",
+      "texture": "narutomod:textures/kakuzu.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:ay",
+      "name": "Ay",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/ay.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "borutomodaddononero:boro",
+      "name": "Boro",
+      "category": "Named characters",
+      "texture": "borutomodaddononero:textures/boro_start.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:c",
+      "name": "C",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/c.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:darui",
+      "name": "Darui",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/darui.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbcursemarkaddon:edotensei_hashirama",
+      "name": "Edotensei Hashirama",
+      "category": "Named characters",
+      "texture": "ahznbcursemarkaddon:textures/hashirama_edo.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:edotensei_itachi",
+      "name": "Edotensei Itachi",
+      "category": "Named characters",
+      "texture": "narutomod:textures/itachi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:edotensei_nagato",
+      "name": "Edotensei Nagato",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/edotensei_nagato.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:gaara",
+      "name": "Gaara",
+      "category": "Named characters",
+      "texture": "narutomod:textures/gaara.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbswordsplus:ginkaku",
+      "name": "Ginkaku",
+      "category": "Named characters",
+      "texture": "ahznbswordsplus:textures/2024_02_07_ginkaku-22316219.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:haku",
+      "name": "Haku",
+      "category": "Named characters",
+      "texture": "narutomod:textures/haku.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:hatake_kakashi",
+      "name": "Hatake Kakashi",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/hatake_kakashi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:iruka_sensei",
+      "name": "Iruka Sensei",
+      "category": "Named characters",
+      "texture": "narutomod:textures/iruka64x64.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "borutomodaddononero:isshiki_boss",
+      "name": "Isshiki",
+      "category": "Named characters",
+      "texture": "borutomodaddononero:textures/isshiki_boss_texture.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:jiraiya",
+      "name": "Jiraiya",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/jiraiya.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:jiraiya",
+      "name": "Jiraiya",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/jiraiya_sagemode.png",
+      "role": "Sage Mode skin"
+    },
+    {
+      "entity_id": "narutomod:kakashi",
+      "name": "Kakashi",
+      "category": "Named characters",
+      "texture": "narutomod:textures/kakashi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:kankuro",
+      "name": "Kankuro",
+      "category": "Named characters",
+      "texture": "narutomod:textures/kankuro.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:kimimaro",
+      "name": "Kimimaro",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/kimimaro.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:kurotsuchi",
+      "name": "Kurotsuchi",
+      "category": "Named characters",
+      "texture": "narutomod:textures/kurotsuchi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:mightguy",
+      "name": "Might Guy",
+      "category": "Named characters",
+      "texture": "narutomod:textures/might_guy.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "borutomodaddononero:momoshiki_boss",
+      "name": "Momoshiki",
+      "category": "Named characters",
+      "texture": "borutomodaddononero:textures/momoshiki_boss_texture.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbcursemarkaddon:orochimaru",
+      "name": "Orochimaru",
+      "category": "Named characters",
+      "texture": "ahznbcursemarkaddon:textures/orochimaru_naruto_shippuden_villain_great_white_snake_snake_sannin_ninja_boy_anime_1.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:sakura_haruno",
+      "name": "Sakura Haruno",
+      "category": "Named characters",
+      "texture": "narutomod:textures/sakura_slim_256.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:sasori",
+      "name": "Sasori of the Red Sand",
+      "category": "Named characters",
+      "texture": "narutomod:textures/sasori2.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:sasori",
+      "name": "Sasori of the Red Sand",
+      "category": "Named characters",
+      "texture": "narutomod:textures/sasori_core.png",
+      "role": "Sasori core form"
+    },
+    {
+      "entity_id": "narutomod:temari",
+      "name": "Temari",
+      "category": "Named characters",
+      "texture": "narutomod:textures/temari.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:tenten",
+      "name": "Tenten",
+      "category": "Named characters",
+      "texture": "narutomod:textures/tenten.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbswordsplus:tobirama",
+      "name": "Tobirama",
+      "category": "Named characters",
+      "texture": "ahznbswordsplus:textures/2021_10_05_tobirama-1-19063706.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "ahznbcursemarkaddon:tsunade",
+      "name": "Tsunade",
+      "category": "Named characters",
+      "texture": "ahznbcursemarkaddon:textures/tsunade_senju.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:yakushi_kabuto",
+      "name": "Yakushi Kabuto",
+      "category": "Named characters",
+      "texture": "kabutoaddon:textures/kabuto.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:zabuza_momochi",
+      "name": "Zabuza Momochi",
+      "category": "Named characters",
+      "texture": "narutomod:textures/zabuzamomochi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:anbu",
+      "name": "Anbu",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_anbu.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:explosive_ninja",
+      "name": "Explosive Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/explosive_ninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:iwa_rogue",
+      "name": "Iwa Rogue",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/iwa_rogue.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:lava_ninja",
+      "name": "Lava Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/lava_ninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:medical_ninja",
+      "name": "Medical Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/medicalnin.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ninja_iwa",
+      "name": "Ninja Iwa",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_iwa.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ninja_kiri",
+      "name": "Ninja Kiri",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_kiri.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ninja_konoha",
+      "name": "Ninja Konoha",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_konoha.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ninja_kumo",
+      "name": "Ninja Kumo",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_kumo.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ninja_suna",
+      "name": "Ninja Suna",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/ninja_suna.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:ninjabandit",
+      "name": "Ninjabandit",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/bandit.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:otsutsuki",
+      "name": "Otsutsuki",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/otsutsuki.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:anbu",
+      "name": "Rogue Anbu",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/anbu.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:rogue_ninja",
+      "name": "Rogue Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/rogue_ninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:rogue_puppet_master",
+      "name": "Rogue Puppet Master",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/puppetninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:s_rank_missing_ninja",
+      "name": "S Rank Missing Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/s_rank_missing_ninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:shinobi",
+      "name": "Shinobi",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/shinobi.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:shinobi",
+      "name": "Shinobi",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/shinobi1.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:shinobi",
+      "name": "Shinobi",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/shinobi2.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:shinobi",
+      "name": "Shinobi",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/shinobi3.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:sound_ninja",
+      "name": "Sound Ninja",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/sound_ninja.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "kabutoaddon:storm_rogue",
+      "name": "Storm Rogue",
+      "category": "Other legacy combat NPCs",
+      "texture": "kabutoaddon:textures/storm_rogue.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:whitezetsu",
+      "name": "White Zetsu",
+      "category": "Other legacy combat NPCs",
+      "texture": "narutomod:textures/zetsu_white_256.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:seven_tails",
+      "name": "Chomei",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/seventails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:eight_tails",
+      "name": "Gyuuki",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/bijudama.png",
+      "role": "projectile texture"
+    },
+    {
+      "entity_id": "narutomod:eight_tails",
+      "name": "Gyuuki",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/eighttails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:three_tails",
+      "name": "Isobu",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/threetails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:five_tails",
+      "name": "Kokuo",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/fivetails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:nine_tails",
+      "name": "Kurama",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/beam_gold.png",
+      "role": "beam texture"
+    },
+    {
+      "entity_id": "narutomod:nine_tails",
+      "name": "Kurama",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/ninetails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:nine_tails",
+      "name": "Kurama",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/ninetailskcm.png",
+      "role": "chakra-mode skin"
+    },
+    {
+      "entity_id": "narutomod:two_tails",
+      "name": "Matatabi",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/twotails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:two_tails",
+      "name": "Matatabi",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/twotailsflames.png",
+      "role": "flame overlay"
+    },
+    {
+      "entity_id": "narutomod:six_tails",
+      "name": "Saiken",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/sixtails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:one_tail",
+      "name": "Shukaku",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/onetail.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:four_tails",
+      "name": "Son Goku",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/fourtails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ten_tails",
+      "name": "Ten Tails",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/tentails.png",
+      "role": "skin / model texture"
+    },
+    {
+      "entity_id": "narutomod:ten_tails",
+      "name": "Ten Tails",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/tentails_minion.png",
+      "role": "Ten Tails minion skin"
+    },
+    {
+      "entity_id": "narutomod:ten_tails",
+      "name": "Ten Tails",
+      "category": "Tailed beasts",
+      "texture": "narutomod:textures/tentailsl1.png",
+      "role": "alternate form"
+    }
+  ],
+  "preview_sheets": [
+    {
+      "category": "Named characters",
+      "path": "previews/named-characters-1.png",
+      "images": 20
+    },
+    {
+      "category": "Named characters",
+      "path": "previews/named-characters-2.png",
+      "images": 19
+    },
+    {
+      "category": "Other legacy combat NPCs",
+      "path": "previews/other-legacy-combat-npcs-1.png",
+      "images": 20
+    },
+    {
+      "category": "Other legacy combat NPCs",
+      "path": "previews/other-legacy-combat-npcs-2.png",
+      "images": 3
+    },
+    {
+      "category": "Tailed beasts",
+      "path": "previews/tailed-beasts-1.png",
+      "images": 16
+    }
+  ],
+  "private_zip_sha256": "4e82e1a159c6c8584b1e4c8cff73c33d5aa9d0306df8c9086c9de79ee2c74bbb",
+  "original_png_hashes_and_zip_verified": true
+}

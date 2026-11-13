@@ -2,6 +2,10 @@
 
 Updated: 2026-11-13 UTC.
 
+## Original boss skin PNGs extracted for owner
+
+All 67 curated legacy entries now have direct PNG resource mappings: 37 named characters,20 other combat NPCs,10 tailed beasts. The local gallery contains78 unique original PNGs/79 entity bindings, five visually inspected preview sheets, a searchable HTML gallery and a ZIP. Itachi/Edo Itachi share one PNG; forms, overlays and related effect/core textures are labeled. See docs/legacy-boss-skins.md and collaboration/legacy-boss-gallery/skin-texture-index.json. Original PNG hashes, decoding, all67 mappings,78 HTML images and ZIP CRC/entry/byte integrity passed. Raw third-party images stay under ignored exports; only original extraction code/provenance metadata/documentation are saved to GitHub. The earlier in-game stationary renderer remains unfinished.
+
 ## Chat-closing source checkpoint and unfinished boss gallery
 
 The owner requested uploading all remaining work before closing this chat. Continuation branch: `codex/chat-handoff-20261113`. This checkpoint captures the current public tracked/untracked source tree, including Rack/HUD combat switching, Sonnet equipment metadata, pending lifecycle/native checks, Magma tooling/evidence and the original boss-gallery helper/setup source. The prior combat/art checkpoint is also retained at `codex/combat-hotbar-equipment-20261113` (2907071cb97d14491c25c42a8516c5c6bb2367b0). Original local-only world/runtime/account data and third-party assets are excluded.
