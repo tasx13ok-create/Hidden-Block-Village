@@ -1,0 +1,669 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-11-13T18:23:59.164673+00:00",
+  "source_commit": "b69ec020b5fd4c159c6969e5c3f4a9ccca8abfcf",
+  "file": "OPUS55-FULL-HANDOFF-1000000-CHARS.md",
+  "characters": 1000000,
+  "utf8_bytes": 1000716,
+  "sha256": "eef517915bf23edd63753ee7db9c5d7bd283236a8bbe3bf7bcb061bc4a133fcb",
+  "whole_source_units": 109,
+  "padding_added": false,
+  "arbitrary_truncation": false,
+  "private_payloads_included": false,
+  "sources": [
+    {
+      "path": "collaboration/claude-inputs/FABLE-INSTRUCTIONS.md",
+      "sha256": "dd3e7e6aae5cf261dd7894384330619924738eb6b44a192562d78c155758c86c",
+      "source_characters": 99203,
+      "source_bytes": 99325
+    },
+    {
+      "path": "collaboration/claude-inputs/FABLE-CONTEXT.md",
+      "sha256": "8ceabb115ef65cf88bb8dbc2e0aca8f3bb3e2bf762252c0bdc5de98399b939f6",
+      "source_characters": 102830,
+      "source_bytes": 103420
+    },
+    {
+      "path": "collaboration/claude-inputs/FABLE-MEMORY.md",
+      "sha256": "9191462c0717635bc13a2bc2068e230ce153822b98c27b9dcd088482afc92763",
+      "source_characters": 103195,
+      "source_bytes": 103199
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/Actors.java",
+      "sha256": "6e9400ef110720dd7a5c1b9bfb9dcaf8236b68a6509db434cfd40641206ceebe",
+      "source_characters": 14691,
+      "source_bytes": 14792
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/ClientProxy.java",
+      "sha256": "eee306bb37c7ea188001dfe1592457ead20ae2edfe35dea3cf2815dbf9238547",
+      "source_characters": 864,
+      "source_bytes": 865
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/CommonProxy.java",
+      "sha256": "3eb2016367aa523f25506c858f451ae96ebf021cf396662767585971f533edda",
+      "source_characters": 81,
+      "source_bytes": 82
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/Encounters.java",
+      "sha256": "91fd652aab5d22828d84aacc16b461887d3253d2e3474f8aebd7f89b8851bd7c",
+      "source_characters": 5617,
+      "source_bytes": 5653
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/Profiles.java",
+      "sha256": "44ae7d4169dbb7c65c5c4875eb9aa8462a7117f94febf40ae86a46dcf6dfefcf",
+      "source_characters": 1392,
+      "source_bytes": 1393
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilityActions.java",
+      "sha256": "e4df68b70d74ee0dbd441868f76a4638f2c0003c9fe73d4c7a1d096e02916810",
+      "source_characters": 11816,
+      "source_bytes": 11942
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilityLoadoutSnapshot.java",
+      "sha256": "7e769eb8dedef59ecddeadb8214883913108382c8f71e09fcac819d7c101408b",
+      "source_characters": 1416,
+      "source_bytes": 1416
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilitySnapshot.java",
+      "sha256": "acafef98bfd7470818b1bc4e16127802fb509166d4bd060d39c899b301ae4b8e",
+      "source_characters": 3914,
+      "source_bytes": 3914
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AcademyCampaign.java",
+      "sha256": "189a83a760d2e36d0bcb5da7f9dfdb0f188e9729611b9d9054c604ff38d7326b",
+      "source_characters": 21244,
+      "source_bytes": 21244
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AcademyCourse.java",
+      "sha256": "5f59b0b8d9fe430ef5133329d5e9c9965da8f4bcb8259bcd6dc15879bd814db7",
+      "source_characters": 7060,
+      "source_bytes": 7060
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AcademyEvents.java",
+      "sha256": "ccca53d7cc2b3a6fbe457fddc2d7fb7944987919f6c6af3b521fae6acf2b19d7",
+      "source_characters": 4868,
+      "source_bytes": 4868
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AcademyProgress.java",
+      "sha256": "58ebe96c09ba518135c3b06d15b692da9c989fc5bc8877ad8351238c6ce12a7f",
+      "source_characters": 2308,
+      "source_bytes": 2308
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Adventures.java",
+      "sha256": "9831aff2092a9ff046982b949c350b1800449e4c0d64812138e6dc67d7dcc6fa",
+      "source_characters": 6626,
+      "source_bytes": 6626
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Arts.java",
+      "sha256": "b8f08054e2a75799db19d982cddad3616eda3386ba10b07c7077a3454b28641f",
+      "source_characters": 13255,
+      "source_bytes": 13255
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Combat.java",
+      "sha256": "6deccc843c45ef01eaa48e8fba766d9a6c95da132a86225968f535c9fce6f129",
+      "source_characters": 14206,
+      "source_bytes": 14446
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FieldRogue.java",
+      "sha256": "f51a832639b0f8c8c380d9200135a5565591ce0af2fbda9c05105da62aa043a6",
+      "source_characters": 4594,
+      "source_bytes": 4594
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Forms.java",
+      "sha256": "7fce63e3ecb09ce95ac2cb62f7312e33252025dd167daac39e6bc1f6464891b4",
+      "source_characters": 4316,
+      "source_bytes": 4316
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Gear.java",
+      "sha256": "193ca3186743dd18f330db0fcf9d2a2acb506c0d0aaa6993b8f8272b6df7df11",
+      "source_characters": 9150,
+      "source_bytes": 9305
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Missions.java",
+      "sha256": "17df03c44dc8809bee7ad6374fe9efb5255ae80799fe7c68a1b6ac05f2c798d4",
+      "source_characters": 12984,
+      "source_bytes": 13113
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OriginalArmorLoadoutProvider.java",
+      "sha256": "d9e4273f190adb5c71d3558cf5291796258bbddab4f5c620ca667438d6bf1c2f",
+      "source_characters": 1502,
+      "source_bytes": 1524
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OriginalArmorRegistry.java",
+      "sha256": "438f728728224affcb4216eaf8d07ad7aa449b23357ae9b7a6f6c8f8a25682b0",
+      "source_characters": 5260,
+      "source_bytes": 5260
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OwnedSkills.java",
+      "sha256": "c6c46614c0f924a6fd4c3a8fc09011a119682a3457d435ec56f7fac41008130d",
+      "source_characters": 2286,
+      "source_bytes": 2286
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/PlayerState.java",
+      "sha256": "27d67587ac678916537696b8a07ce3b96e3e6b5635160bb97258f69bd084429a",
+      "source_characters": 1508,
+      "source_bytes": 1508
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/RewardLedger.java",
+      "sha256": "57896215966253753310388ce26a96cba87a17367044f20a3185eab7c8ce3ae3",
+      "source_characters": 16212,
+      "source_bytes": 16481
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Summons.java",
+      "sha256": "d4048127c2840dbbed8298ab36ad6d68a237a0baa8dbe8b9b90a8ee23c293cba",
+      "source_characters": 3576,
+      "source_bytes": 3576
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Targets.java",
+      "sha256": "2c6e69601c6e5a44e415731847860b701c8e1c610bd13743b133f5716b56a331",
+      "source_characters": 617,
+      "source_bytes": 617
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ValeOrders.java",
+      "sha256": "736b01aa9dfa18e53dbea966816dcbca8ba0f275466929f61beb95988144ddd1",
+      "source_characters": 3514,
+      "source_bytes": 3578
+    },
+    {
+      "path": "modules/vale-residents-server-bridge/src/main/java/village/residentsbridge/ResidentServerBridge.java",
+      "sha256": "f44a4ffbee29a8d12df9ae4106f12446b7206a8621621f8c4612fcb116883336",
+      "source_characters": 2763,
+      "source_bytes": 2800
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/CommonProxy.java",
+      "sha256": "df8a23e1cc5ccd66ae1b21066272f16fb30fcdfb1607caee4cc636123509ec7b",
+      "source_characters": 84,
+      "source_bytes": 84
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/DialogueBook.java",
+      "sha256": "0917ad1e911ffefd08f5c6268bd7ca1338b35a57a814ca0140e0434b5b8ec1c6",
+      "source_characters": 8846,
+      "source_bytes": 8846
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/DialogueSessions.java",
+      "sha256": "a6099aac97f8ae68fca1dc81414b59e1f4ff32ba44c936eff6ffcc5162c84a3f",
+      "source_characters": 4725,
+      "source_bytes": 4725
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/EntityResident.java",
+      "sha256": "088f1fce4ac6495da3c6ee73163735b1b2d4311b3bcde807f0d9660310cb423c",
+      "source_characters": 4380,
+      "source_bytes": 4380
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/InteractionWindow.java",
+      "sha256": "94fc93b0e64de8b2eb2837102fa10e12fec1b149fd4ef118533ecb48861b8c77",
+      "source_characters": 835,
+      "source_bytes": 835
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/Provisioning.java",
+      "sha256": "e23ee31428afbb70c90cada3e13ddb513a7d559171ace470f7d810afb940343c",
+      "source_characters": 6036,
+      "source_bytes": 6036
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentAuthoring.java",
+      "sha256": "07579b9ad6b0153057f4d2db93f7231735c0a2281c47065b96ad0ed69cb27a69",
+      "source_characters": 2077,
+      "source_bytes": 2077
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentChooseCommand.java",
+      "sha256": "ff43c4cde3024965e4ade96119ff4506cf520881c6df816b5f8b9e77db6160cb",
+      "source_characters": 824,
+      "source_bytes": 824
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentEvents.java",
+      "sha256": "054f6b4ca7b4e81fed15f24bdf50ae48577f2717267edcb7d8f5c6a31a2a8c84",
+      "source_characters": 1730,
+      "source_bytes": 1730
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentIdentity.java",
+      "sha256": "6456b7ef80da8827cbffc0bbf8ba2e57f7e13fc5c1b09e56d8c99f72e6a00938",
+      "source_characters": 1449,
+      "source_bytes": 1449
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentRole.java",
+      "sha256": "d5b6aad494bc92bc60da3b14220ee39552d1e29395d72b4fbe3c8eec8d9a8b7e",
+      "source_characters": 693,
+      "source_bytes": 693
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentSlots.java",
+      "sha256": "0600397b31ae4151a182af07a37e2df57082da18e2caabdfeaf5fc330dad8a41",
+      "source_characters": 4285,
+      "source_bytes": 4285
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentsCommand.java",
+      "sha256": "a421cf98a20cc061715fa216fddcfc9efe0f4fcf5931a884f676ac307ae2062f",
+      "source_characters": 3885,
+      "source_bytes": 3885
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ResidentsData.java",
+      "sha256": "1d1e3cd40377251239eadbfea7cb46c44771c4d8e9b7f996e66d0ca813d42071",
+      "source_characters": 1061,
+      "source_bytes": 1061
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/RoleMenus.java",
+      "sha256": "9a75ed69fbeef6346a07c30041e6ddf1f6c7279fd73040fb4a0bdfcc9a782903",
+      "source_characters": 1265,
+      "source_bytes": 1265
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ValeResidents.java",
+      "sha256": "b1fc60e86e8910d3e986d24c66d8174d38ad88bfe8f306a61c1abea6f994d791",
+      "source_characters": 2796,
+      "source_bytes": 2849
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/client/ClientProxy.java",
+      "sha256": "b28cdd2535ed0ec6416ff2ce13c4e516e3618542048a35bd21f9bc7d705914e0",
+      "source_characters": 500,
+      "source_bytes": 500
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/client/ResidentRenderer.java",
+      "sha256": "83b2ee5ba0ad44e468928f2d63ed8c96ef16691afe3adb7ce56ee8e2643a9904",
+      "source_characters": 1245,
+      "source_bytes": 1245
+    },
+    {
+      "path": "modules/vale-residents/tests/village/residents/DialogueChecks.java",
+      "sha256": "43f5f89c4c503c8ec4c787469174b057f0ccbacd665fab85fd5ed3c31e0de8f2",
+      "source_characters": 3087,
+      "source_bytes": 3087
+    },
+    {
+      "path": "modules/vale-residents/tests/village/residents/ResidentChecks.java",
+      "sha256": "1c5825312013a89fc1eec54b79ad52b7deb90392f3768ca84215fd9f3bbafb3d",
+      "source_characters": 10857,
+      "source_bytes": 10857
+    },
+    {
+      "path": "modules/vale-world-compat/src/main/java/village/vale/worldcompat/ClientModels.java",
+      "sha256": "b9894346ef5cd86293f7db371214b5963ad00b8f045bc11114f2fa200f6fd5e4",
+      "source_characters": 749,
+      "source_bytes": 750
+    },
+    {
+      "path": "modules/vale-world-compat/src/main/java/village/vale/worldcompat/WorldCompat.java",
+      "sha256": "c76a2a6345f7f826354f4c39922c2b72147ea2824878e446aecae8c6fdc41f1a",
+      "source_characters": 11176,
+      "source_bytes": 11178
+    },
+    {
+      "path": "modules/vale-world-compat/tests/village/vale/worldcompat/CompatibilityChecks.java",
+      "sha256": "035d289946404c6e15b3ef6a20fc7fcb62444db0925f66712bd99ea52006c39f",
+      "source_characters": 7082,
+      "source_bytes": 7082
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/CommonProxy.java",
+      "sha256": "cee910722675af5f71fae06e3e912739c8502b5e619eb5aa924dfd1e10dc5dc2",
+      "source_characters": 89,
+      "source_bytes": 89
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/EntityStandard.java",
+      "sha256": "193957b4677667cdb283c6f69b8a50f2403aab53fd592bc64e8b3c3fa1f73b0c",
+      "source_characters": 6641,
+      "source_bytes": 6641
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/EntityStandard030.java",
+      "sha256": "bff60802ba377dc0ea4f6c3ec4555654af3d4bfe961ea0dde2e76c25f303f8ab",
+      "source_characters": 289,
+      "source_bytes": 289
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/ItemStandard.java",
+      "sha256": "3d5869dba3223474b6fdc0f2ce761eb7a007cf090aef7729ff3b4bae796f624c",
+      "source_characters": 2930,
+      "source_bytes": 2930
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardGeometry.java",
+      "sha256": "e435ca5e596a4c4bcbca106708c9bd9f5b8d40b962b990f0afbcefafd4910ea0",
+      "source_characters": 1269,
+      "source_bytes": 1269
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardRecord.java",
+      "sha256": "bcb647f5ab9d9765cdc37dc615ac4dd28a0866f935e1fcdf273ea034a3dd3ed8",
+      "source_characters": 4189,
+      "source_bytes": 4189
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardVariant.java",
+      "sha256": "59ee99e8aef4a73ea1d29479a520325a63eba4c05ee91a8d2308ade65bfc0f50",
+      "source_characters": 1106,
+      "source_bytes": 1106
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardsArchive.java",
+      "sha256": "4589a8abf03ab3a931c66efc7bdc0c5f4b1e8efd46d1cfa340fda36000e1751b",
+      "source_characters": 2766,
+      "source_bytes": 2766
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardsCommand.java",
+      "sha256": "7c49dbf95d26fb2dc0f8b3916baf2cd00ddd3b59ec7eb23a5461c304057b5d79",
+      "source_characters": 6765,
+      "source_bytes": 6765
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/StandardsMod.java",
+      "sha256": "31b4a823ac091f0a6f739f369de6f0e9dee531fac87801d639ea2085cfa4ec6d",
+      "source_characters": 2789,
+      "source_bytes": 2789
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/client/ClientProxy.java",
+      "sha256": "2590df89e2ee787e877ad18862d9964382835ceded7afc2de4dbd7a25a60916e",
+      "source_characters": 1462,
+      "source_bytes": 1462
+    },
+    {
+      "path": "modules/village-standards/src/main/java/village/standards/client/StandardRenderer.java",
+      "sha256": "ce02553fb504a707f12942b69b3581d37d5a798bf9ef7b6d6f54a438569829b6",
+      "source_characters": 4853,
+      "source_bytes": 4853
+    },
+    {
+      "path": "modules/village-standards/tests/village/standards/StandardsChecks.java",
+      "sha256": "587a8f295fbc5cf093134117c709cc831273e20a92521eb95b107b1736df3cb6",
+      "source_characters": 11330,
+      "source_bytes": 11330
+    },
+    {
+      "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeChecks.java",
+      "sha256": "f5ee924800975a29173a48f039f25aeab41b2053ee26d5c51b552f99cc1b5695",
+      "source_characters": 25192,
+      "source_bytes": 25192
+    },
+    {
+      "path": "modules/village-standards/worldchecks/village/standards/StandardsNativeRunner.java",
+      "sha256": "29e4b71eecd79897f76f3ca8b4dd91b69be7c4b4d5038127c95335c9aea7a1c7",
+      "source_characters": 4036,
+      "source_bytes": 4036
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/AcademyNativeChecks.java",
+      "sha256": "6ad4e3a29392224b6ef43f78435df1a6dc18f045b3de5bfa47dc7c15d1a6e3b7",
+      "source_characters": 15190,
+      "source_bytes": 15190
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ClawNativeChecks.java",
+      "sha256": "f50f30f53c011e7a01a82b183a5d447b8726be9c2f30f6e4b73be648b293e4a2",
+      "source_characters": 22040,
+      "source_bytes": 22040
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+      "sha256": "f94574644100d9cc148e845b40f5c795efedf86b0330639f9326a9a668515e93",
+      "source_characters": 25191,
+      "source_bytes": 25191
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ReedEscapeNativeChecks039.java",
+      "sha256": "3646bcc70c9e05464591a973e3ac2c28c7b8a75acf866a0a75e47e719fa5176a",
+      "source_characters": 20910,
+      "source_bytes": 20910
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollCastNativeChecks039.java",
+      "sha256": "a81f4c750f68dde54a253a53647d4851009f5d67ee3b7e8926723988f453ad93",
+      "source_characters": 36528,
+      "source_bytes": 36528
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollNativeChecks038.java",
+      "sha256": "35efdcf204eee605ee3e8fff78dbd024f10682802787baf46cf35fc00229d728",
+      "source_characters": 16130,
+      "source_bytes": 16130
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/valerack/RackNativeChecks038.java",
+      "sha256": "b3b65090705fbff559082fbc71c3f66cbc63ef0b7c62753cd69de033c62a9b89",
+      "source_characters": 9294,
+      "source_bytes": 9294
+    },
+    {
+      "path": "modules/vale-orders/tests/AcademyChecks.java",
+      "sha256": "6d55cccec2c7820daa10715b281f69a244d53a57336cdf6ab32a9f893faa7a6d",
+      "source_characters": 2821,
+      "source_bytes": 2821
+    },
+    {
+      "path": "modules/vale-orders/tests/CommandSecurityTest.java",
+      "sha256": "09340cd36622ea89cf5a4a5c3c444005f71f88f93481bc894cbd624f46ad6a60",
+      "source_characters": 4500,
+      "source_bytes": 4500
+    },
+    {
+      "path": "modules/vale-orders/tests/JeiCatalogChecks.java",
+      "sha256": "946a52025f4e22053e618377a0b3d31ca32081bb8f02464a39c93847b871cbb7",
+      "source_characters": 1477,
+      "source_bytes": 1477
+    },
+    {
+      "path": "modules/vale-orders/tests/PoseMathTest.java",
+      "sha256": "20845522e217c2a909784a26edbdb54e47257e7fe9a8abbf7f02152ac8bc9e89",
+      "source_characters": 1060,
+      "source_bytes": 1060
+    },
+    {
+      "path": "modules/vale-orders/tests/RulesTest.java",
+      "sha256": "1425a0b0ab00bd9ba825268e1d84e9bd0d84b0f11763c9bc63f5833ee138c0c8",
+      "source_characters": 2086,
+      "source_bytes": 2086
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/AbilityContractTest.java",
+      "sha256": "b3eced7e8ec650222e686aea7b28a3df80ba63f3efa5fb8f44396eaeceb1e400",
+      "source_characters": 4881,
+      "source_bytes": 4881
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/HudSnapshotTest.java",
+      "sha256": "dc209a7fd00544778eedcb80cca644766292a3e8cd5a8f6edb5109049d1b0955",
+      "source_characters": 2675,
+      "source_bytes": 2675
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/LoadoutContractTest.java",
+      "sha256": "33ad92152d2adcb969e2e83262b78bd16435168978a8e9534f5c412ea2963fb2",
+      "source_characters": 7226,
+      "source_bytes": 7226
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/armor/OriginalArmorChecks.java",
+      "sha256": "5cbfd00656fecbc12458c73039cf088c0e0e340a9291e76cd01234dac522e1f6",
+      "source_characters": 18355,
+      "source_bytes": 18355
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/armor/api/ApiContractChecks.java",
+      "sha256": "782f291debe9c78e6e219a409545e2aab0a833ff84a472e1969f20bf058c2f85",
+      "source_characters": 3092,
+      "source_bytes": 3092
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/arsenal/ClawCombatChecks.java",
+      "sha256": "70b58b6deb24599cb04b51ebfeca3fcadd220ba95a0bb2a3cb1c7ddd90a60bf1",
+      "source_characters": 3543,
+      "source_bytes": 3543
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/arsenal/GameplayRecoveryChecks.java",
+      "sha256": "4df33b4fb244865e0260a82a31074461788129884f6ed739ea942104e100e114",
+      "source_characters": 6030,
+      "source_bytes": 6030
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/arsenal/ScrollCastChecks039.java",
+      "sha256": "f6f94d9d08a7840fb35b378960b0814308c7036ad6b1cc8416d9ba487a5d7dcd",
+      "source_characters": 3722,
+      "source_bytes": 3722
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/arsenal/ScrollCompanionChecks038.java",
+      "sha256": "fc44348628ef824a16272be0fc643a51eba7696cae84f0ceb245e11d666ddf28",
+      "source_characters": 6822,
+      "source_bytes": 6822
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/AbilityRequestPolicyTest.java",
+      "sha256": "ec68622c26ed512c81d639b894e751755d728a014918c56d20ee168fe467c594",
+      "source_characters": 2852,
+      "source_bytes": 2852
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/ControlsChecks.java",
+      "sha256": "7f0c2b31ad9b0f210685e37145d3b96b83703bdbdc6f5afe36475beba6a78f7b",
+      "source_characters": 10280,
+      "source_bytes": 10280
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/FocusedCastChecks.java",
+      "sha256": "b7dfc6e838b8ff32ca52a3bb0202be4d36f315bb8766a095da53eea3f49a4b74",
+      "source_characters": 4942,
+      "source_bytes": 4942
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/JutsuFocusChecks.java",
+      "sha256": "fb2ad708ba44d82b1a8c15e19a69f47905bf6ce13d51e94f74eedc62922f5f29",
+      "source_characters": 6561,
+      "source_bytes": 6561
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/MenuChecks.java",
+      "sha256": "ca89d77312ed7e56640df6e6a57682898e30226061e91726801258e4b7720588",
+      "source_characters": 11076,
+      "source_bytes": 11076
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/SimpleMenuChecks.java",
+      "sha256": "0132c20fc43f8647f011a02183325b3acf2c9a644fe8442d18b62ce50c900f0d",
+      "source_characters": 3423,
+      "source_bytes": 3423
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Bosses.java",
+      "sha256": "c99eb27bdac490fad5ee500c24e21b33d7edb78744529dcc3cbb81614ab32363",
+      "source_characters": 665,
+      "source_bytes": 665
+    },
+    {
+      "path": "modules/field-controls/tests/village/controls/SettingsChecks.java",
+      "sha256": "623ea7a4b76e112a267a4f872198496fc4c237edc62b05614344f8ac22480fa2",
+      "source_characters": 5924,
+      "source_bytes": 5924
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilityCodec.java",
+      "sha256": "1e8130e2bec7d0a149edd98633a5af31852ba0517d543c722493af22da3bd01c",
+      "source_characters": 4344,
+      "source_bytes": 4344
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilityNetwork.java",
+      "sha256": "6e339ec18154a41ac29d1211f20a68069bcf58e9867d40ecc32f03bb5eb68f63",
+      "source_characters": 8639,
+      "source_bytes": 8639
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ClientCatalogHide.java",
+      "sha256": "6444fbfa953ecfe8229ddbadbd2527aae541881a9750d80addd2f0d9cf50fc69",
+      "source_characters": 2775,
+      "source_bytes": 2775
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ClientProxy.java",
+      "sha256": "89e364c535e262758a75568a7182def70676e2fff54cb6d2aecadfcd229ae070",
+      "source_characters": 1113,
+      "source_bytes": 1122
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ContentRegistries.java",
+      "sha256": "d88c47df161617962838f6502eba545cde947c2cc31bb240198bfac68c3ed0b8",
+      "source_characters": 639,
+      "source_bytes": 639
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Diagnostics.java",
+      "sha256": "a2845542adb0601aea8164afaf60fb61dc02fd554074e93851ac567a6aa4b3ff",
+      "source_characters": 5221,
+      "source_bytes": 5298
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/EchoCompanion.java",
+      "sha256": "d7d266c8f5393a5e8a01b41d32d3751b25389f31f6f8d97965694ee554c6f57d",
+      "source_characters": 5034,
+      "source_bytes": 5034
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/EncounterRewards.java",
+      "sha256": "8cf1b73660decf9ad0b609725ab85afb8181a7e412825965f6cbf6737627f390",
+      "source_characters": 2953,
+      "source_bytes": 2953
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FieldItems.java",
+      "sha256": "fd109054395da6de432d99d7bf091d95c2206a7f86f42ccdf7aa4f90d002d5df",
+      "source_characters": 8001,
+      "source_bytes": 8001
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FieldRenderers.java",
+      "sha256": "f8fd756a863a9a998a0c9d42443ab7ccd1a923e142e9f4c3c6324a83a8865f53",
+      "source_characters": 5705,
+      "source_bytes": 5705
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FormLayers.java",
+      "sha256": "dc718250d2db0bd7910198d0ba5194b381fecb2de9fd9e12ab3a629d3a2d77d7",
+      "source_characters": 4403,
+      "source_bytes": 4403
+    }
+  ]
+}
