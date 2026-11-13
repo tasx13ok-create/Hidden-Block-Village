@@ -37,3 +37,6 @@ Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not commit
 ## Known limits
 - In the screenshots, the caster is hidden by vanilla because the camera is a stand-in entity.
 - Claw lock and lunge get a hand flash plus three-claw slashes, but no dedicated lunge trail yet.
+
+## Screenshot probe (dev only)
+`clientchecks/village/vale/arsenal/VfxShots.java` is built only into the separate `vale-clientchecks-dev.jar` and does nothing unless `-Dvaleorders.vfxshots=true` is set. It opens a flat creative world and saves screenshots of every hand technique. Add `-Dvaleorders.vfxshots.weapons=true` to cover all 27 weapons instead.
