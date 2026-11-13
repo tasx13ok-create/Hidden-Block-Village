@@ -63,6 +63,12 @@ Measured in the container: a full audit of a synthetic 288×217×288 volume take
 
 ## Exact next steps (owner's PC, for Fable or Codex with folder access)
 
+Fastest first step, one command for all five files (about 3 s per Sakura-sized file in the container). Per-file reports stay in ignored `local/`. Only `summary.json` (aggregate counts and hashes) is meant to be copied into `release/evidence/` after review.
+
+```powershell
+python -m tools.world_merge batch --input-dir local/v17-intake --output-dir local/v17-audit
+```
+
 ```powershell
 python -m tools.world_merge audit --input local/v17-intake/sakura_v17.schematic --output local/v17-audit/sakura.json
 python -m tools.world_merge compare --old ../output_v9/earth_sacred_sakura.schematic --new local/v17-intake/sakura_v17.schematic --anchor-pair <v9 gate>:<v17 gate> --output local/v17-audit/sakura-v9-v17.json

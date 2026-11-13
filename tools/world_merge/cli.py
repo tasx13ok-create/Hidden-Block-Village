@@ -198,6 +198,11 @@ def build_parser():
     va.add_argument('--output')
     va.add_argument('--replace-report', action='store_true')
     va.set_defaults(func=cmd_anchors_verify)
+    bt = sub.add_parser('batch', help='audit every .schematic in a folder; per-file reports + aggregate summary')
+    bt.add_argument('--input-dir', required=True)
+    bt.add_argument('--output-dir', required=True)
+    bt.add_argument('--replace-report', action='store_true')
+    bt.set_defaults(func=cmd_batch)
     ni = sub.add_parser('npc-inventory', help='metadata-only CustomNPCs intake report (nothing executed)')
     ni.add_argument('--world', required=True)
     ni.add_argument('--output')
@@ -208,6 +213,47 @@ def build_parser():
     rb.add_argument('--paste', type=int, required=True)
     rb.set_defaults(func=_rollback)
     return p
+
+
+def cmd_batch(args):
+    from . import anchors
+    src, out = Path(args.input_dir), Path(args.output_dir)
+    files = sorted(src.glob('*.schematic'))
+    if not files:
+        raise ValueError('No .schematic files in %s' % src)
+    out.mkdir(parents=True, exist_ok=True)
+    summary = {'schema': 1, 'scope': 'offline static audit; aggregate counts only', 'files': []}
+    for f in files:
+        report_path = out / (f.stem + '.audit.json')
+        if report_path.exists() and not args.replace_report:
+            raise FileExistsError('Refusing to overwrite %s' % report_path)
+        schem = Schematic.load(f)
+        report = audit.full_audit(schem)
+        report['input'] = {'file': f.name, 'sha256': sha256_file(f)}
+        report['placement'] = placement.placement_report(schem)
+        report['anchor_candidates'] = anchors.suggest(schem)
+        report['needs_review'] = needs_review(report)
+        _write_json(report_path, report, args.replace_report)
+        fm, ro, fl = report['format'], report['routes'], report['fluids']
+        summary['files'].append({
+            'file': f.name, 'sha256': report['input']['sha256'],
+            'size': [fm['dimensions'][k] for k in ('width', 'height', 'length')],
+            'occupied_y_range': fm['occupied_y_range'], 'non_vanilla_ids': fm['non_vanilla_ids'],
+            'tile_issue_kinds': sorted({i['kind'] for i in report['tiles']['issues']}),
+            'blocks_missing_tile': report['tiles']['blocks_missing_tile']['count'],
+            'unsupported_gravity': report['gravity']['unsupported']['count'],
+            'fluids': fl['by_classification'],
+            'standable_cells': ro['standable_cells'], 'reached_standable_from_edges': ro['reached_standable'],
+            'unreachable_containers': ro['unreachable_containers']['count'],
+            'unreached_regions_16plus': ro['unreached_regions_16plus']['count'],
+            'door_orphans': report['access']['door_orphan_halves']['count'],
+            'ladder_problems': report['access']['ladder_problems']['count'],
+            'valid_paste_y_range': report['placement'].get('valid_paste_y_range'),
+            'largest_open_area_span': (report['anchor_candidates']['open_areas'] or [{}])[0].get('span'),
+            'needs_review': report['needs_review']})
+    _write_json(out / 'summary.json', summary, args.replace_report)
+    _emit(argparse.Namespace(output=None), summary)
+    return 0
 
 
 def cmd_npc_inventory(args):

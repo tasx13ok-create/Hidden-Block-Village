@@ -609,6 +609,27 @@ class CliTests(unittest.TestCase):
             self.assertEqual(2, code)
             self.assertIn('error:', err)
 
+    def test_batch_writes_per_file_reports_and_aggregate_summary_without_overwrite(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / 'in'
+            src.mkdir()
+            save(house(), src, 'a_v17.schematic')
+            s = house()
+            s.set_block(12, 3, 12, SAND)
+            save(s, src, 'b_v17.schematic')
+            out = Path(tmp) / 'out'
+            code, stdout, _ = self.run_cli('batch', '--input-dir', str(src), '--output-dir', str(out))
+            self.assertEqual(0, code)
+            summary = json.loads((out / 'summary.json').read_text())
+            rows = {r['file']: r for r in summary['files']}
+            self.assertEqual(0, rows['a_v17.schematic']['unsupported_gravity'])
+            self.assertEqual(1, rows['b_v17.schematic']['unsupported_gravity'])
+            self.assertTrue(rows['b_v17.schematic']['needs_review'])
+            self.assertTrue((out / 'a_v17.audit.json').is_file())
+            code, _, err = self.run_cli('batch', '--input-dir', str(src), '--output-dir', str(out))
+            self.assertEqual(2, code)
+            self.assertIn('Refusing to overwrite', err)
+
     def test_compare_requires_exactly_one_alignment(self):
         with tempfile.TemporaryDirectory() as tmp:
             a = save(house(), tmp, 'a.schematic')
