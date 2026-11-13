@@ -1,0 +1,10 @@
+FABLE PROJECT SETUP
+
+FABLE-INSTRUCTIONS.md: detailed execution rules and implementation contracts.
+FABLE-CONTEXT.md: product, dungeon, reference and verification explanation.
+FABLE-MEMORY.md: dated factual state plus evidence/backlog/reference appendices.
+
+Attach these three files to Claude. In the project instructions or first message write:
+Read FABLE-INSTRUCTIONS.md as the project instructions, FABLE-CONTEXT.md as background, and FABLE-MEMORY.md as dated memory. Verify current repo state, then implement the assigned Fable task in an isolated branch. Plans and old evidence are not new achievements.
+
+If the app rejects a large pasted instructions field, attach the instructions file and use the short instruction above; do not silently truncate the books. Keep source links and relative paths anchored to the actual repository. A manifest records exact counts/hashes.

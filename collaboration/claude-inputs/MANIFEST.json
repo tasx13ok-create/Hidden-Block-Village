@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-11-13T18:08:16.381589+00:00",
+  "base_git_commit": "eb94b462136f91b55cc7bf8c76a76b9651bb40a8",
+  "count_definition": "Unicode characters, including LF newlines; UTF-8 bytes reported separately",
+  "padding_added": false,
+  "arbitrary_truncation": false,
+  "private_payloads_included": false,
+  "sources": [
+    {
+      "path": ".agents/skills/hidden-block-village/SKILL.md",
+      "bytes": 7243,
+      "sha256": "c13c3a1bdfe838fa4b37530f1c957e6f0889d7c480a02b78b4e4146362c62d1d"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3737,
+      "sha256": "df75d3a64208cdc3d45ba830409cac87568e02abf8d8d4a9e29f17c4b78cd28b"
+    },
+    {
+      "path": "collaboration/FABLE-PROJECT-INSTRUCTIONS.md",
+      "bytes": 4844,
+      "sha256": "439c059216eb18450f9a5307f904386a318ed38bfd3df99759356bdd98fee32d"
+    },
+    {
+      "path": "collaboration/FABLE-TASKS.md",
+      "bytes": 6053,
+      "sha256": "ce3cf8f0f0e945d26338e0e747f94d379f19c2fa902a713c23f1ed6c6b8bb573"
+    },
+    {
+      "path": "collaboration/fable/MEMORY.md",
+      "bytes": 9316,
+      "sha256": "a195d956a63e588f75b9195f76128ba5c2a846e6de4711cb2c74a7ec87a2a7f9"
+    },
+    {
+      "path": "design/ACADEMY-CAMPAIGN.md",
+      "bytes": 11721,
+      "sha256": "4fe622f5479ceb83bfeb392eb5158b2a027517cb6df000dec41a0be04761eb97"
+    },
+    {
+      "path": "design/DUNGEON-ATLAS.md",
+      "bytes": 23833,
+      "sha256": "05f6be1ab19c6de6c02d8a249f50a6f8b75ebe8c767fdffd95c354cbb83c374e"
+    },
+    {
+      "path": "design/IMPLEMENTATION-PROMPT.md",
+      "bytes": 13856,
+      "sha256": "64a07ddc94cbc6b19e73288c370dd15fc2b2875c0b0d5d5fc4aea885d4d565e6"
+    },
+    {
+      "path": "design/MASTER-PLAN.md",
+      "bytes": 16455,
+      "sha256": "6655f8d69e4798d745b91411711461c1a04cc9a20c81b8861f7d5af4929d18a9"
+    },
+    {
+      "path": "design/MOD-REBUILD-MATRIX.md",
+      "bytes": 27863,
+      "sha256": "4a2a3ee5edac3809c61e2d3228e54d2a4ff5bde3e3f521c84a8e89c568d2dfc7"
+    },
+    {
+      "path": "design/NARUTO-FUN-BRIEF.md",
+      "bytes": 21349,
+      "sha256": "5d9d587593a89929d9069d3e9a3fd6ceeadac63740fc505ba9ee726e71db4959"
+    },
+    {
+      "path": "design/REFERENCE-RESEARCH.md",
+      "bytes": 13037,
+      "sha256": "6afa29fe1368683c4e84d8b457f2100ac73ac85691a934f5caf99d8d4dd6a02d"
+    },
+    {
+      "path": "design/SYSTEMS-SPEC.md",
+      "bytes": 28253,
+      "sha256": "351623f9c9e3e49c7f9862130372a9de94158206a704ca40af71e836893b591f"
+    },
+    {
+      "path": "design/backlog.json",
+      "bytes": 54936,
+      "sha256": "35a09bc270b28b22a25d15e2527a64e46ad6c686b297cab6aea32c76773e722f"
+    },
+    {
+      "path": "design/reference-mod-inventory.json",
+      "bytes": 40164,
+      "sha256": "7d413e181061b3f5da753a81a0d5997de0c36428f9e6705ddde2d548292b40c8"
+    },
+    {
+      "path": "docs/build-modules.md",
+      "bytes": 12392,
+      "sha256": "3111ea4dd66d49913e67979a4560d7da98892005fcc8869c40dbf432660cece0"
+    },
+    {
+      "path": "docs/native-checks.md",
+      "bytes": 7956,
+      "sha256": "ea5f3ad6f410be9b20abb12c147308febdc04d288570ac11fc0cba60630d1d06"
+    },
+    {
+      "path": "release/evidence/academy0310-verification.json",
+      "bytes": 14114,
+      "sha256": "79521d8f63423e09f27a247759f1936643a2562ba5aecb0ad5012a7ada844a1a"
+    },
+    {
+      "path": "release/evidence/v17-intake-20261113.json",
+      "bytes": 9074,
+      "sha256": "0200fffd197ce22b50d415566ad65e5850f91e16e73f533cb0f1908c8ff6ff22"
+    }
+  ],
+  "files": [
+    {
+      "file": "FABLE-INSTRUCTIONS.md",
+      "characters": 99203,
+      "utf8_bytes": 99325,
+      "lines": 807,
+      "sha256": "dd3e7e6aae5cf261dd7894384330619924738eb6b44a192562d78c155758c86c"
+    },
+    {
+      "file": "FABLE-CONTEXT.md",
+      "characters": 102830,
+      "utf8_bytes": 103420,
+      "lines": 981,
+      "sha256": "8ceabb115ef65cf88bb8dbc2e0aca8f3bb3e2bf762252c0bdc5de98399b939f6"
+    },
+    {
+      "file": "FABLE-MEMORY.md",
+      "characters": 103195,
+      "utf8_bytes": 103199,
+      "lines": 2701,
+      "sha256": "9191462c0717635bc13a2bc2068e230ce153822b98c27b9dcd088482afc92763"
+    }
+  ]
+}
