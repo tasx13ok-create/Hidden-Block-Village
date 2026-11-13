@@ -28,7 +28,7 @@ public final class HandTechnique extends Entity {
     private static final DataParameter<Byte> STATE = EntityDataManager.createKey(HandTechnique.class, DataSerializers.BYTE);
     /** Client lookup: owner entity id -> live technique (for arm poses). */
     public static final Map<Integer, HandTechnique> CLIENT_BY_OWNER = new java.util.concurrent.ConcurrentHashMap<>();
-    private int stateAge, dying = -1;
+    private int stateAge, dying = -1, visualTicks = -1;
     private java.util.UUID ownerUuid;
     public float impactX, impactY, impactZ;
 
@@ -79,6 +79,20 @@ public final class HandTechnique extends Entity {
         }
     }
 
+    /** Visual-only carrier for a bridged licensed move: lives {@code ticks} without a Vale scroll mode. */
+    static void visual(EntityPlayerMP p, String style, int ticks) {
+        if (!known(style) || p.world.isRemote) return;
+        HandTechnique old = find(p);
+        if (old != null) old.finish(FIZZLE);
+        HandTechnique h = new HandTechnique(p.world);
+        h.dataManager.set(OWNER, p.getEntityId());
+        h.ownerUuid = p.getUniqueID();
+        h.dataManager.set(STYLE, style);
+        h.visualTicks = Math.max(1, Math.min(200, ticks));
+        h.setPosition(p.posX, p.posY + 1.2, p.posZ);
+        if (p.world.spawnEntity(h)) p.world.playSound(null, p.posX, p.posY + 1.2, p.posZ, startSound(style), SoundCategory.PLAYERS, 0.8f, startPitch(style));
+    }
+
     /** Called by ScrollEvents when the mode's strike actually lands on {@code target}. */
     static void impact(EntityPlayerMP p, EntityLivingBase target) {
         HandTechnique h = find(p);
@@ -116,8 +130,11 @@ public final class HandTechnique extends Entity {
         EntityPlayerMP p = ownerUuid == null || world.getMinecraftServer() == null ? null : world.getMinecraftServer().getPlayerList().getPlayerByUUID(ownerUuid);
         if (p == null || p.world != world || !p.isEntityAlive() || p.isSpectator()) { finish(FIZZLE); return; }
         if (p.getEntityId() != ownerId()) dataManager.set(OWNER, p.getEntityId());
-        NBTTagCompound s = Scrolls.state(p);
-        if (!style().equals(s.getString("mode")) || s.getLong("modeUntil") < ArsenalAccess.now(p)) { finish(FIZZLE); return; }
+        if (visualTicks >= 0) { if (--visualTicks <= 0) { finish(FIZZLE); return; } }
+        else {
+            NBTTagCompound s = Scrolls.state(p);
+            if (!style().equals(s.getString("mode")) || s.getLong("modeUntil") < ArsenalAccess.now(p)) { finish(FIZZLE); return; }
+        }
         // Follow the owner so tracking/chunk visibility match; rendering anchors to the animated arm.
         setPosition(p.posX, p.posY + 1.2, p.posZ);
         if (ticksExisted % loopTicks(style()) == 0)

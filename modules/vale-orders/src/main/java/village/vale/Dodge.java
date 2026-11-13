@@ -47,6 +47,7 @@ public final class Dodge {
         boolean airUsed = AIR_USED.getOrDefault(id, false);
         if (!DodgeMath.allowed(p.isEntityAlive(), p.isSpectator(), now, LAST.getOrDefault(id, Long.MIN_VALUE / 2), p.onGround, airUsed)) return;
         if (p.isRiding() || p.isElytraFlying() || p.capabilities.isFlying || p.isPlayerSleeping()) return;
+        if (!village.vale.bridge.MoveCost.pay(p, village.vale.bridge.Bridge.dodgeCost)) return;
         LAST.put(id, now);
         if (!p.onGround) AIR_USED.put(id, true);
         double[] v = DodgeMath.velocity(dir, p.rotationYaw);

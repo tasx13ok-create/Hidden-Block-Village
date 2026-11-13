@@ -42,6 +42,7 @@ public final class ValeOrders {
         HudNetwork.register();
         AbilityNetwork.register();
         Dodge.register();
+        village.vale.bridge.Bridge.init(event.getModConfigurationDirectory());
         OriginalArmorRuntime.initialize();
         OriginalArmorLightEntity.register(this);
         proxy.preInit();

@@ -92,3 +92,12 @@ New `AnimeDraw` helper (per-vertex-colour gradients, radial glows, halos, flame 
 
 ## Original 256x256 encounter skins
 `vale-encounters` `ClientProxy` now picks one of six original HD skins per profile (`Skins.of`) instead of `steve.png`. Textures are in `src/main/resources/assets/valeencounters/textures/entity/`, and the painter is in `tools/skins/`. The module compiles against the current core dev jar. The skins have not yet been checked in the client on encounter actors.
+
+## Licensed-mod bridge (vale-orders `village.vale.bridge`)
+The bridge works by reflection and registry name only. No licensed code or assets are referenced or copied. Config lives in `config/valeorders/`.
+- `ChakraLink`: reads NarutoMod chakra through the API already used by the HUD. A spend method is discovered at runtime and trusted only if chakra actually goes down. It reports its status in the log.
+- `MoveCost.pay`: spends chakra when linked (`preferChakra`, `chakraPerResolve`) and Vale resolve otherwise. The dodge now goes through it (`dodgeCost`, default 0).
+- Discovery: records item uses, entity spawns and damage sources from the watched namespaces into `bridge-discovered.json`.
+- `bridge-moves.json`: maps a licensed item or entity id to a Vale style (spiral, charge, fireedge, windedge, lava, lightmode, `weapon:<arsenal key>`). It plays Vale visuals only, via `HandTechnique.visual` (a visual-only carrier) and `WeaponPulse.cast`.
+- Hooks in shared files: one line each in `ValeOrders.preInit` (`Bridge.init`) and `Dodge.perform` (`MoveCost.pay`).
+- Still needed: the licensed jars, to fill the move map, and a check of the chakra spend method against them.
