@@ -89,3 +89,6 @@ New `AnimeDraw` helper (per-vertex-colour gradients, radial glows, halos, flame 
 - Flowing chakra streams with travelling beads along both edges, spinning seals on the end caps, rising chakra motes and a light sweep.
 - The chakra colour shifts red with danger, orange when burning and icy in the cold.
 - Rail slots get element-coloured gradients and glow (by school), a rotating seal, selected flames and kunai, and a radial-ray ready burst.
+
+## Original 256x256 encounter skins
+`vale-encounters` `ClientProxy` now picks one of six original HD skins per profile (`Skins.of`) instead of `steve.png`. Textures are in `src/main/resources/assets/valeencounters/textures/entity/`, and the painter is in `tools/skins/`. The module compiles against the current core dev jar. The skins have not yet been checked in the client on encounter actors.
