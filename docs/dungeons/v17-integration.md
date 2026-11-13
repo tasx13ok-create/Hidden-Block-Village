@@ -1,6 +1,6 @@
 # v17 dungeon integration: audit/import tooling and placement findings
 
-Status: **tooling delivered and fixture-tested; not yet run on the real v17 bytes.** The Fable session that wrote this ran in an isolated cloud container. It could not see the owner's Windows files (`local/v17-intake`, `C:/Users/Steal/Downloads/archive-2026-11-13T173625Z`, the parent `../output_v9` / `../source` / `../tools`, or `D:/HiddenBlockVillage-Sprint-20261113/recovered-world`), and no computer folder was shared with it. So the report has no v17 route, fluid or defect counts, no v9/v17 diff and no candidate schematic yet. Everything below about the real files comes from committed metadata (`release/evidence/v17-intake-20261113.json`). Everything about behavior comes from synthetic fixtures.
+Status: **run on the real v17 bytes** (owner-uploaded, SHA256-matched to the intake record). The c1 fix candidates are built and statically verified. They have **not** been pasted into a world or walked natively. See [Real-file results](#real-file-results-2026-11-13). The Fable session that wrote this ran in an isolated cloud container. It could not see the owner's Windows files (`local/v17-intake`, `C:/Users/Steal/Downloads/archive-2026-11-13T173625Z`, the parent `../output_v9` / `../source` / `../tools`, or `D:/HiddenBlockVillage-Sprint-20261113/recovered-world`), and no computer folder was shared with it. So the report has no v17 route, fluid or defect counts, no v9/v17 diff and no candidate schematic yet. Everything below about the real files comes from committed metadata (`release/evidence/v17-intake-20261113.json`). Everything about behavior comes from synthetic fixtures.
 
 ## Inputs (from committed metadata, not re-hashed here)
 
@@ -11,6 +11,22 @@ Status: **tooling delivered and fixture-tested; not yet run on the real v17 byte
 | `sand_v17.schematic` | 288×153×288 | `7ea2cb4f…15ec` | (96,69,1) | (-144,-107,-49) | 150 |
 | `mist_v17.schematic` | 200×148×200 | `40d6fbdb…be51` | (96,21,1) | (-96,-21,-1) | 94 |
 | `nether_v17.schematic` | 256×126×256 | `55867e4f…7f72` | (80,43,1) | (-128,-51,-49) | 123 |
+
+## Real-file results (2026-11-13)
+
+Evidence is in `release/evidence/v17-audit-20261113.json`. The schematics, per-file reports, route maps and candidates stay in ignored `local/` (`local/v17-intake`, `local/v17-audit`, `local/v17-candidates`).
+
+**Clean:** no non-vanilla IDs; no tile identity, duplicate or position problems; no container block missing its tile; no unsupported gravity blocks (including Sand's 41k sand); no orphan door halves. All fluids are `contained`: Mist's 427k water and Nether's lava have no leaks and do not reach the schematic edge. Nether has one ladder with no solid support behind it.
+
+**Structure:** Sakura, Cloud and Sand each include a full-footprint ground base (about 27 layers) with the complex floating above it: Sakura's main island at Y 89–125, Cloud's at Y 119–136, Sand's at Y 74–128. That base is the only part a boundary walk reaches. Mist's main walk region covers its settlement at Y 5–31. Nether's citadel floats from Y 47 and touches no edge.
+
+**Defect found and fixed in c1: sealed chest rooms.** In all five dungeons, every chest room separate from its main route was sealed by stained glass (block 95) exactly where the doorway belongs. Either 2-high glass fills the doorway, or (Sakura and one Sand room) an open trapdoor sits under a 1-block glass transom. A player cannot enter.
+
+- Before the fix, only 12 of 36 chests connected to their main route: Sakura 1/4, Cloud 2/6, Sand 2/13, Mist 1/5, Nether 6/8.
+- `doorways` proposed the smallest opening, preferring glass cells and never touching tile entities or fluids. The c1 candidates apply 14 cell edits: six oak doors (12 cells) facing the walking direction, plus two transom blocks set to air.
+- After the fix, all 36 chests connect to the main route. A full re-audit of each candidate shows no other check changed and no new blocked doors. Candidate and plan hashes are in the evidence file.
+
+**Open structural question, not edited:** many upper storeys and tower floors have no walkable connection within 4 blocks of the main route. This includes large floors in Cloud's towers (Y 134–190), Sakura's upper halls (Y 115–134) and Nether's upper sanctum levels. The walk model covers stairs, slabs, ladders and vines, and roofs and canopy are already separated out. So these floors appear to lack stairs or ladders entirely. Fixing them needs design choices (where a stair or ladder goes), so it is left for review rather than auto-generated. Route maps in `local/v17-audit/*_routes.png` show where these floors are.
 
 ## Placement finding (computed from the metadata above)
 

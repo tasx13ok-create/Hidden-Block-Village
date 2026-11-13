@@ -1,0 +1,464 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "scope": "OFFLINE_STATIC_AUDIT_OF_REAL_V17_BYTES_AND_C1_CANDIDATES",
+  "tool": "tools/world_merge (batch, doorways, apply)",
+  "payload_published": false,
+  "native_walkthrough": false,
+  "world_paste": false,
+  "dungeons": {
+    "sakura": {
+      "input": {
+        "file": "sakura_v17.schematic",
+        "sha256": "5f0eb66c2998b156a8fcc2af503e16bcedbe8ee446d503e1d04a76b2f2e46a24"
+      },
+      "audit": {
+        "size": [
+          288,
+          217,
+          288
+        ],
+        "occupied_y_range": [
+          0,
+          214
+        ],
+        "non_vanilla_ids": [],
+        "tile_issue_kinds": [],
+        "blocks_missing_tile": 0,
+        "unsupported_gravity": 0,
+        "fluids": {
+          "contained": 10
+        },
+        "door_orphans": 0,
+        "ladder_problems": 0,
+        "valid_paste_y_range": [
+          99,
+          138
+        ]
+      },
+      "chests_connected_to_main_route": {
+        "before": [
+          1,
+          4
+        ],
+        "after_c1": [
+          4,
+          4
+        ]
+      },
+      "candidate": {
+        "file": "sakura_v17-c1.schematic",
+        "sha256": "be0a61c5604937219218420b55baed2549f5ea59b9ff734a7d28faff69ff84ea",
+        "plan_sha256": "dc8e483be3a2c67682a8d4e0b3c04e812894247675488d10da61a7ca0f5e9f95",
+        "verification_ok": true,
+        "changed_cells": 1,
+        "edits": [
+          {
+            "pos": [
+              200,
+              100,
+              193
+            ],
+            "before": {
+              "block": 95,
+              "data": 0
+            },
+            "after": {
+              "block": 0,
+              "data": 0
+            }
+          }
+        ]
+      }
+    },
+    "cloud": {
+      "input": {
+        "file": "cloud_v17.schematic",
+        "sha256": "a59a1b4e0a56c35f832cbac0404de76a6bae73f2bc0825476438989b145a70fa"
+      },
+      "audit": {
+        "size": [
+          288,
+          209,
+          288
+        ],
+        "occupied_y_range": [
+          0,
+          206
+        ],
+        "non_vanilla_ids": [],
+        "tile_issue_kinds": [],
+        "blocks_missing_tile": 0,
+        "unsupported_gravity": 0,
+        "fluids": {},
+        "door_orphans": 0,
+        "ladder_problems": 0,
+        "valid_paste_y_range": [
+          123,
+          170
+        ]
+      },
+      "chests_connected_to_main_route": {
+        "before": [
+          2,
+          6
+        ],
+        "after_c1": [
+          6,
+          6
+        ]
+      },
+      "candidate": {
+        "file": "cloud_v17-c1.schematic",
+        "sha256": "a9aeba61db4a2f84aa555a50b515f5e7837eebaa43a217b0b13202845d310f1d",
+        "plan_sha256": "aabe984cfa9d6d52d30ebceab3b14433be482356ce38702fc538c82d3ab186a7",
+        "verification_ok": true,
+        "changed_cells": 2,
+        "edits": [
+          {
+            "pos": [
+              79,
+              123,
+              112
+            ],
+            "before": {
+              "block": 95,
+              "data": 0
+            },
+            "after": {
+              "block": 64,
+              "data": 2
+            }
+          },
+          {
+            "pos": [
+              79,
+              124,
+              112
+            ],
+            "before": {
+              "block": 95,
+              "data": 0
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          }
+        ]
+      }
+    },
+    "sand": {
+      "input": {
+        "file": "sand_v17.schematic",
+        "sha256": "7ea2cb4fd47c8d73305ab9713984b280f776cb791f5f04f492bc25d2de9015ec"
+      },
+      "audit": {
+        "size": [
+          288,
+          153,
+          288
+        ],
+        "occupied_y_range": [
+          0,
+          150
+        ],
+        "non_vanilla_ids": [],
+        "tile_issue_kinds": [],
+        "blocks_missing_tile": 0,
+        "unsupported_gravity": 0,
+        "fluids": {
+          "contained": 3
+        },
+        "door_orphans": 0,
+        "ladder_problems": 0,
+        "valid_paste_y_range": [
+          107,
+          210
+        ]
+      },
+      "chests_connected_to_main_route": {
+        "before": [
+          2,
+          13
+        ],
+        "after_c1": [
+          13,
+          13
+        ]
+      },
+      "candidate": {
+        "file": "sand_v17-c1.schematic",
+        "sha256": "b298df3e2333cce93fb073b409bdf1849046af0f89091dbbe5abee2ef062afab",
+        "plan_sha256": "82b2e0a77a3007355a8503975c60788e056b83737fd7adfef4c4637e23e8f6e2",
+        "verification_ok": true,
+        "changed_cells": 7,
+        "edits": [
+          {
+            "pos": [
+              127,
+              74,
+              79
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 3
+            }
+          },
+          {
+            "pos": [
+              127,
+              75,
+              79
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          },
+          {
+            "pos": [
+              95,
+              108,
+              166
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 0,
+              "data": 0
+            }
+          },
+          {
+            "pos": [
+              193,
+              107,
+              158
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 2
+            }
+          },
+          {
+            "pos": [
+              193,
+              108,
+              158
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          },
+          {
+            "pos": [
+              95,
+              107,
+              118
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 0
+            }
+          },
+          {
+            "pos": [
+              95,
+              108,
+              118
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          }
+        ]
+      }
+    },
+    "mist": {
+      "input": {
+        "file": "mist_v17.schematic",
+        "sha256": "40d6fbdbaf2d2c4b858e2bd2ea840ff5b2c32e373deaad255c928fe0edcdbe51"
+      },
+      "audit": {
+        "size": [
+          200,
+          148,
+          200
+        ],
+        "occupied_y_range": [
+          0,
+          94
+        ],
+        "non_vanilla_ids": [],
+        "tile_issue_kinds": [],
+        "blocks_missing_tile": 0,
+        "unsupported_gravity": 0,
+        "fluids": {
+          "contained": 1
+        },
+        "door_orphans": 0,
+        "ladder_problems": 0,
+        "valid_paste_y_range": [
+          21,
+          129
+        ]
+      },
+      "chests_connected_to_main_route": {
+        "before": [
+          1,
+          5
+        ],
+        "after_c1": [
+          5,
+          5
+        ]
+      },
+      "candidate": {
+        "file": "mist_v17-c1.schematic",
+        "sha256": "f2eb21fdc5b633807189126f35f2880d3a21c6d4a9505fa3f9acd0ba7b6daa6b",
+        "plan_sha256": "4161a73eda2e276b1103672c782629d280d366c4e7e78d192a853948f514d448",
+        "verification_ok": true,
+        "changed_cells": 2,
+        "edits": [
+          {
+            "pos": [
+              27,
+              21,
+              110
+            ],
+            "before": {
+              "block": 95,
+              "data": 0
+            },
+            "after": {
+              "block": 64,
+              "data": 2
+            }
+          },
+          {
+            "pos": [
+              27,
+              22,
+              110
+            ],
+            "before": {
+              "block": 95,
+              "data": 0
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          }
+        ]
+      }
+    },
+    "nether": {
+      "input": {
+        "file": "nether_v17.schematic",
+        "sha256": "55867e4fb7774ef40bcf0f658be30eb9daf2786f3b3c49af1be0d177a9177f72"
+      },
+      "audit": {
+        "size": [
+          256,
+          126,
+          256
+        ],
+        "occupied_y_range": [
+          1,
+          123
+        ],
+        "non_vanilla_ids": [],
+        "tile_issue_kinds": [],
+        "blocks_missing_tile": 0,
+        "unsupported_gravity": 0,
+        "fluids": {
+          "contained": 3
+        },
+        "door_orphans": 0,
+        "ladder_problems": 1,
+        "valid_paste_y_range": [
+          51,
+          181
+        ]
+      },
+      "chests_connected_to_main_route": {
+        "before": [
+          6,
+          8
+        ],
+        "after_c1": [
+          8,
+          8
+        ]
+      },
+      "candidate": {
+        "file": "nether_v17-c1.schematic",
+        "sha256": "38c9f34d6ced433fee7ce20154b244c5031b003e3ed29ec16b071ab8c4ed7b8e",
+        "plan_sha256": "c287a320698aa42f537f0f5e1c7b17f726cd84263458bad6abd031a99b1bb23f",
+        "verification_ok": true,
+        "changed_cells": 2,
+        "edits": [
+          {
+            "pos": [
+              76,
+              53,
+              112
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 3
+            }
+          },
+          {
+            "pos": [
+              76,
+              54,
+              112
+            ],
+            "before": {
+              "block": 95,
+              "data": 4
+            },
+            "after": {
+              "block": 64,
+              "data": 8
+            }
+          }
+        ]
+      }
+    }
+  }
+}

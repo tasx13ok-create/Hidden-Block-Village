@@ -40,6 +40,14 @@ Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeo
 * `batch` subcommand: audit, placement and anchor candidates for every schematic in a folder, plus an aggregate `summary.json`. About 3 s on a synthetic 288×217×288 volume.
 * Tests: `test_world_merge.py` has 37 tests; the full suite is 208 OK, 2 skipped.
 
+## Real v17 run (owner uploaded the five schematics; SHA256 matches the intake record)
+
+* `batch` run on all five files. Format, tiles, gravity and fluids are clean. One unsupported ladder in Nether.
+* **Defect fixed in c1 candidates:** stained glass seals every isolated chest room's doorway, in all five dungeons. Only 12/36 chests connected to the main route; after 14 cell edits (six oak doors plus two transom clears) it is 36/36. Re-audit shows no regressions. Evidence: `release/evidence/v17-audit-20261113.json`. Candidates are in ignored `local/v17-candidates/` in this container only.
+* Open for review: upper storeys and towers with no stairs or ladders (see `docs/dungeons/v17-integration.md`).
+* New tool `doorways` with 2 fixture tests; `test_world_merge.py` now has 39 tests.
+* The candidate `.schematic` files exist only in this cloud container (private, not in Git). To get them onto the PC, re-run `doorways` and `apply` there from the committed plan coordinates, or download them from this session.
+
 ## Hooks / requests for Codex
 
 * Package 1 needs no hook. The tools are standalone.
