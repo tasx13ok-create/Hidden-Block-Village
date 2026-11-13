@@ -43,7 +43,7 @@ Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not commit
 
 ## Four-way dodge (key V, rebindable)
 - New: `Dodge.java` (channel `valeorders_dodge`; the server checks cooldown and one air dodge per jump, then applies the burst and a short hurt grace), `DodgeMath.java`, `client/DodgeClient.java`, `tests/village/vale/DodgeMathTest.java` (547 checks).
-- Direction comes from movement input: W gives a forward roll, S or no input gives a back flip, and A/D give mirrored side rolls.
+- Anime-style flash step (no flips). Direction comes from movement input: W gives a low dash with arms swept back, S or no input gives a guarded backstep, and A/D give mirrored side steps. Each step leaves 5 fading blue afterimages and speed lines, with a burst of 1.55 blocks per tick kept low to the ground.
 - Hooks in shared files: `ValeOrders.preInit` calls `Dodge.register()`. `CommonProxy` and `ClientProxy` get `dodgeAnim`. `ClientProxy.preInit` calls `DodgeClient.initialize()`. `RunPoses.finish` calls `DodgeClient.pose`. Lang keys added.
-- Tuning to agree with Codex's combat: cooldown 16 ticks, speed 1.05, i-frames ~6 ticks. Should it also cost resolve or stamina?
+- Tuning to agree with Codex's combat: cooldown 16 ticks, speed 1.55, i-frames ~6 ticks. Should it also cost resolve or stamina?
 - Evidence: `release/evidence/dodge-4way-20261113.png`. Probe flag: `-Dvaleorders.vfxshots.dodge=true`.

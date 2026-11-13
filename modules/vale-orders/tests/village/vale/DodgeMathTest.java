@@ -29,12 +29,18 @@ public final class DodgeMathTest {
         double prev = -1;
         for (int i = 0; i <= 40; i++) { double p = DodgeMath.progress(i * DodgeMath.ANIM_TICKS / 40.0); check(p >= prev && p <= 1, "progress monotonic"); prev = p; }
         for (int d = 0; d < 4; d++) {
-            check(DodgeMath.spin(d, 0) == 0 && Math.abs(Math.abs(DodgeMath.spin(d, DodgeMath.ANIM_TICKS)) - 360) < 1e-9, "full rotation ends upright " + d);
-            check(DodgeMath.spin(d, 30) == DodgeMath.spin(d, DodgeMath.ANIM_TICKS), "spin holds after the end");
+            double[] start = DodgeMath.lean(d, 0), mid = DodgeMath.lean(d, DodgeMath.ANIM_TICKS * 0.4), end = DodgeMath.lean(d, DodgeMath.ANIM_TICKS);
+            check(Math.abs(start[0]) + Math.abs(start[1]) < 1e-9 && Math.abs(end[0]) + Math.abs(end[1]) < 1e-9, "upright before and after " + d);
+            check(Math.abs(mid[0]) + Math.abs(mid[1]) > 20, "strong lean mid-step " + d);
+            check(Math.abs(mid[0]) < 90 && Math.abs(mid[1]) < 90, "never flips " + d);
         }
-        check(Math.signum(DodgeMath.spin(DodgeMath.FRONT, 5)) != Math.signum(DodgeMath.spin(DodgeMath.BACK, 5)), "front roll and back flip turn opposite ways");
-        check(Math.signum(DodgeMath.spin(DodgeMath.LEFT, 5)) != Math.signum(DodgeMath.spin(DodgeMath.RIGHT, 5)), "left and right rolls mirror");
-        check(DodgeMath.tuck(0) < 1e-9 && DodgeMath.tuck(DodgeMath.ANIM_TICKS * 0.45) > 0.9 && DodgeMath.tuck(DodgeMath.ANIM_TICKS) < 0.5, "tuck peaks mid-roll");
+        check(DodgeMath.lean(DodgeMath.FRONT, 4)[0] > 0 && DodgeMath.lean(DodgeMath.BACK, 4)[0] < 0, "front leans in, back leans away");
+        check(DodgeMath.lean(DodgeMath.LEFT, 4)[1] == -DodgeMath.lean(DodgeMath.RIGHT, 4)[1], "side leans mirror");
+        check(DodgeMath.tuck(0) < 1e-9 && DodgeMath.tuck(DodgeMath.ANIM_TICKS * 0.4) > 0.99 && DodgeMath.tuck(DodgeMath.ANIM_TICKS) < 1e-9, "pose snaps in, holds, recovers");
+        for (int i = 0; i < DodgeMath.AFTERIMAGES; i++) {
+            check(DodgeMath.ghostAlpha(i, 2) > DodgeMath.ghostAlpha(i + 1, 2), "older afterimages are fainter");
+            check(DodgeMath.ghostAlpha(i, DodgeMath.ANIM_TICKS * 1.3) == 0, "afterimages gone after the step");
+        }
         System.out.println("PASS: " + checks + " dodge checks (directions, velocity, gating, rotation, tuck).");
     }
 }

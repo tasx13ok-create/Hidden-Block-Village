@@ -6,8 +6,9 @@ public final class DodgeMath {
     public static final int FRONT = 0, BACK = 1, LEFT = 2, RIGHT = 3;
     public static final String[] NAMES = {"front", "back", "left", "right"};
     /** Animation length and server recovery (ticks). */
-    public static final int ANIM_TICKS = 12, COOLDOWN_TICKS = 16, IFRAME_TICKS = 6;
-    public static final double SPEED = 1.05, LIFT = 0.22, BACK_LIFT = 0.34;
+    public static final int ANIM_TICKS = 9, COOLDOWN_TICKS = 16, IFRAME_TICKS = 6, AFTERIMAGES = 5;
+    /** Flash-step burst: fast and low to the ground (anime body-flicker), not a hop. */
+    public static final double SPEED = 1.55, LIFT = 0.08, BACK_LIFT = 0.14;
 
     /** Direction from held movement input (moveForward > 0 is W, moveStrafe > 0 is A). No input dodges backwards. */
     public static int direction(float forward, float strafe) {
@@ -44,20 +45,30 @@ public final class DodgeMath {
         return 0.35 * u + 0.65 * t;
     }
 
-    /** Whole-body rotation in degrees: front roll +360, back flip -360, side rolls +/-360 about the forward axis. */
-    public static double spin(int dir, double age) {
-        double p = progress(age);
+    /**
+     * Body lean in degrees {pitch, roll}: a deep forward dash lean, a backstep lean, and side
+     * leans into the step. Snaps in fast, holds, then recovers to upright.
+     */
+    public static double[] lean(int dir, double age) {
+        double k = tuck(age);
         switch (dir) {
-            case FRONT: return 360 * p;
-            case BACK: return -360 * p;
-            case LEFT: return -360 * p;
-            default: return 360 * p;
+            case FRONT: return new double[] {38 * k, 0};
+            case BACK: return new double[] {-22 * k, 0};
+            case LEFT: return new double[] {8 * k, -28 * k};
+            default: return new double[] {8 * k, 28 * k};
         }
+    }
+
+    /** Afterimage alpha for ghost i (0 = newest) at the given age; ghosts fade as the step ends. */
+    public static double ghostAlpha(int i, double age) {
+        double life = 1 - Math.max(0, Math.min(1, (age - ANIM_TICKS * 0.4) / (ANIM_TICKS * 0.8)));
+        return Math.max(0, 0.45 * (1 - i / (double) AFTERIMAGES) * life);
     }
 
     /** Tuck amount 0..1: limbs pull in mid-roll and release at the end. */
     public static double tuck(double age) {
         double u = Math.max(0, Math.min(1, age / ANIM_TICKS));
-        return Math.sin(Math.PI * Math.min(1, u * 1.15));
+        double in = Math.min(1, u * 4), out = Math.min(1, (1 - u) * 2.5);
+        return Math.sin(Math.PI / 2 * Math.min(in, out));
     }
 }
