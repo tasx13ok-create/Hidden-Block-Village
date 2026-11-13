@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "resident": "bellwarden_tsumugi",
+  "start": "welcome",
+  "after_clear_start": "after",
+  "pages": [
+    {
+      "id": "welcome",
+      "lines": [
+        "One, two, three. You arrived on the third interval. Good timing.",
+        "The storm signal is dark. No one enters the monastery until it is lit."
+      ],
+      "choices": [
+        {
+          "id": "offer",
+          "label": "What do you need?",
+          "action": "PAGE",
+          "target": "offer"
+        },
+        {
+          "id": "advice",
+          "label": "Any advice?",
+          "action": "PAGE",
+          "target": "advice"
+        },
+        {
+          "id": "claim",
+          "label": "I finished the task",
+          "action": "CLAIM_CONTRACT"
+        }
+      ]
+    },
+    {
+      "id": "offer",
+      "lines": [
+        "A short task, then the gate is yours. You will be back before the tea cools."
+      ],
+      "choices": [
+        {
+          "id": "accept",
+          "label": "I will do it",
+          "action": "ACCEPT_CONTRACT",
+          "target": "gate_cloud_first_interval"
+        },
+        {
+          "id": "back",
+          "label": "Not yet",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "lines": [
+        "The bridge is quick but the sentinels lock a lane before they shoot. Watch for it.",
+        "The covered route is safer. Two levers, one bell interval. If you fall, the terrace below will catch you."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "lines": [
+        "Signal's lit. The towers are yours to climb.",
+        "I rang your interval this morning. It sounds better than most."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    }
+  ]
+}

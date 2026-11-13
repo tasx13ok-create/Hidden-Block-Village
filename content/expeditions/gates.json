@@ -1,0 +1,289 @@
+{
+  "schema": 1,
+  "content_version": "gates-0.1.0",
+  "status": "AUTHORED_DATA_NOT_RUNTIME",
+  "note": "Original gate missions that lead a player to each v17 dungeon entrance. Anchors are dungeon-local cells still to be measured with tools/world_merge audit. Objective types marked proposed need the Core adapter in content/expeditions/README.md.",
+  "anchors": {
+    "sakura_gate_overlook": {"dungeon": "sakura_v17", "kind": "arrival", "local_pos": null, "measure_hint": "first standable cell on the outer sanctuary path facing the modest gate"},
+    "sakura_seed_stone_a": {"dungeon": "sakura_v17", "kind": "marker", "local_pos": null, "measure_hint": "garden route, east court"},
+    "sakura_seed_stone_b": {"dungeon": "sakura_v17", "kind": "marker", "local_pos": null, "measure_hint": "garden route, moss pond edge"},
+    "sakura_seed_stone_c": {"dungeon": "sakura_v17", "kind": "marker", "local_pos": null, "measure_hint": "garden route, root-cracked stair"},
+    "sakura_scout_yard": {"dungeon": "sakura_v17", "kind": "encounter", "local_pos": null, "measure_hint": "open lane on the direct route, at least 9x9 clear"},
+    "sakura_keepers_veranda": {"dungeon": "sakura_v17", "kind": "checkpoint", "local_pos": null, "measure_hint": "keeper's veranda / preparation area"},
+    "cloud_arrival_terrace": {"dungeon": "cloud_v17", "kind": "arrival", "local_pos": null, "measure_hint": "sheltered arrival terrace"},
+    "cloud_bell_court": {"dungeon": "cloud_v17", "kind": "marker", "local_pos": null, "measure_hint": "bell rope in the bell court"},
+    "cloud_exposed_bridge": {"dungeon": "cloud_v17", "kind": "encounter", "local_pos": null, "measure_hint": "direct exposed bridge midpoint; needs a catch terrace below"},
+    "cloud_signal_lever_a": {"dungeon": "cloud_v17", "kind": "marker", "local_pos": null, "measure_hint": "covered interior route, first lever"},
+    "cloud_signal_lever_b": {"dungeon": "cloud_v17", "kind": "marker", "local_pos": null, "measure_hint": "covered interior route, second lever"},
+    "cloud_signal_platform": {"dungeon": "cloud_v17", "kind": "checkpoint", "local_pos": null, "measure_hint": "signal platform before the tower interiors"},
+    "sand_caravan_gate": {"dungeon": "sand_v17", "kind": "arrival", "local_pos": null, "measure_hint": "shaded caravan gate"},
+    "sand_wind_vane_a": {"dungeon": "sand_v17", "kind": "marker", "local_pos": null, "measure_hint": "market court vane"},
+    "sand_wind_vane_b": {"dungeon": "sand_v17", "kind": "marker", "local_pos": null, "measure_hint": "wind hall vane"},
+    "sand_stall_ambush": {"dungeon": "sand_v17", "kind": "encounter", "local_pos": null, "measure_hint": "market stalls lane"},
+    "sand_shelter_court": {"dungeon": "sand_v17", "kind": "checkpoint", "local_pos": null, "measure_hint": "shaded preparation court with water"},
+    "mist_moored_pier": {"dungeon": "mist_v17", "kind": "arrival", "local_pos": null, "measure_hint": "moored arrival/fishing pier, dry standable plank"},
+    "mist_tide_lantern_a": {"dungeon": "mist_v17", "kind": "marker", "local_pos": null, "measure_hint": "covered market walk lantern"},
+    "mist_tide_lantern_b": {"dungeon": "mist_v17", "kind": "marker", "local_pos": null, "measure_hint": "boat workshop lantern"},
+    "mist_tide_lantern_c": {"dungeon": "mist_v17", "kind": "marker", "local_pos": null, "measure_hint": "veranda network lantern"},
+    "mist_boathouse_lane": {"dungeon": "mist_v17", "kind": "encounter", "local_pos": null, "measure_hint": "boat-house flank lane, dry, no one-block doorway"},
+    "mist_lantern_quay": {"dungeon": "mist_v17", "kind": "checkpoint", "local_pos": null, "measure_hint": "boat workshop / preparation"},
+    "nether_ash_overlook": {"dungeon": "nether_v17", "kind": "arrival", "local_pos": null, "measure_hint": "ash approach preview overlook"},
+    "nether_cooling_valve_a": {"dungeon": "nether_v17", "kind": "marker", "local_pos": null, "measure_hint": "service court valve, lava behind a safety margin"},
+    "nether_cooling_valve_b": {"dungeon": "nether_v17", "kind": "marker", "local_pos": null, "measure_hint": "second service valve"},
+    "nether_gate_court": {"dungeon": "nether_v17", "kind": "encounter", "local_pos": null, "measure_hint": "guardian gate approach cell"},
+    "nether_forge_court": {"dungeon": "nether_v17", "kind": "checkpoint", "local_pos": null, "measure_hint": "forge court / preparation"}
+  },
+  "residents": [
+    {
+      "id": "keeper_hanae",
+      "display_name": "Hanae, Root Archive Keeper",
+      "dungeon": "sakura_v17",
+      "role": "gatekeeper",
+      "nature": "earth",
+      "personality": "Patient archivist who talks to the old tree as if it were a colleague. Hates people stepping on roots.",
+      "dialogue": "dialogue/keeper_hanae.json",
+      "routine": [
+        {"phase": "dawn", "anchor": "sakura_seed_stone_a", "activity": "checks seed stones, writes notes"},
+        {"phase": "day", "anchor": "sakura_keepers_veranda", "activity": "offers the gate mission and repairs scrolls"},
+        {"phase": "dusk", "anchor": "sakura_gate_overlook", "activity": "lights gate lanterns"},
+        {"phase": "night", "anchor": "sakura_keepers_veranda", "activity": "reads; still answers if spoken to"}
+      ],
+      "fallback_anchor": "sakura_keepers_veranda",
+      "reactions": [
+        {"event": "earth_jutsu_nearby", "response": "watches and comments on the stance; no penalty"},
+        {"event": "fire_near_tree", "response": "warns once, then steps between the player and the trunk"},
+        {"event": "mission_cleared", "response": "opens the veranda supply chest dialogue and greets by name"}
+      ]
+    },
+    {
+      "id": "bellwarden_tsumugi",
+      "display_name": "Tsumugi, Bellwarden",
+      "dungeon": "cloud_v17",
+      "role": "gatekeeper",
+      "nature": "lightning",
+      "personality": "Brisk, counts everything in bell intervals, quietly proud of never losing a trainee off a bridge.",
+      "dialogue": "dialogue/bellwarden_tsumugi.json",
+      "routine": [
+        {"phase": "dawn", "anchor": "cloud_bell_court", "activity": "rings the first interval"},
+        {"phase": "day", "anchor": "cloud_arrival_terrace", "activity": "offers the gate mission"},
+        {"phase": "dusk", "anchor": "cloud_signal_platform", "activity": "inspects signal levers"},
+        {"phase": "night", "anchor": "cloud_arrival_terrace", "activity": "keeps watch under the eaves"}
+      ],
+      "fallback_anchor": "cloud_arrival_terrace",
+      "reactions": [
+        {"event": "lightning_jutsu_nearby", "response": "times it aloud and grins"},
+        {"event": "player_fell_to_catch_terrace", "response": "calls down a route hint instead of a scolding"},
+        {"event": "mission_cleared", "response": "rings a short personal interval when the player arrives"}
+      ]
+    },
+    {
+      "id": "cisternkeeper_rihane",
+      "display_name": "Rihane, Cistern Keeper",
+      "dungeon": "sand_v17",
+      "role": "gatekeeper",
+      "nature": "wind",
+      "personality": "Dry humor, measures water by the cup, trusts people who share food.",
+      "dialogue": "dialogue/cisternkeeper_rihane.json",
+      "routine": [
+        {"phase": "dawn", "anchor": "sand_wind_vane_a", "activity": "reads the morning wind"},
+        {"phase": "day", "anchor": "sand_caravan_gate", "activity": "offers the gate mission in the shade"},
+        {"phase": "dusk", "anchor": "sand_shelter_court", "activity": "rations water for the night"},
+        {"phase": "night", "anchor": "sand_shelter_court", "activity": "tends the lamps"}
+      ],
+      "fallback_anchor": "sand_caravan_gate",
+      "reactions": [
+        {"event": "wind_jutsu_nearby", "response": "checks whether the vanes moved"},
+        {"event": "player_shares_food", "response": "thanks them; later dialogue offers a shortcut hint"},
+        {"event": "mission_cleared", "response": "the caravaneer you escorted waves from the stalls"}
+      ]
+    },
+    {
+      "id": "pilot_shiori",
+      "display_name": "Shiori, Harbor Pilot",
+      "dungeon": "mist_v17",
+      "role": "gatekeeper",
+      "nature": "water",
+      "personality": "Soft-spoken, reads tides like handwriting, will not let anyone fight in a doorway.",
+      "dialogue": "dialogue/pilot_shiori.json",
+      "routine": [
+        {"phase": "dawn", "anchor": "mist_moored_pier", "activity": "checks moorings in the fog"},
+        {"phase": "day", "anchor": "mist_lantern_quay", "activity": "offers the gate mission"},
+        {"phase": "dusk", "anchor": "mist_tide_lantern_a", "activity": "lights tide lanterns"},
+        {"phase": "night", "anchor": "mist_lantern_quay", "activity": "mends rope"}
+      ],
+      "fallback_anchor": "mist_lantern_quay",
+      "reactions": [
+        {"event": "water_jutsu_nearby", "response": "names the tide it would ride"},
+        {"event": "transformation_on_pier", "response": "steps back and warns that the planks are old"},
+        {"event": "mission_cleared", "response": "leaves a lantern burning at the player's mooring"}
+      ]
+    },
+    {
+      "id": "forgesentinel_kagero",
+      "display_name": "Kagero, Forge Sentinel",
+      "dungeon": "nether_v17",
+      "role": "gatekeeper",
+      "nature": "fire",
+      "personality": "Former citadel guard, blunt, scarred, respects anyone who interrupts a seal instead of tanking it.",
+      "dialogue": "dialogue/forgesentinel_kagero.json",
+      "routine": [
+        {"phase": "dawn", "anchor": "nether_ash_overlook", "activity": "studies the gate through ash"},
+        {"phase": "day", "anchor": "nether_ash_overlook", "activity": "offers the gate mission"},
+        {"phase": "dusk", "anchor": "nether_cooling_valve_a", "activity": "checks valve pressure"},
+        {"phase": "night", "anchor": "nether_ash_overlook", "activity": "sharpens a blade"}
+      ],
+      "fallback_anchor": "nether_ash_overlook",
+      "reactions": [
+        {"event": "fire_jutsu_nearby", "response": "critiques the spread; no penalty"},
+        {"event": "player_low_health", "response": "points to the cooled alcove behind the overlook"},
+        {"event": "mission_cleared", "response": "salutes once; forge court guards stop challenging the player"}
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "gate_sakura_seedfall",
+      "dungeon": "sakura_v17",
+      "title": "Seedfall at the Rootbound Gate",
+      "giver": "keeper_hanae",
+      "level": 4,
+      "prerequisites": {"contracts_completed": ["academy_ambush"]},
+      "target_minutes": [6, 10],
+      "summary": "Root-bound scouts are trampling the archive gardens. Read the seed stones or drive the scouts off, then walk Hanae's courier to the veranda.",
+      "start_stage": "arrive",
+      "stages": [
+        {"id": "arrive", "text": "Reach the overlook above the Rootbound Gate.", "objective": {"type": "reach_marker", "anchor": "sakura_gate_overlook", "radius": 3}, "next": "choose"},
+        {"id": "choose", "text": "Hanae's notes or the scouts: pick how to clear the garden.", "objective": {"type": "choose_branch"}, "branches": [
+          {"id": "read_garden", "label": "Read the three seed stones", "next": "seed_stones"},
+          {"id": "drive_scouts", "label": "Drive off the root-bound scouts", "next": "scouts"}
+        ]},
+        {"id": "seed_stones", "text": "Touch the seed stones in the order the moss grows: east court, pond edge, cracked stair.", "objective": {"type": "interact_sequence", "anchors": ["sakura_seed_stone_a", "sakura_seed_stone_b", "sakura_seed_stone_c"], "ordered": true}, "on_fail": {"kind": "wrong_order", "effect": "two scouts wake (run-bound)", "retry_from": "seed_stones"}, "next": "escort"},
+        {"id": "scouts", "text": "Braced scouts block the lane. Flank them; their guard faces forward.", "objective": {"type": "defeat_group", "anchor": "sakura_scout_yard", "profiles": [{"key": "mob_moss_sentry", "count": 2}, {"key": "mob_bracken_watcher", "count": 1}]}, "next": "escort"},
+        {"id": "escort", "text": "Walk the courier to the keeper's veranda. Keep the lane clear.", "objective": {"type": "escort_actor", "actor": "archive_courier", "to": "sakura_keepers_veranda", "max_seconds": 120}, "on_fail": {"kind": "actor_downed", "effect": "courier retreats to the overlook", "retry_from": "escort"}, "next": null}
+      ],
+      "failure": {"death": "respawn at the last reached checkpoint; run-bound actors are cleared and respawned for the current stage only", "disconnect": "stage and branch persist; actors are removed on logout and recreated on resume", "abandon": "no reward; branch choice is forgotten"},
+      "rewards": {
+        "first_clear": {"xp": 300, "merit": 3, "ledger_items": [{"key": "travel_ration", "count": 2}], "unlocks": ["expedition_sakura_entry"], "lesson_preview": "earth_cover_preview"},
+        "repeat": {"xp": 120, "merit": 1, "ledger_items": [{"key": "travel_ration", "count": 1}]},
+        "receipt": "gate/{player}/{mission}/{run}",
+        "cooldown_ticks": 6000
+      }
+    },
+    {
+      "id": "gate_cloud_first_interval",
+      "dungeon": "cloud_v17",
+      "title": "The First Interval",
+      "giver": "bellwarden_tsumugi",
+      "level": 5,
+      "prerequisites": {"contracts_completed": ["academy_ambush"]},
+      "target_minutes": [6, 10],
+      "summary": "The storm signal must be lit before the monastery opens. Cross the exposed bridge under fire or slip through the covered levers, then hold the signal.",
+      "start_stage": "arrive",
+      "stages": [
+        {"id": "arrive", "text": "Reach the sheltered arrival terrace.", "objective": {"type": "reach_marker", "anchor": "cloud_arrival_terrace", "radius": 3}, "next": "bell"},
+        {"id": "bell", "text": "Ring the bell and remember the interval.", "objective": {"type": "interact_marker", "anchor": "cloud_bell_court"}, "next": "choose"},
+        {"id": "choose", "text": "Fast and exposed, or covered and careful?", "objective": {"type": "choose_branch"}, "branches": [
+          {"id": "bridge", "label": "Cross the exposed bridge", "next": "bridge"},
+          {"id": "levers", "label": "Work the covered levers", "next": "levers"}
+        ]},
+        {"id": "bridge", "text": "Sentinels lock a firing lane before they shoot. Step out of the lane, then close in.", "objective": {"type": "defeat_group", "anchor": "cloud_exposed_bridge", "profiles": [{"key": "mob_silver_sentry", "count": 2}]}, "on_fail": {"kind": "fell", "effect": "land on the catch terrace; no health penalty beyond the fall", "retry_from": "bridge"}, "next": "hold"},
+        {"id": "levers", "text": "Pull both levers within the bell interval (90 seconds).", "objective": {"type": "interact_sequence", "anchors": ["cloud_signal_lever_a", "cloud_signal_lever_b"], "ordered": false, "time_limit_seconds": 90}, "on_fail": {"kind": "timeout", "effect": "levers reset with a bell chime", "retry_from": "levers"}, "next": "hold"},
+        {"id": "hold", "text": "Hold the signal platform for 45 seconds while it charges.", "objective": {"type": "defend_point", "anchor": "cloud_signal_platform", "seconds": 45, "profiles": [{"key": "mob_dawn_skirmisher", "count": 3}]}, "on_fail": {"kind": "platform_lost", "effect": "signal discharges; skirmishers leave", "retry_from": "hold"}, "next": null}
+      ],
+      "failure": {"death": "respawn on the arrival terrace with the reached stage kept", "disconnect": "stage persists; timers restart from full on resume", "abandon": "no reward"},
+      "rewards": {
+        "first_clear": {"xp": 350, "merit": 3, "ledger_items": [{"key": "travel_ration", "count": 2}], "unlocks": ["expedition_cloud_entry"], "lesson_preview": "lightning_step_preview"},
+        "repeat": {"xp": 140, "merit": 1, "ledger_items": [{"key": "travel_ration", "count": 1}]},
+        "receipt": "gate/{player}/{mission}/{run}",
+        "cooldown_ticks": 6000
+      }
+    },
+    {
+      "id": "gate_sand_dry_wind",
+      "dungeon": "sand_v17",
+      "title": "Water Before the Wind",
+      "giver": "cisternkeeper_rihane",
+      "level": 6,
+      "prerequisites": {"contracts_completed": ["rogue_hunt"]},
+      "target_minutes": [7, 10],
+      "summary": "A caravaneer is pinned in the market by shielded raiders. Read the wind vanes to find a shaded path or break the ambush, then bring food to the shelter court.",
+      "start_stage": "arrive",
+      "stages": [
+        {"id": "arrive", "text": "Reach the shaded caravan gate.", "objective": {"type": "reach_marker", "anchor": "sand_caravan_gate", "radius": 3}, "next": "choose"},
+        {"id": "choose", "text": "Find the shaded path or break the ambush head on?", "objective": {"type": "choose_branch"}, "branches": [
+          {"id": "vanes", "label": "Read the wind vanes", "next": "vanes"},
+          {"id": "ambush", "label": "Break the ambush", "next": "ambush"}
+        ]},
+        {"id": "vanes", "text": "Check both vanes. The shade path is where they point.", "objective": {"type": "interact_sequence", "anchors": ["sand_wind_vane_a", "sand_wind_vane_b"], "ordered": false}, "next": "escort"},
+        {"id": "ambush", "text": "Shielded caravaneers block the stalls. Hit them from the side; a sand mark punishes standing still.", "objective": {"type": "defeat_group", "anchor": "sand_stall_ambush", "profiles": [{"key": "mob_amber_sentry", "count": 2}, {"key": "mob_quarry_binder", "count": 1}]}, "next": "escort"},
+        {"id": "escort", "text": "Walk the caravaneer to the shelter court.", "objective": {"type": "escort_actor", "actor": "stranded_caravaneer", "to": "sand_shelter_court", "max_seconds": 120}, "on_fail": {"kind": "actor_downed", "effect": "caravaneer hides in the stalls again", "retry_from": "escort"}, "next": "supplies"},
+        {"id": "supplies", "text": "Give Rihane four bread for the caravan.", "objective": {"type": "deliver_items", "item": "minecraft:bread", "count": 4, "plain_only": true}, "next": null}
+      ],
+      "failure": {"death": "respawn at the caravan gate with the stage kept", "disconnect": "stage persists; escort restarts at the stalls", "abandon": "no reward; delivered items are only consumed on completion"},
+      "rewards": {
+        "first_clear": {"xp": 400, "merit": 3, "ledger_items": [{"key": "travel_ration", "count": 2}], "unlocks": ["expedition_sand_entry"], "lesson_preview": "wind_gust_preview"},
+        "repeat": {"xp": 160, "merit": 1, "ledger_items": [{"key": "travel_ration", "count": 1}]},
+        "receipt": "gate/{player}/{mission}/{run}",
+        "cooldown_ticks": 6000
+      }
+    },
+    {
+      "id": "gate_mist_low_tide",
+      "dungeon": "mist_v17",
+      "title": "Lanterns at Low Tide",
+      "giver": "pilot_shiori",
+      "level": 5,
+      "prerequisites": {"contracts_completed": ["academy_ambush"]},
+      "target_minutes": [6, 9],
+      "summary": "Fog silhouettes have snuffed the tide lanterns. Relight them before the water rises and clear the boat-house lane so Shiori can bring the skiff in.",
+      "start_stage": "arrive",
+      "stages": [
+        {"id": "arrive", "text": "Reach the moored pier.", "objective": {"type": "reach_marker", "anchor": "mist_moored_pier", "radius": 3}, "next": "lanterns"},
+        {"id": "lanterns", "text": "Relight the three tide lanterns before the tide turns (3 minutes).", "objective": {"type": "interact_sequence", "anchors": ["mist_tide_lantern_a", "mist_tide_lantern_b", "mist_tide_lantern_c"], "ordered": false, "time_limit_seconds": 180}, "on_fail": {"kind": "timeout", "effect": "lanterns gutter out; tide resets", "retry_from": "lanterns"}, "next": "choose"},
+        {"id": "choose", "text": "Clear the lane on foot, or let Shiori pull you along the water?", "objective": {"type": "choose_branch"}, "branches": [
+          {"id": "pier", "label": "Clear the boat-house lane on foot", "next": "lane"},
+          {"id": "water", "label": "Ride the skiff around the back", "next": "skiff"}
+        ]},
+        {"id": "lane", "text": "Silhouettes flank from the boat houses. Listen for the oar knock before they strike.", "objective": {"type": "defeat_group", "anchor": "mist_boathouse_lane", "profiles": [{"key": "mob_rain_watcher", "count": 2}, {"key": "mob_fen_skirmisher", "count": 1}]}, "next": "quay"},
+        {"id": "skiff", "text": "Keep the skiff afloat for 45 seconds while Shiori steers around the piles.", "objective": {"type": "protect_actor", "actor": "pilot_skiff", "seconds": 45}, "on_fail": {"kind": "actor_downed", "effect": "skiff drifts back to the pier", "retry_from": "skiff"}, "next": "quay"},
+        {"id": "quay", "text": "Meet Shiori at the lantern quay.", "objective": {"type": "reach_marker", "anchor": "mist_lantern_quay", "radius": 3}, "next": null}
+      ],
+      "failure": {"death": "respawn on the pier; drowning recovery uses the nearest dry platform", "disconnect": "stage persists; timers restart from full", "abandon": "no reward"},
+      "rewards": {
+        "first_clear": {"xp": 320, "merit": 3, "ledger_items": [{"key": "travel_ration", "count": 2}], "unlocks": ["expedition_mist_entry"], "lesson_preview": "water_bolt_preview"},
+        "repeat": {"xp": 130, "merit": 1, "ledger_items": [{"key": "travel_ration", "count": 1}]},
+        "receipt": "gate/{player}/{mission}/{run}",
+        "cooldown_ticks": 6000
+      }
+    },
+    {
+      "id": "gate_nether_ash_seal",
+      "dungeon": "nether_v17",
+      "title": "Ash on the Guardian Gate",
+      "giver": "forgesentinel_kagero",
+      "level": 8,
+      "prerequisites": {"contracts_completed": ["reed_trial"]},
+      "target_minutes": [7, 10],
+      "summary": "A seal breaker is opening the citadel's guardian gate. Cool the service valves or storm the gate guards, then interrupt the seal before it completes.",
+      "start_stage": "arrive",
+      "stages": [
+        {"id": "arrive", "text": "Reach the ash overlook and look at the gate.", "objective": {"type": "reach_marker", "anchor": "nether_ash_overlook", "radius": 3}, "next": "choose"},
+        {"id": "choose", "text": "Through the service court, or straight at the gate?", "objective": {"type": "choose_branch"}, "branches": [
+          {"id": "valves", "label": "Close the cooling valves", "next": "valves"},
+          {"id": "assault", "label": "Storm the gate guards", "next": "assault"}
+        ]},
+        {"id": "valves", "text": "Close both cooling valves. The lava stays behind its margin.", "objective": {"type": "interact_sequence", "anchors": ["nether_cooling_valve_a", "nether_cooling_valve_b"], "ordered": false}, "next": "interrupt"},
+        {"id": "assault", "text": "Armored guards turn to face you. Their back is open after a sweep.", "objective": {"type": "defeat_group", "anchor": "nether_gate_court", "profiles": [{"key": "mob_ember_sentry", "count": 2}, {"key": "mob_flint_skirmisher", "count": 1}]}, "next": "interrupt"},
+        {"id": "interrupt", "text": "Stop the seal breaker within 60 seconds. Hit it while it channels.", "objective": {"type": "defeat_group", "anchor": "nether_gate_court", "profiles": [{"key": "mob_ember_binder", "count": 1}], "time_limit_seconds": 60}, "on_fail": {"kind": "seal_completed", "effect": "the gate flares; return to the overlook (short walk) and try again", "retry_from": "interrupt"}, "next": "forge"},
+        {"id": "forge", "text": "Enter the forge court.", "objective": {"type": "reach_marker", "anchor": "nether_forge_court", "radius": 3}, "next": null}
+      ],
+      "failure": {"death": "respawn at the ash overlook with the stage kept; dropped items cannot fall into lava because objective items are journal-only", "disconnect": "stage persists; the seal breaker is removed and the timer restarts", "abandon": "no reward"},
+      "rewards": {
+        "first_clear": {"xp": 500, "merit": 4, "ledger_items": [{"key": "travel_ration", "count": 2}], "unlocks": ["expedition_nether_entry"], "lesson_preview": "fire_burst_preview"},
+        "repeat": {"xp": 200, "merit": 1, "ledger_items": [{"key": "travel_ration", "count": 1}]},
+        "receipt": "gate/{player}/{mission}/{run}",
+        "cooldown_ticks": 6000
+      }
+    }
+  ]
+}

@@ -21,12 +21,28 @@ Updated 2026-11-13 by Fable (Claude Code, cloud session). This records observati
 
 Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeons/v17-integration.md`, `collaboration/fable/STATUS.md`. No shared build/version files, Core modules, root skill, plan or handoff were edited.
 
+## Package 2: dungeon-gate missions, residents and dialogue — content done, runtime adapter pending
+
+| Item | State | Evidence |
+| --- | --- | --- |
+| `content/expeditions/gates.json` | 5 original gate missions (one per v17 dungeon), 5 gatekeeper residents with day routines and reactions, 28 named anchors | Each mission has a branch, on_fail/retry, death/disconnect/abandon policy, first-clear and smaller repeat rewards, a receipt template and a cooldown |
+| `content/expeditions/dialogue/*.json` | 5 resident dialogues within `DialogueBook` limits | Validated |
+| `tools/validate_expeditions.py` | Cross-checks against `Missions.java` contract keys, `encounter-profiles.json` mob keys, `FieldItems` ledger items and `DialogueBook` limits; checks stage-graph reachability, cycles and completion; blocks reward-farming patterns | `python tools/validate_expeditions.py` → 0 errors, 28 "anchor not yet measured" warnings |
+| `tests/test_validate_expeditions.py` | 12 tests, each breaking one real rule on a copy | Passing |
+| Whole suite | `python -m unittest discover -s tests` → 204 tests OK, 2 skipped | Container run |
+| Runtime | **Not implemented.** Nothing loads this content in game yet | Adapter contract in `content/expeditions/README.md` |
+
 ## Hooks / requests for Codex
 
-* None needed for package 1. The tools are standalone.
-* For the mission content (package 2), see `content/missions/README.md` on this branch once it is pushed: it describes a proposed data adapter contract for Core review.
+* Package 1 needs no hook. The tools are standalone.
+* Package 2 needs the small gate-mission adapter in `content/expeditions/README.md`. It is a second registry beside `Missions.ALL`, using existing `Encounters.create`, `RewardLedger.issue` receipts, academy-style owned/run-bound actors and walking checks. It does not change existing contract keys or wire formats. Codex owns that Core change; I did not edit `modules/`.
 
 ## Next
 
 1. Owner/Codex on the PC: run the commands at the end of `docs/dungeons/v17-integration.md` against `local/v17-intake` and post the JSON summaries (aggregate only) back to this branch.
-2. Fable continues with independent package 2 (original dungeon-entrance missions/NPC dialogue as data) on this branch.
+2. Measure the 28 anchors from the real v17 files (audit `--entrance`), fill `local_pos`, and pass `validate_expeditions.py --require-anchors`.
+3. Codex: review the adapter contract; once the server archive at D: is extracted, Fable or Codex can run `copy-world`/`paste-world` on a D: candidate.
+
+## Sync state
+
+Push from this cloud session to `origin claude/upbeat-ride-nyxq23` was refused with HTTP 403 ("Claude doesn't have GitHub access to tasx13ok-create/Hidden-Block-Village for your organization"). Until GitHub access is fixed, these commits exist only in this session's container. A `git format-patch` bundle of the branch is the fallback for the owner to apply on the PC.
