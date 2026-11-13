@@ -26,8 +26,8 @@ public final class ScrollEvents {
    if(mode.equals("fireedge")||mode.equals("lava"))e.getEntityLiving().setFire(3);
    if(mode.equals("windedge"))ScrollEffects.push(p,e.getEntityLiving(),.65,.15);
    if(mode.equals("charge")||mode.equals("lightmode"))e.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,40,2));
-   if(mode.equals("spiral")){ScrollEffects.push(p,e.getEntityLiving(),1,.4);s.removeTag("mode");}
-   if(mode.equals("charge"))s.removeTag("mode");ArsenalAccess.save(p);
+   if(mode.equals("spiral")){ScrollEffects.push(p,e.getEntityLiving(),1,.4);HandTechnique.impact(p,e.getEntityLiving());s.removeTag("mode");}
+   if(mode.equals("charge")){HandTechnique.impact(p,e.getEntityLiving());s.removeTag("mode");}ArsenalAccess.save(p);
   }}finally{EXTRA.remove();}
  }
  @SubscribeEvent(priority=EventPriority.LOWEST) public static void hurt(LivingHurtEvent e){
