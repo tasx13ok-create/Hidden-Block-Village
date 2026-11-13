@@ -2,6 +2,19 @@
 
 Updated: 2026-11-13 UTC.
 
+
+## Active Core 0.3.10 academy checkpoint
+
+This section supersedes the older next-step lists below for current gameplay development. The owner asked for implementation, JEI repair, academy/first missions and ongoing GitHub saves. Use `.agents/skills/hidden-block-village/SKILL.md`.
+
+Core 0.3.10 now has six introductory exercises (arrival, nature/ward choice, ordered walking, observed evade/guard/Reed Escape, three accepted lance contacts, real ration crafting/hand-in), a protected opt-in Minecraft campus with five resident guides, and run-bound dispatch/ambush contracts. Stable reward receipts, full-inventory delivery, nonce/distance/stage dialogue guards and owner-bound actor cleanup are implemented. The optional JEI bridge skips an empty removal batch and retains error reporting. Read [the play guide](academy-0310.md) for exact inputs and scope.
+
+The latest complete source build passed all eleven source areas and 36 artifacts with source snapshot `1548956006b3814dddd8e8038362d0df8d7c1f9cc9334984720947b63d924372`. There are 34 new progress checks and dedicated JEI bridge regressions. The tooling suite passed 170 tests with four skips. The new separate Minecraft/OptiFine/JEI client joined its fresh academy server and logged `VALE_JEI_CATALOG_PASS: 0`; the prior optional-bridge warning is absent. Exact artifact identities and scope are in `release/evidence/academy0310-verification.json`.
+
+Local playable session: ignored `local/academy-preview-0310-c`, loopback port 25577, player `ValeAcademy`, server PID 20188, game PID 8884. It is in survival at the arrival guide. The old Core 0.3.9 inspection game PID 11804 / port 25576 remains intact. Two earlier refused setup attempts and a debug fixture are preserved under ignored local paths. Do not replace JARs in either live client. Desktop controls failed initialization with Windows path error 3, so a visual/manual-input walkthrough is not claimed.
+
+Native acceptance is being rerun after correcting fixture-only assertions about queued item units and death-animation bodies. The preceding run reached actual training, crafting, delivery and the first ambush kill; that failed overall run is not pass evidence. Next: finish the exact-hash disposable native run, record the final result, then continue the unimplemented A07-A10 story, distinct nature mechanics and presentation. Production-world migration/restart, two-client gameplay, Magma/plugins and Bisect remain separate gates. Friend CustomNPCs/world data have not been published or imported by this change.
+
 ## Owner's standing direction
 
 Always work in and save checkpoints to this GitHub repository so work can continue across PCs. Read `AGENTS.md`. Preserve original work and licensing/provenance records. The owner is recreating mod components and adding original gameplay; maintaining ownership and accurate licensing context is part of the project objective.

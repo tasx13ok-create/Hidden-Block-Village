@@ -55,7 +55,7 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.9",
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.10",
      dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
@@ -134,6 +134,8 @@ public final class RecoveryNativeChecks {
                 throw wrapped;
             }
             passed("Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery");
+            assertions += village.vale.AcademyNativeChecks.run(server);
+            passed("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect");
             report.addProperty("passed", true);
         } catch (Throwable error) {
             failure = error;

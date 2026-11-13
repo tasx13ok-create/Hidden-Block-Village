@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.9", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.10", acceptedMinecraftVersions = "[1.12.2]")
 public final class ValeOrders {
     @net.minecraftforge.fml.common.SidedProxy(clientSide="village.vale.ClientProxy", serverSide="village.vale.CommonProxy")
     public static CommonProxy proxy;
@@ -32,6 +32,7 @@ public final class ValeOrders {
         MinecraftForge.EVENT_BUS.register(new Combat());
         MinecraftForge.EVENT_BUS.register(new Progression());
         MinecraftForge.EVENT_BUS.register(new Adventures());
+        MinecraftForge.EVENT_BUS.register(new AcademyEvents());
         Bosses.register(this);
         Adventures.register(this);
         village.vale.arsenal.Arsenal.registerEntities(this);
@@ -57,6 +58,7 @@ public final class ValeOrders {
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
         event.registerServerCommand(new ValeCommand());
+        event.registerServerCommand(new AcademyCommand());
         event.registerServerCommand(new MigrationLoot.Command());
     }
 }

@@ -159,7 +159,7 @@ def load_build_inputs(report_path, root=ROOT):
         require(api["version"] == production["version"] and
                 assembly.jar_mods(api["path"]) == {production["mod_id"]: production["version"]},
                 "Development API and production mod versions differ: " + module)
-    require(apis["vale-orders"]["version"] == "0.3.9", "This native fixture requires Core 0.3.9")
+    require(apis["vale-orders"]["version"] in ("0.3.9", "0.3.10"), "This native fixture requires Core 0.3.9 or 0.3.10")
     require(apis["village-standards"]["version"] == "0.3.1", "This native fixture requires Standards 0.3.1")
     prepared = report.get("prepared_minecraft_api", {})
     api = builds.prepared_api(pack.no_links(Path(prepared["path"])))
@@ -262,6 +262,8 @@ def verify_private_jar(path, module, source_dir, mod_id, version, root):
         for name in ("ScrollCastNativeChecks039", "ReedEscapeNativeChecks039"):
             require("village/vale/arsenal/" + name + ".class" in classes,
                     "The new Core 0.3.9 native callback checks are missing: " + name)
+        if version == "0.3.10":
+            require("village/vale/AcademyNativeChecks.class" in classes, "Core 0.3.10 academy fixture class is missing")
     return {"mod_id": mod_id, "version": version, "file": path.name, "path": path, **pack.hash_file(path)}
 
 
@@ -338,6 +340,9 @@ def validate_native_result(value, expected, log):
     require(type(value.get("assertions")) is int and value["assertions"] > 0, "Native fixture reported no assertions")
     require(isinstance(value.get("checks"), list) and all(check in value["checks"] for check in REQUIRED_CHECKS),
             "Core 0.3.9 scroll and Reed Escape callback checks did not complete")
+    if expected["valeorders"]["version"] == "0.3.10":
+        require("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect" in value["checks"],
+                "Core 0.3.10 academy acceptance did not complete")
     require(value.get("minecraft_version") == "1.12.2" and value.get("forge_version") == FORGE_VERSION,
             "Native result names a different Minecraft/Forge runtime")
     require(value.get("loaded_fixture_mods") == expected, "Loaded native mod names, versions, or hashes differ from the exact staged roster")
@@ -381,6 +386,18 @@ def run(args, root=ROOT):
                                "official_sha1": INSTALLER_SHA1, "input": "reviewed_local_file" if args.installer else "official_download"}
         runtime = scratch / "runtime"
         runtime.mkdir()
+        cache = getattr(args, "library_cache", None)
+        if cache is not None:
+            cache = pack.no_links(cache.resolve())
+            require(cache.is_dir(), "Forge library cache must be a directory")
+            cached = []
+            for source in sorted(cache.rglob("*.jar")):
+                source = pack.no_links(source)
+                destination = runtime / "libraries" / source.relative_to(cache)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(source, destination)
+                cached.append(source.relative_to(cache).as_posix())
+            report["library_cache"] = {"jar_count": len(cached), "validation": "official Forge installer revalidates Maven dependency checksums"}
         run_process([java8, "-Djava.awt.headless=true", "-jar", installer, "--installServer", runtime],
                     scratch, evidence / "forge-install.log", 600, report["steps"], "install official Forge")
         forge = runtime / FORGE_FILE
@@ -453,6 +470,7 @@ def main(argv=None):
     parser.add_argument("--gradle-launcher", type=Path, help="Same approved Gradle launcher used for component builds")
     parser.add_argument("--gradle-arg", action="append", default=[], help="Extra Gradle argument; use --gradle-arg=-Pname=value")
     parser.add_argument("--installer", type=Path, help="Optional existing official installer; both fixed hashes are still required")
+    parser.add_argument("--library-cache", type=Path, help="Optional Maven library cache; official installer still validates dependencies")
     parser.add_argument("--server-timeout", type=int, default=600, help="Server process limit in seconds (30-1800)")
     args = parser.parse_args(argv)
     if not 30 <= args.server_timeout <= 1800:

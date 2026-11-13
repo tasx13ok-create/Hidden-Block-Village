@@ -101,7 +101,7 @@ public final class Arts {
         List<EntityLivingBase> targets;
         if(a.shape==0){EntityLivingBase e=Combat.aimedTarget(p,12);targets=e==null?Collections.emptyList():Collections.singletonList(e);}
         else targets=near(p,6,true,3);
-        boolean ok=false;for(EntityLivingBase e:targets)ok=hit(p,e,a.order,a.shape==0?6:4)||ok;
+        boolean ok=false;for(EntityLivingBase e:targets){boolean contact=hit(p,e,a.order,a.shape==0?6:4);if(contact)AcademyCampaign.art(p,a.key,e);ok=contact||ok;}
         return ok;
     }
     public static boolean hit(EntityPlayerMP p,EntityLivingBase e,Order order,float damage){

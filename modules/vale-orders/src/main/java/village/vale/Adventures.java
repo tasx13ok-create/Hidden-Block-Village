@@ -39,7 +39,7 @@ public final class Adventures {
         EntityPlayerMP p=(EntityPlayerMP)e.player;if(!p.isEntityAlive())return;
         Forms.tick(p);Summons.tick(p);Missions.tick(p);
     }
-    @SubscribeEvent public void crafted(PlayerEvent.ItemCraftedEvent e){if(!e.player.world.isRemote&&e.player instanceof EntityPlayerMP)Missions.crafted((EntityPlayerMP)e.player,e.crafting);}
+    @SubscribeEvent public void crafted(PlayerEvent.ItemCraftedEvent e){if(!e.player.world.isRemote&&e.player instanceof EntityPlayerMP){Missions.crafted((EntityPlayerMP)e.player,e.crafting);AcademyCampaign.crafted((EntityPlayerMP)e.player,e.crafting);}}
     @SubscribeEvent public void logout(PlayerEvent.PlayerLoggedOutEvent e){if(e.player instanceof EntityPlayerMP){Forms.end((EntityPlayerMP)e.player,false);Summons.dismiss((EntityPlayerMP)e.player);}}
     @SubscribeEvent public void dimension(PlayerEvent.PlayerChangedDimensionEvent e){if(e.player instanceof EntityPlayerMP){Forms.end((EntityPlayerMP)e.player,false);Summons.dismiss((EntityPlayerMP)e.player);}}
     @SubscribeEvent public void login(PlayerEvent.PlayerLoggedInEvent e){if(e.player instanceof EntityPlayerMP){Forms.end((EntityPlayerMP)e.player,false);Summons.dismiss((EntityPlayerMP)e.player);Quartermaster.recover((EntityPlayerMP)e.player);}}

@@ -1,5 +1,7 @@
 # First playable campaign: The Missing Dispatch
 
+Core 0.3.10 now implements a smaller introductory runtime route: see [the playable candidate guide](../docs/academy-0310.md). The full specification below remains the M1 target; the six basics and two contract prototypes do not fulfill its final nature-specific lessons, escort branches or graduation story.
+
 This is an original authored campaign specification for milestone M1. IDs and events below are proposed content contracts, not already registered runtime features. Build the first village graybox and wire real server events before marking any mission playable. Display names can use the selected village localization; technical IDs remain stable. Introduce the wider shinobi conflict through a local problem that first appears to be a misdelivered dispatch.
 
 ## Cast, places and tone
@@ -12,7 +14,7 @@ Tone: inhabitants have jobs and understandable stakes. Ren's mistake has a repai
 
 ## Mission graph and runtime contract
 
-Default chain is A01 → A02 → A03 → A04 → A05 → A06 → A07 → A08 → A09 → A10. A07 has two authored branches that rejoin. Returning players can resume completed stages without repeating unique rewards. Replays explicitly distinguish practice credit from first completion.
+Default chain is A01 â†’ A02 â†’ A03 â†’ A04 â†’ A05 â†’ A06 â†’ A07 â†’ A08 â†’ A09 â†’ A10. A07 has two authored branches that rejoin. Returning players can resume completed stages without repeating unique rewards. Replays explicitly distinguish practice credit from first completion.
 
 Each state transition checks authoritative player identity, mission version, prerequisite state, target/anchor ID and eligibility. Objective events include a sequence/run ID and must be accepted at most once. If a required actor or item disappears, a mission service reconstructs the pending objective from state instead of resetting the whole character. No client button or screenshot constitutes completion.
 
@@ -45,7 +47,7 @@ If one of these engines is unfinished, the campaign stage remains blocked for th
 
 Set numerical XP/Ryo rewards only after measuring the route; proposed progression is graduation plus starter equipment/provisions and an understandable next training choice. The chain must not instantly unlock advanced eyes, beast forms or all nine wards. Currency granted during the tutorial cannot support an exploitably profitable replay loop. A normal player can buy the missing ration ingredient without paying real money or using an OP command.
 
-Target 30–45 minutes for an exploratory first completion and a shorter returning-player route. Measure actual play rather than forcing timers. Keep optional dialogue, practice and discoveries available for players who enjoy them. A journal breadcrumb says current action, destination and reason; the environment supplies the corresponding landmark. No quest stage requires remembering an unexplained coordinate string from chat.
+Target 30â€“45 minutes for an exploratory first completion and a shorter returning-player route. Measure actual play rather than forcing timers. Keep optional dialogue, practice and discoveries available for players who enjoy them. A journal breadcrumb says current action, destination and reason; the environment supplies the corresponding landmark. No quest stage requires remembering an unexplained coordinate string from chat.
 
 Give players a first meaningful specialization choice after graduation, with a preview/practice route and a bounded respec policy. Expose the first dungeon's prerequisite through a resident conversation and map discovery, not a debug inventory item. The Missing Dispatch thread seeds future village/harbor stories without requiring that all later campaign content already be shipped.
 

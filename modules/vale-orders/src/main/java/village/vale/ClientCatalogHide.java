@@ -23,7 +23,7 @@ public final class ClientCatalogHide {
         try{
             Class<?> internal=Class.forName("mezz.jei.Internal");if(internal.getMethod("getRuntime").invoke(null)==null)return;Object registry=internal.getMethod("getIngredientRegistry").invoke(null);if(registry==null)return;
             Class<?> api=Class.forName("mezz.jei.api.ingredients.IIngredientRegistry");Collection<?> all=(Collection<?>)api.getMethod("getAllIngredients",Class.class).invoke(registry,ItemStack.class);List<ItemStack> hidden=new ArrayList<>();for(Object o:all)if(o instanceof ItemStack&&CanonicalCatalog.blocked(((ItemStack)o).getItem()))hidden.add((ItemStack)o);
-            api.getMethod("removeIngredientsAtRuntime",Class.class,Collection.class).invoke(registry,ItemStack.class,hidden);jeiComplete=true;attempted=true;
+            JeiCatalogBridge.remove(registry,api,ItemStack.class,hidden);jeiComplete=true;attempted=true;
             org.apache.logging.log4j.LogManager.getLogger("ValeCatalog").info("VALE_JEI_CATALOG_PASS: "+hidden.size()+" overlapping combat-prop variants removed from JEI.");
         }catch(Exception e){jeiFailure=e.toString();attempted=true;org.apache.logging.log4j.LogManager.getLogger("ValeCatalog").warn("Optional JEI catalog bridge failed; common recipe/use policy remains active.",e);}
     }

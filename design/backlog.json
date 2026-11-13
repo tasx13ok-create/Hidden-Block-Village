@@ -40,7 +40,7 @@
       "title": "Handle an empty optional JEI removal list without a warning",
       "owner": "vale-orders client",
       "priority": "P0",
-      "status": "planned",
+      "status": "verified_component",
       "depends_on": [],
       "deliverables": [
         "new versioned Core candidate",
@@ -48,7 +48,11 @@
       ],
       "acceptance": [
         "Empty list makes no invalid JEI call; nonempty list removes the intended stacks; real separate client no longer emits the observed bridge warning."
-      ]
+      ],
+      "evidence": [
+        "release/evidence/academy0310-verification.json"
+      ],
+      "implementation_scope": "Core 0.3.10 skips empty removal batches; nonempty/error regressions pass; separate OptiFine+JEI graphical process joined and logged successful bridge startup without the observed warning."
     },
     {
       "id": "REC-PRIVATE",
@@ -999,7 +1003,7 @@
       "title": "Complete normal-player academy-to-first-mission route",
       "owner": "residents and progression",
       "priority": "P0",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "SYS-STATE"
       ],
@@ -1011,7 +1015,12 @@
       ],
       "acceptance": [
         "A new non-OP player can train, graduate, learn a nature, acquire equipment and complete a rewarded mission after reconnect."
-      ]
+      ],
+      "evidence": [
+        "docs/academy-0310.md",
+        "release/evidence/academy0310-verification.json"
+      ],
+      "implementation_scope": "Six playable introductory exercises and dispatch/ambush contract prototypes. Full A07-A10 branching, distinct nature lessons, final presentation and two-client acceptance remain open."
     },
     {
       "id": "SYS-COMBAT",

@@ -197,6 +197,19 @@ class NativeOrchestrationTests(unittest.TestCase):
         with self.assertRaisesRegex(native.NativeError, "success marker"):
             native.validate_native_result(good, expected, log)
 
+    def test_core0310_requires_actual_academy_acceptance_label(self):
+        expected = {"valeorders": {"version": "0.3.10", "file": "core.jar", "sha256": "a" * 64}}
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 100,
+                  "checks": list(native.REQUIRED_CHECKS), "minecraft_version": "1.12.2",
+                  "forge_version": native.FORGE_VERSION, "loaded_fixture_mods": expected,
+                  "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "academy.log"
+        log.write_text(native.PASS_MARKER + " 100 assertions\n", encoding="utf-8")
+        with self.assertRaisesRegex(native.NativeError, "academy acceptance"):
+            native.validate_native_result(result, expected, log)
+        result["checks"].append("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect")
+        native.validate_native_result(result, expected, log)
+
     def test_nonzero_process_exit_cannot_pass(self):
         steps = []
         with contextlib.redirect_stdout(io.StringIO()), self.assertRaisesRegex(native.NativeError, "exited with status 7"):

@@ -21,6 +21,8 @@ public final class Missions {
     public static final Map<String,Contract> ALL=new LinkedHashMap<>();
     static{
         add("field_patrol","Clear the Footpaths","kill",1,5,125,1);
+        add("academy_dispatch","The Missing Dispatch: First Delivery","academyDelivery",2,1,125,1);
+        add("academy_ambush","Roadside Ambush","academyCombat",2,2,175,2);
         add("trail_scout","Survey the Old Road","travel",1,192,150,1);
         add("supply_run","Granary Relief","supplies",1,16,150,1);
         add("ration_cook","Camp Kitchen","cook",2,4,200,2);
@@ -56,14 +58,18 @@ public final class Missions {
         if(dossier.hasKey(key)||dossier.getSize()<128)dossier.setInteger(key,Math.min(1000000,dossier.getInteger(key)+1));state.setTag("dossier",dossier);
         Contract c=ALL.get(state.getString("mission"));if(c==null)return;
         boolean matches=c.type.equals("kill")||c.type.equals("night")&&(p.world.getWorldTime()%24000>=13000&&p.world.getWorldTime()%24000<23000)||c.type.equals("rogue")&&(target instanceof FieldRogue||EncounterRewards.mob(target))||(target instanceof TrialKeeper||EncounterRewards.boss(target))&&c.type.equals("boss"+(target instanceof TrialKeeper?((TrialKeeper)target).kind():EncounterRewards.tier(target)));
+        if(c.type.equals("academyCombat")&&AcademyCampaign.ambushMatches(p,target))matches=true;
         if(matches)advance(p,1);
     }
     public static boolean accept(EntityPlayerMP p,String key){
         Contract c=ALL.get(key);if(c==null)return Adventures.tell(p,"Unknown contract. /vale missions lists contracts.");NBTTagCompound s=PlayerState.data(p);
+        if(c.type.startsWith("academy")&&!AcademyCampaign.basicsComplete(p))return Adventures.tell(p,"Finish the six academy basics before accepting this mission.");
+        if(c.type.equals("academyCombat")&&!AcademyCampaign.state(p).getBoolean("dispatchCompleted"))return Adventures.tell(p,"Complete and claim your first dispatch delivery before the ambush mission.");
+        if(c.type.equals("academyCombat")&&Adventures.now(p)<s.getLong("academyAmbushReady"))return Adventures.tell(p,"The ambush yard is preparing. Retry in a minute; abandoning cannot farm new raiders.");
         if(!s.getString("mission").isEmpty())return Adventures.tell(p,"Finish or abandon your current contract first.");
         if(s.getString("starterOrder").isEmpty()||PlayerState.level(p)<c.level)return Adventures.tell(p,"Choose an order and reach level "+c.level+".");
         long ready=s.getCompoundTag("missionCooldowns").getLong(key);if(Adventures.now(p)<ready)return Adventures.tell(p,"That contract is cooling down for "+Rules.cooldownSeconds(Adventures.now(p),ready)+"s.");
-        s.setString("mission",key);s.setInteger("missionProgress",0);s.setDouble("missionFraction",0);s.setLong("missionRun",s.getLong("missionRun")+1);location(p,s);Adventures.save(p);return Adventures.tell(p,"Accepted "+c.title+". Goal "+c.goal+"; /vale mission claim when ready.",true);
+        s.setString("mission",key);s.setInteger("missionProgress",0);s.setDouble("missionFraction",0);s.setLong("missionRun",s.getLong("missionRun")+1);if(c.type.equals("academyCombat"))s.setLong("academyAmbushReady",Adventures.now(p)+1200);location(p,s);Adventures.save(p);return Adventures.tell(p,"Accepted "+c.title+". Goal "+c.goal+"; /vale mission claim when ready.",true);
     }
     public static void abandon(EntityPlayerMP p){PlayerState.data(p).removeTag("mission");PlayerState.data(p).setInteger("missionProgress",0);Adventures.save(p);Adventures.tell(p,"Contract abandoned. No reward or merit awarded.",true);}
     static void advance(EntityPlayerMP p,int amount){NBTTagCompound s=PlayerState.data(p);Contract c=ALL.get(s.getString("mission"));if(c!=null&&amount>0){s.setInteger("missionProgress",Math.min(c.goal,s.getInteger("missionProgress")+amount));HudNetwork.dirty(p);}}
@@ -92,10 +98,11 @@ public final class Missions {
         s.removeTag("mission");s.setInteger("missionProgress",0);s.setDouble("missionFraction",0);
         s.setInteger("merit",Math.min(1000000,s.getInteger("merit")+c.merit));s.setInteger("missionsCompleted",Math.min(1000000,s.getInteger("missionsCompleted")+1));
         NBTTagCompound cooldowns=s.getCompoundTag("missionCooldowns");cooldowns.setLong(c.key,Adventures.now(p)+(c.type.startsWith("boss")?12000:6000));s.setTag("missionCooldowns",cooldowns);
-        PlayerState.addXp(p,c.xp);Adventures.save(p);
+        PlayerState.addXp(p,c.xp);if(c.type.equals("academyDelivery"))AcademyCampaign.state(p).setBoolean("dispatchCompleted",true);Adventures.save(p);
         RewardLedger.get(p).issue(p,"travel_ration",2,receipt);Progression.unlock(p);return Adventures.tell(p,"Completed "+c.title+": "+c.xp+" XP, "+c.merit+" merit, two queued travel rations.",true);
     }
     public static void show(EntityPlayerMP p){
+        if(p.dimension==0&&AcademyCampaign.course(p).active)AcademyCampaign.show(p);
         NBTTagCompound s=PlayerState.data(p);Contract c=ALL.get(s.getString("mission"));int completed=s.getInteger("missionsCompleted");
         p.sendMessage(new TextComponentString("Field journal | "+(completed>=12?"Keeper":completed>=6?"Warden":completed>=2?"Scout":"Initiate")+" | Merit "+s.getInteger("merit")+" | Contracts "+completed));
         TextComponentString provisions=new TextComponentString("[Quartermaster] Spend earned merit on equipment and training tools.");provisions.getStyle().setColor(TextFormatting.AQUA).setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/vale provisions"));p.sendMessage(provisions);
@@ -108,6 +115,8 @@ public final class Missions {
     public static void dossier(EntityPlayerMP p){NBTTagCompound d=PlayerState.data(p).getCompoundTag("dossier");p.sendMessage(new TextComponentString("Enemy dossier: "+d.getSize()+" observed enemy types. Trials change at 65% and 30% health; avoid locked ground marks."));for(String key:new TreeSet<>(d.getKeySet()))p.sendMessage(new TextComponentString(key+": "+d.getInteger(key)+" defeated"));}
     public static void bossContribution(EntityPlayerMP p,int kind){Contract c=ALL.get(PlayerState.data(p).getString("mission"));if(c!=null&&c.type.equals("boss"+kind))advance(p,1);}
     private static String objective(Contract c){
+        if(c.type.equals("academyDelivery"))return "Collect the dispatch from the Mission Officer; deliver to Ren";
+        if(c.type.equals("academyCombat"))return "Defeat your two mission raiders; speak to Ren to resume";
         if(c.type.startsWith("boss"))return "Defeat "+Bosses.NAMES[Integer.parseInt(c.type.substring(4))];
         if(c.type.equals("travel"))return "Travel "+c.goal+" blocks on foot";
         if(c.type.equals("supplies"))return "Deliver sixteen plain wheat";

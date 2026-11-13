@@ -1,0 +1,339 @@
+{
+  "schema": 1,
+  "candidate": "Core 0.3.10 introductory academy",
+  "scope": "LOCAL_SOURCE_AND_NETWORK_CLIENT",
+  "source_snapshot_sha256": "1548956006b3814dddd8e8038362d0df8d7c1f9cc9334984720947b63d924372",
+  "source_build_passed": true,
+  "source_areas": 11,
+  "artifacts": [
+    {
+      "component": "vale-orders",
+      "role": "runtime_mod",
+      "file": "vale-orders-0.3.10.jar",
+      "bytes": 1981424,
+      "sha256": "dd3aae3ca12b7125e10ce75905bf2a95e29091c724228822039a75d994d53008"
+    },
+    {
+      "component": "vale-orders",
+      "role": "development_api",
+      "file": "vale-orders-0.3.10-dev.jar",
+      "bytes": 1956897,
+      "sha256": "e918bae148c3df87e00b16245bafd0daea5e08395d569a97336bfe223ed5b355"
+    },
+    {
+      "component": "vale-orders",
+      "role": "sources",
+      "file": "vale-orders-0.3.10-sources.jar",
+      "bytes": 1629380,
+      "sha256": "9fadc7be04db09c5488b23b12e9d01fb78e545f613a014b9563501cfac0649e0"
+    },
+    {
+      "component": "vale-encounters",
+      "role": "runtime_mod",
+      "file": "vale-encounters-0.3.6.jar",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "component": "vale-encounters",
+      "role": "development_api",
+      "file": "vale-encounters-0.3.6-dev.jar",
+      "bytes": 29604,
+      "sha256": "780e74a18a795d6a1d0033532b3b8a9afe8dd71c1e85bc2c74405350684c648a"
+    },
+    {
+      "component": "vale-encounters",
+      "role": "sources",
+      "file": "vale-encounters-0.3.6-sources.jar",
+      "bytes": 11986,
+      "sha256": "2c9373cbaf5d4e144fc75c469cc06a22b146d9a0f9fa6018fbafab00f6f15a5a"
+    },
+    {
+      "component": "vale-rack",
+      "role": "runtime_mod",
+      "file": "Vale-Rack-0.1.2.jar",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "component": "vale-rack",
+      "role": "development_api",
+      "file": "Vale-Rack-0.1.2-dev.jar",
+      "bytes": 33054,
+      "sha256": "e38e2dff3e6e29d3ccdaad8e36a9634b551350a3edbbfbd082beb06b63dbd73e"
+    },
+    {
+      "component": "vale-residents",
+      "role": "runtime_mod",
+      "file": "vale-residents-0.2.0.jar",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "component": "vale-residents",
+      "role": "development_api",
+      "file": "vale-residents-0.2.0-dev.jar",
+      "bytes": 45349,
+      "sha256": "bd79e30d3f79867889f3c0cfb38e1e14ed142dc4b78420b896c1bb42adc4c24b"
+    },
+    {
+      "component": "vale-residents",
+      "role": "sources",
+      "file": "vale-residents-0.2.0-sources.jar",
+      "bytes": 20123,
+      "sha256": "1f3760ef2d56d8b00cd79642a472d5b7963495f42508df3fcf68dbe29b4d8dc2"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "role": "runtime_mod",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "role": "development_api",
+      "file": "vale-residents-server-bridge-0.1.0-dev.jar",
+      "bytes": 2932,
+      "sha256": "f542d966da2049a3457e6a6a39b2cb710b6b8f98a7691d8f75385db81768d9a0"
+    },
+    {
+      "component": "vale-world-compat",
+      "role": "runtime_mod",
+      "file": "vale-world-compat-1.0.0.jar",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "component": "vale-world-compat",
+      "role": "development_api",
+      "file": "vale-world-compat-1.0.0-dev.jar",
+      "bytes": 25368,
+      "sha256": "48c0b07332e3dea1af249ef242723822bc3809148f19c4e7d955922c56ad204e"
+    },
+    {
+      "component": "vale-world-compat",
+      "role": "sources",
+      "file": "vale-world-compat-1.0.0-sources.jar",
+      "bytes": 14140,
+      "sha256": "9c39eb727d4089c9aca9ff428b807eaaccae28f241a0bd3a24007d11d5d6989f"
+    },
+    {
+      "component": "field-hud",
+      "role": "runtime_mod",
+      "file": "field-hud-0.14.1.jar",
+      "bytes": 182952,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "component": "field-hud",
+      "role": "development_api",
+      "file": "field-hud-0.14.1-dev.jar",
+      "bytes": 180381,
+      "sha256": "bb481a3daa4d720d2c745e065054871733a6e02117c88b16c1ba41b8f9259615"
+    },
+    {
+      "component": "field-hud",
+      "role": "sources",
+      "file": "field-hud-0.14.1-sources.jar",
+      "bytes": 88981,
+      "sha256": "fda6d52818063dbc613ca87f90fff7286202f7446d00e15ae444ccc0e82912ab"
+    },
+    {
+      "component": "field-controls",
+      "role": "runtime_mod",
+      "file": "field-controls-1.4.0-simple-candidate.jar",
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "component": "field-controls",
+      "role": "development_api",
+      "file": "field-controls-1.4.0-simple-candidate-dev.jar",
+      "bytes": 123820,
+      "sha256": "31b1d3b65f4fce7d5d8cf0753eb236baae2dbd773f348094707afa8b137fb087"
+    },
+    {
+      "component": "field-controls",
+      "role": "sources",
+      "file": "field-controls-1.4.0-simple-candidate-sources.jar",
+      "bytes": 52640,
+      "sha256": "21f2ebd80bc5f2aae0f9db7a0922ae5fe8ef702152563d94eda21bf772952bc0"
+    },
+    {
+      "component": "client-lifecycle",
+      "role": "runtime_mod",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "component": "client-lifecycle",
+      "role": "development_api",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0-dev.jar",
+      "bytes": 8299,
+      "sha256": "c4421f5ea50f63b3353f2549471e9ea218928df605e8e1d7877fea5b463a0431"
+    },
+    {
+      "component": "client-lifecycle",
+      "role": "sources",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0-sources.jar",
+      "bytes": 3842,
+      "sha256": "28b3c959a9a1d259e016275bbecfa12d0880b0371dbe4b7056bcda7b9309ed1a"
+    },
+    {
+      "component": "damage-compat",
+      "role": "runtime_mod",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "component": "damage-compat",
+      "role": "development_api",
+      "file": "Vale-Forge-Damage-Compat-0.1.0-dev.jar",
+      "bytes": 5460,
+      "sha256": "4e6569437286343abfddcc047fb587918efa8c0d72e6b42e8998c833892bd5d9"
+    },
+    {
+      "component": "damage-compat",
+      "role": "sources",
+      "file": "Vale-Forge-Damage-Compat-0.1.0-sources.jar",
+      "bytes": 3328,
+      "sha256": "1052ede382f122a1398f67e39d36281482af1ba10cc8ea0653d367a1e82d242d"
+    },
+    {
+      "component": "server-bridge",
+      "role": "runtime_mod",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "component": "server-bridge",
+      "role": "development_api",
+      "file": "Vale-Server-Bridge-0.2.0-dev.jar",
+      "bytes": 4647,
+      "sha256": "ad29b41db26396c14d1972b9220b649bc0aa6839f876dc1488ebccc8ea2c60ea"
+    },
+    {
+      "component": "server-bridge",
+      "role": "sources",
+      "file": "Vale-Server-Bridge-0.2.0-sources.jar",
+      "bytes": 2467,
+      "sha256": "36ff6fc8371992e863e8161ed608fb10628d535bc6ffbe527a5969ef9c450ed7"
+    },
+    {
+      "component": "server-bootstrap",
+      "role": "bootstrap_library",
+      "file": "Vale-Server-Bootstrap-0.3.7.jar",
+      "bytes": 9025,
+      "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf"
+    },
+    {
+      "component": "server-bootstrap",
+      "role": "sources",
+      "file": "Vale-Server-Bootstrap-0.3.7-sources.jar",
+      "bytes": 4436,
+      "sha256": "687c2f4ad044a3fb272af202b9240f1ed9c31caa32a9d592bb14c3dc5f0a41a4"
+    },
+    {
+      "component": "village-standards",
+      "role": "runtime_mod",
+      "file": "Village-Standards-0.3.1.jar",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    {
+      "component": "village-standards",
+      "role": "development_api",
+      "file": "Village-Standards-0.3.1-dev.jar",
+      "bytes": 36716,
+      "sha256": "87942aaf785c126fc28914920bb72a7d75373b97b4a83a9f4052fa21e154319b"
+    },
+    {
+      "component": "village-standards",
+      "role": "sources",
+      "file": "Village-Standards-0.3.1-sources.jar",
+      "bytes": 23671,
+      "sha256": "45a6608278ec31d10eabbb817bc32728e470f5469c5050854246bac2aca35489"
+    }
+  ],
+  "regression_suite": {
+    "tests": 170,
+    "skipped": 4,
+    "passed": true
+  },
+  "academy_progress_checks": 34,
+  "jei_bridge_regressions_passed": true,
+  "network_client": {
+    "minecraft": "1.12.2",
+    "forge": "14.23.5.2859",
+    "joined_fresh_academy_sandbox": true,
+    "jei_empty_list_pass": true,
+    "optional_jei_bridge_warning_observed": false,
+    "mods": [
+      {
+        "file": "Essential_1-5-1_forge_1-12-2.jar",
+        "sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e"
+      },
+      {
+        "file": "field-controls-1.4.0-simple-candidate.jar",
+        "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+      },
+      {
+        "file": "field-hud-0.14.1.jar",
+        "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+      },
+      {
+        "file": "jei_1.12.2-4.22.0.1034.jar",
+        "sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2"
+      },
+      {
+        "file": "OptiFine_1.12.2_HD_U_G5.jar",
+        "sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e"
+      },
+      {
+        "file": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+        "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+      },
+      {
+        "file": "vale-encounters-0.3.6.jar",
+        "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+      },
+      {
+        "file": "vale-orders-0.3.10.jar",
+        "sha256": "dd3aae3ca12b7125e10ce75905bf2a95e29091c724228822039a75d994d53008"
+      },
+      {
+        "file": "Vale-Rack-0.1.2.jar",
+        "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+      },
+      {
+        "file": "vale-residents-0.2.0.jar",
+        "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+      },
+      {
+        "file": "vale-world-compat-1.0.0.jar",
+        "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+      },
+      {
+        "file": "Village-Standards-0.3.1.jar",
+        "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+      }
+    ],
+    "visible_human_walkthrough": false
+  },
+  "native_acceptance": {
+    "status": "pending_rerun"
+  },
+  "production_world_tested": false,
+  "magma_plugins_tested": false,
+  "bisect_deployed": false,
+  "limitations": [
+    "Six introductory basics and two contract prototypes; full ten-stage campaign remains incomplete.",
+    "Existing ward lance engines used; final distinct nature lessons remain incomplete.",
+    "Vanilla villager guides and original Minecraft graybox; final NPC art/animation and friend CustomNPCs import are separate.",
+    "Desktop control tool failed to initialize; no visual/input walkthrough claimed."
+  ]
+}

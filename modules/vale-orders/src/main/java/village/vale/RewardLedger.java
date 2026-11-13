@@ -102,6 +102,12 @@ public final class RewardLedger extends WorldSavedData {
         return fresh;
     }
 
+    /** Fixed one-time tutorial kit; no arbitrary item ID or quantity is accepted. */
+    void issueAcademySupply(EntityPlayerMP player,String key,String receipt){
+        if(!java.util.Arrays.asList("bread","cooked_beef","carrot").contains(key))throw new IllegalArgumentException("Unknown academy ingredient");
+        issueItem(player.getServerWorld(),player.getUniqueID(),"minecraft:"+key,"minecraft:"+key,1,receipt,false);deliver(player);
+    }
+
     /** Durable outbox also supports offline boss participants. */
     public boolean issue(WorldServer world, UUID owner, String key, int count, String receipt) {
         if (!Gear.ITEMS.containsKey(key) || count < 1 || count > 16) throw new IllegalArgumentException("Invalid reward.");
@@ -160,6 +166,7 @@ public final class RewardLedger extends WorldSavedData {
                     Gear.ITEMS.get(itemKey.substring(ValeOrders.ID.length() + 1)) :
                     itemKey.startsWith("hvbijuu:")&&OwnedArmor.rewardKey(itemKey.substring(8))?
                         Item.REGISTRY.getObject(new net.minecraft.util.ResourceLocation(itemKey)):
+                    java.util.Arrays.asList("minecraft:bread","minecraft:cooked_beef","minecraft:carrot").contains(itemKey)?Item.REGISTRY.getObject(new net.minecraft.util.ResourceLocation(itemKey)):
                     itemKey.startsWith("hvdungeonpictures:")&&Item.REGISTRY.containsKey(new net.minecraft.util.ResourceLocation(itemKey))?
                         Item.REGISTRY.getObject(new net.minecraft.util.ResourceLocation(itemKey)):null;
                 if (item == null) continue;
