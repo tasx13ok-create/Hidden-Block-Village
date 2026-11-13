@@ -8,6 +8,7 @@ Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay syste
 
 | Resource | Purpose |
 | --- | --- |
+| [Current cross-PC handoff](docs/current-handoff.md) | Latest observed results, blockers and next steps. Read [standing instructions](AGENTS.md) before continuing work on any PC. |
 | [Recovery status](docs/recovery-status.md) | Distinguishes the existing package, later candidate, historical evidence, and remaining acceptance work. |
 | [Core build instructions](docs/build-core.md) | Reproduce the recovered Core source with the pinned wrapper and correct Java toolchains. |
 | [All component builds](docs/build-modules.md) | Build the recovered source areas in dependency order, inspect artifact roles and retain exact source/output hashes. |
