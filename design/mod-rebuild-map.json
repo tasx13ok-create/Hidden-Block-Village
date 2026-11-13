@@ -1,0 +1,643 @@
+{
+  "schema": "vale.mod-rebuild-map/v1",
+  "archive_sha256": "c4d54acb14e719ec4ece244aea6843fa20a345b29ff3ebfe6f5c4e719cbd6fdd",
+  "rows": [
+    {
+      "reference_file": "!mixinbooter-11.18.jar",
+      "reference_sha256": "ac6779132ca4df1a4f6319f3edc605c9d9b6c8ff6889e851472e2b41ecce273e",
+      "strategy": "dependency_transition",
+      "owner": "compatibility helpers",
+      "scope": "Mixin bootstrap requirements of retained consumers; remove dependency only after those consumers are gone.",
+      "current_evidence": "Not an owned replacement. Current optional integrations may bootstrap their own mixins.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-001",
+      "acceptance": [
+        "Start the approved roster without duplicate injection or unsupported bytecode; identify every remaining consumer."
+      ]
+    },
+    {
+      "reference_file": "[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "reference_sha256": "4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808",
+      "strategy": "original_utility_rebuild",
+      "owner": "field-hud",
+      "scope": "Target health, status, damage feedback, bounded range and visibility rules.",
+      "current_evidence": "HUD exists; full reference indicator behavior has not been audited.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-002",
+      "acceptance": [
+        "Real two-player combat shows correct health/status without hidden-entity disclosure or stale target bars."
+      ]
+    },
+    {
+      "reference_file": "ahznb weapons plus 1.2.1.jar",
+      "reference_sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders arsenal",
+      "scope": "Every reference weapon: acquisition, reach, charged/secondary action, effects, model and persistence.",
+      "current_evidence": "Original arsenal and rack exist; weapon-by-weapon parity remains open.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-003",
+      "acceptance": [
+        "Each observed weapon has a distinct tested action, readable presentation and normal-player acquisition."
+      ]
+    },
+    {
+      "reference_file": "ahznbstweaks-2.0.jar",
+      "reference_sha256": "06d387874f26ae0566e6f881af313f6b13796e8b07b1795d8277e0e8c6b26243",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders and world-compat",
+      "scope": "Observe actual balance/progression/behavior patches and specify intended replacements individually.",
+      "current_evidence": "Filename 2.0 and embedded 1.7 disagree; behavior scope unresolved.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-004",
+      "acceptance": [
+        "Record each observed tweak and test its interaction with the selected owned systems; do not infer behavior from filename."
+      ]
+    },
+    {
+      "reference_file": "almirioncore-1.1.jar",
+      "reference_sha256": "50e10d3542e12fa949d22ba257779d1601dfc49c58e005c8e029fe84b2f48e42",
+      "strategy": "identity_investigation",
+      "owner": "compatibility helpers",
+      "scope": "Resolve loader identity and actual dependency/behavior obligations before choosing an implementation.",
+      "current_evidence": "Embedded Example Mod and version placeholder are not a trustworthy identity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-005",
+      "acceptance": [
+        "Observe runtime identity and dependent consumers; document a concrete replacement or justified dependency retirement."
+      ]
+    },
+    {
+      "reference_file": "AnbuBingoBook - 1.6.1.jar",
+      "reference_sha256": "50448009137a6fe29857c4cd33c841db8ecf67ff85fbf6c48e08541f2cd329a4",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders missions",
+      "scope": "Bounty dossiers, mission eligibility, target identity, contribution, payouts and public/private intel.",
+      "current_evidence": "Mission/journal foundations exist; complete bounty behavior is unverified.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-006",
+      "acceptance": [
+        "Correct eligible target and contributor receive exactly one payout; invalid targets and duplicate claims are refused."
+      ]
+    },
+    {
+      "reference_file": "AppleSkin-mc1.12-1.0.14.jar",
+      "reference_sha256": "4bbd37edecff0b420ab0eea166b5d7b4b41a9870bfb8647bf243140dc57f101e",
+      "strategy": "original_utility_rebuild",
+      "owner": "field-hud and culinary",
+      "scope": "Readable hunger/saturation and food-preview information integrated into provisions.",
+      "current_evidence": "Culinary runtime exists; owned saturation/preview presentation is planned.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-007",
+      "acceptance": [
+        "Compare actual eating result to preview, respect GUI scale and avoid obscuring combat information."
+      ]
+    },
+    {
+      "reference_file": "Armourers-Workshop-1.12.2-0.51.0.jar",
+      "reference_sha256": "0abc8622e3a40c822a603e54065dbd0670c77bf73993487da8ef8c209e5afbe0",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned appearance tools",
+      "scope": "Cosmetic equipment/wardrobe, original authoring and a documented import path for permitted user-created skins.",
+      "current_evidence": "Original ward renderer exists; AW editor/import parity is not implemented.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-008",
+      "acceptance": [
+        "Equip/save/reload cosmetics without altering combat equipment; import only explicitly supported formats and retain source provenance."
+      ]
+    },
+    {
+      "reference_file": "Baryon Expansion_beta2.jar",
+      "reference_sha256": "58f311849ad3d26e3c82115550d912633577e95891e75067d24df983465a8ee1",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders modes",
+      "scope": "Observed high-risk transformation mechanics, strain, activation, duration, counters and visuals.",
+      "current_evidence": "Original modes are a foundation, not verified Baryon parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-009",
+      "acceptance": [
+        "Costs and consequences persist through relog/death; opponents see readable tells; no free toggle exploit."
+      ]
+    },
+    {
+      "reference_file": "biju_unleashing-1.7.3.jar",
+      "reference_sha256": "40c8f324e30f4305b1da35d4d31206643749ce8f6b04168bd8c6794df0c0e984",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders wards and encounters",
+      "scope": "Nine beast-related progression paths, encounters, contracts, forms and distinct combat expression.",
+      "current_evidence": "Nine original ward profiles and shared encounters exist; complete beast loop/unique mechanics remain open.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-010",
+      "acceptance": [
+        "All nine have acquisition, distinct kit, counterplay, ownership recovery and real client animation evidence."
+      ]
+    },
+    {
+      "reference_file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "reference_sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders advanced content",
+      "scope": "Observe its specific advanced techniques/entities/items and map each obligation into owned engines.",
+      "current_evidence": "No complete artifact-specific parity claim.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-011",
+      "acceptance": [
+        "Each observed feature has an evidence row; no assumed modern-franchise roster is marked implemented."
+      ]
+    },
+    {
+      "reference_file": "Clumps-3.1.2.jar",
+      "reference_sha256": "f3ce670e0087f4c6b770fd05ae5c3dfd8462f74c62397932ea72954d1c6c8df4",
+      "strategy": "original_utility_rebuild",
+      "owner": "world runtime optimization",
+      "scope": "Bounded XP aggregation preserving the actual XP sum, pickup rules and progression effects.",
+      "current_evidence": "Not yet an owned verified equivalent.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-012",
+      "acceptance": [
+        "Stress test many XP awards with unchanged totals, party semantics and no duplicate pickup."
+      ]
+    },
+    {
+      "reference_file": "colorfulhealthbar-0.0.4a.jar",
+      "reference_sha256": "a80cf48a1e29b22f20d250b36de663e75346d44e7a3c16f3c133aac1b9828824",
+      "strategy": "original_utility_rebuild",
+      "owner": "field-hud",
+      "scope": "Consistent player/target health bars with configurable layout, status shapes and accessibility.",
+      "current_evidence": "Original HUD exists; reference-specific visual behavior remains unverified.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-013",
+      "acceptance": [
+        "Readability at multiple aspect ratios and health scales; no duplicate conflicting bars."
+      ]
+    },
+    {
+      "reference_file": "Controlling-3.0.12.4.jar",
+      "reference_sha256": "f5edd4793f96cd5a6f31aecbd3030093b367a51afba5d6f7281756d0f9c03786",
+      "strategy": "original_utility_rebuild",
+      "owner": "field-controls",
+      "scope": "Binding search, conflict detection, remap persistence, focus and input safety.",
+      "current_evidence": "Controls 1.4 simple exists; full binding-search parity remains planned.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-014",
+      "acceptance": [
+        "Resolve a conflict, save/restart and verify chat/search do not fire abilities."
+      ]
+    },
+    {
+      "reference_file": "CosmeticArmorReworked-1.12.2-v5a.jar",
+      "reference_sha256": "a1dac96cf2168015255f4cad8748e8b969e99bd0919e9cb78deb9198ee9753e8",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned appearance and rack",
+      "scope": "Separate cosmetic presentation from real armor stats with exact stack storage and synchronized visibility.",
+      "current_evidence": "Ward renderer exists; independent cosmetic-slot parity is not established.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-015",
+      "acceptance": [
+        "Equip/remove/death/reconnect preserves real combat gear, cosmetics and observer rendering without duplication."
+      ]
+    },
+    {
+      "reference_file": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "reference_sha256": "2759356b95ffb6a88c14997ff508dfe30f66abaa8e2d8029e18e02dcb57bc8cc",
+      "strategy": "compatibility_import_and_rebuild",
+      "owner": "vale-residents",
+      "scope": "Original NPC behavior/dialogue/services/schedules plus careful import or optional retention of friend-authored definitions.",
+      "current_evidence": "Residents has three service roles; it is not a complete CNPC runtime.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-016",
+      "acceptance": [
+        "ID/reference remap, scripts, quests, trade, faction, appearance, pathing and copied-world restart all pass for imported content."
+      ]
+    },
+    {
+      "reference_file": "Essential_1-5-1_forge_1-12-2.jar",
+      "reference_sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e",
+      "strategy": "optional_external",
+      "owner": "client integration",
+      "scope": "Keep optional local compatibility; implement owned server/party join UX without requiring a proprietary social/account service.",
+      "current_evidence": "Pinned local JAR works in inspection; no redistribution permission inferred.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-017",
+      "acceptance": [
+        "Owned gameplay works without Essential; optional enabled profile still starts and connects."
+      ]
+    },
+    {
+      "reference_file": "Fluidlogged-API-v3.3.3-mc1.12.2.jar",
+      "reference_sha256": "2f9ae6c9e534c8c33fe2c87ea64c06553bd1ec74ce5cac16e793b983ea2b3b3f",
+      "strategy": "compatibility_import_and_rebuild",
+      "owner": "world-compat and water geometry",
+      "scope": "Legacy fluid/block data compatibility and required water-bearing architecture behavior.",
+      "current_evidence": "Mist uses real water; arbitrary legacy fluidlogged block migration is unverified.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-018",
+      "acceptance": [
+        "Preserve source water/block identity in a test copy; no flooding, silent deletion or invented universal conversion."
+      ]
+    },
+    {
+      "reference_file": "FTBLib-5.4.7.2.jar",
+      "reference_sha256": "623fc574f0227fec6cc9e26c3879a605f9b4499c0078ff085291901a5495a6ac",
+      "strategy": "dependency_transition",
+      "owner": "vale-orders party services",
+      "scope": "Map actual team/library consumers to owned party/state APIs; remove only after their obligations are covered.",
+      "current_evidence": "Current party/reward foundations exist, not complete FTBLib parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-019",
+      "acceptance": [
+        "Team membership and consumers survive restart/rejoin; no abandoned library dependency remains."
+      ]
+    },
+    {
+      "reference_file": "FTBQuests-1202.9.0.15.jar",
+      "reference_sha256": "3f6a674ac0d8678fd0b127e6930199f32848fe47d1689e44c72976bfb24c7385",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders missions and residents",
+      "scope": "Versioned objective graphs, chapters, party credit, rewards, repeat rules, content authoring and safe import.",
+      "current_evidence": "Current missions are partial foundations; full quest editor/import parity is planned.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-020",
+      "acceptance": [
+        "Normal-player chain and co-op replay work through restart; each payout is idempotent; unsupported imported objectives are explicit."
+      ]
+    },
+    {
+      "reference_file": "geckolib-forge-1.12.2-3.0.31.jar",
+      "reference_sha256": "b00bc9de4e3e94cea0455f8d58b295c1464272135e842bdf3170c2c955c871a5",
+      "strategy": "dependency_transition",
+      "owner": "owned animation renderer",
+      "scope": "Document retained animation consumers and replace necessary behavior with original rigs/controllers or reviewed dependencies.",
+      "current_evidence": "Original cuboid ward engine exists; it is not a general GeckoLib replacement.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-021",
+      "acceptance": [
+        "Every owned actor has a tested animation contract; no transitive runtime dependency is removed prematurely."
+      ]
+    },
+    {
+      "reference_file": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "reference_sha256": "9a9772dd99397c17ce2bd2acdafc098ead8fa8202c2998ce199555410c41d215",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned ward renderer and legacy repair",
+      "scope": "Audit all nine armor silhouettes, tail/body transforms, native attachments, motion, clipping and mode hooks.",
+      "current_evidence": "Original Vale wards and separate recovered hvbijuu candidate are distinct; later private legacy candidate is not installed.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-022",
+      "acceptance": [
+        "Test all forms/movement states at several frame rates and perspectives; never substitute one renderer while claiming to fix the other."
+      ]
+    },
+    {
+      "reference_file": "ItemFilters-1.0.4.2.jar",
+      "reference_sha256": "cdffbb810f75db50afce9681374f0604e4c1ed2dcfe768cff5b4e17d5384166b",
+      "strategy": "original_utility_rebuild",
+      "owner": "crafting and mission matching",
+      "scope": "Bounded item/tag/metadata matching for recipes, objectives and service filters.",
+      "current_evidence": "Existing owned crafting/state checks cover some use cases; complete filter language is not established.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-023",
+      "acceptance": [
+        "Positive/negative metadata/NBT cases, unknown items and changed tags behave deterministically without arbitrary expressions."
+      ]
+    },
+    {
+      "reference_file": "jei_1.12.2-4.22.0.1034.jar",
+      "reference_sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned codex and optional integration",
+      "scope": "Search, recipe/use discovery and item visibility, with retained optional JEI support during development.",
+      "current_evidence": "JEI is in inspection; empty-list hide bridge warning is an observed P0 fix.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-024",
+      "acceptance": [
+        "Empty/nonempty hide bridge works; owned recipe/codex search gives accurate acquisition and input handling."
+      ]
+    },
+    {
+      "reference_file": "JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "reference_sha256": "9ea4d7df19c0a53880aae5e745ef1e886854bea5c533878688587a5e3fdaebdd",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned codex",
+      "scope": "Explain observed resource locations, mob drops and authored loot ranges without exposing hidden content.",
+      "current_evidence": "Planned; do not invent observed drop tables.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-025",
+      "acceptance": [
+        "Displayed sources match actual configured loot/world generation and discovery eligibility."
+      ]
+    },
+    {
+      "reference_file": "JutsuAddon v1.0.jar",
+      "reference_sha256": "badda88ba357c0fe78e069e2f6b57566ecdaa7718b03c7452902f3172d3338e0",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders techniques",
+      "scope": "Observe each additional technique, its acquisition, timing, geometry, costs and visual identity.",
+      "current_evidence": "Current scroll engines cover several families; exact addon parity remains open.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-026",
+      "acceptance": [
+        "Each mapped technique completes the universal behavior record and native/two-client scenarios."
+      ]
+    },
+    {
+      "reference_file": "kabutoaddon 5.5.8-beta.jar",
+      "reference_sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders and encounters",
+      "scope": "Audit its actual techniques, actors, upgrades and progression rather than inferring them from the title.",
+      "current_evidence": "Filename 5.5.8 and generic embedded 1.0.0 cannot establish mechanics coverage.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-027",
+      "acceptance": [
+        "Every observed actor/technique gets acquisition, unique mechanics, persistence and presentation proof."
+      ]
+    },
+    {
+      "reference_file": "Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "reference_sha256": "c1078a0897359bf09a58c95ff367f4d77c3eef7e9802f468789a43453cce6948",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "village-standards",
+      "scope": "Five village picture items, placement/support, dimensions, variants, saved entity identity and original art.",
+      "current_evidence": "Standards 0.3.1 has verified historical binary contract; actual production-world migration remains open.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-028",
+      "acceptance": [
+        "Existing pictures load in a copied world with correct village, support and recovery; replacement art is provenance-reviewed."
+      ]
+    },
+    {
+      "reference_file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "reference_sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders, encounters and systems",
+      "scope": "Full shinobi base: natures, clans, eyes, combat, movement, modes, actors, items, blocks and progression.",
+      "current_evidence": "556 current items and partial mechanics do not establish base-mod parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-029",
+      "acceptance": [
+        "Complete per-feature ledger and normal-player campaign with unique mechanics, multiplayer and visual evidence."
+      ]
+    },
+    {
+      "reference_file": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "reference_sha256": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders content",
+      "scope": "Audit actual addon-specific equipment/techniques/entities and integrate distinct obligations.",
+      "current_evidence": "Some counterpart/encounter foundations exist; source-artifact mapping needs observation.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-030",
+      "acceptance": [
+        "No merged generic placeholder can close multiple unique obligations; verify actual configured behaviors."
+      ]
+    },
+    {
+      "reference_file": "NarutoModAddon-0.3.1- V1.3.jar",
+      "reference_sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders progression",
+      "scope": "Observe chakra/stat/progression additions and their interactions with the base mod.",
+      "current_evidence": "Embedded 1.1 differs from filename V1.3.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-031",
+      "acceptance": [
+        "Resource scaling, purchase/unlock costs, reset behavior and save/relog are specified and tested."
+      ]
+    },
+    {
+      "reference_file": "nmee-0.2.2-beta.jar",
+      "reference_sha256": "efcf8e1a85a7bb94c72f43e36692f329a6ce990f7f9782fcbd4686b860851f13",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders and compatibility",
+      "scope": "Audit enhanced-extension fixes/features and map each concrete behavior.",
+      "current_evidence": "Embedded 0.2.1-beta differs from filename 0.2.2-beta; no exhaustive obligation list yet.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-032",
+      "acceptance": [
+        "Reference observations distinguish a bug fix from a new ability; each accepted replacement has a regression case."
+      ]
+    },
+    {
+      "reference_file": "OptiFine_1.12.2_HD_U_G5.jar",
+      "reference_sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e",
+      "strategy": "optional_external",
+      "owner": "client rendering integration",
+      "scope": "Retain optional local shader/rendering compatibility; owned game readability, effects and settings work without it.",
+      "current_evidence": "Exact local pinned JAR initialized and connected in inspection.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-033",
+      "acceptance": [
+        "Actual client tests vanilla and OptiFine separately; no private JAR is silently bundled into public distribution."
+      ]
+    },
+    {
+      "reference_file": "Patchouli-1.0-23.6.jar",
+      "reference_sha256": "8fcceac75c71e0d041db734111200205d03431b7e8646f8209cf2c4de9afef7b",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned codex",
+      "scope": "In-world readable journal/codex, discovery gates, localization, navigation and content authoring.",
+      "current_evidence": "Current technique codex/mission journal are foundations, not a full book framework.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-034",
+      "acceptance": [
+        "A novice can find acquisition, recipe and mission help without OP/debug commands; localization and navigation persist."
+      ]
+    },
+    {
+      "reference_file": "RinneganAddon v1.3.jar",
+      "reference_sha256": "bcb143c7dc6ee501774be39d66ce294b6135cbf555e9130205db814411a5f9c0",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders advanced eyes",
+      "scope": "Observe path-specific abilities, sustained summons/forces, unlocks, drains, geometry and counters.",
+      "current_evidence": "Advanced eye-path parity is not established by current generic effects.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-035",
+      "acceptance": [
+        "Each path has distinct tested mechanics, sustained cost, loaded-chunk/protection limits and observer visuals."
+      ]
+    },
+    {
+      "reference_file": "SealsAddon v1.0.jar",
+      "reference_sha256": "9bdefc7b778148736ab11b9fadfefd09e01c3bfc9860f682c1eec6fff7354cee",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders sealing",
+      "scope": "Marks, placed seals, bindings, travel/storage/ritual semantics actually observed in reference.",
+      "current_evidence": "Waymark and some scroll effects are partial foundations.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-036",
+      "acceptance": [
+        "Ownership, placement, multiple targets, removal, expiry, protection and restart behave deterministically."
+      ]
+    },
+    {
+      "reference_file": "SharinganAddon v1.0.jar",
+      "reference_sha256": "fe7682724edeb5898a0fb65f624a12f3d9990bca0fa9ba625c9d1ad5d2dad8f3",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders eye progression",
+      "scope": "Observed eye stages and abilities, copied techniques, counters, strain and evolution paths.",
+      "current_evidence": "No full eye-stage/mechanic parity claim.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-037",
+      "acceptance": [
+        "Unlocks, eligible copy whitelist, information limits, form conflicts and two-client readability pass."
+      ]
+    },
+    {
+      "reference_file": "shinobiculinary-1.2.0.jar",
+      "reference_sha256": "3b212998b35451ed76b96e68548167a0e59a4e5a8023b8896aa0ed90b697b637",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders culinary",
+      "scope": "Regional ingredients, farming, processing, cooking, stations, recipes, food benefits and trade.",
+      "current_evidence": "Owned culinary runtime/items exist; full recipe and machine-behavior audit remains open.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-038",
+      "acceptance": [
+        "Each recipe/station has real inputs/outputs, occupied/full cases, unload/restart and valid normal-player acquisition."
+      ]
+    },
+    {
+      "reference_file": "SpringAddon7.0.jar",
+      "reference_sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "vale-orders curse and advanced content",
+      "scope": "Audit observed curse-mark and other registered content with activation/risk/progression/visual contracts.",
+      "current_evidence": "Embedded ahznbcursemarkaddon 5.0 differs from SpringAddon7.0 filename.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-039",
+      "acceptance": [
+        "Distinct stages/costs/counters persist and render correctly; no inferred feature is marked complete."
+      ]
+    },
+    {
+      "reference_file": "stg-1.12.2-1.2.3.jar",
+      "reference_sha256": "0ab0cb80822dd58ed83393edff83ac0497e1f12cbf4ceb9dacd963e2a949d2cb",
+      "strategy": "original_utility_rebuild",
+      "owner": "vale-orders combat trace",
+      "scope": "Allow intended melee through replaceable grass while preserving real obstacle/target order.",
+      "current_evidence": "Existing owned attack geometry needs a dedicated foliage parity scenario.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-040",
+      "acceptance": [
+        "Grass does not block a permitted target; walls, allies and nearer collision still prevent an invalid hit."
+      ]
+    },
+    {
+      "reference_file": "supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "reference_sha256": "9f15755020a966023eae8e9d1446441d175a88c09b1e458a47fcb3024d5e57f8",
+      "strategy": "dependency_transition",
+      "owner": "field-controls and configuration",
+      "scope": "Identify actual consumers and replace their required settings workflows with owned validated schemas.",
+      "current_evidence": "Not an owned library replacement; removal depends on consumer audit.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-041",
+      "acceptance": [
+        "Invalid values are bounded; saved settings reload; no active consumer references a removed library."
+      ]
+    },
+    {
+      "reference_file": "TravelersBackpack-1.12.2-1.0.35.jar",
+      "reference_sha256": "39a7914b5a55b7d5ad5d1192c38a66b926895317e0426a359a529de2f8028581",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned inventory equipment",
+      "scope": "Field pack storage, upgrades, carried/displayed state and any observed fluid/tool behavior.",
+      "current_evidence": "Six-slot rack is not backpack parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-042",
+      "acceptance": [
+        "No nested-container duplication; full inventory/death/drop/reconnect preserves every exact stack and upgrade."
+      ]
+    },
+    {
+      "reference_file": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "reference_sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned world decoration and compatibility",
+      "scope": "Original furnishings/props and required gameplay blocks, plus conservative legacy saved-data support.",
+      "current_evidence": "Canonical combat-prop quarantine exists; complete decoration/block migration does not.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-043",
+      "acceptance": [
+        "Usable original furnishings and accurate collision; unknown legacy blocks never silently become air in a preserved world."
+      ]
+    },
+    {
+      "reference_file": "warpmod-1.12.2-1.0.1.jar",
+      "reference_sha256": "f582a6ea518e3bbde565c181a5588f0248a63703647b63a9406d075dbc304f4a",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned travel service",
+      "scope": "Permissioned destinations, named travel, cost, cooldown, combat lock and failure recovery.",
+      "current_evidence": "Waymark is a separate personal technique, not complete named-warp parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-044",
+      "acceptance": [
+        "Private/unknown/unsafe destinations fail without charging; successful travel charges once and respects protection."
+      ]
+    },
+    {
+      "reference_file": "Waystones_1.12.2-4.1.0.jar",
+      "reference_sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15",
+      "strategy": "original_gameplay_rebuild",
+      "owner": "owned travel and discoveries",
+      "scope": "Discoverable physical travel network, bound destinations, ownership and regional progression.",
+      "current_evidence": "Planned; current inspection teleport book is not a finished travel network.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-045",
+      "acceptance": [
+        "Discovery, destination destruction, rename, transfer, costs, cooldown and restart all preserve correct state."
+      ]
+    },
+    {
+      "reference_file": "worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "reference_sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75",
+      "strategy": "authoring_tool_and_runtime_rebuild",
+      "owner": "owned template/expedition tools",
+      "scope": "Template import/export, anchors, safe placement, validation, bounded restoration and required authoring workflow.",
+      "current_evidence": "Offline schematic generators and checks exist outside this source checkout; reusable runtime template service is planned.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-046",
+      "acceptance": [
+        "Round-trip native metadata/tile entities, refuse unsafe targets, preserve rollback and reset only owned encounter cells."
+      ]
+    },
+    {
+      "reference_file": "xaerolib-forge-1.12.2-1.7.3.jar",
+      "reference_sha256": "6c0cab56a6f56e94eff537f0fdfa6f6f69b9d651caf221e44a837027a6d9b1c0",
+      "strategy": "dependency_transition",
+      "owner": "owned map and configuration",
+      "scope": "Map dependency obligations follow the owned map/discovery UI; retain locally only for explicit compatibility tests.",
+      "current_evidence": "No owned replacement or redistribution inference.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-047",
+      "acceptance": [
+        "Owned discovery/map features function without the library; any retained map consumer has matching required dependencies."
+      ]
+    },
+    {
+      "reference_file": "xaerominimap-forge-1.12.2-26.6.0.jar",
+      "reference_sha256": "efb30f0904bb8e3744bb62f77ad4f7c9e7613e063aa9900498cbb5a6e1b6d882",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned exploration HUD",
+      "scope": "Readable local navigation, discovered landmarks and consensual party waypoints.",
+      "current_evidence": "Planned; avoid inheriting radar/hidden-entity disclosures by default.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-048",
+      "acceptance": [
+        "Map orientation/scale/visibility and saved waypoints work; inaccessible rooms/enemies remain undisclosed."
+      ]
+    },
+    {
+      "reference_file": "xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "reference_sha256": "a00a7d95dc8d19427d989d43968fea0d645b508fdc15bd568389e6b18bd17b6b",
+      "strategy": "original_utility_rebuild",
+      "owner": "owned atlas",
+      "scope": "Persistent discovered-world atlas, dimension-aware routes, labels and party sharing.",
+      "current_evidence": "Planned; no existing full atlas parity.",
+      "coverage_status": "NOT_EXHAUSTIVELY_AUDITED",
+      "work_package": "MOD-049",
+      "acceptance": [
+        "Discover/save/reload/dimension switch and bounded map storage work without scanning unloaded world terrain."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hidden Block Village"
+  short_description: "Build the immersive shinobi Minecraft project"
+  default_prompt: "Use $hidden-block-village to continue the next verified gameplay milestone from the project plan."

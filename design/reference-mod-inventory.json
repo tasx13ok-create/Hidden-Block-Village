@@ -1,0 +1,1413 @@
+{
+  "schema": "vale.reference-mod-inventory/v1",
+  "archive_name": "mods.zip",
+  "archive_bytes": 202413488,
+  "archive_sha256": "c4d54acb14e719ec4ece244aea6843fa20a345b29ff3ebfe6f5c4e719cbd6fdd",
+  "jar_count": 49,
+  "jars": [
+    {
+      "file": "!mixinbooter-11.18.jar",
+      "archive_entry": "mods/!mixinbooter-11.18.jar",
+      "sha256": "ac6779132ca4df1a4f6319f3edc605c9d9b6c8ff6889e851472e2b41ecce273e",
+      "bytes": 2451781,
+      "crc_verified": true,
+      "classes": 1305,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 3,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "mixinbooter",
+          "name": "MixinBooter",
+          "version": "11.18",
+          "mcversion": "1.12.2",
+          "url": "https://github.com/CleanroomMC/MixinBooter"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "archive_entry": "mods/[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "sha256": "4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808",
+      "bytes": 285416,
+      "crc_verified": true,
+      "classes": 34,
+      "resources": {
+        ".png": 28,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "DamageIndicatorsMod",
+          "name": "Damage Indicators",
+          "version": "3.5.1",
+          "dependencies": [],
+          "url": "http://www.minecraftforum.net/topic/1536685-"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "ahznb weapons plus 1.2.1.jar",
+      "archive_entry": "mods/ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "bytes": 2568601,
+      "crc_verified": true,
+      "classes": 44,
+      "resources": {
+        ".png": 31,
+        ".ogg": 0,
+        ".json": 9,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "ahznbswordsplus",
+          "name": "AHZNB swords plus",
+          "version": "1.2.1",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "'narutomod'"
+          ],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "ahznbstweaks-2.0.jar",
+      "archive_entry": "mods/ahznbstweaks-2.0.jar",
+      "sha256": "06d387874f26ae0566e6f881af313f6b13796e8b07b1795d8277e0e8c6b26243",
+      "bytes": 74214,
+      "crc_verified": true,
+      "classes": 52,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "ahznbstweaks",
+          "name": "AHZNBS Tweaks",
+          "version": "1.7",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "required-after:narutomod"
+          ],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "almirioncore-1.1.jar",
+      "archive_entry": "mods/almirioncore-1.1.jar",
+      "sha256": "50e10d3542e12fa949d22ba257779d1601dfc49c58e005c8e029fe84b2f48e42",
+      "bytes": 2924,
+      "crc_verified": true,
+      "classes": 1,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "examplemod",
+          "name": "Example Mod",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "AnbuBingoBook - 1.6.1.jar",
+      "archive_entry": "mods/AnbuBingoBook - 1.6.1.jar",
+      "sha256": "50448009137a6fe29857c4cd33c841db8ecf67ff85fbf6c48e08541f2cd329a4",
+      "bytes": 307996,
+      "crc_verified": true,
+      "classes": 26,
+      "resources": {
+        ".png": 22,
+        ".ogg": 0,
+        ".json": 79,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "anbubingobook",
+          "name": "Anbu Bingo Book",
+          "version": "1.5.3",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            " patchouli",
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "WIKI HERE NOWWWW https://ahznb-naruto-shinobicraft.fandom.com/wiki/AHZNB_Naruto_ShinobiCraft_Wiki"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "AppleSkin-mc1.12-1.0.14.jar",
+      "archive_entry": "mods/AppleSkin-mc1.12-1.0.14.jar",
+      "sha256": "4bbd37edecff0b420ab0eea166b5d7b4b41a9870bfb8647bf243140dc57f101e",
+      "bytes": 33683,
+      "crc_verified": true,
+      "classes": 22,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "appleskin",
+          "name": "AppleSkin",
+          "version": "1.0.14",
+          "mcversion": "1.12",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Armourers-Workshop-1.12.2-0.51.0.jar",
+      "archive_entry": "mods/Armourers-Workshop-1.12.2-0.51.0.jar",
+      "sha256": "0abc8622e3a40c822a603e54065dbd0670c77bf73993487da8ef8c209e5afbe0",
+      "bytes": 2678747,
+      "crc_verified": true,
+      "classes": 927,
+      "resources": {
+        ".png": 174,
+        ".ogg": 19,
+        ".json": 114,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "armourers_workshop",
+          "name": "Armourer's Workshop",
+          "version": "1.12.2-0.51.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "https://github.com/RiskyKen/Armourers-Workshop"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Baryon Expansion_beta2.jar",
+      "archive_entry": "mods/Baryon Expansion_beta2.jar",
+      "sha256": "58f311849ad3d26e3c82115550d912633577e95891e75067d24df983465a8ee1",
+      "bytes": 887254,
+      "crc_verified": true,
+      "classes": 50,
+      "resources": {
+        ".png": 16,
+        ".ogg": 0,
+        ".json": 9,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "baryonexpansion",
+          "name": "BaryonExpansion",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "biju_unleashing-1.7.3.jar",
+      "archive_entry": "mods/biju_unleashing-1.7.3.jar",
+      "sha256": "40c8f324e30f4305b1da35d4d31206643749ce8f6b04168bd8c6794df0c0e984",
+      "bytes": 42902905,
+      "crc_verified": true,
+      "classes": 200,
+      "resources": {
+        ".png": 26,
+        ".ogg": 7,
+        ".json": 13,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "biju_unleashing",
+          "name": "Biju Unleashing",
+          "version": "1.7.3",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "archive_entry": "mods/BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "bytes": 1803175,
+      "crc_verified": true,
+      "classes": 117,
+      "resources": {
+        ".png": 40,
+        ".ogg": 2,
+        ".json": 30,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "borutomodaddononero",
+          "name": "borutomodaddononero",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://mcreator.nete"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Clumps-3.1.2.jar",
+      "archive_entry": "mods/Clumps-3.1.2.jar",
+      "sha256": "f3ce670e0087f4c6b770fd05ae5c3dfd8462f74c62397932ea72954d1c6c8df4",
+      "bytes": 13792,
+      "crc_verified": true,
+      "classes": 8,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "clumps",
+          "name": "Clumps",
+          "version": "3.1.2",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "colorfulhealthbar-0.0.4a.jar",
+      "archive_entry": "mods/colorfulhealthbar-0.0.4a.jar",
+      "sha256": "a80cf48a1e29b22f20d250b36de663e75346d44e7a3c16f3c133aac1b9828824",
+      "bytes": 16447,
+      "crc_verified": true,
+      "classes": 8,
+      "resources": {
+        ".png": 2,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "colorfulhealthbar",
+          "name": "Colorful Health Bar",
+          "version": "0.0.4a",
+          "mcversion": "1.12.2",
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Controlling-3.0.12.4.jar",
+      "archive_entry": "mods/Controlling-3.0.12.4.jar",
+      "sha256": "f5edd4793f96cd5a6f31aecbd3030093b367a51afba5d6f7281756d0f9c03786",
+      "bytes": 34383,
+      "crc_verified": true,
+      "classes": 13,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "controlling",
+          "name": "Controlling",
+          "version": "3.0.12.4",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "CosmeticArmorReworked-1.12.2-v5a.jar",
+      "archive_entry": "mods/CosmeticArmorReworked-1.12.2-v5a.jar",
+      "sha256": "a1dac96cf2168015255f4cad8748e8b969e99bd0919e9cb78deb9198ee9753e8",
+      "bytes": 72111,
+      "crc_verified": true,
+      "classes": 36,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [
+        "LICENSE.txt"
+      ],
+      "declared_mods": [
+        {
+          "modid": "cosmeticarmorreworked",
+          "name": "CosmeticArmorReworked",
+          "version": "1.12.2-v5a",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "forge"
+          ],
+          "dependants": [],
+          "url": "https://github.com/zlainsama/cosmeticarmorreworked"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "archive_entry": "mods/CustomNPCs_1.12.2-(05Jul20).jar",
+      "sha256": "2759356b95ffb6a88c14997ff508dfe30f66abaa8e2d8029e18e02dcb57bc8cc",
+      "bytes": 9911871,
+      "crc_verified": true,
+      "classes": 956,
+      "resources": {
+        ".png": 593,
+        ".ogg": 122,
+        ".json": 44,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "customnpcs",
+          "name": "CustomNPCs",
+          "version": "1.12",
+          "mcversion": "1.12",
+          "dependencies": [],
+          "url": "http://tinyurl.com/customnpcs"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Essential_1-5-1_forge_1-12-2.jar",
+      "archive_entry": "mods/Essential_1-5-1_forge_1-12-2.jar",
+      "sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e",
+      "bytes": 55768993,
+      "crc_verified": true,
+      "classes": 2,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Fluidlogged-API-v3.3.3-mc1.12.2.jar",
+      "archive_entry": "mods/Fluidlogged-API-v3.3.3-mc1.12.2.jar",
+      "sha256": "2f9ae6c9e534c8c33fe2c87ea64c06553bd1ec74ce5cac16e793b983ea2b3b3f",
+      "bytes": 808179,
+      "crc_verified": true,
+      "classes": 452,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "fluidlogged_api",
+          "name": "Fluidlogged API",
+          "version": "3.3.3",
+          "mcversion": "1.12.2",
+          "url": "https://github.com/jbredwards/Fluidlogged-API"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "FTBLib-5.4.7.2.jar",
+      "archive_entry": "mods/FTBLib-5.4.7.2.jar",
+      "sha256": "623fc574f0227fec6cc9e26c3879a605f9b4499c0078ff085291901a5495a6ac",
+      "bytes": 934370,
+      "crc_verified": true,
+      "classes": 500,
+      "resources": {
+        ".png": 83,
+        ".ogg": 0,
+        ".json": 6,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "ftblib",
+          "name": "FTB Library",
+          "version": "5.4.7.2",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "http://minecraft.curseforge.com/projects/ftblib"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "FTBQuests-1202.9.0.15.jar",
+      "archive_entry": "mods/FTBQuests-1202.9.0.15.jar",
+      "sha256": "3f6a674ac0d8678fd0b127e6930199f32848fe47d1689e44c72976bfb24c7385",
+      "bytes": 1091954,
+      "crc_verified": true,
+      "classes": 408,
+      "resources": {
+        ".png": 74,
+        ".ogg": 0,
+        ".json": 36,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "ftbquests",
+          "name": "FTB Quests",
+          "version": "1202.9.0.15",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "http://minecraft.curseforge.com/projects/ftb-quests"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "geckolib-forge-1.12.2-3.0.31.jar",
+      "archive_entry": "mods/geckolib-forge-1.12.2-3.0.31.jar",
+      "sha256": "b00bc9de4e3e94cea0455f8d58b295c1464272135e842bdf3170c2c955c871a5",
+      "bytes": 3702893,
+      "crc_verified": true,
+      "classes": 1408,
+      "resources": {
+        ".png": 24,
+        ".ogg": 1,
+        ".json": 39,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [
+        "META-INF/LICENSE",
+        "META-INF/NOTICE",
+        "META-INF/LICENSE.txt",
+        "META-INF/NOTICE.txt"
+      ],
+      "declared_mods": [
+        {
+          "modid": "geckolib3",
+          "name": "GeckoLib",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": "http://berniesoftware.com/"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "archive_entry": "mods/HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "sha256": "9a9772dd99397c17ce2bd2acdafc098ead8fa8202c2998ce199555410c41d215",
+      "bytes": 1056024,
+      "crc_verified": true,
+      "classes": 85,
+      "resources": {
+        ".png": 111,
+        ".ogg": 0,
+        ".json": 73,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "hvbijuu",
+          "name": "Hidden Village Bijuu Armor",
+          "version": "0.16.2-rc1",
+          "mcversion": "1.12.2"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "ItemFilters-1.0.4.2.jar",
+      "archive_entry": "mods/ItemFilters-1.0.4.2.jar",
+      "sha256": "cdffbb810f75db50afce9681374f0604e4c1ed2dcfe768cff5b4e17d5384166b",
+      "bytes": 78935,
+      "crc_verified": true,
+      "classes": 50,
+      "resources": {
+        ".png": 11,
+        ".ogg": 0,
+        ".json": 5,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "itemfilters",
+          "name": "Item Filters",
+          "version": "1.0.4.2",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "http://minecraft.curseforge.com/projects/item-filters"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "jei_1.12.2-4.22.0.1034.jar",
+      "archive_entry": "mods/jei_1.12.2-4.22.0.1034.jar",
+      "sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2",
+      "bytes": 715518,
+      "crc_verified": true,
+      "classes": 399,
+      "resources": {
+        ".png": 22,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "jei",
+          "name": "Just Enough Items",
+          "version": "4.22.0.1034",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "https://www.curseforge.com/minecraft/mc-mods/jei"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "archive_entry": "mods/JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "sha256": "9ea4d7df19c0a53880aae5e745ef1e886854bea5c533878688587a5e3fdaebdd",
+      "bytes": 222270,
+      "crc_verified": true,
+      "classes": 135,
+      "resources": {
+        ".png": 7,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "jeresources",
+          "name": "Just Enough Resources",
+          "version": "0.9.2",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "JEI"
+          ],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "JutsuAddon v1.0.jar",
+      "archive_entry": "mods/JutsuAddon v1.0.jar",
+      "sha256": "badda88ba357c0fe78e069e2f6b57566ecdaa7718b03c7452902f3172d3338e0",
+      "bytes": 216559,
+      "crc_verified": true,
+      "classes": 90,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "jutsuaddon",
+          "name": "NarutoMod Jutsu Add-on by bybyzyanka",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": "https://discord.gg/MdFpAjPqpX"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "kabutoaddon 5.5.8-beta.jar",
+      "archive_entry": "mods/kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "bytes": 3357299,
+      "crc_verified": true,
+      "classes": 484,
+      "resources": {
+        ".png": 105,
+        ".ogg": 1,
+        ".json": 53,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "kabutoaddon",
+          "name": "Kabutoaddon",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "archive_entry": "mods/Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "sha256": "c1078a0897359bf09a58c95ff367f4d77c3eef7e9802f468789a43453cce6948",
+      "bytes": 2093107,
+      "crc_verified": true,
+      "classes": 6,
+      "resources": {
+        ".png": 10,
+        ".ogg": 0,
+        ".json": 5,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "hvdungeonpictures",
+          "name": "Naruto Dungeon Pictures",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": []
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "archive_entry": "mods/NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "bytes": 29778441,
+      "crc_verified": true,
+      "classes": 2253,
+      "resources": {
+        ".png": 464,
+        ".ogg": 130,
+        ".json": 501,
+        ".obj": 1,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "narutomod",
+          "name": "NarutoMod",
+          "version": "0.3.1-beta",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://www.youtube.com/c/AHZNB"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "archive_entry": "mods/NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "sha256": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05",
+      "bytes": 2843222,
+      "crc_verified": true,
+      "classes": 196,
+      "resources": {
+        ".png": 97,
+        ".ogg": 2,
+        ".json": 123,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "narutomodaddononero",
+          "name": "NarutoModAddonOneRo",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [],
+          "dependants": [],
+          "url": "https://www.curseforge.com/minecraft/mc-mods/narutomod-addon"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "NarutoModAddon-0.3.1- V1.3.jar",
+      "archive_entry": "mods/NarutoModAddon-0.3.1- V1.3.jar",
+      "sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+      "bytes": 1903408,
+      "crc_verified": true,
+      "classes": 235,
+      "resources": {
+        ".png": 24,
+        ".ogg": 3,
+        ".json": 58,
+        ".obj": 1,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "narutomodaddon",
+          "name": "Naruto Chakra Addon",
+          "version": "1.1",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "https://mcreator.net"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "nmee-0.2.2-beta.jar",
+      "archive_entry": "mods/nmee-0.2.2-beta.jar",
+      "sha256": "efcf8e1a85a7bb94c72f43e36692f329a6ce990f7f9782fcbd4686b860851f13",
+      "bytes": 10113,
+      "crc_verified": true,
+      "classes": 7,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 4,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "nmee",
+          "name": "NarutoMod EnhancedExtension",
+          "version": "0.2.1-beta",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "required-after:narutomod"
+          ],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "OptiFine_1.12.2_HD_U_G5.jar",
+      "archive_entry": "mods/OptiFine_1.12.2_HD_U_G5.jar",
+      "sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e",
+      "bytes": 2669107,
+      "crc_verified": true,
+      "classes": 493,
+      "resources": {
+        ".png": 11,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [
+        "optifine/xdelta/licence.txt"
+      ],
+      "declared_mods": [],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Patchouli-1.0-23.6.jar",
+      "archive_entry": "mods/Patchouli-1.0-23.6.jar",
+      "sha256": "8fcceac75c71e0d041db734111200205d03431b7e8646f8209cf2c4de9afef7b",
+      "bytes": 472464,
+      "crc_verified": true,
+      "classes": 145,
+      "resources": {
+        ".png": 17,
+        ".ogg": 2,
+        ".json": 11,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "patchouli",
+          "name": "Patchouli",
+          "version": "1.0-23.6",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "http://www.vazkii.us"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "RinneganAddon v1.3.jar",
+      "archive_entry": "mods/RinneganAddon v1.3.jar",
+      "sha256": "bcb143c7dc6ee501774be39d66ce294b6135cbf555e9130205db814411a5f9c0",
+      "bytes": 412281,
+      "crc_verified": true,
+      "classes": 96,
+      "resources": {
+        ".png": 9,
+        ".ogg": 1,
+        ".json": 3,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "rinneganaddon",
+          "name": "NarutoMod Rinnegan Add-on by bybyzyanka",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": "https://discord.gg/MdFpAjPqpX"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "SealsAddon v1.0.jar",
+      "archive_entry": "mods/SealsAddon v1.0.jar",
+      "sha256": "9bdefc7b778148736ab11b9fadfefd09e01c3bfc9860f682c1eec6fff7354cee",
+      "bytes": 177819,
+      "crc_verified": true,
+      "classes": 66,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "sealsaddon",
+          "name": "NarutoMod Seals Add-on by bybyzyanka",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": "https://discord.gg/MdFpAjPqpX"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "SharinganAddon v1.0.jar",
+      "archive_entry": "mods/SharinganAddon v1.0.jar",
+      "sha256": "fe7682724edeb5898a0fb65f624a12f3d9990bca0fa9ba625c9d1ad5d2dad8f3",
+      "bytes": 1054445,
+      "crc_verified": true,
+      "classes": 145,
+      "resources": {
+        ".png": 13,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 2,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "sharinganaddon",
+          "name": "NarutoMod Sharingan Add-on by bybyzyanka",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": "https://discord.gg/MdFpAjPqpX"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "shinobiculinary-1.2.0.jar",
+      "archive_entry": "mods/shinobiculinary-1.2.0.jar",
+      "sha256": "3b212998b35451ed76b96e68548167a0e59a4e5a8023b8896aa0ed90b697b637",
+      "bytes": 1423453,
+      "crc_verified": true,
+      "classes": 74,
+      "resources": {
+        ".png": 69,
+        ".ogg": 0,
+        ".json": 94,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "shinobiculinary",
+          "name": "Shinobi Culinary",
+          "version": "1.1.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "SpringAddon7.0.jar",
+      "archive_entry": "mods/SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "bytes": 24349345,
+      "crc_verified": true,
+      "classes": 531,
+      "resources": {
+        ".png": 182,
+        ".ogg": 9,
+        ".json": 79,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "ahznbcursemarkaddon",
+          "name": "AhznbCursemarkAddon",
+          "version": "5.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "requiredMods": [
+            "narutomod"
+          ],
+          "dependants": [],
+          "url": "https://www.curseforge.com/minecraft/mc-mods/cursemarkaddon"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "stg-1.12.2-1.2.3.jar",
+      "archive_entry": "mods/stg-1.12.2-1.2.3.jar",
+      "sha256": "0ab0cb80822dd58ed83393edff83ac0497e1f12cbf4ceb9dacd963e2a949d2cb",
+      "bytes": 24024,
+      "crc_verified": true,
+      "classes": 4,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "stg",
+          "name": "SwingThroughGrass",
+          "version": "1.12.2-1.2.3",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "archive_entry": "mods/supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "sha256": "9f15755020a966023eae8e9d1446441d175a88c09b1e458a47fcb3024d5e57f8",
+      "bytes": 204829,
+      "crc_verified": true,
+      "classes": 47,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 0,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "supermartijn642configlib",
+          "name": "SuperMartijn642's Config Library",
+          "version": "1.1.8",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": "https://www.curseforge.com/minecraft/mc-mods/supermartijn642s-config-lib"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "TravelersBackpack-1.12.2-1.0.35.jar",
+      "archive_entry": "mods/TravelersBackpack-1.12.2-1.0.35.jar",
+      "sha256": "39a7914b5a55b7d5ad5d1192c38a66b926895317e0426a359a529de2f8028581",
+      "bytes": 397467,
+      "crc_verified": true,
+      "classes": 114,
+      "resources": {
+        ".png": 93,
+        ".ogg": 0,
+        ".json": 93,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "travelersbackpack",
+          "name": "Traveler's Backpack",
+          "version": "1.0.35",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "archive_entry": "mods/VariedCommodities_1.12.2-(31Mar23).jar",
+      "sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+      "bytes": 1766394,
+      "crc_verified": true,
+      "classes": 352,
+      "resources": {
+        ".png": 425,
+        ".ogg": 9,
+        ".json": 487,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "variedcommodities",
+          "name": "Varied Commodities",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "warpmod-1.12.2-1.0.1.jar",
+      "archive_entry": "mods/warpmod-1.12.2-1.0.1.jar",
+      "sha256": "f582a6ea518e3bbde565c181a5588f0248a63703647b63a9406d075dbc304f4a",
+      "bytes": 413872,
+      "crc_verified": true,
+      "classes": 15,
+      "resources": {
+        ".png": 0,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "warp_mod",
+          "name": "Warp Mod",
+          "version": "1.0.0",
+          "mcversion": "1.12.2",
+          "url": "https://www.curseforge.com/minecraft/mc-mods/the-warp-mod"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "Waystones_1.12.2-4.1.0.jar",
+      "archive_entry": "mods/Waystones_1.12.2-4.1.0.jar",
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15",
+      "bytes": 178994,
+      "crc_verified": true,
+      "classes": 86,
+      "resources": {
+        ".png": 7,
+        ".ogg": 0,
+        ".json": 15,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "waystones",
+          "name": "Waystones",
+          "version": "4.1.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "archive_entry": "mods/worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75",
+      "bytes": 1479535,
+      "crc_verified": true,
+      "classes": 975,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 3,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "worldedit",
+          "name": "WorldEdit",
+          "version": "6.1.10-SNAPSHOT;e6b38e8",
+          "mcversion": "1.12.2",
+          "dependencies": [
+            "Forge@[14.23.5.2768,)",
+            "sponge"
+          ],
+          "requiredMods": [
+            "Forge@[14.23.5.2768,)"
+          ],
+          "dependants": [],
+          "url": "http://wiki.sk89q.com/wiki/WorldEdit"
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "xaerolib-forge-1.12.2-1.7.3.jar",
+      "archive_entry": "mods/xaerolib-forge-1.12.2-1.7.3.jar",
+      "sha256": "6c0cab56a6f56e94eff537f0fdfa6f6f69b9d651caf221e44a837027a6d9b1c0",
+      "bytes": 617566,
+      "crc_verified": true,
+      "classes": 468,
+      "resources": {
+        ".png": 1,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "xaerolib",
+          "name": "XaeroLib",
+          "version": "1.7.3",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "xaerominimap-forge-1.12.2-26.6.0.jar",
+      "archive_entry": "mods/xaerominimap-forge-1.12.2-26.6.0.jar",
+      "sha256": "efb30f0904bb8e3744bb62f77ad4f7c9e7613e063aa9900498cbb5a6e1b6d882",
+      "bytes": 2030024,
+      "crc_verified": true,
+      "classes": 1280,
+      "resources": {
+        ".png": 14,
+        ".ogg": 0,
+        ".json": 10,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "xaerominimap",
+          "name": "Xaero's Minimap",
+          "version": "26.6.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    },
+    {
+      "file": "xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "archive_entry": "mods/xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "sha256": "a00a7d95dc8d19427d989d43968fea0d645b508fdc15bd568389e6b18bd17b6b",
+      "bytes": 943127,
+      "crc_verified": true,
+      "classes": 539,
+      "resources": {
+        ".png": 6,
+        ".ogg": 0,
+        ".json": 2,
+        ".obj": 0,
+        ".js": 0,
+        ".aw": 0
+      },
+      "license_entry_names": [],
+      "declared_mods": [
+        {
+          "modid": "xaeroworldmap",
+          "name": "Xaero's World Map",
+          "version": "1.47.0",
+          "mcversion": "1.12.2",
+          "dependencies": [],
+          "url": ""
+        }
+      ],
+      "license_status": "NOT_REVIEWED_NO_REDISTRIBUTION_PERMISSION_INFERRED"
+    }
+  ],
+  "other_entries": [],
+  "scope": "Metadata and integrity inventory only; not a feature-parity audit or license clearance.",
+  "third_party_payloads_published": false
+}

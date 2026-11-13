@@ -1,0 +1,1616 @@
+{
+  "schema": "vale.game-build-backlog/v1",
+  "product_scope": "Owned immersive shinobi game and functional coverage of all supplied reference mods",
+  "tasks": [
+    {
+      "id": "OBS-INVENTORY",
+      "title": "Inventory the supplied 49 reference JARs",
+      "owner": "release tooling",
+      "priority": "P0",
+      "status": "verified_metadata",
+      "depends_on": [],
+      "deliverables": [
+        "design/reference-mod-inventory.json",
+        "tools/audit_reference_mods.py"
+      ],
+      "acceptance": [
+        "Every supplied JAR is represented with exact bytes and SHA-256; no third-party payload is published."
+      ]
+    },
+    {
+      "id": "SYS-PARITY",
+      "title": "Establish behavioral ledger and first auditable feature slice",
+      "owner": "gameplay audit",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "OBS-INVENTORY"
+      ],
+      "deliverables": [
+        "design/feature-parity-ledger.json"
+      ],
+      "acceptance": [
+        "Each observed mechanic has acquisition, input, effects, counterplay, persistence and presentation obligations.",
+        "Unknown behavior and intentional departures are explicit; no overall completion percentage is invented.",
+        "The ledger/schema and initial observed slice enable implementation; exhaustive observation of all 49 mods is not a prerequisite for independent work."
+      ]
+    },
+    {
+      "id": "FIX-JEI",
+      "title": "Handle an empty optional JEI removal list without a warning",
+      "owner": "vale-orders client",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [],
+      "deliverables": [
+        "new versioned Core candidate",
+        "empty/nonempty/error regression cases"
+      ],
+      "acceptance": [
+        "Empty list makes no invalid JEI call; nonempty list removes the intended stacks; real separate client no longer emits the observed bridge warning."
+      ]
+    },
+    {
+      "id": "REC-PRIVATE",
+      "title": "Recover approved inventory and complete production server/world inputs",
+      "owner": "release recovery",
+      "priority": "P0",
+      "status": "blocked_inputs",
+      "depends_on": [],
+      "deliverables": [
+        "private reviewed source inventory and complete stage"
+      ],
+      "acceptance": [
+        "Recover exact original inventory and source bytes; preserve originals and incomplete candidates; do not synthesize a substitute."
+      ]
+    },
+    {
+      "id": "REC-V17",
+      "title": "Recover and compare later dungeon v17 schematics",
+      "owner": "world content",
+      "priority": "P1",
+      "status": "blocked_inputs",
+      "depends_on": [],
+      "deliverables": [
+        "private immutable v17 input",
+        "safe comparison metadata"
+      ],
+      "acceptance": [
+        "Compare actual v17 bytes and anchors to v9 before replacing existing authored work."
+      ]
+    },
+    {
+      "id": "REC-NPCS",
+      "title": "Intake friend-authored CustomNPCs bundle",
+      "owner": "NPC migration",
+      "priority": "P1",
+      "status": "blocked_inputs",
+      "depends_on": [],
+      "deliverables": [
+        "private originals",
+        "ID/reference and provenance report"
+      ],
+      "acceptance": [
+        "World/profile NPC data, dependencies, assets and changed-NPC list are present; unresolved references are listed."
+      ]
+    },
+    {
+      "id": "MOD-001",
+      "title": "Resolve functional coverage: !mixinbooter-11.18.jar",
+      "owner": "compatibility helpers",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Start the approved roster without duplicate injection or unsupported bytecode; identify every remaining consumer."
+      ]
+    },
+    {
+      "id": "MOD-002",
+      "title": "Resolve functional coverage: [1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "owner": "field-hud",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Real two-player combat shows correct health/status without hidden-entity disclosure or stale target bars."
+      ]
+    },
+    {
+      "id": "MOD-003",
+      "title": "Resolve functional coverage: ahznb weapons plus 1.2.1.jar",
+      "owner": "vale-orders arsenal",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Each observed weapon has a distinct tested action, readable presentation and normal-player acquisition."
+      ]
+    },
+    {
+      "id": "MOD-004",
+      "title": "Resolve functional coverage: ahznbstweaks-2.0.jar",
+      "owner": "vale-orders and world-compat",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Record each observed tweak and test its interaction with the selected owned systems; do not infer behavior from filename."
+      ]
+    },
+    {
+      "id": "MOD-005",
+      "title": "Resolve functional coverage: almirioncore-1.1.jar",
+      "owner": "compatibility helpers",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Observe runtime identity and dependent consumers; document a concrete replacement or justified dependency retirement."
+      ]
+    },
+    {
+      "id": "MOD-006",
+      "title": "Resolve functional coverage: AnbuBingoBook - 1.6.1.jar",
+      "owner": "vale-orders missions",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Correct eligible target and contributor receive exactly one payout; invalid targets and duplicate claims are refused."
+      ]
+    },
+    {
+      "id": "MOD-007",
+      "title": "Resolve functional coverage: AppleSkin-mc1.12-1.0.14.jar",
+      "owner": "field-hud and culinary",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Compare actual eating result to preview, respect GUI scale and avoid obscuring combat information."
+      ]
+    },
+    {
+      "id": "MOD-008",
+      "title": "Resolve functional coverage: Armourers-Workshop-1.12.2-0.51.0.jar",
+      "owner": "owned appearance tools",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Equip/save/reload cosmetics without altering combat equipment; import only explicitly supported formats and retain source provenance."
+      ]
+    },
+    {
+      "id": "MOD-009",
+      "title": "Resolve functional coverage: Baryon Expansion_beta2.jar",
+      "owner": "vale-orders modes",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Costs and consequences persist through relog/death; opponents see readable tells; no free toggle exploit."
+      ]
+    },
+    {
+      "id": "MOD-010",
+      "title": "Resolve functional coverage: biju_unleashing-1.7.3.jar",
+      "owner": "vale-orders wards and encounters",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "All nine have acquisition, distinct kit, counterplay, ownership recovery and real client animation evidence."
+      ]
+    },
+    {
+      "id": "MOD-011",
+      "title": "Resolve functional coverage: BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "owner": "vale-orders advanced content",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Each observed feature has an evidence row; no assumed modern-franchise roster is marked implemented."
+      ]
+    },
+    {
+      "id": "MOD-012",
+      "title": "Resolve functional coverage: Clumps-3.1.2.jar",
+      "owner": "world runtime optimization",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Stress test many XP awards with unchanged totals, party semantics and no duplicate pickup."
+      ]
+    },
+    {
+      "id": "MOD-013",
+      "title": "Resolve functional coverage: colorfulhealthbar-0.0.4a.jar",
+      "owner": "field-hud",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Readability at multiple aspect ratios and health scales; no duplicate conflicting bars."
+      ]
+    },
+    {
+      "id": "MOD-014",
+      "title": "Resolve functional coverage: Controlling-3.0.12.4.jar",
+      "owner": "field-controls",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Resolve a conflict, save/restart and verify chat/search do not fire abilities."
+      ]
+    },
+    {
+      "id": "MOD-015",
+      "title": "Resolve functional coverage: CosmeticArmorReworked-1.12.2-v5a.jar",
+      "owner": "owned appearance and rack",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Equip/remove/death/reconnect preserves real combat gear, cosmetics and observer rendering without duplication."
+      ]
+    },
+    {
+      "id": "MOD-016",
+      "title": "Resolve functional coverage: CustomNPCs_1.12.2-(05Jul20).jar",
+      "owner": "vale-residents",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "ID/reference remap, scripts, quests, trade, faction, appearance, pathing and copied-world restart all pass for imported content."
+      ]
+    },
+    {
+      "id": "MOD-017",
+      "title": "Resolve functional coverage: Essential_1-5-1_forge_1-12-2.jar",
+      "owner": "client integration",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Owned gameplay works without Essential; optional enabled profile still starts and connects."
+      ]
+    },
+    {
+      "id": "MOD-018",
+      "title": "Resolve functional coverage: Fluidlogged-API-v3.3.3-mc1.12.2.jar",
+      "owner": "world-compat and water geometry",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Preserve source water/block identity in a test copy; no flooding, silent deletion or invented universal conversion."
+      ]
+    },
+    {
+      "id": "MOD-019",
+      "title": "Resolve functional coverage: FTBLib-5.4.7.2.jar",
+      "owner": "vale-orders party services",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Team membership and consumers survive restart/rejoin; no abandoned library dependency remains."
+      ]
+    },
+    {
+      "id": "MOD-020",
+      "title": "Resolve functional coverage: FTBQuests-1202.9.0.15.jar",
+      "owner": "vale-orders missions and residents",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Normal-player chain and co-op replay work through restart; each payout is idempotent; unsupported imported objectives are explicit."
+      ]
+    },
+    {
+      "id": "MOD-021",
+      "title": "Resolve functional coverage: geckolib-forge-1.12.2-3.0.31.jar",
+      "owner": "owned animation renderer",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Every owned actor has a tested animation contract; no transitive runtime dependency is removed prematurely."
+      ]
+    },
+    {
+      "id": "MOD-022",
+      "title": "Resolve functional coverage: HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "owner": "owned ward renderer and legacy repair",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Test all forms/movement states at several frame rates and perspectives; never substitute one renderer while claiming to fix the other."
+      ]
+    },
+    {
+      "id": "MOD-023",
+      "title": "Resolve functional coverage: ItemFilters-1.0.4.2.jar",
+      "owner": "crafting and mission matching",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Positive/negative metadata/NBT cases, unknown items and changed tags behave deterministically without arbitrary expressions."
+      ]
+    },
+    {
+      "id": "MOD-024",
+      "title": "Resolve functional coverage: jei_1.12.2-4.22.0.1034.jar",
+      "owner": "owned codex and optional integration",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Empty/nonempty hide bridge works; owned recipe/codex search gives accurate acquisition and input handling."
+      ]
+    },
+    {
+      "id": "MOD-025",
+      "title": "Resolve functional coverage: JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "owner": "owned codex",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Displayed sources match actual configured loot/world generation and discovery eligibility."
+      ]
+    },
+    {
+      "id": "MOD-026",
+      "title": "Resolve functional coverage: JutsuAddon v1.0.jar",
+      "owner": "vale-orders techniques",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Each mapped technique completes the universal behavior record and native/two-client scenarios."
+      ]
+    },
+    {
+      "id": "MOD-027",
+      "title": "Resolve functional coverage: kabutoaddon 5.5.8-beta.jar",
+      "owner": "vale-orders and encounters",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Every observed actor/technique gets acquisition, unique mechanics, persistence and presentation proof."
+      ]
+    },
+    {
+      "id": "MOD-028",
+      "title": "Resolve functional coverage: Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "owner": "village-standards",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Existing pictures load in a copied world with correct village, support and recovery; replacement art is provenance-reviewed."
+      ]
+    },
+    {
+      "id": "MOD-029",
+      "title": "Resolve functional coverage: NarutoMod-1.12.2-0.3.1.beta.jar",
+      "owner": "vale-orders, encounters and systems",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Complete per-feature ledger and normal-player campaign with unique mechanics, multiplayer and visual evidence."
+      ]
+    },
+    {
+      "id": "MOD-030",
+      "title": "Resolve functional coverage: NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "owner": "vale-orders content",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "No merged generic placeholder can close multiple unique obligations; verify actual configured behaviors."
+      ]
+    },
+    {
+      "id": "MOD-031",
+      "title": "Resolve functional coverage: NarutoModAddon-0.3.1- V1.3.jar",
+      "owner": "vale-orders progression",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Resource scaling, purchase/unlock costs, reset behavior and save/relog are specified and tested."
+      ]
+    },
+    {
+      "id": "MOD-032",
+      "title": "Resolve functional coverage: nmee-0.2.2-beta.jar",
+      "owner": "vale-orders and compatibility",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Reference observations distinguish a bug fix from a new ability; each accepted replacement has a regression case."
+      ]
+    },
+    {
+      "id": "MOD-033",
+      "title": "Resolve functional coverage: OptiFine_1.12.2_HD_U_G5.jar",
+      "owner": "client rendering integration",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Actual client tests vanilla and OptiFine separately; no private JAR is silently bundled into public distribution."
+      ]
+    },
+    {
+      "id": "MOD-034",
+      "title": "Resolve functional coverage: Patchouli-1.0-23.6.jar",
+      "owner": "owned codex",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "A novice can find acquisition, recipe and mission help without OP/debug commands; localization and navigation persist."
+      ]
+    },
+    {
+      "id": "MOD-035",
+      "title": "Resolve functional coverage: RinneganAddon v1.3.jar",
+      "owner": "vale-orders advanced eyes",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Each path has distinct tested mechanics, sustained cost, loaded-chunk/protection limits and observer visuals."
+      ]
+    },
+    {
+      "id": "MOD-036",
+      "title": "Resolve functional coverage: SealsAddon v1.0.jar",
+      "owner": "vale-orders sealing",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Ownership, placement, multiple targets, removal, expiry, protection and restart behave deterministically."
+      ]
+    },
+    {
+      "id": "MOD-037",
+      "title": "Resolve functional coverage: SharinganAddon v1.0.jar",
+      "owner": "vale-orders eye progression",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Unlocks, eligible copy whitelist, information limits, form conflicts and two-client readability pass."
+      ]
+    },
+    {
+      "id": "MOD-038",
+      "title": "Resolve functional coverage: shinobiculinary-1.2.0.jar",
+      "owner": "vale-orders culinary",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Each recipe/station has real inputs/outputs, occupied/full cases, unload/restart and valid normal-player acquisition."
+      ]
+    },
+    {
+      "id": "MOD-039",
+      "title": "Resolve functional coverage: SpringAddon7.0.jar",
+      "owner": "vale-orders curse and advanced content",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Distinct stages/costs/counters persist and render correctly; no inferred feature is marked complete."
+      ]
+    },
+    {
+      "id": "MOD-040",
+      "title": "Resolve functional coverage: stg-1.12.2-1.2.3.jar",
+      "owner": "vale-orders combat trace",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Grass does not block a permitted target; walls, allies and nearer collision still prevent an invalid hit."
+      ]
+    },
+    {
+      "id": "MOD-041",
+      "title": "Resolve functional coverage: supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "owner": "field-controls and configuration",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Invalid values are bounded; saved settings reload; no active consumer references a removed library."
+      ]
+    },
+    {
+      "id": "MOD-042",
+      "title": "Resolve functional coverage: TravelersBackpack-1.12.2-1.0.35.jar",
+      "owner": "owned inventory equipment",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "No nested-container duplication; full inventory/death/drop/reconnect preserves every exact stack and upgrade."
+      ]
+    },
+    {
+      "id": "MOD-043",
+      "title": "Resolve functional coverage: VariedCommodities_1.12.2-(31Mar23).jar",
+      "owner": "owned world decoration and compatibility",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Usable original furnishings and accurate collision; unknown legacy blocks never silently become air in a preserved world."
+      ]
+    },
+    {
+      "id": "MOD-044",
+      "title": "Resolve functional coverage: warpmod-1.12.2-1.0.1.jar",
+      "owner": "owned travel service",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Private/unknown/unsafe destinations fail without charging; successful travel charges once and respects protection."
+      ]
+    },
+    {
+      "id": "MOD-045",
+      "title": "Resolve functional coverage: Waystones_1.12.2-4.1.0.jar",
+      "owner": "owned travel and discoveries",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Discovery, destination destruction, rename, transfer, costs, cooldown and restart all preserve correct state."
+      ]
+    },
+    {
+      "id": "MOD-046",
+      "title": "Resolve functional coverage: worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "owner": "owned template/expedition tools",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Round-trip native metadata/tile entities, refuse unsafe targets, preserve rollback and reset only owned encounter cells."
+      ]
+    },
+    {
+      "id": "MOD-047",
+      "title": "Resolve functional coverage: xaerolib-forge-1.12.2-1.7.3.jar",
+      "owner": "owned map and configuration",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Owned discovery/map features function without the library; any retained map consumer has matching required dependencies."
+      ]
+    },
+    {
+      "id": "MOD-048",
+      "title": "Resolve functional coverage: xaerominimap-forge-1.12.2-26.6.0.jar",
+      "owner": "owned exploration HUD",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Map orientation/scale/visibility and saved waypoints work; inaccessible rooms/enemies remain undisclosed."
+      ]
+    },
+    {
+      "id": "MOD-049",
+      "title": "Resolve functional coverage: xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "owner": "owned atlas",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "feature obligation rows",
+        "owned implementation or explicit compatibility disposition",
+        "version-bound validation evidence"
+      ],
+      "acceptance": [
+        "Discover/save/reload/dimension switch and bounded map storage work without scanning unloaded world terrain."
+      ]
+    },
+    {
+      "id": "SYS-STATE",
+      "title": "Versioned character and world-state contracts",
+      "owner": "vale-orders",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-PARITY"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Document stable IDs, migrations, unknown-content quarantine, deadlines, ownership and one reward authority."
+      ]
+    },
+    {
+      "id": "SYS-ACADEMY",
+      "title": "Complete normal-player academy-to-first-mission route",
+      "owner": "residents and progression",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "design/ACADEMY-CAMPAIGN.md implemented as real runtime content",
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "A new non-OP player can train, graduate, learn a nature, acquire equipment and complete a rewarded mission after reconnect."
+      ]
+    },
+    {
+      "id": "SYS-COMBAT",
+      "title": "Unified attack reservation, geometry and counterplay contracts",
+      "owner": "combat",
+      "priority": "P0",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Real target protection, physical contact order, interruption and anti-stunlock cases pass with two clients."
+      ]
+    },
+    {
+      "id": "SYS-MOVEMENT",
+      "title": "Dash, substitution, tree/water traversal and safe movement training",
+      "owner": "movement",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-COMBAT"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Collision/support/world-border/protection and relocation-failure semantics pass; accessible training routes exist."
+      ]
+    },
+    {
+      "id": "SYS-NATURES",
+      "title": "Five base nature paths with distinct complete introductory kits",
+      "owner": "techniques",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-COMBAT",
+        "SYS-ACADEMY"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Each nature has three genuinely different introductory techniques with acquisition, counters, visuals and persistence."
+      ]
+    },
+    {
+      "id": "SYS-INTERACTIONS",
+      "title": "Bounded nature/environment interaction table",
+      "owner": "techniques",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-NATURES"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Conflict order, ownership, protection and reset are deterministic; no uncontrolled world simulation."
+      ]
+    },
+    {
+      "id": "SYS-CLANS",
+      "title": "First eight complete lineage/specialist paths then full roster",
+      "owner": "lineages",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-NATURES"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Every path has signature mechanic, weakness, trials, mastery and distinct in-game presentation; remaining roster stays visible."
+      ]
+    },
+    {
+      "id": "SYS-EYES",
+      "title": "Eye-path acquisition, stages, copying, information and strain",
+      "owner": "lineages",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-CLANS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Stages and copy eligibility are explicit; no arbitrary hidden-player information, free relog reset or unbounded stacking."
+      ]
+    },
+    {
+      "id": "SYS-SEALS",
+      "title": "Placed seals, rituals, bindings and safe travel networks",
+      "owner": "techniques",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-INTERACTIONS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Nodes respect ownership, protection, expiry, restart and deterministic relocation settlement."
+      ]
+    },
+    {
+      "id": "SYS-WARDS",
+      "title": "Nine distinct original ward transformation paths",
+      "owner": "ward renderer",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-CLANS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Each path has a usable acquisition/trial and distinct kit; nine rigs pass all movement/perspective/frame-rate checks."
+      ]
+    },
+    {
+      "id": "SYS-SAGE",
+      "title": "Sage, curse and gates paths with meaningful limits",
+      "owner": "modes",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-CLANS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Preparation, strain, conflict slots, dispel/counterplay and persistent consequences are demonstrated."
+      ]
+    },
+    {
+      "id": "SYS-ARSENAL",
+      "title": "Distinct weapon families and legendary mechanics",
+      "owner": "arsenal",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-COMBAT"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Exact-stack rack behavior, attack geometry, upgrades, acquisition and unique weapon actions work in normal play."
+      ]
+    },
+    {
+      "id": "SYS-COMPANIONS",
+      "title": "Authored companion acquisition, roles and orders",
+      "owner": "encounters",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-COMBAT",
+        "SYS-ACADEMY"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Acquisition, owner limits, Assist/Follow/Guard/Hold, support credit, cleanup and reconnect work for delivered companions."
+      ]
+    },
+    {
+      "id": "SYS-AI",
+      "title": "Unique enemy decision patterns and navigation",
+      "owner": "encounters",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-COMBAT"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Representative roster has distinct tells/counters, bounded pathing and real client animation; generic profile count is not parity."
+      ]
+    },
+    {
+      "id": "SYS-MISSIONS",
+      "title": "Versioned mission graphs, parties and repeatability",
+      "owner": "missions",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-ACADEMY",
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Solo/co-op objective graphs, late joins, already-completed members, fail/retry and exactly-once rewards pass."
+      ]
+    },
+    {
+      "id": "SYS-ECONOMY",
+      "title": "Ryo/provision economy, crafting, cooking and sinks",
+      "owner": "services",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-MISSIONS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Real earn-spend-craft loop, full outputs, interruption and outbox retry work with no duplicate payment."
+      ]
+    },
+    {
+      "id": "SYS-NPCS",
+      "title": "Living original residents and friend-content migration",
+      "owner": "residents",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-ACADEMY"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Roles, schedules, dialogue conditions, protected navigation and supported imports survive save/restart; unavailable friend data remains explicitly blocked."
+      ]
+    },
+    {
+      "id": "SYS-VILLAGES",
+      "title": "Five distinct lived-in village service and story layers",
+      "owner": "world content",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-NPCS",
+        "SYS-MISSIONS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Each village has a unique arrival, services, mission identity, safe routes and inhabited functional interiors."
+      ]
+    },
+    {
+      "id": "SYS-TRAVEL",
+      "title": "Discoverable atlas, waypoints and travel service",
+      "owner": "exploration",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-VILLAGES",
+        "SYS-SEALS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Discovery, dimension identity, combat lock, unsafe destinations, destroyed nodes and travel charges/retries pass."
+      ]
+    },
+    {
+      "id": "SYS-UI",
+      "title": "Readable HUD, remappable controls and original codex",
+      "owner": "client",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "E/hotbar/building remain useful; UI focus prevents casts; reduced effects and text scaling work on recorded resolutions."
+      ]
+    },
+    {
+      "id": "SYS-ART",
+      "title": "Original equipment, actor, icon, sound and animation production",
+      "owner": "art",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-UI"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Each shipped content entry has original assets/provenance, readable silhouettes and real first/third-person review."
+      ]
+    },
+    {
+      "id": "SYS-FACTIONS",
+      "title": "Village reputation, exams and opt-in conflict",
+      "owner": "world systems",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-MISSIONS",
+        "SYS-VILLAGES"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Promotion/support credit, faction services, spectator rules, disconnect/retry and nonparticipant protection pass."
+      ]
+    },
+    {
+      "id": "SYS-INVENTORY",
+      "title": "Backpack/cosmetic storage and exact-stack persistence",
+      "owner": "inventory",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-STATE"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Nested container refusal, cosmetic/stat separation, full inventory and death/reconnect do not duplicate or lose stacks."
+      ]
+    },
+    {
+      "id": "DNG-RUNTIME",
+      "title": "Immutable templates and restart-safe expedition state machine",
+      "owner": "dungeons",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-MISSIONS",
+        "SYS-AI"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Reserved cells, participant rules, phase recovery, reset boundaries, drops/outbox and crash/restart are proven without modifying player areas."
+      ]
+    },
+    {
+      "id": "SYS-PERFORMANCE",
+      "title": "Recorded server/client performance and effects budgets",
+      "owner": "engineering",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "SYS-AI",
+        "SYS-WARDS",
+        "DNG-RUNTIME"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Profile agreed hardware/scenarios; enforce bounded spawn, particle, sound, chunk and task budgets with reduced-effects readability."
+      ]
+    },
+    {
+      "id": "REL-CANDIDATE",
+      "title": "Complete matching production client/server candidate",
+      "owner": "release",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "REC-PRIVATE",
+        "SYS-ACADEMY"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Use real pinned inputs, new output ID and successful preparation/assembly receipts; shared JARs match."
+      ]
+    },
+    {
+      "id": "REL-WORLD",
+      "title": "Production-world migration and save/restart acceptance",
+      "owner": "world compatibility",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "REL-CANDIDATE"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Copied Naruto.test retains builds/NPCs/players; handle missing registries explicitly; save and restart cleanly."
+      ]
+    },
+    {
+      "id": "REL-GRAPHICS",
+      "title": "Actual complete client handshake, graphics and gameplay",
+      "owner": "client acceptance",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "REL-CANDIDATE",
+        "SYS-UI"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Two real clients, actual gameplay, shaders independently, first/third-person forms and repeated reconnects are observed."
+      ]
+    },
+    {
+      "id": "REL-HOSTED",
+      "title": "Actual Magma and Bisect acceptance with rollback",
+      "owner": "release",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "REL-WORLD",
+        "REL-GRAPHICS"
+      ],
+      "deliverables": [
+        "owned implementation/content",
+        "playable acceptance route",
+        "version-bound evidence"
+      ],
+      "acceptance": [
+        "Hosted start/save/restart, matching-client connection, plugin roster and rollback trial have version-bound evidence."
+      ]
+    },
+    {
+      "id": "DNG-MIST",
+      "title": "Mist: The Tidal Covenant",
+      "owner": "world/encounter production",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "DNG-RUNTIME",
+        "SYS-ART"
+      ],
+      "deliverables": [
+        "versioned authored template and anchors",
+        "room/encounter/puzzle graph",
+        "actual client walkthrough and persistence evidence"
+      ],
+      "acceptance": [
+        "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
+        "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    },
+    {
+      "id": "DNG-EARTH",
+      "title": "Earth: The Rootbound Archive",
+      "owner": "world/encounter production",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "DNG-RUNTIME",
+        "SYS-ART"
+      ],
+      "deliverables": [
+        "versioned authored template and anchors",
+        "room/encounter/puzzle graph",
+        "actual client walkthrough and persistence evidence"
+      ],
+      "acceptance": [
+        "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
+        "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    },
+    {
+      "id": "DNG-CLOUD",
+      "title": "Cloud: The Thunderstep Monastery",
+      "owner": "world/encounter production",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "DNG-RUNTIME",
+        "SYS-ART"
+      ],
+      "deliverables": [
+        "versioned authored template and anchors",
+        "room/encounter/puzzle graph",
+        "actual client walkthrough and persistence evidence"
+      ],
+      "acceptance": [
+        "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
+        "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    },
+    {
+      "id": "DNG-SAND",
+      "title": "Sand: The Windcarved Observatory",
+      "owner": "world/encounter production",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "DNG-RUNTIME",
+        "SYS-ART"
+      ],
+      "deliverables": [
+        "versioned authored template and anchors",
+        "room/encounter/puzzle graph",
+        "actual client walkthrough and persistence evidence"
+      ],
+      "acceptance": [
+        "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
+        "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    },
+    {
+      "id": "DNG-FIRE",
+      "title": "Fire: The Ember Regent's Citadel",
+      "owner": "world/encounter production",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "DNG-RUNTIME",
+        "SYS-ART"
+      ],
+      "deliverables": [
+        "versioned authored template and anchors",
+        "room/encounter/puzzle graph",
+        "actual client walkthrough and persistence evidence"
+      ],
+      "acceptance": [
+        "Meet the dungeon-specific atlas brief and native placement/water/support checks.",
+        "Solo/co-op, fail/retry, disconnect/restart, rewards and exit/reset all pass; v17 recovery is required before overwriting that later baseline if recovered."
+      ]
+    }
+  ],
+  "completion_percentage": null
+}
