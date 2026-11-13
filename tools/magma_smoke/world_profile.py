@@ -38,7 +38,7 @@ def require(ok, message):
 
 def profile(memory='2G', port=PORT):
     require(memory in ('2G', '4G'), 'Copied-world memory must be 2G or 4G')
-    require(port in (PORT, 25583), 'Unsupported version-pinned copied-world port')
+    require(port in (PORT, 25583, 25585), 'Unsupported version-pinned copied-world port')
     return dict(smoke.PROPERTIES, **{'level-name': LEVEL, 'level-type': 'DEFAULT', 'generator-settings': '', 'server-port': str(port)})
 
 
@@ -304,13 +304,12 @@ def seal(candidate, recovery, script_review, runtime_level, memory='2G'):
     from .release_profile import world_port
     upgrade = json.loads((candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
     port = world_port(candidate, upgrade)
-    if upgrade.get('profile_release') == '0.3.12':
+    if upgrade.get('profile_release') in ('0.3.12', '0.3.13'):
+        from .release_profile import legacy_registry_scope
         require(pack.hash_file(runtime_level)['sha256'] == upgrade['registry_reference_level_sha256'], 'Wrong pinned legacy registry reference')
         names = {name for ids in saved_registries(candidate / LEVEL / 'level.dat').values() for name in ids}
-        require(not any(name.startswith('valeorders:') for name in names), 'Saved Core namespace requires an exact new-runtime registry inventory')
         prior = json.loads((candidate / 'PRIVATE-BASELINE-0311-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
-        prior_hashes = {row['component']: row['sha256'] for row in prior['added']}
-        require(all(row['sha256'] == prior_hashes[row['component']] for row in upgrade['added'] if row['component'] != 'vale-orders'), 'Changed registry-reference owners')
+        legacy_registry_scope(upgrade['profile_release'], names, prior['added'], upgrade['added'])
     registries = registry_review(candidate / LEVEL / 'level.dat', runtime_level)
     registries['reference_scope'] = upgrade.get('registry_reference_scope', 'Exact already booted 0.3.11 enhanced runtime')
     save(candidate / 'PRIVATE-WORLD-REGISTRY-REVIEW.json', registries)

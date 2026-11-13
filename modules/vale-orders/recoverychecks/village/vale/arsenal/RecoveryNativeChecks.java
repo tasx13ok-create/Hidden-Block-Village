@@ -122,6 +122,8 @@ public final class RecoveryNativeChecks {
             passed("Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup");
             assertions += ClawNativeChecks.run(player);
             passed("Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed");
+            assertions += village.valerack.CombatHotbarNativeChecks.run(player);
+            passed("Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death");
             assertions += village.valerack.RackNativeChecks038.run(player);
             passed("Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops");
             try {
@@ -138,6 +140,8 @@ public final class RecoveryNativeChecks {
             passed("Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery");
             assertions += WeaponPulseNativeChecks.run(player);
             passed("Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation");
+            assertions += CombatAbilityNativeChecks.run(player);
+            passed("Native six mastered techniques cast from the switched physical combat hotbar");
             assertions += HandTechniqueNativeChecks.run(player);
             passed("Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup");
             assertions += village.vale.nature.NatureNativeChecks.run(player);

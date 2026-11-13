@@ -33,7 +33,9 @@ final class ScrollEffects {
  static boolean mode(EntityPlayerMP p,String kind,int ticks){
   NBTTagCompound s=Scrolls.state(p);String current=s.getString("mode");long now=ArsenalAccess.now(p);
   s.setLong("modeVersion",s.getLong("modeVersion")+1);
-  if(!current.isEmpty()&&s.getLong("modeUntil")>now){
+  // Using the same technique toggles it off; choosing another technique must
+  // replace the old mode, not spend its cost merely dismissing the old one.
+  if(current.equals(kind)&&s.getLong("modeUntil")>now){
    s.setString("mode","");s.setLong("modeUntil",0);Scrolls.recordApplied(p);HandTechnique.end(p);ArsenalAccess.save(p);return true;
   }
   s.setString("mode",kind);s.setLong("modeUntil",now+ticks);

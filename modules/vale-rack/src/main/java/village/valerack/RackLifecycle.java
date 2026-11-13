@@ -21,13 +21,19 @@ public final class RackLifecycle{
     @SubscribeEvent public void respawn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent event){if(event.player instanceof EntityPlayerMP){EntityPlayerMP p=(EntityPlayerMP)event.player;RackSessions.reset(p);RackSessions.sync(p);}}
     @SubscribeEvent public void tick(TickEvent.PlayerTickEvent event){if(event.phase==TickEvent.Phase.END&&!event.player.world.isRemote&&event.player instanceof EntityPlayerMP){
         EntityPlayerMP p=(EntityPlayerMP)event.player;RackData data=RackData.of(p);if(p.isEntityAlive()&&!p.isDead){data.deathSeen=false;data.deathHandled=false;}
-        RackSessions.Session s=RackSessions.current(p);if(s!=null&&(data.dirty||RackSessions.now(p)>=s.nextSync))RackSessions.sync(p);
+        RackSessions.Session s=RackSessions.current(p);
+        if(data.combat.active&&!data.locked&&p.isEntityAlive()){
+            if(p.inventory.currentItem<0||p.inventory.currentItem>=6){p.inventory.currentItem=Math.max(0,Math.min(5,data.combat.combatSelected));p.connection.sendPacket(new net.minecraft.network.play.server.SPacketHeldItemChange(p.inventory.currentItem));}
+            data.combat.combatSelected=p.inventory.currentItem;
+            if(s!=null)for(int i=0;i<6;i++){ItemStack stack=p.inventory.mainInventory.get(i);if(s.observedCombat[i]==null||!ItemStack.areItemStacksEqual(s.observedCombat[i],stack)){s.observedCombat[i]=stack.copy();data.markDirty();}}
+        }
+        if(s!=null&&(data.dirty||RackSessions.now(p)>=s.nextSync))RackSessions.sync(p);
     }}
     @SubscribeEvent(priority=EventPriority.LOWEST)public void death(LivingDeathEvent event){if(event.getEntityLiving() instanceof EntityPlayerMP){EntityPlayerMP p=(EntityPlayerMP)event.getEntityLiving();RackData d=RackData.of(p);d.deathSeen=true;d.deathKeep=p.world.getGameRules().getBoolean("keepInventory")||p.isSpectator();}}
     public static void consumeDeath(EntityPlayer p,java.util.Collection<EntityItem> drops){
         RackData d=RackData.of(p);if(d.deathHandled||d.locked)return;d.deathHandled=true;
         for(int i=0;i<6;i++){ItemStack stack=d.getStackInSlot(i);if(stack.isEmpty())continue;d.raw(i,ItemStack.EMPTY);if(!EnchantmentHelper.hasVanishingCurse(stack)){EntityItem item=new EntityItem(p.world,p.posX,p.posY,p.posZ,stack.copy());item.setDefaultPickupDelay();drops.add(item);}}
-        d.markDirty();
+        d.combat.dropParked(p,drops);d.markDirty();
     }
     @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)public void drops(PlayerDropsEvent event){EntityPlayer p=event.getEntityPlayer();if(!p.world.isRemote){RackData d=RackData.of(p);boolean keep=d.deathSeen?d.deathKeep:p.world.getGameRules().getBoolean("keepInventory")||p.isSpectator();if(!keep)consumeDeath(p,event.getDrops());}}
     @SubscribeEvent public void clone(PlayerEvent.Clone event){

@@ -335,15 +335,16 @@ def main(argv=None):
     world.add_argument('--receipt-sha256', required=True)
     world.add_argument('--candidate', type=Path, required=True)
     world.add_argument('--memory', choices=('2G', '4G'), default='2G')
-    world312 = sub.add_parser('world-stage-0312')
-    world312.add_argument('--runtime', type=Path, required=True)
-    world312.add_argument('--world-source', type=Path, required=True)
-    world312.add_argument('--frozen-receipt', type=Path, required=True)
-    world312.add_argument('--receipt-sha256', required=True)
-    world312.add_argument('--candidate', type=Path, required=True)
-    world312.add_argument('--frozen-inputs', type=Path, required=True)
-    world312.add_argument('--script-review-donor', type=Path, required=True)
-    world312.add_argument('--memory', choices=('2G', '4G'), default='2G')
+    for command in ('world-stage-0312', 'world-stage-0313'):
+        upgrading_world = sub.add_parser(command)
+        upgrading_world.add_argument('--runtime', type=Path, required=True)
+        upgrading_world.add_argument('--world-source', type=Path, required=True)
+        upgrading_world.add_argument('--frozen-receipt', type=Path, required=True)
+        upgrading_world.add_argument('--receipt-sha256', required=True)
+        upgrading_world.add_argument('--candidate', type=Path, required=True)
+        upgrading_world.add_argument('--frozen-inputs', type=Path, required=True)
+        upgrading_world.add_argument('--script-review-donor', type=Path, required=True)
+        upgrading_world.add_argument('--memory', choices=('2G', '4G'), default='2G')
     reviewing = sub.add_parser('world-review')
     reviewing.add_argument('--candidate', type=Path, required=True)
     reviewing.add_argument('--recovery', type=Path, required=True)
@@ -372,9 +373,10 @@ def main(argv=None):
         result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.memory)
         print(json.dumps({'status': result['status'], 'world_files': len(result['files']), 'port': result['port']}))
         return 0
-    if args.action == 'world-stage-0312':
+    if args.action in ('world-stage-0312', 'world-stage-0313'):
         from .release_profile import prepare, reuse_script_review
-        result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.frozen_inputs, args.memory)
+        result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.frozen_inputs, args.memory,
+                         profile_release='0.3.13' if args.action.endswith('0313') else '0.3.12')
         reuse_script_review(args.candidate, args.script_review_donor)
         print(json.dumps({'status': result['status'], 'world_files': len(result['files']), 'port': result['port'], 'release': result['profile_release']}))
         return 0

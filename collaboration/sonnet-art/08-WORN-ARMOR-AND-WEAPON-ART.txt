@@ -1,0 +1,263 @@
+SEPARATE WORK: WORN ARMOR, HELD WEAPONS AND ALTERNATE FORMS
+
+A new square icon does not complete a character's outfit or a weapon's held appearance.
+For each weapon in 06: original icon; original first/third-person held texture/model; each listed blocking/thrown/extended form; effect layers where the design calls for them.
+For each wearable in 06: original item icon per actual piece; worn skin/armor texture using the actual model's UVs; slim/normal compatibility when supported; mode/cloak/wing attachments separately.
+Existing worn texture paths below were previously present only in the broad PNG appendix. Sizes are canvas dimensions, not new icon export sizes. Review UVs; do not resize a worn texture to 32x32.
+
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_1.png | 1024x512
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_2.png | 64x64
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_1.png | 512x512
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_2.png | 64x64
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_1.png | 64x64
+[ ] ahznb weapons plus 1.2.1.jar | assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_2.png | 1024x512
+[ ] Armourers-Workshop-1.12.2-0.51.0.jar | assets/armourers_workshop/textures/armour/cube.png | 256x256
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonchoumei_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryongyuki_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonisobu_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonkokou_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonmatatabi_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonsaiken_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonshukaku_mode.png | 512x512
+[ ] Baryon Expansion_beta2.jar | assets/baryonexpansion/textures/baryonsongoku_mode.png | 512x512
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/armor_boruto_texture.png | 1266x633
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/cloack_isshiki.png | 512x512
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/isshiki_dojutsu_texture.png | 2048x512
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/jogan_dojutsu_texture.png | 2048x512
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/karma_boruto_stage_2_texture.png | 2048x2048
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/karma_kawaki_stage_2_texture.png | 2048x2048
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/models/armor/testing_layer_1.png | 64x32
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/models/armor/testing_layer_2.png | 64x32
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/senrigan_texture.png | 2048x512
+[ ] BorutoMod Addon byAnimeSupremeTeam v1.0.jar | assets/borutomodaddononero/textures/texture_boro_core.png | 16x16
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/assassin_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/assassin_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/commissar_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/commissar_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/cowleather_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/cowleather_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/crown1_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/crown2_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/demonic_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/demonic_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullbronze_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullbronze_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullcloth_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fulldiamond_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullemerald_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullemerald_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullgold_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fulliron_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullwood_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/fullwood_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/infantry_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/mask_1.png | 128x64
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/mithril_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/mithril_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/nanorum_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/nanorum_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/ninja_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/ninja_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/officer_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/papercrown_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/soldier_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/soldier_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/tactical_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/tuxido_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/tuxido_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/wizard_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/wizard_2.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/x407_1.png | 64x32
+[ ] CustomNPCs_1.12.2-(05Jul20).jar | assets/customnpcs/textures/armor/x407_2.png | 64x32
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/chomei.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/chomei_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/chomei_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/gyuki.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/gyuki_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/gyuki_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/isobu.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/isobu_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/isobu_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kokuo.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kokuo_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kokuo_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kurama.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kurama_cage.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kurama_cage_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kurama_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/kurama_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/matatabi.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/matatabi_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/matatabi_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/saiken.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/saiken_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/saiken_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/shukaku.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/shukaku_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/shukaku_s.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/son_goku.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/son_goku_n.png | 1024x1024
+[ ] HiddenVillage-BijuuArmor-0.16.2-rc1.jar | assets/hvbijuu/textures/armor/son_goku_s.png | 1024x1024
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/akatsukirobe.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/chojiwings.png | 1024x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/cloudheadband.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/edotenseihood.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/hakuclothing.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/kabutoarmor.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/kabutohood.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/kakashiarmor.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/leafheadband.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/obi_layer_1.png | 32x32
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/obibelt.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/rainheadband.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/rinnesharingan_obito_tomoe.png | 2048x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/saijacket.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/sandheadband.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/shino_hood.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/soundheadband.png | 512x512
+[ ] kabutoaddon 5.5.8-beta.jar | assets/kabutoaddon/textures/stoneheadband.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/amearmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/anbuarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/asura_path.png | 64x32
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bijucloak_kcm2.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bijucloak_kurama.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bijucloak_sand.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bijucloakl1.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bijucloakl2.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/blocks/fire_black_layer_1.png | 16x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/blocks/fire_layer_1.png | 16x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/bonearmor.png | 64x64
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/byakuganhelmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/byakurinnesharingan_helmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/fishnetarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/gourd_iron.png | 64x64
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/gourd_sand.png | 64x64
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/iwaarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/jiraiyaarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/jumpsuitarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/kiriarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/konohaarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/kumoarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/madara_jinchuriki.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mangekyosharinganhelmet_eternal.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mangekyosharinganhelmet_obito.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mangekyosharinganhelmet_sasuke.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_anbu1.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_anbu2.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_anbu3.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_anbu4.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_obito1.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/mask_obito3.png | 256x256
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/models/armor/sasuke__layer_1.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/models/armor/sasuke__layer_2.png | 1024x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/narutoshippudenarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/obitowararmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/otoarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/rinneganhelmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/rinnesharinganhelmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_akatsuki.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_akatsuki_half.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_hokage.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_hood.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_jiraiya.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_kazekage.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_mizukage.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_raikage.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/robe_tsuchikage.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/sakurashippudenarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/samuraiarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/sharinganhelmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/sound5armor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/steamarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/sunaarmor.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/tenseigan_chakramode.png | 512x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/tenseiganhelmet.png | 2048x512
+[ ] NarutoMod-1.12.2-0.3.1.beta.jar | assets/narutomod/textures/wa1armor.png | 512x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_chojuro_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_gaara_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_haku_texture.png | 256x256
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_konohamaru_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_naruto_the_last_texture.png | 1280x640
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_neji_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_onoki_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_orochimaru_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_sasuke_the_last_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_shisui_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/armor_zabuza_texture.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/belt_raikage_texture.png | 1024x1024
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/easter_bandana_texture.png | 512x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/first_hokage_necklace_texture.png | 256x256
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/models/armor/testing_layer_1.png | 64x32
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/models/armor/testing_layer_2.png | 64x32
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/paper_wings_armor.png | 1024x512
+[ ] NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar | assets/narutomodaddononero/textures/utakata_cloak_texture.png | 512x512
+[ ] RinneganAddon v1.3.jar | assets/narutomod/textures/rinneems.png | 2048x512
+[ ] RinneganAddon v1.3.jar | assets/narutomod/textures/rinneems_obito.png | 2048x512
+[ ] SharinganAddon v1.0.jar | assets/narutomod/textures/mangekyosharinganhelmet_itachi.png | 7045x1760
+[ ] SharinganAddon v1.0.jar | assets/narutomod/textures/mangekyosharinganhelmet_shisui.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/base/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/boruto/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/code/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/dourado/helmet.png | 2048x512
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/glass/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jigen/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jougan/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/boruto/kawaki/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet2.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/madara/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/2/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/ems/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/one/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet2.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/ms/whyhellothere/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/random/yashi/helmet.png | 7045x1760
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/blue/helmet.png | 2048x512
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/dudu/helmet.png | 2048x512
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/red/helmet.png | 2048x512
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/byakusharingan/helmet.png | 2048x512
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/models/armor/test_layer_1.png | 64x32
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/models/armor/test_layer_2.png | 64x32
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/susanoo.png | 128x128
+[ ] SpringAddon7.0.jar | assets/ahznbcursemarkaddon/textures/threetails.png | 512x512
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/assassin_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/assassin_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/bandit_mask_1.png | 128x64
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/commissar_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/commissar_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/cow_leather_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/cow_leather_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/crown1_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/crown2_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/demonic_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/demonic_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_bronze_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_bronze_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_cloth_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_diamond_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_emerald_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_emerald_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_golden_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_iron_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_wooden_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/full_wooden_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/infantry_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/mithril_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/mithril_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/nanorum_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/nanorum_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/ninja_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/ninja_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/officer_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/paper_crown_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/paper_crown_1_overlay.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/soldier_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/soldier_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/tactical_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/tuxedo_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/tuxedo_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/wizard_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/wizard_2.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/x407_1.png | 64x32
+[ ] VariedCommodities_1.12.2-(31Mar23).jar | assets/variedcommodities/textures/models/armor/x407_2.png | 64x32

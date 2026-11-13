@@ -10,6 +10,21 @@ import village.vale.RewardLedger;
 
 public final class RackPolicy {
     private RackPolicy(){}
+    public static boolean bounded(ItemStack stack){return stack!=null&&(stack.isEmpty()||stack.getCount()>0&&stack.getCount()<=Math.min(64,stack.getMaxStackSize())&&(!stack.hasTagCompound()||stack.getTagCompound().toString().getBytes(StandardCharsets.UTF_8).length<=65536));}
+    /** Physical combat loadout supports scrolls, codices, consumables and ordinary items. */
+    public static boolean combatType(ItemStack stack){
+        if(stack==null||stack.isEmpty())return false;Item item=stack.getItem();ResourceLocation id=item.getRegistryName();
+        return id!=null&&Item.REGISTRY.containsKey(id)&&Item.REGISTRY.getObject(id)==item&&(!id.getNamespace().equals("valeorders")||Gear.ITEMS.get(id.getPath())==item);
+    }
+    public static boolean combatAccepts(EntityPlayer owner,ItemStack stack){
+        if(!combatType(stack)||!bounded(stack))return false;
+        Item item=stack.getItem();
+        // Crafted garments, meals, kitchen supplies and tonics are intentionally tradeable;
+        // their ordinary native use path does not require a reward receipt.
+        return owner.world.isRemote||!item.getRegistryName().getNamespace().equals("valeorders")
+            ||item instanceof village.vale.OriginalOutfits.Garment||item instanceof village.vale.FieldItems.Meal||village.vale.culinary.Culinary.ITEMS.containsValue(item)
+            ||RewardLedger.get(owner).valid(owner,stack);
+    }
     public static boolean type(ItemStack stack){
         if(stack==null||stack.isEmpty())return false;
         Item item=stack.getItem();ResourceLocation id=item.getRegistryName();

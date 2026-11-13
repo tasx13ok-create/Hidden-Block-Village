@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "scope": "LEGACY_MODEL_SHOWCASE_EXPERIMENT_NOT_ACCEPTED_RELEASE",
+  "roster_types": 67,
+  "named_characters": 37,
+  "other_combat_npcs": 20,
+  "tailed_beasts": 10,
+  "planned_views": 268,
+  "native_gallery": {
+    "network_join_observed": true,
+    "visible_four_angle_human_lineup": true,
+    "complete_all_type_coverage_verified": false,
+    "problems": [
+      "Elevated floor lighting caused a network read timeout during setup",
+      "Some native bosses revive/duplicate or enforce world-unique spawning",
+      "Initial static catalog confused display names with registry IDs; Rogue Anbu corrected to kabutoaddon:anbu"
+    ]
+  },
+  "stationary_model_helper": {
+    "component_build_passed": true,
+    "runtime_sha256": "63c7daa2aeaed7b6348ac1b95b4230043f68250df645f1bd2161632fea6f8084",
+    "models_constructed_marker": true,
+    "render_failures_observed": true,
+    "complete_graphical_acceptance": false,
+    "client_stopped_marker": true,
+    "note": "No causal inference about shutdown. A JEI ASM class-discovery warning and unrelated Essential account errors also occurred; raw logs remain private."
+  },
+  "computer_control_stopped_by_owner": true,
+  "next_steps": [
+    "Inspect the nested render exception and repair the stationary helper; construction does not prove rendering",
+    "Reconcile the public catalog display-name/registry-ID join before regenerating the curated roster",
+    "Verify each named type and each view in a new isolated session; do not overwrite live clients",
+    "Keep all supplied reference art, mod JARs, saved worlds and account-bearing runtime files private"
+  ]
+}

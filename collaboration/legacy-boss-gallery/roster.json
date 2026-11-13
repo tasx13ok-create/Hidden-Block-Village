@@ -1,0 +1,4097 @@
+{
+  "scope": "Curated legacy named characters, other combat NPCs and ten tailed beasts; not an exhaustive private CustomNPC roster",
+  "categories": {
+    "Named characters": 37,
+    "Other legacy combat NPCs": 20,
+    "Tailed beasts": 10
+  },
+  "roster": [
+    {
+      "id": "narutomod:itachi",
+      "name": "Itachi Uchiha",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityItachi",
+      "index": 0,
+      "origin": [
+        1000,
+        4,
+        0
+      ],
+      "camera": [
+        1004.5,
+        5,
+        -9
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            0
+          ],
+          "tag": "legacy_0_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            0
+          ],
+          "tag": "legacy_0_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            0
+          ],
+          "tag": "legacy_0_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            0
+          ],
+          "tag": "legacy_0_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbcursemarkaddon:edotensei_madara",
+      "name": "Edotensei Madara",
+      "category": "Named characters",
+      "jar": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "class": "net/mcreator/ahznbcursemarkaddon/entity/EntityEdotenseiMadara",
+      "index": 1,
+      "origin": [
+        1016,
+        4,
+        0
+      ],
+      "camera": [
+        1020.5,
+        5,
+        -9
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            0
+          ],
+          "tag": "legacy_1_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            0
+          ],
+          "tag": "legacy_1_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            0
+          ],
+          "tag": "legacy_1_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            0
+          ],
+          "tag": "legacy_1_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:uchiha_obito",
+      "name": "Uchiha Obito",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityUchihaObito",
+      "index": 2,
+      "origin": [
+        1032,
+        4,
+        0
+      ],
+      "camera": [
+        1036.5,
+        5,
+        -9
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            0
+          ],
+          "tag": "legacy_2_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            0
+          ],
+          "tag": "legacy_2_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            0
+          ],
+          "tag": "legacy_2_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            0
+          ],
+          "tag": "legacy_2_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:uzumaki_naruto",
+      "name": "Uzumaki Naruto",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityUzumakiNaruto",
+      "index": 3,
+      "origin": [
+        1048,
+        4,
+        0
+      ],
+      "camera": [
+        1052.5,
+        5,
+        -9
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            0
+          ],
+          "tag": "legacy_3_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            0
+          ],
+          "tag": "legacy_3_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            0
+          ],
+          "tag": "legacy_3_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            0
+          ],
+          "tag": "legacy_3_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:kisame_hoshigaki",
+      "name": "Kisame Hoshigaki",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityKisameHoshigaki",
+      "index": 4,
+      "origin": [
+        1000,
+        4,
+        12
+      ],
+      "camera": [
+        1004.5,
+        5,
+        3
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            12
+          ],
+          "tag": "legacy_4_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            12
+          ],
+          "tag": "legacy_4_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            12
+          ],
+          "tag": "legacy_4_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            12
+          ],
+          "tag": "legacy_4_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:deidara",
+      "name": "Deidara",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityDeidara",
+      "index": 5,
+      "origin": [
+        1016,
+        4,
+        12
+      ],
+      "camera": [
+        1020.5,
+        5,
+        3
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            12
+          ],
+          "tag": "legacy_5_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            12
+          ],
+          "tag": "legacy_5_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            12
+          ],
+          "tag": "legacy_5_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            12
+          ],
+          "tag": "legacy_5_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:hidan",
+      "name": "Hidan",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityHidan",
+      "index": 6,
+      "origin": [
+        1032,
+        4,
+        12
+      ],
+      "camera": [
+        1036.5,
+        5,
+        3
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            12
+          ],
+          "tag": "legacy_6_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            12
+          ],
+          "tag": "legacy_6_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            12
+          ],
+          "tag": "legacy_6_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            12
+          ],
+          "tag": "legacy_6_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:kakuzu",
+      "name": "Kakuzu",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityKakuzu",
+      "index": 7,
+      "origin": [
+        1048,
+        4,
+        12
+      ],
+      "camera": [
+        1052.5,
+        5,
+        3
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            12
+          ],
+          "tag": "legacy_7_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            12
+          ],
+          "tag": "legacy_7_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            12
+          ],
+          "tag": "legacy_7_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            12
+          ],
+          "tag": "legacy_7_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:ay",
+      "name": "Ay",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityAy",
+      "index": 8,
+      "origin": [
+        1000,
+        4,
+        24
+      ],
+      "camera": [
+        1004.5,
+        5,
+        15
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            24
+          ],
+          "tag": "legacy_8_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            24
+          ],
+          "tag": "legacy_8_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            24
+          ],
+          "tag": "legacy_8_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            24
+          ],
+          "tag": "legacy_8_3"
+        }
+      ]
+    },
+    {
+      "id": "borutomodaddononero:boro",
+      "name": "Boro",
+      "category": "Named characters",
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "class": "net/mcreator/borutomodaddononero/entity/EntityBoro",
+      "index": 9,
+      "origin": [
+        1016,
+        4,
+        24
+      ],
+      "camera": [
+        1020.5,
+        5,
+        15
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            24
+          ],
+          "tag": "legacy_9_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            24
+          ],
+          "tag": "legacy_9_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            24
+          ],
+          "tag": "legacy_9_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            24
+          ],
+          "tag": "legacy_9_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:c",
+      "name": "C",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityC",
+      "index": 10,
+      "origin": [
+        1032,
+        4,
+        24
+      ],
+      "camera": [
+        1036.5,
+        5,
+        15
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            24
+          ],
+          "tag": "legacy_10_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            24
+          ],
+          "tag": "legacy_10_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            24
+          ],
+          "tag": "legacy_10_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            24
+          ],
+          "tag": "legacy_10_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:darui",
+      "name": "Darui",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityDarui",
+      "index": 11,
+      "origin": [
+        1048,
+        4,
+        24
+      ],
+      "camera": [
+        1052.5,
+        5,
+        15
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            24
+          ],
+          "tag": "legacy_11_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            24
+          ],
+          "tag": "legacy_11_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            24
+          ],
+          "tag": "legacy_11_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            24
+          ],
+          "tag": "legacy_11_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbcursemarkaddon:edotensei_hashirama",
+      "name": "Edotensei Hashirama",
+      "category": "Named characters",
+      "jar": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "class": "net/mcreator/ahznbcursemarkaddon/entity/EntityEdotenseiHashirama",
+      "index": 12,
+      "origin": [
+        1000,
+        4,
+        36
+      ],
+      "camera": [
+        1004.5,
+        5,
+        27
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            36
+          ],
+          "tag": "legacy_12_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            36
+          ],
+          "tag": "legacy_12_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            36
+          ],
+          "tag": "legacy_12_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            36
+          ],
+          "tag": "legacy_12_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:edotensei_itachi",
+      "name": "Edotensei Itachi",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityEdotenseiItachi",
+      "index": 13,
+      "origin": [
+        1016,
+        4,
+        36
+      ],
+      "camera": [
+        1020.5,
+        5,
+        27
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            36
+          ],
+          "tag": "legacy_13_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            36
+          ],
+          "tag": "legacy_13_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            36
+          ],
+          "tag": "legacy_13_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            36
+          ],
+          "tag": "legacy_13_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:edotensei_nagato",
+      "name": "Edotensei Nagato",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityEdotenseiNagato",
+      "index": 14,
+      "origin": [
+        1032,
+        4,
+        36
+      ],
+      "camera": [
+        1036.5,
+        5,
+        27
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            36
+          ],
+          "tag": "legacy_14_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            36
+          ],
+          "tag": "legacy_14_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            36
+          ],
+          "tag": "legacy_14_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            36
+          ],
+          "tag": "legacy_14_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:gaara",
+      "name": "Gaara",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityGaara",
+      "index": 15,
+      "origin": [
+        1048,
+        4,
+        36
+      ],
+      "camera": [
+        1052.5,
+        5,
+        27
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            36
+          ],
+          "tag": "legacy_15_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            36
+          ],
+          "tag": "legacy_15_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            36
+          ],
+          "tag": "legacy_15_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            36
+          ],
+          "tag": "legacy_15_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbswordsplus:ginkaku",
+      "name": "Ginkaku",
+      "category": "Named characters",
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "class": "com/lowercobra/ahznbswordsplus/entity/EntityGinkaku",
+      "index": 16,
+      "origin": [
+        1000,
+        4,
+        48
+      ],
+      "camera": [
+        1004.5,
+        5,
+        39
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            48
+          ],
+          "tag": "legacy_16_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            48
+          ],
+          "tag": "legacy_16_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            48
+          ],
+          "tag": "legacy_16_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            48
+          ],
+          "tag": "legacy_16_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:haku",
+      "name": "Haku",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityHaku",
+      "index": 17,
+      "origin": [
+        1016,
+        4,
+        48
+      ],
+      "camera": [
+        1020.5,
+        5,
+        39
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            48
+          ],
+          "tag": "legacy_17_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            48
+          ],
+          "tag": "legacy_17_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            48
+          ],
+          "tag": "legacy_17_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            48
+          ],
+          "tag": "legacy_17_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:hatake_kakashi",
+      "name": "Hatake Kakashi",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityHatakeKakashi",
+      "index": 18,
+      "origin": [
+        1032,
+        4,
+        48
+      ],
+      "camera": [
+        1036.5,
+        5,
+        39
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            48
+          ],
+          "tag": "legacy_18_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            48
+          ],
+          "tag": "legacy_18_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            48
+          ],
+          "tag": "legacy_18_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            48
+          ],
+          "tag": "legacy_18_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:iruka_sensei",
+      "name": "Iruka Sensei",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityIrukaSensei",
+      "index": 19,
+      "origin": [
+        1048,
+        4,
+        48
+      ],
+      "camera": [
+        1052.5,
+        5,
+        39
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            48
+          ],
+          "tag": "legacy_19_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            48
+          ],
+          "tag": "legacy_19_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            48
+          ],
+          "tag": "legacy_19_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            48
+          ],
+          "tag": "legacy_19_3"
+        }
+      ]
+    },
+    {
+      "id": "borutomodaddononero:isshiki_boss",
+      "name": "Isshiki",
+      "category": "Named characters",
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "class": "net/mcreator/borutomodaddononero/entity/EntityIsshikiBoss",
+      "index": 20,
+      "origin": [
+        1000,
+        4,
+        60
+      ],
+      "camera": [
+        1004.5,
+        5,
+        51
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            60
+          ],
+          "tag": "legacy_20_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            60
+          ],
+          "tag": "legacy_20_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            60
+          ],
+          "tag": "legacy_20_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            60
+          ],
+          "tag": "legacy_20_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:jiraiya",
+      "name": "Jiraiya",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityJiraiya",
+      "index": 21,
+      "origin": [
+        1016,
+        4,
+        60
+      ],
+      "camera": [
+        1020.5,
+        5,
+        51
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            60
+          ],
+          "tag": "legacy_21_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            60
+          ],
+          "tag": "legacy_21_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            60
+          ],
+          "tag": "legacy_21_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            60
+          ],
+          "tag": "legacy_21_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:kakashi",
+      "name": "Kakashi",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityKakashi",
+      "index": 22,
+      "origin": [
+        1032,
+        4,
+        60
+      ],
+      "camera": [
+        1036.5,
+        5,
+        51
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            60
+          ],
+          "tag": "legacy_22_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            60
+          ],
+          "tag": "legacy_22_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            60
+          ],
+          "tag": "legacy_22_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            60
+          ],
+          "tag": "legacy_22_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:kankuro",
+      "name": "Kankuro",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityKankuro",
+      "index": 23,
+      "origin": [
+        1048,
+        4,
+        60
+      ],
+      "camera": [
+        1052.5,
+        5,
+        51
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            60
+          ],
+          "tag": "legacy_23_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            60
+          ],
+          "tag": "legacy_23_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            60
+          ],
+          "tag": "legacy_23_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            60
+          ],
+          "tag": "legacy_23_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:kimimaro",
+      "name": "Kimimaro",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityKimimaro",
+      "index": 24,
+      "origin": [
+        1000,
+        4,
+        72
+      ],
+      "camera": [
+        1004.5,
+        5,
+        63
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            72
+          ],
+          "tag": "legacy_24_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            72
+          ],
+          "tag": "legacy_24_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            72
+          ],
+          "tag": "legacy_24_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            72
+          ],
+          "tag": "legacy_24_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:kurotsuchi",
+      "name": "Kurotsuchi",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityKurotsuchi",
+      "index": 25,
+      "origin": [
+        1016,
+        4,
+        72
+      ],
+      "camera": [
+        1020.5,
+        5,
+        63
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            72
+          ],
+          "tag": "legacy_25_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            72
+          ],
+          "tag": "legacy_25_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            72
+          ],
+          "tag": "legacy_25_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            72
+          ],
+          "tag": "legacy_25_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:mightguy",
+      "name": "Might Guy",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityMightGuy",
+      "index": 26,
+      "origin": [
+        1032,
+        4,
+        72
+      ],
+      "camera": [
+        1036.5,
+        5,
+        63
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            72
+          ],
+          "tag": "legacy_26_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            72
+          ],
+          "tag": "legacy_26_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            72
+          ],
+          "tag": "legacy_26_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            72
+          ],
+          "tag": "legacy_26_3"
+        }
+      ]
+    },
+    {
+      "id": "borutomodaddononero:momoshiki_boss",
+      "name": "Momoshiki",
+      "category": "Named characters",
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "class": "net/mcreator/borutomodaddononero/entity/EntityMomoshikiBoss",
+      "index": 27,
+      "origin": [
+        1048,
+        4,
+        72
+      ],
+      "camera": [
+        1052.5,
+        5,
+        63
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            72
+          ],
+          "tag": "legacy_27_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            72
+          ],
+          "tag": "legacy_27_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            72
+          ],
+          "tag": "legacy_27_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            72
+          ],
+          "tag": "legacy_27_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbcursemarkaddon:orochimaru",
+      "name": "Orochimaru",
+      "category": "Named characters",
+      "jar": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "class": "net/mcreator/ahznbcursemarkaddon/entity/EntityOrochimaru",
+      "index": 28,
+      "origin": [
+        1000,
+        4,
+        84
+      ],
+      "camera": [
+        1004.5,
+        5,
+        75
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            84
+          ],
+          "tag": "legacy_28_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            84
+          ],
+          "tag": "legacy_28_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            84
+          ],
+          "tag": "legacy_28_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            84
+          ],
+          "tag": "legacy_28_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:sakura_haruno",
+      "name": "Sakura Haruno",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntitySakuraHaruno",
+      "index": 29,
+      "origin": [
+        1016,
+        4,
+        84
+      ],
+      "camera": [
+        1020.5,
+        5,
+        75
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            84
+          ],
+          "tag": "legacy_29_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            84
+          ],
+          "tag": "legacy_29_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            84
+          ],
+          "tag": "legacy_29_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            84
+          ],
+          "tag": "legacy_29_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:sasori",
+      "name": "Sasori of the Red Sand",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntitySasori",
+      "index": 30,
+      "origin": [
+        1032,
+        4,
+        84
+      ],
+      "camera": [
+        1036.5,
+        5,
+        75
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            84
+          ],
+          "tag": "legacy_30_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            84
+          ],
+          "tag": "legacy_30_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            84
+          ],
+          "tag": "legacy_30_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            84
+          ],
+          "tag": "legacy_30_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:temari",
+      "name": "Temari",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityTemari",
+      "index": 31,
+      "origin": [
+        1048,
+        4,
+        84
+      ],
+      "camera": [
+        1052.5,
+        5,
+        75
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            84
+          ],
+          "tag": "legacy_31_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            84
+          ],
+          "tag": "legacy_31_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            84
+          ],
+          "tag": "legacy_31_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            84
+          ],
+          "tag": "legacy_31_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:tenten",
+      "name": "Tenten",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityTenten",
+      "index": 32,
+      "origin": [
+        1000,
+        4,
+        96
+      ],
+      "camera": [
+        1004.5,
+        5,
+        87
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            96
+          ],
+          "tag": "legacy_32_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            96
+          ],
+          "tag": "legacy_32_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            96
+          ],
+          "tag": "legacy_32_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            96
+          ],
+          "tag": "legacy_32_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbswordsplus:tobirama",
+      "name": "Tobirama",
+      "category": "Named characters",
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "class": "com/lowercobra/ahznbswordsplus/entity/EntityTobirama",
+      "index": 33,
+      "origin": [
+        1016,
+        4,
+        96
+      ],
+      "camera": [
+        1020.5,
+        5,
+        87
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            96
+          ],
+          "tag": "legacy_33_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            96
+          ],
+          "tag": "legacy_33_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            96
+          ],
+          "tag": "legacy_33_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            96
+          ],
+          "tag": "legacy_33_3"
+        }
+      ]
+    },
+    {
+      "id": "ahznbcursemarkaddon:tsunade",
+      "name": "Tsunade",
+      "category": "Named characters",
+      "jar": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "class": "net/mcreator/ahznbcursemarkaddon/entity/EntityTsunade",
+      "index": 34,
+      "origin": [
+        1032,
+        4,
+        96
+      ],
+      "camera": [
+        1036.5,
+        5,
+        87
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            96
+          ],
+          "tag": "legacy_34_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            96
+          ],
+          "tag": "legacy_34_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            96
+          ],
+          "tag": "legacy_34_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            96
+          ],
+          "tag": "legacy_34_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:yakushi_kabuto",
+      "name": "Yakushi Kabuto",
+      "category": "Named characters",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityYakushiKabuto",
+      "index": 35,
+      "origin": [
+        1048,
+        4,
+        96
+      ],
+      "camera": [
+        1052.5,
+        5,
+        87
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            96
+          ],
+          "tag": "legacy_35_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            96
+          ],
+          "tag": "legacy_35_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            96
+          ],
+          "tag": "legacy_35_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            96
+          ],
+          "tag": "legacy_35_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:zabuza_momochi",
+      "name": "Zabuza Momochi",
+      "category": "Named characters",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityZabuzaMomochi",
+      "index": 36,
+      "origin": [
+        1000,
+        4,
+        108
+      ],
+      "camera": [
+        1004.5,
+        5,
+        99
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            108
+          ],
+          "tag": "legacy_36_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            108
+          ],
+          "tag": "legacy_36_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            108
+          ],
+          "tag": "legacy_36_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            108
+          ],
+          "tag": "legacy_36_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:anbu",
+      "name": "Anbu",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityAnbu",
+      "index": 37,
+      "origin": [
+        1016,
+        4,
+        108
+      ],
+      "camera": [
+        1020.5,
+        5,
+        99
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            108
+          ],
+          "tag": "legacy_37_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            108
+          ],
+          "tag": "legacy_37_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            108
+          ],
+          "tag": "legacy_37_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            108
+          ],
+          "tag": "legacy_37_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:explosive_ninja",
+      "name": "Explosive Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityExplosiveNinja",
+      "index": 38,
+      "origin": [
+        1032,
+        4,
+        108
+      ],
+      "camera": [
+        1036.5,
+        5,
+        99
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            108
+          ],
+          "tag": "legacy_38_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            108
+          ],
+          "tag": "legacy_38_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            108
+          ],
+          "tag": "legacy_38_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            108
+          ],
+          "tag": "legacy_38_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:iwa_rogue",
+      "name": "Iwa Rogue",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityIwaRogue",
+      "index": 39,
+      "origin": [
+        1048,
+        4,
+        108
+      ],
+      "camera": [
+        1052.5,
+        5,
+        99
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            108
+          ],
+          "tag": "legacy_39_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            108
+          ],
+          "tag": "legacy_39_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            108
+          ],
+          "tag": "legacy_39_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            108
+          ],
+          "tag": "legacy_39_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:lava_ninja",
+      "name": "Lava Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityLavaNinja",
+      "index": 40,
+      "origin": [
+        1000,
+        4,
+        120
+      ],
+      "camera": [
+        1004.5,
+        5,
+        111
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            120
+          ],
+          "tag": "legacy_40_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            120
+          ],
+          "tag": "legacy_40_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            120
+          ],
+          "tag": "legacy_40_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            120
+          ],
+          "tag": "legacy_40_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:medical_ninja",
+      "name": "Medical Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityMedicalNinja",
+      "index": 41,
+      "origin": [
+        1016,
+        4,
+        120
+      ],
+      "camera": [
+        1020.5,
+        5,
+        111
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            120
+          ],
+          "tag": "legacy_41_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            120
+          ],
+          "tag": "legacy_41_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            120
+          ],
+          "tag": "legacy_41_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            120
+          ],
+          "tag": "legacy_41_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ninja_iwa",
+      "name": "Ninja Iwa",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNinjaIwa",
+      "index": 42,
+      "origin": [
+        1032,
+        4,
+        120
+      ],
+      "camera": [
+        1036.5,
+        5,
+        111
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            120
+          ],
+          "tag": "legacy_42_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            120
+          ],
+          "tag": "legacy_42_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            120
+          ],
+          "tag": "legacy_42_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            120
+          ],
+          "tag": "legacy_42_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ninja_kiri",
+      "name": "Ninja Kiri",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNinjaKiri",
+      "index": 43,
+      "origin": [
+        1048,
+        4,
+        120
+      ],
+      "camera": [
+        1052.5,
+        5,
+        111
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            120
+          ],
+          "tag": "legacy_43_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            120
+          ],
+          "tag": "legacy_43_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            120
+          ],
+          "tag": "legacy_43_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            120
+          ],
+          "tag": "legacy_43_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ninja_konoha",
+      "name": "Ninja Konoha",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNinjaKonoha",
+      "index": 44,
+      "origin": [
+        1000,
+        4,
+        132
+      ],
+      "camera": [
+        1004.5,
+        5,
+        123
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            132
+          ],
+          "tag": "legacy_44_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            132
+          ],
+          "tag": "legacy_44_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            132
+          ],
+          "tag": "legacy_44_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            132
+          ],
+          "tag": "legacy_44_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ninja_kumo",
+      "name": "Ninja Kumo",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNinjaKumo",
+      "index": 45,
+      "origin": [
+        1016,
+        4,
+        132
+      ],
+      "camera": [
+        1020.5,
+        5,
+        123
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            132
+          ],
+          "tag": "legacy_45_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            132
+          ],
+          "tag": "legacy_45_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            132
+          ],
+          "tag": "legacy_45_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            132
+          ],
+          "tag": "legacy_45_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ninja_suna",
+      "name": "Ninja Suna",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNinjaSuna",
+      "index": 46,
+      "origin": [
+        1032,
+        4,
+        132
+      ],
+      "camera": [
+        1036.5,
+        5,
+        123
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            132
+          ],
+          "tag": "legacy_46_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            132
+          ],
+          "tag": "legacy_46_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            132
+          ],
+          "tag": "legacy_46_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            132
+          ],
+          "tag": "legacy_46_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:ninjabandit",
+      "name": "Ninjabandit",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityNinjabandit",
+      "index": 47,
+      "origin": [
+        1048,
+        4,
+        132
+      ],
+      "camera": [
+        1052.5,
+        5,
+        123
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            132
+          ],
+          "tag": "legacy_47_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            132
+          ],
+          "tag": "legacy_47_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            132
+          ],
+          "tag": "legacy_47_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            132
+          ],
+          "tag": "legacy_47_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:otsutsuki",
+      "name": "Otsutsuki",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityOtsutsuki",
+      "index": 48,
+      "origin": [
+        1000,
+        4,
+        144
+      ],
+      "camera": [
+        1004.5,
+        5,
+        135
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            144
+          ],
+          "tag": "legacy_48_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            144
+          ],
+          "tag": "legacy_48_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            144
+          ],
+          "tag": "legacy_48_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            144
+          ],
+          "tag": "legacy_48_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:anbu",
+      "name": "Rogue Anbu",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityRogueAnbu",
+      "index": 49,
+      "origin": [
+        1016,
+        4,
+        144
+      ],
+      "camera": [
+        1020.5,
+        5,
+        135
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            144
+          ],
+          "tag": "legacy_49_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            144
+          ],
+          "tag": "legacy_49_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            144
+          ],
+          "tag": "legacy_49_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            144
+          ],
+          "tag": "legacy_49_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:rogue_ninja",
+      "name": "Rogue Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityRogueNinja",
+      "index": 50,
+      "origin": [
+        1032,
+        4,
+        144
+      ],
+      "camera": [
+        1036.5,
+        5,
+        135
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            144
+          ],
+          "tag": "legacy_50_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            144
+          ],
+          "tag": "legacy_50_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            144
+          ],
+          "tag": "legacy_50_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            144
+          ],
+          "tag": "legacy_50_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:rogue_puppet_master",
+      "name": "Rogue Puppet Master",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityRoguePuppetMaster",
+      "index": 51,
+      "origin": [
+        1048,
+        4,
+        144
+      ],
+      "camera": [
+        1052.5,
+        5,
+        135
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            144
+          ],
+          "tag": "legacy_51_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            144
+          ],
+          "tag": "legacy_51_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            144
+          ],
+          "tag": "legacy_51_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            144
+          ],
+          "tag": "legacy_51_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:s_rank_missing_ninja",
+      "name": "S Rank Missing Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntitySRankMissingNinja",
+      "index": 52,
+      "origin": [
+        1000,
+        4,
+        156
+      ],
+      "camera": [
+        1004.5,
+        5,
+        147
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            156
+          ],
+          "tag": "legacy_52_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            156
+          ],
+          "tag": "legacy_52_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            156
+          ],
+          "tag": "legacy_52_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            156
+          ],
+          "tag": "legacy_52_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:shinobi",
+      "name": "Shinobi",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityShinobi",
+      "index": 53,
+      "origin": [
+        1016,
+        4,
+        156
+      ],
+      "camera": [
+        1020.5,
+        5,
+        147
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1016,
+            4,
+            156
+          ],
+          "tag": "legacy_53_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1019,
+            4,
+            156
+          ],
+          "tag": "legacy_53_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1022,
+            4,
+            156
+          ],
+          "tag": "legacy_53_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1025,
+            4,
+            156
+          ],
+          "tag": "legacy_53_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:sound_ninja",
+      "name": "Sound Ninja",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntitySoundNinja",
+      "index": 54,
+      "origin": [
+        1032,
+        4,
+        156
+      ],
+      "camera": [
+        1036.5,
+        5,
+        147
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1032,
+            4,
+            156
+          ],
+          "tag": "legacy_54_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1035,
+            4,
+            156
+          ],
+          "tag": "legacy_54_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1038,
+            4,
+            156
+          ],
+          "tag": "legacy_54_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1041,
+            4,
+            156
+          ],
+          "tag": "legacy_54_3"
+        }
+      ]
+    },
+    {
+      "id": "kabutoaddon:storm_rogue",
+      "name": "Storm Rogue",
+      "category": "Other legacy combat NPCs",
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "class": "net/mcreator/kabutoaddon/entity/EntityStormRogue",
+      "index": 55,
+      "origin": [
+        1048,
+        4,
+        156
+      ],
+      "camera": [
+        1052.5,
+        5,
+        147
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1048,
+            4,
+            156
+          ],
+          "tag": "legacy_55_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1051,
+            4,
+            156
+          ],
+          "tag": "legacy_55_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1054,
+            4,
+            156
+          ],
+          "tag": "legacy_55_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1057,
+            4,
+            156
+          ],
+          "tag": "legacy_55_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:whitezetsu",
+      "name": "White Zetsu",
+      "category": "Other legacy combat NPCs",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityWhiteZetsu",
+      "index": 56,
+      "origin": [
+        1000,
+        4,
+        168
+      ],
+      "camera": [
+        1004.5,
+        5,
+        159
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1000,
+            4,
+            168
+          ],
+          "tag": "legacy_56_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1003,
+            4,
+            168
+          ],
+          "tag": "legacy_56_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1006,
+            4,
+            168
+          ],
+          "tag": "legacy_56_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1009,
+            4,
+            168
+          ],
+          "tag": "legacy_56_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:seven_tails",
+      "name": "Chomei",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntitySevenTails",
+      "index": 57,
+      "origin": [
+        1180,
+        4,
+        0
+      ],
+      "camera": [
+        1234,
+        15,
+        -40
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            0
+          ],
+          "tag": "legacy_57_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            0
+          ],
+          "tag": "legacy_57_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            0
+          ],
+          "tag": "legacy_57_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            0
+          ],
+          "tag": "legacy_57_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:eight_tails",
+      "name": "Gyuuki",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityEightTails",
+      "index": 58,
+      "origin": [
+        1180,
+        4,
+        80
+      ],
+      "camera": [
+        1234,
+        15,
+        40
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            80
+          ],
+          "tag": "legacy_58_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            80
+          ],
+          "tag": "legacy_58_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            80
+          ],
+          "tag": "legacy_58_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            80
+          ],
+          "tag": "legacy_58_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:three_tails",
+      "name": "Isobu",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityThreeTails",
+      "index": 59,
+      "origin": [
+        1180,
+        4,
+        160
+      ],
+      "camera": [
+        1234,
+        15,
+        120
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            160
+          ],
+          "tag": "legacy_59_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            160
+          ],
+          "tag": "legacy_59_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            160
+          ],
+          "tag": "legacy_59_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            160
+          ],
+          "tag": "legacy_59_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:five_tails",
+      "name": "Kokuo",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityFiveTails",
+      "index": 60,
+      "origin": [
+        1180,
+        4,
+        240
+      ],
+      "camera": [
+        1234,
+        15,
+        200
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            240
+          ],
+          "tag": "legacy_60_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            240
+          ],
+          "tag": "legacy_60_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            240
+          ],
+          "tag": "legacy_60_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            240
+          ],
+          "tag": "legacy_60_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:nine_tails",
+      "name": "Kurama",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityNineTails",
+      "index": 61,
+      "origin": [
+        1180,
+        4,
+        320
+      ],
+      "camera": [
+        1234,
+        15,
+        280
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            320
+          ],
+          "tag": "legacy_61_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            320
+          ],
+          "tag": "legacy_61_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            320
+          ],
+          "tag": "legacy_61_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            320
+          ],
+          "tag": "legacy_61_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:two_tails",
+      "name": "Matatabi",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityTwoTails",
+      "index": 62,
+      "origin": [
+        1180,
+        4,
+        400
+      ],
+      "camera": [
+        1234,
+        15,
+        360
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            400
+          ],
+          "tag": "legacy_62_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            400
+          ],
+          "tag": "legacy_62_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            400
+          ],
+          "tag": "legacy_62_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            400
+          ],
+          "tag": "legacy_62_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:six_tails",
+      "name": "Saiken",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntitySixTails",
+      "index": 63,
+      "origin": [
+        1180,
+        4,
+        480
+      ],
+      "camera": [
+        1234,
+        15,
+        440
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            480
+          ],
+          "tag": "legacy_63_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            480
+          ],
+          "tag": "legacy_63_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            480
+          ],
+          "tag": "legacy_63_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            480
+          ],
+          "tag": "legacy_63_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:one_tail",
+      "name": "Shukaku",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityOneTail",
+      "index": 64,
+      "origin": [
+        1180,
+        4,
+        560
+      ],
+      "camera": [
+        1234,
+        15,
+        520
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            560
+          ],
+          "tag": "legacy_64_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            560
+          ],
+          "tag": "legacy_64_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            560
+          ],
+          "tag": "legacy_64_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            560
+          ],
+          "tag": "legacy_64_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:four_tails",
+      "name": "Son Goku",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityFourTails",
+      "index": 65,
+      "origin": [
+        1180,
+        4,
+        640
+      ],
+      "camera": [
+        1234,
+        15,
+        600
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            640
+          ],
+          "tag": "legacy_65_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            640
+          ],
+          "tag": "legacy_65_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            640
+          ],
+          "tag": "legacy_65_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            640
+          ],
+          "tag": "legacy_65_3"
+        }
+      ]
+    },
+    {
+      "id": "narutomod:ten_tails",
+      "name": "Ten Tails",
+      "category": "Tailed beasts",
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "class": "net/narutomod/entity/EntityTenTails",
+      "index": 66,
+      "origin": [
+        1180,
+        4,
+        720
+      ],
+      "camera": [
+        1234,
+        15,
+        680
+      ],
+      "views": [
+        {
+          "label": "FRONT",
+          "yaw": 180,
+          "position": [
+            1180,
+            4,
+            720
+          ],
+          "tag": "legacy_66_0"
+        },
+        {
+          "label": "LEFT",
+          "yaw": -90,
+          "position": [
+            1216,
+            4,
+            720
+          ],
+          "tag": "legacy_66_1"
+        },
+        {
+          "label": "BACK",
+          "yaw": 0,
+          "position": [
+            1252,
+            4,
+            720
+          ],
+          "tag": "legacy_66_2"
+        },
+        {
+          "label": "RIGHT",
+          "yaw": 90,
+          "position": [
+            1288,
+            4,
+            720
+          ],
+          "tag": "legacy_66_3"
+        }
+      ]
+    }
+  ]
+}

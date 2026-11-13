@@ -28,11 +28,6 @@ public final class GateEvents {
     @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)public static void death(LivingDeathEvent event){
         if(!event.getEntityLiving().world.isRemote&&(tagged(event.getEntityLiving())||event.getEntityLiving() instanceof EntityPlayerMP)&&DEATHS.size()<512)DEATHS.putIfAbsent(event.getEntityLiving().getUniqueID(),new Death(event));
     }
-    /** Mission couriers are protected actors, never random vanilla merchants. */
-    @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true)public static void interact(PlayerInteractEvent.EntityInteract event){
-        Entity actor=event.getTarget();
-        if(!actor.world.isRemote&&actor instanceof net.minecraft.entity.passive.EntityVillager&&tagged(actor)&&actor.getEntityData().getBoolean("valeGateFriendly"))event.setCanceled(true);
-    }
     @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true)public static void attack(LivingAttackEvent event){
         if(event.getEntityLiving().world.isRemote)return;Entity victim=event.getEntityLiving(),source=event.getSource().getTrueSource();
         if(tagged(source)){

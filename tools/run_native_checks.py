@@ -270,7 +270,7 @@ def verify_private_jar(path, module, source_dir, mod_id, version, root):
         if version in ("0.3.12", "0.3.13"):
             require("village/vale/arsenal/HandTechniqueNativeChecks.class" in classes, "Core 0.3.12 hand-technique fixture class is missing")
         if version == "0.3.13":
-            for helper in ("village/vale/arsenal/WeaponPulseNativeChecks.class", "village/vale/expedition/GateNativeChecks.class"):
+            for helper in ("village/vale/arsenal/WeaponPulseNativeChecks.class", "village/vale/expedition/GateNativeChecks.class", "village/valerack/CombatHotbarNativeChecks.class", "village/vale/arsenal/CombatAbilityNativeChecks.class"):
                 require(helper in classes, "Core 0.3.13 fixture class missing: " + helper)
     return {"mod_id": mod_id, "version": version, "file": path.name, "path": path, **pack.hash_file(path)}
 
@@ -361,6 +361,9 @@ def validate_native_result(value, expected, log):
     if expected["valeorders"]["version"] == "0.3.13":
         require("Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation" in value["checks"], "Core 0.3.13 weapon presentation acceptance did not complete")
         require("Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity" in value["checks"], "Core 0.3.13 expedition acceptance did not complete")
+    if expected["valeorders"]["version"] == "0.3.13":
+        for check in ("Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death", "Native six mastered techniques cast from the switched physical combat hotbar"):
+            require(check in value["checks"], "Core 0.3.13 combat-hotbar acceptance did not complete: " + check)
     require(value.get("minecraft_version") == "1.12.2" and value.get("forge_version") == FORGE_VERSION,
             "Native result names a different Minecraft/Forge runtime")
     require(value.get("loaded_fixture_mods") == expected, "Loaded native mod names, versions, or hashes differ from the exact staged roster")

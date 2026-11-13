@@ -24,7 +24,7 @@ public final class JutsuRail extends Gui {
     // Error feedback uses the normal action bar through JutsuInput, rather than a persistent footer.
     public static void hint(String value){}
     public static void draw(HudLayers.Frame frame){
-        if(RackAccess.loaded()){if(visible())RackRailDraw.draw(frame);return;}
+        if(RackAccess.loaded()){if(visible()&&!RackAccess.combatActive())RackRailDraw.draw(frame);return;}
         if(!visible()||!JutsuAccess.MODEL.initialized())return;
         JutsuRailLayout rail=layout(frame.resolution.getScaledWidth(),frame.resolution.getScaledHeight());if(rail.box==null)return;
         Layout.Box b=rail.box;double time=frame.time;JutsuRailModel model=JutsuAccess.MODEL;

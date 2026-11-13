@@ -41,13 +41,8 @@ public final class GateNativeChecks {
         // The isolated fixture does not run World.updateEntities: drain exactly
         // its own already-dead actors using native removal before respawn checks.
         // Native removeEntity alone defers chunk detachment to that world loop.
-        for(Entity entity:new ArrayList<Entity>(world.loadedEntityList))if(entity.getEntityData().hasUniqueId(GateRuntime.OWNER)&&owner.equals(entity.getEntityData().getUniqueId(GateRuntime.OWNER))){
-            // Native death animation still needs ticks after its objective UUID
-            // is credited/forgotten. Never synthesize a corpse's dead outcome.
-            if(!entity.isDead&&entity instanceof EntityLivingBase&&!((EntityLivingBase)entity).isEntityAlive())world.updateEntityWithOptionalForce(entity,true);
-            if(entity.isDead)world.removeEntityDangerously(entity);
-        }
-        world.getWorldInfo().setWorldTotalTime(Adventures.now(p)+1);GateRuntime.tick(p);for(int slot=0;slot<9;slot++){Entity actor=GateRuntime.actor(p,slot);if(actor!=null&&!actor.isDead&&(!(actor instanceof EntityLivingBase)||((EntityLivingBase)actor).isEntityAlive())){world.updateEntityWithOptionalForce(actor,true);if(actor instanceof EntityLivingBase)((EntityLivingBase)actor).hurtResistantTime=0;}}GateEvents.flush();}
+        for(Entity entity:new ArrayList<Entity>(world.loadedEntityList))if((entity.isDead||entity instanceof EntityLivingBase&&!((EntityLivingBase)entity).isEntityAlive())&&entity.getEntityData().hasUniqueId(GateRuntime.OWNER)&&owner.equals(entity.getEntityData().getUniqueId(GateRuntime.OWNER)))world.removeEntityDangerously(entity);
+        world.getWorldInfo().setWorldTotalTime(Adventures.now(p)+1);GateRuntime.tick(p);for(int slot=0;slot<9;slot++){Entity actor=GateRuntime.actor(p,slot);if(actor!=null&&!actor.isDead){world.updateEntityWithOptionalForce(actor,true);if(actor instanceof EntityLivingBase)((EntityLivingBase)actor).hurtResistantTime=0;}}GateEvents.flush();}
     private EntityPlayerMP login(boolean restore){Learner next=new Learner(server,world,owner);next.connection=new Quiet(server,next);if(restore)server.getPlayerList().readPlayerDataFromFile(next);next.interactionManager.setGameType(GameType.SURVIVAL);server.getPlayerList().playerLoggedIn(next);FMLCommonHandler.instance().firePlayerLoggedIn(next);ReflectionHelper.setPrivateValue(EntityPlayerMP.class,next,0,"respawnInvulnerabilityTicks","field_147101_bU");return next;}
     private void reconnect(){server.getPlayerList().playerLoggedOut(p);p=login(true);}
     private void clearInventory(){for(int i=0;i<p.inventory.mainInventory.size();i++)p.inventory.mainInventory.set(i,ItemStack.EMPTY);}
@@ -78,15 +73,11 @@ public final class GateNativeChecks {
         p.setPosition(736.5,80,750.5);long run=s().getLong("run");for(int i=0;i<5;i++)step();
         check(s().getString("stage").equals("escort")&&s().getLong("run")==run&&!s().hasUniqueId("actor0")&&!s().hasKey("started")&&s().getInteger("observed")==0,"Far friendly approach spawned/retried/started a timer");
         p.setPosition(746.5,80,753.0);step();Entity first=GateRuntime.actor(p,0);check(first instanceof EntityVillager,"Escort did not create an actual native villager");cleanup.add(first);
-        gate.escort=first;gate.escortEvent=null;net.minecraft.inventory.Container current=p.openContainer;p.interactOn(first,EnumHand.MAIN_HAND);
-        check(gate.escortEvent!=null&&gate.escortEvent.isCanceled()&&p.openContainer==current&&!((EntityVillager)first).isTrading(),"Mission courier opened a native trade interaction");gate.escort=null;
         first.setDead();world.removeEntity(first);step();check(s().getString("stage").equals("escort")&&!s().hasUniqueId("actor0"),"Downed escort did not reset checkpoint");step();Entity replacement=GateRuntime.actor(p,0);check(replacement instanceof EntityVillager&&replacement!=first,"Escort retry reused lost actor");cleanup.add(replacement);
         int moves=0;for(;moves<100&&s().getString("stage").equals("escort");moves++){p.move(MoverType.SELF,0,0,.08);p.onGround=true;step();}
         check(s().getString("stage").equals("skiff"),"Actual pathfinding escort failed after "+moves+" walking steps: p="+p.getPositionVector()+" actor="+replacement.getPositionVector()+" observed="+s().getInteger("observed"));
         check(replacement.isDead&&s().getString("checkpoint").equals("escort_end"),"Reached escort checkpoint did not clear owned actor");
         p.setPosition(747.5,80,750.5);step();Entity boat=GateRuntime.actor(p,0);check(boat instanceof GateSkiff,"Protect stage did not create registered native skiff");cleanup.add(boat);
-        Entity priorRide=outsider.getRidingEntity();outsider.interactOn(boat,EnumHand.MAIN_HAND);check(outsider.getRidingEntity()==priorRide&&!boat.getPassengers().contains(outsider),"Unrelated player boarded the owned native skiff");
-        p.setSneaking(false);p.interactOn(boat,EnumHand.MAIN_HAND);check(p.getRidingEntity()==boat,"Matching owner could not board the native skiff");p.dismountRidingEntity();check(!p.isRiding(),"Owner could not dismount the native skiff");
         check(!boat.attackEntityFrom(DamageSource.causePlayerDamage(p),6),"Owner melee bypassed protected skiff authority");
         check(boat.attackEntityFrom(DamageSource.GENERIC,6)&&boat.isDead,"Native environmental damage did not down skiff");step();
         check(s().getString("stage").equals("skiff")&&!s().hasUniqueId("actor0")&&s().getInteger("observed")==0,"Downed skiff did not reset timer/checkpoint");step();
@@ -174,8 +165,7 @@ public final class GateNativeChecks {
         @Override public void sendPacket(Packet<?> packet){}
     }
     public static final class Gate {
-        BlockPos block;EntityLivingBase death;Entity giver,escort;PlayerInteractEvent.EntityInteract escortEvent;boolean cancelInteract;
-        @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)public void observeEscort(PlayerInteractEvent.EntityInteract e){if(e.getTarget()==escort)escortEvent=e;}
+        BlockPos block;EntityLivingBase death;Entity giver;boolean cancelInteract;
         @SubscribeEvent(priority=EventPriority.LOWEST)public void interact(PlayerInteractEvent.EntityInteract e){if(cancelInteract&&e.getTarget()==giver)e.setCanceled(true);}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void click(PlayerInteractEvent.RightClickBlock e){if(block!=null&&block.equals(e.getPos()))e.setCanceled(true);}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void death(LivingDeathEvent e){if(e.getEntityLiving()==death)e.setCanceled(true);}

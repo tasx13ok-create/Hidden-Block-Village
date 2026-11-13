@@ -20,7 +20,7 @@ import village.vale.RewardLedger;
 public final class RackNativeChecks038 {
     private int checks;
     private void check(boolean value,String why){checks++;if(!value)throw new AssertionError(why);}
-    public static int run(EntityPlayerMP p){return new RackNativeChecks038().verify(p);}
+    public static int run(EntityPlayerMP p){return new RackNativeChecks038().verify(p)+CombatHotbarNativeChecks.run(p)+village.vale.arsenal.CombatAbilityNativeChecks.run(p);}
     private static NBTTagCompound item(ItemStack stack){return stack.writeToNBT(new NBTTagCompound());}
     private static void advance(EntityPlayerMP p){p.getServer().getWorld(0).getWorldInfo().setWorldTotalTime(RackSessions.now(p)+3);}
     private static String request(EntityPlayerMP p,int slot){
@@ -106,11 +106,11 @@ public final class RackNativeChecks038 {
 
             ByteBuf wire=Unpooled.buffer();
             try{
-                new RackNetwork.Request(0,5,1234,7).toBytes(wire);check(wire.readableBytes()==18,"Rack wire request changed length");
+                new RackNetwork.Request(0,5,1234,7).toBytes(wire);check(wire.readableBytes()==27,"Rack wire request changed length");
                 RackNetwork.Request decoded=new RackNetwork.Request();decoded.fromBytes(wire);
                 check(decoded.valid&&decoded.index==5&&decoded.nonce==1234&&decoded.revision==7,"Sixth rack cell request failed wire round-trip");
-                wire.clear();wire.writeZero(19);decoded=new RackNetwork.Request();decoded.fromBytes(wire);check(!decoded.valid,"Rack accepted trailing request bytes");
-                wire.clear();wire.writeZero(17);decoded=new RackNetwork.Request();decoded.fromBytes(wire);check(!decoded.valid,"Rack accepted a truncated request");
+                wire.clear();wire.writeZero(28);decoded=new RackNetwork.Request();decoded.fromBytes(wire);check(!decoded.valid,"Rack accepted trailing request bytes");
+                wire.clear();wire.writeZero(26);decoded=new RackNetwork.Request();decoded.fromBytes(wire);check(!decoded.valid,"Rack accepted a truncated request");
             }finally{wire.release();}
             return checks;
         }finally{empty(p,rack);}

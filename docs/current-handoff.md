@@ -2,6 +2,18 @@
 
 Updated: 2026-11-13 UTC.
 
+## Chat-closing source checkpoint and unfinished boss gallery
+
+The owner requested uploading all remaining work before closing this chat. Continuation branch: `codex/chat-handoff-20261113`. This checkpoint captures the current public tracked/untracked source tree, including Rack/HUD combat switching, Sonnet equipment metadata, pending lifecycle/native checks, Magma tooling/evidence and the original boss-gallery helper/setup source. The prior combat/art checkpoint is also retained at `codex/combat-hotbar-equipment-20261113` (2907071cb97d14491c25c42a8516c5c6bb2367b0). Original local-only world/runtime/account data and third-party assets are excluded.
+
+This is a WIP recovery branch, not an accepted integrated release. Core0.3.13 at c963f084a60b2406176a721efe6b38288a6e95b0 remains the accepted main checkpoint. In particular, the shared working tree has older GateEvents/GateSkiff content that omits the accepted courier interaction and owner-only boarding protections; reconcile those from main before merging or testing this snapshot. RecoveryNativeChecks also repeats combat suites already called from RackNativeChecks038. Preserve concurrent workers' source and index; no checkout/reset is required to resume.
+
+Boss gallery: 67 curated original entity types (37 named characters,20 additional combat NPCs,10 tailed beasts),268 planned front/left/back/right views. The native gallery joined on25587 and a four-angle human lineup was visibly observed. The elevated-floor lighting stall caused a read timeout; native singleton/revival behavior left incomplete/duplicate coverage. The second stationary-render helper built successfully and logged `GALLERY_MODELS_READY 268 failures=0`, then logged rendering exceptions. Its later client shutdown is observed, not attributed to a particular cause. Complete all-model graphical acceptance is NOT achieved. Computer control stopped on the owner's physical Escape; no further UI control was attempted.
+
+Read `tools/legacy_gallery/README.md`, `collaboration/legacy-boss-gallery/roster.json` and `release/evidence/legacy-boss-gallery-20261113.json`. Source for the helper is in `tools/legacy_gallery_preview/`; setup experiments now use `VALE_GALLERY_BASE` instead of a machine-specific absolute parent. The curated Rogue Anbu registry ID is corrected to `kabutoaddon:anbu`; the initial raw catalog's alias matching remains unfinished. Next: inspect the nested renderer failure, reconcile all registry/display-name joins and verify each view in a new isolated client. Do not report successful construction as successful rendering.
+
+Earlier isolated combat evidence (11 areas/36 artifacts,2392 native assertions,13 hold checks) and accepted Core0.3.13 evidence retain their exact scopes. The entire new WIP recovery snapshot has not received a combined build/native/graphical acceptance run. Only source/metadata/syntax integrity checks were performed for this closing save. Live sessions and private input archives stay local and were not replaced or stopped for GitHub sync.
+
 ## Combat hotbar and complete character-equipment art supplement
 
 Rack 0.1.3 / Field HUD 0.15.0 implement the owner's normal nine-slot <-> separate six-slot combat loadouts. Hold F for three seconds to switch the whole active bar; both loadouts and selections persist. The survival inventory right rail supports real server cursor pickup/place/merge/swap and drag back into native inventory. Reward-bound gear retains ownership checks; ordinary items and crafted garments/meals/tonics are accepted. Different hand modes now replace the old mode instead of charging only to dismiss it. HUD item/NBT copies refresh on snapshot generation changes instead of every frame/tick.

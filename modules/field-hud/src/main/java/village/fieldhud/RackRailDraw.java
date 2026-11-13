@@ -21,7 +21,7 @@ public final class RackRailDraw {
                 SkinDraw.rounded(b.x+1,y+1,b.w-2,rail.slotHeight-3,2,selected?0xF22D3330:0xE51B2428);
                 SkinDraw.outline(b.x+1.2,y+1.2,b.w-2.4,rail.slotHeight-3.4,2,.55,fresh?0xA08F907B:0x70748182);
                 SkinDraw.line(b.x+4,y+1.8,b.x+b.w-4,y+1.8,.55,selected?0xBFCEBA92:0x545A7276);
-                ItemStack stack=RackAccess.stack(row);
+                ItemStack stack=RackAccess.renderStack(row);
                 if(stack.isEmpty()){
                     SkinDraw.outline(cx-3,cy-3,6,6,1,.6,0x666C7E84);SkinDraw.line(cx-1,cy,cx+1,cy,.6,0x667F8C91);
                 }else item(stack,cx-8,cy-8,frame.partial);
