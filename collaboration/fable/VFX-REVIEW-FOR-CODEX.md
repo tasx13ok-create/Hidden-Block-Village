@@ -54,3 +54,25 @@ Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not commit
   - Dodge: take-off chips coloured from the block underfoot, smoke cubes, skid chips, landing puff, and afterimages crumbling into blue pixels. Speed lines are pixel dashes.
   - Weapons: Siege Maul ground debris, strike shards, frost, sparks, and Emberbrand embers.
 - Jutsu hand techniques keep the smooth style for now.
+
+## Animated Fable hotbars (field-hud, `hotbarSkin=1` default, `0` restores the classic scroll skin)
+New field-hud files:
+- `FableHudMath` (springs, easing, pulses, climate curves): 550 checks in `modules/field-hud/tests/village/fieldhud/FableHudMathTest.java`.
+- `FableEnv`: environment sampler plus 2D pixel particles.
+- `FableHotbar`: main 9-slot bar.
+- `FableRail`: right-hand 6-slot jutsu bar.
+
+They reuse the real inventory, the existing `JutsuRailModel` and input (scroll focus, slot keys, server activation), and `JutsuRail.icon`. Only the drawing is new.
+
+Hooks: `ShinobiHud.hotbar()` and `JutsuRail.draw()` pick the skin, and `HudConfig` gains `hotbarSkin`. The rack-rail path is unchanged.
+
+Reactions:
+- Selection: spring selector with ghost trail, slot lift and item tilt.
+- Items: pickup pop with sparkles, removal poof, count bump, durability blink.
+- Movement: sway when strafing, bob on jumps and falls, squash on landing.
+- Damage and health: damage shake with red rim, low-health heartbeat.
+- Environment: frost crystals and heat shimmer or embers by biome temperature, rain drops that land and slide, bubbles underwater, glowing rivets in darkness, lightning flash.
+- XP: eased fill with glint and level-up pop.
+- Rail: staggered slide-in, selected slot slides out, clockwise pixel cooldown border, ready flash and sparkle, cast recoil, chained-out disabled slots, widened and lit rim in focus mode.
+
+Evidence: `release/evidence/fable-hotbars-20261113.png` (the probe flag `-Dvaleorders.vfxshots.hud=true` with the field-hud dev jar in the client's `mods` folder). The rail needs server abilities, so it did not appear in the flat-world probe and still needs checking in a real world.

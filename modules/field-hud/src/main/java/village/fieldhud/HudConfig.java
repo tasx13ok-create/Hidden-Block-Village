@@ -13,6 +13,8 @@ public final class HudConfig {
     public static boolean focusEffects=true;
     public static boolean jutsuRail=true;
     public static int positionX=-1,positionY=-1;
+    /** 0 = classic scroll skin, 1 = animated Fable pixel hotbars. */
+    public static int skin=1;
     public static final String[] MODES={"Explore","Combat","Quiet"};
     public static void load(File directory) {
         file=new Configuration(new File(directory,"fieldhud.cfg"));
@@ -33,6 +35,7 @@ public final class HudConfig {
         eyeMap=file.getBoolean("eyeBezel","hud",true,"Optional Xaero 26.6 circular-map eye bezel using live module bounds.");
         chakra=file.getBoolean("chakra","hud",true,"Integrate NarutoMod's real synchronized chakra and warning/Sage flags when available.");
         slim=file.getBoolean("slimPlate","hud",false,"Narrower status plate. Can be changed in the layout editor.");
+        skin=file.getInt("hotbarSkin","hud",1,0,1,"0 classic scroll hotbar and jutsu rail, 1 animated pixel hotbars that react to movement, damage, weather and light.");
         positionX=file.getInt("statusX","hud",-1,-1,1000,"Normalized status position; -1 uses the default margin.");
         positionY=file.getInt("statusY","hud",-1,-1,1000,"Normalized status position above the hotbar; -1 uses the default margin.");
         save();
@@ -54,6 +57,7 @@ public final class HudConfig {
         file.get("hud","eyeBezel",true).set(eyeMap);
         file.get("hud","chakra",true).set(chakra);
         file.get("hud","slimPlate",false).set(slim);
+        file.get("hud","hotbarSkin",1).set(skin);
         file.get("hud","statusX",-1).set(positionX);
         file.get("hud","statusY",-1).set(positionY);
         if(file.hasChanged()) file.save();

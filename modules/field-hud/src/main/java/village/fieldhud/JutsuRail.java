@@ -25,6 +25,7 @@ public final class JutsuRail extends Gui {
     public static void hint(String value){}
     public static void draw(HudLayers.Frame frame){
         if(RackAccess.loaded()){if(visible())RackRailDraw.draw(frame);return;}
+        if(HudConfig.skin==1){FableRail.draw(frame);return;}
         if(!visible()||!JutsuAccess.MODEL.initialized())return;
         JutsuRailLayout rail=layout(frame.resolution.getScaledWidth(),frame.resolution.getScaledHeight());if(rail.box==null)return;
         Layout.Box b=rail.box;double time=frame.time;JutsuRailModel model=JutsuAccess.MODEL;

@@ -64,6 +64,7 @@ public final class VfxShots {
             p.world.spawnEntity(target);
         });
         if (tick < 300) return;
+        if (Boolean.getBoolean("valeorders.vfxshots.hud")) { hud(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.dodge")) { dodges(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.weapons")) { weapons(mc, server, tick - 300); return; }
         int local = tick - 300, per = 120;
@@ -159,6 +160,40 @@ public final class VfxShots {
         if (t == 18) { mc.setRenderViewEntity(cam); mc.gameSettings.thirdPersonView = 0; }
         if (t == 20) { server.addScheduledTask(() -> WeaponPulse.swing(server.getPlayerList().getPlayers().get(0), spec, spec.role == ArsenalSpec.Role.SWEEP)); }
         if (t == 24) shot(mc, name + "_d_swing");
+    }
+
+    private void hud(Minecraft mc, IntegratedServer server, int t) {
+        mc.gameSettings.hideGUI = false;
+        mc.gameSettings.thirdPersonView = 0;
+        mc.setRenderViewEntity(mc.player);
+        java.util.function.Consumer<java.util.function.Consumer<EntityPlayerMP>> run = c -> server.addScheduledTask(() -> c.accept(server.getPlayerList().getPlayers().get(0)));
+        if (t == 0) run.accept(p -> {
+            p.setGameType(GameType.SURVIVAL);
+            p.connection.setPlayerLocation(0.5, 4, 0.5, 0, 10);
+            net.minecraft.item.Item[] items = {net.minecraft.init.Items.DIAMOND_SWORD, net.minecraft.init.Items.BOW, net.minecraft.init.Items.IRON_PICKAXE, net.minecraft.init.Items.APPLE, net.minecraft.init.Items.ENDER_PEARL, net.minecraft.init.Items.BREAD};
+            for (int i = 0; i < items.length; i++) p.inventory.setInventorySlotContents(i, new net.minecraft.item.ItemStack(items[i], i >= 3 ? 7 + i : 1));
+            p.inventory.getStackInSlot(2).setItemDamage(240);
+            p.inventory.setInventorySlotContents(6, new net.minecraft.item.ItemStack(net.minecraft.init.Blocks.TORCH, 32));
+            p.addExperienceLevel(4); p.addExperience(20);
+            p.inventory.currentItem = 0; p.connection.sendPacket(new net.minecraft.network.play.server.SPacketHeldItemChange(0));
+        });
+        if (t == 30) shot(mc, "hud_01_idle");
+        if (t == 34) run.accept(p -> { p.inventory.currentItem = 4; p.connection.sendPacket(new net.minecraft.network.play.server.SPacketHeldItemChange(4)); });
+        if (t == 36) shot(mc, "hud_02_scroll_spring");
+        if (t == 40) shot(mc, "hud_03_scroll_settled");
+        if (t == 50) run.accept(p -> p.inventory.setInventorySlotContents(7, new net.minecraft.item.ItemStack(net.minecraft.init.Items.GOLDEN_APPLE, 3)));
+        if (t == 53) shot(mc, "hud_04_pickup_pop");
+        if (t == 60) run.accept(p -> { p.world.getWorldInfo().setRaining(true); p.world.setRainStrength(1); });
+        if (t == 110) shot(mc, "hud_05_rain");
+        if (t == 120) run.accept(p -> { p.world.getWorldInfo().setRaining(false); p.world.setRainStrength(0); p.attackEntityFrom(net.minecraft.util.DamageSource.GENERIC, 15); });
+        if (t == 123) shot(mc, "hud_06_damage_lowhealth");
+        if (t == 130) run.accept(p -> { for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) for (int dy = 0; dy <= 2; dy++) p.world.setBlockState(new net.minecraft.util.math.BlockPos(dx, 4 + dy, dz), net.minecraft.init.Blocks.WATER.getDefaultState()); p.heal(20); });
+        if (t == 170) shot(mc, "hud_07_underwater");
+        if (t == 175) run.accept(p -> { for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) for (int dy = 0; dy <= 2; dy++) p.world.setBlockToAir(new net.minecraft.util.math.BlockPos(dx, 4 + dy, dz)); p.setFire(5); p.world.setWorldTime(18000); });
+        if (t == 200) shot(mc, "hud_08_night_burning");
+        if (t == 210) run.accept(p -> { p.extinguish(); p.world.setWorldTime(6000); p.connection.setPlayerLocation(0.5, 9, 0.5, 0, 10); });
+        if (t == 226) shot(mc, "hud_09_landing_squash");
+        if (t == 240) mc.shutdown();
     }
 
     private void dodges(Minecraft mc, IntegratedServer server, int local) {

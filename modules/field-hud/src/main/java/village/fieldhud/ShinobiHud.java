@@ -223,6 +223,6 @@ public final class ShinobiHud extends Gui {
         }
     }
     private static void hotbar(ShinobiLayout layout,double time,float partial) {
-        ScrollHotbar.draw(layout,time,partial);
+        if(HudConfig.skin==1)FableHotbar.draw(layout,time,partial);else ScrollHotbar.draw(layout,time,partial);
     }
 }
