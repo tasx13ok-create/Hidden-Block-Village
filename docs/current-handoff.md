@@ -12,6 +12,8 @@ All **49 original reference JARs** were found in the existing client mods direct
 
 Validation passed for unique current IDs/output paths, all inventory counts, all 26 charged 32x64 strips and existing animation metadata, actor-kind totals, private-path checks and the eight-file ZIP's byte/CRC integrity. Local bundle: ignored `exports/Sonnet-Art-Handoff/Hidden-Block-Village-All-Art.zip`, SHA256 `ee935e1ced0521b9826f7d32d246dc02f8ff838ecc11da14e1c6cad05347218e`. No gameplay/build/runtime changes or new artwork were made. Concurrent gameplay/server changes were preserved and excluded from this checkpoint.
 
+GitHub sync for this art checkpoint is pending: the local Git credential manager has no usable GitHub credential, and a noninteractive push failed with "could not read Username". The complete bundle and commits are retained locally. Push these commits once authenticated; no remote-save claim has been made.
+
 Next art step: give Sonnet the brief and inventory, produce original PNG batches with a completion manifest, then review and wire shared models/HUD/status paths. Keep `spiral_palm` and `storm_lance` save/file keys for Rasengan and Chidori. Preserve worn-model UVs and 3D held geometry; inventory icons alone do not replace armor, actors or procedural VFX. The active gameplay sprint and its separate acceptance work remain ongoing.
 
 ## Core 0.3.12 hand-technique preview is live
