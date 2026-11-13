@@ -1,0 +1,266 @@
+{
+  "schema": 1,
+  "scope": "PINNED_VALE0311_MAGMA_FROZEN_V17_WORLD_COPY_START_RESTART",
+  "status": "PASS_WITH_INHERITED_CONTENT_DEFECTS",
+  "generated_utc": "2026-11-13T20:05:16.622723+00:00",
+  "source_server_archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "source_world_archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "frozen_receipt_sha256": "cb89b22a12f18578a42ad620b454e5c95a2a7d813579013eebaf56f3efbe002c",
+  "frozen_world_manifest_sha256": "85298e3fb60a1b6b3e521f9ef34a0b24884b9e3597955900d854e8d7f89bec2d",
+  "initial_world_files": 1771,
+  "initial_world_bytes": 5687244986,
+  "copy_sha256_and_independent_readback_verified": true,
+  "offline_v17_sites": 5,
+  "offline_v17_new_regions": 8,
+  "offline_v17_pasted_chunks": 1397,
+  "runtime_core_sha256": "a0f0374d160c99648fb29dbaf5b2c58da8898f3d8758cb61ba7628688da10609",
+  "source_build_report": {
+    "bytes": 32764,
+    "sha256": "1f8d059d657a083f0eec276e42e45a1eeeb5b501f929b7b80ecd95f135b6304f"
+  },
+  "native_report": {
+    "bytes": 10728,
+    "sha256": "93ffa386f247326e6fbb521466acf61358fc3f599133779749f10d6b0a3cafbc"
+  },
+  "native_assertions": 1704,
+  "added_runtime_components": [
+    {
+      "path": "mods/vale-orders-0.3.11.jar",
+      "component": "vale-orders",
+      "mod_id": "valeorders",
+      "bytes": 2045893,
+      "sha256": "a0f0374d160c99648fb29dbaf5b2c58da8898f3d8758cb61ba7628688da10609"
+    },
+    {
+      "path": "mods/vale-encounters-0.3.6.jar",
+      "component": "vale-encounters",
+      "mod_id": "valeencounters",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "path": "mods/Vale-Rack-0.1.2.jar",
+      "component": "vale-rack",
+      "mod_id": "valerack",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "path": "mods/vale-residents-0.2.0.jar",
+      "component": "vale-residents",
+      "mod_id": "valeresidents",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "path": "mods/vale-residents-server-bridge-0.1.0.jar",
+      "component": "vale-residents-server-bridge",
+      "mod_id": "residentserverbridge",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "path": "mods/vale-world-compat-1.0.0.jar",
+      "component": "vale-world-compat",
+      "mod_id": "valeworldcompat",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "path": "mods/Vale-Forge-Damage-Compat-0.1.0.jar",
+      "component": "damage-compat",
+      "mod_id": "valedamagecompat",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "path": "mods/Vale-Server-Bridge-0.2.0.jar",
+      "component": "server-bridge",
+      "mod_id": "valeserverbridge",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "path": "mods/Village-Standards-0.3.1.jar",
+      "component": "village-standards",
+      "mod_id": "hvdungeonpictures",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    }
+  ],
+  "active_mod_jars": 54,
+  "canonicalEquipmentCatalog": false,
+  "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+  "runtime_forge": "14.23.5.2860",
+  "static_script_review": {
+    "region_files": 1311,
+    "chunks": 1249484,
+    "saved_entities_inspected": 669,
+    "saved_tile_entities_inspected": 56275,
+    "distinct_nonempty_script_bodies": 0,
+    "parse_errors": 0,
+    "private_review_sha256": "4b8743dd68ac1b3a4c91ab980402aa1ab8c6871822e32766a3733a5c0fc9e2a5",
+    "scope": "Every saved region entity/tile script field and both global/world NPC export libraries; no execution."
+  },
+  "registry_review": {
+    "registry_count": 11,
+    "missing_saved_names": 0,
+    "registries": [
+      {
+        "registry": "ftbquests:rewards",
+        "source_ids": 13,
+        "runtime_ids": 13,
+        "missing": []
+      },
+      {
+        "registry": "ftbquests:tasks",
+        "source_ids": 17,
+        "runtime_ids": 17,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:biomes",
+        "source_ids": 63,
+        "runtime_ids": 63,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:blocks",
+        "source_ids": 348,
+        "runtime_ids": 357,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:enchantments",
+        "source_ids": 34,
+        "runtime_ids": 34,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:entities",
+        "source_ids": 440,
+        "runtime_ids": 454,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:items",
+        "source_ids": 1397,
+        "runtime_ids": 1954,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:potions",
+        "source_ids": 56,
+        "runtime_ids": 61,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:potiontypes",
+        "source_ids": 40,
+        "runtime_ids": 40,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:soundevents",
+        "source_ids": 723,
+        "runtime_ids": 723,
+        "missing": []
+      },
+      {
+        "registry": "minecraft:villagerprofessions",
+        "source_ids": 6,
+        "runtime_ids": 6,
+        "missing": []
+      }
+    ],
+    "post_runtime_missing_source_names": 0,
+    "mapping_discard_authorized": false
+  },
+  "allowlisted_dependency_files": 128,
+  "dependency_manifest_sha256": "ce1f26288dad8b1769cb7adbd0b6c6f32270720db2998ff1934465e343dbc4ac",
+  "private_player_related_files": 13,
+  "private_player_related_files_byte_unchanged": 13,
+  "frozen_source_files_reverified_unchanged": 1771,
+  "recovery_dependency_source_files_reverified_unchanged": 128,
+  "boots": [
+    {
+      "label": "copied-world-boot-01",
+      "started_utc": "2026-11-13T19:54:28.416806+00:00",
+      "finished_utc": "2026-11-13T19:55:07.075331+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25581,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "a4c914e5a7a33ae0e5bbb5db5abc4aa23a270fd32992d557f2a4b7e90cc9708e",
+      "elapsed_seconds": 38.657,
+      "fml_mods_loaded": 60,
+      "crazycrates_enabled": true,
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2
+      },
+      "classloading_or_heap_failure_markers": 0,
+      "mapping_confirmation_markers": 0,
+      "post_stop_world_file_count": 1772,
+      "post_stop_world_manifest_sha256": "af7ef0a1264389d8379f39541ce878686b96a218bb06b5a46f854ac01235d5fc",
+      "post_stop_snapshot_algorithm": "release_pack.digest(file_rows)"
+    },
+    {
+      "label": "copied-world-boot-02-restart",
+      "started_utc": "2026-11-13T19:55:37.253689+00:00",
+      "finished_utc": "2026-11-13T19:56:12.386558+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25581,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "28a852b77e0a606abaaf20bec0fa2612463cfd64df62d92cce7ae003b735e57a",
+      "elapsed_seconds": 35.141,
+      "fml_mods_loaded": 60,
+      "crazycrates_enabled": true,
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2
+      },
+      "classloading_or_heap_failure_markers": 0,
+      "mapping_confirmation_markers": 0,
+      "post_stop_world_file_count": 1772,
+      "post_stop_world_manifest_sha256": "98cfca34ec313d14582ac85a4536d7ce859ecac2fdb1525856cad294c7fe1ab9",
+      "post_stop_snapshot_algorithm": "release_pack.digest(file_rows)"
+    }
+  ],
+  "normal_client_joined": false,
+  "player_gameplay_exercised": false,
+  "v17_sites_visited_natively": false,
+  "hosted_deployment": false,
+  "candidate_stopped": true,
+  "tests": {
+    "magma_smoke_fixtures": 15,
+    "result": "PASS",
+    "command": "python -m unittest discover -s tests -p test_magma_smoke.py -v"
+  },
+  "limitations": [
+    "Saved-world bootstrap/restart only; no matching client or player interactions.",
+    "Five exact schematic pastes retain offline proof; actual visits, lighting and fluid behavior still require acceptance.",
+    "Known legacy recipe/hook/mailbox defects persist.",
+    "Newer frozen world NPC/player data retained; older server-world NPC data not overlaid.",
+    "Source/native artifacts stay pinned to0311 independently of later mutable builds.",
+    "Private raw worlds, player/NPC data, configs and logs are excluded from Git."
+  ],
+  "source_checkpoint_sha256": {
+    "tools/magma_smoke/__init__.py": "778a4c9d8d6a164ea193d9bf2acd59663fc992faead2fc992c5eeb6ba5845183",
+    "tools/magma_smoke/__main__.py": "41c8176b06a0f07996c60dce0a2313dacf3c59bc9d2f267408d5f47e00cb5276",
+    "tools/magma_smoke/smoke.py": "d03a1bb3811288dee6669a91143f9f8f75c931bb9681b550752e482930fa1bd8",
+    "tools/magma_smoke/world_profile.py": "81b6dd3a1a94f95b3e0a427f39dec1555e02b1bd6ca11097919c12b5e58e2d03",
+    "tests/test_magma_smoke.py": "31c4bfa8d3c67f6283dd51d35ae68b2eaf05ed237ef8fead382a1170de563c5b"
+  }
+}

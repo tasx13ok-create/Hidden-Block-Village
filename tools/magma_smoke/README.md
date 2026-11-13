@@ -1,6 +1,6 @@
 # Disposable Magma bootstrap/restart
 
-This tool stages a **new** private candidate from verified server intake, preserving archived JAR identities. It deliberately excludes recovered worlds, archived credentials/configs, global NPC scripts and exploded loose classes. Only mods explicitly declaring `clientSideOnly` are omitted automatically; every omission is recorded.
+The default flat-world stage creates a **new** private candidate from verified server intake, preserving archived JAR identities. It excludes recovered worlds, archived credentials/configs, global NPC scripts and exploded loose classes. The explicit copied-world profile below adds separately verified world/dependency inputs. Only mods explicitly declaring `clientSideOnly` are omitted automatically; every omission is recorded.
 
 ```powershell
 python -m tools.magma_smoke stage --recovery D:/verified-recovery --candidate D:/new-flat-candidate --dependencies D:/reviewed-dependencies.json
@@ -16,3 +16,13 @@ Boot requires a disposable marker, exact archived Magma SHA, fresh-profile flat-
 The explicit `enhance` action instead creates another new candidate on loopback port **25580**. It accepts `--recovery`, `--candidate`, `--dependencies`, `--source-root`, `--build-report` and `--native-report`. Passing source/native receipts must bind the exact nine `run_native_checks.PRODUCTION` server components and the requested Core 0.3.11 hash. It retains the archived `hvdungeonpictures` JAR under `retained-originals/`, installs tested Village Standards as its sole active registry owner and pins `canonicalEquipmentCatalog=false` for legacy equipment coexistence. The private source/native reports are copied with verified hashes. Before each enhanced boot, the added artifacts, retained original and compatibility setting are verified. `boot` uses the reviewed profile's port; other bind/port changes are rejected.
 
 This tests bootstrap and clean restart only. It does not establish normal-client gameplay, every addon hook, crafting recipes, restored server settings, NPC scripts, copied production worlds, historical loose-class patches or hosted deployment compatibility. See `docs/magma-smoke-current.md` for observed results and remaining defects.
+
+## Explicit copied-world profile
+
+`world-stage` creates another new candidate from a stopped enhanced runtime plus an explicitly **FROZEN**, pinned world receipt. It verifies every source/copy/readback hash and keeps a pending marker that the flat-world boot guard refuses. It takes `--runtime`, `--world-source`, `--frozen-receipt`, `--receipt-sha256`, `--candidate` and optional `--memory 2G|4G`. It uses the runtime's private pinned 0.3.11 JARs/receipts, never the latest mutable build reports.
+
+`world-review --candidate ... --recovery ...` parses every region's entity/tile NBT and the original global/world NPC libraries without execution. Nonempty inline/standalone scripts or parse failures block this supported no-executable-script profile. The private report contains source hashes and may contain script text; keep it outside Git.
+
+`world-seal --candidate ... --recovery ... --script-review ... --runtime-level ... --memory 2G` verifies complete review coverage and zero missing saved registry names against an already booted exact enhanced runtime. It copies only the explicit legacy mod/NPC/Armourer's Workshop/proper CrazyCrates allowlist, rejects nonempty credential-like fields and preserves the newer world's NPC/player data. It excludes archived server/access/network configs and unresolved stray root plugin YAML. Successful sealing enables a distinct reviewed copied-world guard on **127.0.0.1:25581**; it does not bypass or weaken the flat-world guard.
+
+Each copied-world boot checks the sealed input or preceding clean post-stop world snapshot. Every run records a complete private post-stop world hash snapshot. A failed previous boot blocks casual restart and remains preserved; no missing-mapping confirmation/discard command is sent. This profile allows a 4 GB cap when explicitly selected; the observed current two boots used 2 GB. Matching full-pack client acceptance remains separate.

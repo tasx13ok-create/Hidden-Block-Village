@@ -1,7 +1,8 @@
 """Stage a fresh flat-world Magma candidate, then observe bounded hidden boots.
 
-Private receipts/logs stay in the candidate. This never copies recovered worlds,
-credentials, global NPC scripts, archived startup scripts or plugin configs.
+Private receipts/logs stay in the candidate. The default flat-world stage omits
+worlds/private configs; the explicit copied-world profile requires a pinned copy,
+complete static review and registry acceptance. Archived startup scripts never run.
 """
 import argparse
 from datetime import datetime, timezone
@@ -59,7 +60,11 @@ def properties(text):
 
 def validate_profile(candidate):
     candidate = pack.no_links(candidate)
-    require((candidate / MARKER).read_text(encoding='ascii').strip() == 'DISPOSABLE_FLAT_WORLD_ONLY', 'Disposable marker missing')
+    marker = (candidate / MARKER).read_text(encoding='ascii').strip()
+    if marker == 'COPIED_WORLD_REVIEWED_ONLY':
+        from .world_profile import validate_world
+        return validate_world(candidate)
+    require(marker == 'DISPOSABLE_FLAT_WORLD_ONLY', 'Flat profile marker missing, or copied-world review is still pending')
     config = properties((candidate / 'server.properties').read_text(encoding='ascii'))
     enhanced_file = candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json'
     expected = dict(PROPERTIES)
@@ -82,7 +87,7 @@ def validate_profile(candidate):
     return candidate
 
 
-def java_command(java_home, candidate):
+def java_command(java_home, candidate, memory='2G'):
     java_home = pack.no_links(java_home)
     release = properties((java_home / 'release').read_text(encoding='utf-8'))
     require(release.get('JAVA_VERSION', '').strip('"').startswith('1.8.'), 'Windows Java 8 required')
@@ -90,7 +95,10 @@ def java_command(java_home, candidate):
     executable = java_home / 'bin/java.exe'
     with pack.stable_reader(executable) as stream:
         require(stream.read(2) == b'MZ', 'Windows PE Java binary required')
-    return [str(executable), '-Xms512M', '-Xmx2G', '-Djava.awt.headless=true', '-jar', str(candidate / MAGMA), 'nogui']
+    require(memory in ('2G', '4G'), 'Unsupported memory limit')
+    if memory == '4G':
+        require((candidate / MARKER).read_text(encoding='ascii').strip() == 'COPIED_WORLD_REVIEWED_ONLY', '4G requires the reviewed copied-world profile')
+    return [str(executable), '-Xms512M', '-Xmx' + memory, '-Djava.awt.headless=true', '-jar', str(candidate / MAGMA), 'nogui']
 
 
 def copy_verified(source, destination, expected=None, sha1=None):
@@ -248,9 +256,11 @@ def boot(candidate, java_home, timeout=300, label='boot-01'):
     port = int(properties((candidate / 'server.properties').read_text(encoding='ascii'))['server-port'])
     with socket.socket() as probe:
         probe.bind((HOST, port))
-    command = java_command(java_home, candidate)
+    is_world = (candidate / MARKER).read_text(encoding='ascii').strip() == 'COPIED_WORLD_REVIEWED_ONLY'
+    memory = json.loads((candidate / 'PRIVATE-COPIED-WORLD-READY.json').read_text(encoding='utf-8'))['memory_limit'] if is_world else '2G'
+    command = java_command(java_home, candidate, memory)
     result = {'label': label, 'started_utc': utc(), 'java_sha256': pack.hash_file(Path(command[0]))['sha256'],
-              'memory_limit': '2G', 'port': port, 'bind': HOST, 'world': LEVEL, 'command': command,
+              'memory_limit': memory, 'port': port, 'bind': HOST, 'world': 'Naruto.test' if is_world else LEVEL, 'command': command,
               'done': False, 'clean_stop': False, 'exit_code': None, 'forced_termination': False}
     began = time.monotonic()
     proc = None
@@ -291,6 +301,10 @@ def boot(candidate, java_home, timeout=300, label='boot-01'):
         observed = observe_log(text)
         result['done'] = result['done'] or observed['done']
         result['clean_stop'] = result['done'] and observed['stopping'] and observed['saved'] and result['exit_code'] == 0 and not result['forced_termination']
+        if is_world:
+            from .world_profile import record_boot
+            record_boot(candidate, result)
+            result['copied_world_snapshot_recorded'] = True
         result['log_sha256'] = pack.hash_file(log)['sha256'] if log.exists() else None
         result['elapsed_seconds'] = round(time.monotonic() - began, 3)
         result['finished_utc'] = utc()
@@ -313,6 +327,22 @@ def main(argv=None):
     upgrading.add_argument('--source-root', type=Path, required=True)
     upgrading.add_argument('--build-report', type=Path, required=True)
     upgrading.add_argument('--native-report', type=Path, required=True)
+    world = sub.add_parser('world-stage')
+    world.add_argument('--runtime', type=Path, required=True)
+    world.add_argument('--world-source', type=Path, required=True)
+    world.add_argument('--frozen-receipt', type=Path, required=True)
+    world.add_argument('--receipt-sha256', required=True)
+    world.add_argument('--candidate', type=Path, required=True)
+    world.add_argument('--memory', choices=('2G', '4G'), default='2G')
+    reviewing = sub.add_parser('world-review')
+    reviewing.add_argument('--candidate', type=Path, required=True)
+    reviewing.add_argument('--recovery', type=Path, required=True)
+    sealing = sub.add_parser('world-seal')
+    sealing.add_argument('--candidate', type=Path, required=True)
+    sealing.add_argument('--recovery', type=Path, required=True)
+    sealing.add_argument('--script-review', type=Path, required=True)
+    sealing.add_argument('--runtime-level', type=Path, required=True)
+    sealing.add_argument('--memory', choices=('2G', '4G'), default='2G')
     running = sub.add_parser('boot')
     running.add_argument('--candidate', type=Path, required=True)
     running.add_argument('--java-home', type=Path, required=True)
@@ -327,6 +357,21 @@ def main(argv=None):
         result = enhance(args.recovery, args.candidate, json.loads(args.dependencies.read_text(encoding='utf-8')), args.source_root, args.build_report, args.native_report)
         print(json.dumps({'status': result['status'], 'added': len(result['added']), 'removed_from_active': len(result['removed_from_active']), 'port': result['port']}))
         return 0
+    if args.action == 'world-stage':
+        from .world_profile import prepare
+        result = prepare(args.runtime, args.world_source, args.frozen_receipt, args.receipt_sha256, args.candidate, args.memory)
+        print(json.dumps({'status': result['status'], 'world_files': len(result['files']), 'port': result['port']}))
+        return 0
+    if args.action == 'world-seal':
+        from .world_profile import seal
+        result = seal(args.candidate, args.recovery, args.script_review, args.runtime_level, args.memory)
+        print(json.dumps({'status': result['status'], 'missing_saved_registry_names': result['missing_saved_registry_names'], 'dependency_files': result['dependency_file_count']}))
+        return 0
+    if args.action == 'world-review':
+        from .world_profile import review_scripts
+        result = review_scripts(args.candidate, args.recovery)
+        print(json.dumps({'status': result['status'], 'region_files': result['region_files'], 'chunks': result['chunks'], 'distinct_script_bodies': len(result['script_bodies']), 'parse_errors': len(result['parse_errors'])}))
+        return 0 if result['status'] == 'NO_EXECUTABLE_SCRIPT_BODY_FOUND' else 2
     require(1 <= args.timeout <= 600, 'Boot timeout outside 1..600 seconds')
     result = boot(args.candidate, args.java_home, args.timeout, args.label)
     return 0 if result['clean_stop'] else 2

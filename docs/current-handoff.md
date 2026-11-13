@@ -2,6 +2,14 @@
 
 Updated: 2026-11-13 UTC.
 
+## Copied v17 Magma world now boots and restarts
+
+The separate private `magma-v17-copied-world-01` candidate passed two actual boot/Done/save/exit-0 runs on loopback25581, in38.657s and35.141s, with pinned Core0.3.11, all nine verified enhancements, archived Magma/Forge2860 and reviewed original NPC/Armourers/CrazyCrates dependencies. Both runs loaded60FML identities and enabled CrazyCrates. All13 copied player-related files stayed byte-identical; all1771 frozen worldsource files and128 dependency sourcefiles remain unchanged. No missing-mapping, unknown-entity, linkage orOOM markers occurred. The inherited invalid recipe ERROR remains. The runtime is now stopped. No client joined and no native dungeon route/water/lighting or hosted acceptance is claimed. Read `release/evidence/magma-v17-copied-world-20261113.json` and `docs/magma-smoke-current.md`.
+
+The copied-world guard has15passing fixtures. Static review parsed all1311regions/1249484chunks without script bodies or parseerrors and checked savednames across11registries. Five original v17 placements have their separate frozen offline receipt in `release/evidence/v17-candidate-20261113.json`. This supersedes earlier statements that the copied-world candidate was unbooted.
+
+Claude's original hand-technique VFX through `e837307e1d40b6a74733d1b303d7f48b8c8bcf0e` is being integrated as Core0.3.12 in the working tree. Its separate mastered-character playground is prepared; new native/network checks remain in progress. Physical Escape stopped desktop control; no new visible VFX acceptance is claimed. The full sprint stays active; deadline2026-11-14 13:32:41UTC.
+
 ## Current Core 0.3.11 and integrated Fable checkpoint
 
 Core 0.3.11 implements five distinct starter nature techniques, six accepted-contact melee chains, an early optional Lightning Chakra Armor kit/trial, timed contact counter, physical burst step, earned two-phase Guillotine Drop, owner/run-bound challengers and bounded local villager reactions. Registry/save IDs remain stable; Earth uses a new no-drop temporary cover block and preserves later terrain/tile edits. Read `docs/lightning-kit-0311.md`, `docs/nature-moves-current.md` and `docs/melee-current.md`. This is a playable enhancement checkpoint, not the full requested Naruto game.

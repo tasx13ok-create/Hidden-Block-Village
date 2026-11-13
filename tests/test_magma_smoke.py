@@ -12,6 +12,7 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.server_intake.intake import recover
 from tools.magma_smoke import smoke
+from tools.magma_smoke import world_profile as world
 
 
 def jar(entries):
@@ -33,7 +34,7 @@ class MagmaSmokeTests(unittest.TestCase):
         self.pin.start()
         self.addCleanup(self.pin.stop)
 
-    def fixture_recovery(self):
+    def fixture_recovery(self, include_script=True):
         source = self.root / 'server.zip'
         with zipfile.ZipFile(source, 'w') as archive:
             for name, data in ((smoke.MAGMA, self.magma), ('mods/owner.jar', jar([])), ('mods/client.jar', jar([])),
@@ -42,7 +43,8 @@ class MagmaSmokeTests(unittest.TestCase):
                                ('Naruto.test/level.dat', b'private-world'), ('customnpcs/scripts/unsafe.js', b'throw dangerous()'),
                                ('plugins/messages.yml', b'private config a'), ('plugins/Messages.yml', b'private config b'),
                                ('org/bukkit/Bukkit.class', b'fixture class metadata')):
-                archive.writestr(name, data)
+                if include_script or name != 'customnpcs/scripts/unsafe.js':
+                    archive.writestr(name, data)
         root = self.root / 'recovery'
         recover(source, root)
         inventory = {'jars': [{'path': 'mods/owner.jar', 'category': 'mods', 'declared_client_only': False},
@@ -188,6 +190,94 @@ class MagmaSmokeTests(unittest.TestCase):
         self.assertEqual(smoke.observe_log(text), {'done': True, 'stopping': True, 'saved': True, 'fatal': False})
         self.assertTrue(smoke.observe_log('Encountered an unexpected exception')['fatal'])
         self.assertFalse(smoke.observe_log('Loading mods')['done'])
+
+    def fixture_frozen_world(self, name='frozen', ids=('minecraft:air',)):
+        source = self.root / name
+        source.mkdir()
+        n = world.nbt
+        rows = [n.compound({'K': n.Tag(n.STRING, identity), 'V': n.Tag(n.INT, index)}) for index, identity in enumerate(ids)]
+        root = n.compound({'FML': n.compound({'Registries': n.compound({'minecraft:blocks': n.compound({'ids': n.Tag(n.LIST, rows, n.COMPOUND)})})}), 'Data': n.compound()})
+        (source / 'level.dat').write_bytes(n.dumps(root))
+        files = world.tree_rows(source)
+        receipt = self.root / (name + '.frozen.json')
+        value = {'status': 'FROZEN_FOR_READ_ONLY_COPY', 'world_path': str(source), 'files': files, 'file_count': len(files), 'bytes': sum(row['bytes'] for row in files),
+                 'manifest_sha256': hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()}
+        receipt.write_text(json.dumps(value))
+        return source, receipt, smoke.pack.hash_file(receipt)['sha256']
+
+    def test_frozen_receipt_and_missing_registry_checks_are_fail_closed(self):
+        source, receipt, identity = self.fixture_frozen_world(ids=('minecraft:air', 'legacy:required'))
+        with self.assertRaises(ValueError):
+            world.frozen_receipt(receipt, '0' * 64)
+        runtime, unused, ignored = self.fixture_frozen_world('runtime-world')
+        review = world.registry_review(source / 'level.dat', runtime / 'level.dat')
+        self.assertEqual(review['missing_saved_names'], 1)
+        self.assertFalse(review['mapping_discard_authorized'])
+        self.assertEqual(review['registries'][0]['missing'], ['legacy:required'])
+
+    def test_copied_world_stays_unbootable_until_script_registry_and_source_seal(self):
+        recovery = self.fixture_recovery(include_script=False)
+        root, build, qa, core = self.fixture_build()
+        runtime = self.root / 'runtime'
+        source, frozen, identity = self.fixture_frozen_world()
+        with patch.object(smoke, 'CORE_SHA256', core):
+            smoke.enhance(recovery, runtime, [], root, build, qa)
+            candidate = self.root / 'copied-world'
+            result = world.prepare(runtime, source, frozen, identity, candidate)
+            self.assertEqual(result['status'], 'COPIED_VERIFIED_PENDING_STATIC_REVIEW')
+            with self.assertRaises(ValueError):
+                smoke.validate_profile(candidate)
+            review = world.review_scripts(candidate, recovery)
+            self.assertEqual(review['status'], 'NO_EXECUTABLE_SCRIPT_BODY_FOUND')
+            sealed = world.seal(candidate, recovery, candidate / world.REVIEW, source / 'level.dat')
+            self.assertEqual(sealed['missing_saved_registry_names'], 0)
+            self.assertEqual(smoke.validate_profile(candidate), candidate)
+            (candidate / world.LEVEL / 'level.dat').write_bytes(b'changed-world')
+            with self.assertRaises(ValueError):
+                smoke.validate_profile(candidate)
+            self.assertEqual(smoke.pack.hash_file(source / 'level.dat')['sha256'], result['files'][0]['sha256'])
+
+    def test_original_nonempty_script_review_blocks_native_world_seal(self):
+        recovery = self.fixture_recovery()
+        root, build, qa, core = self.fixture_build()
+        runtime = self.root / 'runtime'
+        source, frozen, identity = self.fixture_frozen_world()
+        with patch.object(smoke, 'CORE_SHA256', core):
+            smoke.enhance(recovery, runtime, [], root, build, qa)
+            candidate = self.root / 'copied-world'
+            world.prepare(runtime, source, frozen, identity, candidate)
+            review = world.review_scripts(candidate, recovery)
+            self.assertEqual(review['status'], 'REVIEW_REQUIRED')
+            self.assertEqual(len(review['script_bodies']), 1)
+            with self.assertRaises(ValueError):
+                world.seal(candidate, recovery, candidate / world.REVIEW, source / 'level.dat')
+            self.assertEqual((candidate / smoke.MARKER).read_text().strip(), world.PENDING)
+
+    def test_private_dependency_secret_fields_are_reported_without_values(self):
+        flags = world.credential_flags(b'S:apiToken=private-test-secret\nS:password=""\nB:useToken=false\n')
+        self.assertEqual(len(flags), 1)
+        self.assertNotIn('private-test-secret', json.dumps(flags))
+
+    def test_inline_placed_tile_script_is_found_without_execution(self):
+        recovery = self.fixture_recovery(include_script=False)
+        candidate = self.root / 'review-only'
+        (candidate / world.LEVEL / 'region').mkdir(parents=True)
+        (candidate / smoke.MARKER).write_text(world.PENDING + '\n')
+        n = world.nbt
+        tile = n.compound({'id': n.Tag(n.STRING, 'customnpcs:scripted'), 'Scripts': n.Tag(n.LIST, [n.compound({'Script': n.Tag(n.STRING, 'throw never_execute()')})], n.COMPOUND)})
+        chunk = n.compound({'Level': n.compound({'Entities': n.Tag(n.LIST, [], n.COMPOUND), 'TileEntities': n.Tag(n.LIST, [tile], n.COMPOUND)})})
+        path = candidate / world.LEVEL / 'region/r.0.0.mca'
+        region = world.anvil.Region(path)
+        region.store_chunk(0, '', chunk)
+        path.write_bytes(region.to_bytes())
+        rows = world.tree_rows(candidate / world.LEVEL)
+        (candidate / world.PREP).write_text(json.dumps({'files': rows, 'source_manifest_sha256': 'fixture'}))
+        review = world.review_scripts(candidate, recovery)
+        self.assertEqual(review['region_files'], 1)
+        self.assertEqual(review['chunks'], 1)
+        self.assertEqual(review['status'], 'REVIEW_REQUIRED')
+        self.assertEqual(len(review['script_bodies']), 1)
+        self.assertFalse(review['scripts_executed'])
 
 
 if __name__ == '__main__':

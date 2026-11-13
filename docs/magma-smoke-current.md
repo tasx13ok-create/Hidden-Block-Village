@@ -1,6 +1,6 @@
 # Actual Magma baseline startup and restart — November 13, 2026
 
-The exact archived Magma JAR **started and cleanly restarted two separate disposable flat-world candidates**: an original-roster baseline and a Vale Core 0.3.11 enhancement. All four runs reached `Done`, saved chunks and exited `0` without forced termination. This advances the earlier static intake checkpoint; it does not establish recovered-world migration or client gameplay acceptance.
+The exact archived Magma JAR **started and cleanly restarted three separate candidates**: an original-roster flat baseline, a Vale Core 0.3.11 flat enhancement and a verified copy of the frozen v17 world. All six runs reached `Done`, saved chunks and exited `0` without forced termination. The copied-world result remains separate from matching-client gameplay and native visits to all five dungeon sites.
 
 ## Observed runs
 
@@ -61,7 +61,7 @@ No runtime failure was hidden by replacing Magma or removing registry owners. Or
 
 ## Tools, tests and next step
 
-`tools/magma_smoke/` implements new-only staging, exact source/dependency checks, fixed local settings, Windows Java 8 checks and hidden bounded boot/stop observation. **Ten fixture tests pass**, including the original eight baseline fixtures plus enhancement receipt binding, duplicate-owner retention and legacy catalog safeguards. They cover source preservation, registry-owner retention, original world/script/config omission, changed-input failure receipts, dependency pins/overwrite protection, network/world profile rejection, Java/memory limits and endpoint allowlisting. Unit tests do not execute a server; the runs in this document are separate real runtime evidence.
+`tools/magma_smoke/` implements new-only staging, exact source/dependency checks, fixed local settings, Windows Java 8 checks and hidden bounded boot/stop observation. The original ten flat/enhanced fixtures passed at their checkpoint; the current suite has **15 passing fixtures**, including copied-world guards described below. They cover source preservation, registry-owner retention, original world/script/config omission, changed-input failure receipts, dependency pins/overwrite protection, network/world profile rejection, Java/memory limits and endpoint allowlisting. Unit tests do not execute a server; the runs in this document are separate real runtime evidence.
 
 The next gate is a **new copied-world candidate**, not modifying or relaunching the verified recovery in place. Preserve all original registry owners, select the intended config/loose-class profile explicitly, retain private NPC/quest/assets dependencies and resolve the known recipe/hook/Fluidlogged issues where their behavior matters. Then perform first copied-world boot, missing-mapping checks, clean stop/restart and matching normal-client acceptance. Vale-enhanced artifacts need their own exact assembly manifest and gameplay evidence. Neither this flat-world smoke nor its clean restart authorizes production migration or hosted deployment claims.
 
@@ -81,3 +81,28 @@ The nine additions are Vale Orders, Encounters, Rack, Residents, Residents Serve
 | `enhanced-boot-02-restart` | Same-world restart; 60 identities; CrazyCrates enabled; Done/save/exit 0 | 28.829 s |
 
 No new Core/CustomNPCs/SpringAddon/Fluidlogged classloading crash or duplicate-registry-owner failure occurred during bootstrap/restart. The baseline's rejected legacy recipe and mailbox/hook warnings persist. This is coexistence **startup/restart** acceptance; no client joined, no jutsu/mission/NPC interactions were exercised, no recovered world or original NPC scripts were copied, and no hosted deployment occurred. Both candidates remain stopped and preserved.
+
+## Frozen v17 copied-world acceptance
+
+A third, separate candidate at `D:/HiddenBlockVillage-Sprint-20261113/magma-v17-copied-world-01/` now passed actual saved-world startup and restart on **127.0.0.1:25581**, using the same pinned Core 0.3.11/nine-component/54-active-JAR Magma profile, Java 8 and **2 GB** heap. This candidate is stopped. No client joined it, and no hosted deployment occurred.
+
+Copying began only after the world owner explicitly marked `D:/HiddenBlockVillage-Sprint-20261113/v17-world-candidate-01/world` **FROZEN**. Its private receipt SHA-256 is `cb89b22a12f18578a42ad620b454e5c95a2a7d813579013eebaf56f3efbe002c`; tree manifest `85298e3fb60a1b6b3e521f9ef34a0b24884b9e3597955900d854e8d7f89bec2d`. All **1,771 files / 5,687,244,986 bytes** were copied and independently read back against the pinned file hashes. The source has five exact v17 template pastes in eight new regions/1,397 chunks, with no additional terrain/doorway edits. These paste facts remain offline evidence; native visits to the five distant sites have not occurred.
+
+Before boot, all **1,311 region files / 1,249,484 chunks** were parsed read-only to inspect saved entity/tile script fields. The pass inspected 669 saved entities and 56,275 tile entities, plus the original world/global NPC libraries. It found **zero nonempty executable script bodies and zero parse errors**. Private script/source details remain outside Git. The script absence profile fails closed for nonempty scripts; it does not claim arbitrary JavaScript has been audited or is safe to execute.
+
+The source `level.dat` saved registry-name sets were compared with the exact already booted enhanced runtime. **All eleven registries have zero missing saved names**. In particular, all 348 saved blocks, 1,397 items and 440 entities remain registered; the enhanced runtime has 357 blocks, 1,954 items and 454 entities. This is a name-presence/migration preflight, not proof that every old item's behavior or render is equivalent. No removal, discard or `/fml confirm` command was issued.
+
+**128 original dependency/config files** were copied through an explicit allowlist with byte/readback verification and credential-field review: global CustomNPCs libraries/assets, Armourer's Workshop library/config, required legacy mod configs, proper CrazyCrates data/configs and relevant shared content. The newer frozen world's CustomNPCs, skin database and private player data stay intact; the older server archive's world-level NPC data was not overlaid. Archived access/network/server properties and unresolved stray root plugin collision files remain excluded. The compatibility setting `canonicalEquipmentCatalog=false` remains in force.
+
+| Copied-world run | Result | Elapsed including post-stop snapshot |
+| --- | --- | ---: |
+| `copied-world-boot-01` | 60 FML identities; CrazyCrates enabled; actual `Naruto.test` Done/save/exit 0 | 38.657 s |
+| `copied-world-boot-02-restart` | Same saved world restarted; 60 identities; Done/save/exit 0 | 35.141 s |
+
+No missing-mapping prompt, unknown-entity, classlinkage or out-of-memory marker occurred. The inherited invalid Killer Bi sword recipe remains an ERROR; the known addon-hook/mailbox warnings are not erased by this result. Residents reported three provisioned guides and three saved role slots on the first boot; that provisioning message did not recur on restart. This is a logged bootstrap observation, not a player interaction or dialogue acceptance claim.
+
+After both boots, all **13 copied player-related files** remain byte-identical. All **1,771 frozen source files** and **128 recovery dependency source files** were rehashed unchanged. Runtime writes are confined to the separate candidate; complete private post-stop world snapshots are retained for both runs. Source/native receipts and JARs remain pinned to 0.3.11 even while the main source moves to later versions.
+
+The distinct copied-world guard requires its FROZEN receipt, exact verified copy, complete script review, zero missing registry names, loopback/offline/query/RCON settings, the nine pinned artifacts and reviewed global NPC data. It verifies the initial or last clean world snapshot before each boot. Failed boots remain preserved and cannot be silently resumed through a mapping discard. Current **15 synthetic fixtures pass**, including inline scripted-tile detection without execution, pending-world rejection, source-pin/missing-registry rejection, credential redaction and changed-world protection.
+
+Safe aggregate evidence: `release/evidence/magma-v17-copied-world-20261113.json`. The next gate is a matching full 58-JAR Core 0.3.11 client using this profile's legacy catalog setting, then actual player/NPC/jutsu/dungeon visits, relog/restart and measured native lighting/water behavior at all five sites. The stopped candidate must not be confused with the separate newer-version tryout client/server.

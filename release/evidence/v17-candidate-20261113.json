@@ -1,0 +1,774 @@
+{
+  "schema": 1,
+  "scope": "OFFLINE_EXACT_V17_TEMPLATES_IN_INDEPENDENT_FROZEN_WORLD_COPY",
+  "status": "COPIED_PLACED_VERIFIED_ROLLBACK_REAPPLIED_NATIVE_PENDING",
+  "raw_world_player_npc_script_or_tile_payloads_published": false,
+  "native_loaded": false,
+  "visually_verified": false,
+  "deployed": false,
+  "source_archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "copy": {
+    "files": 1761,
+    "bytes": 5681387636,
+    "zip_crc_and_sha256_verified": true,
+    "manifest_sha256": "dae3af409ceafbb551364ec73ae72bbb8c8d85b259f6d1c55619c3b4d7d8138a"
+  },
+  "preservation": {
+    "source_file_inventory_unchanged": true,
+    "source_file_sha256_verified": 1761,
+    "all_original_candidate_file_sha256_preserved": 1761,
+    "all_five_original_schematic_hashes_unchanged": true,
+    "original_world_native_loaded": false,
+    "candidate_native_loaded": false,
+    "raw_world_or_player_payload_published": false
+  },
+  "frozen_snapshot": {
+    "files": 1771,
+    "bytes": 5687244986,
+    "manifest_sha256": "85298e3fb60a1b6b3e521f9ef34a0b24884b9e3597955900d854e8d7f89bec2d",
+    "private_receipt_sha256": "cb89b22a12f18578a42ad620b454e5c95a2a7d813579013eebaf56f3efbe002c",
+    "frozen_utc": "2026-11-13T19:34:34Z",
+    "manifest_digest_recipe": "sha256(json.dumps(private_receipt.files, sort_keys=True).encode(utf-8)); default JSON separators, stored list order, no trailing newline"
+  },
+  "placement": {
+    "dimension": "overworld",
+    "sites": 5,
+    "new_region_files": 8,
+    "new_chunks": 1397,
+    "all_target_region_files_previously_absent": true,
+    "original_template_edits_applied": 0,
+    "doorway_proposals_applied": 0,
+    "story_gate_assignments": 0,
+    "exact_block_metadata_samples_verified": 1120,
+    "full_translated_tile_payloads_verified": 144
+  },
+  "sites": [
+    {
+      "dungeon": "sakura",
+      "schematic": "sakura_v17.schematic",
+      "schematic_sha256": "5f0eb66c2998b156a8fcc2af503e16bcedbe8ee446d503e1d04a76b2f2e46a24",
+      "dimension": "overworld",
+      "world_min": [
+        40000,
+        10,
+        40000
+      ],
+      "world_max": [
+        40287,
+        226,
+        40287
+      ],
+      "dimensions": [
+        288,
+        217,
+        288
+      ],
+      "target_regions_previously_absent": true,
+      "region_coordinates": [
+        [
+          78,
+          78
+        ]
+      ],
+      "paste_number": 1,
+      "totals": {
+        "cells_changed": 2473005,
+        "tiles_removed": 0,
+        "tiles_added": 23,
+        "ticks_dropped": 0,
+        "entities_inside_left_untouched": 0,
+        "chunks_created": 324
+      },
+      "verification": {
+        "chunks_verified": 324,
+        "region_files_verified": 1,
+        "all_nonair_histogram_verified": true,
+        "nonair_blocks": 2473005,
+        "block_metadata_samples_verified": 222,
+        "sample_sha256": "658fab0668fabd7de4387b804aebe3df8a31f6ef61952205da1f3dc18a44d41a",
+        "all_translated_tile_payloads_verified": 23,
+        "tile_payload_aggregate_sha256": "86d27621afae4ac04f908a8caed60f118c842849d17f366056a73e71bf489b87",
+        "real_water_blocks_preserved": 822,
+        "chunk_geometry_sha256": "97e56d71f4ca573326a70c2010cda9adea52470b9dbd6b92a2a43ee3647b9d69"
+      },
+      "exact_original_template": true,
+      "doorway_or_terrain_edits_applied": 0,
+      "candidate_anchors": {
+        "status": "GEOMETRY_ONLY_UNVERIFIED_VISUALLY_AND_NATIVELY",
+        "entry": {
+          "local_feet_cell": [
+            3,
+            27,
+            143
+          ],
+          "world_feet_cell": [
+            40003,
+            37,
+            40143
+          ],
+          "teleport_centre": [
+            40003.5,
+            37,
+            40143.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "arena": {
+          "local_feet_cell": [
+            70,
+            27,
+            14
+          ],
+          "world_feet_cell": [
+            40070,
+            37,
+            40014
+          ],
+          "teleport_centre": [
+            40070.5,
+            37,
+            40014.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "clear_square_width": 29,
+          "local_square_bounds": [
+            [
+              56,
+              27,
+              0
+            ],
+            [
+              84,
+              27,
+              28
+            ]
+          ],
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "derivation": "clear 3x3 inset landing reachable from largest safe boundary floor cluster",
+        "clearance_scope": "four-air preferred; Nether uses measured three-air court because no12x12 four-air square exists",
+        "initial_geometry_seed": [
+          0,
+          27,
+          143
+        ],
+        "forward_and_return_graph_reachable": true,
+        "shortest_route_edges": 196,
+        "route_uses_swim": false,
+        "route_uses_climb": false,
+        "reached_nodes_from_explicit_entry": 81975,
+        "containers_total": 4,
+        "containers_unreachable_from_entry": 4,
+        "story_gate_positions_assigned": 0,
+        "story_gate_semantics_inferred": false
+      },
+      "water_preservation": {
+        "block_count": 822,
+        "local_y_range": [
+          96,
+          99
+        ],
+        "world_y_range": [
+          106,
+          109
+        ],
+        "boundary_water_cells": 0,
+        "native_fluid_behavior_verified": false
+      }
+    },
+    {
+      "dungeon": "cloud",
+      "schematic": "cloud_v17.schematic",
+      "schematic_sha256": "a59a1b4e0a56c35f832cbac0404de76a6bae73f2bc0825476438989b145a70fa",
+      "dimension": "overworld",
+      "world_min": [
+        42000,
+        20,
+        40000
+      ],
+      "world_max": [
+        42287,
+        228,
+        40287
+      ],
+      "dimensions": [
+        288,
+        209,
+        288
+      ],
+      "target_regions_previously_absent": true,
+      "region_coordinates": [
+        [
+          82,
+          78
+        ]
+      ],
+      "paste_number": 2,
+      "totals": {
+        "cells_changed": 2437607,
+        "tiles_removed": 0,
+        "tiles_added": 23,
+        "ticks_dropped": 0,
+        "entities_inside_left_untouched": 0,
+        "chunks_created": 324
+      },
+      "verification": {
+        "chunks_verified": 324,
+        "region_files_verified": 1,
+        "all_nonair_histogram_verified": true,
+        "nonair_blocks": 2437607,
+        "block_metadata_samples_verified": 216,
+        "sample_sha256": "4136a8101acace5a52e1bc2029ba30fdbc6ec74b24fcdd67831c49a4ce9b6dc9",
+        "all_translated_tile_payloads_verified": 23,
+        "tile_payload_aggregate_sha256": "ad88552cd860d1e92a3c443c76e9eebf5ebf41bf8f433ef7a688516e8c3da826",
+        "real_water_blocks_preserved": 0,
+        "chunk_geometry_sha256": "9cf8d8118e12f39a245b6421ecd205963210cb2134cf1d5faf541ed2e88577c6"
+      },
+      "exact_original_template": true,
+      "doorway_or_terrain_edits_applied": 0,
+      "candidate_anchors": {
+        "status": "GEOMETRY_ONLY_UNVERIFIED_VISUALLY_AND_NATIVELY",
+        "entry": {
+          "local_feet_cell": [
+            3,
+            27,
+            143
+          ],
+          "world_feet_cell": [
+            42003,
+            47,
+            40143
+          ],
+          "teleport_centre": [
+            42003.5,
+            47,
+            40143.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "arena": {
+          "local_feet_cell": [
+            70,
+            27,
+            14
+          ],
+          "world_feet_cell": [
+            42070,
+            47,
+            40014
+          ],
+          "teleport_centre": [
+            42070.5,
+            47,
+            40014.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "clear_square_width": 29,
+          "local_square_bounds": [
+            [
+              56,
+              27,
+              0
+            ],
+            [
+              84,
+              27,
+              28
+            ]
+          ],
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "derivation": "clear 3x3 inset landing reachable from largest safe boundary floor cluster",
+        "clearance_scope": "four-air preferred; Nether uses measured three-air court because no12x12 four-air square exists",
+        "initial_geometry_seed": [
+          0,
+          27,
+          143
+        ],
+        "forward_and_return_graph_reachable": true,
+        "shortest_route_edges": 196,
+        "route_uses_swim": false,
+        "route_uses_climb": false,
+        "reached_nodes_from_explicit_entry": 81902,
+        "containers_total": 6,
+        "containers_unreachable_from_entry": 6,
+        "story_gate_positions_assigned": 0,
+        "story_gate_semantics_inferred": false
+      },
+      "water_preservation": {
+        "block_count": 0,
+        "local_y_range": null,
+        "world_y_range": null,
+        "boundary_water_cells": 0,
+        "native_fluid_behavior_verified": false
+      }
+    },
+    {
+      "dungeon": "sand",
+      "schematic": "sand_v17.schematic",
+      "schematic_sha256": "7ea2cb4fd47c8d73305ab9713984b280f776cb791f5f04f492bc25d2de9015ec",
+      "dimension": "overworld",
+      "world_min": [
+        44000,
+        40,
+        40000
+      ],
+      "world_max": [
+        44287,
+        192,
+        40287
+      ],
+      "dimensions": [
+        288,
+        153,
+        288
+      ],
+      "target_regions_previously_absent": true,
+      "region_coordinates": [
+        [
+          85,
+          78
+        ],
+        [
+          86,
+          78
+        ]
+      ],
+      "paste_number": 3,
+      "totals": {
+        "cells_changed": 2445592,
+        "tiles_removed": 0,
+        "tiles_added": 41,
+        "ticks_dropped": 0,
+        "entities_inside_left_untouched": 0,
+        "chunks_created": 324
+      },
+      "verification": {
+        "chunks_verified": 324,
+        "region_files_verified": 2,
+        "all_nonair_histogram_verified": true,
+        "nonair_blocks": 2445592,
+        "block_metadata_samples_verified": 237,
+        "sample_sha256": "f378c0d7765f6bf73cd72b5f2a5cf74412cc36e787e3485a3b7d83bf49115ba4",
+        "all_translated_tile_payloads_verified": 41,
+        "tile_payload_aggregate_sha256": "fa79bf591c6fcffc3b2f91ab870689245b65b1c77e327b6c037641c597709159",
+        "real_water_blocks_preserved": 708,
+        "chunk_geometry_sha256": "bab322ce691103ebdc8427cf0963c2ed164c7262dddb36313838e1e0719d536e"
+      },
+      "exact_original_template": true,
+      "doorway_or_terrain_edits_applied": 0,
+      "candidate_anchors": {
+        "status": "GEOMETRY_ONLY_UNVERIFIED_VISUALLY_AND_NATIVELY",
+        "entry": {
+          "local_feet_cell": [
+            3,
+            27,
+            143
+          ],
+          "world_feet_cell": [
+            44003,
+            67,
+            40143
+          ],
+          "teleport_centre": [
+            44003.5,
+            67,
+            40143.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "arena": {
+          "local_feet_cell": [
+            70,
+            27,
+            14
+          ],
+          "world_feet_cell": [
+            44070,
+            67,
+            40014
+          ],
+          "teleport_centre": [
+            44070.5,
+            67,
+            40014.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "clear_square_width": 29,
+          "local_square_bounds": [
+            [
+              56,
+              27,
+              0
+            ],
+            [
+              84,
+              27,
+              28
+            ]
+          ],
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "derivation": "clear 3x3 inset landing reachable from largest safe boundary floor cluster",
+        "clearance_scope": "four-air preferred; Nether uses measured three-air court because no12x12 four-air square exists",
+        "initial_geometry_seed": [
+          0,
+          27,
+          143
+        ],
+        "forward_and_return_graph_reachable": true,
+        "shortest_route_edges": 196,
+        "route_uses_swim": false,
+        "route_uses_climb": false,
+        "reached_nodes_from_explicit_entry": 82064,
+        "containers_total": 13,
+        "containers_unreachable_from_entry": 13,
+        "story_gate_positions_assigned": 0,
+        "story_gate_semantics_inferred": false
+      },
+      "water_preservation": {
+        "block_count": 708,
+        "local_y_range": [
+          73,
+          107
+        ],
+        "world_y_range": [
+          113,
+          147
+        ],
+        "boundary_water_cells": 0,
+        "native_fluid_behavior_verified": false
+      }
+    },
+    {
+      "dungeon": "mist",
+      "schematic": "mist_v17.schematic",
+      "schematic_sha256": "40d6fbdbaf2d2c4b858e2bd2ea840ff5b2c32e373deaad255c928fe0edcdbe51",
+      "dimension": "overworld",
+      "world_min": [
+        46000,
+        40,
+        40000
+      ],
+      "world_max": [
+        46199,
+        187,
+        40199
+      ],
+      "dimensions": [
+        200,
+        148,
+        200
+      ],
+      "target_regions_previously_absent": true,
+      "region_coordinates": [
+        [
+          89,
+          78
+        ],
+        [
+          90,
+          78
+        ]
+      ],
+      "paste_number": 4,
+      "totals": {
+        "cells_changed": 775257,
+        "tiles_removed": 0,
+        "tiles_added": 28,
+        "ticks_dropped": 0,
+        "entities_inside_left_untouched": 0,
+        "chunks_created": 169
+      },
+      "verification": {
+        "chunks_verified": 169,
+        "region_files_verified": 2,
+        "all_nonair_histogram_verified": true,
+        "nonair_blocks": 775257,
+        "block_metadata_samples_verified": 221,
+        "sample_sha256": "99320c0da88b375ef9a80630d97e83ec40d4855c895fa4c20bcef7667d35f354",
+        "all_translated_tile_payloads_verified": 28,
+        "tile_payload_aggregate_sha256": "a712c02308e92a525034fd19bd8f09d04ba23a6f8001674001197e2299653a21",
+        "real_water_blocks_preserved": 427086,
+        "chunk_geometry_sha256": "37b1c500b49325047df862a146066f4011b29020751324d8a984817ed1efc9c0"
+      },
+      "exact_original_template": true,
+      "doorway_or_terrain_edits_applied": 0,
+      "candidate_anchors": {
+        "status": "GEOMETRY_ONLY_UNVERIFIED_VISUALLY_AND_NATIVELY",
+        "entry": {
+          "local_feet_cell": [
+            96,
+            21,
+            3
+          ],
+          "world_feet_cell": [
+            46096,
+            61,
+            40003
+          ],
+          "teleport_centre": [
+            46096.5,
+            61,
+            40003.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "arena": {
+          "local_feet_cell": [
+            105,
+            21,
+            180
+          ],
+          "world_feet_cell": [
+            46105,
+            61,
+            40180
+          ],
+          "teleport_centre": [
+            46105.5,
+            61,
+            40180.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 4,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "clear_square_width": 16,
+          "local_square_bounds": [
+            [
+              98,
+              21,
+              173
+            ],
+            [
+              113,
+              21,
+              188
+            ]
+          ],
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "derivation": "clear 3x3 inset landing reachable from largest safe boundary floor cluster",
+        "clearance_scope": "four-air preferred; Nether uses measured three-air court because no12x12 four-air square exists",
+        "initial_geometry_seed": [
+          96,
+          21,
+          0
+        ],
+        "forward_and_return_graph_reachable": true,
+        "shortest_route_edges": 268,
+        "route_uses_swim": false,
+        "route_uses_climb": false,
+        "reached_nodes_from_explicit_entry": 436444,
+        "containers_total": 5,
+        "containers_unreachable_from_entry": 4,
+        "story_gate_positions_assigned": 0,
+        "story_gate_semantics_inferred": false
+      },
+      "water_preservation": {
+        "block_count": 427086,
+        "local_y_range": [
+          5,
+          16
+        ],
+        "world_y_range": [
+          45,
+          56
+        ],
+        "boundary_water_cells": 0,
+        "native_fluid_behavior_verified": false
+      }
+    },
+    {
+      "dungeon": "nether",
+      "schematic": "nether_v17.schematic",
+      "schematic_sha256": "55867e4fb7774ef40bcf0f658be30eb9daf2786f3b3c49af1be0d177a9177f72",
+      "dimension": "overworld",
+      "world_min": [
+        48000,
+        40,
+        40000
+      ],
+      "world_max": [
+        48255,
+        165,
+        40255
+      ],
+      "dimensions": [
+        256,
+        126,
+        256
+      ],
+      "target_regions_previously_absent": true,
+      "region_coordinates": [
+        [
+          93,
+          78
+        ],
+        [
+          94,
+          78
+        ]
+      ],
+      "paste_number": 5,
+      "totals": {
+        "cells_changed": 410756,
+        "tiles_removed": 0,
+        "tiles_added": 29,
+        "ticks_dropped": 0,
+        "entities_inside_left_untouched": 0,
+        "chunks_created": 256
+      },
+      "verification": {
+        "chunks_verified": 256,
+        "region_files_verified": 2,
+        "all_nonair_histogram_verified": true,
+        "nonair_blocks": 410756,
+        "block_metadata_samples_verified": 224,
+        "sample_sha256": "9c1b6437705a30d40830cf0aacdafb5353757153f6e13893a65c6bbbce25ae64",
+        "all_translated_tile_payloads_verified": 29,
+        "tile_payload_aggregate_sha256": "ed2efbb9dc89ab858a13b83817bb8b7119087c3f8876c5c08e81044e3ce14be0",
+        "real_water_blocks_preserved": 0,
+        "chunk_geometry_sha256": "f5f8edad5b47d404e119f99be6f51eda066830aa9b9dfa6e3537f3d601d44f81"
+      },
+      "exact_original_template": true,
+      "doorway_or_terrain_edits_applied": 0,
+      "candidate_anchors": {
+        "status": "GEOMETRY_ONLY_UNVERIFIED_VISUALLY_AND_NATIVELY",
+        "entry": {
+          "local_feet_cell": [
+            68,
+            61,
+            73
+          ],
+          "world_feet_cell": [
+            48068,
+            101,
+            40073
+          ],
+          "teleport_centre": [
+            48068.5,
+            101,
+            40073.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 3,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "arena": {
+          "local_feet_cell": [
+            72,
+            61,
+            77
+          ],
+          "world_feet_cell": [
+            48072,
+            101,
+            40077
+          ],
+          "teleport_centre": [
+            48072.5,
+            101,
+            40077.5
+          ],
+          "solid_floor_and_clearance_verified_in_candidate": true,
+          "clear_air_blocks_above_feet": 3,
+          "gravity_floor_support_chain_verified": true,
+          "native_or_visual_verified": false,
+          "clear_square_width": 13,
+          "local_square_bounds": [
+            [
+              66,
+              61,
+              71
+            ],
+            [
+              78,
+              61,
+              83
+            ]
+          ],
+          "terminal_static_support_checked_in_candidate": true
+        },
+        "derivation": "interior clear-square landing; no safe boundary floor exists, not an authored gate",
+        "clearance_scope": "four-air preferred; Nether uses measured three-air court because no12x12 four-air square exists",
+        "initial_geometry_seed": [
+          68,
+          61,
+          73
+        ],
+        "forward_and_return_graph_reachable": true,
+        "shortest_route_edges": 8,
+        "route_uses_swim": false,
+        "route_uses_climb": false,
+        "reached_nodes_from_explicit_entry": 323,
+        "containers_total": 8,
+        "containers_unreachable_from_entry": 8,
+        "story_gate_positions_assigned": 0,
+        "story_gate_semantics_inferred": false
+      },
+      "water_preservation": {
+        "block_count": 0,
+        "local_y_range": null,
+        "world_y_range": null,
+        "boundary_water_cells": 0,
+        "native_fluid_behavior_verified": false
+      }
+    }
+  ],
+  "rollback_reapply": {
+    "paste": 5,
+    "dungeon": "nether",
+    "all_created_regions_removed": true,
+    "other_preview_regions_unchanged": 6,
+    "reapplied_all_chunk_payloads_identical": true,
+    "geometry_sha256": "f5f8edad5b47d404e119f99be6f51eda066830aa9b9dfa6e3537f3d601d44f81",
+    "original_receipt_retained": true
+  },
+  "tool_sha256": {
+    "tools/world_merge/anvil.py": "0b1a4e3e36dc19fde3e42e535aa2f4a915a2c1d0549290be9440a8c41dd5ae4c",
+    "tools/world_merge/nbt.py": "c7bb20b6f2b4d9a78003c84a1559ba3d634de1ba1481426ceeb636d292002022",
+    "tools/world_merge/schematic.py": "b8de7280a906e25378636c50e07ec25b9381151b18537a8314ef322b92bbcf3c",
+    "tools/world_merge/audit.py": "2506a468eef77513dc8266f2b115509a8e20119ba071d66e1544209a30c172d2",
+    "tools/world_merge/anchors.py": "75ea7fecd2e393d15c48562ff6f8376e1ada36f2bb42d7c5d853406cfe65df9f"
+  },
+  "limits": [
+    "Offline block-grid geometry, not native collision/lighting/fluid/AI verification.",
+    "All five previews are Overworld sites; Nether is a template name, not DIM-1.",
+    "Original copied files and unknown/private data remain byte-identical; no legacy registry or NPC migration is claimed.",
+    "Entry/arena locations are candidate landings and clear courts, not inferred story-gate/boss semantics.",
+    "Nether has a13x13 court with3 clear air blocks; no12x12 court with4 clear air blocks was found by the conservative mask.",
+    "Static entry reachability still leaves containers unreachable; no automatic doorway/terrain changes were applied.",
+    "The frozen snapshot must only be copied for native testing; do not run Java against it or the recovered originals.",
+    "Adjacent terrain generation/biome seams and the low legal placement heights have not been inspected in-game; these are preview sites, not approved final-world integration seams."
+  ],
+  "finished_utc": "2026-11-13T19:36:49Z"
+}
