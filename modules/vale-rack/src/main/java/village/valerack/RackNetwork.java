@@ -14,11 +14,11 @@ public final class RackNetwork{
     private RackNetwork(){}
     public static void initialize(){CHANNEL=NetworkRegistry.INSTANCE.newSimpleChannel("valerack");CHANNEL.registerMessage(RequestHandler.class,Request.class,0,Side.SERVER);CHANNEL.registerMessage(SnapshotHandler.class,Snapshot.class,1,Side.CLIENT);}
     public static final class Request implements IMessage{
-        public int operation,index;public long nonce,revision;public boolean valid;
+        public int operation,index,window=-1,button,sequence;public long nonce,revision;public boolean valid;
         public Request(){}
         public Request(int operation,int index,long nonce,long revision){this.operation=operation;this.index=index;this.nonce=nonce;this.revision=revision;valid=true;}
-        @Override public void fromBytes(ByteBuf b){valid=b.readableBytes()==18;if(!valid)return;operation=b.readUnsignedByte();index=b.readUnsignedByte();nonce=b.readLong();revision=b.readLong();valid=operation==1&&index==255||operation==0&&index<6;}
-        @Override public void toBytes(ByteBuf b){b.writeByte(operation);b.writeByte(index);b.writeLong(nonce);b.writeLong(revision);}
+        @Override public void fromBytes(ByteBuf b){valid=b.readableBytes()==27;if(!valid)return;operation=b.readUnsignedByte();index=b.readUnsignedByte();nonce=b.readLong();revision=b.readLong();window=b.readInt();button=b.readUnsignedByte();sequence=b.readInt();valid=sequence>=0&&(((operation==1||operation==2)&&index==255)||operation==0&&index<6||operation==3&&index<6&&window>=0&&button<=1);}
+        @Override public void toBytes(ByteBuf b){b.writeByte(operation);b.writeByte(index);b.writeLong(nonce);b.writeLong(revision);b.writeInt(window);b.writeByte(button);b.writeInt(sequence);}
     }
     public static final class RequestHandler implements IMessageHandler<Request,IMessage>{
         @Override public IMessage onMessage(Request request,MessageContext context){
@@ -28,11 +28,11 @@ public final class RackNetwork{
         }
     }
     public static final class Snapshot implements IMessage{
-        public UUID owner;public int dimension;public long nonce,revision;public boolean locked,valid;public ItemStack[] stacks=new ItemStack[6];
+        public UUID owner;public int dimension,acknowledged;public long nonce,revision;public boolean locked,valid,combatActive;public ItemStack[] stacks=new ItemStack[6];
         public Snapshot(){}
-        Snapshot(EntityPlayerMP p,RackSessions.Session s,RackData data){owner=p.getUniqueID();dimension=p.dimension;nonce=s.nonce;revision=data.revision;locked=data.locked;for(int i=0;i<6;i++)stacks[i]=data.getStackInSlot(i).copy();valid=true;}
-        @Override public void toBytes(ByteBuf b){b.writeLong(owner.getMostSignificantBits());b.writeLong(owner.getLeastSignificantBits());b.writeInt(dimension);b.writeLong(nonce);b.writeLong(revision);b.writeBoolean(locked);for(ItemStack stack:stacks)ByteBufUtils.writeItemStack(b,stack);}
-        @Override public void fromBytes(ByteBuf b){owner=new UUID(b.readLong(),b.readLong());dimension=b.readInt();nonce=b.readLong();revision=b.readLong();locked=b.readBoolean();for(int i=0;i<6;i++)stacks[i]=ByteBufUtils.readItemStack(b);valid=b.readableBytes()==0;}
+        Snapshot(EntityPlayerMP p,RackSessions.Session s,RackData data){owner=p.getUniqueID();dimension=p.dimension;nonce=s.nonce;revision=data.revision;locked=data.locked;combatActive=data.combat.active;acknowledged=s.acknowledged;for(int i=0;i<6;i++)stacks[i]=data.combat.combat(p,data,i).copy();valid=true;}
+        @Override public void toBytes(ByteBuf b){b.writeLong(owner.getMostSignificantBits());b.writeLong(owner.getLeastSignificantBits());b.writeInt(dimension);b.writeLong(nonce);b.writeLong(revision);b.writeBoolean(locked);b.writeBoolean(combatActive);b.writeInt(acknowledged);for(ItemStack stack:stacks)ByteBufUtils.writeItemStack(b,stack);}
+        @Override public void fromBytes(ByteBuf b){owner=new UUID(b.readLong(),b.readLong());dimension=b.readInt();nonce=b.readLong();revision=b.readLong();locked=b.readBoolean();combatActive=b.readBoolean();acknowledged=b.readInt();for(int i=0;i<6;i++)stacks[i]=ByteBufUtils.readItemStack(b);valid=b.readableBytes()==0&&acknowledged>=0;}
     }
     public static final class SnapshotHandler implements IMessageHandler<Snapshot,IMessage>{@Override public IMessage onMessage(Snapshot message,MessageContext context){RackMod.PROXY.snapshot(message,context);return null;}}
 }

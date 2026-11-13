@@ -13,14 +13,17 @@ import net.minecraft.util.EnumHandSide;
 public final class ScrollHotbar extends Gui {
     private static final Minecraft MC=Minecraft.getMinecraft();
     private static double focus=-1,lastTime,changedAt=-100;
-    private static int previous=-1;
+    private static int previous=-1,previousCount;
     private ScrollHotbar(){}
     public static void reset(){focus=-1;previous=-1;lastTime=0;changedAt=-100;}
     public static void draw(ShinobiLayout layout,double time,float partial){
-        Layout.Box b=layout.hotbar;int x=b.x,y=b.y;
+        boolean combat=RackAccess.combatActive();int count=combat?6:9;
+        Layout.Box full=layout.hotbar;Layout.Box b=combat?new Layout.Box(full.x+30,full.y,full.w-60,full.h):full;int x=b.x,y=b.y;
+        boolean curve=HudConfig.curve&&!combat;
         boolean motion=HudConfig.motion&&HudConfig.mode!=2;
         double route=JutsuAccess.MODEL.focus(time,motion),priority=1-route*.28;
-        int selected=MC.player.inventory.currentItem;
+        int selected=Math.max(0,Math.min(count-1,MC.player.inventory.currentItem));
+        if(previousCount!=count){focus=selected;previousCount=count;}
         if(previous!=selected){previous=selected;changedAt=time;}
         if(focus<0||!motion||time<lastTime||time-lastTime>20)focus=selected;
         else focus=SkinMath.ease(focus,selected,Math.min(4,time-lastTime),.8);
@@ -33,28 +36,29 @@ public final class ScrollHotbar extends Gui {
         SkinDraw.rounded(x+17,y+6,b.w-34,25,1,0xF5232C30);
         SkinDraw.line(x+17,y+2.5,x+b.w-17,y+2.5,.7,0xFFE9DDC2);
         SkinDraw.line(x+17,y+30,x+b.w-17,y+30,.6,0xFF796D57);
-        for(int i=0;i<9;i++){
-            int sx=ScrollGeometry.slotX(b,i),sy=ScrollGeometry.slotY(b,i,HudConfig.curve);
+        for(int i=0;i<count;i++){
+            int sx=ScrollGeometry.slotX(b,i),sy=ScrollGeometry.slotY(b,i,curve);
             SkinDraw.rounded(sx,sy,19,22,1.5,0xF4141F24);
             SkinDraw.outline(sx+.25,sy+.25,18.5,21.5,1.5,.45,0x827E7969);
             SkinDraw.line(sx+3,sy+.6,sx+16,sy+.6,.6,0x78596665);
             SkinDraw.line(sx+4,sy+21,sx+15,sy+21,.5,0x706D5148);
         }
-        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,HudConfig.curve);
+        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,curve);
         SkinDraw.rounded(sx,sy,19,22,1.5,SkinDraw.alpha(0x663B35,(int)(90*priority)));
         SkinDraw.outline(sx-.4,sy-.4,19.8,22.8,1.6,.8,SkinDraw.alpha(0xBD6E5E,(int)(245*priority)));
         ScrollChrome.corners(sx,sy,19,22,SkinDraw.alpha(0xF0DCB7,(int)(235*priority)));
         SkinDraw.line(sx+5,sy+21.1,sx+14,sy+21.1,.8,SkinDraw.alpha(0xE9BB79,(int)((150+stamp*75)*priority)));
         // The selected physical slot remains unambiguous while the outer bracket eases.
-        for(int i=0;i<9;i++){
+        for(int i=0;i<count;i++){
             int cx=ScrollGeometry.slotX(b,i)+9;
             SkinDraw.rounded(cx-6,y+.5,12,5.5,1,i==selected?0xFF8F4B40:0xFF303937);
             key(MC.gameSettings.keyBindsHotbar[i],cx,y+.8,i==selected?0xFFF4E3BF:0xFFC0B9A4,12);
         }
-        cap(x+2,y,selected==0,route);cap(x+b.w-17,y,selected==8,route);
+        cap(x+2,y,selected==0,route);cap(x+b.w-17,y,selected==count-1,route);
+        if(combat)MC.fontRenderer.drawStringWithShadow("Combat",x+b.w/2-MC.fontRenderer.getStringWidth("Combat")/2,y-24,0xFF9DDDDC);
 
         RenderHelper.enableGUIStandardItemLighting();GlStateManager.enableDepth();
-        for(int i=0;i<9;i++)item(MC.player.inventory.mainInventory.get(i),ScrollGeometry.itemX(b,i),ScrollGeometry.itemY(b,i,HudConfig.curve));
+        for(int i=0;i<count;i++)item(MC.player.inventory.mainInventory.get(i),ScrollGeometry.itemX(b,i),ScrollGeometry.itemY(b,i,curve));
         RenderHelper.disableStandardItemLighting();GlStateManager.disableDepth();GlStateManager.disableLighting();
         ItemStack off=MC.player.getHeldItemOffhand();
         if(!off.isEmpty()){
@@ -75,10 +79,10 @@ public final class ScrollHotbar extends Gui {
         }
         if(MC.playerController.gameIsSurvivalOrAdventure()&&!MC.player.isRidingHorse()){
             int ex=x+24,ey=y-3;
-            SkinDraw.rounded(ex-1,ey-1,178,4,1,0xC0182225);
-            double xp=176*SkinMath.ratio(MC.player.experience,1);
+            int xpWidth=b.w-48;SkinDraw.rounded(ex-1,ey-1,xpWidth+2,4,1,0xC0182225);
+            double xp=xpWidth*SkinMath.ratio(MC.player.experience,1);
             if(xp>0)SkinDraw.rounded(ex,ey,xp,2,.8,0xFFC5B27C);
-            for(int n=1;n<9;n++)SkinDraw.line(ex+n*19.55,ey,ex+n*19.55,ey+2,.45,0x5A272A25);
+            for(int n=1;n<count;n++)SkinDraw.line(ex+n*xpWidth/(double)count,ey,ex+n*xpWidth/(double)count,ey+2,.45,0x5A272A25);
             if(MC.player.experienceLevel>0){
                 String label=String.valueOf(MC.player.experienceLevel);int w=Math.max(16,MC.fontRenderer.getStringWidth(label)+8),cx=x+b.w/2;
                 SkinDraw.rounded(cx-w/2,y-14,w,10,2,0xF21B2629);
