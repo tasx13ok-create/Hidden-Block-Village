@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "resident": "pilot_shiori",
+  "start": "welcome",
+  "after_clear_start": "after",
+  "pages": [
+    {
+      "id": "welcome",
+      "lines": [
+        "Quietly, please. The fog carries voices.",
+        "The tide lanterns went out and the silhouettes came with the dark. I cannot bring the skiff in blind."
+      ],
+      "choices": [
+        {
+          "id": "offer",
+          "label": "What do you need?",
+          "action": "PAGE",
+          "target": "offer"
+        },
+        {
+          "id": "advice",
+          "label": "Any advice?",
+          "action": "PAGE",
+          "target": "advice"
+        },
+        {
+          "id": "claim",
+          "label": "I finished the task",
+          "action": "CLAIM_CONTRACT"
+        }
+      ]
+    },
+    {
+      "id": "offer",
+      "lines": [
+        "A short task, then the gate is yours. You will be back before the tea cools."
+      ],
+      "choices": [
+        {
+          "id": "accept",
+          "label": "I will do it",
+          "action": "ACCEPT_CONTRACT",
+          "target": "gate_mist_low_tide"
+        },
+        {
+          "id": "back",
+          "label": "Not yet",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "lines": [
+        "Light the three lanterns before the tide turns. After that, the boat houses or the water, whichever you trust.",
+        "Do not fight in a doorway. The planks are old and there is always a dry platform nearby."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "lines": [
+        "The quay is lit. The Tidal Covenant will hear you knock.",
+        "I left a lantern at your mooring. It will burn until you come back."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    }
+  ]
+}

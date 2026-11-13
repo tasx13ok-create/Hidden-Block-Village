@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "scope": "STATIC_NPC_INTAKE_AND_PRIVATE_FORMAT_PREVIEW",
+  "friend_bundle_received": false,
+  "actual_format_roundtrip_files": 18,
+  "actual_format_roundtrip_pass": true,
+  "typed_snbt_files": 11,
+  "binary_nbt_files": 7,
+  "baseline_supported_files": 15,
+  "candidate_files": 16,
+  "candidate_counts": {
+    "asset": 1,
+    "clone": 9,
+    "dialog": 1,
+    "factions": 1,
+    "opaque": 4
+  },
+  "blocking_issues": 0,
+  "preexisting_reference_warnings": 1,
+  "baseline_manifest_sha256": "e5e07cb55d0342e9cb3e37bba8e84a76cd55f6b57f7f239f6344484203a9e5d4",
+  "candidate_manifest_sha256": "5dec5dd1e65ba2c2c5dd4cc8505b7e9f9ee7e82a3c25b9c0344e2d02942fac4e",
+  "candidate_written": true,
+  "backup_verified": true,
+  "original_npc_files_hash_reverified": 20,
+  "original_npc_files_unchanged": true,
+  "scripts_executed": false,
+  "game_started": false,
+  "placed_entities_merged": false,
+  "tests": {
+    "npc_fixtures": 18,
+    "server_intake_fixtures": 12,
+    "combined_fixtures": 30,
+    "result": "PASS",
+    "command": "python -m unittest discover -s tests -p \"*_intake.py\" -v"
+  },
+  "source_checkpoint_sha256": {
+    "tools/npc_intake/__init__.py": "2b6e38484ba226ff28d7fcda1856a2affa5849fe8b7dd1ba86f4e6b43cf24c64",
+    "tools/npc_intake/__main__.py": "c8df33f79b3a09d81f0a7962f9991c148ba61392ae5e2cad3a371c72602a29bf",
+    "tools/npc_intake/formats.py": "21f65cf884c5867ae6f244a8a7bd96df783ad70e66956a79f83a3bbf0d260e91",
+    "tools/npc_intake/intake.py": "1820144b0e4abdabfba496ab089100ff98f303c121e1b8ed32fc1aebc8648f10",
+    "tests/test_npc_intake.py": "3241d0a8f9af9b29d7d64a836a19e10c6243a3499db3b6c01873f082a6a0916f"
+  },
+  "input_server_archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "adapter_customnpcs_sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b",
+  "baseline_definition_counts": {
+    "clone": 8,
+    "dialog": 1,
+    "faction": 4
+  },
+  "generated_utc": "2026-11-13T18:57:25.539309+00:00",
+  "limitations": [
+    "No friend bundle received; preview uses an unchanged recovered export under a new fixture filename.",
+    "Candidate is an NPC data overlay with exact original supported-data backup, not a complete server/world.",
+    "Placed entities, world regions and player progress are not merged.",
+    "Opaque scripts/commands/objective forms require exact hash acknowledgement and are never automatically remapped or executed.",
+    "Resource checks establish presence, not appearance or gameplay.",
+    "No game start, restart, normal-client acceptance or GitHub publication of NPC payloads occurred."
+  ]
+}

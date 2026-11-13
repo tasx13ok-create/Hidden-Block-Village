@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.10'
+version = '0.3.11'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -222,6 +222,8 @@ tasks.named('check') { dependsOn tasks.named('verifyGameplayRecovery') }
 
 // New gameplay rules are verified independently of the private native fixture.
 for (entry in [verifyAcademy: 'village.vale.AcademyChecks',
+               verifyMelee: 'village.vale.melee.MeleeComboChecks',
+               verifyNature: 'village.vale.nature.NatureRulesTest',
                verifyJeiCatalog: 'village.vale.JeiCatalogChecks',
                verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',
                verifyScrollCasts: 'village.vale.arsenal.ScrollCastChecks039',

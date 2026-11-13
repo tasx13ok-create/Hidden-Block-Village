@@ -2,7 +2,7 @@
   {
     "modid": "valeorders",
     "name": "Vale Orders",
-    "version": "0.3.10",
+    "version": "0.3.11",
     "mcversion": "1.12.2",
     "description": "Original order equipment, resolve-based combat, progression and server-issued rewards.",
     "authorList": [

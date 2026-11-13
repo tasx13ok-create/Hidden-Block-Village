@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "resident": "cisternkeeper_rihane",
+  "start": "welcome",
+  "after_clear_start": "after",
+  "pages": [
+    {
+      "id": "welcome",
+      "lines": [
+        "Sit in the shade before you speak. Nobody thinks well in this sun.",
+        "A caravaneer is pinned in the stalls. Raiders with shields. The cistern stays shut until they leave."
+      ],
+      "choices": [
+        {
+          "id": "offer",
+          "label": "What do you need?",
+          "action": "PAGE",
+          "target": "offer"
+        },
+        {
+          "id": "advice",
+          "label": "Any advice?",
+          "action": "PAGE",
+          "target": "advice"
+        },
+        {
+          "id": "claim",
+          "label": "I finished the task",
+          "action": "CLAIM_CONTRACT"
+        }
+      ]
+    },
+    {
+      "id": "offer",
+      "lines": [
+        "A short task, then the gate is yours. You will be back before the tea cools."
+      ],
+      "choices": [
+        {
+          "id": "accept",
+          "label": "I will do it",
+          "action": "ACCEPT_CONTRACT",
+          "target": "gate_sand_dry_wind"
+        },
+        {
+          "id": "back",
+          "label": "Not yet",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "lines": [
+        "The vanes always point to the shaded path. Read them and you never fight in the open.",
+        "Or break the ambush. Hit the shields from the side and do not stand still on the marks."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "lines": [
+        "Water for the caravan, bread for the road. The observatory gate is open to you.",
+        "Share food here and people remember. That is how this place works."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    }
+  ]
+}

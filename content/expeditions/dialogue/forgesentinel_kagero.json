@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "resident": "forgesentinel_kagero",
+  "start": "welcome",
+  "after_clear_start": "after",
+  "pages": [
+    {
+      "id": "welcome",
+      "lines": [
+        "Look at the gate. Not at me, at the gate. See the glow at the seam?",
+        "A seal breaker is opening it from inside. If it finishes, the guard turns out."
+      ],
+      "choices": [
+        {
+          "id": "offer",
+          "label": "What do you need?",
+          "action": "PAGE",
+          "target": "offer"
+        },
+        {
+          "id": "advice",
+          "label": "Any advice?",
+          "action": "PAGE",
+          "target": "advice"
+        },
+        {
+          "id": "claim",
+          "label": "I finished the task",
+          "action": "CLAIM_CONTRACT"
+        }
+      ]
+    },
+    {
+      "id": "offer",
+      "lines": [
+        "A short task, then the gate is yours. You will be back before the tea cools."
+      ],
+      "choices": [
+        {
+          "id": "accept",
+          "label": "I will do it",
+          "action": "ACCEPT_CONTRACT",
+          "target": "gate_nether_ash_seal"
+        },
+        {
+          "id": "back",
+          "label": "Not yet",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "lines": [
+        "You can close the cooling valves and slip in, or go straight at the guards. Their backs are open after a sweep.",
+        "Either way, interrupt the breaker while it channels. Do not try to outlast it."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "lines": [
+        "Seal's broken. The forge court will let you pass.",
+        "Rest in the cooled alcove if the heat gets to you. Pride is not armor."
+      ],
+      "choices": [
+        {
+          "id": "back",
+          "label": "Back",
+          "action": "PAGE",
+          "target": "welcome"
+        }
+      ]
+    }
+  ]
+}

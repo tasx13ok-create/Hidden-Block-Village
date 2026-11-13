@@ -210,6 +210,25 @@ class NativeOrchestrationTests(unittest.TestCase):
         result["checks"].append("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect")
         native.validate_native_result(result, expected, log)
 
+    def test_core0311_cannot_pass_using_only_older_fixture_results(self):
+        expected = {"valeorders": {"version": "0.3.11", "file": "core.jar", "sha256": "a" * 64}}
+        older = list(native.REQUIRED_CHECKS) + ["Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect"]
+        additions = ["Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+                     "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+                     "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 1400,
+                  "checks": older + additions, "minecraft_version": "1.12.2",
+                  "forge_version": native.FORGE_VERSION, "loaded_fixture_mods": expected,
+                  "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0311.log"
+        log.write_text(native.PASS_MARKER + " 1400 assertions\n", encoding="utf-8")
+        native.validate_native_result(result, expected, log)
+        for missing in additions:
+            with self.subTest(missing=missing), self.assertRaisesRegex(native.NativeError, "0.3.11 acceptance"):
+                altered = copy.deepcopy(result)
+                altered["checks"].remove(missing)
+                native.validate_native_result(altered, expected, log)
+
     def test_nonzero_process_exit_cannot_pass(self):
         steps = []
         with contextlib.redirect_stdout(io.StringIO()), self.assertRaisesRegex(native.NativeError, "exited with status 7"):
