@@ -29,6 +29,7 @@ public final class ScrollHotbar extends Gui {
         HotbarFx.frame(time,motion);HotbarFx.slots(selected,focus);
         HotbarFx.pushBody(b,time,motion,1);
         try{
+        HotbarFx.under(b,time);
 
         // Parchment is restricted to borders; the item wells retain high-contrast ink.
         SkinDraw.rounded(x,y+2,b.w,30,3,0xC510161A);
@@ -57,9 +58,11 @@ public final class ScrollHotbar extends Gui {
         }
         cap(x+2,y,selected==0,route);cap(x+b.w-17,y,selected==8,route);
 
+        HotbarFx.over(b,time,focus,selected);
         RenderHelper.enableGUIStandardItemLighting();GlStateManager.enableDepth();
         for(int i=0;i<9;i++)HotbarFx.item(i,MC.player.inventory.mainInventory.get(i),ScrollGeometry.itemX(b,i),ScrollGeometry.itemY(b,i,HudConfig.curve),i==selected,time);
         RenderHelper.disableStandardItemLighting();GlStateManager.disableDepth();GlStateManager.disableLighting();
+        HotbarFx.top(b,time,focus);
         ItemStack off=MC.player.getHeldItemOffhand();
         if(!off.isEmpty()){
             Layout.Box ob=MC.player.getPrimaryHand()==EnumHandSide.RIGHT?layout.leftHand:layout.rightHand;

@@ -79,3 +79,13 @@ New files:
 The rack-rail path is unchanged. Motion off (or Quiet mode) snaps everything to static.
 
 Evidence: `release/evidence/fable-hotbars-20261113.png`. The rail needs server abilities, so it still needs checking in a real world.
+
+### Anime detail pass
+New `AnimeDraw` helper (per-vertex-colour gradients, radial glows, halos, flame tongues, spirals, ribbons, ink blobs, kunai, with additive blending and full state restore). `HotbarFx.under/over/top/railUnder/railBurst` add these layers:
+- A breathing multi-layer chakra aura and drop shadow, with chakra wisps rising off the scroll.
+- Washi paper fibres, a sumi-e ink wash, per-slot gloss and chakra underlight.
+- On the selected slot: a rotating swirl seal, a halo, chakra flames and twin kunai brackets.
+- An ink splash on selection change.
+- Flowing chakra streams with travelling beads along both edges, spinning seals on the end caps, rising chakra motes and a light sweep.
+- The chakra colour shifts red with danger, orange when burning and icy in the cold.
+- Rail slots get element-coloured gradients and glow (by school), a rotating seal, selected flames and kunai, and a radial-ray ready burst.

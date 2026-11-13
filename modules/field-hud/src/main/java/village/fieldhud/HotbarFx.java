@@ -192,6 +192,150 @@ public final class HotbarFx {
         }
     }
 
+
+    // ---- anime art layers -----------------------------------------------------------------------
+    private static double splashAt = -100, splashX, splashY;
+    private static int splashFrom = -1;
+
+    /** Current chakra colour: blue at rest, shifting with danger, fire, cold and focus. */
+    public static int chakra(double time) {
+        int c = AnimeDraw.mix(0x3FA8FF, 0x7FE8FF, 0.5 + 0.5 * Math.sin(time * 0.05));
+        c = AnimeDraw.mix(c, 0xFF3A2A, Math.max(FableEnv.hurt, FableHudMath.clamp((0.3 - FableEnv.health) / 0.3, 0, 1) * 0.8));
+        c = AnimeDraw.mix(c, 0xFF8A2A, FableEnv.burning * 0.8);
+        c = AnimeDraw.mix(c, 0xCFF4FF, FableEnv.frost * 0.5);
+        return c;
+    }
+
+    /** Behind the scroll: breathing multi-layer chakra aura and a soft drop shadow. */
+    public static void under(Layout.Box b, double time) {
+        int c = chakra(time);
+        double breathe = 0.75 + 0.25 * Math.sin(time * 0.08);
+        double cx = b.x + b.w / 2.0, cy = b.y + 17;
+        AnimeDraw.glow(cx, cy + 14, b.w * 0.55, 10, 0x000000, 0.55, false);                  // drop shadow
+        AnimeDraw.glow(cx, cy, b.w * 0.68, 34, c, 0.32 * breathe, true);                     // wide aura
+        AnimeDraw.glow(cx, cy, b.w * 0.56, 24, c, 0.38 * breathe, true);
+        AnimeDraw.glow(cx, cy - 2, b.w * 0.40, 10, AnimeDraw.mix(c, 0xFFFFFF, 0.5), 0.18 * breathe, true);
+        // Chakra wisps curling up off the top edge.
+        for (int k = 0; k < 7; k++) {
+            double px = b.x + 24 + k * (b.w - 48) / 6.0 + Math.sin(time * 0.07 + k) * 6;
+            double h = 12 + 10 * (0.5 + 0.5 * Math.sin(time * 0.11 + k * 1.7));
+            AnimeDraw.flame(px, b.y + 4, 9, h, time * 0.2 + k, c, 0xFFFFFF, 0.5 * breathe, true);
+        }
+    }
+
+    /** Between the slot wells and the items: paper fibres, ink wash, gloss, selected seal + flames, kunai, splash, chakra stream, cap seals. */
+    public static void over(Layout.Box b, double time, double selector, int selected) {
+        int x = b.x, y = b.y, c = chakra(time);
+        // Washi fibres in the parchment border.
+        for (int i = 0; i < 70; i++) {
+            double fx = x + 10 + FableHudMath.noise(41, i) * (b.w - 20), fy = y + 1 + (i % 2 == 0 ? FableHudMath.noise(43, i) * 4 : 26 + FableHudMath.noise(47, i) * 4);
+            double len = 2 + FableHudMath.noise(53, i) * 5, ang = (FableHudMath.noise(59, i) - 0.5) * 0.8;
+            SkinDraw.line(fx, fy, fx + Math.cos(ang) * len, fy + Math.sin(ang) * len, .35, SkinDraw.alpha(i % 3 == 0 ? 0xFFF6E2 : 0x8A6E4A, 70));
+        }
+        // Sumi-e ink wash across the well band, darker toward the bottom.
+        AnimeDraw.vertical(x + 17, y + 6, b.w - 34, 25, AnimeDraw.argb(0x0A1A2A, 0.0), AnimeDraw.argb(0x000000, 0.35), false);
+        for (int i = 0; i < 9; i++) {
+            int sx = ScrollGeometry.slotX(b, i), sy = ScrollGeometry.slotY(b, i, HudConfig.curve) - lift(i);
+            AnimeDraw.vertical(sx + 1, sy + 1, 17, 9, AnimeDraw.argb(0xFFFFFF, 0.14), AnimeDraw.argb(0xFFFFFF, 0.0), false); // gloss
+            AnimeDraw.vertical(sx + 1, sy + 14, 17, 7, AnimeDraw.argb(c, 0.0), AnimeDraw.argb(c, 0.16), true);           // chakra underlight
+            SkinDraw.line(sx + 2, sy + 1.2, sx + 9, sy + 1.2, .5, SkinDraw.alpha(0xFFFFFF, 90));
+        }
+        // Selected slot: rotating swirl seal, chakra flames and kunai brackets.
+        double sx = x + 22 + selector * ScrollGeometry.STRIDE + 9.5, sy = y + 7 + ScrollGeometry.curve(selector, HudConfig.curve) - FableHudMath.lift(0) + 11;
+        AnimeDraw.glow(sx, sy, 15, 15, c, 0.45, true);
+        AnimeDraw.spiral(sx, sy, 9, 2.6, 1.6, AnimeDraw.mix(c, 0xFFFFFF, 0.3), 0.55, -time * 0.12, true);
+        AnimeDraw.spiral(sx, sy, 9, 2.6, 0.8, 0xFFFFFF, 0.35, -time * 0.12 + Math.PI, true);
+        AnimeDraw.halo(sx, sy, 11 + Math.sin(time * 0.2), 1.6, c, 0.5, true);
+        for (int k = 0; k < 6; k++) {
+            double fx = sx - 8 + k * 3.2, flick = FableHudMath.noise(k, (long) (time / 2));
+            AnimeDraw.flame(fx, sy + 11, 4.5, 9 + flick * 9, time * 0.4 + k, c, 0xE8FBFF, 0.55, true);
+        }
+        AnimeDraw.kunai(sx - 13, sy, 1, 7, 0.95);
+        AnimeDraw.kunai(sx + 13, sy, -1, 7, 0.95);
+        // Ink splash where the selection lands.
+        if (selected != splashFrom) { if (splashFrom >= 0) { splashAt = time; splashX = sx; splashY = sy; } splashFrom = selected; }
+        double sp = (time - splashAt) / 12;
+        if (sp >= 0 && sp < 1) for (int i = 0; i < 9; i++) {
+            double a = i * 0.698 + FableHudMath.noise(7, i), d = 4 + 14 * FableHudMath.backOut(sp) * (0.6 + 0.4 * FableHudMath.noise(11, i));
+            AnimeDraw.blob(splashX + Math.cos(a) * d, splashY + Math.sin(a) * d * 0.6, 1.2 + 2.2 * (1 - sp) * FableHudMath.noise(13, i), i, i % 3 == 0 ? 0x8A1A1A : 0x101418, 0.45 * (1 - sp));
+        }
+        // Flowing chakra stream along the top and bottom of the scroll, with travelling beads.
+        for (int edge = 0; edge < 2; edge++) {
+            int n = 48;
+            double[] xs = new double[n], ys = new double[n], ws = new double[n];
+            int[] cs = new int[n];
+            for (int i = 0; i < n; i++) {
+                double f = i / (n - 1.0);
+                xs[i] = x + 17 + f * (b.w - 34);
+                ys[i] = (edge == 0 ? y + 2.5 : y + 30) + Math.sin(f * 18 - time * 0.25 + edge * 2) * 0.9;
+                double wave = 0.5 + 0.5 * Math.sin(f * 9 - time * 0.18 + edge);
+                ws[i] = 0.8 + 1.4 * wave;
+                cs[i] = AnimeDraw.argb(AnimeDraw.mix(c, 0xFFFFFF, wave * 0.6), 0.25 + 0.45 * wave);
+            }
+            AnimeDraw.ribbon(xs, ys, ws, cs, true);
+            for (int k = 0; k < 2; k++) {
+                double f = ((time * 0.012 + k * 0.5 + edge * 0.25) % 1.0);
+                AnimeDraw.glow(x + 17 + f * (b.w - 34), edge == 0 ? y + 2.5 : y + 30, 5, 2.2, 0xFFFFFF, 0.7, true);
+            }
+        }
+        // Spinning seals over both end caps.
+        for (double cxp : new double[] {x + 9.5, x + b.w - 9.5}) {
+            AnimeDraw.glow(cxp, y + 15.5, 8, 8, c, 0.35, true);
+            AnimeDraw.spiral(cxp, y + 15.5, 4.2, 2.2, 1.0, 0xFFFFFF, 0.6, time * 0.09, true);
+        }
+    }
+
+    /** Above the items: chakra motes drifting up from the selected slot and an edge light sweep. */
+    public static void top(Layout.Box b, double time, double selector) {
+        int c = chakra(time);
+        double sx = b.x + 22 + selector * ScrollGeometry.STRIDE + 9.5;
+        if (RNG.nextDouble() < 0.5 * Math.min(1, dt)) FableEnv.emit(sx + (RNG.nextDouble() - 0.5) * 14, b.y + 26, (RNG.nextDouble() - 0.5) * 0.2, -0.3 - RNG.nextDouble() * 0.3, -0.004, 24, 0xFF000000 | AnimeDraw.mix(c, 0xFFFFFF, 0.4), 1);
+        double sweep = ((time * 0.01) % 1.4) - 0.2;
+        if (sweep > 0 && sweep < 1) AnimeDraw.gradient(b.x + 17 + sweep * (b.w - 34) - 8, b.y + 6, 16, 25, AnimeDraw.argb(0xFFFFFF, 0), AnimeDraw.argb(0xFFFFFF, 0.12), AnimeDraw.argb(0xFFFFFF, 0.12), AnimeDraw.argb(0xFFFFFF, 0), true);
+    }
+
+    /** Element colour for a jutsu school/id. */
+    public static int element(JutsuEntry e) {
+        String k = ((e.school == null ? "" : e.school) + " " + e.id).toLowerCase(java.util.Locale.ROOT);
+        if (k.contains("ember") || k.contains("fire") || k.contains("katon")) return 0xFF6A1A;
+        if (k.contains("current") || k.contains("water") || k.contains("suiton")) return 0x2F8CFF;
+        if (k.contains("gale") || k.contains("wind") || k.contains("futon")) return 0x7FE08A;
+        if (k.contains("storm") || k.contains("lightning") || k.contains("raiton")) return 0xC8B8FF;
+        if (k.contains("flint") || k.contains("earth") || k.contains("doton")) return 0xC89A5A;
+        if (k.contains("rime") || k.contains("ice")) return 0x9FE8FF;
+        if (k.contains("bloom") || k.contains("wood")) return 0x5ED27E;
+        if (k.contains("dusk") || k.contains("shadow")) return 0x8A6BC8;
+        if (k.contains("dawn") || k.contains("light")) return 0xFFE08A;
+        return 0x3FA8FF;
+    }
+
+    /** Behind a rail slot's icon: element gradient, inner glow, rotating seal ring, selected flames and kunai. */
+    public static void railUnder(double x, double y, double w, double h, JutsuEntry e, boolean selected, boolean enabled, double time, int row) {
+        if (e == null) return;
+        int el = element(e);
+        double cx = x + w / 2, cy = y + h / 2, k = enabled ? 1 : 0.35;
+        AnimeDraw.vertical(x + 1, y + 1, w - 2, h - 2, AnimeDraw.argb(AnimeDraw.mix(el, 0x000000, 0.35), 0.55 * k), AnimeDraw.argb(0x05080C, 0.7 * k), false);
+        AnimeDraw.glow(cx, cy, w * 0.45, h * 0.45, el, 0.45 * k, true);
+        AnimeDraw.vertical(x + 1, y + 1, w - 2, h * 0.35, AnimeDraw.argb(0xFFFFFF, 0.16), AnimeDraw.argb(0xFFFFFF, 0), false);
+        AnimeDraw.spiral(cx, cy, Math.min(w, h) * 0.42, 1.8, 0.9, el, 0.45 * k, time * (0.05 + row * 0.01), true);
+        if (selected) {
+            AnimeDraw.glow(cx, cy, w * 0.9, h * 0.7, el, 0.35, true);
+            AnimeDraw.halo(cx, cy, Math.min(w, h) * 0.55 + Math.sin(time * 0.25), 1.4, AnimeDraw.mix(el, 0xFFFFFF, 0.4), 0.6, true);
+            for (int f = 0; f < 4; f++) AnimeDraw.flame(x + 3 + f * (w - 6) / 3.0, y + h - 1, 4, 6 + 6 * FableHudMath.noise(f + row * 9, (long) (time / 2)), time * 0.4 + f, el, 0xFFFFFF, 0.5, true);
+            AnimeDraw.kunai(x - 3, cy, 1, 6, 0.9);
+        }
+    }
+
+    /** Ready burst: radial chakra rays and an expanding halo. */
+    public static void railBurst(double cx, double cy, double size, double f, int rgb) {
+        if (f <= 0) return;
+        AnimeDraw.halo(cx, cy, size * (0.5 + 0.8 * (1 - f)), 2, rgb, f, true);
+        for (int i = 0; i < 12; i++) {
+            double a = i * Math.PI / 6, r0 = size * 0.4, r1 = size * (0.6 + 0.7 * (1 - f));
+            AnimeDraw.ribbon(new double[] {cx + Math.cos(a) * r0, cx + Math.cos(a) * r1}, new double[] {cy + Math.sin(a) * r0, cy + Math.sin(a) * r1}, new double[] {1.4, 0.2}, new int[] {AnimeDraw.argb(0xFFFFFF, f), AnimeDraw.argb(rgb, 0)}, true);
+        }
+    }
+
     // ---- particles -----------------------------------------------------------------------------------
     public static void weather(double x, double y, double w, double h, double time) { FableEnv.weather(x, y, w, h, time, Math.min(dt, 5), RNG); }
     public static void particles() { GlStateManager.disableDepth(); FableEnv.drawParticles(); }
