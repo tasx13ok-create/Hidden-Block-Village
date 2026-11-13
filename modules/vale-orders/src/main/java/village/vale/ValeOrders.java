@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.13", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.14", acceptedMinecraftVersions = "[1.12.2]")
 public final class ValeOrders {
     @net.minecraftforge.fml.common.SidedProxy(clientSide="village.vale.ClientProxy", serverSide="village.vale.CommonProxy")
     public static CommonProxy proxy;
@@ -27,6 +27,7 @@ public final class ValeOrders {
         pvpAbilities = cfg.getBoolean("allowAbilityPvP", "combat", false, "Ability attacks must also pass server PvP and team checks.");
         fieldRogueSpawns = cfg.getBoolean("fieldRogueSpawns", "adventure", true, "Rare vanilla-rule night patrols in forests, hills and swamps; no structures or block changes.");
         canonicalEquipmentCatalog = cfg.getBoolean("canonicalEquipmentCatalog", "adventure", true, "Retire overlapping VariedCommodities/CustomNPC combat props from recipes, creative/JEI and player combat. Keep their registry IDs for legacy data. Restart to change.");
+        Dodge.configure(cfg.getInt("dodgeChakraCost","movement",6,0,25,"Chakra cost of a four-way dodge."),cfg.getInt("dodgeCooldownTicks","movement",16,8,80,"Dodge recovery ticks; persists across logout."));
         if (cfg.hasChanged()) cfg.save();
         village.vale.culinary.Culinary.registerTiles();
         MinecraftForge.EVENT_BUS.register(new Combat());
@@ -43,6 +44,7 @@ public final class ValeOrders {
         village.vale.expedition.GateRuntime.registerSkiff(this,123);
         HudNetwork.register();
         AbilityNetwork.register();
+        Dodge.register();
         OriginalArmorRuntime.initialize();
         OriginalArmorLightEntity.register(this);
         proxy.preInit();

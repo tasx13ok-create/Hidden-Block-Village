@@ -1,6 +1,6 @@
 plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
 group='village.valerack'
-version='0.1.2'
+version='0.1.4'
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) } }
 minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39'); username.set('ValeRackBuilder') }
 apply from: file('../../gradle/vale-compile-inputs.gradle')
@@ -9,3 +9,19 @@ tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.in
 tasks.named('jar') { archiveBaseName.set('Vale-Rack') }
 
 apply from: file('../../gradle/vale-mod-build.gradle')
+
+// Exact client continuation receipts can be tested without loading Minecraft.
+def cursorReceiptClasses = layout.buildDirectory.dir('cursor-receipt-checks')
+tasks.register('compileCursorReceiptChecks', JavaCompile) {
+    source files('src/main/java/village/valerack/client/CursorReceipt.java', 'tests/village/valerack/client/CursorReceiptChecks.java')
+    classpath = files()
+    destinationDirectory = cursorReceiptClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifyCursorReceipts', JavaExec) {
+    dependsOn 'compileCursorReceiptChecks'
+    classpath = files(cursorReceiptClasses)
+    mainClass = 'village.valerack.client.CursorReceiptChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifyCursorReceipts' }

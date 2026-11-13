@@ -38,7 +38,7 @@ def require(ok, message):
 
 def profile(memory='2G', port=PORT):
     require(memory in ('2G', '4G'), 'Copied-world memory must be 2G or 4G')
-    require(port in (PORT, 25583), 'Unsupported version-pinned copied-world port')
+    require(port in (PORT, 25583, 25585), 'Unsupported version-pinned copied-world port')
     return dict(smoke.PROPERTIES, **{'level-name': LEVEL, 'level-type': 'DEFAULT', 'generator-settings': '', 'server-port': str(port)})
 
 
@@ -162,7 +162,7 @@ def credential_flags(raw):
     return result
 
 
-def review_scripts(candidate, recovery):
+def review_scripts(candidate, recovery, *, region_paths=None):
     """Read every region's entity/tile NBT and both original NPC libraries."""
     candidate, recovery = map(pack.no_links, (candidate, recovery))
     require((candidate / smoke.MARKER).read_text(encoding='ascii').strip() == PENDING, 'Review only an unstarted pending world copy')
@@ -210,7 +210,18 @@ def review_scripts(candidate, recovery):
                 else:
                     snbt(value, origin, context)
     last = 0
-    for region_path in sorted(world.rglob('*.mca')):
+    if region_paths is None:
+        selected_regions = sorted(world.rglob('*.mca'))
+    else:
+        allowed = {row['path']: row for row in prep['files'] if row['path'].endswith('.mca')}
+        require(len(region_paths) == len(set(region_paths)) and set(region_paths) <= set(allowed), 'Unreviewed or duplicate partial-region selector')
+        selected_regions = []
+        for relative in sorted(region_paths):
+            path = pack.no_links(world / pack.safe_relative(relative))
+            require(pack.hash_file(path) == {key: allowed[relative][key] for key in ('bytes', 'sha256')}, 'Partial-region bytes differ from frozen copy')
+            selected_regions.append(path)
+        report['partial_region_review_only'] = True
+    for region_path in selected_regions:
         try:
             region = anvil.Region(region_path)
             for slot in region.chunks:
@@ -250,6 +261,52 @@ def review_scripts(candidate, recovery):
     report['status'] = 'REVIEW_REQUIRED' if report['script_bodies'] or report['parse_errors'] else 'NO_EXECUTABLE_SCRIPT_BODY_FOUND'
     save(candidate / REVIEW, report)
     return report
+
+
+def review_changed_regions(candidate, recovery, donor):
+    """Reuse a complete script-absence proof only for identical region payloads."""
+    candidate, recovery, donor = map(pack.no_links, (candidate, recovery, donor))
+    prep = json.loads((candidate / PREP).read_text(encoding='utf-8'))
+    old_prep = json.loads((donor / PREP).read_text(encoding='utf-8'))
+    old_review, old_id = pack.read_json(donor / REVIEW)
+    old_frozen, _ = frozen_receipt(donor / 'PRIVATE-WORLD-FROZEN-RECEIPT.json', old_prep['source_frozen_receipt_sha256'])
+    old_ready = json.loads((donor / READY).read_text(encoding='utf-8'))
+    require(old_frozen['files'] == old_prep['files'] and old_ready['script_review'] == old_id, 'Donor frozen/review seal identity differs')
+    require(old_review['world_source_manifest_sha256'] == old_prep['source_manifest_sha256'], 'Donor proof belongs to another frozen world')
+    require(old_review.get('status') == 'NO_EXECUTABLE_SCRIPT_BODY_FOUND' and not old_review['script_bodies'] and not old_review['parse_errors'], 'A complete donor no-script proof is required')
+    old = {row['path']: row for row in old_prep['files'] if row['path'].endswith('.mca')}
+    new = {row['path']: row for row in prep['files'] if row['path'].endswith('.mca')}
+    require(old_review['region_files'] == len(old) and old_review['region_manifest_sha256'] == pack.digest(list(old.values())), 'Donor region proof coverage differs')
+    require(set(old) <= set(new), 'Source regions were removed; require an explicit preservation review')
+    verify_rows(candidate / LEVEL, prep['files'])
+    changed = [name for name, row in new.items() if row != old.get(name)]
+    old_counts = Counter(chunks=0, entities=0, tile_entities=0)
+    old_world = pack.no_links(old_prep['source_world'])
+    for name in changed:
+        if name not in old:
+            continue
+        path = old_world / pack.safe_relative(name)
+        require(pack.hash_file(path) == {key: old[name][key] for key in ('bytes', 'sha256')}, 'Original changed-region counter reference differs')
+        region = anvil.Region(path)
+        for slot in region.chunks:
+            level = region.load_chunk(slot)[1]['Level']
+            old_counts['chunks'] += 1
+            for key, counter in (('Entities', 'entities'), ('TileEntities', 'tile_entities')):
+                if key in level:
+                    old_counts[counter] += len(level[key].value)
+    result = review_scripts(candidate, recovery, region_paths=changed)
+    parsed_counts = {key: result[key] for key in ('chunks', 'entities', 'tile_entities')}
+    result.update(region_files=len(new), partial_region_review_only=False,
+                  unchanged_region_payloads_reused=len(new) - len(changed), changed_regions_reparsed=changed,
+                  donor_complete_review_sha256=old_id['sha256'],
+                  review_mode='Complete hash-verified delta: unchanged region payloads reuse prior full no-script proof; changed regions and all global/world NPC exports parsed again.',
+                  script_metadata_counts_scope='Changed regions and all current global/world NPC exports only; unchanged-region metadata stays in the donor proof.',
+                  parsed_this_pass=parsed_counts)
+    for key in ('chunks', 'entities', 'tile_entities'):
+        result[key] = old_review[key] - old_counts[key] + result[key]
+    require(all(result[key] >= 0 for key in ('chunks', 'entities', 'tile_entities')), 'Invalid donor/counter coverage')
+    save(candidate / REVIEW, result)
+    return result
 
 
 def stage_dependencies(candidate, recovery):
@@ -304,13 +361,12 @@ def seal(candidate, recovery, script_review, runtime_level, memory='2G'):
     from .release_profile import world_port
     upgrade = json.loads((candidate / 'PRIVATE-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
     port = world_port(candidate, upgrade)
-    if upgrade.get('profile_release') == '0.3.12':
+    if upgrade.get('profile_release') in ('0.3.12', '0.3.13'):
+        from .release_profile import legacy_registry_scope
         require(pack.hash_file(runtime_level)['sha256'] == upgrade['registry_reference_level_sha256'], 'Wrong pinned legacy registry reference')
         names = {name for ids in saved_registries(candidate / LEVEL / 'level.dat').values() for name in ids}
-        require(not any(name.startswith('valeorders:') for name in names), 'Saved Core namespace requires an exact new-runtime registry inventory')
         prior = json.loads((candidate / 'PRIVATE-BASELINE-0311-MAGMA-ENHANCEMENT.json').read_text(encoding='utf-8'))
-        prior_hashes = {row['component']: row['sha256'] for row in prior['added']}
-        require(all(row['sha256'] == prior_hashes[row['component']] for row in upgrade['added'] if row['component'] != 'vale-orders'), 'Changed registry-reference owners')
+        legacy_registry_scope(upgrade['profile_release'], names, prior['added'], upgrade['added'])
     registries = registry_review(candidate / LEVEL / 'level.dat', runtime_level)
     registries['reference_scope'] = upgrade.get('registry_reference_scope', 'Exact already booted 0.3.11 enhanced runtime')
     save(candidate / 'PRIVATE-WORLD-REGISTRY-REVIEW.json', registries)

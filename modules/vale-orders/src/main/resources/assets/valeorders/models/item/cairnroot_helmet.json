@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/flint_helmet"
+  "parent": "valeorders:item/flint_helmet",
+  "textures": {
+    "layer0": "valeorders:items/cairnroot_helmet"
+  }
 }

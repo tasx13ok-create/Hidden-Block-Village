@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/rime_helmet"
+  "parent": "valeorders:item/rime_helmet",
+  "textures": {
+    "layer0": "valeorders:items/glasschime_helmet"
+  }
 }

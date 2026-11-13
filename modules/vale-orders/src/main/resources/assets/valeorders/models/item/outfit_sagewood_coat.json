@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/storm_chestplate"
+    "layer0": "valeorders:items/outfit_sagewood_coat"
   }
 }

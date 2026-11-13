@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/gale_chestplate"
+  "parent": "valeorders:item/gale_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/reedrunner_chestplate"
+  }
 }

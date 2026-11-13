@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/flint_boots"
+  "parent": "valeorders:item/flint_boots",
+  "textures": {
+    "layer0": "valeorders:items/cairnroot_boots"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dusk_chestplate"
+  "parent": "valeorders:item/dusk_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/hushvault_chestplate"
+  }
 }

@@ -55,7 +55,7 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.13",
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.14",
      dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
@@ -123,6 +123,10 @@ public final class RecoveryNativeChecks {
             assertions += ClawNativeChecks.run(player);
             passed("Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed");
             assertions += village.valerack.RackNativeChecks038.run(player);
+            passed("Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death");
+            passed("Native six mastered techniques cast from the switched physical combat hotbar");
+            assertions += village.valerack.CombatHotbarLifecycleNativeChecks.run(player);
+            passed("Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership");
             passed("Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops");
             try {
                 assertions += (Integer)Class.forName("village.standards.StandardsNativeChecks")
@@ -144,6 +148,8 @@ public final class RecoveryNativeChecks {
             passed("Native five distinct nature techniques, protected temporary Earth cover and effect settlement");
             assertions += village.vale.expedition.GateNativeChecks.run(player);
             passed("Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity");
+            assertions += village.vale.DodgeNativeChecks.run(player);
+            passed("Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle");
             assertions += village.vale.AcademyNativeChecks.run(server);
             passed("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect");
             passed("Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery");

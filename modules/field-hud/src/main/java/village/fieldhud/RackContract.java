@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 /** Resolves the optional native storage API without initializing or invoking it. */
 public final class RackContract {
     public final Method ready,stack,selected,select,equip,open;
+    public final Method toggle,combat,generation,cursor,pending,ticket,accepted;
     public RackContract(Class<?> api,Class<?> nativeStack)throws ReflectiveOperationException{
         ready=method(api,"ready",Boolean.TYPE);
         stack=method(api,"stack",nativeStack,Integer.TYPE);
@@ -13,7 +14,10 @@ public final class RackContract {
         select=method(api,"select",Void.TYPE,Integer.TYPE);
         equip=method(api,"requestEquip",Boolean.TYPE,Integer.TYPE);
         open=method(api,"requestOpen",Boolean.TYPE);
+        toggle=optional(api,"requestToggle",Boolean.TYPE);combat=optional(api,"combatActive",Boolean.TYPE);
+        generation=optional(api,"snapshotGeneration",Long.TYPE);cursor=optional(api,"requestCursor",Boolean.TYPE,Integer.TYPE,Integer.TYPE,Integer.TYPE);pending=optional(api,"pending",Boolean.TYPE);ticket=optional(api,"cursorTicket",Integer.TYPE);accepted=optional(api,"cursorAccepted",Boolean.TYPE,Integer.TYPE);
     }
+    private static Method optional(Class<?> api,String name,Class<?> result,Class<?>...arguments){try{return method(api,name,result,arguments);}catch(NoSuchMethodException missing){return null;}}
     private static Method method(Class<?> api,String name,Class<?> result,Class<?>...arguments)throws NoSuchMethodException{
         Method value=api.getMethod(name,arguments);
         if(!Modifier.isStatic(value.getModifiers())||value.getReturnType()!=result)throw new NoSuchMethodException("Unsupported storage API: "+name);

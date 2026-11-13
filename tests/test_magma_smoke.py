@@ -283,6 +283,49 @@ class MagmaSmokeTests(unittest.TestCase):
         self.assertEqual(len(review['script_bodies']), 1)
         self.assertFalse(review['scripts_executed'])
 
+    def test_delta_review_reparses_changed_region_and_rejects_new_script(self):
+        recovery = self.fixture_recovery(include_script=False)
+        n = world.nbt
+        def region_at(root, scripted):
+            path = root / 'region/r.0.0.mca'
+            path.parent.mkdir(parents=True)
+            tiles = [n.compound({'id': n.Tag(n.STRING, 'customnpcs:scripted'), 'Scripts': n.Tag(n.LIST, [n.compound({'Script': n.Tag(n.STRING, 'throw never_execute()')})], n.COMPOUND)})] if scripted else []
+            chunk = n.compound({'Level': n.compound({'Entities': n.Tag(n.LIST, [], n.COMPOUND), 'TileEntities': n.Tag(n.LIST, tiles, n.COMPOUND)})})
+            region = world.anvil.Region(path)
+            region.store_chunk(0, '', chunk)
+            path.write_bytes(region.to_bytes())
+        original = self.root / 'original-regions'
+        region_at(original, False)
+        old_rows = world.tree_rows(original)
+        donor = self.root / 'donor-delta'
+        region_at(donor / world.LEVEL, False)
+        frozen = {'status': 'FROZEN_FOR_READ_ONLY_COPY', 'files': old_rows, 'file_count': 1,
+                  'bytes': sum(row['bytes'] for row in old_rows),
+                  'manifest_sha256': hashlib.sha256(json.dumps(old_rows, sort_keys=True).encode()).hexdigest()}
+        frozen_path = donor / 'PRIVATE-WORLD-FROZEN-RECEIPT.json'
+        frozen_path.write_text(json.dumps(frozen))
+        (donor / world.PREP).write_text(json.dumps({'files': old_rows, 'source_manifest_sha256': frozen['manifest_sha256'],
+            'source_world': str(original), 'source_frozen_receipt_sha256': smoke.pack.hash_file(frozen_path)['sha256']}))
+        (donor / smoke.MARKER).write_text(world.PENDING)
+        world.review_scripts(donor, recovery)
+        (donor / world.READY).write_text(json.dumps({'script_review': smoke.pack.hash_file(donor / world.REVIEW)}))
+        target = self.root / 'new-delta'
+        region_at(target / world.LEVEL, True)
+        new_rows = world.tree_rows(target / world.LEVEL)
+        (target / world.PREP).write_text(json.dumps({'files': new_rows, 'source_manifest_sha256': 'new-frozen'}))
+        (target / smoke.MARKER).write_text(world.PENDING)
+        result = world.review_changed_regions(target, recovery, donor)
+        self.assertEqual(result['status'], 'REVIEW_REQUIRED')
+        self.assertEqual(result['changed_regions_reparsed'], ['region/r.0.0.mca'])
+        self.assertEqual(result['tile_entities'], 1)
+        self.assertEqual(len(result['script_bodies']), 1)
+        self.assertFalse(result['scripts_executed'])
+        sealed = json.loads((donor / world.READY).read_text())
+        sealed['script_review']['sha256'] = 'changed-donor-seal'
+        (donor / world.READY).write_text(json.dumps(sealed))
+        with self.assertRaises(ValueError):
+            world.review_changed_regions(target, recovery, donor)
+
     def test_release312_upgrade_uses_frozen_receipts_new_port_and_retains0311(self):
         recovery = self.fixture_recovery(include_script=False)
         source_root, old_build, old_native, old_core = self.fixture_build()
@@ -309,6 +352,7 @@ class MagmaSmokeTests(unittest.TestCase):
         qa['source_build_report'] = smoke.pack.hash_file(build_path)
         qa['assertions'] = 2058
         qa['expected_loaded_mods']['valeorders']['sha256'] = new_core
+        qa['production_mod_ids'] = list(qa['expected_loaded_mods'])
         qa_path = frozen_inputs / 'build/native-check-report.json'
         qa_path.write_text(json.dumps(qa))
         with patch.object(smoke, 'CORE_SHA256', old_core), patch.object(release, 'CORE_SHA256', new_core), patch.object(release, 'SOURCE_SHA256', 'fixture-source-312'), patch.object(release, 'BUILD_SHA256', smoke.pack.hash_file(build_path)['sha256']), patch.object(release, 'NATIVE_SHA256', smoke.pack.hash_file(qa_path)['sha256']):
@@ -339,6 +383,32 @@ class MagmaSmokeTests(unittest.TestCase):
             release.world_port(self.root, {'profile_release': '0.3.13', 'core_sha256': 'anything'})
         with self.assertRaises(ValueError):
             release.world_port(self.root, {'profile_release': '0.3.12', 'core_sha256': 'wrong', 'source_snapshot_sha256': release.SOURCE_SHA256})
+
+    def test_release313_has_its_own_exact_source_native_port_and_changed_owner_boundary(self):
+        spec = release.release_spec('0.3.13')
+        self.assertEqual(spec['port'], 25585)
+        self.assertEqual(spec['assertions'], 2305)
+        self.assertEqual(spec['changed'], {'vale-orders', 'vale-residents'})
+        self.assertEqual(spec['absent'], {'valeorders', 'valeresidents'})
+        self.assertNotEqual(spec['core'], release.release_spec('0.3.12')['core'])
+        with self.assertRaises(ValueError):
+            release.release_spec('0.3.14')
+        with self.assertRaises(ValueError):
+            world.profile(port=25582)
+
+    def test_legacy_reference_rejects_saved_changed_owners_or_unreviewed_changes(self):
+        components = ['vale-orders', 'vale-residents'] + ['stable' + str(i) for i in range(7)]
+        old = [dict(component=name, sha256='old') for name in components]
+        new = [dict(row, sha256='new') if row['component'] in {'vale-orders', 'vale-residents'} else dict(row) for row in old]
+        release.legacy_registry_scope('0.3.13', {'minecraft:stone', 'customnpcs:customnpc'}, old, new)
+        for name in ('valeorders:blade', 'valeresidents:resident'):
+            with self.assertRaises(ValueError):
+                release.legacy_registry_scope('0.3.13', {name}, old, new)
+        changed = [dict(row, sha256='unreviewed') if row['component'] == 'stable0' else dict(row) for row in new]
+        with self.assertRaises(ValueError):
+            release.legacy_registry_scope('0.3.13', {'minecraft:stone'}, old, changed)
+        with self.assertRaises(ValueError):
+            release.legacy_registry_scope('0.3.12', {'minecraft:stone'}, old, new)
 
     def test_script_review_reuse_requires_identical_frozen_file_rows(self):
         for name, digest in (('donor', 'old'), ('new', 'changed')):

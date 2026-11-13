@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dusk_helmet"
+  "parent": "valeorders:item/dusk_helmet",
+  "textures": {
+    "layer0": "valeorders:items/hushvault_helmet"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/ember_chestplate"
+  "parent": "valeorders:item/ember_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/kilnback_chestplate"
+  }
 }

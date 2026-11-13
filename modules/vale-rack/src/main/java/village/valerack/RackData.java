@@ -13,7 +13,8 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 /** Six owned physical slots, independent of InventoryPlayer's thirty-six cells. */
 public final class RackData implements IInventory,INBTSerializable<NBTTagCompound> {
-    public static final int SIZE=6,VERSION=1;
+    public static final int SIZE=6,VERSION=2;
+    public final CombatHotbar combat=new CombatHotbar();
     @CapabilityInject(RackData.class) public static final Capability<RackData> CAP=null;
     private final ItemStack[] stacks=new ItemStack[SIZE];
     private final NBTTagCompound[] envelopes=new NBTTagCompound[SIZE];
@@ -31,18 +32,19 @@ public final class RackData implements IInventory,INBTSerializable<NBTTagCompoun
         if(locked)return original.copy();NBTTagCompound root=original.copy();root.setInteger("Version",VERSION);root.setLong("Revision",revision);
         NBTTagList items=new NBTTagList();for(int i=0;i<SIZE;i++)if(!stacks[i].isEmpty()){
             NBTTagCompound entry=envelopes[i]==null?new NBTTagCompound():envelopes[i].copy();entry.setInteger("Slot",i);entry.setTag("Stack",stacks[i].writeToNBT(new NBTTagCompound()));items.appendTag(entry);
-        }for(NBTTagCompound entry:opaque)items.appendTag(entry.copy());root.setTag("Items",items);return root;
+        }for(NBTTagCompound entry:opaque)items.appendTag(entry.copy());root.setTag("Items",items);root.setTag("CombatHotbar",combat.save());return root;
     }
     @Override public void deserializeNBT(NBTTagCompound nbt){
-        original=nbt.copy();Arrays.fill(stacks,ItemStack.EMPTY);Arrays.fill(envelopes,null);opaque.clear();locked=nbt.hasKey("Version")&&(!nbt.hasKey("Version",3)||nbt.getInteger("Version")!=VERSION)||nbt.hasKey("Items")&&(!nbt.hasKey("Items",9)||((NBTTagList)nbt.getTag("Items")).tagCount()>0&&((NBTTagList)nbt.getTag("Items")).getTagType()!=10)||nbt.hasKey("Revision")&&!nbt.hasKey("Revision",4);revision=Math.max(0,nbt.getLong("Revision"));
+        original=nbt.copy();combat.clear();Arrays.fill(stacks,ItemStack.EMPTY);Arrays.fill(envelopes,null);opaque.clear();locked=nbt.hasKey("Version")&&(!nbt.hasKey("Version",3)||(nbt.getInteger("Version")!=VERSION&&nbt.getInteger("Version")!=1))||nbt.hasKey("Items")&&(!nbt.hasKey("Items",9)||((NBTTagList)nbt.getTag("Items")).tagCount()>0&&((NBTTagList)nbt.getTag("Items")).getTagType()!=10)||nbt.hasKey("Revision")&&!nbt.hasKey("Revision",4);revision=Math.max(0,nbt.getLong("Revision"));
+        if(!locked&&nbt.hasKey("CombatHotbar"))locked=!nbt.hasKey("CombatHotbar",10)||!combat.load(nbt.getCompoundTag("CombatHotbar"));
         if(!locked){NBTTagList list=nbt.getTagList("Items",10);for(int i=0;i<list.tagCount();i++){
             NBTTagCompound entry=list.getCompoundTagAt(i);int index=entry.hasKey("Slot",3)?entry.getInteger("Slot"):-1;ItemStack stack=entry.hasKey("Stack",10)?new ItemStack(entry.getCompoundTag("Stack")):ItemStack.EMPTY;
-            if(index<0||index>=SIZE||!stacks[index].isEmpty()||stack.isEmpty()||!RackPolicy.type(stack)||stack.getCount()>Math.min(64,stack.getMaxStackSize()))opaque.add(entry.copy());
+            if(index<0||index>=SIZE||!stacks[index].isEmpty()||stack.isEmpty()||!RackPolicy.combatType(stack)||!RackPolicy.bounded(stack))opaque.add(entry.copy());
             else{stacks[index]=stack;envelopes[index]=entry.copy();}
-        }}dirty=true;
+        }}if(combat.active)for(ItemStack stack:stacks)if(!stack.isEmpty())locked=true;dirty=true;
     }
     /** Moves ownership during clone; the detached old entity cannot hold a second live copy. */
-    public void detach(){Arrays.fill(stacks,ItemStack.EMPTY);Arrays.fill(envelopes,null);opaque.clear();original=new NBTTagCompound();locked=false;markDirty();}
+    public void detach(){Arrays.fill(stacks,ItemStack.EMPTY);Arrays.fill(envelopes,null);opaque.clear();original=new NBTTagCompound();combat.clear();locked=false;markDirty();}
     public void raw(int slot,ItemStack stack){stacks[slot]=stack.isEmpty()?ItemStack.EMPTY:stack;}
     @Override public int getSizeInventory(){return SIZE;}
     @Override public boolean isEmpty(){for(ItemStack stack:stacks)if(!stack.isEmpty())return false;return true;}
@@ -55,12 +57,12 @@ public final class RackData implements IInventory,INBTSerializable<NBTTagCompoun
     @Override public boolean isUsableByPlayer(EntityPlayer p){return owner==p&&!p.isDead&&p.isEntityAlive()&&!p.isSpectator();}
     @Override public void openInventory(EntityPlayer p){}
     @Override public void closeInventory(EntityPlayer p){}
-    @Override public boolean isItemValidForSlot(int index,ItemStack stack){return !locked&&owner!=null&&index>=0&&index<SIZE&&RackPolicy.accepts(owner,stack);}
+    @Override public boolean isItemValidForSlot(int index,ItemStack stack){return !locked&&!combat.active&&owner!=null&&index>=0&&index<SIZE&&RackPolicy.combatAccepts(owner,stack);}
     @Override public int getField(int id){return 0;}
     @Override public void setField(int id,int value){}
     @Override public int getFieldCount(){return 0;}
     @Override public void clear(){if(!locked){Arrays.fill(stacks,ItemStack.EMPTY);markDirty();}}
-    @Override public String getName(){return "Weapon rack";}
+    @Override public String getName(){return "Combat hotbar";}
     @Override public boolean hasCustomName(){return false;}
     @Override public ITextComponent getDisplayName(){return new TextComponentString(getName());}
     public static final class Provider implements ICapabilitySerializable<NBTTagCompound>{

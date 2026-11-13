@@ -9,6 +9,6 @@ public final class RackScreen extends GuiContainer{
         for(net.minecraft.inventory.Slot slot:inventorySlots.inventorySlots){int sx=x+slot.xPos,sy=y+slot.yPos;drawRect(sx-1,sy-1,sx+17,sy+17,0xff1b2428);drawRect(sx,sy,sx+16,sy+16,0xffc6b58f);}
         int selected=RackClientApi.selectedSlot();if(selected>=0){int sx=x+43+selected*18;drawRect(sx-1,y+53,sx+17,y+55,0xff9ddddc);}
     }
-    @Override protected void drawGuiContainerForegroundLayer(int mx,int my){fontRenderer.drawString("Weapon rack",16,13,0x1b2428);fontRenderer.drawString("Focus + use: equip / stow",16,57,0x1b2428);fontRenderer.drawString("Inventory",16,74,0x1b2428);}
+    @Override protected void drawGuiContainerForegroundLayer(int mx,int my){fontRenderer.drawString("Combat hotbar",16,13,0x1b2428);fontRenderer.drawString("Hold combat key 3s",16,57,0x1b2428);fontRenderer.drawString("Inventory",16,74,0x1b2428);}
     @Override public void drawScreen(int mx,int my,float partial){drawDefaultBackground();super.drawScreen(mx,my,partial);renderHoveredToolTip(mx,my);}
 }

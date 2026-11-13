@@ -144,6 +144,25 @@ A NEW profile, `D:/HiddenBlockVillage-Sprint-20261113/Vale-0312-All-Mods-Client-
 
 The private variant receipt is SHA-256 `821606f3a8802cad25a6a7f686a7e9264aef95caa292cba7e3bce8cf93bdd387`; launch recipe `99b3674f61e31f377e059f41efbe6040ae8af6596ad4782e74e3f3b8ade0babd`. The matching Magma server/controller stays running. All25 Magma tooling fixtures pass, including exact-byte option editing and fail-closed handling of duplicate/unknown forms. No client UI was automated by this agent.
 
+## Core0.3.13 copied-world baseline on25585
+
+The NEW `D:/HiddenBlockVillage-Sprint-20261113/magma-v17-playable-gates-0313-01` profile passed two actual Done/save/clean exit0 runs and is now stopped. It uses archived Magma/Forge2860, Windows Java8,2GB,54 server JARs, CrazyCrates and `canonicalEquipmentCatalog=false`. Source `aacf8985dc408704cba269daa5a4ef488635030a5e25d938462fbed7f5c0d096` comes from the isolated0.3.13 release worktree, not the mutable original checkout. Core SHA-256 is `c2db8c4d472aec9f38a3c1d7b44b4ac31c93dfd0bbfb6373908de1af8c049352`; exact source-build receipt `33df3e878588866bec95b8e8970655d3ed681457b11975aab77e58e885ac9732`, passing **2,305-assertion** native receipt `79704422c5e655df53686822102c7461be3866573e94aee4f62a7fbece560818`. All12 runtime components and both receipts were copied/hash-frozen privately before staging; all nine server components match that proof.
+
+Port25584 was already owned by the active combat-hotbar preview. The first preflight refused before starting Java or mutating the new world. Root approved a bounded rebind of this unstarted profile to **127.0.0.1:25585**; the existing25584 preview and25583 Magma runtime were preserved. The preflight refusal and config/receipt-only rebind are retained privately. No occupied listener was stopped.
+
+| 0.3.13 copied-world run | Observed result | Elapsed |
+| --- | --- | ---: |
+| `copied-world-0313-boot-01` | Done/save/clean exit0 | 39.079 s |
+| `copied-world-0313-boot-02-restart` | Same-world Done/save/clean exit0 | 35.328 s |
+
+All1,771 frozen-world files and five original schematics were reverified unchanged before stage. Complete no-script findings were reused only for byte-identical source/region manifests; the128 original dependencies and NPC sources were reviewed again at sealing. Core and Residents changed; seven other server additions remain byte-identical to the0.3.11 baseline. No source saved names use either changed namespace. The resulting legacy-name preflight uses that bounded scope, then the actual0.3.13 saved registry dump confirms no missing original names. No mapping discard/confirmation occurred and no private QA JAR was installed.
+
+The first boot logged three provisioned core Residents, zero adopted actors and three saved role slots. Both boots logged five authored gates with unresolved sites remaining disabled. **The seven new props, five new original gate givers and measured runtime bindings are not installed.** The candidate name does not mean those missions have native acceptance. Gate/NPC placement awaits root's console-plan review and an explicit remote-chunk loading strategy. The ignored preparation draft contains exact allowlisted commands, typed-SNBT UUID capture and six passing guard fixtures; it sends no commands. Those future actor identities must come from native output, never generated placeholder UUIDs.
+
+A matching0.3.13 full58 client assembly/launch recipe is prepared privately, with58 verified provider JARs/55 static IDs, six server-shared matches,68 external pins and1,305 verified assets. It uses synthetic `ValeGateProbe`, loopback25585/max4GB, legacy catalogfalse/JER DIYfalse and the explicit temporary CustomNPC inventory-tab workaround. **The new client is not assembled or launched.** No0.3.13 graphical/network/dungeon visit is claimed. The original GUI-thread compatibility draft remains ignored and unpromoted.
+
+All27 Magma tooling fixtures pass, including distinct0.3.13 pins/port and rejection of changed-owner saved IDs or unreviewed reference owners. Safe boot evidence is `release/evidence/magma0313-v17-copied-world-20261113.json`. The inherited invalid recipe and hook/mailbox warnings remain. Hosted deployment, actual gate objectives, world fluid/lighting/route fidelity and broad49-mod behavior remain separate gates.
+
 
 ### Controlled TabGuard client run observed
 

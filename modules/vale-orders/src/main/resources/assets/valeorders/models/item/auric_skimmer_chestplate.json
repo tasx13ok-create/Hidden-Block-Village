@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dawn_chestplate"
+  "parent": "valeorders:item/dawn_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/auric_skimmer_chestplate"
+  }
 }

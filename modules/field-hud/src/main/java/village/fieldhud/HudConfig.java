@@ -10,6 +10,7 @@ public final class HudConfig {
     public static boolean shinobi=true,motion=true,curve=true,eyeMap=true;
     public static boolean chakra=true,slim=false;
     public static boolean glassBlur=true;
+    public static boolean narutoInventory=true,menuSounds=true;
     public static boolean focusEffects=true;
     public static boolean jutsuRail=true;
     public static int positionX=-1,positionY=-1;
@@ -17,6 +18,8 @@ public final class HudConfig {
     public static void load(File directory) {
         file=new Configuration(new File(directory,"fieldhud.cfg"));
         file.load();
+        narutoInventory=file.getBoolean("narutoInventory","hud",true,"Original paper/ink skin over native inventory; retains crafting, recipe book, slots and tooltips.");
+        menuSounds=file.getBoolean("narutoMenuSounds","hud",true,"Quiet native click sounds for Naruto settings buttons.");
         mode=file.getInt("mode","hud",0,0,2,"0 Explore, 1 Combat, 2 Quiet. Changes only Field HUD.");
         margin=file.getInt("margin","hud",8,4,24,"Screen inset in scaled GUI pixels.");
         location=file.getBoolean("location","hud",true,"Show biome or configured build name in Explore mode.");
@@ -38,6 +41,9 @@ public final class HudConfig {
         save();
     }
     public static void save() {
+        if(file==null)return;
+        file.get("hud","narutoInventory",true).set(narutoInventory);
+        file.get("hud","narutoMenuSounds",true).set(menuSounds);
         file.get("hud","mode",0).set(mode);
         file.get("hud","margin",8).set(margin);
         file.get("hud","location",true).set(location);

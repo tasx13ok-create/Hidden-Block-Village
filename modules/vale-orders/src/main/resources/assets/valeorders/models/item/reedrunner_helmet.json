@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/gale_helmet"
+  "parent": "valeorders:item/gale_helmet",
+  "textures": {
+    "layer0": "valeorders:items/reedrunner_helmet"
+  }
 }

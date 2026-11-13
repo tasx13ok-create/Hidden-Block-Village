@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/gale_leggings"
+    "layer0": "valeorders:items/outfit_cloudmere_trousers"
   }
 }

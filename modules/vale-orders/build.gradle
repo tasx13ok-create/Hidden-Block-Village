@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.13'
+version = '0.3.14'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -227,6 +227,7 @@ for (entry in [verifyAcademy: 'village.vale.AcademyChecks',
                verifyJutsu: 'village.vale.JutsuMathTest',
                verifyWeaponVfx: 'village.vale.WeaponMathTest',
                verifyGates: 'village.vale.expedition.GateRulesChecks',
+               verifyDodge: 'village.vale.DodgeChecks',
                verifyGateContent: 'village.vale.expedition.GateBookChecks',
                verifyJeiCatalog: 'village.vale.JeiCatalogChecks',
                verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',

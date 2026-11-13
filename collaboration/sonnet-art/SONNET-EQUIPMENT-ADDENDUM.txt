@@ -1,0 +1,22 @@
+ADD THIS TO THE ORIGINAL SONNET ART HANDOFF
+
+The owner wants every character outfit/armor and every weapon across the supplied pack, including actual worn armor and held weapons.
+Read 06-ARMOR-AND-WEAPONS.txt for the focused reference gear not named in the current Vale checklist; 07 for corrected real display names/base items; 08 for additional worn/held-art work; equipment-inventory.json for exact provenance and duplicate flags.
+Do not assume Bracken Coat, generic focus lenses or generic arsenal names already reproduce Naruto character equipment. Make explicit coverage/mapping decisions. Do not invent a one-to-one mapping or extra armor slots.
+Most character equipment was already in files 04/05 of the earlier full bundle. This supplement makes it actionable and prevents missed characters; deduplicate by source JAR + model ID, not display name. Distinct mods can have separate swords with the same display name.
+Unused generated language strings such as eye-boots are not proof those items exist. Private custom skins and runtime NBT variants remain a separate inspection task, not fabricated checklist entries.
+Create original art, readable icons, individual PNGs, UV-correct worn textures, held-model assets where needed, labeled previews and a per-ID completion manifest. Do not copy supplied third-party artwork or change gameplay/registry IDs.
+
+{
+  "jars_verified": 49,
+  "equipment_model_states": 685,
+  "not_named_in_current_vale_list": 673,
+  "new_localized_names_or_base_aliases": 9,
+  "new_model_paths_beyond_first_bundle": 0,
+  "worn_texture_paths": 256,
+  "categories": {
+    "Armor / wearables": 342,
+    "Equipment infrastructure / examples": 12,
+    "Weapons": 331
+  }
+}

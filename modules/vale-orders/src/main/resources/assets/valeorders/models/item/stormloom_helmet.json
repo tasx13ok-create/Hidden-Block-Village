@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/storm_helmet"
+  "parent": "valeorders:item/storm_helmet",
+  "textures": {
+    "layer0": "valeorders:items/stormloom_helmet"
+  }
 }

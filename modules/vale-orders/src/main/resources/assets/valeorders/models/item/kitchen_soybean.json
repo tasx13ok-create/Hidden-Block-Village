@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/kitchen_placeholder_deferred"
+    "layer0": "valeorders:items/kitchen_soybean"
   }
 }

@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.fieldhud'
-version = '0.14.1'
+version = '0.16.0'
 base { archivesName = 'field-hud' }
 java {
     toolchain {
@@ -19,9 +19,39 @@ minecraft {
     username.set('FieldHudTest')
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+def holdClasses = layout.buildDirectory.dir('hold-checks')
+tasks.register('compileHoldChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/HoldGesture.java', 'tests/village/fieldhud/HoldGestureChecks.java')
+    classpath = files()
+    destinationDirectory = holdClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifyCombatHold', JavaExec) {
+    dependsOn 'compileHoldChecks'
+    classpath = files(holdClasses)
+    mainClass = 'village.fieldhud.HoldGestureChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifyCombatHold' }
 jar { from('LICENSE.txt') }
 // Optional local compile shortcut. The supplied JAR must be an independently
 // prepared, deobfuscated Forge 1.12.2 stable-39 development API, never a mod JAR.
 // Fresh external builds omit this property and use the normal RFG pipeline.
 
 apply from: file('../../gradle/vale-mod-build.gradle')
+
+// Naruto settings/inventory geometry and rebinding gesture checks, independent of Minecraft.
+def narutoMenuClasses = layout.buildDirectory.dir('naruto-menu-checks')
+tasks.register('compileNarutoMenuChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/Layout.java', 'src/main/java/village/fieldhud/NarutoMenuLayout.java', 'src/main/java/village/fieldhud/InventoryThemeLayout.java', 'src/main/java/village/fieldhud/TrainingGrade.java', 'src/main/java/village/fieldhud/RebindGesture.java', 'tests/village/fieldhud/NarutoMenuChecks.java')
+    classpath = files()
+    destinationDirectory = narutoMenuClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifyNarutoMenus', JavaExec) {
+    dependsOn 'compileNarutoMenuChecks'
+    classpath = files(narutoMenuClasses)
+    mainClass = 'village.fieldhud.NarutoMenuChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifyNarutoMenus' }

@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/storm_chestplate"
+  "parent": "valeorders:item/storm_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/stormloom_chestplate"
+  }
 }

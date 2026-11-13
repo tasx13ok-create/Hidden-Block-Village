@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dusk_leggings"
+  "parent": "valeorders:item/dusk_leggings",
+  "textures": {
+    "layer0": "valeorders:items/hushvault_leggings"
+  }
 }

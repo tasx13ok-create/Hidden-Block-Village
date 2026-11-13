@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/technique_codex"
+    "layer0": "valeorders:items/resonance_vow"
   }
 }

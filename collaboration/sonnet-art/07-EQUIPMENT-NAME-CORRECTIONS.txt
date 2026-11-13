@@ -1,0 +1,40 @@
+EXACT EXTRA HUMAN-READABLE NAMES / BASE-ITEM ALIASES
+
+The first index enumerated model JSON files. These localized names/base items have different filenames or multiple state models. They are corrections to existing art jobs, not nine extra confirmed items.
+
+[ ] Leaf Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.leaf_headband.name
+    Existing related models: kabutoaddon:item/leafheadband
+
+[ ] Cloud Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.cloud_headband.name
+    Existing related models: kabutoaddon:item/cloudheadband
+
+[ ] Rain Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.rain_headband.name
+    Existing related models: kabutoaddon:item/rainheadband
+
+[ ] Sound Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.sound_headband.name
+    Existing related models: kabutoaddon:item/soundheadband
+
+[ ] Kabuto Robe | kabutoaddon 5.5.8-beta.jar
+    Name key: item.kabuto_robe.name
+    Existing related models: kabutoaddon:item/kabutohood
+
+[ ] Sand Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.sand_headband.name
+    Existing related models: kabutoaddon:item/sandheadband
+
+[ ] Stone Ninja Headband | kabutoaddon 5.5.8-beta.jar
+    Name key: item.stone_headband.name
+    Existing related models: kabutoaddon:item/stoneheadband
+
+[ ] Giant Folding Fan | NarutoMod-1.12.2-0.3.1.beta.jar
+    Name key: item.folding_fan.name
+    Existing related models: narutomod:item/folding_fan_0, narutomod:item/folding_fan_1
+
+[ ] Retractable Spear | NarutoMod-1.12.2-0.3.1.beta.jar
+    Name key: item.spear_retractable.name
+    Existing related models: narutomod:item/spear_retractable_0, narutomod:item/spear_retractable_1, narutomod:item/spear_retractable_2, narutomod:item/spear_retractable_3, narutomod:item/spear_retractable_4, narutomod:item/spear_retractable_5, narutomod:item/spear_retractable_6, narutomod:item/spear_retractable_7
+

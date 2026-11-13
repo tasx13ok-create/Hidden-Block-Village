@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/flint_leggings"
+  "parent": "valeorders:item/flint_leggings",
+  "textures": {
+    "layer0": "valeorders:items/cairnroot_leggings"
+  }
 }

@@ -1,19 +1,31 @@
 [
   {
     "path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
-    "sha256": "0abfe41fa42d97c255425c8810a040285759fe02c3901136332138e35e90029a"
+    "sha256": "f899bb9f684ca7fa6baa6c484846c75d809b43620ce580c6accfc344b758ade5"
   },
   {
     "path": "src/village/vale/clientcompat/ClientLifecyclePlugin.java",
-    "sha256": "efce34d6bfce2ef838b144890de01e2e91afeefe0a421f37e9de39437baf2366"
+    "sha256": "b5d3f92bcdea1f8c7c3d02556e407169f72aa3cafa58fd7107ea258d729833f3"
   },
   {
     "path": "src/village/vale/clientcompat/ClientLifecycleTransformer.java",
     "sha256": "d3d991498516e03e9427b15a8f55967507e010760aa9c100b1fa5b75ddd12e97"
   },
   {
+    "path": "src/village/vale/clientcompat/NpcGuiThreadDispatch.java",
+    "sha256": "394dc6fe9cd1b506be8e16c9397ba0249ce6b564e0b5d24cc131e947668794ce"
+  },
+  {
+    "path": "src/village/vale/clientcompat/NpcGuiThreadTransformer.java",
+    "sha256": "391d8ded26bd85ce0e8c7e1ae7deaac59d6378cb7d70712be0123a6d651177c3"
+  },
+  {
     "path": "src/village/vale/clientcompat/SafeShutdown.java",
     "sha256": "4cafe600953aeb89d204940053709ccba67cbcef606316140744f0bce22b81eb"
+  },
+  {
+    "path": "src/village/vale/clientcompat/SupportedNpcSource.java",
+    "sha256": "7a342aa3db69c079ea75ec3306c7755b45a7aabaf6cc654a4716ab9520e26ca2"
   },
   {
     "path": "src/village/vale/damagecompat/DamageCompatMod.java",

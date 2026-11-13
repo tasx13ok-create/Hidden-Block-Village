@@ -77,5 +77,51 @@
   "staged_files": 11,
   "staged_bytes": 18878,
   "byte_identical_java_and_resources": true,
-  "build_scope": "Original adapter sources and BUILD.txt; external compile inputs are not included."
+  "build_scope": "Original adapter sources and BUILD.txt; external compile inputs are not included.",
+  "subsequent_original_gui_thread_change": {
+    "component": "client-lifecycle",
+    "version": "0.1.1",
+    "authorship": "New original Hidden Block Village implementation; compatibility descriptors/hash observations only; no third-party source/class payload copied",
+    "source_jar_sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b",
+    "scope": "Exact onTabClicked()V single scheduler call redirects unchanged whole Runnable to Minecraft thread; shutdown hook preserved",
+    "historical_archive_records_preserved": true,
+    "files": [
+      {
+        "path": "src/village/vale/clientcompat/NpcGuiThreadTransformer.java",
+        "bytes": 3437,
+        "sha256": "391d8ded26bd85ce0e8c7e1ae7deaac59d6378cb7d70712be0123a6d651177c3"
+      },
+      {
+        "path": "src/village/vale/clientcompat/NpcGuiThreadDispatch.java",
+        "bytes": 664,
+        "sha256": "394dc6fe9cd1b506be8e16c9397ba0249ce6b564e0b5d24cc131e947668794ce"
+      },
+      {
+        "path": "src/village/vale/clientcompat/SupportedNpcSource.java",
+        "bytes": 2725,
+        "sha256": "7a342aa3db69c079ea75ec3306c7755b45a7aabaf6cc654a4716ab9520e26ca2"
+      },
+      {
+        "path": "src/village/vale/clientcompat/ClientLifecyclePlugin.java",
+        "bytes": 845,
+        "sha256": "b5d3f92bcdea1f8c7c3d02556e407169f72aa3cafa58fd7107ea258d729833f3"
+      },
+      {
+        "path": "src/village/vale/clientcompat/ClientLifecycleMod.java",
+        "bytes": 297,
+        "sha256": "f899bb9f684ca7fa6baa6c484846c75d809b43620ce580c6accfc344b758ade5"
+      },
+      {
+        "path": "client-lifecycle/build.gradle",
+        "bytes": 816,
+        "sha256": "9ca619fd7ece6a038b69fb5d81953ba5ca838759ecf5e54842aa974eb8de1100"
+      }
+    ],
+    "standalone_checks": {
+      "bytecode_and_source": 33,
+      "dispatch_and_integration": 26,
+      "passed": true,
+      "runtime_gui_acceptance": false
+    }
+  }
 }

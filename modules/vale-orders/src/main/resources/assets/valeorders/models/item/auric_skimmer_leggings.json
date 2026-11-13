@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dawn_leggings"
+  "parent": "valeorders:item/dawn_leggings",
+  "textures": {
+    "layer0": "valeorders:items/auric_skimmer_leggings"
+  }
 }
