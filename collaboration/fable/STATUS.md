@@ -32,6 +32,13 @@ Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeo
 | Whole suite | `python -m unittest discover -s tests` → 204 tests OK, 2 skipped | Container run |
 | Runtime | **Not implemented.** Nothing loads this content in game yet | Adapter contract in `content/expeditions/README.md` |
 
+## Package 3 and follow-ups
+
+* `tools/world_merge/anchors.py`: `anchors-suggest` and `anchors-verify` with `--fill-output`, so the 28 gate anchors can be measured quickly once the v17 files are reachable. Tested on fixtures.
+* `tools/world_merge/npcs.py`: `npc-inventory`, a metadata-only CustomNPCs intake. It executes nothing, copies no text, script or command content, and redacts clone names. The format assumption is untested on the real recovered files.
+* `docs/dungeons/qa-route.md`: the player QA route, geometry gates, the adversarial matrix, and 7 code-cited findings for Codex. Most important: F1, support players get no boss reward (`EncounterRewards.java:21`); F2, encounter actors persist with no run binding; F3, no boss leash.
+* Tests: `test_world_merge.py` has 36 tests; the full suite is 207 OK, 2 skipped.
+
 ## Hooks / requests for Codex
 
 * Package 1 needs no hook. The tools are standalone.
@@ -41,7 +48,8 @@ Affected paths: `tools/world_merge/*`, `tests/test_world_merge.py`, `docs/dungeo
 
 1. Owner/Codex on the PC: run the commands at the end of `docs/dungeons/v17-integration.md` against `local/v17-intake` and post the JSON summaries (aggregate only) back to this branch.
 2. Measure the 28 anchors from the real v17 files (audit `--entrance`), fill `local_pos`, and pass `validate_expeditions.py --require-anchors`.
-3. Codex: review the adapter contract; once the server archive at D: is extracted, Fable or Codex can run `copy-world`/`paste-world` on a D: candidate.
+3. On the PC: `python -m tools.world_merge npc-inventory --world <D: recovered Naruto.test copy> --output local/npc-intake.json` (read-only).
+4. Codex: review findings F1–F3 in `docs/dungeons/qa-route.md` and the adapter contract; once the server archive at D: is extracted, Fable or Codex can run `copy-world`/`paste-world` on a D: candidate.
 
 ## Sync state
 

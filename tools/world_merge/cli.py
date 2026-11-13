@@ -182,11 +182,58 @@ def build_parser():
     cw.add_argument('--dest', required=True)
     cw.add_argument('--manifest', required=True)
     cw.set_defaults(func=lambda args: _copy_world(args))
+    sa = sub.add_parser('anchors-suggest', help='candidate arrival/court/arena/container cells')
+    sa.add_argument('--input', required=True)
+    sa.add_argument('--entrance', type=_vec, action='append')
+    sa.add_argument('--output')
+    sa.add_argument('--replace-report', action='store_true')
+    sa.set_defaults(func=cmd_anchors_suggest)
+    va = sub.add_parser('anchors-verify', help='verify gates.json anchors for one dungeon')
+    va.add_argument('--input', required=True)
+    va.add_argument('--gates', required=True)
+    va.add_argument('--dungeon', required=True)
+    va.add_argument('--measured', help='JSON {anchor_id: [x,y,z]} overriding local_pos')
+    va.add_argument('--entrance', type=_vec, action='append')
+    va.add_argument('--fill-output', help='write a NEW gates file with verified anchors applied')
+    va.add_argument('--output')
+    va.add_argument('--replace-report', action='store_true')
+    va.set_defaults(func=cmd_anchors_verify)
+    ni = sub.add_parser('npc-inventory', help='metadata-only CustomNPCs intake report (nothing executed)')
+    ni.add_argument('--world', required=True)
+    ni.add_argument('--output')
+    ni.add_argument('--replace-report', action='store_true')
+    ni.set_defaults(func=cmd_npc_inventory)
     rb = sub.add_parser('rollback', help='restore a candidate world to before paste N')
     rb.add_argument('--world-copy', required=True)
     rb.add_argument('--paste', type=int, required=True)
     rb.set_defaults(func=_rollback)
     return p
+
+
+def cmd_npc_inventory(args):
+    from . import npcs
+    _emit(args, npcs.inventory(args.world))
+    return 0
+
+
+def cmd_anchors_suggest(args):
+    from . import anchors
+    _emit(args, anchors.suggest(Schematic.load(args.input), args.entrance))
+    return 0
+
+
+def cmd_anchors_verify(args):
+    from . import anchors
+    gates = json.loads(Path(args.gates).read_text(encoding='utf-8'))
+    measured = json.loads(Path(args.measured).read_text(encoding='utf-8')) if args.measured else None
+    rows = anchors.verify(Schematic.load(args.input), gates, args.dungeon, args.entrance, measured)
+    report = {'dungeon': args.dungeon, 'anchors': rows,
+              'ok': sum(r['status'] == 'ok' for r in rows), 'total': len(rows)}
+    if args.fill_output:
+        report['applied_to_new_file'] = anchors.fill(args.gates, args.fill_output, rows)
+    _emit(args, report)
+    bad = [r for r in rows if r['status'] not in ('ok', 'unmeasured', 'route_node_unchecked_reachability')]
+    return 1 if bad else 0
 
 
 def _rollback(args):

@@ -496,6 +496,88 @@ class WorldPasteTests(unittest.TestCase):
             anvil.Region(bad)
 
 
+class AnchorTests(unittest.TestCase):
+    def gates(self):
+        return {'schema': 1, 'anchors': {
+            'gate': {'dungeon': 'sakura_v17', 'kind': 'arrival', 'local_pos': None},
+            'chest_room': {'dungeon': 'sakura_v17', 'kind': 'checkpoint', 'local_pos': None},
+            'in_wall': {'dungeon': 'sakura_v17', 'kind': 'marker', 'local_pos': None},
+            'other': {'dungeon': 'mist_v17', 'kind': 'arrival', 'local_pos': [1, 1, 1]}}}
+
+    def test_suggest_finds_edge_arrival_open_area_and_container_standing_cell(self):
+        from tools.world_merge import anchors
+        r = anchors.suggest(house(), min_area=20)
+        self.assertTrue(r['arrival_candidates'] and r['arrival_candidates'][0]['y'] == 1)
+        self.assertEqual(1, r['open_areas'][0]['y'])
+        chest = r['containers'][0]
+        self.assertTrue(chest['reachable'] and chest['pos'] == [6, 1, 6])
+        s = house()
+        s.set_block(7, 1, 10, STONE)
+        s.set_block(7, 2, 10, STONE)
+        self.assertFalse(anchors.suggest(s)['containers'][0]['reachable'])
+
+    def test_verify_classifies_each_anchor_and_fill_writes_only_verified_to_new_file(self):
+        from tools.world_merge import anchors
+        measured = {'gate': [1, 1, 1], 'chest_room': [6, 1, 7], 'in_wall': [4, 2, 4]}
+        rows = {r['anchor']: r['status'] for r in anchors.verify(house(), self.gates(), 'sakura_v17', [(1, 1, 1)], measured)}
+        self.assertEqual({'gate': 'ok', 'chest_room': 'ok', 'in_wall': 'not_a_route_node'}, rows)
+        s = house()
+        s.set_block(7, 1, 10, STONE)
+        s.set_block(7, 2, 10, STONE)
+        rows2 = {r['anchor']: r['status'] for r in anchors.verify(s, self.gates(), 'sakura_v17', [(1, 1, 1)], measured)}
+        self.assertEqual('unreachable_from_entrance', rows2['chest_room'])
+        self.assertEqual('unmeasured', {r['anchor']: r['status'] for r in anchors.verify(house(), self.gates(), 'sakura_v17')}['gate'])
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / 'gates.json'
+            src.write_text(json.dumps(self.gates()))
+            rows = anchors.verify(house(), self.gates(), 'sakura_v17', [(1, 1, 1)], measured)
+            with self.assertRaises(FileExistsError):
+                anchors.fill(src, src, rows)
+            out = Path(tmp) / 'gates.measured.json'
+            applied = anchors.fill(src, out, rows)
+            self.assertEqual(['chest_room', 'gate'], sorted(applied))
+            data = json.loads(out.read_text())
+            self.assertEqual([6, 1, 7], data['anchors']['chest_room']['local_pos'])
+            self.assertIsNone(data['anchors']['in_wall']['local_pos'])
+            self.assertIsNone(json.loads(src.read_text())['anchors']['gate']['local_pos'])
+
+
+class NpcInventoryTests(unittest.TestCase):
+    def test_nbt_json_dialect_and_metadata_only_report(self):
+        from tools.world_merge import npcs
+        self.assertEqual({'a': 1, 'b': [1, 2], 'c': 1.5, 's': 'keep 1b'},
+                         npcs.parse(b'{"a": 1b, "b": [I; 1, 2], "c": 1.5f, "s": "keep 1b"}'))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / 'world' / 'customnpcs'
+            (root / 'dialogs' / 'village').mkdir(parents=True)
+            (root / 'quests' / 'main').mkdir(parents=True)
+            (root / 'clones' / '1').mkdir(parents=True)
+            (root / 'scripts').mkdir()
+            (root / 'dialogs' / 'village' / '1.json').write_text(
+                '{"DialogId": 1, "DialogTitle": "Secret greeting", "DialogText": "PRIVATE TEXT", "DialogQuest": 7,'
+                ' "Options": [{"OptionSlot": 0b, "Option": {"Title": "Go", "Dialog": 2, "DialogCommand": "/give @p diamond 64"}},'
+                ' {"OptionSlot": 1b, "Option": {"Title": "Bye", "Dialog": 9}}]}')
+            (root / 'dialogs' / 'village' / '2.json').write_text('{"DialogId": 2, "DialogTitle": "x", "Options": []}')
+            (root / 'quests' / 'main' / '7.json').write_text('{"Title": "q", "NextQuestId": -1}')
+            (root / 'clones' / '1' / 'Sensei.json').write_text(
+                '{"id": "customnpcs:customnpc", "Name": "PRIVATE NAME", "Weapons": [{"id": "narutomod:kunai"}], "ScriptEnabled": 1b}')
+            (root / 'scripts' / 'boss.js').write_text('function interact(e){ e.API.executeCommand("op x"); }')
+            (root / 'broken.json').write_text('{not json')
+            report = npcs.inventory(Path(tmp) / 'world')
+            dumped = json.dumps(report)
+            for private in ('PRIVATE TEXT', 'Secret greeting', 'PRIVATE NAME', 'Sensei', '/give', 'executeCommand'):
+                self.assertNotIn(private, dumped)
+            self.assertEqual(2, len(report['dialogs']))
+            self.assertEqual(2, report['dialogs']['1']['options'])
+            self.assertEqual({'dialog_options_with_commands': 1, 'total_command_chars': 19}, report['commands'])
+            self.assertEqual([{'from_dialog': 1, 'to_dialog': 9}], report['broken_references'])
+            self.assertEqual(['customnpcs', 'narutomod'], report['dependency_namespaces'])
+            self.assertTrue(report['clones'][0]['has_script_data'])
+            self.assertEqual(1, report['scripts']['files'])
+            self.assertEqual([{'path': 'broken.json', 'reason': 'not_json_or_nbt_json'}], report['unparsed'])
+            self.assertFalse(npcs.inventory(Path(tmp))['customnpcs_present'])
+
+
 class CliTests(unittest.TestCase):
     def run_cli(self, *argv):
         out, err = io.StringIO(), io.StringIO()
