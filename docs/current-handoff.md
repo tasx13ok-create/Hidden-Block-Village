@@ -44,3 +44,13 @@ Native ChatGPT/Codex Remote is a separate possible route if the original host is
 5. Validate the complete matching server/client candidate, current Magma runtime, copied saved-world start/save/restart and migration, real graphical client/mod handshake and gameplay, intended graphics/Solas setup, and finally Bisect start/restart/client connection.
 
 Do not represent recorded Forge fixture success, Python tooling success, or the item counterpart coverage metric as proof of complete gameplay or hosted deployment acceptance.
+
+## Windows desktop continuation on 13 November 2026
+
+The available Windows desktop now has a separate clone of this repository inside its older dungeon workspace. Its checkout was synchronized to `69c8c9e6fba844ca7c13feb7839c2cb47f2e0169`; all 1,512 files in `release/candidate039-source-inputs.json` were read and matched their recorded byte counts and SHA-256 values, with zero mismatches. `tools/build_modules.py --list` successfully enumerated all eleven source areas using Python 3.12.10. This verifies source checkout identity and tool discovery, not a new component build or Minecraft run.
+
+The older workspace now has a local `AGENTS.md` entry point directing future sessions into this Git checkout and its current handoff. Existing dungeon saves and deliveries remain at v9 on this desktop; a newer chat mentions v17, but its schematic bytes were not located or verified here.
+
+Targeted filename searches of the inspected local Downloads, Documents, OneDrive/Desktop, CurseForge instance folders and additional download/transfer locations did not locate the reviewed `actual-stage-before.jsonl`, complete Vale server stage, assembly/preparation receipts, or `Naruto.test`. The documented `D:\Codex` directory is absent on this machine. These bounded searches do not establish that every disk or backup has been searched. Both Vale browser and native connection status tools returned no devices during this chat.
+
+Java on PATH reports 21.0.10; the inspected standard Java locations did not supply the required JDK 25/JDK 8 pair. The existing workspace Python 3.12.10 interpreter is usable. No full package assembly, saved-world load, graphical client or hosted acceptance was run during this desktop continuation. The next packaging step remains recovery of the original reviewed inventory and complete private inputs, followed by a separate fresh Core 0.3.9 assembly and its acceptance checks.
