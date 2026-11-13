@@ -268,9 +268,9 @@ def main(argv=None):
         "schema": 1, "started_utc": datetime.now(timezone.utc).isoformat(),
         "scope": "SOURCE_COMPONENT_BUILDS", "minecraft_launched": False,
         "saved_world_tested": False, "hosted_acceptance": False,
-        "plan": plan, "results": {}, "artifacts_directory": str(artifacts_root.relative_to(ROOT)),
+        "plan": plan, "results": {}, "artifacts_directory": artifacts_root.relative_to(ROOT).as_posix(),
         "source_snapshot": {"sha256": before_source["sha256"], "git_commit": before_source["git_commit"],
-                            "path": str((work / "source-inputs.json").relative_to(ROOT))},
+                            "path": (work / "source-inputs.json").relative_to(ROOT).as_posix()},
     }
     results = report["results"]
     for module in plan:
@@ -307,15 +307,15 @@ def main(argv=None):
                 shutil.copyfile(artifact, target)
                 if sha256(target) != entry["sha256"]:
                     raise BuildError(f"Artifact changed while copying: {artifact}")
-                entry["copied_path"] = str(target.relative_to(ROOT))
-            results[module] = {"status": "PASS", **data, "log": str(log.relative_to(ROOT))}
+                entry["copied_path"] = target.relative_to(ROOT).as_posix()
+            results[module] = {"status": "PASS", **data, "log": log.relative_to(ROOT).as_posix()}
             if module == "vale-orders" and not api:
                 prepared = directory / "build" / "rfg" / "recompiled_minecraft-1.12.2.jar"
                 if prepared.is_file():
                     api = prepared_api(prepared)
             print(f"PASS {module}: {len(data['artifacts'])} declared outputs checked", flush=True)
         except (BuildError, OSError, ValueError, zipfile.BadZipFile) as error:
-            results[module] = {"status": "FAIL", "error": str(error), "log": str(log.relative_to(ROOT))}
+            results[module] = {"status": "FAIL", "error": str(error), "log": log.relative_to(ROOT).as_posix()}
             print(f"FAIL {module}: {error}", flush=True)
         write_json(work / "report.json", report)
     report["finished_utc"] = datetime.now(timezone.utc).isoformat()

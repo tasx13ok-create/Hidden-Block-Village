@@ -105,6 +105,35 @@ class SourceBuildTests(unittest.TestCase):
         self.assertFalse(report["passed"])
         self.assertFalse(metadata.exists())
 
+    def test_successful_build_report_locates_copied_artifacts_portably(self):
+        directory = self.root / "modules/server-bootstrap/build"
+        directory.mkdir(parents=True)
+        launcher = self.root / "launcher.py"
+        launcher.write_text("", encoding="utf-8")
+
+        def build_fixture(*args, **kwargs):
+            artifact = directory / "bootstrap.jar"
+            with zipfile.ZipFile(artifact, "w") as archive:
+                archive.writestr("village/deployment/Bootstrap.class", self.class_header())
+            (directory / "vale-build.json").write_text(json.dumps({
+                "schema": 1, "module": "server-bootstrap", "version": "fixture",
+                "minecraft_launched": False,
+                "artifacts": [{"role": "bootstrap_library", "path": str(artifact)}],
+            }), encoding="utf-8")
+            return mock.Mock(returncode=0)
+
+        with mock.patch.object(BUILD, "ROOT", self.root), mock.patch.object(BUILD.subprocess, "run", side_effect=build_fixture), mock.patch.object(BUILD.subprocess, "check_output", side_effect=BUILD.subprocess.CalledProcessError(128, ["git"])), mock.patch.dict(BUILD.os.environ, {}, clear=True), contextlib.redirect_stdout(io.StringIO()):
+            code = BUILD.main(["--modules", "server-bootstrap", "--gradle-launcher", str(launcher)])
+        self.assertEqual(0, code)
+        report = json.loads((self.root / "build/source-build-report.json").read_text())
+        result = report["results"]["server-bootstrap"]
+        copied = result["artifacts"][0]
+        for relative in (report["artifacts_directory"], report["source_snapshot"]["path"],
+                         result["log"], copied["copied_path"]):
+            self.assertNotIn("\\", relative)
+            self.assertTrue((self.root / relative).exists())
+        self.assertEqual(copied["sha256"], BUILD.sha256(self.root / copied["copied_path"]))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -127,22 +127,38 @@ class AssemblyStatusTests(unittest.TestCase):
             handoff = Path(temporary) / "Vale-Export" / "vale-038"
             tool = handoff / "tools" / "prepare_connected_release.py"
             tool.parent.mkdir(parents=True)
-            tool.write_text("import hashlib, time\nend = time.monotonic() + 45\npayload = b'x' * 1048576\nwhile time.monotonic() < end:\n    hashlib.sha256(payload).digest()\n", encoding="utf-8")
+            worker_identity = tool.with_suffix('.pid')
+            tool.write_text("import hashlib, os, time\nfrom pathlib import Path\n"
+                            "Path(__file__).with_suffix('.pid').write_text(str(os.getpid()))\n"
+                            "end = time.monotonic() + 45\npayload = b'x' * 1048576\n"
+                            "while time.monotonic() < end:\n    hashlib.sha256(payload).digest()\n", encoding="utf-8")
             child = subprocess.Popen([sys.executable, str(tool), "DO-NOT-SAVE-PRIVATE-ARGUMENTS"],
                                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             try:
+                deadline = time.monotonic() + 10
+                while not worker_identity.exists() and child.poll() is None and time.monotonic() < deadline:
+                    time.sleep(0.05)
+                self.assertTrue(worker_identity.is_file(), "Fixture worker did not start")
+                # A Windows venv python.exe can be a redirector which remains
+                # alive beside the actual interpreter. Both exact-path matches
+                # are valid; identify the worker instead of assuming one PID.
+                expected_pids = {child.pid, int(worker_identity.read_text())}
                 first = cs.query_processes(handoff)
                 time.sleep(0.2)
                 second = cs.query_processes(handoff)
                 self.assertEqual("ok", first["status"], first)
                 self.assertEqual("ok", second["status"], second)
-                self.assertEqual([child.pid], [row["pid"] for row in first["processes"]])
-                self.assertEqual([child.pid], [row["pid"] for row in second["processes"]])
+                self.assertEqual(expected_pids, {row["pid"] for row in first["processes"]})
+                self.assertEqual(expected_pids, {row["pid"] for row in second["processes"]})
                 self.assertEqual("ACTIVITY_OBSERVED", cs.compare_samples(first, second)["state"])
                 self.assertNotIn("DO-NOT-SAVE-PRIVATE-ARGUMENTS", json.dumps([first, second]))
             finally:
                 if child.poll() is None:
-                    child.terminate()
+                    # Terminate only this fixture's tree, including a venv
+                    # interpreter behind the redirector, before removing it.
+                    subprocess.run(["taskkill.exe", "/PID", str(child.pid), "/T", "/F"],
+                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                   timeout=10, check=True)
                 child.wait(timeout=5)
 
 

@@ -408,7 +408,17 @@ class WindowsNoninteractiveCISmokeTests(unittest.TestCase):
         self.assertGreater(int(info["creation_time_100ns"]), 0)
         self.assertEqual(info["creation_time_100ns"], repeated["creation_time_100ns"])
         self.assertTrue(os.path.isabs(info["exe"]))
-        self.assertEqual(os.path.basename(sys.executable).lower(), os.path.basename(info["exe"]).lower())
+        # Store aliases and venv redirectors can give sys.executable a
+        # different name from the running image. Cross-check the loaded
+        # executable through a separate Win32 API, including drive aliases.
+        module_name = ctypes.WinDLL("kernel32", use_last_error=True).GetModuleFileNameW
+        module_name.argtypes = [ctypes.c_void_p, ctypes.c_wchar_p, ctypes.c_uint32]
+        module_name.restype = ctypes.c_uint32
+        buffer = ctypes.create_unicode_buffer(32768)
+        length = module_name(None, buffer, len(buffer))
+        self.assertGreater(length, 0)
+        self.assertLess(length, len(buffer))
+        self.assertTrue(os.path.samefile(buffer.value, info["exe"]))
 
     def test_noninteractive_ci_reports_desktop_without_requiring_unlocked_session(self):
         state = self.api.desktop_state()
