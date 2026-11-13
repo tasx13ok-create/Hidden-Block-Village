@@ -32,7 +32,7 @@ public final class RunPoses {
     public static float blend(EntityPlayer p){State s=STATES.get(p);return s==null?0:s.spring.value;}
     public static boolean suppressed(EntityPlayer p){State s=STATES.get(p);return s!=null&&s.suppressed;}
     public static void capture(ModelBiped model,Entity entity,float limb,float age){Arguments a=ARGUMENTS.get();a.model=model;a.entity=entity;a.limb=limb;a.age=age;}
-    public static void finish(ModelBiped model){Arguments a=ARGUMENTS.get();if(a.model!=model)return;try{apply(model,a.entity,a.limb,a.age);village.vale.client.JutsuVfx.pose(model,a.entity,a.age);}finally{a.model=null;a.entity=null;}}
+    public static void finish(ModelBiped model){Arguments a=ARGUMENTS.get();if(a.model!=model)return;try{apply(model,a.entity,a.limb,a.age);village.vale.client.JutsuVfx.pose(model,a.entity,a.age);village.vale.client.DodgeClient.pose(model,a.entity,a.age);}finally{a.model=null;a.entity=null;}}
     public static void apply(ModelBiped model,Entity entity,float limbAmount,float age){
         if(!(entity instanceof EntityPlayer)||!entity.world.isRemote)return;EntityPlayer p=(EntityPlayer)entity;
         // First-person hand rendering passes age zero; keep hands, held-item use and view unchanged.

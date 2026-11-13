@@ -41,6 +41,7 @@ public final class ValeOrders {
         village.vale.arsenal.Scrolls.registerEntities(this);
         HudNetwork.register();
         AbilityNetwork.register();
+        Dodge.register();
         OriginalArmorRuntime.initialize();
         OriginalArmorLightEntity.register(this);
         proxy.preInit();

@@ -64,6 +64,7 @@ public final class VfxShots {
             p.world.spawnEntity(target);
         });
         if (tick < 300) return;
+        if (Boolean.getBoolean("valeorders.vfxshots.dodge")) { dodges(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.weapons")) { weapons(mc, server, tick - 300); return; }
         int local = tick - 300, per = 120;
         int s = local / per, t = local % per;
@@ -158,6 +159,26 @@ public final class VfxShots {
         if (t == 18) { mc.setRenderViewEntity(cam); mc.gameSettings.thirdPersonView = 0; }
         if (t == 20) { server.addScheduledTask(() -> WeaponPulse.swing(server.getPlayerList().getPlayers().get(0), spec, spec.role == ArsenalSpec.Role.SWEEP)); }
         if (t == 24) shot(mc, name + "_d_swing");
+    }
+
+    private void dodges(Minecraft mc, IntegratedServer server, int local) {
+        int per = 40, d = local / per, t = local % per;
+        if (d >= 8) { if (t == 0) mc.shutdown(); return; }
+        int dir = d % 4; boolean back = d >= 4;
+        if (t == 0) {
+            mc.setRenderViewEntity(mc.player); mc.gameSettings.thirdPersonView = back ? 1 : 2;
+            server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).connection.setPlayerLocation(0.5, 4, 0.5, 0, 0));
+        }
+        if (t == 10) server.addScheduledTask(() -> {
+            EntityPlayerMP p = server.getPlayerList().getPlayers().get(0);
+            try { java.lang.reflect.Method m = village.vale.Dodge.class.getDeclaredMethod("perform", EntityPlayerMP.class, int.class); m.setAccessible(true); m.invoke(null, p, dir); }
+            catch (Exception ex) { throw new RuntimeException(ex); }
+        });
+        String name = "dodge_" + village.vale.DodgeMath.NAMES[dir] + (back ? "_behind" : "_front");
+        if (t == 13) shot(mc, name + "_1");
+        if (t == 15) shot(mc, name + "_2");
+        if (t == 17) shot(mc, name + "_3");
+        if (t == 19) shot(mc, name + "_4");
     }
 
     private static int shotMode(ArsenalSpec.Role r) {

@@ -40,3 +40,10 @@ Real 1.12.2 client under Xvfb and Mesa, using a private probe that is not commit
 
 ## Screenshot probe (dev only)
 `clientchecks/village/vale/arsenal/VfxShots.java` is built only into the separate `vale-clientchecks-dev.jar` and does nothing unless `-Dvaleorders.vfxshots=true` is set. It opens a flat creative world and saves screenshots of every hand technique. Add `-Dvaleorders.vfxshots.weapons=true` to cover all 27 weapons instead.
+
+## Four-way dodge (key V, rebindable)
+- New: `Dodge.java` (channel `valeorders_dodge`; the server checks cooldown and one air dodge per jump, then applies the burst and a short hurt grace), `DodgeMath.java`, `client/DodgeClient.java`, `tests/village/vale/DodgeMathTest.java` (547 checks).
+- Direction comes from movement input: W gives a forward roll, S or no input gives a back flip, and A/D give mirrored side rolls.
+- Hooks in shared files: `ValeOrders.preInit` calls `Dodge.register()`. `CommonProxy` and `ClientProxy` get `dodgeAnim`. `ClientProxy.preInit` calls `DodgeClient.initialize()`. `RunPoses.finish` calls `DodgeClient.pose`. Lang keys added.
+- Tuning to agree with Codex's combat: cooldown 16 ticks, speed 1.05, i-frames ~6 ticks. Should it also cost resolve or stamina?
+- Evidence: `release/evidence/dodge-4way-20261113.png`. Probe flag: `-Dvaleorders.vfxshots.dodge=true`.
