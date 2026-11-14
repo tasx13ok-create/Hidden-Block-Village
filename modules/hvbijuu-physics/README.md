@@ -39,3 +39,10 @@ jar uf HiddenVillage-BijuuArmor-0.16.2-rc1.jar -C out village/bijuu
 ```
 
 The jar itself is not committed. Merge this file into the mod's real source when it is available.
+
+## Pass 3 (experimental)
+
+- **Tail-to-tail separation (on).** Chains rooted on the same body push their own nodes out of each other (`TAIL_GAP`). In the crowded six-tail swing bench (`tests/TailBench2.java`), worst overlap is 0.107 for rc1 against 0.106 here. That's no real improvement yet, but it's stable with no stretch.
+- **Body capsule (off: `BODY_ENABLED=false`).** It infers the body from a smoothed tail direction. In the swing bench it clipped more than rc1 did, so it stays off.
+
+**Known finding.** Pass 2's momentum makes tails swing through the body more on extreme sweeps than stiff rc1 does: body penetration 0.28 against 0.04 in `TailBench2`. A reliable fix needs the real body position and yaw from the caller (`TerrainTailSolver`), not an estimate inside `TailPhysics`. The single-tail bench (`tests/TailBench.java`) still shows 0–0.3% stretch, no penetration and no folding.

@@ -14,6 +14,11 @@
  *    tails stay put on the ground instead of skating and jittering.
  *  - Root impulse: a sudden root jump/landing adds a damped kick down the chain (follow-through).
  *  - All results checked finite; a non-finite state resets cleanly to the animated pose.
+ * Pass 3:
+ *  - Body capsule (experimental, BODY_ENABLED=false by default): keeps nodes out of a vertical capsule
+ *    just forward of the root. Off because it did not beat rc1 in the swing bench yet.
+ *  - Tail-to-tail separation: chains rooted on the same body push their nodes apart, so multi-tail
+ *    sets fan out and layer instead of interpenetrating. Each chain only moves its own nodes.
  */
 package village.bijuu;
 
@@ -35,6 +40,16 @@ public final class TailPhysics {
     public static double INERTIA_SPRING = 0.75;
     /** How far (in ticks of root motion) the tip's goal trails behind the root. */
     public static double TRAIL = 1.6;
+    /** Wearer body capsule (blocks): radius, extent below and above the tail root, forward offset. */
+    /** Body capsule is experimental and OFF by default (BODY_ENABLED); it did not beat rc1 in the swing bench. */
+    public static boolean BODY_ENABLED = false;
+    public static double BODY_RADIUS = 0.3, BODY_BELOW = 1.45, BODY_ABOVE = 0.55, BODY_FORWARD = 0.17;
+    /** Extra gap kept between neighbouring tails (blocks). */
+    public static double TAIL_GAP = 0.025;
+    private static final java.util.List<java.lang.ref.WeakReference<TailPhysics>> RECENT = new ArrayList<>();
+    private long steppedAt;
+    /** Smoothed forward direction of the body (opposite the average tail direction), XZ only. */
+    private double forwardX = Double.NaN, forwardZ;
     public final double[][] points;
     public final double[][] previous;
     private final double[][] velocity;
@@ -87,6 +102,7 @@ public final class TailPhysics {
         }
         System.arraycopy(target[0], 0, this.lastRoot, 0, 3);
         Arrays.fill(this.rootVelocity, 0.0);
+        this.forwardX = Double.NaN;
         this.initialized = false;
     }
 
@@ -106,6 +122,7 @@ public final class TailPhysics {
         for (int n = 0; n < count; ++n) System.arraycopy(this.points[n], 0, this.previous[n], 0, 3);
         for (int n = 1; n < count; ++n) this.length[n] = Math.max(1.0E-4, TailPhysics.distance(target[n], target[n - 1]));
 
+        this.trackForward(target);
         // Root motion this tick, and its change (impulse) for follow-through.
         double[] rootDelta = new double[3], impulse = new double[3];
         double rootSpeed = 0;
@@ -209,6 +226,9 @@ public final class TailPhysics {
                     }
                 }
             }
+            for (int pass = 0; pass < 3; ++pass) {
+            if (s == sub - 1) this.separate(target);
+            this.body(target);
             // Follow-the-leader pass: lock every segment to its rest length from the root outward,
             // keeping direction, so momentum never stretches the tail. Collision is re-checked per node.
             for (int n = 1; n < count; ++n) {
@@ -217,6 +237,7 @@ public final class TailPhysics {
                 for (int k = 0; k < 3; ++k) this.points[n][k] = this.points[n - 1][k] + (this.points[n][k] - this.points[n - 1][k]) * (this.length[n] / dist);
                 TailPhysics.sweep(this.beforeNode, this.points[n], this.local[n], this.radii[n]);
                 TailPhysics.project(this.points[n], list, this.radii[n]);
+            }
             }
             // Friction: a node touching a block loses most of its sliding speed and all bounce.
             for (int n = 1; n < count; ++n) {
@@ -235,6 +256,68 @@ public final class TailPhysics {
             }
         }
         if (!finite) this.reset(target);
+    }
+
+    /** Once per tick: slow low-pass of the body forward so a swinging tail does not drag the body estimate. */
+    private void trackForward(double[][] target) {
+        int count = target.length;
+        double bx = target[0][0] - target[count - 1][0], bz = target[0][2] - target[count - 1][2], bl = Math.sqrt(bx * bx + bz * bz);
+        if (bl < 1.0E-6) return;
+        bx /= bl; bz /= bl;
+        if (Double.isNaN(this.forwardX)) { this.forwardX = bx; this.forwardZ = bz; return; }
+        double fx = this.forwardX + (bx - this.forwardX) * 0.02, fz = this.forwardZ + (bz - this.forwardZ) * 0.02, fl = Math.sqrt(fx * fx + fz * fz);
+        if (fl > 1.0E-6) { this.forwardX = fx / fl; this.forwardZ = fz / fl; }
+    }
+
+    /** Keeps nodes past the base outside a vertical body capsule just forward of the root. */
+    private void body(double[][] target) {
+        int count = this.points.length;
+        if (!BODY_ENABLED || Double.isNaN(this.forwardX)) return;
+        double bx = this.forwardX, bz = this.forwardZ;
+        double cx = target[0][0] + bx * BODY_FORWARD, cz = target[0][2] + bz * BODY_FORWARD;
+        double lo = target[0][1] - BODY_BELOW, hi = target[0][1] + BODY_ABOVE;
+        for (int n = 2; n < count; ++n) {
+            double[] p = this.points[n];
+            if (p[1] < lo || p[1] > hi) continue;
+            double r = BODY_RADIUS + this.radii[n], dx = p[0] - cx, dz = p[2] - cz, d = Math.sqrt(dx * dx + dz * dz);
+            if (d >= r) continue;
+            // Respect poses the animator deliberately places against the body (wraps, guards).
+            double tx = target[n][0] - cx, tz = target[n][2] - cz;
+            if (Math.sqrt(tx * tx + tz * tz) < r) continue;
+            if (d < 1.0E-6) { dx = -bx; dz = -bz; d = 1; }
+            p[0] = cx + dx / d * r;
+            p[2] = cz + dz / d * r;
+            this.contact[n] = true;
+        }
+    }
+
+    /** Pushes this chain's nodes out of other chains rooted on the same body (stepped within the last frames). */
+    private void separate(double[][] target) {
+        long now = System.nanoTime();
+        this.steppedAt = now;
+        synchronized (RECENT) {
+            boolean listed = false;
+            for (java.util.Iterator<java.lang.ref.WeakReference<TailPhysics>> it = RECENT.iterator(); it.hasNext(); ) {
+                TailPhysics o = it.next().get();
+                if (o == null || now - o.steppedAt > 250_000_000L) { it.remove(); continue; }
+                if (o == this) { listed = true; continue; }
+                if (TailPhysics.distance(o.points[0], this.points[0]) > 0.9) continue;
+                for (int i = 2; i < this.points.length; ++i) {
+                    double[] p = this.points[i];
+                    for (int j = 2; j < o.points.length; ++j) {
+                        double[] q = o.points[j];
+                        double need = this.radii[i] + o.radii[j] + TAIL_GAP;
+                        double dx = p[0] - q[0], dy = p[1] - q[1], dz = p[2] - q[2], d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        if (d >= need) continue;
+                        if (d < 1.0E-6) { dx = (i % 2 == 0 ? 1 : -1) * 1.0E-3; dy = 0; dz = 1.0E-3; d = Math.sqrt(dx * dx + dz * dz); }
+                        double push = (need - d) / d * 0.7;   // most of the overlap; the other chain resolves the rest
+                        p[0] += dx * push; p[1] += dy * push; p[2] += dz * push;
+                    }
+                }
+            }
+            if (!listed) RECENT.add(new java.lang.ref.WeakReference<>(this));
+            if (RECENT.size() > 512) RECENT.remove(0);
+        }
     }
 
     public static void sweep(double[] dArray, double[] dArray2, List<Box> list, double d) {
