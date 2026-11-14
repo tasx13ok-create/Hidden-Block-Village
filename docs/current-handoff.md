@@ -17,6 +17,22 @@ The owner requested no new backup for the target update because backups already 
 
 ## Exact current component cohort
 
+The owner's later request for a separate ready-to-upload server is also fulfilled.
+`D:/Bisect server upload/Hidden Block Village Server` is a new standalone server folder;
+`Hidden Block Village Server - Bisect.zip` is its checked root-layout server archive,
+6,037,663,281bytes, SHA256 `80c1e35a1de16c61f9afb7036d67773c9b29a9c3c2bfbea4700870091097ec1a`.
+It contains53mods and3,695server inputs, without a nested server/client wrapper.
+Bisect documents a500MB browser limit, so `Hidden Block Village - Browser Upload`
+contains8independent standard ZIPs, each below450MB; upload and unarchive all eight
+into the same server root. They need no multipart joining. Replace old mods/plugins
+rather than mixing old JAR versions. Keep/use Magma1.12.2 and64-bit Java8.
+The single large ZIP/folder is suitable for SFTP drag-and-drop. Give players only
+the separate `Hidden Block Village.zip` CurseForge client. Private world/player and
+host settings are preserved; the live inspection session was not changed.
+Safe receipts: `release/evidence/bisect-root-server-0316.json` and
+`release/evidence/bisect-browser-upload-0316.json`. Actual hosted acceptance remains pending.
+Official upload guide: https://help.bisecthosting.com/hc/en-us/articles/40124893034011-How-to-Move-Over-Existing-Minecraft-Server-Files
+
 Current filenames use Naruto branding while stable technical mod, registry and save IDs remain unchanged.
 Current Core is Naruto-Core-0.3.16.jar from Source13; current HUD is Naruto-HUD-0.20.1.jar from Source12.
 The remaining production components use the complete Source11 cohort.
