@@ -22,6 +22,32 @@ public final class ResourceContractChecks {
     public static final class WrongRoot {public static WrongResult pathway(Actor actor){return null;}}
     private static ResourceEscrow.Account account(Pool pool)throws Exception{ApiRoot.pool=pool;return new ChakraLink.Api(ApiRoot.class,Pool.class,Tracker.class,Actor.class).account(new Actor());}
     private static ResourceEscrow.Debit reserve(Pool pool,double cost)throws Exception{ResourceEscrow.Result r=ResourceEscrow.reserve(account(pool),cost,()->true);check(r.debit!=null,"Reservation refused: "+r.error);return r.debit;}
+    @SuppressWarnings("unchecked") private static void mutableOwnerCleanup()throws Exception{
+        // Allocate an inert actual player/Ticket solely to execute settlement cleanup.
+        // No constructor bypass is used by production and this body has no world, network or server authority.
+        Class<?> unsafeClass=Class.forName("sun.misc.Unsafe");java.lang.reflect.Field unsafeField=unsafeClass.getDeclaredField("theUnsafe");unsafeField.setAccessible(true);
+        Object unsafe=unsafeField.get(null);java.lang.reflect.Method allocate=unsafeClass.getMethod("allocateInstance",Class.class);
+        net.minecraft.entity.player.EntityPlayerMP player=(net.minecraft.entity.player.EntityPlayerMP)allocate.invoke(unsafe,net.minecraft.entity.player.EntityPlayerMP.class);
+        java.util.UUID owner=java.util.UUID.randomUUID();player.setUniqueId(owner);
+        java.lang.reflect.Field activeField=MoveCost.class.getDeclaredField("ACTIVE");activeField.setAccessible(true);
+        java.util.Map<java.util.UUID,MoveCost.Ticket> active=(java.util.Map<java.util.UUID,MoveCost.Ticket>)activeField.get(null);
+        check(active.isEmpty(),"Component cleanup fixture started with unrelated reservations");
+        try{
+            for(boolean refund:new boolean[]{false,true}){
+                MoveCost.Ticket ticket=(MoveCost.Ticket)allocate.invoke(unsafe,MoveCost.Ticket.class);
+                for(String name:new String[]{"player","owner","ready"}){
+                    java.lang.reflect.Field field=MoveCost.Ticket.class.getDeclaredField(name);field.setAccessible(true);
+                    field.set(ticket,name.equals("player")?player:name.equals("owner")?owner:Boolean.TRUE);
+                }
+                active.put(owner,ticket);player.setUniqueId(java.util.UUID.randomUUID());
+                check(!(refund?ticket.refund():ticket.commit()),"Mutated UUID retained valid settlement context");
+                check(!active.containsKey(owner)&&!ticket.pending(),"Mutated UUID leaked original owner reservation");
+                player.setUniqueId(owner);
+                check(active.putIfAbsent(owner,ticket)==null,"Restored UUID could not acquire its original reservation slot");
+                active.remove(owner,ticket);
+            }
+        }finally{active.clear();}
+    }
     public static void main(String[] args)throws Exception{
         Pool p=new Pool();ResourceEscrow.Debit d=reserve(p,6);check(p.value==94&&p.persisted==94&&p.doubles==1&&p.floats==0,"Exact absolute double route/persistence");check(d.amount==6,"Actual debit");check(d.commit()&&!d.commit()&&!d.refund(),"Commit was not final");check(p.value==94,"Committed action refunded");
         p=new Pool();d=reserve(p,100);check(p.value==0&&p.clears==1&&p.doubles==0,"Exact-zero did not use public clear");check(d.refund()&&p.value==100&&d.refunded()==100,"Exact-zero rollback");check(!d.refund()&&p.value==100,"Repeated refund minted");
@@ -75,6 +101,7 @@ public final class ResourceContractChecks {
         check(!legacyDebit.commit()&&!legacyDebit.refund()&&saved.getInteger("resolve")==84,"Detached commit became a later free action");
         saved.setInteger("resolve",100);ResourceEscrow.Result strictLegacy=ResourceEscrow.reserve(legacy,16,()->attached[0]);
         check(strictLegacy.debit==null&&saved.getInteger("resolve")==100,"Detached account acquired new reservation authority");
+        mutableOwnerCleanup();
         check(!MoveCost.busy(null),"Null body reported a resource operation");
         System.out.println("RESOURCE_CONTRACT_PASS: "+assertions);
     }

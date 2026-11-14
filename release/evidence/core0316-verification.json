@@ -1,0 +1,343 @@
+{
+  "schema": 1,
+  "scope": "SOURCE_COMPONENTS_AND_DISPOSABLE_FORGE_NATIVE_ONLY",
+  "core_version": "0.3.16",
+  "component_passed": true,
+  "native_passed": true,
+  "native_assertions": 3649,
+  "source_snapshot_sha256": "231c762c6f012e92718e46a450038c811df536e3afdb57dbbc9e6499d64ec657",
+  "source_base_git_commit": "4bb508e05f64ea0209548a719681d98abc8df84a",
+  "build_report_sha256": "493f922884cf1304e1136aeaedc881f5a3b3e8f8253328ae60e9434bed1008c5",
+  "native_report_sha256": "404caf607c80a184753ac491ec320f2b67ca9d8b60c98cb33192f4f54bbb451a",
+  "native_result_sha256": "05973a921b22acd607aacece2b68359033f9529da1c28407fd3599869f6682b0",
+  "private_fixture_inputs_sha256": "a4e58e8e2991233f762e2f99f1f65e2c15e55a8c2342c7043f74eea0b291e781",
+  "source_drift": [],
+  "runtime_exit_code": 0,
+  "runtime_removed": true,
+  "native_checks": [
+    "556 live registered items and current diagnostic category checks",
+    "Native result-slot pickup remains issued after expired preview timeout",
+    "Stale proof is recomputed by native container before actual crafting",
+    "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+    "Native Party Charter leave/rejoin preserves the existing expedition",
+    "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+    "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+    "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support",
+    "Native scroll cast reentry, resolve reservation, held-stack replacement and protected return teleport",
+    "Native Reed Escape teleport protection, recursive callbacks and rejected movement cleanup",
+    "Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed",
+    "Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death",
+    "Native six mastered techniques cast from the switched physical combat hotbar",
+    "Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership",
+    "Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops",
+    "Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery",
+    "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+    "Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation",
+    "Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup",
+    "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+    "Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity",
+    "Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle",
+    "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+    "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery",
+    "Native worn armor registered getters, conditional Lightning and packaged assets",
+    "Native shared-resource accepted casts, canceled effects, mode upkeep and callback settlement"
+  ],
+  "modules": {
+    "vale-orders": {
+      "status": "PASS",
+      "version": "0.3.16",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "vale-orders-0.3.16.jar",
+          "sha256": "3c2a6fed37c66d1bb63af4e617e4c1eae2eef02fc9704a316950722a9465c17b",
+          "bytes": 2738370
+        },
+        {
+          "role": "development_api",
+          "name": "vale-orders-0.3.16-dev.jar",
+          "sha256": "da41d018733033280fb9d4b99777e2ccf9ab8869dfccf1389b9d3e12dfffa1ea",
+          "bytes": 2703057
+        },
+        {
+          "role": "sources",
+          "name": "vale-orders-0.3.16-sources.jar",
+          "sha256": "5dd73cdd992956c39857299a8af56b6d6e7799e78a941d4f7276a1cc8f483a7f",
+          "bytes": 2216494
+        }
+      ]
+    },
+    "vale-encounters": {
+      "status": "PASS",
+      "version": "0.3.6",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "vale-encounters-0.3.6.jar",
+          "sha256": "155f590495e708cfddadf8a9c7f24c145ca7ef4328ebd2ec7d16d470b512f4c5",
+          "bytes": 30012
+        },
+        {
+          "role": "development_api",
+          "name": "vale-encounters-0.3.6-dev.jar",
+          "sha256": "6e9a964b7d51d25e72b172d6de40981cb39cd744368bf8f52ad313c23f470ec6",
+          "bytes": 29609
+        },
+        {
+          "role": "sources",
+          "name": "vale-encounters-0.3.6-sources.jar",
+          "sha256": "2f60e6664b0857cc8bd75709e08a722cc62b0969fc6328e887f6f61dbaac85df",
+          "bytes": 11989
+        }
+      ]
+    },
+    "vale-rack": {
+      "status": "PASS",
+      "version": "0.1.4",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "Vale-Rack-0.1.4.jar",
+          "sha256": "162cfb2185dd8f8316252f2cb0d87841e1a313cab6a739405ea24a04ab471dbb",
+          "bytes": 42283
+        },
+        {
+          "role": "development_api",
+          "name": "Vale-Rack-0.1.4-dev.jar",
+          "sha256": "e6e4dd694e14a62f8fe57ea1a12762a89969134e4339a59f15ed49ada6f21147",
+          "bytes": 41461
+        }
+      ]
+    },
+    "vale-residents": {
+      "status": "PASS",
+      "version": "0.2.1",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "vale-residents-0.2.1.jar",
+          "sha256": "9ea53d45d148c1fbfe38a7b9bc57654240b8632524bacd07dfaca23b8a443269",
+          "bytes": 46139
+        },
+        {
+          "role": "development_api",
+          "name": "vale-residents-0.2.1-dev.jar",
+          "sha256": "8e3c005e57731a23b48eba160512f2596a79a6071227f8e2d7e2f89acb67c458",
+          "bytes": 45417
+        },
+        {
+          "role": "sources",
+          "name": "vale-residents-0.2.1-sources.jar",
+          "sha256": "6335db27c911b04f87e9e645b11c3c2cf5ecba07183b9fdd94e3e2e0f519179f",
+          "bytes": 20166
+        }
+      ]
+    },
+    "vale-residents-server-bridge": {
+      "status": "PASS",
+      "version": "0.1.0",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "vale-residents-server-bridge-0.1.0.jar",
+          "sha256": "79fc0947fc052d8dedefff72d15a179dd4c2180a21fcdeb116164a61e944550f",
+          "bytes": 3021
+        },
+        {
+          "role": "development_api",
+          "name": "vale-residents-server-bridge-0.1.0-dev.jar",
+          "sha256": "d8ddc1b1dab545fe29f15c92f4aea45aa0db809b538795d51dd3654b5b5e58f4",
+          "bytes": 2936
+        }
+      ]
+    },
+    "vale-world-compat": {
+      "status": "PASS",
+      "version": "1.0.0",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "vale-world-compat-1.0.0.jar",
+          "sha256": "4195e8a6127221f2a3c37dd901ab1e8ad7256d68d53a621ef215c7aa0da18fd9",
+          "bytes": 27725
+        },
+        {
+          "role": "development_api",
+          "name": "vale-world-compat-1.0.0-dev.jar",
+          "sha256": "29dbf2d2bbe00ceab64ddad3a2731c5578f92abefbf78ae90d0079a0ffda17bf",
+          "bytes": 26760
+        },
+        {
+          "role": "sources",
+          "name": "vale-world-compat-1.0.0-sources.jar",
+          "sha256": "f09a02ce7c7136dbbae542691eef9f2cdc6506a732776d878ff4812d68fb07da",
+          "bytes": 15533
+        }
+      ]
+    },
+    "field-hud": {
+      "status": "PASS",
+      "version": "0.18.0",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "field-hud-0.18.0.jar",
+          "sha256": "4b371322178fd584fb0f196f188a66002517fdd81364fa56453c8ac046a65a6e",
+          "bytes": 217952
+        },
+        {
+          "role": "development_api",
+          "name": "field-hud-0.18.0-dev.jar",
+          "sha256": "e53bbf6655ac7a5c1d8f2749b2d355d200b7674f27ed060eada84cd27843eb79",
+          "bytes": 214909
+        },
+        {
+          "role": "sources",
+          "name": "field-hud-0.18.0-sources.jar",
+          "sha256": "bc4a5c89c9189175158cf8ba33d3dc9af04c3b0f802326633364e20dd0e7a778",
+          "bytes": 107019
+        }
+      ]
+    },
+    "field-controls": {
+      "status": "PASS",
+      "version": "1.5.0",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "field-controls-1.5.0.jar",
+          "sha256": "c00795f2cd88f4b63c45888b320043aafabfd63bc6c03d17854627cefa58624b",
+          "bytes": 125339
+        },
+        {
+          "role": "development_api",
+          "name": "field-controls-1.5.0-dev.jar",
+          "sha256": "1c28d1971a4050dc15d98e8cd01619afe99842a4bfb93fd69dc3912be681cf05",
+          "bytes": 123708
+        },
+        {
+          "role": "sources",
+          "name": "field-controls-1.5.0-sources.jar",
+          "sha256": "3e49409994ca38ed69ff03a2a6fbe892ed3ce6a811dd8df79e4d86d8eaee114d",
+          "bytes": 52704
+        }
+      ]
+    },
+    "vale-compatibility-helpers": {
+      "status": "PASS",
+      "version": "source-adapters",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "Vale-Client-Lifecycle-Compat-0.1.2.jar",
+          "sha256": "a2fe53085b312d31b319dd4ca24ef32b37220412857350b07b4e6fdcfa547eca",
+          "bytes": 16243
+        },
+        {
+          "role": "development_api",
+          "name": "Vale-Client-Lifecycle-Compat-0.1.2-dev.jar",
+          "sha256": "860b313d4d6178cf071b96a43042f54e3f5feef758f3a7d81a20ce9773515640",
+          "bytes": 16114
+        },
+        {
+          "role": "sources",
+          "name": "Vale-Client-Lifecycle-Compat-0.1.2-sources.jar",
+          "sha256": "0e9f4ebde368417b6233f6954a3c79b4d2f0a35805251601a06a84a0d010de1a",
+          "bytes": 7432
+        },
+        {
+          "role": "runtime_mod",
+          "name": "Vale-Forge-Damage-Compat-0.1.0.jar",
+          "sha256": "77d183c9d84e970d5032a7734cdedab198a0ff50d6f4722d533c30f6d4c9f3a4",
+          "bytes": 5611
+        },
+        {
+          "role": "development_api",
+          "name": "Vale-Forge-Damage-Compat-0.1.0-dev.jar",
+          "sha256": "3bd3bfee272659ebd9b43312348415cf6ecc1cc6484b7fe247bb098f856e9000",
+          "bytes": 5465
+        },
+        {
+          "role": "sources",
+          "name": "Vale-Forge-Damage-Compat-0.1.0-sources.jar",
+          "sha256": "c710abdcaea330ebdc710a3e20621a9159c473ee1089271afc611dc62eb12f8c",
+          "bytes": 3331
+        },
+        {
+          "role": "runtime_mod",
+          "name": "Vale-Server-Bridge-0.2.0.jar",
+          "sha256": "b2c0f2f6c477a52bfcd28dae21848c59a75547d354771d1c5b86120a5ebe9f26",
+          "bytes": 4796
+        },
+        {
+          "role": "development_api",
+          "name": "Vale-Server-Bridge-0.2.0-dev.jar",
+          "sha256": "f79a078cb5efefb0462c1f08164efdb53fc2d4b4de7f3d501ac40c73477cfa92",
+          "bytes": 4657
+        },
+        {
+          "role": "sources",
+          "name": "Vale-Server-Bridge-0.2.0-sources.jar",
+          "sha256": "9aa351c49392588afce0111b111201f97572f5b4e73eaca7c3cf8c5223660557",
+          "bytes": 2469
+        }
+      ]
+    },
+    "server-bootstrap": {
+      "status": "PASS",
+      "version": "0.3.7",
+      "artifacts": [
+        {
+          "role": "bootstrap_library",
+          "name": "Vale-Server-Bootstrap-0.3.7.jar",
+          "sha256": "eaecbfb55e4f1fe409e60ac63ba2ac0ca67cdd37fdc265f872c07c14bd396daf",
+          "bytes": 9025
+        },
+        {
+          "role": "sources",
+          "name": "Vale-Server-Bootstrap-0.3.7-sources.jar",
+          "sha256": "687c2f4ad044a3fb272af202b9240f1ed9c31caa32a9d592bb14c3dc5f0a41a4",
+          "bytes": 4436
+        }
+      ]
+    },
+    "village-standards": {
+      "status": "PASS",
+      "version": "0.3.1",
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "Village-Standards-0.3.1.jar",
+          "sha256": "7f072a2fa5c40e3ba1e7e02702dee404b390670977989320bed162ade9b8d045",
+          "bytes": 39364
+        },
+        {
+          "role": "development_api",
+          "name": "Village-Standards-0.3.1-dev.jar",
+          "sha256": "1fd882c0f91fd054cc1855c9be55e4675163dcb553ef8232e5b255d847d8dd4c",
+          "bytes": 38674
+        },
+        {
+          "role": "sources",
+          "name": "Village-Standards-0.3.1-sources.jar",
+          "sha256": "cee6e3babc82900a50cb5aad407f25ed5f60df0840cb3b416d1176cbeb367caa",
+          "bytes": 25629
+        }
+      ]
+    }
+  },
+  "full54_mod_acceptance": false,
+  "graphical_acceptance": false,
+  "copied_production_world_acceptance": false,
+  "hosted_acceptance": false,
+  "deployment_ready": false,
+  "claude_fully_merged": false,
+  "creative_full_setup_launched": false,
+  "pending": [
+    "Paired fully absorbed Focus/Scroll contact timing in real Magma",
+    "Canonical Base/Spring client packet/handler integration",
+    "All54 reviewed Claude source paths and their verified original replacements",
+    "Fresh isolated full setup in Creative with owned gear and all eligible unlocks",
+    "Actual Sakura academy adoption/five campaign gameplay/hosting"
+  ]
+}

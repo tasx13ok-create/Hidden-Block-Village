@@ -95,3 +95,23 @@ FAILED on UUID mutation cleanup: a callback changes the player's UUID before
 the transaction removes its runtime guard. Cleanup must use the original
 captured owner key. That production correction is ongoing; no assertion was
 relaxed and no native/full-pack/deployment acceptance is claimed.
+
+## Verified Core0.3.16 native checkpoint
+
+The immutable owner-key cleanup correction now passes all11source areas/
+36artifacts and all3,649disposable Forge native assertions, including every
+inherited0.3.15check and the new shared-resource/codec/session cases. Source is
+`231c762c6f012e92718e46a450038c811df536e3afdb57dbbc9e6499d64ec657`;
+build report `493f922884cf1304e1136aeaedc881f5a3b3e8f8253328ae60e9434bed1008c5`;
+native report `404caf607c80a184753ac491ec320f2b67ca9d8b60c98cb33192f4f54bbb451a`.
+Core is `3c2a6fed37c66d1bb63af4e617e4c1eae2eef02fc9704a316950722a9465c17b`.
+The runtime exited0and was removed. All63resource component assertions pass.
+Earlier failed candidates above are preserved history, not the current result.
+
+The owner explicitly chose the new0.3.16label on the accepted0.3.15base.
+This accepts the standalone Forge cohort; full54/Magma/client/Creative/hosting
+are separate gates. Actual Magma's Damage0callback occurs before absorption
+deduction, requiring a paired Focus/Scroll observation correction before full
+pack acceptance. Base/Spring delegation client proof and the remaining Claude
+visual/menu work are still under integration. No full Creative setup has been
+launched yet. It must follow the completed reviewed merge and fresh acceptance.

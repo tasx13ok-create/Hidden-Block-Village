@@ -48,8 +48,9 @@ public final class MoveCost {
     private static void invalidate(EntityPlayer player){
         if(!serverContext(player))return;
         EntityPlayerMP p=(EntityPlayerMP)player;SESSIONS.remove(p);
-        Ticket held=ACTIVE.get(p.getUniqueID());if(held!=null&&held.player==p){held.closed=true;ACTIVE.remove(p.getUniqueID(),held);}
-        READING.remove(p.getUniqueID(),p);
+        // UUID is mutable during third-party callbacks; release by captured key/body identity.
+        for(Ticket held:new java.util.ArrayList<>(ACTIVE.values()))if(held.player==p){held.closed=true;ACTIVE.remove(held.owner,held);}
+        READING.entrySet().removeIf(entry->entry.getValue()==p);
     }
     @SubscribeEvent public static void clone(net.minecraftforge.event.entity.player.PlayerEvent.Clone e){invalidate(e.getOriginal());invalidate(e.getEntityPlayer());}
     @SubscribeEvent public static void login(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent e){invalidate(e.player);}
@@ -58,9 +59,9 @@ public final class MoveCost {
     @SubscribeEvent public static void dimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent e){invalidate(e.player);}
     @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true) public static void death(LivingDeathEvent e){
         if(!serverContext(e.getEntityLiving() instanceof EntityPlayer?(EntityPlayer)e.getEntityLiving():null))return;
-        EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();Ticket held=ACTIVE.get(p.getUniqueID());
+        EntityPlayerMP p=(EntityPlayerMP)e.getEntityLiving();
         // Keep the final event reference; another LOWEST listener may still cancel death.
-        if(held!=null&&held.player==p)held.death=e;
+        for(Ticket held:new java.util.ArrayList<>(ACTIVE.values()))if(held.player==p)held.death=e;
     }
     private static LegacyAccount legacy(final EntityPlayerMP p){return new LegacyAccount(p,PlayerState.data(p));}
     /** Own original NBT object: detaching player state must never redirect a rollback to its replacement. */
@@ -91,7 +92,7 @@ public final class MoveCost {
     }
     public static Ticket reserve(EntityPlayerMP p,int units){
         if(units<0||!current(p)||READING.containsKey(p.getUniqueID())||ACTIVE.containsKey(p.getUniqueID())||ACTIVE.size()>=CAP)return null;
-        Ticket ticket=new Ticket(p,units,scale);ACTIVE.put(p.getUniqueID(),ticket);
+        Ticket ticket=new Ticket(p,units,scale);ACTIVE.put(ticket.owner,ticket);
         boolean retained=false;
         try{
             if(units==0){ticket.provider="free";ticket.ready=true;retained=true;return ticket;}
@@ -106,7 +107,7 @@ public final class MoveCost {
             if(result.debit==null)return null;
             ticket.payment=result.debit;ticket.ready=true;retained=true;return ticket;
         }catch(RuntimeException|LinkageError failure){return null;}
-        finally{if(!retained){ticket.closed=true;ACTIVE.remove(p.getUniqueID(),ticket);}}
+        finally{if(!retained){ticket.closed=true;ACTIVE.remove(ticket.owner,ticket);}}
     }
     /** Compatibility for irrevocable immediate actions only. Refundable callers need reserve/try-with-resources. */
     public static boolean pay(EntityPlayer p,int units){if(!(p instanceof EntityPlayerMP))return false;Ticket ticket=reserve((EntityPlayerMP)p,units);return ticket!=null&&ticket.commit();}
@@ -114,7 +115,7 @@ public final class MoveCost {
     public static double restore(EntityPlayerMP p,int units){
         if(units<=0||!current(p)||READING.containsKey(p.getUniqueID()))return 0;
         Ticket ticket=ACTIVE.get(p.getUniqueID());boolean own=ticket==null;
-        if(own){if(ACTIVE.size()>=CAP)return 0;ticket=new Ticket(p,0,scale);ACTIVE.put(p.getUniqueID(),ticket);}
+        if(own){if(ACTIVE.size()>=CAP)return 0;ticket=new Ticket(p,0,scale);ACTIVE.put(ticket.owner,ticket);}
         final Ticket chosen=ticket;
         if(!own&&(!chosen.ready||chosen.closed||chosen.gainBusy))return 0;
         chosen.gainBusy=true;
@@ -127,7 +128,7 @@ public final class MoveCost {
             double factor="narutomod".equals(chosen.provider)?chosen.costScale:1;
             return ResourceEscrow.gain(chosen.account,units*factor,chosen::context)/factor;
         }catch(RuntimeException|LinkageError failure){return 0;}
-        finally{chosen.gainBusy=false;if(own){chosen.closed=true;ACTIVE.remove(p.getUniqueID(),chosen);}}
+        finally{chosen.gainBusy=false;if(own){chosen.closed=true;ACTIVE.remove(chosen.owner,chosen);}}
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event){
         MinecraftServer currentServer=FMLCommonHandler.instance().getMinecraftServerInstance();
@@ -137,15 +138,15 @@ public final class MoveCost {
         for(Ticket ticket:new java.util.ArrayList<>(ACTIVE.values())){
             if(ticket.death!=null&&!ticket.death.isCanceled()&&(ticket.player.isDead||ticket.player.getHealth()<=0)){invalidate(ticket.player);continue;}
             ticket.death=null;
-            if(!current(ticket.player)||ticket.player.world!=ticket.world||ticket.player.dimension!=ticket.dimension||now(ticket.player)<ticket.at||now(ticket.player)-ticket.at>100){ticket.closed=true;ACTIVE.remove(ticket.player.getUniqueID(),ticket);}
+            if(!current(ticket.player)||ticket.player.world!=ticket.world||ticket.player.dimension!=ticket.dimension||now(ticket.player)<ticket.at||now(ticket.player)-ticket.at>100){ticket.closed=true;ACTIVE.remove(ticket.owner,ticket);}
         }
     }
     public static final class Ticket implements AutoCloseable {
-        private final EntityPlayerMP player;private final MinecraftServer server;private final World world;private final int dimension,units;private final Object connection,session;private final long at;private final double costScale;
+        private final EntityPlayerMP player;private final UUID owner;private final MinecraftServer server;private final World world;private final int dimension,units;private final Object connection,session;private final long at;private final double costScale;
         private LivingDeathEvent death;
         private ResourceEscrow.Account account;private ResourceEscrow.Debit payment;private String provider="pending";private boolean ready,closed,gainBusy,checking;
-        Ticket(EntityPlayerMP player,int units,double scale){this.player=player;server=player.getServer();world=player.world;dimension=player.dimension;connection=player.connection;session=session(player);this.units=units;costScale=scale;at=now(player);}
-        private boolean bodyContext(){return !checking&&SESSIONS.get(player)==session&&current(player)&&player.getServer()==server&&player.world==world&&player.dimension==dimension&&player.connection==connection&&ACTIVE.get(player.getUniqueID())==this;}
+        Ticket(EntityPlayerMP player,int units,double scale){this.player=player;owner=player.getUniqueID();server=player.getServer();world=player.world;dimension=player.dimension;connection=player.connection;session=session(player);this.units=units;costScale=scale;at=now(player);}
+        private boolean bodyContext(){return !checking&&owner.equals(player.getUniqueID())&&SESSIONS.get(player)==session&&current(player)&&player.getServer()==server&&player.world==world&&player.dimension==dimension&&player.connection==connection&&ACTIVE.get(owner)==this;}
         private boolean legacyRefundContext(){return account instanceof LegacyAccount&&"resolve".equals(provider)&&!external()&&bodyContext();}
         private boolean context(){
             if(!bodyContext())return false;
@@ -159,8 +160,8 @@ public final class MoveCost {
         public double refunded(){return payment==null?0:payment.refunded();}
         public boolean pending(){return ready&&!closed;}
         public boolean valid(){return pending()&&context();}
-        public boolean commit(){if(!pending())return false;closed=true;try{return payment==null?context():payment.commit();}finally{ACTIVE.remove(player.getUniqueID(),this);}}
-        public boolean refund(){if(!pending())return false;closed=true;try{return payment==null?context():payment.refund();}finally{ACTIVE.remove(player.getUniqueID(),this);}}
+        public boolean commit(){if(!pending())return false;closed=true;try{return payment==null?context():payment.commit();}finally{ACTIVE.remove(owner,this);}}
+        public boolean refund(){if(!pending())return false;closed=true;try{return payment==null?context():payment.refund();}finally{ACTIVE.remove(owner,this);}}
         @Override public void close(){if(pending())refund();}
     }
 }

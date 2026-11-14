@@ -367,5 +367,7 @@
     "Full original-pack fresh-character admission and gameplay",
     "Five map campaigns and hosting"
   ],
-  "previous_component_source_sha256": "c1651743f1f832587f8b362579ddd90ea1d59b3c9e435dbfa8c73ce6a89ef136"
+  "previous_component_source_sha256": "c1651743f1f832587f8b362579ddd90ea1d59b3c9e435dbfa8c73ce6a89ef136",
+  "historical_candidate": true,
+  "superseded_by": "core0316-verification.json"
 }
