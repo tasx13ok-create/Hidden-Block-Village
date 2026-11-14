@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 import village.vale.ValeCommand;
 
 /** Original optional server adapter. No Bukkit classes or upstream code bundled. */
-@Mod(modid="valeserverbridge",name="Vale Server Bridge",version="0.2.0",dependencies="required-after:valeorders",acceptedMinecraftVersions="[1.12.2]",serverSideOnly=true,acceptableRemoteVersions="*")
+@Mod(modid="valeserverbridge",name="Naruto Server Bridge",version="0.2.0",dependencies="required-after:valeorders",acceptedMinecraftVersions="[1.12.2]",serverSideOnly=true,acceptableRemoteVersions="*")
 public final class ValeServerBridge {
     private boolean publicCrates;
     @Mod.EventHandler public void preInit(FMLPreInitializationEvent event){Configuration config=new Configuration(event.getSuggestedConfigurationFile());config.load();publicCrates=config.getBoolean("publicCrateAccess","compatibility",false,"Give ordinary players access/open/preview defaults only; explicit permission-manager rules still apply. No crate administration.");if(config.hasChanged())config.save();}

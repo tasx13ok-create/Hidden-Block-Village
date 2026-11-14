@@ -50,10 +50,10 @@ public final class Dodge {
     }
     private static final class Attempt {
         final EntityPlayerMP p;final World world;final int dimension;final NBTTagCompound account,state;final long now,oldReady,oldSequence,sequence,reservedReady;final boolean oldAir;final int paid;
-        final double x,y,z,mx,my,mz;final float yaw;boolean committed;
+        final double x,y,z,mx,my,mz;final float yaw;boolean committed;village.vale.bridge.MoveCost.Ticket payment;
         Attempt(EntityPlayerMP p,NBTTagCompound state,long now){this.p=p;world=p.world;dimension=p.dimension;account=PlayerState.data(p);this.state=state;this.now=now;oldReady=state.getLong("readyAt");oldSequence=state.getLong("sequence");sequence=oldSequence+1;reservedReady=now+cooldown;oldAir=state.getBoolean("airUsed");paid=cost;x=p.posX;y=p.posY;z=p.posZ;mx=p.motionX;my=p.motionY;mz=p.motionZ;yaw=p.rotationYaw;}
         boolean valid(){return basic(p)&&p.world==world&&p.dimension==dimension&&PlayerState.data(p)==account&&Dodge.state(p)==state&&state.getInteger("schema")==1&&state.getLong("readyAt")==reservedReady&&state.getLong("sequence")==sequence&&p.posX==x&&p.posY==y&&p.posZ==z&&p.motionX==mx&&p.motionY==my&&p.motionZ==mz&&p.rotationYaw==yaw;}
-        void refund(){if(committed||PlayerState.data(p)!=account||Dodge.state(p)!=state)return;PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+paid));if(state.getLong("readyAt")==reservedReady)state.setLong("readyAt",oldReady);if(state.getLong("sequence")==sequence)state.setLong("sequence",oldSequence);state.setBoolean("airUsed",oldAir);Adventures.save(p);}
+        void refund(){if(committed)return;if(payment!=null)payment.refund();if(PlayerState.data(p)!=account||Dodge.state(p)!=state)return;if(state.getLong("readyAt")==reservedReady)state.setLong("readyAt",oldReady);if(state.getLong("sequence")==sequence)state.setLong("sequence",oldSequence);state.setBoolean("airUsed",oldAir);Adventures.save(p);}
     }
     /** Read-only displacement permits protection mods to refuse this action before any impulse/grace. */
     @Cancelable public static final class Pre extends net.minecraftforge.event.entity.player.PlayerEvent {
@@ -62,9 +62,10 @@ public final class Dodge {
     }
     static boolean perform(EntityPlayerMP p,int direction){
         if(!DodgeMath.valid(direction)||!basic(p)||BUSY.containsKey(p.getUniqueID())||BUSY.size()>=256)return false;
-        NBTTagCompound value=state(p);long now=Adventures.now(p);if(value.getInteger("schema")!=1||now<0||now<value.getLong("readyAt")||value.getLong("sequence")<0||value.getLong("sequence")==Long.MAX_VALUE||PlayerState.resolve(p)<cost)return false;
-        Attempt attempt=new Attempt(p,value,now);BUSY.put(p.getUniqueID(),attempt);value.setLong("readyAt",attempt.reservedReady);value.setLong("sequence",attempt.sequence);PlayerState.setResolve(p,PlayerState.resolve(p)-attempt.paid);
+        NBTTagCompound value=state(p);long now=Adventures.now(p);if(value.getInteger("schema")!=1||now<0||now<value.getLong("readyAt")||value.getLong("sequence")<0||value.getLong("sequence")==Long.MAX_VALUE||(!village.vale.bridge.MoveCost.external()&&PlayerState.resolve(p)<cost))return false;
+        Attempt attempt=new Attempt(p,value,now);BUSY.put(p.getUniqueID(),attempt);value.setLong("readyAt",attempt.reservedReady);value.setLong("sequence",attempt.sequence);
         try{
+            attempt.payment=village.vale.bridge.MoveCost.reserve(p,attempt.paid);if(attempt.payment==null)return false;
             Adventures.save(p);if(!attempt.valid())return false;boolean grounded=ground(p);if(!attempt.valid()||!DodgeMath.allowed(true,false,now,attempt.oldReady,grounded,attempt.oldAir))return false;
             double[] base=DodgeMath.velocity(direction,p.rotationYaw);double keep=grounded?.2:.4;
             double dx=base[0]+DodgeMath.retain(p.motionX,keep),dy=base[1]+DodgeMath.retain(Math.max(-.6,p.motionY),.3),dz=base[2]+DodgeMath.retain(p.motionZ,keep);
@@ -77,7 +78,7 @@ public final class Dodge {
             if(dx*dx+dz*dz<.0225)return false;
             Pre event=new Pre(p,direction,dx,dy,dz);MinecraftForge.EVENT_BUS.post(event);if(event.isCanceled()||!attempt.valid()||!safeSweep(p,sweep))return false;
             if(WINDOWS.size()>=256&&!WINDOWS.containsKey(p.getUniqueID()))return false;
-            value.setBoolean("airUsed",!grounded);attempt.committed=true;p.motionX=dx;p.motionY=dy;p.motionZ=dz;p.velocityChanged=true;WINDOWS.put(p.getUniqueID(),new Window(attempt));
+            value.setBoolean("airUsed",!grounded);if(!attempt.payment.valid()||!attempt.payment.commit())return false;attempt.committed=true;p.motionX=dx;p.motionY=dy;p.motionZ=dz;p.velocityChanged=true;WINDOWS.put(p.getUniqueID(),new Window(attempt));
             // Native tracker sends velocity to the owner and observers. No direct position write, no fall reset.
             Adventures.save(p);
             try{p.world.playSound(null,p.posX,p.posY,p.posZ,SoundEvents.ENTITY_ENDERDRAGON_FLAP,SoundCategory.PLAYERS,.25f,1.85f);((WorldServer)p.world).spawnParticle(EnumParticleTypes.CLOUD,p.posX,p.posY+.1,p.posZ,6,.25,.05,.25,.02);WorldReactions.power(p,"dodge",1);}catch(RuntimeException cosmetic){warn(cosmetic);}

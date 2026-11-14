@@ -11,7 +11,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-@Mod(modid=Encounters.ID,name="Vale Original Encounters",version="0.3.6",dependencies="required-after:valeorders@[0.3.6,)",acceptedMinecraftVersions="[1.12.2]")
+@Mod(modid=Encounters.ID,name="Naruto Original Encounters",version="0.3.6",dependencies="required-after:valeorders@[0.3.6,)",acceptedMinecraftVersions="[1.12.2]")
 public final class Encounters {
  public static final String ID="valeencounters";
  @SidedProxy(clientSide="village.encounters.ClientProxy",serverSide="village.encounters.CommonProxy")public static CommonProxy proxy;

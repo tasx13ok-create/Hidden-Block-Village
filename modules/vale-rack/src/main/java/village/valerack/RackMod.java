@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid=RackMod.ID,name="Vale Rack",version=RackMod.VERSION,dependencies="required-after:valeorders",acceptableRemoteVersions="[0.1.4]")
+@Mod(modid=RackMod.ID,name="Naruto Rack",version=RackMod.VERSION,dependencies="required-after:valeorders",acceptableRemoteVersions="[0.1.4]")
 public final class RackMod {
     public static final String ID="valerack",VERSION="0.1.4";
     @Mod.Instance(ID) public static RackMod INSTANCE;

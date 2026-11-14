@@ -70,10 +70,13 @@ final class ScrollSupport {
  }
  static NBTTagCompound companion(EntityPlayerMP p,ItemStack s){return ScrollJournal.get(p).companion(tag(s).getString("valeSerial"));}
  static boolean deploy(EntityPlayerMP p,ItemStack stack,String kind,BlockPos pos,EnumFacing face){
-  if(face!=EnumFacing.UP||!p.world.getBlockState(pos).isSideSolid(p.world,pos,face)||PlayerState.level(p)<4||PlayerState.resolve(p)<20)return false;
+  if(face!=EnumFacing.UP||!p.world.getBlockState(pos).isSideSolid(p.world,pos,face)||PlayerState.level(p)<4||village.vale.bridge.MoveCost.availableUnits(p)<20)return false;
   NBTTagCompound n=companion(p,stack);if(n.getBoolean("deployed"))return false;if(n.hasKey("health")&&(!Float.isFinite(n.getFloat("health"))||n.getFloat("health")<=0))return Scrolls.tell(p,"Companion destroyed. Repair with four iron ingots while sealed.");
   if(kind.equals("summon"))kind="summon_"+Math.max(1,Math.min(3,n.getInteger("variant")));
-  ScrollActor actor=ScrollActor.spawn(p,kind,new Vec3d(pos).add(.5,1,.5),null,12000,kind.startsWith("summon_")?6:4);if(actor==null)return false;if(n.hasKey("health"))actor.setHealth(Math.min(actor.getMaxHealth(),n.getFloat("health")));actor.sourceSerial=tag(stack).getString("valeSerial");actor.setOrder(n.getString("order"),false);ScrollJournal.get(p).deployCompanion(actor.sourceSerial,p.getUniqueID(),actor.getUniqueID(),p.dimension,actor.expires);tag(stack).setString("valeCompanionOrder",actor.order().title);PlayerState.setResolve(p,PlayerState.resolve(p)-20);ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;
+  village.vale.bridge.MoveCost.Ticket payment=village.vale.bridge.MoveCost.reserve(p,20);if(payment==null)return false;
+  net.minecraft.world.World world=p.world;NBTTagCompound account=PlayerState.data(p);
+  try{if(!payment.valid()||!ArsenalAccess.issued(p,stack)||(p.getHeldItemMainhand()!=stack&&p.getHeldItemOffhand()!=stack))return false;
+  ScrollActor actor=ScrollActor.spawnPaid(p,kind,new Vec3d(pos).add(.5,1,.5),null,12000,kind.startsWith("summon_")?6:4,payment);if(actor==null)return false;if(p.world!=world||PlayerState.data(p)!=account){actor.setDead();world.removeEntity(actor);return false;}if(n.hasKey("health"))actor.setHealth(Math.min(actor.getMaxHealth(),n.getFloat("health")));actor.sourceSerial=tag(stack).getString("valeSerial");actor.setOrder(n.getString("order"),false);ScrollJournal.get(p).deployCompanion(actor.sourceSerial,p.getUniqueID(),actor.getUniqueID(),p.dimension,actor.expires);tag(stack).setString("valeCompanionOrder",actor.order().title);if(payment.pending())payment.commit();ScrollJournal.get(p).flush(p);ArsenalAccess.save(p);return true;}finally{payment.close();}
  }
  static ScrollActor linkedActor(EntityPlayerMP p,UUID id){
   for(net.minecraft.world.WorldServer world:net.minecraftforge.common.DimensionManager.getWorlds())

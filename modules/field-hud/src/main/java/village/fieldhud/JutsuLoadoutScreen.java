@@ -92,7 +92,7 @@ public final class JutsuLoadoutScreen extends GuiScreen {
             if(entry==null)tip.add("Empty shortcut");
             else{
                 tip.add(entry.name);tip.add(entry.kind.equals("weapon")?"Activate to equip this carried weapon":entry.kind.equals("technique")?"Uses the matching held weapon":"Activate to use this attack");
-                if(entry.cost>0)tip.add(entry.cost+" "+entry.resource);
+                if(entry.cost>0)tip.add(SharedResourceBridge.cost(entry));
                 if(entry.requiredLevel>0)tip.add("Level "+entry.requiredLevel);
                 if(entry.itemCount>0)tip.add("Carried: "+entry.itemCount);
                 if(!entry.enabled)tip.add(entry.blockReason());

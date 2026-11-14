@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import village.vale.ArsenalAccess;
 import village.vale.Gear;
 import village.vale.PlayerState;
+import village.vale.bridge.MoveCost;
 import village.vale.RewardLedger;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -101,7 +102,7 @@ public final class Scrolls {
         NBTTagCompound r=row(p,lesson.key);long now=ArsenalAccess.now(p);boolean practicing=p.isSneaking();
         int cost=ScrollRules.cost(lesson.cost,practicing,lesson.kind.equals("dragon")&&!p.isInWater());
         int required=practicing?0:lesson.practice,ticks=practicing?30:lesson.cooldown;
-        ScrollRules.Failure fail=ScrollRules.cast(castProof(p,stack,lesson),r.getBoolean("learned"),PlayerState.level(p),lesson.level,r.getInteger("practice"),required,now,r.getLong("next"),PlayerState.resolve(p),cost);
+        ScrollRules.Failure fail=ScrollRules.cast(castProof(p,stack,lesson),r.getBoolean("learned"),PlayerState.level(p),lesson.level,r.getInteger("practice"),required,now,r.getLong("next"),MoveCost.availableUnits(p),cost);
         if(fail!=ScrollRules.Failure.NONE)return tell(p,"Technique unavailable: "+fail.name().toLowerCase(Locale.ROOT)+".");
         if(practicing&&r.getInteger("practice")>=60)return tell(p,"Practice complete.");
         if(p.getCooldownTracker().hasCooldown(stack.getItem()))return false;
@@ -111,14 +112,14 @@ public final class Scrolls {
         if(CASTS.putIfAbsent(cast.owner,cast)!=null)return false;
         Throwable failure=null;
         try {
-            cast.reserved=true;PlayerState.setResolve(p,PlayerState.resolve(p)-cost);
-            if(!practicing&&!ScrollEffects.cast(p,lesson))return tell(p,"No valid effect. Resolve kept.");
-            cast.applied=true;return true;
+            cast.payment=MoveCost.reserve(p,cost);if(cast.payment==null)return tell(p,"Chakra unavailable; no technique applied.");if(!cast.valid(p))return false;
+            if(!practicing&&!ScrollEffects.cast(p,lesson)&&!cast.applied)return tell(p,"No valid effect. Chakra kept.");
+            cast.accept();return true;
         } catch(RuntimeException|Error error) {
             failure=error;throw error;
         } finally {
             try {
-                if(cast.applied)completeCast(p,cast,practicing,ticks,next);
+                if(cast.applied){cast.accept();completeCast(p,cast,practicing,ticks,next);}
                 else cast.refund();
             } catch(RuntimeException|Error completionError) {
                 if(failure==null)throw completionError;
@@ -140,7 +141,7 @@ public final class Scrolls {
     }
     /** Record an observed irreversible effect before a callback exception unwinds. */
     static void recordApplied(EntityPlayerMP p) {
-        for(CastAttempt cast:CASTS.values())if(cast.player==p){cast.applied=true;return;}
+        for(CastAttempt cast:CASTS.values())if(cast.player==p){cast.accept();return;}
     }
     /** Recheck after a cancellable callback, before applying an irreversible move. */
     static boolean castStillValid(EntityPlayerMP p) {
@@ -149,7 +150,7 @@ public final class Scrolls {
     private static final class CastAttempt {
         final EntityPlayerMP player;final UUID owner;final ItemStack stack,proof;final Item item;final Lesson lesson;
         final World world;final int dimension,required,cost;final EnumHand hand;
-        final NBTTagCompound account,scrolls,progress;boolean reserved,applied;
+        final NBTTagCompound account,scrolls,progress;boolean applied;MoveCost.Ticket payment;
         CastAttempt(EntityPlayerMP p,ItemStack stack,Lesson lesson,NBTTagCompound progress,int required,int cost) {
             player=p;owner=p.getUniqueID();this.stack=stack;proof=stack.copy();item=stack.getItem();this.lesson=lesson;
             world=p.world;dimension=p.dimension;hand=p.getHeldItemMainhand()==stack?EnumHand.MAIN_HAND:EnumHand.OFF_HAND;
@@ -159,17 +160,11 @@ public final class Scrolls {
             return p==player&&owner.equals(p.getUniqueID())&&p.world==world&&p.dimension==dimension&&p.getHeldItem(hand)==stack
                     &&ItemStack.areItemStacksEqual(stack,proof)&&castProof(p,stack,lesson)
                     &&PlayerState.data(p)==account&&state(p)==scrolls&&scrolls.getCompoundTag(lesson.key)==progress
-                    &&progress.getBoolean("learned")&&progress.getInteger("practice")>=required&&PlayerState.level(p)>=lesson.level;
+                    &&progress.getBoolean("learned")&&progress.getInteger("practice")>=required&&PlayerState.level(p)>=lesson.level&&(applied||payment!=null&&payment.valid());
         }
-        void refund() {
-            if(!reserved)return;
-            int restored=village.vale.Rules.clampResolve(account.getInteger("resolve"))+cost;
-            // Refund the account actually debited. Replacing that account in an
-            // event must not give the replacement state an unearned top-up.
-            if(PlayerState.data(player)==account)PlayerState.setResolve(player,restored);
-            else account.setInteger("resolve",village.vale.Rules.clampResolve(restored));
-            reserved=false;
-        }
+        void accept(){applied=true;if(payment!=null&&payment.pending())payment.commit();}
+        void refund(){if(payment!=null)payment.close();}
+
     }
     /** Original036 carrier bridge: no packet/HUD schema and no forged held-item context. */
     public static boolean castFromCarrier036(EntityPlayerMP p,ItemStack stack,String key) {

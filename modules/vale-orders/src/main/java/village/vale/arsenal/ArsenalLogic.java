@@ -32,6 +32,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import village.vale.ArsenalAccess;
 import village.vale.PlayerState;
+import village.vale.bridge.MoveCost;
 
 /** All specials enter through native main-hand use and the existing Core authority. */
 public final class ArsenalLogic {
@@ -58,7 +59,7 @@ public final class ArsenalLogic {
     public static boolean ready(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,boolean explain) {
         boolean ok=ArsenalMath.ready(!p.world.isRemote,p.isEntityAlive(),p.isSpectator(),p.getHeldItemMainhand()==stack,
                 proof(p,stack,spec),ArsenalAccess.fullSet(p)==spec.order,p.getCooldownTracker().hasCooldown(stack.getItem())||state(p).getBoolean("busy"),
-                ArsenalAccess.now(p),ArsenalCooldowns.readyAt(state(p),spec),PlayerState.resolve(p),spec.cost);
+                ArsenalAccess.now(p),ArsenalCooldowns.readyAt(state(p),spec),MoveCost.availableUnits(p),spec.cost);
         if(!ok&&explain)tell(p,"Specialist technique needs your issued matching set, resolve and recovery.");
         return ok;
     }
@@ -79,11 +80,11 @@ public final class ArsenalLogic {
         if(spec.role==ArsenalSpec.Role.TALONS||!ArsenalMath.released(ticks,spec.charge)||!ready(p,stack,spec,false))return;
         // Reserve once before any native callback. Failed/cancelled casts refund it;
         // callbacks cannot recursively cast again before this transaction closes.
-        state(p).setBoolean("busy",true);
-        PlayerState.setResolve(p,PlayerState.resolve(p)-spec.cost);
+        ArsenalCharge charge=ArsenalCharge.begin(p,stack,spec);if(charge==null)return;
         float power=ArsenalMath.charge(ticks);
         boolean used=false;
-        try {
+        try(ArsenalCharge reservation=charge) {
+        if(!ArsenalCharge.context(p)||!heldProof(p,stack,spec))return;
         EntityLivingBase target;
         switch(spec.role) {
             case RETURN: used=fire(p,stack,spec,ArsenalShot.RETURN,power,0);break;
@@ -98,11 +99,11 @@ public final class ArsenalLogic {
                     for(int i=-1;i<=1;i++)used=fire(p,stack,spec,ArsenalShot.FIRE,power,i*10)||used;
                 }
                 break;
-            case EMITTER: used=field(p,stack,spec,p.getPositionVector().add(0,.8,0),ArsenalField.EMITTER,power);break;
+            case EMITTER: used=castField(p,stack,spec,p.getPositionVector().add(0,.8,0),ArsenalField.EMITTER,power);break;
             case TRAP:
                 RayTraceResult floor=p.world.rayTraceBlocks(p.getPositionEyes(1),p.getPositionEyes(1).add(p.getLookVec().scale(6)),false,true,false);
                 if(floor!=null&&floor.typeOfHit==RayTraceResult.Type.BLOCK&&floor.sideHit==net.minecraft.util.EnumFacing.UP)
-                    used=field(p,stack,spec,floor.hitVec.add(0,.08,0),ArsenalField.TRAP,power);
+                    used=castField(p,stack,spec,floor.hitVec.add(0,.08,0),ArsenalField.TRAP,power);
                 break;
             case WIND:
                 if(p.isSneaking()) {guard(p,spec);used=true;}
@@ -116,8 +117,8 @@ public final class ArsenalLogic {
             case GUARD: guard(p,spec);used=true;break;
             case MEND:
                 if(p.getHealth()<p.getMaxHealth()||p.isPotionActive(MobEffects.SLOWNESS)||p.isPotionActive(MobEffects.WEAKNESS)||p.isPotionActive(MobEffects.POISON)) {
-                    p.heal(3);p.removePotionEffect(MobEffects.SLOWNESS);p.removePotionEffect(MobEffects.WEAKNESS);p.removePotionEffect(MobEffects.POISON);
-                    PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+3));guard(p,spec);used=true;
+                    float before=p.getHealth();try{p.heal(3);}finally{if(p.getHealth()>before)ArsenalCharge.accepted(p);}removeStatus(p,MobEffects.SLOWNESS);removeStatus(p,MobEffects.WEAKNESS);removeStatus(p,MobEffects.POISON);
+                    guard(p,spec);MoveCost.restore(p,3);used=true;
                 }
                 break;
             case SLAM:
@@ -131,31 +132,32 @@ public final class ArsenalLogic {
                 if(target!=null) {
                     if(p.isSneaking()) {
                         // A bounded snare field is the original prison analogue; it never places blocks.
-                        used=field(p,stack,spec,target.getPositionVector(),ArsenalField.SNARE,power);
-                    } else if(hit(p,target,7+4*power)) {push(p,target,.6);used=true;}
+                        used=castField(p,stack,spec,target.getPositionVector(),ArsenalField.SNARE,power);
+                    } else if(castHit(p,target,7+4*power)) {push(p,target,.6);used=true;}
                 }
                 break;
             case CHAIN:
                 target=ArsenalAccess.aimedTarget(p,10);
-                if(target!=null&&hit(p,target,5+power*3)) {
+                if(target!=null&&castHit(p,target,5+power*3)) {
                     used=true;int count=0;
                     for(EntityLivingBase next:near(p,target.getPositionVector(),3,4)) {
+                        if(!ArsenalCharge.context(p)||!heldProof(p,stack,spec))break;
                         if(next==target||count>=2)continue;
-                        if(hit(p,next,4)) {line(p,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0),EnumParticleTypes.CRIT_MAGIC);WeaponPulse.arc(p,spec,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0));count++;}
+                        if(castHit(p,next,4)) {line(p,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0),EnumParticleTypes.CRIT_MAGIC);WeaponPulse.arc(p,spec,target.getPositionVector().add(0,.8,0),next.getPositionVector().add(0,.8,0));count++;}
                     }
                 }
                 break;
             case OVERDRIVE:
-                p.addPotionEffect(new PotionEffect(MobEffects.STRENGTH,60,0));
-                p.addPotionEffect(new PotionEffect(MobEffects.SPEED,60,0));
+                status(p,MobEffects.STRENGTH,60,0);
+                status(p,MobEffects.SPEED,60,0);
                 p.addExhaustion(3);state(p).setLong("overdriveRecovery",ArsenalAccess.now(p)+60);used=true;break;
             case SWEEP:
-                state(p).setLong("sweepUntil",ArsenalAccess.now(p)+100);used=true;break;
+                state(p).setLong("sweepUntil",ArsenalAccess.now(p)+100);ArsenalCharge.accepted(p);used=true;break;
             default:
                 target=ArsenalAccess.aimedTarget(p,spec.role==ArsenalSpec.Role.FINISH?7:4.5);
                 if(target!=null) {
                     float damage=spec.role==ArsenalSpec.Role.FINISH?ArsenalMath.finishDamage(target.getHealth(),target.getMaxHealth(),power):6+4*power;
-                    if(hit(p,target,damage)) {
+                    if(castHit(p,target,damage)) {
                         used=true;
                         switch(spec.role) {
                             case DRAIN: drain(p,target,8);break;
@@ -175,18 +177,23 @@ public final class ArsenalLogic {
                     }
                 }
         }
-        if(used) {commit(p,stack,spec);chargeCue(p,spec,40);WeaponPulse.cast(p,spec,power);}
+        if(used||charge.applied) {charge.accept();charge.complete();chargeCue(p,spec,40);WeaponPulse.cast(p,spec,power);}
         else tell(p,"No permitted effect: check aim, range, ground or your active field limit.");
-        } finally {
-            state(p).removeTag("busy");
-            if(!used)PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+spec.cost));
         }
     }
-    static boolean hit(EntityPlayerMP p,EntityLivingBase target,float damage) { return ArsenalAccess.hit(p,target,Math.min(16,damage)); }
+    static boolean hit(EntityPlayerMP p,EntityLivingBase target,float damage){return ArsenalAccess.hit(p,target,Math.min(16,damage));}
+    private static boolean castHit(EntityPlayerMP p,EntityLivingBase target,float damage) {
+        if(!ArsenalCharge.context(p)||target==null)return false;
+        float before=target.getHealth()+target.getAbsorptionAmount();
+        try{boolean hit=ArsenalAccess.hit(p,target,Math.min(16,damage));ItemStack held=p.getHeldItemMainhand();return hit&&ArsenalCharge.context(p)&&held.getItem() instanceof ArsenalBlade&&proof(p,held,((ArsenalBlade)held.getItem()).spec)&&target.world==p.world&&ArsenalAccess.allowed(p,target);}
+        finally{if(Float.isFinite(before)&&target.getHealth()+target.getAbsorptionAmount()<before)ArsenalCharge.accepted(p);}
+    }
+    private static void removeStatus(EntityPlayerMP p,net.minecraft.potion.Potion potion){PotionEffect old=p.getActivePotionEffect(potion);try{p.removePotionEffect(potion);}finally{if(old!=null&&p.getActivePotionEffect(potion)!=old)ArsenalCharge.accepted(p);}}
+    static void status(EntityPlayerMP p,net.minecraft.potion.Potion potion,int ticks,int amplifier){PotionEffect effect=new PotionEffect(potion,ticks,amplifier);try{p.addPotionEffect(effect);}finally{if(p.getActivePotionEffect(potion)==effect)ArsenalCharge.accepted(p);}}
     static void guard(EntityPlayerMP p,ArsenalSpec spec) {
         state(p).setLong("guardUntil",ArsenalAccess.now(p)+40);
         state(p).setString("guardKey",spec.key);
-        state(p).setFloat("counter",0);state(p).setLong("counterUntil",ArsenalAccess.now(p)+160);
+        state(p).setFloat("counter",0);state(p).setLong("counterUntil",ArsenalAccess.now(p)+160);ArsenalCharge.accepted(p);
     }
     static float protect(EntityPlayerMP p,float amount) {
         if(!Float.isFinite(amount)||amount<=0||ArsenalAccess.now(p)>state(p).getLong("guardUntil"))return amount;
@@ -201,9 +208,10 @@ public final class ArsenalLogic {
     static boolean cone(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,double range,int limit,float damage,boolean push,boolean radial) {
         boolean used=false;
         for(EntityLivingBase target:near(p,p.getPositionVector(),range,limit)) {
+            if(!ArsenalCharge.context(p)||!heldProof(p,stack,spec))break;
             Vec3d delta=target.getPositionVector().subtract(p.getPositionVector()).normalize();
             if(!radial&&p.getLookVec().dotProduct(delta)<.35)continue;
-            if(hit(p,target,damage)) {
+            if(castHit(p,target,damage)) {
                 used=true;if(push)push(p,target,.5);
                 if(spec.role==ArsenalSpec.Role.SONIC)target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,60,0));
             }
@@ -241,13 +249,16 @@ public final class ArsenalLogic {
     static boolean fire(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,int mode,float power,float yaw) {
         if(shotCount(p)>=ArsenalMath.MAX_SHOTS)return false;
         ArsenalShot shot=new ArsenalShot(p,stack,spec,mode,power,yaw);
-        boolean spawned=p.world.spawnEntity(shot);
-        if(spawned&&mode==ArsenalShot.RETURN)state(p).setUniqueId("flight",shot.getUniqueID());
-        return spawned;
+        net.minecraft.world.World world=p.world;boolean spawned=false;
+        try{spawned=world.spawnEntity(shot);if(spawned&&!shot.isDead&&mode==ArsenalShot.RETURN)state(p).setUniqueId("flight",shot.getUniqueID());return spawned&&!shot.isDead;}
+        finally{if(!shot.isDead&&shot.world==world&&world.getEntityByID(shot.getEntityId())==shot)ArsenalCharge.accepted(p);}
     }
-    static boolean field(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,Vec3d center,int mode,float power) {
+    static boolean field(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,Vec3d center,int mode,float power){return field(p,stack,spec,center,mode,power,false);}
+    private static boolean castField(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,Vec3d center,int mode,float power){return field(p,stack,spec,center,mode,power,true);}
+    private static boolean field(EntityPlayerMP p,ItemStack stack,ArsenalSpec spec,Vec3d center,int mode,float power,boolean cast) {
         if(fieldCount(p)>=ArsenalMath.MAX_FIELDS||!p.world.isBlockLoaded(new BlockPos(center)))return false;
-        return p.world.spawnEntity(new ArsenalField(p,stack,spec,center,mode,power));
+        ArsenalField field=new ArsenalField(p,stack,spec,center,mode,power);net.minecraft.world.World world=p.world;
+        try{return world.spawnEntity(field)&&!field.isDead;}finally{if(cast&&!field.isDead&&field.world==world&&world.getEntityByID(field.getEntityId())==field)ArsenalCharge.accepted(p);}
     }
     public static boolean inFlight(EntityPlayerMP p,ItemStack stack) {
         if(!state(p).hasUniqueId("flight"))return false;
@@ -274,19 +285,18 @@ public final class ArsenalLogic {
         if(!safe(p,at))return tell(p,"Waymark is outside safe travel range or blocked.");
         // Reserve before Forge teleport callbacks, just as release does before damage callbacks.
         // This also prevents an event subscriber re-entering the same unconsumed marker.
-        s.setBoolean("busy",true);
-        PlayerState.setResolve(p,PlayerState.resolve(p)-spec.cost);
+        ArsenalCharge charge=ArsenalCharge.begin(p,stack,spec);if(charge==null)return false;
         boolean used=false;
-        try {
+        try(ArsenalCharge reservation=charge) {
+            if(!ArsenalCharge.context(p)||!heldProof(p,stack,spec))return false;
             EnderTeleportEvent e=new EnderTeleportEvent(p,at.x,at.y,at.z,0);
             if(MinecraftForge.EVENT_BUS.post(e))return false;
             Vec3d destination=new Vec3d(e.getTargetX(),e.getTargetY(),e.getTargetZ());
             if(p.getHeldItemMainhand()!=stack||!proof(p,stack,spec)||!safe(p,destination))return false;
-            p.connection.setPlayerLocation(destination.x,destination.y,destination.z,p.rotationYaw,p.rotationPitch);
-            p.fallDistance=0;s.removeTag("markUntil");used=true;commit(p,stack,spec);return true;
-        } finally {
-            s.removeTag("busy");
-            if(!used)PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+spec.cost));
+            Vec3d before=p.getPositionVector();net.minecraft.world.World world=p.world;
+            try{p.connection.setPlayerLocation(destination.x,destination.y,destination.z,p.rotationYaw,p.rotationPitch);}
+            finally{if(p.world!=world||p.getPositionVector().squareDistanceTo(before)>1.0e-10)charge.accept();}
+            p.fallDistance=0;s.removeTag("markUntil");used=true;charge.accept();charge.complete();return true;
         }
     }
     static boolean safe(EntityPlayerMP p,Vec3d at) {
@@ -299,10 +309,10 @@ public final class ArsenalLogic {
     static void drain(EntityPlayerMP p,EntityLivingBase target,int maximum) {
         int gain=2;
         if(target instanceof EntityPlayerMP) {
-            EntityPlayerMP other=(EntityPlayerMP)target;
-            gain=Math.min(maximum,PlayerState.resolve(other));PlayerState.setResolve(other,PlayerState.resolve(other)-gain);
+            EntityPlayerMP other=(EntityPlayerMP)target;gain=Math.min(maximum,MoveCost.availableUnits(other));
+            if(gain>0){MoveCost.Ticket stolen=MoveCost.reserve(other,gain);if(stolen==null)gain=0;else try{stolen.commit();}finally{stolen.close();}}
         }
-        if(gain>0) {PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+gain));p.heal(1);}
+        if(gain>0){MoveCost.restore(p,gain);p.heal(1);}
         target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,60,0));
     }
     static void addEffect(EntityPlayerMP p,EntityLivingBase target,ItemStack proof,ArsenalSpec spec,int mode,int duration) {

@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = ValeResidents.MODID, name = "Vale Residents", version = "0.2.1",
+@Mod(modid = ValeResidents.MODID, name = "Naruto Residents", version = "0.2.1",
      acceptedMinecraftVersions = "[1.12.2]", dependencies = "required-after:valeorders@[0.3.13,0.4.0)")
 public final class ValeResidents {
     public static final String MODID = "valeresidents";

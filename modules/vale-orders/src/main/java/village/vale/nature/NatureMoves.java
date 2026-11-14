@@ -24,10 +24,11 @@ public final class NatureMoves {
     public static boolean handles(Arts.Art a){return a!=null&&a.shape==0&&(a.order==Order.EMBER||a.order==Order.CURRENT||a.order==Order.FLINT||a.order==Order.GALE||a.order==Order.STORM);}
     static final class Attempt {
         final EntityPlayerMP p;final World world;final Arts.Art art;final NBTTagCompound account;final boolean carried;
-        boolean applied;
+        boolean applied;village.vale.bridge.MoveCost.Ticket payment;
+        void accept(){applied=true;if(payment!=null&&payment.pending())payment.commit();}
         Attempt(EntityPlayerMP p,Arts.Art art,boolean carried){this.p=p;this.world=p.world;this.art=art;account=PlayerState.data(p);this.carried=carried;}
         boolean valid(){
-            if(!p.isEntityAlive()||p.isSpectator()||p.world!=world||world.isRemote||PlayerState.data(p)!=account||PlayerState.level(p)<art.level||Combat.fullSet(p)==null)return false;
+            if(!p.isEntityAlive()||p.isSpectator()||p.world!=world||world.isRemote||PlayerState.data(p)!=account||PlayerState.level(p)<art.level||Combat.fullSet(p)==null||(payment!=null&&(payment.pending()?!payment.valid():!applied))||p.getServer()==null||p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())!=p)return false;
             if(!art.order.key.equals(account.getString("starterOrder"))&&!account.getBoolean("study_"+art.order.key))return false;
             if(!carried)return "valeorders:technique_codex".equals(Gear.key(p.getHeldItemMainhand()));
             for(ItemStack stack:p.inventory.mainInventory)if("valeorders:technique_codex".equals(Gear.key(stack)))return true;
@@ -40,27 +41,32 @@ public final class NatureMoves {
         NBTTagCompound root=attempt.account,cds=root.getCompoundTag("artCooldowns");long now=Adventures.now(p),oldOwn=cds.getLong(art.key),oldGlobal=root.getLong("artGlobal");
         if(now<oldOwn||now<oldGlobal)return Adventures.tell(p,"This jutsu is recovering.");
         int cost=Forms.active(p)==2?Math.max(1,art.cost*3/4):art.cost;
-        if(PlayerState.resolve(p)<cost)return Adventures.tell(p,"Need "+cost+" chakra for "+art.title+".");
         long own=now+art.cooldown*20L,global=now+20;
-        ACTIVE.put(p.getUniqueID(),attempt);PlayerState.setResolve(p,PlayerState.resolve(p)-cost);
-        cds.setLong(art.key,own);root.setTag("artCooldowns",cds);root.setLong("artGlobal",global);
-        boolean success=false;
+        ACTIVE.put(p.getUniqueID(),attempt);
+        boolean success=false,reserved=false;
         try{
+            attempt.payment=village.vale.bridge.MoveCost.reserve(p,cost);
+            if(attempt.payment==null)return Adventures.tell(p,village.vale.bridge.ResourceText.requirement(p,cost));
+            if(!attempt.valid())return false;
+            cds.setLong(art.key,own);root.setTag("artCooldowns",cds);root.setLong("artGlobal",global);
+            reserved=true;
             // Persist the reservation before callbacks can produce irreversible effects or save the player.
             Adventures.save(p);success=perform(attempt);
-            if(!success)Adventures.tell(p,art.order==Order.FLINT?"Need six clear blocks on solid ground, outside protected space; previous cover must fade.":"No permitted contact. Aim around cover; hostile arrows also count for Wind.");
-            return success;
+            if(!success&&!attempt.applied)Adventures.tell(p,art.order==Order.FLINT?"Need six clear blocks on solid ground, outside protected space; previous cover must fade.":"No permitted contact. Aim around cover; hostile arrows also count for Wind.");
+            return success||attempt.applied;
         }finally{
             try{
-                if(attempt.applied){
+                if(attempt.payment!=null){if(attempt.applied)attempt.payment.commit();else attempt.payment.refund();}
+                if(reserved){
+                if(attempt.applied&&PlayerState.data(p)==root&&p.world==attempt.world){
                     root.setLong("lastCombat",now);Missions.art(p);Adventures.gesture(p);HudNetwork.cast(p,art.key);
-                    p.sendStatusMessage(new TextComponentString(art.title+" | Chakra "+PlayerState.resolve(p)+"/100"),true);
-                }else{
-                    PlayerState.setResolve(p,PlayerState.resolve(p)+cost);
+                    p.sendStatusMessage(new TextComponentString(art.title+" | "+village.vale.bridge.ResourceText.balance(p)),true);
+                }else if(!attempt.applied){
                     NBTTagCompound live=root.getCompoundTag("artCooldowns");if(live.getLong(art.key)==own)live.setLong(art.key,oldOwn);root.setTag("artCooldowns",live);
                     if(root.getLong("artGlobal")==global)root.setLong("artGlobal",oldGlobal);
                 }
-                Adventures.save(p);
+                if(PlayerState.data(p)==root)Adventures.save(p);
+                }
             }finally{ACTIVE.remove(p.getUniqueID(),attempt);}
         }
     }
@@ -77,12 +83,13 @@ public final class NatureMoves {
             case CURRENT:{
                 boolean ok=false;for(EntityLivingBase target:cone(p,6,.48,5)){
                     if(!a.valid())break;
-                    if(impact(a,target,3)){ok=true;if(followup(a,target,6,.48)){target.extinguish();target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,60,1));target.getEntityData().setLong("valeNatureWetUntil",p.world.getTotalWorldTime()+60);push(p,target,1.0);contact(a,target);}}
+                    if(impact(a,target,3)){ok=true;if(followup(a,target,6,.48)){target.extinguish();target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,60,1));if(!followup(a,target,6,.48))continue;target.getEntityData().setLong("valeNatureWetUntil",p.world.getTotalWorldTime()+60);push(p,target,1.0);contact(a,target);}}
                 }
                 if(ok&&a.valid()){spray(p,EnumParticleTypes.WATER_SPLASH,6,1.8,8);sound(p,SoundEvents.ITEM_BUCKET_EMPTY,.8F,.8F);}return ok;
             }
             case FLINT:
                 if(!EarthCover.raise(p,a))return false;
+                a.accept();if(!a.valid())return true;
                 AcademyCampaign.defensiveArt(p,a.art.key,EarthCover.center(p));
                 ((WorldServer)p.world).spawnParticle(EnumParticleTypes.BLOCK_DUST,EarthCover.center(p).getX()+.5,p.posY+.6,EarthCover.center(p).getZ()+.5,32,1,.6,1,.08,net.minecraft.block.Block.getStateId(Blocks.COBBLESTONE.getDefaultState()));
                 sound(p,SoundEvents.BLOCK_STONE_PLACE,1,.65F);return true;
@@ -95,7 +102,7 @@ public final class NatureMoves {
                     if(!a.valid()||inspected++>=64||dispersed>=8)break;if(!eligibleArrow(p,arrow))continue;
                     AttackEntityEvent event=new AttackEntityEvent(p,arrow);if(MinecraftForge.EVENT_BUS.post(event)||!a.valid()||!eligibleArrow(p,arrow))continue;
                     // Disperse supported hostile arrows. No ownership swap or uncontrolled reflected friendly damage.
-                    try{arrow.setDead();}finally{if(arrow.isDead)a.applied=true;}
+                    try{arrow.setDead();}finally{if(arrow.isDead)a.accept();}
                     if(arrow.isDead){ok=true;dispersed++;}
                 }
                 if(ok&&a.valid()){spray(p,EnumParticleTypes.CLOUD,9,1.25,4);sound(p,SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP,1,.6F);}return ok;
@@ -108,8 +115,8 @@ public final class NatureMoves {
                 if(!impact(a,target,wet?12:9))return false;
                 // A precise short strike commits the user's footing; walls and canceled native damage win.
                 if(followup(a,target,6.5,.94)){
-                    p.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,16,1));target.addPotionEffect(new PotionEffect(MobEffects.GLOWING,25,0));
-                    line(p,target.getPositionEyes(1),EnumParticleTypes.CRIT_MAGIC);contact(a,target);sound(p,SoundEvents.ENTITY_FIREWORK_BLAST,.7F,1.7F);
+                    p.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,16,1));if(!followup(a,target,6.5,.94))return true;target.addPotionEffect(new PotionEffect(MobEffects.GLOWING,25,0));
+                    if(!followup(a,target,6.5,.94))return true;line(p,target.getPositionEyes(1),EnumParticleTypes.CRIT_MAGIC);contact(a,target);sound(p,SoundEvents.ENTITY_FIREWORK_BLAST,.7F,1.7F);
                 }return true;
             }
             default:return false;
@@ -119,7 +126,7 @@ public final class NatureMoves {
         if(!a.valid()||!rayClear(a.p,target)||!ArsenalAccess.allowed(a.p,target))return false;
         float before=target.getHealth()+target.getAbsorptionAmount();
         try{return ArsenalAccess.hit(a.p,target,damage);}
-        finally{if(target.getHealth()+target.getAbsorptionAmount()<before)a.applied=true;}
+        finally{if(target.getHealth()+target.getAbsorptionAmount()<before)a.accept();}
     }
     private static void contact(Attempt a,EntityLivingBase target){AcademyCampaign.art(a.p,a.art.key,target);}
     /** Damage callbacks may change world, team, equipment or position after actual health loss. */

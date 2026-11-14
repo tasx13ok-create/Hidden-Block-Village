@@ -68,33 +68,32 @@ public final class ClawCombat {
         if(!ArsenalLogic.ready(p,stack,SPEC,true))return false;
         EntityLivingBase target=ArsenalAccess.aimedTarget(p,ClawRules.RANGE);
         if(!targetable(p,target)) {tell(p,"Aim at a visible permitted target within five blocks.");return false;}
-        boolean rear=rear(p,target),used=false,reserved=false;
+        boolean rear=rear(p,target),used=false;ArsenalCharge charge=null;
         ArsenalLogic.state(p).setBoolean("busy",true);
         try {
             if(MinecraftForge.EVENT_BUS.post(new ClawLockEvent(p,target,rear))||!held(p,stack)||!targetable(p,target))return false;
-            if(!held(p,stack)||!targetable(p,target)||PlayerState.resolve(p)<SPEC.cost)return false;
-            PlayerState.setResolve(p,PlayerState.resolve(p)-SPEC.cost);reserved=true;
+            if(!held(p,stack)||!targetable(p,target))return false;charge=ArsenalCharge.begin(p,stack,SPEC);if(charge==null)return false;if(!ArsenalCharge.context(p)||!held(p,stack)||!targetable(p,target))return false;
             // One native application, and its final applicability result, authorizes
             // the rear effect. Existing blindness must not hide a new DENY result.
-            if(rear&&!blind(target))return false;
+            if(rear&&!blind(p,target))return false;
             if(!held(p,stack)||!targetable(p,target))return false;
             LOCKS.put(p.getUniqueID(),new Lock(target,stack,p.dimension,ArsenalAccess.now(p),rear));
-            used=true;ArsenalLogic.commit(p,stack,SPEC);
+            used=true;charge.accept();charge.complete();
             cue(p,target,EnumParticleTypes.SPELL_WITCH,8);
             tell(p,(rear?"Rear lock: blinded. ":"Target locked. ")+"Use or attack within five seconds; the lunge has a one-second tell.");
             return true;
         } finally {
             ArsenalLogic.state(p).removeTag("busy");
-            if(reserved&&!used)PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+SPEC.cost));
+            if(charge!=null)charge.close();
         }
     }
 
-    private static boolean blind(EntityLivingBase target) {
+    private static boolean blind(EntityPlayerMP p,EntityLivingBase target) {
         PotionEffect effect=new PotionEffect(MobEffects.BLINDNESS,ClawRules.BLIND_TICKS,0);
         PotionAttempt attempt=new PotionAttempt(target,effect),previous=POTION.get();
         POTION.set(attempt);
         try {target.addPotionEffect(effect);}
-        finally {if(previous==null)POTION.remove();else POTION.set(previous);}
+        finally {if(previous==null)POTION.remove();else POTION.set(previous);PotionEffect present=target.getActivePotionEffect(MobEffects.BLINDNESS);if(attempt.event!=null&&attempt.event.getResult()!=Event.Result.DENY&&present!=null&&present.getDuration()>=ClawRules.BLIND_TICKS)ArsenalCharge.accepted(p);}
         PotionEffect applied=target.getActivePotionEffect(MobEffects.BLINDNESS);
         return attempt.event!=null&&attempt.event.getResult()!=Event.Result.DENY
                 &&applied!=null&&applied.getDuration()>=ClawRules.BLIND_TICKS;

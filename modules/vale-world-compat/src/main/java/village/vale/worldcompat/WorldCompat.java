@@ -27,7 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import village.vale.Quartermaster;
 
 /** Original save bridge. Legacy technical identifiers are data compatibility only. */
-@Mod(modid=WorldCompat.ID,name="Vale World Furnishings",version="1.0.0",dependencies="required-after:valeorders",acceptedMinecraftVersions="[1.12.2]")
+@Mod(modid=WorldCompat.ID,name="Naruto World Furnishings",version="1.0.0",dependencies="required-after:valeorders",acceptedMinecraftVersions="[1.12.2]")
 @Mod.EventBusSubscriber(modid=WorldCompat.ID)
 public final class WorldCompat {
  public static final String ID="valeworldcompat";

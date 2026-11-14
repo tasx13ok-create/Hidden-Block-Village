@@ -44,7 +44,7 @@ public final class ClientHud extends Gui {
     }
     @SubscribeEvent public void tick(TickEvent.ClientTickEvent event) {
         if(event.phase!=TickEvent.Phase.END) return;
-        ChakraBridge.tick();
+        SharedResourceBridge.tick();ChakraBridge.tick();
         ValeBridge.tick();
         JutsuAccess.tick();RackAccess.tick();JutsuInput.tick();
         ReadinessHud.tick();
