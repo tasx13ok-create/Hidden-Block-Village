@@ -4,6 +4,46 @@ Updated 2026-11-14. GitHub is the shared source of truth; private PC files and u
 
 ## Current owner request and live session
 
+PRIORITY owner correction: work directly, no sub-agents, one folder at a time.
+All three remaining sub-agents were interrupted and verified interrupted. Do not
+restart or delegate to them without fresh owner authorization. The owner reports
+the delivered setup looks about two hours behind and reverted icons are replaced.
+
+Root found an actual client mismatch: the new CurseForge profile
+`Naruto Complete Client - Friend Test` contains field-hud0.18.0 and enables
+Vale-Reference-Flat-Icons-v3.zip in options.txt. It also contains the newer server
+mod cohort, which does not replace old client-only HUD/control/compat JARs.
+The older unpacked D:/Bisect server upload/Hidden Block Village client tree is
+also stale (HUD0.20.0 / Source11Core). Do not package from that unpacked tree.
+The sealed Hidden Block Village.zip passes its recorded SHA and contains
+HUD0.20.1 / Source13Core. Use explicit sealed inputs, not a stale folder/glob.
+
+ONE-FOLDER correction delivered now:
+`D:/Bisect server upload/CLIENT UPDATE - Hidden Block Village/01 - mods.zip`
+203,555,669bytes, SHA256
+`78296d26effdc60096ced953becdf4394deb930eaa52678bc5aa1e684053d72d`.
+It contains58complete client JARs at mods/, including HUD0.20.1 and a new Source14
+Core0.3.16 built from current main with Claude's chest-crouch correction.
+Core SHA `12eb3d63e13b817648eaabb001bf4d21abdfad0f43b89d70c2e4b2375045a93c`;
+only ArmorCoreFx.class differs from accepted Source13. All nonclient Core bytes
+and57other JARs are identical. All nested JARs and ZIP CRC/SHA readbacks passed.
+Tool: tools/package_client_mods.py; safe receipt:
+release/evidence/current-client-mods-0316.json. Server gameplay is identical, so
+this renderer-only Core difference does not require another server upload.
+The complete Source14Core build passed without source drift; private report:
+D:/HiddenBlockVillage-Sprint-20261113/core016-build-snapshot-14/build/source-builds/20261114T173840Z-599cba7a/report.json,
+SHA493df853658c54a3542cb8b6329902c047c190265adff44081d3ba6db092a437.
+No new graphical/native/server-hosted acceptance is claimed for the renderer delta.
+
+Owner action: close Minecraft; replace the entire CLIENT mods folder in the
+Friend Test profile with this ZIP's mods folder. This ZIP is not for Bisect.
+Root has not modified that profile or options/resourcepacks; next requested
+folder is resourcepacks, removing the active retired reference overlay so original
+unowned mod icons/armor show again. Respect the one-folder-at-a-time instruction.
+The Source13preview client exited at12:22:47local; process30120 is no longer
+present. Preview server31524 remains alive. Preserve it; historical join/dodge
+evidence below does not mean a client is currently connected.
+
 The owner wants Claude's reviewed work merged, the requested Bisect archive updated, named client/full ZIPs, and a playable creative inspection session.
 This explicitly revokes the earlier request to keep Minecraft closed.
 Keep the active inspection session available. Do not send input, close the client, or stop the server without coordination.
