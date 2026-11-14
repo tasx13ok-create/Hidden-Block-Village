@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "scope": "OFFLINE_UV_CONTRACT_SOFTWARE_RENDER_NOT_NATIVE",
+  "source": "Prepared MCP stable39 ModelBox,ModelBiped,LayerBipedArmor functional coordinates",
+  "renderer": "render_hero.py",
+  "views": [
+    {
+      "view": "FRONT",
+      "yaw": 0,
+      "walk": false,
+      "visible_pixels_by_slot": {
+        "head": 3600,
+        "chest": 33220,
+        "leggings": 8628,
+        "boots": 7476
+      },
+      "out_of_canvas_uv_samples": 0
+    },
+    {
+      "view": "THREE-QUARTER",
+      "yaw": 38,
+      "walk": false,
+      "visible_pixels_by_slot": {
+        "head": 5040,
+        "chest": 33938,
+        "leggings": 9610,
+        "boots": 8666
+      },
+      "out_of_canvas_uv_samples": 0
+    },
+    {
+      "view": "BACK",
+      "yaw": 180,
+      "walk": false,
+      "visible_pixels_by_slot": {
+        "head": 3600,
+        "chest": 33220,
+        "leggings": 8628,
+        "boots": 7476
+      },
+      "out_of_canvas_uv_samples": 0
+    },
+    {
+      "view": "WALK UV CHECK",
+      "yaw": -32,
+      "walk": true,
+      "visible_pixels_by_slot": {
+        "head": 4980,
+        "chest": 39115,
+        "leggings": 7088,
+        "boots": 8025
+      },
+      "out_of_canvas_uv_samples": 0
+    }
+  ],
+  "native_client_acceptance": false,
+  "image_sha256": "4742314f28170a2fefd7fb9f9af64c76f4a9e521690bb507886a44cd5f14eb90",
+  "headwear_implemented": true,
+  "headwear_inflation": 1.5,
+  "actual_native_head_visibility": [
+    "bipedHead",
+    "bipedHeadwear"
+  ],
+  "renderer_sha256": "78471c5228d3399c4660b833848f69e2fb4d53e9dbbb273cdba93c76a06cefd9"
+}

@@ -17,7 +17,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL14;
+import org.lwjgl.opengl.GLContext;
 import village.vale.JutsuMath;
 import village.vale.arsenal.HandTechnique;
 
@@ -28,6 +33,7 @@ import village.vale.arsenal.HandTechnique;
  * (client config) scales band/mote/bolt counts for low-end machines and reduced effects.
  */
 @SideOnly(Side.CLIENT)
+@Mod.EventBusSubscriber(modid="valeorders",value=Side.CLIENT)
 public final class JutsuVfx extends Render<HandTechnique> {
     /** 0 = reduced, 1 = normal, 2 = high. */
     public static int detail = 1;
@@ -45,6 +51,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
             "Hand-technique effect density: 0 reduced (fewer bands/motes, no flicker), 1 normal, 2 high.");
         if (c.hasChanged()) c.save();
     }
+    @SubscribeEvent public static void unload(WorldEvent.Unload event){if(event.getWorld().isRemote)HandTechnique.clearClientWorld(event.getWorld());}
 
     @Override protected ResourceLocation getEntityTexture(HandTechnique entity) { return null; }
 
@@ -70,7 +77,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
         EntityPlayer p = (EntityPlayer) entity;
         if (Math.abs(age - p.ticksExisted) > 2) return; // first-person hand pass
         HandTechnique h = HandTechnique.CLIENT_BY_OWNER.get(p.getEntityId());
-        if (h == null || h.isDead || !posed(h.style()) || p.isHandActive() || p.isRiding()) return;
+        if (h == null || h.isDead || h.world!=p.world || h.state()!=HandTechnique.HELD || h.ownerId()!=p.getEntityId() || !posed(h.style()) || p.isHandActive() || p.isRiding()) return;
         float blend = (float) JutsuMath.easeOut(Math.min(1, (h.stateAge() + 1) / 6.0));
         float swing = p.swingProgress > 0 ? 0.4f : 1f; // let attack swings read through
         float target = (float) -armPitch(h.style());
@@ -104,7 +111,12 @@ public final class JutsuVfx extends Render<HandTechnique> {
             at = anchor(owner, style, partial, mc);
         }
         GlStateManager.pushMatrix();
-        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT | GL11.GL_LINE_BIT | GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_CURRENT_BIT);
+        // Never restore enable/blend/depth behind GlStateManager's state cache.
+        // Only raw line/current attributes (which this renderer does not change through its cache) use the GL stack.
+        GL11.glPushAttrib(GL11.GL_LINE_BIT | GL11.GL_CURRENT_BIT);
+        boolean texture=GL11.glIsEnabled(GL11.GL_TEXTURE_2D),lighting=GL11.glIsEnabled(GL11.GL_LIGHTING),cull=GL11.glIsEnabled(GL11.GL_CULL_FACE),blend=GL11.glIsEnabled(GL11.GL_BLEND),depthWrite=GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK);
+        boolean separate=GLContext.getCapabilities().OpenGL14||OpenGlHelper.extBlendFuncSeparate;
+        int src=GL11.glGetInteger(GL11.GL_BLEND_SRC),dst=GL11.glGetInteger(GL11.GL_BLEND_DST),srcAlpha=separate?GL11.glGetInteger(GL14.GL_BLEND_SRC_ALPHA):src,dstAlpha=separate?GL11.glGetInteger(GL14.GL_BLEND_DST_ALPHA):dst;
         float lx = OpenGlHelper.lastBrightnessX, ly = OpenGlHelper.lastBrightnessY;
         try {
             GlStateManager.translate(at[0] - camX, at[1] - camY, at[2] - camZ);
@@ -135,9 +147,12 @@ public final class JutsuVfx extends Render<HandTechnique> {
         } finally {
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lx, ly);
             GL11.glPopAttrib();
-            GlStateManager.depthMask(true);
-            GlStateManager.enableTexture2D();
-            GlStateManager.disableBlend();
+            GlStateManager.depthMask(depthWrite);
+            GlStateManager.tryBlendFuncSeparate(src,dst,srcAlpha,dstAlpha);
+            if(texture)GlStateManager.enableTexture2D();else GlStateManager.disableTexture2D();
+            if(lighting)GlStateManager.enableLighting();else GlStateManager.disableLighting();
+            if(cull)GlStateManager.enableCull();else GlStateManager.disableCull();
+            if(blend)GlStateManager.enableBlend();else GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
     }
@@ -289,7 +304,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
     private void lightning(HandTechnique e, byte state, double t, double age, double scale, int bolts, double reach, boolean body) {
         boolean impact = state == HandTechnique.IMPACT;
         double fade = impact ? 1 - Math.min(1, age / JutsuMath.IMPACT_TICKS) : 1;
-        long flicker = detail == 0 ? (long) (t / 4) : (long) (t / 2);
+        long flicker = detail == 0 ? 0L : (long) (t / 2);
         sphere(0.11 * scale * (impact ? 2.5 * fade : 1), 0xFFFFFF, (float) (0.9 * fade), 8);
         sphere(0.22 * scale * (impact ? 2 : 1), 0x6FB8FF, (float) (0.25 * fade), 8);
         int n = detail == 0 ? Math.max(3, bolts / 2) : detail == 2 ? bolts + 4 : bolts;
@@ -308,7 +323,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
     }
 
     private void bodyArcs(HandTechnique e, EntityPlayer owner, double t, double scale) {
-        long flicker = detail == 0 ? (long) (t / 4) : (long) (t / 2);
+        long flicker = detail == 0 ? 0L : (long) (t / 2);
         int n = detail == 0 ? 5 : detail == 2 ? 16 : 11;
         normal();
         GlStateManager.pushMatrix();

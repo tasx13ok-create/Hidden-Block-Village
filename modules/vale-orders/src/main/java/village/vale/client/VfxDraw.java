@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL14;
+import org.lwjgl.opengl.GLContext;
 
 /**
  * Shared untextured full-bright drawing primitives for procedural effects. Always bracket calls
@@ -17,8 +19,16 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public final class VfxDraw {
     private VfxDraw() {}
-    private static float savedX, savedY;
-    private static int depth;
+    private static final java.util.Deque<Frame> FRAMES=new java.util.ArrayDeque<>();
+    private static final class Frame {
+        final float lightX=OpenGlHelper.lastBrightnessX,lightY=OpenGlHelper.lastBrightnessY;
+        final double x=camX,y=camY,z=camZ;
+        final boolean texture=GL11.glIsEnabled(GL11.GL_TEXTURE_2D),lighting=GL11.glIsEnabled(GL11.GL_LIGHTING),
+            cull=GL11.glIsEnabled(GL11.GL_CULL_FACE),blend=GL11.glIsEnabled(GL11.GL_BLEND),depthWrite=GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK);
+        final boolean separate=GLContext.getCapabilities().OpenGL14||OpenGlHelper.extBlendFuncSeparate;
+        final int src=GL11.glGetInteger(GL11.GL_BLEND_SRC),dst=GL11.glGetInteger(GL11.GL_BLEND_DST),
+            srcAlpha=separate?GL11.glGetInteger(GL14.GL_BLEND_SRC_ALPHA):src,dstAlpha=separate?GL11.glGetInteger(GL14.GL_BLEND_DST_ALPHA):dst;
+    }
     /** Camera position in the local frame of the current effect (set by {@link #begin(double, double, double)}). */
     private static double camX, camY, camZ;
     /** World units per "pixel width" unit, so line widths look the same on every driver. */
@@ -38,11 +48,10 @@ public final class VfxDraw {
     }
 
     public static void begin() {
-        if (depth++ > 0) return;
+        FRAMES.push(new Frame());
         GlStateManager.pushMatrix();
-        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT | GL11.GL_LINE_BIT | GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_CURRENT_BIT);
-        savedX = OpenGlHelper.lastBrightnessX;
-        savedY = OpenGlHelper.lastBrightnessY;
+        GL11.glPushAttrib(GL11.GL_LINE_BIT | GL11.GL_CURRENT_BIT);
+        camX=camY=camZ=0;
         GlStateManager.disableTexture2D();
         GlStateManager.disableLighting();
         GlStateManager.disableCull();
@@ -53,17 +62,21 @@ public final class VfxDraw {
     }
 
     public static void end() {
-        if (--depth > 0) return;
-        depth = 0;
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, savedX, savedY);
+        if(FRAMES.isEmpty())return;
+        Frame f=FRAMES.pop();
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,f.lightX,f.lightY);
         GL11.glPopAttrib();
-        GlStateManager.depthMask(true);
-        GlStateManager.enableTexture2D();
-        GlStateManager.disableBlend();
+        GlStateManager.depthMask(f.depthWrite);
+        GlStateManager.tryBlendFuncSeparate(f.src,f.dst,f.srcAlpha,f.dstAlpha);
+        if(f.texture)GlStateManager.enableTexture2D();else GlStateManager.disableTexture2D();
+        if(f.lighting)GlStateManager.enableLighting();else GlStateManager.disableLighting();
+        if(f.cull)GlStateManager.enableCull();else GlStateManager.disableCull();
+        if(f.blend)GlStateManager.enableBlend();else GlStateManager.disableBlend();
+        GlStateManager.resetColor();
+        camX=f.x;camY=f.y;camZ=f.z;
         GlStateManager.popMatrix();
     }
 
-    /** Glow that adds light (cores, sparks). */
     public static void additive() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE); }
     /** Coloured translucency that keeps saturation in daylight (bodies, auras). */
     public static void normal() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA); }

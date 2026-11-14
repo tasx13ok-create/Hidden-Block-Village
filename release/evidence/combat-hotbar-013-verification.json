@@ -1,0 +1,264 @@
+{
+  "schema": 1,
+  "scope": "ISOLATED_COMBAT_HOTBAR_COMPONENT_AND_NATIVE_CHECKS",
+  "versions": {
+    "vale-rack": "0.1.3",
+    "field-hud": "0.15.0",
+    "candidate_core": "0.3.13"
+  },
+  "source_snapshot_sha256": "940775d1cbdbc2de4be0ef82d4c9d1a31e25a363dc44c0cf7a581893c719b6e4",
+  "candidate_includes_other_worker_core_changes": true,
+  "checkpoint_scope": "Independent hotbar/UI/ability-mode fix plus art metadata; concurrent Core weapon/gate files remain with their owning worker.",
+  "source_build": {
+    "passed": true,
+    "areas": 11,
+    "artifacts": 36,
+    "report_sha256": "1e47d77efde595944cf10dd2f5805adc7f57cbf2cbe918f7cfa5a97012919287",
+    "report": "build/source-builds/20261113T213457Z-8c65398b/report.json"
+  },
+  "native": {
+    "passed": true,
+    "assertions": 2392,
+    "report_sha256": "807fc8be1dea2ed4a79da2803e40e6cb27a83370a9c4005a87bffdef020b99ed",
+    "started_utc": "2026-11-13T21:37:03.212284+00:00",
+    "finished_utc": "2026-11-13T21:38:08.679651+00:00",
+    "report": "build/native-checks/20261113T213703Z-8bb5f6c0/report.json"
+  },
+  "hold_gesture_checks": 13,
+  "runtime_artifacts": [
+    {
+      "module": "vale-orders",
+      "version": "0.3.13",
+      "file": "vale-orders-0.3.13.jar",
+      "sha256": "7f4e5c15d45d4540a1d57293ebd832eb8aeb70c6dee413b0f5795b002751f468",
+      "bytes": 2165053
+    },
+    {
+      "module": "vale-encounters",
+      "version": "0.3.6",
+      "file": "vale-encounters-0.3.6.jar",
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68",
+      "bytes": 30011
+    },
+    {
+      "module": "vale-rack",
+      "version": "0.1.3",
+      "file": "Vale-Rack-0.1.3.jar",
+      "sha256": "19efe3b56cafe2176631decca9c1036add8679a939b37d1c94a6f08e847d28fa",
+      "bytes": 40624
+    },
+    {
+      "module": "vale-residents",
+      "version": "0.2.1",
+      "file": "vale-residents-0.2.1.jar",
+      "sha256": "e733e15c9184f2ec5d98dd7b012ed5890919a4637d8dd1305adb01d7aabef209",
+      "bytes": 46128
+    },
+    {
+      "module": "vale-residents-server-bridge",
+      "version": "0.1.0",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef",
+      "bytes": 3018
+    },
+    {
+      "module": "vale-world-compat",
+      "version": "1.0.0",
+      "file": "vale-world-compat-1.0.0.jar",
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd",
+      "bytes": 26332
+    },
+    {
+      "module": "field-hud",
+      "version": "0.15.0",
+      "file": "field-hud-0.15.0.jar",
+      "sha256": "9343b305af615445612c55804d4559c8d126f54d63e15dc0d5ebefcc1464af1c",
+      "bytes": 190070
+    },
+    {
+      "module": "field-controls",
+      "version": "1.4.0-simple-candidate",
+      "file": "field-controls-1.4.0-simple-candidate.jar",
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce",
+      "bytes": 125420
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "version": "source-adapters",
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4",
+      "bytes": 8456
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "version": "source-adapters",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8",
+      "bytes": 5607
+    },
+    {
+      "module": "vale-compatibility-helpers",
+      "version": "source-adapters",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d",
+      "bytes": 4793
+    },
+    {
+      "module": "village-standards",
+      "version": "0.3.1",
+      "file": "Village-Standards-0.3.1.jar",
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077",
+      "bytes": 37390
+    }
+  ],
+  "owned_source_files": [
+    {
+      "path": "modules/field-hud/build.gradle",
+      "sha256": "a75abca09fc60092148c944acdd8eceb612d0cd53b27aacf6d3d60e04da77325"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ClientHud.java",
+      "sha256": "160afc93e7764dad8b67c137f1d009bc5f4976651326a14364aa050c54455d35"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/CombatInventoryOverlay.java",
+      "sha256": "93acb9d6c155b2e558855efcbd5b365bc82c9954b9319c20afeae741ecf81cab"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java",
+      "sha256": "9d8c1c8ed09f70e1dad0ebd382f6429dd5151d2528e7714febcb766e240dc370"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HoldGesture.java",
+      "sha256": "132b0f065d974fa9e73e2144bf13867d686e8f56b1de5bc91afd2c85730c3e31"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuInput.java",
+      "sha256": "5a7d98b823b79f585fed9643cb5a21791b0edda3fb0d625999d5a561f13af674"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuRail.java",
+      "sha256": "ca0be2d69f8dbd782739bb1ccf52d6c1ab5c83aefe45f1a3e68db62a53fd75d8"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/RackAccess.java",
+      "sha256": "17f508240308fe6b9787270a0f41386e1c0eb311bc3c932331f087457e7e08f8"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/RackContract.java",
+      "sha256": "c5ba80355f78aec4b9230d2daa2649155fc38e85aeff5c6320160622554aeacc"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/RackRailDraw.java",
+      "sha256": "5aed5db625b1b6c890d97d4b0c53b9e462fd0e79daa14a7d0bdda80d91e16bbf"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ScrollHotbar.java",
+      "sha256": "19d69206c1fbab5fc649d3b9fc10d22f0f2a9bc0105beeb389090d5d06131a31"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ShinobiHud.java",
+      "sha256": "54ad10d79a58a3105eb2d91caf4bd358351a0c34a75dbccb9f6512a313a1393a"
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/assets/fieldhud/lang/en_us.lang",
+      "sha256": "1695763a59433c59a336702717580ebc1a002e1665d294f80084a6e9f9640fbb"
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/mcmod.info",
+      "sha256": "90699d7700a27f7f365038ae9752cb68e10a51a8b02fd5ac8e888a371f83d6e8"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/HoldGestureChecks.java",
+      "sha256": "281e2b7fab51ad5b16d04aff61f049ff072eaa67c28fa309291ef7fa5660b26c"
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/CombatAbilityNativeChecks.java",
+      "sha256": "44db30e7f3a030e452d37038766e9c4142a3b247c94b9e4dddd8e607444da7b9"
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/valerack/CombatHotbarNativeChecks.java",
+      "sha256": "4d0a989d35a51db1fd12dc2a8870a1dbd64680591d73c92d3abca0a54435dff3"
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/valerack/RackNativeChecks038.java",
+      "sha256": "bfa4c90f7b699dec7e1c91fd5d46198fdc00ad563e85e51551e99fb630e0c7f3"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollEffects.java",
+      "sha256": "514626f0553e0ea144a3f468c2e735a178df6d944093eb0bc68253c30cc1f49b"
+    },
+    {
+      "path": "modules/vale-rack/build.gradle",
+      "sha256": "f1efd286fd38851c859d9e7cc27b1eb88c615d510eb8cde9790320122b7efe6c"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/CombatHotbar.java",
+      "sha256": "94e4d327522f9f21983610c6afb513f2a45a883668afd7df4367fb66ece40a7c"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackContainer.java",
+      "sha256": "9e148112f0374f613520c212a4bbea6848d4887c7b033698e41c4a3fef261266"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackData.java",
+      "sha256": "b1cc62b5eb5bce0f2292ac58d49ad7d22d01cd44b2d8048eef2f46d1245e060d"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackLifecycle.java",
+      "sha256": "58fdbb70b478f0a01ac46dc960b177835815bfced87dfc7ac0a71eec68c6ead0"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackMod.java",
+      "sha256": "b1372a39e99527ce0eaf0ea09a991eb5b898e0be329137894740c23fcc2620ed"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackNetwork.java",
+      "sha256": "5bb8270eacf55c6fcd43da622626dac63cbf52f2b56012af9b51e0df30b94d4e"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackPolicy.java",
+      "sha256": "2d0058aee1e33732e19150cf54577c3968006c413b911e4b21afc2877bd6e5fe"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackSessions.java",
+      "sha256": "7766f327fb0c4da52bd1e18d5a0809e2f03838f01fc598a59ece054d3d836d17"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/client/RackClientApi.java",
+      "sha256": "7883000634651a72cb14802488eaae599709727bae5b929e2d760443df3a020d"
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/client/RackScreen.java",
+      "sha256": "cc84343c8252ccb7b97df71b5bef3cf09e1bb6da0d474c171e94c7652e937c4d"
+    },
+    {
+      "path": "modules/vale-rack/src/main/resources/mcmod.info",
+      "sha256": "7a960d767e0d7aee9ac2a563c381199514a52dc231bfe9793ec0257718698d31"
+    },
+    {
+      "path": "modules/vale-rack/README.md",
+      "sha256": "4c3bab80b908922a76ed4c3a91cee86dab765adca5be1e27599d02f8afa3a033"
+    }
+  ],
+  "preview": {
+    "source_snapshot_sha256": "0def62a1916fff68ea40fb279a83220e0d57670820001a9508730e1d46c94fa3",
+    "native_assertions": 2391,
+    "client_jars": 12,
+    "server_jars": 9,
+    "network_join_observed": true,
+    "jei_empty_batch_pass": true,
+    "visible_six_slot_bar_and_cinder_edge": true,
+    "physical_hold_and_complete_drag_flow_verified": false,
+    "final_garment_policy_in_live_preview": false
+  },
+  "acceptance": {
+    "component_build": true,
+    "disposable_forge_native": true,
+    "final_hash_graphical": false,
+    "full_reference_pack": false,
+    "production_world_restart": false,
+    "hosted": false
+  },
+  "fixture_note": "The synchronous gate fixture now drains owner-bound zero-health bodies without waiting for vanilla death animation; production gate behavior is unchanged. This other-worker fixture is excluded from the independent checkpoint."
+}

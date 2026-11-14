@@ -92,7 +92,7 @@ def source_snapshot(root=None):
     paths = set()
     excluded = {"build", ".gradle", "__pycache__", "logs", "crash-reports", "run",
                 "recoverychecks", "clientchecks", "worldchecks"}
-    for area in ("modules", "gradle"):
+    for area in ("modules", "gradle", "content/expeditions"):
         start = root / area
         if not start.is_dir():
             continue

@@ -82,6 +82,17 @@ class SourceBuildTests(unittest.TestCase):
         source.write_text("class Main { int value; }", encoding="utf-8")
         self.assertNotEqual(first["sha256"], BUILD.source_snapshot(self.root)["sha256"])
 
+    def test_packaged_expedition_content_is_a_source_input(self):
+        first = BUILD.source_snapshot(self.root)
+        content = self.root / "content" / "expeditions" / "gates.json"
+        content.parent.mkdir(parents=True)
+        content.write_text('{"content_version":"fixture"}', encoding="utf-8")
+        second = BUILD.source_snapshot(self.root)
+        self.assertNotEqual(first["sha256"], second["sha256"])
+        self.assertIn("content/expeditions/gates.json", [row["path"] for row in second["files"]])
+        content.write_text('{"content_version":"changed"}', encoding="utf-8")
+        self.assertNotEqual(second["sha256"], BUILD.source_snapshot(self.root)["sha256"])
+
     def test_source_snapshot_excludes_generated_outputs_and_private_fixture(self):
         first = BUILD.source_snapshot(self.root)
         for area in ("build", "recoverychecks", "logs", "crash-reports", "run"):

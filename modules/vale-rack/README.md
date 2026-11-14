@@ -1,89 +1,27 @@
-# Vale Rack 0.1.2
+# Vale Rack 0.1.3
 
-Vale Rack provides six persistent weapon storage slots outside the player's
-normal inventory. This source candidate accompanies Core 0.3.8 and Field HUD
-0.14.1. Install `Vale-Rack-0.1.2.jar` on both the client and server: its network
-handshake requires the matching Rack version. The public `RackClientApi`
-signatures remain version 1; `requestEquip` now also handles an empty selection
-by requesting that the server stow the held weapon.
+Vale Rack provides a persistent six-slot combat hotbar alongside the normal nine-slot Minecraft hotbar. Install Rack 0.1.3 on both client and server, with Field HUD 0.15.0 for the inventory overlay and hold gesture. The Rack network handshake requires matching versions.
 
-## Quick equip and stow
+## Playing
 
-In Field HUD, focus the weapon rail with its configurable focus binding
-(default F), select a slot, then use its action. Ordinary use and the compatible
-Controls cast binding route to that focused slot. Storage in the HUD settings
-still opens the native six-slot rack container for direct inventory management.
+Open the normal survival inventory and drag items into the six Combat slots on the right. Left click picks up, places, merges or exchanges a stack; right click takes half or places one. Drag back onto an inventory cell to remove an item. Weapons, owned scrolls/techniques, ordinary items, crafted meals and chakra tonics are supported. Core reward-bound equipment still requires its owner's valid receipt.
 
-| Selected rack slot | Held stack | Result |
-| --- | --- | --- |
-| Filled | Empty hand | Equip the stored weapon; the selected rack slot becomes empty. |
-| Filled | Accepted weapon | Swap the two physical stacks, including when the main inventory is full. |
-| Empty | Accepted weapon | Stow the held weapon directly; no spare main-inventory cell is needed. |
-| Filled | Food or another nonweapon | Move the held stack into a free main-inventory cell, then equip the stored weapon. Refuse the operation if there is no free cell. |
-| Empty | Empty hand or an ineligible stack | Refuse the operation and preserve the inventory. |
+Close the inventory and hold the configurable combat-hotbar key (default F) for three seconds. The whole six-slot combat loadout becomes the active bottom hotbar and held items. Hold again to restore the original nine-slot normal loadout. Both selections are remembered. Keys 1–6 and the mouse wheel select combat items. Early release, a menu, lost gameplay focus or active item use cancels the hold; release before trying again. F takes precedence over vanilla swap-hands while assigned to combat; rebind swap-hands in Controls if needed.
 
-Damage, enchantments, display names and custom tags travel with each stack.
-Core ownership serials are preserved. Server-side replacement of a charging
-main-hand stack cancels that active use without releasing its charged action;
-it does not reset an unrelated active offhand. The HUD requires active item use
-to finish before sending a focused rack action.
+The HUD settings storage button also opens the native six-slot container when the normal bar is active. The former public quick-equip/stow API remains available to older integrations, with its weapon-only policy; current HUD input uses whole-bar switching.
 
-## Ownership, storage and request rules
+## Inventory and network behavior
 
-Core swords qualify only when the registered item is the exact object found
-under the same key in `Gear.ITEMS` and the native item registry. The three
-explicit Core throwable IDs retain the same identity check. Server admission
-also requires `RewardLedger.valid` for the current owner. This includes issued
-specialist swords such as Crescent Talons; a forged or unissued copy is rejected.
-A crafted specialist must first complete Core's authoritative crafting-result
-binding transaction.
+There is one physical active inventory. During combat, Rack parks all nine normal stacks and moves the six combat stacks into native hotbar cells 0–5; cells 6–8 start empty. On return, changed/consumed combat stacks go back into Rack and the parked normal stacks return. No ownership serials or items are minted by switching. An item another mod inserts into cells 6–8 is relocated to a free main-inventory cell if needed; an insufficient-space return is refused before mutation.
 
-Ordinary non-Core swords, axes, bows and shields retain their existing admission
-policy. Core armor, food, scrolls and generic items remain ineligible for these slots.
-Stack count and NBT-size limits remain enforced.
+The server validates player/context, nonce, revision, window, cursor and item admission. Cursor requests contain a slot/button and transaction sequence, never client-supplied item data. Full native inventory/cursor correction precedes the acknowledged Rack snapshot. Periodic snapshots cannot acknowledge an outstanding drag. Changing a held stack cancels its native charge without firing a stale attack; an unrelated offhand use remains intact.
 
-Every quick action validates the server thread, live player, session nonce,
-world/dimension context, rack revision, container, cursor and applicable item
-ownership before changing slots. The server performs the validated assignments
-within one task, then publishes a new rack revision. Client snapshots remain
-defensive copies and expire when their player, world or connection changes.
+Storage schema 2 parks the inactive normal bank and remembers selections. Schema 1 saves migrate without changing existing stacks; unknown schemas remain opaque and locked. Vanilla owns active combat inventory persistence/drops. Rack transfers or drops the parked bank once during clone/death, respecting keepInventory and Vanishing. Existing opaque item records stay preserved.
 
-Storage schema 1, opaque saved-data handling, clone transfer, death drops,
-`keepInventory` and Curse of Vanishing behavior retain their existing contracts.
-The 0.1.2 changes add quick stow and active-use cancellation; they do not change
-the saved slot layout or mint a second item during an equip operation.
+HUD snapshots remain defensive at the public API. The HUD refreshes copies only when the snapshot generation changes and uses those copies directly for rendering, removing repeated per-tick/per-frame deep NBT copies.
 
-## Build and acceptance
+## Build and evidence
 
-Build through the repository's [module orchestrator](../../docs/build-modules.md),
-which supplies the newly built Core development API. For a direct module build,
-use the actual development API path reported by Core's `build/vale-build.json`:
+Use the [module orchestrator](../../docs/build-modules.md), which supplies Core's current development API. Private Forge checks exercise real item movement, reload, full-inventory refusal, cursor split/merge, replay rejection, clone/death conservation and casting all six hand techniques from the combat inventory. A separate pure Java check verifies the 3,000 ms hold boundary and interruption/release behavior.
 
-```sh
-./gradlew -p modules/vale-rack \
-  -PvaleCoreDevJar=/absolute/path/to/current-core-development.jar \
-  writeValeBuildMetadata
-```
-
-The production mod and development JAR are declared in `build/vale-build.json`.
-Core's separate `RackNativeChecks038` helper covers all six quick-stow cells,
-full-inventory swaps and refusal paths, custom stack data, active-use handling,
-ownership, session/revision replay rejection, serialization and death-drop
-conservation. It is compiled into the private Core QA mod using
-`-PvaleRackDevJar=/absolute/path/to/current-rack-development.jar`. Follow the
-[complete disposable fixture setup](../../docs/build-modules.md#isolated-native-acceptance-fixture)
-for its nine production server mods, both QA JARs and guarded world/flag setup.
-
-The guarded Forge 14.23.5.2859 and Magma (Forge 14.23.5.2860) runs each passed
-78 Rack assertions within the combined 656-assertion Core 0.3.8 fixture. Consult
-the [version-bound candidate evidence](../../release/candidate038-verification.json)
-for the measured artifact hashes and runtime identities. Saved-world
-restart/respawn, the real client/server HUD and container workflow, and hosted
-integration require their own acceptance. Earlier Core 0.3.5/Rack 0.1.1 or
-frozen Rack 0.1.0 receipts do not establish acceptance for this pair.
-
-`SOURCE-PROVENANCE.json`, `SOURCE-MANIFEST.json` and `REQUIRED-VERIFICATION.json`
-retain the recovered candidate's historical record; their older version and
-`NOT_RUN` fields are not current 0.1.2 result receipts. No compiled dependencies,
-game binaries, private native test classes, launchers or worlds are packaged
-into the production Rack JAR. The module's license remains MIT.
+Read [the combat hotbar handoff](../../docs/combat-hotbar-013.md) for actual results and remaining graphical acceptance. Earlier Rack 0.1.2/Core 0.3.8 receipts do not prove this version. Recovered provenance/manifest files retain historical scope; no game binaries, private QA runtime or world files are distributed by this source checkpoint. License: MIT.

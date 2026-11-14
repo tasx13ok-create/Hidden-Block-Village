@@ -1,0 +1,3519 @@
+{
+  "schema": 1,
+  "source08_sha256": "d1191299d0e639f78349188b850c2ff89835f10b842c24abb7a21207fda49ae0",
+  "source08_reference_rows": 256,
+  "reference_backlog": [
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_1.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/bijucloakl2__1_layer_2.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_1.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/madara_jinchuriki___1__layer_2.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_1.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "path": "assets/ahznbswordsplus/textures/models/armor/outsutsukicloak__layer_2.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Armourers-Workshop-1.12.2-0.51.0.jar",
+      "path": "assets/armourers_workshop/textures/armour/cube.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonchoumei_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryongyuki_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonisobu_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonkokou_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonmatatabi_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonsaiken_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonshukaku_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "Baryon Expansion_beta2.jar",
+      "path": "assets/baryonexpansion/textures/baryonsongoku_mode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/armor_boruto_texture.png",
+      "size": [
+        1266,
+        633
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/cloack_isshiki.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/isshiki_dojutsu_texture.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/jogan_dojutsu_texture.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/karma_boruto_stage_2_texture.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/karma_kawaki_stage_2_texture.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/models/armor/testing_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/models/armor/testing_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/senrigan_texture.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "path": "assets/borutomodaddononero/textures/texture_boro_core.png",
+      "size": [
+        16,
+        16
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/assassin_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/assassin_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/commissar_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/commissar_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/cowleather_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/cowleather_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/crown1_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/crown2_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/demonic_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/demonic_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullbronze_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullbronze_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullcloth_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fulldiamond_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullemerald_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullemerald_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullgold_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fulliron_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullwood_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/fullwood_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/infantry_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/mask_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/mithril_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/mithril_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/nanorum_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/nanorum_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/ninja_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/ninja_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/officer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/papercrown_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/soldier_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/soldier_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/tactical_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/tuxido_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/tuxido_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/wizard_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/wizard_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/x407_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "CustomNPCs_1.12.2-(05Jul20).jar",
+      "path": "assets/customnpcs/textures/armor/x407_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/chomei.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/chomei_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/chomei_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/gyuki.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/gyuki_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/gyuki_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/isobu.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/isobu_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/isobu_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kokuo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kokuo_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kokuo_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kurama.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kurama_cage.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kurama_cage_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kurama_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/kurama_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/matatabi.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/matatabi_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/matatabi_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/saiken.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/saiken_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/saiken_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/shukaku.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/shukaku_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/shukaku_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/son_goku.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/son_goku_n.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "path": "assets/hvbijuu/textures/armor/son_goku_s.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/akatsukirobe.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/chojiwings.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/cloudheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/edotenseihood.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/hakuclothing.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/kabutoarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/kabutohood.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/kakashiarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/leafheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/obi_layer_1.png",
+      "size": [
+        32,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/obibelt.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/rainheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/rinnesharingan_obito_tomoe.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/saijacket.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/sandheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/shino_hood.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/soundheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "path": "assets/kabutoaddon/textures/stoneheadband.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/amearmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/anbuarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/asura_path.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bijucloak_kcm2.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bijucloak_kurama.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bijucloak_sand.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bijucloakl1.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bijucloakl2.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/blocks/fire_black_layer_1.png",
+      "size": [
+        16,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/blocks/fire_layer_1.png",
+      "size": [
+        16,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/bonearmor.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/byakuganhelmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/byakurinnesharingan_helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/fishnetarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/gourd_iron.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/gourd_sand.png",
+      "size": [
+        64,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/iwaarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/jiraiyaarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/jumpsuitarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/kiriarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/konohaarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/kumoarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/madara_jinchuriki.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mangekyosharinganhelmet_eternal.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mangekyosharinganhelmet_obito.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mangekyosharinganhelmet_sasuke.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_anbu1.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_anbu2.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_anbu3.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_anbu4.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_obito1.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/mask_obito3.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/models/armor/sasuke__layer_1.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/models/armor/sasuke__layer_2.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/narutoshippudenarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/obitowararmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/otoarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/rinneganhelmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/rinnesharinganhelmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_akatsuki.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_akatsuki_half.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_hokage.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_hood.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_jiraiya.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_kazekage.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_mizukage.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_raikage.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/robe_tsuchikage.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/sakurashippudenarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/samuraiarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/sharinganhelmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/sound5armor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/steamarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/sunaarmor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/tenseigan_chakramode.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/tenseiganhelmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "path": "assets/narutomod/textures/wa1armor.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_chojuro_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_gaara_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_haku_texture.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_konohamaru_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_naruto_the_last_texture.png",
+      "size": [
+        1280,
+        640
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_neji_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_onoki_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_orochimaru_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_sasuke_the_last_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_shisui_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/armor_zabuza_texture.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/belt_raikage_texture.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/easter_bandana_texture.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/first_hokage_necklace_texture.png",
+      "size": [
+        256,
+        256
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/models/armor/testing_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/models/armor/testing_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/paper_wings_armor.png",
+      "size": [
+        1024,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "path": "assets/narutomodaddononero/textures/utakata_cloak_texture.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "RinneganAddon v1.3.jar",
+      "path": "assets/narutomod/textures/rinneems.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "RinneganAddon v1.3.jar",
+      "path": "assets/narutomod/textures/rinneems_obito.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SharinganAddon v1.0.jar",
+      "path": "assets/narutomod/textures/mangekyosharinganhelmet_itachi.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SharinganAddon v1.0.jar",
+      "path": "assets/narutomod/textures/mangekyosharinganhelmet_shisui.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/base/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/boruto/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/code/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/dourado/helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/glass/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jigen/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/jougan/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/boruto/kawaki/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ketsuryugan/helmet2.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/madara/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/2/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/ems/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/robberto/one/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/tyler/helmet2.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/ms/whyhellothere/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/random/yashi/helmet.png",
+      "size": [
+        7045,
+        1760
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/blue/helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/dudu/helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/rinnegan/red/helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/dojutsu/sharingan/byakusharingan/helmet.png",
+      "size": [
+        2048,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/models/armor/test_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/models/armor/test_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/susanoo.png",
+      "size": [
+        128,
+        128
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "path": "assets/ahznbcursemarkaddon/textures/threetails.png",
+      "size": [
+        512,
+        512
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/assassin_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/assassin_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/bandit_mask_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/commissar_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/commissar_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/cow_leather_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/cow_leather_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/crown1_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/crown2_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/demonic_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/demonic_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_bronze_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_bronze_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_cloth_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_diamond_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_emerald_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_emerald_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_golden_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_iron_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_wooden_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/full_wooden_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/infantry_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/mithril_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/mithril_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/nanorum_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/nanorum_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/ninja_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/ninja_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/officer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/paper_crown_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/paper_crown_1_overlay.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/soldier_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/soldier_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/tactical_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/tuxedo_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/tuxedo_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/wizard_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/wizard_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/x407_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    },
+    {
+      "jar": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "path": "assets/variedcommodities/textures/models/armor/x407_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "status": "REFERENCE_UV_AND_AUTHORIZATION_REVIEW_PENDING",
+      "copied_pixels": false
+    }
+  ],
+  "reference_jars": {
+    "ahznb weapons plus 1.2.1.jar": 6,
+    "Armourers-Workshop-1.12.2-0.51.0.jar": 1,
+    "Baryon Expansion_beta2.jar": 8,
+    "BorutoMod Addon byAnimeSupremeTeam v1.0.jar": 10,
+    "CustomNPCs_1.12.2-(05Jul20).jar": 39,
+    "HiddenVillage-BijuuArmor-0.16.2-rc1.jar": 29,
+    "kabutoaddon 5.5.8-beta.jar": 18,
+    "NarutoMod-1.12.2-0.3.1.beta.jar": 57,
+    "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar": 18,
+    "RinneganAddon v1.3.jar": 2,
+    "SharinganAddon v1.0.jar": 2,
+    "SpringAddon7.0.jar": 26,
+    "VariedCommodities_1.12.2-(31Mar23).jar": 40
+  },
+  "reference_sizes": {
+    "[1024, 512]": 20,
+    "[64, 64]": 6,
+    "[512, 512]": 57,
+    "[256, 256]": 9,
+    "[1266, 633]": 1,
+    "[2048, 512]": 20,
+    "[2048, 2048]": 2,
+    "[64, 32]": 84,
+    "[16, 16]": 1,
+    "[128, 64]": 2,
+    "[1024, 1024]": 30,
+    "[32, 32]": 1,
+    "[16, 512]": 2,
+    "[1280, 640]": 1,
+    "[7045, 1760]": 19,
+    "[128, 128]": 1
+  },
+  "current_owned_paths": [
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/bloom_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "2bec2ff7a42e15a4bd8fe6b2216001bea86181f88bd4b2aae81a05fa371b2ae7",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/bloom_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "6b448485d935fd036ed36070f174f0edc456bbd1724fa5201a527d07424f3d70",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/current_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "90428bd71201c1c6c6e3510af52590bf01776c3d57873660f2c22a5408ddbdce",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/current_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "7dd036ffdb7eb6c46f79d6617176f93b8e7635d91a6c920390b23d277c3eb3d3",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dawn_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "d16ad836ac020cd0cf3df7e4cf02c79bd251d5a5bf3a3d450731c43180d2c11d",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dawn_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "4adfb1907b356bd8ab151f2e55244ceb815f224db892b76d0761e57a78913f97",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dusk_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "cacd381251d4b1541864b56bd9133c4e07622d7f4477c46b30da5fb6a8b65144",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dusk_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "d2414a39bb9c3a1622e0a1ae6d4cbfad1ab2c51f1a3a557aa41c3be292986f61",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/ember_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "5a36b984d62fa8fe641036ff1a32d92095658ae2c88f8e38496691baef94b176",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/ember_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "bc1c9a9d0571ad98bf4a825d0a78c22f90fc36b67235a64581031cda9e04934a",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/flint_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "fe882a538d7f058c9131c763b80c315df873a076fecf74d4e6a28578e9b00459",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/flint_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "b7d88a541ec2732f4167018cd933d937057a5bf934341a240339f54dd76e87ab",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/gale_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "0d924d8a12801f663210d49fd665916e97630cae16c078ceda0e70066ea19468",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/gale_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "f3366f77fea288422d9f99eacc1ed7ba178e0bb292c54137bba3b10c563db54c",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/rime_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "a1db771f7158a4c82a2a9375227163da1f021d8033811f9b587bc6aff3c72d46",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/rime_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "c9a432acaf0b817afe11e577560831f20a7bff6b161c781b54e072439557cb4d",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/storm_layer_1.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "ee69a6088007c2f7aad35881a6c93cc26fb640ecc420169ea84b035cfa2ddec9",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/storm_layer_2.png",
+      "size": [
+        64,
+        32
+      ],
+      "sha256": "d96fdf8f1cec097d3881f33558a6ee5c5dcd5bd89858950e625029374ed279c0",
+      "active_renderer": "native_ModelBiped_layer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "44d7589df78c6e4e1b9cae318d68d5ae68af6df59dd4fe9e2ada58a2f0e08a16",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "3b28a1a0f3fc97a06ef8ccb0c4efceae9f0c1bdf2684b842500d32ab9601c381",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "114acf1ec07318b6b9af6fe892d9a8c6237b743954fc64aad5634c608d06b8ec",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "7ec39c8cc193fb4aab2425645f6904594c30da16303388a3ee98b99e9a8bde6c",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "4c2e3ba54113aa1e1bb50c2a8e53d06bc6b2194f6ef37fbfca334d4557bc9c3a",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "a0faf0e364e74364bf9a15424eb1aaabe34ee37762c029a68cc6981cd24d2ee5",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/auric_skimmer_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "8e65008986cf6732f4a07f8fc021366504dc5256c47d37adc658698710ab9e54",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "a75354e672cbd47d7e9976ec45877babdf67afd314360879c9095f5f4634a258",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "83f730734a188d105f6c77e79ce3a972342a205423c5f6bfe63a2837c0724734",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "c48d83531608d46f781c536b4fc1a4f4ac781539d3b5c9ce22d10a2b85f89eee",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "85de90823e13fd782ed7604b349694defde701ed22512b89a7005730d579a158",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "1118405b2194cfdc2091fd8415416834637187cb4cad7af941525937b9005a19",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "9c42cde0fc7a9c9bc986b81e45d9841b804dc70f895cccc619678cbe16addf9b",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/bellbloom_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "01c0567a074ccf71a62c10f818b7a0ca4c42cf3e32e96f63aa452ea12f80a4b9",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "9d627e16dcf50719a8d39208ab1ad008b60ccb8abd24c7df2ca4aa895f4b2103",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "3fe66f554d18c09300a06f9dca716096399be015f98d423731ebbe6e2adc1e14",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "a150795f949c62bc0d8e909bb823b1d5003e89b41bb13060d58ba5bf6d4cbc47",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5ea0d78259777a97f4394ad7c3a98369b66dc70512aa2ed0a1c887541cc3abde",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "b49f676db901ff28ef3f0d937b3cae4942f65eb4da93b49382d0ac7be2dad610",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "9d4ca47dc9c39ed8e5ca576a3ea2c9734c44728b6f4fac91737387dc64121af5",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/cairnroot_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "92137933a5ac8603d6cc9c5d3da6654c4a08f32f8febf0989f6e244d075735bd",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "935fc4cb238bed87b169c95c12ab6dc30f6728d4546767fe60920af775874aca",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "b616db121376b36bc0f2d6195d012b49fa1d19525aded4fad7463ffcc3375cf1",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "d3de5ee9f5b742ed671f5bcdb8e7b92087ea6476c0d2d491fbfb2cf42bd93fe4",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "a8a6643cfa33a61a05d08e625050f099d91f9288416e30321aa04a8a983a37f4",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "11a514a96b36b4e16a65db612d163c580dc9735b526e3824a6fe0db006e67c1f",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "a0cb139ec9044229d83b303780a102809204795c3dbc52b9f25cff7a9a7cae03",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/glasschime_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "26fbe58087a08fc2ac1cd6e4e04c90b122631920808f5abfecd7371212c4c8a2",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "17bc715b4ff49dad3a0a65b7174f3196458a7386f2991d8543a2363c33011c8f",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "23486d539b8937342de658b3aec1ef7b3426ca6d8aa7da3002a6a247d65a4dc8",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "0440e5f6910eb1cd761c4db7a1af23c89855d8ca84b37525856e1718ee20b62c",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "7c8e7f783444b542a2df1c7d2142132af5bd0c5e145a5179f4fb5b58979ac898",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "4ff7366f9248ff3c713ca4343ad630b89fab22752454ded0425fea391753e5e1",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "02f28ae5d3a57800dbc6567f819401d6cf6e388492b5efde0453fe13b3f4e30d",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/hushvault_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "735366eb4de47fba68f1cb07f5bb29028bdac0ed4b765b14a4d77794b2bcb767",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "05bba5216f1a711a5c3d4092e099c2542a8828d0d469b77d8c5a55c1ccd1e5f2",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "0edf0e7df6217ab09b70d58c5438081c189730f80efbe1f46dd11a4bde0848a9",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "2b92b76962e8d5621aef1c02b4507afdc0c9377632b94f559dcd643298861b12",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "55511d4e6669ad3b8b2c1832cec6f5238235f344038ded64319d82e2b74b87a8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "3041e5bc1de474218bc85c9ec09f6d2661de320964e35d17a40c732aff0019de",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "8c9a5704ae47448bad8e373e7ab80a74e04fd2ba87992723228872a6141a1f87",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/kilnback_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "1c550d3e376c9a1a341fdf91638940a239f227d01d9cc4f3c7710306134ab538",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "6bf9b34c092434da1aa2a88910f3a8f583a4a86f7171fdd056e2196e80519545",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "5f7d177887fbf8cff8b3d40d42710c45f82576ac1e57ae25a3cb3b181c79ba4c",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "2264fb8d618fd07eac211e3478b5c9755dd416181669e9454b9aab0ce2a7e1a9",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "45ed7b763b7a5b9919f05dd4486d60d0b68a83ed5dde8baa262d8f4afd60d3bd",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "727c13bae6f73901aebddedcc7bfcbd0db357facc2915c233c7801c0c1a92940",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "e868fb9f7d9cacdb65c590c591701f4e66560ae5200dacffca378d0711c4c5a2",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/reedrunner_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "c73bebdd9cfc5a17ffb751d33deb2a908925c3c07fa990fd472132e41dc80cf8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "d7eb9706c3788e5b3ac5d32dbc669664d1060cf7c7b30d5760f6c54ab40cd72c",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "0a30cd508db6334b30414c1b8f88be3ddc4e321a87bebd4d67c9792c83d8e7bc",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "1297fcf165ebf8d3cee22caab5040b37cb4aa34daf7df127cdf21731b125ed9c",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "89c7eb7d95dc9921f82a1d961219c6ba295e00215491092b8f7c567f8472e926",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "a36ec8986c40b3a866a0a91e6d1cf4b20a924c1b36b3daa523ea4e1e2c5a4cfd",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "2e1ad02f039b4eddda1ac926d495dd947720c9a8b7303728dc3139bc81ca9c20",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/shoalglass_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "e1c25b71a7a7d9e669b6d07294a24254117954d8f7a760d35948833b6159f867",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "8c4d92b49d86496aa42ef3aaddd0b280dabce0b4550ede2a5e713d732e6debec",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_e.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "9ead6da0d27c5b6b1c406a737fb0dc7c2579e1409456b752e936d49662c34632",
+      "active_renderer": "AtlasUv_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_hot.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "8e199df0d583385f037bfe1c516f0bd8e24c3371b7eef6d4f0ddf7d1207ee164",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_layer_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "137c50ebf3e9e326eec06a68a7f18e281c24e6805eb228bbc69b9d6ce5095e24",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_layer_1_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "9f6150bcc1f55033e21fa60a48b1a0822def203bfe997d932555638cbefdc750",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_layer_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "aba0e1832c674500ff22b87b43481e61e957159587ac44e327fd3e8f2473808e",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_layer_2_e.png",
+      "size": [
+        128,
+        64
+      ],
+      "sha256": "5b1e207974a848c7e51741b3cae520024983b6389aff60f3e246c0a89879cee8",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_n.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "305584b69ea74417c47a8815c9a198e7b983dfbc080206dd0773be99ab61d1f6",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valearmor/textures/armor/stormloom_s.png",
+      "size": [
+        256,
+        128
+      ],
+      "sha256": "b3e60c8ec2b1258b284d84cd7cb3318900c23793a5fa50befc2bbb329fe999a5",
+      "active_renderer": "not_bound_by_current_TexturedArmorRenderer"
+    }
+  ],
+  "current_wearable_inventory_slots": {
+    "ward_armor": 36,
+    "independent_armor_mesh": 36,
+    "focus_garments": 76,
+    "outfits": 79
+  },
+  "hero_contract": {
+    "kit": "Lightning Chakra Armor",
+    "native_issued_keys": [
+      "storm_helmet",
+      "storm_chestplate",
+      "storm_leggings",
+      "storm_boots"
+    ],
+    "albedo_layer1": "valeorders:textures/models/armor/storm_layer_1.png",
+    "albedo_layer2": "valeorders:textures/models/armor/storm_layer_2.png",
+    "uv_canvas": [
+      64,
+      32
+    ],
+    "model": "native ModelBiped1.0(outer),0.5(leggings)",
+    "active_emissive_texture_hook": false,
+    "active_aura": "LightningLayers procedural bone-bound ribbons; separate renderer"
+  },
+  "frozen_production_modified": false,
+  "scope": "PRE015_BASELINE_RESOURCE_AND_REFERENCE_METADATA_NOT_UPDATED_ART_COMPLETION"
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 64 32" shape-rendering="crispEdges"><metadata>Original focus_kiln_haven_greaves slot-specific nativeLEGSUV; no icon/reference texture copied</metadata>
+<rect x="28" y="29" width="4" height="3" fill="#1a2230"/>
+<rect x="28" y="29" width="4" height="0.5" fill="#858098"/>
+<rect x="16" y="29" width="4" height="3" fill="#1a2230"/>
+<rect x="16" y="29" width="4" height="0.5" fill="#858098"/>
+<rect x="20" y="29" width="8" height="3" fill="#1a2230"/>
+<rect x="20" y="29" width="8" height="0.5" fill="#858098"/>
+<rect x="32" y="29" width="8" height="3" fill="#1a2230"/>
+<rect x="32" y="29" width="8" height="0.5" fill="#858098"/>
+<rect x="8" y="20" width="4" height="12" fill="#1a2230"/>
+<rect x="8" y="25" width="4" height="2" fill="#b2bbc5"/>
+<rect x="0" y="20" width="4" height="12" fill="#1a2230"/>
+<rect x="0" y="25" width="4" height="2" fill="#b2bbc5"/>
+<rect x="4" y="16" width="4" height="4" fill="#1a2230"/>
+<rect x="8" y="16" width="4" height="4" fill="#1a2230"/>
+<rect x="4" y="20" width="4" height="12" fill="#1a2230"/>
+<rect x="4" y="25" width="4" height="2" fill="#b2bbc5"/>
+<rect x="12" y="20" width="4" height="12" fill="#1a2230"/>
+<rect x="12" y="25" width="4" height="2" fill="#b2bbc5"/>
+<polyline points="8.5,20.5 8.5,31.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="8.25,25.25 11.75,26.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="0.5,20.5 0.5,31.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="0.25,25.25 3.75,26.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="4.5,20.5 4.5,31.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="4.25,25.25 7.75,26.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="7.0,21.25 5.8,21.25 5.0,22.05 5.0,22.85 5.8,23.25 7.0,23.25 6.2,22.85 5.8,22.05 6.2,21.65 7.0,21.25" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="12.5,20.5 12.5,31.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="12.25,25.25 15.75,26.5" fill="none" stroke="#858098" stroke-width="0.25"/>
+<polyline points="15.0,21.25 13.8,21.25 13.0,22.05 13.0,22.85 13.8,23.25 15.0,23.25 14.2,22.85 13.8,22.05 14.2,21.65 15.0,21.25" fill="none" stroke="#858098" stroke-width="0.25"/>
+</svg>

@@ -100,8 +100,8 @@ public final class Gear {
         }
         @Override public Order order() { return school; }
         @Override public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-            return ValeOrders.ID + ":textures/models/armor/" + school.key + "_layer_" +
-                (slot == EntityEquipmentSlot.LEGS ? "2" : "1") + ".png";
+            boolean lightning = school == Order.STORM && entity instanceof net.minecraft.entity.EntityLivingBase && LightningKit.EFFECT != null && ((net.minecraft.entity.EntityLivingBase)entity).isPotionActive(LightningKit.EFFECT);
+            return ArmorSkinPaths.texture(school.key,slot == EntityEquipmentSlot.LEGS,lightning);
         }
         @SideOnly(Side.CLIENT)
         @Override public void addInformation(ItemStack stack, @Nullable World world, java.util.List<String> lines, ITooltipFlag flag) {

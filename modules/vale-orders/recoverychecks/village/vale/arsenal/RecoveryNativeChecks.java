@@ -55,7 +55,7 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.10",
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.15",
      dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
@@ -123,6 +123,10 @@ public final class RecoveryNativeChecks {
             assertions += ClawNativeChecks.run(player);
             passed("Native Crescent Talons lock, dodgeable lunge, cancellation, rear damage and bounded bleed");
             assertions += village.valerack.RackNativeChecks038.run(player);
+            passed("Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death");
+            passed("Native six mastered techniques cast from the switched physical combat hotbar");
+            assertions += village.valerack.CombatHotbarLifecycleNativeChecks.run(player);
+            passed("Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership");
             passed("Native six-slot quick stow/equip, full inventory, ownership, active-use cancellation, serialization and death drops");
             try {
                 assertions += (Integer)Class.forName("village.standards.StandardsNativeChecks")
@@ -134,8 +138,23 @@ public final class RecoveryNativeChecks {
                 throw wrapped;
             }
             passed("Native village standards: all five villages/four walls, bounds, support, cancellation, NBT, drops and opaque recovery");
+            assertions += village.vale.melee.MeleeNativeChecks.run(player);
+            passed("Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery");
+            assertions += WeaponPulseNativeChecks.run(player);
+            passed("Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation");
+            assertions += HandTechniqueNativeChecks.run(player);
+            passed("Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup");
+            assertions += village.vale.nature.NatureNativeChecks.run(player);
+            passed("Native five distinct nature techniques, protected temporary Earth cover and effect settlement");
+            assertions += village.vale.expedition.GateNativeChecks.run(player);
+            passed("Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity");
+            assertions += village.vale.DodgeNativeChecks.run(player);
+            passed("Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle");
             assertions += village.vale.AcademyNativeChecks.run(server);
             passed("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect");
+            passed("Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery");
+            assertions += village.vale.WornArmorNativeChecks.run(player);
+            passed("Native worn armor registered getters, conditional Lightning and packaged assets");
             report.addProperty("passed", true);
         } catch (Throwable error) {
             failure = error;

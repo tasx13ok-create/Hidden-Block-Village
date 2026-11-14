@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/current_helmet"
+  "parent": "valeorders:item/current_helmet",
+  "textures": {
+    "layer0": "valeorders:items/shoalglass_helmet"
+  }
 }

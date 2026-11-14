@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "scope": "CORE0314_FULL_PACK_COPIED_WORLD_JOIN_AND_OBSERVED_GUI_DEADLOCK",
+  "core_source_sha256": "2981ed8c5b3736bde53485f6bf83b49a3f2289af73167428121113df19890ae1",
+  "core_runtime_sha256": "bb5f29ef02475687a02e3bae2f0bc345ffc1d9a76e213c2630f7946ea508e83d",
+  "source_checkpoint": "6193483a2dd1356ddbe5d0ba188f8898eece26aa",
+  "native_assertions": 2739,
+  "magma": {
+    "production_only_flat_preflight": {
+      "jar_count": 54,
+      "done_seconds": 27.203,
+      "saved_and_exited_zero": true
+    },
+    "copied_v17_world_boots": [
+      {
+        "done_seconds": 35.218,
+        "saved_and_exited_zero": true
+      },
+      {
+        "done_seconds": 36.141,
+        "saved_and_exited_zero": true
+      }
+    ],
+    "missing_saved_registry_names": 0,
+    "original_world_and_player_records_preserved": true
+  },
+  "client": {
+    "jar_count": 58,
+    "observed_fml_identities": 64,
+    "modded_connection_local_time": "2026-11-13 17:54:05",
+    "joined_local_time": "2026-11-13 17:54:06",
+    "shader_pack": "BSL10.1.8",
+    "world0_programs_loaded": true,
+    "world0_programs_local_time": "17:54:08\u201317:54:10",
+    "no_shader_error_in_observed_log_tail": true,
+    "world_and_shader_image_visually_observed": true,
+    "gui_inventory_input": "TIMEOUT_OUTCOME_UNKNOWN",
+    "sustained_fps_measured": false
+  },
+  "blocker": {
+    "status": "CONFIRMED_GUI_THREAD_DEADLOCK_IN_TWO_THREAD_DUMPS",
+    "quest_adapter_loaded": true,
+    "factions_adapter_in_011": false,
+    "client_thread_waits_in": "org.lwjgl.input.Keyboard.isKeyDown",
+    "worker_thread_holds_lwjgl_monitor_in": "WindowsDisplay.nSetTitle via Essential.WindowTitleManager.updateTitle and Minecraft.displayGuiScreen",
+    "unsafe_gui_callback": "InventoryTabFactions.lambda$onTabClicked$0",
+    "evidence": "Two matching Java8 jstack captures; explicit client off-thread GUI warning",
+    "new_client_stopped_after_evidence": true,
+    "other_previews_preserved": true,
+    "next_fix": "Extend exact-source whole-Runnable adapter to observed Factions path and audit sister tabs in new0.3.15 source."
+  },
+  "not_accepted": [
+    "Inventory interaction, Dodge/rebind/hold-F graphical acceptance",
+    "Five measured-v17 gate gameplay routes",
+    "New worn armor rendering in Minecraft",
+    "Complete 49-mod recreation parity",
+    "Bisect hosting"
+  ]
+}

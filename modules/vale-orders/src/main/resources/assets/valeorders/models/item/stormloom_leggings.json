@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/storm_leggings"
+  "parent": "valeorders:item/storm_leggings",
+  "textures": {
+    "layer0": "valeorders:items/stormloom_leggings"
+  }
 }

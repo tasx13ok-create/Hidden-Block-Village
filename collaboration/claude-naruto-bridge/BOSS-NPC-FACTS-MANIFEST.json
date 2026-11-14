@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "scope": "PUBLIC_SAFE_NARUTO_BOSS_NPC_API_FACTS",
+  "files": [
+    {
+      "path": "BOSS-NPC-FACTS.md",
+      "bytes": 7596,
+      "sha256": "5dd0c8c999f7cd04d87f98ef81421db1d24b7a12c6763ca7dae3d5de913c05e7"
+    },
+    {
+      "path": "BOSS-NPC-FACTS.json",
+      "bytes": 295589,
+      "sha256": "560411566eee2691b1591cd710d088063adb41990e01e2e7370d0121dcc3a770"
+    },
+    {
+      "path": "boss-npc-registry-table.csv",
+      "bytes": 17012,
+      "sha256": "aa726bf9ccf9782fefbb90af96bdee7fc435834a3df41ed24584f60245ff3826"
+    }
+  ],
+  "source_pins_verified": 49,
+  "crc_audited_relevant_jars": 12,
+  "curated_entities": 67,
+  "api_types": 24,
+  "item_symbol_references": 158,
+  "no_code_or_art_copied": true
+}

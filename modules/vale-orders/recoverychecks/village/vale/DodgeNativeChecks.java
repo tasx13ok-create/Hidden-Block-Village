@@ -1,0 +1,82 @@
+package village.vale;
+
+import com.mojang.authlib.GameProfile;
+import java.lang.reflect.*;
+import java.util.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.*;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerInteractionManager;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.*;
+import net.minecraft.world.border.WorldBorder;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.*;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+
+/** Disposable native learner; actual travel/damage/reload, never a public earn command. */
+public final class DodgeNativeChecks {
+    private final MinecraftServer server;private final WorldServer world;private EntityPlayerMP p;private final UUID owner=UUID.fromString("43ec7807-821a-4a56-9c03-070031400001");
+    private final Events events=new Events();private final List<Entity> entities=new ArrayList<>();private final Dodge ticks;private int checks;
+    private final int oldCost,oldCooldown;private final double centerX,centerZ,borderSize;
+    private DodgeNativeChecks(EntityPlayerMP context)throws Exception{server=context.getServer();world=server.getWorld(0);WorldBorder border=world.getWorldBorder();centerX=border.getCenterX();centerZ=border.getCenterZ();borderSize=border.getDiameter();oldCost=integer("cost");oldCooldown=integer("cooldown");Constructor<Dodge> constructor=Dodge.class.getDeclaredConstructor();constructor.setAccessible(true);ticks=constructor.newInstance();Dodge.configure(6,16);for(int x=50;x<=57;x++)for(int z=50;z<=57;z++)world.getChunk(x,z);for(int x=840;x<=888;x++)for(int z=840;z<=888;z++)for(int y=89;y<=94;y++)world.setBlockState(new BlockPos(x,y,z),y==89?Blocks.STONE.getDefaultState():Blocks.AIR.getDefaultState(),2);p=login(false);}
+    public static int run(EntityPlayerMP context){if(context==null||context.getServer()==null||!context.getServer().isCallingFromMinecraftThread()||!Boolean.getBoolean("valeorders.recoverycheck"))throw new IllegalStateException("Private native fixture required");DodgeNativeChecks c=null;try{c=new DodgeNativeChecks(context);MinecraftForge.EVENT_BUS.register(c.events);c.exercise();return c.checks;}catch(Exception error){throw new AssertionError("Dodge native fixture failed",error);}finally{if(c!=null){MinecraftForge.EVENT_BUS.unregister(c.events);c.close();}}}
+    private static int integer(String key)throws Exception{Field field=Dodge.class.getDeclaredField(key);field.setAccessible(true);return field.getInt(null);}
+    private void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError("Dodge native: "+message);}
+    private EntityPlayerMP login(boolean restore){Learner player=new Learner(server,world,owner);player.connection=new Quiet(server,player);if(restore)server.getPlayerList().readPlayerDataFromFile(player);player.interactionManager.setGameType(GameType.SURVIVAL);server.getPlayerList().playerLoggedIn(player);FMLCommonHandler.instance().firePlayerLoggedIn(player);ReflectionHelper.setPrivateValue(EntityPlayerMP.class,player,0,"respawnInvulnerabilityTicks","field_147101_bU");return player;}
+    private void tick(long count){world.getWorldInfo().setWorldTotalTime(Adventures.now(p)+count);ticks.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));}
+    private void fresh(double x,double y,double z,boolean ground){events.mode=0;events.cancelDeath=false;p.interactionManager.setGameType(GameType.SURVIVAL);p.noClip=false;p.capabilities.isFlying=false;p.dismountRidingEntity();p.inventory.clear();p.setPositionAndRotation(x,y,z,0,0);p.motionX=p.motionY=p.motionZ=0;p.onGround=ground;p.setSneaking(false);p.setHealth(p.getMaxHealth());p.hurtResistantTime=0;p.fallDistance=0;PlayerState.data(p).removeTag("Dodge");PlayerState.setResolve(p,100);Dodge.state(p);ticks.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));}
+    private void fresh(){fresh(860.5,90,860.5,true);}
+    private void wall(boolean present){for(int x=859;x<=862;x++)for(int y=90;y<=93;y++)world.setBlockState(new BlockPos(x,y,861),present?Blocks.STONE.getDefaultState():Blocks.AIR.getDefaultState(),2);}
+    private void exercise()throws Exception{
+        for(int direction=0;direction<4;direction++){fresh();p.fallDistance=7;Vec3d before=p.getPositionVector();long now=Adventures.now(p);check(Dodge.perform(p,direction),"Cardinal request refused "+direction);check(PlayerState.resolve(p)==94&&Dodge.state(p).getLong("readyAt")==now+16,"Exact native cost/cooldown "+direction);check(p.getPositionVector().equals(before)&&p.fallDistance==7&&p.velocityChanged,"Impulse teleported/reset fall/native tracking "+direction);check(!Dodge.perform(p,direction)&&PlayerState.resolve(p)==94,"Click spam spent/activated again");p.travel(0,0,0);double dx=p.posX-before.x,dz=p.posZ-before.z;check(direction==0?dz>.6&&Math.abs(dx)<.05:direction==1?dz<-.5&&Math.abs(dx)<.05:direction==2?dx>.6&&Math.abs(dz)<.05:dx<-.6&&Math.abs(dz)<.05,"Real native four-way travel failed "+direction+" delta "+dx+","+dz);}
+        fresh(860.5,90,860.65,true);wall(true);check(!Dodge.perform(p,0)&&PlayerState.resolve(p)==100&&Dodge.state(p).getLong("readyAt")==0&&p.motionZ==0,"Near wall bypassed or charged failed impulse");wall(false);
+        fresh();WorldBorder border=world.getWorldBorder();border.setCenter(860.5,860.5);border.setTransition(2);check(!Dodge.perform(p,0)&&PlayerState.resolve(p)==100,"World border bypassed/charged");border.setCenter(centerX,centerZ);border.setTransition(borderSize);
+        unloadedEdge();
+        for(int mode=1;mode<=5;mode++){fresh();events.mode=mode;events.reserved=false;boolean applied=Dodge.perform(p,0);if(mode==3){check(applied&&!events.nested,"Reentrant dodge callback was accepted");check(PlayerState.resolve(p)==94,"Reentry paid wrong cost");}else{check(!applied&&PlayerState.resolve(p)==100&&Dodge.state(p).getLong("readyAt")==0,"Final protection/throw/context refusal did not restore escrow mode "+mode);if(mode==4)check(p.motionX==.42,"Refusal overwrote another callback's velocity");if(mode==5)check(p.posX==861.5,"Refusal undid another callback's movement");}check(events.reserved,"Cost/cooldown not reserved before external callbacks");events.mode=0;}
+        fresh(860.5,93,860.5,false);check(Dodge.perform(p,2)&&Dodge.state(p).getBoolean("airUsed"),"First airborne impulse refused/unrecorded");long ready=Dodge.state(p).getLong("readyAt");EntityPlayerMP old=p;server.getPlayerList().playerLoggedOut(p);p=login(true);check(Dodge.state(p).getLong("readyAt")==ready&&Dodge.state(p).getBoolean("airUsed")&&PlayerState.resolve(p)==94,"Actual NBT logout/reload reset cooldown/air use");check(!Dodge.perform(old,0),"Stale queued player body remained authoritative");check(!Dodge.perform(p,0)&&PlayerState.resolve(p)==94,"Reconnect bypassed cooldown");tick(20);check(!Dodge.perform(p,0),"Reconnect/offline gap granted a second air dodge");p.onGround=true;tick(1);check(Dodge.state(p).getBoolean("airUsed")&&!Dodge.perform(p,0),"Spoofed onGround reset air use without collision floor");p.setPosition(860.5,90,860.5);p.fallDistance=0;p.move(MoverType.SELF,0,-.2,0);tick(1);check(!Dodge.state(p).getBoolean("airUsed")&&Dodge.perform(p,3),"Actual native landing did not rearm air use");
+        fresh();NBTTagCompound future=Dodge.state(p);future.setInteger("schema",99);future.setString("opaque","keep");NBTTagCompound copy=future.copy();check(!Dodge.perform(p,0),"Future schema accepted an action");tick(1);check(future.equals(copy),"Future state schema modified");
+        witness();graceAndLife();
+    }
+    private void unloadedEdge(){
+        // Forge setPositionAndRotation ensures its destination chunk; never stage
+        // the learner inside the supposed unloaded chunk. Approach from a real loaded neighbor.
+        int sourceX=-1,sourceZ=-1,targetX=-1,targetZ=-1,direction=-1,deltaX=0,deltaZ=0;
+        int[][] directions={{1,0,DodgeMath.LEFT},{-1,0,DodgeMath.RIGHT},{0,1,DodgeMath.FRONT},{0,-1,DodgeMath.BACK}};
+        search:for(int x=50;x<=57;x++)for(int z=50;z<=57;z++)if(world.getChunkProvider().getLoadedChunk(x,z)!=null)for(int[] d:directions)if(world.getChunkProvider().getLoadedChunk(x+d[0],z+d[1])==null){sourceX=x;sourceZ=z;targetX=x+d[0];targetZ=z+d[1];direction=d[2];deltaX=d[0];deltaZ=d[1];break search;}
+        check(sourceX>=0,"No bounded loaded-to-unloaded neighbor fixture");
+        double x=sourceX*16+8,z=sourceZ*16+8;if(deltaX>0)x=(sourceX+1)*16-.55;else if(deltaX<0)x=sourceX*16+.55;if(deltaZ>0)z=(sourceZ+1)*16-.55;else if(deltaZ<0)z=sourceZ*16+.55;
+        for(boolean groundFlag:new boolean[]{false,true}){
+            fresh(x,90,z,groundFlag);String site=" source="+sourceX+","+sourceZ+" target="+targetX+","+targetZ+" groundFlag="+groundFlag;
+            check(world.getChunkProvider().getLoadedChunk(sourceX,sourceZ)!=null&&world.getChunkProvider().getLoadedChunk(targetX,targetZ)==null,"Native fixture setup loaded the target before perform"+site);
+            boolean applied=Dodge.perform(p,direction);
+            check(!applied,"Impulse entered an unloaded neighboring chunk"+site);
+            check(PlayerState.resolve(p)==100&&Dodge.state(p).getLong("readyAt")==0,"Refused unloaded-neighbor impulse spent escrow"+site);
+            check(world.getChunkProvider().getLoadedChunk(targetX,targetZ)==null,"Dodge itself generated the unloaded neighboring chunk"+site);
+        }
+    }
+    private void witness(){fresh();EntityVillager visible=villager(860.5,90,863.5),future=villager(859.5,90,861.5),hidden=villager(864.5,90,860.5),far=villager(880.5,90,860.5);NBTTagCompound memory=new NBTTagCompound();memory.setInteger("schema",99);memory.setString("opaque","keep");future.getEntityData().setTag("ValePowerReaction",memory);NBTTagCompound expectedMemory=memory.copy();for(int z=859;z<=862;z++)for(int y=90;y<=93;y++)world.setBlockState(new BlockPos(862,y,z),Blocks.STONE.getDefaultState(),2);check(Dodge.perform(p,0),"Witnessed dodge refused");NBTTagCompound seen=visible.getEntityData().getCompoundTag("ValePowerReaction");check(seen.getString("kind").equals("dodge")&&seen.getUniqueId("witnessedPlayer").equals(p.getUniqueID()),"Local visible witness did not react to accepted movement");check(!hidden.getEntityData().hasKey("ValePowerReaction")&&!far.getEntityData().hasKey("ValePowerReaction"),"Reaction crossed LOS/range");check(future.getEntityData().getCompoundTag("ValePowerReaction").equals(expectedMemory),"Future witness schema modified");long ready=seen.getLong("ready");fresh();check(Dodge.perform(p,0)&&visible.getEntityData().getCompoundTag("ValePowerReaction").getLong("ready")==ready,"Repeated dodge bypassed witness cooldown");for(int z=859;z<=862;z++)for(int y=90;y<=93;y++)world.setBlockState(new BlockPos(862,y,z),Blocks.AIR.getDefaultState(),2);}
+    private EntityVillager villager(double x,double y,double z){EntityVillager villager=new EntityVillager(world);villager.setNoAI(true);villager.setPosition(x,y,z);check(world.spawnEntity(villager),"Native witness spawn refused");entities.add(villager);return villager;}
+    private void graceAndLife()throws Exception{fresh();EntityZombie enemy=new EntityZombie(world);enemy.setNoAI(true);enemy.setPosition(862,90,860.5);check(world.spawnEntity(enemy),"Native melee attacker absent");entities.add(enemy);check(Dodge.perform(p,0),"Grace dodge refused");float health=p.getHealth();check(!p.attackEntityFrom(DamageSource.causeMobDamage(enemy),3)&&p.getHealth()==health,"Accepted physical grace did not cancel native incoming attack");p.hurtResistantTime=0;check(p.attackEntityFrom(DamageSource.FALL,2)&&p.getHealth()<health,"Dodge grace incorrectly blocked environmental fall damage");tick(6);p.hurtResistantTime=0;health=p.getHealth();check(p.attackEntityFrom(DamageSource.causeMobDamage(enemy),3)&&p.getHealth()<health,"Physical grace never expired");
+        fresh();check(Dodge.perform(p,0),"Spectator setup dodge refused");p.interactionManager.setGameType(GameType.SPECTATOR);tick(1);check(!Dodge.perform(p,0)&&!windows().containsKey(p.getUniqueID()),"Spectator retained dodge/grace window");fresh();check(Dodge.perform(p,0),"Canceled death setup refused");events.cancelDeath=true;p.setHealth(0);p.onDeath(DamageSource.OUT_OF_WORLD);tick(1);check(p.getHealth()==7&&windows().containsKey(p.getUniqueID()),"Final-canceled native death cleared a living dodge window");events.cancelDeath=false;p.setHealth(0);p.onDeath(DamageSource.OUT_OF_WORLD);tick(1);check(!windows().containsKey(p.getUniqueID()),"Accepted native death retained an active dodge window");
+        long savedReady=Dodge.state(p).getLong("readyAt");EntityPlayerMP old=p;Learner clone=new Learner(server,world,owner);clone.connection=new Quiet(server,clone);clone.copyFrom(old,false);server.getPlayerList().playerLoggedOut(old);clone.interactionManager.setGameType(GameType.SURVIVAL);server.getPlayerList().playerLoggedIn(clone);FMLCommonHandler.instance().firePlayerLoggedIn(clone);ReflectionHelper.setPrivateValue(EntityPlayerMP.class,clone,0,"respawnInvulnerabilityTicks","field_147101_bU");p=clone;check(Dodge.state(p).getLong("readyAt")==savedReady&&!Dodge.perform(p,0),"Native death copyFrom/respawn reset the saved dodge cooldown");}
+    @SuppressWarnings("unchecked")private Map<UUID,?> windows()throws Exception{Field field=Dodge.class.getDeclaredField("WINDOWS");field.setAccessible(true);return (Map<UUID,?>)field.get(null);}
+    private void close(){try{events.mode=0;for(Entity entity:entities)world.removeEntityDangerously(entity);if(p!=null)server.getPlayerList().playerLoggedOut(p);world.getWorldBorder().setCenter(centerX,centerZ);world.getWorldBorder().setTransition(borderSize);Dodge.configure(oldCost,oldCooldown);}catch(RuntimeException failed){throw new IllegalStateException("Dodge native cleanup failed",failed);}}
+    public final class Events {
+        int mode;boolean nested,reserved,cancelDeath;
+        @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)public void pre(Dodge.Pre event){if(event.getEntityPlayer()!=p)return;reserved=PlayerState.resolve(p)==94&&Dodge.state(p).getLong("readyAt")==Adventures.now(p)+16;if(mode==1)event.setCanceled(true);if(mode==2)throw new IllegalStateException("Injected dodge protection callback failure");if(mode==3)nested=Dodge.perform(p,3);if(mode==4)p.motionX=.42;if(mode==5)p.setPosition(p.posX+1,p.posY,p.posZ);}
+        @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)public void death(LivingDeathEvent event){if(cancelDeath&&event.getEntityLiving()==p){event.setCanceled(true);p.setHealth(7);}}
+    }
+    private static final class Learner extends EntityPlayerMP {Learner(MinecraftServer server,WorldServer world,UUID uuid){super(server,world,new GameProfile(uuid,"Dodge0314"),new PlayerInteractionManager(world));}@Override public void sendMessage(ITextComponent message){}@Override public void sendStatusMessage(ITextComponent message,boolean actionBar){}}
+    private static final class Quiet extends NetHandlerPlayServer {Quiet(MinecraftServer server,EntityPlayerMP player){super(server,network(),player);}private static NetworkManager network(){NetworkManager manager=new NetworkManager(EnumPacketDirection.SERVERBOUND);new io.netty.channel.embedded.EmbeddedChannel(manager);return manager;}@Override public void sendPacket(Packet<?> packet){}}
+}

@@ -178,14 +178,6 @@ public final class Bridge {
         return autoMap && watchedId(id) ? BridgeMath.infer(id) : null;
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public void evade(LivingAttackEvent e) {
-        // A dodge in its evasion window avoids licensed jutsu and projectiles (and any ordinary hit).
-        if (e.getEntity().world.isRemote || !(e.getEntityLiving() instanceof EntityPlayerMP)) return;
-        if (e.getSource().canHarmInCreative() || e.getSource().isUnblockable() && e.getSource().getTrueSource() == null) return;
-        if (village.vale.Dodge.evading((EntityPlayerMP) e.getEntityLiving())) e.setCanceled(true);
-    }
-
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void attack(LivingAttackEvent e) {
         if (e.getEntity().world.isRemote) return;

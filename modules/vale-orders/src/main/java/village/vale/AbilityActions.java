@@ -24,9 +24,11 @@ public final class AbilityActions {
         NBTTagCompound state=PlayerState.data(p);long now=Math.max(0,Adventures.now(p));List<AbilitySnapshot.Entry> list=new ArrayList<>();
         boolean codex=!carried(p,"valeorders:technique_codex").isEmpty();
         for(Arts.Art art:Arts.available(p)){
-            int cost=Forms.active(p)==2?Math.max(1,art.cost*3/4):art.cost;
+            int cost=LightningKit.index(art.key)>=0?art.cost:Forms.active(p)==2?Math.max(1,art.cost*3/4):art.cost;
             String reason=base(p,art.level,cost,true);if(reason.isEmpty()&&!codex)reason="Carry your technique codex.";
+            int kit=LightningKit.index(art.key);if(reason.isEmpty()&&kit>=0)reason=LightningKit.gate(p,kit);
             int own=remaining(now,state.getCompoundTag("artCooldowns").getLong(art.key),art.cooldown*20),global=remaining(now,state.getLong("artGlobal"),20);
+            if(kit==5){own=0;global=0;}
             list.add(entry("art/"+art.key,art.title,"art",art.order==null?"neutral":art.order.key,"valeorders:technique_codex",art.level,cost,0,reason,Math.max(own,global),own>=global?art.cooldown*20:20));
         }
         ItemStack held=p.getHeldItemMainhand();

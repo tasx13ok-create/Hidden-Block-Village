@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 64 32" shape-rendering="crispEdges"><metadata>Original outfit_galecrest_hood slot-specific nativeHEADUV; no icon/reference texture copied</metadata>
+<rect x="16" y="8" width="8" height="8" fill="#13283a"/>
+<rect x="16.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="17.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="18.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="18.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="19.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="20.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="21.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="21.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="22.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="0" y="8" width="8" height="8" fill="#13283a"/>
+<rect x="0.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="1.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="2.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="2.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="3.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="4.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="5.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="5.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="6.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="8" y="0" width="8" height="8" fill="#13283a"/>
+<rect x="8.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="9.25" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="10.0" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="10.75" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="11.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="12.25" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="13.0" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="13.75" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="14.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="16" y="0" width="8" height="8" fill="#13283a"/>
+<rect x="16.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="17.25" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="18.0" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="18.75" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="19.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="20.25" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="21.0" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="21.75" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="22.5" y="7.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="8" y="8" width="8" height="1.5" fill="#13283a"/>
+<rect x="8" y="9.5" width="1" height="5" fill="#13283a"/>
+<rect x="15" y="9.5" width="1" height="5" fill="#13283a"/>
+<rect x="8" y="15" width="8" height="1" fill="#417882"/>
+<rect x="24" y="8" width="8" height="8" fill="#13283a"/>
+<rect x="24.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="25.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="26.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="26.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="27.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="28.25" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="29.0" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="29.75" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="30.5" y="15.5" width="0.25" height="0.25" fill="#79a9ac"/>
+<rect x="9" y="8.25" width="6" height="1.5" fill="#79a9ac"/>
+<polyline points="10.5,8.7 11.1,8.5 11.7,8.5 12.3,8.7 12.9,8.7 13.5,8.5" fill="none" stroke="#13283a" stroke-width="0.25"/>
+<polyline points="10.5,9.1 11.1,8.9 11.7,8.9 12.3,9.1 12.9,9.1 13.5,8.9" fill="none" stroke="#13283a" stroke-width="0.25"/>
+<polyline points="10.5,9.5 11.1,9.3 11.7,9.3 12.3,9.5 12.9,9.5" fill="none" stroke="#13283a" stroke-width="0.25"/>
+</svg>

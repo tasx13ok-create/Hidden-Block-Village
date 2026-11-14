@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/dusk_helmet"
+    "layer0": "valeorders:items/outfit_dunestone_hood"
   }
 }

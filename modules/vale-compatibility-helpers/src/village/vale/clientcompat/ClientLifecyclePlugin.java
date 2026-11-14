@@ -6,7 +6,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 @IFMLLoadingPlugin.SortingIndex(1001)
 @IFMLLoadingPlugin.TransformerExclusions({"village.vale.clientcompat"})
 public final class ClientLifecyclePlugin implements IFMLLoadingPlugin {
-    @Override public String[] getASMTransformerClass(){return new String[]{"village.vale.clientcompat.ClientLifecycleTransformer"};}
+    @Override public String[] getASMTransformerClass(){return new String[]{"village.vale.clientcompat.ClientLifecycleTransformer","village.vale.clientcompat.NpcGuiThreadTransformer"};}
     @Override public String getModContainerClass(){return null;}
     @Override public String getSetupClass(){return null;}
     @Override public void injectData(Map<String,Object> data){}

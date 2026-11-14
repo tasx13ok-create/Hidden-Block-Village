@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "scope": "offline static audit; aggregate counts only",
+  "files": [
+    {
+      "file": "cloud_v17.schematic",
+      "sha256": "a59a1b4e0a56c35f832cbac0404de76a6bae73f2bc0825476438989b145a70fa",
+      "size": [
+        288,
+        209,
+        288
+      ],
+      "occupied_y_range": [
+        0,
+        206
+      ],
+      "non_vanilla_ids": [],
+      "tile_issue_kinds": [],
+      "blocks_missing_tile": 0,
+      "unsupported_gravity": 0,
+      "fluids": {},
+      "standable_cells": 132999,
+      "reached_standable_from_edges": 81902,
+      "unreachable_containers": 6,
+      "unreached_regions_16plus": 231,
+      "door_orphans": 0,
+      "ladder_problems": 0,
+      "valid_paste_y_range": [
+        123,
+        170
+      ],
+      "largest_open_area_span": [
+        288,
+        288
+      ],
+      "needs_review": true
+    },
+    {
+      "file": "mist_v17.schematic",
+      "sha256": "40d6fbdbaf2d2c4b858e2bd2ea840ff5b2c32e373deaad255c928fe0edcdbe51",
+      "size": [
+        200,
+        148,
+        200
+      ],
+      "occupied_y_range": [
+        0,
+        94
+      ],
+      "non_vanilla_ids": [],
+      "tile_issue_kinds": [],
+      "blocks_missing_tile": 0,
+      "unsupported_gravity": 0,
+      "fluids": {
+        "contained": 1
+      },
+      "standable_cells": 69548,
+      "reached_standable_from_edges": 45185,
+      "unreachable_containers": 4,
+      "unreached_regions_16plus": 41,
+      "door_orphans": 0,
+      "ladder_problems": 0,
+      "valid_paste_y_range": [
+        21,
+        129
+      ],
+      "largest_open_area_span": [
+        194,
+        194
+      ],
+      "needs_review": true
+    },
+    {
+      "file": "nether_v17.schematic",
+      "sha256": "55867e4fb7774ef40bcf0f658be30eb9daf2786f3b3c49af1be0d177a9177f72",
+      "size": [
+        256,
+        126,
+        256
+      ],
+      "occupied_y_range": [
+        1,
+        123
+      ],
+      "non_vanilla_ids": [],
+      "tile_issue_kinds": [],
+      "blocks_missing_tile": 0,
+      "unsupported_gravity": 0,
+      "fluids": {
+        "contained": 3
+      },
+      "standable_cells": 38472,
+      "reached_standable_from_edges": 0,
+      "unreachable_containers": 8,
+      "unreached_regions_16plus": 423,
+      "door_orphans": 0,
+      "ladder_problems": 1,
+      "valid_paste_y_range": [
+        51,
+        181
+      ],
+      "largest_open_area_span": null,
+      "needs_review": true
+    },
+    {
+      "file": "sakura_v17.schematic",
+      "sha256": "5f0eb66c2998b156a8fcc2af503e16bcedbe8ee446d503e1d04a76b2f2e46a24",
+      "size": [
+        288,
+        217,
+        288
+      ],
+      "occupied_y_range": [
+        0,
+        214
+      ],
+      "non_vanilla_ids": [],
+      "tile_issue_kinds": [],
+      "blocks_missing_tile": 0,
+      "unsupported_gravity": 0,
+      "fluids": {
+        "contained": 10
+      },
+      "standable_cells": 135553,
+      "reached_standable_from_edges": 81975,
+      "unreachable_containers": 4,
+      "unreached_regions_16plus": 227,
+      "door_orphans": 0,
+      "ladder_problems": 0,
+      "valid_paste_y_range": [
+        99,
+        138
+      ],
+      "largest_open_area_span": [
+        288,
+        288
+      ],
+      "needs_review": true
+    },
+    {
+      "file": "sand_v17.schematic",
+      "sha256": "7ea2cb4fd47c8d73305ab9713984b280f776cb791f5f04f492bc25d2de9015ec",
+      "size": [
+        288,
+        153,
+        288
+      ],
+      "occupied_y_range": [
+        0,
+        150
+      ],
+      "non_vanilla_ids": [],
+      "tile_issue_kinds": [],
+      "blocks_missing_tile": 0,
+      "unsupported_gravity": 0,
+      "fluids": {
+        "contained": 3
+      },
+      "standable_cells": 118936,
+      "reached_standable_from_edges": 82064,
+      "unreachable_containers": 13,
+      "unreached_regions_16plus": 199,
+      "door_orphans": 0,
+      "ladder_problems": 0,
+      "valid_paste_y_range": [
+        107,
+        210
+      ],
+      "largest_open_area_span": [
+        288,
+        288
+      ],
+      "needs_review": true
+    }
+  ],
+  "tool_branch": "claude/upbeat-ride-nyxq23",
+  "tool_commit": "1450679d58cd729b231b6a8a826e6f1535fc0dd5",
+  "native_walkthrough": false,
+  "input_mutated": false,
+  "notes": [
+    "Boundary-auto route findings require authored entrance anchors; unreached containers/regions are review candidates, not established gameplay defects.",
+    "Nether has no automatically inferred edge entry, so all its containers are unvisited by this default search.",
+    "Open-area bounding-box span alone does not establish a usable boss arena; irregular regions and obstructions need measurement."
+  ]
+}

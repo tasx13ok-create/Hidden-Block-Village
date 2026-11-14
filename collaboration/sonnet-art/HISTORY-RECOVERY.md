@@ -1,0 +1,7 @@
+# Original local art handoff history
+
+The existing local commits `3becc28ea48e98c09e4dda22864a5c627d13b685` and `dca6fc0f46115dcc065f88c95faa6fef7d559b87` contain the owner's Sonnet art checklist, metadata inventory and its source tool. Shell Git authentication was unavailable. Their exact original Git objects, author information and parent relationship are preserved in `history-20261113.bundle` (SHA-256 `c63ff9fad0a338f189a659eb24326f77c2d32a1e9308168940698c2a7dbe7945`), based on already-published `d59ddd24f64cf404032fb9e497896bb5d3d26358`. The local ref `preserved/sonnet-art-20261113` also retains them.
+
+The narrowly scoped `recover-art-history` workflow verifies that exact bundle and tip, then merges the original history without rewriting the published branch. Its only permitted conflict is the current handoff, whose newer text already includes the original art notes. It fails on unexpected conflicts or a rejected ordinary push. No archive-provided script runs; the bundle contributes only reviewed repository text/tool history. This preserves the original commit IDs rather than recreating their authorship through a contents API.
+
+A clone containing the prerequisite can inspect the original objects independently with `git bundle verify collaboration/sonnet-art/history-20261113.bundle` and `git fetch ./collaboration/sonnet-art/history-20261113.bundle refs/heads/preserved/sonnet-art-20261113:refs/remotes/reviewed-art/original`. Asset production remains unfinished; an art checklist or filename match is not a completed model/texture claim.

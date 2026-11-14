@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/dawn_helmet"
+  "parent": "valeorders:item/dawn_helmet",
+  "textures": {
+    "layer0": "valeorders:items/auric_skimmer_helmet"
+  }
 }

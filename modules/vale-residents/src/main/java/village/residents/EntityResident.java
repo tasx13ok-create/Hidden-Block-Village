@@ -98,7 +98,8 @@ public final class EntityResident extends EntityCreature {
             player.sendMessage(new TextComponentString("This resident has an unsupported saved role. Its data has been preserved; ask an operator to inspect it."));
             return true;
         }
-        DialogueSessions.open(this, (EntityPlayerMP) player);
+        if (!village.vale.expedition.GateRuntime.open((EntityPlayerMP) player, this))
+            DialogueSessions.open(this, (EntityPlayerMP) player);
         return true;
     }
 }

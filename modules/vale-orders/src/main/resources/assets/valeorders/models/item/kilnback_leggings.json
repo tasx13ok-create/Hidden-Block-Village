@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/ember_leggings"
+  "parent": "valeorders:item/ember_leggings",
+  "textures": {
+    "layer0": "valeorders:items/kilnback_leggings"
+  }
 }

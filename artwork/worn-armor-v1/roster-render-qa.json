@@ -1,0 +1,5832 @@
+{
+  "scope": "OFFLINE_NATIVE_GEOMETRY_UV_SOFTWARE_RENDER_NOT_MINECRAFT",
+  "entries": [
+    {
+      "key": "ember",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "8a9656eb83c2a26d43afcc57d74e8d1b5cd176889fccdcdbe8eef6a2a8a5b831"
+    },
+    {
+      "key": "current",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "545d898f759f0e830bd345f8d56dae0399c09547179765c65bf7daa50c1f3dd0"
+    },
+    {
+      "key": "gale",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b88132815d1ad7bc5c427f735794a3cc21b4db38ec48698e69c6be5bf386bd23"
+    },
+    {
+      "key": "flint",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5f8e9519a9eb290a2bf183cc53d2475d6f64128606bc3d339284121ea0954c54"
+    },
+    {
+      "key": "bloom",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "846887fcb3fcd2687ac93c70373147154a21e89d4a251f999fbb2d7fe9507bb4"
+    },
+    {
+      "key": "rime",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d99984911944b49e5af0a1a6fb960116707e9c250158e64866e67554e562f761"
+    },
+    {
+      "key": "dusk",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c30092f03568226a65c4731e2bd7539a0023ef0c37ffa367da70bc324f1f4fbe"
+    },
+    {
+      "key": "dawn",
+      "category": "ward_set",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 3602,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 5040,
+            "2": 33938,
+            "3": 8770,
+            "4": 9618
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 3600,
+            "2": 33220,
+            "3": 7886,
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 4980,
+            "2": 39115,
+            "3": 6476,
+            "4": 8785
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "6d11e65b3d49cb7fadb534966a7e74e9fe5f3d2c1befba1bed9fa27430a12b40"
+    },
+    {
+      "key": "focus_amber_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "63a8e449a155ee7ea19a9913adb90c8029012fcfff2a4bf89c50799a81be644a"
+    },
+    {
+      "key": "focus_birch_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9276925bc5c2d781d068dd3571a3000f652b7dbf36b85acdd8dcf429ebe78330"
+    },
+    {
+      "key": "focus_copper_wake_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "e7d746104d09a8d108cfb8e6aefa29ca1740819a4d287d1a8fdcd31e4f6c7b5c"
+    },
+    {
+      "key": "focus_dusk_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0362a24723e19f6852d99ea1d5e22d734722d7a2bc7e9acf93c091316eb01886"
+    },
+    {
+      "key": "focus_elm_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "cf739ae7413f729ca7b4bb8c3dc48a4aa10760c6d3d5e85fa3935644d899585a"
+    },
+    {
+      "key": "focus_flint_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "8e193c84ec64a8ea09e071eb453057ce4be391f5841928448bb05a7d4f0f02fa"
+    },
+    {
+      "key": "focus_gale_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f64726f5deb0a1f7cc563f230ac3739f8a047d1a5ff9abc1a3851f273f716e67"
+    },
+    {
+      "key": "focus_heather_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c21f6d5caf039cec3aeb0bf18bc7f8de7c630112a5a56001170d6faf6cce7549"
+    },
+    {
+      "key": "focus_ivory_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d98171dff339214d3d1b0c4f9ac4d3cb78f82bc2f5fb97835139d286dd262427"
+    },
+    {
+      "key": "focus_juniper_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d9d1f665a6a50ef8bf3f7e8160af64e499c5388b6576f823f784baee44674ba3"
+    },
+    {
+      "key": "focus_kiln_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "97769fea2b197319a5b5fb7f9508d38812a530857e4f216284a16319691ab345"
+    },
+    {
+      "key": "focus_lantern_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f3ef751799904dab3c3f42b7ddb3cc660b9f24bc4381645675e2882e2f22af09"
+    },
+    {
+      "key": "focus_moss_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9e6a353be78633b3e41003f5bacf7eaaea6456250cc58bed9b85ef2a24aa818b"
+    },
+    {
+      "key": "focus_night_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "00af8699b797d54be13b1b34a5823b117c0bc59c813a05a3072aa4af87be9cb6"
+    },
+    {
+      "key": "focus_ochre_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "65e7a184d638fb2ba8e2beec5a182485a3f37187d1814a39311fb0920c164f68"
+    },
+    {
+      "key": "focus_pearl_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "75122584d92ca0c48de487e508202db1c69630f0273e6b93136580d251c384f9"
+    },
+    {
+      "key": "focus_quartz_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "a31cb7293179fa6184307a33e7b544ee9c5dc8613aa7dbf9872d4eb9a03d8e6a"
+    },
+    {
+      "key": "focus_reed_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "8d312bfb509755a1a898af0c10db8aee0a3551121983931f26a127496857d3c4"
+    },
+    {
+      "key": "focus_slate_wake_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "7a3a7bc9361effab385564b6303edfd43931b656a635335744b70a56e76f7b77"
+    },
+    {
+      "key": "focus_thistle_wake_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d00895d3a62d302bb56383eb3cc6cf69f90b9dac1787d836db049be3c7657a14"
+    },
+    {
+      "key": "focus_amber_hollow_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c63e00699aa67831499d753fea175d8937968c2c1c3f287d6f5c398652457f44"
+    },
+    {
+      "key": "focus_birch_hollow_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "aa66c3099991032ddd699d898db657c0994812ffe4036ae7f4cab18440df36bf"
+    },
+    {
+      "key": "focus_copper_hollow_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "e35c57d3a446501401a669393246fd017e7efd6cfd8d7f8177bf7c83ba361b01"
+    },
+    {
+      "key": "focus_dusk_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4dcb0cd8d5b84a049ba647f7d30f213807aa903fc5af4c7c38fdd2ad743ef659"
+    },
+    {
+      "key": "focus_elm_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "85b83720c231234787a31a981ee387bc789d26fe598bb40d4ff6caf5fc4f115b"
+    },
+    {
+      "key": "focus_flint_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "065aa5cf4d3659ca6dfe0a3b4cf95701f88b0547a70a4b855bb35a718caff82d"
+    },
+    {
+      "key": "focus_gale_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "12dbb758ea3ce1b26bf6cae12432bcc30603cadea18606579ed8f1c4efa1c8b7"
+    },
+    {
+      "key": "focus_heather_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "491ca6bb1e1fb1451eeac02ba6fcbe1c4da747abe1857d76e32238168d223778"
+    },
+    {
+      "key": "focus_ivory_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "67e440a8ba3a181bb7e96581966dea7fb1ecdf32f8adc0228b65716827707464"
+    },
+    {
+      "key": "focus_juniper_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "100307c0f5b622660bb444059db16e79ef087ae78f77692993ffa83d7cd06bab"
+    },
+    {
+      "key": "focus_kiln_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "7f21dbbad276f9585b9fd1aa6963f391642e2c0cc87ee74f89c2e4143870aa33"
+    },
+    {
+      "key": "focus_lantern_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "1a3f2e4ac4e8ac4e7d7fef6e83a161130cf6e76b32e340f3a36b69ac53a0199c"
+    },
+    {
+      "key": "focus_moss_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "a1b5fb80a8c1b43600083aea64f183e9fc8393527567699e3ae20450fe1661ab"
+    },
+    {
+      "key": "focus_night_hollow_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "aa3e252ff1c2c3c0452246243804218f56560718bd6d7573dc54754854e80e23"
+    },
+    {
+      "key": "focus_ochre_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d6a7a76cb65d26138e84b673cf901d5f64c1a1183b0ababa0a32bad40154d9fb"
+    },
+    {
+      "key": "focus_pearl_hollow_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "af117456399e6a03c4e0073d342c9f4c1e9cc7019fe74bdd61a6c5fbd59597b5"
+    },
+    {
+      "key": "focus_quartz_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b5a77e302a17e6dfea56bb77d81e207f9034b1688c063b73bdfa81b386e3047a"
+    },
+    {
+      "key": "focus_reed_hollow_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "fe849c064421d9e31d6f47addaf4b112b19e8fcbb8b6cd8863d87c8c3f37de1d"
+    },
+    {
+      "key": "focus_slate_hollow_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "8ef462320d50cc8f1fb4cff69994510fa7e3674d20a7958e904c008eb253f093"
+    },
+    {
+      "key": "focus_thistle_hollow_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "3549d8c22b2d71aba650ad2405a6a7aff6f9a49fc9a26614f85706ad021d201c"
+    },
+    {
+      "key": "focus_amber_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "1d541cb526cf7e8777a077fb23ef9bae6e28c31c3715823629eb95436e9808a0"
+    },
+    {
+      "key": "focus_birch_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "2d554828ec5fc7b5c3bc1e0dbabd5a7294ea9e69c24c490e7f23e1d110366fda"
+    },
+    {
+      "key": "focus_copper_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4b1bd97f6d58cecc04d567df47812372fb246cc61375b27a65c5986ed55dd06c"
+    },
+    {
+      "key": "focus_dusk_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "bb06460f2f4525364d6770b4e1d115fd5acabd2d607043fd65f6acc90e414636"
+    },
+    {
+      "key": "focus_elm_crest_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "80e610c8de8b8c44781a254ccca42ce7e213b8cf3fa91bbb768d9b956aaa9283"
+    },
+    {
+      "key": "focus_flint_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "948939c0ed6c1838edb4d28894e60a1fd6791104e04f553089f86115d9bf3240"
+    },
+    {
+      "key": "focus_gale_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4f170b28eec6b7d2f80b42b9e1889b6290e9a2ac3112ddf1f723b59fde211514"
+    },
+    {
+      "key": "focus_heather_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "605e2006509694026f8ac0ea48e5433f3c97ec0512fe43f220b80114492138fe"
+    },
+    {
+      "key": "focus_ivory_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "68a3aace3d2a66915b2300ad31cd48b1b36c494f9ef4218348dcae97f6f37064"
+    },
+    {
+      "key": "focus_juniper_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "3a198edfff07cf869e8503ca60883c6ade6546ef41e23c003ea69fb7b68f0d19"
+    },
+    {
+      "key": "focus_kiln_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "62eb1a92d6e919d9da595b97fc9537cdfd2b02405ddcf5bc53374dbd2db3098a"
+    },
+    {
+      "key": "focus_lantern_crest_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "2a25f653e3fe4552241be9729c559df233a07cfaa661f4668c6b73f4848e07fa"
+    },
+    {
+      "key": "focus_moss_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "271f946b7578fcfbebeb44021d0fcdc6a54f9e24663b1b827816785d9861c20c"
+    },
+    {
+      "key": "focus_night_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "33e145ed601994882d3c5e2bf37841d636e784433354b966f67b930b79959514"
+    },
+    {
+      "key": "focus_ochre_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "a04b228fcbb1ad16c89164525fc30418f3daeaad493b6e38b7a4e18af274bd3d"
+    },
+    {
+      "key": "focus_pearl_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c58b7c7f6cd0f001d19000911b1b7ff3f261eba953ca032ad9931388edafe744"
+    },
+    {
+      "key": "focus_quartz_crest_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c4e0939c95889e1d70ee1e427800347004702c4f4d6a248ccf93f1e6ab39899a"
+    },
+    {
+      "key": "focus_reed_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "edacf431aca537ae0da6932847fea197e431778b3e3db72aefdaab1c2c334ae9"
+    },
+    {
+      "key": "focus_slate_crest_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "eac9bc5cf9013ff4be7d0d33a82f00449a8572d8c1152b20ed111b137927ee73"
+    },
+    {
+      "key": "focus_thistle_crest_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "a0a386472d4ae5f1fd95bca2634e8bd00a56dad0130ee0f1ed65922365df4868"
+    },
+    {
+      "key": "focus_amber_haven_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f724c35c48d02496eaaa0bb1c88eaac9233dbe82bac907db1586baf3f483ea40"
+    },
+    {
+      "key": "focus_birch_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "46e2c374f217c046dc960d434d01373a3c6505475e90ff2c2a3b636d4e6fae45"
+    },
+    {
+      "key": "focus_copper_haven_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d11028474fbf0d3b2cb79ac3d7b9098aea1e764e80eda7c2865deb8762679f2d"
+    },
+    {
+      "key": "focus_dusk_haven_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b30400359300175ae7ad9c718e959831f6cf661bd0d6011b36fb896aeb009d62"
+    },
+    {
+      "key": "focus_elm_haven_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f23f5270dabe9813858ddf43e59badb7b6aff1a32519efa0ea19349fe9360780"
+    },
+    {
+      "key": "focus_flint_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0c6c32e127fc70167bb97c1d321f795828e09a9e84ba78aaac982b7820591123"
+    },
+    {
+      "key": "focus_gale_haven_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0f91279baebbd3a35ad058595271bf8c8f183faaf97130f615d17b824e082030"
+    },
+    {
+      "key": "focus_heather_haven_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5c1622874e144b397c779717e764fd77da3e0c4b4d06b00fa631bd6f43b944ec"
+    },
+    {
+      "key": "focus_ivory_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "06fdfb346ff6d931285b33bb41f6112768fb59222534e4d5209de97ccb3d17a1"
+    },
+    {
+      "key": "focus_juniper_haven_treads",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "4": 9716
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "4": 8302
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "4": 9039
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "89e881c6e764b2a85f187ea6c654ced98c20004f03e1adc83daaeb514246e1c7"
+    },
+    {
+      "key": "focus_kiln_haven_greaves",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "393a61916c5ba56c9edf53211b0d4c39899e3790d9e11bf3606c46ef11a0c68f"
+    },
+    {
+      "key": "focus_lantern_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5d4d5c5a5edcadfdd9d6cca7bd4b090177ead56872133c1878f3e374c51379ee"
+    },
+    {
+      "key": "focus_moss_haven_lens",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 6216
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 4442
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 6142
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "2f6fe6117cb2b9eacdabb6995b1dcda0b21b1f55daf76bc1135007d5e0415581"
+    },
+    {
+      "key": "focus_night_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "140eda9259c1e1e8656d10bed06c364fe517d4a4df8b1d577020a990b101063d"
+    },
+    {
+      "key": "focus_ochre_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "e374982e19e99d92f2e47939c0bd0d4b8e2c7044fcca9b818c6197e498be18a2"
+    },
+    {
+      "key": "focus_pearl_haven_mantle",
+      "category": "focus",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9b0082a979d3c89cf4a6517eb060f2175453d5f5aff8d9bb80ccb4c79dffaf57"
+    },
+    {
+      "key": "outfit_bracken_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "be65eec23691430acc659356ee43b836e967f38d58bbae14504287db68166840"
+    },
+    {
+      "key": "outfit_copperleaf_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "01b2c002be765bf77d59c1a230d04070fc77efebbe6d087865e447d2da9742fb"
+    },
+    {
+      "key": "outfit_duskmere_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "943fd247b03fecd8ea8ab86cd12299bf5135ab821d3dea47498a92b75d7e155d"
+    },
+    {
+      "key": "outfit_cairn_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "dda2cbb30b30e53fba3ce857f750bb7593e67eabe5d583a1e7a5452b026af8f6"
+    },
+    {
+      "key": "outfit_reedbank_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "706c86af7d1262233e952674bf11cb48f945bcd4a164a9374b327ee863415226"
+    },
+    {
+      "key": "outfit_highridge_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "25bd422258719dca31d568dd11ed254624456e30ae6a40ad43fe87e502a3da2a"
+    },
+    {
+      "key": "outfit_mosslight_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b80356caeebe95b6920700a287a8061c5538914a6292295228f7940df1ef9639"
+    },
+    {
+      "key": "outfit_ironbark_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "a0631ae9c920b56fa3211dbe8fea8ea2239319130934758d8093689b99611a54"
+    },
+    {
+      "key": "outfit_sunfen_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "47af1d53a4b7e2450fbba2fad6458a452681ccbd912ccc9e4fcef627e2acb75e"
+    },
+    {
+      "key": "outfit_rimeglass_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "30820dc2a205699f9c131f5ca087e7f8cfbd28f48538eb515b07fc175fd38247"
+    },
+    {
+      "key": "outfit_ashfield_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "6997d9f57b153669d80360ea9633355a366339d58676402c6a5476562b8dd136"
+    },
+    {
+      "key": "outfit_tidebound_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "63c540d6c1827503e520450582188f8be4af9e4a21c8909244aa8bbbff6c992f"
+    },
+    {
+      "key": "outfit_thistle_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "19b7ca37574da1c7844c909c27f95e253b2ea498605b3930a06dd9b29ba9570f"
+    },
+    {
+      "key": "outfit_thistle_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b5183617616eaa00209d4f92e15754424e62c564c5b14072da457c3a29708b06"
+    },
+    {
+      "key": "outfit_stormreed_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "1504e51c2da43bef4ee247f502223be8d717a8f2f7be8202042babb71b26ed06"
+    },
+    {
+      "key": "outfit_ochre_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "99eec9a90080f8b7192f17b7a7626bffabad9c3f8fb1ba6e97f4aa86ff9c019a"
+    },
+    {
+      "key": "outfit_ochre_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "e81231330e0cbb74d6b4b20fcfb6fdfb701df4075ad3bd86159cd2a2c57928a4"
+    },
+    {
+      "key": "outfit_willow_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5cd3b66859c7f77c1e681e897ac99289b5cbb004343de6de213183ab7ff0cfae"
+    },
+    {
+      "key": "outfit_willow_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "629f5e644b5d57520cc55567691ae3bd60a2d8023d4a1bc2b8349b842df2bb16"
+    },
+    {
+      "key": "outfit_dunestone_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "3efbad96c3a77e2a10347e408641b7401f396422a6974b656b22a0e5af11436c"
+    },
+    {
+      "key": "outfit_moonfern_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "e336732235d207f9e4189d44a764528c3a3604cf7e353f589d54a4bf89a42765"
+    },
+    {
+      "key": "outfit_kilnward_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "6edbf48846812401c9cbf366aa904990ad26a15e0761354d22e48bf8a6fea9d3"
+    },
+    {
+      "key": "outfit_galecrest_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "1378fac24d441541887d574728deafc7c1c6005c38cfb8e1cb256e3d98cc178d"
+    },
+    {
+      "key": "outfit_riverflint_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f1586a3251b4c175b1b13230a4ba943de5477b4f71bc18cf7f0ce1c6d6f1e82e"
+    },
+    {
+      "key": "outfit_ambermoss_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0a82e7c4a519e0ddd18bf409bc2b3627fcd925a730c20d33c6783019bb0f47aa"
+    },
+    {
+      "key": "outfit_mistroot_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "da6e1196ce1fbdb76746f68f86887fe2eb040a5d332151132670be678e2d0071"
+    },
+    {
+      "key": "outfit_pearlwood_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9f9f9ea330dcb6d9bb2a943f6595f7078f7bdb4cdff2563370e6ce92f399469f"
+    },
+    {
+      "key": "outfit_pearlwood_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9b859ee5e23bb0fe5191fcd13d2ae873708d415138e9cf59876e193843d96159"
+    },
+    {
+      "key": "outfit_bellstone_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f9cdf80816c872349e998eb834d59158c96ca953e2c93e6a46a1c08776b65e74"
+    },
+    {
+      "key": "outfit_cinderleaf_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0db6b79ba70602ed279a753f3ec93ed7e2c08969116a29a0c73ebd1452187838"
+    },
+    {
+      "key": "outfit_cinderleaf_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4b0cc0b6b931e36d0182e33c65403e6126db8ac4f4eff85a7d5d885d1d75e62f"
+    },
+    {
+      "key": "outfit_cinderleaf_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b5056334c693168b2468c887b9b9e623bc00a10f23e280a72d4ce34fb989c800"
+    },
+    {
+      "key": "outfit_silverfen_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5c5f453e3baa69bc72e6bd5227689c6fb3d52cfd11b34b25cbc0a2896a8ed976"
+    },
+    {
+      "key": "outfit_silverfen_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4cef5f6c61cd7468f3331ac6272d5393b636619d64a8819f1f7ec05fbeede773"
+    },
+    {
+      "key": "outfit_hollowreed_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "3292b6679a7bcb16761a83728eefe1a0e63b0dbc1d94a0e91f25d1a715c956cc"
+    },
+    {
+      "key": "outfit_frostpine_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b2d12a24fde64dc2eabb3e2b545215fb8cb8a6075a98e6ff56b3f2419632cd85"
+    },
+    {
+      "key": "outfit_frostpine_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "dc905bdb28e81c647f1129cc4c3c395838934753982c13efe61da6639393af9c"
+    },
+    {
+      "key": "outfit_frostpine_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "ac99698431a83d27bcc8b3f90596f7bf4e573c793028b29c384f00e258888670"
+    },
+    {
+      "key": "outfit_cloudmere_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "3a6d0d07e957b719e9a0143adc8dc5e37ef69bb1acee2fd913b54737cd0cebeb"
+    },
+    {
+      "key": "outfit_cloudmere_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "2598f40ef94f7b181009489fa4f70546fe1914c78f139930f5891121e5c39433"
+    },
+    {
+      "key": "outfit_cloudmere_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "7d04c60eebc18b59d26a99f61239988678f404ddf1715d9a8f138a6313b5283c"
+    },
+    {
+      "key": "outfit_brookstone_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "781abcbf0527bf0ab95fc6a42be1edb97e9918bae8da1c04997cc35f5531e72b"
+    },
+    {
+      "key": "outfit_brookstone_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f6ca039b0dc751acbda21f1e3c9bee85e2706b973faf9f116222be6ce7bd1169"
+    },
+    {
+      "key": "outfit_brookstone_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "008b22fbb17a008b9901a6e2169e8c6b2cdd46cf64d4efad59a7c470d2491511"
+    },
+    {
+      "key": "outfit_rosequartz_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "896f9da73038b9a44f771883c4baf7f67a8ed64b6066c37216ffa553c65ec9d8"
+    },
+    {
+      "key": "outfit_rosequartz_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "de09f0a84f721acdec5308ed9455203a9fdf23d04a36de6566e3026be0adf7a0"
+    },
+    {
+      "key": "outfit_nightbloom_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "70c8728947c012d07637e869bc4dae56ae91b3e613a62962116d4e0ffec32114"
+    },
+    {
+      "key": "outfit_goldenrush_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "965505cd0059ea912ee9220add579480eb7058957e15fdc340999cb024de6692"
+    },
+    {
+      "key": "outfit_goldenrush_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "15bca9f45291269fe837ce467cd9e007c4d7bbcbfa1405ac03490015d48f9620"
+    },
+    {
+      "key": "outfit_reedstone_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "b6367cfa0a3f76e41f0833dfa6be0ac7423c728b25138c229c00a4ad060d9502"
+    },
+    {
+      "key": "outfit_reedstone_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "cb1843ff585e784626146a5204dcf214be4548c33391c9de7818ce693393fdf7"
+    },
+    {
+      "key": "outfit_sablewood_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "7ff4aabf2ae85ba8ba7ad673a7d7f966337b601a43e4b85c00beb76a6b9e35c9"
+    },
+    {
+      "key": "outfit_sablewood_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "64019016b2516211157a9ec20e8731841c932e1cf16d1b435208b489d12b053e"
+    },
+    {
+      "key": "outfit_windglass_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "76c4ccedcfa04a66b4a82647f3500526f20b60392ec9e6fc9799257947906178"
+    },
+    {
+      "key": "outfit_rainbloom_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c0079373873cbfcc78ad05ebd6ac7900603d9a1aa94e0ae852e59bad98b2f38d"
+    },
+    {
+      "key": "outfit_rainbloom_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "98368c9874123935ab1acb89dd9565aba35217e55fb43d3de0e81efb3e76e3c8"
+    },
+    {
+      "key": "outfit_rainbloom_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "842a80f01b3af8992e5118f63bb0a7a30e2b2a8308d4259226c97bbcdff2d7d4"
+    },
+    {
+      "key": "outfit_brightcairn_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "4a6ffe97110a66017ad44e365766610904378f09576cd36d721578378bbb2cb4"
+    },
+    {
+      "key": "outfit_brightcairn_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5c61171e192dadb7db7c74ab10e00ff9be764fb72e12705fa14298bf9d4d3d68"
+    },
+    {
+      "key": "outfit_shadowpine_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "6eb19ac7ba458caddf9c1ca82aabc7fe51c22720b8196c3b4e73e4d36ebcb976"
+    },
+    {
+      "key": "outfit_shadowpine_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "05f5b692560dff7dade2c572a4ef38654cf7c193f453265d0abc4053215bd7d6"
+    },
+    {
+      "key": "outfit_sunstone_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "34b83ba4202005b9addd7ada915e62725964ad5cc718df188f219a46bc1adb06"
+    },
+    {
+      "key": "outfit_sunstone_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5a0126e7c9aff82b50a29d77f09b5d8035beb0c34c9438ea54563784ccdb3329"
+    },
+    {
+      "key": "outfit_coastfern_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "9142a3561232a8714112f5e205a33343f8329b6363d2ff2656d88e62106ba160"
+    },
+    {
+      "key": "outfit_coastfern_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "50b4ac279edd5bc2592576ff001ca7cd6dba4ff38b7b3c47e6d1fc742cc046e8"
+    },
+    {
+      "key": "outfit_sagewood_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d83d20a8d8128d5254d19e7abc030850eaa06c7378d893bf80e995c8bba5651a"
+    },
+    {
+      "key": "outfit_sagewood_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d7c3732a57f61a9e325a26021a1543ef984b0deb9b683e51d4c13b6b765ce8b1"
+    },
+    {
+      "key": "outfit_redwillow_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "6d805aa9df70b9c805234f2c68298cfa367bfa8d3f768faa5acc39ffefff2a3e"
+    },
+    {
+      "key": "outfit_redwillow_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0ba204378a6437672627d954bfacf097b8f77696aa916f40f258785707a8ef8d"
+    },
+    {
+      "key": "outfit_wildrime_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "ec6d3a4e74373f414304c7720c2b9400e9e0ddd142eabb22759ec23f4528318b"
+    },
+    {
+      "key": "outfit_wildrime_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "289e8e46bc0895d78dee060bc890e30c6d5c4f51d14e000176f95e74b39e0584"
+    },
+    {
+      "key": "outfit_deepcopper_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "0c5229abff93842e6d29685ab8226b89418cecaa0f7d26c4895270397831d321"
+    },
+    {
+      "key": "outfit_deepcopper_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "fd4bdccbaf0e57ef62bc770dd02fc1daa1695ebefe7f57255445c6298b5c9030"
+    },
+    {
+      "key": "outfit_violetfen_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "f9fe022431fe2ddbb093a2f7f8882cc9c9d995186ccc7a1794dddad1ad99fcbb"
+    },
+    {
+      "key": "outfit_violetfen_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "eac3754ea105fa5918c732bcd4c728f1b3a90f35467cf9d6b90b173a6b73ed71"
+    },
+    {
+      "key": "outfit_violetfen_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "d8cd29f5ff33a4b4300de8d0e6eaa1987b228afdea87d54dbcfe1a9e603fb134"
+    },
+    {
+      "key": "outfit_saltbloom_coat",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "2": 33978
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "2": 33220
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "2": 39226
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "5795539c1824b7f99eff211da949add71cb9c66236df4a16e415c24d3817825a"
+    },
+    {
+      "key": "outfit_saltbloom_hood",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "1": 7242
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "1": 14279
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "1": 14400
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "1": 13433
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "c64e4dba7b05d875fd429cc047057684ab7dab2efe22d57496afe559ea61a31b"
+    },
+    {
+      "key": "outfit_saltbloom_trousers",
+      "category": "outfits",
+      "views": [
+        {
+          "view": "FRONT",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "3/4",
+          "visible_pixels": {
+            "3": 20876
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "BACK",
+          "visible_pixels": {
+            "3": 19476
+          },
+          "invalid_uv_samples": 0
+        },
+        {
+          "view": "WALK",
+          "visible_pixels": {
+            "3": 18109
+          },
+          "invalid_uv_samples": 0
+        }
+      ],
+      "image_sha256": "1a8e3e2edbbe06f19df200866eee1fac14efa15633cc9936c2cc81abf06cc1ed"
+    }
+  ],
+  "entry_count": 163,
+  "views": 652,
+  "logical_uv": [
+    64,
+    32
+  ],
+  "actual_png": [
+    256,
+    128
+  ],
+  "preview_boards": [
+    "coverage-sheet-01.png",
+    "coverage-sheet-02.png",
+    "coverage-sheet-03.png",
+    "coverage-sheet-04.png",
+    "coverage-sheet-05.png",
+    "coverage-sheet-06.png"
+  ],
+  "native_visual_acceptance": false,
+  "headwear_implemented": true,
+  "headwear_inflation": 1.5,
+  "actual_native_head_visibility": [
+    "bipedHead",
+    "bipedHeadwear"
+  ],
+  "renderer_sha256": "78471c5228d3399c4660b833848f69e2fb4d53e9dbbb273cdba93c76a06cefd9"
+}

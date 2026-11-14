@@ -19,6 +19,8 @@ public final class JutsuInput {
     public static final KeyBinding FOCUS=new KeyBinding("key.fieldhud.jutsu_focus",KeyConflictContext.IN_GAME,KeyModifier.NONE,Keyboard.KEY_F,"key.categories.fieldhud");
     private static long lastRequest=-1000,lastFeedback=-1000;
     private static Boolean compatibleControls;
+    private static final HoldGesture SWITCH=new HoldGesture();
+    private static long lastProgress;
     private JutsuInput(){}
     public static void start(){ClientRegistry.registerKeyBinding(FOCUS);net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new JutsuInput());}
     public static String focusLabel(){return FOCUS.getKeyCode()==0?"Unbound":FOCUS.getDisplayName();}
@@ -53,6 +55,18 @@ public final class JutsuInput {
         }
     }
     public static void tick(){
+        if(RackAccess.switchSupported()){
+            if(focused())focus(false);
+            int code=FOCUS.getKeyCode();boolean down=code>0&&code<Keyboard.KEYBOARD_SIZE?Keyboard.isKeyDown(code):code<0&&code+100>=0&&code+100<org.lwjgl.input.Mouse.getButtonCount()&&org.lwjgl.input.Mouse.isButtonDown(code+100);
+            boolean allowed=game()&&FOCUS.isActiveAndMatches(code)&&RackAccess.ready()&&!RackAccess.pending()&&!MC.player.isHandActive();long now=Minecraft.getSystemTime();
+            if(SWITCH.update(down,allowed,now)){
+                if(!RackAccess.requestToggle())feedback("Combat hotbar is syncing; release and hold again");
+                else clearUse();
+            }else if(down&&allowed&&SWITCH.progress(now)>0&&SWITCH.progress(now)<1&&now-lastProgress>=100){
+                lastProgress=now;MC.player.sendStatusMessage(new TextComponentString("Switch to "+(RackAccess.combatActive()?"normal":"combat")+" hotbar: "+String.format(java.util.Locale.ROOT,"%.1f",SWITCH.progress(now)*3)+" / 3s"),true);
+            }
+            if(game()&&RackAccess.combatActive()&&MC.player.inventory.currentItem>=6)MC.player.inventory.currentItem=0;
+        }else SWITCH.reset();
         if(RackAccess.loaded()&&JutsuAccess.MODEL.focused())JutsuAccess.MODEL.focus(false,JutsuAccess.time(),false);
         if(focused()&&!eligible()){focus(false);clearUse();}
         if(focused())clearUse();
@@ -80,6 +94,10 @@ public final class JutsuInput {
     }
     private static void binding(boolean keyboardEvent){
         boolean pressed=false;while(FOCUS.isPressed())pressed=true;
+        if(RackAccess.switchSupported()){
+            if(game()&&MC.gameSettings.keyBindSwapHands.getKeyCode()==FOCUS.getKeyCode()){while(MC.gameSettings.keyBindSwapHands.isPressed()){}KeyBinding.setKeyBindState(MC.gameSettings.keyBindSwapHands.getKeyCode(),false);}
+            return;
+        }
         if(!pressed||(keyboardEvent&&Keyboard.isRepeatEvent())||!game())return;
         if(focused()){focus(false);clearUse();return;}
         for(KeyBinding other:MC.gameSettings.keyBindings)if(other!=FOCUS&&other.getKeyCode()==FOCUS.getKeyCode()&&other.isActiveAndMatches(FOCUS.getKeyCode())&&FOCUS.conflicts(other)){
@@ -94,6 +112,7 @@ public final class JutsuInput {
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public void key(InputEvent.KeyInputEvent event){
         binding(true);
+        if(game()&&RackAccess.combatActive())for(int i=6;i<9;i++){KeyBinding key=MC.gameSettings.keyBindsHotbar[i];while(key.isPressed()){}KeyBinding.setKeyBindState(key.getKeyCode(),false);}
         KeyBinding use=MC.gameSettings.keyBindUseItem;
         if(focused()&&game()&&use.getKeyCode()>0&&Keyboard.getEventKeyState()&&use.isActiveAndMatches(Keyboard.getEventKey())){
             boolean repeat=Keyboard.isRepeatEvent();clearUse();if(!repeat)castFocused();
@@ -101,6 +120,7 @@ public final class JutsuInput {
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public void mouseBinding(InputEvent.MouseInputEvent event){binding(false);}
     @SubscribeEvent(priority=EventPriority.HIGHEST) public void mouse(MouseEvent event){
+        if(game()&&RackAccess.combatActive()&&event.getDwheel()!=0){MC.player.inventory.currentItem=Math.floorMod(MC.player.inventory.currentItem+(event.getDwheel()>0?-1:1),6);event.setCanceled(true);return;}
         if(!focused()||!eligible())return;
         if(event.getDwheel()!=0){
             if(RackAccess.loaded()){

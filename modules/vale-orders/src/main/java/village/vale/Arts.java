@@ -1,6 +1,7 @@
 package village.vale;
 
 import java.util.*;
+import village.vale.nature.NatureMoves;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
@@ -24,15 +25,23 @@ public final class Arts {
     static{
         String[][] titles={{"Coal Lance","Furnace Fan","Cinder Seal"},{"River Needle","Undertow Sweep","Tidal Seal"},{"Airfoil","Crosswind","Gale Seal"},{"Gravel Dart","Faultline","Cairn Seal"},{"Briar Thorn","Petal Sweep","Verdant Seal"},{"Hail Shard","Winter Fan","Hoarfrost Seal"},{"Static Lance","Thunder Fan","Storm Seal"},{"Shade Needle","Gloam Sweep","Twilight Seal"},{"Sun Dart","Radiant Fan","Daybreak Seal"}};
         int n=0;for(Order o:Order.values()){for(int shape=0;shape<3;shape++){String key=o.key+new String[]{"_lance","_fan","_seal"}[shape];ALL.put(key,new Art(key,titles[n][shape],o,shape,new int[]{2,5,9}[shape],new int[]{18,24,30}[shape],new int[]{8,12,18}[shape]));}n++;}
+        // Stable save IDs, distinct starter mechanics. Higher shapes retain their existing behavior.
+        starter(Order.EMBER,"Fire Release: Flame Burst",18,7);
+        starter(Order.CURRENT,"Water Release: Surging Wave",18,8);
+        starter(Order.FLINT,"Earth Release: Earth Wall",24,12);
+        starter(Order.GALE,"Wind Release: Gale Palm",16,7);
+        starter(Order.STORM,"Lightning Release: Focused Strike",22,8);
+        for(int i=0;i<LightningKit.KEYS.length;i++)ALL.put(LightningKit.KEYS[i],new Art(LightningKit.KEYS[i],LightningKit.TITLES[i],null,30+i,1,LightningKit.COST[i],LightningKit.COOLDOWN[i]));
         String[] keys={"binding_script","damping_script","ward_circle","phase_step","focus_sight","second_wind","gravitic_pulse","recall_mark","echo_double"};
         String[] names={"Binding Script","Damping Script","Ward Circle","Phase Step","Focus Sight","Second Wind","Gravitic Pulse","Recall Mark","Echo Double"};
         for(int i=0;i<keys.length;i++)ALL.put(keys[i],new Art(keys[i],names[i],null,10+i,new int[]{3,6,3,4,4,6,8,10,7}[i],new int[]{24,22,25,18,15,25,28,20,25}[i],new int[]{16,12,18,10,16,18,15,30,20}[i]));
     }
+    private static void starter(Order o,String title,int cost,int cooldown){String key=o.key+"_lance";ALL.put(key,new Art(key,title,o,0,2,cost,cooldown));}
     private Arts(){}
     public static List<Art> available(EntityPlayerMP p){
         List<Art> list=new ArrayList<>();NBTTagCompound s=PlayerState.data(p);
         if(s.getString("starterOrder").isEmpty())return list;
-        for(Art a:ALL.values())if(PlayerState.level(p)>=a.level&&(a.order==null||a.order.key.equals(s.getString("starterOrder"))||s.getBoolean("study_"+a.order.key)))list.add(a);
+        for(Art a:ALL.values()){int kit=LightningKit.index(a.key);if(kit>=0){if(LightningKit.available(p,kit))list.add(a);}else if(PlayerState.level(p)>=a.level&&(a.order==null||a.order.key.equals(s.getString("starterOrder"))||s.getBoolean("study_"+a.order.key)))list.add(a);}
         return list;
     }
     public static Art selected(EntityPlayerMP p){
@@ -75,6 +84,8 @@ public final class Arts {
         else if(!Gear.key(p.getHeldItemMainhand()).equals("valeorders:technique_codex"))return Adventures.tell(p,"Hold the technique codex in your main hand.");
         if(Combat.fullSet(p)==null)return Adventures.tell(p,"Equip four matching issued armor pieces.");
         if(a==null)return Adventures.tell(p,"No technique is unlocked yet. Reach level 2.");
+        if(LightningKit.index(a.key)>=0)return LightningKit.cast(p,a);
+        if(NatureMoves.handles(a))return NatureMoves.cast(p,a,carriedCodex);
         NBTTagCompound s=PlayerState.data(p);long now=Adventures.now(p);NBTTagCompound cds=s.getCompoundTag("artCooldowns");
         if(now<s.getLong("artGlobal")||now<cds.getLong(a.key))return Adventures.tell(p,"This technique is cooling down.");
         int cost=Forms.active(p)==2?Math.max(1,a.cost*3/4):a.cost;

@@ -1,0 +1,109 @@
+CHAKRA, JUTSU ACTIONS AND HUD SYMBOLS
+
+These action/status/seal symbols are separate from the lesson-scroll and technique item icons in file 01.
+All paths below are PROPOSED; current HUD often draws shared seals in Java rather than loading individual PNGs.
+Supply 32x32 transparent RGBA; verify legibility at 16x16 display. A 128x128 editable master is optional.
+The 49 lesson/technique motifs in file 01 can be reused for HUD views; do not invent another 49 designs.
+
+CODEX JUTSU ACTIONS
+
+[ ] Fire Release: Flame Burst | art/ember_lance | assets/fieldhud/textures/icons/art/ember_lance.png
+[ ] Furnace Fan | art/ember_fan | assets/fieldhud/textures/icons/art/ember_fan.png
+[ ] Cinder Seal | art/ember_seal | assets/fieldhud/textures/icons/art/ember_seal.png
+[ ] Water Release: Surging Wave | art/current_lance | assets/fieldhud/textures/icons/art/current_lance.png
+[ ] Undertow Sweep | art/current_fan | assets/fieldhud/textures/icons/art/current_fan.png
+[ ] Tidal Seal | art/current_seal | assets/fieldhud/textures/icons/art/current_seal.png
+[ ] Wind Release: Gale Palm | art/gale_lance | assets/fieldhud/textures/icons/art/gale_lance.png
+[ ] Crosswind | art/gale_fan | assets/fieldhud/textures/icons/art/gale_fan.png
+[ ] Gale Seal | art/gale_seal | assets/fieldhud/textures/icons/art/gale_seal.png
+[ ] Earth Release: Earth Wall | art/flint_lance | assets/fieldhud/textures/icons/art/flint_lance.png
+[ ] Faultline | art/flint_fan | assets/fieldhud/textures/icons/art/flint_fan.png
+[ ] Cairn Seal | art/flint_seal | assets/fieldhud/textures/icons/art/flint_seal.png
+[ ] Briar Thorn | art/bloom_lance | assets/fieldhud/textures/icons/art/bloom_lance.png
+[ ] Petal Sweep | art/bloom_fan | assets/fieldhud/textures/icons/art/bloom_fan.png
+[ ] Verdant Seal | art/bloom_seal | assets/fieldhud/textures/icons/art/bloom_seal.png
+[ ] Hail Shard | art/rime_lance | assets/fieldhud/textures/icons/art/rime_lance.png
+[ ] Winter Fan | art/rime_fan | assets/fieldhud/textures/icons/art/rime_fan.png
+[ ] Hoarfrost Seal | art/rime_seal | assets/fieldhud/textures/icons/art/rime_seal.png
+[ ] Lightning Release: Focused Strike | art/storm_lance | assets/fieldhud/textures/icons/art/storm_lance.png
+[ ] Thunder Fan | art/storm_fan | assets/fieldhud/textures/icons/art/storm_fan.png
+[ ] Storm Seal | art/storm_seal | assets/fieldhud/textures/icons/art/storm_seal.png
+[ ] Shade Needle | art/dusk_lance | assets/fieldhud/textures/icons/art/dusk_lance.png
+[ ] Gloam Sweep | art/dusk_fan | assets/fieldhud/textures/icons/art/dusk_fan.png
+[ ] Twilight Seal | art/dusk_seal | assets/fieldhud/textures/icons/art/dusk_seal.png
+[ ] Sun Dart | art/dawn_lance | assets/fieldhud/textures/icons/art/dawn_lance.png
+[ ] Radiant Fan | art/dawn_fan | assets/fieldhud/textures/icons/art/dawn_fan.png
+[ ] Daybreak Seal | art/dawn_seal | assets/fieldhud/textures/icons/art/dawn_seal.png
+[ ] Lightning Chakra Armor | art/lightning_chakra_armor | assets/fieldhud/textures/icons/art/lightning_chakra_armor.png
+[ ] Lariat | art/lightning_lariat | assets/fieldhud/textures/icons/art/lightning_lariat.png
+[ ] Lightning Step | art/lightning_step | assets/fieldhud/textures/icons/art/lightning_step.png
+[ ] Thunder Counter | art/lightning_counter | assets/fieldhud/textures/icons/art/lightning_counter.png
+[ ] Guillotine Drop | art/guillotine_drop | assets/fieldhud/textures/icons/art/guillotine_drop.png
+[ ] Release Lightning Armor | art/lightning_release | assets/fieldhud/textures/icons/art/lightning_release.png
+[ ] Binding Script | art/binding_script | assets/fieldhud/textures/icons/art/binding_script.png
+[ ] Damping Script | art/damping_script | assets/fieldhud/textures/icons/art/damping_script.png
+[ ] Ward Circle | art/ward_circle | assets/fieldhud/textures/icons/art/ward_circle.png
+[ ] Phase Step | art/phase_step | assets/fieldhud/textures/icons/art/phase_step.png
+[ ] Focus Sight | art/focus_sight | assets/fieldhud/textures/icons/art/focus_sight.png
+[ ] Second Wind | art/second_wind | assets/fieldhud/textures/icons/art/second_wind.png
+[ ] Gravitic Pulse | art/gravitic_pulse | assets/fieldhud/textures/icons/art/gravitic_pulse.png
+[ ] Recall Mark | art/recall_mark | assets/fieldhud/textures/icons/art/recall_mark.png
+[ ] Echo Double | art/echo_double | assets/fieldhud/textures/icons/art/echo_double.png
+
+EXISTING PROCEDURAL HUD SEALS
+
+[ ] Ember Ward | seal/ember | assets/fieldhud/textures/icons/seal/ember.png
+[ ] Current Ward | seal/current | assets/fieldhud/textures/icons/seal/current.png
+[ ] Gale Ward | seal/gale | assets/fieldhud/textures/icons/seal/gale.png
+[ ] Flint Ward | seal/flint | assets/fieldhud/textures/icons/seal/flint.png
+[ ] Bloom Ward | seal/bloom | assets/fieldhud/textures/icons/seal/bloom.png
+[ ] Rime Ward | seal/rime | assets/fieldhud/textures/icons/seal/rime.png
+[ ] Storm Ward | seal/storm | assets/fieldhud/textures/icons/seal/storm.png
+[ ] Dusk Ward | seal/dusk | assets/fieldhud/textures/icons/seal/dusk.png
+[ ] Dawn Ward | seal/dawn | assets/fieldhud/textures/icons/seal/dawn.png
+[ ] Scroll | seal/scroll | assets/fieldhud/textures/icons/seal/scroll.png
+[ ] Weapon | seal/weapon | assets/fieldhud/textures/icons/seal/weapon.png
+[ ] Seal | seal/seal | assets/fieldhud/textures/icons/seal/seal.png
+
+STATUS EFFECTS
+
+[ ] Bastion Form | status/bastion | assets/fieldhud/textures/icons/status/bastion.png
+[ ] Zephyr Form | status/zephyr | assets/fieldhud/textures/icons/status/zephyr.png
+[ ] Oracle Form | status/oracle | assets/fieldhud/textures/icons/status/oracle.png
+[ ] Eclipse Form | status/eclipse | assets/fieldhud/textures/icons/status/eclipse.png
+[ ] Lightning Chakra Armor | status/lightning_chakra_armor | assets/fieldhud/textures/icons/status/lightning_chakra_armor.png
+
+WARD SKILLS
+
+[ ] Cinder Arc | order/ember | assets/fieldhud/textures/icons/order/ember.png
+[ ] Flowstep | order/current | assets/fieldhud/textures/icons/order/current.png
+[ ] Windstride | order/gale | assets/fieldhud/textures/icons/order/gale.png
+[ ] Stoneguard | order/flint | assets/fieldhud/textures/icons/order/flint.png
+[ ] Mending Breath | order/bloom | assets/fieldhud/textures/icons/order/bloom.png
+[ ] Stillwinter | order/rime | assets/fieldhud/textures/icons/order/rime.png
+[ ] Skybreak | order/storm | assets/fieldhud/textures/icons/order/storm.png
+[ ] Quiet Veil | order/dusk | assets/fieldhud/textures/icons/order/dusk.png
+[ ] Firstlight | order/dawn | assets/fieldhud/textures/icons/order/dawn.png
+
+WEAPON ROLE SYMBOLS (SHARED ACROSS NINE WARDS)
+
+[ ] Patient Guard | weapon_role/saber | assets/fieldhud/textures/icons/weapon_role/saber.png
+[ ] Long Thrust | weapon_role/spear | assets/fieldhud/textures/icons/weapon_role/spear.png
+[ ] Sidestep | weapon_role/dagger | assets/fieldhud/textures/icons/weapon_role/dagger.png
+[ ] Fan Cut | weapon_role/glaive | assets/fieldhud/textures/icons/weapon_role/glaive.png
+[ ] Centering Breath | weapon_role/staff | assets/fieldhud/textures/icons/weapon_role/staff.png
+[ ] Crushing Strike | weapon_role/axe | assets/fieldhud/textures/icons/weapon_role/axe.png
+
+ADDITIONAL CHAKRA / INTERFACE ART DIRECTION (proposed, not an existing asset contract)
+[ ] Chakra/resolve resource symbol (the current internal name is resolve).
+[ ] Health, stamina, hunger, experience, mission merit, level/rank and currency symbols where the owning screen exposes them.
+[ ] Fire, Water, Wind, Earth and Lightning chakra nature symbols; reuse the corresponding Ember/Current/Gale/Flint/Storm seal art where appropriate.
+[ ] Ready, active, cooldown, locked, unlearned, mastered, insufficient chakra, no valid target and unavailable states; prefer renderer tint/overlay variants to duplicate art.
+[ ] Mission available/active/complete/failed; quest giver; shop; party; ally/enemy; destination; waypoint; dungeon entrance; boss; summon; empty/selected hotbar slots.
+These extra UI concepts have no counted fixed file roster yet. Confirm actual screen wiring before making per-state files.
+
+INTEGRATION NOTES
+JutsuRail.icon uses actual item art for weapons/projectiles/forms/summons, and SealArt/SealDraw for other actions.
+Forms currently select vanilla potion icon indices. LightningKit has no custom status sprite binding.
+AbilityCarriers036 explicitly assigns minecraft:book in its renderer registration; reconcile that with ClientModels before installing codex art.
+Armor-specific actions may reuse their armor/profile motif; see OriginalArmorLoadoutProvider and ArmorSnapshot before adding new standalone slots.

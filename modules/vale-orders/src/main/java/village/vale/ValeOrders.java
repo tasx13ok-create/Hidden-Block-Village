@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.10", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.15", acceptedMinecraftVersions = "[1.12.2]")
 public final class ValeOrders {
     @net.minecraftforge.fml.common.SidedProxy(clientSide="village.vale.ClientProxy", serverSide="village.vale.CommonProxy")
     public static CommonProxy proxy;
@@ -27,18 +27,21 @@ public final class ValeOrders {
         pvpAbilities = cfg.getBoolean("allowAbilityPvP", "combat", false, "Ability attacks must also pass server PvP and team checks.");
         fieldRogueSpawns = cfg.getBoolean("fieldRogueSpawns", "adventure", true, "Rare vanilla-rule night patrols in forests, hills and swamps; no structures or block changes.");
         canonicalEquipmentCatalog = cfg.getBoolean("canonicalEquipmentCatalog", "adventure", true, "Retire overlapping VariedCommodities/CustomNPC combat props from recipes, creative/JEI and player combat. Keep their registry IDs for legacy data. Restart to change.");
+        Dodge.configure(cfg.getInt("dodgeChakraCost","movement",6,0,25,"Chakra cost of a four-way dodge."),cfg.getInt("dodgeCooldownTicks","movement",16,8,80,"Dodge recovery ticks; persists across logout."));
         if (cfg.hasChanged()) cfg.save();
         village.vale.culinary.Culinary.registerTiles();
         MinecraftForge.EVENT_BUS.register(new Combat());
         MinecraftForge.EVENT_BUS.register(new Progression());
         MinecraftForge.EVENT_BUS.register(new Adventures());
         MinecraftForge.EVENT_BUS.register(new AcademyEvents());
+        MinecraftForge.EVENT_BUS.register(new LightningKitEvents());
         Bosses.register(this);
         Adventures.register(this);
         village.vale.arsenal.Arsenal.registerEntities(this);
         MinecraftForge.EVENT_BUS.register(new village.vale.arsenal.ArsenalCrafting());
         MinecraftForge.EVENT_BUS.register(new MigrationClaims());
         village.vale.arsenal.Scrolls.registerEntities(this);
+        village.vale.expedition.GateRuntime.registerSkiff(this,123);
         HudNetwork.register();
         AbilityNetwork.register();
         Dodge.register();
@@ -62,6 +65,8 @@ public final class ValeOrders {
         event.registerServerCommand(new ValeCommand());
         event.registerServerCommand(new village.vale.bridge.BridgeCommand());
         event.registerServerCommand(new AcademyCommand());
+        event.registerServerCommand(new village.vale.expedition.GateChoiceCommand());
+        village.vale.expedition.ExpeditionContent.initialize(net.minecraftforge.fml.common.Loader.instance().getConfigDir());
         event.registerServerCommand(new MigrationLoot.Command());
     }
 }

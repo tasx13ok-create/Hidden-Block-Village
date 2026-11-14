@@ -1,0 +1,731 @@
+{
+  "schema": 1,
+  "scope": "PINNED_VALE0312_FULL58_CLIENT_ASSEMBLY_AND_FIRST_RUNTIME_DIAGNOSIS",
+  "status": "FIRST_PROFILE_WINDOWS_HANG_CONTROLLED_TABGUARD_WORLD_JOIN_AND_STOP_OBSERVED",
+  "generated_utc": "2026-11-13T21:05:02.306896+00:00",
+  "source_checkpoint": "d59ddd24f64cf404032fb9e497896bb5d3d26358",
+  "source_snapshot_sha256": "58958edc9eb2a776a250ef8e0a73a97e26e8c479e7cd45433ad24a952c71ccc1",
+  "core_sha256": "7c8c91e0677a2e54cccc52459479bf57587fbd790347558c0786ee3e5d0fa8c8",
+  "source_build_report": {
+    "bytes": 32852,
+    "sha256": "7bf23439d3d63fb43a05e8fe352ec9c2ab7ebbdfee0101456f4b7723b0c2f35b"
+  },
+  "native_report": {
+    "bytes": 11104,
+    "sha256": "c95e7c2165fa1892cdd46ade6d3a490bebba5963488a32f83567be5c18cd3c26"
+  },
+  "native_assertions": 2058,
+  "client_jars": 58,
+  "static_declared_mod_ids": 55,
+  "duplicate_declared_mod_ids": 0,
+  "mods": [
+    {
+      "file": "JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "jeresources": "0.9.2.60"
+      },
+      "bytes": 222270,
+      "sha256": "9ea4d7df19c0a53880aae5e745ef1e886854bea5c533878688587a5e3fdaebdd"
+    },
+    {
+      "file": "stg-1.12.2-1.2.3.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "stg": "1.12.2-1.2.3"
+      },
+      "bytes": 24024,
+      "sha256": "0ab0cb80822dd58ed83393edff83ac0497e1f12cbf4ceb9dacd963e2a949d2cb"
+    },
+    {
+      "file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "borutomodaddononero": "1.0.0"
+      },
+      "bytes": 1803175,
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28"
+    },
+    {
+      "file": "warpmod-1.12.2-1.0.1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "warp_mod": null
+      },
+      "bytes": 413872,
+      "sha256": "f582a6ea518e3bbde565c181a5588f0248a63703647b63a9406d075dbc304f4a"
+    },
+    {
+      "file": "colorfulhealthbar-0.0.4a.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "colorfulhealthbar": "@VERSION@"
+      },
+      "bytes": 16447,
+      "sha256": "a80cf48a1e29b22f20d250b36de663e75346d44e7a3c16f3c133aac1b9828824"
+    },
+    {
+      "file": "FTBQuests-1202.9.0.15.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "ftbquests": "1202.9.0.15"
+      },
+      "bytes": 1091954,
+      "sha256": "3f6a674ac0d8678fd0b127e6930199f32848fe47d1689e44c72976bfb24c7385"
+    },
+    {
+      "file": "xaerominimap-forge-1.12.2-26.6.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "xaerominimap": null
+      },
+      "bytes": 2030024,
+      "sha256": "efb30f0904bb8e3744bb62f77ad4f7c9e7613e063aa9900498cbb5a6e1b6d882"
+    },
+    {
+      "file": "FTBLib-5.4.7.2.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "ftblib": "5.4.7.2"
+      },
+      "bytes": 934370,
+      "sha256": "623fc574f0227fec6cc9e26c3879a605f9b4499c0078ff085291901a5495a6ac"
+    },
+    {
+      "file": "biju_unleashing-1.7.3.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "biju_unleashing": "1.7.3"
+      },
+      "bytes": 42902905,
+      "sha256": "40c8f324e30f4305b1da35d4d31206643749ce8f6b04168bd8c6794df0c0e984"
+    },
+    {
+      "file": "TravelersBackpack-1.12.2-1.0.35.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "travelersbackpack": "1.0.35"
+      },
+      "bytes": 397467,
+      "sha256": "39a7914b5a55b7d5ad5d1192c38a66b926895317e0426a359a529de2f8028581"
+    },
+    {
+      "file": "Armourers-Workshop-1.12.2-0.51.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "armourers_workshop": "1.12.2-0.51.0"
+      },
+      "bytes": 2678747,
+      "sha256": "0abc8622e3a40c822a603e54065dbd0670c77bf73993487da8ef8c209e5afbe0"
+    },
+    {
+      "file": "shinobiculinary-1.2.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "shinobiculinary": "1.2.0"
+      },
+      "bytes": 1423453,
+      "sha256": "3b212998b35451ed76b96e68548167a0e59a4e5a8023b8896aa0ed90b697b637"
+    },
+    {
+      "file": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "narutomodaddononero": "1.0.0"
+      },
+      "bytes": 2843222,
+      "sha256": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05"
+    },
+    {
+      "file": "Essential_1-5-1_forge_1-12-2.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {},
+      "bytes": 55768993,
+      "sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e"
+    },
+    {
+      "file": "Baryon Expansion_beta2.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "baryonexpansion": "1.0.0"
+      },
+      "bytes": 887254,
+      "sha256": "58f311849ad3d26e3c82115550d912633577e95891e75067d24df983465a8ee1"
+    },
+    {
+      "file": "SealsAddon v1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "sealsaddon": "1.0"
+      },
+      "bytes": 177819,
+      "sha256": "9bdefc7b778148736ab11b9fadfefd09e01c3bfc9860f682c1eec6fff7354cee"
+    },
+    {
+      "file": "AppleSkin-mc1.12-1.0.14.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "appleskin": "1.0.14"
+      },
+      "bytes": 33683,
+      "sha256": "4bbd37edecff0b420ab0eea166b5d7b4b41a9870bfb8647bf243140dc57f101e"
+    },
+    {
+      "file": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "variedcommodities": "1.12.2"
+      },
+      "bytes": 1766394,
+      "sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016"
+    },
+    {
+      "file": "ahznbstweaks-2.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "ahznbstweaks": "1.7"
+      },
+      "bytes": 74214,
+      "sha256": "06d387874f26ae0566e6f881af313f6b13796e8b07b1795d8277e0e8c6b26243"
+    },
+    {
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "narutomod": "0.3.1-beta"
+      },
+      "bytes": 29778441,
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+    },
+    {
+      "file": "SpringAddon7.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "ahznbcursemarkaddon": "5.0"
+      },
+      "bytes": 24349345,
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c"
+    },
+    {
+      "file": "xaerolib-forge-1.12.2-1.7.3.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "xaerolib": null
+      },
+      "bytes": 617566,
+      "sha256": "6c0cab56a6f56e94eff537f0fdfa6f6f69b9d651caf221e44a837027a6d9b1c0"
+    },
+    {
+      "file": "[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "damageindicatorsmod": null
+      },
+      "bytes": 285416,
+      "sha256": "4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808"
+    },
+    {
+      "file": "RinneganAddon v1.3.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "rinneganaddon": "1.3"
+      },
+      "bytes": 412281,
+      "sha256": "bcb143c7dc6ee501774be39d66ce294b6135cbf555e9130205db814411a5f9c0"
+    },
+    {
+      "file": "marketblocks-1.0.7-forge1122.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "marketblocks": "1.0.7"
+      },
+      "bytes": 85963,
+      "sha256": "8b36f0526a9429a553050d05343d59bb52bb8807fcd1c6d011a1ee99ab64186e"
+    },
+    {
+      "file": "kabutoaddon 5.5.8-beta.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "kabutoaddon": "1.0.0"
+      },
+      "bytes": 3357299,
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59"
+    },
+    {
+      "file": "ahznb weapons plus 1.2.1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "ahznbswordsplus": "1.2.1"
+      },
+      "bytes": 2568601,
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3"
+    },
+    {
+      "file": "jei_1.12.2-4.22.0.1034.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "jei": "4.22.0.1034"
+      },
+      "bytes": 715518,
+      "sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2"
+    },
+    {
+      "file": "supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "supermartijn642configlib": "1.1.6"
+      },
+      "bytes": 204829,
+      "sha256": "9f15755020a966023eae8e9d1446441d175a88c09b1e458a47fcb3024d5e57f8"
+    },
+    {
+      "file": "CustomNPCs_1.12.2-(05Jul20)-SpringAddon-compat-r1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "customnpcs": "1.12"
+      },
+      "bytes": 9914591,
+      "sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b"
+    },
+    {
+      "file": "HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "hvbijuu": "0.16.2-rc1"
+      },
+      "bytes": 1055741,
+      "sha256": "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b"
+    },
+    {
+      "file": "almirioncore-1.1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "almirioncore": "1.0"
+      },
+      "bytes": 2924,
+      "sha256": "50e10d3542e12fa949d22ba257779d1601dfc49c58e005c8e029fe84b2f48e42"
+    },
+    {
+      "file": "AnbuBingoBook - 1.6.1.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "anbubingobook": "1.5.3"
+      },
+      "bytes": 307996,
+      "sha256": "50448009137a6fe29857c4cd33c841db8ecf67ff85fbf6c48e08541f2cd329a4"
+    },
+    {
+      "file": "Clumps-3.1.2.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "clumps": "3.1.2"
+      },
+      "bytes": 13792,
+      "sha256": "f3ce670e0087f4c6b770fd05ae5c3dfd8462f74c62397932ea72954d1c6c8df4"
+    },
+    {
+      "file": "ItemFilters-1.0.4.2.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "itemfilters": "1.0.4.2"
+      },
+      "bytes": 78935,
+      "sha256": "cdffbb810f75db50afce9681374f0604e4c1ed2dcfe768cff5b4e17d5384166b"
+    },
+    {
+      "file": "JutsuAddon v1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "jutsuaddon": "1.0"
+      },
+      "bytes": 216559,
+      "sha256": "badda88ba357c0fe78e069e2f6b57566ecdaa7718b03c7452902f3172d3338e0"
+    },
+    {
+      "file": "!mixinbooter-11.18.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {},
+      "bytes": 2451781,
+      "sha256": "ac6779132ca4df1a4f6319f3edc605c9d9b6c8ff6889e851472e2b41ecce273e"
+    },
+    {
+      "file": "xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "xaeroworldmap": null
+      },
+      "bytes": 943127,
+      "sha256": "a00a7d95dc8d19427d989d43968fea0d645b508fdc15bd568389e6b18bd17b6b"
+    },
+    {
+      "file": "CosmeticArmorReworked-1.12.2-v5a.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "cosmeticarmorreworked": null
+      },
+      "bytes": 72111,
+      "sha256": "a1dac96cf2168015255f4cad8748e8b969e99bd0919e9cb78deb9198ee9753e8"
+    },
+    {
+      "file": "worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "worldedit": "6.1.10"
+      },
+      "bytes": 1479535,
+      "sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75"
+    },
+    {
+      "file": "Waystones_1.12.2-4.1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "waystones": null
+      },
+      "bytes": 178994,
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15"
+    },
+    {
+      "file": "nmee-0.2.2-beta.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "nmee": "0.2.1-beta"
+      },
+      "bytes": 10113,
+      "sha256": "efcf8e1a85a7bb94c72f43e36692f329a6ce990f7f9782fcbd4686b860851f13"
+    },
+    {
+      "file": "geckolib-forge-1.12.2-3.0.31.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "geckolib3": "3.0.30"
+      },
+      "bytes": 3702893,
+      "sha256": "b00bc9de4e3e94cea0455f8d58b295c1464272135e842bdf3170c2c955c871a5"
+    },
+    {
+      "file": "NarutoModAddon-0.3.1- V1.3.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "narutomodaddon": "1.1"
+      },
+      "bytes": 1903408,
+      "sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf"
+    },
+    {
+      "file": "Fluidlogged-API-v3.3.3-mc1.12.2-magma-test.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "fluidlogged_api": "3.3.3"
+      },
+      "bytes": 800789,
+      "sha256": "366558ea28413d4b65fa09ac83edaea44117112623993eab83d65c4a63b0d8d8"
+    },
+    {
+      "file": "SharinganAddon v1.0.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "sharinganaddon": "1.0"
+      },
+      "bytes": 1054445,
+      "sha256": "fe7682724edeb5898a0fb65f624a12f3d9990bca0fa9ba625c9d1ad5d2dad8f3"
+    },
+    {
+      "file": "Patchouli-1.0-23.6.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "patchouli": null
+      },
+      "bytes": 472464,
+      "sha256": "8fcceac75c71e0d041db734111200205d03431b7e8646f8209cf2c4de9afef7b"
+    },
+    {
+      "file": "Controlling-3.0.12.4.jar",
+      "origin": "original49",
+      "component": null,
+      "mod_ids": {
+        "controlling": "3.0.10"
+      },
+      "bytes": 34383,
+      "sha256": "f5edd4793f96cd5a6f31aecbd3030093b367a51afba5d6f7281756d0f9c03786"
+    },
+    {
+      "file": "Vale-Client-Lifecycle-Compat-0.1.0.jar",
+      "origin": "vale-client",
+      "component": "client-lifecycle",
+      "mod_ids": {
+        "valeclientlifecycle": "0.1.0"
+      },
+      "bytes": 8456,
+      "sha256": "ab93003b43b8a5fab4843e34b589535365f93531f61326f185ec6eb0d8b49cc4"
+    },
+    {
+      "file": "field-controls-1.4.0-simple-candidate.jar",
+      "origin": "vale-client",
+      "component": "field-controls",
+      "mod_ids": {
+        "fieldcontrols": "1.4.0-simple-candidate"
+      },
+      "bytes": 125420,
+      "sha256": "d6949669b42dd20aae9856e447e9cb444efb8828a22707c0f2ffe5b3140365ce"
+    },
+    {
+      "file": "field-hud-0.14.1.jar",
+      "origin": "vale-client",
+      "component": "field-hud",
+      "mod_ids": {
+        "fieldhud": "0.14.1"
+      },
+      "bytes": 182952,
+      "sha256": "6b9c7153ecc1c03b25b645a59f0cd81e75b61ea839accee444cdcabe4315736e"
+    },
+    {
+      "file": "vale-encounters-0.3.6.jar",
+      "origin": "vale-client",
+      "component": "vale-encounters",
+      "mod_ids": {
+        "valeencounters": "0.3.6"
+      },
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "file": "vale-orders-0.3.12.jar",
+      "origin": "vale-client",
+      "component": "vale-orders",
+      "mod_ids": {
+        "valeorders": "0.3.12"
+      },
+      "bytes": 2071953,
+      "sha256": "7c8c91e0677a2e54cccc52459479bf57587fbd790347558c0786ee3e5d0fa8c8"
+    },
+    {
+      "file": "Vale-Rack-0.1.2.jar",
+      "origin": "vale-client",
+      "component": "vale-rack",
+      "mod_ids": {
+        "valerack": "0.1.2"
+      },
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "file": "vale-residents-0.2.0.jar",
+      "origin": "vale-client",
+      "component": "vale-residents",
+      "mod_ids": {
+        "valeresidents": "0.2.0"
+      },
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "file": "vale-world-compat-1.0.0.jar",
+      "origin": "vale-client",
+      "component": "vale-world-compat",
+      "mod_ids": {
+        "valeworldcompat": "1.0.0"
+      },
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "file": "Village-Standards-0.3.1.jar",
+      "origin": "vale-client",
+      "component": "village-standards",
+      "mod_ids": {
+        "hvdungeonpictures": "0.3.1"
+      },
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    },
+    {
+      "file": "OptiFine_1.12.2_HD_U_G5.jar",
+      "origin": "optifine",
+      "component": null,
+      "mod_ids": {},
+      "bytes": 2669107,
+      "sha256": "3b0006797771feb97f2d0d2908ae7c9a78cefb2e730af1c2e85d08a839ba271e"
+    }
+  ],
+  "six_shared_components": [
+    "vale-encounters",
+    "vale-orders",
+    "vale-rack",
+    "vale-residents",
+    "vale-world-compat",
+    "village-standards"
+  ],
+  "server_port": 25583,
+  "client_forge": "14.23.5.2859",
+  "server_forge": "14.23.5.2860",
+  "verification": {
+    "external_files_verified": 68,
+    "vanilla_asset_entries_verified": 1305,
+    "vanilla_asset_manifest_sha256": "881e0a9fe987d750250fcd08359bc52f4df067a610d435ef5ac20ba91726a9a3"
+  },
+  "canonicalEquipmentCatalog": false,
+  "JER_diyData": false,
+  "max_client_heap": "4G",
+  "auth_files_copied": false,
+  "world_copied": false,
+  "private_assembly_receipt": {
+    "bytes": 63476,
+    "sha256": "505634d7ce7f62a6d1a72cdb2357496e241ad009f4131d32c7faf7d2ae170ef3"
+  },
+  "private_launch_recipe": {
+    "bytes": 25128,
+    "sha256": "3129cbabbdde1c0eda9db2484b3a1b6844ca5d814c5eb5fccb86fcf9a4f0de3e"
+  },
+  "runtime": {
+    "process_exit_decimal": 3489660927,
+    "process_exit_hex": "0xCFFFFFFF",
+    "windows_status": "STATUS_APPLICATION_HANG",
+    "wer_event_type": "AppHangB1",
+    "windows_application_hang_event_id": 1002,
+    "windows_wer_event_id": 1001,
+    "target_local_date": "2026-11-13",
+    "timezone": "America/New_York",
+    "modded_connection_local": "15:49:10",
+    "joined_chat_local": "15:49:13",
+    "off_thread_gui_error_local": "15:50:41",
+    "windows_hang_close_local": "15:51:28",
+    "console": {
+      "bytes": 448278,
+      "sha256": "4942e7d6382c5c3faa6d223d3639f37925693cae825d386602d1d662c88825a2"
+    },
+    "stable_playtest_passed": false,
+    "target_jvm_fatal_error_file_found": false,
+    "target_forge_crash_report_found": false,
+    "target_resource_exhaustion_event_found": false,
+    "exact_hang_dependency_proven": false,
+    "unsafe_gui_owner_jar_sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b",
+    "unsafe_gui_class": "micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabQuests",
+    "unsafe_gui_caller": "lambda$onTabClicked$0()V",
+    "unsafe_gui_target": "net.minecraft.client.Minecraft.func_147108_a(Lnet/minecraft/client/gui/GuiScreen;)V",
+    "signer_warning_was_before_successful_join": true
+  },
+  "workaround_variant": {
+    "status": "ASSEMBLED_NOT_LAUNCHED",
+    "all_58_jar_bytes_unchanged": true,
+    "only_config_option_change": "CustomNPCs InventoryGuiEnabled true to false",
+    "unchanged_other_dependencies": 100,
+    "unchanged_generated_files": 3,
+    "change": {
+      "path": "config/CustomNpcs.cfg",
+      "option": "InventoryGuiEnabled",
+      "before_value": true,
+      "after_value": false,
+      "before": {
+        "bytes": 1551,
+        "sha256": "12fc583e3c5d789fb032d1a34bb963908f76f26c28406f072f124f8a30a00f9f"
+      },
+      "after": {
+        "bytes": 1552,
+        "sha256": "3117252718dcafd357cbc30bc47c95da23593b435193c375cf63fa47cc1a8f6d"
+      }
+    },
+    "private_variant_receipt": {
+      "bytes": 17374,
+      "sha256": "821606f3a8802cad25a6a7f686a7e9264aef95caa292cba7e3bce8cf93bdd387"
+    },
+    "private_launch_recipe": {
+      "bytes": 25152,
+      "sha256": "99b3674f61e31f377e059f41efbe6040ae8af6596ad4782e74e3f3b8ade0babd"
+    },
+    "suppresses_customnpcs_inventory_quest_faction_tabs": true,
+    "underlying_dispatch_fixed": false
+  },
+  "tests": {
+    "magma_smoke_fixtures": 25,
+    "result": "PASS"
+  },
+  "sources": [
+    {
+      "title": "Microsoft specific exceptions",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/specific-exceptions",
+      "claim": "0xCFFFFFFF is STATUS_APPLICATION_HANG"
+    }
+  ],
+  "limitations": [
+    "No hung-thread dump was captured; the off-thread screen call is a plausible trigger, not a proven exact terminal dependency.",
+    "Network join was logged; this is not stable graphical gameplay or all-mod parity acceptance.",
+    "No third-party JAR/OptiFine modification or removal.",
+    "No user UI control by this agent.",
+    "Controlled TabGuard variant entered the world and later logged stopping; no numeric exit code or manual quest-tab acceptance was retained."
+  ],
+  "source_checkpoint_sha256": {
+    "tools/magma_smoke/__init__.py": "778a4c9d8d6a164ea193d9bf2acd59663fc992faead2fc992c5eeb6ba5845183",
+    "tools/magma_smoke/__main__.py": "41c8176b06a0f07996c60dce0a2313dacf3c59bc9d2f267408d5f47e00cb5276",
+    "tools/magma_smoke/smoke.py": "3aeb0241ffb43e4172d3451f1c1f6dc1a4bff207a748709fddbeb842783ab3c5",
+    "tools/magma_smoke/world_profile.py": "a92901a342685aede15133e6bd3ac0262cd82d2097d86f8afbae1ae9d6d6957e",
+    "tools/magma_smoke/release_profile.py": "4ca9138de1ec2f6d125d79987ae75b27e47de35866613d0dea9ee6ae80a36aea",
+    "tools/magma_smoke/all_mods_client.py": "8640da0dd00a9cdbceacafaf79af5f5751f4db27268520122e866b02c390ad73",
+    "tools/magma_smoke/live_console.py": "d6dd646b965d3c4aa8f9017c3e19e33cb15478ba64902732eae7bf4bf60fe3cb",
+    "tests/test_magma_smoke.py": "c7eae07ce9105c6f28ac34be2201b63a3c3390dc9c73a42f7add056041837807",
+    "tools/magma_smoke/README.md": "b53541a6d96edcdfdf2f2ebdd6eee0cd25953a1b37bfa9d83f0e5af2df2e34d3",
+    "docs/magma-smoke-current.md": "67cc2c4bb2a783a6575ca51187d283fd03ed2a295229f3649a19aeab35d4a90e"
+  },
+  "controlled_variant_runtime": {
+    "joined": true,
+    "client_chat_join_local": "2026-11-13 16:06:38 America/New_York",
+    "server_disconnect_local": "2026-11-13 16:12:49 America/New_York",
+    "server_disconnect_reason": "Disconnected",
+    "minecraft_stopping_local": "2026-11-13 16:15:12 America/New_York",
+    "process_later_absent": true,
+    "exit_code": null,
+    "console_sha256": "bcc12363dd4467e821bd2093beb7e9546a5efa3f5dc0c22f7930666df537c850",
+    "console_bytes": 461802,
+    "all58_jar_hashes_reverified_by_root": true,
+    "six_shared_server_hashes_reverified_by_root": true,
+    "only_configuration_override": "InventoryGuiEnabled=false",
+    "manual_gui_or_vfx_acceptance": false,
+    "full_game_complete": false
+  }
+}

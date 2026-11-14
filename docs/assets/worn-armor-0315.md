@@ -1,0 +1,8 @@
+# Worn armor source integration 0.3.15
+
+The original UV master, asset manifest, complete reference backlog and precise acceptance limits are in [artwork/worn-armor-v1](../../artwork/worn-armor-v1/README.md). This source cohort replaces iron worn-texture fallbacks on the76 Focus and79 Outfit pieces, adds eight nature-specific Ward worn sets, and selects a separate Cloud-style Lightning kit only during the existing active Lightning effect. Registry IDs, inventories, powers and nine custom ArmorMesh profiles remain unchanged.
+
+Standalone Java8 compilation of the exact three changed armor classes plus the pure texture selector passed. `WornArmorChecks` passed1,779 resource/selection/mask assertions. Fresh authoring reconstruction passed1,315 checks, including173 PNGs and173 SVG masters matching byte-for-byte; the retained file08 reference metadata remains256 rows/13 JARs. Offline software rendering produced656 views with valid UVs and visible intended slots, explicitly including the otherwise transparent headwear cube. Source, resource, native, graphical and shaders acceptance are distinct; full0.3.15 build/native/client acceptance is pending at this checkpoint.
+
+
+Final source/native checkpoint: all 11 source areas / 36 artifacts PASS, exact source `767ca4b88d0e6b7755f04eac1750e7998f7ba5250d0e006a71106ce21c8d0be7`; disposable Forge native checks PASS 3,422 assertions, including actual registered worn getters and packaged assets. See `release/evidence/core0315-verification.json`. Fresh copied-client worn models, animation, lighting and shaders remain unverified. Earlier pending statements above describe the preceding authoring checkpoint.

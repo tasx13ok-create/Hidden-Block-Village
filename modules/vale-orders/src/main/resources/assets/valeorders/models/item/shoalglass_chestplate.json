@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/current_chestplate"
+  "parent": "valeorders:item/current_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/shoalglass_chestplate"
+  }
 }

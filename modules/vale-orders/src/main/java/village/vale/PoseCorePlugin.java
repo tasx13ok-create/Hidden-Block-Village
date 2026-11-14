@@ -7,9 +7,9 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 @IFMLLoadingPlugin.Name("Vale Run Pose")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 @IFMLLoadingPlugin.SortingIndex(1001)
-@IFMLLoadingPlugin.TransformerExclusions({"village.vale.PoseCorePlugin","village.vale.PoseTransformer"})
+@IFMLLoadingPlugin.TransformerExclusions({"village.vale.PoseCorePlugin","village.vale.PoseTransformer","village.vale.DodgeRenderTransformer"})
 public final class PoseCorePlugin implements IFMLLoadingPlugin {
-    @Override public String[] getASMTransformerClass(){return new String[]{"village.vale.PoseTransformer"};}
+    @Override public String[] getASMTransformerClass(){return new String[]{"village.vale.PoseTransformer","village.vale.DodgeRenderTransformer"};}
     @Override public String getModContainerClass(){return null;}
     @Override public String getSetupClass(){return null;}
     @Override public void injectData(Map<String,Object> data){}

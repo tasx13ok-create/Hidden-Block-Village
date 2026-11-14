@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "scope": "TWO_UI_COMPONENTS_ONLY",
+  "passed": true,
+  "finished_utc": "2026-11-14T00:05:53.888505+00:00",
+  "build_report_sha256": "12add067ce968cded326a5f5ef3c935d352648eb4a8c4e66eca1f75dcd315c51",
+  "source_changed_during_build": [],
+  "minecraft_launched": false,
+  "graphical_acceptance": false,
+  "live_0315_changed": false,
+  "predecessor_github_commit": "1ee69f3ba9a0b11339de9d0f2259bde83479fd2f",
+  "changed_source": {
+    "modules/field-controls/build.gradle": "4db6bb2e0d431831107f77633044c063275c059e79b11f4e4f2d35a213ec15a7",
+    "modules/field-controls/src/main/resources/mcmod.info": "23511de3ab34f529f124d9904e71ccb7c9ffe6ed2cc980497c8af442c5e7c0f4",
+    "modules/field-controls/src/main/java/village/controls/ControlsScreen.java": "84a216810aa78ea8c4e6330764aed706fd61f55a1967a66d424872d1490d21ea",
+    "modules/field-controls/src/main/java/village/controls/FieldControls.java": "bd817e3b4ff14eac8a59cf65562863eb733ade8e384185585d9e7db49605a0ea",
+    "modules/field-controls/src/main/java/village/controls/HudBridge.java": "c075dd250911802835ff6ca31784f4fe2ca3c6d9b60929568e0f446086a3d50c",
+    "modules/field-controls/src/main/java/village/controls/SettingsHub.java": "aa36794def03df7816ece8d216aca13b027f1045425b1f9167e9c0293bf46b27",
+    "modules/field-controls/src/main/java/village/controls/Surface.java": "dba0025452ce3ab08411045eaaa629de0894039c26c7c8e53bea3deff7441486",
+    "modules/field-hud/build.gradle": "1a06d9b52206203cf0ab5bcc706604a05b749f667fc33e6180aa13e8cf1d37f2",
+    "modules/field-hud/src/main/resources/mcmod.info": "6dc6ac473b74085585226b2d2bbc64d6c41dfed66111824f8ebf1cea232b77be",
+    "modules/field-hud/src/main/java/village/fieldhud/AdvancedHudScreen.java": "7e481ca1f3b829c5c4a1789f83dbdda1ab45e113efe6e216063f0811f777f207",
+    "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java": "c6fc535a7def1e20076d895671fd00ecbd0d8f5b96d6c81649cab4052274688c",
+    "modules/field-hud/src/main/java/village/fieldhud/HudScreen.java": "c9361c786c7734117824ba527147d8478bfab674f1f68ec46f5c70e380b2c13b",
+    "modules/field-hud/src/main/java/village/fieldhud/NarutoMenuLayout.java": "b59bf59c175ca3bcc13adff5a468f19bd7a2e9fda5cf3d904b7d91b1c0b27fb2",
+    "modules/field-hud/tests/village/fieldhud/NarutoMenuChecks.java": "6f8319afc91883fc1356e86276036973ad8bd7c15da77970b05921056efc5fb9"
+  },
+  "modules": {
+    "field-hud": {
+      "version": "0.17.0",
+      "component_checks": [
+        {
+          "task": "verifyCombatHold",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifyFreshSlotLookup",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifyNarutoMenus",
+          "state": "EXECUTED"
+        }
+      ],
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "field-hud-0.17.0.jar",
+          "sha256": "7e795f19291700622efa35397deb27e50b84aaec6ee766786f09e35ca14b14ba",
+          "bytes": 212216
+        },
+        {
+          "role": "development_api",
+          "name": "field-hud-0.17.0-dev.jar",
+          "sha256": "ee1e2249d81c805deddad954ac6beba87553c756f1f414a7bb47ba6b4594f62a",
+          "bytes": 209263
+        },
+        {
+          "role": "sources",
+          "name": "field-hud-0.17.0-sources.jar",
+          "sha256": "7f16dd9fe6137311e9cee0e1de4d9f4d32e18b1c52e35cf86d2482900c5bae22",
+          "bytes": 104484
+        }
+      ]
+    },
+    "field-controls": {
+      "version": "1.5.0",
+      "component_checks": [
+        {
+          "task": "verifyControls",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifyFocusedCast",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifyJutsuFocus",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifyMenus",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifySettings",
+          "state": "EXECUTED"
+        },
+        {
+          "task": "verifySimpleMenus",
+          "state": "EXECUTED"
+        }
+      ],
+      "artifacts": [
+        {
+          "role": "runtime_mod",
+          "name": "field-controls-1.5.0.jar",
+          "sha256": "c00795f2cd88f4b63c45888b320043aafabfd63bc6c03d17854627cefa58624b",
+          "bytes": 125339
+        },
+        {
+          "role": "development_api",
+          "name": "field-controls-1.5.0-dev.jar",
+          "sha256": "1c28d1971a4050dc15d98e8cd01619afe99842a4bfb93fd69dc3912be681cf05",
+          "bytes": 123708
+        },
+        {
+          "role": "sources",
+          "name": "field-controls-1.5.0-sources.jar",
+          "sha256": "3e49409994ca38ed69ff03a2a6fbe892ed3ce6a811dd8df79e4d86d8eaee114d",
+          "bytes": 52704
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "class": "village.fieldhud.NarutoMenuChecks",
+      "passed": true,
+      "output": "NARUTO_MENU_LAYOUT_PASS: 5172\n"
+    },
+    {
+      "class": "village.fieldhud.HoldGestureChecks",
+      "passed": true,
+      "output": "COMBAT_HOLD_PASS: 13\n"
+    },
+    {
+      "class": "village.fieldhud.FreshSlotLookupChecks",
+      "passed": true,
+      "output": "FRESH_SLOT_LOOKUP_PASS: 19\n"
+    },
+    {
+      "class": "village.controls.ControlsChecks",
+      "passed": true,
+      "output": "PASS: 3266 controls assertions across actual pack conflicts, three presets, contexts, drafts, undo, stress repair and profile recovery.\n"
+    },
+    {
+      "class": "village.controls.SettingsChecks",
+      "passed": true,
+      "output": "PASS: 1029 settings assertions across draft isolation, numeric bounds, gesture undo, reset, file/runtime rollback, retry and native-panel refresh.\n"
+    },
+    {
+      "class": "village.controls.FocusedCastChecks",
+      "passed": true,
+      "output": "PASS: 55 isolated HUD cast-adapter checks\n"
+    },
+    {
+      "class": "village.controls.JutsuFocusChecks",
+      "passed": true,
+      "output": "PASS: 1331 captured-catalog jutsu focus and upgrade allocation checks\n"
+    },
+    {
+      "class": "village.controls.MenuChecks",
+      "passed": true,
+      "output": "MENU_CHECKS_PASS assertions=279360 viewports=4260\n"
+    },
+    {
+      "class": "village.controls.SimpleMenuChecks",
+      "passed": true,
+      "output": "SIMPLE_MENU_CHECKS_PASS assertions=23009\n"
+    }
+  ],
+  "initial_failure": "Java8 ergonomic test heap approximately8GB; verify tasks now cap heaps512MB. Retry passed.",
+  "pending": [
+    "Complete modpack graphical menu entry/navigation and shader child return",
+    "Physical rebind and persistence in next isolated client",
+    "Core16/resource bridge acceptance is separate and unfinished"
+  ],
+  "runtime": {
+    "scope": "UI_ONLY_017_CLIENT_WITH_UNCHANGED_CORE0315_SERVER",
+    "prepared_utc": "2026-11-14T00:10:08.331208+00:00",
+    "client_jar_count": 58,
+    "unchanged_other_jars": 56,
+    "loaded_fml_mod_identities": 64,
+    "owner_same_test_profile": true,
+    "new_private_client_copy": true,
+    "old_client_files_modified": false,
+    "server_files_replaced": false,
+    "loopback_join_observed": true,
+    "graphical_world_hud_observed": true,
+    "shader_scene_observed": true,
+    "settings_menu_click_sent": false,
+    "settings_menu_graphical_acceptance": false,
+    "input_refused_due_to_owner_input": true,
+    "owner_play_observed_after_refusal": true,
+    "automation_stopped": true,
+    "private_stage_receipt_sha256": "b0c831a9ec98f35a5904bd251bb1b8ea88384b80ebde89488c29569eca1a25b9"
+  }
+}

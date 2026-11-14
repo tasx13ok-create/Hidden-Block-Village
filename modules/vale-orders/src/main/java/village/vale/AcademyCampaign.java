@@ -39,7 +39,7 @@ public final class AcademyCampaign {
         if(stage==1)tell(p,"Meet Aki at "+c.at(-16,0)+". Choose a foundation nature; existing ward choices are preserved.");
         if(stage==2)tell(p,"Walk blue markers in order: "+c.at(-20,12)+", "+c.at(-12,24)+", "+c.at(0,24)+". Progress "+s.getInteger("objective")+"/3, then return to Aki.");
         if(stage==3)tell(p,"At the sandstone ring, evade a marked strike; equip your issued set and sneak-use its saber to guard; learn Reed Escape, practice twice, then activate it before a strike. Defense flags "+s.getInteger("objective")+"/7. Return to Aki when all three pass.");
-        if(stage==4)tell(p,"Equip your issued set. Hold the technique codex; choose your first lance in /vale arts. Land three successful arts on your personal training construct, then return to Aki. "+s.getInteger("objective")+"/3.");
+        if(stage==4)tell(p,"Equip your issued set and hold the technique codex. Choose your first nature technique in /vale arts. Demonstrate it three times at your construct; Earth demonstrates accepted cover placement. Return to Aki. "+s.getInteger("objective")+"/3.");
         if(stage==5)tell(p,"Speak to Jun at "+c.at(16,0)+" for a one-time ingredient kit. Craft bread + cooked beef + carrot into travel rations at the kitchen, then give Jun one. Farm ingredients if your kit was lost.");
         if(stage==6){tell(p,"Your introductory academy course is complete. Speak to Ren at "+c.at(24,32)+" for the dispatch/ambush missions, or the Mission Officer at "+c.at(24,0)+" for contracts. The later graduation story is separate content.");button(p,"Field missions","/vale missions");}
     }
@@ -52,6 +52,7 @@ public final class AcademyCampaign {
         if(role.equals("arrival")&&stage==0)choice(p,session,"enroll","Receive my academy journal");
         if(role.equals("mentor")){
             if(stage==1)for(String nature:new String[]{"fire","water","earth","wind","lightning"})choice(p,session,nature,"Train "+nature);
+            if(stage>=2){choice(p,session,"powertrial","Try Lightning Chakra Armor and its combat trial");choice(p,session,"powerclaim","Claim my completed power trial");}
             if(stage==2||stage==3||stage==4)choice(p,session,"claim","Review my completed exercise");
             if(stage==3||stage==4)choice(p,session,"practice","Prepare my personal training construct");
         }
@@ -77,7 +78,9 @@ public final class AcademyCampaign {
             Order chosen=null;for(Order candidate:Order.values())if(candidate.key.equals(order))chosen=candidate;
             if(chosen==null||!Starter.choose(p,chosen))return false;
             state(p).setString("nature",order);complete(p,1);tell(p,"Equip the issued armor and saber from your inventory. Your existing ward identity, if any, was preserved.");
-        }else if(action.equals("practice")){prepareTarget(p);}
+        }else if(action.equals("powertrial")){return LightningTrial.begin(p);}
+        else if(action.equals("powerclaim")){return Missions.claim(p);}
+        else if(action.equals("practice")){prepareTarget(p);}
         else if(action.equals("claim")){
             if(!AcademyProgress.ready(state(p))){tell(p,"Complete the observed exercise first. Repeated clicks do not grant progress.");return false;}
             complete(p,session.stage);
@@ -146,6 +149,11 @@ public final class AcademyCampaign {
         if(!eligible(p)||!course(p).near(p,0,8,9)||target(p)!=contact||!key.equals(PlayerState.data(p).getString("starterOrder")+"_lance"))return;
         if(AcademyProgress.art(state(p))){Adventures.save(p);tell(p,"Academy art contact: "+state(p).getInteger("objective")+"/3.");}
     }
+    /** Called only after an actual protected, nonempty Earth wall placement. */
+    public static void defensiveArt(EntityPlayerMP p,String key,BlockPos center){
+        if(!eligible(p)||state(p).getInteger("stage")!=4||!"flint_lance".equals(key)||!"flint".equals(PlayerState.data(p).getString("starterOrder"))||target(p)==null||!course(p).near(p,0,8,9)||center==null||center.distanceSq(course(p).at(0,8))>100)return;
+        if(AcademyProgress.art(state(p))){Adventures.save(p);tell(p,"Academy Earth cover verified: "+state(p).getInteger("objective")+"/3.");}
+    }
     public static void tick(EntityPlayerMP p){
         if(!eligible(p))return;AcademyCourse c=course(p);NBTTagCompound s=state(p);int stage=s.getInteger("stage");long now=p.world.getTotalWorldTime();
         if(stage==2){
@@ -159,7 +167,7 @@ public final class AcademyCampaign {
         }
         if(!"academy_ambush".equals(PlayerState.data(p).getString("mission")))removeAmbush(p);
         EntityIronGolem dummy=target(p);if(dummy!=null){
-            dummy.extinguish();dummy.setHealth(dummy.getMaxHealth());
+            village.vale.arsenal.ScrollEvents.beforeHealthReset(dummy);dummy.extinguish();dummy.setHealth(dummy.getMaxHealth());
             if(c.near(p,0,8,9))s.setLong("targetSeen",now);
             if(now-s.getLong("targetSeen")>600){removeTarget(p);tell(p,"Your unused practice construct was cleared. Ask Aki to prepare another.");return;}
             if(stage!=3&&stage!=4){removeTarget(p);}

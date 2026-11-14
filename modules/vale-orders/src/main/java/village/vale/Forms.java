@@ -35,6 +35,7 @@ public final class Forms {
         if(kind<0||kind>=4||!p.isEntityAlive()||p.isSpectator())return false;
         NBTTagCompound s=PlayerState.data(p);long now=Adventures.now(p);
         if(active(p)>=0){end(p,true);return true;}
+        if(LightningKit.active(p))return Adventures.tell(p,"Release Lightning Chakra Armor before starting another form.");
         if(Combat.fullSet(p)==null)return Adventures.tell(p,"Equip a matching issued set before transforming.");
         if(PlayerState.level(p)<LEVELS[kind])return Adventures.tell(p,"This form requires level "+LEVELS[kind]+".");
         if(now<s.getLong("formReady"))return Adventures.tell(p,"Form cooling down: "+Rules.cooldownSeconds(now,s.getLong("formReady"))+"s.");

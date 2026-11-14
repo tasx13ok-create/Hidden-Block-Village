@@ -2,11 +2,14 @@
 import gzip
 import io
 import json
+import os
 from pathlib import Path
 import struct
+import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from contextlib import redirect_stdout, redirect_stderr
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -54,6 +57,41 @@ def house():
 
 
 class NBTHostileInputTests(unittest.TestCase):
+    def test_java_modified_utf8_null_astral_and_unpaired_surrogate_golden_bytes(self):
+        text = '\x00\U0001f600\ud800'
+        encoded = b'\xc0\x80\xed\xa0\xbd\xed\xb8\x80\xed\xa0\x80'
+        golden = b'\x0a\x00\x00\x08\x00\x01s' + struct.pack('>H', len(encoded)) + encoded + b'\x00'
+        root = nbt.compound({'s': nbt.Tag(nbt.STRING, text)})
+        self.assertEqual(golden, nbt.dumps(root, compression=None))
+        self.assertEqual(text, nbt.loads(golden)[1]['s'].value)
+        self.assertEqual(golden, nbt.dumps(nbt.loads(golden)[1], compression=None))
+        for illegal in (b'\xf0\x9f\x98\x80', b'\xc0', b'\xe0\x80\x80', b'\x80'):
+            with self.assertRaises(nbt.NBTError):
+                nbt.loads(b'\x0a\x00\x00\x08\x00\x01s' + struct.pack('>H', len(illegal)) + illegal + b'\x00')
+
+    def test_complete_compressed_stream_checksum_and_trailing_data_are_checked(self):
+        for compression in ('gzip', 'zlib'):
+            blob = nbt.dumps(nbt.compound({'keep': nbt.Tag(nbt.INT, 7)}), compression=compression)
+            for cut in (1, 2, 4):
+                with self.assertRaisesRegex(nbt.NBTError, 'Corrupt'):
+                    nbt.loads(blob[:-cut])
+            corrupt = blob[:-1] + bytes([blob[-1] ^ 0x80])
+            with self.assertRaisesRegex(nbt.NBTError, 'Corrupt'):
+                nbt.loads(corrupt)
+            for suffix in (b'junk', blob):
+                with self.assertRaisesRegex(nbt.NBTError, 'Trailing'):
+                    nbt.loads(blob + suffix)
+
+    def test_uncompressed_size_and_tag_object_allocation_are_bounded(self):
+        raw = nbt.dumps(nbt.compound({'many': nbt.Tag(nbt.LIST, [nbt.Tag(nbt.BYTE, 0)] * 100, nbt.BYTE)}), compression=None)
+        with self.assertRaisesRegex(nbt.NBTError, 'Input NBT exceeds'):
+            nbt.loads(raw, max_bytes=20)
+        with mock.patch.object(nbt, 'MAX_TAGS', 32):
+            with self.assertRaisesRegex(nbt.NBTError, 'allocation budget'):
+                nbt.loads(raw)
+        with self.assertRaises(nbt.NBTError):
+            nbt.loads(raw, max_bytes=0)
+
     def test_round_trip_preserves_types_and_order(self):
         root = nbt.compound({'b': nbt.Tag(nbt.SHORT, 7), 'a': nbt.Tag(nbt.LONG_ARRAY, [1, -2]),
                              'l': nbt.Tag(nbt.LIST, [], nbt.STRING), 's': nbt.Tag(nbt.STRING, 'kunai —')})
@@ -496,6 +534,276 @@ class WorldPasteTests(unittest.TestCase):
             anvil.Region(bad)
 
 
+class WorldSafetyTests(unittest.TestCase):
+    setUp = WorldPasteTests.setUp
+    tearDown = WorldPasteTests.tearDown
+
+    def candidate(self):
+        cand = self.dir / 'cand'
+        anvil.copy_world(self.source, cand)
+        return cand
+
+    def regions(self, world):
+        return {p.relative_to(world).as_posix(): p.read_bytes() for p in world.rglob('*.mca')}
+
+    def alias(self, link, target):
+        if os.name == 'nt':
+            result = subprocess.run(['cmd', '/c', 'mklink', '/J', str(link), str(target)], capture_output=True, text=True)
+            if result.returncode:
+                self.skipTest('Windows junction creation unavailable: ' + result.stderr)
+        else:
+            link.symlink_to(target, target_is_directory=True)
+
+    def test_keep_air_preserves_existing_chest_inventory_ticks_and_rejects_ghost_tile(self):
+        cand = self.candidate()
+        path = cand / 'region' / 'r.0.0.mca'
+        region = anvil.Region(path)
+        root = region.load_chunk(0)[1]
+        level = root['Level']
+        sec = anvil._section(level, 0, True)
+        for x in (0, 1):
+            sec['Blocks'].value[(4 << 8) | x] = CHEST
+            level['TileEntities'].value.append(nbt.compound({
+                'id': nbt.Tag(nbt.STRING, 'minecraft:chest'), 'x': nbt.Tag(nbt.INT, x),
+                'y': nbt.Tag(nbt.INT, 4), 'z': nbt.Tag(nbt.INT, 0),
+                'Items': nbt.Tag(nbt.LIST, [nbt.compound({'id': nbt.Tag(nbt.STRING, 'minecraft:diamond')})], nbt.COMPOUND)}))
+        level.value['TileTicks'] = nbt.Tag(nbt.LIST, [nbt.compound({
+            'x': nbt.Tag(nbt.INT, x), 'y': nbt.Tag(nbt.INT, 4), 'z': nbt.Tag(nbt.INT, 0)}) for x in (0, 1)], nbt.COMPOUND)
+        region.store_chunk(0, '', root)
+        region.save_atomic()
+        schematic = new_schematic(2, 1, 1)
+        schematic.set_block(1, 0, 0, STONE)
+        add_tile(schematic, 'minecraft:furnace', 0, 0, 0)  # invalid air tile must not replace retained chest
+        receipt = anvil.paste_into_world_copy(schematic, cand, (0, 4, 0), clear_air=False)
+        after = anvil.Region(path).load_chunk(0)[1]['Level']
+        self.assertEqual((CHEST, 0), anvil.read_block(cand, 0, 4, 0))
+        retained = [t for t in after['TileEntities'].value if t.scalar('x') == 0]
+        self.assertEqual(1, len(retained))
+        self.assertEqual('minecraft:diamond', retained[0]['Items'].value[0].scalar('id'))
+        self.assertEqual([0], [t.scalar('x') for t in after['TileTicks'].value])
+        self.assertEqual(1, receipt['totals']['tiles_removed'])
+        self.assertEqual(0, receipt['totals']['tiles_added'])
+
+    def test_heightmap_keeps_add_only_mod_block_above_vanilla_paste(self):
+        cand = self.candidate()
+        path = cand / 'region' / 'r.0.0.mca'
+        region = anvil.Region(path)
+        root = region.load_chunk(0)[1]
+        sec = anvil._section(root['Level'], 1, True)
+        sec.value['Add'] = nbt.Tag(nbt.BYTE_ARRAY, bytearray(2048))
+        anvil._nibble_set(sec['Add'].value, 4 << 8, 1)  # block256 at y20, low byte zero
+        root['Level']['ForgeCaps'].value['opaque'] = nbt.compound({
+            'longs': nbt.Tag(nbt.LONG_ARRAY, [1, -2, 9223372036854775807]),
+            'text': nbt.Tag(nbt.STRING, chr(0) + chr(0x1F600))})
+        original = root['Level']['ForgeCaps']
+        region.store_chunk(0, '', root)
+        region.save_atomic()
+        schematic = new_schematic(1, 1, 1)
+        schematic.set_block(0, 0, 0, STONE)
+        receipt = anvil.paste_into_world_copy(schematic, cand, (0, 4, 0))
+        level = anvil.Region(path).load_chunk(0)[1]['Level']
+        self.assertEqual(21, level['HeightMap'].value[0])
+        self.assertEqual((256, 0), anvil.read_block(cand, 0, 20, 0))
+        self.assertEqual(original, level['ForgeCaps'])
+        self.assertIn('native light opacity', receipt['heightmap_scope'])
+
+    def test_source_directory_alias_is_rejected_before_copy(self):
+        outside = self.dir / 'outside'
+        outside.mkdir()
+        (outside / 'private.txt').write_bytes(b'not world data')
+        self.alias(self.source / 'linked', outside)
+        with self.assertRaisesRegex(anvil.WorldError, 'reparse'):
+            anvil.copy_world(self.source, self.dir / 'cand')
+        self.assertFalse((self.dir / 'cand').exists())
+        self.assertEqual(b'not world data', (outside / 'private.txt').read_bytes())
+
+    def test_candidate_region_junction_cannot_redirect_paste_into_source(self):
+        cand = self.candidate()
+        (cand / 'region').rename(cand / 'region.private')
+        self.alias(cand / 'region', self.source / 'region')
+        with self.assertRaisesRegex(anvil.WorldError, 'reparse'):
+            anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+    def test_rollback_directory_alias_and_copied_marker_are_rejected(self):
+        cand = self.candidate()
+        self.alias(self.dir / 'cand.rollback', self.source)
+        with self.assertRaisesRegex(anvil.WorldError, 'reparse'):
+            anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        marker = json.loads((cand / anvil.MARKER).read_text())
+        (self.source / anvil.MARKER).write_text(json.dumps(marker))
+        with self.assertRaisesRegex(anvil.WorldError, 'another directory'):
+            anvil.paste_into_world_copy(house(), self.source, (0, 4, 0))
+
+    def test_late_parse_failure_changes_no_regions(self):
+        cand = self.candidate()
+        before = self.regions(cand)
+        real = anvil.Region.load_chunk
+        calls = 0
+        def fail_late(region, slot):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise anvil.WorldError('fixture later-region parse failure')
+            return real(region, slot)
+        with mock.patch.object(anvil.Region, 'load_chunk', fail_late), mock.patch.object(anvil, '_write_region') as writer:
+            with self.assertRaisesRegex(anvil.WorldError, 'later-region'):
+                anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+            writer.assert_not_called()
+        self.assertEqual(before, self.regions(cand))
+        self.assertIsNone(json.loads((cand / anvil.MARKER).read_text())['pending'])
+
+    def test_late_commit_failure_rolls_back_all_earlier_regions_with_prior_journal(self):
+        cand = self.candidate()
+        before = self.regions(cand)
+        real = anvil._write_region
+        calls = 0
+        def fail_late(world, relative, payload):
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                manifest = json.loads((world / anvil.MARKER).read_text())
+                journal = anvil._load_pending(world, manifest)
+                self.assertEqual(4, len(journal['regions']))
+                self.assertTrue(all((Path(journal['rollback_dir']) / 'after' / r['file']).is_file() for r in journal['regions']))
+            if calls == 2:
+                raise OSError('fixture second-region publication failure')
+            return real(world, relative, payload)
+        with mock.patch.object(anvil, '_write_region', fail_late):
+            with self.assertRaisesRegex(OSError, 'second-region'):
+                anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+        self.assertEqual(before, self.regions(cand))
+        manifest = json.loads((cand / anvil.MARKER).read_text())
+        self.assertEqual([], manifest['pastes'])
+        self.assertIsNone(manifest['pending'])
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+    def test_process_interruption_pending_journal_recovers_idempotently(self):
+        cand = self.candidate()
+        before = self.regions(cand)
+        real = anvil._write_region
+        def interrupted(world, relative, payload):
+            real(world, relative, payload)
+            raise KeyboardInterrupt('fixture process interruption after publication')
+        with mock.patch.object(anvil, '_write_region', interrupted):
+            with self.assertRaises(KeyboardInterrupt):
+                anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+        self.assertNotEqual(before, self.regions(cand))
+        self.assertIsNotNone(json.loads((cand / anvil.MARKER).read_text())['pending'])
+        self.assertTrue(anvil.recover_pending(cand)['recovered'])
+        self.assertEqual(before, self.regions(cand))
+        self.assertFalse(anvil.recover_pending(cand)['recovered'])
+        # Old transaction snapshots are kept; a fresh transaction identity permits retry.
+        anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        anvil.rollback(cand, 1)
+        anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        self.assertEqual(1, len(json.loads((cand / anvil.MARKER).read_text())['pastes']))
+
+    def test_damaged_last_snapshot_preflights_entire_rollback(self):
+        cand = self.candidate()
+        receipt = anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+        before = self.regions(cand)
+        row = next(r for r in receipt['regions'] if r['sha256_before'] is not None)
+        (Path(receipt['rollback_dir']) / 'before' / row['file']).write_bytes(b'bad backup')
+        with self.assertRaisesRegex(anvil.WorldError, 'damaged'):
+            anvil.rollback(cand, 1)
+        self.assertEqual(before, self.regions(cand))
+        self.assertEqual(1, len(json.loads((cand / anvil.MARKER).read_text())['pastes']))
+
+    def test_recovery_uses_verified_before_snapshots_when_staged_after_file_is_lost(self):
+        cand = self.candidate()
+        before = self.regions(cand)
+        real = anvil._write_region
+        def interrupted(world, relative, payload):
+            real(world, relative, payload)
+            raise KeyboardInterrupt('fixture after-file loss during interruption')
+        with mock.patch.object(anvil, '_write_region', interrupted):
+            with self.assertRaises(KeyboardInterrupt):
+                anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+        manifest = json.loads((cand / anvil.MARKER).read_text())
+        journal = anvil._load_pending(cand, manifest)
+        saved_after = Path(journal['rollback_dir']) / 'after' / journal['regions'][0]['file']
+        saved_after.unlink()
+        self.assertTrue(anvil.recover_pending(cand)['recovered'])
+        self.assertEqual(before, self.regions(cand))
+
+    def test_late_rollback_failure_restores_entire_precommand_candidate(self):
+        cand = self.candidate()
+        anvil.paste_into_world_copy(house(), cand, (-8, 4, -8))
+        before = self.regions(cand)
+        real = anvil._write_region
+        calls = 0
+        def fail_late(world, relative, payload):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError('fixture rollback publication failure')
+            return real(world, relative, payload)
+        with mock.patch.object(anvil, '_write_region', fail_late):
+            with self.assertRaisesRegex(OSError, 'rollback publication'):
+                anvil.rollback(cand, 1)
+        self.assertEqual(before, self.regions(cand))
+        self.assertEqual(1, len(json.loads((cand / anvil.MARKER).read_text())['pastes']))
+        self.assertIsNone(json.loads((cand / anvil.MARKER).read_text())['pending'])
+
+    def test_path_escape_and_postpaste_user_edits_abort_before_rollback_write(self):
+        cand = self.candidate()
+        receipt = anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        before = self.regions(cand)
+        marker_path = cand / anvil.MARKER
+        marker = json.loads(marker_path.read_text())
+        marker['pastes'][0]['regions'][0]['file'] = '../../source-world/level.dat'
+        marker_path.write_text(json.dumps(marker))
+        with self.assertRaisesRegex(anvil.WorldError, 'Invalid recorded region path'):
+            anvil.rollback(cand, 1)
+        self.assertEqual(before, self.regions(cand))
+        marker['pastes'][0] = receipt
+        marker_path.write_text(json.dumps(marker))
+        (cand / 'region' / 'r.0.0.mca').write_bytes(b'user change after paste')
+        with self.assertRaisesRegex(anvil.WorldError, 'changed since paste'):
+            anvil.rollback(cand, 1)
+        self.assertEqual(b'user change after paste', (cand / 'region' / 'r.0.0.mca').read_bytes())
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+    def test_exclusive_candidate_lock_and_unique_temporary_publication(self):
+        cand = self.candidate()
+        legacy_temp = cand / 'region' / 'r.0.0.mca.tmp'
+        legacy_temp.write_bytes(b'leave unrelated temp untouched')
+        with anvil._world_lock(cand):
+            with self.assertRaisesRegex(anvil.WorldError, 'lock'):
+                anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        anvil.paste_into_world_copy(house(), cand, (0, 4, 0))
+        self.assertEqual(b'leave unrelated temp untouched', legacy_temp.read_bytes())
+
+    def test_overlapping_sector_inventory_and_region_budget_are_rejected(self):
+        path = self.source / 'region' / 'r.0.0.mca'
+        raw = bytearray(path.read_bytes())
+        raw[4:8] = raw[0:4]
+        bad = self.dir / 'overlap.mca'
+        bad.write_bytes(raw)
+        with self.assertRaisesRegex(anvil.WorldError, 'overlaps'):
+            anvil.Region(bad)
+        with mock.patch.object(anvil, 'MAX_REGION_BYTES', 100):
+            with self.assertRaisesRegex(anvil.WorldError, 'budget'):
+                anvil.Region(path)
+
+    def test_chunk_compression_header_and_decoded_budget_are_checked(self):
+        region = anvil.Region(self.source / 'region' / 'r.0.0.mca')
+        with mock.patch.object(anvil, 'MAX_CHUNK_NBT_BYTES', 32):
+            with self.assertRaises(nbt.NBTError):
+                region.load_chunk(0)
+        region.chunks[0] = (2, nbt.dumps(anvil.new_chunk(0, 0), compression=None))
+        with self.assertRaisesRegex(anvil.WorldError, 'header'):
+            region.load_chunk(0)
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows case-insensitive paths')
+    def test_candidate_identity_accepts_windows_case_variant_without_weakening_isolation(self):
+        cand = self.candidate()
+        anvil.paste_into_world_copy(house(), str(cand).swapcase(), (0, 4, 0))
+        anvil.rollback(str(cand).swapcase(), 1)
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+
 class AnchorTests(unittest.TestCase):
     def gates(self):
         return {'schema': 1, 'anchors': {
@@ -574,6 +882,7 @@ class DoorwayTests(unittest.TestCase):
         r = doorways.propose(s, max_cost=2)
         for prop in r['proposals']:
             self.assertNotIn([7, 1, 10], [e['pos'] for e in prop['edits']])
+
 
 
 class NpcInventoryTests(unittest.TestCase):
@@ -672,6 +981,131 @@ class CliTests(unittest.TestCase):
             code, out, _ = self.run_cli('compare', '--old', str(a), '--new', str(a), '--delta', '0,0,0')
             self.assertEqual(0, code)
             self.assertEqual(1.0, json.loads(out)['retained_fraction_of_old_non_air'])
+
+
+class PasteReceiptCliTests(unittest.TestCase):
+    run_cli = CliTests.run_cli
+    tearDown = WorldPasteTests.tearDown
+    alias = WorldSafetyTests.alias
+
+    def setUp(self):
+        WorldPasteTests.setUp(self)
+        self.cand = self.dir / 'cand'
+        anvil.copy_world(self.source, self.cand)
+        self.schematic = save(house(), self.dir, 'input.schematic')
+
+    def inventory(self):
+        return {p.relative_to(self.cand).as_posix(): p.read_bytes() for p in self.cand.rglob('*') if p.is_file()}
+
+    def invoke(self, output):
+        return self.run_cli('paste-world', '--input', str(self.schematic), '--world-copy', str(self.cand),
+                            '--min', '0,4,0', '--receipt', str(output))
+
+    def unchanged(self, before):
+        self.assertEqual(before, self.inventory())
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+    def test_existing_receipt_refuses_before_any_candidate_mutation(self):
+        output = self.dir / 'existing.json'
+        output.write_bytes(b'preserve report')
+        before = self.inventory()
+        with mock.patch.object(anvil, 'paste_into_world_copy', wraps=anvil.paste_into_world_copy) as mutation:
+            code, _, error = self.invoke(output)
+            self.assertEqual(2, code)
+            self.assertIn('Refusing to overwrite', error)
+            mutation.assert_not_called()
+        self.assertEqual(b'preserve report', output.read_bytes())
+        self.unchanged(before)
+
+    def test_nested_source_candidate_and_rollback_receipts_refuse_without_creating_parents(self):
+        before = self.inventory()
+        for protected in (self.source, self.cand, self.dir / 'cand.rollback'):
+            output = protected / 'new-parent' / 'receipt.json'
+            with self.subTest(protected=protected), mock.patch.object(anvil, 'paste_into_world_copy', wraps=anvil.paste_into_world_copy) as mutation:
+                code, _, error = self.invoke(output)
+                self.assertEqual(2, code)
+                self.assertIn('outside source/candidate/rollback', error)
+                mutation.assert_not_called()
+                self.assertFalse(output.parent.exists())
+                self.unchanged(before)
+
+    def test_receipt_junction_aliases_refuse_before_any_candidate_mutation(self):
+        rollback_root = self.dir / 'cand.rollback'
+        rollback_root.mkdir()
+        before = self.inventory()
+        for index, protected in enumerate((self.source, self.cand, rollback_root)):
+            link = self.dir / ('receipt-link%d' % index)
+            self.alias(link, protected)
+            with self.subTest(protected=protected), mock.patch.object(anvil, 'paste_into_world_copy', wraps=anvil.paste_into_world_copy) as mutation:
+                code, _, error = self.invoke(link / 'receipt.json')
+                self.assertEqual(2, code)
+                self.assertIn('reparse', error)
+                mutation.assert_not_called()
+                self.unchanged(before)
+
+    def test_unwritable_parent_and_late_output_collision_refuse_before_mutation(self):
+        before = self.inventory()
+        parent = self.dir / 'not-a-directory'
+        parent.write_bytes(b'keep parent')
+        with mock.patch.object(anvil, 'paste_into_world_copy', wraps=anvil.paste_into_world_copy) as mutation:
+            self.assertEqual(2, self.invoke(parent / 'receipt.json')[0])
+            mutation.assert_not_called()
+        output = self.dir / 'raced.json'
+        output.write_bytes(b'created by another writer')
+        real_exists = Path.exists
+        def before_collision(path):
+            return False if path == output else real_exists(path)
+        with mock.patch.object(Path, 'exists', before_collision), mock.patch.object(anvil, 'paste_into_world_copy', wraps=anvil.paste_into_world_copy) as mutation:
+            self.assertEqual(2, self.invoke(output)[0])
+            mutation.assert_not_called()
+        self.assertEqual(b'created by another writer', output.read_bytes())
+        self.unchanged(before)
+
+    def test_failed_paste_removes_only_its_external_receipt_reservation(self):
+        output = self.dir / 'reports' / 'receipt.json'
+        before = self.inventory()
+        def fail_after_preflight(*args, **kwargs):
+            self.assertTrue(output.is_file())
+            raise anvil.WorldError('fixture no world mutation')
+        with mock.patch.object(anvil, 'paste_into_world_copy', side_effect=fail_after_preflight) as mutation:
+            code, _, error = self.invoke(output)
+            self.assertEqual(2, code)
+            self.assertIn('fixture no world mutation', error)
+            mutation.assert_called_once()
+        self.assertFalse(output.exists())
+        self.unchanged(before)
+
+    def test_valid_external_receipt_is_written_for_synthetic_committed_paste(self):
+        output = self.dir / 'reports' / 'receipt.json'
+        code, _, error = self.invoke(output)
+        self.assertEqual(0, code, error)
+        receipt = json.loads(output.read_text())
+        self.assertEqual('committed', receipt['status'])
+        self.assertEqual(receipt, json.loads((self.cand / anvil.MARKER).read_text())['pastes'][0])
+        self.assertEqual((CHEST, 3), anvil.read_block(self.cand, 6, 5, 6))
+        self.assertEqual(self.source_hashes, {p.name: sha256_file(p) for p in self.source.rglob('*') if p.is_file()})
+
+    def test_postcommit_report_io_failure_explicitly_reports_committed_internal_receipt(self):
+        output = self.dir / 'receipt.json'
+        real_open = open
+        class FailingReceipt:
+            def __init__(self, handle): self.handle = handle
+            def __enter__(self): return self
+            def __exit__(self, *args): self.handle.close()
+            def fileno(self): return self.handle.fileno()
+            def close(self): self.handle.close()
+            def write(self, value): raise OSError('fixture full output device')
+        def fail_external_write(path, mode='r', *args, **kwargs):
+            handle = real_open(path, mode, *args, **kwargs)
+            return FailingReceipt(handle) if Path(path) == output and mode == 'x' else handle
+        with mock.patch('builtins.open', fail_external_write):
+            code, _, error = self.invoke(output)
+        self.assertEqual(2, code)
+        self.assertIn('Paste committed', error)
+        marker = json.loads((self.cand / anvil.MARKER).read_text())
+        self.assertEqual(1, len(marker['pastes']))
+        self.assertTrue((Path(marker['pastes'][0]['rollback_dir']) / 'PASTE-RECEIPT.json').is_file())
+        self.assertFalse(output.exists())
 
 
 if __name__ == '__main__':

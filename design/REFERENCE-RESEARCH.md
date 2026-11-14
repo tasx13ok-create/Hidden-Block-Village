@@ -73,3 +73,14 @@ Translate observations into original solutions and testable scenarios. Do not ac
 Use `docs/recovery-status.md`, `docs/current-handoff.md`, the gameplay guides, Encounters/Rack documentation and `release/evidence/windows-desktop-20261113-verification.json` for existing-work claims. Available dungeon baseline: the older workspace's `README-v9.txt`, authored v9 arrays/scripts and prepared save. The new archive audit supplies metadata/CRC/hash results, not mechanics or license clearance.
 
 The historical 324-obligation audit was bounded, and its complete private records are not present here. Recover/repeat observations rather than fabricate missing rows. Registered items and shared-engine profiles need behavioral acceptance before they close a reference obligation.
+
+
+## Additional primary feedback checked 13 November 2026
+
+These are individual reports / creator-described features, not a representative player survey; no third-party implementation was copied.
+
+- A player reports disproportionate technique volume and requests a control in [Naruto-Mod issue 242](https://github.com/sekwah41/Naruto-Mod/issues/242). **Design consequence:** provide a per-user technique sound multiplier with conservative loop volume. Merely offering reduced particles does not solve sound fatigue. This sound control remains implementation work; the current vanilla-sound stand-ins are not final audio.
+- The developer tracks damage through walls in [issue 214](https://github.com/sekwah41/Naruto-Mod/issues/214) and cooldown icons in [issue 211](https://github.com/sekwah41/Naruto-Mod/issues/211). These are titled requests without detailed issue bodies. **Design consequence:** preserve native geometry/line-of-sight tests and show the selected technique's recovery where the player looks, rather than making chat the only feedback. Our hand-contact fixtures already test occlusion; this does not establish every projectile's final visual/geometry acceptance.
+- The [Chakra Addon creator description](https://modrinth.com/mod/ahznbs-naruto-mod-chakra-addon) advertises immediate ninja/jutsu starts, chakra retention after death, charging and reuse of learning scrolls. **Inference:** short access to fun powers and recovery from setbacks are practical design priorities in this ecosystem. Our optional early Lightning kit and mastered private tryout address early access; creator advertising alone cannot prove broad demand or complete ordinary progression quality. That addon is marked ARR; these observations grant no asset/code redistribution permission.
+
+The next sound/UI changes must be verified in the actual client alongside other mods and key bindings. Continue the full weapon, world and dungeon obligations; this evidence is not a scope reduction.

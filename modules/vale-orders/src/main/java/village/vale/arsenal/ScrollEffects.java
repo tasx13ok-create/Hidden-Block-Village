@@ -30,7 +30,21 @@ final class ScrollEffects {
  static boolean hit(EntityPlayerMP p,EntityLivingBase t,float amount,Potion status,int ticks,int amp){if(t==null||!ArsenalAccess.hit(p,t,amount))return false;if(status!=null)t.addPotionEffect(new PotionEffect(status,ticks,amp));return true;}
  static Vec3d ground(EntityPlayerMP p,int range){Vec3d eye=p.getPositionEyes(1);RayTraceResult r=p.world.rayTraceBlocks(eye,eye.add(p.getLookVec().scale(range)),false,true,false);return r!=null&&r.typeOfHit==RayTraceResult.Type.BLOCK&&r.sideHit==EnumFacing.UP?r.hitVec.add(0,.1,0):null;}
  static boolean spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase target,int life,float power){return ScrollActor.spawn(p,kind,at,target,life,power)!=null;}
- static boolean mode(EntityPlayerMP p,String kind,int ticks){NBTTagCompound s=Scrolls.state(p);String current=s.getString("mode");long now=ArsenalAccess.now(p);if(!current.isEmpty()&&s.getLong("modeUntil")>now){s.setString("mode","");s.setLong("modeUntil",0);ArsenalAccess.save(p);return true;}s.setString("mode",kind);s.setLong("modeUntil",now+ticks);HandTechnique.begin(p,kind);return true;}
+ static boolean mode(EntityPlayerMP p,String kind,int ticks){
+  NBTTagCompound s=Scrolls.state(p);String current=s.getString("mode");long now=ArsenalAccess.now(p);
+  s.setLong("modeVersion",s.getLong("modeVersion")+1);
+  // Using the same technique toggles it off; choosing another technique must
+  // replace the old mode, not spend its cost merely dismissing the old one.
+  if(current.equals(kind)&&s.getLong("modeUntil")>now){
+   s.setString("mode","");s.setLong("modeUntil",0);Scrolls.recordApplied(p);HandTechnique.end(p);ArsenalAccess.save(p);return true;
+  }
+  s.setString("mode",kind);s.setLong("modeUntil",now+ticks);
+  // The gameplay state has already changed. Decorative spawn/sound callbacks must
+  // neither refund a live mode nor prevent a valid technique from completing.
+  Scrolls.recordApplied(p);
+  try{HandTechnique.begin(p,kind);}catch(RuntimeException error){org.apache.logging.log4j.LogManager.getLogger("ValeJutsu").warn("Hand-technique presentation failed; gameplay mode retained",error);}
+  return true;
+ }
  static boolean cast(EntityPlayerMP p,Scrolls.Lesson l){
   EntityLivingBase t;Vec3d at;NBTTagCompound s=Scrolls.state(p);String k=l.kind;
   switch(k){

@@ -1,0 +1,713 @@
+SONNET: REFERENCE ARMOR AND WEAPONS NOT NAMED IN THE CURRENT VALE CHECKLIST
+
+673 model/visual-state rows. Alternate, thrown, blocking and extended forms are NOT extra unique weapons.
+These appeared in the full original-pack reference appendix, but were not named in the current Vale art checklist. No automatic generic-Vale-to-character mapping is claimed.
+Each needs a coverage decision for its original inventory icon AND recognizable held/worn appearance. Preserve the reference ID for tracking; do not invent a production registry ID.
+
+Armor / wearables — Baryon Expansion_beta2.jar
+[ ] Baryon Choumei Cloak | baryonexpansion:item/baryonchoumei_cloakbody
+[ ] Baryon Gyuki Cloak | baryonexpansion:item/baryongyuki_cloakbody
+[ ] Baryon Isobu Cloak | baryonexpansion:item/baryonisobu_cloakbody
+[ ] Baryon Kokou Cloak | baryonexpansion:item/baryonkokou_cloakbody
+[ ] Baryon Matatabi Cloak | baryonexpansion:item/baryonmatatabi_cloakbody
+[ ] Baryon Saiken Cloak | baryonexpansion:item/baryonsaiken_cloakbody
+[ ] Baryon Shukaku Cloak | baryonexpansion:item/baryonshukaku_cloakbody
+[ ] Baryon Son Goku Cloak | baryonexpansion:item/baryonsongoku_cloakbody
+
+Armor / wearables — BorutoMod Addon byAnimeSupremeTeam v1.0.jar
+[ ] Boro Core | borutomodaddononero:item/boro_corebody
+[ ] Boruto (Season 1) Body | borutomodaddononero:item/boruto_armor_season_1body
+[ ] Boruto (Season 1) Leggings | borutomodaddononero:item/boruto_armor_season_1legs
+[ ] Isshiki Cloack | borutomodaddononero:item/isshiki_cloackbody
+[ ] Jogan | borutomodaddononero:item/joganhelmet
+[ ] Karma Boruto Stage 2 (Body) | borutomodaddononero:item/karma_boruto_stage_2body
+[ ] Karma Boruto Stage 2 (Helmet) | borutomodaddononero:item/karma_boruto_stage_2helmet
+[ ] Karma Kawaki Stage 2 (Body) | borutomodaddononero:item/karma_kawaki_stage_2body
+[ ] Karma Kawaki Stage 2 (Helmet) | borutomodaddononero:item/karma_kawaki_stage_2helmet
+[ ] Kokugan | borutomodaddononero:item/kokuganhelmet
+[ ] Senrigan | borutomodaddononero:item/senriganhelmet
+
+Armor / wearables — HiddenVillage-BijuuArmor-0.16.2-rc1.jar
+[ ] Chomei Boots | hvbijuu:item/chomei_boots
+[ ] Chomei Boots Gui | hvbijuu:item/chomei_boots_gui
+[ ] Chomei Chestplate | hvbijuu:item/chomei_chestplate
+[ ] Chomei Chestplate Gui | hvbijuu:item/chomei_chestplate_gui
+[ ] Chomei Helmet | hvbijuu:item/chomei_helmet
+[ ] Chomei Helmet Gui | hvbijuu:item/chomei_helmet_gui
+[ ] Chomei Leggings | hvbijuu:item/chomei_leggings
+[ ] Chomei Leggings Gui | hvbijuu:item/chomei_leggings_gui
+[ ] Gyuki Boots | hvbijuu:item/gyuki_boots
+[ ] Gyuki Boots Gui | hvbijuu:item/gyuki_boots_gui
+[ ] Gyuki Chestplate | hvbijuu:item/gyuki_chestplate
+[ ] Gyuki Chestplate Gui | hvbijuu:item/gyuki_chestplate_gui
+[ ] Gyuki Helmet | hvbijuu:item/gyuki_helmet
+[ ] Gyuki Helmet Gui | hvbijuu:item/gyuki_helmet_gui
+[ ] Gyuki Leggings | hvbijuu:item/gyuki_leggings
+[ ] Gyuki Leggings Gui | hvbijuu:item/gyuki_leggings_gui
+[ ] Isobu Boots | hvbijuu:item/isobu_boots
+[ ] Isobu Boots Gui | hvbijuu:item/isobu_boots_gui
+[ ] Isobu Chestplate | hvbijuu:item/isobu_chestplate
+[ ] Isobu Chestplate Gui | hvbijuu:item/isobu_chestplate_gui
+[ ] Isobu Helmet | hvbijuu:item/isobu_helmet
+[ ] Isobu Helmet Gui | hvbijuu:item/isobu_helmet_gui
+[ ] Isobu Leggings | hvbijuu:item/isobu_leggings
+[ ] Isobu Leggings Gui | hvbijuu:item/isobu_leggings_gui
+[ ] Kokuo Boots | hvbijuu:item/kokuo_boots
+[ ] Kokuo Boots Gui | hvbijuu:item/kokuo_boots_gui
+[ ] Kokuo Chestplate | hvbijuu:item/kokuo_chestplate
+[ ] Kokuo Chestplate Gui | hvbijuu:item/kokuo_chestplate_gui
+[ ] Kokuo Helmet | hvbijuu:item/kokuo_helmet
+[ ] Kokuo Helmet Gui | hvbijuu:item/kokuo_helmet_gui
+[ ] Kokuo Leggings | hvbijuu:item/kokuo_leggings
+[ ] Kokuo Leggings Gui | hvbijuu:item/kokuo_leggings_gui
+[ ] Kurama Boots | hvbijuu:item/kurama_boots
+[ ] Kurama Boots Gui | hvbijuu:item/kurama_boots_gui
+[ ] Kurama Chestplate | hvbijuu:item/kurama_chestplate
+[ ] Kurama Chestplate Gui | hvbijuu:item/kurama_chestplate_gui
+[ ] Kurama Helmet | hvbijuu:item/kurama_helmet
+[ ] Kurama Helmet Gui | hvbijuu:item/kurama_helmet_gui
+[ ] Kurama Leggings | hvbijuu:item/kurama_leggings
+[ ] Kurama Leggings Gui | hvbijuu:item/kurama_leggings_gui
+[ ] Matatabi Boots | hvbijuu:item/matatabi_boots
+[ ] Matatabi Boots Gui | hvbijuu:item/matatabi_boots_gui
+[ ] Matatabi Chestplate | hvbijuu:item/matatabi_chestplate
+[ ] Matatabi Chestplate Gui | hvbijuu:item/matatabi_chestplate_gui
+[ ] Matatabi Helmet | hvbijuu:item/matatabi_helmet
+[ ] Matatabi Helmet Gui | hvbijuu:item/matatabi_helmet_gui
+[ ] Matatabi Leggings | hvbijuu:item/matatabi_leggings
+[ ] Matatabi Leggings Gui | hvbijuu:item/matatabi_leggings_gui
+[ ] Saiken Boots | hvbijuu:item/saiken_boots
+[ ] Saiken Boots Gui | hvbijuu:item/saiken_boots_gui
+[ ] Saiken Chestplate | hvbijuu:item/saiken_chestplate
+[ ] Saiken Chestplate Gui | hvbijuu:item/saiken_chestplate_gui
+[ ] Saiken Helmet | hvbijuu:item/saiken_helmet
+[ ] Saiken Helmet Gui | hvbijuu:item/saiken_helmet_gui
+[ ] Saiken Leggings | hvbijuu:item/saiken_leggings
+[ ] Saiken Leggings Gui | hvbijuu:item/saiken_leggings_gui
+[ ] Shukaku Boots | hvbijuu:item/shukaku_boots
+[ ] Shukaku Boots Gui | hvbijuu:item/shukaku_boots_gui
+[ ] Shukaku Chestplate | hvbijuu:item/shukaku_chestplate
+[ ] Shukaku Chestplate Gui | hvbijuu:item/shukaku_chestplate_gui
+[ ] Shukaku Helmet | hvbijuu:item/shukaku_helmet
+[ ] Shukaku Helmet Gui | hvbijuu:item/shukaku_helmet_gui
+[ ] Shukaku Leggings | hvbijuu:item/shukaku_leggings
+[ ] Shukaku Leggings Gui | hvbijuu:item/shukaku_leggings_gui
+[ ] Son Goku Boots | hvbijuu:item/son_goku_boots
+[ ] Son Goku Boots Gui | hvbijuu:item/son_goku_boots_gui
+[ ] Son Goku Chestplate | hvbijuu:item/son_goku_chestplate
+[ ] Son Goku Chestplate Gui | hvbijuu:item/son_goku_chestplate_gui
+[ ] Son Goku Helmet | hvbijuu:item/son_goku_helmet
+[ ] Son Goku Helmet Gui | hvbijuu:item/son_goku_helmet_gui
+[ ] Son Goku Leggings | hvbijuu:item/son_goku_leggings
+[ ] Son Goku Leggings Gui | hvbijuu:item/son_goku_leggings_gui
+
+Armor / wearables — NarutoMod-1.12.2-0.3.1.beta.jar
+[ ] Akatsuki Robe | narutomod:item/akatsuki_robebody
+[ ] Akatsuki Hat | narutomod:item/akatsuki_robehelmet
+[ ] Anbu Robe Body | narutomod:item/anbu_robebody
+[ ] Asura Path Bodygear | narutomod:item/asurapatharmorbody
+[ ] Biju Cloak Body | narutomod:item/biju_cloakbody
+[ ] Biju Cloak Helmet | narutomod:item/biju_cloakhelmet
+[ ] Biju Cloak Leggings | narutomod:item/biju_cloaklegs
+[ ] Bone Armor | narutomod:item/bone_armorbody
+[ ] Byakugan | narutomod:item/byakuganhelmet
+[ ] Fake Rinne Sharingan | narutomod:item/byakurinnesharinganhelmet
+[ ] Hokage Robe | narutomod:item/clothes_hokagebody
+[ ] Hokage Hat | narutomod:item/clothes_hokagehelmet
+[ ] Kage Robe | narutomod:item/clothes_kazekagebody
+[ ] Kazekage Hat | narutomod:item/clothes_kazekagehelmet
+[ ] Mizukage Hat | narutomod:item/clothes_mizukagehelmet
+[ ] Raikage Hat | narutomod:item/clothes_raikagehelmet
+[ ] Tsuchikage Hat | narutomod:item/clothes_tsuchikagehelmet
+[ ] Dojutsu | narutomod:item/dojutsu
+[ ] Iron Sand Gourd | narutomod:item/gourdbody
+[ ] Eternal Mangekyo Sharingan | narutomod:item/mangekyosharinganeternalhelmet
+[ ] Mangekyo Sharingan - Amaterasu | narutomod:item/mangekyosharinganhelmet
+[ ] Mangekyo Sharingan - Kamui | narutomod:item/mangekyosharinganobitohelmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_1helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_2helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_3helmet
+[ ] Mask Anbu | narutomod:item/mask_anbu_4helmet
+[ ] Mask Obito | narutomod:item/mask_obito_1helmet
+[ ] Mask Obito (4th Ninja War) | narutomod:item/mask_obito_warhelmet
+[ ] Ninja Armor | narutomod:item/ninja_armor
+[ ] Forehead Protector (Amegakure) | narutomod:item/ninja_armor_amehelmet
+[ ] Ninja Suit (Amegakure) | narutomod:item/ninja_armor_amelegs
+[ ] Chest Armor (Anbu) | narutomod:item/ninja_armor_anbubody
+[ ] Ninja Boots (Anbu) | narutomod:item/ninja_armor_anbuboots
+[ ] Ninja Pants (Anbu) | narutomod:item/ninja_armor_anbulegs
+[ ] Ninja Fishnets Shirt and Pants | narutomod:item/ninja_armor_fishnetslegs
+[ ] Flak Jacket (Iwagakure) | narutomod:item/ninja_armor_iwabody
+[ ] Ninja Boots (Iwagakure) | narutomod:item/ninja_armor_iwaboots
+[ ] Forehead Protector (Iwagakure) | narutomod:item/ninja_armor_iwahelmet
+[ ] Ninja Pants (Iwagakure) | narutomod:item/ninja_armor_iwalegs
+[ ] Jiraiya Jacket | narutomod:item/ninja_armor_jiraiyabody
+[ ] Jiraiya Forehead Protector | narutomod:item/ninja_armor_jiraiyahelmet
+[ ] Jiraiya Clothes | narutomod:item/ninja_armor_jiraiyalegs
+[ ] Jumpsuit | narutomod:item/ninja_armor_jumpsuitlegs
+[ ] Flak Jacket (Kirigakure) | narutomod:item/ninja_armor_kiribody
+[ ] Ninja Boots (Kirigakure) | narutomod:item/ninja_armor_kiriboots
+[ ] Forehead Protector (Kirigakure) | narutomod:item/ninja_armor_kirihelmet
+[ ] Ninja Pants (Kirigakure) | narutomod:item/ninja_armor_kirilegs
+[ ] Flak Jacket (Konoha) | narutomod:item/ninja_armor_konohabody
+[ ] Forehead Protector (Konoha) | narutomod:item/ninja_armor_konohahelmet
+[ ] Ninja Pants (Konoha) | narutomod:item/ninja_armor_konohalegs
+[ ] Flak Jacket (Kumogakure) | narutomod:item/ninja_armor_kumobody
+[ ] Ninja Boots (Kumogakure) | narutomod:item/ninja_armor_kumoboots
+[ ] Forehead Protector (Kumogakure) | narutomod:item/ninja_armor_kumohelmet
+[ ] Ninja Pants (Kumogakure) | narutomod:item/ninja_armor_kumolegs
+[ ] Naruto Jacket | narutomod:item/ninja_armor_naruto_sbody
+[ ] Naruto Pants | narutomod:item/ninja_armor_naruto_slegs
+[ ] Obito Suit (4th Ninja War) | narutomod:item/ninja_armor_obito_warbody
+[ ] Ninja Outfit (Otogakure) | narutomod:item/ninja_armor_otobody
+[ ] Ninja Mask (Otogakure) | narutomod:item/ninja_armor_otohelmet
+[ ] Ninja Leggings (Otogakure) | narutomod:item/ninja_armor_otolegs
+[ ] Sakura Vest | narutomod:item/ninja_armor_sakura_1body
+[ ] Sakura Leggings | narutomod:item/ninja_armor_sakura_1legs
+[ ] Ninja Armor Sound Body | narutomod:item/ninja_armor_soundbody
+[ ] Ninja Armor Sound Helmet | narutomod:item/ninja_armor_soundhelmet
+[ ] Flak Jacket (Sunagakure) | narutomod:item/ninja_armor_sunabody
+[ ] Ninja Boots (Sunagakure) | narutomod:item/ninja_armor_sunaboots
+[ ] Forehead Protector (Sunagakure) | narutomod:item/ninja_armor_sunahelmet
+[ ] Ninja Pants (Sunagakure) | narutomod:item/ninja_armor_sunalegs
+[ ] 1st Ninja War Body Armor | narutomod:item/ninja_armor_war_1body
+[ ] Facial Protector (Konoha) | narutomod:item/ninja_armor_war_1helmet
+[ ] Rinne Sharingan Body | narutomod:item/rinneganbody
+[ ] Rinnegan | narutomod:item/rinneganhelmet
+[ ] Rinne Sharingan Leggings | narutomod:item/rinneganlegs
+[ ] Robe | narutomod:item/robe
+[ ] Jiraiya Robe | narutomod:item/robe_jiraiyabody
+[ ] Samurai Armor | narutomod:item/samurai_armorbody
+[ ] Samurai Helmet | narutomod:item/samurai_armorhelmet
+[ ] Samurai Leggings | narutomod:item/samurai_armorlegs
+[ ] Sharingan | narutomod:item/sharinganhelmet
+[ ] Steam Armor Shirt | narutomod:item/steam_armorbody
+[ ] Steam Armor Hat | narutomod:item/steam_armorhelmet
+[ ] Steam Armor Leggings | narutomod:item/steam_armorlegs
+[ ] Tenseigan Chakra | narutomod:item/tenseiganbody
+[ ] Tenseigan | narutomod:item/tenseiganhelmet
+[ ] Tenseigan Chakra | narutomod:item/tenseiganlegs
+[ ] Uchiha Body | narutomod:item/uchihabody
+[ ] Ninja Sandles | narutomod:item/uchihaboots
+[ ] Uchiha Leggings | narutomod:item/uchihalegs
+
+Armor / wearables — NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar
+[ ] Chojuro Body | narutomodaddononero:item/armor_chojurobody
+[ ] Chojuro Helmet | narutomodaddononero:item/armor_chojurohelmet
+[ ] Chojuro Leggings | narutomodaddononero:item/armor_chojurolegs
+[ ] Gaara Body | narutomodaddononero:item/armor_gaarabody
+[ ] Gaara Leggings | narutomodaddononero:item/armor_gaaralegs
+[ ] Haku Body | narutomodaddononero:item/armor_hakubody
+[ ] Haku Leggings | narutomodaddononero:item/armor_hakulegs
+[ ] Konohamaru Body | narutomodaddononero:item/armor_konohamarubody
+[ ] Konohamaru Leggings | narutomodaddononero:item/armor_konohamarulegs
+[ ] Naruto The Last Body | narutomodaddononero:item/armor_naruto_the_lastbody
+[ ] Naruto The Last Leggings | narutomodaddononero:item/armor_naruto_the_lastlegs
+[ ] Neji Body | narutomodaddononero:item/armor_nejibody
+[ ] Neji Leggings | narutomodaddononero:item/armor_nejilegs
+[ ] Onoki Body | narutomodaddononero:item/armor_onokibody
+[ ] Onoki Leggings | narutomodaddononero:item/armor_onokilegs
+[ ] Orochimaru Body | narutomodaddononero:item/armor_orochimarubody
+[ ] Orochimaru Leggings | narutomodaddononero:item/armor_orochimarulegs
+[ ] Sasuke The Last Body | narutomodaddononero:item/armor_sasuke_the_lastbody
+[ ] Sasuke The Last Leggings | narutomodaddononero:item/armor_sasuke_the_lastlegs
+[ ] Shisui Body | narutomodaddononero:item/armor_shisuibody
+[ ] Shisui Helmet | narutomodaddononero:item/armor_shisuihelmet
+[ ] Shisui Leggings | narutomodaddononero:item/armor_shisuilegs
+[ ] Zabuza Body | narutomodaddononero:item/armor_zabuzabody
+[ ] Zabuza Helmet | narutomodaddononero:item/armor_zabuzahelmet
+[ ] Zabuza Leggings | narutomodaddononero:item/armor_zabuzalegs
+[ ] Belt Raikage | narutomodaddononero:item/belt_raikagebody
+[ ] Easter Protector | narutomodaddononero:item/easter_bandanahelmet
+[ ] First Hokage Necklace | narutomodaddononero:item/first_hokage_necklacebody
+[ ] Paper Wings | narutomodaddononero:item/paper_wings_armorbody
+[ ] Utakata Cloak Body | narutomodaddononero:item/utakata_cloakbody
+
+Armor / wearables — RinneganAddon v1.3.jar
+[ ] Obito's Eternal Mangekyou Sharingan Rinnegan | narutomod:item/rinnegansharinganobitohelmet
+[ ] Rinnegan Tomoe | narutomod:item/rinnegantomoehelmet
+
+Armor / wearables — SharinganAddon v1.0.jar
+[ ] Mangekyo Sharingan - Tsukuyomi | narutomod:item/mangekyosharinganitachihelmet
+[ ] Mangekyo Sharingan - Kotoamatsukami | narutomod:item/mangekyosharinganshisuihelmet
+
+Armor / wearables — SpringAddon7.0.jar
+[ ] Blue Rinnegan | ahznbcursemarkaddon:item/blue_rinneganhelmet
+[ ] ByakuSharingan | ahznbcursemarkaddon:item/byakusharinganhelmet
+[ ] Coral Armor | ahznbcursemarkaddon:item/coral_armorbody
+[ ] Dudu Rinnegan | ahznbcursemarkaddon:item/dudu_rinneganhelmet
+[ ] Eternal Mangekyo Sharingan Inferno | ahznbcursemarkaddon:item/e_mangekyo_sharingan_infernohelmet
+[ ] Eye | ahznbcursemarkaddon:item/eyehelmet
+[ ] Fake Kokugan | ahznbcursemarkaddon:item/fake_kokuganhelmet
+[ ] Glass Eye | ahznbcursemarkaddon:item/glass_eyehelmet
+[ ] Halfsharinganhelmet | ahznbcursemarkaddon:item/halfsharinganhelmet
+[ ] Jougan | ahznbcursemarkaddon:item/jouganhelmet
+[ ] Ketsuryugan | ahznbcursemarkaddon:item/ketsuryugan_onhelmet
+[ ] Ketsuryugan | ahznbcursemarkaddon:item/ketsuryuganoffhelmet
+[ ] Kingan | ahznbcursemarkaddon:item/kinganhelmet
+[ ] Madara Rinnegan | ahznbcursemarkaddon:item/madara_rinneganhelmet
+[ ] Mangekyo Sharingan Inferno | ahznbcursemarkaddon:item/mangekyo_sharingan_infernohelmet
+[ ] Mangekyo Sharingan Madara | ahznbcursemarkaddon:item/mangekyo_sharingan_madarahelmet
+[ ] Mangekyo Sharingan Magicians | ahznbcursemarkaddon:item/mangekyo_sharingan_magicianshelmet
+[ ] Mangekyo Sharingan Preta | ahznbcursemarkaddon:item/mangekyo_sharingan_pretahelmet
+[ ] Mangekyosharinganspringhelmet | ahznbcursemarkaddon:item/mangekyosharinganspringhelmet
+[ ] OP Jougan | ahznbcursemarkaddon:item/mike_jouganhelmet
+[ ] Ratja's Eye | ahznbcursemarkaddon:item/ratja_eyehelmet
+[ ] Red Rinnegan | ahznbcursemarkaddon:item/red_rinneganhelmet
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorbody
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorhelmet
+[ ] Susanoo Armor | ahznbcursemarkaddon:item/susanoo_armorlegs
+[ ] Yashi Eye | ahznbcursemarkaddon:item/yashi_eyehelmet
+
+Armor / wearables — VariedCommodities_1.12.2-(31Mar23).jar
+[ ] Assassins Boots | variedcommodities:item/assassin_boots
+[ ] Assassins ChestPlate | variedcommodities:item/assassin_chest
+[ ] Assassins Helmet | variedcommodities:item/assassin_head
+[ ] Assassins Leggings | variedcommodities:item/assassin_legs
+[ ] Bandit Mask | variedcommodities:item/bandit_mask
+[ ] Bronze Skirt | variedcommodities:item/bronze_skirt
+[ ] Chain Skirt | variedcommodities:item/chain_skirt
+[ ] Commissar Trenchcoat | variedcommodities:item/commissar_bottom
+[ ] Commissar ChestPlate | variedcommodities:item/commissar_chest
+[ ] Commissar Helmet | variedcommodities:item/commissar_head
+[ ] Commissar Leggings | variedcommodities:item/commissar_legs
+[ ] Cowleather Boots | variedcommodities:item/cow_leather_boots
+[ ] Cowleather ChestPlate | variedcommodities:item/cow_leather_chest
+[ ] Cowleather Helmet | variedcommodities:item/cow_leather_head
+[ ] Cowleather Leggings | variedcommodities:item/cow_leather_legs
+[ ] Crown | variedcommodities:item/crown
+[ ] Crown | variedcommodities:item/crown2
+[ ] Demonic Boots | variedcommodities:item/demonic_boots
+[ ] Demonic ChestPlate | variedcommodities:item/demonic_chest
+[ ] Demonic Helmet | variedcommodities:item/demonic_head
+[ ] Demonic Leggings | variedcommodities:item/demonic_legs
+[ ] Demonic Skirt | variedcommodities:item/demonic_skirt
+[ ] Diamond Skirt | variedcommodities:item/diamond_skirt
+[ ] Emerald Skirt | variedcommodities:item/emerald_skirt
+[ ] Full Bronze Boots | variedcommodities:item/full_bronze_boots
+[ ] Full Bronze ChestPlate | variedcommodities:item/full_bronze_chest
+[ ] Full Bronze Helmet | variedcommodities:item/full_bronze_head
+[ ] Full Bronze Leggings | variedcommodities:item/full_bronze_legs
+[ ] Full Diamond ChestPlate | variedcommodities:item/full_diamond_chest
+[ ] Full Diamond Helmet | variedcommodities:item/full_diamond_head
+[ ] Full Emerald Boots | variedcommodities:item/full_emerald_boots
+[ ] Full Emerald ChestPlate | variedcommodities:item/full_emerald_chest
+[ ] Full Emerald Helmet | variedcommodities:item/full_emerald_head
+[ ] Full Emerald Leggings | variedcommodities:item/full_emerald_legs
+[ ] Full Gold ChestPlate | variedcommodities:item/full_golden_chest
+[ ] Full Gold Helmet | variedcommodities:item/full_golden_head
+[ ] Full Iron ChestPlate | variedcommodities:item/full_iron_chest
+[ ] Full Iron Helmet | variedcommodities:item/full_iron_head
+[ ] Full Leather ChestPlate | variedcommodities:item/full_leather_chest
+[ ] Full Leather Helmet | variedcommodities:item/full_leather_head
+[ ] Full Wooden Boots | variedcommodities:item/full_wooden_boots
+[ ] Full Wooden ChestPlate | variedcommodities:item/full_wooden_chest
+[ ] Full Wooden Helmet | variedcommodities:item/full_wooden_head
+[ ] Full Wooden Leggings | variedcommodities:item/full_wooden_legs
+[ ] Golden Skirt | variedcommodities:item/golden_skirt
+[ ] Infantry Helmet | variedcommodities:item/infantry_helmet
+[ ] Iron Skirt | variedcommodities:item/iron_skirt
+[ ] Leather Skirt | variedcommodities:item/leather_skirt
+[ ] Mithril Boots | variedcommodities:item/mithril_boots
+[ ] Mithril ChestPlate | variedcommodities:item/mithril_chest
+[ ] Mithril Helmet | variedcommodities:item/mithril_head
+[ ] Mithril Leggings | variedcommodities:item/mithril_legs
+[ ] Mithril Skirt | variedcommodities:item/mithril_skirt
+[ ] Nanorum Boots | variedcommodities:item/nanorum_boots
+[ ] Nanorum ChestPlate | variedcommodities:item/nanorum_chest
+[ ] Nanorum Helmet | variedcommodities:item/nanorum_head
+[ ] Nanorum Leggings | variedcommodities:item/nanorum_legs
+[ ] Necklace | variedcommodities:item/necklace
+[ ] Ninja Chest | variedcommodities:item/ninja_chest
+[ ] Ninja Head | variedcommodities:item/ninja_head
+[ ] Ninja Leggings | variedcommodities:item/ninja_legs
+[ ] Officer ChestPlate | variedcommodities:item/officer_chest
+[ ] Paper Crown | variedcommodities:item/paper_crown
+[ ] Soldier Trenchcoat | variedcommodities:item/soldier_bottom
+[ ] Soldier ChestPlate | variedcommodities:item/soldier_chest
+[ ] Soldier Helmet | variedcommodities:item/soldier_head
+[ ] Soldier Leggings | variedcommodities:item/soldier_legs
+[ ] Tactical Vest | variedcommodities:item/tactical_chest
+[ ] Tactical Helmet | variedcommodities:item/tactical_head
+[ ] Tuxedo Trenchcoat | variedcommodities:item/tuxedo_bottom
+[ ] Tuxedo Chest | variedcommodities:item/tuxedo_chest
+[ ] Tuxedo Pants | variedcommodities:item/tuxedo_pants
+[ ] Wizard Chest | variedcommodities:item/wizard_chest
+[ ] Wizard Head | variedcommodities:item/wizard_head
+[ ] Wizard Leggings | variedcommodities:item/wizard_pants
+[ ] X407 Prototype Boots | variedcommodities:item/x407_boots
+[ ] X407 Prototype ChestPlate | variedcommodities:item/x407_chest
+[ ] X407 Prototype Helmet | variedcommodities:item/x407_head
+[ ] X407 Prototype Leggings | variedcommodities:item/x407_legs
+
+Armor / wearables — kabutoaddon 5.5.8-beta.jar
+[ ] Akatsuki Robes | kabutoaddon:item/akatsuki_robes
+[ ] Biju Cloakbody | kabutoaddon:item/biju_cloakbody
+[ ] Biju Cloakhelmet | kabutoaddon:item/biju_cloakhelmet
+[ ] Biju Cloaklegs | kabutoaddon:item/biju_cloaklegs
+[ ] Butterfly Mode | kabutoaddon:item/choji_wings
+[ ] Cloud Ninja Headband | kabutoaddon:item/cloudheadband
+[ ] Edo Tensei Robe | kabutoaddon:item/edo_tensei_robe
+[ ] Haku Robe | kabutoaddon:item/haku_robe
+[ ] Kabuto Armor Pt 1 | kabutoaddon:item/kabuto_armor_pt_1
+[ ] Kabuto Robe | kabutoaddon:item/kabutohood
+[ ] Kakashi Armor | kabutoaddon:item/kakashi_armor
+[ ] Leaf Ninja Headband | kabutoaddon:item/leafheadband
+[ ] Ninja Headband | kabutoaddon:item/ninja_headband
+[ ] Obi Belt | kabutoaddon:item/obi_belt
+[ ] Obibelt | kabutoaddon:item/obibelt
+[ ] Rain Ninja Headband | kabutoaddon:item/rainheadband
+[ ] Rinne Sharingan | kabutoaddon:item/rinne_sharingan
+[ ] Rinne Sharingan Helmet | kabutoaddon:item/rinne_sharingan_helmet
+[ ] Sai Jacket | kabutoaddon:item/sai_jacket
+[ ] Sand Ninja Headband | kabutoaddon:item/sandheadband
+[ ] Shino Hood | kabutoaddon:item/shino_hood
+[ ] Sound Ninja Headband | kabutoaddon:item/soundheadband
+[ ] Stone Ninja Headband | kabutoaddon:item/stoneheadband
+[ ] Tb Armor | kabutoaddon:item/tb_armor
+
+Weapons — BorutoMod Addon byAnimeSupremeTeam v1.0.jar
+[ ] Chakra Axe | borutomodaddononero:item/chakra_axe
+[ ] Chakra Knife | borutomodaddononero:item/chakra_knife
+[ ] Chakra Spear | borutomodaddononero:item/chakra_spear
+[ ] Chakra Thimble | borutomodaddononero:item/chakra_thimble
+
+Weapons — NarutoMod-1.12.2-0.3.1.beta.jar
+[ ] Adamantine Nyoi | narutomod:item/adamantine_nyoi
+[ ] Anbu Sword | narutomod:item/anbu_sword
+[ ] All-Killing Ash Bones | narutomod:item/ashbones
+[ ] Asura Canon | narutomod:item/asuracanon
+[ ] Black Receiver | narutomod:item/black_receiver
+[ ] Bone Drill | narutomod:item/bone_drill
+[ ] Bone Sword | narutomod:item/bone_sword
+[ ] Chakra Blades | narutomod:item/chakra_blades
+[ ] Chokuto | narutomod:item/chokuto
+[ ] Triple bladed claw | narutomod:item/claw
+[ ] Cleaver Sword | narutomod:item/cleaver
+[ ] Explosive Tag | narutomod:item/explosive_tag
+[ ] Giant Folding Fan (form 0) | narutomod:item/folding_fan_0
+[ ] Giant Folding Fan (form 1) | narutomod:item/folding_fan_1
+[ ] Fuma Shuriken | narutomod:item/fuma_shuriken
+[ ] Metal Gauntlet | narutomod:item/gaunlet
+[ ] Metal Gauntlet | narutomod:item/gauntlet_thrown
+[ ] Gunbai | narutomod:item/gunbai
+[ ] Gunbai Blocking | narutomod:item/gunbai_blocking
+[ ] Gunbai Thrown | narutomod:item/gunbai_thrown
+[ ] Hiramekarei Sword | narutomod:item/hiramekarei_sword
+[ ] Ice Senbon | narutomod:item/ice_senbon
+[ ] Ishiken | narutomod:item/ishiken
+[ ] Kabutowari | narutomod:item/kabutowari
+[ ] Kabutowari Axe | narutomod:item/kabutowari_axe
+[ ] Kabutowari Hammer | narutomod:item/kabutowari_hammer
+[ ] Kagutsuchi Sword | narutomod:item/kagutsuchiswordranged
+[ ] Kamui Shuriken | narutomod:item/kamuishuriken
+[ ] Kiba Blades | narutomod:item/kiba_blades
+[ ] Kunai | narutomod:item/kunai
+[ ] 3-prong Kunai | narutomod:item/kunai_3prong
+[ ] Kunai Blade | narutomod:item/kunai_blade
+[ ] Kunai Explosive | narutomod:item/kunai_explosive
+[ ] Kunai Hiraishin | narutomod:item/kunai_hiraishin
+[ ] Kusanagi Sword | narutomod:item/kusanagi_sword
+[ ] Nuibari Sword | narutomod:item/nuibari_sword
+[ ] Nuibari Sword | narutomod:item/nuibari_thrown
+[ ] Poison Senbons | narutomod:item/poison_senbon
+[ ] Poison Bomb | narutomod:item/poisonbomb
+[ ] Truth Seeking Shakujo | narutomod:item/sage_staff
+[ ] Samehada | narutomod:item/samehada
+[ ] Scythe 3-blade | narutomod:item/scythe_hidan
+[ ] Scythe 3-blade | narutomod:item/scythe_hidan_thrown
+[ ] Scythe Madara | narutomod:item/scythe_madara
+[ ] Scythe Madara Thrown | narutomod:item/scythe_madara_thrown
+[ ] Senbon | narutomod:item/senbon
+[ ] Puppet poison senbon arm canon | narutomod:item/senbon_arm
+[ ] Shibuki Sword | narutomod:item/shibuki_sword
+[ ] Shuriken | narutomod:item/shuriken
+[ ] Smoke Bomb | narutomod:item/smoke_bomb
+[ ] Sound Reflecting Gauntlet | narutomod:item/sound_gaunlet
+[ ] Retractable Spear (form 0) | narutomod:item/spear_retractable_0
+[ ] Retractable Spear (form 1) | narutomod:item/spear_retractable_1
+[ ] Retractable Spear (form 2) | narutomod:item/spear_retractable_2
+[ ] Retractable Spear (form 3) | narutomod:item/spear_retractable_3
+[ ] Retractable Spear (form 4) | narutomod:item/spear_retractable_4
+[ ] Retractable Spear (form 5) | narutomod:item/spear_retractable_5
+[ ] Retractable Spear (form 6) | narutomod:item/spear_retractable_6
+[ ] Retractable Spear (form 7) | narutomod:item/spear_retractable_7
+[ ] Totsuka Sword | narutomod:item/totsuka_sword
+[ ] Yagura Staff | narutomod:item/yagura_staff
+[ ] Kubikiribocho | narutomod:item/zabuza_sword
+
+Weapons — NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar
+[ ] Bo Staff | narutomodaddononero:item/bo_staff
+[ ] Crystal Senbon | narutomodaddononero:item/crystal_senbon
+[ ] Default Katana | narutomodaddononero:item/default_katana_1
+[ ] Default Katana | narutomodaddononero:item/default_katana_2
+[ ] Dragon Blade | narutomodaddononero:item/dragon_blade
+[ ] Fire Sword | narutomodaddononero:item/fire_sword
+[ ] Garian Sword | narutomodaddononero:item/garian_sword
+[ ] Knight Sword | narutomodaddononero:item/knight_sword
+[ ] Konoha Chakra Blade | narutomodaddononero:item/konoha_chakra_blade
+[ ] Kurosawa | narutomodaddononero:item/kurosawa
+[ ] Kusarigama Hanzo | narutomodaddononero:item/kusarigama_hanzo
+[ ] Nodati | narutomodaddononero:item/nodati
+[ ] Nunoboko | narutomodaddononero:item/nunoboko
+[ ] Sai | narutomodaddononero:item/sai
+[ ] Sand Aikitechu | narutomodaddononero:item/sand_aikitechu
+[ ] Scythe | narutomodaddononero:item/scythe
+[ ] Spear | narutomodaddononero:item/spear
+[ ] Supervibrato Lightning Release Swords | narutomodaddononero:item/supervibrato_lightning_release_swords
+[ ] Sword Blue White | narutomodaddononero:item/sword_blue
+[ ] Sword of the Thunder God | narutomodaddononero:item/swordofthe_thunder_god
+[ ] Tonfa | narutomodaddononero:item/tonfa
+[ ] Umbrella | narutomodaddononero:item/umbrella
+[ ] Weaknessless Soaring Shortswords | narutomodaddononero:item/weaknessless_soaring_shortswordsv_1
+[ ] Weaknessless Soaring Shortswordsv | narutomodaddononero:item/weaknessless_soaring_shortswordsv_2
+[ ] White Ligth Chakra Sword | narutomodaddononero:item/wlcs
+
+Weapons — SpringAddon7.0.jar
+[ ] Kumo Nenkin Bow | ahznbcursemarkaddon:item/kumo_nenkin_bow
+[ ] Steel Claw | ahznbcursemarkaddon:item/steel_claw
+[ ] Clemantis Dance: Vine | ahznbcursemarkaddon:item/vine_sword
+[ ] Whip | ahznbcursemarkaddon:item/whip
+
+Weapons — VariedCommodities_1.12.2-(31Mar23).jar
+[ ] Baseball Bat | variedcommodities:item/baseball_bat
+[ ] Basic Battleaxe | variedcommodities:item/basic_battleaxe
+[ ] Basic Broadsword | variedcommodities:item/basic_broadsword
+[ ] Basic Claw | variedcommodities:item/basic_claw
+[ ] Basic Dagger | variedcommodities:item/basic_dagger
+[ ] Basic Dagger Reversed | variedcommodities:item/basic_dagger_reversed
+[ ] Basic Glaive | variedcommodities:item/basic_glaive
+[ ] Basic Gun | variedcommodities:item/basic_gun
+[ ] Basic Scythe | variedcommodities:item/basic_scythe
+[ ] Basic Shield | variedcommodities:item/basic_shield
+[ ] Basic Shield Blocking | variedcommodities:item/basic_shield_blocking
+[ ] Basic Spear | variedcommodities:item/basic_spear
+[ ] Basic Staff | variedcommodities:item/basic_staff
+[ ] Basic Warhammer | variedcommodities:item/basic_warhammer
+[ ] Baton | variedcommodities:item/batton
+[ ] Bear Claw | variedcommodities:item/bear_claw
+[ ] Bo Staff | variedcommodities:item/bo_staff
+[ ] Broken Bottle | variedcommodities:item/broken_bottle
+[ ] Bronze Battle Axe | variedcommodities:item/bronze_battleaxe
+[ ] Bronze Broadsword | variedcommodities:item/bronze_broadsword
+[ ] Bronze Dagger | variedcommodities:item/bronze_dagger
+[ ] Reversed Bronze Dagger | variedcommodities:item/bronze_dagger_reversed
+[ ] Bronze Glaive | variedcommodities:item/bronze_glaive
+[ ] Bronze Gun | variedcommodities:item/bronze_gun
+[ ] Bronze Halberd | variedcommodities:item/bronze_halberd
+[ ] Bronze Mace | variedcommodities:item/bronze_mace
+[ ] Bronze Scythe | variedcommodities:item/bronze_scythe
+[ ] Bronze Shield | variedcommodities:item/bronze_shield
+[ ] Bronze Shield Blocking | variedcommodities:item/bronze_shield_blocking
+[ ] Round Bronze Shield | variedcommodities:item/bronze_shield_round
+[ ] Bronze Shield Round Blocking | variedcommodities:item/bronze_shield_round_blocking
+[ ] Bronze Spear | variedcommodities:item/bronze_spear
+[ ] Bronze Staff | variedcommodities:item/bronze_staff
+[ ] Bronze Sword | variedcommodities:item/bronze_sword
+[ ] Bronze Trident | variedcommodities:item/bronze_trident
+[ ] Bronze Warhammer | variedcommodities:item/bronze_warhammer
+[ ] GunChainsaw | variedcommodities:item/chainsaw_gun
+[ ] Chicken Sword | variedcommodities:item/chicken_sword
+[ ] Cleaver | variedcommodities:item/cleaver
+[ ] Combat Knife | variedcommodities:item/combat_knive
+[ ] Steel Cryscent Shield | variedcommodities:item/crescent_shield
+[ ] Crescent Shield Blocking | variedcommodities:item/crescent_shield_blocking
+[ ] Crossbow | variedcommodities:item/crossbow
+[ ] Crowbar | variedcommodities:item/crowbar
+[ ] Cursed Trident | variedcommodities:item/cursed_trident
+[ ] Demonic Battle Axe | variedcommodities:item/demonic_battleaxe
+[ ] Demonic Broadsword | variedcommodities:item/demonic_broadsword
+[ ] Demonic Dagger | variedcommodities:item/demonic_dagger
+[ ] Reversed Demonic Dagger | variedcommodities:item/demonic_dagger_reversed
+[ ] Demonic Glaive | variedcommodities:item/demonic_glaive
+[ ] Demonic Halberd | variedcommodities:item/demonic_halberd
+[ ] Demonic Mace | variedcommodities:item/demonic_mace
+[ ] Demonic Scythe | variedcommodities:item/demonic_scythe
+[ ] Demonic Shield | variedcommodities:item/demonic_shield_round
+[ ] Demonic Shield Round Blocking | variedcommodities:item/demonic_shield_round_blocking
+[ ] Demonic Spear | variedcommodities:item/demonic_spear
+[ ] Demonic Staff | variedcommodities:item/demonic_staff
+[ ] Demonic Sword | variedcommodities:item/demonic_sword
+[ ] Demonic Trident | variedcommodities:item/demonic_trident
+[ ] Demonic Warhammer | variedcommodities:item/demonic_warhammer
+[ ] Diamond Battle Axe | variedcommodities:item/diamond_battleaxe
+[ ] Diamond Broadsword | variedcommodities:item/diamond_broadsword
+[ ] Diamond Dagger | variedcommodities:item/diamond_dagger
+[ ] Reversed Diamond Dagger | variedcommodities:item/diamond_dagger_reversed
+[ ] Diamond Glaive | variedcommodities:item/diamond_glaive
+[ ] Diamond Gun | variedcommodities:item/diamond_gun
+[ ] Diamond Halberd | variedcommodities:item/diamond_halberd
+[ ] Diamond Mace | variedcommodities:item/diamond_mace
+[ ] Diamond Scythe | variedcommodities:item/diamond_scythe
+[ ] Diamond Shield | variedcommodities:item/diamond_shield
+[ ] Diamond Shield Blocking | variedcommodities:item/diamond_shield_blocking
+[ ] Round Diamond Shield | variedcommodities:item/diamond_shield_round
+[ ] Diamond Shield Round Blocking | variedcommodities:item/diamond_shield_round_blocking
+[ ] Diamond Spear | variedcommodities:item/diamond_spear
+[ ] Diamond Staff | variedcommodities:item/diamond_staff
+[ ] Diamond Trident | variedcommodities:item/diamond_trident
+[ ] Diamond Warhammer | variedcommodities:item/diamond_warhammer
+[ ] Elemental Staff | variedcommodities:item/elemental_staff
+[ ] Emerald Battle Axe | variedcommodities:item/emerald_battleaxe
+[ ] Emerald Broadsword | variedcommodities:item/emerald_broadsword
+[ ] Emerald Dagger | variedcommodities:item/emerald_dagger
+[ ] Reversed Emerald Dagger | variedcommodities:item/emerald_dagger_reversed
+[ ] Emerald Glaive | variedcommodities:item/emerald_glaive
+[ ] Emerald Gun | variedcommodities:item/emerald_gun
+[ ] Emerald Halberd | variedcommodities:item/emerald_halberd
+[ ] Emerald Mace | variedcommodities:item/emerald_mace
+[ ] Emerald Scythe | variedcommodities:item/emerald_scythe
+[ ] Emerald Shield | variedcommodities:item/emerald_shield
+[ ] Emerald Shield Blocking | variedcommodities:item/emerald_shield_blocking
+[ ] Round Emerald Shield | variedcommodities:item/emerald_shield_round
+[ ] Emerald Shield Round Blocking | variedcommodities:item/emerald_shield_round_blocking
+[ ] Emerald Spear | variedcommodities:item/emerald_spear
+[ ] Emerald Staff | variedcommodities:item/emerald_staff
+[ ] Emerald Sword | variedcommodities:item/emerald_sword
+[ ] Emerald Trident | variedcommodities:item/emerald_trident
+[ ] Emerald Warhammer | variedcommodities:item/emerald_warhammer
+[ ] Excalibur | variedcommodities:item/excalibur
+[ ] Frost Battle Axe | variedcommodities:item/frost_battleaxe
+[ ] Frost Broadsword | variedcommodities:item/frost_broadsword
+[ ] Frost Dagger | variedcommodities:item/frost_dagger
+[ ] Reversed Frost Dagger | variedcommodities:item/frost_dagger_reversed
+[ ] Frost Glaive | variedcommodities:item/frost_glaive
+[ ] Frost Halberd | variedcommodities:item/frost_halberd
+[ ] Frost Mace | variedcommodities:item/frost_mace
+[ ] Frost Scythe | variedcommodities:item/frost_scythe
+[ ] Frost Shield | variedcommodities:item/frost_shield
+[ ] Frost Shield Blocking | variedcommodities:item/frost_shield_blocking
+[ ] Frost Spear | variedcommodities:item/frost_spear
+[ ] Frost Staff | variedcommodities:item/frost_staff
+[ ] Frost Sword | variedcommodities:item/frost_sword
+[ ] Frost Trident | variedcommodities:item/frost_trident
+[ ] Frost Warhammer | variedcommodities:item/frost_warhammer
+[ ] Golden Battle Axe | variedcommodities:item/golden_battleaxe
+[ ] Golden Broadsword | variedcommodities:item/golden_broadsword
+[ ] Golden Dagger | variedcommodities:item/golden_dagger
+[ ] Reversed Golden Dagger | variedcommodities:item/golden_dagger_reversed
+[ ] Golden Glaive | variedcommodities:item/golden_glaive
+[ ] Golden Gun | variedcommodities:item/golden_gun
+[ ] Golden Halberd | variedcommodities:item/golden_halberd
+[ ] Golden Mace | variedcommodities:item/golden_mace
+[ ] Golden Scythe | variedcommodities:item/golden_scythe
+[ ] Golden Shield | variedcommodities:item/golden_shield
+[ ] Golden Shield Blocking | variedcommodities:item/golden_shield_blocking
+[ ] Round Golden Shield | variedcommodities:item/golden_shield_round
+[ ] Golden Shield Round Blocking | variedcommodities:item/golden_shield_round_blocking
+[ ] Golden Spear | variedcommodities:item/golden_spear
+[ ] Golden Staff | variedcommodities:item/golden_staff
+[ ] Golden Trident | variedcommodities:item/golden_trident
+[ ] Golden Warhammer | variedcommodities:item/golden_warhammer
+[ ] Golf Club | variedcommodities:item/golf_club
+[ ] Hammer | variedcommodities:item/hammer
+[ ] Steel Heater Shield | variedcommodities:item/heater_shield
+[ ] Heater Shield Blocking | variedcommodities:item/heater_shield_blocking
+[ ] Hockey Stick | variedcommodities:item/hockey_stick
+[ ] Holy Hand Grenade | variedcommodities:item/holyhandgrenade
+[ ] Iron Battle Axe | variedcommodities:item/iron_battleaxe
+[ ] Iron Broadsword | variedcommodities:item/iron_broadsword
+[ ] Iron Dagger | variedcommodities:item/iron_dagger
+[ ] Reversed Iron Dagger | variedcommodities:item/iron_dagger_reversed
+[ ] Iron Glaive | variedcommodities:item/iron_glaive
+[ ] Iron Gun | variedcommodities:item/iron_gun
+[ ] Iron Halberd | variedcommodities:item/iron_halberd
+[ ] Iron Mace | variedcommodities:item/iron_mace
+[ ] Iron Scythe | variedcommodities:item/iron_scythe
+[ ] Iron Shield | variedcommodities:item/iron_shield
+[ ] Iron Shield Blocking | variedcommodities:item/iron_shield_blocking
+[ ] Round Iron Shield | variedcommodities:item/iron_shield_round
+[ ] Iron Shield Round Blocking | variedcommodities:item/iron_shield_round_blocking
+[ ] Iron Spear | variedcommodities:item/iron_spear
+[ ] Iron Staff | variedcommodities:item/iron_staff
+[ ] Iron Trident | variedcommodities:item/iron_trident
+[ ] Iron Warhammer | variedcommodities:item/iron_warhammer
+[ ] Katana | variedcommodities:item/katana
+[ ] Katar | variedcommodities:item/katar
+[ ] Kukri | variedcommodities:item/kukri
+[ ] Kunai | variedcommodities:item/kunai
+[ ] Reverse Kunai | variedcommodities:item/kunai_reversed
+[ ] Lead Pipe | variedcommodities:item/lead_pipe
+[ ] Leaf Blade | variedcommodities:item/leaf_sword
+[ ] Machine Gun | variedcommodities:item/machine_gun
+[ ] Macuahuitl | variedcommodities:item/macuahuitl
+[ ] Magic Wand | variedcommodities:item/magic_wand
+[ ] Mana | variedcommodities:item/mana
+[ ] Mithril Battle Axe | variedcommodities:item/mithril_battleaxe
+[ ] Mithril Broadsword | variedcommodities:item/mithril_broadsword
+[ ] Mithril Dagger | variedcommodities:item/mithril_dagger
+[ ] Reversed Mithril Dagger | variedcommodities:item/mithril_dagger_reversed
+[ ] Mithril Glaive | variedcommodities:item/mithril_glaive
+[ ] Mithril Halberd | variedcommodities:item/mithril_halberd
+[ ] Mithril Mace | variedcommodities:item/mithril_mace
+[ ] Mithril Scythe | variedcommodities:item/mithril_scythe
+[ ] Mithril Shield | variedcommodities:item/mithril_shield_round
+[ ] Mithril Shield Round Blocking | variedcommodities:item/mithril_shield_round_blocking
+[ ] Mithril Spear | variedcommodities:item/mithril_spear
+[ ] Mithril Staff | variedcommodities:item/mithril_staff
+[ ] Mithril Sword | variedcommodities:item/mithril_sword
+[ ] Mithril Trident | variedcommodities:item/mithril_trident
+[ ] Mithril Warhammer | variedcommodities:item/mithril_warhammer
+[ ] Musket | variedcommodities:item/musket
+[ ] Ninja Claw | variedcommodities:item/ninja_claw
+[ ] Pipe Wrench | variedcommodities:item/pipe_wrench
+[ ] Rapier | variedcommodities:item/rapier
+[ ] Saber | variedcommodities:item/saber
+[ ] Sai Blade | variedcommodities:item/sai
+[ ] Steel Scutum Shield | variedcommodities:item/scutum_shield
+[ ] Scutum Shield Blocking | variedcommodities:item/scutum_shield_blocking
+[ ] Shuriken | variedcommodities:item/shuriken
+[ ] Giant Shuriken | variedcommodities:item/shuriken_giant
+[ ] Sledgehammer | variedcommodities:item/sledge_hammer
+[ ] Slingshot | variedcommodities:item/slingshot
+[ ] Steel Claw | variedcommodities:item/steel_claw
+[ ] Stone Battle Axe | variedcommodities:item/stone_battleaxe
+[ ] Stone Broadsword | variedcommodities:item/stone_broadsword
+[ ] Stone Dagger | variedcommodities:item/stone_dagger
+[ ] Reversed Stone Dagger | variedcommodities:item/stone_dagger_reversed
+[ ] Stone Glaive | variedcommodities:item/stone_glaive
+[ ] Stone Gun | variedcommodities:item/stone_gun
+[ ] Stone Halberd | variedcommodities:item/stone_halberd
+[ ] Stone Mace | variedcommodities:item/stone_mace
+[ ] Stone Scythe | variedcommodities:item/stone_scythe
+[ ] Stone Shield | variedcommodities:item/stone_shield
+[ ] Stone Shield Blocking | variedcommodities:item/stone_shield_blocking
+[ ] Round Stone Shield | variedcommodities:item/stone_shield_round
+[ ] Stone Shield Round Blocking | variedcommodities:item/stone_shield_round_blocking
+[ ] Stone Spear | variedcommodities:item/stone_spear
+[ ] Stone Staff | variedcommodities:item/stone_staff
+[ ] Stone Trident | variedcommodities:item/stone_trident
+[ ] Stone Warhammer | variedcommodities:item/stone_warhammer
+[ ] Swiss Army Knife | variedcommodities:item/swiss_army_knife
+[ ] Steel Tower Shield | variedcommodities:item/tower_shield
+[ ] Tower Shield Blocking | variedcommodities:item/tower_shield_blocking
+[ ] Wooden Battle Axe | variedcommodities:item/wooden_battleaxe
+[ ] Wooden Broadsword | variedcommodities:item/wooden_broadsword
+[ ] Wooden Dagger | variedcommodities:item/wooden_dagger
+[ ] Reversed Wooden Dagger | variedcommodities:item/wooden_dagger_reversed
+[ ] Wooden Glaive | variedcommodities:item/wooden_glaive
+[ ] Wooden Gun | variedcommodities:item/wooden_gun
+[ ] Wooden Halberd | variedcommodities:item/wooden_halberd
+[ ] Wooden Mace | variedcommodities:item/wooden_mace
+[ ] Wooden Scythe | variedcommodities:item/wooden_scythe
+[ ] Wooden Shield | variedcommodities:item/wooden_shield
+[ ] Wooden Shield Blocking | variedcommodities:item/wooden_shield_blocking
+[ ] Round Wooden Shield | variedcommodities:item/wooden_shield_round
+[ ] Wooden Shield Round Blocking | variedcommodities:item/wooden_shield_round_blocking
+[ ] Wooden Spear | variedcommodities:item/wooden_spear
+[ ] Wooden Staff | variedcommodities:item/wooden_staff
+[ ] Wooden Trident | variedcommodities:item/wooden_trident
+[ ] Wooden Warhammer | variedcommodities:item/wooden_warhammer
+[ ] Wrench | variedcommodities:item/wrench
+
+Weapons — ahznb weapons plus 1.2.1.jar
+[ ] Infinite Shurikan | ahznbswordsplus:item/infiniteshurikan
+[ ] Seven Star Blade | ahznbswordsplus:item/sevenstarblade
+[ ] Shuriken | ahznbswordsplus:item/shuriken
+[ ] Sword Of The Thunder God | ahznbswordsplus:item/swordofthethundergod
+
+Weapons — kabutoaddon 5.5.8-beta.jar
+[ ] Crescent Staff | kabutoaddon:item/crescentstaff
+[ ] Katana | kabutoaddon:item/katana
+[ ] Sumirehime | kabutoaddon:item/sumirehime
+

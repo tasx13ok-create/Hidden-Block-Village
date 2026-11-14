@@ -70,6 +70,10 @@ public final class WeaponPulse extends Entity {
 
     /** Presentation for a technique that the server just resolved successfully. */
     static void cast(EntityPlayerMP p, ArsenalSpec spec, float power) {
+        try { castPresentation(p,spec,power); }
+        catch(RuntimeException failure) { cosmeticFailure(failure); }
+    }
+    private static void castPresentation(EntityPlayerMP p, ArsenalSpec spec, float power) {
         if (p == null || spec == null) return;
         Vec3d eye = p.getPositionEyes(1), look = p.getLookVec();
         boolean sneak = p.isSneaking();
@@ -110,7 +114,13 @@ public final class WeaponPulse extends Entity {
     }
 
     private static void spawn(EntityPlayerMP p, ArsenalSpec spec, byte kind, int life, float power, Vec3d at, Vec3d end, boolean alt) {
-        if (p.world.isRemote || !Double.isFinite(end.x + end.y + end.z)) return;
+        if (p==null||spec==null||p.world==null||p.world.isRemote||!p.isEntityAlive()||p.isSpectator()||at==null||end==null
+                ||!Double.isFinite(at.x)||!Double.isFinite(at.y)||!Double.isFinite(at.z)
+                ||!Double.isFinite(end.x)||!Double.isFinite(end.y)||!Double.isFinite(end.z)) return;
+        World world=p.world; UUID owner=p.getUniqueID();
+        java.util.List<WeaponPulse> live=world.getEntities(WeaponPulse.class,w->!w.isDead);
+        if(live.size()>=256)return;
+        int owned=0;for(WeaponPulse pulse:live)if(owner.equals(pulse.ownerUuid)&&++owned>=32)return;
         WeaponPulse w = new WeaponPulse(p.world);
         w.ownerUuid = p.getUniqueID();
         w.dataManager.set(SPEC, spec.ordinal());
@@ -125,8 +135,14 @@ public final class WeaponPulse extends Entity {
         w.dataManager.set(PITCH, p.rotationPitch);
         w.dataManager.set(ALT, alt);
         w.setPosition(at.x, at.y, at.z);
-        p.world.spawnEntity(w);
+        try {
+            boolean accepted=world.spawnEntity(w);
+            if(!accepted||p.world!=world||!owner.equals(p.getUniqueID())||!p.isEntityAlive()||w.world!=world)discard(w,world);
+        } catch(RuntimeException failure) { discard(w,world);cosmeticFailure(failure); }
     }
+
+    private static void discard(WeaponPulse pulse,World world){try{pulse.setDead();world.removeEntity(pulse);}catch(RuntimeException failure){cosmeticFailure(failure);}}
+    private static void cosmeticFailure(RuntimeException failure){org.apache.logging.log4j.LogManager.getLogger("ValeWeaponVfx").warn("Weapon presentation failed; accepted gameplay is retained",failure);}
 
     @Override public void onUpdate() {
         super.onUpdate();

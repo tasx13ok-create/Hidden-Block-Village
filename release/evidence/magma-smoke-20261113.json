@@ -1,0 +1,525 @@
+{
+  "schema": 1,
+  "scope": "EXACT_ARCHIVED_MAGMA_FRESH_FLAT_WORLD_START_RESTART",
+  "status": "PASS_WITH_KNOWN_CONTENT_DEFECTS",
+  "generated_utc": "2026-11-13T19:17:53.054901+00:00",
+  "archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+  "magma_manifest_version": "1.12.2-b4c01d2",
+  "runtime_forge": "14.23.5.2860",
+  "java_version": "1.8.0_512",
+  "java_implementor": "Azul Systems",
+  "world_profile": "DISPOSABLE_FLAT",
+  "recovered_world_copied": false,
+  "original_npc_scripts_copied": false,
+  "archived_credentials_copied": false,
+  "normal_client_joined": false,
+  "hosted_deployment": false,
+  "boots": [
+    {
+      "label": "boot-01-original-roster",
+      "started_utc": "2026-11-13T19:08:23.872493+00:00",
+      "finished_utc": "2026-11-13T19:08:55.991213+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25579,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "0affe49bdf9bcb6fc0a7e143dadd221a59ca4d1315724ac9a917ce642498f2c8",
+      "elapsed_seconds": 32.11,
+      "fml_mods_loaded": 52,
+      "crazycrates_enabled": true,
+      "effective_forge_version": "14.23.5.2860",
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2,
+        "CULINARY_REFMAP_MISSING": 1,
+        "NBTAPI_UPDATE_NOTICE": 1
+      }
+    },
+    {
+      "label": "boot-02-restart",
+      "started_utc": "2026-11-13T19:09:14.838640+00:00",
+      "finished_utc": "2026-11-13T19:09:40.631298+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25579,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "4d38009dca8e8fcfc67e53df6825fd1d9ed429681e8b029b289bc28f804450cb",
+      "elapsed_seconds": 25.781,
+      "fml_mods_loaded": 52,
+      "crazycrates_enabled": true,
+      "effective_forge_version": "14.23.5.2860",
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2,
+        "CULINARY_REFMAP_MISSING": 1,
+        "NBTAPI_UPDATE_NOTICE": 1
+      }
+    }
+  ],
+  "original_mod_roster": [
+    {
+      "path": "mods/JustEnoughResources-1.12.2-0.9.2.60.jar",
+      "sha256": "9ea4d7df19c0a53880aae5e745ef1e886854bea5c533878688587a5e3fdaebdd",
+      "disposition": "OMITTED_DECLARED_CLIENT_ONLY"
+    },
+    {
+      "path": "mods/stg-1.12.2-1.2.3.jar",
+      "sha256": "0ab0cb80822dd58ed83393edff83ac0497e1f12cbf4ceb9dacd963e2a949d2cb",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/warpmod-1.12.2-1.0.1.jar",
+      "sha256": "f582a6ea518e3bbde565c181a5588f0248a63703647b63a9406d075dbc304f4a",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/colorfulhealthbar-0.0.4a.jar",
+      "sha256": "a80cf48a1e29b22f20d250b36de663e75346d44e7a3c16f3c133aac1b9828824",
+      "disposition": "OMITTED_DECLARED_CLIENT_ONLY"
+    },
+    {
+      "path": "mods/FTBQuests-1202.9.0.15.jar",
+      "sha256": "3f6a674ac0d8678fd0b127e6930199f32848fe47d1689e44c72976bfb24c7385",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/xaerominimap-forge-1.12.2-26.6.0.jar",
+      "sha256": "efb30f0904bb8e3744bb62f77ad4f7c9e7613e063aa9900498cbb5a6e1b6d882",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/FTBLib-5.4.7.2.jar",
+      "sha256": "623fc574f0227fec6cc9e26c3879a605f9b4499c0078ff085291901a5495a6ac",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/biju_unleashing-1.7.3.jar",
+      "sha256": "40c8f324e30f4305b1da35d4d31206643749ce8f6b04168bd8c6794df0c0e984",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/TravelersBackpack-1.12.2-1.0.35.jar",
+      "sha256": "39a7914b5a55b7d5ad5d1192c38a66b926895317e0426a359a529de2f8028581",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Armourers-Workshop-1.12.2-0.51.0.jar",
+      "sha256": "0abc8622e3a40c822a603e54065dbd0670c77bf73993487da8ef8c209e5afbe0",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/shinobiculinary-1.2.0.jar",
+      "sha256": "3b212998b35451ed76b96e68548167a0e59a4e5a8023b8896aa0ed90b697b637",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+      "sha256": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Essential_1-5-1_forge_1-12-2.jar",
+      "sha256": "0eefd238fb7781eb1bb4b5c9b294cfccffddb9694d44222ba8477edd3fd1636e",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Baryon Expansion_beta2.jar",
+      "sha256": "58f311849ad3d26e3c82115550d912633577e95891e75067d24df983465a8ee1",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/SealsAddon v1.0.jar",
+      "sha256": "9bdefc7b778148736ab11b9fadfefd09e01c3bfc9860f682c1eec6fff7354cee",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/AppleSkin-mc1.12-1.0.14.jar",
+      "sha256": "4bbd37edecff0b420ab0eea166b5d7b4b41a9870bfb8647bf243140dc57f101e",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/VariedCommodities_1.12.2-(31Mar23).jar",
+      "sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/ahznbstweaks-2.0.jar",
+      "sha256": "06d387874f26ae0566e6f881af313f6b13796e8b07b1795d8277e0e8c6b26243",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/xaerolib-forge-1.12.2-1.7.3.jar",
+      "sha256": "6c0cab56a6f56e94eff537f0fdfa6f6f69b9d651caf221e44a837027a6d9b1c0",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/[1.12.2]DamageIndicatorsMod-3.5.1.jar",
+      "sha256": "4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/RinneganAddon v1.3.jar",
+      "sha256": "bcb143c7dc6ee501774be39d66ce294b6135cbf555e9130205db814411a5f9c0",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/marketblocks-1.0.7-forge1122.jar",
+      "sha256": "8b36f0526a9429a553050d05343d59bb52bb8807fcd1c6d011a1ee99ab64186e",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/jei_1.12.2-4.22.0.1034.jar",
+      "sha256": "e069347966155efd050fe18f060162a0406c194528c7c16974263c8879c3a8a2",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "sha256": "c1078a0897359bf09a58c95ff367f4d77c3eef7e9802f468789a43453cce6948",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/supermartijn642configlib-1.1.8-forge-mc1.12.jar",
+      "sha256": "9f15755020a966023eae8e9d1446441d175a88c09b1e458a47fcb3024d5e57f8",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/CustomNPCs_1.12.2-(05Jul20)-SpringAddon-compat-r1.jar",
+      "sha256": "9002f091bd06dd08bbb0c93b57a9279729b6716813094954a5d57cef101b4e0b",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/HiddenVillage-BijuuArmor-0.16.2-rc1.jar",
+      "sha256": "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/almirioncore-1.1.jar",
+      "sha256": "50e10d3542e12fa949d22ba257779d1601dfc49c58e005c8e029fe84b2f48e42",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/AnbuBingoBook - 1.6.1.jar",
+      "sha256": "50448009137a6fe29857c4cd33c841db8ecf67ff85fbf6c48e08541f2cd329a4",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Clumps-3.1.2.jar",
+      "sha256": "f3ce670e0087f4c6b770fd05ae5c3dfd8462f74c62397932ea72954d1c6c8df4",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/ItemFilters-1.0.4.2.jar",
+      "sha256": "cdffbb810f75db50afce9681374f0604e4c1ed2dcfe768cff5b4e17d5384166b",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/JutsuAddon v1.0.jar",
+      "sha256": "badda88ba357c0fe78e069e2f6b57566ecdaa7718b03c7452902f3172d3338e0",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/!mixinbooter-11.18.jar",
+      "sha256": "ac6779132ca4df1a4f6319f3edc605c9d9b6c8ff6889e851472e2b41ecce273e",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/xaeroworldmap-forge-1.12.2-1.47.0.jar",
+      "sha256": "a00a7d95dc8d19427d989d43968fea0d645b508fdc15bd568389e6b18bd17b6b",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/CosmeticArmorReworked-1.12.2-v5a.jar",
+      "sha256": "a1dac96cf2168015255f4cad8748e8b969e99bd0919e9cb78deb9198ee9753e8",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/worldedit-forge-mc1.12.2-6.1.10-dist.jar",
+      "sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Waystones_1.12.2-4.1.0.jar",
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/nmee-0.2.2-beta.jar",
+      "sha256": "efcf8e1a85a7bb94c72f43e36692f329a6ce990f7f9782fcbd4686b860851f13",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/geckolib-forge-1.12.2-3.0.31.jar",
+      "sha256": "b00bc9de4e3e94cea0455f8d58b295c1464272135e842bdf3170c2c955c871a5",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/NarutoModAddon-0.3.1- V1.3.jar",
+      "sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Fluidlogged-API-v3.3.3-mc1.12.2-magma-test.jar",
+      "sha256": "366558ea28413d4b65fa09ac83edaea44117112623993eab83d65c4a63b0d8d8",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/SharinganAddon v1.0.jar",
+      "sha256": "fe7682724edeb5898a0fb65f624a12f3d9990bca0fa9ba625c9d1ad5d2dad8f3",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Patchouli-1.0-23.6.jar",
+      "sha256": "8fcceac75c71e0d041db734111200205d03431b7e8646f8209cf2c4de9afef7b",
+      "disposition": "ACTIVE_ORIGINAL_UNCHANGED"
+    },
+    {
+      "path": "mods/Controlling-3.0.12.4.jar",
+      "sha256": "f5edd4793f96cd5a6f31aecbd3030093b367a51afba5d6f7281756d0f9c03786",
+      "disposition": "OMITTED_DECLARED_CLIENT_ONLY"
+    }
+  ],
+  "plugin": {
+    "path": "plugins/CrazyCrates-1.10.2.2.jar",
+    "sha256": "74a9764f3245712f3987b1682466a1bec12f461c02ca333be4db0dd245b8361c"
+  },
+  "dependencies": [
+    {
+      "target": "libraries/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar",
+      "official_url": "https://libraries.minecraft.net/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar",
+      "sha1": "0097860965d6a0a6b98e7f569f3f966727b8db75",
+      "sha256": "fd5ad66cdd0a496d281b26c699f4511da7c3f95083659ebb7bae22dab876581a",
+      "bytes": 3511093,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "libraries/com/google/guava/guava/21.0/guava-21.0.jar",
+      "official_url": "https://libraries.minecraft.net/com/google/guava/guava/21.0/guava-21.0.jar",
+      "sha1": "3a3d111be1be1b745edfa7d91678a12d7ed38709",
+      "sha256": "972139718abc8a4893fa78cba8cf7b2c903f35c97aaf44fa3031b0669948b480",
+      "bytes": 2521113,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "libraries/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar",
+      "official_url": "https://libraries.minecraft.net/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar",
+      "sha1": "c4ba5371a29ac9b2ad6129b1d39ea38750043eff",
+      "sha256": "c6221763bd79c4f1c3dc7f750b5f29a0bb38b367b81314c4f71896e340c40825",
+      "bytes": 231952,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "libraries/com/mojang/authlib/1.5.25/authlib-1.5.25.jar",
+      "official_url": "https://libraries.minecraft.net/com/mojang/authlib/1.5.25/authlib-1.5.25.jar",
+      "sha1": "9834cdf236c22e84b946bba989e2f94ef5897c3c",
+      "sha256": "c8a095123be93c59d4ac29e4a0616495b3d479ac65913cb719a81ee583e9dfcd",
+      "bytes": 65621,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "libraries/it/unimi/dsi/fastutil/7.1.0/fastutil-7.1.0.jar",
+      "official_url": "https://libraries.minecraft.net/it/unimi/dsi/fastutil/7.1.0/fastutil-7.1.0.jar",
+      "sha1": "9835253257524c1be7ab50c057aa2d418fb72082",
+      "sha256": "c266701bd7a4a2c36285862c1e682ccb7b5cb5b380d0de9bb1b34becf9e1c065",
+      "bytes": 17655579,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "minecraft_server.1.12.2.jar",
+      "official_url": "https://piston-data.mojang.com/v1/objects/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar",
+      "sha1": "886945bfb2b978778c3a0288fd7fab09d315b25f",
+      "sha256": "fe1f9274e6dad9191bf6e6e8e36ee6ebc737f373603df0946aafcded0d53167e",
+      "bytes": 30222121,
+      "identity_origin": "cached official Minecraft1.12.2 version metadata"
+    },
+    {
+      "target": "libraries/com/conversantmedia/disruptor/1.2.14/disruptor-1.2.14.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/conversantmedia/disruptor/1.2.14/disruptor-1.2.14.jar",
+      "sha1": "1030b83d893069cf7caeee33d1ba7ee3f9a83a6d",
+      "sha256": "ef2434e1b915f6c11d42cd3aeb8b705eaa7a4ab8e8eede23e981ab41de139ced",
+      "bytes": 134309,
+      "identity_origin": "Maven Central published exact-coordinate SHA1"
+    },
+    {
+      "target": "libraries/org/projectlombok/lombok/1.16.12/lombok-1.16.12.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.16.12/lombok-1.16.12.jar",
+      "sha1": "64b2d2e8734b54ddba60a69df68a6dac627366c8",
+      "sha256": "fef48ad024a3131cb5e1e7d52f33c97cb223b6a8e5bab2e57a10825d58394159",
+      "bytes": 1413722,
+      "identity_origin": "Maven Central published exact-coordinate SHA1"
+    },
+    {
+      "target": "libraries/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar",
+      "sha1": "f7be08ec23c21485b9b5a1cf1654c2ec8c58168d",
+      "sha256": "c885ce34249682bc0236b4a7d56efcc12048e6135a5baf7a9cde8ad8cda13fcd",
+      "bytes": 19943,
+      "identity_origin": "Maven Central published exact-coordinate SHA1"
+    },
+    {
+      "target": "libraries/me/tongfei/progressbar/0.9.3/progressbar-0.9.3.jar",
+      "url": "https://repo.maven.apache.org/maven2/me/tongfei/progressbar/0.9.3/progressbar-0.9.3.jar",
+      "sha1": "166a5abdb5b47d3c13b03e22c49f2bdb1829c401",
+      "sha256": "ce0bdb9e0abc15baf6ea9086aa166bcb09f41bbc530654c61425b8157d621efe",
+      "bytes": 33213,
+      "identity_origin": "Maven Central published exact-coordinate SHA1"
+    },
+    {
+      "target": "libraries/org/bukkit/bukkit/1.12.2-R0.1-SNAPSHOT/bukkit-1.12.2-R0.1-SNAPSHOT.jar",
+      "url": "https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/bukkit/bukkit/1.12.2-R0.1-SNAPSHOT/bukkit-1.12.2-R0.1-20180712.012114-155.jar",
+      "sha1": "ebb39bc230e588e660c100b507f55af34ba7ea70",
+      "sha256": "90ee672b947f5397cc02a08f8c20bcf98b53f6172dc1608d5bbbcc35ab415e1b",
+      "bytes": 863865,
+      "identity_origin": "official Spigot snapshot timestamp20180712.012114 build155; missing original snapshot identity was not supplied"
+    }
+  ],
+  "static_classpath": {
+    "embedded_bukkit_classes": 1253,
+    "exploded_root_classes": 2877,
+    "overlap_with_magma": 2877,
+    "byte_identical_overlap": 2862,
+    "exploded_classes_not_on_jar_manifest_classpath": true
+  },
+  "exploded_class_differences": [
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$CropGrowEvent$Post.class",
+      "exploded_sha256": "cb1fce1214442409555aa3646d3044677dc42836a84de07307dc88755f8b85bd",
+      "magma_embedded_sha256": "6aa1c0fb7d131657521505ca41e5aa46bf7bf0803fcf18140279edb23e0b09c5"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$EntityMultiPlaceEvent.class",
+      "exploded_sha256": "c06f604ce9783c333eafcc1192c730633a8abe51c5078ac1ae060dd5d1700f72",
+      "magma_embedded_sha256": "561a4302698bee18a0914af7049ddf15d75424a0ff511bd7fe1064ccbbbf1d65"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$PortalSpawnEvent.class",
+      "exploded_sha256": "267313c40e89eccf04ffe21c3adf5dcbfa9c273231d408cb950740453edf892d",
+      "magma_embedded_sha256": "6eab9ee176c7d0b7f0688008ea0a1e252efb8e28e78ed730165b5fc020cb27a1"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$PlaceEvent.class",
+      "exploded_sha256": "e7da83e785cbebceb3ea167ad998a90fbf2d22d26807c5a0fe10da4b32ab778a",
+      "magma_embedded_sha256": "3ec308e9e808dd689195a2e417f90c8819899744c569dd818f4f43a4486f5bcd"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$NeighborNotifyEvent.class",
+      "exploded_sha256": "21153f6bfbb2072357d77597ea616b8d61f72763ef81079bfb5ec7ba1cbad87b",
+      "magma_embedded_sha256": "a53346b0d8e83f5edcdcdc7ee8c1fba1764f27d778bc0f049da3755a29730937"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$FarmlandTrampleEvent.class",
+      "exploded_sha256": "4c2c732b700cfbe20051acbddcb6910ec5f861de10bd2e9d01ad45e69a626528",
+      "magma_embedded_sha256": "bfdaabf533bec868e0777a65c7cac463da59ee15657107852f6e9ec9cdcce40a"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$CropGrowEvent$Pre.class",
+      "exploded_sha256": "36d29f2ef51de405eac467abf729f5e0ca73c3ec4a0ff4001510b02df65c9d84",
+      "magma_embedded_sha256": "307d828eaa05215a1068a2037350a27684b1c3785da4ea75d4643f0308a1ff7a"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$CreateFluidSourceEvent.class",
+      "exploded_sha256": "74b784b8ebe005aab4ebbda8f9bb50f17b01252b8c947f95dd88dab52d58711b",
+      "magma_embedded_sha256": "69e7570d9f7b18f4521ff1b15920991e31d07d4b04e5ebff9084861b8aac8cea"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$BreakEvent.class",
+      "exploded_sha256": "1706baf7642877d56078aed176f78b00fa98ae351dd0703d63137eb0dd4f418f",
+      "magma_embedded_sha256": "37527ec54d05d7d395936aea0caa7d02d3b86822318e89a585432c800b8812fe"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$FluidPlaceBlockEvent.class",
+      "exploded_sha256": "ff62685fd4ef5822628dd7649ec319befe67322611f78e27d86f90fd956de429",
+      "magma_embedded_sha256": "95e1bd6468f9c1f0fb8900a66f810de7370b65b77379371b5348a5eb13501369"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$EntityPlaceEvent.class",
+      "exploded_sha256": "eb3a9ba4312565c2c69f168e55ee0e7fde4a4dc5706837735981bf6f336b7ffe",
+      "magma_embedded_sha256": "c98fc6c83d5e5f44b41285489d375df3731568fa8c5191f6646c2ea0857cd4e8"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$CropGrowEvent.class",
+      "exploded_sha256": "fc86996ef034f086d7ee2d41cd1c60d0d4d519e6a7514d6770cd3658e79820a8",
+      "magma_embedded_sha256": "5e7b6e9e64e310d95375355c03459dd16253c4949896160c960f8bd4918d1b27"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$HarvestDropsEvent.class",
+      "exploded_sha256": "c9b2ce2f8b02aa0a8bb3d990d1d4f9a9036b4feb7d2df70e02cbba2557957845",
+      "magma_embedded_sha256": "a202067b9f577a4bfd47af0b5a32865616a1e8f753071fd7c0d0b9cd6e938961"
+    },
+    {
+      "path": "net/minecraftforge/event/world/BlockEvent$MultiPlaceEvent.class",
+      "exploded_sha256": "af5f69e780f05c99b85e7a6033bb6f4eb6dcea078019accf631328f915bdaa1e",
+      "magma_embedded_sha256": "48a133fe947d77a91aa80ad2ded7cb04193f9d45251c2a1424988f1cfa804380"
+    },
+    {
+      "path": "net/minecraftforge/event/ForgeEventFactory.class",
+      "exploded_sha256": "3160b9d790a5258466b1e6108707370588f39e467c123dac852867d9f24b089c",
+      "magma_embedded_sha256": "79bc4f4c217d38f1e677d44e64c526509ad4d8316f234135903db6bfbf847d67"
+    }
+  ],
+  "post_runtime_integrity": {
+    "staged_original_inputs": 111,
+    "source_inputs_changed": [],
+    "candidate_surviving_inputs_changed": [],
+    "candidate_missing_added_inputs": [
+      "minecraft_server.1.12.2.jar"
+    ],
+    "minecraft_library_copy_sha256": "fe1f9274e6dad9191bf6e6e8e36ee6ebc737f373603df0946aafcded0d53167e",
+    "original_active_mod_jars_verified": 46
+  },
+  "tests": {
+    "magma_smoke_fixtures": 8,
+    "result": "PASS",
+    "command": "python -m unittest discover -s tests -p test_magma_smoke.py -v",
+    "baseline_phase_fixtures": 8,
+    "current_magma_smoke_fixtures": 10
+  },
+  "limitations": [
+    "Fresh flat-world startup/restart only; no Naruto.test migration or normal client gameplay.",
+    "Fresh configs only; unresolved root plugin collisions were not relocated.",
+    "Historical loose-class launch profile is unknown;15 differing archived loose Forge classes were not executed.",
+    "Known recipe/hook/resource warnings remain; successful startup is not content acceptance."
+  ],
+  "source_checkpoint_sha256": {
+    "tools/magma_smoke/__init__.py": "778a4c9d8d6a164ea193d9bf2acd59663fc992faead2fc992c5eeb6ba5845183",
+    "tools/magma_smoke/__main__.py": "41c8176b06a0f07996c60dce0a2313dacf3c59bc9d2f267408d5f47e00cb5276",
+    "tools/magma_smoke/smoke.py": "b5f3a2a23f4cf88664226f68d3d3c62c02c959c215f9581d86c8b36d665fcd59",
+    "tests/test_magma_smoke.py": "2faa3a24f035b322316e572e4f2f2c8cf1f0652ab1ab790e5db6860554e0aef2"
+  },
+  "source_checkpoint_scope": "Final reusable tool includes later enhanced-profile support; baseline observations bind immutable boot receipts."
+}

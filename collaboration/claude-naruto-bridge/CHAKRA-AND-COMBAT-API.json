@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "scope": "PINNED_LOCAL_PUBLIC_API_METADATA_AND_PRIVATE_BYTECODE_BEHAVIOR_OBSERVATIONS_NOT_RUNTIME_BRIDGE_ACCEPTANCE",
+  "observed_date": "2026-11-13",
+  "canonical_default_backend": "net.narutomod.Chakra ONLY",
+  "raw_third_party_code_or_art_included": false,
+  "source_jars": [
+    {
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+    },
+    {
+      "file": "kabutoaddon 5.5.8-beta.jar",
+      "sha256": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59"
+    },
+    {
+      "file": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "sha256": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28"
+    },
+    {
+      "file": "SpringAddon7.0.jar",
+      "sha256": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c"
+    },
+    {
+      "file": "ahznb weapons plus 1.2.1.jar",
+      "sha256": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3"
+    }
+  ],
+  "api": [
+    {
+      "owner": "net.narutomod.Chakra",
+      "member": "pathway",
+      "descriptor": "(Lnet/minecraft/entity/player/EntityPlayer;)Lnet/narutomod/Chakra$PathwayPlayer;",
+      "access": "public static",
+      "observation": "Server accessor lazily creates and caches; not a read-only readiness probe."
+    },
+    {
+      "owner": "net.narutomod.Chakra",
+      "member": "pathway",
+      "descriptor": "(Lnet/minecraft/entity/EntityLivingBase;)Lnet/narutomod/Chakra$Pathway;",
+      "access": "public static",
+      "observation": "Dispatches player overload, native NinjaMob pathway, otherwise separate living cache."
+    },
+    {
+      "owner": "net.narutomod.Chakra",
+      "member": "isInitialized",
+      "descriptor": "(Lnet/minecraft/entity/player/EntityPlayer;)Z",
+      "access": "public static",
+      "observation": "CLIENT cache identity only; never server readiness."
+    },
+    {
+      "owner": "net.narutomod.PlayerTracker",
+      "member": "isNinja",
+      "descriptor": "(Lnet/minecraft/entity/player/EntityPlayer;)Z",
+      "access": "public static",
+      "observation": "Naruto battle-XP identity >0; not Vale or vanilla level."
+    },
+    {
+      "owner": "net.narutomod.PlayerTracker",
+      "member": "getBattleXp",
+      "descriptor": "(Lnet/minecraft/entity/player/EntityPlayer;)D",
+      "access": "public static",
+      "observation": "Native battle-XP read; max normally recalculates to this*0.5."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "getAmount",
+      "descriptor": "()D",
+      "access": "public inherited",
+      "observation": "Absolute live amount."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "getMax",
+      "descriptor": "()D",
+      "access": "public inherited",
+      "observation": "Live maximum; over-cap amount can exist."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "consume",
+      "descriptor": "(D)Z",
+      "access": "public inherited",
+      "observation": "Absolute delta; calls double,bool with false; changed-state result."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "consume",
+      "descriptor": "(DZ)Z",
+      "access": "public virtual; Player override",
+      "observation": "Absolute delta; bool permits over-cap result, NOT simulate; refuses candidate<=0."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "consume",
+      "descriptor": "(F)V",
+      "access": "public inherited",
+      "observation": "FRACTION OF MAX, not absolute."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "consume",
+      "descriptor": "(FZ)V",
+      "access": "public inherited",
+      "observation": "FRACTION OF MAX, not absolute."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "clear",
+      "descriptor": "()V",
+      "access": "public inherited",
+      "observation": "Calls virtual set(0), reaches player persist/sync path."
+    },
+    {
+      "owner": "net.narutomod.Chakra$Pathway",
+      "member": "set",
+      "descriptor": "(D)V",
+      "access": "protected",
+      "observation": "Not a public integration API; do not bypass access."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu",
+      "member": "causeJutsuDamage",
+      "descriptor": "(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity;)Lnet/minecraft/util/DamageSource;",
+      "access": "public static",
+      "observation": "Arguments immediate then true owner; damageType ninjutsu."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu",
+      "member": "causeSenjutsuDamage",
+      "descriptor": "(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity;)Lnet/minecraft/util/DamageSource;",
+      "access": "public static",
+      "observation": "Arguments immediate then true owner; senjutsu classification."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu",
+      "member": "isDamageSourceNinjutsu",
+      "descriptor": "(Lnet/minecraft/util/DamageSource;)Z",
+      "access": "public static",
+      "observation": "Compares damageType to ninjutsu; classification is not ownership/permission."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu",
+      "member": "isDamageSourceSenjutsu",
+      "descriptor": "(Lnet/minecraft/util/DamageSource;)Z",
+      "access": "public static",
+      "observation": "Compares damageType to senjutsu; classification is not ownership/permission."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu",
+      "member": "getCurrentJutsu",
+      "descriptor": "(Lnet/minecraft/item/ItemStack;)Lnet/narutomod/item/ItemJutsu$JutsuEnum;",
+      "access": "public static",
+      "observation": "Read selected original jutsu; do not recast observed actions."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu$IJutsuCallback",
+      "member": "createJutsu",
+      "descriptor": "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityLivingBase;F)Z",
+      "access": "public abstract",
+      "observation": "Callback alone is not the complete native item authority/cost entrypoint."
+    },
+    {
+      "owner": "net.narutomod.item.ItemJutsu$Base",
+      "member": "executeJutsu",
+      "descriptor": "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityLivingBase;F)Z",
+      "access": "protected",
+      "observation": "No public general-purpose complete cast function established here."
+    },
+    {
+      "owner": "net.narutomod.entity.EntityChidori$EC",
+      "member": "getOwner",
+      "descriptor": "()Lnet/minecraft/entity/EntityLivingBase;",
+      "access": "public",
+      "observation": "Plain Entity aura, not IProjectile; live owner accessor."
+    },
+    {
+      "owner": "net.narutomod.entity.EntityScalableProjectile$Base",
+      "member": "shootingEntity",
+      "descriptor": "Lnet/minecraft/entity/EntityLivingBase;",
+      "access": "public field",
+      "observation": "Base implements net.minecraft.entity.IProjectile."
+    },
+    {
+      "owner": "net.mcreator.kabutoaddon.entity.EntityKabutoScalableProjectile$Base",
+      "member": "shootingEntity",
+      "descriptor": "Lnet/minecraft/entity/EntityLivingBase;",
+      "access": "public field",
+      "observation": "Independent projectile base implements IProjectile."
+    },
+    {
+      "owner": "net.mcreator.kabutoaddon.procedure.ProcedureSetChakraCommand",
+      "member": "setChakra",
+      "descriptor": "(Lnet/minecraft/entity/EntityLivingBase;D)V",
+      "access": "public static",
+      "observation": "Delta wrapper around Naruto consume(double); NOT an exact-zero fix."
+    }
+  ],
+  "registry_entities": [
+    {
+      "id": "narutomod:rasengan",
+      "class": "net.narutomod.entity.EntityRasengan$EC",
+      "super_observed": "net.narutomod.entity.EntityScalableProjectile$Base"
+    },
+    {
+      "id": "narutomod:rasenshuriken",
+      "class": "net.narutomod.entity.EntityRasenshuriken$EC",
+      "super_observed": null
+    },
+    {
+      "id": "narutomod:chidori",
+      "class": "net.narutomod.entity.EntityChidori$EC",
+      "super_observed": "net.minecraft.entity.Entity"
+    },
+    {
+      "id": "narutomod:chidori_spear",
+      "class": "net.narutomod.entity.EntityChidori$Spear",
+      "super_observed": null
+    },
+    {
+      "id": "narutomod:entitybulletkunai",
+      "class": "net.narutomod.item.ItemKunai$EntityArrowCustom",
+      "super_observed": "net.minecraft.entity.projectile.EntityArrow"
+    },
+    {
+      "id": "narutomod:entitybulletshuriken",
+      "class": "net.narutomod.item.ItemShuriken$EntityArrowCustom",
+      "super_observed": "net.minecraft.entity.projectile.EntityTippedArrow"
+    },
+    {
+      "id": "narutomod:entitygunbai_chakraball",
+      "class": "net.narutomod.item.ItemGunbai$EntityChakraball",
+      "super_observed": null
+    },
+    {
+      "id": "narutomod:entitygunbai",
+      "class": "net.narutomod.item.ItemGunbai$EntityCustom",
+      "super_observed": null
+    }
+  ],
+  "persistence": {
+    "player_root_entity_data_key": "ChakraPathwaySystem",
+    "type": "double",
+    "direct_nbt_writes_update_cached_pool": false,
+    "player_mutation_sends_self_sync": true,
+    "player_pool_cached_by_entity_body": true
+  },
+  "spring_duplicate": {
+    "independent_cache_and_amount_fields_observed": true,
+    "same_root_entity_data_key_observed_in_both_constructors_and_player_setters": true,
+    "key": "ChakraPathwaySystem",
+    "live_concurrent_listener_or_cache_collision_demonstrated": false,
+    "native_or_mixin_reconciliation_demonstrated": false,
+    "dual_write_allowed": false
+  },
+  "addon_reference_metadata_only": [
+    {
+      "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "base_naruto_api_reference_pairs": 260,
+      "spring_private_pool_reference_pairs": 0
+    },
+    {
+      "jar": "kabutoaddon 5.5.8-beta.jar",
+      "base_naruto_api_reference_pairs": 48,
+      "spring_private_pool_reference_pairs": 0
+    },
+    {
+      "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+      "base_naruto_api_reference_pairs": 14,
+      "spring_private_pool_reference_pairs": 0
+    },
+    {
+      "jar": "SpringAddon7.0.jar",
+      "base_naruto_api_reference_pairs": 235,
+      "spring_private_pool_reference_pairs": 60
+    },
+    {
+      "jar": "ahznb weapons plus 1.2.1.jar",
+      "base_naruto_api_reference_pairs": 0,
+      "spring_private_pool_reference_pairs": 0
+    }
+  ],
+  "runtime_tested": false,
+  "critical_unknowns": [
+    "New facade real full-mod server behavior and packet/UI synchronization",
+    "Actual concurrent Spring duplicate cache behavior under installed listeners/mixins",
+    "No authoritative generic permission-aware complete public cast API established",
+    "No complete registry or damage-route coverage claim from this representative entity list"
+  ]
+}

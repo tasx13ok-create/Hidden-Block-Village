@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/bloom_chestplate"
+  "parent": "valeorders:item/bloom_chestplate",
+  "textures": {
+    "layer0": "valeorders:items/bellbloom_chestplate"
+  }
 }

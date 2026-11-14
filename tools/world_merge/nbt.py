@@ -20,10 +20,54 @@ _SCALAR = {BYTE: '>b', SHORT: '>h', INT: '>i', LONG: '>q', FLOAT: '>f', DOUBLE: 
 
 DEFAULT_MAX_BYTES = 512 * 1024 * 1024
 MAX_DEPTH = 512
+MAX_TAGS = 1000000
 
 
 class NBTError(ValueError):
     """Malformed, truncated or over-limit NBT input."""
+
+
+def _decode_modified_utf8(raw):
+    """Java DataInput/DataOutput UTF code units, including encoded NUL and surrogates."""
+    units = bytearray()
+    i = 0
+    while i < len(raw):
+        first = raw[i]
+        i += 1
+        if first < 0x80:
+            unit = first
+        elif 0xC0 <= first <= 0xDF:
+            if i >= len(raw) or raw[i] & 0xC0 != 0x80:
+                raise NBTError('Invalid modified UTF-8 continuation')
+            unit = ((first & 0x1F) << 6) | (raw[i] & 0x3F)
+            i += 1
+            if unit < 0x80 and unit != 0:
+                raise NBTError('Overlong modified UTF-8 sequence')
+        elif 0xE0 <= first <= 0xEF:
+            if i + 1 >= len(raw) or raw[i] & 0xC0 != 0x80 or raw[i + 1] & 0xC0 != 0x80:
+                raise NBTError('Invalid modified UTF-8 continuation')
+            unit = ((first & 0x0F) << 12) | ((raw[i] & 0x3F) << 6) | (raw[i + 1] & 0x3F)
+            i += 2
+            if unit < 0x800:
+                raise NBTError('Overlong modified UTF-8 sequence')
+        else:
+            raise NBTError('Invalid modified UTF-8 leading byte')
+        units.extend((unit >> 8, unit & 0xFF))
+    return units.decode('utf-16-be', 'surrogatepass')
+
+
+def _encode_modified_utf8(text):
+    units = text.encode('utf-16-be', 'surrogatepass')
+    raw = bytearray()
+    for i in range(0, len(units), 2):
+        unit = (units[i] << 8) | units[i + 1]
+        if 0 < unit < 0x80:
+            raw.append(unit)
+        elif unit < 0x800:
+            raw.extend((0xC0 | (unit >> 6), 0x80 | (unit & 0x3F)))
+        else:
+            raw.extend((0xE0 | (unit >> 12), 0x80 | ((unit >> 6) & 0x3F), 0x80 | (unit & 0x3F)))
+    return bytes(raw)
 
 
 class Tag:
@@ -84,6 +128,7 @@ class _Reader:
         self.data = data
         self.pos = 0
         self.max_bytes = max_bytes
+        self.tags = 0
 
     def take(self, count):
         if count < 0 or self.pos + count > len(self.data):
@@ -106,14 +151,12 @@ class _Reader:
     def string(self):
         size = self.unpack('>H', 2)
         raw = self.take(size)
-        try:
-            # Java "modified UTF-8"; standard decoding covers everything except the rare
-            # encoded NUL / surrogate pairs, which we keep losslessly via surrogatepass.
-            return raw.decode('utf-8', 'surrogatepass')
-        except UnicodeDecodeError:
-            raise NBTError('Invalid string encoding at offset %d' % (self.pos - size))
+        return _decode_modified_utf8(raw)
 
     def payload(self, tag_type, depth):
+        self.tags += 1
+        if self.tags > MAX_TAGS:
+            raise NBTError('NBT tag count exceeds %d' % MAX_TAGS)
         if depth > MAX_DEPTH:
             raise NBTError('NBT nesting exceeds %d' % MAX_DEPTH)
         if tag_type in _SCALAR:
@@ -136,6 +179,8 @@ class _Reader:
             n = self.length(1 if elem != END else 0)
             if elem == END and n:
                 raise NBTError('Non-empty list of TAG_End')
+            if n > MAX_TAGS - self.tags:
+                raise NBTError('NBT list exceeds the tag allocation budget')
             return Tag(LIST, [self.payload(elem, depth + 1) for _ in range(n)], elem)
         if tag_type == COMPOUND:
             items = {}
@@ -153,38 +198,41 @@ class _Reader:
 
 
 def _decompress(raw, max_bytes):
-    if raw[:2] == b'\x1f\x8b':
-        stream = gzip.GzipFile(fileobj=io.BytesIO(raw))
-    elif raw[:1] == b'\x78':
-        stream = None
-        decomp = zlib.decompressobj()
-        try:
-            out = decomp.decompress(raw, max_bytes + 1)
-        except zlib.error as exc:
-            raise NBTError('Corrupt zlib stream: %s' % exc)
-        if len(out) > max_bytes:
-            raise NBTError('Decompressed NBT exceeds %d bytes' % max_bytes)
-        return out
-    else:
+    if len(raw) > max_bytes:
+        raise NBTError('Input NBT exceeds %d bytes' % max_bytes)
+    gzip_stream = raw[:2] == b'\x1f\x8b'
+    zlib_stream = len(raw) >= 2 and raw[0] & 0x0F == 8 and raw[0] >> 4 <= 7 and ((raw[0] << 8) | raw[1]) % 31 == 0
+    if not gzip_stream and not zlib_stream:
         return raw
+    kind = 'gzip' if gzip_stream else 'zlib'
+    decomp = zlib.decompressobj(31 if gzip_stream else 15)
     try:
-        out = stream.read(max_bytes + 1)
-    except (OSError, EOFError, zlib.error) as exc:
-        raise NBTError('Corrupt gzip stream: %s' % exc)
+        out = decomp.decompress(raw, max_bytes + 1)
+    except zlib.error as exc:
+        raise NBTError('Corrupt %s stream: %s' % (kind, exc))
     if len(out) > max_bytes:
         raise NBTError('Decompressed NBT exceeds %d bytes' % max_bytes)
+    if not decomp.eof:
+        raise NBTError('Corrupt %s stream: truncated/incomplete checksum or payload' % kind)
+    if decomp.unused_data:
+        raise NBTError('Trailing bytes/members after complete %s stream' % kind)
     return out
 
 
 def loads(raw, max_bytes=DEFAULT_MAX_BYTES):
     """Parse gzip/zlib/uncompressed NBT bytes. Returns (root_name, root_tag)."""
+    if not isinstance(max_bytes, int) or max_bytes < 1:
+        raise NBTError('max_bytes must be positive')
     data = _decompress(bytes(raw), max_bytes)
     reader = _Reader(data, max_bytes)
     root_type = reader.unpack('>b', 1)
     if root_type != COMPOUND:
         raise NBTError('Root tag must be a compound, got type %d' % root_type)
     name = reader.string()
-    root = reader.payload(COMPOUND, 0)
+    try:
+        root = reader.payload(COMPOUND, 0)
+    except RecursionError as exc:
+        raise NBTError('NBT nesting exceeds the safe parser recursion limit') from exc
     if reader.pos != len(data):
         raise NBTError('Trailing %d bytes after root tag' % (len(data) - reader.pos))
     return name, root
@@ -199,7 +247,7 @@ def load(path, max_bytes=DEFAULT_MAX_BYTES):
 
 
 def _write_string(out, text):
-    raw = text.encode('utf-8', 'surrogatepass')
+    raw = _encode_modified_utf8(text)
     if len(raw) > 0xFFFF:
         raise NBTError('String too long for NBT')
     out.write(struct.pack('>H', len(raw)))

@@ -1,0 +1,11 @@
+# Observed original-mod chakra cache collision
+
+A new disposable Magma flat world loaded the frozen0.3.15 exact54server-JAR roster plus one registry-free original private QA mod. It did not load a copied/live world or real-player profile. The native process stopped cleanly with exit0. This is raw third-party API diagnosis, not0.3.16 bridge acceptance.
+
+Thirteen real Base Naruto API checks passed: publicaddBattleXp caused actualisNinja false-to-true, the real pathway was obtained, consume(double) produced the exact measured debit, clear produced0 and real EntityPlayerMP serialization existed. isInitialized(EntityPlayer) is client-only and absent on the dedicated server; two earlier failed harness attempts are retained, and the corrected harness never queries it.
+
+Both real Base/Spring pathway caches were deliberately configured to1000current/2000temporarymax for the controlled comparison. Baseconsume30 yielded970/1000/sharedNBT970. Springconsume50 yielded970/950/sharedNBT950. Baseconsume10 yielded960/950/sharedNBT960; a single pool should contain910. Shared fieldChakraPathwaySystem was observed from numeric NBT snapshots, not guessed. Forty actual public Base-then-Spring START/END callbacks and20 reversed callbacks did not reconcile the caches. These synthetic capacity overrides are not normal gameplay progression.
+
+The overall fixture remains FALSE: a later actual copyFrom/Forge clone operation raised a XaeroLib clonePlayer NPE because the synthetic fixture had not completed the normal player attachment/login lifecycle. That does not invalidate the preceding collision samples; it does not establish a production clone bug. Proper native registration/lifecycle and packet emission tests remain required.
+
+A Base-canonical payment adapter alone cannot prevent native Spring moves overwriting the shared NBT with stale cached amounts. A narrow original compatibility prototype is being investigated privately: exact hash-pinned Spring normal-player pathway identity, all accessor/mutator/normal-update coverage, independent Sage/mob fallthrough, no duplicated regeneration, preserved network/lifecycle semantics. No prototype is installed in the live game and no coexistence fix is accepted. Only safe observations/hashes and original test source may be published; original JAR/class/art payloads remain private.

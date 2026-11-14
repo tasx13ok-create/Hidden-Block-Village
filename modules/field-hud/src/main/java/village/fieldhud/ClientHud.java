@@ -41,6 +41,7 @@ public final class ClientHud extends Gui {
         MinecraftForge.EVENT_BUS.register(new HudSoundPulse());
         MinecraftForge.EVENT_BUS.register(new ReadinessHud());
         MinecraftForge.EVENT_BUS.register(new MenuFx());
+        MinecraftForge.EVENT_BUS.register(new CombatInventoryOverlay());
     }
     @SubscribeEvent public void tick(TickEvent.ClientTickEvent event) {
         if(event.phase!=TickEvent.Phase.END) return;

@@ -30,6 +30,7 @@ public final class HandTechnique extends Entity {
     public static final Map<Integer, HandTechnique> CLIENT_BY_OWNER = new java.util.concurrent.ConcurrentHashMap<>();
     private int stateAge, dying = -1, visualTicks = -1;
     private java.util.UUID ownerUuid;
+    private int clientOwner = -1;
     public float impactX, impactY, impactZ;
 
     public HandTechnique(World world) {
@@ -62,6 +63,9 @@ public final class HandTechnique extends Entity {
             if (p.getUniqueID().equals(h.ownerUuid) && h.state() == HELD) return h;
         return null;
     }
+    static void end(EntityPlayerMP p){HandTechnique h=find(p);if(h!=null)h.finish(FIZZLE);}
+    public static void clearClientWorld(World world){CLIENT_BY_OWNER.entrySet().removeIf(e->world==null||e.getValue()==null||e.getValue().world==world);}
+    private void forgetClient(){CLIENT_BY_OWNER.entrySet().removeIf(e->e.getValue()==this);clientOwner=-1;}
 
     /** Called when a hand mode becomes active on the server. Replaces any previous carrier. */
     static void begin(EntityPlayerMP p, String style) {
@@ -115,14 +119,15 @@ public final class HandTechnique extends Entity {
             stateAge = 0;
             if (world.isRemote && state() == IMPACT) { impactX = (float) posX; impactY = (float) posY; impactZ = (float) posZ; }
         }
+        if(world!=null&&world.isRemote&&(OWNER.equals(key)||STATE.equals(key)))forgetClient();
     }
 
     @Override public void onUpdate() {
         super.onUpdate();
         stateAge++;
         if (world.isRemote) {
-            if (state() == HELD && ownerId() >= 0) CLIENT_BY_OWNER.put(ownerId(), this);
-            else CLIENT_BY_OWNER.remove(ownerId(), this);
+            if (state() == HELD && ownerId() >= 0&&!isDead) {if(clientOwner!=ownerId())forgetClient();clientOwner=ownerId();CLIENT_BY_OWNER.put(clientOwner,this);}
+            else forgetClient();
             clientParticles();
             return;
         }
@@ -165,7 +170,7 @@ public final class HandTechnique extends Entity {
 
     @Override public void setDead() {
         super.setDead();
-        if (world.isRemote) CLIENT_BY_OWNER.remove(ownerId(), this);
+        if (world.isRemote) forgetClient();
     }
 
     // Never persisted: a reloaded chunk must not resurrect an effect without its server mode.

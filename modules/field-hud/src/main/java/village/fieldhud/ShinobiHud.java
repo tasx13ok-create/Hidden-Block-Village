@@ -42,10 +42,14 @@ public final class ShinobiHud extends Gui {
         return HudConfig.shinobi&&MC.player!=null&&MC.world!=null&&MC.player.isEntityAlive()
             &&!MC.player.isSpectator()&&!MC.gameSettings.hideGUI&&!MC.gameSettings.showDebugInfo;
     }
+    private static boolean combatBarVisible(){return RackAccess.combatActive()&&MC.player!=null&&MC.world!=null&&!MC.gameSettings.hideGUI;}
     @SubscribeEvent(priority=EventPriority.HIGHEST)
     public void replace(RenderGameOverlayEvent.Pre event) {
         if(event.getType()==RenderGameOverlayEvent.ElementType.ALL)GlassMaterial.capture(event.getResolution());
-        if(!active())return;
+        if(!active()){
+            if(combatBarVisible()&&(event.getType()==RenderGameOverlayEvent.ElementType.HOTBAR||event.getType()==RenderGameOverlayEvent.ElementType.EXPERIENCE))event.setCanceled(true);
+            return;
+        }
         switch(event.getType()) {
             case HOTBAR: event.setCanceled(true);break;
             case HEALTH:case ARMOR:case FOOD:case EXPERIENCE:
@@ -56,7 +60,7 @@ public final class ShinobiHud extends Gui {
     }
     @SubscribeEvent(priority=EventPriority.LOWEST)
     public void draw(RenderGameOverlayEvent.Post event) {
-        if(event.getType()!=RenderGameOverlayEvent.ElementType.ALL||!active())return;
+        if(event.getType()!=RenderGameOverlayEvent.ElementType.ALL||(!active()&&!combatBarVisible()))return;
         ScaledResolution sr=event.getResolution();
         ChakraBridge.Snapshot chakra=ChakraBridge.current();
         ShinobiLayout layout=layout(sr.getScaledWidth(),sr.getScaledHeight());
@@ -69,7 +73,7 @@ public final class ShinobiHud extends Gui {
         GlStateManager.tryBlendFuncSeparate(770,771,1,0);GlStateManager.disableLighting();
         try {
             FRAME.resolution=sr;FRAME.layout=layout;FRAME.chakra=chakra;FRAME.time=time;FRAME.partial=event.getPartialTicks();
-            LAYERS.render(FRAME);
+            if(active())LAYERS.render(FRAME);else ScrollHotbar.draw(layout,time,event.getPartialTicks());
         } finally {
             GlStateManager.color(1,1,1,1);RenderHelper.disableStandardItemLighting();GlStateManager.popMatrix();
             if(depth)GlStateManager.enableDepth();else GlStateManager.disableDepth();

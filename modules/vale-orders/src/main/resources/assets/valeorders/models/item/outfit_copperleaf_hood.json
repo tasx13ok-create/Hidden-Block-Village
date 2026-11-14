@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "valeorders:items/current_helmet"
+    "layer0": "valeorders:items/outfit_copperleaf_hood"
   }
 }

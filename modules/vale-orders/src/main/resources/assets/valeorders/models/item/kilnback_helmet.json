@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/ember_helmet"
+  "parent": "valeorders:item/ember_helmet",
+  "textures": {
+    "layer0": "valeorders:items/kilnback_helmet"
+  }
 }

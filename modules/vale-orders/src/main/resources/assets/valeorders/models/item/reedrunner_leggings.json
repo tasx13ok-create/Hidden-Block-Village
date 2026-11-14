@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/gale_leggings"
+  "parent": "valeorders:item/gale_leggings",
+  "textures": {
+    "layer0": "valeorders:items/reedrunner_leggings"
+  }
 }

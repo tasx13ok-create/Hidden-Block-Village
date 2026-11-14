@@ -15,6 +15,7 @@ for a JSON report. Exit status: 0 ok, 1 findings that need review (``--strict``)
 """
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -123,10 +124,40 @@ def cmd_apply(args):
 
 def cmd_paste_world(args):
     from . import anvil
-    schem = Schematic.load(args.input)
-    receipt = anvil.paste_into_world_copy(schem, args.world_copy, args.min, source_path=args.input,
-                                          clear_air=not args.keep_existing_on_air)
-    _write_json(args.receipt, receipt)
+    world, manifest = anvil._candidate(args.world_copy)
+    output = anvil._safe_path(args.receipt)
+    if output.exists():
+        raise FileExistsError('Refusing to overwrite external receipt %s' % output)
+    for protected in (world, anvil._safe_path(manifest['source']), anvil._rollback_root(world)):
+        if anvil._is_within(output, protected):
+            raise anvil.WorldError('External receipt must be outside source/candidate/rollback directories: %s' % output)
+    # Reserve a writable descriptor before even the mutation API's lock file can be created.
+    # Exclusive creation also closes the exists()-then-write collision window.
+    output.parent.mkdir(parents=True, exist_ok=True)
+    anvil._safe_path(output)
+    completed = None
+    with open(output, 'x', encoding='utf-8') as handle:
+        identity = os.fstat(handle.fileno())
+        try:
+            schem = Schematic.load(args.input)
+            completed = anvil.paste_into_world_copy(schem, world, args.min, source_path=args.input,
+                                                    clear_air=not args.keep_existing_on_air)
+            handle.write(json.dumps(completed, indent=2) + '\n')
+            handle.flush()
+            os.fsync(handle.fileno())
+        except BaseException as error:
+            handle.close()
+            # Remove only our own reserved file, never a path another process replaced.
+            try:
+                safe = anvil._safe_path(output)
+                current = safe.stat()
+                if (current.st_dev, current.st_ino) == (identity.st_dev, identity.st_ino):
+                    safe.unlink()
+            except (OSError, ValueError):
+                pass
+            if completed is not None and isinstance(error, Exception):
+                raise anvil.WorldError('Paste committed, but external receipt write failed; internal receipt remains at %s/PASTE-RECEIPT.json' % completed['rollback_dir']) from error
+            raise
     return 0
 
 

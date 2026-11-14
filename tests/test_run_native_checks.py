@@ -210,6 +210,149 @@ class NativeOrchestrationTests(unittest.TestCase):
         result["checks"].append("Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect")
         native.validate_native_result(result, expected, log)
 
+    def test_core0311_cannot_pass_using_only_older_fixture_results(self):
+        expected = {"valeorders": {"version": "0.3.11", "file": "core.jar", "sha256": "a" * 64}}
+        older = list(native.REQUIRED_CHECKS) + ["Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect"]
+        additions = ["Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+                     "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+                     "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 1400,
+                  "checks": older + additions, "minecraft_version": "1.12.2",
+                  "forge_version": native.FORGE_VERSION, "loaded_fixture_mods": expected,
+                  "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0311.log"
+        log.write_text(native.PASS_MARKER + " 1400 assertions\n", encoding="utf-8")
+        native.validate_native_result(result, expected, log)
+        for missing in additions:
+            with self.subTest(missing=missing), self.assertRaisesRegex(native.NativeError, "0.3.11 acceptance"):
+                altered = copy.deepcopy(result)
+                altered["checks"].remove(missing)
+                native.validate_native_result(altered, expected, log)
+
+    def test_core0312_requires_hand_technique_native_result(self):
+        expected = {"valeorders": {"version": "0.3.12", "file": "core.jar", "sha256": "a" * 64}}
+        checks = list(native.REQUIRED_CHECKS) + [
+            "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+            "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+            "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+            "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 1704,
+                  "checks": checks, "minecraft_version": "1.12.2", "forge_version": native.FORGE_VERSION,
+                  "loaded_fixture_mods": expected, "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0312.log"
+        log.write_text(native.PASS_MARKER + " 1704 assertions\n", encoding="utf-8")
+        with self.assertRaisesRegex(native.NativeError, "0.3.12 hand-technique"):
+            native.validate_native_result(result, expected, log)
+        result["checks"].append("Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup")
+        native.validate_native_result(result, expected, log)
+
+    def test_core0313_requires_new_weapon_and_expedition_acceptance(self):
+        expected = {"valeorders": {"version": "0.3.13", "file": "core.jar", "sha256": "a" * 64}}
+        checks = list(native.REQUIRED_CHECKS) + [
+            "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+            "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+            "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+            "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery",
+            "Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup"]
+        additions = ["Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation",
+            "Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 2305,
+            "checks": checks + additions, "minecraft_version": "1.12.2", "forge_version": native.FORGE_VERSION,
+            "loaded_fixture_mods": expected, "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0313.log"
+        log.write_text(native.PASS_MARKER + " 2305 assertions\n", encoding="utf-8")
+        native.validate_native_result(result, expected, log)
+        for missing in additions:
+            altered = copy.deepcopy(result)
+            altered["checks"].remove(missing)
+            with self.subTest(missing=missing), self.assertRaisesRegex(native.NativeError, "0.3.13"):
+                native.validate_native_result(altered, expected, log)
+
+    def test_core0314_requires_real_dodge_hotbar_and_lifecycle_labels(self):
+        expected = {"valeorders": {"version": "0.3.14", "file": "core.jar", "sha256": "a" * 64}}
+        older = list(native.REQUIRED_CHECKS) + [
+            "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+            "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+            "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+            "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery",
+            "Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup",
+            "Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation",
+            "Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity"]
+        additions = [
+            "Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death",
+            "Native six mastered techniques cast from the switched physical combat hotbar",
+            "Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle",
+            "Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 2306,
+                  "checks": older + additions, "minecraft_version": "1.12.2", "forge_version": native.FORGE_VERSION,
+                  "loaded_fixture_mods": expected, "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0314.log"
+        log.write_text(native.PASS_MARKER + " 2306 assertions\n", encoding="utf-8")
+        native.validate_native_result(result, expected, log)
+        for missing in additions:
+            altered = copy.deepcopy(result)
+            altered["checks"].remove(missing)
+            with self.subTest(missing=missing), self.assertRaisesRegex(native.NativeError, "0.3.14"):
+                native.validate_native_result(altered, expected, log)
+
+    def test_core0315_requires_worn_armor_and_all_prior_acceptance(self):
+        expected = {"valeorders": {"version": "0.3.15", "file": "core.jar", "sha256": "a" * 64}}
+        checks = list(native.REQUIRED_CHECKS) + [
+            "Native academy enrollment, walking, guard, substitution, arts, crafting, dispatch, ambush and reconnect",
+            "Native six issued weapon combos, cooled contacts, final cancellation and persistent recovery",
+            "Native five distinct nature techniques, protected temporary Earth cover and effect settlement",
+            "Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery",
+            "Native hand-technique carrier lifecycle, cosmetic spawn failure charge, observed final-cancellation/absorption contacts and cleanup",
+            "Native 27 weapon presentation lifecycles, bounded carriers and cosmetic-failure gameplay isolation",
+            "Native expedition adapter: synthetic measured route, nonce/protection, owner/run actors, defend/escort/skiff, rewards and restart identity",
+            "Native combat hotbar: physical loadouts, cursor transactions, ownership, charge cancellation and death",
+            "Native six mastered techniques cast from the switched physical combat hotbar",
+            "Native four-way paid dodge, collision/protection, saved cooldown/air use, grace and lifecycle",
+            "Native combat hotbar final-canceled death, keepInventory, native drops and end-clone ownership",
+            "Native worn armor registered getters, conditional Lightning and packaged assets"]
+        result = {"schema": 1, "fixture": native.FIXTURE, "passed": True, "assertions": 3000,
+                  "checks": checks, "minecraft_version": "1.12.2", "forge_version": native.FORGE_VERSION,
+                  "loaded_fixture_mods": expected, "core_sha256": expected["valeorders"]["sha256"]}
+        log = self.root / "core0315.log"
+        log.write_text(native.PASS_MARKER + " 3000 assertions\n", encoding="utf-8")
+        native.validate_native_result(result, expected, log)
+        for missing in checks:
+            altered = copy.deepcopy(result)
+            altered["checks"].remove(missing)
+            with self.subTest(missing=missing), self.assertRaises(native.NativeError):
+                native.validate_native_result(altered, expected, log)
+
+    def test_core0315_private_jar_requires_worn_and_prior_helper_classes(self):
+        names = ["village/vale/arsenal/RecoveryNativeChecks", "village/vale/arsenal/ScrollCastNativeChecks039",
+                 "village/vale/arsenal/ReedEscapeNativeChecks039", "village/vale/AcademyNativeChecks",
+                 "village/vale/LightningNativeChecks", "village/vale/nature/NatureNativeChecks",
+                 "village/vale/melee/MeleeNativeChecks", "village/vale/arsenal/HandTechniqueNativeChecks",
+                 "village/vale/arsenal/WeaponPulseNativeChecks", "village/vale/expedition/GateNativeChecks",
+                 "village/vale/DodgeNativeChecks", "village/valerack/CombatHotbarNativeChecks",
+                 "village/valerack/CombatHotbarLifecycleNativeChecks", "village/vale/arsenal/CombatAbilityNativeChecks",
+                 "village/vale/WornArmorNativeChecks"]
+        for name in names:
+            path = self.root / "modules/vale-orders/recoverychecks" / (name + ".java")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("// original synthetic fixture", encoding="utf-8")
+        entries = {name + ".class": self.bytecode() for name in names}
+        entries["mcmod.info"] = '[{"modid":"valerecoverychecks","version":"0.3.15"}]'
+        path = self.root / "worn-helper.jar"
+        self.jar(path, entries)
+        native.verify_private_jar(path, "vale-orders", "recoverychecks", "valerecoverychecks", "0.3.15", self.root)
+        # Every historical required helper remains mandatory at15 too.
+        for missing in names[1:]:
+            changed = dict(entries)
+            del changed[missing + ".class"]
+            self.jar(path, changed)
+            with self.subTest(missing=missing), self.assertRaises(native.NativeError):
+                native.verify_private_jar(path, "vale-orders", "recoverychecks", "valerecoverychecks", "0.3.15", self.root)
+        # The preceding14 contract still has no worn-helper requirement.
+        entries.pop("village/vale/WornArmorNativeChecks.class")
+        entries["mcmod.info"] = '[{"modid":"valerecoverychecks","version":"0.3.14"}]'
+        self.jar(path, entries)
+        native.verify_private_jar(path, "vale-orders", "recoverychecks", "valerecoverychecks", "0.3.14", self.root)
+
     def test_nonzero_process_exit_cannot_pass(self):
         steps = []
         with contextlib.redirect_stdout(io.StringIO()), self.assertRaisesRegex(native.NativeError, "exited with status 7"):

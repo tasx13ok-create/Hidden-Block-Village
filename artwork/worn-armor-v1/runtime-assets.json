@@ -1,0 +1,885 @@
+{
+  "schema": 1,
+  "status": "SOURCE_INTEGRATED_PENDING_BUILD_NATIVE_AND_GRAPHICAL_ACCEPTANCE",
+  "assets": [
+    {
+      "resource": "valeorders:textures/models/armor/bloom_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/bloom_layer_1.png",
+      "sha256": "d473107e8e26f06f433c8ef545520afc5fc76fe528814974bfb79e76b4911b0a"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/bloom_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/bloom_layer_2.png",
+      "sha256": "c257247945486940fcdaea8b21975e4fb750741dcf00492885d93d733f664bea"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/current_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/current_layer_1.png",
+      "sha256": "779fcef6c0a77cfdae87d65cf3a518fd6f00064885b85c751242311403f6b9ec"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/current_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/current_layer_2.png",
+      "sha256": "9097a3de8affbdc17e9ffc33757ab451e47b4b900edb6fc3df82d0437e5b9d9f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/dawn_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dawn_layer_1.png",
+      "sha256": "f92e97de5fbe818a04ccd09fe3f01474db009ea3ec34a154172b0f74238f4bfc"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/dawn_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dawn_layer_2.png",
+      "sha256": "bbe328e9da197bb89bf07a53ca3967f12d148bab3c8b8ce423b352b642242860"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/dusk_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dusk_layer_1.png",
+      "sha256": "8deafc4fdb64d14b8874b819ccb80691f0e010d912dca7a2266aca74a1c0d38c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/dusk_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/dusk_layer_2.png",
+      "sha256": "c5decb49488ff34e1f65aaf562b4e559a067a67bbca44866d647ef6b8d7f6922"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/ember_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/ember_layer_1.png",
+      "sha256": "4b3808bf261e048ccdfffc6bff7eacc94daefec00b37856c1c77d2158ffea453"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/ember_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/ember_layer_2.png",
+      "sha256": "9194494372446caec1a1ee301144e511d7edfc4096b04b98b75bdeb1755dd3ef"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/flint_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/flint_layer_1.png",
+      "sha256": "16c74349c4e20aa6c9ee7b9ae35279590c6b73714bd3a4361ce73aa733a1e18c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/flint_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/flint_layer_2.png",
+      "sha256": "7f73588d300a767323fbf549c60fa627249aa8fad5ee506dae998b2b6697b894"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_amber_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_amber_crest_lens_layer_1.png",
+      "sha256": "de203e21c6684fc0c05cc95643644d025a0a8bc3635b791d66f7e197221844f5"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_amber_haven_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_amber_haven_lens_layer_1.png",
+      "sha256": "55b8cf98a54a09a7eac986ecc505b4f5b2e92e32de2e141929952f74522681ac"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_amber_hollow_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_amber_hollow_lens_layer_1.png",
+      "sha256": "a714165127461614e387f338f18db9d8373415865763d62b0b236fa7ec4ba411"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_amber_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_amber_wake_lens_layer_1.png",
+      "sha256": "6b345bc13a64fcc09226f4c24b3730196a78821b66621458226a12f273817f10"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_birch_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_birch_crest_lens_layer_1.png",
+      "sha256": "b0c2ffc418d714987b3033fee4a3a9dc66466c029a53ea9d882407aef68d6016"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_birch_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_birch_haven_mantle_layer_1.png",
+      "sha256": "4c6e41b82457827a98344d442310f382ebe32c949752c0a77f6b1614644b00b8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_birch_hollow_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_birch_hollow_greaves_layer_2.png",
+      "sha256": "b0523c93844b47c492278e34fb33379d70a810c8b408cfb1a3393bf89fdeaf4f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_birch_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_birch_wake_lens_layer_1.png",
+      "sha256": "153c4a834155880d376463d81a662415058cbb369da62882df2fdef7c7e7512f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_copper_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_copper_crest_mantle_layer_1.png",
+      "sha256": "7a95a7abd2d984b058a23af745505ff50b04163fd1b8e20bd41c399e7bc75a6e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_copper_haven_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_copper_haven_lens_layer_1.png",
+      "sha256": "9e7f05393df24e8aa37428354149137210bd55b2e087e79fc83c8b25b71780b0"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_copper_hollow_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_copper_hollow_lens_layer_1.png",
+      "sha256": "d809c5b892ebab1ca78703d95694afc63cf816317c64ea64cbff48eb6a37a676"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_copper_wake_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_copper_wake_mantle_layer_1.png",
+      "sha256": "3ee42bac1e86f90251e116c21549837879089b5fe04860ccb207986f6ef25182"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_dusk_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_dusk_crest_lens_layer_1.png",
+      "sha256": "19468800308ccf4529ef737aef74f86a10ea447be5f2e7e4e889dc01e2448fc4"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_dusk_haven_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_dusk_haven_greaves_layer_2.png",
+      "sha256": "2cb307a205582e36a1d4eda52ccdd8b2ce0618fb21f1bb0619b276cbf0c4cc15"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_dusk_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_dusk_hollow_mantle_layer_1.png",
+      "sha256": "75ef67bac29877fc9d9b7b0af38759e733acfa139430dc89ec222b1edc7d6b60"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_dusk_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_dusk_wake_lens_layer_1.png",
+      "sha256": "6cc8890820629f2d171c36679dc741e25dc856662eb278d0b613abbdcfcaf961"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_elm_crest_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_elm_crest_greaves_layer_2.png",
+      "sha256": "72339e0179c9c780eec077a516d33874ada1de6fb0d6892c4a7fd68e7e3bef09"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_elm_haven_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_elm_haven_lens_layer_1.png",
+      "sha256": "153c4a834155880d376463d81a662415058cbb369da62882df2fdef7c7e7512f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_elm_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_elm_hollow_mantle_layer_1.png",
+      "sha256": "783d545c3cd3f8fd23a3368d3c9358a45e8c7a28c58a1cd7912da76b25e793b8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_elm_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_elm_wake_lens_layer_1.png",
+      "sha256": "c6a70707438e1769caaba7753e3c388ff1369b233445f31e917442991a86d3ee"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_flint_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_flint_crest_mantle_layer_1.png",
+      "sha256": "54503cd0a0600eb74b9bad36aaba3064c7f940b18e81439f54e457b8bfa7c8b8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_flint_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_flint_haven_mantle_layer_1.png",
+      "sha256": "e972a2bb51b562bb3477b801e20bd4ff5335f2bfda3445039ea6a2fbf805cc80"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_flint_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_flint_hollow_mantle_layer_1.png",
+      "sha256": "3a61bfe688e1c0248ec51be6dec435da37d8222194e122250d997c795729893c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_flint_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_flint_wake_lens_layer_1.png",
+      "sha256": "5e897ed934a3ba7a1b1a011964e14e525289c6c6897ee17ae8f64509128bc4fe"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_gale_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_gale_crest_mantle_layer_1.png",
+      "sha256": "70a77013d67135ae42d3f13db38d70da6781312f860f203923b8107147cce1e4"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_gale_haven_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_gale_haven_lens_layer_1.png",
+      "sha256": "8fd49f006dfea4c3e2bb95d92d674e816adb85929083ab95dfcff183de0657c4"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_gale_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_gale_hollow_mantle_layer_1.png",
+      "sha256": "6b3ede9e237bb30173b61f4aea56319d3e624989e9ec283004950dc5095addc5"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_gale_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_gale_wake_lens_layer_1.png",
+      "sha256": "b183e0914cb7b65788063622aec958ec095f3d5d103ed13b3739deb4a88bb5b6"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_heather_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_heather_crest_mantle_layer_1.png",
+      "sha256": "04134e5e7b36971fa48ef8dbb75e9b1518eb3b6c02f1cae2c7d6e2f8cf1858d8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_heather_haven_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_heather_haven_greaves_layer_2.png",
+      "sha256": "84d3637cf395fda787ef1a087b2e3f3cc8e1682ca8326d6b435d841f0eb7bd3b"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_heather_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_heather_hollow_mantle_layer_1.png",
+      "sha256": "54503cd0a0600eb74b9bad36aaba3064c7f940b18e81439f54e457b8bfa7c8b8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_heather_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_heather_wake_lens_layer_1.png",
+      "sha256": "c20eab43e4c61984dd98bbe505dd7acf451240004b7063eb808464a1255b5bb3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ivory_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ivory_crest_mantle_layer_1.png",
+      "sha256": "a2ef08f515220f03ffefdf80ae93f26141a6c5f9caae29abc74065ed5bdb61ca"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ivory_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ivory_haven_mantle_layer_1.png",
+      "sha256": "bfb487b598acf7edecfa549871953f6e62b02a1fa405f06906406010241c05cc"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ivory_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ivory_hollow_mantle_layer_1.png",
+      "sha256": "e8a041699c4130e7b1ffd583fdb79fcd535726923fb914ef00dfe45b9b629998"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ivory_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ivory_wake_lens_layer_1.png",
+      "sha256": "5645a3d1c2700524a16c4abdb1e5666e350f1ed3149508696ceb97ffdfa5f0e0"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_juniper_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_juniper_crest_mantle_layer_1.png",
+      "sha256": "75b52845a6e3869961105e48a4a5d4002506e9522be67322c50d2e345dda2776"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_juniper_haven_treads_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_juniper_haven_treads_layer_1.png",
+      "sha256": "1acddceb4c28cfbf13239ac9ec14176dcb7f0c843660cb3df8fa214971428993"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_juniper_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_juniper_hollow_mantle_layer_1.png",
+      "sha256": "55f6470e713b9627d0ce7e3565f8ade56b07a260e441ec3264409f8d95946182"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_juniper_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_juniper_wake_lens_layer_1.png",
+      "sha256": "65e460157bca2fa08d653562f82c48a38cc77b9b784d064a261f3a8825f329b1"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_kiln_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_kiln_crest_lens_layer_1.png",
+      "sha256": "1e62c5ffe11d8aba7d7f5dd2e5565b108e6306906374e45c7a18f52831ece030"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_kiln_haven_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_kiln_haven_greaves_layer_2.png",
+      "sha256": "44f99c7b3b9ded4c6e77fb727502a296f16305a822da6bfe01cc2cafb5affb3c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_kiln_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_kiln_hollow_mantle_layer_1.png",
+      "sha256": "74c675ce5a55806e3aa7d967fcb2ebe1b0c53a96f841e2624405e06c0c6cd018"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_kiln_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_kiln_wake_lens_layer_1.png",
+      "sha256": "916cab76bf709d59fad25fbc6c7f96fd8946b4b0935097fdfe09f8341d7a9334"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_lantern_crest_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_lantern_crest_greaves_layer_2.png",
+      "sha256": "94d5cb52fbdb0b7b14385c337e37e5dc81b3855faaa9beae98ff5dba0f27581c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_lantern_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_lantern_haven_mantle_layer_1.png",
+      "sha256": "a95138869f0f57b6a30cd831b0b91627756edc0744dfadee9c13857c127a076d"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_lantern_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_lantern_hollow_mantle_layer_1.png",
+      "sha256": "11b755c70b82f6f10950c10ed4ebb4fff9533e893b9e593888e0d1aa3d3312f9"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_lantern_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_lantern_wake_lens_layer_1.png",
+      "sha256": "ed2f7a927e225b0ab14a1c0f04ddf2a9dcb99b4c769f0822741cbfd1538b6f25"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_moss_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_moss_crest_mantle_layer_1.png",
+      "sha256": "060997cc9aabce0ba5638d55f15c0289ae5fc744b969967798e8217819f12c27"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_moss_haven_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_moss_haven_lens_layer_1.png",
+      "sha256": "76fcf2b65bc83f4caf0dfee4fd06f258d909a4da3321bbb701349b282d5101f3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_moss_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_moss_hollow_mantle_layer_1.png",
+      "sha256": "ee226b1ed73911d1f1688d0a64cde87219a0259636b82652f0822090df5ecdde"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_moss_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_moss_wake_lens_layer_1.png",
+      "sha256": "db4074d9fa64012d160500185ad1803c197d00e52fe53da63546bacc9b86f9d1"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_night_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_night_crest_lens_layer_1.png",
+      "sha256": "4205648bdbbeff822de90955855302c9e5dfcf4bf1252aba6690e07c0c39200c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_night_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_night_haven_mantle_layer_1.png",
+      "sha256": "bd0a85edc0313dca6c07a5337ad873ec64de6a176f84a6cf90e144103ddf8ccf"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_night_hollow_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_night_hollow_greaves_layer_2.png",
+      "sha256": "3a274c4cef4f856edc17cefd98385db711c132b54de1acafa620799734348523"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_night_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_night_wake_lens_layer_1.png",
+      "sha256": "9de464a428e4018c7c8984a0beffe56e2d0a38d577ddcf186c6d928d6db5214a"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ochre_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ochre_crest_mantle_layer_1.png",
+      "sha256": "ba62a26393999c82168d8bcfd70e923bc24298104f270410337cfede4da2a471"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ochre_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ochre_haven_mantle_layer_1.png",
+      "sha256": "5b320e410fe45d1c6ed8f5392bf1c5381eb8a3022ec4ebb3d1545bebcd8648da"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ochre_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ochre_hollow_mantle_layer_1.png",
+      "sha256": "249bdce6504029b55a5e0a5fb568496f07867d1b71514776006d43ac2f1fa7c1"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_ochre_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_ochre_wake_lens_layer_1.png",
+      "sha256": "e0eee35762704d358d86d7e41098ce210c2df2b0fb27bf6cb4632f017d4f1068"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_pearl_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_pearl_crest_lens_layer_1.png",
+      "sha256": "61aed3f148b8cdff62292a9bbbfc7235802f3d5f852e80e8f4ab74f92064ee1e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_pearl_haven_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_pearl_haven_mantle_layer_1.png",
+      "sha256": "e5f0e27fecd32a43216c0dc8e5caf8ced17bc4c03b2324466f1d4060cf15f4e2"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_pearl_hollow_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_pearl_hollow_lens_layer_1.png",
+      "sha256": "440247be16389b89cba51c20aed479707c27da09863757c36cf88393044f9c36"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_pearl_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_pearl_wake_lens_layer_1.png",
+      "sha256": "57b7dce74db054ab3ae89723fa5e6feb6039ee52c88c03dd9a7bc116d1ad2c5e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_quartz_crest_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_quartz_crest_mantle_layer_1.png",
+      "sha256": "e9a1e2f614e21374ed0328c2c4f3ff65b234483a92efd0fa56e9270a64f73c7a"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_quartz_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_quartz_hollow_mantle_layer_1.png",
+      "sha256": "5246b1b299e264a6180b598c37f8776329263172ee3383519ac78b3b7036e5ff"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_quartz_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_quartz_wake_lens_layer_1.png",
+      "sha256": "b7138a633feaf20695b0c224372a4bc9fafe0a4ac9d5141911854b07901e7a95"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_reed_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_reed_crest_lens_layer_1.png",
+      "sha256": "d749ca1aa64e1c8cc257900d20c658ce45eb310d6aa32e63f69b0ab6fba34b70"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_reed_hollow_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_reed_hollow_lens_layer_1.png",
+      "sha256": "dbabb311ce432e32861c19b4025e3ca398f82d66415c23f0f3064654759ec750"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_reed_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_reed_wake_lens_layer_1.png",
+      "sha256": "a17155ef65ce77fc7c2e66a4d1ccc09baae9ec666204290ccc5a764be85dd4f3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_slate_crest_greaves_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_slate_crest_greaves_layer_2.png",
+      "sha256": "9424d3210ab24d106db9a0853fcaaea51a469592eadb898560fa5e83b29613c4"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_slate_hollow_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_slate_hollow_mantle_layer_1.png",
+      "sha256": "2d1126db6b64d3167f8dbe9e80292bdddc10960f7a662a96c0e90c9f7acd4be9"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_slate_wake_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_slate_wake_lens_layer_1.png",
+      "sha256": "d399bd85001f5aff7f2377ed56e2b3ce386470c0d4494a5337d2edb1bf348d43"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_thistle_crest_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_thistle_crest_lens_layer_1.png",
+      "sha256": "1e62c5ffe11d8aba7d7f5dd2e5565b108e6306906374e45c7a18f52831ece030"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_thistle_hollow_lens_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_thistle_hollow_lens_layer_1.png",
+      "sha256": "85b39a2f79b259a91142fb14e91a041f5ce6689f66ecb4c5928244d63ea7f042"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/focus/focus_thistle_wake_mantle_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/focus/focus_thistle_wake_mantle_layer_1.png",
+      "sha256": "6da920b8b7c853ed5a3549922d4c9a7e8be64e52c934c3406df650590ef3e902"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/gale_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/gale_layer_1.png",
+      "sha256": "34698f389773a150ecacd10204375842f4d7926de9524a45dd3161a6086405c2"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/gale_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/gale_layer_2.png",
+      "sha256": "c67bfe7082633430af9cd2754b4c2b636737ab61e667558bffdfa3654049c04b"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/lightning_chakra_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/lightning_chakra_layer_1.png",
+      "sha256": "5a0edcdb4d0ebd78983bad5848612e250c3f6f0ece84f21272a9403105bec579"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/lightning_chakra_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/lightning_chakra_layer_2.png",
+      "sha256": "5c25a98b2f2675af86152eb37f722cf343d7da47038230112a828c1c4eee2503"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_ambermoss_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_ambermoss_hood_layer_1.png",
+      "sha256": "b569a21997001652e1feffd91e50e4b009756f268be1cd9a9ecd518b6bc94761"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_ashfield_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_ashfield_hood_layer_1.png",
+      "sha256": "73417638db79a25076b90676da2d4ec61c11f8b4022806d6037766ff20f317ba"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_bellstone_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_bellstone_trousers_layer_2.png",
+      "sha256": "367d5abebcd1cb1ca47b60173a5c5627f27fd3a9a174a59eedc15284d7d5a1c3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_bracken_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_bracken_coat_layer_1.png",
+      "sha256": "430dd4c15c791e7d71238749803202a5e53f5aa13c7b036cb1f75ccc2e9457ad"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_brightcairn_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_brightcairn_coat_layer_1.png",
+      "sha256": "b4759a4e4f9340f49fd98ec915e2482d5a16d128db8fa9f936805d5f8a98088f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_brightcairn_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_brightcairn_trousers_layer_2.png",
+      "sha256": "adec380a3c9c695918017386630c607eca68d65f98fccda65ab4548081b952b5"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_brookstone_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_brookstone_coat_layer_1.png",
+      "sha256": "99532d5d071be9ce1ea78f9d2c7cb859fb697be489b9cf7766b0fe111826bdfc"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_brookstone_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_brookstone_hood_layer_1.png",
+      "sha256": "b94b714e7a8f8bff1c72724110463f7ca3629cf32d36ba5be23e9b21a35e9c31"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_brookstone_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_brookstone_trousers_layer_2.png",
+      "sha256": "479329109472bcdd2120e28ddf3eeb7dbc6e81686ef271a8a6f154490ea07a87"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cairn_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cairn_coat_layer_1.png",
+      "sha256": "f7c972e7d46caacd02d62f88be667bf96b080df1bcd5b395821050dbe67159cc"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cinderleaf_coat_layer_1.png",
+      "sha256": "7188419027ab9fee4399614a79c6774bdd05c9525de6a01d302d296ec444ffd6"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cinderleaf_hood_layer_1.png",
+      "sha256": "32ee0b700e986d8ec3a038850eaa3263968c991886dc7c65265dbef13d92637f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cinderleaf_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cinderleaf_trousers_layer_2.png",
+      "sha256": "44f99c7b3b9ded4c6e77fb727502a296f16305a822da6bfe01cc2cafb5affb3c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cloudmere_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cloudmere_coat_layer_1.png",
+      "sha256": "9db83a5cef8f129f7381c22f442b7a65a18a129008a6b7ca1e1135ae41a9d6b6"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cloudmere_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cloudmere_hood_layer_1.png",
+      "sha256": "803774a161e1fe29a1a8ca4038f69ae673ed557755e8b62d5f94f9bd9e49d278"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_cloudmere_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_cloudmere_trousers_layer_2.png",
+      "sha256": "d84d7820ed58eb83db90147f5b8e30e1d07a00499ee3c2df86d9a1efaddd71e1"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_coastfern_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_coastfern_coat_layer_1.png",
+      "sha256": "1c00f54c0d61a880941b97fe7c886672b270179d8e9d3fe4d734212f9117979f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_coastfern_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_coastfern_trousers_layer_2.png",
+      "sha256": "bf22191a3735f9e27f65c970e43c852d4c8144c69f55200dfec7e2a8fbef996d"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_copperleaf_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_copperleaf_hood_layer_1.png",
+      "sha256": "7cabaeee9f6d5f533b8fee986ff57c2c7cbadc5fe82a88b9d8e5dcc0544542cf"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_deepcopper_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_deepcopper_coat_layer_1.png",
+      "sha256": "7fa9f458c27289530026c1b41642ba3b13943be80b8c3e34ff2f7a8632b5099e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_deepcopper_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_deepcopper_trousers_layer_2.png",
+      "sha256": "aa40aefbabb88c14e54ec9c1724ed70fea3e07c577ad6e3b1bca324720411960"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_dunestone_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_dunestone_hood_layer_1.png",
+      "sha256": "82438338a6a179a6202228d5920c135a660ea66da07cf2be576fb286cf490039"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_duskmere_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_duskmere_coat_layer_1.png",
+      "sha256": "5de0560dddebc41f82a64b554d5f097cdb31b156f0e487d080e5dc728c0f40cb"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_frostpine_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_frostpine_coat_layer_1.png",
+      "sha256": "9849f4e5806815e97903c0b3152047a68ef4e4aefb647b363445ba6d453b98c7"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_frostpine_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_frostpine_hood_layer_1.png",
+      "sha256": "869ff64eeef36eb4b72a01c264057a6f2b13058425bcfb30aeac6a97e989a21a"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_frostpine_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_frostpine_trousers_layer_2.png",
+      "sha256": "807f2992f75c325bfaef10f9ed8bd3e0b565daa815712d82f1e60e956a0102d3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_galecrest_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_galecrest_hood_layer_1.png",
+      "sha256": "5bf3c45efd829893d8fb8a1aa97ebca15a77bd2144d88093bfa1c876f8b3305e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_goldenrush_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_goldenrush_coat_layer_1.png",
+      "sha256": "995df1dd193f6f0752387ed37790c02bf822f406059136f207a1c5a4fe9b8169"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_goldenrush_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_goldenrush_hood_layer_1.png",
+      "sha256": "1b2f241ea1fae46ce9509468dd75347a400a4cc8b53a9eba6c8be419c5f35ac8"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_highridge_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_highridge_coat_layer_1.png",
+      "sha256": "10d3ddb522347bde789018a9dc74bc468d46f86554bf6a78f38f3efc86e42da0"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_hollowreed_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_hollowreed_trousers_layer_2.png",
+      "sha256": "878882db8be63dc7c4ba8cc42ec2392a57e02e2c22611953e91d4fb4a16d664e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_ironbark_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_ironbark_coat_layer_1.png",
+      "sha256": "0450a3a0013b118816df203063c46f4f2df4cdb2c5606f21d09c4bbc2adcece3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_kilnward_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_kilnward_hood_layer_1.png",
+      "sha256": "1f9d2c0696421d908a868db7c0fb80a98d08c72f09df8b98d3fc5147fb366603"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_mistroot_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_mistroot_hood_layer_1.png",
+      "sha256": "a5ee0167a79c6b023298b7f3357a023f30535e360e1b0f116fbc81633e3a0cd0"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_moonfern_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_moonfern_hood_layer_1.png",
+      "sha256": "0a799a143a92d4784d9532e64502e6062bf6792dcfa7d40b0a8f03baafbc62b7"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_mosslight_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_mosslight_hood_layer_1.png",
+      "sha256": "3692875a1e1fa5fc5925530974d848fc88d980442ed3f9dd7ab632590c714042"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_nightbloom_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_nightbloom_hood_layer_1.png",
+      "sha256": "df3e8117d7838d45834dca32134cfa501f87689b2e6801ec7dc4e5db7d5f7227"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_ochre_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_ochre_coat_layer_1.png",
+      "sha256": "c7decfe078aa897198b9d5e79faf6173bbd46824cdf19f2ff375ac51726e639a"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_ochre_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_ochre_hood_layer_1.png",
+      "sha256": "df3e8117d7838d45834dca32134cfa501f87689b2e6801ec7dc4e5db7d5f7227"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_pearlwood_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_pearlwood_hood_layer_1.png",
+      "sha256": "39f2286534197f4c6170cc6982a0601e06f3f719211b9a4eee08968e1a5498f3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_pearlwood_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_pearlwood_trousers_layer_2.png",
+      "sha256": "fd897fdedba7dc92525877c883cedfa89a8e7db8fe4f418429eb2329f9f4e657"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rainbloom_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rainbloom_coat_layer_1.png",
+      "sha256": "b844a537eb5a1104cf8d3876c639f4f7b2d205629434c7839eac8f4dc62ed77b"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rainbloom_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rainbloom_hood_layer_1.png",
+      "sha256": "7cabaeee9f6d5f533b8fee986ff57c2c7cbadc5fe82a88b9d8e5dcc0544542cf"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rainbloom_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rainbloom_trousers_layer_2.png",
+      "sha256": "7a98b6a675ef8c6ffb44d4343ea26ad39a7020985654f733da5c64630e5deef3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_redwillow_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_redwillow_coat_layer_1.png",
+      "sha256": "2aa812eecaa2052c1c732d5f4b5492b9a9402b8b559122fb109ce4832d26aecf"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_redwillow_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_redwillow_trousers_layer_2.png",
+      "sha256": "c5decb49488ff34e1f65aaf562b4e559a067a67bbca44866d647ef6b8d7f6922"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_reedbank_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_reedbank_hood_layer_1.png",
+      "sha256": "963ff8e0500914fbe5e4909280d2a148bd728641c5e241d90b7a989a4f447a6d"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_reedstone_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_reedstone_coat_layer_1.png",
+      "sha256": "0450a3a0013b118816df203063c46f4f2df4cdb2c5606f21d09c4bbc2adcece3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_reedstone_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_reedstone_hood_layer_1.png",
+      "sha256": "32ee0b700e986d8ec3a038850eaa3263968c991886dc7c65265dbef13d92637f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rimeglass_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rimeglass_coat_layer_1.png",
+      "sha256": "c4132e12566b2fa12fdacf1f3a5d06b91fbf2e2cf3514ad6911f48971d1b8a6d"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_riverflint_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_riverflint_hood_layer_1.png",
+      "sha256": "a96034249c048d7e14bd4a1ab6508f31ee8e260f72eaa82637ec6a7b2f0f1d55"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rosequartz_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rosequartz_coat_layer_1.png",
+      "sha256": "980cb8489216ccd6e6a7a00d1f3cfdd3c3fd9d5e8b4f0dfd78f7e03d78b1b80d"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_rosequartz_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_rosequartz_trousers_layer_2.png",
+      "sha256": "d18517e5d6c0c3e3bba0d0475248266b2d7be10dd2cdcd4576cbbddede6a5a42"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sablewood_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sablewood_coat_layer_1.png",
+      "sha256": "dd9bc9a0df63c21ed4710929fd5a12b3620d2c7ceab4061f369aae436fc4c4c5"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sablewood_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sablewood_hood_layer_1.png",
+      "sha256": "0a799a143a92d4784d9532e64502e6062bf6792dcfa7d40b0a8f03baafbc62b7"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sagewood_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sagewood_coat_layer_1.png",
+      "sha256": "3ce949546cc13a99f08a428d09bb147662fecc6a194cde915880282c5bcdd8d3"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sagewood_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sagewood_trousers_layer_2.png",
+      "sha256": "7d06c665396efaa49f28ba18c0053ea2fcede586c8bb21bb92111311113fcdc4"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_saltbloom_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_saltbloom_coat_layer_1.png",
+      "sha256": "828d26bbb49739e769005d1d7da538d23ba6344aeceec1d66de88d44780a429e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_saltbloom_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_saltbloom_hood_layer_1.png",
+      "sha256": "666644da941c2f06a9d1114a1cee928801af5fb92c41151f84adaa541f22e7b0"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_saltbloom_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_saltbloom_trousers_layer_2.png",
+      "sha256": "f4a1dd439fee12c9d59905fea77bb6655538b571d40ae4e5d9f13d949acf308b"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_shadowpine_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_shadowpine_coat_layer_1.png",
+      "sha256": "2174f60dce0818947a52b91096c1c28923dd98800aab3a3e6239d2f1ab3f8d8e"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_shadowpine_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_shadowpine_trousers_layer_2.png",
+      "sha256": "57f39c590f02d111ca432e94e06fc833ff80215d79b442dc7f8eca6754f107da"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_silverfen_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_silverfen_hood_layer_1.png",
+      "sha256": "0a799a143a92d4784d9532e64502e6062bf6792dcfa7d40b0a8f03baafbc62b7"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_silverfen_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_silverfen_trousers_layer_2.png",
+      "sha256": "bbe328e9da197bb89bf07a53ca3967f12d148bab3c8b8ce423b352b642242860"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_stormreed_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_stormreed_coat_layer_1.png",
+      "sha256": "2e68d0fa45c0fbf4dd26b23606474d0ed79ab1f726f73e7f237c5a292fd7ee56"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sunfen_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sunfen_hood_layer_1.png",
+      "sha256": "b5a6d21e2cdd0d3029dca0f2fd8d96a1c577eefd109687f885f79c08dd58abbd"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sunstone_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sunstone_coat_layer_1.png",
+      "sha256": "2496e647271b96845cb1ced0aca8e346ba966b9bcb2616dc62adc8d895a85a7c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_sunstone_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_sunstone_trousers_layer_2.png",
+      "sha256": "76a73aa8edf954c719bfdf23f27ba97a0cd18bb23f81df5b258c7162a3c5e1bc"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_thistle_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_thistle_coat_layer_1.png",
+      "sha256": "c66f0c5d66aba6d4b39c5a751162ce71aaca4860f660b86cc55598ac3d4b6fbf"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_thistle_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_thistle_hood_layer_1.png",
+      "sha256": "b94b714e7a8f8bff1c72724110463f7ca3629cf32d36ba5be23e9b21a35e9c31"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_tidebound_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_tidebound_hood_layer_1.png",
+      "sha256": "beba35ec1465f383c78345283bcdd19176741dedb642925700f5665f5be52ace"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_violetfen_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_violetfen_coat_layer_1.png",
+      "sha256": "383fa6553280fc953e2f32a241f33aaebd30cc0f339f7eb87d352a601fac3908"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_violetfen_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_violetfen_hood_layer_1.png",
+      "sha256": "85028cdf7602608b3293d29b497f0d69eb7a78e59d32c3e24ca2a1143501786c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_violetfen_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_violetfen_trousers_layer_2.png",
+      "sha256": "9097a3de8affbdc17e9ffc33757ab451e47b4b900edb6fc3df82d0437e5b9d9f"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_wildrime_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_wildrime_coat_layer_1.png",
+      "sha256": "9423f8cf0e9dededc572949944a00e3afdd8b3b8dd5888211104828fb8b43788"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_wildrime_trousers_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_wildrime_trousers_layer_2.png",
+      "sha256": "2e682c7dab749abd5e34d317870645bb73a97d97c599e84930ff263f2ec5bfd9"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_willow_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_willow_coat_layer_1.png",
+      "sha256": "c1339f000b3c2927521aecae85102dbb2cf747bc1f56bd44d5686ac9f20e5b08"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_willow_hood_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_willow_hood_layer_1.png",
+      "sha256": "0adfa004018c795c6a64e070dbb0af120f5496176323cd42368fcd798a54e5eb"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/outfits/outfit_windglass_coat_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/outfits/outfit_windglass_coat_layer_1.png",
+      "sha256": "9eacb29b5ed6c74f27f2f75c9e414d048b1ae09173206b0d192f6a44c78fc611"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/rime_layer_1.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/rime_layer_1.png",
+      "sha256": "3225a5ead0d6b1ff1535c5080cecc35b20ded079f362266fb9c8dbd86c20369c"
+    },
+    {
+      "resource": "valeorders:textures/models/armor/rime_layer_2.png",
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/textures/models/armor/rime_layer_2.png",
+      "sha256": "fd897fdedba7dc92525877c883cedfa89a8e7db8fe4f418429eb2329f9f4e657"
+    }
+  ],
+  "count": 173,
+  "authorship": "Original SVG geometry and authored palettes/ink/thread motifs; deterministic fresh raster export. No reference pixels, existing PNG edits or icon rescaling.",
+  "native_logical_uv": [
+    64,
+    32
+  ],
+  "actual_png": [
+    256,
+    128
+  ],
+  "prior_custom_mesh_unchanged": 36,
+  "classic_inactive_storm_retained": 4,
+  "reference_uv_backlog": 256,
+  "reference_jars": 13
+}

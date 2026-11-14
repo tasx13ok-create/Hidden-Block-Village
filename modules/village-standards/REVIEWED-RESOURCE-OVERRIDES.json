@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "original_provenance_sha256": "8000b9518c68b2160897f3bf8edb7b79655a478430f6b9d6aa6ea149af033ce4",
+  "source": {
+    "archive": "naruto_icons_v3.zip",
+    "bytes": 2412020,
+    "sha256": "6a45fdcffff3336eb0833da7d914a499a761755f1f0569cc2b7977acda1715c7"
+  },
+  "reason": "Owner-directed Claude v3 original inventory-icon integration. Only these five item PNGs replace recovered bytes; original 256x256 wall-picture art, registry IDs, models and every other recovered resource remain pinned. SOURCE-PROVENANCE.json retains its historical original records unchanged.",
+  "overrides": [
+    {
+      "path": "resources/assets/hvdungeonpictures/textures/items/mist_picture.png",
+      "recovered": {
+        "bytes": 227,
+        "sha256": "796dda674fcba0b97e67626300b48cd3ac3a083855e40ffe145ea7293459490f"
+      },
+      "replacement": {
+        "bytes": 474,
+        "sha256": "442d7cce0818657c2c9283997e89cced940835971a1b87b8db65531b32bb7e34",
+        "source_member": "mist_picture.png"
+      }
+    },
+    {
+      "path": "resources/assets/hvdungeonpictures/textures/items/leaf_picture.png",
+      "recovered": {
+        "bytes": 227,
+        "sha256": "647fa439e71cd037ba73718053150c1be23bfec0f8c061f08194c17d6f572797"
+      },
+      "replacement": {
+        "bytes": 474,
+        "sha256": "442d7cce0818657c2c9283997e89cced940835971a1b87b8db65531b32bb7e34",
+        "source_member": "leaf_picture.png"
+      }
+    },
+    {
+      "path": "resources/assets/hvdungeonpictures/textures/items/cloud_picture.png",
+      "recovered": {
+        "bytes": 227,
+        "sha256": "bcdfa52d3be7dda91f812bee2594a3158bb3ca5162734bec4f23f0b02547af49"
+      },
+      "replacement": {
+        "bytes": 474,
+        "sha256": "442d7cce0818657c2c9283997e89cced940835971a1b87b8db65531b32bb7e34",
+        "source_member": "cloud_picture.png"
+      }
+    },
+    {
+      "path": "resources/assets/hvdungeonpictures/textures/items/stone_picture.png",
+      "recovered": {
+        "bytes": 227,
+        "sha256": "568611920de0647c1a5e4f1e54c8c9107dbf0f4cb26ba675a6044387a0d73c5e"
+      },
+      "replacement": {
+        "bytes": 469,
+        "sha256": "be10f6f5160900953e339c064f814d38a601ae488df0dc840219d1268dbe7c25",
+        "source_member": "stone_picture.png"
+      }
+    },
+    {
+      "path": "resources/assets/hvdungeonpictures/textures/items/sand_picture.png",
+      "recovered": {
+        "bytes": 227,
+        "sha256": "66532e9c281c73317450ac35bbad9201cae64eadbbd8fbfcf367114f7b4e31d5"
+      },
+      "replacement": {
+        "bytes": 474,
+        "sha256": "442d7cce0818657c2c9283997e89cced940835971a1b87b8db65531b32bb7e34",
+        "source_member": "sand_picture.png"
+      }
+    }
+  ]
+}

@@ -81,6 +81,7 @@ public final class AcademyNativeChecks {
             choose("courier","ambush");check(actors()==1,"Reconnect resume did not respect earned progress: live="+actors());killOne();choose("courier","missionclaim");AcademyCampaign.tick(p);
             check(actors()==0&&PlayerState.data(p).getInteger("missionsCompleted")==2&&PlayerState.data(p).getInteger("xp")==650,"Ambush settlement or cleanup failed");
             check(!Missions.claim(p)&&PlayerState.data(p).getInteger("xp")==650,"Final reward replay");
+            assertions+=LightningNativeChecks.run(p);
             return assertions;
         }finally{MinecraftForge.EVENT_BUS.unregister(gate);if(p!=null&&server.getPlayerList().getPlayerByUUID(p.getUniqueID())==p)server.getPlayerList().playerLoggedOut(p);}
     }

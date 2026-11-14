@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "scope": "VALE0311_PLUS_ARCHIVED_MODS_MAGMA_FRESH_FLAT_START_RESTART",
+  "status": "PASS_WITH_INHERITED_CONTENT_DEFECTS",
+  "generated_utc": "2026-11-13T19:24:19.589506+00:00",
+  "archive_sha256": "bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b",
+  "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+  "magma_manifest_version": "1.12.2-b4c01d2",
+  "runtime_forge": "14.23.5.2860",
+  "source_build_report": {
+    "bytes": 32764,
+    "sha256": "1f8d059d657a083f0eec276e42e45a1eeeb5b501f929b7b80ecd95f135b6304f"
+  },
+  "native_report": {
+    "bytes": 10728,
+    "sha256": "93ffa386f247326e6fbb521466acf61358fc3f599133779749f10d6b0a3cafbc"
+  },
+  "native_assertions": 1704,
+  "core_sha256": "a0f0374d160c99648fb29dbaf5b2c58da8898f3d8758cb61ba7628688da10609",
+  "added_components": [
+    {
+      "path": "mods/vale-orders-0.3.11.jar",
+      "component": "vale-orders",
+      "mod_id": "valeorders",
+      "bytes": 2045893,
+      "sha256": "a0f0374d160c99648fb29dbaf5b2c58da8898f3d8758cb61ba7628688da10609"
+    },
+    {
+      "path": "mods/vale-encounters-0.3.6.jar",
+      "component": "vale-encounters",
+      "mod_id": "valeencounters",
+      "bytes": 30011,
+      "sha256": "83a2e89c51a7fba159371d4fbf91fce01803ad4233067388e8fcb900bdf2ba68"
+    },
+    {
+      "path": "mods/Vale-Rack-0.1.2.jar",
+      "component": "vale-rack",
+      "mod_id": "valerack",
+      "bytes": 33808,
+      "sha256": "bf259025e35cc3431f6d17ee207d251898a4a9472637b0f96f556e6f3ec1d123"
+    },
+    {
+      "path": "mods/vale-residents-0.2.0.jar",
+      "component": "vale-residents",
+      "mod_id": "valeresidents",
+      "bytes": 46071,
+      "sha256": "979294709b19019a43c5273179008545e201bd57d481b9d9883a038333b7a23b"
+    },
+    {
+      "path": "mods/vale-residents-server-bridge-0.1.0.jar",
+      "component": "vale-residents-server-bridge",
+      "mod_id": "residentserverbridge",
+      "bytes": 3018,
+      "sha256": "10887f4d75c7dc2b8fd89d0ae936cf40ab7f8ab382f1f5e31485e475a9bedfef"
+    },
+    {
+      "path": "mods/vale-world-compat-1.0.0.jar",
+      "component": "vale-world-compat",
+      "mod_id": "valeworldcompat",
+      "bytes": 26332,
+      "sha256": "e8485f79915a427d1ca0d9eb7e5250ecea0bcc44df369dc9d674e857e639eccd"
+    },
+    {
+      "path": "mods/Vale-Forge-Damage-Compat-0.1.0.jar",
+      "component": "damage-compat",
+      "mod_id": "valedamagecompat",
+      "bytes": 5607,
+      "sha256": "c8f33b488afe198e5a8e72113000f562aa95e9ed52bb45d090e263b648ca94d8"
+    },
+    {
+      "path": "mods/Vale-Server-Bridge-0.2.0.jar",
+      "component": "server-bridge",
+      "mod_id": "valeserverbridge",
+      "bytes": 4793,
+      "sha256": "a29c7a86ace2c0a6e468bf7ca6f65b477ead31476592c51b6d653aeaaab2d70d"
+    },
+    {
+      "path": "mods/Village-Standards-0.3.1.jar",
+      "component": "village-standards",
+      "mod_id": "hvdungeonpictures",
+      "bytes": 37390,
+      "sha256": "accce5bbbfff4e1bacc17ce9e4604d40b0c8eb5ba1d6cb7cf44a7e21d121a077"
+    }
+  ],
+  "removed_from_active": [
+    {
+      "path": "mods/Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "retained_path": "retained-originals/mods/Naruto-Dungeon-Pictures-1.12.2-1.0.0.jar",
+      "reason": "Same hvdungeonpictures registry owner supplied by tested village-standards",
+      "bytes": 2093107,
+      "sha256": "c1078a0897359bf09a58c95ff367f4d77c3eef7e9802f468789a43453cce6948"
+    }
+  ],
+  "original_declared_client_only_omissions": [
+    "mods/Controlling-3.0.12.4.jar",
+    "mods/JustEnoughResources-1.12.2-0.9.2.60.jar",
+    "mods/colorfulhealthbar-0.0.4a.jar"
+  ],
+  "original_active_mod_jars": 45,
+  "added_runtime_components": 9,
+  "active_mod_jar_count": 54,
+  "crazycrates_plugin_count": 1,
+  "canonicalEquipmentCatalog": false,
+  "profile": {
+    "host": "127.0.0.1",
+    "port": 25580,
+    "memory_limit": "2G",
+    "world": "FRESH_DISPOSABLE_FLAT"
+  },
+  "boots": [
+    {
+      "label": "enhanced-boot-01",
+      "started_utc": "2026-11-13T19:20:37.468644+00:00",
+      "finished_utc": "2026-11-13T19:21:08.718670+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25580,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "f92f94494808ee6c4fb4acc32be1ed3220a4911231f2ceae060f45195aa49ba5",
+      "elapsed_seconds": 31.25,
+      "fml_mods_loaded": 60,
+      "crazycrates_enabled": true,
+      "effective_forge_version": "14.23.5.2860",
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2,
+        "CULINARY_REFMAP_MISSING": 1,
+        "NBTAPI_UPDATE_NOTICE": 1
+      },
+      "classloading_failure_marker_count": 0,
+      "error_level_messages": [
+        {
+          "code": "INVALID_KILLER_BI_RECIPE"
+        }
+      ]
+    },
+    {
+      "label": "enhanced-boot-02-restart",
+      "started_utc": "2026-11-13T19:21:34.872871+00:00",
+      "finished_utc": "2026-11-13T19:22:03.698338+00:00",
+      "java_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+      "memory_limit": "2G",
+      "port": 25580,
+      "bind": "127.0.0.1",
+      "done": true,
+      "clean_stop": true,
+      "exit_code": 0,
+      "forced_termination": false,
+      "log_sha256": "1abe653e460ad5e9ed3595cebce7e47756f3cce06b988e42bb434d5f33b2eb46",
+      "elapsed_seconds": 28.829,
+      "fml_mods_loaded": 60,
+      "crazycrates_enabled": true,
+      "effective_forge_version": "14.23.5.2860",
+      "known_findings": {
+        "INVALID_KILLER_BI_RECIPE": 1,
+        "MANGEKYO_HOOK_TARGET_MISSING": 2,
+        "FLUIDLOGGED_MAILBOX_UNRESOLVED": 2,
+        "CULINARY_REFMAP_MISSING": 1,
+        "NBTAPI_UPDATE_NOTICE": 1
+      },
+      "classloading_failure_marker_count": 0,
+      "error_level_messages": [
+        {
+          "code": "INVALID_KILLER_BI_RECIPE"
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "recovered_source_inputs_verified": 111,
+    "source_inputs_changed": [],
+    "original_candidate_inputs_changed_including_retained": [],
+    "added_artifact_changes": [],
+    "original_pictures_retained_and_not_active": true,
+    "private_source_build_report_verified": true,
+    "private_native_report_verified": true
+  },
+  "recovered_world_copied": false,
+  "original_npc_scripts_copied": false,
+  "normal_client_joined": false,
+  "gameplay_exercised": false,
+  "hosted_deployment": false,
+  "tests": {
+    "magma_smoke_fixtures": 10,
+    "result": "PASS",
+    "command": "python -m unittest discover -s tests -p test_magma_smoke.py -v"
+  },
+  "limitations": [
+    "Coexistence bootstrap/restart only; no recovered-world migration or gameplay.",
+    "Legacy catalog retirement intentionally disabled for this experiment.",
+    "One explicit duplicate-ID registry-owner replacement; original retained with exact hash.",
+    "Baseline recipe/hook/mailbox warnings persist.",
+    "No historical loose-class patches, private original NPC scripts or hosted deployment accepted."
+  ],
+  "source_checkpoint_sha256": {
+    "tools/magma_smoke/__init__.py": "778a4c9d8d6a164ea193d9bf2acd59663fc992faead2fc992c5eeb6ba5845183",
+    "tools/magma_smoke/__main__.py": "41c8176b06a0f07996c60dce0a2313dacf3c59bc9d2f267408d5f47e00cb5276",
+    "tools/magma_smoke/smoke.py": "b5f3a2a23f4cf88664226f68d3d3c62c02c959c215f9581d86c8b36d665fcd59",
+    "tests/test_magma_smoke.py": "2faa3a24f035b322316e572e4f2f2c8cf1f0652ab1ab790e5db6860554e0aef2"
+  }
+}

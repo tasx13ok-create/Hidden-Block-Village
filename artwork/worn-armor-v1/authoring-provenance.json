@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "author": "Original project SVG/UV artwork authored during Codex implementation; no reference PNG pixels or icon rescaling",
+  "source_tools": [
+    {
+      "path": "tools/worn_armor/build_hero.py",
+      "sha256": "420e8c50ca0ce4d1507135671544de60215062547f06fd0aa423310d86e3f92e"
+    },
+    {
+      "path": "tools/worn_armor/build_roster.py",
+      "sha256": "5e989cbff8be7ccf97ad839a980ee9ea69a25fa481a62a03eedd23102b54ad9a"
+    },
+    {
+      "path": "tools/worn_armor/render_hero.py",
+      "sha256": "78471c5228d3399c4660b833848f69e2fb4d53e9dbbb273cdba93c76a06cefd9"
+    },
+    {
+      "path": "tools/worn_armor/render_roster.py",
+      "sha256": "8b2e4b4014c2ef74eca43c493d0c0657d2ccfc2d829b998211d662373c3f736d"
+    },
+    {
+      "path": "tools/worn_armor/uv_art.py",
+      "sha256": "45cc0ccbea5fd6fea19d7df3cc3f45d7efcd9d56ba8c590decbc9f78e59bfff4"
+    },
+    {
+      "path": "tools/worn_armor/verify.py",
+      "sha256": "6d345b9ffe7f7f2272b19a382330bd527d3f07f649476dab611490598f0305e6"
+    }
+  ],
+  "runtime_asset_manifest": "runtime-assets.json",
+  "svg_masters": 173,
+  "runtime_pngs": 173,
+  "distinct_png_bytes": 158,
+  "native_contract_source": "MCP stable39 native ModelBiped/ModelBox/LayerBipedArmor API geometry facts only; no source payload redistributed",
+  "offline_views": 656,
+  "checks": {
+    "java8_compile": true,
+    "java_checks": 1779,
+    "fresh_svg_png_rebuild_checks": 1315
+  },
+  "build_native_graphical_acceptance": "PENDING_PARENT_VERSION_BOUND_RECEIPT",
+  "pillow_version": "13.0.0"
+}

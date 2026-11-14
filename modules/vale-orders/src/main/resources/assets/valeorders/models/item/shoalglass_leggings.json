@@ -1,3 +1,6 @@
 {
-  "parent": "valeorders:item/current_leggings"
+  "parent": "valeorders:item/current_leggings",
+  "textures": {
+    "layer0": "valeorders:items/shoalglass_leggings"
+  }
 }

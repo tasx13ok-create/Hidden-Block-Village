@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "status": "PRIVATE_AUTHORED_EXACT_UV_DRAFT_NOT_NATIVE_ACCEPTED",
+  "authorship": "Original quarter-unit SVG detailing at64x32 logical UVs, fresh256x128 raster export; no input bitmap edited or resized",
+  "built_by": "build_hero.py",
+  "generator_sha256": "66d6bf3ac0240e721b63d0fa67b3e8d293de0d792e9d50372a953e1a83d8e7b3",
+  "kit": "Lightning Chakra Armor",
+  "issued_items": [
+    "storm_helmet",
+    "storm_chestplate",
+    "storm_leggings",
+    "storm_boots"
+  ],
+  "consumer": "Gear.WardArmor.getArmorTexture; nativeLayerBipedArmor",
+  "outputs": [
+    {
+      "path": "resourcepack/assets/valeorders/textures/models/armor/storm_layer_1.png",
+      "bytes": 1494,
+      "sha256": "5a0edcdb4d0ebd78983bad5848612e250c3f6f0ece84f21272a9403105bec579",
+      "size": [
+        256,
+        128
+      ],
+      "native_resource_id": "valeorders:textures/models/armor/storm_layer_1.png",
+      "opaque_pixels": 11648,
+      "transparent_pixels": 21120
+    },
+    {
+      "path": "resourcepack/assets/valeorders/textures/models/armor/storm_layer_2.png",
+      "bytes": 526,
+      "sha256": "5c25a98b2f2675af86152eb37f722cf343d7da47038230112a828c1c4eee2503",
+      "size": [
+        256,
+        128
+      ],
+      "native_resource_id": "valeorders:textures/models/armor/storm_layer_2.png",
+      "opaque_pixels": 4736,
+      "transparent_pixels": 28032
+    }
+  ],
+  "emission_mask_wired": false,
+  "existing_LightningLayers_untouched": true,
+  "production_modules_changed": false
+}
