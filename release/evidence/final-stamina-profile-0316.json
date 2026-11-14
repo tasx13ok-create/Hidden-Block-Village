@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "scope": "FINAL_NEAR_INFINITE_MOVEMENT_STAMINA_CONFIG",
+  "archive": "Hidden Block Village - Final Stamina Settings.zip",
+  "bytes": 5212,
+  "sha256": "48cac3a8134d25986f073a98e1c5cf3dc218716486eaf251c3a546d96f3b8e21",
+  "dodge_cost": 0,
+  "native_exhaustion_values": {
+    "jump-walk-exhaustion": "0.00000005",
+    "jump-sprint-exhaustion": "0.0000002",
+    "combat-exhaustion": "0.0000001",
+    "regen-exhaustion": "0.000006",
+    "swim-multiplier": "0.00000001",
+    "sprint-multiplier": "0.0000001",
+    "other-multiplier": "0.0"
+  },
+  "standard_drain_multiplier": "0.000001",
+  "runtime_stamina_enforced_by": "Naruto-Stamina-1.0.0.jar",
+  "plugin_sha256": "f0b29317497180285166bb7a4e2a177c736d96c981dcf3430cab80dc9eb756db",
+  "legacy_multiplier_runtime_support_not_assumed": true,
+  "jutsu_chakra_changed": false,
+  "world_or_player_data_written": false,
+  "client_reinstall_required": false,
+  "server_restart_required": true,
+  "extract_after_base_server_archives": true,
+  "crc_and_byte_readback_passed": true,
+  "changed_configs": [
+    {
+      "root_name": "Hidden Block Village Server",
+      "files": [
+        {
+          "path": "config/valeorders.cfg",
+          "before_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc",
+          "after_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc"
+        },
+        {
+          "path": "spigot.yml",
+          "before_sha256": "d46e8eb0e6b6334f97df15ff504810e6a5f87488727f373c4ded7c0a6c7ca982",
+          "after_sha256": "d46e8eb0e6b6334f97df15ff504810e6a5f87488727f373c4ded7c0a6c7ca982"
+        }
+      ]
+    },
+    {
+      "root_name": "archive-2026-11-09T202203Z",
+      "files": [
+        {
+          "path": "config/valeorders.cfg",
+          "before_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc",
+          "after_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc"
+        },
+        {
+          "path": "spigot.yml",
+          "before_sha256": "d46e8eb0e6b6334f97df15ff504810e6a5f87488727f373c4ded7c0a6c7ca982",
+          "after_sha256": "d46e8eb0e6b6334f97df15ff504810e6a5f87488727f373c4ded7c0a6c7ca982"
+        }
+      ]
+    },
+    {
+      "root_name": "server",
+      "files": [
+        {
+          "path": "config/valeorders.cfg",
+          "before_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc",
+          "after_sha256": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc"
+        },
+        {
+          "path": "spigot.yml",
+          "before_sha256": "f0765c12fd90d990695aeabe7e3cccd0dc9d0973d223242c442207aebeb24ddb",
+          "after_sha256": "f0765c12fd90d990695aeabe7e3cccd0dc9d0973d223242c442207aebeb24ddb"
+        }
+      ]
+    }
+  ]
+}

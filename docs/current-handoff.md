@@ -17,6 +17,39 @@ The owner requested no new backup for the target update because backups already 
 
 ## Exact current component cohort
 
+The owner's latest deployment preference is one server folder at a time in chat.
+The first delivered replacement is
+`D:/Bisect server upload/Hidden Block Village - Folder Replacements/01 - mods.zip`:
+200,992,059bytes, SHA256
+`62daa2a27644d07f5a192afd78c85c7761a5e93db2e653d2f5daa82278dea60d`.
+All127files, including53JARs, match the accepted unpacked server manifest;
+every ZIP member passed CRC/SHA256 readback. It contains a top-level `mods/`
+folder, so stop the host, remove the old mods folder, upload/unarchive at the
+server root, and keep stopped until config/plugins replacements follow.
+Only this first folder was packaged/delivered in this step; no hosted changes
+were performed. Next requested folder is config, followed by plugins including
+the final stamina plugin. The client/world need not be reuploaded for these.
+Tool: `tools/package_server_folder.py`; safe receipt:
+`release/evidence/server-folder-mods-0316.json`. Do not start another full6GB ZIP.
+
+Latest owner steering: near-infinite stamina and finish this release now. The final
+server-only overlay is `Hidden Block Village - Final Stamina Settings.zip` in
+D:/Bisect server upload:5,212bytes, SHA256
+`48cac3a8134d25986f073a98e1c5cf3dc218716486eaf251c3a546d96f3b8e21`.
+Extract this LAST after the base server ZIP/eight upload parts, then start/restart
+the server. No world reupload or client reinstall is required. The unpacked server
+folder, original selected archive folder and preview's future startup files are
+already updated; the currently running owner session was not restarted.
+Dodge cost is0. Original Naruto-Stamina1.0.0 maintains20food/20saturation/0exhaustion
+for current Survival/Adventure players every20ticks and cancels only hunger decreases.
+The exact plugin passed22real CraftPlayer/native checks in a new flat Magma fixture,
+including scheduling, mode/session exclusions and disable cleanup. No health/chakra/XP
+calls are added. Native jutsu chakra remains separate. Some Magma movement hunger
+config values are inert, so the plugin, not YAML alone, provides the guarantee.
+Safe receipts: `release/evidence/final-stamina-profile-0316.json` and
+`release/evidence/stamina-native-0316.json`. Other unfinished candidate work stays
+private/uninstalled; this change does not claim the full campaign is complete.
+
 The owner's later request for a separate ready-to-upload server is also fulfilled.
 `D:/Bisect server upload/Hidden Block Village Server` is a new standalone server folder;
 `Hidden Block Village Server - Bisect.zip` is its checked root-layout server archive,
@@ -36,6 +69,10 @@ Official upload guide: https://help.bisecthosting.com/hc/en-us/articles/40124893
 Current filenames use Naruto branding while stable technical mod, registry and save IDs remain unchanged.
 Current Core is Naruto-Core-0.3.16.jar from Source13; current HUD is Naruto-HUD-0.20.1.jar from Source12.
 The remaining production components use the complete Source11 cohort.
+External main merge c970ce0 later adds Claude's small chest-crouch visual tweak.
+That source update is preserved, but was not rebuilt into the Source13 binary
+archives during this final config/plugin update. Select the recorded release
+artifact hashes rather than assuming every later source edit is in those ZIPs.
 Read [the composite proof](../release/evidence/core0316-hud0201-dodge-client.json) before claiming what this mixed correction cohort proves.
 Core SHA256: `387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766`.
 HUD SHA256: `a0e2a25c74bbd26cd5e5ba3a5bdca45439fd26cf01cd17ab43a83c728fb1b474`.
