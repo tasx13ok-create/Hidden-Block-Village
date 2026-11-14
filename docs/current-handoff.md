@@ -1,5 +1,10 @@
 # Current project handoff
 
+## Existing elemental dungeons: initial visual pass
+
+The owner confirmed Sakura/Earth, Cloud/Lightning, Sand/Wind, Mist/Water and Nether/Fire for the five recovered v17 builds; the five new coliseums are separate boss sites. The owner's friend will handle NPC drop choices. See `docs/dungeons/elemental-sites-current.md`. Five separate private schematic candidates with small entrance and encounter-floor motifs are in `local/elemental-v17-floor-markers-encounters-20261114/`; source originals are preserved. Hash-pinned plans, complete readback logs and the original generator are available; safe evidence is `release/evidence/elemental-v17-floor-markers-20261114.json`. Two focused tests and the design validator passed. This is a small offline visual pass, not complete conversion, NPC/drop work, native route/lighting/visual acceptance, or deployment. The Nether-named existing preview is in the Overworld. Earlier provisional private NPC clones were never installed and do not specify the friend's choices. Next: extend and visually/native-verify the builds in a new world copy; coordinate NPC/drop integration with the friend. Keep the owner's Minecraft client closed.
+
+
 ## Latest owner request: original mods, Claude merge and five new coliseums
 
 On14November the owner requests merging Claude's outputs into main, Dodge on the latest Core, a fix for a friend's report of a skipping chakra-charge timer, original unowned mod icons/armor restored (especially Varied Commodities), and a complete separate-chat orchestration for FIVE NEW500×500×250boss coliseums. Original mods are the baseline; our systems connect and enhance them. Read `docs/original-mods-first.md` and the updated project skill/fun brief. Keep Minecraft closed until the owner requests otherwise.
