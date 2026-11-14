@@ -190,3 +190,10 @@ Verified in the client: all nine sets, calm and powered. The test jar was built 
 - **Particle cap** follows the same setting: 200 / 600 / 1,200.
 - **Coarser big voxel spheres:** those over 0.6 radius use larger cubes, with the same silhouette and far fewer cubes.
 - **Measured** in the software-rendered client (Mesa swrast), all 27 weapons with a sample every 20 ticks: the worst frame went from 24 to 36 fps, the average held at about 70 fps, and the most cubes in one frame dropped from 3,856 to 3,000. The probe logs `VFXPERF` lines.
+
+## Combat feel (client `CombatFeel`, cosmetic only)
+- **Taking damage:** a decaying camera shake scaled by health lost, biased away from the attacker. It uses squared trauma, so small hits stay subtle.
+- **Heavy landings** (fall over 3.5 blocks): a jolt.
+- **Your melee hit landing:** a pitch punch plus white and gold voxel sparks at the target, with more for critical hits.
+- **Config** (`valeorders-client.cfg`): `screenShake` and `shakeIntensity` (0–2). Field HUD "animation off" disables it via `MotionGate`.
+- **Checked:** a crash-free client run with damage and a fall; the config keys were written. Shake can't be judged from screenshots, so tune the feel in game.
