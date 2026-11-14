@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 VANILLA = {
     0:'air',1:'stone',2:'grass',3:'dirt',4:'cobblestone',5:'planks',7:'bedrock',
     8:'flowing_water',9:'water',10:'flowing_lava',11:'lava',12:'sand',13:'gravel',
-    17:'log',18:'leaves',20:'glass',24:'sandstone',35:'wool',43:'double_stone_slab',
+    17:'log',18:'leaves',20:'glass',24:'sandstone',35:'wool',41:'gold_block',43:'double_stone_slab',
     44:'stone_slab',45:'brick_block',47:'bookshelf',48:'mossy_cobblestone',49:'obsidian',
     50:'torch',53:'oak_stairs',54:'chest',57:'diamond_block',58:'crafting_table',
     60:'farmland',61:'furnace',62:'lit_furnace',64:'wooden_door',65:'ladder',
@@ -117,6 +117,7 @@ def build_all(brief_path,output,seed=20261114,dry_run=False):
                  'copy_position':spec['proposed_world_min'],'placement_convention':'local 0,0,0 anchored to world_min',
                  'anchors':{k.removesuffix('_local'):v for k,v in spec.items() if k.endswith('_local')},
                  'geometry':geometry,'palette':palette,'layers':dict(volume.layers),
+                 'layer_checks':volume.layer_checks(geometry.get('structural_layers',[])),
                  'encounter':spec,'seconds':round(time.monotonic()-started,3),
                  'peak_process_working_set_bytes':peak_memory_bytes(),
                  'native_palette_join':'NOT_RUN','native_encounter':'NOT_RUN'}

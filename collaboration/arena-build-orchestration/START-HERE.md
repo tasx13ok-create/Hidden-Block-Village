@@ -1,5 +1,17 @@
 # Build the next five Naruto boss coliseums
 
+## Owner clarification, 14 November 2026
+
+The stadiums themselves must measure **500 blocks wide × 500 blocks long ×
+250 blocks high**. A smaller stadium inside a500×500plot does not satisfy the
+assignment. This direct owner clarification supersedes the smaller220..340outer
+bowl and every plot-only interpretation below. Preserve useful136-block combat
+courts while giving the full-size stadium genuine stands, supported concourses,
+entered services, distinct Naruto architecture and occupied upper structures.
+Independent architectural-layer readback must exclude terrain/plot padding and
+isolated marker blocks. Use the project's adapted Naruto research to establish
+recognizable Hashirama, Ay, Gaara, Kisame and Madara identities.
+
 This is an execution brief for a separate arena-building chat. The assignment is **five NEW, finished 500 × 500 × 250 boss dungeons**, added alongside the existing five v17 sites. It is not an instruction to overwrite, enlarge or replace those sites. The intended result is generated Minecraft assets, working encounters, repeatable build tools and evidence from actual checks. A design document alone does not finish this assignment.
 
 ## Copy and paste this kickoff into the new chat

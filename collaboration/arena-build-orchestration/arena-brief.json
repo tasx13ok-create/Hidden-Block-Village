@@ -63,13 +63,24 @@
     "length": 500,
     "cells_per_arena": 62500000,
     "total_cells": 312500000,
-    "local_min": [0, 0, 0],
-    "local_max_inclusive": [499, 249, 499],
+    "local_min": [
+      0,
+      0,
+      0
+    ],
+    "local_max_inclusive": [
+      499,
+      249,
+      499
+    ],
     "world_y_min_inclusive": 0,
     "world_y_max_inclusive": 255,
     "chosen_world_min_y": 3,
     "chosen_world_max_y_inclusive": 252,
-    "valid_world_min_y_range": [0, 6],
+    "valid_world_min_y_range": [
+      0,
+      6
+    ],
     "existing_tool_max_cells": 67108864,
     "existing_nbt_default_max_decompressed_bytes": 536870912,
     "major_geometry_palette": "Verified vanilla 1.12.2 IDs and metadata; optional mod blocks require exact runtime-name remapping.",
@@ -79,21 +90,48 @@
     "main_route_clear_width_min": 5,
     "secondary_route_clear_width_min": 3,
     "native_form_envelopes_must_be_measured": true,
-    "water_mist_old_settlement_footprint_unchanged": [200, 200],
+    "water_mist_old_settlement_footprint_unchanged": [
+      200,
+      200
+    ],
     "old_fire_nether_fractured_base_treatment": "excluded",
-    "all_outputs_new_paths_only": true
+    "all_outputs_new_paths_only": true,
+    "stadium_itself_dimensions": [
+      500,
+      250,
+      500
+    ],
+    "plot_padding_counts_as_stadium_size": false
   },
   "common_play": {
     "normal_party_min": 1,
     "normal_party_max": 4,
-    "entry_to_first_action_target_seconds": [30, 60],
-    "normal_run_target_minutes": [6, 12],
-    "mastered_repeat_target_minutes": [4, 8],
+    "entry_to_first_action_target_seconds": [
+      30,
+      60
+    ],
+    "normal_run_target_minutes": [
+      6,
+      12
+    ],
+    "mastered_repeat_target_minutes": [
+      4,
+      8
+    ],
     "timings_are_design_targets_not_measured_claims": true,
-    "outer_bowl_width_range": [220, 340],
-    "active_court_width_range": [112, 144],
+    "outer_bowl_width_range": [
+      500,
+      500
+    ],
+    "active_court_width_range": [
+      112,
+      144
+    ],
     "ordinary_counter_options_per_mandatory_mechanic_min": 2,
-    "normal_tell_starting_ticks": [20, 35],
+    "normal_tell_starting_ticks": [
+      20,
+      35
+    ],
     "initial_party_health_scale_formula": "1 + 0.55 * (participants - 1); validate native limits and tune with real kits.",
     "op_damage_can_legitimately_skip_later_phases": true,
     "preview_can_award_earned_economy_or_first_clear": false,
@@ -130,24 +168,109 @@
       "native_identity_and_behavior_accepted": false,
       "native_acceptance_risk": "Edo real body, revival, replacement and cleanup need runtime proof before a terminal reward.",
       "preview_dimension": 0,
-      "proposed_world_min": [64000, 3, 64000],
-      "proposed_world_max_inclusive": [64499, 252, 64499],
+      "proposed_world_min": [
+        64000,
+        3,
+        64000
+      ],
+      "proposed_world_max_inclusive": [
+        64499,
+        252,
+        64499
+      ],
       "main_combat_floor_world_y": 80,
-      "entry_local": [250, 77, 40],
-      "prep_local": [250, 77, 92],
-      "checkpoint_local": [250, 77, 150],
-      "boss_local": [250, 77, 250],
-      "reward_local": [250, 89, 370],
-      "exit_local": [270, 77, 64],
+      "entry_local": [
+        250,
+        77,
+        40
+      ],
+      "prep_local": [
+        250,
+        77,
+        92
+      ],
+      "checkpoint_local": [
+        250,
+        77,
+        150
+      ],
+      "boss_local": [
+        250,
+        77,
+        250
+      ],
+      "reward_local": [
+        250,
+        89,
+        370
+      ],
+      "exit_local": [
+        270,
+        77,
+        64
+      ],
       "anchors_are_design_targets_not_native_standing_proofs": true,
-      "architecture": ["Leaf timber and plaster coliseum", "Original monumental tree and root bridges", "Two unequal fractured earth terraces", "Two entered archive/service wings", "Supported high gallery and bloom balcony"],
-      "vertical_zones_world_y": {"roots_and_maintenance": [12, 58], "galleries": [96, 170], "crown_and_monuments": [240, 252]},
-      "primary_route": ["south dispatch gate", "preparation veranda", "split garden", "root court", "boss court", "bloom balcony", "short return"],
+      "architecture": [
+        "Leaf timber and plaster coliseum",
+        "Original monumental tree and root bridges",
+        "Two unequal fractured earth terraces",
+        "Two entered archive/service wings",
+        "Supported high gallery and bloom balcony"
+      ],
+      "vertical_zones_world_y": {
+        "roots_and_maintenance": [
+          12,
+          58
+        ],
+        "galleries": [
+          96,
+          170
+        ],
+        "crown_and_monuments": [
+          240,
+          252
+        ]
+      },
+      "primary_route": [
+        "south dispatch gate",
+        "preparation veranda",
+        "split garden",
+        "root court",
+        "boss court",
+        "bloom balcony",
+        "short return"
+      ],
       "alternate_route": "Supported root-side gallery without mandatory jumps.",
       "phases": [
-        {"id": "root_lanes", "trigger": "entry", "mechanic": "Three marked owned-cell lanes and an exposed physical seal.", "counters": ["dodge or move between lanes", "guard the committed sweep", "break the seal with ordinary attacks"]},
-        {"id": "dragon_commitment", "trigger_health_fraction_design": 0.66, "mechanic": "A bounded wood-dragon-shaped environmental path commits after its tracking tell.", "counters": ["flank during recovery", "interrupt a root anchor"], "nature_advantage": "Verified fire interaction with temporary eligible roots only."},
-        {"id": "sage_bloom", "trigger_health_fraction_design": 0.33, "mechanic": "Two alternating safe sectors and an exposed central anchor create a burst window.", "counters": ["rotate through the safe sector", "control the anchor before committing damage"]}
+        {
+          "id": "root_lanes",
+          "trigger": "entry",
+          "mechanic": "Three marked owned-cell lanes and an exposed physical seal.",
+          "counters": [
+            "dodge or move between lanes",
+            "guard the committed sweep",
+            "break the seal with ordinary attacks"
+          ]
+        },
+        {
+          "id": "dragon_commitment",
+          "trigger_health_fraction_design": 0.66,
+          "mechanic": "A bounded wood-dragon-shaped environmental path commits after its tracking tell.",
+          "counters": [
+            "flank during recovery",
+            "interrupt a root anchor"
+          ],
+          "nature_advantage": "Verified fire interaction with temporary eligible roots only."
+        },
+        {
+          "id": "sage_bloom",
+          "trigger_health_fraction_design": 0.33,
+          "mechanic": "Two alternating safe sectors and an exposed central anchor create a burst window.",
+          "counters": [
+            "rotate through the safe sector",
+            "control the anchor before committing damage"
+          ]
+        }
       ],
       "reward_theme": "Control/earth/wood-themed supported bundle; no claim of an unimplemented Wood Release move.",
       "world_reaction": "Roots lower, bloom balcony opens and keeper dialogue changes."
@@ -161,24 +284,108 @@
       "native_identity_and_behavior_accepted": false,
       "native_acceptance_risk": "Verify the actual Ay body, native Lightning Armor/move state and simultaneous attack budget.",
       "preview_dimension": 0,
-      "proposed_world_min": [65024, 3, 64000],
-      "proposed_world_max_inclusive": [65523, 252, 64499],
+      "proposed_world_min": [
+        65024,
+        3,
+        64000
+      ],
+      "proposed_world_max_inclusive": [
+        65523,
+        252,
+        64499
+      ],
       "main_combat_floor_world_y": 128,
-      "entry_local": [250, 109, 40],
-      "prep_local": [250, 109, 92],
-      "checkpoint_local": [250, 125, 150],
-      "boss_local": [250, 125, 250],
-      "reward_local": [250, 141, 370],
-      "exit_local": [270, 109, 64],
+      "entry_local": [
+        250,
+        109,
+        40
+      ],
+      "prep_local": [
+        250,
+        109,
+        92
+      ],
+      "checkpoint_local": [
+        250,
+        125,
+        150
+      ],
+      "boss_local": [
+        250,
+        125,
+        250
+      ],
+      "reward_local": [
+        250,
+        141,
+        370
+      ],
+      "exit_local": [
+        270,
+        109,
+        64
+      ],
       "anchors_are_design_targets_not_native_standing_proofs": true,
-      "architecture": ["Three fractured pale-stone plates", "Indigo-roofed Cloud fortress-stadium", "One dominant signal tower", "Supported broad bridges and sheltered galleries", "Catch terraces and grounded bypass"],
-      "vertical_zones_world_y": {"entry_and_rest": [112, 124], "optional_towers": [164, 220], "crown": [248, 252]},
-      "primary_route": ["sheltered entry", "training terrace", "grounded inner route", "pylon court", "boss court", "signal reward", "leeward return"],
+      "architecture": [
+        "Three fractured pale-stone plates",
+        "Indigo-roofed Cloud fortress-stadium",
+        "One dominant signal tower",
+        "Supported broad bridges and sheltered galleries",
+        "Catch terraces and grounded bypass"
+      ],
+      "vertical_zones_world_y": {
+        "entry_and_rest": [
+          112,
+          124
+        ],
+        "optional_towers": [
+          164,
+          220
+        ],
+        "crown": [
+          248,
+          252
+        ]
+      },
+      "primary_route": [
+        "sheltered entry",
+        "training terrace",
+        "grounded inner route",
+        "pylon court",
+        "boss court",
+        "signal reward",
+        "leeward return"
+      ],
       "alternate_route": "Sheltered gallery and maintained bridge path with safe catches.",
       "phases": [
-        {"id": "lariat_lanes", "trigger": "entry", "mechanic": "Visible shoulder-charge lane, committed heading and punish recovery.", "counters": ["sidestep or Lightning Step", "guard/counter or flank"]},
-        {"id": "grounded_crown", "trigger_health_fraction_design": 0.66, "mechanic": "Alternating conducted arena pulses with grounded pads.", "counters": ["interrupt a pylon", "take a marked grounded pad"], "nature_advantage": "Verified wind or movement option without exclusivity."},
-        {"id": "guillotine_commitment", "trigger_health_fraction_design": 0.33, "mechanic": "Marked overhead landing, rotating cover and a stable refuge.", "counters": ["evade the committed landing", "defend then burst during recovery"]}
+        {
+          "id": "lariat_lanes",
+          "trigger": "entry",
+          "mechanic": "Visible shoulder-charge lane, committed heading and punish recovery.",
+          "counters": [
+            "sidestep or Lightning Step",
+            "guard/counter or flank"
+          ]
+        },
+        {
+          "id": "grounded_crown",
+          "trigger_health_fraction_design": 0.66,
+          "mechanic": "Alternating conducted arena pulses with grounded pads.",
+          "counters": [
+            "interrupt a pylon",
+            "take a marked grounded pad"
+          ],
+          "nature_advantage": "Verified wind or movement option without exclusivity."
+        },
+        {
+          "id": "guillotine_commitment",
+          "trigger_health_fraction_design": 0.33,
+          "mechanic": "Marked overhead landing, rotating cover and a stable refuge.",
+          "counters": [
+            "evade the committed landing",
+            "defend then burst during recovery"
+          ]
+        }
       ],
       "reward_theme": "Verified movement or Lightning kit upgrade without changing starter nature.",
       "world_reaction": "Signal lights activate outward and a leeward exit opens."
@@ -192,24 +399,107 @@
       "native_identity_and_behavior_accepted": false,
       "native_acceptance_risk": "Native shield/body/drop identity and controlled sand-state behavior require runtime proof.",
       "preview_dimension": 0,
-      "proposed_world_min": [66048, 3, 64000],
-      "proposed_world_max_inclusive": [66547, 252, 64499],
+      "proposed_world_min": [
+        66048,
+        3,
+        64000
+      ],
+      "proposed_world_max_inclusive": [
+        66547,
+        252,
+        64499
+      ],
       "main_combat_floor_world_y": 90,
-      "entry_local": [250, 87, 40],
-      "prep_local": [250, 87, 92],
-      "checkpoint_local": [250, 87, 150],
-      "boss_local": [250, 87, 250],
-      "reward_local": [250, 91, 370],
-      "exit_local": [270, 87, 64],
+      "entry_local": [
+        250,
+        87,
+        40
+      ],
+      "prep_local": [
+        250,
+        87,
+        92
+      ],
+      "checkpoint_local": [
+        250,
+        87,
+        150
+      ],
+      "boss_local": [
+        250,
+        87,
+        250
+      ],
+      "reward_local": [
+        250,
+        91,
+        370
+      ],
+      "exit_local": [
+        270,
+        87,
+        64
+      ],
       "anchors_are_design_targets_not_native_standing_proofs": true,
-      "architecture": ["Sandstone and terracotta monumental bowl", "Turquoise scholarly bays", "Entered shaded market and aid rooms", "Bounded cistern and offset observatory", "Supported fractured desert strata"],
-      "vertical_zones_world_y": {"cistern_and_dry_alternative": [42, 62], "inhabited_galleries": [110, 174], "observatory_and_statues": [225, 252]},
-      "primary_route": ["caravan gate", "shaded preparation", "wind hall", "sand court", "boss court", "restored garden", "shaded return"],
+      "architecture": [
+        "Sandstone and terracotta monumental bowl",
+        "Turquoise scholarly bays",
+        "Entered shaded market and aid rooms",
+        "Bounded cistern and offset observatory",
+        "Supported fractured desert strata"
+      ],
+      "vertical_zones_world_y": {
+        "cistern_and_dry_alternative": [
+          42,
+          62
+        ],
+        "inhabited_galleries": [
+          110,
+          174
+        ],
+        "observatory_and_statues": [
+          225,
+          252
+        ]
+      },
+      "primary_route": [
+        "caravan gate",
+        "shaded preparation",
+        "wind hall",
+        "sand court",
+        "boss court",
+        "restored garden",
+        "shaded return"
+      ],
       "alternate_route": "Dry cistern maintenance loop and side approach.",
       "phases": [
-        {"id": "sand_guard", "trigger": "entry", "mechanic": "Rotating cover and directional/state guard with exposed flanks.", "counters": ["flank during commitment", "break a verified opening with strong attacks"]},
-        {"id": "burial_lanes", "trigger_health_fraction_design": 0.66, "mechanic": "Owned pre-authored dune/cover states preserve one dry safe route.", "counters": ["interrupt a physical seal", "use an accepted heavy weapon contact"]},
-        {"id": "desert_convergence", "trigger_health_fraction_design": 0.33, "mechanic": "Marked converging bands release a burst window.", "counters": ["take the side route and seal", "clear an explicitly eligible temporary hazard"]}
+        {
+          "id": "sand_guard",
+          "trigger": "entry",
+          "mechanic": "Rotating cover and directional/state guard with exposed flanks.",
+          "counters": [
+            "flank during commitment",
+            "break a verified opening with strong attacks"
+          ]
+        },
+        {
+          "id": "burial_lanes",
+          "trigger_health_fraction_design": 0.66,
+          "mechanic": "Owned pre-authored dune/cover states preserve one dry safe route.",
+          "counters": [
+            "interrupt a physical seal",
+            "use an accepted heavy weapon contact"
+          ]
+        },
+        {
+          "id": "desert_convergence",
+          "trigger_health_fraction_design": 0.33,
+          "mechanic": "Marked converging bands release a burst window.",
+          "counters": [
+            "take the side route and seal",
+            "clear an explicitly eligible temporary hazard"
+          ]
+        }
       ],
       "reward_theme": "Verified sealing/projectile/sand-oriented bundle.",
       "world_reaction": "A small protected garden receives water and merchants react."
@@ -223,25 +513,108 @@
       "native_identity_and_behavior_accepted": false,
       "native_acceptance_risk": "Native chakra absorption must not be charged again by arena glue; test water AI and breathing/restart recovery.",
       "preview_dimension": 0,
-      "proposed_world_min": [67072, 3, 64000],
-      "proposed_world_max_inclusive": [67571, 252, 64499],
+      "proposed_world_min": [
+        67072,
+        3,
+        64000
+      ],
+      "proposed_world_max_inclusive": [
+        67571,
+        252,
+        64499
+      ],
       "main_combat_floor_world_y": 66,
       "water_surface_world_y": 63,
-      "entry_local": [250, 63, 40],
-      "prep_local": [250, 63, 92],
-      "checkpoint_local": [250, 63, 150],
-      "boss_local": [250, 63, 250],
-      "reward_local": [250, 67, 370],
-      "exit_local": [270, 63, 64],
+      "entry_local": [
+        250,
+        63,
+        40
+      ],
+      "prep_local": [
+        250,
+        63,
+        92
+      ],
+      "checkpoint_local": [
+        250,
+        63,
+        150
+      ],
+      "boss_local": [
+        250,
+        63,
+        250
+      ],
+      "reward_local": [
+        250,
+        67,
+        370
+      ],
+      "exit_local": [
+        270,
+        63,
+        64
+      ],
       "anchors_are_design_targets_not_native_standing_proofs": true,
-      "architecture": ["Real-water coastal stadium on actual piers and seabed", "Warm lantern paths and entered boathouse", "Connected dry regrouping islands", "Contained underwater alternative", "Tall lighthouse and supported rigging"],
-      "vertical_zones_world_y": {"underwater_route": [48, 58], "water_and_piers": [54, 70], "lighthouse_and_rigging": [210, 252]},
-      "primary_route": ["harbor entry", "breathing and kit preparation", "dry pier loop", "shark court", "boss court", "reward pier", "boathouse return"],
+      "architecture": [
+        "Real-water coastal stadium on actual piers and seabed",
+        "Warm lantern paths and entered boathouse",
+        "Connected dry regrouping islands",
+        "Contained underwater alternative",
+        "Tall lighthouse and supported rigging"
+      ],
+      "vertical_zones_world_y": {
+        "underwater_route": [
+          48,
+          58
+        ],
+        "water_and_piers": [
+          54,
+          70
+        ],
+        "lighthouse_and_rigging": [
+          210,
+          252
+        ]
+      },
+      "primary_route": [
+        "harbor entry",
+        "breathing and kit preparation",
+        "dry pier loop",
+        "shark court",
+        "boss court",
+        "reward pier",
+        "boathouse return"
+      ],
       "alternate_route": "Contained underwater route with tested breathing safeguard and two exits.",
       "phases": [
-        {"id": "shark_lanes", "trigger": "entry", "mechanic": "Curved marked wakes through water channels, with connected dry islands.", "counters": ["cross a visible gap between wakes", "use a dry island or guarded approach"]},
-        {"id": "water_prison", "trigger_health_fraction_design": 0.66, "mechanic": "Bounded precomputed water/dry-state volume with owned breathing safety.", "counters": ["use one of two physical exits", "take the dry alternative or interrupt the controller"]},
-        {"id": "chakra_pressure", "trigger_health_fraction_design": 0.33, "mechanic": "Telegraphed accepted contact may create bounded resource pressure only once across native/glue.", "counters": ["dodge or guard", "interrupt or disengage and use ordinary weapons/seals"]}
+        {
+          "id": "shark_lanes",
+          "trigger": "entry",
+          "mechanic": "Curved marked wakes through water channels, with connected dry islands.",
+          "counters": [
+            "cross a visible gap between wakes",
+            "use a dry island or guarded approach"
+          ]
+        },
+        {
+          "id": "water_prison",
+          "trigger_health_fraction_design": 0.66,
+          "mechanic": "Bounded precomputed water/dry-state volume with owned breathing safety.",
+          "counters": [
+            "use one of two physical exits",
+            "take the dry alternative or interrupt the controller"
+          ]
+        },
+        {
+          "id": "chakra_pressure",
+          "trigger_health_fraction_design": 0.33,
+          "mechanic": "Telegraphed accepted contact may create bounded resource pressure only once across native/glue.",
+          "counters": [
+            "dodge or guard",
+            "interrupt or disengage and use ordinary weapons/seals"
+          ]
+        }
       ],
       "reward_theme": "Verified water/control or sustained-combat bundle.",
       "world_reaction": "Only owned water states recede, lighting a safe reward pier and boathouse exit."
@@ -257,24 +630,107 @@
       "preview_dimension": 0,
       "intended_later_dimension_acceptance": -1,
       "nether_presentation_accepted": false,
-      "proposed_world_min": [68096, 3, 64000],
-      "proposed_world_max_inclusive": [68595, 252, 64499],
+      "proposed_world_min": [
+        68096,
+        3,
+        64000
+      ],
+      "proposed_world_max_inclusive": [
+        68595,
+        252,
+        64499
+      ],
       "main_combat_floor_world_y": 96,
-      "entry_local": [250, 93, 40],
-      "prep_local": [250, 93, 92],
-      "checkpoint_local": [250, 93, 150],
-      "boss_local": [250, 93, 250],
-      "reward_local": [250, 121, 370],
-      "exit_local": [270, 93, 64],
+      "entry_local": [
+        250,
+        93,
+        40
+      ],
+      "prep_local": [
+        250,
+        93,
+        92
+      ],
+      "checkpoint_local": [
+        250,
+        93,
+        150
+      ],
+      "boss_local": [
+        250,
+        93,
+        250
+      ],
+      "reward_local": [
+        250,
+        121,
+        370
+      ],
+      "exit_local": [
+        270,
+        93,
+        64
+      ],
       "anchors_are_design_targets_not_native_standing_proofs": true,
-      "architecture": ["Grounded charcoal/Nether-brick citadel-stadium", "Massive supported podium and guardian shapes", "Controlled furnace light and lava margins", "Entered service/aid/military galleries", "High moon gate and reward sanctum"],
-      "vertical_zones_world_y": {"cooling_and_service": [28, 62], "galleries": [130, 190], "citadel_crown": [245, 252]},
-      "primary_route": ["guardian gate", "forge preparation", "split service gallery", "seal court", "boss court", "cooled reward sanctum", "short sheltered return"],
+      "architecture": [
+        "Grounded charcoal/Nether-brick citadel-stadium",
+        "Massive supported podium and guardian shapes",
+        "Controlled furnace light and lava margins",
+        "Entered service/aid/military galleries",
+        "High moon gate and reward sanctum"
+      ],
+      "vertical_zones_world_y": {
+        "cooling_and_service": [
+          28,
+          62
+        ],
+        "galleries": [
+          130,
+          190
+        ],
+        "citadel_crown": [
+          245,
+          252
+        ]
+      },
+      "primary_route": [
+        "guardian gate",
+        "forge preparation",
+        "split service gallery",
+        "seal court",
+        "boss court",
+        "cooled reward sanctum",
+        "short sheltered return"
+      ],
       "alternate_route": "Cooling/service route with supported ascent and physical seal access.",
       "phases": [
-        {"id": "fire_and_fan", "trigger": "entry", "mechanic": "Broad readable fire lanes and a committed sweep with recovery.", "counters": ["take the marked safe side", "guard/resist and punish recovery"]},
-        {"id": "susanoo_pressure", "trigger_health_fraction_design": 0.66, "mechanic": "Verified native or original supported avatar presentation and two physical seal stations.", "counters": ["open one seal route", "use a supported armor/control approach to the other station"]},
-        {"id": "meteor_commitment", "trigger_health_fraction_design": 0.33, "mechanic": "Two visible overhead commitments create bounded blasts and burst windows; no uncontrolled terrain explosion.", "counters": ["use one of multiple tested shelters", "interrupt/defend through an explicitly supported counter"]}
+        {
+          "id": "fire_and_fan",
+          "trigger": "entry",
+          "mechanic": "Broad readable fire lanes and a committed sweep with recovery.",
+          "counters": [
+            "take the marked safe side",
+            "guard/resist and punish recovery"
+          ]
+        },
+        {
+          "id": "susanoo_pressure",
+          "trigger_health_fraction_design": 0.66,
+          "mechanic": "Verified native or original supported avatar presentation and two physical seal stations.",
+          "counters": [
+            "open one seal route",
+            "use a supported armor/control approach to the other station"
+          ]
+        },
+        {
+          "id": "meteor_commitment",
+          "trigger_health_fraction_design": 0.33,
+          "mechanic": "Two visible overhead commitments create bounded blasts and burst windows; no uncontrolled terrain explosion.",
+          "counters": [
+            "use one of multiple tested shelters",
+            "interrupt/defend through an explicitly supported counter"
+          ]
+        }
       ],
       "reward_theme": "Verified advanced armor/weapon/mode choice with actual implemented moves.",
       "world_reaction": "Furnace light cools, the upper seal opens and the aid-court return becomes available."
@@ -282,8 +738,42 @@
   ],
   "runtime_contract": {
     "state_schema_version": 1,
-    "states": ["AVAILABLE", "PREPARING", "READY", "ENTERED", "PHASE1", "PHASE2", "PHASE3", "VICTORY_PENDING", "REWARD_PENDING", "REWARDED", "EXITED", "RESET_READY", "RECOVERY_CHECKPOINT", "RETRY", "SAFE_CLOSED"],
-    "persisted_identity": ["arena_id", "template_version", "template_sha256", "run_uuid", "seed", "participants", "eligibility", "contributions", "checkpoint", "phase", "objective_state", "boss_uuid", "owned_actor_uuids", "owned_cell_journal", "reward_receipts", "disconnect_grace_deadline", "reset_status"],
+    "states": [
+      "AVAILABLE",
+      "PREPARING",
+      "READY",
+      "ENTERED",
+      "PHASE1",
+      "PHASE2",
+      "PHASE3",
+      "VICTORY_PENDING",
+      "REWARD_PENDING",
+      "REWARDED",
+      "EXITED",
+      "RESET_READY",
+      "RECOVERY_CHECKPOINT",
+      "RETRY",
+      "SAFE_CLOSED"
+    ],
+    "persisted_identity": [
+      "arena_id",
+      "template_version",
+      "template_sha256",
+      "run_uuid",
+      "seed",
+      "participants",
+      "eligibility",
+      "contributions",
+      "checkpoint",
+      "phase",
+      "objective_state",
+      "boss_uuid",
+      "owned_actor_uuids",
+      "owned_cell_journal",
+      "reward_receipts",
+      "disconnect_grace_deadline",
+      "reset_status"
+    ],
     "unknown_future_state_policy": "Preserve opaque data and refuse mutation.",
     "contribution_policy": "Actual accepted loss/protection/healing/objectives with verified source and run identity; final event references and after-unwind HP/absorption checks.",
     "reward_policy": "Supported items only, authentic Core serial ownership where applicable, bounded separate native-item policy, durable outbox and terminal once-only receipt.",
@@ -320,12 +810,42 @@
     "graphical_acceptance_only_after_owner_allows_client",
     "five_outputs_and_verified_github_checkpoint"
   ],
-  "gate_result_values": ["PASS", "FAIL", "NOT_RUN", "BLOCKED_INPUT"],
+  "gate_result_values": [
+    "PASS",
+    "FAIL",
+    "NOT_RUN",
+    "BLOCKED_INPUT"
+  ],
   "repair_policy": "Preserve failed candidates/reports, fix the root cause, regenerate affected outputs and rerun affected/downstream gates. Do not delete assertions, omit an arena or reuse evidence from different bytes.",
   "deliverables": {
-    "private": ["five full-size Alpha schematics", "per-arena palette/anchor/encounter/reward/reset metadata", "new preview world or reproducible guarded staging package", "top-down and route maps", "honestly labeled previews", "native and performance reports", "install/run/rollback guide", "complete artifact hashes and failure history"],
-    "public_repository": ["original arena generator/runtime source", "versioned arena data", "meaningful tests", "asset generation/provenance records", "safe evidence metadata", "current handoff", "verified GitHub branch and commit"],
-    "excluded_from_public_repository": ["reference JAR distributions", "reference decompilations", "third-party artwork without reviewed permission", "world saves", "private player/NPC/dialog/script payloads", "credentials", "large private runtime archives"]
+    "private": [
+      "five full-size Alpha schematics",
+      "per-arena palette/anchor/encounter/reward/reset metadata",
+      "new preview world or reproducible guarded staging package",
+      "top-down and route maps",
+      "honestly labeled previews",
+      "native and performance reports",
+      "install/run/rollback guide",
+      "complete artifact hashes and failure history"
+    ],
+    "public_repository": [
+      "original arena generator/runtime source",
+      "versioned arena data",
+      "meaningful tests",
+      "asset generation/provenance records",
+      "safe evidence metadata",
+      "current handoff",
+      "verified GitHub branch and commit"
+    ],
+    "excluded_from_public_repository": [
+      "reference JAR distributions",
+      "reference decompilations",
+      "third-party artwork without reviewed permission",
+      "world saves",
+      "private player/NPC/dialog/script payloads",
+      "credentials",
+      "large private runtime archives"
+    ]
   },
   "completion_truth": {
     "five_arenas_generated_by_this_brief": false,
@@ -333,5 +853,11 @@
     "renders_prove_native_routes_or_physics": false,
     "perfect_or_100_percent_parity_promised": false,
     "expected_behavior": "Execute the complete five-arena assignment in one run with self-repair, while stating actual scope and unavailable acceptance honestly."
+  },
+  "owner_clarification_2026_11_14": {
+    "requirement": "The stadium structures themselves are exactly500wide x500long x250high; plot padding or a smaller stadium does not satisfy this.",
+    "architecture": "Use the adapted project Naruto research for distinct recognizable boss architecture and mechanics.",
+    "supersedes": "common_play.outer_bowl_width_range and any plot-only interpretation of fixed dimensions",
+    "acceptance": "Independent architectural-layer occupancy, full500footprint, deliberately occupied250height, usable supported stadium geometry; terrain/markers excluded."
   }
 }

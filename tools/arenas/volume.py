@@ -5,12 +5,13 @@ are local, inclusive. Invalid writes fail instead of silently clipping structure
 """
 import gzip
 import hashlib
+import json
 import math
 import mmap
 import os
 from pathlib import Path
 import struct
-from collections import Counter
+from collections import Counter, deque
 
 
 def sha256(path):
@@ -45,14 +46,16 @@ class Volume:
             raise ValueError('Unsafe volume size')
         self.handles = []
         self.arrays = []
-        for name in ('Blocks', 'Data', 'High'):
+        for name in ('Blocks', 'Data', 'High', 'ArenaLayers'):
             f = (self.directory / (name + '.bin')).open('w+b')
             f.truncate(self.cells)
             self.handles.append(f)
             self.arrays.append(mmap.mmap(f.fileno(), self.cells))
-        self.blocks, self.data, self.high = self.arrays
+        self.blocks, self.data, self.high, self.owners = self.arrays
         self.layers = Counter()
+        self.layer_ids = {}
         self.used = set()
+        self.layer_samples = {}
         self.has_high = False
 
     def _bounds(self, x0, y0, z0, x1, y1, z1):
@@ -67,15 +70,36 @@ class Volume:
         if not (type(block) is int and 0 <= block <= 4095 and type(meta) is int and 0 <= meta <= 15):
             raise ValueError('Invalid Alpha block or metadata')
         n = x1-x0+1
+        if layer not in self.layer_ids:
+            if len(self.layer_ids)>=255: raise ValueError('Layer identity budget exceeded')
+            self.layer_ids[layer]=len(self.layer_ids)+1
+        owner=bytes([self.layer_ids[layer]])*n
         b,d,h = bytes([block & 255])*n, bytes([meta])*n, bytes([block >> 8])*n
         stride = self.width*self.length
         for y in range(y0,y1+1):
             for z in range(z0,z1+1):
                 i = y*stride + z*self.width + x0
                 self.blocks[i:i+n], self.data[i:i+n], self.high[i:i+n] = b,d,h
+                self.owners[i:i+n]=owner
         self.layers[layer] += n*(y1-y0+1)*(z1-z0+1)
         self.used.add((block,meta))
         self.has_high |= block > 255
+        if block:
+            samples=self.layer_samples.setdefault(layer,deque(maxlen=96))
+            for x,y,z in ((x0,y0,z0),(x1,y1,z1),((x0+x1)//2,(y0+y1)//2,(z0+z1)//2)):
+                samples.append((x,y,z,block,meta))
+
+    def layer_checks(self,required=()):
+        result={}
+        for layer in sorted(set(required)|set(self.layers)):
+            found=[];seen=set()
+            for x,y,z,block,meta in self.layer_samples.get(layer,()):
+                i=(y*self.length+z)*self.width+x
+                if (x,y,z) not in seen and self.blocks[i]+(self.high[i]<<8)==block and self.data[i]==meta:
+                    found.append({'position':[x,y,z],'block':block,'meta':meta});seen.add((x,y,z))
+            result[layer]={'written_cells':self.layers.get(layer,0),'surviving_witnesses':found,
+                           'required':layer in required}
+        return result
 
     def set(self,x,y,z,block,meta=0,layer='geometry'):
         self.box(x,y,z,x,y,z,block,meta,layer)
@@ -116,7 +140,9 @@ class Volume:
                 for base,vec in (('WEOrigin',world_min),('WEOffset',(0,0,0))):
                     for axis,value in zip('XYZ',vec):
                         named(f,3,base+axis,struct.pack('>i',value))
-                for name,arr in (('Blocks',self.blocks),('Data',self.data)):
+                names=json.dumps({str(v):k for k,v in self.layer_ids.items()},sort_keys=True,separators=(',',':')).encode('utf-8')
+                named(f,8,'ArenaLayerNames',struct.pack('>H',len(names))+names)
+                for name,arr in (('Blocks',self.blocks),('Data',self.data),('ArenaLayers',self.owners)):
                     named(f,7,name,struct.pack('>i',self.cells))
                     for offset in range(0,self.cells,1<<20):
                         f.write(arr[offset:offset+(1<<20)])

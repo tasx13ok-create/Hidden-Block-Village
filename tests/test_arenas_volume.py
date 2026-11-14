@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+import json
 from pathlib import Path
 
 from tools.arenas.volume import Volume, safe_new_directory
@@ -24,6 +25,11 @@ class StreamingVolumeTests(unittest.TestCase):
             self.assertEqual(s.blocks[1],255)
             self.assertEqual(s.data[1],15)
             self.assertEqual(sum(b==98 for b in s.blocks),12)
+            owner=s.root['ArenaLayers'].value
+            names=json.loads(s.root['ArenaLayerNames'].value)
+            self.assertEqual(len(owner),s.cells)
+            self.assertEqual(names[str(owner[0])],'geometry')
+            self.assertEqual(owner[5],0)
 
     def test_rejects_outside_volume_bad_metadata_and_existing_dest(self):
         with tempfile.TemporaryDirectory() as tmp:

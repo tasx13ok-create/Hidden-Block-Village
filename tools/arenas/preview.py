@@ -73,31 +73,35 @@ def make_previews(volume,record,directory):
             ids,meta=a[:,:,index],d[:,:,index]
         im=Image.fromarray(color(ids,meta)[::-1]).resize((1000,500),Image.Resampling.NEAREST)
         save(name,im,'Measured block section; air exposes interiors and supporting construction')
-    # Orthographic elevated projections of actual top surfaces, sampled every 3
-    # blocks for bounded preview cost. Silhouette heights come from full columns.
+    # Render exposed faces of sampled voxels rather than a heightfield: a tree
+    # canopy must not become an invented vertical wall down to the terrain.
     for name,turn in [('southwest',0),('southeast',1),('northeast',2)]:
-        hh=np.rot90(heights,turn)
-        cc=np.rot90(top,turn)
+        step=3
+        ids=np.rot90(a,turn,axes=(1,2))[::step,::step,::step]
+        meta=np.rot90(d,turn,axes=(1,2))[::step,::step,::step]
+        occupied=ids!=0
+        above=np.zeros_like(occupied);above[:-1]=occupied[1:]
+        front=np.zeros_like(occupied);front[:,:-1]=occupied[:,1:]
+        right=np.zeros_like(occupied);right[:,:,:-1]=occupied[:,:,1:]
+        visible=occupied & (~above | ~front | ~right)
+        yy,zz,xx=np.nonzero(visible)
+        order=np.argsort(xx+zz+yy*1.7,kind='stable')
+        voxel_colors=color(ids,meta)
         canvas=Image.new('RGB',(1100,790),(27,37,50))
         dr=ImageDraw.Draw(canvas)
-        scale=1.05; rise=1.7; step=3
-        for zz in range(0,l,step):
-            for xx in range(0,w,step):
-                yy=int(hh[zz,xx]); rgb=tuple(int(v) for v in cc[zz,xx])
-                px=550+(xx-zz)*scale
-                py=210+(xx+zz)*scale*.48-yy*rise
-                q=step*scale
-                # Side faces down to the lower sampled neighbor (not arbitrary
-                # invented walls or a filled bounding box).
-                neighbor=int(hh[min(zz+step,l-1),xx])
-                if yy>neighbor:
-                    drop=(yy-neighbor)*rise
+        scale=1.05; rise=1.7
+        q=step*scale; drop=step*rise
+        for i in order:
+                y,z,x=int(yy[i]),int(zz[i]),int(xx[i])
+                rgb=tuple(int(v) for v in voxel_colors[y,z,x])
+                px=550+(x-z)*step*scale
+                py=210+(x+z)*step*scale*.48-(y+1)*step*rise
+                if not front[y,z,x]:
                     dr.polygon([(px-q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px-q,py+q*.48+drop)],fill=tuple(int(v*.65) for v in rgb))
-                neighbor=int(hh[zz,min(xx+step,w-1)])
-                if yy>neighbor:
-                    drop=(yy-neighbor)*rise
+                if not right[y,z,x]:
                     dr.polygon([(px+q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px+q,py+q*.48+drop)],fill=tuple(int(v*.8) for v in rgb))
-                dr.polygon([(px,py),(px+q,py+q*.48),(px,py+q*.96),(px-q,py+q*.48)],fill=rgb)
+                if not above[y,z,x]:
+                    dr.polygon([(px,py),(px+q,py+q*.48),(px,py+q*.96),(px-q,py+q*.48)],fill=rgb)
         save('silhouette-'+name,canvas,'Elevated '+name+' / sampled actual geometry / neutral unlit block colors')
     del a,d
     return files
