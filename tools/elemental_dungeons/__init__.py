@@ -1,1 +1,1 @@
-"""Private CustomNPCs clone preparation; no world changes."""
+"""Tools for separate elemental dungeon candidates."""
