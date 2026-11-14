@@ -157,3 +157,20 @@ Motion off or Quiet mode keeps only the static colouring. Evidence: `release/evi
   - CustomNPC-bus reward de-duplication.
   - Ninjutsu versus physical classification for dodge and guard.
   - Native full-pack acceptance.
+
+## Bijuu chest power core (vale-orders `client/ArmorCoreFx`)
+A render layer that detects Hidden Village Bijuu Armor chestplates by reflection (`village.bijuu.BijuuArmor$Armor.beast`), with no compile dependency.
+
+Drawn on the body bone, in layers:
+- a recessed socket and bevelled voxel frame
+- rune studs lighting in sequence
+- energy veins with travelling pulses
+- a counter-rotating shell around a tumbling emissive core
+- two tilted orbit rings
+- additive bloom and flaring shafts
+- a pulsing ground light pool
+- shed voxel sparks
+
+"Power" (sprint, swing, recent damage, low health; smoothed) drives brightness, pulse rate, ring speed and shafts. The colour follows the beast slot.
+
+Verified in the client: all nine sets, calm and powered. The test jar was built from this branch (0.3.10 label). Integrate into the accepted 0.3.15+ Core rather than shipping it standalone.

@@ -177,7 +177,7 @@ public final class VfxShots {
 
     private static final String[] BEASTS = {"shukaku", "matatabi", "isobu", "son_goku", "kokuo", "saiken", "chomei", "gyuki", "kurama"};
     private void bijuu(Minecraft mc, IntegratedServer server, int local) {
-        int per = 90, b = local / per, t = local % per;
+        int per = 100, b = local / per, t = local % per;
         mc.gameSettings.hideGUI = true;
         if (b >= BEASTS.length) { if (t == 0) mc.shutdown(); return; }
         String beast = BEASTS[b];
@@ -207,6 +207,11 @@ public final class VfxShots {
             if (t == at[i] - 3) mc.gameSettings.thirdPersonView = views[i].endsWith("front") ? 2 : 1;
             if (t == at[i]) shot(mc, String.format("bijuu_%d_%s_%s", b, beast, views[i]));
         }
+        if (t == 80) { mc.gameSettings.thirdPersonView = 2; mc.gameSettings.fovSetting = 30; }
+        if (t == 84) shot(mc, String.format("core_%d_%s_calm", b, beast));
+        if (t == 86) server.addScheduledTask(() -> { EntityPlayerMP p = server.getPlayerList().getPlayers().get(0); p.attackEntityFrom(net.minecraft.util.DamageSource.GENERIC, 1); p.heal(1); });
+        if (t == 92) shot(mc, String.format("core_%d_%s_powered", b, beast));
+        if (t == 96) mc.gameSettings.fovSetting = 70;
     }
 
     private void menus(Minecraft mc, IntegratedServer server, int t) {
