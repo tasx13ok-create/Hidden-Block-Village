@@ -33,6 +33,16 @@ public final class VfxDraw {
     private static double camX, camY, camZ;
     /** World units per "pixel width" unit, so line widths look the same on every driver. */
     public static final double WIDTH_SCALE = 0.0075;
+    /**
+     * Voxel mode: lines, spheres, ribbons and glows are rebuilt from face-shaded pixel cubes on a
+     * 1/16-block grid so effects look like Minecraft blocks and particles instead of smooth GL.
+     */
+    private static final VoxelRules.Frames MODES=new VoxelRules.Frames();
+    public static void voxel(boolean enabled){MODES.voxel(enabled);}
+    public static void frameBudget(int cubes){MODES.frame(cubes);}
+    public static int frameUsed(){return MODES.globalUsed();}
+    public static int frameSkipped(){return MODES.globalSkipped();}
+    private static final double PX = 1 / 16.0;
 
     /** Starts an effect whose local origin is the given camera-relative render offset. */
     public static void begin(double x, double y, double z) {
@@ -43,6 +53,7 @@ public final class VfxDraw {
 
     public static void begin() {
         FRAMES.push(new Frame());
+        MODES.push(JutsuVfx.detail==0?256:JutsuVfx.detail==2?2048:1024);
         GlStateManager.pushMatrix();
         GL11.glPushAttrib(GL11.GL_LINE_BIT | GL11.GL_CURRENT_BIT);
         camX=camY=camZ=0;
@@ -58,6 +69,7 @@ public final class VfxDraw {
     public static void end() {
         if(FRAMES.isEmpty())return;
         Frame f=FRAMES.pop();
+        MODES.pop();
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,f.lightX,f.lightY);
         GL11.glPopAttrib();
         GlStateManager.depthMask(f.depthWrite);
@@ -71,6 +83,9 @@ public final class VfxDraw {
         GlStateManager.popMatrix();
     }
 
+    private static boolean finite(double... v){for(double n:v)if(!Double.isFinite(n))return false;return true;}
+    private static boolean path(double[][] points){if(points==null||points.length<2||points.length>256)return false;for(double[] p:points)if(p==null||p.length!=3||!finite(p))return false;return true;}
+
     public static void additive() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE); }
     /** Coloured translucency that keeps saturation in daylight (bodies, auras). */
     public static void normal() { GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA); }
@@ -80,7 +95,8 @@ public final class VfxDraw {
     }
 
     public static void sphere(double x, double y, double z, double r, int rgb, float alpha, int steps) {
-        if (r <= 0.001 || alpha <= 0.003) return;
+        if(!finite(x,y,z,r)||r<=.001||r>128||!Float.isFinite(alpha)||alpha<=.003f||steps<3||steps>64)return;
+        if (MODES.voxel()) { cubes(VoxelGeometry.sphere(x,y,z,r,alpha,MODES.remaining()),rgb); return; }
         Tessellator t = Tessellator.getInstance();
         BufferBuilder b = t.getBuffer();
         b.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
@@ -106,7 +122,8 @@ public final class VfxDraw {
 
     /** Soft round camera-facing glow: bright centre fading to a transparent rim. */
     public static void billboard(RenderManager rm, double x, double y, double z, double size, int rgb, float alpha) {
-        if (size <= 0.0005 || alpha <= 0.003) return;
+        if(!finite(x,y,z,size)||size<=.0005||size>16||!Float.isFinite(alpha)||alpha<=.003f)return;
+        if (MODES.voxel()) { cube(pixel(x),pixel(y),pixel(z),Math.max(PX,Math.round(size*1.2/PX)*PX),rgb,alpha);return; }
         double[][] f = facing(x, y, z);
         Tessellator t = Tessellator.getInstance();
         BufferBuilder b = t.getBuffer();
@@ -124,7 +141,8 @@ public final class VfxDraw {
      * with alpha fading from a0 to a1 along its length. {@code width} is in "pixel" units.
      */
     public static void line(double[][] pts, int rgb, float a0, float a1, float width) {
-        if (pts.length < 2 || Math.max(a0, a1) <= 0.003) return;
+        if(!path(pts)||!Float.isFinite(a0)||!Float.isFinite(a1)||Math.max(a0,a1)<=.003f||!Float.isFinite(width)||width<=0||width>128)return;
+        if (MODES.voxel()) { cubes(VoxelGeometry.line(pts,a0,a1,width,MODES.remaining()),rgb);return; }
         double half = width * WIDTH_SCALE * 0.5;
         Tessellator t = Tessellator.getInstance();
         BufferBuilder b = t.getBuffer();
@@ -159,8 +177,10 @@ public final class VfxDraw {
 
     /** Filled strip between two matching edges (slash blades, shield arcs). */
     public static void ribbon(double[][] inner, double[][] outer, int rgb, float a0, float a1) {
-        int n = Math.min(inner.length, outer.length);
+        if(!path(inner)||!path(outer)||inner.length!=outer.length||!Float.isFinite(a0)||!Float.isFinite(a1))return;
+        int n = inner.length;
         if (n < 2 || Math.max(a0, a1) <= 0.003) return;
+        if (MODES.voxel()) { cubes(VoxelGeometry.ribbon(inner,outer,a0,a1,MODES.remaining()),rgb);return; }
         Tessellator t = Tessellator.getInstance();
         BufferBuilder b = t.getBuffer();
         b.begin(GL11.GL_QUAD_STRIP, DefaultVertexFormats.POSITION_COLOR);
@@ -172,9 +192,48 @@ public final class VfxDraw {
         t.draw();
     }
 
+    /**
+     * Axis-aligned voxel cube with Minecraft-style face shading (top 100%, north/south 80%,
+     * east/west 60%, bottom 50%), so pixel effects read like blocks and particles.
+     */
+    public static void cube(double x, double y, double z, double size, int rgb, float alpha) {
+        if(!finite(x,y,z,size)||Math.abs(x)>32000000||Math.abs(y)>32000000||Math.abs(z)>32000000||size<=.0005||size>16||!Float.isFinite(alpha)||alpha<=.003f||!MODES.use(1))return;
+        Tessellator t = Tessellator.getInstance();
+        BufferBuilder b = t.getBuffer();
+        b.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
+        cubeInto(b, x, y, z, size, rgb, alpha);
+        t.draw();
+    }
+
+    private static void cubes(java.util.List<VoxelGeometry.Cube> cubes,int rgb){
+        if(cubes.isEmpty()||!MODES.use(cubes.size()))return;Tessellator t=Tessellator.getInstance();BufferBuilder b=t.getBuffer();b.begin(GL11.GL_QUADS,DefaultVertexFormats.POSITION_COLOR);
+        for(VoxelGeometry.Cube c:cubes)cubeInto(b,c.x,c.y,c.z,c.size,rgb,c.alpha);t.draw();
+    }
+
+    static void cubeInto(BufferBuilder b, double x, double y, double z, double size, int rgb, float alpha) {
+        if(!MODES.globalCube())return;
+        if(!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(z)||Math.abs(x)>32000000||Math.abs(y)>32000000||Math.abs(z)>32000000||!Double.isFinite(size)||size<=0||size>16||!Float.isFinite(alpha)||alpha<=.003f)return;
+        double h = size / 2, x0 = x - h, x1 = x + h, y0 = y - h, y1 = y + h, z0 = z - h, z1 = z + h;
+        int top = rgb, ns = shade(rgb, 0.8), ew = shade(rgb, 0.6), bot = shade(rgb, 0.5);
+        vertex(b, x0, y1, z0, top, alpha); vertex(b, x0, y1, z1, top, alpha); vertex(b, x1, y1, z1, top, alpha); vertex(b, x1, y1, z0, top, alpha);
+        vertex(b, x0, y0, z0, bot, alpha); vertex(b, x1, y0, z0, bot, alpha); vertex(b, x1, y0, z1, bot, alpha); vertex(b, x0, y0, z1, bot, alpha);
+        vertex(b, x0, y0, z0, ns, alpha); vertex(b, x0, y1, z0, ns, alpha); vertex(b, x1, y1, z0, ns, alpha); vertex(b, x1, y0, z0, ns, alpha);
+        vertex(b, x0, y0, z1, ns, alpha); vertex(b, x1, y0, z1, ns, alpha); vertex(b, x1, y1, z1, ns, alpha); vertex(b, x0, y1, z1, ns, alpha);
+        vertex(b, x0, y0, z0, ew, alpha); vertex(b, x0, y0, z1, ew, alpha); vertex(b, x0, y1, z1, ew, alpha); vertex(b, x0, y1, z0, ew, alpha);
+        vertex(b, x1, y0, z0, ew, alpha); vertex(b, x1, y1, z0, ew, alpha); vertex(b, x1, y1, z1, ew, alpha); vertex(b, x1, y0, z1, ew, alpha);
+    }
+
+    public static int shade(int rgb, double f) {
+        f=Double.isFinite(f)?Math.max(0,Math.min(1.2,f)):0;int r=Math.min(255,(int)(((rgb>>16)&255)*f)),g=Math.min(255,(int)(((rgb>>8)&255)*f)),bl=Math.min(255,(int)((rgb&255)*f));
+        return (r << 16) | (g << 8) | bl;
+    }
+
+    /** Snaps a coordinate to a 1/16-block pixel grid. */
+    public static double pixel(double v){return Double.isFinite(v)&&Math.abs(v)<=32000000?Math.round(v*16)/16.0:0;}
+
     /** Flat horizontal annulus centred at (x,y,z). */
     public static void annulus(double x, double y, double z, double r0, double r1, int rgb, float alpha, int steps) {
-        if (r1 <= r0 || alpha <= 0.003) return;
+        if(!finite(x,y,z,r0,r1)||r0<0||r1<=r0||r1>128||!Float.isFinite(alpha)||alpha<=.003f||steps<3||steps>64)return;
         double[][] in = new double[steps + 1][], out = new double[steps + 1][];
         for (int i = 0; i <= steps; i++) {
             double a = i * Math.PI * 2 / steps;

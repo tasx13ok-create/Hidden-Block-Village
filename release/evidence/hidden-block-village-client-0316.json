@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "scope": "FRIEND_CLIENT_ARCHIVE_INTEGRITY_NOT_GAMEPLAY_ACCEPTANCE",
+  "archive": "Hidden Block Village.zip",
+  "bytes": 204639753,
+  "sha256": "2172ab6f94105ff93f332ad89e96cae665f95d6f2b54c3c240e9531b86a28abe",
+  "core_version": "0.3.16",
+  "mods": 58,
+  "entries": 192,
+  "crc_and_byte_readback_passed": true,
+  "selected_shader": "BSL_v10.1.8.zip",
+  "omitted_profile_resources": [
+    "config/field-controls/backups/options-1794612158073.txt",
+    "config/field-controls/backups/options-1794612490957.txt",
+    "config/field-controls/profiles.json.previous",
+    "config/fieldhud-loadouts.json",
+    "config/jei/worldSettings.cfg",
+    "config/xaeropatreon.txt",
+    "resourcepacks/Vale-Reference-Flat-Icons-v3.zip"
+  ],
+  "frozen_resource_fallbacks": [],
+  "source_receipt_sha256": "1f2bef4b6b35455a038178044cfedcb04a42117a84312f42aaa302b62720d2b5",
+  "source_snapshot_sha256": "f8533d0b6cd498a93bd7998effe4ff6e737b0aba6cffdfeb3b50aefeee4d9330",
+  "gameplay_test_performed": false,
+  "bisect_test_performed": false,
+  "private_runtime_and_account_directories_included": false
+}

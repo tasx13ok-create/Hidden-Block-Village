@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "status": "ORIGINAL_CLIENT_GATE_SOURCE_FIXED_COMPONENT_BUILD_AND_REAL_RELOAD_PENDING",
+  "core_version": "0.3.16",
+  "server_Dodge_authority_costs_cooldowns_physics_or_wire_changed": false,
+  "observed_bug": "Actual client/server both have Core0.3.16 and the registered Dodge backend, but client reads a server-side-only modList cache and refuses V.",
+  "actual_Forge_facts": [
+    "Forge1.12.2 FMLClientHandler has no getServerModList method.",
+    "Client handshake validates server ModList without setting NetworkDispatcher.modList; that per-dispatcher client map is empty.",
+    "ChannelRegistrationHandler posts CustomPacketRegistrationEvent with packet origin NetworkManager and local target Side.CLIENT for server advertisements.",
+    "REGISTER can arrive before ClientConnectedToServerEvent and before play handler/world."
+  ],
+  "adaptation": [
+    "Retain exact receiving manager proof for the server-advertised valeorders_dodge channel introduced with Core0.3.14. Do not use globally registered local channels.",
+    "A synchronized cache retains at most4weak manager identities and checks referential equality. Registration requires local targetCLIENT; UNREGISTER and matching disconnect revoke only that manager.",
+    "Current open NetHandlerPlayClient manager must match. No channel or unknown connection fails closed. When an explicit remote Core version exists, unsupported/old/malformed versions still refuse. Empty native client version map relies on the advertised protocol channel, not a local version guess.",
+    "Existing world/body/connection input and pose resets are preserved. Same-manager respawn keeps its network handshake capability.",
+    "One bounded NARUTO_DODGE_SERVER_READY log per current manager proves accepted native registration without IP,UUID or product UI implementation details."
+  ],
+  "checks": {
+    "pure_client_contract_assertions": 18,
+    "actual_Forge_prepared_API_compile_final": true,
+    "same_deployed_Core_and_Dodge_hashes_beforefix": "Independently confirmed by paired reviewer",
+    "real_client_reload_and_paid_server_move": "PENDING_ROOT"
+  },
+  "paths": [
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/DodgeClient.java",
+      "sha256": "d31e589ed984de176863d53c1f31c9a5e3bb1cdd0eff1bb49f92cadfa3740da3"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/DodgeServerCapability.java",
+      "sha256": "001be94a1e69ee1259e42a3f03753cb9fa9e00a90274c415457d2bbd58cbbb51"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/DodgeServerCapabilityChecks.java",
+      "sha256": "2489861410c37ee4cba535c3bbb5c1ddae5c3a82626d7e1d6f8108ba6a21ab51"
+    },
+    {
+      "path": "modules/vale-orders/build.gradle",
+      "sha256": "e5e6b9896556bf168d48df21991978f73fde5b9e530282eec32d7446ad59c1cd"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Five dungeon campaigns: world and encounter atlas
 
+> **Owner direction, 14 November 2026:** The existing five v17 sites are elemental NPC-and-loot dungeons. The five new 500×500×250 coliseums are separate boss-fight sites. The boss concepts in the older sections below are historical design ideas, not instructions to place those bosses in the elemental sites. See [elemental sites](../docs/dungeons/elemental-sites-current.md) for the recovered builds, confirmed nature assignment and implementation status. The owner's friend will handle NPC drop choices.
+
 ## Production baseline and shared contract
 
 This is the next design specification, not a new exported dungeon release. Available v9 source has Earth/Leaf, Cloud and Sand at 192Ã—192; Mist at 200Ã—200; Fire/Nether at 160Ã—160. All five newer v17 schematics have now been recovered and metadata-audited: Sakura/Cloud/Sand 288×288, Mist 200×200 and Nether 256×256. See `release/evidence/v17-intake-20261113.json` and the current handoff. Their geometry/routes/native runtime still require comparison and validation before replacement. Preserve the original arrays, world, anchors and exports, and author each revision in a separate output/save.

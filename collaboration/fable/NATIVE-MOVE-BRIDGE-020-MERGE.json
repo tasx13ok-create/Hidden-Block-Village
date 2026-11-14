@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "scope": "reviewed-native-move-bridge-promotion-after-remote-merge",
+  "preserved_hardened_source_commit": "436c869",
+  "merged_remote_commit": "f1b0f8f",
+  "reviewed_manifest_sha256": "ec4b2c365549b15a6b39549ce3fb37b48c7bd87222c859bb3aeec90cbe8c1063",
+  "promoted_paths": 24,
+  "all_candidate_hashes_verified_before_writes": true,
+  "targeted_hardened_preimages_restored_then_verified_before_promotion": 5,
+  "remote_raw_preimages_preserved_privately": true,
+  "all_promoted_files_lf": true,
+  "superseded_removed_paths": [
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/BridgeMath.java",
+      "sha256": "84af23a322bff275ec1615942a50434dffc42b9c7ef3385548751153d438f846"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/BridgeMathTest.java",
+      "sha256": "986d201da6c07d14d361cb91e52ed046bce259a5ec05960b90de6cc6459e7834"
+    }
+  ],
+  "removal_reason": "Raw runtime name inference is superseded by the separate inactive verified:false proposal generator. Accepted runtime maps require exact registered typed IDs, operator review and verified:true. Percentage-based native economics and intent-triggered cues are not restored.",
+  "other_authority_preserved": [
+    "ChakraLink",
+    "MoveCost",
+    "ResourceNetwork",
+    "JutsuSnapshotReader"
+  ],
+  "ledger_or_pool_paths_restored": false,
+  "renderer_or_armor_paths_changed_by_this_promotion": false,
+  "native_harness_integration": "Invoke village.vale.arsenal.BridgeNativeChecks.run(player) LAST in the isolated recovery fixture, with explicit flag/marker and only the synthetic registered MP. The helper stops its temporary Bridge and requires server shutdown afterward.",
+  "c_component_checks": {
+    "executed": true,
+    "main_java8_compile": true,
+    "rule_checks_java8_compile": true,
+    "configuration": 52,
+    "receipt_engine": 38,
+    "discovery": 11,
+    "command_permission": 12,
+    "total_assertions": 113,
+    "exit_code": 0,
+    "log_sha256": "b7e13efd44093bbaa5b2dc22097e1caf18c046373cf5db41b9272bae7739216b"
+  },
+  "matching_native_endpoint": "pending",
+  "deployment_ready": false,
+  "prior_c_attempt": {
+    "passed": false,
+    "stage": "main compile before Bridge checks",
+    "cause": "Unadapted raw ScrollActorVfx references to removed VfxDraw.voxel field",
+    "resolution": "Renderer owner replaced the raw references with scoped reviewed voxel helpers; complete second compilation and all four Bridge checks passed.",
+    "failure_log_retained_privately": true
+  }
+}

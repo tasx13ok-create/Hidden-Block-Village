@@ -27,7 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import village.vale.Quartermaster;
 
 /** Original save bridge. Legacy technical identifiers are data compatibility only. */
-@Mod(modid=WorldCompat.ID,name="Naruto World Furnishings",version="1.0.0",dependencies="required-after:valeorders",acceptedMinecraftVersions="[1.12.2]")
+@Mod(modid=WorldCompat.ID,name="Naruto World Furnishings",version="1.0.1",dependencies="required-after:valeorders;after:variedcommodities;after:waystones",acceptedMinecraftVersions="[1.12.2]")
 @Mod.EventBusSubscriber(modid=WorldCompat.ID)
 public final class WorldCompat {
  public static final String ID="valeworldcompat";
@@ -39,13 +39,15 @@ public final class WorldCompat {
  static final List<Destination> DESTINATIONS=new ArrayList<>();
  static final Map<UUID,String> SELECTED=new HashMap<>();
  static final Map<UUID,Long> COOLDOWNS=new HashMap<>();
- @SubscribeEvent public static void blocks(RegistryEvent.Register<Block> e){for(Furnishing b:BLOCKS)e.getRegistry().register(b);}
- @SubscribeEvent public static void items(RegistryEvent.Register<Item> e){for(Furnishing b:BLOCKS)e.getRegistry().register(new ItemBlock(b).setRegistryName(b.getRegistryName()));}
+ @SubscribeEvent public static void blocks(RegistryEvent.Register<Block> e){for(Furnishing b:BLOCKS)if(!net.minecraftforge.fml.common.Loader.isModLoaded(b.getRegistryName().getNamespace())&&!e.getRegistry().containsKey(b.getRegistryName()))e.getRegistry().register(b);}
+ @SubscribeEvent public static void items(RegistryEvent.Register<Item> e){for(Furnishing b:BLOCKS)if(Block.REGISTRY.getObject(b.getRegistryName())==b&&!e.getRegistry().containsKey(b.getRegistryName()))e.getRegistry().register(new ItemBlock(b).setRegistryName(b.getRegistryName()));}
  @Mod.EventHandler public void preInit(FMLPreInitializationEvent e)throws IOException {
-  GameRegistry.registerTileEntity(MarkerTile.class,new ResourceLocation("waystones:waystone"));
-  GameRegistry.registerTileEntity(TableTile.class,new ResourceLocation("variedcommodities:table"));
-  GameRegistry.registerTileEntity(FireTile.class,new ResourceLocation("variedcommodities:campfire"));
-  GameRegistry.registerTileEntity(BoardTile.class,new ResourceLocation("variedcommodities:trading_block"));
+  if(!net.minecraftforge.fml.common.Loader.isModLoaded("waystones"))GameRegistry.registerTileEntity(MarkerTile.class,new ResourceLocation("waystones:waystone"));
+  if(!net.minecraftforge.fml.common.Loader.isModLoaded("variedcommodities")){
+   GameRegistry.registerTileEntity(TableTile.class,new ResourceLocation("variedcommodities:table"));
+   GameRegistry.registerTileEntity(FireTile.class,new ResourceLocation("variedcommodities:campfire"));
+   GameRegistry.registerTileEntity(BoardTile.class,new ResourceLocation("variedcommodities:trading_block"));
+  }
   File file=new File(e.getModConfigurationDirectory(),"valeworldcompat-destinations.tsv");
   DESTINATIONS.clear();
   if(file.isFile())for(String line:Files.readAllLines(file.toPath(),StandardCharsets.UTF_8)) {
@@ -105,7 +107,7 @@ public final class WorldCompat {
  }
  static BlockPos safeLanding(WorldServer w,BlockPos marker,EntityPlayerMP p){for(int r=1;r<=4;r++)for(int dy=0;dy<=3;dy++)for(int dx=-r;dx<=r;dx++)for(int dz=-r;dz<=r;dz++){
   if(Math.max(Math.abs(dx),Math.abs(dz))!=r)continue;BlockPos q=marker.add(dx,dy,dz);if(q.getY()<1||q.getY()>253||!w.getWorldBorder().contains(q)||!w.isBlockLoaded(q)||!w.getBlockState(q.down()).isSideSolid(w,q.down(),EnumFacing.UP))continue;
-  Block floor=w.getBlockState(q.down()).getBlock();if(floor==Blocks.MAGMA||floor==Blocks.CACTUS||floor==FIRE)continue;
+  Block floor=w.getBlockState(q.down()).getBlock();if(floor==Blocks.MAGMA||floor==Blocks.CACTUS||FIRE.getRegistryName().equals(floor.getRegistryName()))continue;
   AxisAlignedBB box=new AxisAlignedBB(q.getX()+.2,q.getY(),q.getZ()+.2,q.getX()+.8,q.getY()+1.8,q.getZ()+.8);
   if(w.getCollisionBoxes(p,box).isEmpty()&&!w.containsAnyLiquid(box)&&w.getBlockState(q).getBlock()!=Blocks.FIRE&&w.getBlockState(q.up()).getBlock()!=Blocks.FIRE)return q;
  }return null;}

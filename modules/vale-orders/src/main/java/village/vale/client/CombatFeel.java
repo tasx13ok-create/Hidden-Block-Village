@@ -1,0 +1,20 @@
+package village.vale.client;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.*;
+import village.vale.arsenal.WeaponPulse;
+/** Cosmetic native-tick damage/landing camera feedback; confirmed own arsenal melee carriers add punch/sparks. */
+@SideOnly(Side.CLIENT) public final class CombatFeel {
+ public static boolean enabled=true;public static float intensity=.6f;private static boolean installed;private static final VfxFeedback STATE=new VfxFeedback();private static final VoxelRules.Epoch EPOCH=new VoxelRules.Epoch();private static long epoch=-1;private static int sampled=Integer.MIN_VALUE;private static double bias;
+ private CombatFeel(){}
+ public static void initialize(java.io.File folder){if(installed)return;installed=true;try{net.minecraftforge.common.config.Configuration c=new net.minecraftforge.common.config.Configuration(new java.io.File(folder,"valeorders-client.cfg"));c.load();enabled=c.getBoolean("screenShake","combat",true,"Cosmetic camera feedback from observed damage, landing and confirmed arsenal melee.");intensity=c.getFloat("shakeIntensity","combat",.6f,0,2,"Camera feedback strength.");if(c.hasChanged())c.save();}catch(RuntimeException unavailable){enabled=false;}net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new CombatFeel());VoxelBits.install();}
+ private static boolean context(){Minecraft m=Minecraft.getMinecraft();if(!m.isCallingFromMinecraftThread())return false;boolean ready=EPOCH.prepare(m.world,m.player,m.getConnection(),m.player==null?-1:m.player.ticksExisted);if(epoch!=EPOCH.version()){epoch=EPOCH.version();STATE.clear();sampled=Integer.MIN_VALUE;bias=0;}return ready;}
+ static double noise(double t,long seed){long i=(long)Math.floor(t);double f=t-i,u=f*f*(3-2*f),a=village.vale.WeaponMath.hash(seed,(int)i)*2-1,b=village.vale.WeaponMath.hash(seed,(int)(i+1))*2-1;return a+(b-a)*u;}
+ @SubscribeEvent public void tick(TickEvent.ClientTickEvent ev){if(ev.phase!=TickEvent.Phase.END||!context()||sampled==EPOCH.tick())return;sampled=EPOCH.tick();Minecraft m=Minecraft.getMinecraft();if(!enabled||!MotionGate.allowed()||m.isGamePaused()){STATE.clear();return;}STATE.sample(m.player.getHealth(),m.player.getAbsorptionAmount(),m.player.getMaxHealth(),m.player.onGround,m.player.fallDistance,EPOCH.delta());Entity attacker=m.player.getAttackingEntity();if(attacker!=null&&attacker.world==m.world){double a=Math.atan2(attacker.posZ-m.player.posZ,attacker.posX-m.player.posX)-Math.toRadians(m.player.rotationYaw+90);bias=Double.isFinite(a)?Math.sin(a):0;}else bias=0;}
+ /** Called only once after VoxelBits validates an admitted actual SWING entity; no AttackEntity intent hook. */
+ static void acceptedSwing(WeaponPulse e){Minecraft m=Minecraft.getMinecraft();if(!context()||!enabled||!MotionGate.allowed()||e.kind()!=WeaponPulse.SWING||e.ownerId()!=m.player.getEntityId()||e.world!=m.world||m.world.getEntityByID(e.getEntityId())!=e)return;STATE.acceptedSwing(e.alt());int n=e.alt()?8:4;java.util.Random r=VoxelBits.RNG;for(int i=0;i<n;i++)VoxelBits.spawn(e.endX(),e.endY(),e.endZ(),(r.nextDouble()-.5)*.35,r.nextDouble()*.25,(r.nextDouble()-.5)*.35,1,i%4==0?0xFFE27A:0xFFFFFF,1f,8+r.nextInt(6),.03,.9,true);}
+ @SubscribeEvent public void camera(EntityViewRenderEvent.CameraSetup e){if(!context()||!enabled||!Float.isFinite(intensity)||intensity<=0||!MotionGate.allowed())return;double partial=e.getRenderPartialTicks();if(!Double.isFinite(partial))return;double t=Minecraft.getMinecraft().player.ticksExisted+Math.max(0,Math.min(1,partial)),strength=Math.min(2,intensity),k=STATE.trauma*STATE.trauma*strength;e.setYaw((float)(e.getYaw()+(noise(t*.9,1)*2.2+bias*1.2)*k));e.setPitch((float)(e.getPitch()+noise(t*.9,8)*2*k+STATE.punch*1.4*strength));e.setRoll((float)(e.getRoll()+noise(t*.7,14)*3*k));}
+}

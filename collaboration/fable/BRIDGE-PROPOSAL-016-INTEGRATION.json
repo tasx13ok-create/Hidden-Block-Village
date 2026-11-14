@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "status": "PROMOTED_OFFLINE_TOOL",
+  "source_pin": "3a257fe16c302d2a0b0ee9fd5c07072f789ddf41",
+  "original_author": "Claude Opus 5.5",
+  "original_ordered_rules": 69,
+  "original_skip_terms": 21,
+  "rules_and_skip_terms_preserved": true,
+  "proposal_schema": 1,
+  "proposal_verified": false,
+  "runtime_auto_mapping": false,
+  "renaming_an_unchanged_proposal_activates_it": false,
+  "inference_scope": "Offline private registry metadata review only; no native cast or owner ABI proof is inferred. Schema/typed IDs/styles/duplicates/counts/bytes are bounded. Native registry existence and accepted runtime file verification remain separate.",
+  "old_percent_economics_restored": false,
+  "verification": {
+    "promoted_stdlib_tests": 19,
+    "promoted_tests_exit": 0,
+    "synthetic_input_ids": 10,
+    "synthetic_proposals": 7,
+    "actual_production_parser_rejects_unverified_proposal": "PASS reported by paired runtime parser checks",
+    "api_or_network_call": false
+  },
+  "paths": [
+    {
+      "path": "tools/bridge/propose_moves.py",
+      "sha256": "1663dccc92c2a6eab16071460cfcf2afc0e06d1850162c1db2b7ce580292aabe"
+    },
+    {
+      "path": "tools/bridge/README.md",
+      "sha256": "22402f17c2206549bfb1ff5708522e611adbe47134797ad377aa191fec79d6cc"
+    },
+    {
+      "path": "tools/bridge/tests/test_propose_moves.py",
+      "sha256": "6b449f64f69dc7d31d1f5d34aee16266b43935fd2cebfaa8ae5c688d17ab6183"
+    }
+  ]
+}

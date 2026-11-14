@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=1": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=2": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=3": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=4": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=5": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=6": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=7": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=8": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=9": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=10": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=11": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=12": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=13": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=14": {
+      "model": "valeworldcompat:waystone"
+    },
+    "legacy=15": {
+      "model": "valeworldcompat:waystone"
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "scope": "SOURCE09_FULL_NATIVE_PROVIDERS_AND_SYNTHETIC_CHARGE_DODGE_ONLY",
+  "created_utc": "2026-11-14T14:48:21.085944+00:00",
+  "passed": true,
+  "deployment_ready": false,
+  "core_source_sha256": "034b8c4a2c2d2f411e0f255a0d2b1cdb2bf06091441cbd4a1326f970a68b797e",
+  "build_report_sha256": "72e3307bd991734e5bbda127c38390c05c38a750aed2772a15bca9e9a3f97bd3",
+  "selected_components": [
+    {
+      "component": "vale-orders",
+      "file": "vale-orders-0.3.16.jar",
+      "bytes": 2762345,
+      "sha256": "044a71226956c354eb20e0c38eed58e4140b50b35bae3b035bf2526aea06531f"
+    },
+    {
+      "component": "vale-encounters",
+      "file": "vale-encounters-0.3.6.jar",
+      "bytes": 30012,
+      "sha256": "155f590495e708cfddadf8a9c7f24c145ca7ef4328ebd2ec7d16d470b512f4c5"
+    },
+    {
+      "component": "vale-rack",
+      "file": "Vale-Rack-0.1.4.jar",
+      "bytes": 42283,
+      "sha256": "162cfb2185dd8f8316252f2cb0d87841e1a313cab6a739405ea24a04ab471dbb"
+    },
+    {
+      "component": "vale-residents",
+      "file": "vale-residents-0.2.1.jar",
+      "bytes": 46139,
+      "sha256": "9ea53d45d148c1fbfe38a7b9bc57654240b8632524bacd07dfaca23b8a443269"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "file": "vale-residents-server-bridge-0.1.0.jar",
+      "bytes": 3021,
+      "sha256": "79fc0947fc052d8dedefff72d15a179dd4c2180a21fcdeb116164a61e944550f"
+    },
+    {
+      "component": "vale-world-compat",
+      "file": "vale-world-compat-1.0.1.jar",
+      "bytes": 27952,
+      "sha256": "25492f6a99fa8c10aef941f663dd0c984b3f094e06f0881d2b18cf3b133a8768"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "file": "Vale-Forge-Damage-Compat-0.1.0.jar",
+      "bytes": 5611,
+      "sha256": "77d183c9d84e970d5032a7734cdedab198a0ff50d6f4722d533c30f6d4c9f3a4"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "file": "Vale-Server-Bridge-0.2.0.jar",
+      "bytes": 4796,
+      "sha256": "b2c0f2f6c477a52bfcd28dae21848c59a75547d354771d1c5b86120a5ebe9f26"
+    },
+    {
+      "component": "village-standards",
+      "file": "Village-Standards-0.3.1.jar",
+      "bytes": 39364,
+      "sha256": "7f072a2fa5c40e3ba1e7e02702dee404b390670977989320bed162ade9b8d045"
+    }
+  ],
+  "production_server_jars": 54,
+  "registry_free_observer_jars": 1,
+  "private_economic_transformer_installed": false,
+  "process_exit_code": 0,
+  "forced_termination": false,
+  "original_world_or_real_player_used": false,
+  "new_disposable_flat_world_only": true,
+  "actual_client_endpoint_or_graphics_tested": false,
+  "provider_registry_and_nbt_assertions": 55,
+  "official_synthetic_admission_assertions": 1,
+  "native_provider_rows": [
+    {
+      "id": "variedcommodities:table",
+      "block_class": "noppes.vc.blocks.BlockTable",
+      "item_class": "net.minecraft.item.ItemBlock",
+      "factory_tile_class": "noppes.vc.blocks.tiles.TileTable",
+      "factory_tile_key": "variedcommodities:table",
+      "saved_id_lookup_class": "noppes.vc.blocks.tiles.TileTable",
+      "native_nbt_roundtrip": true,
+      "native_nbt_field_names": [
+        "BannerColor",
+        "BannerRotation",
+        "id",
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "id": "variedcommodities:campfire",
+      "block_class": "noppes.vc.blocks.BlockCampfire",
+      "item_class": "net.minecraft.item.ItemBlock",
+      "factory_tile_class": "noppes.vc.blocks.tiles.TileCampfire",
+      "factory_tile_key": "variedcommodities:campfire",
+      "saved_id_lookup_class": "noppes.vc.blocks.tiles.TileCampfire",
+      "native_nbt_roundtrip": true,
+      "native_nbt_field_names": [
+        "BannerColor",
+        "BannerRotation",
+        "id",
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "id": "variedcommodities:trading_block",
+      "block_class": "noppes.vc.blocks.BlockTrading",
+      "item_class": "net.minecraft.item.ItemBlock",
+      "factory_tile_class": "noppes.vc.blocks.tiles.TileTrading",
+      "factory_tile_key": "variedcommodities:trading_block",
+      "saved_id_lookup_class": "noppes.vc.blocks.tiles.TileTrading",
+      "native_nbt_roundtrip": true,
+      "native_nbt_field_names": [
+        "BannerColor",
+        "BannerRotation",
+        "id",
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "id": "waystones:waystone",
+      "block_class": "net.blay09.mods.waystones.block.BlockWaystone",
+      "item_class": "net.minecraft.item.ItemBlock",
+      "factory_tile_class": "net.blay09.mods.waystones.block.TileWaystone",
+      "factory_tile_key": "waystones:waystone",
+      "saved_id_lookup_class": "net.blay09.mods.waystones.block.TileWaystone",
+      "native_nbt_roundtrip": true,
+      "native_nbt_field_names": [
+        "IsDummy",
+        "IsGlobal",
+        "IsMossy",
+        "WasGenerated",
+        "WaystoneName",
+        "id",
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  ],
+  "actual_native_tile_registry": {
+    "variedcommodities:banner": "noppes.vc.blocks.tiles.TileBanner",
+    "variedcommodities:barrel": "noppes.vc.blocks.tiles.TileBarrel",
+    "variedcommodities:beam": "noppes.vc.blocks.tiles.TileBeam",
+    "variedcommodities:big_sign": "noppes.vc.blocks.tiles.TileBigSign",
+    "variedcommodities:blood_block": "noppes.vc.blocks.tiles.TileBlood",
+    "variedcommodities:book": "noppes.vc.blocks.tiles.TileBook",
+    "variedcommodities:campfire": "noppes.vc.blocks.tiles.TileCampfire",
+    "variedcommodities:candle": "noppes.vc.blocks.tiles.TileCandle",
+    "variedcommodities:carpentry_bench": "noppes.vc.blocks.tiles.TileCarpentryBench",
+    "variedcommodities:chair": "noppes.vc.blocks.tiles.TileChair",
+    "variedcommodities:couch_wood": "noppes.vc.blocks.tiles.TileCouchWood",
+    "variedcommodities:couch_wool": "noppes.vc.blocks.tiles.TileCouchWool",
+    "variedcommodities:crate": "noppes.vc.blocks.tiles.TileCrate",
+    "variedcommodities:lamp": "noppes.vc.blocks.tiles.TileLamp",
+    "variedcommodities:pedestal": "noppes.vc.blocks.tiles.TilePedestal",
+    "variedcommodities:shelf": "noppes.vc.blocks.tiles.TileShelf",
+    "variedcommodities:sign": "noppes.vc.blocks.tiles.TileSign",
+    "variedcommodities:stool": "noppes.vc.blocks.tiles.TileStool",
+    "variedcommodities:table": "noppes.vc.blocks.tiles.TileTable",
+    "variedcommodities:tall_lamp": "noppes.vc.blocks.tiles.TileTallLamp",
+    "variedcommodities:tombstone": "noppes.vc.blocks.tiles.TileTombstone",
+    "variedcommodities:trading_block": "noppes.vc.blocks.tiles.TileTrading",
+    "variedcommodities:wall_banner": "noppes.vc.blocks.tiles.TileWallBanner",
+    "variedcommodities:weapon_rack": "noppes.vc.blocks.tiles.TileWeaponRack",
+    "waystones:waystone": "net.blay09.mods.waystones.block.TileWaystone"
+  },
+  "native_charge": {
+    "assertions": 22,
+    "initial_warmup_ticks": 20,
+    "native_stop_block_ticks": 100,
+    "warmup_deltas": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "duplicate_toggle_interrupt_and_native_block_observed": true
+  },
+  "native_dodge": {
+    "assertions": 45,
+    "cardinals": [
+      {
+        "direction": 0,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4089000000000023
+      },
+      {
+        "direction": 1,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 1.9656249999999986
+      },
+      {
+        "direction": 2,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4089000000000023
+      },
+      {
+        "direction": 3,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4088999999999996
+      }
+    ],
+    "physical_client_binding_tested": false
+  },
+  "native_jar_inputs_unchanged_after": true,
+  "all_native_jar_hashes_verified": 45,
+  "native_provider_jars": [
+    {
+      "file": "VariedCommodities_1.12.2-(31Mar23).jar",
+      "bytes": 1766394,
+      "sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016"
+    },
+    {
+      "file": "Waystones_1.12.2-4.1.0.jar",
+      "bytes": 178994,
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15"
+    }
+  ],
+  "worldcompat_assets_all_own_namespace": true,
+  "worldcompat_asset_files": [
+    "assets/valeworldcompat/blockstates/campfire.json",
+    "assets/valeworldcompat/blockstates/table.json",
+    "assets/valeworldcompat/blockstates/trading_block.json",
+    "assets/valeworldcompat/blockstates/waystone.json",
+    "assets/valeworldcompat/lang/en_us.lang",
+    "assets/valeworldcompat/models/block/campfire.json",
+    "assets/valeworldcompat/models/block/table.json",
+    "assets/valeworldcompat/models/block/trading_block.json",
+    "assets/valeworldcompat/models/block/waystone.json",
+    "assets/valeworldcompat/models/item/campfire.json",
+    "assets/valeworldcompat/models/item/table.json",
+    "assets/valeworldcompat/models/item/trading_block.json",
+    "assets/valeworldcompat/models/item/waystone.json",
+    "assets/valeworldcompat/textures/items/campfire.png",
+    "assets/valeworldcompat/textures/items/table.png",
+    "assets/valeworldcompat/textures/items/trading_block.png",
+    "assets/valeworldcompat/textures/items/waystone.png"
+  ],
+  "identities": {
+    "native_result": {
+      "bytes": 9410,
+      "sha256": "59945b53bb35dfe921140f3d89a59d0a0ad4a755fc99fc85fa3655ed39211245"
+    },
+    "native_run": {
+      "bytes": 306,
+      "sha256": "8fc2c8d31a8a2e951f972889942d870c8163b6fb4a8a576408c05f3bbe936f6f"
+    },
+    "inputs": {
+      "bytes": 10900,
+      "sha256": "cabb5fbcbcb1ab6404c141fb1c9d95cfdba4ee78593bf30256d9219c81874cce"
+    },
+    "own_qa_sources": {
+      "bytes": 736,
+      "sha256": "71c7a4f44205a8869dc0f229d4ed833bbc637ab893a2a1dcbadfb4f14d41e5b0"
+    }
+  },
+  "limits": [
+    "Detached native TE roundtrip is not copied-world migration/restart acceptance.",
+    "Original provider rendering/GUI/recipes remain actual-client acceptance gates.",
+    "No new Base/Spring canonical compatibility helper was installed or accepted by this run.",
+    "Raw private fixture logs/player files remain excluded from GitHub."
+  ]
+}

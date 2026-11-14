@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-14",
+  "scope": "Offline readback of small entrance and encounter floor markers in separate v17 schematic copies; not complete dungeon conversions or gameplay acceptance.",
+  "candidates": {
+    "sakura_earth": {"changed_cells": 30, "sha256": "147647ebae1dc4c00cb79c3ba5151c5b2e6be39c3603b87afad37cdbc08df1b9"},
+    "cloud_lightning": {"changed_cells": 28, "sha256": "57e44a114eac50669e5dcf599d0d92a2782646f3a381eac66c4de9b531398593"},
+    "sand_wind": {"changed_cells": 28, "sha256": "8edc63506db63418809a45250e89a5ab159118f9f56032effc795c6bea0dc754"},
+    "mist_water": {"changed_cells": 21, "sha256": "093a8462038653171eac88f9cda4f9a6ff41d7e2a6eecb89affe17dede237ed5"},
+    "nether_fire": {"changed_cells": 16, "sha256": "a5f14cb8e383f1219a73642da9b74aa2db7cb8663899c2576a4fe03fa7890399"}
+  },
+  "checks": ["Exact original v17 SHA-256 inputs", "Expected full floor blocks, clear feet and head, no tile at changed cells", "Readback verifies all blocks and metadata, tile entities and remaining root tags", "Five output hashes independently rechecked", "Two focused marker tests passed", "Design validator passed"],
+  "not_verified": ["Minecraft visual appearance", "Native navigation and lighting", "World installation", "NPC encounters and drops", "Saved-world restart or deployment"],
+  "owner_direction": "The owner's friend handles NPC drops; the five new coliseums are separate boss sites."
+}

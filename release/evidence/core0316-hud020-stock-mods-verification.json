@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "scope": "SOURCE09_COMPONENT_FORGE_AND_PRODUCTION_MOD_PROVIDER_CHECKPOINT",
+  "core_version": "0.3.16",
+  "hud_version": "0.20.0",
+  "client_lifecycle_version": "0.1.3",
+  "world_compat_version": "1.0.1",
+  "source_sha256": "034b8c4a2c2d2f411e0f255a0d2b1cdb2bf06091441cbd4a1326f970a68b797e",
+  "component_build": {
+    "passed": true,
+    "areas": 11,
+    "artifacts": 36,
+    "source_drift": false,
+    "report_sha256": "72e3307bd991734e5bbda127c38390c05c38a750aed2772a15bca9e9a3f97bd3",
+    "core_runtime_sha256": "044a71226956c354eb20e0c38eed58e4140b50b35bae3b035bf2526aea06531f",
+    "hud_runtime_sha256": "2ca68c9f477501d1434456cbb124f22fd9f2c762648c99f1b57eb87dc6d370b3",
+    "world_compat_runtime_sha256": "25492f6a99fa8c10aef941f663dd0c984b3f094e06f0881d2b18cf3b133a8768",
+    "client_lifecycle_runtime_sha256": "909d861f140ff76c7f74f8b285630cf74f4bff154d2dcbcc112aa3938e553d68"
+  },
+  "disposable_forge_native": {
+    "passed": true,
+    "assertions": 3665,
+    "report_sha256": "c39fdc2c6fa9b277dd8f3db235ff2dd448a8d656d59d376f4d8a229ad1e7542e",
+    "fixture_inputs_sha256": "35538e6dd98c2576ddafd6e8197fcff8b5a051c815f019d23dcf91a434d1ee2d",
+    "runtime_removed": true,
+    "all_inherited_checks_retained": true
+  },
+  "production54_magma_observer": {
+    "passed": true,
+    "evidence": "release/evidence/original-provider-native09.json",
+    "native_result_sha256": "59945b53bb35dfe921140f3d89a59d0a0ad4a755fc99fc85fa3655ed39211245",
+    "provider_checks": 55,
+    "official_player_body_checks": 1,
+    "native_charging_checks": 22,
+    "naruto_backed_dodge_checks": 45,
+    "all_four_dodge_directions": true,
+    "private_spring_economic_transformer_used": false,
+    "native_input_jars_unchanged": 45,
+    "process_exit_code": 0,
+    "forced_termination": false
+  },
+  "charge_input_prefix": {
+    "evidence": "release/evidence/chakra-charge-input-013.json",
+    "physical_rules_checks": 10,
+    "actual_helper_source_checks": 15,
+    "exact_client_transform_checks": 38,
+    "exact_server_transform_checks": 22,
+    "private_input_checks_executed_in_component_build": true,
+    "native_warmup_ticks_retained": 20,
+    "native_stop_block_ticks_retained": 100,
+    "native_release_noop_retained": true,
+    "unrelated_and_repeat_keyboard_events_filtered": true
+  },
+  "claude_original_integration": {
+    "menu_rules_checks": 82243,
+    "armor_rules_checks": 6480,
+    "synthetic_armor_mesh_checks": 194,
+    "armor_extra_effects_default_enabled": false,
+    "native_models_textures_or_stats_replaced": false,
+    "whole_parent_history_imported": false,
+    "all_claude_features_merged": false,
+    "pending": ["Registry discovery/config/cosmetic routing", "Generic voxel presentation", "Encounter-only actor art/tools", "Supporting proposal tools", "Unadopted native-tail enhancement intent"]
+  },
+  "frozen_world_tile_id_coverage": {
+    "evidence": "release/evidence/frozen-v17-provider-tile-census.json",
+    "regions_hash_checked": 1303,
+    "chunks_parsed": 1249484,
+    "tiles": 56275,
+    "relevant_native_provider_tiles": 65,
+    "relevant_unresolved_ids": 0,
+    "source_world_written": false
+  },
+  "physical_client_tested": false,
+  "graphical_client_tested": false,
+  "copied_world_migration_restart_tested": false,
+  "base_spring_client_canonicalization_accepted": false,
+  "hosted_acceptance": false,
+  "deployment_ready": false,
+  "complete_game_delivered": false,
+  "minecraft_client_remains_closed": true
+}

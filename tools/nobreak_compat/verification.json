@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-14T15:37:19.366558+00:00",
+  "scope": "EXACT_NOBREAK_MAGMA112_NATIVE_DISPATCH_AND_RESTART",
+  "original": {
+    "name": "NoBreak",
+    "author": "jojodmo",
+    "version": "1.4",
+    "bytes": 6787,
+    "sha256": "981fad52e429de342d585f30289784510b3d3dd466fc2ced0110930249cfdf1f",
+    "unchanged": true,
+    "declared_api_version": "1.14",
+    "actual_loader_accepted": true,
+    "known_incompatibilities": [
+      "Material.isInteractable()Z absent",
+      "Material.FARMLAND absent; 1.12 material is SOIL"
+    ]
+  },
+  "candidate": {
+    "bytes": 9122,
+    "sha256": "602075b5f5901161f4cdfdb01ec142abec74dc418bbe61d7bbe9c201128e2f41",
+    "java_class_major_versions": [
+      52
+    ],
+    "changed_original_entries": [
+      "com/jojodmo/nobreak/BreakListener.class"
+    ],
+    "added_helper": "village/vale/nobreakcompat/InteractionCompat.class",
+    "other_original_zip_entries_byte_identical": 7,
+    "metadata_unchanged": true,
+    "changed_instruction_records": [
+      {
+        "before": "53: invokevirtual #36                 // Method org/bukkit/Material.isInteractable:()Z",
+        "after": "53: invokestatic  #298                // Method village/vale/nobreakcompat/InteractionCompat.isInteractable:(Lorg/bukkit/Material;)Z"
+      },
+      {
+        "before": "28: getstatic     #43                 // Field org/bukkit/Material.FARMLAND:Lorg/bukkit/Material;",
+        "after": "28: getstatic     #301                // Field org/bukkit/Material.SOIL:Lorg/bukkit/Material;"
+      }
+    ]
+  },
+  "source09": {
+    "source_sha256": "034b8c4a2c2d2f411e0f255a0d2b1cdb2bf06091441cbd4a1326f970a68b797e",
+    "build_report_sha256": "72e3307bd991734e5bbda127c38390c05c38a750aed2772a15bca9e9a3f97bd3",
+    "production_mod_count": 54,
+    "all_mods_unchanged_after": true,
+    "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce"
+  },
+  "checks": {
+    "native_boots": 4,
+    "assertions_per_boot": [
+      79,
+      21,
+      20,
+      26
+    ],
+    "total_assertions": 146,
+    "failures": 0,
+    "method_or_field_abi_errors": 0,
+    "clean_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "forced_termination": false,
+    "java": "Zulu 1.8.0_512",
+    "resolved_public_bukkit_members": 56,
+    "unresolved_public_bukkit_members": 0,
+    "wrong_pin_rejected": true,
+    "overwrite_refused": true,
+    "reproduced_with_promoted_tool": true,
+    "synthetic_op_nonop_senders": true,
+    "real_player_login": false,
+    "fresh_flat_only": true,
+    "original_world_or_player_used": false,
+    "client_or_gpu_started": false
+  },
+  "covered": [
+    "enabled/disabled OP and non-OP break/place cancellation",
+    "explicit nobreak.ignore permission",
+    "chest/furnace/workbench interactions",
+    "air-click original Bukkit cancellation baseline preserved",
+    "Varied Commodities table native mapping and base activation classification",
+    "SOIL entity interaction cancellation",
+    "status/toggle permissions and runtime state",
+    "actual shutdown persistence and reset-on-restart",
+    "enabled NoBreak direct Bukkit and Forge World state-write bypass"
+  ],
+  "limits": {
+    "no_named_jutsu_cast_tested": true,
+    "no_universal_world_protection_claim": true,
+    "varied_commodities_table_native_activation": "inherited base Block; classified false",
+    "classification": "exact native activation override; enumerated vanilla fallback if reflection unavailable",
+    "graphical_or_production_world_acceptance": false
+  },
+  "final_config": {
+    "enabled": false,
+    "reset_on_restart": true,
+    "reset_to": false,
+    "enable_messages": false
+  },
+  "public_source_hashes": [
+    {
+      "path": "patch_nobreak_112.py",
+      "sha256": "e64e3347a5dd4e4d3b774ad655a6436050cb96462313f166debf0191f35591c9"
+    },
+    {
+      "path": "compat-src/PatchNoBreak.java",
+      "sha256": "3131e1da0ab9bfa3879e7e8ff127718bfbcf12586c9f1dee8f0c7e035a5c0f51"
+    },
+    {
+      "path": "compat-src/village/vale/nobreakcompat/InteractionCompat.java",
+      "sha256": "fadb3981ff5c20317ba4316e17580368f4fecdaf64bbf2adeb2d12b1d04cfd65"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d42d7ce2edcbe57dcc2f5732ef4c7c77aa8aaa553e3013d25fdc9434e50a5319"
+    }
+  ],
+  "private_evidence_hashes": [
+    {
+      "private_label": "nobreak-native09-compat-03/PRIVATE-NOBREAK-PHASE-1.json",
+      "sha256": "b51cc174f8793845155bd21880f58fbd0fcacf28a3698447a80eaaad8ed51aad"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/native-phase-1.console.log",
+      "sha256": "970a045ba4f353ff79610e6fa4b7e7891369721292f20b436ad756fd83e29dfa"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/PRIVATE-NOBREAK-PHASE-2.json",
+      "sha256": "07d767ce5c80b51d4d941510c4d0aefebb4473090876eb26ff819788e7b05a93"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/native-phase-2.console.log",
+      "sha256": "51cad9ecc84e9fc5016a101f758df3870c274037178bda2582e3e985febaa05e"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/PRIVATE-NOBREAK-PHASE-3.json",
+      "sha256": "faef0e4dd6b7f0dac50b869d90727f1b021af00211d662b3c39c4d8df0fddcf4"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/native-phase-3.console.log",
+      "sha256": "d7251690ea2fed25caa58cb40257bf7ea79eb87deaf6921fba564426eff18f53"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/PRIVATE-NOBREAK-PHASE-4.json",
+      "sha256": "8dc0efb2a3eb7bb38f9616497f2052ac791393383ceb4401f4c243553c571cd3"
+    },
+    {
+      "private_label": "nobreak-native09-compat-03/native-phase-4.console.log",
+      "sha256": "a1b76e858628ac7090c967d3c010902bcae4f44526f855b155811ac508f25a57"
+    },
+    {
+      "private_label": "nobreak-native09-01/review/OPCODE-DELTA.json",
+      "sha256": "7ad0de6d5777d6c243ef5d1d2900b9d4be32f6f14d46fe90eb40b50a4edf8ebd"
+    },
+    {
+      "private_label": "nobreak-native09-01/review/patched-03-bukkit-abi.log",
+      "sha256": "589e3bc8394d0d1d96d7b91c282aa727292339b455ddeb028916ef1eab4b05b6"
+    },
+    {
+      "private_label": "nobreak-native09-01/publish-checks/CHECKS.json",
+      "sha256": "1e89149a92a99d2d5f4acf1455be28a816df09767a785fcf3d4cb5872bb6d122"
+    }
+  ],
+  "distribution": {
+    "no_original_or_patched_plugin_jar_committed": true,
+    "no_private_disassembly_or_logs_committed": true,
+    "no_redistribution_permission_inferred": true
+  },
+  "official_source": "https://www.spigotmc.org/resources/nobreak.63732/"
+}

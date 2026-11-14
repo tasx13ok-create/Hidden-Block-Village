@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "SOURCE_NAMING_CONFIGURED_MATCHED_BUILD_PENDING",
+  "scope": "Owned component distribution filenames only",
+  "stable_versions_modids_registry_ids_save_ids_and_classes_changed": false,
+  "native_third_party_jars_renamed": false,
+  "historical_evidence_rewritten": false,
+  "runtime_development_and_sources_tasks": [
+    "reobfJar",
+    "jar",
+    "sourcesJar"
+  ],
+  "mapping": {
+    "vale-orders": "Naruto-Core",
+    "vale-encounters": "Naruto-Encounters",
+    "vale-rack": "Naruto-Equipment-Rack",
+    "vale-residents": "Naruto-Residents",
+    "vale-residents-server-bridge": "Naruto-Residents-Server-Bridge",
+    "vale-world-compat": "Naruto-World-Compat",
+    "field-hud": "Naruto-HUD",
+    "field-controls": "Naruto-Controls",
+    "client-lifecycle": "Naruto-Client-Compat",
+    "damage-compat": "Naruto-Damage-Compat",
+    "server-bridge": "Naruto-Server-Bridge",
+    "server-bootstrap": "Naruto-Server-Bootstrap",
+    "village-standards": "Naruto-Village-Standards"
+  },
+  "metadata": "writeValeBuildMetadata resolves actual task archiveFile providers; build_modules.py inspects declared paths and does not infer an old filename. Bootstrap metadata likewise reads actual jar/sources task outputs.",
+  "verification": {
+    "isolated_actual_Gradle_archive_task_name_checks": 39,
+    "components": 13,
+    "result": "PASS",
+    "scope": "Synthetic Java projects with version1.2.3 and existing old base names; actual production RFG build result is separate."
+  },
+  "files": [
+    {
+      "path": "gradle/naruto-artifact-names.gradle",
+      "sha256": "edd9eac2ddd2b534a08684964cfb1d9cd38f1c03c081553f7e00469b904f7e72"
+    },
+    {
+      "path": "gradle/vale-mod-build.gradle",
+      "sha256": "0321f0f202d25c085384d0968698f36f6a0ea67c25a063d52bb7f8c5eeb52ae5"
+    },
+    {
+      "path": "modules/server-bootstrap/build.gradle",
+      "sha256": "eabcf7e8280c85d9ba6ae19bdb58f2133bf319b7487574fa9c5be53eae35386d"
+    }
+  ]
+}

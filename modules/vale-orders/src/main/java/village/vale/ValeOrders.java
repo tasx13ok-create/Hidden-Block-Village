@@ -62,10 +62,13 @@ public final class ValeOrders {
 
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
+        village.vale.bridge.Bridge.start(event.getServer(),net.minecraftforge.fml.common.Loader.instance().getConfigDir());
+        event.registerServerCommand(new village.vale.bridge.BridgeCommand());
         event.registerServerCommand(new ValeCommand());
         event.registerServerCommand(new AcademyCommand());
         event.registerServerCommand(new village.vale.expedition.GateChoiceCommand());
         village.vale.expedition.ExpeditionContent.initialize(net.minecraftforge.fml.common.Loader.instance().getConfigDir());
         event.registerServerCommand(new MigrationLoot.Command());
     }
+    @Mod.EventHandler public void serverStopped(net.minecraftforge.fml.common.event.FMLServerStoppedEvent event){village.vale.bridge.Bridge.stop();}
 }

@@ -10,7 +10,7 @@ public final class HudConfig {
     public static boolean shinobi=true,motion=true,curve=true,eyeMap=true;
     public static boolean chakra=true,slim=false;
     public static boolean glassBlur=true;
-    public static boolean narutoInventory=true,menuSounds=true;
+    public static boolean narutoInventory=true,menuSounds=true,menuEffects=true;
     public static boolean focusEffects=true;
     public static boolean jutsuRail=true;
     public static int positionX=-1,positionY=-1;
@@ -31,6 +31,7 @@ public final class HudConfig {
         motion=file.getBoolean("animation","hud",true,"Smooth meters, brief selection feedback and low-health seal. Off snaps to actual values.");
         glassBlur=file.getBoolean("glassBlur","hud",true,"GPU scene blur behind glass panels. Off uses translucent glass without blur.");
         focusEffects=file.getBoolean("focusEffects","hud",true,"Subtle native dojutsu/casting focus and confirmed-cast flash. Quiet hides these; Motion off removes animation.");
+        menuEffects=file.getBoolean("menuEffects","hud",true,"Owned menu atmosphere. Reduced motion keeps static colours; Menu clicks controls extra audio.");
         jutsuRail=file.getBoolean("jutsuBar","hud",true,"Six local shortcuts to server-owned attacks and equipment below the minimap. Focus routes scrolling; menus retain normal input.");
         curve=file.getBoolean("curvedHotbar","hud",true,"Subtle two-pixel scroll curve; items follow their slots.");
         eyeMap=file.getBoolean("eyeBezel","hud",true,"Optional Xaero 26.6 circular-map eye bezel using live module bounds.");
@@ -56,6 +57,7 @@ public final class HudConfig {
         file.get("hud","glassBlur",true).set(glassBlur);
         file.get("hud","focusEffects",true).set(focusEffects);
         file.get("hud","jutsuBar",true).set(jutsuRail);
+        file.get("hud","menuEffects",true).set(menuEffects);
         file.get("hud","curvedHotbar",true).set(curve);
         file.get("hud","eyeBezel",true).set(eyeMap);
         file.get("hud","chakra",true).set(chakra);

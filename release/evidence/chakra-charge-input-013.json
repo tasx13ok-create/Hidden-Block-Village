@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "scope": "STOCK_NATIVE_CHARGE_DIAGNOSIS_AND_PROMOTED_CLIENT_COMPONENT_CHECKS",
+  "verified_utc": "2026-11-14T14:34:32.991060+00:00",
+  "client_lifecycle_version": "0.1.3",
+  "canonical_source_promoted": true,
+  "source_provenance": {
+    "path": "collaboration/fable/CHARGE-INPUT-013-INTEGRATION.json",
+    "bytes": 8651,
+    "sha256": "a851671b853644da1a5c9061f4298c4ff97b954448768f28e76a35e9c825ebee"
+  },
+  "promoted_component_checks": {
+    "passed": true,
+    "physical_key_edge_assertions": 10,
+    "actual_client_helper_source_with_isolated_stubs_assertions": 15,
+    "exact_native_side_input_client_assertions": 38,
+    "exact_native_side_input_server_assertions": 22,
+    "build_log": {
+      "bytes": 4003,
+      "sha256": "e5d4624c58c553918c78989b99bd56ab1ec7b434a4dbeb669eac33e50644c1c3"
+    },
+    "artifacts": [
+      {
+        "role": "runtime_mod",
+        "file": "Vale-Client-Lifecycle-Compat-0.1.3.jar",
+        "bytes": 24432,
+        "sha256": "909d861f140ff76c7f74f8b285630cf74f4bff154d2dcbcc112aa3938e553d68",
+        "class_count": 17,
+        "zip_crc_passed": true,
+        "isolated_stubs_or_checks_packaged": false
+      },
+      {
+        "role": "development_api",
+        "file": "Vale-Client-Lifecycle-Compat-0.1.3-dev.jar",
+        "bytes": 24241,
+        "sha256": "b953dd752d720f4ff1d7773ad42baecb116b060daa5f89f5f1702435f9d1334b",
+        "class_count": 17,
+        "zip_crc_passed": true,
+        "isolated_stubs_or_checks_packaged": false
+      },
+      {
+        "role": "sources",
+        "file": "Vale-Client-Lifecycle-Compat-0.1.3-sources.jar",
+        "bytes": 11188,
+        "sha256": "7a7aa7e825bb7bab6ce002fccd248b1a84a33db2c19bf27b334e8ca8809f2171",
+        "class_count": 0,
+        "zip_crc_passed": true,
+        "isolated_stubs_or_checks_packaged": false
+      }
+    ]
+  },
+  "exact_source_transform_policy": {
+    "private_input_gradle_property": "chargeAddonInput",
+    "original_addon_sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+    "target_class": "narutomodaddon.keybind.KeyBindingChakraChargeButton",
+    "unknown_input_rejected": true,
+    "unrelated_or_absent_class_unchanged": true,
+    "dedicated_server_side_bytes_unchanged": true,
+    "native_first_press_body_preserved": true,
+    "release_is_no_op": true,
+    "physical_matching_keyboard_down_only": true,
+    "os_repeat_or_other_held_key_rejected": true,
+    "rebound_key_read_each_event": true,
+    "unbound_or_non_keyboard_binding_rejected": true,
+    "gui_disconnect_missing_client_and_stale_body_world_rejected": true
+  },
+  "native04_diagnosis": {
+    "passed": true,
+    "process_exit_code": 0,
+    "forced_termination": false,
+    "original_world_or_real_player_used": false,
+    "disposable_flat_world_only": true,
+    "core_version": "0.3.16",
+    "core_source_sha256": "8b5ac108319049bfa86cf490ec1c4fd4f372a655b14d32f6781b8e57f349232d",
+    "core_build_report_sha256": "679a7755db4280b51656c5383a1fd18f0373a1d7d82b4d6e672528619780a46b",
+    "charge_assertions": 22,
+    "initial_warmup_ticks": 20,
+    "native_stop_block_ticks": 100,
+    "warmup_tick_deltas": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "one_native_charge_tick_listener": true,
+    "initial_start_events": 12,
+    "initial_end_events": 12,
+    "duplicate_toggle_cancels_timer_and_immediate_retry_is_blocked": true,
+    "native_release_dispatch": "Exact source branch: isKeyDown=false reaches neither pressAction nor sendToServer; true reaches both. Native behavior is press-toggle; release is a no-op.",
+    "dodge_assertions": 45,
+    "dodge_cardinals": [
+      {
+        "direction": 0,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4089000000000023
+      },
+      {
+        "direction": 1,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 1.9656249999999986
+      },
+      {
+        "direction": 2,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4089000000000023
+      },
+      {
+        "direction": 3,
+        "applied": true,
+        "provider_before": 1000.0,
+        "actual_native_debit": 6.0,
+        "scale": 1.0,
+        "ready_ticks": 16,
+        "native_travel_distance_squared": 2.4088999999999996
+      }
+    ],
+    "inherited_phase_assertions": {
+      "api": 18,
+      "overload": 20,
+      "facade_lifecycle": 49,
+      "callers_ward_controls": 82,
+      "paired_absorption": 16
+    },
+    "result_identity": {
+      "bytes": 136211,
+      "sha256": "515a51d4c3bd00e59bfc20d867bb4ad01c9df5b45ef51d0cc75cf305ae943b24"
+    },
+    "run_identity": {
+      "bytes": 1314,
+      "sha256": "e57010139ec72af3a779e7572d96de5f4f017ceb19701db59d2c08915d60b88a"
+    }
+  },
+  "historical_draft_harness_failures": [
+    "01 used nonexistent narutomod:ninja advancement; corrected to actual ninjaachievement.",
+    "02 tested backward dodge from a chunk edge; retained legitimate unloaded-neighbor refusal, moved03 exercise to loaded chunk center.",
+    "03 assumed immediate restart; observed native100tick stop block, corrected04 expectation without changing native game timing."
+  ],
+  "promoted_validation_history": [
+    {
+      "attempt": 1,
+      "result": "FAILED_BEFORE_COMPILATION",
+      "reason": "Aggregate invocation lacked explicit local JDK8 toolchain discovery; corrected invocation preserved the failure log."
+    },
+    {
+      "attempt": 2,
+      "result": "PASS",
+      "explicit_local_jdk_paths": true
+    }
+  ],
+  "installed_in_owner_client": false,
+  "real_physical_keyboard_or_client_endpoint_tested": false,
+  "production_deployment_accepted": false,
+  "full09_cohort_accepted": false,
+  "original_mod_jars_changed": false,
+  "limits": [
+    "Native04 executes the original native charge procedure and Naruto-backed Dodge; it does not execute the new client input helper.",
+    "The promoted helper is actual-source tested with isolated API stubs, and original addon bytes are structurally checked through official CLIENT/SERVER side transforms. This is not a real graphical client endpoint.",
+    "Native charge remains press-toggle with release no-op, original20-tick warmup and100-tick stop cooldown; no native timing or server message protocol was changed.",
+    "Positive keyboard bindings are supported by this filter; it does not add mouse-bound charge input to the native KeyInputEvent handler.",
+    "The input filter is not a server protocol anti-abuse mechanism; the native input message has no event identity.",
+    "Owner requests Minecraft closed; no client launch, key injection, world or runtime mod replacement occurred.",
+    "Base/Spring public-API canonicalization and the complete matching09 cohort remain separate acceptance scopes."
+  ]
+}
