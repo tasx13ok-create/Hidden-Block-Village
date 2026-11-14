@@ -9,3 +9,19 @@ All four input files were retained privately with exact byte/hash verification b
 The external Git history already exposed those files. Current-tree removal does not erase that history; no shared history was rewritten. No license or complete history purge is claimed.
 
 The proposed momentum, separation, experimental body capsule and swing-benchmark enhancements are not adopted production features. Keeping the original provider does not prove those enhancements. Future work must use reviewed original source or an independently authored optional public-API adapter, with actual native body/world tests. Original worlds, native assets and the private baseline JAR remain unchanged.
+
+## Tail section style pass (`TailSectionBox`)
+
+This applies the same way to every tail section on every set, and adds no per-design features.
+
+- **Half-pixel stepping:** prism vertices snap to a 0.5 px grid, so tapers step like Minecraft geometry.
+- **Plate collars:** each section that is at least 2 px wide, tall and deep gets a raised rim at its front joint. The rim is built from that section's own profile (8-ring, 12-round, shell or blade) and side UVs, so it inherits the set's texture. Minecraft's per-face shading gives the bevel light and shadow.
+
+**Build.** The source is decompiled, with Minecraft names obfuscated (SRG). Compile it against `srg_merged_minecraft.jar` (from the vale-orders RFG cache), the Forge `classes.jar` and the original jar:
+
+```
+javac -cp <rc1 jar>:<srg_merged_minecraft.jar>:<forge classes.jar> -d out src/village/bijuu/TailSectionBox.java
+jar uf <armor jar> -C out village/bijuu
+```
+
+**Verified:** all nine sets ran in the 1.12.2 client with no exceptions.
