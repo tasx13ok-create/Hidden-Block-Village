@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "status": "PROMOTED_HUD_PATCH_SOURCE_MATCHING_BUILD_AND_REAL_CLIENT_RETEST_PENDING",
+  "hud_version": "0.20.1",
+  "core_version_unchanged": "0.3.16",
+  "observed_failure": "Client0.20.0 crashed in AnimeDraw.State during MenuFx background on GuiConnecting. Generic GL11.glGetFloat rejected4remaining elements before the native query.",
+  "fix": "Allocate a direct16-element query buffer; preserve and restore the four actual RGBA values. No native-mod, gameplay, input or Core logic changed.",
+  "root_cause_of_missed_check": "Earlier synthetic GL accepted4elements and a heap buffer, omitting the LWJGL2 wrapper contract. It proved synthetic state restoration but not real query admission. The actual client exposed this gap.",
+  "library_contract": {
+    "lwjgl": "2.9.4-nightly-20150209",
+    "sha256": "833e721817f70d1445eec13d8ce5a86e12af70efac5014356302e2bbc68b3fe2",
+    "generic_buffer_queries": "GL11 glGetFloat/glGetInteger/glGetDouble/glGetBoolean buffer overloads require direct buffers with at least16remaining elements, regardless of values returned.",
+    "observed_wrapper_contract": "Actual installed wrapper bytecode invokes BufferChecks.checkBuffer(buffer,16); no wrapper implementation copied into source."
+  },
+  "audit": {
+    "AnimeDraw": "Changed4to16; new buffer starts with16remaining.",
+    "ChakraBridge": "Existing direct16IntBuffer; clear before glGetInteger(SCISSOR_BOX).",
+    "GlassMaterial": "Existing direct16IntBuffer; clear before glGetInteger(VIEWPORT). Vertex FloatBuffer12 is buffer-upload data, not a query buffer.",
+    "Core_VfxDraw_JutsuVfx_LightningLayers": "Only scalar glGetInteger/glGetBoolean calls; no caller-owned query buffers and no Core patch."
+  },
+  "checks": {
+    "actual_LWJGL_BufferChecks_headless_assertions": 13,
+    "old_actual_AnimeDraw_against_strict_stub": "Expected failure reproduces4<16guard at State constructor",
+    "fixed_actual_AnimeDraw_state_recording_assertions": 44,
+    "java8_compile": true,
+    "full_HUD_component_build": "PENDING_ROOT",
+    "actual_client_rejoin": "PENDING_ROOT",
+    "shader_or_fps_acceptance_claimed": false
+  },
+  "test_isolation": "glchecks and bufferchecks are explicit isolated JavaCompile/JavaExec tasks, outside main/sourceSets. No test doubles or native game libraries copied into production archives.",
+  "paths": [
+    {
+      "path": "modules/field-hud/build.gradle",
+      "sha256": "5e528702811b3d1c5641baf69cfc6c2fadf5a4b745c4135566adf71f86854d3b"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/AnimeDraw.java",
+      "sha256": "0c4d7c417fd94a5aef6c5e84a747022a8c704cd4519269c72443cd612d48095e"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java",
+      "sha256": "53fc7f0ed965f3700ea93e536d2cc483b3b2c3253a0ab351dfe9906304dee610"
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/mcmod.info",
+      "sha256": "7176e40fd5200cd3460f500040132d7a7a08182222d3ca147ea8affa3edcb281"
+    },
+    {
+      "path": "modules/field-hud/glchecks/net/minecraft/client/renderer/BufferBuilder.java",
+      "sha256": "d406c49c7501a5ce7a5ee91b8737e5314952f2ceed5d58b78e5397fac0334c64"
+    },
+    {
+      "path": "modules/field-hud/glchecks/net/minecraft/client/renderer/GlStateManager.java",
+      "sha256": "b2301fec2a84127110cb27fdfb1cbe8419d35895a32630c165777fbb34bd6046"
+    },
+    {
+      "path": "modules/field-hud/glchecks/net/minecraft/client/renderer/OpenGlHelper.java",
+      "sha256": "e780c5191d6af0811635172b5c4a249bc5efda94456d05beb2de8af5c28ed5ad"
+    },
+    {
+      "path": "modules/field-hud/glchecks/net/minecraft/client/renderer/Tessellator.java",
+      "sha256": "8e61c099215006044e71cb88d3a4f8bbd208e4c7cc6e29bab368dc1067ef1d35"
+    },
+    {
+      "path": "modules/field-hud/glchecks/net/minecraft/client/renderer/vertex/DefaultVertexFormats.java",
+      "sha256": "f5ca7d0f0d917dd02dc2ee04f91e20095e0b84534a56769c22a03c78d44ff95d"
+    },
+    {
+      "path": "modules/field-hud/glchecks/org/lwjgl/BufferUtils.java",
+      "sha256": "b38c86ad706c1ebc1fa6cdd9ad5443d77a8fed55a0e15b19d538d8d96cba782d"
+    },
+    {
+      "path": "modules/field-hud/glchecks/org/lwjgl/opengl/GL11.java",
+      "sha256": "9c13ef8c972be40c2e9f6359151cf215b05c339040a2b382d8640229308b367b"
+    },
+    {
+      "path": "modules/field-hud/glchecks/org/lwjgl/opengl/GL13.java",
+      "sha256": "b1171d6ff98f9f27d1618dfb2541b61b5313e9276d1c8dbb1fbf9733f4ba9dbf"
+    },
+    {
+      "path": "modules/field-hud/glchecks/org/lwjgl/opengl/GL14.java",
+      "sha256": "d970c5ddf71610bf02e292016c01cb9e64c2c5b21ad8b3b74607fda1fa745377"
+    },
+    {
+      "path": "modules/field-hud/glchecks/org/lwjgl/opengl/GLContext.java",
+      "sha256": "4c53fed8721c4471d1109261cb716c23db4799dfcab796b01155a2bdd6b5b4b1"
+    },
+    {
+      "path": "modules/field-hud/glchecks/village/fieldhud/AnimeDrawStateChecks.java",
+      "sha256": "0af1e1be1a8c3cf9733721dec75906d5a65d37817e0206fff6c165ffee8e4c88"
+    },
+    {
+      "path": "modules/field-hud/glchecks/village/fieldhud/SkinDraw.java",
+      "sha256": "92b17e8d7a72eadb77503ade32cbcbd43ce5e860342da2a9a68636851f566b04"
+    },
+    {
+      "path": "modules/field-hud/bufferchecks/village/fieldhud/LwjglQueryContractChecks.java",
+      "sha256": "59ebf0630d1c5ca457df9ba9a5485845c662bed71f4707367977c5b2f26a2bbc"
+    }
+  ],
+  "private_evidence_hashes": [
+    {
+      "label": "actual-lwjgl-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "actual-lwjgl-contract.log",
+      "sha256": "271956fe2003342d68b48a658e70f6776ad90d366e4af51904364f1d6416735e"
+    },
+    {
+      "label": "new-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "new-strict-recorder.log",
+      "sha256": "7c2b9b181edaac1b233580974577846119188c4d0708f2602da661d2b24ea4d1"
+    },
+    {
+      "label": "old-compile-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "old-compile.log",
+      "sha256": "aed86adb305b7fb490a55022d81c9d89a6a3e30da6fe0cc60043cbf115b6c9eb"
+    },
+    {
+      "label": "old-crash-reproduced.log",
+      "sha256": "ae631d3e9e66ff5520cccde16c74ea8966d93c68cffea23cffe7c94031bf093e"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
-group='village.vale'; version='1.0.0'
+group='village.vale'; version='1.0.1'
 base { archivesName='vale-world-compat' }
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
 minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }

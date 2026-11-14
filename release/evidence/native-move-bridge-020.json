@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "candidate": "native-move-bridge-020",
+  "status": "source-adapter-and-guarded-native-helper-compiled",
+  "production_installable_artifact": false,
+  "compile_inputs": {
+    "minecraft": "1.12.2",
+    "java_source_target": "8",
+    "core_version": "0.3.16",
+    "core_source_snapshot_sha256": "034b8c4a2c2d2f411e0f255a0d2b1cdb2bf06091441cbd4a1326f970a68b797e",
+    "core_development_api_sha256": "a94917876f6a6471947e1990efc0c0511e48769f2da7d2a699959a4f997d0c03",
+    "prepared_minecraft_api_sha256": "bb7c86e893e668f3aa5402b146eaeccc7474b24317d54b22d1ceb3902744d59b",
+    "optional_naruto_compile_dependency": false
+  },
+  "executed_checks": {
+    "configuration": 52,
+    "receipt_engine": 38,
+    "discovery": 11,
+    "command_permission": 12,
+    "total_assertions": 113,
+    "actual_main_and_native_helper_java8_compile": true,
+    "check": true,
+    "reobfJar": true,
+    "sourcesJar": true,
+    "exit_code": 0,
+    "log_sha256": "8eb4f0992f3a5108c98a8138ed77f2fecca0985169de8f9f2698459748658b93"
+  },
+  "synthetic_proposal_fixture": {
+    "rows": 7,
+    "verified": false,
+    "sha256": "c54fe52e092817ebbeff3ecb0ea5f535bd225e12f65aab10bace895ce002cd1d",
+    "renamed_unmodified_proposal_rejected": true
+  },
+  "native_runtime": {
+    "executed": false,
+    "helper_compiled": true,
+    "helper": "village.vale.arsenal.BridgeNativeChecks",
+    "requires_matching_merged_core": true,
+    "requires_disposable_fixture": true,
+    "requires_run_last_then_server_shutdown": true
+  },
+  "pending_gates": [
+    "Full matching merged Source10 Core build and all existing checks",
+    "Actual disposable native Bridge helper execution with matching merged Core",
+    "Runtime optional Naruto public owner-contract probes",
+    "Real matching client hand pose, weapon presentation and actionbar inspection"
+  ],
+  "scope": [
+    "Exact reviewed registry mapping and typed discovery",
+    "Accepted entity admission or native health/absorption-loss presentation",
+    "No native recast, chakra/resolve debit, cooldown mutation, XP or boss-credit authority",
+    "No universal native jutsu parity claim",
+    "Original installed mod art and registrations preserved"
+  ],
+  "preservation": {
+    "minecraft_client_launched": false,
+    "original_worlds_or_profiles_modified": false,
+    "reference_code_or_art_copied": false,
+    "core_resource_facades_replaced": false,
+    "removed_pool_or_ledger_paths_restored": false,
+    "arena_paths_modified": false
+  },
+  "retained_failed_attempts": [
+    {
+      "stage": "second compile invocation",
+      "result": "interrupted before checks",
+      "reason": "Mistyped prepared-API property selected the ordinary preparation pipeline; corrected to prebuiltMinecraft in subsequent successful runs."
+    }
+  ]
+}

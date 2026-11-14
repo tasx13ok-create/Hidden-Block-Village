@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "scope": "ORIGINAL_REVIEWED_CHARGE_INPUT_PREFIX_AND_COMPONENT_TESTS",
+  "reviewed_utc": "2026-11-14T14:34:32.991060+00:00",
+  "base_commit": "8681bb9219e065eeadb1b85915d21a33183d5b76",
+  "client_lifecycle_version": "0.1.3",
+  "authorship": "Original project compatibility source; independently reviewed and promoted by Codex.",
+  "all_15_preimages_verified_before_first_write": true,
+  "normalization": "LF",
+  "paths": [
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ClientLifecycleMod.java",
+      "before_sha256": "7daf45e7acb4b9240f5bd63db83e551cd839b8c2e21d86ba84c724d94ce23e46",
+      "draft_sha256": "3fe2ee4426cff7c28cfb99e7585a51f8bb4577d8386e5a2cc9da2798bc9519ca",
+      "promoted": {
+        "bytes": 299,
+        "sha256": "3fe2ee4426cff7c28cfb99e7585a51f8bb4577d8386e5a2cc9da2798bc9519ca"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ClientLifecyclePlugin.java",
+      "before_sha256": "b5d3f92bcdea1f8c7c3d02556e407169f72aa3cafa58fd7107ea258d729833f3",
+      "draft_sha256": "c75460a17259837c8228fac9c8b26450b608e1131b8c2adf63da8a6f922985ff",
+      "promoted": {
+        "bytes": 896,
+        "sha256": "c75460a17259837c8228fac9c8b26450b608e1131b8c2adf63da8a6f922985ff"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/PhysicalChargeKey.java",
+      "before_sha256": null,
+      "draft_sha256": "f0aa76b9d40773b2e53dbbab739a80d80f96851819b72d462371094c912d2bf9",
+      "promoted": {
+        "bytes": 379,
+        "sha256": "f0aa76b9d40773b2e53dbbab739a80d80f96851819b72d462371094c912d2bf9"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ChargeInputClient.java",
+      "before_sha256": null,
+      "draft_sha256": "f7d6fe28195be036ab18c1bb54d8cb8bcca468c2ce8336a0b510168ea2a0ebf0",
+      "promoted": {
+        "bytes": 970,
+        "sha256": "f7d6fe28195be036ab18c1bb54d8cb8bcca468c2ce8336a0b510168ea2a0ebf0"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ChargeInputGuard.java",
+      "before_sha256": null,
+      "draft_sha256": "00753bfee467ff91d5ba3193bba171ade77cd21e7ec8986271a12ab97fc7f564",
+      "promoted": {
+        "bytes": 2429,
+        "sha256": "00753bfee467ff91d5ba3193bba171ade77cd21e7ec8986271a12ab97fc7f564"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ChargeInputTransformer.java",
+      "before_sha256": null,
+      "draft_sha256": "3db21f9d0c9dfa6e7d66edafa4c9cbae5786099c1b9479725525540d7ae1ca3a",
+      "promoted": {
+        "bytes": 3095,
+        "sha256": "3db21f9d0c9dfa6e7d66edafa4c9cbae5786099c1b9479725525540d7ae1ca3a"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/village/vale/clientcompat/ChargeInputClientChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "dfd79e044b51126a376acbc872771bf6364a842555d3dd31409e645d269805c1",
+      "promoted": {
+        "bytes": 2506,
+        "sha256": "dfd79e044b51126a376acbc872771bf6364a842555d3dd31409e645d269805c1"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/village/vale/clientcompat/ChargeInputTransformChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "7f0ccdf9d8cdadcbb09fb81f85eb7ecf197c0a42284a1084c30e660caa259885",
+      "promoted": {
+        "bytes": 4591,
+        "sha256": "7f0ccdf9d8cdadcbb09fb81f85eb7ecf197c0a42284a1084c30e660caa259885"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/village/vale/clientcompat/PhysicalChargeKeyChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "2306f9d9da0bbc294b93faddd01fde5cd10791319a9e447429f3720c8406f08f",
+      "promoted": {
+        "bytes": 1672,
+        "sha256": "2306f9d9da0bbc294b93faddd01fde5cd10791319a9e447429f3720c8406f08f"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/charge-input-stubs/net/minecraft/client/Minecraft.java",
+      "before_sha256": null,
+      "draft_sha256": "c830eafc23caee3e7a7582e6199ee59c6dfc36145977b1878bf99ba3e2594fda",
+      "promoted": {
+        "bytes": 408,
+        "sha256": "c830eafc23caee3e7a7582e6199ee59c6dfc36145977b1878bf99ba3e2594fda"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/charge-input-stubs/net/minecraft/client/settings/KeyBinding.java",
+      "before_sha256": null,
+      "draft_sha256": "b34f462c2b447ae26198f66c2fabdf21593efa394d0651fdaff3fdf204fd01b8",
+      "promoted": {
+        "bytes": 165,
+        "sha256": "b34f462c2b447ae26198f66c2fabdf21593efa394d0651fdaff3fdf204fd01b8"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/charge-input-stubs/net/minecraftforge/fml/relauncher/Side.java",
+      "before_sha256": null,
+      "draft_sha256": "868a0288c6ef66cedc4e37327a0098787c388161c07efdeec0ffda536b301187",
+      "promoted": {
+        "bytes": 75,
+        "sha256": "868a0288c6ef66cedc4e37327a0098787c388161c07efdeec0ffda536b301187"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/charge-input-stubs/net/minecraftforge/fml/relauncher/SideOnly.java",
+      "before_sha256": null,
+      "draft_sha256": "0ad2690e24d9567ee0f5775438f4d36b63b7151ced0625789fea6ce7590a7f0a",
+      "promoted": {
+        "bytes": 163,
+        "sha256": "0ad2690e24d9567ee0f5775438f4d36b63b7151ced0625789fea6ce7590a7f0a"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/tests/charge-input-stubs/org/lwjgl/input/Keyboard.java",
+      "before_sha256": null,
+      "draft_sha256": "3d2d5da44ba3232f06ebe2c0ace8f5fd622a23632e743389b829130f6972c994",
+      "promoted": {
+        "bytes": 435,
+        "sha256": "3d2d5da44ba3232f06ebe2c0ace8f5fd622a23632e743389b829130f6972c994"
+      }
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/client-lifecycle/build.gradle",
+      "before_sha256": "6e3f7a0b029c8d6ce28da26b581a7382e946f375f338d276f14934be4c0703a6",
+      "draft_sha256": "0e91109353c0b90e105458d6b4f66d00f6fe6dbd184ccc1e2303b5c016e417c1",
+      "promoted": {
+        "bytes": 3439,
+        "sha256": "0e91109353c0b90e105458d6b4f66d00f6fe6dbd184ccc1e2303b5c016e417c1"
+      }
+    }
+  ],
+  "protected_existing_client_source_unchanged": {
+    "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ClientLifecycleTransformer.java": {
+      "bytes": 2150,
+      "sha256": "d3d991498516e03e9427b15a8f55967507e010760aa9c100b1fa5b75ddd12e97"
+    },
+    "modules/vale-compatibility-helpers/src/village/vale/clientcompat/NpcGuiThreadDispatch.java": {
+      "bytes": 664,
+      "sha256": "394dc6fe9cd1b506be8e16c9397ba0249ce6b564e0b5d24cc131e947668794ce"
+    },
+    "modules/vale-compatibility-helpers/src/village/vale/clientcompat/NpcGuiThreadTransformer.java": {
+      "bytes": 3683,
+      "sha256": "22594fc935b7deca10772719721f6f89736947ab7e58f7643b468ebab8054f7b"
+    },
+    "modules/vale-compatibility-helpers/src/village/vale/clientcompat/SafeShutdown.java": {
+      "bytes": 2456,
+      "sha256": "4cafe600953aeb89d204940053709ccba67cbcef606316140744f0bce22b81eb"
+    },
+    "modules/vale-compatibility-helpers/src/village/vale/clientcompat/SupportedNpcSource.java": {
+      "bytes": 3224,
+      "sha256": "0a9bff3aa2ded3b8c6be147f7ed64ea07477194bfb4a2991395f4ec859edcbc2"
+    }
+  },
+  "private_draft_manifest": {
+    "bytes": 4327,
+    "sha256": "7728370cf6c11779d09acba5572093b17d025ac3dba07174eb39193537e4b1ca"
+  },
+  "original_addon_source_sha256": "7eb82c19936f3902a19e477da8bd457250c7ceca2fef5eff6d4c574595f777bf",
+  "original_source_class_sha256": "445a71010f1b9e3893a83294c8ad86ba487adec6951acdeaef68baf2322bab2d",
+  "native_class": "narutomodaddon.keybind.KeyBindingChakraChargeButton",
+  "native_method": "onKeyInput(Lnet/minecraftforge/fml/common/gameevent/InputEvent$KeyInputEvent;)V",
+  "implementation": "One physical matching keyboard down/non-repeat/current-context prefix; the original native body and all unrelated methods remain intact.",
+  "existing_plugin_transformers_preserved": true,
+  "only_appended_transformer": "village.vale.clientcompat.ChargeInputTransformer",
+  "native_method_bodies_or_art_copied_into_repository": false,
+  "original_mod_jars_modified": false,
+  "new_mod_added": false,
+  "owner_client_or_world_changed": false,
+  "arena_paths_changed": false,
+  "reference_distribution_permission_inferred": false
+}

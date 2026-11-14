@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "scope": "SOURCE11_MATCHED_FULL_ORIGINAL_PROVIDER_MAGMA_AND_BRIDGE_NATIVE",
+  "passed": true,
+  "deployment_ready": false,
+  "source_sha256": "83a0fe1cd40dd88aa320216df66a64b4809da708568285b80c608196f0660372",
+  "build_report_sha256": "4c9afe3a916f29468e699fb08c92866fc02ef53922e27a740f89b59f97bd356f",
+  "core_dev_api_sha256": "ea9c72550a25b7e06f9758d5ebb7901fd6d9be3786f635d7335428277d2e6dbd",
+  "production_server_jars": 54,
+  "registry_free_observer_jars": 1,
+  "unchanged_original_native_jars": 45,
+  "selected_project_components": [
+    {
+      "component": "vale-orders",
+      "file": "Naruto-Core-0.3.16.jar",
+      "bytes": 2846820,
+      "sha256": "55fdfab42505407fe7552d1a5ae2f327bfcbff1f66aef5f8c612483adb2f5dcf"
+    },
+    {
+      "component": "vale-encounters",
+      "file": "Naruto-Encounters-0.3.7.jar",
+      "bytes": 159267,
+      "sha256": "f3280db3d811b8157c8cc899630933af33db37152ae1174a696d7b517364c63b"
+    },
+    {
+      "component": "vale-rack",
+      "file": "Naruto-Equipment-Rack-0.1.4.jar",
+      "bytes": 42283,
+      "sha256": "162cfb2185dd8f8316252f2cb0d87841e1a313cab6a739405ea24a04ab471dbb"
+    },
+    {
+      "component": "vale-residents",
+      "file": "Naruto-Residents-0.2.1.jar",
+      "bytes": 46139,
+      "sha256": "9ea53d45d148c1fbfe38a7b9bc57654240b8632524bacd07dfaca23b8a443269"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "file": "Naruto-Residents-Server-Bridge-0.1.0.jar",
+      "bytes": 3021,
+      "sha256": "79fc0947fc052d8dedefff72d15a179dd4c2180a21fcdeb116164a61e944550f"
+    },
+    {
+      "component": "vale-world-compat",
+      "file": "Naruto-World-Compat-1.0.1.jar",
+      "bytes": 27952,
+      "sha256": "25492f6a99fa8c10aef941f663dd0c984b3f094e06f0881d2b18cf3b133a8768"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "file": "Naruto-Damage-Compat-0.1.0.jar",
+      "bytes": 5611,
+      "sha256": "77d183c9d84e970d5032a7734cdedab198a0ff50d6f4722d533c30f6d4c9f3a4"
+    },
+    {
+      "component": "vale-compatibility-helpers",
+      "file": "Naruto-Server-Bridge-0.2.0.jar",
+      "bytes": 4796,
+      "sha256": "b2c0f2f6c477a52bfcd28dae21848c59a75547d354771d1c5b86120a5ebe9f26"
+    },
+    {
+      "component": "village-standards",
+      "file": "Naruto-Village-Standards-0.3.1.jar",
+      "bytes": 39364,
+      "sha256": "7f072a2fa5c40e3ba1e7e02702dee404b390670977989320bed162ade9b8d045"
+    }
+  ],
+  "actual_assertions": {
+    "provider_registry_and_detached_nbt": 55,
+    "official_synthetic_player_admission": 1,
+    "native_charge_timing": 22,
+    "naruto_backed_cardinal_dodge": 45,
+    "accepted_effect_bridge_and_cosmetic_lifecycle": 79,
+    "total": 202
+  },
+  "native_charge_observed": {
+    "warmup_ticks": 20,
+    "native_stop_block_ticks": 100,
+    "each_actual_player_update_decremented_once": true,
+    "duplicate_native_toggle_canceled_then_respected_block": true,
+    "native_server_charge_listener_count": 1,
+    "actual_keyboard_or_client_endpoint_executed": false
+  },
+  "native_dodge_observed": {
+    "directions": 4,
+    "native_resource_provider": "narutomod",
+    "configured_cost": 6,
+    "native_scale": 1,
+    "configured_recovery_ticks": 16,
+    "one_native_debit_per_direction": true,
+    "spam_refused_without_second_debit": true,
+    "actual_native_travel_in_all_directions": true,
+    "physical_client_binding_tested": false
+  },
+  "bridge_observed": [
+    "Unmapped native damage produces no cue",
+    "Accepted health loss presents once after native unwind without changing resource/progression state",
+    "Final Attack/Hurt/Damage cancellation rejects cues",
+    "Absorption-only native outcome qualifies",
+    "A zero mapped contact cannot inherit later unrelated loss",
+    "Accepted outcome survives subsequent native heal",
+    "Synthetic events without native loss produce no cue",
+    "Actual owned vanilla arrow spawn admits only after unwind and final cancellation/identity/membership/ownership checks",
+    "Pending receipts reject timeout, same-body respawn and changed map snapshot",
+    "Tagged weapon/hand cosmetics reject same-body respawn and spawn-callback connection/world/entity-ID/UUID replacement",
+    "Canceled death alone retains valid living cosmetics",
+    "Cosmetic serialization refuses persistence and uncaptured reload dies",
+    "Moved-world or removed cosmetic pulse expires",
+    "Native hand cosmetics never replace earned hand carriers",
+    "Bridge stop closes only tagged cosmetics and preserves earned hand/weapon carriers"
+  ],
+  "process": {
+    "exit_code": 0,
+    "forced_termination": false,
+    "original_world_or_real_player_used": false,
+    "new_disposable_flat_world_only": true,
+    "explicit_block_edits": false,
+    "private_economic_transformer_installed": false,
+    "native_input_hashes_unchanged_after": true,
+    "diagnostic_port_released": true,
+    "elapsed_seconds": 33.509952
+  },
+  "remaining_limits": [
+    "No real graphical client, keyboard binding or shader endpoint was executed",
+    "Spawn-owner execution uses actual vanilla arrow public ABI; optional Naruto projectile/flow owner contracts still need specific runtime entity probes",
+    "No universal native jutsu parity or native boss contribution/reward credit claim",
+    "Detached provider tile NBT roundtrips do not prove complete owner-world payload migration or restart"
+  ],
+  "private_evidence_hashes": {
+    "native_result_sha256": "ee33b5fee3d3c8c3636f60f5323f45ed8cb016bc39b8758cc87cdf4fa16eb953",
+    "run_receipt_sha256": "2769796ffde60622646ca6874e32e7ed13c2e02ae41f07c45fdbdfe734945ce5",
+    "console_log_sha256": "c14f1ceeeed7216260edf09e40a4606c552b7854a66c6fc325886f5748b38773",
+    "observer_jar_sha256": "94235d71f79eb7344a97a6289259c2d6184043e8398ed5e7388f4ce02ef21324",
+    "bridge_helper_source_sha256": "f5c278288afea4fc1faa90e46c9c9920e0f6968ba7cd419cfc52ed97df9d9dcd"
+  }
+}

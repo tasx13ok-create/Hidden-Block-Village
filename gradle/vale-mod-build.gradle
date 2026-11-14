@@ -1,5 +1,7 @@
 import groovy.json.JsonOutput
 
+apply from: file(project.projectDir.parentFile.name == 'vale-compatibility-helpers' ? '../../../gradle/naruto-artifact-names.gradle' : '../../gradle/naruto-artifact-names.gradle')
+
 // Check JVM ergonomics must not claim several GB while the owner plays.
 // Minecraft launch tasks retain their independent runtime heap settings.
 tasks.withType(JavaExec).matching { it.name.startsWith('verify') }.configureEach { maxHeapSize = '512m' }

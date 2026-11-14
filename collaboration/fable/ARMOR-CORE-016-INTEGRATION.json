@@ -1,0 +1,297 @@
+{
+  "schema": 1,
+  "claude_source_pin": "bea21d389ccfe8e142099e2d217449abe84c12f8",
+  "minecraft_launched": false,
+  "native_input_acceptance": false,
+  "graphical_acceptance": false,
+  "dynamic_block_light_claimed": false,
+  "original_models_textures_items_or_stats_replaced": false,
+  "default_enabled": false,
+  "client_config": "valeorders-client.cfg / effects.armorPowerCore",
+  "settings_path": "Inventory Settings > Look > Visual effects > Armor core glow",
+  "optional_lookup_class": "village.bijuu.BijuuArmor$Armor",
+  "optional_public_field": "public final int beast",
+  "optional_provider_observed_in_current_private_client": true,
+  "own_compiled_class_count": 9,
+  "armor_real_api_compile_passed": true,
+  "hud_main_classes_compiled": 82,
+  "armor_pure_rules_checks": 3348,
+  "armor_synthetic_mesh_checks": 194,
+  "hud_pure_rules_checks": 82243,
+  "native_fixture_code_in_production": false,
+  "tail_or_recovered_source_imported": false,
+  "limits": {
+    "live_body_cache": 32,
+    "world_players_scanned_per_tick": 256,
+    "new_sparks_per_native_tick": 16,
+    "total_sparks": 128,
+    "simulation_catchup_ticks": 4,
+    "native_power_update_once_per_tick": true
+  },
+  "preserved_features": [
+    "layered original socket/bevels",
+    "eight sequential studs",
+    "shoulder/rib energy veins",
+    "tumbling emissive core and inner shell",
+    "two orbit rings",
+    "bloom/shafts",
+    "native-tick voxel sparks",
+    "cosmetic annulus on a loaded upward support within three blocks"
+  ],
+  "remaining_acceptance": [
+    "matching complete build and production-archive exclusion checks",
+    "real closed-client toggle persistence, keyboard/mouse/parent navigation",
+    "actual compatible worn armor, shaders/GL/native model layering and performance"
+  ],
+  "status": "HISTORICAL_OPT_IN_PASS1_INTERMEDIATE",
+  "promoted_utc": "2026-11-14T14:16:21.085514+00:00",
+  "field_hud_version": "0.20.0",
+  "core_version": "0.3.16",
+  "coauthor_credit": "Claude Opus 5.5 <noreply@anthropic.com>",
+  "adaptation_credit": "Codex original opt-in integration, identity/tick/geometry limits and settings bridge",
+  "claude_authored_commit": "8753b43",
+  "private_draft_manifest_sha256": "15ea12835375e509d3e6e8eebf1f62f09c4588289af4cf4dca346cbb39d600e1",
+  "promotion_checks": "All sixteen canonical preimages and frozen draft hashes validated before writes; LF normalized",
+  "claude_parent_history_merged": false,
+  "production_archive_packaging_accepted": false,
+  "actual_promoted_source_recompiled": true,
+  "files": [
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/net/minecraft/client/renderer/BufferBuilder.java",
+      "before_sha256": null,
+      "promoted_sha256": "e616885ffe9d3694b8622f526a810abadce3be2acc81daafa878aaa21817cbf6",
+      "bytes": 585,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/net/minecraft/client/renderer/Tessellator.java",
+      "before_sha256": null,
+      "promoted_sha256": "6b7bed993688a98063a34e6dee396daa9eba9fb14832672674e9a370c1e798a3",
+      "bytes": 433,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/net/minecraft/client/renderer/vertex/DefaultVertexFormats.java",
+      "before_sha256": null,
+      "promoted_sha256": "5aec5da50e8adb40dc26e761047c563bdfba997611855f86302bdc837aae56dc",
+      "bytes": 146,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/org/lwjgl/opengl/GL11.java",
+      "before_sha256": null,
+      "promoted_sha256": "f7e96224ebfba6d5d31c9a5543e8486a9ca214b475a57d11c96a4688ee6bd8ca",
+      "bytes": 90,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/village/vale/client/ArmorCoreMeshChecks.java",
+      "before_sha256": null,
+      "promoted_sha256": "bda7a9ef2aa8ae7635651176ede5e7599706078c944c550a9420413f0d20ad3b",
+      "bytes": 2615,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/armorcoremeshchecks/village/vale/client/VfxDraw.java",
+      "before_sha256": null,
+      "promoted_sha256": "84dff1b45a641d85568ec94e0566098e509f4b8944b340169a48479e696146c7",
+      "bytes": 288,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/build.gradle",
+      "before_sha256": "ca6294390a62f6ce5e5547605c51b43c797f5e828de3cb547ac2a061996fb501",
+      "promoted_sha256": "0b90310bb52d1bb912da102be940f19aa04ad6a41b65d58200786be3a0798cd6",
+      "bytes": 15475,
+      "claude_pin_sha256": "bbaab57baf670d95e52d112c9c0873cc2c2b2d039b95942205520469204b052e",
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java",
+      "before_sha256": null,
+      "promoted_sha256": "4d95beea6ab8eb61b1af3df79de5c63c13079d516a71dc4f13105f390a6c12c6",
+      "bytes": 17612,
+      "claude_pin_sha256": "8c77ce7b62b0b50c0e48e87c870a8fe3ef62da0a88c351c7e58f494711c75f4f",
+      "authorship": "Original Claude ArmorCoreFx adapted by Codex",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreGeometry.java",
+      "before_sha256": null,
+      "promoted_sha256": "1e83ca08cefc57ce98afbf94341b3fd4849f2cf4274b932f49c54ae77f66e006",
+      "bytes": 1573,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreRules.java",
+      "before_sha256": null,
+      "promoted_sha256": "221157ce306c9c80730eb3f94febaf3a12d19fd626df25325ed6cad1038f25af",
+      "bytes": 3367,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ClientProxy.java",
+      "before_sha256": "c253f243fa6ce2266b3d8f4d77af8560f9ad02193d651b33eeb7c773669cad70",
+      "promoted_sha256": "29ffe51c671cdde173e4e4a86592686fb7abd97e1bd7b5bf5c82e7c11d55d76c",
+      "bytes": 1403,
+      "claude_pin_sha256": "9c3a83d99ec5fb240a94a700e6e38ca82c26fb85645a0744c41162b9cd90ae4c",
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/ArmorCoreRulesChecks.java",
+      "before_sha256": null,
+      "promoted_sha256": "390a9e56e856df0871db2c360e0a2f8f6623d9f03484d84b4f1d72a20a7c8752",
+      "bytes": 4728,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original bounded integration/test source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HudScreen.java",
+      "before_sha256": "64972fbbea1472875f00bac40611625d9bd31879592d2672c22610ef0787c328",
+      "promoted_sha256": "d9bb199a82fcb16682dc46c007c0a68951cfb8ba0858500d3c9359a7c3e6382a",
+      "bytes": 20212,
+      "claude_pin_sha256": null,
+      "authorship": "Codex optional visual-effects settings integration",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuEffectsScreen.java",
+      "before_sha256": "f801f2f059cb8f2a5869fc328115957222cb369a91d5652ccc04ad9d0701979f",
+      "promoted_sha256": "c7fa8a6b6e7ec33243c06d515b23f7bf97daa58a3466d08cca8609338d87f1dc",
+      "bytes": 4544,
+      "claude_pin_sha256": null,
+      "authorship": "Codex optional visual-effects settings integration",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuFxRules.java",
+      "before_sha256": "7e4d6e9bd67f1ed11ead64b30bf13f49cc7f248f66bb7222d8da34db2d8f7021",
+      "promoted_sha256": "847ee61408d41b41b148c7e334aaa330d27807e30602e760113111d1123a24e7",
+      "bytes": 3308,
+      "claude_pin_sha256": null,
+      "authorship": "Codex optional visual-effects settings integration",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/MenuFxRulesChecks.java",
+      "before_sha256": "8619f6af0aa5f52d67d80d7560b06ae4a567966577712da5a40a7fff5887625e",
+      "promoted_sha256": "08679af2284167565cbaafdc02ad9d4c0acfe7dfcc3d1b356bdd17f1f0a21e45",
+      "bytes": 4432,
+      "claude_pin_sha256": null,
+      "authorship": "Codex original focus/geometry/accessibility regression tests",
+      "normalization": "LF"
+    }
+  ],
+  "promoted_component_checks": {
+    "checked_utc": "2026-11-14T14:18:04.052094+00:00",
+    "core_overlay_source_files": 4,
+    "core_class_files": 9,
+    "class_major_versions": [
+      52
+    ],
+    "all_hud_main_sources": 82,
+    "core_javac_exit_code": 0,
+    "hud_javac_exit_code": 0,
+    "armor_rules_checks": 3348,
+    "synthetic_mesh_checks": 194,
+    "menu_rules_checks": 82243,
+    "actual_client_or_gpu_run": false,
+    "source_hashes_unchanged_since_promotion": true,
+    "core_classes": [
+      {
+        "path": "village/vale/client/ArmorCoreFx$1.class",
+        "sha256": "c9ec2c0495f6ae3cfc757699c771653328673662b267e2caf9707148ddeb0839"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx$Hooks.class",
+        "sha256": "cd2fdad048177f1a1509f90e9c1f34fc06d42ba032d10b05005e1099dbd62b06"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx$Spark.class",
+        "sha256": "757226924ac5f8cfd2500f78fc18b3758369cc1ab40595ea45e7c1bc307048a1"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx.class",
+        "sha256": "df243d45e877b686cf7e3b7456a6740f73612eef4fa0cbc21b0088e9b4a66392"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreGeometry.class",
+        "sha256": "0743d01786a5c70ad99ea83eaee976a15a93de403bf53f7b9ce391f54075cb2f"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules$Power.class",
+        "sha256": "340cb0b08dbc06bbe2f7cfb2f5589ff683e2b4d15f1b48dfde0e522c55ed7c1c"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules$Tracker.class",
+        "sha256": "6169fea397a000c584ef7306eb6213b5c9785c8dce67c743d075a7fcac3e0bbd"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules.class",
+        "sha256": "a7e682dab558342c6ad28bbdb17af29755d5aeb83d16015e8c801ba0ecbb82fd"
+      },
+      {
+        "path": "village/vale/ClientProxy.class",
+        "sha256": "229fe435807f095af87640965b2c6354cef6146412d11ad26f3c349d7f8433b1"
+      }
+    ],
+    "logs": {
+      "core-compile.log": {
+        "diagnostic_file_created": false,
+        "sha256": null
+      },
+      "hud-compile.log": {
+        "diagnostic_file_created": true,
+        "sha256": "9f31bd03e305fb730ba8e0dfd43a4e49f069e2075f13b8fc70b3b0b61d570231"
+      },
+      "armor-pure.log": {
+        "diagnostic_file_created": true,
+        "sha256": "5db849c25584d2dc370adbf264f20c9fb6ba01fdc5b1b319deb3b7bb746e9b03"
+      },
+      "mesh.log": {
+        "diagnostic_file_created": true,
+        "sha256": "631c9c989df2c8bbe9a1e443a5e85f2e7a943a71064d15af53639a41e9a8bdda"
+      },
+      "menu-pure.log": {
+        "diagnostic_file_created": true,
+        "sha256": "6735342cc1208c13ae43794d6117fe1ddb03a7e57a13bb9299c8ee1df7c1690e"
+      }
+    },
+    "core_log_note": "Compiler emitted no diagnostics; PowerShell Tee-Object did not create an empty diagnostic file. Successful exit and generated Java8 classes were observed."
+  },
+  "superseded_by": "collaboration/fable/ARMOR-CORE-PASS2-016-INTEGRATION.json",
+  "superseded_paths": [
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java",
+      "current_source_sha256": "a3669891aabecf323094ac5c6762cae5747c7a63847e664d82f633af344866d6"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreRules.java",
+      "current_source_sha256": "643ddc49a140db9f68815ef011945a0eaf1d7f70782201ed4cf10b9732f2731f"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/ArmorCoreRulesChecks.java",
+      "current_source_sha256": "c333bac3bda71d47830d54a500cbdc3ebfa5e367ae9c8f5924618d9c13f77413"
+    }
+  ],
+  "supersession_note": "Two main Java paths and their pure test now include the reviewed original3a257fe chest-core pass2. Other pass1 files and the default-off inventory switch remain current; prior check results are historical, and fresh matching-cohort acceptance remains required."
+}

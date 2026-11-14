@@ -1,0 +1,14 @@
+// Pure voxel bounds plus actual VfxDraw recording checks, isolated from production.
+['verifyVoxelRules':'village.vale.client.VoxelRulesChecks','verifyVoxelGeometry':'village.vale.client.VoxelGeometryChecks','verifyVfxFeedback':'village.vale.client.VfxFeedbackChecks'].each { taskName,checkClass ->
+ tasks.register(taskName,JavaExec) { dependsOn tasks.named('ruleChecksClasses'); classpath=sourceSets.ruleChecks.runtimeClasspath; mainClass.set(checkClass); javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }) }
+ tasks.named('check') { dependsOn taskName }
+}
+def voxelGlClasses=layout.buildDirectory.dir('voxel-gl-recording-checks')
+tasks.register('compileVoxelGlChecks',JavaCompile) {
+ source fileTree('voxelglchecks') { include '**/*.java' }
+ source files('src/main/java/village/vale/client/VfxDraw.java','src/main/java/village/vale/client/VoxelRules.java','src/main/java/village/vale/client/VoxelGeometry.java')
+ classpath=files(); destinationDirectory=voxelGlClasses
+ javaCompiler=javaToolchains.compilerFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }
+}
+tasks.register('verifyVoxelGlRecording',JavaExec) { dependsOn 'compileVoxelGlChecks'; classpath=files(voxelGlClasses); mainClass='village.vale.client.VfxDrawStateChecks'; javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }) }
+tasks.named('check') { dependsOn 'verifyVoxelGlRecording' }

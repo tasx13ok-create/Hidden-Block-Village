@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "feature": "Original Claude menu atmosphere adapted to unified Naruto settings and native screen observers",
+  "field_hud_version": "0.20.0",
+  "core_version_preserved": "0.3.16",
+  "source_commit": "bea21d389ccfe8e142099e2d217449abe84c12f8",
+  "coauthor_credit": "Claude Opus 5.5 <noreply@anthropic.com>",
+  "adaptation_credit": "Codex: native GUI/slot boundaries, parent navigation, tick/audio/accessibility limits and scoped rendering",
+  "private_draft_manifest_sha256": "a7fd8c92b498698c2b1a5a48af099616928ab86cb1bc6c57301ad54b22a2de89",
+  "promoted_utc": "2026-11-14T13:59:36.973928+00:00",
+  "promotion_checks": "Every canonical preimage and frozen draft SHA verified before writes; LF normalized",
+  "tail_or_recovered_code_imported": false,
+  "claude_parent_history_merged": false,
+  "native_or_graphical_acceptance_claimed": false,
+  "main_classes_compiled": 82,
+  "pure_rules_checks": 81784,
+  "checks_scope": "Actual Java8 compilation of all HUD main sources against prepared Forge API and accepted Core/Residents development APIs; pure rules are headless",
+  "files": [
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ClientHud.java",
+      "before_sha256": "dcf877e21b751b75fb65b7a1e35ed87423ff23d791fdad8be08096663fca8555",
+      "promoted_sha256": "3f1b75a4ec6a5275556a85eb5d1fed5c533b6fa76b937c2411ee6eaa57479134",
+      "claude_pin_sha256": "967cf664b315a23895bb5ea77b9112b1a045273a4e5325fc7a11898c463e83bc",
+      "authorship": "Codex integration of existing canonical original source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HudConfig.java",
+      "before_sha256": "2ec518cd25c2a8691da3b12aa0c827054f42294beeca47db728375187586f58a",
+      "promoted_sha256": "cb4125d7a687dc5dc96ba5189af9efd690e10d6e46f812e24ba47afc547ea59a",
+      "claude_pin_sha256": "7da235f3eb7944653dd94dc9166109a6faeb64dedf99cfc1ad81899f4af35f38",
+      "authorship": "Codex integration of existing canonical original source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HudScreen.java",
+      "before_sha256": "c9361c786c7734117824ba527147d8478bfab674f1f68ec46f5c70e380b2c13b",
+      "promoted_sha256": "64972fbbea1472875f00bac40611625d9bd31879592d2672c22610ef0787c328",
+      "claude_pin_sha256": "c9361c786c7734117824ba527147d8478bfab674f1f68ec46f5c70e380b2c13b",
+      "authorship": "Codex integration of existing canonical original source",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuEffectsScreen.java",
+      "before_sha256": null,
+      "promoted_sha256": "f801f2f059cb8f2a5869fc328115957222cb369a91d5652ccc04ad9d0701979f",
+      "claude_pin_sha256": null,
+      "authorship": "Original Codex integration and safety rules",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuFx.java",
+      "before_sha256": null,
+      "promoted_sha256": "98e07801718c096d9cbb9b85ccbbe2d86560a82f09b6789dc6ec907f76143ffc",
+      "claude_pin_sha256": "476d6a6385bc772b4a702a7efa09a81cb11e1995383e45d2624a5f8b6b3505c5",
+      "authorship": "Claude original MenuFx adapted by Codex",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuFxRules.java",
+      "before_sha256": null,
+      "promoted_sha256": "7e4d6e9bd67f1ed11ead64b30bf13f49cc7f248f66bb7222d8da34db2d8f7021",
+      "claude_pin_sha256": null,
+      "authorship": "Original Codex integration and safety rules",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/MenuFxRulesChecks.java",
+      "before_sha256": null,
+      "promoted_sha256": "8619f6af0aa5f52d67d80d7560b06ae4a567966577712da5a40a7fff5887625e",
+      "claude_pin_sha256": null,
+      "authorship": "Original Codex integration and safety rules",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/build.gradle",
+      "before_sha256": "360cedd20f711b9db40496faa190edf980e41765b5cf0d8f6ae5fa86ae9a10fb",
+      "promoted_sha256": "83639f1a4fa66f2688faf976d0977ce52b15e8a8f69369772ce688754452ddcb",
+      "authorship": "Codex integration/version metadata",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java",
+      "before_sha256": "9cf038b087e47fbb9cdbb83480d265ed586e6ad7a467bf67af7ee6574d36cc02",
+      "promoted_sha256": "ff41fc5da778f5faeac54606cf155869477d375390ff4fb835663de5f4f888df",
+      "authorship": "Codex integration/version metadata",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/mcmod.info",
+      "before_sha256": "28d7cac7bd2f4580709dd12a8f350631f3ac7e484cda5f5543ea3b09190f41d7",
+      "promoted_sha256": "74fc38cb5009f331850659aa388b6d52f5734eea56960558cb40c76319739d5a",
+      "authorship": "Codex integration/version metadata",
+      "normalization": "LF"
+    }
+  ],
+  "remaining_acceptance": [
+    "full matching-cohort build",
+    "actual menu settings/focus/parent return and native container/chat behavior",
+    "actual GPU/shader rendering with effects and reduced-motion modes"
+  ],
+  "status": "HISTORICAL_MENU_ONLY_INTERMEDIATE",
+  "superseded_by": "collaboration/fable/ARMOR-CORE-016-INTEGRATION.json",
+  "superseded_paths": [
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HudScreen.java",
+      "current_source_sha256": "d9bb199a82fcb16682dc46c007c0a68951cfb8ba0858500d3c9359a7c3e6382a"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuEffectsScreen.java",
+      "current_source_sha256": "c7fa8a6b6e7ec33243c06d515b23f7bf97daa58a3466d08cca8609338d87f1dc"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuFxRules.java",
+      "current_source_sha256": "847ee61408d41b41b148c7e334aaa330d27807e30602e760113111d1123a24e7"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/MenuFxRulesChecks.java",
+      "current_source_sha256": "08679af2284167565cbaafdc02ad9d4c0acfe7dfcc3d1b356bdd17f1f0a21e45"
+    }
+  ],
+  "supersession_note": "The initial menu-only source/check receipt is retained. Four HUD paths now add the optional armor switch and four-control layout/focus rules; Field HUD remains0.20.0. Current source pins and expanded checks are in the linked armor integration receipt."
+}

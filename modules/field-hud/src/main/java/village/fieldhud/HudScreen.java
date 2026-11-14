@@ -21,7 +21,7 @@ public final class HudScreen extends GuiScreen {
     private static final String[] HUD={"Display mode","Technique bar","Location label","Target health","Arrival cues","Durability warning","Chakra display","Eye-map frame"};
     private static final String[] DETAILS={"HUD layout","Panel width","Outer margin","Item-bar curve","Region definitions","Equipment storage","Video / shaders","Sound mixer"};
     private static final String[] GAME={"Game preferences","Video / shaders","Sound mixer","Chat / interface","Resource packs","Language","Skin layers","Installed mods"};
-    private static final String[] PRESENT={"Paper inventory","Shinobi HUD","Reduced motion","Action focus","Glass blur","Region chime","GUI scale","Menu clicks"};
+    private static final String[] PRESENT={"Paper inventory","Shinobi HUD","Reduced motion","Action focus","Glass blur","Region chime","GUI scale","Visual effects"};
     private static final String[] CONTROL={"Dodge","Settings key","Inventory key","Use item","Attack","All bindings","Saved profiles","Mouse preferences"};
     private static final String[] DESCRIPTIONS={"key.valeorders.dodge","key.fieldhud.settings","key.inventory","key.use","key.attack"};
     public HudScreen(){this(null);}public HudScreen(GuiScreen parent){this.parent=parent;}
@@ -49,7 +49,7 @@ public final class HudScreen extends GuiScreen {
     private String value(int id){
         switch(id){
             case 100:return on(HudConfig.narutoInventory);case 101:return on(HudConfig.shinobi);case 102:return on(!HudConfig.motion);case 103:return on(HudConfig.focusEffects);
-            case 104:return on(HudConfig.glassBlur);case 105:return on(HudConfig.chime);case 106:return mc.gameSettings.guiScale==0?"Auto":mc.gameSettings.guiScale+"x";case 107:return on(HudConfig.menuSounds);
+            case 104:return on(HudConfig.glassBlur);case 105:return on(HudConfig.chime);case 106:return mc.gameSettings.guiScale==0?"Auto":mc.gameSettings.guiScale+"x";case 107:return "Open options";
             case 205:return "Open all keys";case 206:return "Open profiles";case 207:return "Open mouse";
             case 500:return HudConfig.MODES[HudConfig.mode];case 501:return on(HudConfig.jutsuRail);case 502:return on(HudConfig.location);case 503:return on(HudConfig.target);case 504:return on(HudConfig.arrivals);case 505:return on(HudConfig.warning);case 506:return on(HudConfig.chakra);case 507:return on(HudConfig.eyeMap);
             case 520:return "Move panel";case 521:return HudConfig.slim?"Slim":"Full";case 522:return HudConfig.margin+" px";case 523:return on(HudConfig.curve);case 524:return "Reload zones";case 525:return RackAccess.loaded()?"Open storage":"Edit loadout";case 526:return "Video settings";case 527:return "Open mixer";
@@ -74,7 +74,7 @@ public final class HudScreen extends GuiScreen {
             case 104:return "Soften the HUD surfaces, or switch off for crisp panels and reduced effects.";
             case 105:return "Optional quiet native chime when entering a configured region. Does not change combat audio.";
             case 106:return "Real Minecraft GUI scale. Auto adapts to the window; the inventory remains native-sized.";
-            case 107:return "Native click audio for these Naruto settings buttons.";
+            case 107:return "Menu atmosphere, menu clicks and optional chest-armor glow. Reduced motion remains on this Look page.";
             case 200:return NarutoBindings.find(DESCRIPTIONS[0])==null?"Dodge is unavailable in this session. Open All controls to review installed actions.":"Rebind your dodge. ! marks a conflicting action. A quick directional step still follows its normal cost and cooldown.";
             case 201:return "Rebind the existing settings key. Other installed actions keep their own bindings.";
             case 205:case 206:case 207:return "Open installed native/Field Controls for all actions, conflicts, profiles and mouse preferences.";
@@ -105,7 +105,7 @@ public final class HudScreen extends GuiScreen {
             case 106:
                 mc.gameSettings.guiScale=(mc.gameSettings.guiScale+1)%5;mc.gameSettings.saveOptions();
                 net.minecraft.client.gui.ScaledResolution sr=new net.minecraft.client.gui.ScaledResolution(mc);setWorldAndResolution(mc,sr.getScaledWidth(),sr.getScaledHeight());return;
-            case 107:HudConfig.menuSounds=!HudConfig.menuSounds;break;
+            case 107:mc.displayGuiScreen(new MenuEffectsScreen(this));return;
             case 205:case 401:openBindings("Bindings");return;
             case 206:openBindings("Profiles");return;case 207:openBindings("Mouse");return;
             case 500:HudConfig.mode=(HudConfig.mode+1)%3;break;case 501:HudConfig.jutsuRail=!HudConfig.jutsuRail;break;case 502:HudConfig.location=!HudConfig.location;break;case 503:HudConfig.target=!HudConfig.target;break;case 504:HudConfig.arrivals=!HudConfig.arrivals;break;case 505:HudConfig.warning=!HudConfig.warning;break;case 506:HudConfig.chakra=!HudConfig.chakra;break;case 507:HudConfig.eyeMap=!HudConfig.eyeMap;break;

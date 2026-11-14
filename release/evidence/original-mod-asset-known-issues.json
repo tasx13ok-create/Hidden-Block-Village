@@ -1,0 +1,738 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_ORIGINAL_CLIENT_ASSET_KNOWN_ISSUES",
+  "observed_client_visual_and_audio_issues_unfixed": true,
+  "log_snapshot": {
+    "bytes": 473155,
+    "sha256": "eeee6a3abfbbc2c8f3c78f1694b3e0f9c76fa23b7b641c80e949912333688b13",
+    "lines": 4219
+  },
+  "counts": {
+    "distinct_missing_model_files": 39,
+    "model_file_not_found_occurrences": 40,
+    "distinct_missing_textures": 2,
+    "texture_missing_occurrences": 2,
+    "distinct_missing_sound_files": 5,
+    "sound_file_missing_occurrences": 5,
+    "distinct_missing_sound_events": 1,
+    "distinct_failing_variants": 5,
+    "variant_failure_occurrences": 6
+  },
+  "resource_packs_enabled": false,
+  "model_links": [
+    {
+      "missing_model_file": "ahznbcursemarkaddon:models/item/jiton.json",
+      "occurrences": 1,
+      "referring_original_jsons": [],
+      "requested_original_file_exists": false,
+      "verdict": "No own item model in Spring namespace; the exact item/jiton path exists once in base Naruto namespace. Candidate requires icon-intent review before activation.",
+      "existing_original_candidate": {
+        "jar": "NarutoMod-1.12.2-0.3.1.beta.jar",
+        "model": "narutomod:item/jiton",
+        "entry": "assets/narutomod/models/item/jiton.json"
+      },
+      "missing_namespace_owner": "SpringAddon7.0.jar"
+    },
+    {
+      "missing_model_file": "minecraft:models/ sword killer b.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/supervibrato_lightning_release_swords.json",
+          "parent_reference": " sword killer b",
+          "own_elements": 64
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/block_hora.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/custom_block_1.json",
+          "parent_reference": "block_hora",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/bostaff.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/bo_staff.json",
+          "parent_reference": "bostaff",
+          "own_elements": 40
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/cekira0tcucuki.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/chakra_axe.json",
+          "parent_reference": "cekira0tcucuki",
+          "own_elements": 107
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/cursemark.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/cursemark.json",
+          "parent_reference": "cursemark",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/default katana1.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/default_katana_1.json",
+          "parent_reference": "default katana1",
+          "own_elements": 34
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/default katana2.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/default_katana_2.json",
+          "parent_reference": "default katana2",
+          "own_elements": 34
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/fire sword.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/fire_sword.json",
+          "parent_reference": "Fire Sword",
+          "own_elements": 200
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/hanzo.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/kusarigama_hanzo.json",
+          "parent_reference": "hanzo",
+          "own_elements": 112
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/harian's sword.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/garian_sword.json",
+          "parent_reference": "Harian's sword",
+          "own_elements": 557
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/karma_boruto_icon.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/karma_boruto_icon.json",
+          "parent_reference": "karma_boruto_icon",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/karma_kawaki_icon.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/karma_kawaki_icon.json",
+          "parent_reference": "karma_kawaki_icon",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kiba.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/kiba.json",
+          "parent_reference": "kiba",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kidomaru.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/kidomaru.json",
+          "parent_reference": "kidomaru",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kinshiki_w3.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/chakra_thimble.json",
+          "parent_reference": "kinshiki_w3",
+          "own_elements": 47
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kinshiki_w4.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/chakra_spear.json",
+          "parent_reference": "kinshiki_w4",
+          "own_elements": 130
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kinshiki_w5.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "BorutoMod Addon byAnimeSupremeTeam v1.0.jar",
+          "json": "assets/borutomodaddononero/models/custom/chakra_knife.json",
+          "parent_reference": "kinshiki_w5",
+          "own_elements": 46
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/knightssword.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/knight_sword.json",
+          "parent_reference": "knightssword",
+          "own_elements": 221
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/konohachakrablade.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/konoha_chakra_blade.json",
+          "parent_reference": "konohachakrablade",
+          "own_elements": 213
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/kurosawa's sword.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/kurosawa.json",
+          "parent_reference": "Kurosawa's Sword",
+          "own_elements": 66
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/medical.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/medical.json",
+          "parent_reference": "medical",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/nodati.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/nodati.json",
+          "parent_reference": "nodati",
+          "own_elements": 48
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/nunoboko.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/nunoboko.json",
+          "parent_reference": "nunoboko",
+          "own_elements": 213
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/peacockblade1.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/weaknessless_soaring_shortswords_v1.json",
+          "parent_reference": "peacockblade1",
+          "own_elements": 93
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/peacockblade2.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/weaknessless_soaring_shortswords_v2.json",
+          "parent_reference": "peacockblade2",
+          "own_elements": 123
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/redrinnegan.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/redrinnegansword.json",
+          "parent_reference": "redrinnegan",
+          "own_elements": 16
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/sai.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/sai.json",
+          "parent_reference": "sai",
+          "own_elements": 46
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/sandaikitechu.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/sandaikitechu.json",
+          "parent_reference": "sandaikitechu",
+          "own_elements": 56
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/spear.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/spear.json",
+          "parent_reference": "spear",
+          "own_elements": 113
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/statujaonero.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/statue_onero.json",
+          "parent_reference": "statujaonero",
+          "own_elements": 162
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/steel.json",
+      "occurrences": 2,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/steel.json",
+          "parent_reference": "steel",
+          "own_elements": 1
+        },
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/steelblock.json",
+          "parent_reference": "steel",
+          "own_elements": 1
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/sword_blue_white.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/sword_blue_white.json",
+          "parent_reference": "sword_blue_white",
+          "own_elements": 50
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/sword_kos.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/scythe.json",
+          "parent_reference": "sword_kos",
+          "own_elements": 49
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/swordofthegodofthunder.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/sword_of_the_thunder_god.json",
+          "parent_reference": "swordofthegodofthunder",
+          "own_elements": 198
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/tonfa.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/tonfa.json",
+          "parent_reference": "tonfa",
+          "own_elements": 16
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/umbrella.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/umbrella.json",
+          "parent_reference": "umbrella",
+          "own_elements": 288
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/vinesword.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "SpringAddon7.0.jar",
+          "json": "assets/ahznbcursemarkaddon/models/custom/vinesword.json",
+          "parent_reference": "vinesword",
+          "own_elements": 1622
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    },
+    {
+      "missing_model_file": "minecraft:models/wlcs.json",
+      "occurrences": 1,
+      "referring_original_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/wlcs.json",
+          "parent_reference": "wlcs",
+          "own_elements": 52
+        }
+      ],
+      "requested_original_file_exists": false,
+      "verdict": "Bad original parent reference; own geometry exists. Alias back to referring JSON would cycle; no JSON-only geometry-free repair applied."
+    }
+  ],
+  "textures": [
+    {
+      "missing": "minecraft:textures/crystal_senbon.png",
+      "occurrences": 1,
+      "owner_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/crystal_senbon.json",
+          "pointer": "/textures/2",
+          "reference": "crystal_senbon"
+        }
+      ],
+      "exact_existing_candidates": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "entry": "assets/narutomodaddononero/textures/blocks/crystal_senbon.png",
+          "reference": "narutomodaddononero:blocks/crystal_senbon"
+        },
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "entry": "assets/narutomodaddononero/textures/crystal_senbon.png",
+          "reference": "narutomodaddononero:crystal_senbon"
+        }
+      ]
+    },
+    {
+      "missing": "minecraft:textures/kkg_paper.png",
+      "occurrences": 1,
+      "owner_jsons": [
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/kkg_paper.json",
+          "pointer": "/textures/0",
+          "reference": "kkg_paper"
+        },
+        {
+          "jar": "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar",
+          "json": "assets/narutomodaddononero/models/custom/kkg_paper.json",
+          "pointer": "/textures/particle",
+          "reference": "kkg_paper"
+        }
+      ],
+      "exact_existing_candidates": []
+    }
+  ],
+  "missing_sound_files": [
+    "kabutoaddon:sounds/clash.ogg",
+    "kabutoaddon:sounds/obitobyonero.ogg",
+    "kabutoaddon:sounds/obitobyonero1.ogg",
+    "sharinganaddon:sounds/kotoamatsukami.ogg",
+    "sharinganaddon:sounds/tsukuyomi.ogg"
+  ],
+  "missing_sound_event_details": [
+    {
+      "event": "rinneganaddon:amenotejikara",
+      "occurrences": 1,
+      "sound_definition_files": [
+        {
+          "jar": "RinneganAddon v1.3.jar",
+          "json": "assets/rinneganaddon/sounds.json",
+          "requested_event_key_present": false
+        }
+      ],
+      "exact_basename_audio_candidates": [
+        {
+          "jar": "RinneganAddon v1.3.jar",
+          "entry": "assets/rinneganaddon/sounds/amenotejikara.ogg"
+        }
+      ]
+    }
+  ],
+  "failing_variants": [
+    {
+      "variant": "ahznbcursemarkaddon:jiton#inventory",
+      "log_occurrences": 2,
+      "exact_blockstate_jsons": [],
+      "item_model_present": false
+    },
+    {
+      "variant": "shinobiculinary:redbean_crop#age=6",
+      "log_occurrences": 1,
+      "exact_blockstate_jsons": [
+        {
+          "jar": "shinobiculinary-1.2.0.jar",
+          "json": "assets/shinobiculinary/blockstates/redbean_crop.json",
+          "declared_variant_keys": [
+            "age=0",
+            "age=1",
+            "age=2",
+            "age=3",
+            "age=4",
+            "age=5"
+          ],
+          "requested_variant_present": false
+        }
+      ],
+      "item_model_present": false
+    },
+    {
+      "variant": "shinobiculinary:redbean_crop#age=7",
+      "log_occurrences": 1,
+      "exact_blockstate_jsons": [
+        {
+          "jar": "shinobiculinary-1.2.0.jar",
+          "json": "assets/shinobiculinary/blockstates/redbean_crop.json",
+          "declared_variant_keys": [
+            "age=0",
+            "age=1",
+            "age=2",
+            "age=3",
+            "age=4",
+            "age=5"
+          ],
+          "requested_variant_present": false
+        }
+      ],
+      "item_model_present": false
+    },
+    {
+      "variant": "shinobiculinary:soybean_crop#age=6",
+      "log_occurrences": 1,
+      "exact_blockstate_jsons": [
+        {
+          "jar": "shinobiculinary-1.2.0.jar",
+          "json": "assets/shinobiculinary/blockstates/soybean_crop.json",
+          "declared_variant_keys": [
+            "age=0",
+            "age=1",
+            "age=2",
+            "age=3",
+            "age=4",
+            "age=5"
+          ],
+          "requested_variant_present": false
+        }
+      ],
+      "item_model_present": false
+    },
+    {
+      "variant": "shinobiculinary:soybean_crop#age=7",
+      "log_occurrences": 1,
+      "exact_blockstate_jsons": [
+        {
+          "jar": "shinobiculinary-1.2.0.jar",
+          "json": "assets/shinobiculinary/blockstates/soybean_crop.json",
+          "declared_variant_keys": [
+            "age=0",
+            "age=1",
+            "age=2",
+            "age=3",
+            "age=4",
+            "age=5"
+          ],
+          "requested_variant_present": false
+        }
+      ],
+      "item_model_present": false
+    }
+  ],
+  "safe_overlay_created": false,
+  "runtime_profile_or_repository_edits": false,
+  "reason_no_overlay": "Fail closed:39referring original geometry JSONs have38distinct bad parent IDs. Redirecting those IDs back to their own geometry causes cycles; texture file requests cannot be repaired by a JSON-only alias. No art, geometry or code copied.",
+  "detailed_report_sha256": "4af380f55f7a12ecebdfbcc61596fe0070318d3d7c1b762cc12bc38e0a713d33"
+}

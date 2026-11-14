@@ -1,0 +1,241 @@
+{
+  "schema": 1,
+  "status": "PROMOTED_ORIGINAL_SOURCE_PENDING_MATCHED_SOURCE10",
+  "source_pin": "3a257fe16c302d2a0b0ee9fd5c07072f789ddf41",
+  "core_version": "0.3.16",
+  "hud_version_unchanged": "0.20.0",
+  "source_relationship": "Original Claude generic effect intent adapted to current original Frame and Armor pass2; no reference-decompiled source or artwork.",
+  "features": [
+    "Claude-authored face-shaded Minecraft voxel sphere/line/ribbon/billboard, adapted to current nested GL Frame instead of a global toggle.",
+    "Each effect frame owns 256/1024/2048 cubes by detail; each primitive at most384. Finite input/point/size/step bounds and whole-shape sampling.",
+    "Native admitted own WeaponPulse CAST emits original role-specific chips/shards/embers/frost/sparks once per actual entity identity. Native admitted own FIRE shots emit at most once every two observed native ticks. No input-intent or server gameplay changes.",
+    "One shared client particle engine for armor and weapons: max600 live; armor lane128 with16new/native tick; weapon lane472 with64new/native tick; fire watchers128, pending and receipts512 each.",
+    "World/body/connection identity or native tick rewind clears all caches. Catchup capped4ticks. Pending admission requires exact current world entity-map identity and nondead entity; loaded-block-only bounce checks.",
+    "Armor pass2 remains opt-in FALSE; charge, overload, hit spray, heartbeat, steam and night support remain. Shared engine preserves signed gravity/integration order, fixed armor size/fade and additive blend; weapons retain normal blend/shrink. At most2bounded particle batches.",
+    "Jutsu detail0, HUD reduced motion or Quiet suppress extra particles and animated armor embellishments through optional reflection; no hard HUD dependency.",
+    "Only project-owned carriers/renderers are modified. Original installed providers, NPC assets/icons/armor layers, native chakra, damage, attributes and moves remain authoritative.",
+    "Additional raw authored renderer families adapted with a global 1200/3000/9000 generic cube ceiling shared across nested effects and particles, strict native world LOD, native-tick bounded scroll trails and observed-only combat camera feedback. See RUNTIME-RENDERER-016-INTEGRATION.json."
+  ],
+  "verification": {
+    "real_api": {
+      "java_source_files": 9,
+      "own_production_files": 7,
+      "unchanged_dependency_files": 2,
+      "javac_exit": 0,
+      "generated_class_count": 24,
+      "all_class_major_versions": 52,
+      "gpu_or_client_used": false
+    },
+    "pure_rules": 914,
+    "pure_geometry": 12287,
+    "actual_VfxDraw_recording_assertions": 680,
+    "isolated_gradle_check": "PASS; all 6 actionable tasks executed",
+    "native_client_admission_or_particle_visual_acceptance": "PENDING",
+    "promoted_client_api_source_files": 15,
+    "promoted_feedback_global_checks": 9017,
+    "additional_main_and_ruleChecks_compile": "PASS via paired four-task C invocation; full matched source10 result belongs to root receipt"
+  },
+  "limits": [
+    "Recording checks use isolated synthetic MC/GL APIs and do not prove GPU, shader, frame rate or gameplay-window correctness.",
+    "Real Minecraft/Forge API compilation is separate from a full source10 build and native/client acceptance.",
+    "Generic particle native-entity admission has not been exercised in a real connected client.",
+    "This is shared rendering and emission coverage, not unique complete weapon gameplay parity.",
+    "Separate Bridge native confirmed-receipt routing and server cosmetic body/session tagging are owned by paired recovery; this package does not implement them.",
+    "Original native Tail provider remains. Recovered tail sources are excluded from this selective adaptation and production build; VfxShots remains isolated clientChecks QA only."
+  ],
+  "paths": [
+    {
+      "path": "gradle/vale-voxel-checks.gradle",
+      "before_sha256": null,
+      "draft_sha256": "9968420c1995ece46ca302226cd0cce4c93547fb4dfa0181fc1c44ae6bbd7ef4",
+      "bytes": 1473,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "6f3fd0ba7764374a72db2769e6b70c4f388e5d502aa2b26ac4e5618a7396210c"
+    },
+    {
+      "path": "modules/vale-orders/build.gradle",
+      "before_sha256": "0b90310bb52d1bb912da102be940f19aa04ad6a41b65d58200786be3a0798cd6",
+      "draft_sha256": "5115f3c3c441534a38cc9b8a31c7476924b700797484091c408fe13fb137aca1",
+      "bytes": 15534,
+      "merge_policy": "append isolated apply line only; preserve Bridge additions",
+      "promoted_sha256": "49ca16f41f317462002127265708c503e624a96b6a71c1afb91cf1bc42fb8b60"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java",
+      "before_sha256": "a3669891aabecf323094ac5c6762cae5747c7a63847e664d82f633af344866d6",
+      "draft_sha256": "bf8f9e4dece2fbb6691cf817cc6997ca93b094533dd9b5ef35c2da9cb48648b6",
+      "bytes": 20356,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "bf8f9e4dece2fbb6691cf817cc6997ca93b094533dd9b5ef35c2da9cb48648b6"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxDraw.java",
+      "before_sha256": "c2b6bd7a87045100a4a6b9e79464b8f04397bd685855f1cd9de30f5f5cc22016",
+      "draft_sha256": "ef409c930f5b7c141192acc32345d09f3daf8b4af064483f7d6d468e7e7bb2ce",
+      "bytes": 14674,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "887bab93aa7d952e345a2a894d2f48d78fa363794376c5b8646c32a00394da78"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxPreferences.java",
+      "before_sha256": null,
+      "draft_sha256": "99eca104ae2252dc97183da26baf90e420858bb0cdb04a5cd77a20f8873c3edb",
+      "bytes": 768,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "99eca104ae2252dc97183da26baf90e420858bb0cdb04a5cd77a20f8873c3edb"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelBits.java",
+      "before_sha256": null,
+      "draft_sha256": "1a44d4b535955180fbb299ace2d8252a37780a11ce5bf6b1873b29734c13f979",
+      "bytes": 8951,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "a86c9486f643bd7241c8482cd41237929b8060b8fdb37862c5cc6704d647c0ed"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelGeometry.java",
+      "before_sha256": null,
+      "draft_sha256": "2deeb77316bd8b1635214c712ce53ee0f9f1f4afa6f4651729565a34884410c4",
+      "bytes": 4679,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "2deeb77316bd8b1635214c712ce53ee0f9f1f4afa6f4651729565a34884410c4"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelRules.java",
+      "before_sha256": null,
+      "draft_sha256": "90d583de3bf902a0d013b519978f9a80dda88b1f8524503d43dc4bb837013d5b",
+      "bytes": 2333,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "207077c103f05b4c2df333622847e73c7704dd75469e10e24c7c10cd268ab0fa"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/WeaponVfx.java",
+      "before_sha256": "df7c9b836250a16cd72efed149668dd5d2086ba1b6467db20dc90a19dd2d01cf",
+      "draft_sha256": "322def6fdd580c420064091f5e048259506c27b9bcbc241f7ec60110552b3d51",
+      "bytes": 42152,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "322def6fdd580c420064091f5e048259506c27b9bcbc241f7ec60110552b3d51"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/VoxelGeometryChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "49d0154bdde1326914aacd7c6998587b8e516ceb4dd74e32b2211ee7637d703e",
+      "bytes": 12178,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "49d0154bdde1326914aacd7c6998587b8e516ceb4dd74e32b2211ee7637d703e"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/VoxelRulesChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "8abed00a14e3855efcf343d727a053fa460bcf9a469bf959ad63ff5f9a82c0f8",
+      "bytes": 10007,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "8abed00a14e3855efcf343d727a053fa460bcf9a469bf959ad63ff5f9a82c0f8"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/BufferBuilder.java",
+      "before_sha256": null,
+      "draft_sha256": "7ccf83a6cbdea4ca677b86a187dc22b91752770a6cd2441691043e08002fd7bb",
+      "bytes": 1569,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "7ccf83a6cbdea4ca677b86a187dc22b91752770a6cd2441691043e08002fd7bb"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/GlStateManager.java",
+      "before_sha256": null,
+      "draft_sha256": "fe17cd70bc8be362a52a5cca31fce6567707fe4b42fe50e3ff644b57e2b27dad",
+      "bytes": 2843,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "fe17cd70bc8be362a52a5cca31fce6567707fe4b42fe50e3ff644b57e2b27dad"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/OpenGlHelper.java",
+      "before_sha256": null,
+      "draft_sha256": "4086463e9456aab9b9a7edbe09a91e68f992726f7fa18127fdde21dfb9cda779",
+      "bytes": 471,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "4086463e9456aab9b9a7edbe09a91e68f992726f7fa18127fdde21dfb9cda779"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/Tessellator.java",
+      "before_sha256": null,
+      "draft_sha256": "25d2ba2e2d074365e366abddb83d59895ce7f7fe55d01faabf9342a0257961fc",
+      "bytes": 1146,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "25d2ba2e2d074365e366abddb83d59895ce7f7fe55d01faabf9342a0257961fc"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/entity/RenderManager.java",
+      "before_sha256": null,
+      "draft_sha256": "3219323fa11a191e3ee35bd2f0e6848ead538eee8d8751a21a21b98c93fbfd1e",
+      "bytes": 83,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "3219323fa11a191e3ee35bd2f0e6848ead538eee8d8751a21a21b98c93fbfd1e"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraft/client/renderer/vertex/DefaultVertexFormats.java",
+      "before_sha256": null,
+      "draft_sha256": "5aec5da50e8adb40dc26e761047c563bdfba997611855f86302bdc837aae56dc",
+      "bytes": 146,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "5aec5da50e8adb40dc26e761047c563bdfba997611855f86302bdc837aae56dc"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraftforge/fml/relauncher/Side.java",
+      "before_sha256": null,
+      "draft_sha256": "703761fd421677d3add11a8c464afbd1b4cef50002d5c47b8a5136638f5ff1ad",
+      "bytes": 78,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "703761fd421677d3add11a8c464afbd1b4cef50002d5c47b8a5136638f5ff1ad"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/net/minecraftforge/fml/relauncher/SideOnly.java",
+      "before_sha256": null,
+      "draft_sha256": "f3090bbf9d7fcbe8dd02bc7aa81dd69766b4725aa66df94026d99d46b7e9ffba",
+      "bytes": 274,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "f3090bbf9d7fcbe8dd02bc7aa81dd69766b4725aa66df94026d99d46b7e9ffba"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/org/lwjgl/opengl/GL11.java",
+      "before_sha256": null,
+      "draft_sha256": "2107cec8f4a75cb86fafc4d675d006a0ad22395597bd3e6f09d4b5192c828580",
+      "bytes": 2475,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "2107cec8f4a75cb86fafc4d675d006a0ad22395597bd3e6f09d4b5192c828580"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/org/lwjgl/opengl/GL14.java",
+      "before_sha256": null,
+      "draft_sha256": "b79e6e6ffbfc6c44ca311a223d53f7faa8f0ab898845a030dbab0ded1e0dbace",
+      "bytes": 129,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "b79e6e6ffbfc6c44ca311a223d53f7faa8f0ab898845a030dbab0ded1e0dbace"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/org/lwjgl/opengl/GLContext.java",
+      "before_sha256": null,
+      "draft_sha256": "ff1060fe14881ab58c55e9d16d428cc43d73c8bd4549e8dc6e524e437fa3fbcd",
+      "bytes": 232,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "ff1060fe14881ab58c55e9d16d428cc43d73c8bd4549e8dc6e524e437fa3fbcd"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/village/vale/client/JutsuVfx.java",
+      "before_sha256": null,
+      "draft_sha256": "64b26d0f97a89f0368e0b92ecbd802354572b480c762968d8dfa791a4637d418",
+      "bytes": 182,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "64b26d0f97a89f0368e0b92ecbd802354572b480c762968d8dfa791a4637d418"
+    },
+    {
+      "path": "modules/vale-orders/voxelglchecks/village/vale/client/VfxDrawStateChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "ca2b8deb9c1bf567caa94f4ec319b777f6184852453e72817e606d8fe530a554",
+      "bytes": 13711,
+      "merge_policy": "exact-preimage replacement or absent-only new file",
+      "promoted_sha256": "ca2b8deb9c1bf567caa94f4ec319b777f6184852453e72817e606d8fe530a554"
+    }
+  ],
+  "remote_merge_pin": "f1b0f8f34d16a8d8388574e7aadf538d093e6a96"
+}

@@ -23,14 +23,19 @@ import village.vale.ArsenalAccess;
 public final class HandTechnique extends Entity {
     public static final String[] STYLES = {"spiral", "charge", "fireedge", "windedge", "lava", "lightmode"};
     public static final byte HELD = 0, IMPACT = 1, FIZZLE = 2;
+    private static final byte VISUAL = 3;
     private static final DataParameter<Integer> OWNER = EntityDataManager.createKey(HandTechnique.class, DataSerializers.VARINT);
     private static final DataParameter<String> STYLE = EntityDataManager.createKey(HandTechnique.class, DataSerializers.STRING);
     private static final DataParameter<Byte> STATE = EntityDataManager.createKey(HandTechnique.class, DataSerializers.BYTE);
     /** Client lookup: owner entity id -> live technique (for arm poses). */
     public static final Map<Integer, HandTechnique> CLIENT_BY_OWNER = new java.util.concurrent.ConcurrentHashMap<>();
-    private int stateAge, dying = -1, visualTicks = -1;
+    private int stateAge, dying = -1;
     private java.util.UUID ownerUuid;
     private int clientOwner = -1;
+    private int visualLife;
+    private EntityPlayerMP visualBody;
+    private Object visualConnection;
+    private village.vale.bridge.BridgeReceipts.Context visualLease;
     public float impactX, impactY, impactZ;
 
     public HandTechnique(World world) {
@@ -54,16 +59,33 @@ public final class HandTechnique extends Entity {
 
     public int ownerId() { return dataManager.get(OWNER); }
     public String style() { return dataManager.get(STYLE); }
-    public byte state() { return dataManager.get(STATE); }
+    public byte state() { byte raw=dataManager.get(STATE);return raw==VISUAL?HELD:raw; }
+    public boolean visualOnly(){return dataManager.get(STATE)==VISUAL;}
     /** Ticks spent in the current state (client and server). */
     public int stateAge() { return stateAge; }
 
     static HandTechnique find(EntityPlayerMP p) {
         for (HandTechnique h : p.world.getEntities(HandTechnique.class, h -> h != null && !h.isDead))
-            if (p.getUniqueID().equals(h.ownerUuid) && h.state() == HELD) return h;
+            if (p.getUniqueID().equals(h.ownerUuid) && h.state() == HELD&&!h.visualOnly()) return h;
         return null;
     }
     static void end(EntityPlayerMP p){HandTechnique h=find(p);if(h!=null)h.finish(FIZZLE);}
+    /** Independent short-lived presentation. Never calls begin/end or alters a real scroll mode. */
+    static boolean visual(EntityPlayerMP p,String style,int ticks,village.vale.bridge.BridgeReceipts.Context lease){
+        if(lease==null||!lease.valid()||!village.vale.bridge.Bridge.current(p)||!known(style)||ticks<1||ticks>40||find(p)!=null)return false;
+        java.util.List<HandTechnique> live=p.world.getEntities(HandTechnique.class,h->!h.isDead&&h.visualOnly());
+        if(live.size()>=128)return false;for(HandTechnique h:live)if(p.getUniqueID().equals(h.ownerUuid))return false;
+        World world=p.world;HandTechnique h=new HandTechnique(world);h.ownerUuid=p.getUniqueID();h.visualBody=p;h.visualConnection=p.connection;h.visualLife=ticks;h.visualLease=lease;
+        h.dataManager.set(OWNER,p.getEntityId());h.dataManager.set(STYLE,style);h.dataManager.set(STATE,VISUAL);h.setPosition(p.posX,p.posY+1.2,p.posZ);
+        try{boolean admitted=world.spawnEntity(h);if(!admitted||!h.visualOnly()||!style.equals(h.style())||!h.visualOwner(p)||h.world!=world||h.isDead||world.getEntityByID(h.getEntityId())!=h){discardVisual(h,world);return false;}return true;}
+        catch(RuntimeException|LinkageError failure){discardVisual(h,world);return false;}
+    }
+    static void endVisual(EntityPlayerMP p){
+        for(net.minecraft.world.WorldServer world:net.minecraftforge.common.DimensionManager.getWorlds())
+            for(HandTechnique h:world.getEntities(HandTechnique.class,h->!h.isDead&&h.visualOnly()))if(h.visualBody==p)discardVisual(h,world);
+    }
+    private boolean visualOwner(EntityPlayerMP p){return visualLease!=null&&visualLease.valid()&&p==visualBody&&p.connection==visualConnection&&p.world==world&&p.getEntityId()==ownerId()&&p.getUniqueID().equals(ownerUuid)&&village.vale.bridge.Bridge.current(p);}
+    private static void discardVisual(HandTechnique h,World original){try{h.setDead();original.removeEntity(h);if(h.world!=null&&h.world!=original)h.world.removeEntity(h);}catch(RuntimeException|LinkageError ignored){h.setDead();}}
     public static void clearClientWorld(World world){CLIENT_BY_OWNER.entrySet().removeIf(e->world==null||e.getValue()==null||e.getValue().world==world);}
     private void forgetClient(){CLIENT_BY_OWNER.entrySet().removeIf(e->e.getValue()==this);clientOwner=-1;}
 
@@ -81,20 +103,6 @@ public final class HandTechnique extends Entity {
         if (spawned) {
             p.world.playSound(null, p.posX, p.posY + 1.2, p.posZ, startSound(style), SoundCategory.PLAYERS, 0.8f, startPitch(style));
         }
-    }
-
-    /** Visual-only carrier for a bridged licensed move: lives {@code ticks} without a Vale scroll mode. */
-    static void visual(EntityPlayerMP p, String style, int ticks) {
-        if (!known(style) || p.world.isRemote) return;
-        HandTechnique old = find(p);
-        if (old != null) old.finish(FIZZLE);
-        HandTechnique h = new HandTechnique(p.world);
-        h.dataManager.set(OWNER, p.getEntityId());
-        h.ownerUuid = p.getUniqueID();
-        h.dataManager.set(STYLE, style);
-        h.visualTicks = Math.max(1, Math.min(200, ticks));
-        h.setPosition(p.posX, p.posY + 1.2, p.posZ);
-        if (p.world.spawnEntity(h)) p.world.playSound(null, p.posX, p.posY + 1.2, p.posZ, startSound(style), SoundCategory.PLAYERS, 0.8f, startPitch(style));
     }
 
     /** Called by ScrollEvents when the mode's strike actually lands on {@code target}. */
@@ -126,20 +134,21 @@ public final class HandTechnique extends Entity {
         super.onUpdate();
         stateAge++;
         if (world.isRemote) {
-            if (state() == HELD && ownerId() >= 0&&!isDead) {if(clientOwner!=ownerId())forgetClient();clientOwner=ownerId();CLIENT_BY_OWNER.put(clientOwner,this);}
+            if (state() == HELD && ownerId() >= 0&&!isDead) {if(clientOwner!=ownerId())forgetClient();clientOwner=ownerId();if(visualOnly())CLIENT_BY_OWNER.putIfAbsent(clientOwner,this);else CLIENT_BY_OWNER.put(clientOwner,this);}
             else forgetClient();
             clientParticles();
             return;
         }
         if (dying >= 0) { if (--dying <= 0) setDead(); return; }
         EntityPlayerMP p = ownerUuid == null || world.getMinecraftServer() == null ? null : world.getMinecraftServer().getPlayerList().getPlayerByUUID(ownerUuid);
+        if(visualOnly()){
+            if(ticksExisted>=visualLife||p==null||!visualOwner(p)){discardVisual(this,world);return;}
+            setPosition(p.posX,p.posY+1.2,p.posZ);return;
+        }
         if (p == null || p.world != world || !p.isEntityAlive() || p.isSpectator()) { finish(FIZZLE); return; }
         if (p.getEntityId() != ownerId()) dataManager.set(OWNER, p.getEntityId());
-        if (visualTicks >= 0) { if (--visualTicks <= 0) { finish(FIZZLE); return; } }
-        else {
-            NBTTagCompound s = Scrolls.state(p);
-            if (!style().equals(s.getString("mode")) || s.getLong("modeUntil") < ArsenalAccess.now(p)) { finish(FIZZLE); return; }
-        }
+        NBTTagCompound s = Scrolls.state(p);
+        if (!style().equals(s.getString("mode")) || s.getLong("modeUntil") < ArsenalAccess.now(p)) { finish(FIZZLE); return; }
         // Follow the owner so tracking/chunk visibility match; rendering anchors to the animated arm.
         setPosition(p.posX, p.posY + 1.2, p.posZ);
         if (ticksExisted % loopTicks(style()) == 0)

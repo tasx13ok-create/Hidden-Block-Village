@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "candidate": "native-move-bridge-020",
+  "source_intent": "Recover optional exact-name discovery, operator-reviewed mapping and native effect presentation from the remaining Claude work without replacing hardened gameplay authority.",
+  "reviewed_claude_commit": "3a257fe16c302d2a0b0ee9fd5c07072f789ddf41",
+  "implementation": "Original adapter and tests; only project-owned presentation classes changed. Optional native types are looked up through fixed public ownership contracts.",
+  "runtime_configuration": "No inferred active defaults; strict verified:true accepted schema and atomic snapshot publication. Name inference remains in a separate unverified proposal tool.",
+  "source_hooks": [
+    "ValeOrders server start/stop registration",
+    "ScrollEvents existing health-reset boundary",
+    "Separate cosmetic HandTechnique state and WeaponPulse receipt lease"
+  ],
+  "prohibited_paths_preserved": [
+    "ChakraLink",
+    "MoveCost",
+    "ResourceNetwork",
+    "JutsuSnapshotReader"
+  ],
+  "removed_paths_not_restored": [
+    "ChakraLedger",
+    "ChakraPool",
+    "ChakraLedgerTest"
+  ],
+  "economic_authority": "No native cast, resource reservation/consumption, cooldown, XP or boss contribution mutation.",
+  "reference_access": "Registry metadata and public method/field signatures only; no reference method bodies, decompilation, textures, models or distributions included.",
+  "distribution": "Source, tests, synthetic fixture and safe records only; private compile JARs and runtime inputs stay outside Git.",
+  "verification_evidence": "release/evidence/native-move-bridge-020.json",
+  "deployment_ready": false
+}

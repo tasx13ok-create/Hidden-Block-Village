@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=1": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=2": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=3": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=4": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=5": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=6": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=7": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=8": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=9": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=10": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=11": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=12": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=13": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=14": {
+      "model": "valeworldcompat:table"
+    },
+    "legacy=15": {
+      "model": "valeworldcompat:table"
+    }
+  }
+}

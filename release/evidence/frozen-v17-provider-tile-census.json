@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_COMPLETE_FROZEN_V17_BLOCK_ENTITY_ID_CENSUS",
+  "created_utc": "2026-11-14T14:51:10.778080+00:00",
+  "passed": true,
+  "world_loaded_in_minecraft": false,
+  "source_world_written": false,
+  "block_regions_sha256_checked_before_parse": 1303,
+  "chunks_parsed": 1249484,
+  "region_bytes_verified": 5678321664,
+  "frozen_world_manifest_sha256": "85298e3fb60a1b6b3e521f9ef34a0b24884b9e3597955900d854e8d7f89bec2d",
+  "frozen_receipt_identity": {
+    "bytes": 278898,
+    "sha256": "cb89b22a12f18578a42ad620b454e5c95a2a7d813579013eebaf56f3efbe002c"
+  },
+  "tile_entities": 56275,
+  "tile_id_families": 22,
+  "tile_id_counts": {
+    "Banner": 10256,
+    "FlowerPot": 10133,
+    "Sign": 128,
+    "Skull": 32399,
+    "minecraft:banner": 93,
+    "minecraft:bed": 56,
+    "minecraft:chest": 498,
+    "minecraft:daylight_detector": 104,
+    "minecraft:dispenser": 121,
+    "minecraft:dropper": 303,
+    "minecraft:enchanting_table": 2,
+    "minecraft:flower_pot": 1050,
+    "minecraft:furnace": 20,
+    "minecraft:hopper": 7,
+    "minecraft:jukebox": 665,
+    "minecraft:mob_spawner": 2,
+    "minecraft:noteblock": 312,
+    "minecraft:sign": 61,
+    "variedcommodities:campfire": 6,
+    "variedcommodities:table": 37,
+    "variedcommodities:trading_block": 2,
+    "waystones:waystone": 20
+  },
+  "relevant_native_provider_ids": {
+    "variedcommodities:campfire": 6,
+    "variedcommodities:table": 37,
+    "variedcommodities:trading_block": 2,
+    "waystones:waystone": 20
+  },
+  "relevant_tiles_resolve_native09_modern_keys": 65,
+  "provider_lookup_class_by_id": {
+    "variedcommodities:campfire": "noppes.vc.blocks.tiles.TileCampfire",
+    "variedcommodities:table": "noppes.vc.blocks.tiles.TileTable",
+    "variedcommodities:trading_block": "noppes.vc.blocks.tiles.TileTrading",
+    "waystones:waystone": "net.blay09.mods.waystones.block.TileWaystone"
+  },
+  "unresolved_relevant_ids": [],
+  "extra_vc_alias_ids_needed_for_this_frozen_source": false,
+  "excluded_non_block_region_mca_files": 8,
+  "excluded_mca_bytes": 0,
+  "legacy_vanilla_ids": [
+    "Banner",
+    "FlowerPot",
+    "Sign",
+    "Skull"
+  ],
+  "identities": {
+    "scanner_log": {
+      "bytes": 1207,
+      "sha256": "40178cea16bd059ea81221886854bc6cebff780804377d4042df1b75e26b2f5a"
+    },
+    "scanner_source": {
+      "bytes": 5691,
+      "sha256": "a0659236adf114553f71a10df58d4379e7e502d86647c4c405e68bc209b26fe8"
+    },
+    "region_manifest_rows": {
+      "bytes": 121271,
+      "sha256": "962acc3f1056ace142c9de56bffb94954d49e419cb44a134c4fceb72764eb637"
+    },
+    "provider_native_result": {
+      "bytes": 9410,
+      "sha256": "59945b53bb35dfe921140f3d89a59d0a0ad4a755fc99fc85fa3655ed39211245"
+    }
+  },
+  "limits": [
+    "This proves saved tile-ID coverage; full opaque payload migration and copied-world restart remain separate.",
+    "Vanilla legacy IDs use the stock Minecraft data-fixer route; no custom alias rewrite is inferred.",
+    "Previously enhanced runtime copies containing ValeCook* payloads were not this frozen source and require separate migration review.",
+    "No raw world/tile payload, coordinates or real player records are included."
+  ]
+}

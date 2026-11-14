@@ -1,0 +1,1 @@
+package net.minecraft.client.renderer;public final class BufferBuilder{public boolean fail;public void begin(int mode,Object format){if(fail)throw new IllegalStateException("synthetic begin");}public BufferBuilder pos(double x,double y,double z){return this;}public BufferBuilder color(int r,int g,int b,int a){return this;}public void endVertex(){}}

@@ -304,3 +304,54 @@ tasks.register('verifyWornArmor', JavaExec) {
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
 }
 tasks.named('check') { dependsOn tasks.named('verifyWornArmor') }
+
+// Optional original armor presentation; native-tick identity rules are headless.
+tasks.register('verifyArmorCoreRules', JavaExec) {
+    dependsOn tasks.named('ruleChecksClasses')
+    classpath = sourceSets.ruleChecks.runtimeClasspath
+    mainClass.set('village.vale.client.ArmorCoreRulesChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+}
+tasks.named('check') { dependsOn tasks.named('verifyArmorCoreRules') }
+// Synthetic mesh recorder is isolated: its MC stubs never enter a production source set.
+def armorCoreMeshClasses = layout.buildDirectory.dir('armor-core-mesh-checks')
+tasks.register('compileArmorCoreMeshChecks', JavaCompile) {
+    source fileTree('armorcoremeshchecks') { include '**/*.java' }
+    source files('src/main/java/village/vale/client/ArmorCoreGeometry.java')
+    classpath = files()
+    destinationDirectory = armorCoreMeshClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8); vendor = JvmVendorSpec.AZUL }
+}
+tasks.register('verifyArmorCoreMesh', JavaExec) {
+    dependsOn 'compileArmorCoreMeshChecks'
+    classpath = files(armorCoreMeshClasses)
+    mainClass = 'village.vale.client.ArmorCoreMeshChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8); vendor = JvmVendorSpec.AZUL }
+}
+tasks.named('check') { dependsOn 'verifyArmorCoreMesh' }
+
+// Exact optional-mod mappings, observed receipts and permission guards. No private mod input needed.
+for (entry in [verifyNativeBridgeConfig: 'village.vale.bridge.BridgeConfigChecks',
+               verifyNativeBridgeReceipts: 'village.vale.bridge.BridgeReceiptChecks',
+               verifyNativeBridgeDiscovery: 'village.vale.bridge.BridgeDiscoveryChecks',
+               verifyNativeBridgeCommands: 'village.vale.bridge.BridgeCommandChecks']) {
+    def taskName = entry.key
+    def testMain = entry.value
+    tasks.register(taskName, JavaExec) {
+        dependsOn tasks.named('ruleChecksClasses')
+        classpath = sourceSets.ruleChecks.runtimeClasspath
+        mainClass.set(testMain)
+        if (taskName == 'verifyNativeBridgeConfig') args file('tests/fixtures/bridge-moves.proposed.json').absolutePath
+        javaLauncher.set(javaToolchains.launcherFor {
+            languageVersion.set(JavaLanguageVersion.of(8))
+            vendor.set(JvmVendorSpec.AZUL)
+        })
+    }
+    tasks.named('check') { dependsOn tasks.named(taskName) }
+}
+
+apply from: file('../../gradle/vale-voxel-checks.gradle')
+
+// Exact remote-channel client capability, independent of Minecraft world/body lifetime.
+tasks.register('verifyDodgeServerCapability',JavaExec){dependsOn 'ruleChecksClasses';classpath=sourceSets.ruleChecks.runtimeClasspath;mainClass='village.vale.client.DodgeServerCapabilityChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.named('check'){dependsOn 'verifyDodgeServerCapability'}

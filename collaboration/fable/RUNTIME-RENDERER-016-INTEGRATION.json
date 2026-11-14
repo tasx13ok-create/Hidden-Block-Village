@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "status": "PROMOTED_SOURCE_PENDING_MATCHED_COHORT_AND_GRAPHICS",
+  "original_author": "Claude Opus 5.5",
+  "source_pin": "f1b0f8f34d16a8d8388574e7aadf538d093e6a96",
+  "safe_base": "436c869",
+  "core_version": "0.3.16",
+  "hud_version": "0.20.0",
+  "gameplay_mutations": false,
+  "native_mod_assets_overridden": false,
+  "adaptation": [
+    "CombatFeel initialized once from ClientProxy. Camera reacts to observed client HP/absorption loss and native landing transitions. Exact world/body/connection/tick reset and bounded catchup prevent stale feedback across respawn or direct context swaps.",
+    "The raw AttackEntity event was input intent, not hit acceptance. Its success sparks/punch are instead triggered once by an admitted project-owned WeaponPulse SWING from the existing confirmed arsenal melee path. This does not add a new ordinary vanilla/native melee receipt protocol.",
+    "ScrollActorVfx retains all ten original shape families: fireball, firestream, vacuum, front, cannon, waterstream, shark, blade, dragon, thunder. Only own ScrollActor renderer selects them. Disguise/native entity render and other kinds retain existing handling.",
+    "Scroll trail cache is exact identity, max 128 entities and 24 positions each; sampled once at native END with exact world/entity-map membership. Fireball embers emit there, never per render; reduced motion/Quiet disables extra emission and freezes decorative phase.",
+    "VfxDraw voxel state is nested and scoped. Crescent matrix is restored in finally. Global generic cube budgets 1200/3000/9000 per observed render frame include the shared particle batches, in addition to per-effect and particle caps. Existing separate armor mesh is independently bounded.",
+    "VfxBudget LOD rejects detached/dead/foreign world entities; beyond48 blocks no procedural hand/scroll cue is drawn. MotionGate uses the optional shared detail/reduced-motion/Quiet preference."
+  ],
+  "tests": {
+    "real_api_promoted_client_source_files": 15,
+    "pure_rules": 914,
+    "pure_geometry": 12287,
+    "pure_feedback_and_global_bound_assertions": 9017,
+    "actual_VfxDraw_recording_assertions": 680,
+    "actual_core_main_and_ruleChecks_compile": "PASS in paired C Gradle task invocation",
+    "graphical_acceptance": false,
+    "fps_or_gpu_claim": false
+  },
+  "private_probe": {
+    "path": "modules/vale-orders/clientchecks/village/vale/arsenal/VfxShots.java",
+    "sha256": "3835c451997b5a9b21b07eede3ecee916bdfdbf26eb402aed22f939661a339a1",
+    "scope": "Historical clientChecks QA source. Not main source; only explicit private probe build includes it. Registration also requires explicit valeorders.vfxshots=true. It creates its own test world and can close the client; never enable in an owner inspection profile. No probe/client was launched by this integration.",
+    "ordinary_jar_includes_probe": false
+  },
+  "paths": [
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/CombatFeel.java",
+      "sha256": "f1bbafc066f209b7eb969ceef5f8ce3dd8b59187d47d3bee3c08b93f3def9186"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/MotionGate.java",
+      "sha256": "a6b57fc514ad320ff02cee965ed9764fc3971960f5c66c67f66d72b803e01fac"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxBudget.java",
+      "sha256": "6310c11b2c7ac33321a4eb84949dea632aee5b644cbd3b069fe3ae5b2085cc99"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ScrollActorVfx.java",
+      "sha256": "cb2cb87806b0c83cc6e2f429c0e969893f8a5ae330ecf5f75897535eb1abb78b"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/JutsuVfx.java",
+      "sha256": "220c212f491c6703b5b93c03b4ef540dc7ba6ffc9e0cd5b31decf2d255c448b5"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxDraw.java",
+      "sha256": "887bab93aa7d952e345a2a894d2f48d78fa363794376c5b8646c32a00394da78"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelRules.java",
+      "sha256": "207077c103f05b4c2df333622847e73c7704dd75469e10e24c7c10cd268ab0fa"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelBits.java",
+      "sha256": "a86c9486f643bd7241c8482cd41237929b8060b8fdb37862c5cc6704d647c0ed"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxFeedback.java",
+      "sha256": "eaf80948c43bb267d6b40f235ead5659964fb884e525c2e2da8ba3b0bfc42a13"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ClientProxy.java",
+      "sha256": "ab68aaf5751c1a9ab88d15b4348a167bdaa83d8c2a53f150f69f823c66c3abfd"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollActor.java",
+      "sha256": "2261f822bf63db7794ab28ddf77b7b40d59f1916b5e55e04d660e4aee24a6e53"
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/VfxFeedbackChecks.java",
+      "sha256": "fcf8ea042acbdf1e8de081470b2774f402c11f7e163d0304aca2961332f173f1"
+    },
+    {
+      "path": "gradle/vale-voxel-checks.gradle",
+      "sha256": "6f3fd0ba7764374a72db2769e6b70c4f388e5d502aa2b26ac4e5618a7396210c"
+    }
+  ]
+}

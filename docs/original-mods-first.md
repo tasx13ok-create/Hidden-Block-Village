@@ -24,11 +24,18 @@ Saved technical IDs remain stable when the provider is absent. This prevents
 the compatibility module from replacing original furniture presentation or
 behavior when the original mod is installed.
 
-The new compatibility source still requires its matching component/native and
-full-pack provider-present checks before installation. The stopped test client
-has the resource-pack selection change; its old compatibility JAR is retained
-until that new matching build is accepted. No Minecraft window was opened.
-Visual inspection of restored equipment remains pending the next user test.
+The matching source09build now passes all11areas/36artifacts,3,665Forge native
+assertions and55actual full54Magma provider checks. Original block/item/tile
+classes and native ID/factory/NBT roundtrips pass. A read-only hash-checked census
+of all1,249,484frozen-world chunks found65VC/Waystones tiles, all using the exact
+modern native keys verified by the probe. No additional aliases are needed for
+that frozen input. Read `release/evidence/original-provider-native09.json` and
+`release/evidence/frozen-v17-provider-tile-census.json`.
+
+The stopped test client has the resource-pack selection change; the new matching
+component installation is separate. No Minecraft window was opened. Visual
+inspection, full opaque-payload migration and copied-world restart remain
+pending; the census does not claim those broader results.
 
 Future client/friend exports must use the stock-art selection and the latest
 matching approved component receipt. Historical flat-icon/friend archives remain

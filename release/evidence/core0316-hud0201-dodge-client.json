@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "scope": "SOURCE11_NATIVE_BASELINE_WITH_VERIFIED_HUD12_AND_CLIENT_ONLY_DODGE13_CORRECTIONS",
+  "created_utc": "2026-11-14T16:13:47.120681+00:00",
+  "production_versions": {
+    "core": "0.3.16",
+    "hud": "0.20.1",
+    "client_compat": "0.1.3"
+  },
+  "source11_baseline": {
+    "source_sha256": "83a0fe1cd40dd88aa320216df66a64b4809da708568285b80c608196f0660372",
+    "report_sha256": "4c9afe3a916f29468e699fb08c92866fc02ef53922e27a740f89b59f97bd356f",
+    "areas": 11,
+    "artifacts": 36,
+    "all_passed": true,
+    "source_drift": false,
+    "core_runtime_sha256": "55fdfab42505407fe7552d1a5ae2f327bfcbff1f66aef5f8c612483adb2f5dcf",
+    "forge_native_assertions": 3665,
+    "forge_native_report_sha256": "2993c4de01bbda8170b060a044a8e3286b9b2e34cd21d9e52a9e721428751b0b",
+    "full55_magma_assertions": 202,
+    "full55_evidence": "release/evidence/source11-native-provider-bridge.json",
+    "full55_evidence_sha256": "162191451a05b8924aaa08337b7794db16ccd066f0c464ae727059821a5b63d4",
+    "native_original_jar_hashes_preserved": 45,
+    "private_economic_transformer_installed": false
+  },
+  "hud12_correction": {
+    "source_sha256": "71418f57b6d05ce624e249a73b4b650ab32c1ce92f94e64ba71f4b03e30f8e26",
+    "report_sha256": "9d16f4004b56810d0b800a0b88a579b69f4d397d598b4d9597abb0dcda32d715",
+    "component_build_passed": true,
+    "source_drift": false,
+    "runtime_file": "Naruto-HUD-0.20.1.jar",
+    "runtime_sha256": "a0e2a25c74bbd26cd5e5ba3a5bdca45439fd26cf01cd17ab43a83c728fb1b474",
+    "runtime_bytes": 272103,
+    "purpose": "Fix the actual client HUD crash while keeping native artwork and server gameplay unchanged."
+  },
+  "dodge13_client_correction": {
+    "source_sha256": "f8533d0b6cd498a93bd7998effe4ff6e737b0aba6cffdfeb3b50aefeee4d9330",
+    "report_sha256": "8e2d1ee78c9b78e7fb2cdb740cb861a58cc7cccb8d966d563accbea1262f1a36",
+    "core_component_build_passed": true,
+    "core_checks_executed": 36,
+    "new_capability_assertions": 18,
+    "runtime_file": "Naruto-Core-0.3.16.jar",
+    "runtime_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+    "runtime_bytes": 2849845,
+    "reported_trigger": "User pressed V in the real joined Source12 client and saw the misleading Core0.3.14 requirement despite deployed Core0.3.16.",
+    "diagnosis": "The client dispatcher mod map is empty on the examined Forge1.12.2 handshake path;0.3.16 passes the existing numerical version predicate.",
+    "correction": "Use connection-specific remote valeorders_dodge registration, honor unregister/disconnect and reject known unsupported versions. Preserve registration received before the later connected event.",
+    "changed_runtime_entries": [
+      "village/vale/client/DodgeClient$Frame.class",
+      "village/vale/client/DodgeClient.class",
+      "village/vale/client/DodgeServerCapability$Entry.class",
+      "village/vale/client/DodgeServerCapability.class"
+    ],
+    "all_nonclient_class_bytes_identical_to_native_tested_source11": true,
+    "unchanged_nonclient_class_count": 350,
+    "all_other_archive_entries_identical": true,
+    "fresh_backend_native_rerun_for_source13": false,
+    "native_result_reuse_basis": "Only the four listed client Dodge class entries differ from the exact native-tested Source11 Core; server class bytes and other production entries are identical."
+  },
+  "private_installation_status": {
+    "preview_core13_installed": true,
+    "requested_bisect_target_core13_installed": true,
+    "target_server_mods": 53,
+    "target_naruto_jars": 9,
+    "target_world_writes_during_update": 0,
+    "target_host_settings_preserved": true,
+    "extra_backup_created_for_target_update": false,
+    "backup_preference": "Owner explicitly requested reuse of existing backups."
+  },
+  "client_observation": {
+    "source12_real_join_observed": true,
+    "source12_shader_and_gl_glass_loading_observed": true,
+    "source12_dodge_gate_failed_by_actual_user_report": true,
+    "source13_client_launched": true,
+    "source13_ready_and_join_verified": true,
+    "source13_physical_dodge_accepted": true,
+    "computer_use_unavailable_reason": "Computer-use kernel assets failed to load; no fabricated screen or keyboard acceptance.",
+    "source13_modded_connection_local_time": "2026-11-14 11:12:10",
+    "source13_dodge_server_ready_marker_local_time": "2026-11-14 11:12:13",
+    "source13_actual_join_local_time": "2026-11-14 11:12:14",
+    "current_multiplayer_stable_observed": true,
+    "saved_actual_session_accepted_dodge_sequence": {
+      "before": 0,
+      "after": 36,
+      "save_all_local_time": "2026-11-14 11:13:38",
+      "native_fixture_installed": false,
+      "refused_or_refunded_attempts_restore_sequence": true,
+      "conclusion": "36 accepted actual-session dodges observed in the saved server state.",
+      "all_four_physical_keyboard_directions_claimed": false
+    }
+  },
+  "known_original_asset_errors": {
+    "evidence_sha256": "2ebd88a6976b095ebea614ffa16e0df3c02eb22c269acc68d9c8e5033f22c0fa",
+    "distinct_missing_models": 39,
+    "model_log_occurrences": 40,
+    "missing_textures": 2,
+    "missing_sound_files": 5,
+    "missing_sound_events": 1,
+    "distinct_failing_variants": 5,
+    "variant_log_occurrences": 6,
+    "corrective_overlay_activated": false,
+    "original_art_replaced": false
+  },
+  "complete_graphical_or_physical_acceptance": false,
+  "hosted_acceptance": false,
+  "full_game_complete": false,
+  "deployment_ready": false,
+  "distribution": "Safe source/build metadata only; no private profiles, real player identifiers, raw log bodies, world payloads, native distributions or artwork included.",
+  "archives": {
+    "client": {
+      "file": "Hidden Block Village.zip",
+      "bytes": 204639753,
+      "sha256": "2172ab6f94105ff93f332ad89e96cae665f95d6f2b54c3c240e9531b86a28abe",
+      "mods": 58,
+      "zip_entries": 192,
+      "crc_readback_passed": true,
+      "original_art_preserved": true,
+      "bsl_shader_pack_included": true,
+      "receipt": "release/evidence/hidden-block-village-client-0316.json"
+    },
+    "full_setup": {
+      "status": "COMPLETE_INTEGRITY_VERIFIED",
+      "file": "Hidden Block Village Full Setup.zip",
+      "bytes": 6242378177,
+      "sha256": "31db1bd77f1985556288b2a582a3a92a568ecae5f33d00ac36dde140d30e9d89",
+      "crc_and_file_sha256_readback_passed": true,
+      "contains_private_world_and_player_data": true,
+      "receipt": "release/evidence/hidden-block-village-full-setup-0316.json"
+    }
+  }
+}

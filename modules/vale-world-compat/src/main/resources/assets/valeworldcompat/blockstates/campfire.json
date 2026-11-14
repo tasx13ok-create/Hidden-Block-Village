@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "legacy=0": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=1": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=2": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=3": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=4": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=5": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=6": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=7": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=8": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=9": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=10": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=11": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=12": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=13": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=14": {
+      "model": "valeworldcompat:campfire"
+    },
+    "legacy=15": {
+      "model": "valeworldcompat:campfire"
+    }
+  }
+}

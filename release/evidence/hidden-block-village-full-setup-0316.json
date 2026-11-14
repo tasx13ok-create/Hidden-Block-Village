@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "scope": "PRIVATE_SETUP_ARCHIVE_INTEGRITY",
+  "created_utc": "2026-11-14T16:15:20.447397+00:00",
+  "archive": "Hidden Block Village Full Setup.zip",
+  "bytes": 6242378177,
+  "sha256": "31db1bd77f1985556288b2a582a3a92a568ecae5f33d00ac36dde140d30e9d89",
+  "files": 3699,
+  "contains_private_world_and_player_data": true,
+  "crc_and_all_file_sha256_readback_passed": true,
+  "gameplay_acceptance_claimed": false,
+  "hosting_accepted": false
+}

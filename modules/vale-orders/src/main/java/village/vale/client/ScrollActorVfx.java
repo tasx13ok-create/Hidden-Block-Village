@@ -2,7 +2,7 @@ package village.vale.client;
 
 import java.util.ArrayDeque;
 import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.IdentityHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -29,9 +29,16 @@ import village.vale.WeaponMath;
 @SideOnly(Side.CLIENT)
 public final class ScrollActorVfx {
     private ScrollActorVfx() {}
-    private static final Map<Entity, ArrayDeque<double[]>> PATH = new WeakHashMap<>();
+    private static final Map<Entity, ArrayDeque<double[]>> PATH = new IdentityHashMap<>();
+    private static final VoxelRules.Epoch EPOCH=new VoxelRules.Epoch();private static long epoch=-1;private static int updated=Integer.MIN_VALUE;private static boolean installed;
+    public static void initialize(){if(!installed){installed=true;net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new Hooks());}}
+    private static boolean context(){Minecraft mc=Minecraft.getMinecraft();if(!mc.isCallingFromMinecraftThread())return false;boolean ready=EPOCH.prepare(mc.world,mc.player,mc.getConnection(),mc.player==null?-1:mc.player.ticksExisted);if(epoch!=EPOCH.version()){epoch=EPOCH.version();PATH.clear();updated=Integer.MIN_VALUE;}return ready;}
+    public static final class Hooks {
+      @net.minecraftforge.fml.common.eventhandler.SubscribeEvent public void tick(net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent ev){if(ev.phase!=net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END||!context()||updated==EPOCH.tick())return;updated=EPOCH.tick();for(java.util.Iterator<Map.Entry<Entity,ArrayDeque<double[]>>> it=PATH.entrySet().iterator();it.hasNext();){Map.Entry<Entity,ArrayDeque<double[]>> entry=it.next();Entity e=entry.getKey();if(VfxBudget.lod(e)<=0){it.remove();continue;}ArrayDeque<double[]> q=entry.getValue();double[] last=q.peekFirst();if(last!=null&&(int)last[3]==e.ticksExisted)continue;if(last!=null&&(int)last[3]>e.ticksExisted)q.clear();q.addFirst(new double[]{e.posX,e.posY+e.height/2,e.posZ,e.ticksExisted});while(q.size()>24)q.removeLast();if(e instanceof village.vale.arsenal.ScrollActor&&"fireball".equals(((village.vale.arsenal.ScrollActor)e).kind)&&e.ticksExisted%2==0&&MotionGate.allowed()){java.util.Random r=VoxelBits.RNG;VoxelBits.spawn(e.posX,e.posY+e.height/2,e.posZ,(r.nextDouble()-.5)*.05,.03,(r.nextDouble()-.5)*.05,1,r.nextBoolean()?0xFFB03A:0xFF6A1A,1f,12,-.002,.9,false);}}}
+    }
 
     public static boolean draws(String kind) {
+        if(kind==null)return false;
         switch (kind) {
             case "fireball": case "firestream": case "vacuum": case "front": case "cannon":
             case "waterstream": case "shark": case "blade": case "dragon": case "thunder": return true;
@@ -45,13 +52,8 @@ public final class ScrollActorVfx {
 
     /** Recent positions (newest first), sampled once per tick. */
     private static ArrayDeque<double[]> path(Entity e) {
-        ArrayDeque<double[]> q = PATH.computeIfAbsent(e, k -> new ArrayDeque<>());
-        double[] last = q.peekFirst();
-        if (last == null || (int) last[3] != e.ticksExisted) {
-            q.addFirst(new double[] {e.posX, e.posY + e.height / 2, e.posZ, e.ticksExisted});
-            while (q.size() > 24) q.removeLast();
-        }
-        return q;
+        ArrayDeque<double[]> q=PATH.get(e);if(q==null){q=new ArrayDeque<>();if(PATH.size()<128)PATH.put(e,q);}
+        ArrayDeque<double[]> copy=new ArrayDeque<>(q);if(copy.isEmpty())copy.add(new double[]{e.posX,e.posY+e.height/2,e.posZ,e.ticksExisted});return copy;
     }
 
     /** Unit flight direction from the sampled path (falls back to motion). */
@@ -63,14 +65,14 @@ public final class ScrollActorVfx {
     }
 
     public static void render(Entity e, String kind, double x, double y, double z, float pt) {
-        if (VfxBudget.lod(e) <= 0) return;
+        if (!context()||!draws(kind)||VfxBudget.lod(e)<=0||!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(z)||!Float.isFinite(pt)||pt<0||pt>1) return;
         ArrayDeque<double[]> q = path(e);
         double[] at = pos(e, pt), d = dir(e, q);
-        double t = e.ticksExisted + pt;
+        double t = MotionGate.allowed()?e.ticksExisted+pt:0;
         float yaw = (float) Math.toDegrees(Math.atan2(-d[0], d[2])), pitch = (float) -Math.toDegrees(Math.asin(Math.max(-1, Math.min(1, d[1]))));
         double[][] b = WeaponMath.basis(yaw, pitch);
         VfxDraw.begin(x, y + e.height / 2, z);
-        VfxDraw.voxel = true;
+        VfxDraw.voxel(true);
         try {
             switch (kind) {
                 case "fireball": fireball(t, b, e); break;
@@ -86,7 +88,6 @@ public final class ScrollActorVfx {
                 default: break;
             }
         } finally {
-            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
@@ -106,10 +107,7 @@ public final class ScrollActorVfx {
             double[] tip = w(b, Math.cos(a) * r * 0.4, Math.sin(a) * r * 0.4, -r - len);
             VfxDraw.line(new double[][] {base, tip}, i % 2 == 0 ? 0xFFB03A : 0xFF6A1A, 0.95f, 0.2f, 9f);
         }
-        if (e.ticksExisted % 2 == 0) {
-            java.util.Random rnd = e.world.rand;
-            VoxelBits.spawn(e.posX, e.posY + e.height / 2, e.posZ, (rnd.nextDouble() - 0.5) * 0.05, 0.03, (rnd.nextDouble() - 0.5) * 0.05, 1, rnd.nextBoolean() ? 0xFFB03A : 0xFF6A1A, 1f, 12, -0.002, 0.9, false);
-        }
+
     }
 
     private static void orb(double t, int body, int core, double r) {
@@ -162,7 +160,7 @@ public final class ScrollActorVfx {
 
     private static void crescent(double t, double[][] b, int core, int glow, double size, boolean spin) {
         GlStateManager.pushMatrix();
-        if (spin) {
+        try { if (spin) {
             double[] axis = b[0];
             GlStateManager.rotate((float) (t * 40 % 360), (float) axis[0], (float) axis[1], (float) axis[2]);
         }
@@ -177,7 +175,7 @@ public final class ScrollActorVfx {
         VfxDraw.ribbon(in, out, glow, 0.85f, 0.85f);
         VfxDraw.additive();
         VfxDraw.line(out, core, 0.95f, 0.95f, 6f);
-        GlStateManager.popMatrix();
+        } finally { GlStateManager.popMatrix(); }
     }
 
     private static void creature(double t, double[][] b) {
