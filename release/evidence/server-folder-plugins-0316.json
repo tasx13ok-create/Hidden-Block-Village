@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "scope": "SINGLE_SERVER_FOLDER_REPLACEMENT",
+  "file": "03 - plugins.zip",
+  "folder": "plugins",
+  "bytes": 3272247,
+  "sha256": "6e18573aa590721a16ef549cce3d486566729ab02f96220ecf1809452995b4e6",
+  "files": 1602,
+  "jars": 3,
+  "source_manifest_exact_match": true,
+  "all_crc_and_sha256_readbacks_passed": true,
+  "root_layout_preserved": true,
+  "below_browser_upload_bytes": 450000000,
+  "source_and_live_server_modified": false,
+  "instructions": "Stop server; replace old folder; extract ZIP in server root. Keep stopped until all replacements are installed.",
+  "hosted_acceptance_performed": false
+}

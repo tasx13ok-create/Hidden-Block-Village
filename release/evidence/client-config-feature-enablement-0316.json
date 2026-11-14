@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "scope": "ACTUAL_OWNER_CLIENT_CONFIG_FEATURE_ENABLEMENT",
+  "profile_name": "Hidden Block VillageSL",
+  "changed_file": "config/valeorders-client.cfg",
+  "before_sha256": "eac1d11a8d55b7b302a10843ed4af332236f3087e59d6f994c619b32e74e1fb3",
+  "after_sha256": "92212206ca4121433496755dafea854c191768e76c6c6b234d41186cb90ec4b1",
+  "settings": {
+    "armorPowerCore": true,
+    "jutsuDetail": 2
+  },
+  "hud_inventory_menu_jutsu_bar_already_enabled": true,
+  "key_bindings_preserved": true,
+  "preserved_config_hashes": {
+    "field-controls/profiles.json": "20b0f466c7592ec1711f4b2b31bfacce4db59fccc04ab16e791d8389dab8a63a",
+    "fieldhud.cfg": "51f2702b38ae0e6a50dbcc9a16b93017aa3635d51be041906b82ce3baecdb908",
+    "valeorders.cfg": "5119900e03808b2fcc3c7005f8f86bd51f149943aaa3133121ae5ccbe03e37cc",
+    "VariedCommodities.cfg": "98bb12dffe44ff0b9bf3d3fbf9e236b5f4fb54d777c06a16634b0a6ae94dce36",
+    "hvbijuu.cfg": "e5374ba6b11af933daeba9f22e64309e59c4245eab9da9fc20038edbfa7df8cc"
+  },
+  "native_icons_and_armor_textures_modified": false,
+  "mod_jars_world_or_server_modified": false,
+  "fresh_graphical_acceptance_claimed": false,
+  "completed": true
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "scope": "ACTUAL_IMPORTED_CLIENT_MIXED_MODS_CLEANUP",
+  "status": "PASS",
+  "expected_current_jars": 58,
+  "replacement_archive_sha256": "78296d26effdc60096ced953becdf4394deb930eaa52678bc5aa1e684053d72d",
+  "all_58_current_jar_hashes_matched_before_cleanup": true,
+  "retired_files": [
+    {
+      "file": "field-controls-1.5.0.jar",
+      "bytes": 125339,
+      "sha256": "c00795f2cd88f4b63c45888b320043aafabfd63bc6c03d17854627cefa58624b"
+    },
+    {
+      "file": "field-hud-0.18.0.jar",
+      "bytes": 217952,
+      "sha256": "4b371322178fd584fb0f196f188a66002517fdd81364fa56453c8ac046a65a6e"
+    },
+    {
+      "file": "logo.jpeg",
+      "bytes": 367797,
+      "sha256": "c753c42a3f7b7e7091c82896598fc422e56690fcdf3516187e237e100913060a"
+    },
+    {
+      "file": "mcmod.info",
+      "bytes": 267,
+      "sha256": "b0d17a6cbdad72c8576f0d7f35240acb922003550231a46067af0011ac5bd6ef"
+    },
+    {
+      "file": "Naruto-Damage-Compat-0.1.0.jar",
+      "bytes": 5611,
+      "sha256": "77d183c9d84e970d5032a7734cdedab198a0ff50d6f4722d533c30f6d4c9f3a4"
+    },
+    {
+      "file": "Naruto-Residents-Server-Bridge-0.1.0.jar",
+      "bytes": 3021,
+      "sha256": "79fc0947fc052d8dedefff72d15a179dd4c2180a21fcdeb116164a61e944550f"
+    },
+    {
+      "file": "Naruto-Server-Bridge-0.2.0.jar",
+      "bytes": 4796,
+      "sha256": "b2c0f2f6c477a52bfcd28dae21848c59a75547d354771d1c5b86120a5ebe9f26"
+    },
+    {
+      "file": "pack.mcmeta",
+      "bytes": 67,
+      "sha256": "c5dc2fe8baf75f1aae429728baa7805a4d3aa09df3075f6433002ce4b4cfa84f"
+    },
+    {
+      "file": "Vale-Client-Lifecycle-Compat-0.1.2.jar",
+      "bytes": 16243,
+      "sha256": "a2fe53085b312d31b319dd4ca24ef32b37220412857350b07b4e6fdcfa547eca"
+    }
+  ],
+  "resourcepacks_or_options_modified": false,
+  "server_world_or_player_data_modified": false,
+  "owner_game_process_stopped": false,
+  "completed": true,
+  "all_58_current_jar_hashes_matched_after_cleanup": true,
+  "original_varied_commodities_jar_sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+  "native_asset_namespace_audit": "Owned current JARs contain no variedcommodities asset namespace; old external resource-pack removal is the next folder step"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "scope": "SINGLE_CLIENT_MODS_FOLDER_REPLACEMENT",
+  "file": "01 - mods.zip",
+  "bytes": 203555669,
+  "sha256": "78296d26effdc60096ced953becdf4394deb930eaa52678bc5aa1e684053d72d",
+  "mods": 58,
+  "hud_version": "0.20.1",
+  "core_version": "0.3.16",
+  "core_sha256": "12eb3d63e13b817648eaabb001bf4d21abdfad0f43b89d70c2e4b2375045a93c",
+  "previous_core_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+  "core_changed_entries": [
+    "village/vale/client/ArmorCoreFx.class"
+  ],
+  "all_nonclient_core_bytes_identical": true,
+  "base_client_archive_sha256": "2172ab6f94105ff93f332ad89e96cae665f95d6f2b54c3c240e9531b86a28abe",
+  "core_build_report_sha256": "493df853658c54a3542cb8b6329902c047c190265adff44081d3ba6db092a437",
+  "all_other_mod_jars_unchanged": true,
+  "all_nested_jar_and_zip_crc_sha256_checks_passed": true,
+  "client_profile_or_live_session_modified": false,
+  "resource_pack_or_options_modified": false,
+  "host_server_update_required_for_renderer_only_delta": false,
+  "fresh_graphical_or_hosted_acceptance_claimed": false
+}

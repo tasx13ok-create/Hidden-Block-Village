@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "scope": "SERVER_ROOT_FILES_REPLACEMENT",
+  "file": "04 - server settings.zip",
+  "folder": null,
+  "bytes": 1657,
+  "sha256": "b79c58c33957f233d1ee73406f868e4363701854455f04bff51de8aed80737cc",
+  "files": 1,
+  "jars": 0,
+  "source_manifest_exact_match": true,
+  "all_crc_and_sha256_readbacks_passed": true,
+  "root_layout_preserved": true,
+  "below_browser_upload_bytes": 450000000,
+  "source_and_live_server_modified": false,
+  "instructions": "Stop server; extract ZIP in server root and replace the selected files.",
+  "hosted_acceptance_performed": false,
+  "root_files": [
+    "spigot.yml"
+  ]
+}

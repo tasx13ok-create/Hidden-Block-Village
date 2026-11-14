@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "scope": "SINGLE_SERVER_FOLDER_REPLACEMENT",
+  "file": "02 - config.zip",
+  "folder": "config",
+  "bytes": 900249,
+  "sha256": "ac98fb18479929c1bc1a156d4dc7dbddc9b5c3b30fb0f9b1c95da874ef0436c7",
+  "files": 66,
+  "jars": 0,
+  "source_manifest_exact_match": true,
+  "all_crc_and_sha256_readbacks_passed": true,
+  "root_layout_preserved": true,
+  "below_browser_upload_bytes": 450000000,
+  "source_and_live_server_modified": false,
+  "instructions": "Stop server; replace old folder; extract ZIP in server root. Keep stopped until all replacements are installed.",
+  "hosted_acceptance_performed": false
+}

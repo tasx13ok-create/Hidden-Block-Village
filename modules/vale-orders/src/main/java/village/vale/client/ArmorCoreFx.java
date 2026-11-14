@@ -135,7 +135,7 @@ public final class ArmorCoreFx implements LayerRenderer<AbstractClientPlayer> {
         VfxDraw.begin();
         try {
             renderer.getMainModel().bipedBody.postRender(scale);
-            if (p.isSneaking()) GlStateManager.translate(0, 0.2, 0);
+            // The body bone already includes the sneak lean/offset; no extra translate here.
             // Chest front plane: x right(-) / left(+), y down, z front = -0.135 (just proud of the armour).
             GlStateManager.translate(0, 0.26, -0.15);
             double px = 1 / 16.0;

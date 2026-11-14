@@ -1,0 +1,4 @@
+name: Naruto-Stamina
+main: village.naruto.stamina.NarutoStamina
+version: 1.0.0
+description: Near-infinite food stamina for survival and adventure movement.

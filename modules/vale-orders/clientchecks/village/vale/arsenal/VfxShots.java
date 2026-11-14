@@ -212,10 +212,10 @@ public final class VfxShots {
         if (t == 84) shot(mc, String.format("core_%d_%s_calm", b, beast));
         if (t == 86) server.addScheduledTask(() -> { EntityPlayerMP p = server.getPlayerList().getPlayers().get(0); p.attackEntityFrom(net.minecraft.util.DamageSource.GENERIC, 1); p.heal(1); });
         if (t == 92) shot(mc, String.format("core_%d_%s_powered", b, beast));
-        if (t == 100) server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).setSneaking(true));
+        if (t == 100) net.minecraft.client.settings.KeyBinding.setKeyBindState(mc.gameSettings.keyBindSneak.getKeyCode(), true);
         if (t == 130) shot(mc, String.format("core_%d_%s_charging", b, beast));
         if (t == 162) shot(mc, String.format("core_%d_%s_overload", b, beast));
-        if (t == 168) { server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).setSneaking(false)); mc.gameSettings.fovSetting = 70; }
+        if (t == 168) { net.minecraft.client.settings.KeyBinding.setKeyBindState(mc.gameSettings.keyBindSneak.getKeyCode(), false); mc.gameSettings.fovSetting = 70; }
     }
 
     private void menus(Minecraft mc, IntegratedServer server, int t) {

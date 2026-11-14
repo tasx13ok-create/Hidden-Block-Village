@@ -182,7 +182,7 @@ Verified in the client: all nine sets, calm and powered. The test jar was built 
 - **Water or rain:** steam rises off the core.
 - **Night or dark sky:** the ground light pool is 50% wider.
 
-**Verified in the client:** the hit spray. **Not verified:** the charge and overload. The probe crouches the player from the server, but the local player's crouch comes from keyboard input, so it never charged. Check this in game by holding sneak for 3 s.
+**Verified in the client:** the hit spray, plus the charge and overload, now driven by the real sneak key. Fixed: the core slid off the chest while crouching, because a manual sneak offset was applied on top of the body bone.
 
 ## Effects performance pass (client `VfxBudget`)
 - **Per-frame voxel cube budget** by `jutsuDetail`: 1,200 / 3,000 / 9,000 cubes. Extra cubes are skipped, so effects lose fine detail instead of stalling.
