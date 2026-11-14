@@ -41,7 +41,7 @@ public final class VfxShots {
             if (mc.currentScreen instanceof GuiMainMenu) {
                 if (Boolean.getBoolean("valeorders.vfxshots.menus") && titleWait++ < 60) { if (titleWait == 59) shot(mc, "menu_00_title"); return; }
                 launched = true;
-                WorldSettings s = new WorldSettings(1234L, GameType.CREATIVE, false, false, WorldType.FLAT);
+                WorldSettings s = new WorldSettings(1234L, GameType.CREATIVE, false, false, WorldType.FLAT).enableCommands();
                 mc.launchIntegratedServer("vfxshots-" + System.currentTimeMillis(), "vfxshots", s);
             }
             return;
@@ -66,6 +66,15 @@ public final class VfxShots {
             p.world.spawnEntity(target);
         });
         if (tick < 300) return;
+        if (Boolean.getBoolean("valeorders.vfxshots.bridge")) {
+            int t = tick - 300;
+            mc.gameSettings.hideGUI = false; mc.gameSettings.thirdPersonView = 2;
+            if (t == 5) server.addScheduledTask(() -> { EntityPlayerMP p = server.getPlayerList().getPlayers().get(0); p.inventory.setInventorySlotContents(0, new net.minecraft.item.ItemStack(net.minecraft.init.Items.BLAZE_ROD)); p.inventory.currentItem = 0;
+                server.getCommandManager().executeCommand(p, "/narutobridge status"); server.getCommandManager().executeCommand(p, "/narutobridge map weapon:emberbrand"); server.getCommandManager().executeCommand(p, "/narutobridge test spiral"); });
+            if (t == 25) shot(mc, "bridge_command");
+            if (t == 40) mc.shutdown();
+            return;
+        }
         if (Boolean.getBoolean("valeorders.vfxshots.menus")) { menus(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.hud")) { hud(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.dodge")) { dodges(mc, server, tick - 300); return; }

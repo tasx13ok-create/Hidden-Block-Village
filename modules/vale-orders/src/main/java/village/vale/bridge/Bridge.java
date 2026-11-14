@@ -73,6 +73,21 @@ public final class Bridge {
         MinecraftForge.EVENT_BUS.register(new Bridge());
     }
 
+    public static int mappingCount() { return MOVES.size(); }
+    public static int seenCount() { return SEEN.size(); }
+    public static void reload() { MOVES.clear(); loadMoves(); }
+
+    /** Sets (or with null, removes) one mapping and writes bridge-moves.json. */
+    public static void setMapping(String id, String style) {
+        if (style == null) MOVES.remove(id); else MOVES.put(id, style);
+        JsonObject root = new JsonObject();
+        root.addProperty("_help", "Map a licensed item or entity ID to a style: spiral, charge, fireedge, windedge, lava, lightmode, weapon:<arsenal key>, or none. Edit in game with /narutobridge map.");
+        JsonObject moves = new JsonObject();
+        new TreeMap<>(MOVES).forEach(moves::addProperty);
+        root.add("moves", moves);
+        write(new File(folder, "bridge-moves.json"), root);
+    }
+
     private static void loadMoves() {
         File f = new File(folder, "bridge-moves.json");
         if (!f.exists()) {

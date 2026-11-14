@@ -60,6 +60,7 @@ public final class ValeOrders {
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
         event.registerServerCommand(new ValeCommand());
+        event.registerServerCommand(new village.vale.bridge.BridgeCommand());
         event.registerServerCommand(new AcademyCommand());
         event.registerServerCommand(new MigrationLoot.Command());
     }
