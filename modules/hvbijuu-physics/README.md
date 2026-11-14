@@ -14,8 +14,8 @@ The proposed momentum, separation, experimental body capsule and swing-benchmark
 
 This applies the same way to every tail section on every set, and adds no per-design features.
 
-- **Half-pixel stepping:** prism vertices snap to a 0.5 px grid, so tapers step like Minecraft geometry.
-- **Plate collars:** each section that is at least 2 px wide, tall and deep gets a raised rim at its front joint. The rim is built from that section's own profile (8-ring, 12-round, shell or blade) and side UVs, so it inherits the set's texture. Minecraft's per-face shading gives the bevel light and shadow.
+- **Whole-pixel stepping** (fable5): prism vertices snap to whole Minecraft pixels, so every taper steps like block geometry.
+- **Plate collars** (fable5: deeper, with a second thinner band halfway along sections at least 6 px long): each section that is at least 2 px wide, tall and deep gets a raised rim at its front joint. The rim is built from that section's own profile (8-ring, 12-round, shell or blade) and side UVs, so it inherits the set's texture. Minecraft's per-face shading gives the bevel light and shadow.
 
 **Build.** The source is decompiled, with Minecraft names obfuscated (SRG). Compile it against `srg_merged_minecraft.jar` (from the vale-orders RFG cache), the Forge `classes.jar` and the original jar:
 
