@@ -28,6 +28,10 @@ public final class Dodge {
     private static SimpleNetworkWrapper channel;
     private static final Map<UUID, Long> LAST = new HashMap<>();
     private static final Map<UUID, Boolean> AIR_USED = new HashMap<>();
+    private static final Map<UUID, Long> EVADE_UNTIL = new HashMap<>();
+
+    /** True during the dodge's short evasion window. */
+    public static boolean evading(EntityPlayerMP p) { Long u = EVADE_UNTIL.get(p.getUniqueID()); return u != null && p.world.getTotalWorldTime() <= u; }
 
     public static void register() {
         if (channel != null) return;
@@ -49,6 +53,7 @@ public final class Dodge {
         if (p.isRiding() || p.isElytraFlying() || p.capabilities.isFlying || p.isPlayerSleeping()) return;
         if (!village.vale.bridge.MoveCost.pay(p, village.vale.bridge.Bridge.dodgeCost)) return;
         LAST.put(id, now);
+        EVADE_UNTIL.put(id, now + DodgeMath.IFRAME_TICKS);
         if (!p.onGround) AIR_USED.put(id, true);
         double[] v = DodgeMath.velocity(dir, p.rotationYaw);
         double keep = p.onGround ? 0.2 : 0.4;
@@ -72,6 +77,7 @@ public final class Dodge {
     @SubscribeEvent public void logout(PlayerEvent.PlayerLoggedOutEvent e) {
         LAST.remove(e.player.getUniqueID());
         AIR_USED.remove(e.player.getUniqueID());
+        EVADE_UNTIL.remove(e.player.getUniqueID());
     }
 
     public static final class Request implements IMessage {

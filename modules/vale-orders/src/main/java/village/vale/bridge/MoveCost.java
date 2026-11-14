@@ -10,10 +10,12 @@ import village.vale.PlayerState;
 public final class MoveCost {
     private MoveCost() {}
 
-    /** Pays {@code resolveCost} (Vale units). Returns false and spends nothing if the player cannot afford it. */
+    /**
+     * Pays {@code resolveCost} percent of the player's energy. With NarutoMod linked, resolve is a
+     * live mirror of chakra (see {@link Bridge#mirror}), so this spend becomes a real chakra spend.
+     */
     public static boolean pay(EntityPlayer p, int resolveCost) {
         if (resolveCost <= 0) return true;
-        if (Bridge.preferChakra && ChakraLink.canSpend() && ChakraLink.spend(p, resolveCost * Bridge.chakraPerResolve)) return true;
         int have = PlayerState.resolve(p);
         if (have < resolveCost) return false;
         PlayerState.setResolve(p, have - resolveCost);

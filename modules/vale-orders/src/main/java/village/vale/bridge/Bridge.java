@@ -46,8 +46,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
  */
 public final class Bridge {
     private Bridge() {}
-    public static boolean preferChakra = true, discovery = true;
+    public static boolean preferChakra = true, discovery = true, autoMap = true;
     public static double chakraPerResolve = 1.0;
+    private static final Map<java.util.UUID, Integer> MIRRORED = new HashMap<>();
     public static int dodgeCost = 0;
     public static String[] watched = {"narutomod", "kabutoaddon", "borutomodaddononero", "ahznbcursemarkaddon", "ahznbswordsplus"};
     private static File folder;
@@ -62,7 +63,8 @@ public final class Bridge {
         Configuration cfg = new Configuration(new File(folder, "bridge.cfg"));
         cfg.load();
         preferChakra = cfg.getBoolean("preferChakra", "chakra", true, "When a licensed chakra mod is linked and supports spending, Vale moves spend chakra instead of resolve.");
-        chakraPerResolve = cfg.getFloat("chakraPerResolve", "chakra", 1.0f, 0.01f, 100f, "Chakra spent per point of Vale resolve cost.");
+        chakraPerResolve = cfg.getFloat("costScale", "chakra", 1.0f, 0.05f, 10f, "Multiplier on chakra spent: a move costing N energy spends N percent of max chakra times this.");
+        autoMap = cfg.getBoolean("autoMap", "moves", true, "Give licensed jutsu/weapons a matching move style from their registry name when bridge-moves.json has no entry.");
         dodgeCost = cfg.getInt("dodgeCost", "moves", 0, 0, 100, "Cost of one dodge in resolve units (chakra when linked). 0 keeps dodging free.");
         discovery = cfg.getBoolean("discovery", "discovery", true, "Record item, entity and damage IDs from the watched mods into bridge-discovered.json.");
         watched = cfg.getStringList("watchedNamespaces", "discovery", watched, "Mod namespaces to record and map.");
@@ -89,7 +91,7 @@ public final class Bridge {
         }
     }
 
-    private static boolean watchedId(String id) {
+    static boolean watchedId(String id) {
         if (id == null) return false;
         int c = id.indexOf(':');
         String ns = c < 0 ? "" : id.substring(0, c);
@@ -125,7 +127,7 @@ public final class Bridge {
         if (r == null) return;
         String id = r.toString();
         note("item", id, s.getItem().getClass().getName());
-        String style = MOVES.get(id);
+        String style = style(id);
         if (style != null) MoveVisuals.play((EntityPlayerMP) e.getEntityPlayer(), style);
     }
 
@@ -135,11 +137,49 @@ public final class Bridge {
         String id = entityId(e.getEntity());
         if (id == null) return;
         note("entity", id, e.getEntity().getClass().getName());
-        String style = MOVES.get(id);
+        String style = style(id);
         if (style != null && e.getEntity() instanceof net.minecraft.entity.projectile.EntityThrowable) {
             net.minecraft.entity.EntityLivingBase thrower = ((net.minecraft.entity.projectile.EntityThrowable) e.getEntity()).getThrower();
             if (thrower instanceof EntityPlayerMP) MoveVisuals.play((EntityPlayerMP) thrower, style);
         }
+    }
+
+    /** Explicit mapping first, then (if enabled) a style inferred from the registry name. */
+    static String style(String id) {
+        String s = MOVES.get(id);
+        if (s != null) return s.isEmpty() || s.equals("none") ? null : s;
+        return autoMap && watchedId(id) ? BridgeMath.infer(id) : null;
+    }
+
+    /**
+     * Chakra mirror: while NarutoMod is linked, Vale resolve (0..100) shows the player's chakra as a
+     * percentage. Any drop caused by a Vale move between ticks is spent from real chakra, then
+     * resolve re-syncs. Reserve-and-refund inside one action nets to zero and spends nothing.
+     */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void mirror(TickEvent.PlayerTickEvent e) {
+        if (e.phase != TickEvent.Phase.END || e.player.world.isRemote || !preferChakra || !ChakraLink.available()) return;
+        double have = ChakraLink.amount(e.player), max = ChakraLink.max(e.player);
+        if (!(max > 0) || Double.isNaN(have)) return;
+        java.util.UUID id = e.player.getUniqueID();
+        int current = village.vale.PlayerState.resolve(e.player);
+        Integer last = MIRRORED.get(id);
+        if (last != null && current < last && ChakraLink.canSpend()) {
+            double spend = BridgeMath.chakraFor(last - current, max, chakraPerResolve);
+            ChakraLink.spend(e.player, Math.min(spend, have));
+            have = ChakraLink.amount(e.player);
+        }
+        int synced = BridgeMath.percent(have, max);
+        if (synced != current) village.vale.PlayerState.setResolve(e.player, synced);
+        MIRRORED.put(id, synced);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void evade(LivingAttackEvent e) {
+        // A dodge in its evasion window avoids licensed jutsu and projectiles (and any ordinary hit).
+        if (e.getEntity().world.isRemote || !(e.getEntityLiving() instanceof EntityPlayerMP)) return;
+        if (e.getSource().canHarmInCreative() || e.getSource().isUnblockable() && e.getSource().getTrueSource() == null) return;
+        if (village.vale.Dodge.evading((EntityPlayerMP) e.getEntityLiving())) e.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

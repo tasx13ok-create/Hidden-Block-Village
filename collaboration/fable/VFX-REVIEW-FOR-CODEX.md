@@ -115,3 +115,9 @@ All vanilla and modded screens keep their layout; this only adds presentation.
 - **Tooltips:** brush-ink colours by rarity, gold for Vale items, kunai corner marks.
 
 Motion off or Quiet mode keeps only the static colouring. Evidence: `release/evidence/menu-immersion-20261113.png`. The probe flag is `-Dvaleorders.vfxshots.menus=true`.
+
+### Bridge pass 2
+- **Chakra mirror (`Bridge.mirror`):** with NarutoMod linked, resolve becomes a live 0–100% mirror of chakra each player tick. Any drop caused by an add-on move is spent from real chakra, scaled by `costScale`. Reserve-and-refund inside one action nets to zero. No add-on cost or refund code was changed.
+- **Dodge evasion (`Dodge.evading` + `Bridge.evade`):** during the dodge window, attacks from any source are cancelled, licensed jutsu and projectiles included. Void and creative-bypass damage still apply.
+- **Auto-mapping (`BridgeMath.infer`, `autoMap`):** watched-mod items and entities without an explicit `bridge-moves.json` entry get a style from registry-name keywords. Examples: rasen→spiral, chidori/raiton→charge, katon/fire→fire edge, futon/wind→wind edge, yoton/lava→lava, suiton/mist→Mist Censer, doton/earth→Siege Maul, kunai/shuriken/senbon/swords/tags→matching weapon effects. An entry of `"none"` disables one. 45 checks in `tests/village/vale/BridgeMathTest.java`.
+- **Still to verify with the real jars:** the chakra spend method, and whether the keyword inferences pick sensible styles for the actual IDs.
