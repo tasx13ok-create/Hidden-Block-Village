@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.fieldhud'
-version = '0.16.0'
+version = '0.17.0'
 base { archivesName = 'field-hud' }
 java {
     toolchain {
@@ -19,6 +19,8 @@ minecraft {
     username.set('FieldHudTest')
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+// Keep headless checks bounded while a full modded client/server is running.
+tasks.withType(JavaExec).matching { it.name.startsWith('verify') }.configureEach { maxHeapSize = '512m' }
 def holdClasses = layout.buildDirectory.dir('hold-checks')
 tasks.register('compileHoldChecks', JavaCompile) {
     source files('src/main/java/village/fieldhud/HoldGesture.java', 'tests/village/fieldhud/HoldGestureChecks.java')

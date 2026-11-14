@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.*;
 import net.minecraftforge.fml.common.gameevent.*;
 import org.lwjgl.input.Keyboard;
 
-@Mod(modid=FieldControls.ID,name="Field Settings & Controls",version="1.4.0-simple-candidate",clientSideOnly=true,acceptableRemoteVersions="*",acceptedMinecraftVersions="[1.12.2]")
+@Mod(modid=FieldControls.ID,name="Field Settings & Controls",version="1.5.0",clientSideOnly=true,acceptableRemoteVersions="*",acceptedMinecraftVersions="[1.12.2]")
 public final class FieldControls {
     public static final String ID="fieldcontrols";
     public static ProfileStore store;
@@ -79,7 +79,7 @@ public final class FieldControls {
         if(HudBridge.legacyParent!=null&&old!=null&&old.getClass().getName().startsWith("village.fieldhud.")&&next!=null&&!next.getClass().getName().startsWith("village.fieldhud."))HudBridge.legacyParent=null;
         if(next instanceof GuiOptions&&!(next instanceof SettingsHub)) {
             if(NATIVE_OPTIONS.contains(next))return;
-            event.setGui(new ControlsScreen(Minecraft.getMinecraft().currentScreen));return;
+            GuiScreen hub=HudBridge.settingsScreen(Minecraft.getMinecraft().currentScreen);event.setGui(hub==null?new SettingsHub(Minecraft.getMinecraft().currentScreen):hub);return;
         }
         // Controlling 3.x subclasses GuiControls; replacement happens after its hook.
         if(next instanceof GuiControls)event.setGui(new ControlsScreen(Minecraft.getMinecraft().currentScreen));
@@ -104,8 +104,7 @@ public final class FieldControls {
                 if(plan.unresolved>0)throw new IllegalStateException("The installed actions need additional spare keys");
                 setup.replace(plan.values,requested.title);Bindings.MouseState mouse=new Bindings.MouseState(mc.gameSettings);if(requested!=Model.Preset.CLASSIC)mouse.autoJump=false;
                 store.data.initialPreset="";bridge.save(setup,mouse);
-                ControlsScreen welcome=new ControlsScreen(mc.currentScreen,true);mc.displayGuiScreen(welcome);
-                welcome.notice=requested.title+" layout applied. Previous keys are in Startup backup.";
+                startupWarning=requested.title+" layout applied. Previous keys are in Startup backup.";openSettings(mc.currentScreen);
             } else {
                 if(!store.data.active.isEmpty()) {
                     boolean added=false;for(Model.Action action:bridge.catalog.actions)added|=!store.data.active.containsKey(action.id);
@@ -155,6 +154,14 @@ public final class FieldControls {
             mc.player.sendChatMessage(entry.getValue());
         }
     }
-    public static void open(GuiScreen parent) { Minecraft.getMinecraft().displayGuiScreen(new ControlsScreen(parent)); }
-    public static void openSettings(GuiScreen parent){Minecraft.getMinecraft().displayGuiScreen(new ControlsScreen(parent));}
+    public static void open(GuiScreen parent){openSettings(parent);}
+    public static void openSettings(GuiScreen parent){if(parent!=null&&parent.getClass().getName().equals("village.fieldhud.HudScreen")){Minecraft.getMinecraft().displayGuiScreen(parent);return;}GuiScreen hub=HudBridge.settingsScreen(parent);Minecraft.getMinecraft().displayGuiScreen(hub==null?new SettingsHub(parent):hub);}
+    /** Complete transactional binding editor; child of the canonical Naruto hub. */
+    public static void openBindings(GuiScreen parent,String section){
+        ControlsScreen screen=new ControlsScreen(parent);
+        if(Arrays.asList("Bindings","Presets","Profiles","Mouse").contains(section))screen.page=section;
+        Minecraft.getMinecraft().displayGuiScreen(screen);
+    }
+    /** Complete native settings draft; never replaces bindings with a five-key subset. */
+    public static void openPreferences(GuiScreen parent,String section){Minecraft.getMinecraft().displayGuiScreen(new SettingsHub(parent,section));}
 }

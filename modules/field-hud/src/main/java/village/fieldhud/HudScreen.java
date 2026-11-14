@@ -17,25 +17,32 @@ public final class HudScreen extends GuiScreen {
     private String notice="";
     private KeyBinding listening;
     private final RebindGesture capture=new RebindGesture();
-    private static final String[] TABS={"Display","Controls","Shinobi record"};
+    private static final String[] TABS={"Look","HUD","HUD details","Controls","Game","Shinobi record"};
+    private static final String[] HUD={"Display mode","Technique bar","Location label","Target health","Arrival cues","Durability warning","Chakra display","Eye-map frame"};
+    private static final String[] DETAILS={"HUD layout","Panel width","Outer margin","Item-bar curve","Region definitions","Equipment storage","Video / shaders","Sound mixer"};
+    private static final String[] GAME={"Game preferences","Video / shaders","Sound mixer","Chat / interface","Resource packs","Language","Skin layers","Installed mods"};
     private static final String[] PRESENT={"Paper inventory","Shinobi HUD","Reduced motion","Action focus","Glass blur","Region chime","GUI scale","Menu clicks"};
-    private static final String[] CONTROL={"Dodge","Settings key","Inventory key","Use item","Attack","All controls","Video / shaders","Sound mixer"};
+    private static final String[] CONTROL={"Dodge","Settings key","Inventory key","Use item","Attack","All bindings","Saved profiles","Mouse preferences"};
     private static final String[] DESCRIPTIONS={"key.valeorders.dodge","key.fieldhud.settings","key.inventory","key.use","key.attack"};
     public HudScreen(){this(null);}public HudScreen(GuiScreen parent){this.parent=parent;}
     @Override public void initGui(){
         buttonList.clear();layout=new NarutoMenuLayout(width,height);
         if(!layout.usable){int w=Math.min(160,Math.max(1,layout.panel.w-16));buttonList.add(new NarutoInk.Button(106,new Layout.Box(layout.panel.x+(layout.panel.w-w)/2,layout.panel.y+layout.panel.h-47,w,18),"GUI scale: "+value(106)));buttonList.add(new NarutoInk.Button(403,new Layout.Box(layout.panel.x+(layout.panel.w-w)/2,layout.panel.y+layout.panel.h-25,w,18),"Return"));return;}
-        for(int i=0;i<3;i++){NarutoInk.Button b=new NarutoInk.Button(i,layout.tab(i),TABS[i]);b.selected=page==i;buttonList.add(b);}
-        if(page<2)for(int i=0;i<8;i++){
-            int id=(page==0?100:200)+i;NarutoInk.Button b=new NarutoInk.Button(id,layout.value(i),value(id));
-            if(page==1&&i<5)b.enabled=NarutoBindings.find(DESCRIPTIONS[i])!=null;buttonList.add(b);
+        for(int i=0;i<TABS.length;i++){NarutoInk.Button b=new NarutoInk.Button(i,layout.tab(i),TABS[i]);b.selected=page==i;buttonList.add(b);}
+        if(page!=5)for(int i=0;i<8;i++){
+            int id=(page==0?100:page==1?500:page==2?520:page==3?200:600)+i;
+            NarutoInk.Button button=new NarutoInk.Button(id,layout.value(i),value(id));
+            if(page==3&&i<5)button.enabled=NarutoBindings.find(DESCRIPTIONS[i])!=null;
+            if(page==2&&i==0)button.enabled=mc.player!=null&&mc.world!=null&&HudConfig.shinobi;
+            if(page==2&&i==5)button.enabled=storageReady();
+            buttonList.add(button);
         }
-        if(page==2){
+        if(page==5){
             buttonList.add(new NarutoInk.Button(300,layout.value(6),"Open journal"));
             buttonList.add(new NarutoInk.Button(301,layout.value(7),"View jutsu"));
             for(GuiButton b:buttonList)if(b.id>=300)b.enabled=mc.player!=null&&mc.world!=null&&ValeBridge.hasFreshLocal();
         }
-        String[] foot={"HUD layout","Advanced","Video","Done"};
+        String[] foot={"HUD layout","All bindings","Video","Done"};
         for(int i=0;i<4;i++){GuiButton b=new NarutoInk.Button(400+i,layout.footer(i),foot[i]);if(i==0)b.enabled=mc.player!=null&&mc.world!=null&&HudConfig.shinobi;buttonList.add(b);}
     }
     private static String on(boolean v){return v?"On":"Off";}
@@ -43,7 +50,10 @@ public final class HudScreen extends GuiScreen {
         switch(id){
             case 100:return on(HudConfig.narutoInventory);case 101:return on(HudConfig.shinobi);case 102:return on(!HudConfig.motion);case 103:return on(HudConfig.focusEffects);
             case 104:return on(HudConfig.glassBlur);case 105:return on(HudConfig.chime);case 106:return mc.gameSettings.guiScale==0?"Auto":mc.gameSettings.guiScale+"x";case 107:return on(HudConfig.menuSounds);
-            case 205:return "Open controls";case 206:return "Video settings";case 207:return "Open mixer";
+            case 205:return "Open all keys";case 206:return "Open profiles";case 207:return "Open mouse";
+            case 500:return HudConfig.MODES[HudConfig.mode];case 501:return on(HudConfig.jutsuRail);case 502:return on(HudConfig.location);case 503:return on(HudConfig.target);case 504:return on(HudConfig.arrivals);case 505:return on(HudConfig.warning);case 506:return on(HudConfig.chakra);case 507:return on(HudConfig.eyeMap);
+            case 520:return "Move panel";case 521:return HudConfig.slim?"Slim":"Full";case 522:return HudConfig.margin+" px";case 523:return on(HudConfig.curve);case 524:return "Reload zones";case 525:return RackAccess.loaded()?"Open storage":"Edit loadout";case 526:return "Video settings";case 527:return "Open mixer";
+            case 600:return "Open options";case 601:return "Video settings";case 602:return "Open mixer";case 603:return "Chat / text";case 604:return "Choose packs";case 605:return "Choose language";case 606:return "Skin options";case 607:return "Mod options";
             default:if(id>=200&&id<205){KeyBinding key=NarutoBindings.find(DESCRIPTIONS[id-200]);return key==null?"Unavailable":key==listening?"Press a key...":key.getKeyCode()==0?"Unbound":key.getDisplayName()+(NarutoBindings.conflict(key,key.getKeyCode(),key.getKeyModifier()).isEmpty()?"":" !");}return "";
         }
     }
@@ -51,7 +61,7 @@ public final class HudScreen extends GuiScreen {
     private boolean captureReady(){int code=capture.openingCode();boolean down=code>0?Keyboard.isKeyDown(code):code<0&&org.lwjgl.input.Mouse.isButtonDown(code+100);return capture.ready(down);}
     @Override public void updateScreen(){
         if(listening!=null)captureReady();
-        for(GuiButton b:buttonList)if(b.id>=100&&b.id<208){b.displayString=value(b.id);if(b.id>=200&&b.id<205)b.enabled=NarutoBindings.find(DESCRIPTIONS[b.id-200])!=null;}
+        for(GuiButton b:buttonList)if((b.id>=100&&b.id<108)||(b.id>=200&&b.id<208)||(b.id>=500&&b.id<528)||(b.id>=600&&b.id<608)){b.displayString=value(b.id);if(b.id>=200&&b.id<205)b.enabled=NarutoBindings.find(DESCRIPTIONS[b.id-200])!=null;if(b.id==525)b.enabled=storageReady();}
     }
     private String help(int id){
         if(listening!=null)return "Press a key or mouse button. Hold Ctrl/Shift/Alt for a chord. Escape cancels; Delete clears.";
@@ -67,19 +77,24 @@ public final class HudScreen extends GuiScreen {
             case 107:return "Native click audio for these Naruto settings buttons.";
             case 200:return NarutoBindings.find(DESCRIPTIONS[0])==null?"Dodge is unavailable in this session. Open All controls to review installed actions.":"Rebind your dodge. ! marks a conflicting action. A quick directional step still follows its normal cost and cooldown.";
             case 201:return "Rebind the existing settings key. Other installed actions keep their own bindings.";
-            case 205:return "Open installed native/Field Controls for all actions, conflicts, profiles and mouse preferences.";
-            case 206:case 402:return "Open video and shader options provided by Minecraft and OptiFine.";
-            case 207:return "Open the native sound mixer. Master and category sliders affect actual game sound.";
+            case 205:case 206:case 207:return "Open installed native/Field Controls for all actions, conflicts, profiles and mouse preferences.";
+            case 526:case 601:case 402:return "Open video and shader options provided by Minecraft and OptiFine.";
+            case 527:case 602:return "Open the native sound mixer. Master and category sliders affect actual game sound.";
             case 300:return "Open the server mission journal; no mission progress or rewards are granted here.";
             case 301:return "Ask the server for your available arts and techniques.";
             case 400:return "Move the existing HUD panel. No bar or inventory slot is repositioned by these settings.";
-            case 401:return "All previous HUD preferences remain available in the advanced page.";
+            case 401:return "Every installed action, input profile, conflict, preset and undo remains in the full bindings editor.";
+            case 500:return "Explore, Combat or Quiet display mode; gameplay stays unchanged.";
+            case 501:return "Show the existing technique bar. Its slots and controls are unchanged.";
+            case 502:return "Show biome or named-area labels.";case 503:return "Show the target under your crosshair and its actual health.";case 504:return "Show short named-region arrival cues.";case 505:return "Warn about equipped gear below fifteen percent durability.";case 506:return "Show the synchronized chakra/resource data provided by the installed server.";case 507:return "Show the eye-map bezel when supported; move Xaero maps in their own settings.";
+            case 520:return "Move the existing HUD panel; Shift snaps to four pixels.";case 521:return "Choose the existing full or slim status-panel width.";case 522:return "Set a four to twenty-four pixel outer margin.";case 523:return "Toggle the existing shallow item-bar curve; no slot positions are rewritten here.";case 524:return Regions.error.isEmpty()?"Reload local named-region definitions.":Regions.error;case 525:return "Manage the existing physical weapon storage or learned loadout. Switch to normal loadout first.";
+            case 600:return "All native game settings, with staged edits, undo, Apply and discard.";case 603:return "Native chat and interface preferences.";case 604:return "Open the real resource-pack selector.";case 605:return "Open native language and font settings.";case 606:return "Open native skin-layer toggles.";case 607:return "Open Forge installed mods and their available settings.";
             default:return "Changes save immediately. Tab moves focus; Enter activates. Escape returns.";
         }
     }
     @Override protected void actionPerformed(GuiButton b)throws IOException{
         if(!b.enabled)return;focus=b.id;notice="";
-        if(b.id<3){page=b.id;initGui();return;}
+        if(b.id<TABS.length){page=b.id;initGui();return;}
         switch(b.id){
             case 100:HudConfig.narutoInventory=!HudConfig.narutoInventory;break;
             case 101:HudConfig.shinobi=!HudConfig.shinobi;break;
@@ -91,17 +106,31 @@ public final class HudScreen extends GuiScreen {
                 mc.gameSettings.guiScale=(mc.gameSettings.guiScale+1)%5;mc.gameSettings.saveOptions();
                 net.minecraft.client.gui.ScaledResolution sr=new net.minecraft.client.gui.ScaledResolution(mc);setWorldAndResolution(mc,sr.getScaledWidth(),sr.getScaledHeight());return;
             case 107:HudConfig.menuSounds=!HudConfig.menuSounds;break;
-            case 205:mc.displayGuiScreen(new GuiControls(this,mc.gameSettings));return;
-            case 206:case 402:mc.displayGuiScreen(new GuiVideoSettings(this,mc.gameSettings));return;
-            case 207:mc.displayGuiScreen(new GuiScreenOptionsSounds(this,mc.gameSettings));return;
+            case 205:case 401:openBindings("Bindings");return;
+            case 206:openBindings("Profiles");return;case 207:openBindings("Mouse");return;
+            case 500:HudConfig.mode=(HudConfig.mode+1)%3;break;case 501:HudConfig.jutsuRail=!HudConfig.jutsuRail;break;case 502:HudConfig.location=!HudConfig.location;break;case 503:HudConfig.target=!HudConfig.target;break;case 504:HudConfig.arrivals=!HudConfig.arrivals;break;case 505:HudConfig.warning=!HudConfig.warning;break;case 506:HudConfig.chakra=!HudConfig.chakra;break;case 507:HudConfig.eyeMap=!HudConfig.eyeMap;break;
+            case 520:mc.displayGuiScreen(new HudLayoutScreen(this));return;case 521:HudConfig.slim=!HudConfig.slim;break;case 522:HudConfig.margin=HudConfig.margin>=24?4:HudConfig.margin+4;break;case 523:HudConfig.curve=!HudConfig.curve;break;case 524:Regions.reload();notice=Regions.error.isEmpty()?"Regions reloaded.":Regions.error;break;
+            case 525:if(RackAccess.loaded()){notice=RackAccess.requestOpen()?"Opening weapon storage...":"Storage is not ready. Return to the normal loadout first.";return;}mc.displayGuiScreen(new JutsuLoadoutScreen(this));return;
+            case 600:openPreferences("Gameplay");return;case 603:openPreferences("Interface");return;
+            case 604:mc.displayGuiScreen(new GuiScreenResourcePacks(this));return;case 605:mc.displayGuiScreen(new GuiLanguage(this,mc.gameSettings,mc.getLanguageManager()));return;case 606:mc.displayGuiScreen(new GuiCustomizeSkin(this));return;case 607:mc.displayGuiScreen(new net.minecraftforge.fml.client.GuiModList(this));return;
+            case 526:case 601:case 402:mc.displayGuiScreen(new GuiVideoSettings(this,mc.gameSettings));return;
+            case 527:case 602:mc.displayGuiScreen(new GuiScreenOptionsSounds(this,mc.gameSettings));return;
             case 300:case 301:
                 if(mc.player!=null&&ValeBridge.hasFreshLocal()){mc.displayGuiScreen(null);mc.player.sendChatMessage(b.id==300?"/vale journal":"/vale arts");}return;
             case 400:mc.displayGuiScreen(new HudLayoutScreen(this));return;
-            case 401:mc.displayGuiScreen(new AdvancedHudScreen(this));return;
             case 403:mc.displayGuiScreen(parent);return;
             default:if(b.id>=200&&b.id<205){listening=NarutoBindings.find(DESCRIPTIONS[b.id-200]);capture.begin(openingCode());KeyBinding.unPressAllKeys();return;}return;
         }
         HudConfig.save();initGui();
+    }
+    private boolean storageReady(){return mc.player!=null&&mc.world!=null&&(RackAccess.loaded()?RackAccess.ready()&&!RackAccess.combatActive()&&!RackAccess.pending():JutsuAccess.fresh());}
+    private void openBindings(String section){
+        try{Class.forName("village.controls.FieldControls",true,net.minecraftforge.fml.common.Loader.instance().getModClassLoader()).getMethod("openBindings",GuiScreen.class,String.class).invoke(null,this,section);}
+        catch(ReflectiveOperationException|LinkageError unavailable){mc.displayGuiScreen(new GuiControls(this,mc.gameSettings));}
+    }
+    private void openPreferences(String section){
+        try{Class.forName("village.controls.FieldControls",true,net.minecraftforge.fml.common.Loader.instance().getModClassLoader()).getMethod("openPreferences",GuiScreen.class,String.class).invoke(null,this,section);}
+        catch(ReflectiveOperationException|LinkageError unavailable){notice="Native preferences module unavailable. Video, sound and bindings remain accessible here.";}
     }
     private void bind(int code,KeyModifier modifier){
         KeyBinding target=listening;if(target==null)return;
@@ -130,10 +159,10 @@ public final class HudScreen extends GuiScreen {
     }
     @Override public void drawScreen(int mx,int my,float partial){
         drawDefaultBackground();NarutoInk.paper(layout.panel.x,layout.panel.y,layout.panel.w,layout.panel.h);
-        NarutoInk.title(layout.panel,"NARUTO | Shinobi settings",page==2?"Your synchronized field record":"Paper, ink and clear combat information");
+        NarutoInk.title(layout.panel,"NARUTO | Shinobi settings",page==5?"Your synchronized field record":"Paper, ink and clear combat information");
         if(!layout.usable){java.util.List<String> small=fontRenderer.listFormattedStringToWidth("Increase the window size or reduce GUI scale to show all Naruto settings.",Math.max(1,layout.panel.w-20));for(int i=0;i<Math.min(3,small.size());i++)fontRenderer.drawString(small.get(i),layout.panel.x+10,layout.panel.y+42+i*10,NarutoInk.INK,false);super.drawScreen(mx,my,partial);return;}
         int hovered=focus;
-        if(page<2){String[] labels=page==0?PRESENT:CONTROL;
+        if(page!=5){String[] labels=page==0?PRESENT:page==1?HUD:page==2?DETAILS:page==3?CONTROL:GAME;
             for(int i=0;i<8;i++){Layout.Box r=layout.row(i),v=layout.value(i);fontRenderer.drawString(fontRenderer.trimStringToWidth(labels[i],Math.max(1,v.x-r.x-5)),r.x+2,r.y+(r.h-8)/2,NarutoInk.INK,false);}
         }else drawRecord(mx,my);
         for(GuiButton b:buttonList){if(b instanceof NarutoInk.Button)((NarutoInk.Button)b).focused=b.id==focus;if(mx>=b.x&&my>=b.y&&mx<b.x+b.width&&my<b.y+b.height)hovered=b.id;}

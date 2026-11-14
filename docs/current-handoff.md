@@ -1,5 +1,13 @@
 # Current project handoff
 
+## Unified inventory settings component checkpoint
+
+The owner's requested single Naruto settings hub is implemented: inventory Settings, F7/F8, the settings commands and pause Options use the same six-tab hub. The former Advanced HUD menu is a redirect. All old HUD preferences, full action bindings, saved profiles, presets, mouse controls and staged native preferences remain available; child editors use the Naruto paper theme. Hotbar appearance/geometry was preserved. Read `docs/unified-naruto-settings.md`.
+
+Field HUD0.17.0 and Field Controls1.5.0 both built their actual Forge production/dev/source artifacts with all nine check programs passing. Selected UI source was unchanged during the successful build. Verification heaps are now capped512MB after an initial host-memory failure. Exact source/artifact identities and actual check output are in `release/evidence/unified-naruto-settings.json`.
+
+This accepts the two UI components only. No full016 Core/resource-bridge build or graphical menu acceptance is implied. The owner's active015 client/server was not changed or controlled. Next: stage these exact two UI artifacts into a separate next client, verify inventory/F7/F8/pause routing, bindings/Apply/Discard and native shader-child return. The guarded shared-resource callers and raw Base/Spring native diagnostic remain ongoing independent work in the016 checkout; their unaccepted source is excluded from this UI checkpoint.
+
 ## Naruto-only direction and urgent Claude interoperability handoff
 
 Latest owner direction: the game is Naruto, with Naruto designs, characters, names, villages/clans/jutsu and free fan-made distribution. The owner says they intend to obtain the franchise license. Public Vale-facing branding is being removed; internal registry/save/wire IDs stay stable. Licensing evidence remains separately planned/pending. These authoring changes do not replace the owner's active015 session.

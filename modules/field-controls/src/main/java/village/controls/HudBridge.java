@@ -8,11 +8,14 @@ import net.minecraftforge.fml.common.Loader;
 /** Optional integration with the HUD project's actual screens and renderer. */
 final class HudBridge {
     static GuiScreen legacyParent;
-    private static Method glass;
-    private static boolean lookedUpGlass,glassFailed;
-    static boolean available(){return Loader.isModLoaded("fieldhud")&&Minecraft.getMinecraft().world!=null;}
+    static boolean available(){return Loader.isModLoaded("fieldhud");}
+    static GuiScreen settingsScreen(GuiScreen parent){
+        if(!available())return null;
+        try{return (GuiScreen)Class.forName("village.fieldhud.HudScreen",true,Loader.instance().getModClassLoader()).getConstructor(GuiScreen.class).newInstance(parent);}
+        catch(ReflectiveOperationException|LinkageError unavailable){return null;}
+    }
     static void open(GuiScreen parent,boolean layout)throws Exception {
-        if(!available())throw new IllegalStateException("Enter a world with Field HUD installed to use this tool.");
+        if(!available()||(layout&&Minecraft.getMinecraft().world==null))throw new IllegalStateException("Enter a world with Naruto HUD installed to use this tool.");
         ClassLoader loader=Loader.instance().getModClassLoader();
         try {
             Class<?> api=Class.forName("village.fieldhud.ClientApi",true,loader);
@@ -27,18 +30,5 @@ final class HudBridge {
     static boolean returning(GuiScreen old,GuiScreen next) {
         return legacyParent!=null&&old!=null&&old.getClass().getName().startsWith("village.fieldhud.")&&next==null;
     }
-    static void panel(int x,int y,int w,int h) {
-        if(!glassFailed&&Loader.isModLoaded("fieldhud")) {
-            try {
-                if(!lookedUpGlass) {
-                    lookedUpGlass=true;Class<?> type=Class.forName("village.fieldhud.GlassMaterial",true,Loader.instance().getModClassLoader());
-                    glass=type.getMethod("panel",double.class,double.class,double.class,double.class,double.class,int.class,int.class);
-                }
-                if(glass!=null) {
-                    glass.invoke(null,(double)x,(double)y,(double)w,(double)h,7d,0x172630,224);return;
-                }
-            }catch(Exception unavailable){glassFailed=true;}
-        }
-        Surface.panel(x,y,w,h);
-    }
+    static void panel(int x,int y,int w,int h){Surface.panel(x,y,w,h);}
 }

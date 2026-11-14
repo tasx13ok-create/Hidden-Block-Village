@@ -12,8 +12,9 @@ public final class NarutoMenuChecks {
             for(int i=0;i<8;i++){
                 Layout.Box row=m.row(i),value=m.value(i);check(contains(m.panel,row)&&contains(row,value),"setting row/value outside panel");check(value.h>=14&&value.w>=48,"setting target too small");check(!overlap(row,m.help),"settings overwrite helper text");
                 for(int j=0;j<i;j++)check(!overlap(row,m.row(j)),"two settings overlap");
-                for(int j=0;j<3;j++)check(!overlap(row,m.tab(j)),"row overlaps tab");
+                for(int j=0;j<6;j++)check(!overlap(row,m.tab(j)),"row overlaps tab");
             }
+            for(int i=0;i<6;i++){check(contains(m.panel,m.tab(i)),"six-tab navigation outside panel");for(int j=0;j<i;j++)check(!overlap(m.tab(i),m.tab(j)),"navigation tabs overlap");}
             for(int i=0;i<4;i++){check(contains(m.panel,m.footer(i))&&!overlap(m.help,m.footer(i)),"footer overlaps help/leaves panel");for(int j=0;j<i;j++)check(!overlap(m.footer(i),m.footer(j)),"footer buttons overlap");}
             // Native panel can move when the recipe book opens: follow its real left edge.
             for(int left:new int[]{(width-176)/2,Math.max(0,(width-176)/2+77)}){

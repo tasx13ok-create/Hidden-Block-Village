@@ -47,11 +47,12 @@ public final class ControlsScreen extends GuiScreen {
         measure();buttonList.clear();modalButtons.clear();buttonId=0;conflicts=session.conflicts();
         positionFields();
         if(!modal.isEmpty()){buildModal();syncFocus();return;}
-        for(int i=0;i<SimpleNavigation.PAGES.length;i++){String p=SimpleNavigation.PAGES[i];MenuLayout.Box b=SimpleNavigation.tab(layout,i);button(b.x,b.y,b.w,b.h,SimpleNavigation.LABELS[i],0,"nav/"+p,()->{if(p.equals("Controls")){changePage("Bindings");}else route(()->mc.displayGuiScreen(new SettingsHub(parent,p)));}).selected=p.equals("Controls");}
+        String[] tools={"Bindings","Presets","Profiles","Mouse","Settings"};
+        for(int i=0;i<tools.length;i++){final String target=tools[i];MenuLayout.Box box=SimpleNavigation.tab(layout,i);button(box.x,box.y,box.w,box.h,target,0,"nav/"+target,()->{if(target.equals("Settings"))route(()->FieldControls.openSettings(parent));else changePage(target);}).selected=page.equals(target);}
         MenuLayout.Box essential=SimpleNavigation.essential(layout);Surface.Button e=button(essential.x,essential.y,essential.w,essential.h,"Essential",1,"essential",()->route(()->openEssential()));e.enabled=EssentialBridge.available();e.tooltip=EssentialBridge.status();
-        if(page.equals("Bindings"))buildBindings();else if(page.equals("Presets"))buildPresets();else if(page.equals("Profiles"))buildProfiles();
+        if(page.equals("Bindings"))buildBindings();else if(page.equals("Presets"))buildPresets();else if(page.equals("Profiles"))buildProfiles();else if(page.equals("Mouse"))buildMouse();
         int fy=footer+3;undoButton=button(layout.footer.x,fy,42,20,"Undo",1,"footer/undo",this::undo);undoButton.enabled=journal.available();
-        button(layout.footer.x+46,fy,44,20,"More...",0,"footer/more",()->route(()->mc.displayGuiScreen(new SettingsHub(parent,"More"))));
+        button(layout.footer.x+46,fy,44,20,"Settings",0,"footer/more",()->route(()->FieldControls.openSettings(parent)));
         button(layout.footer.right()-132,fy,62,20,"Apply",2,"footer/apply",()->requestSave(false)).enabled=dirty();
         button(layout.footer.right()-66,fy,66,20,welcome?"Continue":"Done",1,"footer/done",this::exit);syncFocus();
     }
@@ -181,7 +182,7 @@ public final class ControlsScreen extends GuiScreen {
     @Override public void drawScreen(int mx,int my,float partial){
         if(mx!=lastMx||my!=lastMy){keyboardMode=false;lastMx=mx;lastMy=my;applyFocus();}
         drawDefaultBackground();drawRect(0,0,width,height,0x65080F13);int hard=session.hardCount(),missing=session.missingEssentials();String badge=missing>0?missing+" unbound essentials":hard>0?hard+" conflicts":dirty()?"Draft":"Inputs ready";
-        Surface.board(layout,welcome?"Controls setup":"Settings","",Surface.MUTED);hoveredAction=null;
+        Surface.board(layout,"NARUTO | Controls","",Surface.MUTED);hoveredAction=null;
         if(page.equals("Bindings"))drawBindings(mx,my);else if(page.equals("Presets"))drawPresets();else if(page.equals("Profiles"))drawProfiles();else drawMouse();
         if(!modal.isEmpty())drawModal();for(GuiButton b:buttonList)b.drawButton(mc,mx,my,partial);
         if(modal.isEmpty()){

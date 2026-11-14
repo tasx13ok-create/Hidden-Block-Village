@@ -34,7 +34,7 @@ public final class SettingsHub extends GuiScreen {
         measure();buttonList.clear();sliders.clear();ids=0;
         if(!dialog.isEmpty()){buildDialog();syncFocus();return;}
         for(int i=0;i<PAGES.length;i++){String p=PAGES[i];MenuLayout.Box box=SimpleNavigation.tab(layout,i);Surface.Button button=button(box.x,box.y,box.w,box.h,SimpleNavigation.LABELS[i],0,"page/"+p,()->{
-            finishGesture();if(p.equals("Controls")){route(()->mc.displayGuiScreen(new ControlsScreen(parent)));return;}
+            finishGesture();if(p.equals("Controls")){route(()->mc.displayGuiScreen(new ControlsScreen(this)));return;}
             page=p;defaultsPage=p;offset=0;selected=null;search.setFocused(false);rebuild();
         });button.selected=page.equals(p);}
         MenuLayout.Box e=SimpleNavigation.essential(layout);Surface.Button essential=button(e.x,e.y,e.w,e.h,"Essential",1,"essential",()->route(()->{try{EssentialBridge.open(this);}catch(Exception ex){notice="Essential could not open. Use its native menu.";rebuild();}}));essential.enabled=EssentialBridge.available();essential.tooltip=EssentialBridge.status();
@@ -56,8 +56,8 @@ public final class SettingsHub extends GuiScreen {
         });b.detail=summary(p);b.tooltip=b.detail+". "+tips[i];}
     }
     private String summary(String p){if(p.equals("Gameplay"))return "FOV "+Math.round(((Number)session.draft.get("FOV")).doubleValue())+" / Look "+Math.round(((Number)session.draft.get("SENSITIVITY")).doubleValue()*200)+"%";if(p.equals("Video"))return "Chunks "+Math.round(((Number)session.draft.get("RENDER_DISTANCE")).doubleValue())+" / "+(Boolean.TRUE.equals(session.draft.get("ENABLE_VSYNC"))?"VSync":"FPS "+Math.round(((Number)session.draft.get("FRAMERATE_LIMIT")).doubleValue()));if(p.equals("Audio"))return "Master "+Math.round(((Number)session.draft.get("sound.master")).doubleValue()*100)+"%";if(p.equals("Interface"))for(Def d:backend.defs)if(d.id.equals("GUI_SCALE"))return "Scale "+d.format(session.draft.get(d.id));return p.equals("Controls")?FieldControls.store.data.layout+" layout":"Native and mod screens";}
-    private static final String[] TOOLS={"HUD settings","HUD layout","Installed mods","Resource packs","Language","Skin customization","Advanced video / shaders","Advanced chat","Minecraft options"};
-    private static final String[] TOOL_HELP={"Adjust the HUD or edit technique slots in HUD > Loadout.","Reposition the HUD.","Open Forge's mod list and available mod configuration pages.","Open Minecraft's resource-pack selector.","Open native language and font settings.","Open native skin-layer settings.","Open native video settings and installed OptiFine or shader extensions.","Open the complete native chat settings screen.","Open the full vanilla options screen, including the existing difficulty permissions."};
+    private static final String[] TOOLS={"HUD settings","HUD layout","Installed mods","Resource packs","Language","Skin customization","Advanced video / shaders","Advanced chat","Naruto settings"};
+    private static final String[] TOOL_HELP={"Adjust the HUD or edit technique slots in HUD > Loadout.","Reposition the HUD.","Open Forge's mod list and available mod configuration pages.","Open Minecraft's resource-pack selector.","Open native language and font settings.","Open native skin-layer settings.","Open native video settings and installed OptiFine or shader extensions.","Open the complete native chat settings screen.","Return to the canonical Naruto settings hub."};
     private void buildTools(){
         button(left,layout.content.y,contentWidth,20,"Restore "+defaultsPage+" defaults...",1,"tool/defaults",()->{page=defaultsPage;resetPlan=session.defaults(page);resetOffset=0;dialog="reset";rebuild();}).tooltip="Review Game defaults before staging them. Other sections can be reset with their native settings.";
 
@@ -71,9 +71,9 @@ public final class SettingsHub extends GuiScreen {
     }
     private void tool(int index){
         try{
-            if(index<2){HudBridge.open(this,index==1);return;}
+            if(index==0){FieldControls.openSettings(parent);return;}if(index==1){HudBridge.open(this,true);return;}
             if(index==2){mc.displayGuiScreen(new GuiModList(this));return;}
-            if(index==8){GuiOptions nativeOptions=new GuiOptions(this,mc.gameSettings);FieldControls.allowNative(nativeOptions);mc.displayGuiScreen(nativeOptions);return;}
+            if(index==8){FieldControls.openSettings(parent);return;}
             GuiScreen target=index==3?new GuiScreenResourcePacks(this):index==4?new GuiLanguage(this,mc.gameSettings,mc.getLanguageManager()):index==5?new GuiCustomizeSkin(this):index==6?new GuiVideoSettings(this,mc.gameSettings):new ScreenChatOptions(this,mc.gameSettings);mc.displayGuiScreen(target);
         }catch(Exception ex){Throwable cause=ex instanceof java.lang.reflect.InvocationTargetException&&ex.getCause()!=null?ex.getCause():ex;notice=cause.getMessage()==null?"That page is unavailable.":cause.getMessage();rebuild();}
     }
@@ -166,7 +166,7 @@ public final class SettingsHub extends GuiScreen {
     private int wrap(String s,int x,int y,int w,int bottom,int color){for(String line:fontRenderer.listFormattedStringToWidth(s,Math.max(16,w))){if(y+9>bottom)break;text(line,x,y,color);y+=11;}return y;}
     @Override public void drawScreen(int mx,int my,float partial){
         if(mx!=lastMx||my!=lastMy){keyboardMode=false;lastMx=mx;lastMy=my;applyFocus();}
-        drawDefaultBackground();drawRect(0,0,width,height,0x65080F13);Surface.board(layout,"Settings","",Surface.MUTED);
+        drawDefaultBackground();drawRect(0,0,width,height,0x65080F13);Surface.board(layout,"NARUTO | Game preferences","",Surface.MUTED);
         hoveredDef=null;if(dialog.isEmpty()){contextTitle="";contextBody="";}
         if(isSettingsPage())drawSettings(mx,my);else if(page.equals("Overview"))drawOverview();else drawTools();
         if(!dialog.isEmpty())drawDialog();for(GuiButton b:buttonList)b.drawButton(mc,mx,my,partial);

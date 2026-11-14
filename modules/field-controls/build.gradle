@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.controls'
-version = '1.4.0-simple-candidate'
+version = '1.5.0'
 base { archivesName = 'field-controls' }
 java {
     toolchain {
@@ -19,6 +19,8 @@ minecraft {
     username.set('ControlsTest')
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+// Keep headless checks bounded while a full modded client/server is running.
+tasks.withType(JavaExec).matching { it.name.startsWith('verify') }.configureEach { maxHeapSize = '512m' }
 jar { from('LICENSE.txt') }
 // Optional local compile shortcut. The supplied JAR must be an independently
 // prepared, deobfuscated Forge 1.12.2 stable-39 development API, never a mod JAR.
@@ -91,7 +93,7 @@ tasks.register('verifySimpleMenus', JavaExec) {
 tasks.named('check') { dependsOn tasks.named('verifySimpleMenus') }
 if (providers.gradleProperty('controlsCapture').isPresent()) {
     sourceSets.main.java.srcDir('clientchecks')
-    version = '1.4.0-simple-candidate-capture-test'
+    version = '1.5.0-capture-test'
 }
 
 apply from: file('../../gradle/vale-mod-build.gradle')
