@@ -1,7 +1,7 @@
 # Five stadiums: current checkpoint
 
 The owner's 14 November clarification requires the stadium structures themselves
-to span 500 wide × 500 long × 250 high. All five build04 exports pass measured
+to span 500 wide Ã— 500 long Ã— 250 high. All five build04 exports pass measured
 architectural occupancy at the six extreme planes, substantial perimeter bands,
 all four quadrants and the upper 50 layers. The combat courts remain compact
 inside monumental stands, functional wings, galleries and original landmarks.
@@ -10,8 +10,8 @@ Uchiha fan/citadel compositions follow the adapted project research.
 
 Work is on `codex/five-new-naruto-coliseums`; the original dirty checkout and
 protected shared modules remain untouched. Main was fetched again and currently
-points to 7baca5c7115355e5b737ec3602ebaed0e458eef8. This checkpoint still has the
-8681bb9 base; integration is pending without discarding source changes.
+points to 7baca5c7115355e5b737ec3602ebaed0e458eef8. The fetched main was merged without conflicts and saved as verified remote
+70a345189340fdba3f6b0fc655be6899da0eef6a; local source changes were preserved.
 Minecraft was not opened or controlled by this arena worker.
 
 Private outputs: `D:/HiddenBlockVillage-Arenas-20261114/build-04`. Each arena
@@ -72,3 +72,57 @@ Continue the mandatory native repair loop, retain failed candidates, publish
 further checkpoints, then package all five exact artifacts and update this handoff.
 This checkpoint is original source and offline construction acceptance, not a
 production or hosting release. The old sprint deadline is not an arena finish time.
+
+
+## Current13 native repair checkpoint
+
+The server-only module now compiles against the exact Source13 Core development
+API, SHA256 17aed767c851d7359e33f37e15dbefa3d4de4693ce8be6462e808e49cc037815.
+Current server mods are the53 exact original/project files independently compared
+to the accepted root server ZIP. No original world, host setting or live session
+is changed. See `arenas-current13-native-repair.json` for safe exact module,
+server/source and package identities and retained failure scopes.
+
+Native08 measured9,261 actual route collision/support samples, all passing, but
+126 native block-light samples failed. Actual stairs have opacity255: some buried
+fixtures cannot illuminate the walking volume. Build05 is now repairing exposed
+supported fixtures across all five; it must get new independent and native gates.
+Build04 and every old failure remain preserved. Downloaded04 schematics install
+the full structures; do not promote them into accepted encounter/lighting scope.
+
+The optional starter genuinely passed45 first-process and51 second-process
+assertions, including five real Core owner serials, full-inventory pending,
+delivery once, retry, choice locking and unchanged native XP/nature/Core order.
+Exact public-leader native Ay ally ownership controls passed in both processes;
+Magma's class-entry CodeSource URLs were normalized to their actual JAR before
+comparison. No same-class or baseline actor is removed simply for proximity.
+
+Current source adds explicit public command permission (operator reset remains
+protected), automatic strict empty reset, saved-body chunk prewarm, and separate
+sealing/admission versus native-death acceptance policies. Each physical sequence
+must charge under40 real updating-boss ticks with an eligible participant within
+32 blocks; this is not reward contribution. Native lethal remains independent.
+Restart tests observe the real FML startup before warmup and exercise actual
+pressure, saved phases and pending rewards; a faulty zero assertion after80 real
+ticks is retained as failed QA evidence and repaired, not removed from the gate.
+
+The isolated actual Nether pass has exercised13975 lava source cells, native
+flow/containment and a real bed explosion in a separately journaled obsidian cage;
+all2197 sacrificial cells restored. Its route light gate failed and remains FAIL.
+No Nether encounter production controller, portal8:1 or shader acceptance follows.
+A real vanilla boat buoyancy/riding/dismount helper is implemented for the final
+Mist physics pass; no client steering or giant-form acceptance is claimed.
+
+Post-native03 independent comparison covered every312.5million cell again. It
+found7095 covered-grass→dirt changes and eight new empty chest Lock fields, with
+no other structural block changes. All12 retained grass samples were buried at
+blocklight0/skylight0, consistent with vanilla grass decay. The raw exact comparison
+stays FAIL. This measured limited native run is not universal jutsu-grief proof.
+
+For the owner's supplied Forge server, `Stadium Schematics - Upload to Server
+Root.zip` places only five files under `config/worldedit/schematics/`. Unarchive
+it at the server root, load one with `//schem load mcedit <filename.schematic>`,
+stand at the intended minimum atY3 and use `//paste` in an empty arena world.
+The current download contains04 geometry; a final05 replacement follows the
+required repair loop. No arena controller or third-party distribution is hidden
+inside that structures-only upload.

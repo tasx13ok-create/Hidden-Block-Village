@@ -11,6 +11,10 @@ tasks.register('verifyArenaRules',JavaExec) { dependsOn tasks.named('checksClass
 tasks.named('check') { dependsOn tasks.named('verifyArenaRules') }
 apply from: file('../../gradle/vale-mod-build.gradle')
 sourceSets { nativeChecks { java.srcDirs=['nativechecks']; compileClasspath+=sourceSets.main.output+sourceSets.main.compileClasspath; runtimeClasspath+=output+compileClasspath } }
+if(providers.gradleProperty('arenaExcludePendingSources').orElse('false').get()=='true') {
+ sourceSets.configureEach { java.exclude('**/StarterKitNativeChecks.java','**/NativeNetherChecks.java','**/RestartNativeChecks.java') }
+ ext.valeUnavailableChecks=['Explicit focused development slice excludes pending starter/Nether/process-restart sources; default full build includes them.']
+}
 def qaJar=tasks.register('nativeChecksJar',Jar) { dependsOn tasks.named('nativeChecksClasses'); from sourceSets.nativeChecks.output; archiveBaseName.set('PRIVATE-naruto-arenas-checks'); archiveClassifier.set('dev'); destinationDirectory.set(layout.buildDirectory.dir('private-native-checks')) }
 def productionReobf=tasks.named('reobfJar',com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar)
 tasks.register('reobfNativeChecksJar',com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar) {

@@ -122,6 +122,31 @@ these are not human walking, client input, full cooperative-clear or sustained
 load acceptance. Accepted healing/damage contribution still requires the shared
 authority surface; no intent-only credit is fabricated.
 
+The optional `ArenaStarterKits` component uses an independent permanent UUID
+choice and Core's public durable ledger for four matching Ward pieces plus the
+chosen order's basic saber. It requires genuine completed physical practice and
+rejects current arena membership, preview, creative, spectator and fake bodies.
+It never assigns native nature, battle XP or Core starter order and never
+replaces inventory. Retries reuse the same five receipts, including after loss.
+
+The immutable `preview-world-04-native-08` candidate passed the actual starter
+two-process case:45 assertions saved a full-inventory five-item pending queue;
+51 assertions on the second boot loaded that queue, delivered five genuine
+owner serials and rejected replay/changed choice/replacement of lost gear.
+Native XP/non-Core state and Core order preservation also passed. Both boots
+stopped cleanly. These results prove that bounded starter scope, not boss-clear
+entitlement or complete arena acceptance. The same native candidate retained
+126 dark route samples out of9,261, so its lighting gate remained failed.
+
+Exact starter production source SHA256:
+`d735a48daebd678246841b03f328f9eedc66b30ceb7a700dcc0ae4ad66524e02`.
+Private helper source:
+`09355de617d1271a85275e5ee3535b6d053ad851fbee6413dd3f877d18d72eb5`.
+That candidate's arena runtime JAR:
+`dc86d0ad20f57214b8fee2f3a38a03f101f9810790a3040f2306db8428474d2f`;
+private QA JAR:
+`e457d467c082afeec80335ad34dad7a3bbaf000fea089d1dcdc26c24a5c7731d`.
+
 Private authoring dependencies: NumPy 2.2.6 for bounded full-output scans and chunk
 conversion; Pillow 11.2.1 for the integrator's offline raster previews. They are
 installed into the private D: authoring directory, not distributed with the game.

@@ -24,7 +24,10 @@ JAVA8 = TOOLCHAIN/'zulu8.98.0.111-ca-jdk8.0.512-win_x64'
 JAVA25 = TOOLCHAIN/'zulu25.38.109-ca-jdk25.0.5.0.3-win_x64'
 GRADLE = Path('C:/Users/Steal/.gradle/wrapper/dists/gradle-9.5.0-bin/bvnork1r7n8i6kp5cnkibsc9q/gradle-9.5.0/bin/gradle.bat')
 API = PRIVATE_BASE/'core016-build-snapshot-08/modules/vale-orders/build/rfg/recompiled_minecraft-1.12.2.jar'
-CORE_API = PRIVATE_BASE/'core016-build-snapshot-08/build/source-builds/20261114T134645Z-7db6ba67/artifacts/vale-orders/development_api/vale-orders-0.3.16-dev.jar'
+CORE_API = PRIVATE_BASE/'core016-build-snapshot-13/build/source-builds/20261114T160853Z-6991eb05/artifacts/vale-orders/development_api/Naruto-Core-0.3.16-dev.jar'
+CORE_REPORT = PRIVATE_BASE/'core016-build-snapshot-13/build/source-builds/20261114T160853Z-6991eb05/report.json'
+COHORT = Path('D:/HiddenBlockVillage-Arenas-20261114/current-server-mods-13.json')
+COHORT_SHA = 'ac239179489d9c5d77f9e6e55b5e08f7dfc6f586ce93cefcb49a998faf95952e'
 MODULE = ROOT/'modules/naruto-arenas'
 MAGMA = 'Magma-1.12.2-8cc35ed-server.jar'
 MAGMA_SHA = '2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce'
@@ -57,22 +60,28 @@ def save(path,data):
     Path(path).write_text(json.dumps(data,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 
 
-def own_sources():
+PENDING_NAMES={'StarterKitNativeChecks.java','NativeNetherChecks.java','RestartNativeChecks.java'}
+
+
+def own_sources(pending_sources=False):
     return [{'path':p.relative_to(MODULE).as_posix(),'sha256':digest(p)} for p in sorted(MODULE.rglob('*'))
-            if p.is_file() and not any(x in p.relative_to(MODULE).parts for x in ('build','.gradle'))]
+            if p.is_file() and not any(x in p.relative_to(MODULE).parts for x in ('build','.gradle')) and not (pending_sources and p.name in PENDING_NAMES)]
 
 
-def build_module():
-    before=own_sources();env=dict(os.environ,VALE_JAVA8_HOME=str(JAVA8),JAVA_HOME=str(JAVA25))
-    if digest(CORE_API)!='1cc217db62a94fe04bb7c6ea9dc20cedbfb26d824aca851f4c86847addbb1a72':raise ValueError('Accepted Core API identity differs')
-    subprocess.run([str(GRADLE),'--no-daemon','-PprebuiltMinecraft='+str(API),'-PvaleCoreDevJar='+str(CORE_API),'writeValeBuildMetadata','reobfNativeChecksJar'],cwd=MODULE,env=env,check=True)
-    if own_sources()!=before:raise ValueError('Arena module source drift during build')
+def build_module(pending_sources=False):
+    before=own_sources(pending_sources);env=dict(os.environ,VALE_JAVA8_HOME=str(JAVA8),JAVA_HOME=str(JAVA25))
+    if digest(CORE_API)!='17aed767c851d7359e33f37e15dbefa3d4de4693ce8be6462e808e49cc037815' or digest(CORE_REPORT)!='8e2d1ee78c9b78e7fb2cdb740cb861a58cc7cccb8d966d563accbea1262f1a36':raise ValueError('Accepted Core API/report identity differs')
+    arguments=[str(GRADLE),'--no-daemon','-PprebuiltMinecraft='+str(API),'-PvaleCoreDevJar='+str(CORE_API)]
+    if pending_sources:arguments.append('-ParenaExcludePendingSources=true')
+    arguments+=['writeValeBuildMetadata','reobfNativeChecksJar']
+    subprocess.run(arguments,cwd=MODULE,env=env,check=True)
+    if own_sources(pending_sources)!=before:raise ValueError('Arena module source drift during build')
     metadata=json.loads((MODULE/'build/vale-build.json').read_text())
     artifact=Path(next(a['path'] for a in metadata['artifacts'] if a['role']=='runtime_mod'))
     with zipfile.ZipFile(artifact) as z:
         if z.testzip() is not None:raise ValueError('Arena module archive CRC failed')
     qa=MODULE/'build/private-native-checks/PRIVATE-naruto-arenas-checks-0.1.0.jar'
-    report={'schema':1,'source_files':before,'runtime_mod':str(artifact),'sha256':digest(artifact),'bytes':artifact.stat().st_size,'private_qa':{'path':str(qa),'sha256':digest(qa)},'prepared_minecraft_api_sha256':digest(API),'core_development_api_sha256':digest(CORE_API),'java8_executable_sha256':digest(JAVA8/'bin/java.exe'),'acceptance':'COMPONENT_BUILD_ONLY'}
+    report={'schema':1,'source_files':before,'excluded_pending_sources':sorted(PENDING_NAMES) if pending_sources else [],'runtime_mod':str(artifact),'sha256':digest(artifact),'bytes':artifact.stat().st_size,'private_qa':{'path':str(qa),'sha256':digest(qa)},'prepared_minecraft_api_sha256':digest(API),'core_build_report':str(CORE_REPORT),'core_build_report_sha256':digest(CORE_REPORT),'core_development_api_sha256':digest(CORE_API),'java8_executable_sha256':digest(JAVA8/'bin/java.exe'),'acceptance':'COMPONENT_BUILD_ONLY'}
     save(MODULE/'build/arena-build-identity.json',report)
     return report
 
@@ -119,21 +128,17 @@ def verified_copy(source,dest,expected=None):
     return value
 
 
-def stage_runtime(world,manifest_path,dest,registry_only=False):
+def stage_runtime(world,manifest_path,dest,registry_only=False,pending_sources=False,port=25612):
+    if not isinstance(port,int) or not 1024<=port<=65535:raise ValueError("Explicit loopback fixture port required")
     dest=no_links(dest)
     if dest.exists():raise FileExistsError(dest)
     dest.mkdir(parents=True)
     if digest(BASELINE/MAGMA)!=MAGMA_SHA:raise ValueError('Magma pin mismatch')
-    guard=json.loads((BASELINE/'PRIVATE-DISPOSABLE-BRIDGE-NATIVE.json').read_text())
-    if guard['source_snapshot_sha256']!='8b5ac108319049bfa86cf490ec1c4fd4f372a655b14d32f6781b8e57f349232d':raise ValueError('Unaccepted Core cohort')
-    historical_rows=guard['production54'];assert len(historical_rows)==54
-    omitted=[r for r in historical_rows if r['file']=='[1.12.2]DamageIndicatorsMod-3.5.1.jar']
-    if len(omitted)!=1:raise ValueError('Explicit reviewed optional server-DI omission missing')
-    if omitted[0]['sha256']!='4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808':raise ValueError('Reviewed DI bytes differ')
-    rows=[r for r in historical_rows if r not in omitted]
-    if len(rows)!=53:raise ValueError('Unexpected original composition after reviewed DI omission')
-    for r in rows:
-        verified_copy(BASELINE/'mods'/r['file'],dest/'mods'/r['file'],r['sha256'])
+    if digest(COHORT)!=COHORT_SHA:raise ValueError('Current stopped server roster receipt differs')
+    cohort=json.loads(COHORT.read_text());rows=cohort['server_mods'];mods_source=no_links(Path(cohort['root'])/'mods')
+    if len(rows)!=53 or len({r['file'] for r in rows})!=53:raise ValueError('Exact current53 roster required')
+    omitted=[{'file':'[1.12.2]DamageIndicatorsMod-3.5.1.jar','sha256':'4150b8b73313c9134ab412e935e6c3d9b3def3e18e84c7f5dd105f95e428b808','reason':'Optional server DI omitted by current approved server assembly after recorded permission-packet failure; original preserved'}]
+    for r in rows:verified_copy(mods_source/r['file'],dest/'mods'/r['file'],r['sha256'])
     # These are data/dependency directories in the previously inspected, stopped fixture.
     for name in ('libraries','mappings','config','plugins','armourers_workshop','customnpcs','patchouli_books'):
         if (BASELINE/name).exists():
@@ -143,7 +148,7 @@ def stage_runtime(world,manifest_path,dest,registry_only=False):
     if (dest/'customnpcs/scripts').exists():raise ValueError('Global scripts are not admitted by this fresh-world probe')
     for name in (MAGMA,'forge-1.12.2-14.23.5.2859.jar','magma_libs.json','magma.yml','bukkit.yml','spigot.yml','paper.yml','commands.yml','help.yml','permissions.yml','binpatches.pack.lzma','deobfuscation_data-1.12.2.lzma'):
         if (BASELINE/name).is_file():verified_copy(BASELINE/name,dest/name)
-    module=build_module();verified_copy(module['runtime_mod'],dest/'mods'/Path(module['runtime_mod']).name,module['sha256'])
+    module=build_module(pending_sources);verified_copy(module['runtime_mod'],dest/'mods'/Path(module['runtime_mod']).name,module['sha256'])
     verified_copy(module['private_qa']['path'],dest/'mods'/Path(module['private_qa']['path']).name,module['private_qa']['sha256'])
     save(dest/'config/naruto-arenas.json',config_from_manifest(manifest_path))
     if not registry_only:
@@ -154,7 +159,7 @@ def stage_runtime(world,manifest_path,dest,registry_only=False):
         if tree(world)!=before:raise ValueError('Staged world changed during copy')
     else:before=[]
     props={'level-name':'arena-preview','level-type':'FLAT','generator-settings':'3;minecraft:bedrock,2*minecraft:dirt,minecraft:grass;1;',
-           'server-ip':'127.0.0.1','server-port':'25612','online-mode':'false','enable-rcon':'false','enable-query':'false','max-players':'0',
+           'server-ip':'127.0.0.1','server-port':str(port),'online-mode':'false','enable-rcon':'false','enable-query':'false','max-players':'0',
            'white-list':'true','view-distance':'3','max-tick-time':'180000','spawn-protection':'0','difficulty':'1','spawn-monsters':'true','spawn-animals':'false',
            'motd':'PRIVATE NEW ARENA WORLD NATIVE DIAGNOSTIC','allow-flight':'true'}
     (dest/'server.properties').write_text(''.join(k+'='+v+'\n' for k,v in props.items()),encoding='ascii')
@@ -162,11 +167,11 @@ def stage_runtime(world,manifest_path,dest,registry_only=False):
     (dest/'.hbv-arenas-native-probe').write_text('NEW_FRESH_ARENA_WORLD_ONLY\n',encoding='ascii')
     result={'schema':1,'scope':'PRIVATE_FRESH_ARENA_NATIVE_CANDIDATE','base_production53':rows,'omitted_original_server_mods':[dict(r,reason='Latest approved preview omits optional server Damage Indicators after recorded permission-packet failure; original bytes preserved') for r in omitted],'total_production_jars':len(rows)+1,'private_qa_jars':1,'arena_module':module,'manifest_sha256':digest(manifest_path),
             'source_world':str(world) if not registry_only else None,'world_source_files':before,'registry_only':registry_only,'original_world_used':False,'client_launched':False,
-            'magma_sha256':MAGMA_SHA,'java8_sha256':digest(JAVA8/'bin/java.exe')}
+            'loopback_port':port,'mods_cohort_receipt':str(COHORT),'mods_cohort_sha256':COHORT_SHA,'dependency_scope':'Current exact53 stopped server mods; compatible inspected bridge baseline configs/plugins/libraries, no current-server config equivalence claim','magma_sha256':MAGMA_SHA,'java8_sha256':digest(JAVA8/'bin/java.exe')}
     save(dest/'PRIVATE-ARENA-NATIVE-INPUTS.json',result);return result
 
 
-def boot(runtime,iteration,registry_only=False,controller_only=False):
+def boot(runtime,iteration,registry_only=False,controller_only=False,restart_only=False,port=None,nether_only=False,boat_only=False):
     runtime=no_links(runtime)
     inputs=json.loads((runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json').read_text())
     if digest(runtime/MAGMA)!=MAGMA_SHA:raise ValueError('Runtime drift')
@@ -174,12 +179,19 @@ def boot(runtime,iteration,registry_only=False,controller_only=False):
         if digest(runtime/'mods'/r['file'])!=r['sha256']:raise ValueError('Production module drift')
     arena=inputs['arena_module']
     if digest(runtime/'mods'/Path(arena['runtime_mod']).name)!=arena['sha256']:raise ValueError('Arena module drift')
-    with socket.socket() as sock:sock.bind(('127.0.0.1',25612))
+    port=inputs.get('loopback_port',25612) if port is None else port
+    if not isinstance(port,int) or not 1024<=port<=65535:raise ValueError('Invalid loopback port')
+    props=dict(line.split('=',1) for line in (runtime/'server.properties').read_text().splitlines() if '=' in line and not line.startswith('#'))
+    if props.get('server-ip')!='127.0.0.1' or props.get('server-port')!=str(port):raise ValueError('Explicit fixture port does not match isolated server.properties')
+    with socket.socket() as sock:sock.bind(('127.0.0.1',port))
     result_path=runtime/'PRIVATE-ARENA-NATIVE-RESULT.json'
     if result_path.exists():result_path.rename(runtime/f'PRIVATE-ARENA-NATIVE-RESULT-{iteration-1}.json')
     argv=[str(JAVA8/'bin/java.exe'),'-Xms512M','-Xmx3G','-Djava.awt.headless=true','-Dhbv.arenas.nativeProbe=true','-Dhbv.arenas.probeIteration='+str(iteration)]
     if registry_only:argv.append('-Dhbv.arenas.registryOnly=true')
     if controller_only:argv.append('-Dhbv.arenas.controllerOnly=true')
+    if restart_only:argv.append('-Dhbv.arenas.restartOnly=true')
+    if nether_only:argv.append('-Dhbv.arenas.netherOnly=true')
+    if boat_only:argv.append('-Dhbv.arenas.boatOnly=true')
     argv+=['-jar',str(runtime/MAGMA),'nogui']
     log=runtime/f'PRIVATE-ARENA-BOOT-{iteration}.log';started=time.monotonic();receipt={'started_utc':datetime.now(timezone.utc).isoformat(),'iteration':iteration,'forced_termination':False}
     with log.open('xb') as out:
@@ -199,7 +211,7 @@ def boot(runtime,iteration,registry_only=False,controller_only=False):
     return receipt
 
 
-def run_checks(candidate,cases='all'):
+def run_checks(candidate,cases='all',pending_sources=False,port=25612):
     candidate=no_links(candidate)
     stage_path=candidate/'ARENA-STAGE.json'
     if not stage_path.is_file():raise ValueError('Exact arena world stage marker required; no latest-build selection is allowed')
@@ -207,16 +219,26 @@ def run_checks(candidate,cases='all'):
     if digest(no_links(manifest))!=stage['manifest_sha256']:raise ValueError('Stage manifest identity differs')
     registry_only=cases=='registry'
     controller_only=cases=='controller'
-    if cases not in ('all','registry','controller'):raise ValueError('Unknown native case selection')
+    restart_only=cases=='restart'
+    nether_only=cases=='nether'
+    boat_only=cases=='boat'
+    if nether_only and not (candidate/'ARENA-NETHER-STAGE.json').is_file():raise ValueError('Exact cold Nether stage marker required')
+    if cases not in ('all','registry','controller','restart','nether','boat'):raise ValueError('Unknown native case selection')
     for index in range(1,100):
         runtime=candidate.parent/(candidate.name+f'-native-{index:02d}')
         if not runtime.exists():break
     else:raise ValueError('Native candidate cap exceeded')
-    staged=stage_runtime(candidate,manifest,runtime,registry_only)
-    first=boot(runtime,1,registry_only,controller_only)
-    second=boot(runtime,2,registry_only,controller_only) if first['exit_code']==0 and not first['forced_termination'] and not first['critical_log_failures'] else None
-    report={'schema':1,'scope':'REGISTRY_ONLY' if registry_only else 'FOCUSED_CONTROLLER_ONLY_NO_GEOMETRY_ACCEPTANCE' if controller_only else 'NATIVE_GEOMETRY_CONTROLLER_DIAGNOSTIC','runtime':str(runtime),'inputs_sha256':digest(runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json'),
-            'boots':[first]+([second] if second else []),'passed':bool(first['clean_shutdown'] and first['native_result'] and first['native_result']['passed'] and second and second['clean_shutdown'] and second['native_result'] and second['native_result']['passed']),
-            'full_encounter_acceptance':False,'graphical_acceptance':'NOT_RUN_OWNER_KEEP_CLOSED','remaining':['earned entry API integration','distinct encounter playtests','native Edo terminal/revival verification','durable reward crash tests','restart during every phase','load measurements','client rendering']}
+    if pending_sources and cases!='controller':raise ValueError('Pending-source exclusion is permitted only for explicit focused controller diagnostics')
+    staged=stage_runtime(candidate,manifest,runtime,registry_only,pending_sources,port)
+    boots=[]
+    for iteration in range(1,8 if restart_only else 3):
+        receipt=boot(runtime,iteration,registry_only,controller_only,restart_only,port,nether_only,boat_only)
+        boots.append(receipt)
+        if not receipt['clean_shutdown'] or not receipt['native_result'] or (restart_only and not receipt['native_result'].get('passed',False)):break
+    passed=len(boots)==(7 if restart_only else 2) and all(b['clean_shutdown'] and b['native_result'] and b['native_result'].get('passed',False) for b in boots)
+    if restart_only:passed=passed and boots[-1]['native_result'].get('native_restart_cases',{}).get('all_seven_boots_complete',False)
+    report={'schema':1,'scope':'ISOLATED_NATIVE_BOAT_ONLY' if boat_only else 'ISOLATED_NATIVE_NETHER_ONLY' if nether_only else 'REAL_SEVEN_PROCESS_RESTART_ONLY' if restart_only else 'REGISTRY_ONLY' if registry_only else 'FOCUSED_CONTROLLER_ONLY_NO_GEOMETRY_ACCEPTANCE' if controller_only else 'NATIVE_GEOMETRY_CONTROLLER_DIAGNOSTIC','runtime':str(runtime),'inputs_sha256':digest(runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json'),
+            'boots':boots,'passed':bool(passed),'loopback_port':port,
+            'full_encounter_acceptance':False,'graphical_acceptance':'NOT_RUN_OWNER_KEEP_CLOSED','remaining':['native full encounter and protection gates','client rendering']}
     save(runtime/'PRIVATE-ARENA-NATIVE-SUMMARY.json',report)
     return report

@@ -124,7 +124,7 @@ public final class ControllerNativeChecks {
   damageLog.flush();defend();
   if(--wait>0){clock++;return false;}
   if(index>=definitions.size()){finish();return true;}
-  if(d==null){d=definitions.get(index);trust=d.terminal_verified;row=new JsonObject();failures=new JsonArray();row.addProperty("id",d.id);row.add("failures",failures);row.addProperty("template_sha256",d.template_sha256);}
+  if(d==null){d=definitions.get(index);trust=d.terminal_verified;row=new JsonObject();failures=new JsonArray();row.addProperty("id",d.id);row.add("failures",failures);row.addProperty("template_sha256",d.template_sha256);row.addProperty("production_admission_seal_policy_at_start",d.terminal_verified);row.addProperty("production_native_death_policy_at_start",d.native_death_verified);}
   try{
    check(server.getPlayerList().getPlayerByUUID(player.getUniqueID())==player,"Official body was replaced or logged out");
    check(player.isEntityAlive(),"Participant died during actual controller test");
@@ -144,7 +144,7 @@ public final class ControllerNativeChecks {
    if(stage==21){
     player.setHealth(player.getMaxHealth());row.addProperty("prepared_actual_equipment_max_health",player.getMaxHealth());
     if(!camp()){wait=2;return false;}
-    d.terminal_verified=true;ArenaDirector.admit(player,d,false);check(state().equals("PHASE1"),"Normal admission did not start phase1");
+    d.terminal_verified=true;check(!server.getPlayerList().canSendCommands(player.getGameProfile()),"Private flow body unexpectedly has operator privilege");server.getCommandManager().executeCommand(player,"narutoarena enter "+d.id);check(state().equals("PHASE1"),"Non-operator normal admission command did not start phase1");
     row.addProperty("actual_native_boss_normal_admission",true);phase=1;
     if(repeat==0){PartyNativeChecks.begin(server,d,current(),player);stage=20;wait=1;return false;}
     engage();stage=3;wait=48;return false;
@@ -185,7 +185,12 @@ public final class ControllerNativeChecks {
     check(!RewardOutbox.deliver(player,current(),0),"Actual victory full inventory unexpectedly delivered");
     String token=ArenaDirector.text(current(),"run")+":"+player.getUniqueID();row.addProperty("reward_token",token);
     ArenaDirector.exit(player,d,current());check(RewardArchive.pending(player)!=null,"Exit lost actual pending earned reward");
-    ArenaDirector.reset(d,current());check(state().equals("AVAILABLE"),"Actual empty combat-cell reset failed");
+    stage=71;wait=3;return false;
+   }
+   if(stage==71){
+    check(state().equals("RESET_READY")||state().equals("AVAILABLE"),"Automatic empty reset entered an unexpected state: "+state());
+    if(!state().equals("AVAILABLE")){wait=3;return false;}
+    row.addProperty("non_operator_automatic_empty_reset",true);
     if(row.has("native_party_cases")&&row.getAsJsonObject("native_party_cases").has("offline_contributor_uuid")){
      String owner=row.getAsJsonObject("native_party_cases").get("offline_contributor_uuid").getAsString();boolean retained=false;
      for(String id:ArenaDirector.keys(RewardArchive.records())){JsonObject archivedParty=RewardArchive.records().getAsJsonObject(id);JsonObject members=archivedParty.getAsJsonObject("members");
@@ -199,7 +204,7 @@ public final class ControllerNativeChecks {
     if(repeat==0){repeat=1;row.addProperty("first_run_complete",true);player.resetActiveHand();equip();stage=22;wait=20;return false;}
     row.addProperty("clean_second_run_complete",true);finishArena();wait=3;return false;
    }
-   if(stage==22){player.setHealth(player.getMaxHealth());if(!camp()){wait=2;return false;}ArenaDirector.admit(player,d,false);phase=1;engage();stage=3;wait=48;return false;}
+   if(stage==22){player.setHealth(player.getMaxHealth());if(!camp()){wait=2;return false;}check(!server.getPlayerList().canSendCommands(player.getGameProfile()),"Repeat body unexpectedly has operator privilege");server.getCommandManager().executeCommand(player,"narutoarena enter "+d.id);check(state().equals("PHASE1"),"Actual non-operator repeat admission failed");row.addProperty("non_operator_second_admission",true);phase=1;engage();stage=3;wait=48;return false;}
   }catch(Throwable error){failures.add(error.toString());row.addProperty("failed_stage",stage);row.addProperty("last_state",d==null?"":ArenaDirector.run(d)==null?"NO_RUN":state());
    // Preserve failed arena state and actor/cell evidence. Do not blind-reset it.
    damageLog.flush();try{if(row.has("native_party_cases")&&!row.has("party_live_phase_closed"))PartyNativeChecks.endCombat();}catch(Throwable cleanup){row.addProperty("party_cleanup_observation",cleanup.toString());}

@@ -22,9 +22,11 @@ final class ArenaTerminals {
   if(!allSeals(run)||!ArenaDirector.text(run,"state").equals("PHASE3"))throw new IllegalStateException("Three actual seal sequences required");
   WorldServer w=ArenaDirector.server.getWorld(0);Entity body=w.getEntityFromUuid(UUID.fromString(ArenaDirector.text(run,"boss_uuid")));
   if(body==null||body.isDead||!ArenaDirector.text(run,"run").equals(body.getEntityData().getString("HbvArenaRun"))||!d.id.equals(body.getEntityData().getString("HbvArenaId")))throw new IllegalStateException("Exact active owned boss required for sealing");
+  ArenaActors.observe(d,run,body);
   if(!ArenaDirector.restore(d,run)){ArenaDirector.state(run,"SAFE_CLOSED");return;}
   run.addProperty("terminal_kind","ORIGINAL_ARENA_SEAL");run.addProperty("sealed_class",body.getClass().getName());run.addProperty("sealed_class_sha256",classHash(body));run.addProperty("seal_observation_ticks",0);run.addProperty("native_death_claimed",false);ArenaDirector.state(run,"SEALING_OBSERVE");
   // Only this run's exact authenticated body. No vessel/global manager setters.
+  if(!ArenaActors.cleanup(d,run)){ArenaDirector.state(run,"SAFE_CLOSED");return;}
   body.setDead();ArenaDirector.broadcast(run,"Three seals complete. The arena seal is binding its owned boss. This ending is an original arena adaptation; it does not award native death XP.");
  }
  static void tick(ArenaDirector.Definition d,JsonObject run){

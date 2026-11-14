@@ -1,0 +1,220 @@
+{
+  "schema": 1,
+  "scope": "CANDIDATE_CURRENT13_NATIVE_REPAIR_CHECKPOINT_NOT_PRODUCTION_ACCEPTANCE",
+  "source_module": {
+    "runtime_sha256": "dc86d0ad20f57214b8fee2f3a38a03f101f9810790a3040f2306db8428474d2f",
+    "private_qa_sha256": "e457d467c082afeec80335ad34dad7a3bbaf000fea089d1dcdc26c24a5c7731d",
+    "source_files": [
+      {
+        "path": "build.gradle",
+        "sha256": "73f163f2e17e8521a5af3b70f2aa888f40705c4ebfb20e81b7f8e82fea04bdd6"
+      },
+      {
+        "path": "gradle.properties",
+        "sha256": "8f331a3ec0dfa6928717a7c8e8009e7da8624d236ba0adec5a05447aaf7c04fb"
+      },
+      {
+        "path": "nativechecks/village/vale/ArenaDodgeNativeAccess.java",
+        "sha256": "dc3321d3342587499809d7dc49b804f6ba4c545ea0d5ca9bdcf2c9d3a1cfdfe1"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ActorNativeChecks.java",
+        "sha256": "6120fcb99ef0f413b29405137f6b76f24534e24c682e100fd3df53661343892c"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/CombatNativeChecks.java",
+        "sha256": "91e37f46e8514a0fee9149c937b7cd4565870e1b59fcbd234c6b6d883ee360d5"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ControllerNativeChecks.java",
+        "sha256": "b314b4316b77ce3b18e45e0194c97fe1a8ba67c9c0afa2f5b98156d5c9869cfb"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/CoreRewardNativeChecks.java",
+        "sha256": "4f57660be3bd8ac7253b042ad679a5cf1b9e56e3b6949e42098fab4c1fd78deb"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/LargeStateNativeChecks.java",
+        "sha256": "c6569f4a014bcb187adc8b890d9364dfa28433ca7bcf3c54f98a4148953be4da"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/NativeNetherChecks.java",
+        "sha256": "4aef07fadd5454d78988cf5b91bf070b047cac60db743d3bc82288dabc1469c8"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/NativeProbe.java",
+        "sha256": "40f9734ee1cc0f6fb3304b0e9a51078eb715810b63fdaee0aba15a8999e65719"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/OutboxNativeChecks.java",
+        "sha256": "b71a31b64fdcebc019e78262c728851f9cddfb45d892b57914424e9698ab58b6"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/PartyNativeChecks.java",
+        "sha256": "2b9a6785303ac0efea08a9b69921e17884964261b18678bb3854a6c2d5be0823"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/RestartNativeChecks.java",
+        "sha256": "50e445903147fd610ae05d0725e1d15409bb8c22fbf614603734efdc5a9c9285"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ServicesNativeChecks.java",
+        "sha256": "1db9cca8d6b73a220c54ef0c56a5829b259c83d81d6b65c2def1d08fac258232"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/StarterKitNativeChecks.java",
+        "sha256": "09355de617d1271a85275e5ee3535b6d053ad851fbee6413dd3f877d18d72eb5"
+      },
+      {
+        "path": "settings.gradle",
+        "sha256": "5d6bb7c1f88bd80bed974c1370b35077af540cfa6017b532db9764037e22684a"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaActors.java",
+        "sha256": "d313eefdb85fea8beec1e72a2e2e63aa01331a1fff0871f2d6ed5e73eb46ec85"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaDirector.java",
+        "sha256": "9ae21851db572d70d19eb5ee2d8786f0b73ca99a0fe050c7b74177728d78b65f"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaIntro.java",
+        "sha256": "9e3cca9bec9a85dc459321aafba42c7b8f59a48373d53a1fc99dc62cc261e9cc"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaServices.java",
+        "sha256": "9c223d04499e9fda8309bb965993b5595d4719e4ee6f2d825b1f9b843a10f6bf"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaStarterKits.java",
+        "sha256": "d735a48daebd678246841b03f328f9eedc66b30ceb7a700dcc0ae4ad66524e02"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaTerminals.java",
+        "sha256": "cf2f865aa0fc67d926b0b0f62634db800eb12de27c8933b13d2be70a7a22406f"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/BeatSculptures.java",
+        "sha256": "a2ac9fa1d2421b38c8c6e46b47addced866ef6ff9ad18185943352e0b09f7bd9"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/CoreRewardOutbox.java",
+        "sha256": "41ade502f261d634ee76c65b85e4b167ef1a6c62521b332709a7e8e1d3068ad4"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/EnvironmentalBeats.java",
+        "sha256": "f0bc246e5b15a879661a19c2cd1af2234c8bf20380674eaaed1a7e94146ffd03"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/NativeBossPolicies.java",
+        "sha256": "1f24424f8852fcef778f9d7b020d4dd300ccdcb8a0f55bd2ca874509384f32f6"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RewardArchive.java",
+        "sha256": "ebe6e880f8a6fb9cb6e5077da0ad2e1358246185bd84eb691f7233faa5c9f96f"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RewardOutbox.java",
+        "sha256": "2c5ed9b4d1b80d11bef09eedadee14aaa89b1c0ffbac186ed887d3e06a1f40c4"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RunRules.java",
+        "sha256": "b38f0584ef71978de509fc0384b2bc22c78913acfa17fac14f35f211b7178f28"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/WaterPrison.java",
+        "sha256": "3c57bf736071bb883651af92cebe590aa60e716607bacda239c857e683426575"
+      },
+      {
+        "path": "src/main/resources/mcmod.info",
+        "sha256": "57c476ef33d72e81293b45e7e8b7204815d538020706cc44cdd20b4905849c4e"
+      },
+      {
+        "path": "tests/village/vale/arenas/RunRulesChecks.java",
+        "sha256": "ac25c2105542513fc39309fc1e4eeb330ffe0fbac7679678eafdebaa0e73ef74"
+      }
+    ],
+    "core_api_sha256": "17aed767c851d7359e33f37e15dbefa3d4de4693ce8be6462e808e49cc037815"
+  },
+  "server_core_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+  "geometry": "build04; see arenas-build04-offline.json",
+  "native08": {
+    "clean_processes": 2,
+    "current53_server_mods_plus_original_arena_module": true,
+    "human_collision_support_samples": 9261,
+    "human_collision_support_failures": 0,
+    "native_light_failures": {
+      "forest": 19,
+      "cloud": 38,
+      "sand": 16,
+      "mist": 24,
+      "fire": 29
+    },
+    "starter_real_assertions": [
+      45,
+      51
+    ],
+    "starter_genuine_owned_items_delivered": 5,
+    "starter_process_restart": "PASS",
+    "native_actor_public_leader_uuid_controls": "PASS_TWO_PROCESSES",
+    "native_outbox_and_core_reward_cases": "PASS",
+    "large_utf8_journal_two_process_restore": "PASS",
+    "ordinary_player_command_admission": "FAIL_REPAIR_IN_SOURCE",
+    "full_encounter_acceptance": false
+  },
+  "restart_current13_source03": {
+    "boots_0_through_3": "PASS_ALL_FIVE",
+    "boot4": "FAILED_QA_ZERO_ASSERTION_AFTER_80_REAL_WARMUP_TICKS",
+    "source_repair": "observe at actual FMLServerStarted; then allow genuine elapsed ticks",
+    "overall": "FAIL_RETAINED"
+  },
+  "nether_current13_source03": {
+    "native_hell_provider": "PASS",
+    "actual_lava_source_cells": 13975,
+    "native_lava_flow_and_containment": "PASS",
+    "actual_contained_bed_explosion": "PASS",
+    "all_2197_sacrificial_cells_restored": "PASS",
+    "route_lighting": "FAIL_AT_OPAQUE_STAIRS",
+    "overall": "FAIL_RETAINED"
+  },
+  "post_native03_readback": {
+    "compared_cells": 312500000,
+    "grass_to_dirt_cells": 7095,
+    "empty_chest_lock_serialization_additions": 8,
+    "other_structural_block_differences": 0,
+    "grass_samples": 12,
+    "sample_cover": "all buried under opaque blocks, blocklight=0 and skylight=0; consistent with natural decay",
+    "raw_comparison": "FAIL_RETAINED",
+    "universal_jutsu_grief_protection_claimed": false
+  },
+  "pending": [
+    "new build05 exposed stair/gallery lighting and downstream asset gates",
+    "current source ordinary-player command / pressure / independent terminal policy retest",
+    "seven-process final restart and pending reward",
+    "native boat fixture",
+    "native Nether final geometry and restart",
+    "standalone performance target",
+    "sealed shared Core damage/heal/protection observer",
+    "client/shader acceptance under closed-client preference"
+  ],
+  "private_packages": [
+    {
+      "name": "Five Naruto Stadium Schematics.zip",
+      "bytes": 8742673,
+      "sha256": "c71233752c6d8f4ee7c8a831e79cc0e62455aa29ef1e4afe83e4ebc44f0f875d",
+      "scope": "BUILD04_ORIGINAL_STRUCTURES_ONLY; automatic encounters separate"
+    },
+    {
+      "name": "Stadium Schematics - Upload to Server Root.zip",
+      "bytes": 7779533,
+      "sha256": "9a6180e2407258f23515a9379270bd2595ac9579a133a88aeb35970f835a2dea",
+      "scope": "BUILD04_ORIGINAL_STRUCTURES_ONLY; automatic encounters separate"
+    },
+    {
+      "name": "Five Naruto Stadiums - Build04 Geometry.zip",
+      "bytes": 15088042,
+      "sha256": "ea035936346448d4f0f1083d5cc673814b59c877b394f0bb61d71beb686d9959",
+      "scope": "BUILD04_ORIGINAL_STRUCTURES_ONLY; automatic encounters separate"
+    }
+  ]
+}
