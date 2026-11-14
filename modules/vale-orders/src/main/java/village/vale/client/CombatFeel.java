@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public final class CombatFeel {
     public static boolean enabled = true;
-    public static float intensity = 1f;
+    public static float intensity = 0.6f;
     private static double trauma, punch, bias, lastHealth = -1;
     private static float lastFall;
     private static boolean wasGround = true;
@@ -36,7 +36,7 @@ public final class CombatFeel {
         net.minecraftforge.common.config.Configuration c = new net.minecraftforge.common.config.Configuration(new java.io.File(folder, "valeorders-client.cfg"));
         c.load();
         enabled = c.getBoolean("screenShake", "combat", true, "Camera shake on taking damage and heavy landings, and a small punch when your melee hit lands. Cosmetic only.");
-        intensity = c.getFloat("shakeIntensity", "combat", 1f, 0f, 2f, "Strength of combat camera feedback.");
+        intensity = c.getFloat("shakeIntensity", "combat", 0.6f, 0f, 2f, "Strength of combat camera feedback.");
         if (c.hasChanged()) c.save();
         MinecraftForge.EVENT_BUS.register(new CombatFeel.Hooks());
         VoxelBits.install();
@@ -56,7 +56,7 @@ public final class CombatFeel {
             if (p == null || mc.isGamePaused()) { lastHealth = -1; return; }
             if (lastHealth >= 0 && p.getHealth() < lastHealth - 0.01) {
                 double lost = lastHealth - p.getHealth();
-                trauma = Math.min(1, trauma + 0.25 + lost / Math.max(1, p.getMaxHealth()) * 2.5);
+                trauma = Math.min(0.8, trauma + 0.15 + lost / Math.max(1, p.getMaxHealth()) * 1.8);
                 Entity src = p.getAttackingEntity() != null ? p.getAttackingEntity() : null;
                 if (src != null) { double ang = Math.atan2(src.posZ - p.posZ, src.posX - p.posX) - Math.toRadians(p.rotationYaw + 90); bias = Math.sin(ang); }
                 else bias = 0;
@@ -77,11 +77,11 @@ public final class CombatFeel {
             if (!e.getEntityPlayer().world.isRemote || e.getEntityPlayer() != mc.player || !(e.getTarget() instanceof EntityLivingBase)) return;
             EntityPlayer p = e.getEntityPlayer();
             boolean crit = p.fallDistance > 0 && !p.onGround && !p.isOnLadder() && !p.isInWater() && p.getCooledAttackStrength(0.5f) > 0.9f;
-            punch = Math.min(1, punch + (crit ? 0.9 : 0.5) * p.getCooledAttackStrength(0.5f));
+            punch = Math.min(1, punch + (crit ? 0.6 : 0.3) * p.getCooledAttackStrength(0.5f));
             Entity t = e.getTarget();
             java.util.Random r = p.world.rand;
             double tx = t.posX, ty = t.posY + t.height * 0.6, tz = t.posZ;
-            int n = crit ? 16 : 8;
+            int n = crit ? 8 : 4;
             for (int i = 0; i < n; i++)
                 VoxelBits.spawn(tx, ty, tz, (r.nextDouble() - 0.5) * 0.35, r.nextDouble() * 0.25, (r.nextDouble() - 0.5) * 0.35, 1, i % 4 == 0 ? 0xFFE27A : 0xFFFFFF, 1f, 8 + r.nextInt(6), 0.03, 0.9, true);
         }
