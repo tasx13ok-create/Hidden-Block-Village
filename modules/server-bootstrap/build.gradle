@@ -32,3 +32,5 @@ tasks.register('writeValeBuildMetadata') {
         ])) + '\n'
     }
 }
+
+apply from: file('../../gradle/naruto-artifact-names.gradle')

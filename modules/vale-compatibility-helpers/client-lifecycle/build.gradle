@@ -1,6 +1,6 @@
 plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
 group = 'village.vale'
-version = '0.1.2'
+version = '0.1.3'
 base { archivesName = 'Vale-Client-Lifecycle-Compat' }
 java {
     toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }
@@ -14,3 +14,19 @@ jar {
     manifest { attributes('FMLCorePlugin': 'village.vale.clientcompat.ClientLifecyclePlugin', 'FMLCorePluginContainsFMLMod': 'true', 'ForceLoadAsMod': 'true') }
 }
 apply from: file('../../../gradle/vale-mod-build.gradle')
+
+// Original physical charge-edge checks; private addon transform input is optional.
+def rules=layout.buildDirectory.dir('charge-rule-checks')
+tasks.register('compilePhysicalChargeKeyChecks',JavaCompile){source files('../src/village/vale/clientcompat/PhysicalChargeKey.java','../tests/village/vale/clientcompat/PhysicalChargeKeyChecks.java');classpath=files();destinationDirectory=rules;javaCompiler=javaToolchains.compilerFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.register('verifyPhysicalChargeKey',JavaExec){dependsOn 'compilePhysicalChargeKeyChecks';classpath=files(rules);mainClass='village.vale.clientcompat.PhysicalChargeKeyChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.named('check'){dependsOn 'verifyPhysicalChargeKey'}
+def clientRules=layout.buildDirectory.dir('client-source-checks')
+tasks.register('compileChargeInputClientChecks',JavaCompile){source files('../src/village/vale/clientcompat/PhysicalChargeKey.java','../src/village/vale/clientcompat/ChargeInputClient.java','../tests/village/vale/clientcompat/ChargeInputClientChecks.java')+fileTree('../tests/charge-input-stubs'){include '**/*.java'};classpath=files();destinationDirectory=clientRules;javaCompiler=javaToolchains.compilerFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.register('verifyChargeInputClientSource',JavaExec){dependsOn 'compileChargeInputClientChecks';classpath=files(clientRules);mainClass='village.vale.clientcompat.ChargeInputClientChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.named('check'){dependsOn 'verifyChargeInputClientSource'}
+def transforms=layout.buildDirectory.dir('input-transform-checks')
+tasks.register('compileChargeInputTransformChecks',JavaCompile){dependsOn 'classes';source files('../tests/village/vale/clientcompat/ChargeInputTransformChecks.java');classpath=sourceSets.main.compileClasspath+sourceSets.main.output;destinationDirectory=transforms;javaCompiler=javaToolchains.compilerFor{languageVersion=JavaLanguageVersion.of(8)}}
+['CLIENT','SERVER'].each { side ->
+ tasks.register('verifyChargeInputTransform'+side,JavaExec){dependsOn 'compileChargeInputTransformChecks';classpath=files(transforms)+sourceSets.main.runtimeClasspath;mainClass='village.vale.clientcompat.ChargeInputTransformChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)};onlyIf {providers.gradleProperty('chargeAddonInput').isPresent()};doFirst {args providers.gradleProperty('chargeAddonInput').get(),side}}
+ tasks.named('check'){dependsOn 'verifyChargeInputTransform'+side}
+}

@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "status": "PROMOTED_SOURCE_PENDING_MATCHED_COHORT_AND_GRAPHICS",
+  "source_pin": "3a257fe16c302d2a0b0ee9fd5c07072f789ddf41",
+  "original_author": "Claude Opus 5.5",
+  "version": "0.3.7",
+  "scope": "Original procedural256px texture atlases for our Encounter actors only. No imported CustomNPCs, Residents, original provider icons/armor or player data is replaced.",
+  "adaptation": "ModelPlayer(0,false) uses the actual64x64skin layout including asymmetric limbs and outerwear. Six cached ResourceLocations and deterministic stable profile matching; no per-frame texture allocation.",
+  "verification": {
+    "all_main_sources_compiled": 6,
+    "pure_profile_checks": 20007,
+    "actual_headless_model_checks": 4,
+    "supplied_atlases_visually_inspected": 6,
+    "pixel_identical_regeneration": 6,
+    "opaque_base_UV_faces": 216,
+    "actual_client_or_gpu": false,
+    "unique_gameplay_parity_claimed": false
+  },
+  "paths": [
+    {
+      "path": "modules/vale-encounters/build.gradle",
+      "source09_sha256": "d7b3eeeef23d29ea962071344de0cca077c84d79105beb14d313da5e6fa6b680",
+      "sha256": "a7ee1c6df1eef42ee8a3028e4be2c6dc5830d66356490514c9d5d5781ce8a3e1",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "modules/vale-encounters/modelchecks/village/encounters/ActorSkinModelChecks.java",
+      "source09_sha256": null,
+      "sha256": "a0fc157b59111fa163a4f9c4f04382a7a3caf49cb2227b90b006ac8f86e6a5fa",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/ActorSkinRules.java",
+      "source09_sha256": null,
+      "sha256": "0625838585ecb7087906e2a17df1a4b25c2c3f983754f90b9dc623d4561b2d4a",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/ClientProxy.java",
+      "source09_sha256": "eee306bb37c7ea188001dfe1592457ead20ae2edfe35dea3cf2815dbf9238547",
+      "sha256": "de9a699fe6c578a34d41e877c4b0ae9edf5beb885fada252f43833f21a8df494",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/Encounters.java",
+      "source09_sha256": "8aef9e6205cc65754cb644ca865d50c12c46e7ddc3d35de6448934bdfd9479e3",
+      "sha256": "306c991ddc2691efa5fa60aeeb7512be5ebac5ef478304cf4c5f7adfc04df658",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/ash_regent_boss.png",
+      "source09_sha256": null,
+      "sha256": "e7566917209b4fd4aa1d18c71d940ef3e60596e0671a734e85bef6b368630833",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/garran_flint_jonin.png",
+      "source09_sha256": null,
+      "sha256": "4a22bc7562ceea1835cdd007a2c4af4db08827c09792b7cf717ea00212e25eff",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/kaito_ember_genin.png",
+      "source09_sha256": null,
+      "sha256": "be44be992cb3522d9beebd0c451638a825bfa6c548cef9b1841b4c270372200a",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/lantern_sage_dawn.png",
+      "source09_sha256": null,
+      "sha256": "0c01249a5b65f49db7c5c970174d415abff04e95134745a531dfcb9f5feb4452",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/rook_dusk_operative.png",
+      "source09_sha256": null,
+      "sha256": "9ede9ba5eb73063696d6286b3a7b2b9d6dcff07606ef7b9a681a7cc4a3692096",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/sayo_current_kunoichi.png",
+      "source09_sha256": null,
+      "sha256": "d49b8c2aad189a95b329e14d1b70f57c792392fc38cf3dabeadf6707cec97de0",
+      "provided_original_png_bytes_unchanged": true
+    },
+    {
+      "path": "modules/vale-encounters/tests/village/encounters/ActorSkinRulesChecks.java",
+      "source09_sha256": null,
+      "sha256": "937093168e0861c447d100d59bda5bca4b550357fec3e0482de4a1bb5d9bf59b",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "tools/skins/hdcast.py",
+      "source09_sha256": null,
+      "sha256": "0105d180cfd0fe27f23e274ef985d15665a2ff116d2e26050755966dd803d22d",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "tools/skins/hdpaint.py",
+      "source09_sha256": null,
+      "sha256": "31ea861336861f86a4d1a9ede39da41d7d91d10d96ca97270788c01b50618716",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "tools/skins/README.md",
+      "source09_sha256": null,
+      "sha256": "a82ff45b2f2e672ef86bc617f1a036e2a91525d0713438b7d3dedbfdae785950",
+      "provided_original_png_bytes_unchanged": null
+    },
+    {
+      "path": "tools/skins/verify_actor_art.py",
+      "source09_sha256": null,
+      "sha256": "8fb1ceefb0413de4a6ab057b10bc468919259417d1cdf17eecb6004f586bceef",
+      "provided_original_png_bytes_unchanged": null
+    }
+  ]
+}

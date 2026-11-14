@@ -1,0 +1,1 @@
+package org.lwjgl.opengl;public final class GLContext{public static final Caps CAPS=new Caps();public static Caps getCapabilities(){return CAPS;}public static final class Caps{public boolean OpenGL14=true;}}

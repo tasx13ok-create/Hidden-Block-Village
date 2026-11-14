@@ -32,6 +32,9 @@ public final class WeaponPulse extends Entity {
     private static final DataParameter<Float> PITCH = EntityDataManager.createKey(WeaponPulse.class, DataSerializers.FLOAT);
     private static final DataParameter<Boolean> ALT = EntityDataManager.createKey(WeaponPulse.class, DataSerializers.BOOLEAN);
     private UUID ownerUuid;
+    // Only bridge cosmetics retain this receipt lease; earned pulses keep their existing behavior.
+    private village.vale.bridge.BridgeReceipts.Context visualLease;
+    private EntityPlayerMP visualBody;
 
     public WeaponPulse(World world) {
         super(world);
@@ -73,34 +76,45 @@ public final class WeaponPulse extends Entity {
         try { castPresentation(p,spec,power); }
         catch(RuntimeException failure) { cosmeticFailure(failure); }
     }
-    private static void castPresentation(EntityPlayerMP p, ArsenalSpec spec, float power) {
+    /** An already-admitted native effect; the lease never calls gameplay or native resource code. */
+    static void visual(EntityPlayerMP p, ArsenalSpec spec, village.vale.bridge.BridgeReceipts.Context lease) {
+        if(lease==null||!lease.valid())return;
+        castPresentation(p,spec,1,lease);
+    }
+    static void closeVisual(EntityPlayerMP player) {
+        if(player==null)return;
+        for(net.minecraft.world.WorldServer world:net.minecraftforge.common.DimensionManager.getWorlds())
+            for(WeaponPulse pulse:world.getEntities(WeaponPulse.class,w->!w.isDead&&w.visualBody==player&&w.visualLease!=null))discard(pulse,world);
+    }
+    private static void castPresentation(EntityPlayerMP p, ArsenalSpec spec, float power) {castPresentation(p,spec,power,null);}
+    private static void castPresentation(EntityPlayerMP p, ArsenalSpec spec, float power, village.vale.bridge.BridgeReceipts.Context lease) {
         if (p == null || spec == null) return;
         Vec3d eye = p.getPositionEyes(1), look = p.getLookVec();
         boolean sneak = p.isSneaking();
         switch (spec.role) {
-            case GUARD: case MEND: spawn(p, spec, AURA, 40, power, eye, eye, false); return;
+            case GUARD: case MEND: spawn(p, spec, AURA, 40, power, eye, eye, false,lease); return;
             case WIND:
-                if (sneak) spawn(p, spec, AURA, 40, power, eye, eye, true);
-                else spawn(p, spec, CAST, WeaponMath.CAST_TICKS, power, eye, eye.add(look.scale(8)), false);
+                if (sneak) spawn(p, spec, AURA, 40, power, eye, eye, true,lease);
+                else spawn(p, spec, CAST, WeaponMath.CAST_TICKS, power, eye, eye.add(look.scale(8)), false,lease);
                 return;
-            case OVERDRIVE: spawn(p, spec, AURA, 60, power, eye, eye, false); return;
-            case SWEEP: spawn(p, spec, AURA, 100, power, eye, eye, false); return;
-            case SLAM: spawn(p, spec, CAST, WeaponMath.CAST_TICKS + 4, power, p.getPositionVector(), p.getPositionVector(), false); return;
+            case OVERDRIVE: spawn(p, spec, AURA, 60, power, eye, eye, false,lease); return;
+            case SWEEP: spawn(p, spec, AURA, 100, power, eye, eye, false,lease); return;
+            case SLAM: spawn(p, spec, CAST, WeaponMath.CAST_TICKS + 4, power, p.getPositionVector(), p.getPositionVector(), false,lease); return;
             case SONIC:
                 if (sneak) break;
-                spawn(p, spec, CAST, WeaponMath.CAST_TICKS, power, eye, eye.add(look.scale(10)), false); return;
+                spawn(p, spec, CAST, WeaponMath.CAST_TICKS, power, eye, eye.add(look.scale(10)), false,lease); return;
             case EXTEND: case CHAIN: case DRAIN: case SHOCK: case BREAK: case RESTORE: case RIME: case BURST: case FINISH: {
                 double range = spec.role == ArsenalSpec.Role.CHAIN ? 10 : spec.role == ArsenalSpec.Role.EXTEND ? 8 : spec.role == ArsenalSpec.Role.FINISH ? 7 : 4.5;
                 EntityLivingBase target = ArsenalAccess.aimedTarget(p, range);
                 Vec3d end = target != null ? target.getPositionVector().add(0, target.height * 0.55, 0) : eye.add(look.scale(range * 0.7));
                 int life = spec.role == ArsenalSpec.Role.BURST ? WeaponMath.BURST_TICKS : WeaponMath.CAST_TICKS;
-                spawn(p, spec, CAST, life, power, eye, end, spec.role == ArsenalSpec.Role.EXTEND && sneak);
+                spawn(p, spec, CAST, life, power, eye, end, spec.role == ArsenalSpec.Role.EXTEND && sneak,lease);
                 return;
             }
             default: break;
         }
         // Projectile and field roles: a short muzzle flash at the hand; the flight itself is drawn by the shot renderer.
-        spawn(p, spec, CAST, WeaponMath.MUZZLE_TICKS, power, eye, eye.add(look.scale(2)), sneak);
+        spawn(p, spec, CAST, WeaponMath.MUZZLE_TICKS, power, eye, eye.add(look.scale(2)), sneak,lease);
     }
 
     /** A secondary chain arc between two struck bodies. */
@@ -114,6 +128,10 @@ public final class WeaponPulse extends Entity {
     }
 
     private static void spawn(EntityPlayerMP p, ArsenalSpec spec, byte kind, int life, float power, Vec3d at, Vec3d end, boolean alt) {
+        spawn(p,spec,kind,life,power,at,end,alt,null);
+    }
+    private static void spawn(EntityPlayerMP p, ArsenalSpec spec, byte kind, int life, float power, Vec3d at, Vec3d end, boolean alt, village.vale.bridge.BridgeReceipts.Context lease) {
+        if(lease!=null&&!lease.valid())return;
         if (p==null||spec==null||p.world==null||p.world.isRemote||!p.isEntityAlive()||p.isSpectator()||at==null||end==null
                 ||!Double.isFinite(at.x)||!Double.isFinite(at.y)||!Double.isFinite(at.z)
                 ||!Double.isFinite(end.x)||!Double.isFinite(end.y)||!Double.isFinite(end.z)) return;
@@ -123,6 +141,7 @@ public final class WeaponPulse extends Entity {
         int owned=0;for(WeaponPulse pulse:live)if(owner.equals(pulse.ownerUuid)&&++owned>=32)return;
         WeaponPulse w = new WeaponPulse(p.world);
         w.ownerUuid = p.getUniqueID();
+        w.visualLease=lease;w.visualBody=lease==null?null:p;
         w.dataManager.set(SPEC, spec.ordinal());
         w.dataManager.set(KIND, kind);
         w.dataManager.set(OWNER, p.getEntityId());
@@ -137,16 +156,19 @@ public final class WeaponPulse extends Entity {
         w.setPosition(at.x, at.y, at.z);
         try {
             boolean accepted=world.spawnEntity(w);
-            if(!accepted||p.world!=world||!owner.equals(p.getUniqueID())||!p.isEntityAlive()||w.world!=world)discard(w,world);
-        } catch(RuntimeException failure) { discard(w,world);cosmeticFailure(failure); }
+            if(!accepted||p.world!=world||!owner.equals(p.getUniqueID())||!p.isEntityAlive()||w.world!=world||lease!=null&&(!lease.valid()||w.isDead||world.getEntityByID(w.getEntityId())!=w))discardCandidate(w,world,lease);
+        } catch(RuntimeException failure) { discardCandidate(w,world,lease);cosmeticFailure(failure); }
+        catch(LinkageError failure){if(lease!=null)discardCandidate(w,world,lease);throw failure;}
     }
 
+    private static void discardCandidate(WeaponPulse pulse,World world,village.vale.bridge.BridgeReceipts.Context lease){discard(pulse,world);if(lease!=null&&pulse.world!=null&&pulse.world!=world)discard(pulse,pulse.world);}
     private static void discard(WeaponPulse pulse,World world){try{pulse.setDead();world.removeEntity(pulse);}catch(RuntimeException failure){cosmeticFailure(failure);}}
     private static void cosmeticFailure(RuntimeException failure){org.apache.logging.log4j.LogManager.getLogger("ValeWeaponVfx").warn("Weapon presentation failed; accepted gameplay is retained",failure);}
 
     @Override public void onUpdate() {
         super.onUpdate();
         if (world.isRemote) return;
+        if(visualLease!=null&&(!visualLease.valid()||visualBody==null||visualBody.world!=world||world.getEntityByID(getEntityId())!=this)){setDead();return;}
         if (ticksExisted > life() + 1) { setDead(); return; }
         if (kind() == AURA || kind() == SWING) {
             EntityPlayerMP p = ownerUuid == null || world.getMinecraftServer() == null ? null : world.getMinecraftServer().getPlayerList().getPlayerByUUID(ownerUuid);

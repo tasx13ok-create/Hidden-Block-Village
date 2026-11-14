@@ -34,6 +34,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--receipt-output', type=Path, required=True)
     parser.add_argument('--core-version', required=True)
+    parser.add_argument('--pack-name', default='Hidden Block Village')
+    parser.add_argument('--stock-mod-art', action='store_true', help='Require no resource-pack overrides and omit the retired reference icon overlay')
     args = parser.parse_args()
     for path in [args.output, args.receipt_output, args.output.with_suffix('.zip.sha256')]:
         if path.exists():
@@ -69,7 +71,10 @@ def main():
         with zipfile.ZipFile(io.BytesIO(payload['overrides/mods/' + name])) as jar:
             if jar.testzip() is not None:
                 raise ValueError('Broken mod archive: ' + name)
-    core_path = 'overrides/mods/vale-orders-' + args.core_version + '.jar'
+    core_files = [row['file'] for row in receipt['mods'] if row.get('component') == 'vale-orders']
+    if len(core_files) != 1:
+        raise ValueError('Exactly one receipt-bound Core component is required')
+    core_path = 'overrides/mods/' + core_files[0]
     with zipfile.ZipFile(io.BytesIO(payload[core_path])) as jar:
         info = json.loads(jar.read('mcmod.info'))
         if not any(m.get('modid') == 'valeorders' and m.get('version') == args.core_version for m in info):
@@ -77,6 +82,9 @@ def main():
     for row in receipt['resources']:
         relative = row['path']
         p = safe_path(relative)
+        if args.stock_mod_art and relative == 'resourcepacks/Vale-Reference-Flat-Icons-v3.zip':
+            omitted.append(relative)
+            continue
         if relative in OMIT or relative.startswith('config/field-controls/backups/'):
             omitted.append(relative)
             continue
@@ -94,17 +102,21 @@ def main():
     selected_shader = next(line.split('=', 1)[1] for line in shaders.splitlines() if line.startswith('shaderPack='))
     if 'overrides/shaderpacks/' + selected_shader not in payload:
         raise ValueError('Selected shader is absent')
-    if 'overrides/resourcepacks/Vale-Reference-Flat-Icons-v3.zip' not in payload:
+    if args.stock_mod_art:
+        selected = next((line.split(':', 1)[1] for line in options.splitlines() if line.startswith('resourcePacks:')), None)
+        if selected is None or json.loads(selected) != []:
+            raise ValueError('Stock mod art requires an empty active resource-pack list')
+    elif 'overrides/resourcepacks/Vale-Reference-Flat-Icons-v3.zip' not in payload:
         raise ValueError('Selected icon pack is absent')
 
     manifest = {
         'minecraft': {'version': '1.12.2', 'modLoaders': [{'id': 'forge-14.23.5.2859', 'primary': True}]},
         'manifestType': 'minecraftModpack', 'manifestVersion': 1,
-        'name': 'Naruto Complete Client - Friend Test', 'version': args.core_version + '-test.1',
+        'name': args.pack_name, 'version': args.core_version + '-test.2',
         'author': 'Hidden Block Village', 'files': [], 'overrides': 'overrides',
     }
     payload['manifest.json'] = (json.dumps(manifest, indent=2) + '\n').encode()
-    readme = '''NARUTO COMPLETE CLIENT - CORE {version} FRIEND TEST
+    readme = '''{pack_name} - CORE {version} TEST
 
 INSTALL
 1. In CurseForge's Minecraft section, choose Import and select this ZIP.
@@ -125,7 +137,9 @@ CONTROLS
 V: Dodge. Hold F for three seconds: switch normal/combat hotbar.
 E: inventory. F7/F8: Naruto settings/controls. F12: swap hands.
 F6/F9/F10 retain the displaced legacy action bindings. Rebind in Settings.
-BSL shaders and the resource pack are included and selected. If the friend's
+BSL shaders are included and selected. Original installed mod icons and worn
+armor are retained; our own items, HUD and optional effects sit on top.
+If the friend's
 PC struggles, choose Shaders OFF in Video Settings; the gameplay mods remain.
 
 WHAT IS INCLUDED
@@ -136,8 +150,8 @@ All mod bytes are included locally; this is not only a remote-download list.
 The launcher installs the Minecraft/Forge runtime normally.
 
 TEST STATUS
-Core {version} passed all 11 component builds / 36 artifacts and 3,649
-disposable Forge native assertions. This ZIP's roster, hashes, nested JARs,
+Consult the matching release evidence for the exact source/build/native results.
+This ZIP's roster, hashes, nested JARs,
 settings references and all archive bytes have been checked. It is a test
 snapshot. Remaining Claude features, full-pack gameplay/Creative checks and
 hosted Bisect acceptance were not complete at packaging. It does not claim
@@ -153,7 +167,7 @@ If reporting a problem, include logs/latest.log from your new profile and
 describe the action. Keep account/session files private.
 
 Import instructions: https://support.curseforge.com/support/solutions/articles/9000197912
-'''.format(version=args.core_version)
+'''.format(version=args.core_version, pack_name=args.pack_name)
     payload['START-HERE.txt'] = readme.encode('utf-8')
     payload['MODLIST.txt'] = ('\n'.join(sorted(expected)) + '\n').encode('utf-8')
     pins = {'schema': 1, 'scope': 'FRIEND_CLIENT_TEST_DOWNLOAD', 'core_version': args.core_version,

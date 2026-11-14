@@ -1,48 +1,11 @@
-# Bijuu Armor tail physics, pass 2
+# Native Bijuu tail provenance and runtime baseline
 
-This replaces `village.bijuu.TailPhysics` in Hidden Village Bijuu Armor 0.16.2-rc1. The public API is unchanged, so no callers change. The source was recovered from the owner's jar (decompiled with the owner's approval) and edited here, because the original source is not in this repository. Only the tail collision and inertia solver changes; models, textures and every other class are untouched.
+The original privately installed Hidden Village Bijuu Armor0.16.2rc1 JAR remains the runtime baseline. This directory provides no replacement class and is not a production build component.
 
-## What changed
+The external main merge at `f1b0f8f34d16a8d8388574e7aadf538d093e6a96` brought modified tail source and benchmarks. Its README explicitly identified the implementation as recovered by decompiling the supplied upstream JAR, then edited because upstream source was absent. Claude authored the edits, but that does not establish reviewed public redistribution permission for the recovered implementation. No recovered body was read, copied into another implementation or used in the original runtime adaptations during this review.
 
-- **Adaptive sub-steps (2–6).** These follow root and tip speed, so fast swings and jumps no longer tunnel.
-- **Verlet momentum.** Each segment keeps its own velocity between ticks. rc1 clamped velocity to ±0.45 and scaled it by 0.8 every tick; a smooth tanh limit replaces that. Tails trail starts, whip on turns and jumps, and follow through after the body stops.
-- **Travelling pose goal.** The pose goal trails behind the root along the chain (`TRAIL`), and the pose spring is softened (`INERTIA_SPRING`), so motion travels down the tail.
-- **Root impulse.** Sudden starts, stops, jumps and landings kick a damped wave down the chain.
-- **Bending limit (`BEND`).** A tail can curl but cannot fold back through itself.
-- **Follow-the-leader length lock.** Each sub-step ends with this pass, so momentum never stretches segments.
-- **Contact friction (`FRICTION`).** Resting tails stay on the ground instead of skating.
-- **Rest damping.** Tails settle quickly once the body stops.
-- **Finite-state guard.** A non-finite result resets cleanly to the animated pose.
+All four input files were retained privately with exact byte/hash verification before the recovered implementation and its two dependent benchmarks were removed from the current public tree. This README is an original disposition record. Safe identities and review scope are recorded in `../../collaboration/fable/TAIL-PHYSICS-PROVENANCE-DISPOSITION.json`.
 
-The tunables are public statics: `ITERATIONS`, `FRICTION`, `BEND`, `MAX_SPEED`, `INERTIA_SPRING` and `TRAIL`.
+The external Git history already exposed those files. Current-tree removal does not erase that history; no shared history was rewritten. No license or complete history purge is claimed.
 
-## Bench (`tests/TailBench.java`)
-
-The bench runs a 12-segment tail through a scripted sequence: run, weave, jump, land and rest, on a floor with a block behind the player. Results for the four beast profiles tested (0, 2, 5 and 8), rc1 vs pass 2:
-
-| Metric | rc1 | pass 2 |
-|---|---|---|
-| Max segment stretch | 11–15% | 0.2–1.1% |
-| Penetration into blocks | 0 | 0 |
-| Folds | 0 | 0 |
-| Peak tip speed (whip) | 0.31–0.33 | 0.58–0.75 |
-| Motion after settling | 0 | 0 |
-| Rest slide | 0 | 0 |
-
-Trailing is now real momentum rather than stretch. The patched jar also ran cleanly in the real 1.12.2 client through run, strafe, jump, land and settle for all nine sets.
-
-## Build
-
-```
-javac -cp HiddenVillage-BijuuArmor-0.16.2-rc1.jar -d out src/village/bijuu/TailPhysics.java
-jar uf HiddenVillage-BijuuArmor-0.16.2-rc1.jar -C out village/bijuu
-```
-
-The jar itself is not committed. Merge this file into the mod's real source when it is available.
-
-## Pass 3 (experimental)
-
-- **Tail-to-tail separation (on).** Chains rooted on the same body push their own nodes out of each other (`TAIL_GAP`). In the crowded six-tail swing bench (`tests/TailBench2.java`), worst overlap is 0.107 for rc1 against 0.106 here. That's no real improvement yet, but it's stable with no stretch.
-- **Body capsule (off: `BODY_ENABLED=false`).** It infers the body from a smoothed tail direction. In the swing bench it clipped more than rc1 did, so it stays off.
-
-**Known finding.** Pass 2's momentum makes tails swing through the body more on extreme sweeps than stiff rc1 does: body penetration 0.28 against 0.04 in `TailBench2`. A reliable fix needs the real body position and yaw from the caller (`TerrainTailSolver`), not an estimate inside `TailPhysics`. The single-tail bench (`tests/TailBench.java`) still shows 0–0.3% stretch, no penetration and no folding.
+The proposed momentum, separation, experimental body capsule and swing-benchmark enhancements are not adopted production features. Keeping the original provider does not prove those enhancements. Future work must use reviewed original source or an independently authored optional public-API adapter, with actual native body/world tests. Original worlds, native assets and the private baseline JAR remain unchanged.

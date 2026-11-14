@@ -1,6 +1,8 @@
-import sys; sys.path.insert(0, sys.argv[1])
+import argparse, sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from hdpaint import *
-OUT = sys.argv[2]
+OUT = None
 ALL = [HEAD, HAT, BODY, JACKET, RARM, RSLV, LARM, LSLV, RLEG, RPANT, LLEG, LPANT]
 
 def kaito():  # Ember Ward genin: rust hair swept up, charcoal crossover top, ember sash, wrapped limbs
@@ -161,4 +163,20 @@ def ash_regent():  # boss: smouldering layered cloak, horned bone helm, ember ey
         sx, sy, sw, sh = HAT[k]; p.poly([(sx + 2, sy + 2.4), (sx + 6, sy + 2.4), (sx + 4, sy - 0.2)], bone)
     p.finish(ALL); p.im.save(OUT + '/ash_regent_boss.png')
 
-for f in (kaito, sayo, garran, lantern_sage, rook, ash_regent): f()
+def generate(destination):
+    global OUT
+    path = Path(destination).resolve()
+    names = ('kaito_ember_genin', 'sayo_current_kunoichi', 'garran_flint_jonin', 'lantern_sage_dawn', 'rook_dusk_operative', 'ash_regent_boss')
+    if any((path / (name + '.png')).exists() for name in names):
+        raise FileExistsError('Preserve existing artwork; select a new output directory')
+    path.mkdir(parents=True, exist_ok=True)
+    OUT = str(path)
+    for painter in (kaito, sayo, garran, lantern_sage, rook, ash_regent):
+        painter()
+    return [path / (name + '.png') for name in names]
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Generate six original Encounter-only skins into a new destination')
+    parser.add_argument('--out', type=Path, required=True)
+    options = parser.parse_args()
+    generate(options.out)

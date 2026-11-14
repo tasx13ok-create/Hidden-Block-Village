@@ -49,17 +49,32 @@ public final class MenuFx {
     private static GuiButton hovered;
     private static double hoverAt;
     private static Field buttonField;
+    private static final MenuFxRules.Clock CLOCK=new MenuFxRules.Clock();
+    private static MenuFxRules.Mask mask;private static double hoverSoundAt=-1000,clickSoundAt=-1000;
+    private static int screenWidth,screenHeight;
+    private static Object world,body,connection;
+    private static void context(){Object next=MC.getConnection();if(world!=MC.world||body!=MC.player||connection!=next){world=MC.world;body=MC.player;connection=next;reset(MC.currentScreen);}}
+    private static boolean live(GuiScreen g){if(g==null||MC.currentScreen!=g||!MC.isCallingFromMinecraftThread())return false;context();return true;}
+    private static boolean sounds(){return MenuFxRules.audible(on(),HudConfig.motion,HudConfig.menuSounds,HudConfig.mode);}
+    private static void reset(GuiScreen next){screen=next;openedAt=lastFrame=now();hovered=null;BITS.clear();CLOCK.reset();lastBeat=-100;mask=null;screenWidth=next==null?0:next.width;screenHeight=next==null?0:next.height;}
+    private static MenuFxRules.Mask mask(GuiContainer g){
+        MenuFxRules.Mask result=new MenuFxRules.Mask(g.width,g.height,g.getGuiLeft(),g.getGuiTop(),g.getXSize(),g.getYSize());
+        if(g.inventorySlots==null||g.inventorySlots.inventorySlots.size()>512){result.block();return result;}
+        for(net.minecraft.inventory.Slot slot:g.inventorySlots.inventorySlots)if(slot!=null&&slot.isEnabled())result.include((double)g.getGuiLeft()+slot.xPos,(double)g.getGuiTop()+slot.yPos,16,16);
+        return result;
+    }
 
     private static double now() { return Minecraft.getSystemTime() / 50.0; }
     private static boolean on() { return HudConfig.menuEffects; }
-    private static boolean motion() { return HudConfig.motion && HudConfig.mode != 2; }
+    private static boolean motion() { return MenuFxRules.animated(on(),HudConfig.motion,HudConfig.mode); }
 
     // ---- particles (screen space, independent of world pause) ------------------------------------
     private static final class Bit { double x, y, vx, vy, rot, spin, size, age, life; int color; int kind; }
     private static final List<Bit> BITS = new ArrayList<>();
     private static final int LEAF = 0, MOTE = 1, INK = 2, PETAL = 3, DRIP = 4;
     private static void emit(int kind, double x, double y, double vx, double vy, double size, double life, int color) {
-        if (BITS.size() > 220) BITS.remove(0);
+        if(!motion()||!CLOCK.emit(now())||!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(vx)||!Double.isFinite(vy)||!Double.isFinite(size)||!Double.isFinite(life)||size<=0||size>12||life<1||life>400)return;
+        if(BITS.size()>=220)BITS.remove(0);
         Bit b = new Bit(); b.kind = kind; b.x = x; b.y = y; b.vx = vx; b.vy = vy; b.size = size; b.life = life; b.color = color;
         b.rot = RNG.nextDouble() * 360; b.spin = (RNG.nextDouble() - 0.5) * 8; BITS.add(b);
     }
@@ -76,18 +91,19 @@ public final class MenuFx {
     }
     private static void drawBits() {
         for (Bit b : BITS) {
+            if(mask!=null&&!mask.allows(b.x,b.y,b.size*(b.kind==DRIP?8:3)))continue;
             double f = b.age / b.life, a = f < 0.15 ? f / 0.15 : f > 0.75 ? (1 - f) / 0.25 : 1;
             switch (b.kind) {
                 case LEAF: case PETAL: {
                     GlStateManager.pushMatrix();
-                    GlStateManager.translate(b.x, b.y, 0);
+                    try{GlStateManager.translate(b.x,b.y,0);
                     GlStateManager.rotate((float) b.rot, 0, 0, 1);
                     double s = b.size, squeeze = 0.55 + 0.45 * Math.abs(Math.cos(Math.toRadians(b.rot * 1.7)));
                     int c = b.color;
                     AnimeDraw.ribbon(new double[] {-s, 0, s}, new double[] {0, 0, 0}, new double[] {0.2, s * squeeze, 0.2},
                             new int[] {AnimeDraw.argb(AnimeDraw.mix(c, 0x000000, 0.25), a * 0.9), AnimeDraw.argb(c, a * 0.95), AnimeDraw.argb(AnimeDraw.mix(c, 0xFFFFFF, 0.3), a * 0.9)}, false);
                     if (b.kind == LEAF) SkinDraw.line(-s, 0, s, 0, .35, SkinDraw.alpha(AnimeDraw.mix(c, 0x000000, 0.45), (int) (a * 200)));
-                    GlStateManager.popMatrix();
+                    }finally{GlStateManager.popMatrix();}
                     break;
                 }
                 case MOTE: AnimeDraw.glow(b.x, b.y, b.size * 2.4, b.size * 2.4, b.color, 0.55 * a, true); AnimeDraw.glow(b.x, b.y, b.size, b.size, 0xFFFFFF, 0.6 * a, true); break;
@@ -115,21 +131,21 @@ public final class MenuFx {
 
     // ---- events ------------------------------------------------------------------------------
     @SubscribeEvent public void opened(GuiScreenEvent.InitGuiEvent.Post e) {
-        if (e.getGui() != screen) { screen = e.getGui(); openedAt = now(); hovered = null; BITS.clear(); }
+        if(live(e.getGui())&&(e.getGui()!=screen||screenWidth!=e.getGui().width||screenHeight!=e.getGui().height))reset(e.getGui());
     }
 
-    @SubscribeEvent public void tick(TickEvent.ClientTickEvent e) { if (e.phase == TickEvent.Phase.END && MC.currentScreen == null) { screen = null; } }
+    @SubscribeEvent public void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END)return;context();if(screen!=MC.currentScreen||!on())reset(MC.currentScreen);if(!motion()){BITS.clear();CLOCK.reset();}}
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void background(GuiScreenEvent.BackgroundDrawnEvent e) {
-        if (!on()) return;
-        GuiScreen g = e.getGui();
+        if(!on()||!live(e.getGui()))return;
+        try(AnimeDraw.Scope state=new AnimeDraw.Scope()){
+        GuiScreen g=e.getGui();if(screen!=g||screenWidth!=g.width||screenHeight!=g.height)reset(g);
         int w = g.width, h = g.height;
-        double t = now();
-        int c = mood();
-        boolean move = motion();
+        boolean move=motion();double t=move?now():openedAt;
+        int c=mood();
         if (g instanceof GuiGameOver) return;
-        if (g instanceof GuiContainer) { container(w, h, t, c, move); return; }
+        if(g instanceof GuiContainer){mask=mask((GuiContainer)g);container(w,h,t,c,move);return;}mask=null;
         if (g instanceof GuiChat) return;
         // Pause, options and any other in-world menu: layered ink-and-chakra backdrop.
         AnimeDraw.vertical(0, 0, w, h * 0.5, AnimeDraw.argb(0x05080C, 0.35), AnimeDraw.argb(0x05080C, 0.0), false);
@@ -146,14 +162,16 @@ public final class MenuFx {
             double px = (k + 0.5) * w / 9.0 + (move ? Math.sin(t * 0.03 + k) * 10 : 0), hh = 18 + 16 * (0.5 + 0.5 * Math.sin(t * 0.05 + k * 1.3));
             AnimeDraw.flame(px, h - 8, 22, move ? hh : 20, t * 0.08 + k, c, 0xFFFFFF, 0.16, true);
         }
+        if(g instanceof GuiMainMenu||g instanceof GuiDownloadTerrain)return;
         if (move) {
-            double dt = Math.min(4, t - lastFrame); lastFrame = t;
+            double dt=CLOCK.step(now());
             if (RNG.nextDouble() < 0.10 * dt) emit(LEAF, RNG.nextDouble() * w, -6, 0.3 + RNG.nextDouble() * 0.4, 0.25 + RNG.nextDouble() * 0.3, 3 + RNG.nextDouble() * 2.5, 260, RNG.nextBoolean() ? 0x6E9E3A : 0xB8862A);
             if (RNG.nextDouble() < 0.25 * dt) emit(MOTE, RNG.nextDouble() * w, h + 4, (RNG.nextDouble() - 0.5) * 0.2, -0.3 - RNG.nextDouble() * 0.4, 1 + RNG.nextDouble() * 1.4, 160, c);
             step(dt);
         }
         drawBits();
         GlStateManager.color(1, 1, 1, 1);
+            }
     }
 
     private static void brushBand(double x, double y, double w, double h, int rgb, double alpha, double t, boolean move) {
@@ -170,7 +188,7 @@ public final class MenuFx {
     }
 
     private static void death(int w, int h, double t, boolean move) {
-        double age = t - openedAt, bleed = Math.min(1, age / 40);
+        double age=Math.max(0,t-openedAt),bleed=move?Math.min(1,age/40):1;
         int red = 0x8A0A0A;
         AnimeDraw.vertical(0, 0, w, h * 0.35 * bleed, AnimeDraw.argb(red, 0.75), AnimeDraw.argb(red, 0), false);
         AnimeDraw.vertical(0, h - h * 0.35 * bleed, w, h * 0.35 * bleed, AnimeDraw.argb(red, 0), AnimeDraw.argb(red, 0.75), false);
@@ -179,24 +197,25 @@ public final class MenuFx {
         double beat = FableHudMath.heartbeat(t, 0.025);
         AnimeDraw.halo(w / 2.0, h / 2.0, Math.max(w, h) * 0.62, Math.max(w, h) * 0.18, 0xFF2A1A, 0.10 + 0.14 * beat, true);
         if (move) {
-            double dt = Math.min(4, t - lastFrame); lastFrame = t;
+            double dt=CLOCK.step(now());
             if (RNG.nextDouble() < 0.12 * dt) emit(DRIP, RNG.nextDouble() * w, h * 0.3 * bleed * RNG.nextDouble(), 0, 0.05, 1.5 + RNG.nextDouble() * 2, 120, 0x6A0606);
             step(dt);
         }
         drawBits();
-        if (beat > 0.6 && age - lastBeat > 10) { lastBeat = age; MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_NOTE_BASEDRUM, 0.5f)); }
+        if(move&&sounds()&&beat>0.6&&age-lastBeat>20) { lastBeat = age; MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_NOTE_BASEDRUM, 0.5f)); }
         GlStateManager.color(1, 1, 1, 1);
     }
     private static double lastBeat = -100;
 
     private static void container(int w, int h, double t, int c, boolean move) {
-        AnimeDraw.gradient(0, 0, w * 0.22, h, AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0.45), false);
-        AnimeDraw.gradient(w * 0.78, 0, w * 0.22, h, AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0), false);
-        AnimeDraw.vertical(0, h * 0.8, w, h * 0.2, AnimeDraw.argb(c, 0), AnimeDraw.argb(c, 0.18), true);
+        double left=mask==null?0:mask.leftMargin(),right=mask==null?0:mask.rightMargin(),bottom=mask==null?h:mask.bottomStart();
+        AnimeDraw.gradient(0,0,left,h, AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0.45), false);
+        AnimeDraw.gradient(w-right,0,right,h, AnimeDraw.argb(0x000000, 0), AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0.45), AnimeDraw.argb(0x000000, 0), false);
+        AnimeDraw.vertical(0,bottom,w,h-bottom, AnimeDraw.argb(c, 0), AnimeDraw.argb(c, 0.18), true);
         if (move) {
-            double dt = Math.min(4, t - lastFrame); lastFrame = t;
+            double dt=CLOCK.step(now());
             // Motes rise only in the outer margins so they never cover slots.
-            if (RNG.nextDouble() < 0.15 * dt) { double x = RNG.nextBoolean() ? RNG.nextDouble() * w * 0.18 : w - RNG.nextDouble() * w * 0.18; emit(MOTE, x, h + 4, (RNG.nextDouble() - 0.5) * 0.15, -0.25 - RNG.nextDouble() * 0.3, 1 + RNG.nextDouble(), 180, c); }
+            if (RNG.nextDouble() < 0.15 * dt) { double x=RNG.nextBoolean()?RNG.nextDouble()*left:w-RNG.nextDouble()*right;emit(MOTE, x, h + 4, (RNG.nextDouble() - 0.5) * 0.15, -0.25 - RNG.nextDouble() * 0.3, 1 + RNG.nextDouble(), 180, c); }
             step(dt);
         }
         drawBits();
@@ -211,33 +230,41 @@ public final class MenuFx {
                     try { buttonField = GuiScreen.class.getDeclaredField(n); buttonField.setAccessible(true); break; } catch (NoSuchFieldException ignored) {}
                 }
             }
-            return buttonField == null ? java.util.Collections.emptyList() : (List<GuiButton>) buttonField.get(g);
+            List<GuiButton> result=buttonField==null?java.util.Collections.emptyList():(List<GuiButton>)buttonField.get(g);return result.size()<=512?result:java.util.Collections.emptyList();
         } catch (IllegalAccessException e) { return java.util.Collections.emptyList(); }
+    }
+
+    /** The input font is drawn later by native chat, so this band cannot darken typed text. */
+    @SubscribeEvent(priority=EventPriority.LOWEST)
+    public void chat(GuiScreenEvent.DrawScreenEvent.Pre e){
+        if(!on()||!(e.getGui() instanceof GuiChat)||!live(e.getGui()))return;
+        GuiScreen g=e.getGui();if(screen!=g||screenWidth!=g.width||screenHeight!=g.height)reset(g);
+        try(AnimeDraw.Scope state=new AnimeDraw.Scope()){
+            boolean move=motion();double t=move?now():openedAt;
+            brushBand(0,g.height-15,g.width,16,0x05080C,.45,t,move);
+            SkinDraw.line(2,g.height-2.5,g.width-2,g.height-2.5,.6,SkinDraw.alpha(mood(),160));
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void drawn(GuiScreenEvent.DrawScreenEvent.Post e) {
-        if (!on()) return;
-        GuiScreen g = e.getGui();
-        double t = now();
-        boolean move = motion();
+        if(!on()||!live(e.getGui()))return;
+        try(AnimeDraw.Scope state=new AnimeDraw.Scope()){
+        GuiScreen g=e.getGui();if(screen!=g||screenWidth!=g.width||screenHeight!=g.height)reset(g);
+        boolean move=motion();double t=move?now():openedAt;
         int c = mood();
         GlStateManager.disableDepth();
         if (g instanceof GuiMainMenu) title(g.width, g.height, t, move);
         if (g instanceof GuiGameOver) death(g.width, g.height, t, move);
         if (g instanceof GuiDownloadTerrain) loading(g.width, g.height, t);
-        if (g instanceof GuiChat) {
-            brushBand(0, g.height - 15, g.width, 16, 0x05080C, 0.45, t, move);
-            SkinDraw.line(2, g.height - 2.5, g.width - 2, g.height - 2.5, .6, SkinDraw.alpha(c, 160));
-        }
         // Button reactions.
         GuiButton over = null;
-        for (GuiButton b : buttons(g)) if (b.visible && b.enabled && b.isMouseOver()) over = b;
+        for(GuiButton b:buttons(g))if(b!=null&&b.visible&&b.enabled&&b.width>0&&b.height>0){if(b.isMouseOver())over=b;else if(over==null&&b instanceof NarutoInk.Button&&((NarutoInk.Button)b).focused)over=b;}
         if (over != hovered) {
             hovered = over; hoverAt = t;
-            if (over != null) MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_NOTE_HAT, 1.7f + RNG.nextFloat() * 0.2f));
+            if(over!=null&&move&&sounds()&&now()-hoverSoundAt>=8){hoverSoundAt=now();MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_NOTE_HAT, 1.7f+RNG.nextFloat()*.2f));}
         }
-        if (hovered != null) {
+        if (hovered != null && safeButton(g,hovered)) {
             GuiButton b = hovered;
             double p = move ? FableHudMath.backOut(Math.min(1, (t - hoverAt) / 5)) : 1;
             double y = b.y + b.height - 1.5, x0 = b.x + 3, len = (b.width - 6) * p;
@@ -256,23 +283,31 @@ public final class MenuFx {
         }
         GlStateManager.enableDepth();
         GlStateManager.color(1, 1, 1, 1);
+            }
     }
 
     @SubscribeEvent public void clicked(GuiScreenEvent.ActionPerformedEvent.Post e) {
-        if (!on() || e.getButton() == null) return;
+        if(!on()||!live(e.getGui())||e.getButton()==null||!e.getButton().visible||!e.getButton().enabled)return;
         GuiButton b = e.getButton();
-        MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, 0.9f + RNG.nextFloat() * 0.25f));
-        if (!motion()) return;
+        if(sounds()&&now()-clickSoundAt>=5){clickSoundAt=now();MC.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON,.9f+RNG.nextFloat()*.25f));}
+        if (!motion()||!safeButton(e.getGui(),b)) return;
         for (int i = 0; i < 10; i++) {
             double a = RNG.nextDouble() * Math.PI * 2, s = 0.6 + RNG.nextDouble() * 1.6;
             emit(INK, b.x + b.width / 2.0, b.y + b.height / 2.0, Math.cos(a) * s * 2, Math.sin(a) * s, 1.2 + RNG.nextDouble() * 2.2, 14 + RNG.nextDouble() * 8, i % 3 == 0 ? 0x8A1A1A : 0x0A0C10);
         }
     }
 
+    private static boolean safeButton(GuiScreen g,GuiButton button){
+        if(!(g instanceof GuiContainer))return true;
+        MenuFxRules.Mask slots=mask((GuiContainer)g);
+        double mx=Math.max(24,button.width*.12),my=Math.max(12,button.height*.6);
+        return slots.allowsRectangle(button.x-mx,button.y-my,button.width+2*mx,button.height+2*my);
+    }
+
     private static void title(int w, int h, double t, boolean move) {
         AnimeDraw.vertical(0, h * 0.6, w, h * 0.4, AnimeDraw.argb(0x3FA8FF, 0), AnimeDraw.argb(0x3FA8FF, 0.16), true);
         if (move) {
-            double dt = Math.min(4, t - lastFrame); lastFrame = t;
+            double dt=CLOCK.step(now());
             if (RNG.nextDouble() < 0.18 * dt) emit(PETAL, RNG.nextDouble() * w * 1.2 - w * 0.1, -6, 0.4 + RNG.nextDouble() * 0.5, 0.3 + RNG.nextDouble() * 0.3, 2.2 + RNG.nextDouble() * 1.8, 300, RNG.nextBoolean() ? 0xF4B8C8 : 0xFFD8E2);
             if (RNG.nextDouble() < 0.2 * dt) emit(MOTE, RNG.nextDouble() * w, h + 4, (RNG.nextDouble() - 0.5) * 0.2, -0.3 - RNG.nextDouble() * 0.3, 1 + RNG.nextDouble(), 200, 0x7FD8FF);
             step(dt);
@@ -290,35 +325,27 @@ public final class MenuFx {
         MC.fontRenderer.drawStringWithShadow(line, (float) (cx - MC.fontRenderer.getStringWidth("Gathering chakra...") / 2.0), (float) (cy + 30), 0xFFDCEBFF);
     }
 
-    // ---- licensed moves -------------------------------------------------------------------------
-    private static final String[] WATCHED = {"narutomod", "kabutoaddon", "borutomodaddononero", "ahznbcursemarkaddon", "ahznbswordsplus"};
-    @SubscribeEvent public void use(net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem e) {
-        if (!e.getWorld().isRemote || e.getEntityPlayer() != MC.player || e.getItemStack().isEmpty() || e.getItemStack().getItem().getRegistryName() == null) return;
-        String ns = e.getItemStack().getItem().getRegistryName().getNamespace();
-        for (String w : WATCHED) if (w.equals(ns)) { HotbarFx.castPulse(); return; }
-    }
+    // Confirmed cast FX use HotbarFx owner receipts, never RightClickItem intent.
 
     // ---- tooltips -------------------------------------------------------------------------------
     @SubscribeEvent public void tooltipColor(RenderTooltipEvent.Color e) {
-        if (!on()) return;
-        ItemStack s = e.getStack();
+        if(!on()||!MC.isCallingFromMinecraftThread()||e.isCancelable()&&e.isCanceled())return;
+        ItemStack s=e.getStack();
         int accent = accent(s);
         e.setBackground(0xF00A0C10);
         e.setBorderStart(0xFF000000 | accent);
         e.setBorderEnd(0xFF000000 | AnimeDraw.mix(accent, 0x000000, 0.55));
     }
 
-    @SubscribeEvent public void tooltipPost(RenderTooltipEvent.PostBackground e) {
-        if (!on()) return;
-        int x = e.getX() - 3, y = e.getY() - 3, w = e.getWidth() + 6, h = e.getHeight() + 6, c = accent(e.getStack());
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(0, 0, 300);
-        AnimeDraw.vertical(x + 1, y + 1, w - 2, Math.min(8, h - 2), AnimeDraw.argb(c, 0.25), AnimeDraw.argb(c, 0), true);
-        for (int[] k : new int[][] {{x, y, 1}, {x + w, y, -1}}) {
-            SkinDraw.line(k[0], k[1], k[0] + k[2] * 5, k[1], .8, 0xFFFFFFFF);
-            SkinDraw.line(k[0], k[1], k[0], k[1] + 5, .8, 0xFFFFFFFF);
+    @SubscribeEvent public void tooltipPost(RenderTooltipEvent.PostBackground e){
+        if(!on()||!MC.isCallingFromMinecraftThread()||e.isCancelable()&&e.isCanceled()||e.getWidth()<1||e.getHeight()<1||e.getWidth()>16384||e.getHeight()>16384)return;
+        try(AnimeDraw.Scope state=new AnimeDraw.Scope()){
+            int x=e.getX()-3,y=e.getY()-3,w=e.getWidth()+6,h=e.getHeight()+6,c=accent(e.getStack());
+            GlStateManager.pushMatrix();try{
+                GlStateManager.translate(0,0,300);AnimeDraw.vertical(x+1,y+1,w-2,Math.min(8,h-2),AnimeDraw.argb(c,.25),AnimeDraw.argb(c,0),true);
+                for(int[] k:new int[][]{{x,y,1},{x+w,y,-1}}){SkinDraw.line(k[0],k[1],k[0]+k[2]*5,k[1],.8,0xFFFFFFFF);SkinDraw.line(k[0],k[1],k[0],k[1]+5,.8,0xFFFFFFFF);}
+            }finally{GlStateManager.popMatrix();}
         }
-        GlStateManager.popMatrix();
     }
 
     private static int accent(ItemStack s) {

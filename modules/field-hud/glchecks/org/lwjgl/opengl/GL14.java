@@ -1,0 +1,1 @@
+package org.lwjgl.opengl;public final class GL14{public static final int GL_BLEND_SRC_ALPHA=1002,GL_BLEND_DST_ALPHA=1003;}

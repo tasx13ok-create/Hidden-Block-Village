@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "scope": "INDEPENDENT_BISECT_BROWSER_UPLOAD_ZIPS",
+  "source_server_sha256": "80c1e35a1de16c61f9afb7036d67773c9b29a9c3c2bfbea4700870091097ec1a",
+  "parts": [
+    {
+      "file": "Hidden Block Village Server - Part 01.zip",
+      "bytes": 444709506,
+      "sha256": "bc6a4a5475e9c918ac8a5908d99fd3875f1c99ea9a70d44cdd79d8b7cba6af34",
+      "files": 292
+    },
+    {
+      "file": "Hidden Block Village Server - Part 02.zip",
+      "bytes": 444820555,
+      "sha256": "9d2d68cb4d0c0b551b03dc42cdb8fdc9786b699c4dc0e6cb007bb90e42a2f745",
+      "files": 248
+    },
+    {
+      "file": "Hidden Block Village Server - Part 03.zip",
+      "bytes": 445925598,
+      "sha256": "93479b2f115a42eb451fefee5873d6b9ba0544d02157be0c31307dd7ed413f8a",
+      "files": 147
+    },
+    {
+      "file": "Hidden Block Village Server - Part 04.zip",
+      "bytes": 445861868,
+      "sha256": "6918279983d50f74b1790b7c69d6f86a8fedaad5fefd60f91ea7e4f045e186c6",
+      "files": 180
+    },
+    {
+      "file": "Hidden Block Village Server - Part 05.zip",
+      "bytes": 445034777,
+      "sha256": "2f141648edcea1fef23ee87896907acbf2d8101ba17f422fa680144eea79bc3a",
+      "files": 218
+    },
+    {
+      "file": "Hidden Block Village Server - Part 06.zip",
+      "bytes": 442669892,
+      "sha256": "992ea63a4891246c9cfa60040efb44e6d6041f5e7f68452b5a0fbfb9201b1dfe",
+      "files": 253
+    },
+    {
+      "file": "Hidden Block Village Server - Part 07.zip",
+      "bytes": 406873210,
+      "sha256": "b991845bc798c2d6eae24807cf8898cd8ac72cdbb5e20872b61597c75af2ba4e",
+      "files": 682
+    },
+    {
+      "file": "Hidden Block Village Server - Part 08.zip",
+      "bytes": 60725167,
+      "sha256": "a6a65ef69998626118f406b175038a3ce913e6d8ff9e24797c83ae280a239c1a",
+      "files": 1677
+    }
+  ],
+  "all_files_covered_once": true,
+  "root_layout_preserved": true,
+  "all_crc_and_sha256_readbacks_passed": true,
+  "each_part_below_bytes": 450000000,
+  "requires_zip_volume_joining": false,
+  "server_payload_changed": false,
+  "operator_readme_updated": true,
+  "contains_private_world_player_data": true,
+  "live_session_or_original_inputs_modified": false
+}

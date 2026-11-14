@@ -1,382 +1,123 @@
 # Current project handoff
 
-## Existing elemental dungeons: initial visual pass
+Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
+
+## Current owner request and live session
+
+The owner wants Claude's reviewed work merged, the requested Bisect archive updated, named client/full ZIPs, and a playable creative inspection session.
+This explicitly revokes the earlier request to keep Minecraft closed.
+Keep the active inspection session available. Do not send input, close the client, or stop the server without coordination.
+The latest client process was launched at about 11:11 local with Core Source13; server process 31524 is ready on private port 25594.
+Client process 30120 emitted NARUTO_DODGE_SERVER_READY at 11:12:13 local and completed the actual Source13 join at 11:12:14.
+The modded connection established at 11:12:10; the current client is stable in multiplayer.
+Actual saved-session dodge acceptance is now confirmed: the accepted sequence increased from 0 to 36 after save-all at 11:13:38.
+The transaction restores that sequence on refusal/refund, so this shows 36 accepted session dodges, without claiming all four physical directions were tested.
+Root owns final logs/process observations, Git sync, archives and the final status update. Do not infer a join from process existence.
+The owner requested no new backup for the target update because backups already exist. Do not create another one automatically.
+
+## Exact current component cohort
+
+The owner's later request for a separate ready-to-upload server is also fulfilled.
+`D:/Bisect server upload/Hidden Block Village Server` is a new standalone server folder;
+`Hidden Block Village Server - Bisect.zip` is its checked root-layout server archive,
+6,037,663,281bytes, SHA256 `80c1e35a1de16c61f9afb7036d67773c9b29a9c3c2bfbea4700870091097ec1a`.
+It contains53mods and3,695server inputs, without a nested server/client wrapper.
+Bisect documents a500MB browser limit, so `Hidden Block Village - Browser Upload`
+contains8independent standard ZIPs, each below450MB; upload and unarchive all eight
+into the same server root. They need no multipart joining. Replace old mods/plugins
+rather than mixing old JAR versions. Keep/use Magma1.12.2 and64-bit Java8.
+The single large ZIP/folder is suitable for SFTP drag-and-drop. Give players only
+the separate `Hidden Block Village.zip` CurseForge client. Private world/player and
+host settings are preserved; the live inspection session was not changed.
+Safe receipts: `release/evidence/bisect-root-server-0316.json` and
+`release/evidence/bisect-browser-upload-0316.json`. Actual hosted acceptance remains pending.
+Official upload guide: https://help.bisecthosting.com/hc/en-us/articles/40124893034011-How-to-Move-Over-Existing-Minecraft-Server-Files
+
+Current filenames use Naruto branding while stable technical mod, registry and save IDs remain unchanged.
+Current Core is Naruto-Core-0.3.16.jar from Source13; current HUD is Naruto-HUD-0.20.1.jar from Source12.
+The remaining production components use the complete Source11 cohort.
+Read [the composite proof](../release/evidence/core0316-hud0201-dodge-client.json) before claiming what this mixed correction cohort proves.
+Core SHA256: `387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766`.
+HUD SHA256: `a0e2a25c74bbd26cd5e5ba3a5bdca45439fd26cf01cd17ab43a83c728fb1b474`.
+The final client ZIP is complete: Hidden Block Village.zip, 204,639,753 bytes, 58 mods and 192 ZIP entries; CRC readback passed.
+Client ZIP SHA256: `2172ab6f94105ff93f332ad89e96cae665f95d6f2b54c3c240e9531b86a28abe`.
+It retains stock original art and the BSL shader pack. Hidden Block Village Full Setup.zip is complete at6,242,378,177bytes with all file CRC/SHA256 readbacks passed; SHA256 `31db1bd77f1985556288b2a582a3a92a568ecae5f33d00ac36dde140d30e9d89`.
+Both ZIPs are in D:/Bisect server upload. The full setup contains private world/player data and must stay private.
+Read release/evidence/hidden-block-village-client-0316.json for the completed client archive receipt.
+Do not distribute an older same-version Core from a stale build/libs glob. Select the exact declared artifact role and hash.
+
+## Observed build and native results
+
+Source11: `83a0fe1cd40dd88aa320216df66a64b4809da708568285b80c608196f0660372`.
+Its complete build passed all 11 source areas and 36 artifacts with no source drift.
+Build report: `4c9afe3a916f29468e699fb08c92866fc02ef53922e27a740f89b59f97bd356f`.
+The disposable Forge native suite passed 3,665 assertions.
+Forge report: `2993c4de01bbda8170b060a044a8e3286b9b2e34cd21d9e52a9e721428751b0b`.
+A separate full 55-JAR Magma fixture passed 202 assertions: 55 providers, 1 official synthetic admission, 22 charge, 45 Naruto-backed dodge and 79 Bridge.
+That fixture used a new flat world and no real player/owner world, exited 0 without force and preserved all 45 original native JAR hashes.
+Its safe evidence is [source11-native-provider-bridge.json](../release/evidence/source11-native-provider-bridge.json).
+No private economic transformer was installed. The diagnostic port was released after exit.
+These are server/native proofs; they do not establish actual keyboard, graphical, shader or full owner-world migration acceptance.
+
+Source12 HUD source: `71418f57b6d05ce624e249a73b4b650ab32c1ce92f94e64ba71f4b03e30f8e26`.
+Its HUD-only build passed and corrects the actual client HUD crash.
+Source13 Core source: `f8533d0b6cd498a93bd7998effe4ff6e737b0aba6cffdfeb3b50aefeee4d9330`.
+Its Core-only build passed all 36 declared Core check tasks, including 18 new server-capability assertions.
+A direct ZIP comparison against native-tested Source11 changes only four client Dodge class entries.
+Every nonclient class byte and every other runtime archive entry is identical; no fresh Source13 backend-native rerun is claimed.
+
+## Actual V-key defect and correction
+
+The owner reported the real joined Source12 client falsely requiring Core 0.3.14 although client and server both had Core 0.3.16.
+The numeric version predicate already accepts 0.3.16. The defect was reading an empty client-side Forge dispatcher mod map.
+Source13 uses the current NetworkManager's advertised valeorders_dodge channel, honoring unregister and disconnect.
+It preserves registration received before the later ClientConnected event and refuses known unsupported versions.
+The existing request wire, server payment, native travel, collision, dodge window and cooldown are unchanged.
+Actual Source13 session dodge acceptance is confirmed by the saved sequence increase 0 to 36.
+This is separate from the prior four-direction synthetic native proof; complete physical direction coverage remains unclaimed.
+
+## Original mods, artwork and known asset errors
+
+Original supplied mods and their art remain authoritative; our gameplay/presentation glue is additive.
+The old flat inventory reskin overlay is disabled. No corrective native asset overlay was activated.
+The actual Source11 client log records 39 distinct missing model references (40 occurrences), 2 textures, 5 sound files, 1 sound event and 5 failing variants (6 occurrences).
+Most missing parents occur in original full-geometry JSONs; aliasing a missing parent back to its own geometry creates a cycle.
+Exact crystal_senbon art exists under the original namespace. Exact kkg_paper art is unresolved; do not guess a substitute.
+Some original crop ages and sound mappings remain undefined. These errors may persist after our HUD and dodge fixes.
+Read-only diagnostic evidence SHA: `2ebd88a6976b095ebea614ffa16e0df3c02eb22c269acc68d9c8e5033f22c0fa`.
+Computer-use kernel assets failed to load, so no automated screen or physical-input pass can be claimed.
+Source12 did complete a real join and shader/GL loading, but that does not establish every model, UI, move or gameplay loop works.
+
+## Target update and creative setup
+
+The requested private Bisect target has 53 server mods, including 9 Naruto-named project JARs.
+Core Source13 is installed in both the copied preview and the requested target.
+The target update wrote no world files and preserved host settings. Existing backups were reused per owner instruction.
+Original worlds, schematics, save archives, rollback candidates, player data and credentials stay private and preserved.
+The copied inspection player's creative/admin setup used actual server commands and positive native battle XP/current-chakra setup.
+Some execute wrappers printed misleading “All invocations failed” text even though changes applied.
+Verify actual state before any retry; never repeat progression or resource commands blindly.
+NoBreak1.4's original Bukkit bytes fail this legacy Magma interaction API. Use only the separately verified compatible private handling recorded by root.
+Do not treat a local copied-world launch as hosted or public deployment acceptance.
+
+## Adopted work and remaining boundaries
 
-The owner confirmed Sakura/Earth, Cloud/Lightning, Sand/Wind, Mist/Water and Nether/Fire for the five recovered v17 builds; the five new coliseums are separate boss sites. The owner's friend will handle NPC drop choices. See `docs/dungeons/elemental-sites-current.md`. Five separate private schematic candidates with small entrance and encounter-floor motifs are in `local/elemental-v17-floor-markers-encounters-20261114/`; source originals are preserved. Hash-pinned plans, complete readback logs and the original generator are available; safe evidence is `release/evidence/elemental-v17-floor-markers-20261114.json`. Two focused tests and the design validator passed. This is a small offline visual pass, not complete conversion, NPC/drop work, native route/lighting/visual acceptance, or deployment. The Nether-named existing preview is in the Overworld. Earlier provisional private NPC clones were never installed and do not specify the friend's choices. Next: extend and visually/native-verify the builds in a new world copy; coordinate NPC/drop integration with the friend. Keep the owner's Minecraft client closed.
+Reviewed menu/HUD, hand/weapon cosmetics, original armor opt-ins, generic VFX helpers, Encounter art, registry discovery and inactive proposal tools are integrated.
+Runtime mappings require exact registered IDs, reviewed verified:true configuration and accepted outcomes; no RightClick-intent charges or flashes.
+The Bridge does not recast native jutsu, debit twice, award extra XP or claim universal native-cast/boss-credit coverage.
+The offline name proposal remains verified:false. Renaming it does not activate it.
+Hardened ChakraLink, MoveCost, ResourceNetwork and JutsuSnapshotReader remain authoritative; deleted ledger/pool paths are not resurrected.
+Recovered upstream tail bodies were removed from the public working tree without rewriting external history.
+The proposed hVB tail enhancements remain UNADOPTED; the existing original native tail mod is the baseline.
+The separate five-coliseum chat owns all arena paths and orchestration files. Do not edit them from this chat.
+The requested sealed Core outcome observer for arena damage/support credit remains pending; generic deferred damage is not accepted reward authority.
 
+## Next work and honest limits
 
-## Latest owner request: original mods, Claude merge and five new coliseums
+The final source checkpoint includes these receipts and this handoff. Fetch and verify origin/main before continuing; the session's final reply reports the verified GitHub commit. Binary ZIPs and private PC inputs do not transfer through Git automatically.
 
-On14November the owner requests merging Claude's outputs into main, Dodge on the latest Core, a fix for a friend's report of a skipping chakra-charge timer, original unowned mod icons/armor restored (especially Varied Commodities), and a complete separate-chat orchestration for FIVE NEW500×500×250boss coliseums. Original mods are the baseline; our systems connect and enhance them. Read `docs/original-mods-first.md` and the updated project skill/fun brief. Keep Minecraft closed until the owner requests otherwise.
+The Source13 real client has joined, advertised-capability detection passed, and 36 accepted real-session dodges were saved. Preserve the live inspection session. Do not reopen the old buggy Source11/12 client archives; superseded candidates are retained privately.
 
-The reviewed Core/HUD19 checkpoint is VERIFIED on GitHub main at `de686c8dac084be2a083ed898ba126dd20331ace`, with all11/36component outputs,3,665disposable Forge assertions and the separately bounded full54Magma tests recorded below. The full game remains unfinished and missed the original20-hour deadline.
+Next, repair the documented original asset references without changing the requested original artwork; finish academy/first missions, imported NPC/save restart and campaign acceptance; coordinate the sealed outcome API with the separate arena branch. Do not infer universal combat/quest parity or hosted readiness from these checks.
 
-`collaboration/arena-build-orchestration/START-HERE.md` is the complete new-chat kickoff/execution handoff; `arena-brief.json` supplies five matching specifications.108consistency checks passed across dimensions, MC1.12Y3..252,36anchors, regionaligned/nonoverlapping proposed reservations, five static candidate IDs, three phases/two counters each, preservation and evidence status. These are build instructions, not generated arenas. The new chat owns only the explicitly listed arena paths and must fetch main, audit actual free space/registries, generate all five and pass the required repair/acceptance loops.
-
-The stopped Creative0316profile now has the reference reskin pack deselected:724model overrides removed, including353Varied Commodities overrides. All58runtime JARs, the exact original Varied Commodities JAR and the archived overlay remain unchanged;45installed JARs match the original inventory byte-for-byte. Our project item art remains. The private options backup/receipt is `D:/HiddenBlockVillage-Sprint-20261113/original-mod-art-restore-01/`. No Minecraft window was opened. Three original furniture resource conflicts were also identified in our compatibility mod;1.0.1source now defers original providers and relocates its fallback art into its own namespace, with both actual Java8classes compiling successfully. Its full matching component/provider-present native checks and installation remain pending.
-
-HUD20 menu observers and settings-child source are promoted locally and compile against the real API. Optional Claude armor-core effects are being integrated with stock models/UVs retained and a visible opt-in setting. Charge investigation located the native NarutoModAddon charging-key/tick/UI classes; the tick listener already uses END, while unrelated keyboard events/repeat can reach its held-key handler. That is a measured investigation target, not yet an accepted cause/fix. The friend did not distinguish recharge numbers from the hold timer. Latest-Core Dodge has existing real four-way paid/collision/cancellation/persistence tests and a V/default47 binding plus inventory settings; explicit Naruto-backed native Dodge/charging probes are in progress. Publish the next complete matching source/verification checkpoint after these actual results; do not present unbuilt local changes as installed.
-
-## Recovered sprint checkpoint: HUD0.19 builds; new native checks running
-
-The20-hour sprint deadline was2026-11-14 13:32:41UTC. At13:45UTC the prior build session was missing and all previously recorded Minecraft/server processes were absent. Cause is unproven. The full game was not completed by that deadline and remains unfinished. The owner explicitly answered **Keep Minecraft closed**; do not reopen or take UI control. The earlier Creative server readiness below is historical, not a currently running server claim.
-
-Core0.3.16 from the accepted015base is already merged on main at `a5da4ab695e7b17101dee20690e9e30e75b6117d`; main later includes the separate friend-client export at `cb4dd599e1fbfa404b41e9e0cd5c561068cf69bd`. The next reviewed original checkpoint selectively integrates Claude's hotbar effects as HUD0.19.0, preserving the real6/9banks, cached physical items, unified settings hub and canonical shared-resource authority. Original Claude authorship and exact `bea21d389ccfe8e142099e2d217449abe84c12f8` pin are recorded in `collaboration/fable/FIELD-HUD-019-INTEGRATION.json`; no recovered tail source or Claude parent history is imported.
-
-The new Focus/Scroll correction observes actual absorption loss after native unwind and seals it before another attack/heal/reset. It preserves final event cancellation and zero-loss controls. A private paired regression helper is excluded from production. The previous07build failed during JVM heap allocation; its outputs are retained. Compiler forks are now capped512MB alongside verification JVMs. The interrupted first08run recorded a successful Core build but no complete report, so it was not accepted as a full build.
-
-The recovered08cohort now PASSES all11areas/36artifacts with no source drift: source `8b5ac108319049bfa86cf490ec1c4fd4f372a655b14d32f6781b8e57f349232d`; report `679a7755db4280b51656c5383a1fd18f0373a1d7d82b4d6e672528619780a46b`; Core `840d44ec6db5355aeec0402de6d74350cd36d18d350a4e7f5ce14e4e6bf21014`; HUD0.19 `54b09ee318e5f97dd285a205a41dabde8cffd66d980ad95316689a2500a54d8b`. Its private path is `D:/HiddenBlockVillage-Sprint-20261113/core016-build-snapshot-08/build/source-builds/20261114T134645Z-7db6ba67/report.json`. The matching fresh disposable Forge run PASSES3,665assertions, retaining every inherited check and adding16paired absorption cases; report `cd9e198203efef3c2dfc82e69e91a32bc4edb8cf31527049ab7cec174e0bd69b`, private fixture inputs `35538e6dd98c2576ddafd6e8197fcff8b5a051c815f019d23dcf91a434d1ee2d`. Its runtime exited0and was removed. Read `release/evidence/core0316-hud019-verification.json`. Full54Magma paired tests remain separate/pending; no graphical/deployment acceptance is claimed.
-
-The earlier quick Creative copy verified1771world files/5,687,244,986bytes,58client JARs and53server JARs after omitting optional server-side Damage Indicators. Its early Singleplayer failure originated in the DI permission packet before JoinGame; downstream NPEs were consequences. The client later shut down; PID1956 was reused by GameBarFTServer. No successful join/native chakra initialization was recorded for that quick preview. Its private world has39authentic grant items,49mastered current technique rows, Creative/Sakura spawn and keepNinjaXp; this is admin preview setup, not earned progression.
-
-JEI's input ZIP is valid but contains a stray Java21class that Forge's Java8-era ASM rejects. `tools/repair_local_jei.py` prepared a new private candidate, preserving all512retained entries byte-identical and the original archive. Read `docs/jei-java8-repair.md`; activation/catalog/search/recipes remain unverified. The live/friend archives were not silently replaced.
-
-The matching bounded full54Magma flat-world run also PASSES:18native API,20overload,49facade/lifecycle,82caller and16paired assertions. It proves the absorbed ward's exact5payment, zero-loss/unrelated-loss and final-cancel controls, all four paired mode cases, same-body respawn/session safeguards and original Sage/Byakugou callbacks. It exited0without forced termination. Raw result SHA `ba9873435c172a5d31c0e39e1a605edcd65e2b04faf2ef3cc88ac2a75af10ce9`; safe summary is `release/evidence/core0316-magma-paired-receipts.json`. This private fixture retains an experimental Spring delegation shim using protected Base.set reflection; it is not production canonicalization/client/saved-world acceptance. A public-API-only replacement remains separate work.
-
-Remaining work includes reviewed Claude menu/armor/VFX/Encounter art and original tail implementation; Base/Spring public-API/client canonicalization; Sakura academy adoption and earned ninja awakening; first missions and all five enhanced campaigns; graphics/network/restart/hosting acceptance. Menu and chakra prototypes are currently D-only; the owner's closed-client preference does not block independent source work. Keep the complete49-mod/five-campaign objective active and distinguish every evidence scope.
-
-## Friend client download: Core 0.3.16
-
-At the owner's request, created `Naruto-Complete-Client-0.3.16-Test.zip` in the parent Naruto mod directory for the owner to upload and share with a friend. The self-contained CurseForge-format client contains all58pinned client JARs from the new Creative0316 preview, Naruto settings/resources, BSL shaders and installation instructions. It is204,762,667bytes with SHA256`ec20f3bcdf8cdc7c313bc9509de79aef65ea74b624e9562cd8d9f233dfc84cbb`. Core is0.3.16, exceeding the minimum0.3.14Dodge requirement; no older015archive was delivered.
-
-`tools/package_friend_client.py` reproduces the export from explicit private receipts and hash-matched inputs; `release/evidence/friend-client-0316-archive.json` records its193entries and completed byte/CRC validation. Account/session folders, worlds, logs, map history, old controls backups and player loadouts are excluded. Five resource files already changed during the live preload were recovered only from earlier client copies with exactly matching pinned hashes. The original/live clients were unchanged. Client archive and original mods/art stay local; only original tooling and safe metadata are public. No upload to Bisect was performed. The friend needs the matching0316server for multiplayer. This is the full current client test snapshot, not a claim that remaining Claude integration or full hosted/gameplay acceptance has finished. The owner asked for immediate delivery and no additional checks; none are planned for this packaging task.
-
-
-## Core0.3.16 native PASS; merge Core, then finish Claude and Creative setup
-
-The owner explicitly confirmed use of the newerCore0.3.16label, based on accepted015, and requests the full Creative setup ONLY AFTER Core and Claude are fully merged. Preserve accepted015/artifacts/worlds and the existing owner test copies; do not launch a partially merged setup as if complete.
-
-The corrected cohort PASSES all11component areas/36artifacts and3,649actual disposable Forge native assertions. Source `231c762c6f012e92718e46a450038c811df536e3afdb57dbbc9e6499d64ec657`; build report `493f922884cf1304e1136aeaedc881f5a3b3e8f8253328ae60e9434bed1008c5`; native report `404caf607c80a184753ac491ec320f2b67ca9d8b60c98cb33192f4f54bbb451a`; private fixture input aggregate `a4e58e8e2991233f762e2f99f1f65e2c15e55a8c2342c7043f74eea0b291e781`; Core `3c2a6fed37c66d1bb63af4e617e4c1eae2eef02fc9704a316950722a9465c17b`. Runtime exited0and was removed. All inherited acceptance labels remain mandatory. Read `release/evidence/core0316-verification.json`; previous failing candidates are historical and superseded.
-
-Both actual regressions are corrected without removing assertions: detached fallback NBT refunds preserve replacement accounts, and immutable transaction owner UUIDs prevent callback identity changes leaking reservation keys. Sixty-three resource component checks pass. Owner-only client cache/codec and Magma same-body session safeguards remain included. Main source is being merged as a Core checkpoint; this is not a full54/Magma/graphical/deployment-ready claim.
-
-Claude integration is explicitly unfinished. Latest audited pin is `bea21d389ccfe8e142099e2d217449abe84c12f8` (requested49d7a4b plus8753power-core work). `docs/claude-integration-audit-0316.md` and `collaboration/fable/INTEGRATION-AUDIT-0316.json` enumerate all54unique paths and72protected canonical paths. Preserve every intended feature through reviewed original integration. Selectively apply original Claude code with pinned provenance/coauthorship, preserving Core authority, actual Rack6/9banks, fresh render caches and the unified inventory hub. Tail README explicitly says recovered/decompiled source; source ownership/permission is not independently verified, so do not merge that source or its ancestry into main. Implement an original replacement from reviewed behavior without reusing recovered bodies. The earlier64pxNPCskin set was reverted; later256pxEncounter-only art is distinct and must not replace importedCustomNPCs.
-
-Real full54private tests independently prove49native facade/retained-ninja lifecycle cases and the bounded Base/Spring canonical debit case; these are partial results. A fully absorbed focus contact exposed Magma's ordering: finalDamage0is emitted BEFORE actual absorption deduction. Paired Focus/Scroll receipt prototypes and positive/zero-loss/unrelated-loss/final-cancel regression helpers are ready onD, not yet promoted. No compatibility-hook rewrite is warranted. Server-side native packet observations and original Sage/Byakugou callbacks exist; real client endpoint/graphical acceptance and final matching-cohort proof remain open.
-
-Next: finish the Core source merge and verify its GitHub head; promote/test the narrow paired receipt correction; finish reviewed Claude hotbar/menu/VFX/armor/encounter art and original tail replacement; finish optional Base/Spring client integration. Then assemble a NEW full58-client/54-server Naruto copy in Creative, grant authentic owned gear/eligible unlocks/native chakra through reviewed setup APIs, preserve unearned preview status and existing saves, and verify settings/dodge/six-slot/skills/shaders/Creative behavior before handing it over. Sakura academy Ddraft has674independently matched preconditions and seven offline checks; actual adoption/first missions/five enhanced campaigns and hosting remain unfinished. Full20-hour goal stays active; deadline2026-11-14 13:32:41UTC.
-
-## Core16 source saved on a WIP branch; native correction continues
-
-The complete compiled Core0.3.16/HUD0.18.0 integration is VERIFIED on GitHub branch `codex/core0316-resource-integration`, commit `f93f15827b824455332ab2dfe9286eb5eb4c610b` (tree `5c79e0f32f01d32dd44059a91771bfa0b4275a6b`). All11areas/36artifacts passed with source `c1651743f1f832587f8b362579ddd90ea1d59b3c9e435dbfa8c73ce6a89ef136`, build report `224ab58f97fe9d74a7b728941a9456c9ea7ad72c31a619e5b4792fcd00e1519c`, Core `e417b9f00540e3a9ac97d85aa533a0e15f7eff913f8b22a55e3939c2541ae473`, HUD `4b371322178fd584fb0f196f188a66002517fdd81364fa56453c8ac046a65a6e`. Read `docs/core0316-resource-integration.md` and `release/evidence/core0316-component-candidate.json`. This WIP source is not deployment-ready; main's runtime authority remains the accepted015 cohort plus separately verified UI17.
-
-The integration uses optional exact-double chakra API reservations and additive once-only settlement across the project's move/food/gear callers, raw-double owner telemetry, provider-aware HUD/cost text, and explicit server session tokens. Actual Magma reuses the same player object on respawn; Clone/Respawn/login/logout/dimension invalidation handles that case. Original Naruto/Spring coexistence is still a separate unresolved full-pack gate.
-
-Two disposable Forge native runs reached134assertions and FAILED. The first exposed an unregistered temporary test spender; official login/logout was added and its unchanged status/potion/reentry assertions then passed. The second exposed a real fallback regression: rejected effects did not restore the detached original NBT reservation, although the replacement account was preserved. No assertion was deleted or relaxed. A subsequent three-file correction (MoveCost, ResourceEscrow and ResourceContractChecks) is currently LOCAL/UNSYNCED beyondf93: it isolates captured fallback NBT refunds while keeping native API refunds strict. Its56component checks and Java8 compile pass. The new full build is running in `D:/HiddenBlockVillage-Sprint-20261113/core016-build-snapshot-05`, source `991520318b82236d87a66876136edda5361f117cb7252b7db55744d7ab547d9c`; no build05/native success is yet claimed.
-
-Source/build exports now preserve the complete tracked checkout plus new source inputs and verify the same compiled-source hash as the canonical checkout. Production paths remain contained; no symlink/verifier shortcut was introduced. All verification JVM heaps are capped512MB while game launch heaps remain independent. Low C: space was mitigated by moving12regenerable014Minecraft API JAR copies and the two original downloaded SDK ZIPs with their metadata to private D: retention folders, checking every byte hash before removal from C:. Extracted active toolchains, original source/world archives and saved worlds were not moved or deleted. Private receipts are `retained-014-generated-minecraft-apis/PRIVATE-MOVE-RECEIPT.json` and `retained-original-toolchain-downloads/PRIVATE-MOVE-RECEIPT.json` under the sprint D: directory.
-
-The Menu-017 client was observed running earlier, then its process was absent on the latest check; no shutdown cause is claimed and it was not relaunched. The unchanged015 server process was still live. Revalidate processes before any client control. A D-only Sakura academy adoption/provision draft identifies two existing clear areas and674original block/meta preconditions; no course/NPC/terrain changes were made to the owner world. Native adoption, fresh-character chakra awakening (publicaddBattleXp creates max but zero current), keepNinjaXp world policy, five campaign walkthroughs, native jutsu/event/boss integration and actual hosted acceptance remain unfinished. Keep the original49-mod obligations intact.
-
-Next: complete build05, run the unchanged inherited acceptance suite plus shared-resource/codec/lifecycle cases, fix actual failures, then save the corrected checkpoint. Continue the private Base/Spring delegation prototype's client/packet/lifecycle/Sage checks before integration. After resource acceptance, promote the reviewed non-destructive Sakura academy adapter into a NEW world copy and connect its existing first missions. Sprint deadline remains2026-11-14 13:32:41UTC; the full goal is active and incomplete.
-
-## Updated UI client joined; owner has control
-
-The old015 client had exited before the UI update. A NEW private Menu-017 client now runs Field HUD0.17.0 and Field Controls1.5.0 with the other56JARs byte-identical to015, connected to the unchanged loopback25589 copied-world server. The actual64-mod handshake confirmed both new UI versions. Root observed the shaded world/HUD. A Settings click was refused because owner input was detected; the next observation showed the owner playing. No click was sent, and automation stopped. Keep this owner session intact; do not retake input or relaunch over it. The old client's files and rollback artifacts are preserved.
-
-The menu source and both actual UI component builds are verified on GitHub at `870735116230f71988b722c0c134befb6d61a01e`. The inventory hub and redirects are implemented; graphical settings entry/navigation/rebind/shader-child return remain unaccepted. `release/evidence/unified-naruto-settings.json` distinguishes observed network/world results from pending menu interaction.
-
-An independent cold54-mod raw-API diagnostic proves Base Naruto and Spring cache overwrites: starting1000/1000, Base-30 then Spring-50 then Base-10 leaves Base960/Spring950/rootNBT960 rather than910. Native callbacks across60ticks did not reconcile them. Thirteen Base API assertions passed, but the overall private fixture failed later on a synthetic-player lifecycle/Xaero clone defect. This is not aCore16 acceptance pass. Read `docs/naruto-chakra-cache-collision.md`; a private player-only delegation compatibility prototype is under development. No raw JAR, reference code or private world was published.
-
-Core16 shared-resource callers/telemetry/branding are ongoing working changes excluded from the accepted UI checkpoint. Root owns Dodge/Nature/Lightning/availability/telemetry, weapon agent owns Arts/Combat/Forms/Summons/Techniques/carriers, nature agent owns arsenal/focus/food/tools. Next: finish guarded caller and provider compatibility verification, build the complete frozen cohort, run actual native checks, then stage a separate full16 copy. The active owner client remains UI17 over acceptedCore15.
-
-## Required Core baseline and Claude bridge evidence
-
-The owner requires Core **0.3.14 or newer** from now on for Dodge and newer moves. Continue from the accepted **0.3.15** cohort; do not downgrade it. The inspected downloaded Client.zip contains Core0.3.5/HUD0.14.0/Rack0.1.1 and does not meet this baseline.
-
-Read `collaboration/claude-naruto-bridge/CORE-AND-BRIDGE-REVIEW-20261113.md`. Claude branch7588b9f still probes a client-only API on the dedicated server, guesses a spend overload and defers some payment until a later mirror tick. The ongoing guarded integration is separate and preserved. A private owner handoff now packages the five hash/CRC-verified original JARs, existing exact API facts, prior raw-API diagnostic log/results and 345item/315entity saved-runtime registry names with UNVERIFIED inferred styles. Neither the raw log nor that registry list is the requested build's bridge-discovered.json; no genuine discovery file was found in the inspected locations. Raw fixture overall result remainsfalse despite13earlier passing API checks and observed Base/Spring cache divergence. No new bridge/gameplay acceptance is claimed.
-
-The private bundles remain under the original checkout's ignored `local/claude-naruto-bridge-intake/20261113-bridge-review-01/`. Five JAR hashes/sizes/CRC and both ZIPs' exact-entry byte/hash/CRC checks passed. Only this note and the linked original review are saved publicly. Next: finish the ongoing adapter/caller integration on the accepted modern base, test in an isolated matching full-pack candidate, then collect its actual log and event discovery file. Preserve the owner's live015 session and concurrent source/index.
-
-
-## Unified inventory settings component checkpoint
-
-The owner's requested single Naruto settings hub is implemented: inventory Settings, F7/F8, the settings commands and pause Options use the same six-tab hub. The former Advanced HUD menu is a redirect. All old HUD preferences, full action bindings, saved profiles, presets, mouse controls and staged native preferences remain available; child editors use the Naruto paper theme. Hotbar appearance/geometry was preserved. Read `docs/unified-naruto-settings.md`.
-
-Field HUD0.17.0 and Field Controls1.5.0 both built their actual Forge production/dev/source artifacts with all nine check programs passing. Selected UI source was unchanged during the successful build. Verification heaps are now capped512MB after an initial host-memory failure. Exact source/artifact identities and actual check output are in `release/evidence/unified-naruto-settings.json`.
-
-This accepts the two UI components only. No full016 Core/resource-bridge build or graphical menu acceptance is implied. The owner's active015 client/server was not changed or controlled. Next: stage these exact two UI artifacts into a separate next client, verify inventory/F7/F8/pause routing, bindings/Apply/Discard and native shader-child return. The guarded shared-resource callers and raw Base/Spring native diagnostic remain ongoing independent work in the016 checkout; their unaccepted source is excluded from this UI checkpoint.
-
-## Naruto-only direction and urgent Claude interoperability handoff
-
-Latest owner direction: the game is Naruto, with Naruto designs, characters, names, villages/clans/jutsu and free fan-made distribution. The owner says they intend to obtain the franchise license. Public Vale-facing branding is being removed; internal registry/save/wire IDs stay stable. Licensing evidence remains separately planned/pending. These authoring changes do not replace the owner's active015 session.
-
-Claude can start the optional shared chakra adapter now. Read `collaboration/claude-naruto-bridge/START-HERE.md`, `CHAKRA-AND-COMBAT-API.md` and `BOSS-NPC-FACTS.md`. Five exact existing49-pack JARs (61,856,861bytes) are privately available under the original shared checkout's ignored `local/claude-naruto-bridge-intake/20261113-pinned49-01/jars/`, with SHA/CRC manifest, metadata and a private START-HERE copy. No upload is needed if Claude Desktop has that local-file connector; otherwise the owner must attach the actual files. JARs and original code/art are not published.
-
-Critical observed API traps: `consume(float)` is fraction-of-max; double overload is absolute and itsboolean is over-cap policy, notsimulation. Exact-zero use requires publicclear+verification. `isInitialized(player)` is CLIENT-only, so isnota server readiness gate. Additiverefund creditsatmostactualreserveddebit and preservesindependent changes; no stale snapshot restore. SpringAddon has a separatecache sharingthe same rootNBTkey: base Naruto is thesoledefaultbackend, no dualpoolspend/sync assumptions. Thirdpartycast observationmustnot cast/recharge again. 67boss/NPC IDs/publicABI andcustomNpc eventbus/XP/clone risks are documented.
-
-The adapter andcaller/mapping/event/reward integration are NOTyetimplemented or accepted by these facts. Claude ownsnewChakraResource adapter/tests; Codex owns theexisting62spending/escrow callers and subsequent integrations. Targetnewsourcecheckout is `vale-campaigns/Hidden-Block-Village`, separatefrom thefrozenaccepted015 andolderoriginal-checkoutWIP. Live015 remainsuntouched. Root'spublicname/metadata/language patchesareworkingchanges pendingthe nextfullbuild; noidentifier migrationisintended.
-
-
-## New 58-mod client connected; owner actively playing
-
-All authored 0.3.15 source/artwork/tools are verified on GitHub main at `82b2df1036e774e7e5c2b125547c3471b28cc466`; the unchanged eleven-area/36-artifact build and 3,422-assertion native acceptance remain the source/runtime authority. A new separate copied Naruto/v17 world with 54 server JARs and a matching 58-JAR graphical client is now connected. See `docs/everything-0315-runtime.md` and `release/evidence/everything0315-runtime.json` for exact safe evidence.
-
-The first client joined, then received a Netty read timeout and closed itself; the cause remains unproven. One authorized retry retained the same 58 JAR bytes and added only the verified `fml.readTimeout=120` diagnostic tolerance. That retry is connected and responsive. Root's bounded graphical observations confirmed the shaded 3D Sakura world, upper-right minimap, Naruto paper inventory with many v3 icons and six populated technique slots. Manual owner movement was observed. These are now observed results, superseding the preceding join/inventory/shader-pending notes for this copied session.
-
-Physical Dodge, settings/rebinding, the three-second F hold, actual Quest/Factions tab clicks and activated Lightning worn visuals have NOT been accepted. Native getters, logged GUI hook markers and loaded textures do not prove those interactive checks. The owner is actively playing: do not take UI control, teleport, change time/world state, spawn targets or relaunch over this session. Continue independent work without interrupting it.
-
-Naruto designs, characters and names remain the owner's direction. Franchise licensing stays planned/pending; no verified license grant or numerical clearance percentage is claimed. Private worlds, original mod distributions and the derived reference-art ZIP remain excluded from GitHub. Full 49-mod/five-dungeon feature completion remains unfinished.
-
-Historical checkpoint notes follow.
-
-## Verified Core 0.3.15 saved source; fresh copied-client acceptance next
-
-The owner's current instruction is to save all completed work to GitHub and load the new test copy. The 0.3.15 cohort is frozen in `C:/Users/Steal/.codex/worktrees/vale-worn-armor/Hidden-Block-Village`; the accepted 0.3.14 source, original worlds, older previews and concurrent original-checkout work remain preserved.
-
-All eleven source areas / 36 artifacts PASS with no source drift: `build/source-builds/20261113T230336Z-e1552932/report.json`, SHA256 `0ccec5515d12252c134f61e7bc44cf0719246df3c06e2b1703031a7f1750258a`. Exact source `767ca4b88d0e6b7755f04eac1750e7998f7ba5250d0e006a71106ce21c8d0be7`; Core 0.3.15 `a75f07ecff7fc94f55e5912c7dbf14059ce9daeb3de09c519d564d5538af9f95`; client-lifecycle 0.1.2 `39b253ed6d2c96310d132b888c20d9639b9726e50f85f32c79c3ba01d8efbccb`. The 1,779 worn resource/mask/selection checks pass.
-
-Disposable Forge native acceptance PASSES 3,422 assertions: `build/native-checks/20261113T230643Z-c8b0fa92/report.json`, SHA256 `ea52718c53032471574e440bfb7928e40edcf8e628328166b38fe0bc32c47a7e`. Runtime exited 0 and was removed. New actual registered-getter, conditional-Lightning and packaged-worn-resource checks run after the existing Academy/Lightning fixtures restore state. Every prior weapon, gate, hand-technique, dodge and hotbar requirement remains mandatory. See `release/evidence/core0315-verification.json`.
-
-This cohort adds 173 original worn PNGs and 173 editable SVG masters, with 656 offline native-contract model views. It supplies new applicable-state art for 191 equipped pieces and preserves all 36 independent custom-mesh pieces. These are worn UV resources, not resized inventory icons. Actual Minecraft worn rendering, shaders and the fresh full-pack join remain pending; offline views and native getters do not establish graphical acceptance. All 256 file08 reference worn paths remain tracked obligations rather than claimed parity.
-
-The 0.3.14 full client did join with shaders, then hung in a concrete CustomNPCs Factions GUI off-thread path involving Essential's window-title manager. Its source and stack evidence are retained below. Client-lifecycle 0.1.2 now dispatches both exact supported Quest/Factions tab Runnables wholly to the client thread; 57 actual-class/ASM and 40 dispatch checks pass. A separate fresh 0.3.15 copied client is being prepared; verify its Factions/Quest GUI and worn models before calling graphical acceptance complete. Do not replace or relaunch older profiles over the owner's session.
-
-Owner direction: Naruto designs, characters and names stay; a license is planned/pending. No executed franchise license or scope document has been verified, and no numerical copyright-clearance percentage is claimed. Franchise rights and individual third-party code/art/mod permissions are separate. See `design/IP-LICENSING-STATUS.md`.
-
-The separate private reference-art ZIP maps 724 supported reference model states and preserves 382 complex/dependent contracts. Its public mapper/tests/count receipts are saved; the ZIP contains observed third-party transform JSON and MUST NOT be published. No world/player data, credentials, raw reference JARs or runtime archives belong in this public checkpoint. Full 49-mod/five-dungeon gameplay completion remains active and unfinished.
-
-Historical checkpoint notes follow; this section supersedes older 0.3.15 build/native-pending statements.
-
-## Full014 world/client observation;015 correction underway
-
-Core0.3.14 source/native and both complete Claude v3 art ZIPs are VERIFIED on GitHub main `6193483a2dd1356ddbe5d0ba188f8898eece26aa` (tree19c9216393badf12a2d0fcabbbd29215fd112459), with2,739 native assertions. The actual54-JAR Magma preflight and two copied-v17 world boots/save/exit passed. Matching58-JAR client joined, BSLworld0 programs compiled and its shaded world/HUD were visually observed. Read `release/evidence/everything0314-client-observation-20261113.json` for exact boundaries.
-
-The first inventory input timed out. Two immediate Java8 thread dumps proved a persistent lock chain: client Keyboard.isKeyDown waits on the LWJGL monitor held by the worker opening InventoryTabFactions through Essential.WindowTitleManager's native title update. The0.1.1 adapter handles Quests only; its marker loaded correctly. Factions is another actual off-thread path. Only the NEW hungclient23404 was stopped after evidence; server25586 and other previews remain preserved. No inventory/rebind/Dodge/shader-FPS acceptance is claimed. Extend the narrowly pinned whole-Runnable adapter for Factions and audit sister tabs, rather than disabling those menus.
-
-Next isolated source is `C:/Users/Steal/.codex/worktrees/vale-worn-armor/Hidden-Block-Village`, base6193483, Core0.3.15. Its original worn-UV implementation currently contains173PNG/editableSVG masters covering191 equipped pieces, exactnativeUV templates and656 offline model views;36 existing custom-mesh pieces remain unchanged. Resource/reconstruction checks passed, actual Minecraft worn rendering pending. Internal worker is wiring the actual-getter native helper; compatibility worker owns client-lifecycle0.1.2 +Factions fix. Wait for both freezes before building. Keep accepted014 source/artifacts unchanged.
-
-A private client-only reference art resource pack now safely overrides724 reference model states while retaining382 complex/dependent contracts.42 mapper tests pass; original49 JARs were byte-preserved. Public mapper/evidence documents coverage. Its private ZIP includes observed third-party model transforms and MUST NOT be published. Fullsource ownerartZIPs are public; inventory icons still do not satisfy wornUV work. All256file08referenceworn paths remain tracked as a separate obligation.
-
-## Everything integration and worn-armor scope (latest)
-
-The owner supplied Claude v3 icons and 32px Blockbench sources. Complete original ZIPs and all 3,559 member identities are verified on GitHub WIP branch `codex/everything-0314`, commit `a0f9e903171b08ce52c404c8724166ba63f0f540`, preserving the separate combat-hotbar source history as a parent. That earlier integration snapshot remains preserved. The following Core0.3.14 source/native cohort is now verified; full-pack graphical and hosted acceptance remain separate. See `docs/everything-0314-integration.md` and `artwork/claude-v3/README.md`.
-
-Managed integration checkout: `C:/Users/Steal/.codex/worktrees/vale-everything/Hidden-Block-Village`. Its full build at `build/source-builds/20261113T222757Z-83485836/report.json` passed all eleven areas/36 artifacts without source drift. Source `2981ed8c5b3736bde53485f6bf83b49a3f2289af73167428121113df19890ae1`; Core0.3.14 `bb5f29ef02475687a02e3bae2f0bc345ffc1d9a76e213c2630f7946ea508e83d`; Rack0.1.4/HUD0.16.0/Residents0.2.1/client-lifecycle0.1.1. Includes four-way paid Dodge, body/queued-epoch cleanup, precise cursor success receipts and fresh native slot lookup, Naruto native-inventory/settings, 561 reviewed 32px icons and whole-Runnable quest-tab thread dispatch. Claude owns hotbar appearance/placement; original shared checkout and active preview remain untouched.
-
-Native acceptance now PASSES **2,739 assertions**: `build/native-checks/20261113T223745Z-2d842630/report.json`, SHA202a78a70330e6527519c55cbd14d1c370e950759d5e68793a3985f6ac90d568; exact private-input aggregate16cb1c56cd876b47cb870572f8d9ab5f48adf804f1e90dbebeaa3f52449fad3e. Runtime exited0 and was removed. Public `release/evidence/core0314-verification.json` binds this cohort. A real world-border overlap defect was corrected; the unloaded fixture was corrected to prove a genuinely loaded-source/absent-neighbor precondition. Failed reports remain preserved. Twelve runtime components and reports are independently frozen under `D:/HiddenBlockVillage-Sprint-20261113/everything0314-frozen-inputs`. New production-only Magma flat preflight uses25588 because25587 is occupied by another preserved preview; final copied world remains25586. Full58client/shaders/graphical acceptance and measured gate provisioning are still pending. Private controls preserve all actions: V=Dodge,F7=settings,F8=Controls, priorVmove=F6, legacyFcasts=F9/F10, native swapHands=F12. Original sources/players/previews stay unchanged.
-
-The owner's latest Claude quotation explicitly flags file08 worn armor as unfinished. Inventory PNGs and flat Blockbench plates do not satisfy humanoid worn UV textures. File08 inventories 256 reference paths; these are a retained rebuild obligation, not 256 current verified project contracts. Lightning trial's actual storm set binds native 64x32 `storm_layer_1/2.png`; nine independent ArmorMesh profiles use a separate 256x128 material atlas and procedural geometry, while focus/outfit garments still use vanilla iron atlases. A private original SVG/UV-authoring and on-model preview workflow is being built under ignored worn-armor draft space, beginning with actual Lightning/Storm worn layers. Do not modify this frozen Everything cohort with that future pass or claim worn art completed. Full 49-mod/five-dungeon scope and twenty-hour sprint remain active.
-
-
-Updated: 2026-11-13 UTC.
-
-## Combat hotbar and complete character-equipment art supplement
-
-Rack 0.1.3 / Field HUD 0.15.0 implement the owner's normal nine-slot <-> separate six-slot combat loadouts. Hold F for three seconds to switch the whole active bar; both loadouts and selections persist. The survival inventory right rail supports real server cursor pickup/place/merge/swap and drag back into native inventory. Reward-bound gear retains ownership checks; ordinary items and crafted garments/meals/tonics are accepted. Different hand modes now replace the old mode instead of charging only to dismiss it. HUD item/NBT copies refresh on snapshot generation changes instead of every frame/tick.
-
-Final isolated candidate: all eleven source areas / 36 artifacts PASS, 2,392 native Forge assertions PASS, 13 hold-gesture checks PASS. Source SHA256 `940775d1cbdbc2de4be0ef82d4c9d1a31e25a363dc44c0cf7a581893c719b6e4`. Read `docs/combat-hotbar-013.md` and `release/evidence/combat-hotbar-013-verification.json`. The candidate includes concurrent Core 0.3.13 weapon/gate work; this independent checkpoint owns only Rack/HUD, the mode fix, its private checks and art metadata. Preserve all other workers' changes and staged files. The shared RecoveryNativeChecks direct CombatHotbarNativeChecks call duplicates coverage already invoked through RackNativeChecks038; its owning worker should remove that duplicate.
-
-The separate 12-client/9-server-JAR preview on loopback 25584 joined with JEI's empty catalog check passing. Six-slot bottom bar and Cinder Edge were visibly observed; full physical F timing and drag-in/out were not manually accepted. The live preview uses the preceding 2,391-check candidate. The final crafted-garment admission fix is built/tested separately; no JARs were replaced in the owner's running session. Next: new-session or owner-chosen restart with final artifacts, graphical drag/F/key/wheel checks, and restart with each bank active. Full original-pack/world/hosted acceptance remains separate.
-
-The Sonnet supplement is `collaboration/sonnet-art/SONNET-EQUIPMENT-ADDENDUM.txt`. File 06 explicitly lists 342 armor/wearable and 331 weapon model/visual states (673 rows), absent by name from the generic current-Vale list but already in the earlier full reference appendix. File 07 supplies nine corrected display-name/base aliases; file 08 includes 256 worn-armor texture paths and held-art work. `equipment-inventory.json` adds provenance/overlap/classification evidence; `tools/build_equipment_handoff.py` verifies all 49 supplied JAR hashes and regenerates it. Alternate forms are not extra unique weapons. The five-file ignored ZIP passed CRC/exact-byte checks; see `docs/sonnet-equipment-addendum.md`. No reference art, JARs or private world data were copied into source control.
-
-Verified source checkpoint: 850ae32c23cd7da3055199cc3e84de1eb4788902 on GitHub; fresh fetch matched tree 4568c4d707936feda8187aef30efdef2df0afbd8. GitHub continuation branch: `codex/combat-hotbar-equipment-20261113`. The connected Git Data path can save the complete art + hotbar checkpoint despite absent local Git credentials. The original art-only commits remain on the shared checkout; do not reset it or overwrite the other worker's index. Integrate the checkpoint deliberately with the ongoing Core release, preserving both sets of changes.
-
-## Complete Sonnet art inventory requested by owner
-
-The owner is preparing a full art pass in Sonnet, including existing icons, weapons, scrolls, chakra, armor and all other mod artwork. `collaboration/sonnet-art/START-HERE-SONNET.txt` is the brief; `ALL-ICON-NAMES.txt` is the compact complete name checklist. Five detailed lists and `asset-inventory.json` provide exact paths, sizes, source references and integration notes. `tools/build_icon_handoff.py` regenerates the package from current source and an explicitly supplied original-mod directory.
-
-Observed static scope: **592 current item-model slots** (566 base models plus 26 charged weapon strips), **74 proposed HUD/action/status/seal PNG slots**, 116 existing non-item PNGs, 33 block models and 136 encounter profiles. The current model categories include 81 weapon bases, 49 lesson scrolls, 49 technique icons, 72 armor icons, 76 focus garments and 79 outfit pieces. There are 291 shared-art model bindings, one vanilla paper binding, 295 dedicated texture bindings and five 3D inventory models. Dedicated existing images are included for redesign, not claimed missing.
-
-All **49 original reference JARs** were found in the existing client mods directory and SHA256-matched to `design/reference-mod-inventory.json`; their top-level `assets/` metadata contains **1,106 JSON item-model entries and 2,791 PNG entries**. Only names, dimensions, hashes and resource references are exported. These are model/resource counts, not unique runtime item counts or complete atlas-region coverage. Original and Vale inventories overlap; no unverified one-to-one mapping is claimed. No third-party artwork, JAR payloads, world/player data or private NPC assets were added.
-
-Validation passed for unique current IDs/output paths, all inventory counts, all 26 charged 32x64 strips and existing animation metadata, actor-kind totals, private-path checks and the eight-file ZIP's byte/CRC integrity. Local bundle: ignored `exports/Sonnet-Art-Handoff/Hidden-Block-Village-All-Art.zip`, SHA256 `ee935e1ced0521b9826f7d32d246dc02f8ff838ecc11da14e1c6cad05347218e`. No gameplay/build/runtime changes or new artwork were made. Concurrent gameplay/server changes were preserved and excluded from this checkpoint.
-
-GitHub sync for this art checkpoint is pending: the local Git credential manager has no usable GitHub credential, and a noninteractive push failed with "could not read Username". The complete bundle and commits are retained locally. Push these commits once authenticated; no remote-save claim has been made.
-
-Next art step: give Sonnet the brief and inventory, produce original PNG batches with a completion manifest, then review and wire shared models/HUD/status paths. Keep `spiral_palm` and `storm_lance` save/file keys for Rasengan and Chidori. Preserve worn-model UVs and 3D held geometry; inventory icons alone do not replace armor, actors or procedural VFX. The active gameplay sprint and its separate acceptance work remain ongoing.
-
-## Verified Core 0.3.13; Everything test copy next
-
-Core0.3.13 is accepted in the isolated release worktree: all11sourceareas/36artifacts,2,305nativeassertions,2,088weaponmath/1,002handmath/50gatechecks. Exactsource aacf8985dc408704cba269daa5a4ef488635030a5e25d938462fbed7f5c0d096; Core c2db8c4d472aec9f38a3c1d7b44b4ac31c93dfd0bbfb6373908de1af8c049352. Read `release/evidence/core0313-verification.json` and `docs/weapon-and-gate-runtime-0313.md`. Cohort remainsHUD0.14.1/Rack0.1.2/Residents0.2.1. TwoMagma/v17copyboots on25585also passed; runtime stopped,5givers/7propsstillunapplied.
-
-Latestownerrequest: save everythingmade intoGitHub and create a NEW separatecopy withtheNarutoworld/allmods/dodge/remappable settings/Naruto-themedinventoryandmenus/shaders. Claude explicitly OWNS HOTBARS, includingthe6-slotbarplacementandstyling; do notoverwrite itsactivework. Root owns repo/runtime integration; internalworkershandleDodge andsurroundingsettings/inventorytheme, excludinghotbarfiles. Existingoriginal-checkout HUD/Rack/CoreWIP stayspreservedforEverything0.3.14 integration; it isnotdeclaredacceptedbythis0.3.13receipt. Icon/modelZIPs areowner-attributedClaude WIP snapshots, flatitemplatesnotfinished3Darmor; preserve andlabelthem honestly.
-
-Available BSL10.1.8 is aprivateinput (SHA36b0a50ff7918bf10e9422c401d93779f9d0088a26acea975b435243f96930b5); RTX2070actual8GiB supportsitsGLrequirements, butnewcandidate shadercompile/FPSmustbeobserved. Plannednewtestcopy `D:/HiddenBlockVillage-Sprint-20261113/Hidden-Block-Village-Everything-0314`; port25586mustberechecked. Keep25584hotbarpreviewuntouched;25583oldMagma and25582handserverarepreserved. Full312TabGuardclientjoinedthenloggedshutdown; do notautolauncholdprofiles. Finish thefull49mod/fiveenhanceddungeon scope; sprintdeadline2026-11-14 13:32:41UTC, goalactive.
-
-## Full58 world join, asset WIP and isolated next release
-
-Core0.3.12 now has two clean copied-v17 Magma boots on25583 (36.187s/35.094s) and a matching58-JAR client. The first client entered the world then Windows closed it for AppHang; an off-thread CustomNPCs quest-tab call is a concrete defect and plausible trigger. A separate unchanged-JAR TabGuard variant with only client InventoryGuiEnabled=false joined at16:06:38, later logged normal server Disconnected at16:12:49 and Minecraft Stopping at16:15:12. Its process is now absent; no numeric exitcode/manualGUI acceptance was retained. Both old profiles/logs are preserved. Servers25582/25583 remain running; the12-JAR hand client and full58 client were observed closed. Do not automatically relaunch over the owner's work. Read `docs/magma-smoke-current.md` and `release/evidence/vale0312-full58-client-assembly-20261113.json`.
-
-Concurrent edits arrived in the original checkout (HUD0.15/Rack0.1.3, later HUD/Core changes and private fixtures), invalidating a stable release-source capture. All are preserved. The owner confirms Claude is still working on icons/models. Their exact private snapshots and unfinished coverage are described in `docs/assets-20261113-review.md`; no asset payload is imported/published. All28 dungeon feet anchors and connected paths are measured offline; seven hardware overlays and five original Resident placements are proposed, not applied. Read `docs/dungeons/measured-gates-current.md`.
-
-The next Core0.3.13 release is being tested in managed worktree `C:/Users/Steal/.codex/worktrees/vale-0313-release/Hidden-Block-Village`, reconstructed exactly from accepted373fdb source inputs (1,561 verified files) before concurrency began. Its only later authorized production change is skiff owner-only boarding / escort interaction protection; sourcehash aacf8985dc408704cba269daa5a4ef488635030a5e25d938462fbed7f5c0d096. It includes Claude weapon VFX through e26135a and the actual gate adapter, Core0.3.13/Residents0.2.1/HUD0.14.1/Rack0.1.2, excluding unfinished new combat-bank UI. Full11-area/36-artifact build passed there; its strict native fixture subsequently passed2,305assertions. The isolated source receipt/doc publication is being finalized; no realv17gateplaythrough is claimed. Do not substitute the original checkout's mutable source/artifacts. Its isolated worker will supply the final exact receipts. A GUI-thread compatibility draft and future combat-bank lifecycle QA are kept private for subsequent integration. Full49-mod feature parity, five native playable campaign routes and hosted acceptance remain unfinished. Two original local art-handoff commits are retained verbatim in `collaboration/sonnet-art/history-20261113.bundle` and local ref `preserved/sonnet-art-20261113`; the narrowly pinned history-recovery workflow preserves their original authorship on GitHub.
-
-Sprint deadline2026-11-14 13:32:41UTC; goal stays active.
-
-## Core 0.3.12 hand-technique preview is live
-
-Fable/Claude's original hand VFX through `e837307e1d40b6a74733d1b303d7f48b8c8bcf0e` is integrated and hardened: six styles, lifecycle/cache/render restoration, irrevocable mode charge before cosmetic callbacks, native direct-contact bonus and deferred accepted aftermath. Rasengan and Chidori are display titles with stable `spiral_palm`/`storm_lance` save keys. Absorption-only hits, late final cancellation, later source overwrites, healing/direct academy reset and callback-rearmed carriers have actual regression coverage. All eleven source areas/36 artifacts PASS; 2,058 native assertions (354 new) and 1,002 VFX math checks pass. Read `docs/hand-techniques-0312.md` and `release/evidence/core0312-verification.json` for exact hashes/scopes.
-
-The NEW separate preview is `D:/HiddenBlockVillage-Sprint-20261113/Vale-0312-Hand-Techniques`, loopback 25582, server PID 12300 / client PID 12892 at observation, controller session 70457. Exact tested source `58958edc9eb2a776a250ef8e0a73a97e26e8c479e7cd45433ad24a952c71ccc1`, Core SHA `7c8c91e0677a2e54cccc52459479bf57587fbd790347558c0786ee3e5d0fa8c8`. Twelve client / nine server JARs, OptiFine G5 + JEI 4.22, successful network join/JEI empty-batch pass. Synthetic ValePlaytest has six mastered owned technique items in hotbar 1-6 and two 200 HP stationary husks. Right-click charges; left-click a nearby enemy to strike; F5 changes camera. Private setup bypasses grind for tryout only. Physical Escape stopped CUA: no new Windows screenshot/visible VFX acceptance is claimed. Preserve this session while owner tries it.
-
-Newer Claude weapon VFX commit `e26135a` is fetched but NOT yet integrated. Next: review/integrate those original weapon effects and promote/native-test gate adapter with measured v17 sites. Server agent is authorized to prepare/boot a separate exact 0.3.12 Magma world copy on 25583;0.3.11 profile on 25581 stays stopped/preserved. Full 58-JAR client still needs matching artifact/profile handshake and visible gameplay. All 49 mods / five enhanced dungeons remain obligations; the full sprint remains active.
-
-## Copied v17 Magma world now boots and restarts
-
-The separate private `magma-v17-copied-world-01` candidate passed two actual boot/Done/save/exit-0 runs on loopback 25581, in 38.657s and 35.141s, with pinned Core 0.3.11, all nine verified enhancements, archived Magma/Forge 2860 and reviewed original NPC/Armourers/CrazyCrates dependencies. Both runs loaded 60 FML identities and enabled CrazyCrates. All 13 copied player-related files stayed byte-identical; all 1,771 frozen world source files and 128 dependency source files remain unchanged. No missing-mapping, unknown-entity, linkage or OOM markers occurred. The inherited invalid recipe ERROR remains. The runtime is now stopped. No client joined and no native dungeon route/water/lighting or hosted acceptance is claimed. Read `release/evidence/magma-v17-copied-world-20261113.json` and `docs/magma-smoke-current.md`.
-
-The copied-world guard has 15 passing fixtures. Static review parsed all 1,311 regions / 1,249,484 chunks without script bodies or parse errors and checked saved names across 11 registries. Five original v17 placements have their separate frozen offline receipt in `release/evidence/v17-candidate-20261113.json`. This supersedes earlier statements that the copied-world candidate was unbooted.
-
-Claude's original hand-technique VFX through `e837307e1d40b6a74733d1b303d7f48b8c8bcf0e` is being integrated as Core 0.3.12 in the working tree. Its separate mastered-character playground is prepared; new native/network checks remain in progress. Physical Escape stopped desktop control; no new visible VFX acceptance is claimed. The full sprint stays active; deadline 2026-11-14 13:32:41 UTC.
-
-## Current Core 0.3.11 and integrated Fable checkpoint
-
-Core 0.3.11 implements five distinct starter nature techniques, six accepted-contact melee chains, an early optional Lightning Chakra Armor kit/trial, timed contact counter, physical burst step, earned two-phase Guillotine Drop, owner/run-bound challengers and bounded local villager reactions. Registry/save IDs remain stable; Earth uses a new no-drop temporary cover block and preserves later terrain/tile edits. Read `docs/lightning-kit-0311.md`, `docs/nature-moves-current.md` and `docs/melee-current.md`. This is a playable enhancement checkpoint, not the full requested Naruto game.
-
-All eleven source areas and 36 artifacts pass. Current source snapshot is `ec507de9b7db9dab21e1d230e64c18f57cf91421029b277b08e6c4c9e760f602`; Core runtime SHA-256 is `a0f0374d160c99648fb29dbaf5b2c58da8898f3d8758cb61ba7628688da10609`. The complete disposable Forge 2859 fixture passed **1,704 assertions**; all tooling passed **302 tests, four skips**. World-import hardening accounts for 65 synthetic tests, NPC intake 18, playtest assembly 25 and Magma smoke tooling ten. Exact scope/hashes are in `release/evidence/core0311-verification.json`. The initial common-side tooltip crash was fixed with a separate client-only subscriber. Native fixture fixes distinguish vanilla canceled-contact knockback from added jutsu aftermath and avoid a test teleport itself loading the supposedly unloaded chunk.
-
-A new exact-source OptiFine G5 + JEI client joined a copied academy world: **12 client JARs, nine server JARs**, loopback **25578**, private path `D:/HiddenBlockVillage-Sprint-20261113/Vale-0311-Playtest-A`, server PID **8244**, client PID **15436** at observation. Keep this live session intact. Visible UI checks completed enrollment, Lightning foundation selection, the optional trial offer, issued armor equipment, JEI inventory display and normal codex mode activation with 20 chakra charged, upkeep and nearby mentor reactions. Guide-position teleports were used for QA; this is not a complete human walking/trial playthrough. Third-person armor rendered; active aura silhouette/readability still needs polish/visible acceptance. A crowded original resident cluster occludes the arrival guide from one approach and needs layout cleanup. The old academy/inspection directories remain preserved; their historical process IDs below are not current liveness claims.
-
-The exact archived Magma JAR now passes **four fresh-flat-world boot/save/exit-0 runs**: original roster and restart, then enhanced Core 0.3.11 roster and restart. Embedded Forge reports **2860**, separate from the standalone 2859 JAR. Original profile: 46 active original JARs/52 FML identities. Enhanced profile: 45 originals + nine tested components/60 identities, original pictures retained outside active mods and tested Standards as sole `hvdungeonpictures` owner. CrazyCrates enabled in all runs; legacy equipment was explicitly retained with `canonicalEquipmentCatalog=false`. Read `docs/magma-smoke-current.md` and both public receipts. Rejected legacy Killer B recipe, Mangekyo hook and mailbox warnings remain. Flat-world startup does not prove those mechanics or production-world migration.
-
-Fable's reviewed branch is integrated through `4f8f25e86582880ce7981af378a29f0f62420e92`, retaining original authorship/history. Its tools, five gate mission definitions/dialogues, weak-component route audit and doorway proposals are included. Codex hardened candidate isolation, keep-air inventory/ticks, staged recoverable paste/rollback, path/output guards, Java modified UTF-8 and strict compression. No automatic doorway proposal was applied. Read `docs/dungeons/codex-world-safety-review.md`. The dungeon runtime adapter is drafted privately under `local/expedition-adapter-draft`; its 35 component assertions/standalone compilation are observed, but it is **not yet promoted into production or native-tested**, and all authored null-anchor sites remain disabled.
-
-The executable friend-NPC intake is in `tools/npc_intake`; `docs/npc-merge-current.md` gives exact upload folders/dependencies. Actual typed SNBT/binary NBT round trips and an independent format-preview overlay passed without changing 20 original files. **No friend bundle has arrived or been merged.** Raw NPCs/scripts/assets/player data stay private. The local playtest assembler keeps the reference `mods.zip` roster separate from the server archive: both contain 49 JARs but differ. Server-archive client plus enhancements/OptiFine totals 58 JARs; this full graphical stack is still being prepared/tested separately from the 12-JAR live client.
-
-Five exact original v17 templates have now been placed into eight previously absent overworld regions of a private independent `Naruto.test` copy at `D:/HiddenBlockVillage-Sprint-20261113/v17-world-candidate-01/world`. Source/template bytes are untouched. The agent verified all non-air histograms, 1,120 block/meta samples and all 144 translated tile payloads, plus a complete Nether rollback/reapply. Mist remains 200x200 with 427,086 real water blocks. The source world snapshot is frozen for a **separate** Magma copied-world acceptance candidate on 25581; that candidate has not yet been booted at this handoff. Preserve the frozen world and exact receipts; do not launch recovery in place. Native routes/lighting/fluids, measured mission sites, dungeon encounters, full-stack client, copied-world restart/gameplay and Bisect remain open.
-
-Next: finish copied-world Magma/client acceptance and publish its bounded evidence; promote and native-test the actual gate adapter with measured site/marker/actor/giver bindings; improve the mode action/visual flow and arrival layout; continue the full power/49-mod/dungeon scope. The sprint deadline remains **2026-11-14 13:32:41 UTC**. The goal stays active; no paid API calls are authorized during the deferred reviewer setup.
-
-## Full server recovered; parallel gameplay build active
-
-The full Bisect archive is now available at `D:/archive-2026-11-09T202203Z.zip`; do not ask the owner for it again. All 6,873 entries were recovered into a new private tree at `D:/HiddenBlockVillage-Sprint-20261113/server-intake-verified`, with every ZIP CRC and independent output SHA-256 verified. Archive SHA-256 is `bfdfbad54ead4cc0da9665cc413cc46285f7e36800cb01b90fcd216bfb8a9c3b`. Both genuinely different config case-collision groups are preserved in quarantine. Read `docs/server-intake-current.md` and `release/evidence/server-intake-20261113.json` for exact safe metadata and startup prerequisites. Original archives/worlds and the earlier failed extraction remain intact.
-
-The archive has exactly 49 mod JARs, one plugin JAR, Linux Java 8u252 and a Magma JAR whose manifest version differs from its filename. Eleven declared Magma classpath files are absent. These are observed packaging facts, not proof of a successful start. No recovered server/world has been executed or merged. `tools/server_intake` has 12 passing fixture tests and passes stricter preflight against the real archive. Raw worlds, private configs, player/NPC data and third-party JARs stay outside Git.
-
-The owner explicitly authorized subagents. Internal assignments cover nature jutsu, six native weapon chains, server recovery/NPC intake, local playtest assembly and integration checks, with distinct file ownership. Core 0.3.11 Lightning Armor/trial/reactive-witness work is being built and tested in the main working tree; it is not yet a verified release. The first dedicated test found a common melee tooltip listener loading a client-only class; it was split into a client-only subscriber and the combined rebuild is running. Existing live servers are preserved. The full requested game and the active 20-hour sprint remain unfinished.
-
-Fable's actual remote branch `claude/upbeat-ride-nyxq23` at `1450679d58cd729b231b6a8a826e6f1535fc0dd5` was fetched and its new files restored for integration review. Its 37 world-tool and 12 content-validator tests pass on Windows. The five actual v17 schematics have now been audited offline; no original schematic/world was modified. Dungeon mission JSON still needs runtime wiring and measured anchors. Review found concrete copy/paste/rollback safety defects; hardening is in progress before any real-world paste. This supersedes older statements below that Fable had not been observed pushing or that the full archive path was still pending.
-
-
-## Active Core 0.3.10 academy checkpoint
-
-This section supersedes the older next-step lists below for current gameplay development. The owner asked for implementation, JEI repair, academy/first missions and ongoing GitHub saves. Use `.agents/skills/hidden-block-village/SKILL.md`.
-
-Core 0.3.10 now has six introductory exercises (arrival, nature/ward choice, ordered walking, observed evade/guard/Reed Escape, three accepted lance contacts, real ration crafting/hand-in), a protected opt-in Minecraft campus with five resident guides, and run-bound dispatch/ambush contracts. Stable reward receipts, full-inventory delivery, nonce/distance/stage dialogue guards and owner-bound actor cleanup are implemented. The optional JEI bridge skips an empty removal batch and retains error reporting. Read [the play guide](academy-0310.md) for exact inputs and scope.
-
-The latest complete source build passed all eleven source areas and 36 artifacts with source snapshot `0afcf1cf26b6f75caf3ee8adee5f8cb90574a061c1cfdb0ab11052df1d6b1e67`. There are 37 new progress checks and dedicated JEI bridge regressions. The tooling suite passed 170 tests with four skips. The new separate Minecraft/OptiFine/JEI client joined its fresh academy server and logged `VALE_JEI_CATALOG_PASS: 0`; the prior optional-bridge warning is absent. Exact artifact identities and scope are in `release/evidence/academy0310-verification.json`.
-
-Local playable session: ignored `local/academy-preview-0310-c`, loopback port 25577, player `ValeAcademy`, server PID 20188, game PID 8884. It is in survival at the arrival guide. The old Core 0.3.9 inspection game PID 11804 / port 25576 remains intact. Two earlier refused setup attempts and a debug fixture are preserved under ignored local paths. Do not replace JARs in either live client. Desktop controls failed initialization with Windows path error 3, so a visual/manual-input walkthrough is not claimed.
-
-Final exact-hash disposable Forge acceptance passed 1,261 assertions, including 103 academy assertions: enrollment/replay, full-inventory delivery, walking, actual guard/Reed Escape/arts, native recipe pickup, dispatch, ambush, partial resume and saved player reload. It found and fixed a real UUID-pair cleanup bug: Minecraft 1.12 stores UUIDs as Most/Least tags. Removing the unsuffixed key had left stale references and blocked ambush resume. Earlier failed runs and fixture corrections remain local. Final source/native hashes are in the evidence record. A CRC/hash-checked twelve-mod personal client ZIP is ready under ignored `exports/Vale-Core0310-Academy/`; it includes the fix. The currently active academy game uses the earlier candidate and was left running to preserve the owner's play. Its network/JEI evidence is labeled with the earlier source hash; final-hash graphical acceptance is not claimed. Production-world migration/restart, two-client gameplay, Magma/plugins and Bisect remain separate gates. Friend CustomNPCs/world data have not been published or imported by this change.
-
-## Recovered v17 and collaboration checkpoint
-
-The owner supplied all five latest v17 schematics. Exact copies are preserved under ignored `local/v17-intake`; originals are in `C:/Users/Steal/Downloads/archive-2026-11-13T173625Z`. Sakura, Cloud and Sand are 288Ãƒâ€”288; Mist is 200Ãƒâ€”200; Nether is 256Ãƒâ€”256. Heights are 217, 209, 153, 148 and 126 respectively. The initial numeric scan found valid arrays, no non-vanilla block IDs/command blocks, in-bounds unique tile positions and no immediate unsupported gravity blocks. This does not prove routes, aesthetics, fluid stability or native acceptance. See `release/evidence/v17-intake-20261113.json`.
-
-The 5.67 GB ZIP `C:/Users/Steal/Downloads/9a70913e-616c-483b-926e-2e28e391ebf0.zip` is a **Naruto.test world archive**, not the full server. A complete CRC-checked, file-hashed private recovery copy is at `D:/HiddenBlockVillage-Sprint-20261113/recovered-world/Naruto.test`, with its private receipt one directory above. Its original archive SHA256 is `089ee21b9574f1a4dcbf0ad6eab836eaa56976d9eff6d6b243e1d88cb1aa3a16`. Original archive/source bytes are untouched. This recovers actual world inputs but not the previously approved source inventory or missing server/plugin configuration. The owner will send the full server path when the active download finishes; do not repeatedly ask for it. D: has ample space for copies; C: was down to about 6 GB. Use D: for new large candidate worlds.
-
-The recovered world includes three CustomNPCs dialogs, one Kakashi clone and script data. Preserve these as private compatibility inputs, inventory/remap dependencies and test in a copy; do not confuse them with original Residents or publish assets/player records. No recovered world was started or merged yet.
-
-The owner calls their Claude Desktop assistant **Fable** and wants broad collaboration. `CLAUDE.md`, `collaboration/BOARD.md`, `collaboration/FABLE-TASKS.md` and `docs/three-worker-setup.md` define a separate-worktree dungeon/content queue. Fable has not yet been observed starting/pushing a branch. Codex owns Core gameplay and integration; Fable's first output paths are distinct. Do not claim a direct messaging connection exists.
-
-An optional bounded OpenAI API reviewer was prepared and passed five local tests plus a dry run. The owner authorized a $40 worker cap, then explicitly said not to worry about API setup right now. **Leave it off; no key configured and zero paid calls.** Resume only if the owner asks. Continue actual gameplay implementation; the planned Lightning Chakra Armor kit has not yet been added to source.
-
-## Claude instructions/context/memory books
-
-The owner explicitly requested three substantive files of about 100,000 characters each for Claude. `collaboration/claude-inputs/` contains the exact generated books, a source-hash manifest and start instructions: Instructions **99,203 characters**, Context **102,830**, Memory **103,195**. Counts are Unicode characters including LF, not byte counts. They total 305,228 characters. No quota padding, arbitrary truncation or private world/NPC/player payloads were added. Memory explicitly separates plans from verified achievements and seed facts from evidence appendices.
-
-The source-backed generator is `tools/build_fable_context.py`; author-maintained seeds are `collaboration/FABLE-PROJECT-INSTRUCTIONS.md` and `collaboration/fable/MEMORY.md`. A verified local ZIP is under ignored `exports/Fable-Project-Setup-20261113/Fable-Project-Setup.zip`. The books are offline snapshots, not an automatic memory or cross-assistant messaging service. Their manifest pins the base commit and exact source inputs. Fable should still read current Git state before acting. The context also calculates v17 stored-origin paste bounds: four non-Mist schematics would have negative minimum Y if blindly pasted at the stored origin, so an explicit placement/alignment decision is required.
-
-## Million-character Opus handoff and parallel implementation
-
-At the owner's explicit request, `tools/build_opus_handoff.py` generated exactly **1,000,000 Unicode characters** from pinned commit `b69ec020b5fd4c159c6969e5c3f4a9ccca8abfcf`, the three source-backed books and whole source/test files. It contains 109 complete source units, selected with a whole-file subset-sum; no padding, repeated file copies, private payload or mid-file truncation. `collaboration/opus-handoff-manifest.json` pins every source/hash and generation time. The private generated artifact is under `exports/Opus55-Full-Handoff-20261113/`, with CRC/byte-verified ZIP. Its SHA256 is `eef517915bf23edd63753ee7db9c5d7bd283236a8bbe3bf7bcb061bc4a133fcb`. It is a frozen reference prompt, not a claim that Opus has ingested every section or that copied source is current after later commits.
-
-The owner explicitly authorized internal subagents. Three are now assigned distinct paths: server archive intake under `tools/server_intake/`; nature technique implementation under the nature package plus `Arts.java`; weapon combos under the melee package. Codex owns LightningKit/Trial/Events, Academy integration, builds and final merge. Do not overwrite their active work or run aggregate source-snapshot acceptance while sources are changing. Opus/Fable retains its separate v17 dungeon/content package.
-
-The full server archive is `D:/archive-2026-11-09T202203Z.zip` (8,944,663,680 bytes, 6,873 entries), containing Magma config, mods, plugins and Naruto.test. Initial strict extraction failed before copying because of duplicate/case-colliding `plugins/locations.yml`. Preserve the original and first failed recovery directory; server-intake worker is implementing conflict-preserving recovery. No server code has been started. Root has begun unbuilt Lightning kit/world-reaction source; it is not a verified candidate yet.
-
-## Active twenty-hour Naruto build sprint
-
-The owner explicitly allocated twenty hours to build a fully playable end-to-end Naruto game and asked for community research on mechanics, quality of life, weapons/movesets and interactions. Sprint start: **2026-11-13 17:32:41 UTC**; deadline: **2026-11-14 13:32:41 UTC** (08:32:41 America/New_York). An active goal tracks the work; do not mark it complete because planning or one slice passed.
-
-The latest owner priorities supersede long mandatory onboarding: recognizable Naruto identity, exciting powerful equipment with real moves, fast access to action, reactive villages/world, cohesive movement/weapons/jutsu and preserved Minecraft play. `design/NARUTO-FUN-BRIEF.md` is the detailed decision reference; `design/REFERENCE-RESEARCH.md` now contains primary developer/creator sources and explicitly bounded community signals. Ads are not independent player votes; no inaccessible footage was represented as watched. The project skill and installed local copy now route to that brief. Both skills and the 49-JAR/92-package design ledger validate.
-
-Continue actual implementation during the sprint. Next high-value delivery: **one distinctive Naruto power kit + short combat mission + causal local world reaction**, followed by a contrasting kit and coherent weapon/movement inputs. Read existing mode/armor/arsenal engines first; reuse reliable machinery without claiming shared mechanics are unique. Preserve the full roster and five-dungeon obligations. Do not spend the remaining sprint expanding prose while acquisition, feedback and game feel remain unfinished. Keep testing and publishing meaningful checkpoints; keep existing live games intact unless the user authorizes a restart.
-
-## Owner's standing direction
-
-Always work in and save checkpoints to this GitHub repository so work can continue across PCs. Read `AGENTS.md`. Preserve original work and licensing/provenance records. The owner is recreating mod components and adding original gameplay; maintaining ownership and accurate licensing context is part of the project objective.
-
-## Recovered baseline
-
-The source inspected in this continuation was commit `54ba679` (2026-11-11). The project is Hidden Block Village / Vale, targeting Minecraft 1.12.2, Forge client 14.23.5.2859, Java 8 runtime, and a Magma server intended for Bisect Hosting.
-
-The repository records Core 0.3.9 with eleven source areas and 36 declared build artifacts. Historical source/build/native evidence is in `release/candidate039-verification.json`; the fresh reproduction below verifies the same artifacts and reruns the disposable Forge fixture. Read `docs/recovery-status.md`, `docs/client-and-bisect-039.md`, and `tools/ASSEMBLY.md` before packaging.
-
-The last documented Windows handoff contains Core 0.3.8. A fresh reviewed 0.3.9 handoff and successful complete assembly have not been observed. The preserved world is `Naruto.test`. The approved `actual-stage-before.jsonl` inventory and private runtime inputs remain PC-side; do not fabricate replacements.
-
-## Checks actually run in this continuation
-
-[Fresh verification record](../release/evidence/continuation-20261113-verification.json).
-
-- Installed official Azul JDK 25.0.5 and JDK 8u512 under the execution workspace, verifying both archive SHA-256 values against vendor metadata. Build downloads used the managed proxy and system CA trust.
-- Rebuilt all eleven source areas: 36 artifacts passed integrity checks. All 36 outputs are byte-identical to the recorded Core 0.3.9 component build. All 1,512 source/build inputs match `release/candidate039-source-inputs.json`; source stayed unchanged during the build.
-- Release/bootstrap tooling with Java 8: 161 tests, OK, one Windows-only skip. This supersedes the initial 145-test run with two skips before Java 8 was installed.
-- PC companion coordinator: 26 tests, OK with local-loopback access. The initial sandbox attempt failed because binding localhost was denied.
-- Desktop guard suite: 33 tests, OK, five platform-specific skips. This does not test real Windows input or Minecraft rendering.
-- Fresh private Forge 14.23.5.2859 run: 1,158 assertions passed with nine production mods and two private QA mods. Loaded mod identities were checked against the source build, process exited successfully, and disposable runtime was removed.
-- GitHub source/native job and Ubuntu/Windows release-tools jobs passed for run [43447345877](https://github.com/tasx13ok-create/Hidden-Block-Village/actions/runs/43447345877).
-- Actual saved world, current Magma candidate, graphical client, full package assembly and Bisect acceptance remain unrun. These checks do not establish a deployable complete package.
-
-## Access and recovery observations
-
-The original PC is reportedly powered on but inaccessible to the owner. A second PC is available. Both Vale browser and native connection tools returned no connected devices during this continuation. No original-PC Codex transcripts or newer unpushed work were recovered.
-
-An isolated official device-login flow succeeded. A subsequent authenticated `codex cloud list --json --limit 20` returned an empty task list and null cursor. This is evidence about that Cloud task query only, not evidence that local chats or other account-retained data are absent. Authentication material is private and must never be committed.
-
-Native ChatGPT/Codex Remote is a separate possible route if the original host is already paired and reachable. Account export is another recovery avenue; inclusion of the desired Codex transcripts remains unverified. Full conversation continuity is not established by repository sync alone.
-
-## Next steps
-
-1. Fetch current GitHub changes on the available PC and read `AGENTS.md` plus this handoff. Preserve any existing local changes.
-2. Continue original-PC context recovery through an available authorized remote connection, an existing backup, or an account export. Inspect for newer unpushed source and assembly receipts if access becomes available.
-3. Source reproduction and disposable Forge verification are complete for this checkpoint. On a different PC, follow `docs/build-modules.md` and `docs/native-checks.md` to reproduce them; keep new results bound to their exact source and JAR identities.
-4. Recover the approved private inventory and complete inputs; inspect the old assembly status before preparing a separate fresh 0.3.9 candidate. Preserve original world/archive/rollback and incomplete outputs.
-5. Validate the complete matching server/client candidate, current Magma runtime, copied saved-world start/save/restart and migration, real graphical client/mod handshake and gameplay, intended graphics/Solas setup, and finally Bisect start/restart/client connection.
-
-Do not represent recorded Forge fixture success, Python tooling success, or the item counterpart coverage metric as proof of complete gameplay or hosted deployment acceptance.
-
-## Windows desktop continuation on 13 November 2026
-
-The available Windows desktop now has a separate clone of this repository inside its older dungeon workspace. Its checkout was synchronized to `69c8c9e6fba844ca7c13feb7839c2cb47f2e0169`; all 1,512 files in `release/candidate039-source-inputs.json` were read and matched their recorded byte counts and SHA-256 values, with zero mismatches. `tools/build_modules.py --list` successfully enumerated all eleven source areas using Python 3.12.10. This verifies source checkout identity and tool discovery, not a new component build or Minecraft run.
-
-The older workspace now has a local `AGENTS.md` entry point directing future sessions into this Git checkout and its current handoff. Existing dungeon saves and deliveries remain at v9 on this desktop; a newer chat mentions v17, but its schematic bytes were not located or verified here.
-
-Targeted filename searches of the inspected local Downloads, Documents, OneDrive/Desktop, CurseForge instance folders and additional download/transfer locations did not locate the reviewed `actual-stage-before.jsonl`, complete Vale server stage, assembly/preparation receipts, or `Naruto.test`. The documented `D:\Codex` directory is absent on this machine. These bounded searches do not establish that every disk or backup has been searched. Both Vale browser and native connection status tools returned no devices during this chat.
-
-Java on PATH reports 21.0.10; the inspected standard Java locations did not supply the required JDK 25/JDK 8 pair. The existing workspace Python 3.12.10 interpreter is usable. No full package assembly, saved-world load, graphical client or hosted acceptance was run during this desktop continuation. The next packaging step remains recovery of the original reviewed inventory and complete private inputs, followed by a separate fresh Core 0.3.9 assembly and its acceptance checks.
-
-## Windows build and native execution on 13 November 2026
-
-The Windows desktop continuation progressed beyond checkout recovery. Portable Azul JDK 25.0.5.0.3 and JDK 8u512 were downloaded from official vendor metadata and their Windows archive SHA-256 values verified. All eleven source components and 36 artifacts built successfully on Windows; every output matches the recorded Core 0.3.9 binary identity. The native Forge 14.23.5.2859 fixture then passed all 1,158 assertions with nine production mods and two private QA mods, and its disposable runtime was removed. [Windows verification](../release/evidence/windows-desktop-20261113-verification.json).
-
-The first native attempt exposed Windows backslashes in relative component-report fields, which the strict native verifier rejects. `tools/build_modules.py` now serializes those fields with forward slashes, with a successful-build/copy regression test. All components were rebuilt from the corrected tool before the successful native run. Production gameplay sources and binaries are unchanged.
-
-Two real Windows fixture assumptions were also corrected: virtualenv Python can retain both a redirector and an interpreter process; Microsoft Store Python can report a different executable name and drive alias from `sys.executable`. The status fixture now identifies its worker explicitly and cleans up its own process tree. The desktop smoke test independently cross-checks the loaded image with Win32 and file identity. Final local results: release/bootstrap 162 tests with four platform/privilege skips; coordinator 26 tests with one skip; desktop guard 33 tests without skips. All suites passed.
-
-A separate personal client import ZIP was created under `exports/Vale-Core039-Local-Test/` and CRC/hash verified. It contains nine current source-built client components plus the locally available Essential and OptiFine whose bytes match the historical pins: eleven client mod JARs total. Its manifest selects Minecraft 1.12.2 / Forge 14.23.5.2859. It is a local test profile, with no saved world or supplied Solas payload, and has not been graphically launched. Its identity and roster are in the verification record; the ZIP and third-party binaries are not published to Git.
-
-The approved original inventory and complete server/world inputs remain missing from the inspected local locations. Full production assembly, actual saved-world migration/start/save/restart, graphical client connection/gameplay/Solas, current Magma candidate and Bisect acceptance remain open. The available Windows machine can now build current mods and run the disposable native checks directly.
-
-## Local OptiFine inspection session on 13 November 2026
-
-At the owner's request, launched Java 8 / Forge 14.23.5.2859 with the eleven current client JARs plus local JEI 4.22.0.1034. The visible Minecraft window remains running. A separate loopback-only creative server loads the nine production server mods and a copy of the available v9 dungeon save. Both sides recorded a successful modded connection and the synthetic local inspection player joined; the client recorded OptiFine initialization and HUD scene-blur initialization. BSL 10.1.8 is available in the inspection profile but shaders start disabled. Original worlds and the older client instance were not modified.
-
-This establishes an actual graphical client process and local network join, with no screenshot or manual gameplay acceptance claimed: the desktop-control tools failed to initialize. It does not establish the private Naruto.test world, final Magma roster, Solas or Bisect results. Local session details and logs remain under ignored local storage.
-
-A follow-up issue was observed: the optional JEI catalog-hide bridge calls removeIngredientsAtRuntime with an empty list when no overlapping props are present. JEI starts successfully and the connection proceeds, but the optional bridge emits a warning. The running session was left available to the owner; production binaries were not replaced during play.
-
-## Comprehensive game design checkpoint on 13 November 2026
-
-The owner supplied mods.zip and requested a deeply planned original shinobi game, functional recreation/enhancement of the full pack, IceeRamen reference research and a reusable implementation skill/prompt. The archive contains 49 JARs; its SHA-256 is c4d54acb14e719ec4ece244aea6843fa20a345b29ff3ebfe6f5c4e719cbd6fdd. Every JAR was CRC-read and hashed. Embedded metadata/filenames are preserved separately, including version disagreements and unresolved identities. No JAR payloads or third-party assets were copied into public source.
-
-Read design/README.md. Eight design documents cover the master product/architecture plan, detailed system contracts, all 49 reference dispositions, five dungeon campaigns, creator-source research, the ten-mission academy campaign and the reusable implementation prompt. The linked machine backlog has 89 dependency/acceptance-defined work packages, without an invented overall completion percentage. The project skill lives at .agents/skills/hidden-block-village and is installed locally for subsequent sessions. AGENTS.md points future work to these sources.
-
-Creator material includes the original public Iceeman SMP video descriptions and current creator-published project/release pages. Direct playback fetch failed, so research explicitly records that no video intervals were visually reviewed and leaves a concrete timestamp-review queue. Do not describe this as watched footage. The 1.16.5 inspiration does not change the established 1.12.2 target.
-
-The new standard-library audit and design validation tools were executed against the real archive and full plan. Seven new regression tests cover exact identities, malformed metadata, ambiguous paths, missing reference mappings, dependency cycles and unsupported completion claims. The design validator checks all 49 mappings, 89 work packages and local design links. The skill passed the Skill Creator frontmatter/scaffold validator. These are planning/tooling results, not new gameplay parity or a new dungeon export.
-
-Next implementation: the known empty-list JEI catalog bridge correction in a separately versioned candidate with focused regression and real client smoke; then the normal-player academy/mentor/acquisition vertical slice and Mist encounter graybox. Keep the currently running OptiFine inspection client/server intact. Missing private production inputs, later v17 schematics and friend NPC exports remain separate recovery tasks, not blockers for independently specifiable original systems.
+The full game, all49-mod behavioral parity, all campaigns, all original NPC payload migration, universal native jutsu mapping and complete graphical/hosting acceptance remain unfinished. The20-hour target elapsed. Use design/README.md and the project skill for continuation, and distinguish historical evidence from current observations.

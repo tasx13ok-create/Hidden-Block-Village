@@ -10,10 +10,9 @@ public final class HudConfig {
     public static boolean shinobi=true,motion=true,curve=true,eyeMap=true;
     public static boolean chakra=true,slim=false;
     public static boolean glassBlur=true;
-    public static boolean narutoInventory=true,menuSounds=true;
+    public static boolean narutoInventory=true,menuSounds=true,menuEffects=true;
     public static boolean focusEffects=true;
     public static boolean jutsuRail=true;
-    public static boolean menuEffects=true;
     public static int positionX=-1,positionY=-1;
     public static final String[] MODES={"Explore","Combat","Quiet"};
     public static void load(File directory) {
@@ -32,8 +31,8 @@ public final class HudConfig {
         motion=file.getBoolean("animation","hud",true,"Smooth meters, brief selection feedback and low-health seal. Off snaps to actual values.");
         glassBlur=file.getBoolean("glassBlur","hud",true,"GPU scene blur behind glass panels. Off uses translucent glass without blur.");
         focusEffects=file.getBoolean("focusEffects","hud",true,"Subtle native dojutsu/casting focus and confirmed-cast flash. Quiet hides these; Motion off removes animation.");
+        menuEffects=file.getBoolean("menuEffects","hud",true,"Owned menu atmosphere. Reduced motion keeps static colours; Menu clicks controls extra audio.");
         jutsuRail=file.getBoolean("jutsuBar","hud",true,"Six local shortcuts to server-owned attacks and equipment below the minimap. Focus routes scrolling; menus retain normal input.");
-        menuEffects=file.getBoolean("menuEffects","hud",true,"Animated ink, chakra and leaf backdrops, button reactions, death/loading effects and shinobi tooltips on menus. Motion off keeps only colours.");
         curve=file.getBoolean("curvedHotbar","hud",true,"Subtle two-pixel scroll curve; items follow their slots.");
         eyeMap=file.getBoolean("eyeBezel","hud",true,"Optional Xaero 26.6 circular-map eye bezel using live module bounds.");
         chakra=file.getBoolean("chakra","hud",true,"Integrate NarutoMod's real synchronized chakra and warning/Sage flags when available.");

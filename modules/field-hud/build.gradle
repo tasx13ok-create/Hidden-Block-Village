@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.fieldhud'
-version = '0.19.0'
+version = '0.20.1'
 base { archivesName = 'field-hud' }
 java {
     toolchain {
@@ -106,3 +106,28 @@ tasks.register('compileFableFxChecks', JavaCompile) {
     }
     tasks.named('check') { dependsOn taskName }
 }
+
+// Original menu atmosphere: accessibility, native-slot exclusion and bounded wall-clock effects.
+def menuFxClasses = layout.buildDirectory.dir('menu-fx-checks')
+tasks.register('compileMenuFxChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/MenuFxRules.java', 'tests/village/fieldhud/MenuFxRulesChecks.java')
+    classpath = files()
+    destinationDirectory = menuFxClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifyMenuFxRules', JavaExec) {
+    dependsOn 'compileMenuFxChecks'
+    classpath = files(menuFxClasses)
+    mainClass = 'village.fieldhud.MenuFxRulesChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifyMenuFxRules' }
+
+// Isolated actual AnimeDraw recorder: doubles never enter production/source jars.
+def animeGlClasses=layout.buildDirectory.dir('anime-gl-contract-checks')
+tasks.register('compileAnimeGlContractChecks',JavaCompile){source fileTree('glchecks'){include '**/*.java'};source files('src/main/java/village/fieldhud/AnimeDraw.java','src/main/java/village/fieldhud/FableHudMath.java');classpath=files();destinationDirectory=animeGlClasses;javaCompiler=javaToolchains.compilerFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.register('verifyAnimeGlContract',JavaExec){dependsOn 'compileAnimeGlContractChecks';classpath=files(animeGlClasses);mainClass='village.fieldhud.AnimeDrawStateChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)}}
+def lwjglQueryClasses=layout.buildDirectory.dir('lwjgl-query-contract-checks')
+tasks.register('compileLwjglQueryContractChecks',JavaCompile){source fileTree('bufferchecks'){include '**/*.java'};classpath=sourceSets.main.compileClasspath;destinationDirectory=lwjglQueryClasses;javaCompiler=javaToolchains.compilerFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.register('verifyLwjglQueryContract',JavaExec){dependsOn 'compileLwjglQueryContractChecks';classpath=files(lwjglQueryClasses)+sourceSets.main.compileClasspath;mainClass='village.fieldhud.LwjglQueryContractChecks';javaLauncher=javaToolchains.launcherFor{languageVersion=JavaLanguageVersion.of(8)}}
+tasks.named('check'){dependsOn 'verifyAnimeGlContract','verifyLwjglQueryContract'}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "verified": false,
+  "moves": [
+    {
+      "kind": "entity",
+      "id": "same:kunai",
+      "when": "damage",
+      "owner": "damage_source",
+      "style": "weapon:waymark_knife"
+    },
+    {
+      "kind": "entity",
+      "id": "sample:rasengan",
+      "when": "damage",
+      "owner": "damage_source",
+      "style": "spiral"
+    },
+    {
+      "kind": "entity",
+      "id": "sample:water_forest",
+      "when": "damage",
+      "owner": "damage_source",
+      "style": "weapon:mist_censer"
+    },
+    {
+      "kind": "item",
+      "id": "-sample:fire",
+      "when": "melee",
+      "owner": "direct_player",
+      "style": "fireedge"
+    },
+    {
+      "kind": "item",
+      "id": "same:kunai",
+      "when": "melee",
+      "owner": "direct_player",
+      "style": "weapon:waymark_knife"
+    },
+    {
+      "kind": "item",
+      "id": "sample:forest_fire",
+      "when": "melee",
+      "owner": "direct_player",
+      "style": "fireedge"
+    },
+    {
+      "kind": "item",
+      "id": "sample:water_foodless",
+      "when": "melee",
+      "owner": "direct_player",
+      "style": "weapon:mist_censer"
+    }
+  ]
+}

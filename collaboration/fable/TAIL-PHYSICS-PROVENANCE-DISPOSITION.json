@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "status": "CURRENT_TREE_CLEANED_PRIVATE_INPUTS_RETAINED",
+  "review_scope": "README text plus Git commit messages and tree identities only; no recovered implementation bodies read, copied or adapted.",
+  "input_remote_head": "f1b0f8f34d16a8d8388574e7aadf538d093e6a96",
+  "source_history": [
+    {
+      "commit": "49d7a4bf65af375cafd09fc333316f1d3eff2287",
+      "author": "Claude",
+      "intent": "pass2 momentum, substeps, bend, friction and length locking"
+    },
+    {
+      "commit": "12ac4fc154b05bace428d4129fd8301f987a6157",
+      "author": "Claude",
+      "intent": "pass3 separation, default-off experimental capsule and swing benchmark"
+    }
+  ],
+  "readme_claim": "Implementation was recovered by decompiling the owner supplied Hidden Village Bijuu Armor0.16.2rc1 JAR, then edited because upstream source is not in the repository.",
+  "classification": "Modified recovered upstream implementation; not independently original Fable source. Edit authorship and owner approval to decompile do not establish reviewed public redistribution permission for the recovered body.",
+  "reviewed_redistribution_permission_found": false,
+  "recommended_disposition": "Retain exact opaque bytes and metadata privately under an ignored location, then remove the four module files from the current public tree. Keep original native provider installed privately and preserve all other original integrations. Retain this sanitized provenance record in public.",
+  "upstream_current_history_already_contains_paths": true,
+  "removal_erases_published_git_history": false,
+  "new_tail_pass2_or_pass3_enhancements_adopted_in_production": false,
+  "native_baseline_retained": true,
+  "source10_export_contains_inactive_module": true,
+  "source_cleanup_changes_export_source_hash": true,
+  "inactive_module_built_as_production_component": false,
+  "paths": [
+    {
+      "path": "modules/hvbijuu-physics/README.md",
+      "git_blob": "604a41f89ad29b33f0e2d24eeed993b34005b990"
+    },
+    {
+      "path": "modules/hvbijuu-physics/src/village/bijuu/TailPhysics.java",
+      "git_blob": "1f8b9cad9d329df0d893d3ec9f7c7fcdeffcd452"
+    },
+    {
+      "path": "modules/hvbijuu-physics/tests/TailBench.java",
+      "git_blob": "a36d676919cace751b82260368a23aee5de44481"
+    },
+    {
+      "path": "modules/hvbijuu-physics/tests/TailBench2.java",
+      "git_blob": "a1c900ccd57f8ba747fdb32702527edb86d0d8f6"
+    }
+  ],
+  "disposition": "All four original inputs preserved privately and hash-verified before removal. Recovered implementation and two dependent tests removed from current public tree; README replaced with original safe disposition. No shared history rewrite.",
+  "retained_inputs": [
+    {
+      "path": "modules/hvbijuu-physics/README.md",
+      "sha256": "4c19766137b1f38fc392e4009b41cf42a0964125b70e2a8baf9ff1b229dc1b29",
+      "bytes": 3484
+    },
+    {
+      "path": "modules/hvbijuu-physics/src/village/bijuu/TailPhysics.java",
+      "sha256": "8fa39ad46b9eb14ad5310e29057657f30c118b552d72fe972ac30aed3dd4f4e5",
+      "bytes": 21718
+    },
+    {
+      "path": "modules/hvbijuu-physics/tests/TailBench.java",
+      "sha256": "b7c6a245c4b361b485f90e2d33c9f0e5eb390b16b2b660187668e2b73df67ab8",
+      "bytes": 3479
+    },
+    {
+      "path": "modules/hvbijuu-physics/tests/TailBench2.java",
+      "sha256": "213cab6f2df053efe7591ed8818b5ef942781ba655f3a140f82a8afa89bdcbfb",
+      "bytes": 2327
+    }
+  ],
+  "safe_readme_sha256": "45c8c679c6c83b05e4c7f7cdb865608e55925c375d78b63d104f8a197a77e93f",
+  "production_module_source_changed": false,
+  "matching_source11_rebuild_required": true
+}

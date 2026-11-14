@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "source_pin": "3a257fe16c302d2a0b0ee9fd5c07072f789ddf41",
+  "original_author": "Claude Opus5.5",
+  "adaptation": "Codex original bounded native-tick integration on reviewed opt-in pass1",
+  "minecraft_launched": false,
+  "native_chakra_attributes_items_textures_or_models_changed": false,
+  "tail_or_recovered_source_imported": false,
+  "private_VfxShots_in_production": false,
+  "actual_client_or_gpu_acceptance": false,
+  "source_overlays_compiled": 2,
+  "unchanged_canonical_geometry_compiled_as_dependency": true,
+  "armor_rules_checks": 6480,
+  "inherited_armor_checks_retained": 3348,
+  "new_features": [
+    "native-sneak cosmetic gathering over60 observed ticks with40tick cooldown",
+    "contracting chest gathering ring and inward motes",
+    "one overload flash/expanding shell and48cube world shockwave plus30queued shower sparks",
+    "one14spark hit spray per observed client hurt-time rise",
+    "low-health visual double heartbeat",
+    "water/rain steam",
+    "50percent wider support annulus in night/dark sky",
+    "overload spell audio bounded2pernativeTick and disabled with reduced motion/Quiet"
+  ],
+  "limits": {
+    "cached_wearers": 32,
+    "living_sparks": 128,
+    "new_sparks_per_native_tick": 16,
+    "active_overload_bursts": 32,
+    "native_ticks_per_catchup": 4,
+    "burst_lifetime_ticks": 24,
+    "shockwave_cubes_per_burst": 48,
+    "shower_requests_per_burst": 30,
+    "overload_sounds_per_native_tick": 2
+  },
+  "crowded_scene_policy": "The48cube shockwave is procedural geometry. Shower particles are queued and consume the existing global16-per-tick/128-living cap; expired bursts can drop remaining shower requests under heavy contention. No gameplay effect or resource settlement depends on these visuals.",
+  "dependency_hashes": {
+    "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreGeometry.java": "1e83ca08cefc57ce98afbf94341b3fd4849f2cf4274b932f49c54ae77f66e006"
+  },
+  "remaining_acceptance": [
+    "complete matching production build and private-fixture exclusion",
+    "actual local sneak hold/toggle persistence and actual hurt/steam/night appearance",
+    "shader/GL/native armor layering and frame performance"
+  ],
+  "status": "PROMOTED_COMPONENT_CHECKS_PASS_FULL_BUILD_PENDING",
+  "core_version": "0.3.16",
+  "field_hud_version": "0.20.0",
+  "default_enabled": false,
+  "opt_in_original_armor_policy_preserved": true,
+  "promoted_utc": "2026-11-14T14:29:26.757303+00:00",
+  "promotion_checks": "All three canonical preimages and frozen draft SHA256 values validated before writes; LF normalized",
+  "private_draft_manifest_sha256": "40dc76fa6cc226c717528d3dc3375ccc52784146cdf1fcbfb2cb073d98a1fb53",
+  "coauthor_credit": "Claude Opus 5.5 <noreply@anthropic.com>",
+  "adaptation_credit": "Codex original native-tick charge/event/audio/particle bounds on the reviewed opt-in integration",
+  "actual_promoted_source_recompiled": true,
+  "production_archive_packaging_accepted": false,
+  "files": [
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java",
+      "before_sha256": "4d95beea6ab8eb61b1af3df79de5c63c13079d516a71dc4f13105f390a6c12c6",
+      "promoted_sha256": "a3669891aabecf323094ac5c6762cae5747c7a63847e664d82f633af344866d6",
+      "bytes": 21680,
+      "claude_pin_sha256": "cfd6ebdec50ef120f11e9317b474afcaf443d3b17cd9551aee94a1035733fa46"
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreRules.java",
+      "before_sha256": "221157ce306c9c80730eb3f94febaf3a12d19fd626df25325ed6cad1038f25af",
+      "promoted_sha256": "643ddc49a140db9f68815ef011945a0eaf1d7f70782201ed4cf10b9732f2731f",
+      "bytes": 5500,
+      "claude_pin_sha256": null
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/client/ArmorCoreRulesChecks.java",
+      "before_sha256": "390a9e56e856df0871db2c360e0a2f8f6623d9f03484d84b4f1d72a20a7c8752",
+      "promoted_sha256": "c333bac3bda71d47830d54a500cbdc3ebfa5e367ae9c8f5924618d9c13f77413",
+      "bytes": 8422,
+      "claude_pin_sha256": null
+    }
+  ],
+  "promoted_component_checks": {
+    "checked_utc": "2026-11-14T14:30:28.163303+00:00",
+    "main_source_files_recompiled": 3,
+    "changed_main_sources": 2,
+    "unchanged_geometry_dependency": true,
+    "generated_classes": 9,
+    "class_major_versions": [
+      52
+    ],
+    "javac_exit_code": 0,
+    "all_armor_rules_checks": 6480,
+    "inherited_armor_checks_retained": 3348,
+    "existing_synthetic_mesh_checks": 194,
+    "source_and_dependency_hashes_unchanged_since_promotion": true,
+    "actual_client_or_gpu_run": false,
+    "classes": [
+      {
+        "path": "village/vale/client/ArmorCoreFx$1.class",
+        "sha256": "c9ec2c0495f6ae3cfc757699c771653328673662b267e2caf9707148ddeb0839"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx$Burst.class",
+        "sha256": "393d7aca4ff48311ea05669832f65dc660c6fda03e246c38cb37bb6a55649025"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx$Hooks.class",
+        "sha256": "ea5ecd901495e23f898a67c636308833b19653d7a6631abab5ce2d210a3078cc"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx$Spark.class",
+        "sha256": "eb3b6c14a008364900fb08f6023a55dbd4be279f6498c94ce2a39ad2630273da"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreFx.class",
+        "sha256": "6b96cc81a35f540f14ca157f6ce7be7ccb5f8fd95d5484062a3f6c51426540ff"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreGeometry.class",
+        "sha256": "0743d01786a5c70ad99ea83eaee976a15a93de403bf53f7b9ce391f54075cb2f"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules$Power.class",
+        "sha256": "841afbd7418d16f67c6505c80e3c344d18b35700691f8e7ba262eaa0132601ff"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules$Tracker.class",
+        "sha256": "dee0d23d6410a1acb31699a84104402664f346f1a03681f192531e21179d3551"
+      },
+      {
+        "path": "village/vale/client/ArmorCoreRules.class",
+        "sha256": "a7e682dab558342c6ad28bbdb17af29755d5aeb83d16015e8c801ba0ecbb82fd"
+      }
+    ],
+    "logs": {
+      "pure": "84370af972c0ef0b122c0a79af9d43a28bf7ca48de9cca43d73ee1566ebc2ae6",
+      "mesh": "631c9c989df2c8bbe9a1e443a5e85f2e7a943a71064d15af53639a41e9a8bdda"
+    }
+  },
+  "record_status": "HISTORICAL_SOURCE09_PASS2_INTERMEDIATE",
+  "superseded_implementation_paths": {
+    "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java": "Shared particle-store migration; see GENERIC-VFX-016-INTEGRATION.json and RUNTIME-RENDERER-016-INTEGRATION.json. Original charge/overload/hit/heartbeat/steam/night behavior and default-off toggle retained."
+  },
+  "historical_checks_remain_valid_for_recorded_source": true
+}

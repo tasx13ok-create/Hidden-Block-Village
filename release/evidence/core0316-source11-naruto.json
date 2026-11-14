@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "scope": "SOURCE11_NARUTO_NAMED_MERGED_COHORT",
+  "source_sha256": "83a0fe1cd40dd88aa320216df66a64b4809da708568285b80c608196f0660372",
+  "source_build_report_sha256": "4c9afe3a916f29468e699fb08c92866fc02ef53922e27a740f89b59f97bd356f",
+  "source_build_passed": true,
+  "source_drift": [],
+  "areas": 11,
+  "artifacts": 36,
+  "forge_native_report_sha256": "2993c4de01bbda8170b060a044a8e3286b9b2e34cd21d9e52a9e721428751b0b",
+  "forge_native_passed": true,
+  "forge_native_assertions": 3665,
+  "runtime_components": [
+    {
+      "component": "vale-orders",
+      "file": "Naruto-Core-0.3.16.jar",
+      "bytes": 2846820,
+      "sha256": "55fdfab42505407fe7552d1a5ae2f327bfcbff1f66aef5f8c612483adb2f5dcf"
+    },
+    {
+      "component": "vale-encounters",
+      "file": "Naruto-Encounters-0.3.7.jar",
+      "bytes": 159267,
+      "sha256": "f3280db3d811b8157c8cc899630933af33db37152ae1174a696d7b517364c63b"
+    },
+    {
+      "component": "vale-rack",
+      "file": "Naruto-Equipment-Rack-0.1.4.jar",
+      "bytes": 42283,
+      "sha256": "162cfb2185dd8f8316252f2cb0d87841e1a313cab6a739405ea24a04ab471dbb"
+    },
+    {
+      "component": "vale-residents",
+      "file": "Naruto-Residents-0.2.1.jar",
+      "bytes": 46139,
+      "sha256": "9ea53d45d148c1fbfe38a7b9bc57654240b8632524bacd07dfaca23b8a443269"
+    },
+    {
+      "component": "vale-residents-server-bridge",
+      "file": "Naruto-Residents-Server-Bridge-0.1.0.jar",
+      "bytes": 3021,
+      "sha256": "79fc0947fc052d8dedefff72d15a179dd4c2180a21fcdeb116164a61e944550f"
+    },
+    {
+      "component": "vale-world-compat",
+      "file": "Naruto-World-Compat-1.0.1.jar",
+      "bytes": 27952,
+      "sha256": "25492f6a99fa8c10aef941f663dd0c984b3f094e06f0881d2b18cf3b133a8768"
+    },
+    {
+      "component": "field-hud",
+      "file": "Naruto-HUD-0.20.0.jar",
+      "bytes": 272097,
+      "sha256": "2ca68c9f477501d1434456cbb124f22fd9f2c762648c99f1b57eb87dc6d370b3"
+    },
+    {
+      "component": "field-controls",
+      "file": "Naruto-Controls-1.5.0.jar",
+      "bytes": 125339,
+      "sha256": "c00795f2cd88f4b63c45888b320043aafabfd63bc6c03d17854627cefa58624b"
+    },
+    {
+      "component": "client-lifecycle",
+      "file": "Naruto-Client-Compat-0.1.3.jar",
+      "bytes": 24432,
+      "sha256": "909d861f140ff76c7f74f8b285630cf74f4bff154d2dcbcc112aa3938e553d68"
+    },
+    {
+      "component": "damage-compat",
+      "file": "Naruto-Damage-Compat-0.1.0.jar",
+      "bytes": 5611,
+      "sha256": "77d183c9d84e970d5032a7734cdedab198a0ff50d6f4722d533c30f6d4c9f3a4"
+    },
+    {
+      "component": "server-bridge",
+      "file": "Naruto-Server-Bridge-0.2.0.jar",
+      "bytes": 4796,
+      "sha256": "b2c0f2f6c477a52bfcd28dae21848c59a75547d354771d1c5b86120a5ebe9f26"
+    },
+    {
+      "component": "village-standards",
+      "file": "Naruto-Village-Standards-0.3.1.jar",
+      "bytes": 39364,
+      "sha256": "7f072a2fa5c40e3ba1e7e02702dee404b390670977989320bed162ade9b8d045"
+    }
+  ],
+  "full_pack_native_evidence": "source11-native-provider-bridge.json",
+  "client_archive_evidence": "hidden-block-village-client-0316.json",
+  "stable_mod_registry_save_ids_preserved": true,
+  "original_reference_flat_overlay_active": false,
+  "recovered_tail_bodies_removed_from_public_tree": true,
+  "all_claude_enhancements_claimed": false,
+  "private_probe_excluded_from_production": true,
+  "graphics_and_physical_keyboard_accepted": false,
+  "hosted_acceptance": false
+}

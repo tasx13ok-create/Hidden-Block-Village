@@ -36,6 +36,8 @@ import village.vale.ValeOrders;
 public final class DodgeClient {
     public static final KeyBinding DODGE=new KeyBinding("key.valeorders.dodge",KeyConflictContext.IN_GAME,KeyModifier.NONE,Keyboard.KEY_V,"key.categories.valeorders");
     private static final DodgeInput INPUT=new DodgeInput();
+    private static final DodgeServerCapability SERVER=new DodgeServerCapability();
+    private static java.lang.ref.WeakReference<Object> reportedServer=new java.lang.ref.WeakReference<>(null);
     private static final Map<UUID,Frame> ACTIVE=new LinkedHashMap<>();
     private static final Map<ModelBiped,float[]> POSES=new WeakHashMap<>();
     private static World world;private static Object connection;private static UUID player;private static EntityPlayer body;private static volatile long epoch;private static long ticks,ready,notice;private static String stroke="";private static boolean initialized;
@@ -53,10 +55,14 @@ public final class DodgeClient {
     private static boolean usable(Entity e){return e instanceof EntityPlayer&&e.world==world&&e.isEntityAlive()&&!((EntityPlayer)e).isSpectator()&&!((EntityPlayer)e).isPlayerSleeping()&&!e.isRiding()&&!((EntityPlayer)e).isElytraFlying()&&!((EntityPlayer)e).capabilities.isFlying;}
     /** Existing legacy action wins a real active conflict; never execute both actions from one physical press. */
     public static String conflict(){Minecraft mc=Minecraft.getMinecraft();if(mc.gameSettings==null||DODGE.getKeyCode()==0)return "";for(KeyBinding other:mc.gameSettings.keyBindings)if(other!=null&&other!=DODGE&&other.getKeyCode()!=0&&other.getKeyConflictContext().isActive()&&other.getKeyModifier().isActive(other.getKeyConflictContext())&&DODGE.conflicts(other))return other.getKeyDescription();return "";}
-    private static boolean server(){Minecraft mc=Minecraft.getMinecraft();if(mc.getConnection()==null)return false;try{NetworkDispatcher dispatcher=NetworkDispatcher.get(mc.getConnection().getNetworkManager());return dispatcher!=null&&dispatcher.getModList()!=null&&DodgeMath.supports(dispatcher.getModList().get(ValeOrders.ID));}catch(RuntimeException|LinkageError missing){return false;}}
+    private static boolean server(){Minecraft mc=Minecraft.getMinecraft();if(mc.getConnection()==null)return false;try{net.minecraft.network.NetworkManager manager=mc.getConnection().getNetworkManager();NetworkDispatcher dispatcher=NetworkDispatcher.get(manager);String version=dispatcher==null?null:dispatcher.getModList().get(ValeOrders.ID);boolean supported=SERVER.supports(manager,version,manager.isChannelOpen());if(supported&&reportedServer.get()!=manager){reportedServer=new java.lang.ref.WeakReference<>(manager);System.out.println("NARUTO_DODGE_SERVER_READY");}return supported;}catch(RuntimeException|LinkageError missing){return false;}}
+    // Registration can precede the play handler/world. Cache only exact manager identities;
+    // existing world/body resets retain the same connection's handshake capability.
+    @SubscribeEvent public void registration(net.minecraftforge.fml.common.network.FMLNetworkEvent.CustomPacketRegistrationEvent<?> event){SERVER.registration(event.getManager(),event.getSide()==Side.CLIENT,event.getOperation(),event.getRegistrations().contains("valeorders_dodge"));}
+    @SubscribeEvent public void disconnected(net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientDisconnectionFromServerEvent event){SERVER.disconnect(event.getManager());}
     @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true)public void gui(GuiOpenEvent event){if(event.getGui()!=null){drain();INPUT.press(false,physical(),false,false);}}
     @SubscribeEvent public void tick(TickEvent.ClientTickEvent event){
-        if(event.phase!=TickEvent.Phase.END)return;Minecraft mc=Minecraft.getMinecraft();context(mc);ticks++;boolean queued=drain(),held=physical();String current=keyStroke();if(!current.equals(stroke)){stroke=current;INPUT.reset(held);queued=false;}
+        if(event.phase!=TickEvent.Phase.END)return;Minecraft mc=Minecraft.getMinecraft();context(mc);if(mc.getConnection()!=null&&reportedServer.get()!=mc.getConnection().getNetworkManager())server();ticks++;boolean queued=drain(),held=physical();String current=keyStroke();if(!current.equals(stroke)){stroke=current;INPUT.reset(held);queued=false;}
         boolean allowed=mc.world!=null&&mc.player!=null&&mc.currentScreen==null&&mc.inGameHasFocus&&usable(mc.player)&&DODGE.getKeyConflictContext().isActive()&&DODGE.getKeyModifier().isActive(DODGE.getKeyConflictContext());String conflict=allowed?conflict():"";
         boolean requested=INPUT.press(allowed,held,queued,!conflict.isEmpty());
         if(allowed&&queued&&!conflict.isEmpty()&&ticks>=notice){mc.player.sendStatusMessage(new TextComponentTranslation("message.valeorders.dodge_conflict",net.minecraft.client.resources.I18n.format(conflict)),true);notice=ticks+100;}

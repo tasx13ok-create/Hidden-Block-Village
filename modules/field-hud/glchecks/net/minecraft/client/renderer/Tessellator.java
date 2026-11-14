@@ -1,0 +1,1 @@
+package net.minecraft.client.renderer;public final class Tessellator{private static final Tessellator ONE=new Tessellator();private final BufferBuilder b=new BufferBuilder();public boolean fail;public static Tessellator getInstance(){return ONE;}public BufferBuilder getBuffer(){return b;}public void draw(){if(fail)throw new IllegalStateException("synthetic tessellation");}}

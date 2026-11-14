@@ -1,0 +1,26 @@
+// Distribution filenames only. Stable module/mod/registry/save/class identities are unchanged.
+// Unknown standalone projects can apply this optional script without being renamed.
+def narutoArchiveNames = [
+    'vale-orders':'Naruto-Core',
+    'vale-encounters':'Naruto-Encounters',
+    'vale-rack':'Naruto-Equipment-Rack',
+    'vale-residents':'Naruto-Residents',
+    'vale-residents-server-bridge':'Naruto-Residents-Server-Bridge',
+    'vale-world-compat':'Naruto-World-Compat',
+    'field-hud':'Naruto-HUD',
+    'field-controls':'Naruto-Controls',
+    'client-lifecycle':'Naruto-Client-Compat',
+    'damage-compat':'Naruto-Damage-Compat',
+    'server-bridge':'Naruto-Server-Bridge',
+    'server-bootstrap':'Naruto-Server-Bootstrap',
+    'village-standards':'Naruto-Village-Standards'
+]
+def narutoArchiveName = narutoArchiveNames[project.projectDir.name]
+if (narutoArchiveName != null) {
+    base.archivesName.set(narutoArchiveName)
+    // RFG and modules can have their own archive conventions. Pin each shipped
+    // task explicitly, preserving its version/classifier/extension.
+    tasks.withType(AbstractArchiveTask).matching { it.name in ['jar','reobfJar','sourcesJar'] }.configureEach {
+        archiveBaseName.set(narutoArchiveName)
+    }
+}

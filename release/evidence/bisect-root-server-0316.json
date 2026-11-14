@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "scope": "STANDALONE_BISECT_SERVER_FOLDER_AND_ROOT_ZIP",
+  "archive": "Hidden Block Village Server - Bisect.zip",
+  "bytes": 6037663281,
+  "sha256": "80c1e35a1de16c61f9afb7036d67773c9b29a9c3c2bfbea4700870091097ec1a",
+  "source_verified_setup_sha256": "31db1bd77f1985556288b2a582a3a92a568ecae5f33d00ac36dde140d30e9d89",
+  "server_mods": 53,
+  "server_files": 3695,
+  "root_layout_verified": true,
+  "all_member_crc_and_sha256_readback_passed": true,
+  "includes_private_world_and_player_data": true,
+  "host_settings_world_and_plugin_data_preserved": true,
+  "original_inputs_and_live_session_modified": false,
+  "actual_hosted_acceptance_claimed": false
+}

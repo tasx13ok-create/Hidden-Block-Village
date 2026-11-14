@@ -30,11 +30,9 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         VoxelBits.install();
     }
 
-    private static final java.util.Set<Integer> BURST = java.util.Collections.newSetFromMap(new java.util.WeakHashMap<Integer, Boolean>());
 
     /** One-time pixel debris for a pulse: ground chips, shards, embers, frost, sparks. */
-    private static void debris(WeaponPulse e, ArsenalSpec spec, double[] origin, int[] pal) {
-        if (!BURST.add(e.getEntityId())) return;
+    static void debris(WeaponPulse e, ArsenalSpec spec, double[] origin, int[] pal) {
         java.util.Random r = VoxelBits.RNG;
         double ex = e.endX(), ey = e.endY(), ez = e.endZ();
         switch (spec.role) {
@@ -66,6 +64,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
     @Override protected ResourceLocation getEntityTexture(WeaponPulse entity) { return null; }
 
     private static int detail() { return JutsuVfx.detail; }
+    private static boolean renderable(Entity e,double x,double y,double z,float partial){Minecraft mc=Minecraft.getMinecraft();return e!=null&&!e.isDead&&mc.player!=null&&mc.world!=null&&mc.getConnection()!=null&&e.world==mc.world&&mc.world.getEntityByID(e.getEntityId())==e&&Double.isFinite(x)&&Double.isFinite(y)&&Double.isFinite(z)&&Math.abs(x)<=128&&Math.abs(y)<=128&&Math.abs(z)<=128&&Float.isFinite(partial)&&partial>=0&&partial<=1;}
 
     private static double[] interp(Entity e, float partial) {
         return new double[] {
@@ -100,8 +99,9 @@ public final class WeaponVfx extends Render<WeaponPulse> {
 
     // ---- pulses ---------------------------------------------------------------------------------
     @Override public void doRender(WeaponPulse e, double x, double y, double z, float yaw, float partial) {
+        if(!renderable(e,x,y,z,partial))return;
         ArsenalSpec spec = e.spec();
-        if (spec == null || VfxBudget.lod(e) <= 0) return;
+        if (spec == null) return;
         double age = e.ticksExisted + partial;
         int life = e.life();
         if (age > life + 1) return;
@@ -111,9 +111,9 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         double[] endRel = sub(new double[] {e.endX(), e.endY(), e.endZ()}, origin);
         int[] pal = WeaponMath.palette(spec.role.name());
         double f = WeaponMath.clamp01(age / life), fade = WeaponMath.fade(age, life);
-        if (e.kind() == WeaponPulse.CAST) debris(e, spec, origin, pal);
+        VoxelBits.track(e);
         VfxDraw.begin(x, y, z);
-        VfxDraw.voxel = true;
+        VfxDraw.voxel(true);
         try {
             switch (e.kind()) {
                 case WeaponPulse.ARC: chainBolt(new double[3], endRel, e.getEntityId() * 31L + (long) (age / 2), pal, fade, 1.0); break;
@@ -122,7 +122,6 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: cast(e, spec, owner, origin, handRel, endRel, age, f, fade, pal); break;
             }
         } finally {
-            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
@@ -527,6 +526,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
 
     // ---- projectiles and fields (called from ArsenalClient after the weapon model) ---------------
     public static void shot(ArsenalShot s, double x, double y, double z, float partial, RenderManager rm) {
+        if(!renderable(s,x,y,z,partial))return;
         ArsenalSpec spec = s.spec();
         if (spec == null) return;
         int[] pal = WeaponMath.palette(spec.role.name());
@@ -534,8 +534,9 @@ public final class WeaponVfx extends Render<WeaponPulse> {
         double[] v = {s.motionX, s.motionY, s.motionZ};
         boolean still = len(v) < 1e-3;
         if (still) v = new double[] {0, 0, 1};
+        VoxelBits.track(s);
         VfxDraw.begin(x, y + 0.12, z);
-        VfxDraw.voxel = true;
+        VfxDraw.voxel(true);
         try {
             int mode = s.mode();
             EntityPlayer owner = player(s, s.ownerEntityId());
@@ -591,7 +592,6 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                     }
                     break;
                 case ArsenalShot.FIRE:
-                    if (s.ticksExisted % 2 == 0) { double[] o = interp(s, partial); VoxelBits.spawn(o[0], o[1] + 0.12, o[2], (VoxelBits.RNG.nextDouble() - 0.5) * 0.03, 0.03, (VoxelBits.RNG.nextDouble() - 0.5) * 0.03, 1, VoxelBits.RNG.nextBoolean() ? 0xFFB03A : 0xFF6A1A, 1f, 10, -0.002, 0.9, false); }
                     VfxDraw.normal();
                     for (int i = 0; i < 9; i++) {
                         double[] p = WeaponMath.trail(v, i, 0.16, 0.06, t * 2);
@@ -609,7 +609,6 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: break;
             }
         } finally {
-            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }
@@ -656,12 +655,13 @@ public final class WeaponVfx extends Render<WeaponPulse> {
     }
 
     public static void field(ArsenalField f, double x, double y, double z, float partial, RenderManager rm) {
+        if(!renderable(f,x,y,z,partial))return;
         ArsenalSpec spec = f.spec();
         if (spec == null) return;
         int[] pal = WeaponMath.palette(spec.role.name());
         double t = f.ticksExisted + partial;
         VfxDraw.begin(x, y, z);
-        VfxDraw.voxel = true;
+        VfxDraw.voxel(true);
         try {
             switch (f.mode()) {
                 case ArsenalField.EMITTER: {
@@ -723,7 +723,6 @@ public final class WeaponVfx extends Render<WeaponPulse> {
                 default: break;
             }
         } finally {
-            VfxDraw.voxel = false;
             VfxDraw.end();
         }
     }

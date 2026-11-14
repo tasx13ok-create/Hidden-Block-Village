@@ -1,5 +1,5 @@
 plugins { id 'java'; id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3' }
-group='village.vale'; version='0.3.6'
+group='village.vale'; version='0.3.7'
 base { archivesName='vale-encounters' }
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) }; withSourcesJar() }
 minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
@@ -14,3 +14,16 @@ if(providers.gradleProperty('encounterProbe').isPresent()) {
 }
 
 apply from: file('../../gradle/vale-mod-build.gradle')
+
+// Our new actor skins use the real64x64 player-model contract, not native NPC replacement.
+sourceSets { skinChecks { java.srcDirs=['tests','modelchecks']; compileClasspath+=sourceSets.main.output+sourceSets.main.compileClasspath; runtimeClasspath+=output+compileClasspath } }
+['verifyActorSkinRules':'village.encounters.ActorSkinRulesChecks','verifyActorSkinModelApi':'village.encounters.ActorSkinModelChecks'].each { taskName,checkClass ->
+ tasks.register(taskName,JavaExec) {
+  dependsOn tasks.named('skinChecksClasses')
+  classpath=sourceSets.skinChecks.runtimeClasspath
+  mainClass.set(checkClass)
+  jvmArgs '-Djava.awt.headless=true'
+  javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) })
+ }
+ tasks.named('check') { dependsOn taskName }
+}
