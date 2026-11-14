@@ -13,8 +13,9 @@ public final class VillagesFixture {
  private int state,ticks;private MinecraftServer server;private EntityPlayerMP player,victim;private int assertions;private List<String> checks=new ArrayList<>();
  private Map<String,Object> result=new LinkedHashMap<>();
  private net.minecraftforge.event.entity.living.LivingHurtEvent lastHurt;
+ private NativeLearning.Choice learnedChoice;
  @SubscribeEvent(priority=net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST,receiveCanceled=true) public void hurt(net.minecraftforge.event.entity.living.LivingHurtEvent e){if(e.getEntityLiving()==victim&&e.getSource().getTrueSource()==player)lastHurt=e;}
- @Mod.EventHandler public void started(FMLServerStartedEvent e){state=1;MinecraftForge.EVENT_BUS.register(this);}
+ @Mod.EventHandler public void started(FMLServerStartedEvent e){if(Boolean.getBoolean("hbv.villages.coldTraining"))return;state=1;MinecraftForge.EVENT_BUS.register(this);}
  private void check(boolean condition,String label){assertions++;if(!condition)throw new AssertionError(label);checks.add(label);}
  @SubscribeEvent public void tick(TickEvent.ServerTickEvent e){if(state==0||e.phase!=TickEvent.Phase.END)return;
   try{if(state==1){run();state=2;ticks=0;return;}player.connection.update();victim.connection.update();if(++ticks<80)return;
@@ -25,7 +26,7 @@ public final class VillagesFixture {
  private static Method method(Class<?> c,String[] names,Class<?>... signature)throws Exception{for(String name:names)try{return c.getMethod(name,signature);}catch(NoSuchMethodException ignored){}throw new NoSuchMethodException(c+Arrays.toString(names));}
  private void run()throws Exception {
   server=FMLCommonHandler.instance().getMinecraftServerInstance();Path cwd=Paths.get("").toAbsolutePath().normalize();
-  check(Boolean.getBoolean("hbv.villages.fixture")&&cwd.getFileName().toString().matches("private-native-runtime-0[1-9]"),"dedicated disposable runtime guard");
+  check(Boolean.getBoolean("hbv.villages.fixture")&&cwd.getFileName().toString().matches("private-native-runtime-(0[1-9]|[1-9][0-9])"),"dedicated disposable runtime guard");
   check("villages-port-flat-01".equals(server.getFolderName())&&server.getServerPort()==25596,"exact private flat world and port");
   check(server.getPlayerList().getCurrentPlayerCount()==0,"no real players in fixture");
   check(server.isCallingFromMinecraftThread(),"native server thread");
@@ -88,7 +89,7 @@ public final class VillagesFixture {
   check(TransportData.unlockForPlayer(player.getUniqueID().toString(),"Suna"),"existing transport destination can be unlocked");TransportData.reload();check(TransportData.isUnlockedForPlayer(player.getUniqueID().toString(),"Suna")&&TransportData.getPlayerUnlocks(player.getUniqueID().toString()).contains("Suna"),"transport unlock survives reload");
   List<String> unresolved=new ArrayList<>();for(PvPConfig.LootEntry entry:PvPConfig.getLootPool()){String[] parts=entry.itemId.split(":");if(Legacy112.findItem(parts[0],parts[1])==null)unresolved.add(entry.itemId);}
   result.put("unresolved_original_loot_ids",unresolved);result.put("default_loot_mapping_complete",unresolved.isEmpty());
-  xpRewards();prepareCombat();
+  xpRewards();trainingRewards();prepareCombat();
  }
  private void xpRewards()throws Exception {
   check(server.getCommandManager().getCommands().containsKey("villagereward"),"XP reward issuer registered");
@@ -116,8 +117,11 @@ public final class VillagesFixture {
   method(server.getPlayerList().getClass(),new String[]{"initializeConnectionToPlayer","func_72355_a"},NetworkManager.class,EntityPlayerMP.class,NetHandlerPlayServer.class).invoke(server.getPlayerList(),connection.manager,victim,connection);
   check(server.getPlayerList().getCurrentPlayerCount()==2&&!server.getPlayerList().canSendCommands(victim.getGameProfile()),"second official non-OP player admitted for real native damage");
   ExtendedPlayer.get(victim).setAffiliation(9);ExtendedPlayer.get(victim).setRank("Genin");net.narutomod.PlayerTracker.addBattleXp(victim,200);
+  check(NativeTraining.credit(victim,"skill",5)&&NativeTraining.spend(victim,NativeTraining.Stat.SPEED,5),"private respawn subject has real saved speed allocation");
  }
  private void firstKill(){
+  verifyCapacityAndReset();
+  ItemStack learned=player.getHeldItemMainhand();check(learnedChoice!=null&&NativeLearning.learned(learned,learnedChoice),"learned native technique remains unlocked after eighty real native updates");player.getInventoryEnderChest().setInventorySlotContents(0,learned);player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,ItemStack.EMPTY);
   player.setPositionAndUpdate(0.5,4,0.5);victim.setPositionAndUpdate(2.5,4,0.5);float before=victim.getHealth();boolean hit=victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),2);
   result.put("same_village_native_damage",Arrays.asList(before,victim.getHealth(),hit));check(victim.getHealth()==before&&lastHurt!=null&&lastHurt.isCanceled(),"same-village protection cancels native hurt with no HP loss even when attack returns true");
   ExtendedPlayer.get(victim).setAffiliation(16);hit=victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),4);
@@ -127,9 +131,10 @@ public final class VillagesFixture {
   int rewardSlot=-1;for(int i=0;i<36;i++)if(NativeRewardItems.xpValue(player.inventory.getStackInSlot(i))==5){rewardSlot=i;break;}check(rewardSlot>=0,"earned token remains an identifiable inventory stack");
   if(rewardSlot<9)player.inventory.currentItem=rewardSlot;else{ItemStack previous=player.inventory.getStackInSlot(0);player.inventory.setInventorySlotContents(0,player.inventory.getStackInSlot(rewardSlot));player.inventory.setInventorySlotContents(rewardSlot,previous);player.inventory.currentItem=0;}
   double xp=net.narutomod.PlayerTracker.getBattleXp(player);boolean redeemed=NativeXpRewards.redeem(player,net.minecraft.util.EnumHand.MAIN_HAND);result.put("earned_xp_token_redemption",Arrays.asList(xp,net.narutomod.PlayerTracker.getBattleXp(player),tokenCount(false),redeemed));check(redeemed&&net.narutomod.PlayerTracker.getBattleXp(player)==xp+5&&tokenCount(false)==7,"selected PvP-earned reward redeems into actual Naruto XP");
-  victim=server.getPlayerList().recreatePlayerEntity(victim,0,false);check(server.getPlayerList().getPlayerByUUID(victim.getUniqueID())==victim&&ExtendedPlayer.get(victim).getAffiliation()==16,"native respawn preserves village identity for same profile");
+  victim=server.getPlayerList().recreatePlayerEntity(victim,0,false);check(server.getPlayerList().getPlayerByUUID(victim.getUniqueID())==victim&&ExtendedPlayer.get(victim).getAffiliation()==16&&NativeTraining.points(victim,NativeTraining.Stat.SPEED)==5,"native respawn preserves village identity and allocated training for same profile");
  }
  private void repeatKill(){
+  check(victim.getEntityAttribute(net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()>victim.getEntityAttribute(net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED).getBaseValue(),"respawned player's saved training restores actual movement attribute");
   victim.setPositionAndUpdate(2.5,4,0.5);int before=tokenCount(false);victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),1000);
   check(!victim.isEntityAlive()&&tokenCount(false)==before,"anti-farm prevents another reward across real respawn and repeated native kill");
   victim=server.getPlayerList().recreatePlayerEntity(victim,0,false);
@@ -141,8 +146,46 @@ public final class VillagesFixture {
   victim.setPositionAndUpdate(2.5,4,0.5);int ground=tokenCount(true);victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),1000);
   check(!victim.isEntityAlive()&&tokenCount(false)==64&&tokenCount(true)-ground==4,"partial inventory insert keeps four and drops only four of eight earned tokens");
   result.put("native_pvp_damage_death_respawn_antifarm_verified",true);result.put("partial_pvp_reward_inventory_count",tokenCount(false));result.put("partial_pvp_reward_ground_delta",tokenCount(true)-ground);
+  Map<String,Object> expected=new LinkedHashMap<>();expected.put("skill_points",NativeTraining.balance(player,"skill"));expected.put("jutsu_points",NativeTraining.balance(player,"jutsu"));expected.put("reset_points",NativeTraining.balance(player,"reset"));expected.put("battle_xp",net.narutomod.PlayerTracker.getBattleXp(player));expected.put("technique",learnedChoice.technique.unlocalizedName);expected.put("technique_index",learnedChoice.technique.index);expected.put("victim_speed_points",NativeTraining.points(victim,NativeTraining.Stat.SPEED));try{Files.write(Paths.get("PRIVATE-TRAINING-RESTART-EXPECTED.json"),new GsonBuilder().setPrettyPrinting().create().toJson(expected).getBytes(StandardCharsets.UTF_8));}catch(Exception failure){throw new IllegalStateException(failure);}
  }
  private int tokenCount(boolean ground){int count=0;if(ground){for(net.minecraft.entity.Entity entity:player.world.loadedEntityList)if(entity instanceof net.minecraft.entity.item.EntityItem){ItemStack stack=((net.minecraft.entity.item.EntityItem)entity).getItem();if(NativeRewardItems.xpValue(stack)==5)count+=stack.getCount();}}else for(int i=0;i<player.inventory.getSizeInventory();i++){ItemStack stack=player.inventory.getStackInSlot(i);if(NativeRewardItems.xpValue(stack)==5)count+=stack.getCount();}return count;}
+ private double baselineFist,baselineWeapon,baselineJutsu;
+ private double cowDamage(net.minecraft.util.DamageSource source){net.minecraft.entity.passive.EntityCow cow=new net.minecraft.entity.passive.EntityCow(player.world);cow.setPosition(player.posX+4,player.posY,player.posZ);player.world.getChunk(cow.getPosition());check(player.world.spawnEntity(cow),"disposable native damage subject spawned in explicitly loaded owned fixture geometry");float before=cow.getHealth();cow.attackEntityFrom(source,2);double lost=before-cow.getHealth();cow.setDead();return lost;}
+ private void trainingRewards(){
+  net.narutomod.Chakra.pathway(player);check("2".equals(System.getProperty("narutovillages.chakraHook")),"two canonical Naruto chakra maximum calculation hooks are active");
+  double xp=net.narutomod.PlayerTracker.getBattleXp(player);player.inventory.clear();player.inventory.currentItem=0;player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,NativeRewardItems.create("NarutoDestination:sptoken",10,5));
+  net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem(player,net.minecraft.util.EnumHand.MAIN_HAND);MinecraftForge.EVENT_BUS.post(click);
+  check(click.isCanceled()&&NativeTraining.balance(player,"skill")==10&&player.getHeldItemMainhand().getCount()==4,"SP token banks actual spendable skill points");
+  player.setSneaking(true);click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem(player,net.minecraft.util.EnumHand.MAIN_HAND);MinecraftForge.EVENT_BUS.post(click);player.setSneaking(false);
+  check(NativeTraining.balance(player,"skill")==50&&player.getHeldItemMainhand().isEmpty()&&net.narutomod.PlayerTracker.getBattleXp(player)==xp,"whole-stack SP consumption adds points without substituting XP");
+  baselineFist=cowDamage(net.minecraft.util.DamageSource.causePlayerDamage(player));player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,new ItemStack(Items.IRON_SWORD));baselineWeapon=cowDamage(net.minecraft.util.DamageSource.causePlayerDamage(player));player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,ItemStack.EMPTY);baselineJutsu=cowDamage(net.narutomod.item.ItemJutsu.causeJutsuDamage(player,player));
+  double speed=player.getEntityAttribute(net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();NativeTrainingMenu.open(player);check(player.openContainer instanceof NativeTrainingMenu,"training opens actual native chest container");
+  for(int slot:new int[]{10,12,14,16})player.openContainer.slotClick(slot,1,ClickType.PICKUP,player);
+  check(NativeTraining.balance(player,"skill")==10&&NativeTraining.assigned(player)==40,"four server menu actions allocate ten points each with exact SP costs");
+  check(player.getEntityAttribute(net.minecraft.entity.SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()>speed,"speed allocation changes actual native movement attribute");
+  check(!NativeTraining.spend(player,NativeTraining.Stat.SPEED,-1)&&!NativeTraining.spend(player,NativeTraining.Stat.SPEED,500)&&NativeTraining.balance(player,"skill")==10,"negative and unaffordable training cannot change balances");
+  check(!NativeTraining.reset(player)&&NativeTraining.assigned(player)==40,"allocated training cannot reset without a reset credit");
+  player.openContainer.slotClick(10,1,ClickType.THROW,player);check(NativeTraining.balance(player,"skill")==10&&inventoryCount(Items.BLAZE_POWDER)==0,"training GUI throw action cannot mint its displayed items");player.closeContainer();
+  double fist=cowDamage(net.minecraft.util.DamageSource.causePlayerDamage(player));player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,new ItemStack(Items.IRON_SWORD));double weapon=cowDamage(net.minecraft.util.DamageSource.causePlayerDamage(player));player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,ItemStack.EMPTY);double jutsu=cowDamage(net.narutomod.item.ItemJutsu.causeJutsuDamage(player,player));
+  result.put("training_native_damage",Arrays.asList(baselineFist,fist,baselineWeapon,weapon,baselineJutsu,jutsu));check(fist>baselineFist&&weapon>baselineWeapon&&jutsu>baselineJutsu,"allocated disciplines increase actual unarmed weapon and native jutsu damage");
+  player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,NativeRewardItems.create("NarutoDestination:rpToken",1,1));check(NativeTraining.redeem(player,net.minecraft.util.EnumHand.MAIN_HAND)&&NativeTraining.balance(player,"reset")==1&&NativeTraining.assigned(player)==40,"reset token banks a credit without immediately erasing training");
+  player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,NativeRewardItems.create("NarutoDestination:jptoken",50,1));check(NativeTraining.redeem(player,net.minecraft.util.EnumHand.MAIN_HAND)&&NativeTraining.balance(player,"jutsu")==50&&net.narutomod.PlayerTracker.getBattleXp(player)==xp,"JP token banks learning points without substituting XP");
+  Item item=Legacy112.findItem("narutomod","katon");check(item instanceof net.narutomod.item.ItemJutsu.Base,"actual Naruto Fire Release item is available for learning");ItemStack scroll=new ItemStack(item);net.narutomod.item.ItemJutsu.Base base=(net.narutomod.item.ItemJutsu.Base)item;base.setOwner(scroll,player);base.enableAllJutsus(scroll,false);player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,scroll);
+  List<NativeLearning.Choice> choices=NativeLearning.choices(player);check(!choices.isEmpty(),"held owned scroll discovers supported techniques through native public API");NativeLearning.Choice choice=choices.get(0);learnedChoice=choice;long before=NativeTraining.balance(player,"jutsu");NativeTrainingMenu.open(player);player.openContainer.slotClick(32,0,ClickType.PICKUP,player);
+  check(NativeLearning.learned(scroll,choice)&&NativeTraining.balance(player,"jutsu")==before-choice.cost,"JP menu action unlocks actual native technique with its required knowledge state");
+  check(!NativeLearning.learn(player,choice)&&NativeTraining.balance(player,"jutsu")==before-choice.cost,"already learned technique cannot charge JP again");player.closeContainer();
+  ItemStack restored=new ItemStack(scroll.writeToNBT(new net.minecraft.nbt.NBTTagCompound()));check(NativeLearning.learned(restored,choice),"native learned technique survives actual item NBT serialization roundtrip");player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,restored);
+  VillagesGUIManager.getInstance().openGui(player);player.openContainer.slotClick(48,0,ClickType.PICKUP,player);
+  result.put("native_training_point_spend_and_learning_verified",true);
+ }
+ private void verifyCapacityAndReset(){
+  check(player.openContainer instanceof NativeTrainingMenu,"village hub training entry opens after real delayed command tick");player.closeContainer();
+  double maximum=net.narutomod.Chakra.pathway(player).getMax(),base=net.narutomod.PlayerTracker.getBattleXp(player)*0.5;result.put("canonical_training_chakra_maximum",Arrays.asList(base,maximum));result.put("canonical_training_chakra_points",Arrays.asList(NativeTraining.points(player,NativeTraining.Stat.NINJUTSU),NativeTraining.points(player,NativeTraining.Stat.TAIJUTSU),NativeTraining.chakraMaximum(base,player)));
+  check(Math.abs(maximum-(base+12.5))<0.0001,"SP bonus remains exactly once in canonical chakra maximum after eighty native updates");
+  long total=NativeTraining.totalSkillPoints(player);double xp=net.narutomod.PlayerTracker.getBattleXp(player);check(NativeTraining.reset(player)&&NativeTraining.balance(player,"skill")==50&&NativeTraining.balance(player,"reset")==0&&NativeTraining.assigned(player)==0,"one reset credit reclaims exactly allocated SP");
+  check(NativeTraining.totalSkillPoints(player)==total&&net.narutomod.PlayerTracker.getBattleXp(player)==xp&&net.narutomod.Chakra.pathway(player).getAmount()==0,"reset preserves earned SP and native XP while clearing native chakra");
+  check(!NativeTraining.reset(player)&&NativeTraining.balance(player,"skill")==50,"repeated reset cannot create points");result.put("native_training_canonical_capacity_and_reset_verified",true);
+ }
  private int inventoryCount(Item item){int count=0;for(int i=0;i<player.inventory.getSizeInventory();i++){ItemStack s=player.inventory.getStackInSlot(i);if(!s.isEmpty()&&s.getItem()==item)count+=s.getCount();}return count;}
  private int groundCount(Item item){int count=0;for(net.minecraft.entity.Entity entity:player.world.loadedEntityList)if(entity instanceof net.minecraft.entity.item.EntityItem){ItemStack s=((net.minecraft.entity.item.EntityItem)entity).getItem();if(!s.isEmpty()&&s.getItem()==item)count+=s.getCount();}return count;}
  public static final class QuietConnection extends NetHandlerPlayServer {

@@ -17,7 +17,7 @@ binaries and private test worlds remain outside this public repository.
   says version 1.2.0 and requires `NarutoDestination@[1.24.0,)`.
 - Target: Forge/Magma Minecraft 1.12.2, Java 8, stable-39 mappings,
   RetrofuturaGradle 2.0.3, existing `narutomod` and `variedcommodities`.
-- Current private candidate version: `1.4.2-hbv112.2`. Modern FML mod ID is lowercase
+- Current private candidate version: `1.4.2-hbv112.3`. Modern FML mod ID is lowercase
   `narutodestinationvillages`; the original configuration directory is retained.
 
 ## What the original adapters do
@@ -33,7 +33,8 @@ Chakra, ninja level, battle XP and Jinchuriki tails come from the installed
 NarutoMod's actual public APIs. Old strength comparisons use native battle XP.
 Several legacy-only character statistics still have no native equivalent and
 are **not completed native integrations**. Do not interpret retained legacy
-fields as a working NarutoMod clan or skill-point system.
+fields as a working NarutoMod clan system. The supported SP disciplines and JP
+learning adaptation are described below; other old disciplines remain unfinished.
 
 The original payment adapter accepts the five Varied Commodities coins with the
 retained values 1/9/81/729/6561, plus installed Naruto Ryo notes at their face
@@ -54,11 +55,38 @@ cannot redeem. The operator issuer is `/villagereward xp <1|5|10|50> [count]
 [player]`; `/villagereward reload` reloads the new NativeRewards.cfg. The general
 villages reload also reloads these settings.
 
-Only the four XP rows of the16-row original default pool have this provider so
-far. SP, JP, reset-point, DNA and randomizer entries remain explicitly unfinished.
-They have not been silently replaced by unrelated native items. Recovered
-provider meanings and the remaining binding requirements are recorded in
-`reward-semantics.json`.
+SP, JP and reset credits have distinct persisted, spendable balances. Their
+marked-paper tokens also support single and sneak whole-stack redemption.
+`/shinobitraining` opens a server-owned menu: left-click spends one SP,
+right-click spends ten; reset consumes one reset credit and refunds the four
+supported disciplines. The village hub has a training button. Operator issuance
+also accepts `sp`, `jp` and `reset` with the same denominations and count syntax.
+
+The deliberate native training adaptation implements ninjutsu, taijutsu,
+kenjutsu and speed, capped at500points each. A point adds1% corresponding damage;
+speed adds0.5% movement per point, taijutsu adds0.5health per point. Maximum chakra
+adds1per ninjutsu point and0.25per taijutsu point. An original, structurally
+guarded ASM hook adds this at NarutoMod's two canonical capacity calculations;
+the update hook changes the desired maximum before its cached-value comparison.
+It does not maintain a competing chakra pool. Unsupported provider bytecode
+leaves that provider unchanged and refuses ninjutsu allocation. Reset clears the
+actual native chakra amount. Owned transient attribute modifiers are reapplied
+on login/ticks and after native respawn without deleting unrelated modifiers.
+
+JP learns a real technique on the player's held, owned native jutsu item. The
+menu's learn button cycles techniques on right-click and learns on left-click.
+It uses the public item/provider APIs and preserves native chakra, mode and
+casting requirements. Rank costs are a target-game design: D/E1,C3,B5,A10,S20.
+Learning enables the technique and supplies its required native knowledge XP;
+this is not a reproduction of the old base's separate jutsu-learning model.
+Duplicate learning does not charge. Ownership, held-stack identity and current
+balance are checked before committing the changed stack and JP debit.
+
+Eleven of the16original default reward rows now have usable providers: XP4,
+SP4,JP2,reset1. The five DNA/KG/nature/clan/sage rows remain unfinished, with
+their original identifiers preserved. Recovered provider meanings and remaining
+binding requirements are recorded in `reward-semantics.json`. Installed original
+providers take precedence over fallback token aliases.
 
 ## Build boundary
 
@@ -75,6 +103,17 @@ acceptance. Actual tests use a separately reobfuscated private fixture JAR in a
 new flat-world Magma process, a guarded loopback port and official synthetic
 non-OP players. No owner's world or player data is used. Version-specific
 results and missing checks belong in the release receipt and current handoff.
+
+`verifyTrainingHook` checks the actual private provider class and incompatible
+synthetic mutations: two additive hooks, no replacement methods, idempotence,
+unrelated-class pass-through, missing calculation and wrong-receiver refusal.
+The matching0.1.2-draft build and native fixture compilation passed. The .3
+native server run passed163assertions, including54nonnull slot checks, and a
+separate real process restart passed15training persistence assertions. Actual
+saved SP/JP/reset balances, learned technique ownership/knowledge, battle XP and
+speed effects were restored without reissuing rewards. No network client or
+graphical acceptance is implied. See the version-bound safe receipt at
+`release/evidence/naruto-villages-112-training.json`.
 
 ## Remaining work before an intact port can be claimed
 

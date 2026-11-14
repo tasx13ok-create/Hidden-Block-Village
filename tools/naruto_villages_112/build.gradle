@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.compatibility'
-version = '0.1.1-draft'
+version = '0.1.2-draft'
 base { archivesName = 'Naruto-Villages-Port-Adapters' }
 java {
     toolchain {
@@ -23,11 +23,27 @@ if (!nativeApi.isPresent() || !nativeApi.get().isFile()) {
 sourceSets.main.java.srcDirs = ['compat-src']
 dependencies { compileOnly files(nativeApi) }
 sourceSets {
+    abiChecks {
+        java.srcDirs = ['abi-tests']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
     nativeChecks {
         java.srcDirs = ['tests-src']
         compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
     }
 }
+tasks.register('verifyTrainingHook', JavaExec) {
+    dependsOn tasks.named('abiChecksClasses')
+    classpath = sourceSets.abiChecks.runtimeClasspath
+    mainClass.set('hbv.villageschecks.TrainingHookChecks')
+    systemProperty('narutovillages.nativeJar', nativeApi.get().absolutePath)
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
+}
+tasks.named('check') { dependsOn tasks.named('verifyTrainingHook') }
 if (providers.gradleProperty('villagesPortDevJar').isPresent()) {
     dependencies { nativeChecksCompileOnly files(providers.gradleProperty('villagesPortDevJar').map { file(it) }) }
 }
