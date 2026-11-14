@@ -1,5 +1,12 @@
 # Current project handoff
 
+## Friend client download: Core 0.3.16
+
+At the owner's request, created `Naruto-Complete-Client-0.3.16-Test.zip` in the parent Naruto mod directory for the owner to upload and share with a friend. The self-contained CurseForge-format client contains all58pinned client JARs from the new Creative0316 preview, Naruto settings/resources, BSL shaders and installation instructions. It is204,762,667bytes with SHA256`ec20f3bcdf8cdc7c313bc9509de79aef65ea74b624e9562cd8d9f233dfc84cbb`. Core is0.3.16, exceeding the minimum0.3.14Dodge requirement; no older015archive was delivered.
+
+`tools/package_friend_client.py` reproduces the export from explicit private receipts and hash-matched inputs; `release/evidence/friend-client-0316-archive.json` records its193entries and completed byte/CRC validation. Account/session folders, worlds, logs, map history, old controls backups and player loadouts are excluded. Five resource files already changed during the live preload were recovered only from earlier client copies with exactly matching pinned hashes. The original/live clients were unchanged. Client archive and original mods/art stay local; only original tooling and safe metadata are public. No upload to Bisect was performed. The friend needs the matching0316server for multiplayer. This is the full current client test snapshot, not a claim that remaining Claude integration or full hosted/gameplay acceptance has finished. The owner asked for immediate delivery and no additional checks; none are planned for this packaging task.
+
+
 ## Core0.3.16 native PASS; merge Core, then finish Claude and Creative setup
 
 The owner explicitly confirmed use of the newerCore0.3.16label, based on accepted015, and requests the full Creative setup ONLY AFTER Core and Claude are fully merged. Preserve accepted015/artifacts/worlds and the existing owner test copies; do not launch a partially merged setup as if complete.
