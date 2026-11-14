@@ -1,5 +1,21 @@
 # Naruto identity, power and a living Minecraft world
 
+## Latest integration direction,14November2026
+
+Keep the supplied original mods as the base experience. Our Core, controls, HUD,
+missions, compatibility and encounter systems sit on top and connect them.
+Restore the original item icons and worn armor designs of mods we did not make,
+especially Varied Commodities. Do not enable the reference flat-icon replacement
+pack by default or let compatibility resources/registries shadow an installed
+original provider. Keep our own items, armor, controls and visual effects in
+their project namespaces. Earlier broad replacement/reskin plans are historical
+where they conflict with this direction; preserve the complete functional scope
+through integration and enhancements instead of silently cutting features.
+
+The next five boss dungeons are NEW coliseum-scale arenas, each500×500×250.
+They supplement the preserved v17 campaigns. The independent-chat execution
+handoff is `collaboration/arena-build-orchestration/START-HERE.md`.
+
 Owner direction, 13 November 2026: the game must be recognizably Naruto, exciting to play, rich in powerful armor/modes with actual moves, immersive and reactive. Avoid boring stretched-out progression. This brief updates product priorities in the earlier plan; it does not mark these features implemented. Core 0.3.10 supplies an introductory prototype, not the finished experience described here. [Research and evidence limits](REFERENCE-RESEARCH.md) separate source observations from our proposals.
 
 ## The experience to build

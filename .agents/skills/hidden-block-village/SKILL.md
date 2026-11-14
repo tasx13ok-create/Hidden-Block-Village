@@ -13,6 +13,16 @@ The owner wants an immersive Naruto-inspired shinobi game that still plays as Mi
 
 ## Naruto identity and fun take priority
 
+Latest owner direction14November2026: the supplied original mods remain the
+baseline, with our systems connecting/enhancing them on top. Preserve original
+unowned mod icons and worn armor, especially Varied Commodities; keep the private
+reference flat-icon pack disabled by default. Compatibility aliases and art may
+serve missing providers but must defer to an installed original provider. Our
+own original items/UI/effects stay available in project namespaces. Older broad
+reskin/replacement instructions yield to this direction. New500×500×250boss
+arenas are additional builds; use the new-chat orchestration under
+`collaboration/arena-build-orchestration/` and preserve every old v17 world.
+
 Read `design/NARUTO-FUN-BRIEF.md` when building combat, equipment, progression, NPCs, world interaction or content. It records the owner's updated direction and supersedes the earlier long mandatory onboarding target. Deliver recognizable Naruto actions, powerful equipment with actual movesets and causal world reactions while preserving Minecraft building/inventory. Use public-facing Naruto terminology when the implemented behavior supports it; preserve stable registry/save IDs. Keep canon facts, gameplay adaptations and unfinished stand-ins distinct.
 
 Prioritize one complete power kit + short mission + visible world reaction over more compulsory academy steps or shared-engine item counts. Let players try exciting powers early in clearly scoped practice, then earn mastery through interesting play. Maintain the full requested roster; a playable slice is not permission to silently cut the rest. Judge a kit by acquisition, inputs, changed decisions, animation/impact, response/counter, resource rhythm and restart behavior. Keep ordinary enemies satisfying to overpower; challenge through readable mechanics rather than universal immunities.

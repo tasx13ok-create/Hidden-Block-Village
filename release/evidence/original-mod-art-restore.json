@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "scope": "STOPPED_CLIENT_STOCK_MOD_ART_SELECTION",
+  "passed": true,
+  "minecraft_launched": false,
+  "removed_active_packs": [
+    "Vale-Reference-Flat-Icons-v3.zip"
+  ],
+  "remaining_active_packs": [],
+  "reference_model_overrides_disabled": 724,
+  "varied_commodities_model_overrides_disabled": 353,
+  "varied_commodities_original_jar_sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+  "varied_worn_textures_replaced_by_this_pack": false,
+  "all_runtime_jars_unchanged": 58,
+  "exact_original_reference_jars_present": 45,
+  "reference_pack_retained_unchanged": {
+    "bytes": 828165,
+    "sha256": "ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e"
+  },
+  "options_before_sha256": "8f598969fed7a19270c92f0d56572fae82f7a267494a468d1436a157e98c5389",
+  "options_after_sha256": "29ed54e9fdb41de4e44d57a0faa6db5fbd6d50b47efbe1d84b9ba0415406e434",
+  "project_core_icons_and_worn_armor_retained": true,
+  "graphical_acceptance": false
+}
