@@ -290,6 +290,14 @@ public final class MenuFx {
         MC.fontRenderer.drawStringWithShadow(line, (float) (cx - MC.fontRenderer.getStringWidth("Gathering chakra...") / 2.0), (float) (cy + 30), 0xFFDCEBFF);
     }
 
+    // ---- licensed moves -------------------------------------------------------------------------
+    private static final String[] WATCHED = {"narutomod", "kabutoaddon", "borutomodaddononero", "ahznbcursemarkaddon", "ahznbswordsplus"};
+    @SubscribeEvent public void use(net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem e) {
+        if (!e.getWorld().isRemote || e.getEntityPlayer() != MC.player || e.getItemStack().isEmpty() || e.getItemStack().getItem().getRegistryName() == null) return;
+        String ns = e.getItemStack().getItem().getRegistryName().getNamespace();
+        for (String w : WATCHED) if (w.equals(ns)) { HotbarFx.castPulse(); return; }
+    }
+
     // ---- tooltips -------------------------------------------------------------------------------
     @SubscribeEvent public void tooltipColor(RenderTooltipEvent.Color e) {
         if (!on()) return;

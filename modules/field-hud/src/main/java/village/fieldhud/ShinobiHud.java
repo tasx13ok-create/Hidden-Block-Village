@@ -148,8 +148,9 @@ public final class ShinobiHud extends Gui {
             text(label,x+4,b.y+47,width-8,ct);
             EnergySlate.draw(x+4,b.y+59,width-8,5,CHAKRA.shown(),CHAKRA.trail(),ct,0xFFADC7D1,time,motion);
         }
-        if(vale!=null) {
-            int row=chakra==null?0:18;
+        // With NarutoMod linked, add-on energy mirrors chakra, so only the chakra bar is shown.
+        if(vale!=null&&chakra==null) {
+            int row=0;
             text("Resolve "+number(vale.resolve)+"/"+number(vale.resolveMax),x+4,b.y+47+row,width-8,0xFF9DD5EF);
             EnergySlate.draw(x+4,b.y+59+row,width-8,5,RESOLVE.shown(),RESOLVE.trail(),0xFF08AFFF,0xFFADC7D1,time,motion);
         }

@@ -285,9 +285,20 @@ public final class HotbarFx {
         }
     }
 
+    private static double castAt = -100;
+    /** A licensed jutsu or weapon was used: the selected slot flares with a chakra burst. */
+    public static void castPulse() { castAt = MC.player == null ? -100 : MC.player.ticksExisted; }
+
     /** Above the items: chakra motes drifting up from the selected slot and an edge light sweep. */
     public static void top(Layout.Box b, double time, double selector) {
         int c = chakra(time);
+        double cast = FableHudMath.pulse((time - castAt) / 12);
+        if (cast > 0) {
+            double cx = b.x + 22 + selector * ScrollGeometry.STRIDE + 9.5, cy = b.y + 18;
+            AnimeDraw.glow(cx, cy, 30 * cast + 10, 24 * cast + 8, c, 0.6 * cast, true);
+            railBurst(cx, cy, 22, cast, AnimeDraw.mix(c, 0xFFFFFF, 0.3));
+            if (time - castAt < 1) sparkle(cx, cy, 0xFF000000 | c, 14);
+        }
         double sx = b.x + 22 + selector * ScrollGeometry.STRIDE + 9.5;
         if (RNG.nextDouble() < 0.5 * Math.min(1, dt)) FableEnv.emit(sx + (RNG.nextDouble() - 0.5) * 14, b.y + 26, (RNG.nextDouble() - 0.5) * 0.2, -0.3 - RNG.nextDouble() * 0.3, -0.004, 24, 0xFF000000 | AnimeDraw.mix(c, 0xFFFFFF, 0.4), 1);
         double sweep = ((time * 0.01) % 1.4) - 0.2;
