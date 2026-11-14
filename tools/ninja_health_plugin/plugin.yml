@@ -1,0 +1,12 @@
+name: Ninja-Health
+main: village.naruto.health.NinjaHealth
+version: 1.0.2
+description: Original native Ninja XP health growth and overhead enemy health nameplates.
+load: POSTWORLD
+commands:
+  ninjahealth:
+    description: Show native Ninja XP health growth.
+    usage: /ninjahealth [status|reload]
+permissions:
+  ninjahealth.admin:
+    default: op

@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "scope": "ACTUAL_MAGMA_1122_NATIVE_NINJA_XP_HEALTH_AND_OVERHEAD_NAMEPLATE_DATA",
+  "plugin": {
+    "file": "Ninja-Health-1.0.2.jar",
+    "bytes": 10407,
+    "sha256": "cfb5eead0e217844e5926c8cf47d91dff508de792690f73e3f082c0f7f830af3"
+  },
+  "passed": true,
+  "assertions": 26,
+  "native_xp_thresholds": [
+    {
+      "ninja_xp": 0.0,
+      "actual_max_hp": 20.0,
+      "expected_bonus": 0.0
+    },
+    {
+      "ninja_xp": 174.0,
+      "actual_max_hp": 20.0,
+      "expected_bonus": 0.0
+    },
+    {
+      "ninja_xp": 175.0,
+      "actual_max_hp": 21.0,
+      "expected_bonus": 1.0
+    },
+    {
+      "ninja_xp": 349.0,
+      "actual_max_hp": 21.0,
+      "expected_bonus": 1.0
+    },
+    {
+      "ninja_xp": 350.0,
+      "actual_max_hp": 22.0,
+      "expected_bonus": 2.0
+    }
+  ],
+  "native_max_hp_with_foreign_7hp_bonus": 29.0,
+  "native_original_xp_modifier": {
+    "uuid": "84d6711b-c26d-4dfa-b0c5-1ff54395f4de",
+    "name": "ninja.maxhealth",
+    "handling": "Preserved; own stable modifier counterbalances its XP contribution to floor(nativeXP/175), avoiding double progression"
+  },
+  "checks": [
+    "Actual official registered CraftPlayer, no real user profile",
+    "Native XP0/174/175/349/350 preserved while maximum HP20/20/21/21/22",
+    "Growth does not repeatedly heal",
+    "20same-value updates do not stack the modifier",
+    "Foreign health modifier UUID/name/amount/operation preserved",
+    "Actual native Gaara Bukkit wrapper and overhead current/max HP",
+    "Actual zombie nameplate and accepted damage update",
+    "Original names/visibility and external rename preserved",
+    "Owned scoreboard backup tags removed on restore",
+    "Genuine official logout/new-body login preserves nativeXP and correct maximumHP; stale wrapper refused"
+  ],
+  "native_run": {
+    "exit_code": 0,
+    "seconds": 34.227,
+    "plugin_unchanged": true,
+    "forced_termination": false
+  },
+  "inputs": {
+    "production_mods": 53,
+    "mod_roster_sha256": "ac239179489d9c5d77f9e6e55b5e08f7dfc6f586ce93cefcb49a998faf95952e",
+    "core_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+    "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "private_qa_not_distributed": true
+  },
+  "source": [
+    {
+      "path": "tools/ninja_health_plugin/build.py",
+      "sha256": "1a8ae3ec2f41f64eaedf6f802d56ebeb646a77a883ba3761c9b556e7570ae32b"
+    },
+    {
+      "path": "tools/ninja_health_plugin/config.yml",
+      "sha256": "a5a020836db815d6c00e9e490de3306f5702e514f6762eebb1626207aaa64b6c"
+    },
+    {
+      "path": "tools/ninja_health_plugin/nativechecks/NinjaHealthProof.java",
+      "sha256": "64ab88966c1c1cfb6a3430f63dc4e48eb2824cc878bb568fbb493a032cc14069"
+    },
+    {
+      "path": "tools/ninja_health_plugin/plugin.yml",
+      "sha256": "5353ff07a83562f47355e8f33fb86eb23960fe88cb8eee3c7d9262d96fc1e4ff"
+    },
+    {
+      "path": "tools/ninja_health_plugin/README.md",
+      "sha256": "2dafa05dd850c1e2baedd54ecff3345274e8a903356fe6f1d499cac82ffc2222"
+    },
+    {
+      "path": "tools/ninja_health_plugin/src/village/naruto/health/HeadBars.java",
+      "sha256": "7eb4f774aa063bef55a0c08b16416497b7c743aef8039937ad439fe9ee2f34b0"
+    },
+    {
+      "path": "tools/ninja_health_plugin/src/village/naruto/health/NinjaHealth.java",
+      "sha256": "df62bb59775ff3fa06e3f780fd7d20e6c8069619466f0041104ff8bc5f8b36ee"
+    }
+  ],
+  "private_reports": [
+    {
+      "file": "ninja-health-native-02\\runtime\\PRIVATE-NINJA-HEALTH-RESULT.json",
+      "sha256": "39cd6f786ee705900782d34f4ec31d2bd445f1582538628a6ac8a6b9793bf00c"
+    },
+    {
+      "file": "ninja-health-native-02\\PRIVATE-RUN.json",
+      "sha256": "f53cfbf9d7e0af556b919040482fdac7d886d3d7931ffd8303289384a14edc0d"
+    },
+    {
+      "file": "ninja-health-native-02\\native.console.log",
+      "sha256": "c604f7cb5c781fc69ecb7c369599fc7f6dc540930b6f6ce578e0e23de73013b8"
+    },
+    {
+      "file": "ninja-health-native-02\\compile.log",
+      "sha256": "6dc964ebd95706c5624e584455369c1f063d36b09712f2d590baf03416a7b7cf"
+    },
+    {
+      "file": "ninja-health-native-02\\NinjaHealthProof.java",
+      "sha256": "64ab88966c1c1cfb6a3430f63dc4e48eb2824cc878bb568fbb493a032cc14069"
+    }
+  ],
+  "retained_failures": {
+    "first_runtime_101_report": "ninja-health-native-01/runtime/PRIVATE-NINJA-HEALTH-RESULT.json",
+    "observed": "Native original XP-health contribution appeared during rejoin;1.0.1stacked it.1.0.2counterbalances it. A separate object-equality assertion was replaced with actual UUID/name/amount/operation comparison."
+  },
+  "real_player_or_original_world_used": false,
+  "graphical_acceptance": false,
+  "hosted_acceptance": false,
+  "process_restart_acceptance": "NOT_RUN; actual same-process logout/new-body login was tested",
+  "private_artifact_root": "D:\\HiddenBlockVillage-Arenas-20261114"
+}

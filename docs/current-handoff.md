@@ -485,3 +485,22 @@ CrazyCrates operator follow-up: the supplied server retains spawn-protection16.
 The owner confirmed that an affected player could open a newly registered crate
 outside spawn protection. See [the tested in-game workaround](crazycrates-in-game-fix.md).
 No spawn setting, hosted file, operator grant or live session was changed here.
+
+## Native Ninja XP health and enemy nameplates
+
+The owner's new request is implemented as original server plugin
+Ninja-Health1.0.2; exact source/build tool and install guide are in
+[tools/ninja_health_plugin](../tools/ninja_health_plugin/README.md).
+Private JAR: `D:/HiddenBlockVillage-Arenas-20261114/Ninja-Health-1.0.2.jar`,
+SHA256 `cfb5eead0e217844e5926c8cf47d91dff508de792690f73e3f082c0f7f830af3`.
+Put only this Ninja-Health version in server plugins/ and restart; do not put
+it in mods/. Native XP-health total is floor(BXP/175)HP, counterbalancing the
+original NarutoMod XP-health modifier so it does not double-stack. Other health
+bonuses remain. Enemy current/max HP uses overhead nameplates; F7 Target health
+can hide our old screen panel. Actual fresh Magma53mod/CraftPlayer proof passed
+26checks with exit0, including exact thresholds, other modifiers, genuine
+logout/new-body login and native Gaara/zombie nameplate data/restoration.
+Safe receipt: `release/evidence/ninja-health-102-native.json`. Graphical, shader,
+whole-process restart and hosted deployment acceptance remain unclaimed. Old
+1.0.0/1.0.1JARs and the failed first report remain preserved. The worker did not
+change the owner's host, worlds or live client/server.
