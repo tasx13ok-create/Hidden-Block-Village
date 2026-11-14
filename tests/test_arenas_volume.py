@@ -39,5 +39,21 @@ class StreamingVolumeTests(unittest.TestCase):
                 with self.assertRaises(ValueError): v.set(0,0,0,1,16)
             with self.assertRaises(ValueError): safe_new_directory(tmp)
 
+    def test_real_chest_tile_payload_roundtrip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with Volume(Path(tmp)/'scratch',(8,8,8)) as v:
+                v.chest(3,2,4,2,'Workshop stores')
+                with self.assertRaises(ValueError):v.chest(3,2,4)
+                v.export(Path(tmp)/'chest.schematic',(64000,3,64000))
+            s=Schematic.load(Path(tmp)/'chest.schematic')
+            self.assertEqual(len(s.tile_tags),1)
+            tile=s.tile_tags[0]
+            self.assertEqual(tile.scalar('id'),'minecraft:chest')
+            self.assertEqual(tile.scalar('x'),3)
+            self.assertEqual(tile.scalar('y'),2)
+            self.assertEqual(tile.scalar('z'),4)
+            self.assertEqual(tile.scalar('CustomName'),'Workshop stores')
+            self.assertEqual(tile['Items'].value,[])
+
 
 if __name__=='__main__': unittest.main()

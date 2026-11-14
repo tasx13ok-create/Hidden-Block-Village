@@ -57,6 +57,7 @@ class Volume:
         self.used = set()
         self.layer_samples = {}
         self.has_high = False
+        self.tiles = []
 
     def _bounds(self, x0, y0, z0, x1, y1, z1):
         if any(type(a) is not int for a in (x0,y0,z0,x1,y1,z1)):
@@ -103,6 +104,18 @@ class Volume:
 
     def set(self,x,y,z,block,meta=0,layer='geometry'):
         self.box(x,y,z,x,y,z,block,meta,layer)
+
+    def chest(self,x,y,z,facing=2,custom_name='Arena stores',layer='details'):
+        from tools.world_merge import nbt
+        if facing not in (2,3,4,5) or len(self.tiles)>=128:
+            raise ValueError('Invalid facing or container budget exceeded')
+        if any(t.scalar('x')==x and t.scalar('y')==y and t.scalar('z')==z for t in self.tiles):
+            raise ValueError('Duplicate tile coordinate')
+        if len(custom_name)>80:raise ValueError('Container name exceeds budget')
+        self.set(x,y,z,54,facing,layer)
+        self.tiles.append(nbt.compound({'id':nbt.Tag(nbt.STRING,'minecraft:chest'),
+            'x':nbt.Tag(nbt.INT,x),'y':nbt.Tag(nbt.INT,y),'z':nbt.Tag(nbt.INT,z),
+            'Items':nbt.Tag(nbt.LIST,[],elem=nbt.COMPOUND),'CustomName':nbt.Tag(nbt.STRING,custom_name)}))
 
     def cylinder(self,cx,cz,r,y0,y1,block,meta=0,inner=0,layer='geometry'):
         r = int(r)
@@ -154,8 +167,12 @@ class Volume:
                         for j in range(0,len(b),2):
                             packed[j//2] = b[j] | ((b[j+1] if j+1<len(b) else 0)<<4)
                         f.write(packed)
-                for key in ('Entities','TileEntities'):
-                    named(f,9,key,b'\x0a\x00\x00\x00\x00')
+                named(f,9,'Entities',b'\x0a\x00\x00\x00\x00')
+                named(f,9,'TileEntities',b'\x0a'+struct.pack('>i',len(self.tiles)))
+                if self.tiles:
+                    from tools.world_merge import nbt
+                    for tile in self.tiles:
+                        f.write(nbt.dumps(tile,name='',compression=None)[3:])
                 f.write(b'\x00')
             raw.flush()
             os.fsync(raw.fileno())

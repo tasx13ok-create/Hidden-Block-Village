@@ -9,13 +9,13 @@ from tools.world_merge import nbt
 from tools.arenas.audit import AuditError, Reader, readback, _standing, audit_layer_checks, audit_stairs, audit_stadium
 
 
-def fixture(path, blocks=None, data=None, add=None, size=(3,5,3),owners=None,names=None):
+def fixture(path, blocks=None, data=None, add=None, size=(3,5,3),owners=None,names=None,tiles=None):
     count=size[0]*size[1]*size[2]
     values={key:nbt.Tag(nbt.SHORT,value) for key,value in zip(('Width','Height','Length'),size)}
     values.update({'Materials':nbt.Tag(nbt.STRING,'Alpha'),
         'Blocks':nbt.Tag(nbt.BYTE_ARRAY,blocks or bytes(count)),
         'Data':nbt.Tag(nbt.BYTE_ARRAY,data or bytes(count)),
-        'Entities':nbt.Tag(nbt.LIST,[],nbt.COMPOUND),'TileEntities':nbt.Tag(nbt.LIST,[],nbt.COMPOUND)})
+        'Entities':nbt.Tag(nbt.LIST,[],nbt.COMPOUND),'TileEntities':nbt.Tag(nbt.LIST,tiles or [],nbt.COMPOUND)})
     if add is not None: values['AddBlocks']=nbt.Tag(nbt.BYTE_ARRAY,add)
     if owners is not None:
         import json
@@ -115,6 +115,18 @@ class IndependentReadbackTests(unittest.TestCase):
             fixture(path,owners=bytes(44),names={'1':'stadium_structure'})
             with self.assertRaisesRegex(AuditError,'ArenaLayers length'):
                 with readback(path): pass
+
+    def test_tile_unknown_tags_and_numeric_types_preserved(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)/'t.schematic'
+            tile=nbt.compound({'id':nbt.Tag(nbt.STRING,'minecraft:chest'),
+                'x':nbt.Tag(nbt.INT,1),'y':nbt.Tag(nbt.INT,1),'z':nbt.Tag(nbt.INT,1),
+                'Items':nbt.Tag(nbt.LIST,[],nbt.COMPOUND),'UnknownLong':nbt.Tag(nbt.LONG,1234567890123),
+                'UnknownNested':nbt.compound({'byte':nbt.Tag(nbt.BYTE,7)})})
+            fixture(path,tiles=[tile])
+            with readback(path) as v:
+                self.assertEqual(v.tile_tags,[tile])
+                self.assertEqual(v.tile_tags[0]['UnknownLong'].type,nbt.LONG)
 
 
 if __name__=='__main__': unittest.main()

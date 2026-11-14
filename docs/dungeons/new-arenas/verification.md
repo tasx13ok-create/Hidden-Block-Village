@@ -52,6 +52,13 @@ placement. It never pastes into the immutable v17 candidate or an owner's existi
 world. Production-world staging remains under the reviewed `tools.world_merge`
 copy/paste/rollback workflow and is deliberately refused by this fresh-world tool.
 
+Each 500-block plot must be region-aligned and occupy a different 512-block
+region. This avoids deleting another plot's cells in a shared boundary chunk.
+World coordinates are checked before placement. New destinations nested inside
+an existing world or server runtime are refused. The newly created empty world
+gets a complete hash-verified snapshot before the first placement; the finished
+five-site world gets a second complete cold snapshot before native boot.
+
 Chunk conversion uses bounded NumPy arrays per 16×256×16 chunk. Alpha metadata is
 repacked into Anvil low-even/high-odd nibbles. Empty sections are omitted. Existing
 Anvil/NBT defensive writers serialize output atomically; no hostile-input limits
@@ -68,6 +75,14 @@ not represented as a whole-world rollback.
 exported block ID and metadata value: 312.5 million cell comparisons across the
 five plots. It does not reuse the staging conversion helper. Lighting arrays and
 world time are not included because native runtime legitimately changes them.
+
+Storage chests are actual vanilla block54 with a bounded standard TileEntities
+list (maximum128). Independent output readback checks tile identity, coordinates,
+lid clearance and a safe standing position on the facing side. A tiny captured
+tile payload uses the existing typed NBT decoder so unknown tags and numeric
+types survive coordinate remapping. Staging installs each tile in its correct
+world chunk; the full Anvil comparison checks typed payloads as well as every
+block and metadata cell. Native container opening remains a separate gate.
 
 Private authoring dependencies: NumPy 2.2.6 for bounded full-output scans and chunk
 conversion; Pillow 11.2.1 for the integrator's offline raster previews. They are

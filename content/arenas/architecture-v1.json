@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "version": "1.1.0",
+  "dimensions": [500, 250, 500],
+  "stadium_itself_dimensions": [500, 250, 500],
+  "latest_owner_clarification": "The stadium proper itself occupies the full500x500x250, including spectator construction and structural enclosure; the active combat court stays136 blocks useful for jutsu.",
+  "enclosing_stadium_profiles": {"forest": "Timber/plaster square with Leaf eaves and original sweeping root gate", "cloud": "Asymmetric pale fortress banks with indigo roofs, unequal grounded signal pylons", "sand": "Full circular sandstone Sun-Sand spectator bowl, turquoise scholar bays and gourd seal", "mist": "Beveled piled coastal spectator banks with fin-shaped canopies, shark mouth and real contained sea", "fire": "Grounded octagonal charcoal citadel, heavy eaves and original Uchiha fan gate relief"},
+  "world_min_y": 3,
+  "world_max_y": 252,
+  "coordinate_convention": "Local x,y,z; anchors are standing feet; floor occupies y-1.",
+  "asset_provenance": "Original procedural block geometry authored for Hidden Block Village. No original world cells, external artwork or models are copied.",
+  "profiles": {
+    "forest": {
+      "bowl_radius": 144,
+      "court_diameter": 136,
+      "materials": {"structure": [98, 0], "walkway": [5, 0], "roof": [159, 13]},
+      "tower": {"name": "Archive crown", "center": [402, 352], "radius": 25, "top": 240, "style": "archive"},
+      "silhouette": "Two unequal fractured terraces, broad supported roots, timber archives and sculpted living crown at local249.",
+      "services": ["keeper archive", "medicinal preparation", "root workshop", "seed store", "entered lower maintenance"],
+      "environment": {"authored_tree_uses_real_vanilla_wood": true, "native_fire_protection_required": true, "native_fire_protection_acceptance": "NOT_RUN"}
+    },
+    "cloud": {
+      "bowl_radius": 138,
+      "court_diameter": 136,
+      "materials": {"structure": [155, 0], "walkway": [98, 0], "roof": [159, 11]},
+      "tower": {"name": "Storm signal", "center": [389, 356], "radius": 30, "top": 249, "style": "signal"},
+      "silhouette": "Three unequal pale plates, grounded catch terraces, asymmetrical indigo fortresses and dominant signal crown.",
+      "services": ["signal dispatch", "storm aid", "grounding workshop", "bridge stores", "entered lower maintenance"],
+      "environment": {"conductors": [[196, 228], [304, 272]], "hidden_wind_force": false}
+    },
+    "sand": {
+      "bowl_radius": 159,
+      "court_diameter": 136,
+      "materials": {"structure": [24, 0], "walkway": [159, 0], "roof": [159, 9]},
+      "tower": {"name": "Kazekage observatory", "center": [402, 356], "radius": 29, "top": 249, "style": "observatory"},
+      "silhouette": "Unequal desert strata, sandstone seating, turquoise scholarship, two unequal domes and tall offset observatory.",
+      "services": ["seal library", "caravan treatment", "cistern workshop", "shaded bazaar", "dry cistern gallery"],
+      "environment": {"falling_sand_used": false, "cistern_source_water": true}
+    },
+    "mist": {
+      "bowl_radius": 145,
+      "court_diameter": 136,
+      "materials": {"structure": [98, 0], "walkway": [5, 0], "roof": [159, 9]},
+      "tower": {"name": "Harbor lighthouse", "center": [407, 370], "radius": 25, "top": 249, "style": "lighthouse"},
+      "silhouette": "Real contained sea, seabed piles, warm harbor decking, connected dry court islands, high lighthouse and timber rigging.",
+      "services": ["harbor logbook", "breathing aid", "entered boathouse", "net stores", "optional actual underwater passage"],
+      "environment": {"water_source_id": 9, "surface_local_y": 60, "surface_world_y": 63, "native_breathing_acceptance": "NOT_RUN", "old_mist_modified": false}
+    },
+    "fire": {
+      "bowl_radius": 163,
+      "court_diameter": 136,
+      "materials": {"structure": [112, 0], "walkway": [98, 0], "roof": [159, 15]},
+      "tower": {"name": "Upper seal sanctum", "center": [403, 360], "radius": 26, "top": 249, "style": "sanctum"},
+      "silhouette": "Continuous grounded podium, nested charcoal/Nether-brick districts, unequal guardians and massive supported moon gate.",
+      "services": ["citadel records", "forge treatment", "cooling workshop", "garrison stores", "entered lower maintenance"],
+      "environment": {"fractured_floating_base": false, "contained_lava_source_id": 11, "preview_dimension": 0, "nether_acceptance": "NOT_RUN"}
+    }
+  },
+  "light_policy": "Actual sea-lantern floor sources at <=6-cell route intervals; native block-light acceptance remains separate.",
+  "route_policy": "Primary11, alternative9, ordinary room/lower7, tower5, giant19 with24 headroom; four outer stadium stair aisles9wide and two service/upper galleries. Distinct elevations are unioned before carving, with flat landings and actual normal-half vanilla stairs on each higher tread.",
+  "fluid_policy": "All fluid cells source metadata0. After authored dry cuts, leaking fluid cells become glass lining. Independent output scan and native updates remain mandatory."
+}

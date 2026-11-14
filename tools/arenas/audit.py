@@ -17,6 +17,7 @@ import struct
 import tempfile
 
 from tools.world_merge.anvil import _safe_path
+from tools.world_merge import nbt
 from tools.world_merge.blocks import (FLOOR_TABLE, NO_COLLISION, OPENABLE, FLUIDS,
     GRAVITY, FALL_THROUGH, EXPECTS_TILE, normalize_tile_id, TILE_BLOCKS, VANILLA_IDS, STAIRS)
 
@@ -42,6 +43,8 @@ class Reader:
         self.stream, self.directory = stream, Path(directory)
         self.total = self.tags = 0
         self.arrays = {}
+        self.capture = None
+        self.tile_payload = None
 
     def take(self, count):
         if count < 0 or self.total + count > MAX_BYTES:
@@ -50,6 +53,9 @@ class Reader:
         self.total += len(data)
         if len(data) != count:
             raise AuditError('Truncated NBT')
+        if self.capture is not None:
+            if len(self.capture)+len(data)>1048576: raise AuditError('Tile payload exceeds bounded1MiB budget')
+            self.capture.extend(data)
         return data
 
     def number(self, fmt):
@@ -104,12 +110,18 @@ class Reader:
                 key = self.string()
                 if key in out:
                     raise AuditError('Duplicate NBT key ' + key)
-                out[key] = self.payload(child, key, depth+1)
+                if key=='TileEntities' and depth==0:
+                    if child!=9: raise AuditError('TileEntities must be a list')
+                    self.capture=bytearray()
+                    out[key]=self.payload(child,key,depth+1)
+                    self.tile_payload=bytes(self.capture);self.capture=None
+                else:
+                    out[key] = self.payload(child, key, depth+1)
         raise AuditError('Unsupported NBT type %s' % kind)
 
 
 class Readback:
-    def __init__(self, header, handles, maps):
+    def __init__(self, header, handles, maps, tile_payload=None):
         self.header, self.handles, self.maps = header, handles, maps
         self.width, self.height, self.length = [header[k] for k in ('Width','Height','Length')]
         self.cells = self.width*self.height*self.length
@@ -133,11 +145,22 @@ class Readback:
             if not key.isdigit() or not 0<=int(key)<=255 or not isinstance(value,str) or len(value)>100:
                 raise AuditError('Invalid layer name entry')
             self.layer_names[int(key)]=value
+        if len(header.get('TileEntities',[]))>128: raise AuditError('Arena tile budget128 exceeded')
+        # Only the tiny already-streamed tile payload uses the established typed
+        # decoder. Unknown tag names/types survive stage/remap without inference.
+        self.tile_tags=[]
+        if tile_payload is not None:
+            wrapper=b'\x0a\x00\x00\x09\x00\x0cTileEntities'+tile_payload+b'\x00'
+            self.tile_tags=nbt.loads(wrapper,max_bytes=1048576)[1]['TileEntities'].value
 
     def index(self, x, y, z):
         if not (0 <= x < self.width and 0 <= y < self.height and 0 <= z < self.length):
             raise AuditError('Cell outside readback bounds: %s' % ((x,y,z),))
         return (y*self.length+z)*self.width+x
+
+    def in_bounds(self,x,y,z):
+        return all(type(value) is int for value in (x,y,z)) and (
+            0<=x<self.width and 0<=y<self.height and 0<=z<self.length)
 
     def block(self, x, y, z):
         i = self.index(x,y,z)
@@ -176,7 +199,7 @@ def readback(path, scratch_parent=None):
             for name,(array_path,_) in reader.arrays.items():
                 handles[name] = open(array_path,'rb')
                 maps[name] = mmap.mmap(handles[name].fileno(),0,access=mmap.ACCESS_READ)
-            yield Readback(header,handles,maps)
+            yield Readback(header,handles,maps,reader.tile_payload)
         finally:
             for value in maps.values(): value.close()
             for value in handles.values(): value.close()
@@ -403,13 +426,26 @@ def audit_arena(row, manifest_dir):
         if bounds_max[1] != 249: failures.append('monument does not reach occupied local Y249')
         tiles = v.header.get('TileEntities',[])
         covered = set()
+        tile_access=[]
         for tile in tiles:
             pos=tuple(tile.get(a) for a in 'xyz')
             if pos in covered: failures.append('duplicate tile coordinates')
             covered.add(pos)
             if None in pos or v.block(*pos) not in TILE_BLOCKS.get(normalize_tile_id(tile.get('id')),set()):
                 failures.append('tile identity does not match block')
+                continue
+            if v.block(*pos) in (54,146):
+                x,y,z=pos;meta=v.meta(*pos)
+                facing={2:(0,-1),3:(0,1),4:(-1,0),5:(1,0)}.get(meta)
+                issue=None
+                if facing is None: issue='invalid chest-facing metadata'
+                elif y+1>=v.height or v.block(x,y+1,z) not in NO_COLLISION:
+                    issue='chest lid blocked'
+                else:
+                    issue=_standing(v,[x+facing[0],y,z+facing[1]])
+                tile_access.append({'position':list(pos),'status':'FAIL' if issue else 'PASS','failure':issue})
         if tile_cells-covered: failures.append('blocks missing required tile payloads')
+        if any(t['status']=='FAIL' for t in tile_access): failures.append('unusable container access or blocked lids')
         if v.header.get('Entities',[]): failures.append('export contains unreviewed entities')
         anchors = row.get('anchors',{})
         anchors_bad = {name:issue for name,pos in anchors.items() if (issue:=_standing(v,pos))}
@@ -486,6 +522,7 @@ def audit_arena(row, manifest_dir):
             'unmapped_palette_ids':missing_palette,
             'occupied_by_y':solid_by_y,'gravity_failure_count':gravity_failure_count,'fluid_failure_count':fluid_failure_count,
             'gravity_failures':gravity_bad,'fluid_failures':fluid_bad,'tile_count':len(tiles),
+            'tile_access':tile_access,
             'anchors':{'status':'FAIL' if anchors_bad else 'PASS','failures':anchors_bad},'routes':route_reports,'rooms':room_reports,
             'walking_network':{'nodes':len(walk_nodes),'reachable':len(connected),'unreachable_anchors':unreachable},
             'layer_checks':layer_report,
@@ -501,6 +538,7 @@ def audit(manifest_path, strict=True):
     rows=[audit_arena(row,manifest_path.parent) for row in manifest['arenas']]
     report={'schema':1,'status':'PASS' if all(r['status']=='PASS' for r in rows) else 'FAIL',
             'manifest_sha256':file_hash(manifest_path),'arenas':rows,
+            'audit_source_sha256':file_hash(__file__),
             'native_acceptance':'NOT_RUN','graphical_acceptance':'NOT_RUN_OWNER_KEEP_CLOSED'}
     if strict and len(rows)!=5:
         report['status']='FAIL';report['failure']='Strict release requires all five arenas'

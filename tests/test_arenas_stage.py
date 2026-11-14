@@ -4,9 +4,9 @@ import tempfile
 import unittest
 
 from tools.arenas.audit import AuditError
-from tools.arenas.stage import _store_chunk, _reserve_empty, stage_world, restore_snapshot, _files
+from tools.arenas.stage import _store_chunk, _reserve_empty, stage_world, restore_snapshot, _files, _new_world_destination
 from tools.world_merge import nbt
-from tools.world_merge.anvil import Region, new_chunk, read_block
+from tools.world_merge.anvil import Region, new_chunk, read_block, chunk_tiles, _world_tiles
 
 
 class StagingTests(unittest.TestCase):
@@ -22,6 +22,28 @@ class StagingTests(unittest.TestCase):
             self.assertEqual(read_block(world,5,19,7),(0xA31,11))
             self.assertEqual(read_block(world,6,19,7),(0x234,3))
             self.assertEqual(read_block(world,7,19,5),(0,0))
+
+    def test_container_remap_and_typed_payload_roundtrip(self):
+        import numpy as np
+        from tests.test_arenas_audit import fixture
+        from tools.arenas.audit import readback
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);world=root/'world';(world/'region').mkdir(parents=True)
+            path=root/'chest.schematic'
+            tile=nbt.compound({'id':nbt.Tag(nbt.STRING,'minecraft:chest'),
+                'x':nbt.Tag(nbt.INT,1),'y':nbt.Tag(nbt.INT,1),'z':nbt.Tag(nbt.INT,1),
+                'Items':nbt.Tag(nbt.LIST,[],nbt.COMPOUND),'CustomName':nbt.Tag(nbt.STRING,'Original storage'),
+                'UnknownLong':nbt.Tag(nbt.LONG,1234567890123)})
+            fixture(path,tiles=[tile])
+            with readback(path) as v:
+                transformed=_world_tiles(v,[32,3,48])
+                self.assertEqual(transformed[0][0],(33,4,49))
+                region=Region(world/'region/r.0.0.mca')
+                blocks=np.zeros((256,16,16),dtype=np.uint16);meta=np.zeros_like(blocks,dtype=np.uint8)
+                blocks[4,1,1]=54;meta[4,1,1]=2
+                _store_chunk(region,2,3,blocks,meta,[transformed[0][1]]);region.save_atomic()
+                self.assertEqual(chunk_tiles(world,2,3),[transformed[0][1]])
+                self.assertEqual(tile.scalar('x'),1)
 
     def test_reserved_saved_entities_fail_before_edit(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -47,11 +69,18 @@ class StagingTests(unittest.TestCase):
             self.assertEqual(result['existing_chunks_inspected'],0)
             self.assertEqual(result['status'],'PASS')
 
+    def test_new_world_cannot_be_nested_in_owner_world_or_runtime(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'level.dat').write_bytes(b'original')
+            with self.assertRaisesRegex(AuditError,'existing world/runtime'):
+                _new_world_destination(root/'nested-world')
+            self.assertEqual((root/'level.dat').read_bytes(),b'original')
+
     def test_source_drift_refuses_before_candidate_creation(self):
         import json
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);manifest=root/'manifest.json';candidate=root/'must-not-exist'
-            base={'schema':1,'arenas':[{}]*5,'source_drift':True}
+            base={'schema':1,'arenas':[{'world_min':[64000+1024*i,3,64000]} for i in range(5)],'source_drift':True}
             manifest.write_text(json.dumps(base))
             with self.assertRaisesRegex(AuditError,'drifted build source'):
                 stage_world(manifest,None,candidate)
@@ -59,6 +88,21 @@ class StagingTests(unittest.TestCase):
             base.update(source_drift=False,source={'sha256':'old'},source_after={'sha256':'old'})
             manifest.write_text(json.dumps(base))
             with self.assertRaisesRegex(AuditError,'Current arena source differs'):
+                stage_world(manifest,None,candidate)
+            self.assertFalse(candidate.exists())
+
+    def test_non_aligned_and_shared_region_plots_refuse_before_write(self):
+        import json
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);manifest=root/'manifest.json';candidate=root/'no-world'
+            arenas=[{'world_min':[64000+1024*i,3,64000]} for i in range(5)]
+            arenas[1]['world_min'][0]+=1
+            manifest.write_text(json.dumps({'schema':1,'arenas':arenas}))
+            with self.assertRaisesRegex(AuditError,'region-aligned'):
+                stage_world(manifest,None,candidate)
+            arenas[1]['world_min']=arenas[0]['world_min'][:]
+            manifest.write_text(json.dumps({'schema':1,'arenas':arenas}))
+            with self.assertRaisesRegex(AuditError,'share a region'):
                 stage_world(manifest,None,candidate)
             self.assertFalse(candidate.exists())
 

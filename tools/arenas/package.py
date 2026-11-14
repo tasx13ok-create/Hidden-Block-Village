@@ -15,6 +15,8 @@ def package(manifest_path,audit_path,world,destination,extra_files=()):
     dest=Path(destination).absolute()
     if dest.exists():raise FileExistsError(dest)
     files=[(manifest_path,'exports/manifest.json'),(audit_path,'reports/offline-audit.json')]
+    if (manifest_path.parent/'index.html').is_file():
+        files.append((manifest_path.parent/'index.html','exports/index.html'))
     for arena in manifest['arenas']:
         schem=(manifest_path.parent/arena['schematic']).resolve()
         if not schem.is_relative_to(manifest_path.parent) or sha256(schem)!=arena['sha256']:
