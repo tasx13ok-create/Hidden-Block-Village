@@ -17,7 +17,7 @@ public final class ExtendedPlayer {
  }
  public static Connection getConnection(){return database;}
  public static ExtendedPlayer get(EntityPlayer player){if(player==null)throw new IllegalArgumentException("Player required");return new ExtendedPlayer(player);}
- private NBTTagCompound data(){NBTTagCompound root=player.getEntityData();if(!root.hasKey(EntityPlayer.PERSISTED_NBT_TAG,10))root.setTag(EntityPlayer.PERSISTED_NBT_TAG,new NBTTagCompound());NBTTagCompound persistent=root.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);if(!persistent.hasKey("NarutoVillages112",10))persistent.setTag("NarutoVillages112",new NBTTagCompound());return persistent.getCompoundTag("NarutoVillages112");}
+ NBTTagCompound data(){NBTTagCompound root=player.getEntityData();if(!root.hasKey(EntityPlayer.PERSISTED_NBT_TAG,10))root.setTag(EntityPlayer.PERSISTED_NBT_TAG,new NBTTagCompound());NBTTagCompound persistent=root.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);if(!persistent.hasKey("NarutoVillages112",10))persistent.setTag("NarutoVillages112",new NBTTagCompound());return persistent.getCompoundTag("NarutoVillages112");}
  private boolean server(){return player.world!=null&&!player.world.isRemote&&database!=null;}
  private void ensure(){
   if(!server())return;
@@ -33,9 +33,9 @@ public final class ExtendedPlayer {
  public String getAffiliationName(){int id=getAffiliation();return id>=0&&id<CommandAffiliation.affiliations.length?CommandAffiliation.affiliations[id]:"None";}
  private static int bounded(double n){return Double.isFinite(n)&&n>0?(int)Math.min(Integer.MAX_VALUE,n):0;}
  public int getLevel(){return bounded(PlayerTracker.getNinjaLevel(player));}
- public int getAllSkillPoints(){return bounded(PlayerTracker.getBattleXp(player));}
- public int getAllAssignedSkillPoints(){return getAllSkillPoints();}
- public int getSkillPoints(){return data().getInteger("unspentLegacyPoints");}
+ public int getAllSkillPoints(){return bounded(PlayerTracker.getBattleXp(player)+NativeTraining.totalSkillPoints(player));}
+ public int getAllAssignedSkillPoints(){return bounded(NativeTraining.assigned(player));}
+ public int getSkillPoints(){return bounded(NativeTraining.balance(player,"skill"));}
  public int getCurrentChakra(){return bounded(Chakra.pathway(player).getAmount());}
  public int getMaxChakra(){return bounded(Chakra.pathway(player).getMax());}
  public int getHealth(){return bounded(player.getHealth());}public int getHealthCap(){return bounded(player.getMaxHealth());}
@@ -44,7 +44,7 @@ public final class ExtendedPlayer {
  public int getCurrentSenChakra(){return data().getInteger("legacySenChakra");}public int getMaxSenChakra(){return data().getInteger("legacyMaxSenChakra");}
  public int getNinjutsu(){return data().getInteger("legacyNinjutsu");}public int getGenjutsu(){return data().getInteger("legacyGenjutsu");}
  public int getKenjutsu(){return data().getInteger("legacyKenjutsu");}public int getMedical(){return data().getInteger("legacyMedical");}
- public int getTaijutsu(){return player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE)==null?0:bounded(player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());}
+ public int getTaijutsu(){return NativeTraining.points(player,NativeTraining.Stat.TAIJUTSU);}
  public int getSpeedPoints(){return data().getInteger("legacySpeedPoints");}
  public float getTotalResistance(){return getTotalResistance(false);}public float getTotalResistance(boolean ignored){return player.getTotalArmorValue();}
  public void updateRecord(){if(!server())return;ensure();getRank();getAffiliation();try(PreparedStatement s=database.prepareStatement("UPDATE player_data SET player_name=?,level=?,total_stats=? WHERE player_uuid=?")){s.setString(1,player.getName());s.setInt(2,getLevel());s.setInt(3,getAllSkillPoints());s.setString(4,player.getUniqueID().toString());s.executeUpdate();}catch(SQLException e){throw new IllegalStateException(e);}}

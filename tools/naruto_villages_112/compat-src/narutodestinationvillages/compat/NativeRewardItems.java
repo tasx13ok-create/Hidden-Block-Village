@@ -16,7 +16,17 @@ public final class NativeRewardItems {
     private NativeRewardItems() {}
 
     public static boolean supports(String id) {
-        return id != null && "narutodestination:xptoken".equals(id.toLowerCase(Locale.ROOT));
+        return legacyKind(id) != null;
+    }
+    private static String legacyKind(String id) {
+        if(id==null)return null;
+        switch(id.toLowerCase(Locale.ROOT)){
+            case "narutodestination:xptoken":return "chakra_xp";
+            case "narutodestination:sptoken":return "skill";
+            case "narutodestination:jptoken":return "jutsu";
+            case "narutodestination:rptoken":return "reset";
+            default:return null;
+        }
     }
 
     public static boolean validValue(int value) {
@@ -25,21 +35,21 @@ public final class NativeRewardItems {
 
     public static ItemStack create(String id, int value, int count) {
         if (count < 1 || count > 64) throw new IllegalArgumentException("Reward count must be 1-64");
-        if (!supports(id)) {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
-            return item == null ? null : new ItemStack(item, count, value);
-        }
-        if (!validValue(value)) throw new IllegalArgumentException("XP token value must be 1, 5, 10 or 50");
+        Item original = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        if(original!=null)return new ItemStack(original,count,value);
+        String kind=legacyKind(id);if(kind==null)return null;
+        if (!validValue(value)) throw new IllegalArgumentException("Token value must be 1, 5, 10 or 50");
         ItemStack stack = new ItemStack(Items.PAPER, count);
         NBTTagCompound root = new NBTTagCompound(), reward = new NBTTagCompound(), display = new NBTTagCompound();
         reward.setInteger("version", 1);
-        reward.setString("kind", "chakra_xp");
+        reward.setString("kind", kind);
         reward.setInteger("value", value);
         root.setTag(TAG, reward);
-        display.setString("Name", "\u00a76Chakra Experience Token \u00a7e(" + value + ")");
+        String name="chakra_xp".equals(kind)?"Chakra Experience":"skill".equals(kind)?"Shinobi Skill":"jutsu".equals(kind)?"Jutsu Knowledge":"Training Reset";
+        display.setString("Name", "\u00a76"+name+" Token \u00a7e(" + value + ")");
         NBTTagList lore = new NBTTagList();
-        lore.appendTag(new NBTTagString("\u00a77Right-click to gain Naruto battle XP."));
-        lore.appendTag(new NBTTagString("\u00a77Your village rank applies its XP bonus."));
+        lore.appendTag(new NBTTagString("chakra_xp".equals(kind)?"\u00a77Right-click to gain Naruto battle XP.":"\u00a77Right-click to bank "+kind+" points."));
+        lore.appendTag(new NBTTagString("chakra_xp".equals(kind)?"\u00a77Your village rank applies its XP bonus.":"\u00a77Open /shinobitraining to spend them."));
         lore.appendTag(new NBTTagString("\u00a77Sneak + right-click to consume the stack."));
         display.setTag("Lore", lore);
         root.setTag("display", display);
@@ -49,11 +59,16 @@ public final class NativeRewardItems {
 
     /** Zero means ordinary paper or an invalid token. Never trust display text or client arguments. */
     public static int xpValue(ItemStack stack) {
-        if (stack == null || stack.isEmpty() || stack.getItem() != Items.PAPER || !stack.hasTagCompound()) return 0;
+        return "chakra_xp".equals(kind(stack))?pointValue(stack):0;
+    }
+    public static int pointValue(ItemStack stack){return kind(stack)==null?0:stack.getTagCompound().getCompoundTag(TAG).getInteger("value");}
+    public static String kind(ItemStack stack) {
+        if (stack == null || stack.isEmpty() || stack.getItem() != Items.PAPER || !stack.hasTagCompound()) return null;
         NBTTagCompound root = stack.getTagCompound();
-        if (!root.hasKey(TAG, 10)) return 0;
+        if (!root.hasKey(TAG, 10)) return null;
         NBTTagCompound reward = root.getCompoundTag(TAG);
         int value = reward.getInteger("value");
-        return reward.getInteger("version") == 1 && "chakra_xp".equals(reward.getString("kind")) && validValue(value) ? value : 0;
+        String kind=reward.getString("kind");boolean recognized="chakra_xp".equals(kind)||"skill".equals(kind)||"jutsu".equals(kind)||"reset".equals(kind);
+        return reward.getInteger("version")==1&&recognized&&validValue(value)?kind:null;
     }
 }

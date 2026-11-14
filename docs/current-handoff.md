@@ -2,7 +2,71 @@
 
 Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
-## Latest direct-work checkpoint: native XP rewards and PvP
+## Latest direct-work checkpoint: training and actual process restart
+
+Latest owner preview: `C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-4.jar`,
+7,026,160bytes, internal1.4.2-hbv112.3, SHA256
+`63bb2d8d3a46e50bf827d83fa223f28063beb87851a55e42077e221d3dc1d0e1`.
+It replaces earlier villages addon versions when testing; never install
+duplicate versions. This is still an unfinished port, not deployment acceptance.
+No live owner profile/server/world was changed or launched. Original mod art
+remains supplied by its JARs; the old flat-icon resource pack stays disabled.
+No new agents were spawned or resumed.
+
+SP/JP/reset now have separate long balances and real spending behavior. Original
+adapters implement four SP disciplines (ninjutsu/taijutsu/kenjutsu/speed), real
+native hurt/health/movement effects, canonical native chakra-capacity bonuses,
+reset-credit spending/refund, and actual owned native technique learning. Open
+`/shinobitraining` or the village hub training button. Left/right clicks spend
+1/10SP; the learn button cycles on right and learns on left. OP issuance is
+`/villagereward <xp|sp|jp|reset> <1|5|10|50> [count] [player]`.
+Tokens require marked paper, use server inventory, and preserve installed
+original providers before aliases. The supported stat formulas and JP rank
+costs are documented target-base adaptations, not parity with the old base.
+
+Native warm run12 in disposable runtime13 PASSED163assertions with the current
+53server mods plus this exact .3 addon and private QA. Actual native damage
+increased2->2.199999809for each supported unarmed/weapon/jutsu damage category;
+movement/health modifiers, SP allocation/refusals, JP learning/duplicate refusal,
+reset credit/refund and prior bank/currency/XP/PvP/respawn/drop checks passed.
+The count includes54nonnull inventory-slot checks, not163distinct features.
+Canonical chakra maximum remained120.5from base108after80native updates with
+10ninjutsu/10taijutsu points, without stacking. It uses an original structurally
+guarded two-point ASM hook, not periodic setMax calls or a shadow chakra pool.
+
+Separate cold process on that actual saved synthetic world PASSED15assertions:
+SP50/JP47/reset0, native battle XP221, actual ender-chest saved technique owner
+and learned state, and another player's allocated speed5/real movement effect
+survived a full shutdown/restart and native respawn. No rewards were reissued.
+Both processes exited0 without forced termination; all54staged gameplay JAR
+hashes stayed unchanged. No real player or original world used. This proves
+training persistence, not PvP cooldown restart persistence or production-world
+migration. Safe version-bound receipt:
+`release/evidence/naruto-villages-112-training.json`.
+
+Current public adapter0.1.2-draft component build, five provider-structure checks
+and native-fixture source compilation passed. Its reobfuscated adapter classes
+are compared to the exact native-tested .3 port in the receipt. Private original
+and transformed reference bodies, input/runtime JARs, logs/worlds remain outside
+Git. Original83class names, Java8 linkage and SQLite licenses/natives are audited.
+
+Retained failures: runtime10's fixture damage target was outside loaded geometry;
+one intermediate fixture compile used the wrong MCP method name. Runtime12's
+real capacity check stayed108because the first hook modified only the setter
+argument, after NarutoMod's cache comparison. The .3 final hook changes the
+desired local before that comparison; runtime13 then passed. Failed candidates
+remain private and were not relabeled successes.
+
+Eleven of16original default loot rows now have meaningful providers. The five
+DNA/KG/nature/clan/sage rows still lack complete providers. Other legacy training
+disciplines, clan/senjutsu bindings, promotion/rank caps, complete teleport,
+territory capture, jutsu kill-owner attribution, PvP cooldown restart persistence,
+real network/client GUI/casting acceptance and copied deployment-world migration
+remain open. The full game goal remains active. Next: recover/apply the five
+remaining provider outcome tables, preserve their actual powers/persistence,
+then finish native/client/migration acceptance before deployment packaging.
+
+## Prior direct-work checkpoint: native XP rewards and PvP (d6a3060)
 
 The newest local preview is now
 `C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-3.jar`,
