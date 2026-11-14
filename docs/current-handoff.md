@@ -27,15 +27,24 @@ every ZIP member passed CRC/SHA256 readback. It contains a top-level `mods/`
 folder, so stop the host, remove the old mods folder, upload/unarchive at the
 server root, and keep stopped until config/plugins replacements follow.
 The owner briefly requested a combined ZIP, then explicitly returned to this
-one-folder-at-a-time approach. `02 - config.zip` is next,900,249bytes with66files,
+one-folder-at-a-time approach. `02 - config.zip` was delivered,900,249bytes with66files,
 SHA256 `ac98fb18479929c1bc1a156d4dc7dbddc9b5c3b30fb0f9b1c95da874ef0436c7`.
-`03 - plugins.zip` is also prepared in the same replacement directory and includes
-the final stamina plugin. Both passed manifest/CRC/SHA256 readback; receipts are
+`03 - plugins.zip` is the next delivered folder,3,272,247bytes with1,602files/3JARs;
+SHA256 `6e18573aa590721a16ef549cce3d486566729ab02f96220ecf1809452995b4e6`.
+It includes the final native-verified stamina plugin enabled. Both passed
+manifest/CRC/SHA256 readback; receipts are
 `release/evidence/server-folder-config-0316.json` and
 `release/evidence/server-folder-plugins-0316.json`. No hosted changes were performed.
-Deliver config next, then plugins; keep the server stopped between replacements.
-The client/world need not be reuploaded for these. Root spigot.yml is available
-in the separate final stamina overlay; the plugin enforces stamina independently.
+The plugin ZIP was rechecked against its whole-archive SHA/CRC and exact stamina
+JAR SHA/config before delivery. Keep the server stopped between replacements.
+`04 - server settings.zip` is prepared in the same directory:1,657bytes, containing
+only spigot.yml; SHA256 `b79c58c33957f233d1ee73406f868e4363701854455f04bff51de8aed80737cc`.
+It passed manifest/CRC/SHA readback, with safe receipt
+`release/evidence/server-root-stamina-settings-0316.json`. No connection, operator,
+whitelist or player files are included. Deliver this final root-settings ZIP next.
+The client/world need not be reuploaded for these. The plugin enforces stamina
+independently of Magma's partly inert legacy multipliers. See
+`docs/bisect-stepwise-replacement.md` for the concise operator sequence.
 Tool: `tools/package_server_folder.py`; safe receipt:
 `release/evidence/server-folder-mods-0316.json`. Do not start another full6GB ZIP.
 
