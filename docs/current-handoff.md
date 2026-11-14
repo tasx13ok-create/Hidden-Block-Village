@@ -165,6 +165,36 @@ The proposed hVB tail enhancements remain UNADOPTED; the existing original nativ
 The separate five-coliseum chat owns all arena paths and orchestration files. Do not edit them from this chat.
 The requested sealed Core outcome observer for arena damage/support credit remains pending; generic deferred damage is not accepted reward authority.
 
+## Original-model recovery and next playable candidate
+
+The reviewed original recovery tool is now in `tools/native_asset_repair.py` with
+its original synthetic tests and real-parser helpers under `tools/native_assets/`.
+Only original tool source/tests/docs and safe hash metadata were promoted;
+native geometry, private manifests/launch recipes, JARs and generated packs remain
+private on D. The current release ZIPs, owner session and host were not changed.
+
+Root independently ran the promoted21synthetic tests: PASS. Root also compiled
+and ran the promoted Java helper against the exact real prepared Minecraft API:
+38candidate models /41incoming contexts /1,576assertions PASS. Its report SHA256
+`8f11b2426e0696a152537bcf65bf80bdf88e48570ee362392f6dcbdb17c77b15`
+matches the worker's independent run. These are headless parser/geometry/UV/
+texture-binding checks, not an atlas bake or graphical client test.
+Safe records: `release/evidence/original-model-parent-repair-candidate.json` and
+`release/evidence/original-model-parent-repair-root-review.json`.
+
+The private parent-only candidate covers37of39logged missing references while
+preserving original geometry and child texture maps. Medical's unresolved key1
+and missing jiton stay held. Exact native callback selector/field-to-registered-
+item identity and a new disposable real-client bake remain activation gates.
+No corrective overlay is active or included in the delivered client ZIP.
+
+Academy continuation is a separate D-only0.3.17candidate, not a change to the
+accepted0.3.16upload. The worker is measuring fresh actual native-player BXP
+thresholds before implementing an earned, once-only native chakra awakening,
+short optional basics/first-field-mission progression and restart-safe course
+provisioning. No new-player end-to-end route is accepted yet. Preserve the
+current four manual upload packages while that candidate is developed.
+
 ## Next work and honest limits
 
 The final source checkpoint includes these receipts and this handoff. Fetch and verify origin/main before continuing; the session's final reply reports the verified GitHub commit. Binary ZIPs and private PC inputs do not transfer through Git automatically.
