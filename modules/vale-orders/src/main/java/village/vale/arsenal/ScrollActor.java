@@ -192,6 +192,7 @@ public final class ScrollActor extends EntityCreature {
  @SideOnly(Side.CLIENT) static void registerRenderer(){net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(ScrollActor.class,manager->new net.minecraft.client.renderer.entity.RenderSnowball<ScrollActor>(manager,Gear.ITEMS.get("scroll_actor_glyph"),net.minecraft.client.Minecraft.getMinecraft().getRenderItem()){
   @Override public void doRender(ScrollActor a,double x,double y,double z,float yaw,float partial){
    if(a.dataManager.get(KIND).equals("disguise")){Entity mirrored=a.world.getEntityByID(a.dataManager.get(MIRROR));if(mirrored instanceof EntityLivingBase&&!(mirrored instanceof ScrollActor)){manager.renderEntity(mirrored,x,y,z,yaw,partial,false);return;}}
+   String k=a.dataManager.get(KIND);if(village.vale.client.ScrollActorVfx.draws(k)){village.vale.client.ScrollActorVfx.render(a,k,x,y,z,partial);return;}
    super.doRender(a,x,y,z,yaw,partial);
   }
  });}
