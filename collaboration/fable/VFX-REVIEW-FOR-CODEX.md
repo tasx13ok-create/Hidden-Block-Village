@@ -174,3 +174,12 @@ Drawn on the body bone, in layers:
 "Power" (sprint, swing, recent damage, low health; smoothed) drives brightness, pulse rate, ring speed and shafts. The colour follows the beast slot.
 
 Verified in the client: all nine sets, calm and powered. The test jar was built from this branch (0.3.10 label). Integrate into the accepted 0.3.15+ Core rather than shipping it standalone.
+
+### Chest core pass 2
+- **Sneak charge (~3 s):** builds power, shows a contracting ring and inward motes, then overloads once. The overload is a white flash with an expanding shell, a 48-voxel shockwave ring, a spark shower and a spell sound, followed by a 2 s cooldown.
+- **Hits:** spray voxel sparks out from the core.
+- **Low health:** a double-beat heartbeat replaces the smooth pulse.
+- **Water or rain:** steam rises off the core.
+- **Night or dark sky:** the ground light pool is 50% wider.
+
+**Verified in the client:** the hit spray. **Not verified:** the charge and overload. The probe crouches the player from the server, but the local player's crouch comes from keyboard input, so it never charged. Check this in game by holding sneak for 3 s.

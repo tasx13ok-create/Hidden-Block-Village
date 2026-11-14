@@ -177,7 +177,7 @@ public final class VfxShots {
 
     private static final String[] BEASTS = {"shukaku", "matatabi", "isobu", "son_goku", "kokuo", "saiken", "chomei", "gyuki", "kurama"};
     private void bijuu(Minecraft mc, IntegratedServer server, int local) {
-        int per = 100, b = local / per, t = local % per;
+        int per = 175, b = local / per, t = local % per;
         mc.gameSettings.hideGUI = true;
         if (b >= BEASTS.length) { if (t == 0) mc.shutdown(); return; }
         String beast = BEASTS[b];
@@ -211,7 +211,10 @@ public final class VfxShots {
         if (t == 84) shot(mc, String.format("core_%d_%s_calm", b, beast));
         if (t == 86) server.addScheduledTask(() -> { EntityPlayerMP p = server.getPlayerList().getPlayers().get(0); p.attackEntityFrom(net.minecraft.util.DamageSource.GENERIC, 1); p.heal(1); });
         if (t == 92) shot(mc, String.format("core_%d_%s_powered", b, beast));
-        if (t == 96) mc.gameSettings.fovSetting = 70;
+        if (t == 100) server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).setSneaking(true));
+        if (t == 130) shot(mc, String.format("core_%d_%s_charging", b, beast));
+        if (t == 162) shot(mc, String.format("core_%d_%s_overload", b, beast));
+        if (t == 168) { server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).setSneaking(false)); mc.gameSettings.fovSetting = 70; }
     }
 
     private void menus(Minecraft mc, IntegratedServer server, int t) {
@@ -279,7 +282,7 @@ public final class VfxShots {
             try { java.lang.reflect.Method m = village.vale.Dodge.class.getDeclaredMethod("perform", EntityPlayerMP.class, int.class); m.setAccessible(true); m.invoke(null, p, dir); }
             catch (Exception ex) { throw new RuntimeException(ex); }
         });
-        String name = "dodge_" + village.vale.DodgeMath.NAMES[dir] + (back ? "_behind" : "_front");
+        String name = "dodge_" + new String[] {"front", "back", "left", "right"}[dir] + (back ? "_behind" : "_front");
         if (t == 13) shot(mc, name + "_1");
         if (t == 15) shot(mc, name + "_2");
         if (t == 17) shot(mc, name + "_3");
