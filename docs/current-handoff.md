@@ -461,3 +461,27 @@ The Source13 real client has joined, advertised-capability detection passed, and
 Next, repair the documented original asset references without changing the requested original artwork; finish academy/first missions, imported NPC/save restart and campaign acceptance; coordinate the sealed outcome API with the separate arena branch. Do not infer universal combat/quest parity or hosted readiness from these checks.
 
 The full game, all49-mod behavioral parity, all campaigns, all original NPC payload migration, universal native jutsu mapping and complete graphical/hosting acceptance remain unfinished. The20-hour target elapsed. Use design/README.md and the project skill for continuation, and distinguish historical evidence from current observations.
+
+
+## Five-coliseum arena branch
+
+The separate arena worker has saved final build06 source and safe evidence on
+`codex/five-new-naruto-coliseums`, verified checkpoint
+`48502c1e33c914bd43574d3dad5e7d924a3f0d7a`, including main through d6a306.
+All five stadium structures themselves occupy500x500x250 atY3..252. Strict
+schematic/Anvil312.5M-cell/25-tile, buffer and whole-cold-restore checks PASS.
+The private ALL10 schematic ZIP adds the five unchanged v17 files to the five
+new stadiums; exact paths/hashes and commands are in
+[the arena handoff](dungeons/new-arenas/handoff.md). No owner world/live session
+was modified. Twenty original seal clears and seven semantic process-restart
+checkpoints passed their exact recorded cohorts. Targeted final native Gaara,
+Nether and profile-free lighting passes are separate; final controller/load
+checks continue. Broad p99 FAILs and closed native-death adapters remain explicit.
+The accepted nonlethal outcome observer, client/shader and hosting gates remain
+unavailable. Review the arena handoff/evidence before final shared integration;
+the structures-only download does not install automatic encounters.
+
+CrazyCrates operator follow-up: the supplied server retains spawn-protection16.
+The owner confirmed that an affected player could open a newly registered crate
+outside spawn protection. See [the tested in-game workaround](crazycrates-in-game-fix.md).
+No spawn setting, hosted file, operator grant or live session was changed here.
