@@ -66,6 +66,7 @@ public final class VfxShots {
             p.world.spawnEntity(target);
         });
         if (tick < 300) return;
+        if (Boolean.getBoolean("valeorders.vfxshots.bijuu")) { bijuu(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.bridge")) {
             int t = tick - 300;
             mc.gameSettings.hideGUI = false; mc.gameSettings.thirdPersonView = 2;
@@ -172,6 +173,40 @@ public final class VfxShots {
         if (t == 18) { mc.setRenderViewEntity(cam); mc.gameSettings.thirdPersonView = 0; }
         if (t == 20) { server.addScheduledTask(() -> WeaponPulse.swing(server.getPlayerList().getPlayers().get(0), spec, spec.role == ArsenalSpec.Role.SWEEP)); }
         if (t == 24) shot(mc, name + "_d_swing");
+    }
+
+    private static final String[] BEASTS = {"shukaku", "matatabi", "isobu", "son_goku", "kokuo", "saiken", "chomei", "gyuki", "kurama"};
+    private void bijuu(Minecraft mc, IntegratedServer server, int local) {
+        int per = 90, b = local / per, t = local % per;
+        mc.gameSettings.hideGUI = true;
+        if (b >= BEASTS.length) { if (t == 0) mc.shutdown(); return; }
+        String beast = BEASTS[b];
+        if (t == 0) {
+            try { Class<?> c = Class.forName("village.bijuu.BijuuArmor"); c.getField("requireIssued").setBoolean(null, false); } catch (Exception ex) { System.out.println("BIJUUPROBE no config field " + ex); }
+            server.addScheduledTask(() -> {
+                EntityPlayerMP p = server.getPlayerList().getPlayers().get(0);
+                p.setGameType(GameType.SURVIVAL);
+                p.connection.setPlayerLocation(0.5, 4, 0.5, 0, 0);
+                String[] parts = {"boots", "leggings", "chestplate", "helmet"};
+                for (int i = 0; i < 4; i++) {
+                    net.minecraft.item.Item it = net.minecraft.item.Item.getByNameOrId("hvbijuu:" + beast + "_" + parts[i]);
+                    p.inventory.armorInventory.set(i, it == null ? net.minecraft.item.ItemStack.EMPTY : new net.minecraft.item.ItemStack(it));
+                    if (it == null) System.out.println("BIJUUPROBE missing item hvbijuu:" + beast + "_" + parts[i]);
+                }
+            });
+        }
+        // Motion: walk forward, strafe, jump, stop, to exercise the tail physics.
+        if (t >= 8 && t < 60) server.addScheduledTask(() -> {
+            EntityPlayerMP p = server.getPlayerList().getPlayers().get(0);
+            double vx = t < 25 ? 0 : t < 40 ? 0.25 : 0, vz = t < 25 ? 0.3 : 0;
+            p.motionX = vx; p.motionZ = vz; if (t == 42) p.motionY = 0.45; p.velocityChanged = true;
+        });
+        int[] at = {6, 20, 34, 46, 58, 75};
+        String[] views = {"rest_back", "run_back", "strafe_front", "jump_front", "land_back", "settle_front"};
+        for (int i = 0; i < at.length; i++) {
+            if (t == at[i] - 3) mc.gameSettings.thirdPersonView = views[i].endsWith("front") ? 2 : 1;
+            if (t == at[i]) shot(mc, String.format("bijuu_%d_%s_%s", b, beast, views[i]));
+        }
     }
 
     private void menus(Minecraft mc, IntegratedServer server, int t) {
