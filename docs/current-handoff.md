@@ -1,5 +1,14 @@
 # Current project handoff
 
+## Required Core baseline and Claude bridge evidence
+
+The owner requires Core **0.3.14 or newer** from now on for Dodge and newer moves. Continue from the accepted **0.3.15** cohort; do not downgrade it. The inspected downloaded Client.zip contains Core0.3.5/HUD0.14.0/Rack0.1.1 and does not meet this baseline.
+
+Read `collaboration/claude-naruto-bridge/CORE-AND-BRIDGE-REVIEW-20261113.md`. Claude branch7588b9f still probes a client-only API on the dedicated server, guesses a spend overload and defers some payment until a later mirror tick. The ongoing guarded integration is separate and preserved. A private owner handoff now packages the five hash/CRC-verified original JARs, existing exact API facts, prior raw-API diagnostic log/results and 345item/315entity saved-runtime registry names with UNVERIFIED inferred styles. Neither the raw log nor that registry list is the requested build's bridge-discovered.json; no genuine discovery file was found in the inspected locations. Raw fixture overall result remainsfalse despite13earlier passing API checks and observed Base/Spring cache divergence. No new bridge/gameplay acceptance is claimed.
+
+The private bundles remain under the original checkout's ignored `local/claude-naruto-bridge-intake/20261113-bridge-review-01/`. Five JAR hashes/sizes/CRC and both ZIPs' exact-entry byte/hash/CRC checks passed. Only this note and the linked original review are saved publicly. Next: finish the ongoing adapter/caller integration on the accepted modern base, test in an isolated matching full-pack candidate, then collect its actual log and event discovery file. Preserve the owner's live015 session and concurrent source/index.
+
+
 ## Unified inventory settings component checkpoint
 
 The owner's requested single Naruto settings hub is implemented: inventory Settings, F7/F8, the settings commands and pause Options use the same six-tab hub. The former Advanced HUD menu is a redirect. All old HUD preferences, full action bindings, saved profiles, presets, mouse controls and staged native preferences remain available; child editors use the Naruto paper theme. Hotbar appearance/geometry was preserved. Read `docs/unified-naruto-settings.md`.
