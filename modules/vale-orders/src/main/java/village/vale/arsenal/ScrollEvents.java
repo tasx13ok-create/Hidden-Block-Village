@@ -21,11 +21,11 @@ public final class ScrollEvents {
  @SubscribeEvent(priority=EventPriority.HIGHEST,receiveCanceled=true) public static void preserveContact(LivingAttackEvent e){
   // A later attempt (even one canceled in hurt/damage) can overwrite vanilla's
   // last source. Preserve the earlier native observation before that happens.
-  for(ModeContact c:CONTACTS)if(c.target==e.getEntityLiving())c.observeNativeLoss();
+  for(ModeContact c:CONTACTS)if(c.target==e.getEntityLiving())c.observeNativeLoss(true);
  }
- @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true) public static void preserveHealedContact(LivingHealEvent e){for(ModeContact c:CONTACTS)if(c.target==e.getEntityLiving())c.observeNativeLoss();}
+ @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true) public static void preserveHealedContact(LivingHealEvent e){for(ModeContact c:CONTACTS)if(c.target==e.getEntityLiving())c.observeNativeLoss(true);}
  /** Academy constructs refill directly rather than emitting LivingHealEvent. Preserve their real completed contact first. */
- public static void beforeHealthReset(EntityLivingBase target){village.vale.FocusTransactions.beforeHealthReset(target);for(ModeContact c:CONTACTS)if(c.target==target)c.observeNativeLoss();}
+ public static void beforeHealthReset(EntityLivingBase target){village.vale.FocusTransactions.beforeHealthReset(target);for(ModeContact c:CONTACTS)if(c.target==target)c.observeNativeLoss(true);}
  /** Add through the native attack, never recursively attack inside LivingDamageEvent. */
  @SubscribeEvent(priority=EventPriority.HIGH) public static void modeBonus(LivingHurtEvent e){
   if(e.isCanceled()||!Float.isFinite(e.getAmount())||e.getAmount()<=0||e.getEntityLiving().world.isRemote||CONTACTS.size()>=512)return;
@@ -52,11 +52,20 @@ public final class ScrollEvents {
  }
  private static final class ModeContact{
   final EntityPlayerMP player;final EntityLivingBase target;final UUID owner;final net.minecraft.world.World world;final NBTTagCompound account,state;
-  final String mode;final long until,version;final LivingHurtEvent hurt;final float before,absorptionBefore;LivingDamageEvent damage;boolean observedLoss;float absorbed;
+  final String mode;final long until,version;final LivingHurtEvent hurt;final float before,absorptionBefore;LivingDamageEvent damage;boolean observedLoss,sealed;float absorbed;
   ModeContact(EntityPlayerMP p,EntityLivingBase t,NBTTagCompound a,NBTTagCompound s,String m,long u,long v,LivingHurtEvent h){player=p;target=t;owner=p.getUniqueID();world=p.world;account=a;state=s;mode=m;until=u;version=v;hurt=h;before=t.getHealth()+t.getAbsorptionAmount();absorptionBefore=t.getAbsorptionAmount();}
   boolean activation(){return owner.equals(player.getUniqueID())&&player.world==world&&PlayerState.data(player)==account&&Scrolls.state(player)==state&&mode.equals(state.getString("mode"))&&state.getLong("modeUntil")==until&&state.getLong("modeVersion")==version&&player.isEntityAlive()&&!player.isSpectator();}
-  void observeNativeLoss(){if(target.getLastDamageSource()==hurt.getSource()&&target.getHealth()+target.getAbsorptionAmount()<before)observedLoss=true;}
-  boolean accepted(){observeNativeLoss();return !hurt.isCanceled()&&Float.isFinite(hurt.getAmount())&&hurt.getAmount()>0&&damage!=null&&!damage.isCanceled()&&Float.isFinite(damage.getAmount())&&damage.getAmount()>=0&&(damage.getAmount()>0||absorbed>0)&&observedLoss;}
+  boolean admitted(){return !hurt.isCanceled()&&Float.isFinite(hurt.getAmount())&&hurt.getAmount()>0&&damage!=null&&!damage.isCanceled()&&Float.isFinite(damage.getAmount())&&damage.getAmount()>=0&&(damage.getAmount()>0||absorbed>0);}
+  void observeNativeLoss(boolean seal){
+   if(sealed)return;
+   float absorption=target.getAbsorptionAmount(),now=target.getHealth()+absorption;
+   // The pinned Magma final event precedes absorption deduction; standard Forge follows it.
+   // A matching final event AND real loss are required, bounded before another event.
+   if(damage!=null&&Float.isFinite(absorptionBefore)&&Float.isFinite(absorption))absorbed=Math.max(absorbed,Math.max(0,absorptionBefore-absorption));
+   if(admitted()&&Float.isFinite(before)&&Float.isFinite(now)&&now<before)observedLoss=true;
+   if(seal)sealed=true;
+  }
+  boolean accepted(){observeNativeLoss(false);return admitted()&&observedLoss;}
  }
  @SubscribeEvent public static void contacts(net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent e){if(e.phase==net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END)flushContacts();}
  @SubscribeEvent public static void unload(net.minecraftforge.event.world.WorldEvent.Unload e){CONTACTS.removeIf(c->c.world==e.getWorld());}

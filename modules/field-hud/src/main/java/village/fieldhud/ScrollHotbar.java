@@ -17,6 +17,7 @@ public final class ScrollHotbar extends Gui {
     private ScrollHotbar(){}
     public static void reset(){focus=-1;previous=-1;lastTime=0;changedAt=-100;}
     public static void draw(ShinobiLayout layout,double time,float partial){
+        try(AnimeDraw.Scope renderState=new AnimeDraw.Scope()){
         boolean combat=RackAccess.combatActive();int count=combat?6:9;
         Layout.Box full=layout.hotbar;Layout.Box b=combat?new Layout.Box(full.x+30,full.y,full.w-60,full.h):full;int x=b.x,y=b.y;
         boolean curve=HudConfig.curve&&!combat;
@@ -29,7 +30,7 @@ public final class ScrollHotbar extends Gui {
         else focus=SkinMath.ease(focus,selected,Math.min(4,time-lastTime),.8);
         lastTime=time;
         double stamp=motion?Math.max(0,1-(time-changedAt)/7):0;
-        HotbarFx.frame(time,motion);HotbarFx.slots(selected,focus);
+        HotbarFx.frame(time,motion,count,curve);HotbarFx.slots(selected,focus);
         HotbarFx.pushBody(b,time,motion,1);
         try{
         HotbarFx.under(b,time);
@@ -48,7 +49,7 @@ public final class ScrollHotbar extends Gui {
             SkinDraw.line(sx+4,sy+21,sx+15,sy+21,.5,0x706D5148);
         }
         HotbarFx.ghosts(b,focus,0xE9BB79);
-        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,curve)-FableHudMath.lift(0);
+        double sx=x+22+focus*ScrollGeometry.STRIDE,sy=y+7+ScrollGeometry.curve(focus,curve)-(motion?FableHudMath.lift(0):0);
         SkinDraw.rounded(sx,sy,19,22,1.5,SkinDraw.alpha(0x663B35,(int)(90*priority)));
         SkinDraw.outline(sx-.4,sy-.4,19.8,22.8,1.6,.8,SkinDraw.alpha(0xBD6E5E,(int)(245*priority)));
         ScrollChrome.corners(sx,sy,19,22,SkinDraw.alpha(0xF0DCB7,(int)(235*priority)));
@@ -102,6 +103,7 @@ public final class ScrollHotbar extends Gui {
         }finally{HotbarFx.pop();}
         HotbarFx.particles();
         GlStateManager.color(1,1,1,1);
+        }
     }
     private static void cap(int x,int y,boolean selected,double route){
         SkinDraw.rounded(x,y,15,32,2,0xFF283235);

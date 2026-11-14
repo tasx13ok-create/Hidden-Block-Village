@@ -14,6 +14,8 @@ public final class FableHudMath {
         public Spring(double stiffness, double damping, double start) { this.stiffness = stiffness; this.damping = damping; value = target = start; }
         /** Advances by {@code dt} ticks; large gaps (pause, lag) snap instead of exploding. */
         public double step(double dt) {
+            if(!Double.isFinite(target))target=0;
+            if(!Double.isFinite(value)||!Double.isFinite(velocity)){snap(target);return value;}
             if (!(dt > 0)) return value;
             if (dt > 20) { value = target; velocity = 0; return value; }
             int n = Math.max(1, (int) Math.ceil(dt / 0.25));
@@ -30,7 +32,23 @@ public final class FableHudMath {
         public void snap(double v) { value = target = v; velocity = 0; }
     }
 
-    public static double clamp(double v, double lo, double hi) { return v < lo ? lo : v > hi ? hi : v; }
+    public static double clamp(double v, double lo, double hi) { return !Double.isFinite(v) ? lo : v < lo ? lo : v > hi ? hi : v; }
+    /** At most one bounded simulation step per native game tick; render FPS cannot mint particles. */
+    public static final class TickGate {
+        private int last=Integer.MIN_VALUE;
+        public int step(int tick){if(last==Integer.MIN_VALUE||tick<last){last=tick;return 0;}int dt=(int)Math.min(5L,(long)tick-last);last=tick;return dt;}
+        public void reset(){last=Integer.MIN_VALUE;}
+    }
+    /** Shared bounded emissions; repeated render calls within one native tick cannot multiply work. */
+    public static final class Budget{
+        private final int limit;private int tick=Integer.MIN_VALUE,used;
+        public Budget(int limit){if(limit<1||limit>4096)throw new IllegalArgumentException("Invalid visual budget");this.limit=limit;}
+        public int take(int now,int desired){if(desired<=0)return 0;if(now!=tick){tick=now;used=0;}int result=Math.min(limit-used,desired);used+=result;return result;}
+        public void reset(){tick=Integer.MIN_VALUE;used=0;}
+    }
+    public static int visibleSlots(int count){return count==6?6:9;}
+    public static double selector(double value,int count){return clamp(value,0,visibleSlots(count)-1);}
+
 
     /** 0..1 -> 0..1 with a small overshoot ("back out"), for pop-ins. */
     public static double backOut(double t) {

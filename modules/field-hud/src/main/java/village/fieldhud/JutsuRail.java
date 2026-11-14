@@ -24,7 +24,8 @@ public final class JutsuRail extends Gui {
     // Error feedback uses the normal action bar through JutsuInput, rather than a persistent footer.
     public static void hint(String value){}
     public static void draw(HudLayers.Frame frame){
-        if(RackAccess.loaded()){if(visible()&&!RackAccess.combatActive())RackRailDraw.draw(frame);return;}
+        try(AnimeDraw.Scope renderState=new AnimeDraw.Scope()){
+        if(RackAccess.loaded()){if(visible()&&!RackAccess.combatActive())RackRailDraw.draw(frame);else HotbarFx.railFrame(frame.time,false,false);return;}
         if(!visible()||!JutsuAccess.MODEL.initialized()){HotbarFx.railFrame(frame.time,false,false);return;}
         JutsuRailLayout rail=layout(frame.resolution.getScaledWidth(),frame.resolution.getScaledHeight());if(rail.box==null)return;
         Layout.Box b=rail.box;double time=frame.time;JutsuRailModel model=JutsuAccess.MODEL;
@@ -38,7 +39,7 @@ public final class JutsuRail extends Gui {
                 int iconX=cx-8,iconY=cy-8;boolean selected=row==model.index();JutsuEntry entry=model.display(row);
                 boolean enabled=fresh&&entry!=null&&entry.enabled;double ready=entry==null?0:model.ready(entry.id,time,motion);
                 double cooling=entry==null?0:entry.fraction(elapsed);
-                double[] flash=HotbarFx.railState(row,entry,entry!=null&&fresh&&entry.canCast&&cooling<=0,cooling,time);
+                double[] flash=HotbarFx.railState(row,entry,entry!=null&&fresh&&entry.canCast&&cooling<=0,cooling,time,selected);
                 HotbarFx.pushRow(row,selected,focus,time,motion);
                 try{
                 SkinDraw.rounded(b.x+.5,y+1.5,b.w-1,rail.slotHeight-2,2,0xA8071014);
@@ -61,7 +62,7 @@ public final class JutsuRail extends Gui {
                 if(flash[1]>0){GlStateManager.disableAlpha();SkinDraw.outline(b.x,y,b.w,rail.slotHeight-1,2,1,SkinDraw.alpha(0xFFFFFF,(int)(230*flash[1])));}
                 if(flash[0]>0){GlStateManager.disableAlpha();double g=flash[0]*3;SkinDraw.outline(b.x-g,y-g,b.w+2*g,rail.slotHeight-1+2*g,2.5,.8,SkinDraw.alpha(0x9DDDDC,(int)(230*flash[0])));}
                 if(HotbarFx.justReady(row,time))HotbarFx.sparkle(cx,cy,0xFF9DDDDC,8);
-                if(entry!=null)HotbarFx.railBurst(cx,cy,rail.slotHeight,flash[0],HotbarFx.element(entry));
+                if(entry!=null)HotbarFx.railBurst(cx,cy,rail.slotHeight,flash[1],HotbarFx.element(entry));
                 if(entry.itemCount>1)quantity(entry.itemCount,iconX+15.5,iconY+11);
                 if(!enabled){
                     SkinDraw.line(iconX+3,iconY+13,iconX+13,iconY+3,.85,0xB9C3A298);
@@ -86,6 +87,7 @@ public final class JutsuRail extends Gui {
             HotbarFx.particles();
         }finally{
             if(alphaTest)GlStateManager.enableAlpha();else GlStateManager.disableAlpha();GlStateManager.color(1,1,1,1);
+        }
         }
     }
     private static void quantity(int count,double right,double y){

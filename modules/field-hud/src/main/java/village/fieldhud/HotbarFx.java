@@ -18,20 +18,26 @@ public final class HotbarFx {
     private HotbarFx() {}
 
     // ---- shared body motion ----------------------------------------------------------------------
-    private static double dt, barLast = -1;
-    /** Hotbar per-frame step (environment springs are shared; slot springs use the hotbar's own clock). */
-    public static double frame(double time, boolean motion) {
-        FableEnv.update(time);
-        dt = barLast < 0 || time < barLast ? 0 : Math.min(5, time - barLast);
-        barLast = time;
-        if (!motion) dt = 100;
-        return dt;
+    private static double dt,barLast=-1,railConfirmed=-1000,lastSignal=-1000;
+    private static int count=9,lastWeatherTick=Integer.MIN_VALUE;
+    private static boolean curved=true,moving;
+    private static final FableHudMath.TickGate BAR_CLOCK=new FableHudMath.TickGate(),RAIL_CLOCK=new FableHudMath.TickGate();
+    static double artTime(double time){return HudConfig.motion&&HudConfig.mode!=2&&Double.isFinite(time)?time:0;}
+    private static void confirmed(){double signal=Math.max(ValeBridge.confirmedAt,JutsuSignals.confirmedAt);if(signal>lastSignal){lastSignal=signal;castAt=signal;}}
+    public static void reset(){dt=railDt=0;barLast=railLast=railShownAt=-1;lastSelected=splashFrom=-1;castAt=splashAt=-1000;lastSignal=Math.max(ValeBridge.confirmedAt,JutsuSignals.confirmedAt);railConfirmed=-1000;lastWeatherTick=Integer.MIN_VALUE;BAR_CLOCK.reset();RAIL_CLOCK.reset();
+        java.util.Arrays.fill(GHOST,0);java.util.Arrays.fill(COUNT,0);java.util.Arrays.fill(SEEN,ItemStack.EMPTY);java.util.Arrays.fill(IDS,null);java.util.Arrays.fill(WAS_READY,false);java.util.Arrays.fill(READY_AT,-1000);java.util.Arrays.fill(CAST_AT,-1000);java.util.Arrays.fill(SPARK_TICK,Integer.MIN_VALUE);
+        for(int i=0;i<SLOTS;i++){LIFT[i].snap(0);TILT[i].snap(0);POP[i].snap(1);}for(int i=0;i<ROWS;i++){OUT[i].snap(0);RECOIL[i].snap(0);}
     }
 
-    /** Pushes a matrix that sways, bobs, squashes and shakes the hotbar around its bottom centre. */
+    /** Hotbar per-frame step (environment springs are shared; slot springs use the hotbar's own clock). */
+    public static double frame(double time,boolean motion,int visibleCount,boolean curve){
+        FableEnv.update(time);moving=motion;int next=FableHudMath.visibleSlots(visibleCount);
+        if(next!=count){reset();FableEnv.clearParticles();count=next;}curved=curve;dt=BAR_CLOCK.step(FableEnv.tick());barLast=time;confirmed();return dt;
+    }
+
     public static void pushBody(Layout.Box b, double time, boolean motion, double scale) {
         GlStateManager.pushMatrix();
-        double[] shake = FableHudMath.shake(2.2 * FableEnv.hurt, time);
+        double[] shake = FableHudMath.shake(motion?2.2 * FableEnv.hurt:0, time);
         double ox = (motion ? FableEnv.SWAY.value : 0) * scale + shake[0], oy = (motion ? FableEnv.BOB.value + FableEnv.SQUASH.value * 1.5 : 0) * scale + shake[1];
         GlStateManager.translate(FableHudMath.snap(ox), FableHudMath.snap(oy), 0);
         double sq = motion && scale > 0.9 ? FableHudMath.clamp(FableEnv.SQUASH.value * 0.06, -0.08, 0.1) : 0;
@@ -45,6 +51,7 @@ public final class HotbarFx {
 
     /** Climate / damage / heartbeat / lightning tint over a frame rectangle (drawn after the art). */
     public static void tint(double x, double y, double w, double h, double time) {
+        time=artTime(time);
         double hurt = Math.max(FableEnv.hurt, FableEnv.heartbeat(time));
         if (hurt > 0.02) SkinDraw.outline(x, y, w, h, 3, 1.2, SkinDraw.alpha(0xE0384A, (int) (220 * hurt)));
         if (FableEnv.flash > 0.02) SkinDraw.rounded(x, y, w, h, 3, SkinDraw.alpha(0xFFFFFF, (int) (90 * FableEnv.flash)));
@@ -78,35 +85,40 @@ public final class HotbarFx {
 
     /** Tracks selection changes and per-slot springs; {@code selector} is the eased focus position. */
     public static void slots(int selected, double selector) {
+        selector=FableHudMath.selector(selector,count);selected=(int)FableHudMath.selector(selected,count);
+        if(lastSelected<0)java.util.Arrays.fill(GHOST,selector);
+        if(dt<=0)return;
         if (lastSelected >= 0 && selected != lastSelected) {
             int d = selected - lastSelected;
-            if (Math.abs(d) > 4) d = -Integer.signum(d);
-            for (int i = 0; i < SLOTS; i++) TILT[i].kick(-Integer.signum(d) * 1.6);
+            if (Math.abs(d) > count/2) d = -Integer.signum(d);
+            for (int i = 0; i < count; i++) TILT[i].kick(-Integer.signum(d) * 1.6);
         }
         lastSelected = selected;
         for (int i = GHOST.length - 1; i > 0; i--) GHOST[i] = GHOST[i - 1];
         GHOST[0] = selector;
-        for (int i = 0; i < SLOTS; i++) {
-            LIFT[i].target = FableHudMath.lift(i - selector); LIFT[i].step(dt);
-            TILT[i].target = 0; TILT[i].step(dt);
-            POP[i].target = 1; POP[i].step(dt);
+        for (int i = 0; i < count; i++) {
+            LIFT[i].target = moving?FableHudMath.lift(i-selector):0;if(moving)LIFT[i].step(dt);else LIFT[i].snap(0);
+            TILT[i].target = 0;if(moving)TILT[i].step(dt);else TILT[i].snap(0);
+            POP[i].target = 1;if(moving)POP[i].step(dt);else POP[i].snap(1);
         }
     }
 
     /** Pixel lift of slot i (draw the slot well and item this many pixels higher). */
-    public static int lift(int i) { return FableHudMath.snap(LIFT[i].value); }
+    public static int lift(int i) { return moving&&i>=0&&i<count?FableHudMath.snap(LIFT[i].value):0; }
 
     /** Fading outlines where the selector just was (fast scrolls leave a trail). */
     public static void ghosts(Layout.Box b, double selector, int color) {
+        if(!moving)return;
         for (int g = GHOST.length - 1; g >= 1; g--) {
             if (Math.abs(GHOST[g] - selector) < 0.25) continue;
-            double gx = b.x + 22 + GHOST[g] * ScrollGeometry.STRIDE, gy = b.y + 7 + ScrollGeometry.curve(GHOST[g], HudConfig.curve);
+            double gx = b.x + 22 + FableHudMath.selector(GHOST[g],count) * ScrollGeometry.STRIDE, gy = b.y + 7 + ScrollGeometry.curve(FableHudMath.selector(GHOST[g],count), curved);
             SkinDraw.outline(gx, gy, 19, 22, 1.5, .6, SkinDraw.alpha(color, (int) (110 * (1 - g / (double) GHOST.length))));
         }
     }
 
     /** Draws an item with pickup pop, count bump, scroll tilt, selected bob and pickup sparkles. */
     public static void item(int i, ItemStack stack, int x, int y, boolean selected, double time) {
+        if(i<0||i>=count)return;
         boolean changed = !ItemStack.areItemsEqual(stack, SEEN[i]);
         if (changed) {
             if (!stack.isEmpty()) { POP[i].snap(0.2); POP[i].target = 1; sparkle(x + 8, y + 8, 0xFFF4E3BF, 10); }
@@ -115,10 +127,12 @@ public final class HotbarFx {
         } else if (!stack.isEmpty() && stack.getCount() != COUNT[i]) POP[i].kick(stack.getCount() > COUNT[i] ? 0.12 : -0.08);
         COUNT[i] = stack.getCount();
         if (stack.isEmpty()) return;
-        double scale = POP[i].value * (selected ? 1.1 + 0.03 * Math.sin(time * 0.2) : 1);
-        double tilt = TILT[i].value * 6 + (selected ? Math.sin(time * 0.1) * 2 : 0);
+        time=artTime(time);
+        double scale = moving?POP[i].value*(selected?1.1+0.03*Math.sin(time*.2):1):1;
+        double tilt = moving?TILT[i].value*6+(selected?Math.sin(time*.1)*2:0):0;
         int ly = lift(i);
         GlStateManager.pushMatrix();
+        try{
         GlStateManager.translate(x + 8, y + 8 - ly, 0);
         GlStateManager.rotate((float) tilt, 0, 0, 1);
         GlStateManager.scale(scale, scale, 1);
@@ -126,7 +140,7 @@ public final class HotbarFx {
         GlStateManager.color(1, 1, 1, 1);
         MC.getRenderItem().renderItemAndEffectIntoGUI(MC.player, stack, 0, 0);
         MC.getRenderItem().renderItemOverlays(MC.fontRenderer, stack, 0, 0);
-        GlStateManager.popMatrix();
+        }finally{GlStateManager.popMatrix();}
         if (stack.isItemStackDamageable() && stack.getMaxDamage() > 0 && 1 - stack.getItemDamage() / (double) stack.getMaxDamage() < 0.15 && (int) (time / 6) % 2 == 0) {
             GlStateManager.disableDepth();
             Gui.drawRect(x + 13, y - 1 - ly, x + 17, y - ly, 0xFFE83A3A);
@@ -141,23 +155,22 @@ public final class HotbarFx {
     private static final double[] READY_AT = new double[ROWS], CAST_AT = new double[ROWS];
     private static final boolean[] WAS_READY = new boolean[ROWS];
     private static final String[] IDS = new String[ROWS];
+    private static final int[] SPARK_TICK=new int[ROWS];
     private static double railShownAt = -1, railLast = -1, railDt;
     static { for (int i = 0; i < ROWS; i++) { OUT[i] = new FableHudMath.Spring(0.35, 0.55, 0); RECOIL[i] = new FableHudMath.Spring(0.45, 0.5, 0); READY_AT[i] = CAST_AT[i] = -100; } }
 
     public static void railFrame(double time, boolean motion, boolean visible) {
-        if (!visible) { railShownAt = -1; return; }
-        railDt = railLast < 0 || time < railLast ? 0 : Math.min(5, time - railLast);
-        railLast = time;
-        if (!motion) railDt = 100;
+        if (!visible) { railShownAt = -1;RAIL_CLOCK.reset();return; }
+        FableEnv.update(time);moving=motion;railDt=RAIL_CLOCK.step(FableEnv.tick());railLast=time;confirmed();
         if (railShownAt < 0) railShownAt = time;
     }
 
     /** Pushes the per-row offset: staggered entry, selected slide-out toward screen centre, cast recoil, counter-sway. */
     public static void pushRow(int row, boolean selected, double focus, double time, boolean motion) {
-        OUT[row].target = selected ? 4 + focus * 3 : focus * 1.5; OUT[row].step(railDt);
-        RECOIL[row].target = 0; RECOIL[row].step(railDt);
+        OUT[row].target=motion?(selected?4+focus*3:focus*1.5):0;RECOIL[row].target=0;
+        if(motion){OUT[row].step(railDt);RECOIL[row].step(railDt);}else{OUT[row].snap(0);RECOIL[row].snap(0);}
         double enter = motion ? FableHudMath.backOut(FableHudMath.clamp((time - railShownAt - row * 2.5) / 9, 0, 1)) : 1;
-        double[] shake = FableHudMath.shake(1.5 * FableEnv.hurt, time + 7);
+        double[] shake = FableHudMath.shake(motion?1.5*FableEnv.hurt:0,time+7);
         double dx = -OUT[row].value + RECOIL[row].value + (1 - enter) * 40 + (motion ? -FableEnv.SWAY.value * 0.5 : 0) + shake[0];
         double dy = (motion ? -FableEnv.BOB.value * 0.4 : 0) + shake[1];
         GlStateManager.pushMatrix();
@@ -165,16 +178,15 @@ public final class HotbarFx {
     }
 
     /** Detects ready/cast transitions for a row; returns {readyFlash, castFlash}. */
-    public static double[] railState(int row, JutsuEntry entry, boolean ready, double fraction, double time) {
-        String id = entry == null ? null : entry.id;
-        if (id == null ? IDS[row] != null : !id.equals(IDS[row])) { IDS[row] = id; WAS_READY[row] = ready; }
-        if (ready && !WAS_READY[row]) READY_AT[row] = time;
-        if (!ready && WAS_READY[row] && fraction > 0) { CAST_AT[row] = time; RECOIL[row].kick(2.2); }
-        WAS_READY[row] = ready;
-        return new double[] {FableHudMath.pulse((time - READY_AT[row]) / 10), FableHudMath.pulse((time - CAST_AT[row]) / 8)};
+    public static double[] railState(int row,JutsuEntry entry,boolean ready,double fraction,double time,boolean selected){return railState(row,entry==null?null:entry.id,ready,time,selected);}
+    public static double[] railState(int row,String id,boolean ready,double time,boolean selected){
+        if(id==null?IDS[row]!=null:!id.equals(IDS[row])){IDS[row]=id;WAS_READY[row]=ready;READY_AT[row]=CAST_AT[row]=-1000;}
+        if(ready&&!WAS_READY[row])READY_AT[row]=time;
+        if(id!=null&&selected&&castAt>railConfirmed){railConfirmed=castAt;CAST_AT[row]=castAt;if(moving)RECOIL[row].kick(2.2);}
+        WAS_READY[row]=ready;
+        return moving?new double[]{FableHudMath.pulse((time-READY_AT[row])/10),FableHudMath.pulse((time-CAST_AT[row])/8)}:new double[]{0,0};
     }
-
-    public static boolean justReady(int row, double time) { double a = time - READY_AT[row]; return a >= 0 && a < 1.2; }
+    public static boolean justReady(int row,double time){double age=time-READY_AT[row];int tick=FableEnv.tick();if(!moving||age<0||age>=1.2||SPARK_TICK[row]==tick)return false;SPARK_TICK[row]=tick;return true;}
 
     /** Row x offset currently applied (so the selector can follow the slid-out slot). */
     public static double rowOut(int row) { return -OUT[row].value + RECOIL[row].value; }
@@ -208,6 +220,7 @@ public final class HotbarFx {
 
     /** Behind the scroll: breathing multi-layer chakra aura and a soft drop shadow. */
     public static void under(Layout.Box b, double time) {
+        time=artTime(time);
         int c = chakra(time);
         double breathe = 0.75 + 0.25 * Math.sin(time * 0.08);
         double cx = b.x + b.w / 2.0, cy = b.y + 17;
@@ -225,6 +238,7 @@ public final class HotbarFx {
 
     /** Between the slot wells and the items: paper fibres, ink wash, gloss, selected seal + flames, kunai, splash, chakra stream, cap seals. */
     public static void over(Layout.Box b, double time, double selector, int selected) {
+        time=artTime(time);
         int x = b.x, y = b.y, c = chakra(time);
         // Washi fibres in the parchment border.
         for (int i = 0; i < 70; i++) {
@@ -234,14 +248,14 @@ public final class HotbarFx {
         }
         // Sumi-e ink wash across the well band, darker toward the bottom.
         AnimeDraw.vertical(x + 17, y + 6, b.w - 34, 25, AnimeDraw.argb(0x0A1A2A, 0.0), AnimeDraw.argb(0x000000, 0.35), false);
-        for (int i = 0; i < 9; i++) {
-            int sx = ScrollGeometry.slotX(b, i), sy = ScrollGeometry.slotY(b, i, HudConfig.curve) - lift(i);
+        for (int i = 0; i < count; i++) {
+            int sx = ScrollGeometry.slotX(b, i), sy = ScrollGeometry.slotY(b, i, curved) - lift(i);
             AnimeDraw.vertical(sx + 1, sy + 1, 17, 9, AnimeDraw.argb(0xFFFFFF, 0.14), AnimeDraw.argb(0xFFFFFF, 0.0), false); // gloss
             AnimeDraw.vertical(sx + 1, sy + 14, 17, 7, AnimeDraw.argb(c, 0.0), AnimeDraw.argb(c, 0.16), true);           // chakra underlight
             SkinDraw.line(sx + 2, sy + 1.2, sx + 9, sy + 1.2, .5, SkinDraw.alpha(0xFFFFFF, 90));
         }
         // Selected slot: rotating swirl seal, chakra flames and kunai brackets.
-        double sx = x + 22 + selector * ScrollGeometry.STRIDE + 9.5, sy = y + 7 + ScrollGeometry.curve(selector, HudConfig.curve) - FableHudMath.lift(0) + 11;
+        double sx = x + 22 + selector * ScrollGeometry.STRIDE + 9.5, sy = y + 7 + ScrollGeometry.curve(selector, curved) - (moving?FableHudMath.lift(0):0) + 11;
         AnimeDraw.glow(sx, sy, 15, 15, c, 0.45, true);
         AnimeDraw.spiral(sx, sy, 9, 2.6, 1.6, AnimeDraw.mix(c, 0xFFFFFF, 0.3), 0.55, -time * 0.12, true);
         AnimeDraw.spiral(sx, sy, 9, 2.6, 0.8, 0xFFFFFF, 0.35, -time * 0.12 + Math.PI, true);
@@ -287,10 +301,11 @@ public final class HotbarFx {
 
     private static double castAt = -100;
     /** A licensed jutsu or weapon was used: the selected slot flares with a chakra burst. */
-    public static void castPulse() { castAt = MC.player == null ? -100 : MC.player.ticksExisted; }
+    public static void castPulse(){confirmed();} // Right-click intent cannot mint confirmation.
 
     /** Above the items: chakra motes drifting up from the selected slot and an edge light sweep. */
     public static void top(Layout.Box b, double time, double selector) {
+        time=artTime(time);
         int c = chakra(time);
         double cast = FableHudMath.pulse((time - castAt) / 12);
         if (cast > 0) {
@@ -307,7 +322,10 @@ public final class HotbarFx {
 
     /** Element colour for a jutsu school/id. */
     public static int element(JutsuEntry e) {
-        String k = ((e.school == null ? "" : e.school) + " " + e.id).toLowerCase(java.util.Locale.ROOT);
+        return element(e==null?"":(e.school==null?"":e.school)+" "+e.id);
+    }
+    public static int element(String key){
+        String k=(key==null?"":key).toLowerCase(java.util.Locale.ROOT);
         if (k.contains("ember") || k.contains("fire") || k.contains("katon")) return 0xFF6A1A;
         if (k.contains("current") || k.contains("water") || k.contains("suiton")) return 0x2F8CFF;
         if (k.contains("gale") || k.contains("wind") || k.contains("futon")) return 0x7FE08A;
@@ -322,8 +340,14 @@ public final class HotbarFx {
 
     /** Behind a rail slot's icon: element gradient, inner glow, rotating seal ring, selected flames and kunai. */
     public static void railUnder(double x, double y, double w, double h, JutsuEntry e, boolean selected, boolean enabled, double time, int row) {
+        time=artTime(time);
         if (e == null) return;
-        int el = element(e);
+        railUnderColor(x,y,w,h,element(e),selected,enabled,time,row);
+    }
+    public static void rackUnder(double x,double y,double w,double h,ItemStack stack,boolean selected,boolean enabled,double time,int row){
+        if(stack==null||stack.isEmpty())return;railUnderColor(x,y,w,h,element(String.valueOf(stack.getItem().getRegistryName())),selected,enabled,artTime(time),row);
+    }
+    private static void railUnderColor(double x,double y,double w,double h,int el,boolean selected,boolean enabled,double time,int row){
         double cx = x + w / 2, cy = y + h / 2, k = enabled ? 1 : 0.35;
         AnimeDraw.vertical(x + 1, y + 1, w - 2, h - 2, AnimeDraw.argb(AnimeDraw.mix(el, 0x000000, 0.35), 0.55 * k), AnimeDraw.argb(0x05080C, 0.7 * k), false);
         AnimeDraw.glow(cx, cy, w * 0.45, h * 0.45, el, 0.45 * k, true);
@@ -348,7 +372,7 @@ public final class HotbarFx {
     }
 
     // ---- particles -----------------------------------------------------------------------------------
-    public static void weather(double x, double y, double w, double h, double time) { FableEnv.weather(x, y, w, h, time, Math.min(dt, 5), RNG); }
+    public static void weather(double x,double y,double w,double h,double time){int tick=FableEnv.tick();if(!moving||lastWeatherTick==tick)return;lastWeatherTick=tick;FableEnv.weather(x,y,w,h,time,1,RNG);}
     public static void particles() { GlStateManager.disableDepth(); FableEnv.drawParticles(); }
 
     public static void sparkle(double x, double y, int color, int n) {

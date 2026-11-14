@@ -13,8 +13,27 @@ import org.lwjgl.opengl.GL11;
  */
 public final class AnimeDraw {
     private AnimeDraw() {}
+    private static final java.util.Deque<State> STATES=new java.util.ArrayDeque<>();
+    /** Preserves actual incoming GL state. Use around every whole HUD/menu effect pass. */
+    public static final class Scope implements AutoCloseable{
+        private final State state=new State();private final int depth=STATES.size(),matrix=GL11.glGetInteger(GL11.GL_MATRIX_MODE);private boolean closed;
+        public Scope(){GlStateManager.pushMatrix();}
+        @Override public void close(){if(closed)return;closed=true;while(STATES.size()>depth)STATES.pop().restore();GlStateManager.matrixMode(matrix);GlStateManager.popMatrix();state.restore();}
+    }
+    private static boolean separate(){return org.lwjgl.opengl.GLContext.getCapabilities().OpenGL14||net.minecraft.client.renderer.OpenGlHelper.extBlendFuncSeparate;}
+    private static final class State{
+        final boolean texture=GL11.glIsEnabled(GL11.GL_TEXTURE_2D),blend=GL11.glIsEnabled(GL11.GL_BLEND),alpha=GL11.glIsEnabled(GL11.GL_ALPHA_TEST),depth=GL11.glIsEnabled(GL11.GL_DEPTH_TEST),lighting=GL11.glIsEnabled(GL11.GL_LIGHTING),cull=GL11.glIsEnabled(GL11.GL_CULL_FACE),write=GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK),light0=GL11.glIsEnabled(GL11.GL_LIGHT0),light1=GL11.glIsEnabled(GL11.GL_LIGHT1);
+        final int shade=GL11.glGetInteger(GL11.GL_SHADE_MODEL),source=GL11.glGetInteger(GL11.GL_BLEND_SRC),dest=GL11.glGetInteger(GL11.GL_BLEND_DST),sourceAlpha=separate()?GL11.glGetInteger(org.lwjgl.opengl.GL14.GL_BLEND_SRC_ALPHA):source,destAlpha=separate()?GL11.glGetInteger(org.lwjgl.opengl.GL14.GL_BLEND_DST_ALPHA):dest,textureId=GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D),active=GL11.glGetInteger(org.lwjgl.opengl.GL13.GL_ACTIVE_TEXTURE);
+        final java.nio.FloatBuffer color=org.lwjgl.BufferUtils.createFloatBuffer(4);
+        State(){GL11.glGetFloat(GL11.GL_CURRENT_COLOR,color);}
+        void restore(){GlStateManager.setActiveTexture(active);GlStateManager.bindTexture(textureId);GlStateManager.shadeModel(shade);GlStateManager.tryBlendFuncSeparate(source,dest,sourceAlpha,destAlpha);GlStateManager.depthMask(write);
+            if(texture)GlStateManager.enableTexture2D();else GlStateManager.disableTexture2D();if(blend)GlStateManager.enableBlend();else GlStateManager.disableBlend();if(alpha)GlStateManager.enableAlpha();else GlStateManager.disableAlpha();if(depth)GlStateManager.enableDepth();else GlStateManager.disableDepth();if(lighting)GlStateManager.enableLighting();else GlStateManager.disableLighting();if(cull)GlStateManager.enableCull();else GlStateManager.disableCull();if(light0)GlStateManager.enableLight(0);else GlStateManager.disableLight(0);if(light1)GlStateManager.enableLight(1);else GlStateManager.disableLight(1);GlStateManager.color(color.get(0),color.get(1),color.get(2),color.get(3));
+        }
+    }
+
 
     private static BufferBuilder begin(int mode, boolean additive) {
+        if(STATES.size()>=8)throw new IllegalStateException("Nested anime draw budget exceeded");STATES.push(new State());
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();
@@ -25,13 +44,7 @@ public final class AnimeDraw {
         return b;
     }
 
-    private static void end() {
-        Tessellator.getInstance().draw();
-        GlStateManager.shadeModel(GL11.GL_FLAT);
-        GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ZERO);
-        GlStateManager.enableTexture2D();
-        GlStateManager.color(1, 1, 1, 1);
-    }
+    private static void end(){try{Tessellator.getInstance().draw();}finally{if(!STATES.isEmpty())STATES.pop().restore();}}
 
     private static void v(BufferBuilder b, double x, double y, int argb) {
         b.pos(x, y, 0).color((argb >> 16) & 255, (argb >> 8) & 255, argb & 255, (argb >>> 24) & 255).endVertex();

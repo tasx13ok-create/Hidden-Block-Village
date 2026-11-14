@@ -26,15 +26,37 @@ public final class FableEnv {
     private static boolean wasGround = true;
     private static float lastFall;
     private static int lastHurt;
-    private static Object world;
+    private static Object world,body,connection;
+    private static int dimension,tick=Integer.MIN_VALUE,emitted;
+    private static boolean installed;
+    private static double renderStamp,drawStamp=Double.NaN;
+    private static final FableHudMath.TickGate CLOCK=new FableHudMath.TickGate();
+    private static final FableHudMath.Budget EMIT=new FableHudMath.Budget(32);
+    public static void initialize(){if(!installed){installed=true;net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new Lifecycle());}}
+    public static final class Lifecycle{
+        @net.minecraftforge.fml.common.eventhandler.SubscribeEvent public void tick(net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent e){if(e.phase==net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END)context();}
+    }
+    private static void context(){
+        Object next=MC.getConnection();int dim=MC.player==null?0:MC.player.dimension;
+        if(world!=MC.world||body!=MC.player||connection!=next||dimension!=dim){
+            world=MC.world;body=MC.player;connection=next;dimension=dim;reset();HotbarFx.reset();
+        }
+    }
+    private static void reset(){last=-1;hurtAt=lightningAt=-100;wasGround=true;lastFall=0;lastHurt=0;tick=Integer.MIN_VALUE;emitted=0;accumulator=0;
+        frost=heat=wet=submerged=dark=burning=sprint=flash=hurt=0;health=1;SWAY.snap(0);BOB.snap(0);SQUASH.snap(0);PARTICLES.clear();CLOCK.reset();EMIT.reset();drawStamp=Double.NaN;
+    }
+    static void clearParticles(){PARTICLES.clear();accumulator=0;drawStamp=Double.NaN;}
+    public static int tick(){return MC.player==null?Integer.MIN_VALUE:MC.player.ticksExisted;}
+
 
     /** Updates every frame from the real client player and world. Returns frame delta in ticks. */
     public static double update(double time) {
+        initialize();context();renderStamp=time;
         EntityPlayer p = MC.player;
-        if (p == null || MC.world == null) return 0;
-        if (world != MC.world || last < 0 || time < last) { world = MC.world; last = time; SWAY.snap(0); BOB.snap(0); SQUASH.snap(0); PARTICLES.clear(); }
-        double dt = Math.min(5, time - last);
-        last = time;
+        if(p==null||MC.world==null||MC.getConnection()==null)return 0;
+        double dt=CLOCK.step(p.ticksExisted);if(dt<=0)return 0;
+        if(tick!=p.ticksExisted){tick=p.ticksExisted;emitted=0;}
+        last=time;
         // Motion relative to the view: strafing sways the bar, vertical speed bobs it.
         double yaw = Math.toRadians(p.rotationYaw);
         double side = p.motionX * Math.cos(yaw) + p.motionZ * Math.sin(yaw);
@@ -77,14 +99,17 @@ public final class FableEnv {
     private static double accumulator;
 
     public static void emit(double x, double y, double vx, double vy, double gravity, int life, int color, int size) {
-        if (PARTICLES.size() > 260) PARTICLES.remove(0);
+        if(!HudConfig.motion||HudConfig.mode==2||MC.player==null||MC.world==null||MC.getConnection()==null||life<=0||life>300||size<1||size>4||!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(vx)||!Double.isFinite(vy)||!Double.isFinite(gravity))return;
+        if(EMIT.take(tick(),1)==0)return;emitted++;
+        if (PARTICLES.size() >= 260) PARTICLES.remove(0);
         Bit b = new Bit(); b.x = x; b.y = y; b.vx = vx; b.vy = vy; b.gravity = gravity; b.life = life; b.color = color; b.size = size;
         PARTICLES.add(b);
     }
 
     /** A drop that lands on a frame edge at {@code edgeY} and then slides/drips down it. */
     public static void drop(double x, double edgeY, double startY) {
-        emit(x, startY, 0, 1.6, 0.08, 40, 0xCC9CC8F0, 1);
+        int before=emitted;emit(x, startY, 0, 1.6, 0.08, 40, 0xCC9CC8F0, 1);
+        if(before==emitted||PARTICLES.isEmpty())return;
         Bit b = PARTICLES.get(PARTICLES.size() - 1); b.stick = true; b.stickY = edgeY;
     }
 
@@ -102,6 +127,7 @@ public final class FableEnv {
     }
 
     public static void drawParticles() {
+        if(!HudConfig.motion||HudConfig.mode==2||drawStamp==renderStamp)return;drawStamp=renderStamp;
         for (Bit b : PARTICLES) {
             double f = b.age / (double) b.life;
             int alpha = (int) (((b.color >>> 24) & 255) * (f < 0.7 ? 1 : (1 - f) / 0.3));

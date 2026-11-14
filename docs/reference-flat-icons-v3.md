@@ -1,5 +1,10 @@
 # Private reference flat-icon pack
 
+**Historical/disabled by current owner direction14November2026.** Keep original
+mod icons and armor; our own additions sit on top. This pack is retained as a
+private rollback/source artifact and must not be enabled by default. Read
+`docs/original-mods-first.md` and use the latest stopped-client restore receipt.
+
 The frozen Everything 0.3.14 production JAR cohort remains unchanged. `tools/reference_item_art.py` creates a separate private Minecraft 1.12.2 client resource pack from the owner's v3 PNG bundle and the locally supplied 49 hash-pinned original JARs. It imports 724 supported generated/handheld model states and retains 382 of the 1,106 reference rows. All 42 synthetic tests pass. This is static model/ZIP acceptance; the copied client has not yet graphically accepted this resource pack.
 
 The private ZIP is `private/reference-art-draft/final-20261113/Vale-Reference-Flat-Icons-v3.zip`, 828,165 bytes, SHA256 `ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e`. Its 1,449 entries are 724 private model overrides, 724 original owner PNGs and pack.mcmeta. Coverage is in the adjacent `coverage.json`; public safe pins/counts are in `release/evidence/reference-flat-icons-v3-verification.json`. Do not publish the private ZIP: it contains observed third-party model JSON transforms. The original mapper, synthetic tests and hash/count metadata are public-safe.

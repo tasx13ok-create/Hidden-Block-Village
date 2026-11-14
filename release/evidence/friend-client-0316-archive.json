@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "scope": "FRIEND_CLIENT_ARCHIVE_INTEGRITY_NOT_GAMEPLAY_ACCEPTANCE",
+  "archive": "Naruto-Complete-Client-0.3.16-Test.zip",
+  "bytes": 204762667,
+  "sha256": "ec20f3bcdf8cdc7c313bc9509de79aef65ea74b624e9562cd8d9f233dfc84cbb",
+  "core_version": "0.3.16",
+  "mods": 58,
+  "entries": 193,
+  "crc_and_byte_readback_passed": true,
+  "selected_shader": "BSL_v10.1.8.zip",
+  "omitted_profile_resources": [
+    "config/field-controls/backups/options-1794612158073.txt",
+    "config/field-controls/backups/options-1794612490957.txt",
+    "config/field-controls/profiles.json.previous",
+    "config/fieldhud-loadouts.json",
+    "config/jei/worldSettings.cfg",
+    "config/xaeropatreon.txt",
+    "patchouli_data.json"
+  ],
+  "frozen_resource_fallbacks": [
+    "overrides/config/DIAdvancedCompatibility.cfg",
+    "overrides/config/field-controls/profiles.json",
+    "overrides/config/splash.properties",
+    "overrides/config/worldedit/worldedit.properties",
+    "overrides/options.txt"
+  ],
+  "source_receipt_sha256": "720bb1155cfe9c3528ed38b2d43516a9e09851f0d4fd44277f82e98091e4c117",
+  "source_snapshot_sha256": "231c762c6f012e92718e46a450038c811df536e3afdb57dbbc9e6499d64ec657",
+  "gameplay_test_performed": false,
+  "bisect_test_performed": false,
+  "private_runtime_and_account_directories_included": false
+}
