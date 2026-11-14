@@ -20,8 +20,10 @@ This applies the same way to every tail section on every set, and adds no per-de
 **Build.** The source is decompiled, with Minecraft names obfuscated (SRG). Compile it against `srg_merged_minecraft.jar` (from the vale-orders RFG cache), the Forge `classes.jar` and the original jar:
 
 ```
-javac -cp <rc1 jar>:<srg_merged_minecraft.jar>:<forge classes.jar> -d out src/village/bijuu/TailSectionBox.java
+javac -cp <rc1 jar>:<srg_merged_minecraft.jar>:<forge classes.jar> -d out <private>/village/bijuu/TailSectionBox.java
 jar uf <armor jar> -C out village/bijuu
 ```
 
 **Verified:** all nine sets ran in the 1.12.2 client with no exceptions.
+
+The decompiled armor source (`TailPhysics.java` and `TailSectionBox.java`) is kept private in `local/hvbijuu-src/`, which is gitignored, because the release merge removed decompiled source from the public repository. Merge it into the armor mod's real source.
