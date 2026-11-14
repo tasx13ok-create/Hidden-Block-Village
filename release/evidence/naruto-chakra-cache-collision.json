@@ -1,0 +1,85 @@
+{
+  "scope": "OBSERVED_RAW_BASE_SPRING_CHAKRA_CACHE_COLLISION_NOT_CORE016_ACCEPTANCE",
+  "production_source_sha256": "767ca4b88d0e6b7755f04eac1750e7998f7ba5250d0e006a71106ce21c8d0be7",
+  "production_version": "0.3.15",
+  "production_jar_count": 54,
+  "private_registry_free_fixture_mods": 1,
+  "new_disposable_flat_world_only": true,
+  "original_or_live_profiles_modified": false,
+  "raw_overall_fixture_passed": false,
+  "real_base_api_assertions": 13,
+  "native_process_exit_code": 0,
+  "forced_termination": false,
+  "collision_proven": true,
+  "controlled_pool_setup": {
+    "both_current": 1000,
+    "both_temporary_max": 2000,
+    "public_addBattleXp_for_admission": 1,
+    "normal_gameplay_progression_claimed": false
+  },
+  "sequence": [
+    {
+      "label": "both_created_at_1000",
+      "base": 1000.0,
+      "spring": 1000.0,
+      "shared_nbt_current": 1000.0
+    },
+    {
+      "label": "after_base_30",
+      "base": 970.0,
+      "spring": 1000.0,
+      "shared_nbt_current": 970.0
+    },
+    {
+      "label": "after_spring_50",
+      "base": 970.0,
+      "spring": 950.0,
+      "shared_nbt_current": 950.0
+    },
+    {
+      "label": "after_base_10",
+      "base": 960.0,
+      "spring": 950.0,
+      "shared_nbt_current": 960.0
+    },
+    {
+      "label": "native_base_then_spring_tick_1",
+      "base": 960.0,
+      "spring": 950.0,
+      "shared_nbt_current": 960.0
+    },
+    {
+      "label": "native_base_then_spring_tick_20",
+      "base": 960.0,
+      "spring": 950.0,
+      "shared_nbt_current": 960.0
+    },
+    {
+      "label": "native_base_then_spring_tick_40",
+      "base": 960.0,
+      "spring": 950.0,
+      "shared_nbt_current": 960.0
+    },
+    {
+      "label": "native_reverse_callback_order_tick20",
+      "base": 960.0,
+      "spring": 950.0,
+      "shared_nbt_current": 960.0
+    }
+  ],
+  "expected_final_after_30_50_10_spend": 910,
+  "actual_final_before_callbacks": 960,
+  "native_public_tick_callbacks": {
+    "base_then_spring": 40,
+    "reverse_order": 20,
+    "reconciled_cache": false
+  },
+  "later_unaccepted_step": "Actual copyFrom/Forge clone raised XaeroLib clonePlayer NPE in incompletely initialized synthetic fixture; no production bug claim",
+  "dedicated_isInitialized_method_available": false,
+  "reason": "Exact method has Forge SideOnly CLIENT annotation; harness corrected to avoid it",
+  "private_result_sha256": "eadd363c917c6d84bbdf51a9fb6d052054d3ab19225c0dcc3749f86171587260",
+  "private_run_receipt_sha256": "7ca100a8db843d18088b8d42a9360c407912a5b451b6bf257e4328f960f540c7",
+  "prototype_installed_in_live_game": false,
+  "core016_bridge_accepted": false,
+  "raw_distributions_or_foreign_code_published": false
+}

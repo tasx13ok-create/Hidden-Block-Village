@@ -34,8 +34,13 @@ tasks, not Minecraft's runtime heap.
 
 See `release/evidence/unified-naruto-settings.json` for exact artifact and input
 identities. This is component-build acceptance. The new screens have not yet
-been graphically exercised in the complete modpack. The owner's active 0.3.15
-game was preserved; no running JAR was replaced and no input was sent to it.
-Install these two UI artifacts in the next separately staged client and verify
+been graphically exercised in the complete modpack. The earlier 0.3.15 client
+exited before staging; its files and server were preserved.
+A separate 58-JAR Menu-017 client now contains these exact two new UI artifacts
+and 56 byte-identical other JARs. It joined the unchanged 0.3.15 server and its
+shaded world/HUD were observed. Server handshake independently confirmed HUD
+0.17.0 and Controls 1.5.0. Input was refused because the owner was interacting;
+the following observation confirmed the owner playing, so automation stopped.
+No settings click was sent. Verify
 inventory/F7/F8/pause entry, mouse and keyboard navigation, shader-child return,
 binding persistence and Apply/Discard before full graphical acceptance.

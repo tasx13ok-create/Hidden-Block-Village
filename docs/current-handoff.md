@@ -1,5 +1,15 @@
 # Current project handoff
 
+## Updated UI client joined; owner has control
+
+The old015 client had exited before the UI update. A NEW private Menu-017 client now runs Field HUD0.17.0 and Field Controls1.5.0 with the other56JARs byte-identical to015, connected to the unchanged loopback25589 copied-world server. The actual64-mod handshake confirmed both new UI versions. Root observed the shaded world/HUD. A Settings click was refused because owner input was detected; the next observation showed the owner playing. No click was sent, and automation stopped. Keep this owner session intact; do not retake input or relaunch over it. The old client's files and rollback artifacts are preserved.
+
+The menu source and both actual UI component builds are verified on GitHub at `870735116230f71988b722c0c134befb6d61a01e`. The inventory hub and redirects are implemented; graphical settings entry/navigation/rebind/shader-child return remain unaccepted. `release/evidence/unified-naruto-settings.json` distinguishes observed network/world results from pending menu interaction.
+
+An independent cold54-mod raw-API diagnostic proves Base Naruto and Spring cache overwrites: starting1000/1000, Base-30 then Spring-50 then Base-10 leaves Base960/Spring950/rootNBT960 rather than910. Native callbacks across60ticks did not reconcile them. Thirteen Base API assertions passed, but the overall private fixture failed later on a synthetic-player lifecycle/Xaero clone defect. This is not aCore16 acceptance pass. Read `docs/naruto-chakra-cache-collision.md`; a private player-only delegation compatibility prototype is under development. No raw JAR, reference code or private world was published.
+
+Core16 shared-resource callers/telemetry/branding are ongoing working changes excluded from the accepted UI checkpoint. Root owns Dodge/Nature/Lightning/availability/telemetry, weapon agent owns Arts/Combat/Forms/Summons/Techniques/carriers, nature agent owns arsenal/focus/food/tools. Next: finish guarded caller and provider compatibility verification, build the complete frozen cohort, run actual native checks, then stage a separate full16 copy. The active owner client remains UI17 over acceptedCore15.
+
 ## Required Core baseline and Claude bridge evidence
 
 The owner requires Core **0.3.14 or newer** from now on for Dodge and newer moves. Continue from the accepted **0.3.15** cohort; do not downgrade it. The inspected downloaded Client.zip contains Core0.3.5/HUD0.14.0/Rack0.1.1 and does not meet this baseline.

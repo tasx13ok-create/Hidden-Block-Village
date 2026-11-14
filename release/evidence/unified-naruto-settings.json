@@ -165,5 +165,25 @@
     "Complete modpack graphical menu entry/navigation and shader child return",
     "Physical rebind and persistence in next isolated client",
     "Core16/resource bridge acceptance is separate and unfinished"
-  ]
+  ],
+  "runtime": {
+    "scope": "UI_ONLY_017_CLIENT_WITH_UNCHANGED_CORE0315_SERVER",
+    "prepared_utc": "2026-11-14T00:10:08.331208+00:00",
+    "client_jar_count": 58,
+    "unchanged_other_jars": 56,
+    "loaded_fml_mod_identities": 64,
+    "owner_same_test_profile": true,
+    "new_private_client_copy": true,
+    "old_client_files_modified": false,
+    "server_files_replaced": false,
+    "loopback_join_observed": true,
+    "graphical_world_hud_observed": true,
+    "shader_scene_observed": true,
+    "settings_menu_click_sent": false,
+    "settings_menu_graphical_acceptance": false,
+    "input_refused_due_to_owner_input": true,
+    "owner_play_observed_after_refusal": true,
+    "automation_stopped": true,
+    "private_stage_receipt_sha256": "b0c831a9ec98f35a5904bd251bb1b8ea88384b80ebde89488c29569eca1a25b9"
+  }
 }
