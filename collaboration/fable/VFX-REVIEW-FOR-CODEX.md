@@ -121,3 +121,39 @@ Motion off or Quiet mode keeps only the static colouring. Evidence: `release/evi
 - **Dodge evasion (`Dodge.evading` + `Bridge.evade`):** during the dodge window, attacks from any source are cancelled, licensed jutsu and projectiles included. Void and creative-bypass damage still apply.
 - **Auto-mapping (`BridgeMath.infer`, `autoMap`):** watched-mod items and entities without an explicit `bridge-moves.json` entry get a style from registry-name keywords. Examples: rasen→spiral, chidori/raiton→charge, katon/fire→fire edge, futon/wind→wind edge, yoton/lava→lava, suiton/mist→Mist Censer, doton/earth→Siege Maul, kunai/shuriken/senbon/swords/tags→matching weapon effects. An entry of `"none"` disables one. 45 checks in `tests/village/vale/BridgeMathTest.java`.
 - **Still to verify with the real jars:** the chakra spend method, and whether the keyword inferences pick sensible styles for the actual IDs.
+
+### Bridge pass 3: chakra adapter rebuilt to the pinned API facts (Claude-Bridge-Facts-and-Diagnostics, 2026-11-13)
+- **`ChakraLink`**
+  - Binds the exact public signatures: `Chakra.pathway(EntityPlayer)`, `PlayerTracker.isNinja`, `getAmount()D`, `getMax()D`, `consume(DZ)Z` and `clear()V`.
+  - Never uses the float (fraction-of-max) overloads.
+  - Never uses client-only `isInitialized` on the server.
+  - Server readiness is `isNinja`, and a pathway is never created for a non-ninja.
+  - Base NarutoMod is the only provider; the Spring duplicate pool is not touched.
+  - Status is ABSENT (resolve fallback allowed), UNSUPPORTED (installed but mismatched: fail closed) or READY.
+- **`ChakraLedger`** (pure, 23 adversarial checks in `tests/village/vale/ChakraLedgerTest.java`):
+  - Reserve verifies the exact debit postcondition.
+  - An exact balance goes through `clear()` with a verified zero.
+  - Zero cost is a no-op.
+  - NaN, infinite and negative costs are rejected.
+  - Insufficient balance spends nothing.
+  - A throw after a possible debit is UNKNOWN_STATE: recorded, never retried or fallen back.
+  - Commit and refund settle once.
+  - Refunds are additive, so independent spends and regeneration are preserved.
+  - Refunds are capped at the pre-balance and below the 4×max overfill zone.
+  - Over-cap refunds use `true` only to restore the recorded debit.
+  - A changed pathway identity (body replaced) forfeits the refund.
+- **`MoveCost`**
+  - The agreed facade is `reserve(EntityPlayerMP,int) -> Ticket|null`; `Ticket.commit()`, `refund()` and `close()` settle once.
+  - There is a per-player reentry guard.
+  - `chakraFor(cost) = cost × chakraPerUnit` (config `chakraPerUnit`, absolute units).
+  - `pay()` is the irreversible-action shortcut; the dodge uses it.
+  - `availableUnits()` returns the raw double view divided by the scale.
+- **`Bridge`**
+  - The resolve↔chakra mirror is removed. It paid after the fact and squeezed chakra into the 0..100 byte.
+  - `autoMap` now defaults to off (keyword guesses are proposals only).
+  - Discovery reloads the previous `bridge-discovered.json`, so data persists across runs.
+- **Not done here (Codex-owned per the facts note):**
+  - Moving the existing scroll, weapon and upkeep callers onto `reserve`/`commit`.
+  - CustomNPC-bus reward de-duplication.
+  - Ninjutsu versus physical classification for dodge and guard.
+  - Native full-pack acceptance.

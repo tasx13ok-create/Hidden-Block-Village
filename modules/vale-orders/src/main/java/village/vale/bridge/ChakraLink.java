@@ -4,78 +4,75 @@ import java.lang.reflect.Method;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**
- * Optional, reflection-only link to a licensed chakra system (NarutoMod's net.narutomod.Chakra).
- * Nothing is compiled against it: when the mod is absent every call returns "unavailable" and
- * moves fall back to Vale resolve. Reads use the API already confirmed by the Field HUD
- * (isInitialized, pathway, getAmount, getMax). A spend method is discovered at runtime from
- * the Pathway class (single numeric parameter, consume/use/drain/subtract-style name) and is
- * only used if found; the discovered signature is logged so it can be confirmed.
+ * Reflection-only adapter for base NarutoMod chakra (net.narutomod.Chakra), bound to the exact
+ * public signatures observed for the pinned 0.3.1.beta jar:
+ *   Chakra.pathway(EntityPlayer), PlayerTracker.isNinja(EntityPlayer),
+ *   Pathway.getAmount()D, getMax()D, consume(DZ)Z, clear()V.
+ * The float consume overloads (fraction of max) and the client-only isInitialized are never used
+ * on the server. Spring/addon duplicate pools are not touched: base NarutoMod is the only provider.
+ *
+ * Status: ABSENT (NarutoMod not installed: callers may use the Vale resolve fallback),
+ * UNSUPPORTED (installed but the API does not match: fail closed, no fallback), READY.
  */
 public final class ChakraLink {
     private ChakraLink() {}
-    private static boolean tried, ready;
-    private static Method initialized, pathway, amount, maximum, spend;
-    private static Class<?> spendType;
+    public enum Status { UNCHECKED, ABSENT, UNSUPPORTED, READY }
+    private static Status state = Status.UNCHECKED;
+    private static Method pathway, isNinja, getAmount, getMax, consume, clear;
     public static String status = "not checked";
 
-    private static void init() {
-        if (tried) return;
-        tried = true;
+    static synchronized void init() {
+        if (state != Status.UNCHECKED) return;
+        Class<?> api;
+        try { api = Class.forName("net.narutomod.Chakra"); }
+        catch (ClassNotFoundException | LinkageError absent) { state = Status.ABSENT; status = "NarutoMod not installed: using Vale resolve"; log(); return; }
         try {
-            Class<?> api = Class.forName("net.narutomod.Chakra");
-            initialized = api.getMethod("isInitialized", EntityPlayer.class);
             pathway = api.getMethod("pathway", EntityPlayer.class);
-            Class<?> values = Class.forName("net.narutomod.Chakra$Pathway");
-            amount = values.getMethod("getAmount");
-            maximum = values.getMethod("getMax");
-            for (Method m : values.getMethods()) {
-                String n = m.getName().toLowerCase(java.util.Locale.ROOT);
-                if (m.getParameterCount() != 1) continue;
-                Class<?> t = m.getParameterTypes()[0];
-                if (t != double.class && t != float.class && t != int.class) continue;
-                if (n.contains("consume") || n.equals("use") || n.contains("drain") || n.contains("subtract") || n.contains("spend")) { spend = m; spendType = t; break; }
-            }
-            ready = true;
-            status = "linked to net.narutomod.Chakra" + (spend == null ? " (read-only: no spend method found)" : " (spend via " + spend.getName() + "(" + spendType.getSimpleName() + "))");
-        } catch (ReflectiveOperationException | LinkageError absent) {
-            status = "chakra mod not present; using Vale resolve";
+            isNinja = Class.forName("net.narutomod.PlayerTracker").getMethod("isNinja", EntityPlayer.class);
+            Class<?> path = Class.forName("net.narutomod.Chakra$Pathway");
+            getAmount = path.getMethod("getAmount"); getMax = path.getMethod("getMax");
+            consume = path.getMethod("consume", double.class, boolean.class); clear = path.getMethod("clear");
+            if (getAmount.getReturnType() != double.class || getMax.getReturnType() != double.class || consume.getReturnType() != boolean.class || isNinja.getReturnType() != boolean.class)
+                throw new NoSuchMethodException("unexpected return types");
+            state = Status.READY;
+            status = "linked to base NarutoMod chakra (consume(double,boolean), clear)";
+        } catch (ReflectiveOperationException | LinkageError mismatch) {
+            state = Status.UNSUPPORTED;
+            status = "NarutoMod present but its chakra API does not match (" + mismatch.getClass().getSimpleName() + ": " + mismatch.getMessage() + "); chakra moves are blocked";
         }
-        System.out.println("[valeorders bridge] " + status);
+        log();
+    }
+    private static void log() { System.out.println("[naruto bridge] " + status); }
+
+    public static Status state() { init(); return state; }
+    public static boolean available() { return state() == Status.READY; }
+    public static boolean absent() { return state() == Status.ABSENT; }
+
+    /** Server readiness: NarutoMod's own ninja identity. Never creates a pathway for a non-ninja. */
+    public static boolean ready(EntityPlayer p) {
+        if (!available() || p == null || p.world.isRemote) return false;
+        try { return Boolean.TRUE.equals(isNinja.invoke(null, p)); } catch (ReflectiveOperationException | RuntimeException e) { return false; }
     }
 
-    public static boolean available() { init(); return ready; }
-    public static boolean canSpend() { init(); return ready && spend != null; }
-
-    private static Object path(EntityPlayer p) throws ReflectiveOperationException {
-        if (!Boolean.TRUE.equals(initialized.invoke(null, p))) return null;
-        return pathway.invoke(null, p);
+    /** Pool for the player's current body, or null if not ready. Reacquire per action; never cache. */
+    public static ChakraPool pool(EntityPlayer p) {
+        if (!ready(p)) return null;
+        final Object path;
+        try { path = pathway.invoke(null, p); } catch (ReflectiveOperationException | RuntimeException e) { return null; }
+        if (path == null) return null;
+        return new ChakraPool() {
+            public double amount() throws Exception { return (Double) getAmount.invoke(path); }
+            public double max() throws Exception { return (Double) getMax.invoke(path); }
+            public boolean consume(double d, boolean over) throws Exception { return (Boolean) consume.invoke(path, d, over); }
+            public void clear() throws Exception { clear.invoke(path); }
+            public Object identity() { return path; }
+        };
     }
 
-    /** Current chakra, or NaN when unavailable. */
-    public static double amount(EntityPlayer p) {
-        if (!available() || p == null) return Double.NaN;
-        try { Object v = path(p); return v == null ? Double.NaN : ((Number) amount.invoke(v)).doubleValue(); }
-        catch (ReflectiveOperationException | RuntimeException e) { return Double.NaN; }
-    }
-
-    public static double max(EntityPlayer p) {
-        if (!available() || p == null) return Double.NaN;
-        try { Object v = path(p); return v == null ? Double.NaN : ((Number) maximum.invoke(v)).doubleValue(); }
-        catch (ReflectiveOperationException | RuntimeException e) { return Double.NaN; }
-    }
-
-    /** Spends chakra if the link supports it and the player has enough; returns whether it was spent. */
-    public static boolean spend(EntityPlayer p, double value) {
-        if (!canSpend() || p == null || !(value > 0)) return false;
-        double have = amount(p);
-        if (!(have >= value)) return false;
-        try {
-            Object v = path(p);
-            if (v == null) return false;
-            Object arg = spendType == double.class ? (Object) value : spendType == float.class ? (Object) (float) value : (Object) (int) Math.ceil(value);
-            spend.invoke(v, arg);
-            double after = amount(p);
-            return after < have - 1e-6;   // only trust the discovered method if chakra actually went down
-        } catch (ReflectiveOperationException | RuntimeException e) { return false; }
+    /** {amount, max} for display, or null. */
+    public static double[] view(EntityPlayer p) {
+        ChakraPool pool = pool(p);
+        if (pool == null) return null;
+        try { return new double[] {pool.amount(), pool.max()}; } catch (Exception e) { return null; }
     }
 }

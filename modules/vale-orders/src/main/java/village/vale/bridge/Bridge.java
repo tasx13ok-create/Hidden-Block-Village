@@ -46,9 +46,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
  */
 public final class Bridge {
     private Bridge() {}
-    public static boolean preferChakra = true, discovery = true, autoMap = true;
-    public static double chakraPerResolve = 1.0;
-    private static final Map<java.util.UUID, Integer> MIRRORED = new HashMap<>();
+    public static boolean discovery = true, autoMap = false;
+    public static double chakraPerUnit = 1.0;
     public static int dodgeCost = 0;
     public static String[] watched = {"narutomod", "kabutoaddon", "borutomodaddononero", "ahznbcursemarkaddon", "ahznbswordsplus"};
     private static File folder;
@@ -62,15 +61,28 @@ public final class Bridge {
         folder.mkdirs();
         Configuration cfg = new Configuration(new File(folder, "bridge.cfg"));
         cfg.load();
-        preferChakra = cfg.getBoolean("preferChakra", "chakra", true, "When a licensed chakra mod is linked and supports spending, Vale moves spend chakra instead of resolve.");
-        chakraPerResolve = cfg.getFloat("costScale", "chakra", 1.0f, 0.05f, 10f, "Multiplier on chakra spent: a move costing N energy spends N percent of max chakra times this.");
-        autoMap = cfg.getBoolean("autoMap", "moves", true, "Give licensed jutsu/weapons a matching move style from their registry name when bridge-moves.json has no entry.");
+                chakraPerUnit = cfg.getFloat("chakraPerUnit", "chakra", 1.0f, 0.01f, 1000f, "Absolute NarutoMod chakra spent per unit of add-on move cost (NarutoMod chakra is not a 0..100 scale).");
+        autoMap = cfg.getBoolean("autoMap", "moves", false, "Use registry-name keyword guesses for watched IDs without an explicit bridge-moves.json entry. Guesses are proposals only; prefer exact IDs.");
         dodgeCost = cfg.getInt("dodgeCost", "moves", 0, 0, 100, "Cost of one dodge in resolve units (chakra when linked). 0 keeps dodging free.");
         discovery = cfg.getBoolean("discovery", "discovery", true, "Record item, entity and damage IDs from the watched mods into bridge-discovered.json.");
         watched = cfg.getStringList("watchedNamespaces", "discovery", watched, "Mod namespaces to record and map.");
         if (cfg.hasChanged()) cfg.save();
         loadMoves();
+        loadSeen();
         MinecraftForge.EVENT_BUS.register(new Bridge());
+    }
+
+    /** Keeps discovery across runs: start from the previous bridge-discovered.json. */
+    private static void loadSeen() {
+        File f = new File(folder, "bridge-discovered.json");
+        if (!f.exists()) return;
+        try (Reader r = new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8)) {
+            JsonArray rows = new JsonParser().parse(r).getAsJsonObject().getAsJsonArray("seen");
+            if (rows != null) for (int i = 0; i < rows.size(); i++) {
+                JsonObject o = rows.get(i).getAsJsonObject();
+                SEEN.put(o.get("kind").getAsString() + " " + o.get("id").getAsString(), o);
+            }
+        } catch (Exception bad) { System.out.println("[naruto bridge] could not read bridge-discovered.json: " + bad); }
     }
 
     public static int mappingCount() { return MOVES.size(); }
@@ -100,9 +112,9 @@ public final class Bridge {
         try (Reader r = new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8)) {
             JsonObject moves = new JsonParser().parse(r).getAsJsonObject().getAsJsonObject("moves");
             if (moves != null) moves.entrySet().forEach(e -> MOVES.put(e.getKey(), e.getValue().getAsString()));
-            System.out.println("[valeorders bridge] loaded " + MOVES.size() + " move mappings");
+            System.out.println("[naruto bridge] loaded " + MOVES.size() + " move mappings");
         } catch (Exception bad) {
-            System.out.println("[valeorders bridge] could not read bridge-moves.json: " + bad);
+            System.out.println("[naruto bridge] could not read bridge-moves.json: " + bad);
         }
     }
 
@@ -166,29 +178,6 @@ public final class Bridge {
         return autoMap && watchedId(id) ? BridgeMath.infer(id) : null;
     }
 
-    /**
-     * Chakra mirror: while NarutoMod is linked, Vale resolve (0..100) shows the player's chakra as a
-     * percentage. Any drop caused by a Vale move between ticks is spent from real chakra, then
-     * resolve re-syncs. Reserve-and-refund inside one action nets to zero and spends nothing.
-     */
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void mirror(TickEvent.PlayerTickEvent e) {
-        if (e.phase != TickEvent.Phase.END || e.player.world.isRemote || !preferChakra || !ChakraLink.available()) return;
-        double have = ChakraLink.amount(e.player), max = ChakraLink.max(e.player);
-        if (!(max > 0) || Double.isNaN(have)) return;
-        java.util.UUID id = e.player.getUniqueID();
-        int current = village.vale.PlayerState.resolve(e.player);
-        Integer last = MIRRORED.get(id);
-        if (last != null && current < last && ChakraLink.canSpend()) {
-            double spend = BridgeMath.chakraFor(last - current, max, chakraPerResolve);
-            ChakraLink.spend(e.player, Math.min(spend, have));
-            have = ChakraLink.amount(e.player);
-        }
-        int synced = BridgeMath.percent(have, max);
-        if (synced != current) village.vale.PlayerState.setResolve(e.player, synced);
-        MIRRORED.put(id, synced);
-    }
-
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void evade(LivingAttackEvent e) {
         // A dodge in its evasion window avoids licensed jutsu and projectiles (and any ordinary hit).
@@ -231,6 +220,6 @@ public final class Bridge {
     private static void write(File f, JsonObject o) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         try (Writer w = new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_8)) { g.toJson(o, w); }
-        catch (Exception failed) { System.out.println("[valeorders bridge] could not write " + f + ": " + failed); }
+        catch (Exception failed) { System.out.println("[naruto bridge] could not write " + f + ": " + failed); }
     }
 }
