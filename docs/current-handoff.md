@@ -35,11 +35,24 @@ D:/HiddenBlockVillage-Sprint-20261113/core016-build-snapshot-14/build/source-bui
 SHA493df853658c54a3542cb8b6329902c047c190265adff44081d3ba6db092a437.
 No new graphical/native/server-hosted acceptance is claimed for the renderer delta.
 
-Owner action: close Minecraft; replace the entire CLIENT mods folder in the
-Friend Test profile with this ZIP's mods folder. This ZIP is not for Bisect.
-Root has not modified that profile or options/resourcepacks; next requested
-folder is resourcepacks, removing the active retired reference overlay so original
-unowned mod icons/armor show again. Respect the one-folder-at-a-time instruction.
+The owner copied all58matching new client JARs into the Friend Test profile,
+but nine old extra roots remained, including old HUD/controls/client-compat and
+three server-only JARs. Root completed ONLY the mods-folder cleanup with
+`tools/clean_mixed_client_mods.ps1`: six reviewed stale/server-only JARs and three
+loose metadata/image files moved to the private D retention directory
+`D:/HiddenBlockVillage-Sprint-20261113/client-mixed-jar-cleanup-01/retired`.
+No ordinary original mod JAR was removed. The tool refused a running profile,
+checked all58new JAR hashes before any move and verified the final inventory.
+Root independently rehashed all58installed JARs after cleanup: PASS, exact archive
+match. Original VariedCommodities SHA remains
+bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016.
+Safe receipt: release/evidence/client-mixed-jar-cleanup-0316.json.
+The installed current mods now have no duplicate old HUD/control/compat JARs.
+The owned JAR asset-namespace audit found no variedcommodities texture namespace.
+Options and resourcepacks were left unchanged for the next one-folder step:
+remove the active retired reference overlay so original unowned icons/armor show.
+The old overlay is still active until that next step; do not claim restored
+runtime icons from the mods cleanup alone. No game or host restart was performed.
 The Source13preview client exited at12:22:47local; process30120 is no longer
 present. Preview server31524 remains alive. Preserve it; historical join/dodge
 evidence below does not mean a client is currently connected.
