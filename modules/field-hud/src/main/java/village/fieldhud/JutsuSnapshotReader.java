@@ -34,7 +34,7 @@ public final class JutsuSnapshotReader {
             List<JutsuEntry> entries=new ArrayList<>();Set<String> seen=new HashSet<>();
             for(Object e:(Iterable<?>)source){
                 if(e==null||entries.size()>=(schema==2?128:64))return null;
-                JutsuEntry entry=new JutsuEntry(text(e,"id"),text(e,"title"),text(e,"iconItemId"),integer(e,"iconMeta"),text(e,"kind"),text(e,"schoolKey"),integer(e,"requiredLevel"),"Resolve",integer(e,"resolveCost"),integer(e,"itemCount"),integer(e,"cooldownRemainingTicks"),integer(e,"cooldownTotalTicks"),0,((Number)field(e,"cooldownFraction")).doubleValue(),(Boolean)field(e,"enabled"),text(e,"reason"));
+                JutsuEntry entry=new JutsuEntry(text(e,"id"),text(e,"title"),text(e,"iconItemId"),integer(e,"iconMeta"),text(e,"kind"),text(e,"schoolKey"),integer(e,"requiredLevel"),ChakraBridge.current()!=null?"Chakra":"Resolve",integer(e,"resolveCost"),integer(e,"itemCount"),integer(e,"cooldownRemainingTicks"),integer(e,"cooldownTotalTicks"),0,((Number)field(e,"cooldownFraction")).doubleValue(),(Boolean)field(e,"enabled"),text(e,"reason"));
                 if(entry.kind.equals("weapon")){
                     if(schema!=2||!entry.id.matches("weapon/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"))return null;
                 }else if(!entry.id.matches("(?:art|order|technique|item)/[a-z0-9_:.\\-/]+")||!Arrays.asList("art","order","technique","projectile","form","summon").contains(entry.kind))return null;

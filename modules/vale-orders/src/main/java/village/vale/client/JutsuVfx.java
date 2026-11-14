@@ -94,6 +94,7 @@ public final class JutsuVfx extends Render<HandTechnique> {
 
     // ---------------------------------------------------------------------------------------
     @Override public void doRender(HandTechnique e, double x, double y, double z, float yaw, float partial) {
+        if (VfxBudget.lod(e) <= 0) return;
         Minecraft mc = Minecraft.getMinecraft();
         double camX = e.lastTickPosX + (e.posX - e.lastTickPosX) * partial - x;
         double camY = e.lastTickPosY + (e.posY - e.lastTickPosY) * partial - y;
