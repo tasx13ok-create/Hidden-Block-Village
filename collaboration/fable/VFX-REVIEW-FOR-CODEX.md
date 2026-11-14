@@ -183,3 +183,10 @@ Verified in the client: all nine sets, calm and powered. The test jar was built 
 - **Night or dark sky:** the ground light pool is 50% wider.
 
 **Verified in the client:** the hit spray. **Not verified:** the charge and overload. The probe crouches the player from the server, but the local player's crouch comes from keyboard input, so it never charged. Check this in game by holding sneak for 3 s.
+
+## Effects performance pass (client `VfxBudget`)
+- **Per-frame voxel cube budget** by `jutsuDetail`: 1,200 / 3,000 / 9,000 cubes. Extra cubes are skipped, so effects lose fine detail instead of stalling.
+- **Distance level of detail:** effects aren't drawn past 48 blocks. Past 24 blocks, the chest core drops sparks, shafts and bits.
+- **Particle cap** follows the same setting: 200 / 600 / 1,200.
+- **Coarser big voxel spheres:** those over 0.6 radius use larger cubes, with the same silhouette and far fewer cubes.
+- **Measured** in the software-rendered client (Mesa swrast), all 27 weapons with a sample every 20 ticks: the worst frame went from 24 to 36 fps, the average held at about 70 fps, and the most cubes in one frame dropped from 3,856 to 3,000. The probe logs `VFXPERF` lines.

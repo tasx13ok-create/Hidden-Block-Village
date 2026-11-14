@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public final class VoxelBits {
     public static final double PX = 1 / 16.0;
-    private static final int CAP = 600;
+
     private static final List<Bit> BITS = new ArrayList<>();
     static final Random RNG = new Random();
 
@@ -40,11 +40,12 @@ public final class VoxelBits {
         if (installed) return;
         installed = true;
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new VoxelBits());
+        VfxBudget.install();
     }
 
     public static void spawn(double x, double y, double z, double vx, double vy, double vz, double pixels, int rgb, float alpha, int life, double gravity, double drag, boolean bounce) {
         synchronized (BITS) {
-            if (BITS.size() >= CAP) BITS.remove(0);
+            while (BITS.size() >= VfxBudget.particleCap()) BITS.remove(0);
             Bit b = new Bit();
             b.x = b.px = x; b.y = b.py = y; b.z = b.pz = z;
             b.vx = vx; b.vy = vy; b.vz = vz; b.size = pixels * PX; b.rgb = rgb; b.alpha = alpha;

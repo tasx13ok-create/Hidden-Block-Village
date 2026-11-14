@@ -63,6 +63,7 @@ public final class ScrollActorVfx {
     }
 
     public static void render(Entity e, String kind, double x, double y, double z, float pt) {
+        if (VfxBudget.lod(e) <= 0) return;
         ArrayDeque<double[]> q = path(e);
         double[] at = pos(e, pt), d = dir(e, q);
         double t = e.ticksExisted + pt;

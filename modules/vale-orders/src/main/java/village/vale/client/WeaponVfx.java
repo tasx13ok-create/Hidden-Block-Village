@@ -101,7 +101,7 @@ public final class WeaponVfx extends Render<WeaponPulse> {
     // ---- pulses ---------------------------------------------------------------------------------
     @Override public void doRender(WeaponPulse e, double x, double y, double z, float yaw, float partial) {
         ArsenalSpec spec = e.spec();
-        if (spec == null) return;
+        if (spec == null || VfxBudget.lod(e) <= 0) return;
         double age = e.ticksExisted + partial;
         int life = e.life();
         if (age > life + 1) return;

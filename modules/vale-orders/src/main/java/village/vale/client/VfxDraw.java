@@ -230,7 +230,7 @@ public final class VfxDraw {
 
     /** Hollow voxel shell (plus sparse interior for small orbs), cube size scaled to radius. */
     private static void voxelSphere(double x, double y, double z, double r, int rgb, float alpha) {
-        double size = Math.max(PX, Math.round(Math.max(r / 5, PX) / PX) * PX);
+        double size = Math.max(PX, Math.round(Math.max(r / (r > 0.6 ? 3.5 : 5), PX) / PX) * PX);   // big orbs use bigger voxels: same silhouette, far fewer cubes
         double cx = Math.round(x / size) * size, cy = Math.round(y / size) * size, cz = Math.round(z / size) * size;
         int n = (int) Math.ceil(r / size);
         Tessellator t = Tessellator.getInstance();
@@ -276,7 +276,7 @@ public final class VfxDraw {
     private static double[] lerp(double[] a, double[] b, double f) { return new double[] {a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f}; }
 
     static void cubeInto(BufferBuilder b, double x, double y, double z, double size, int rgb, float alpha) {
-        if (alpha <= 0.003) return;
+        if (alpha <= 0.003 || !VfxBudget.take()) return;
         double h = size / 2, x0 = x - h, x1 = x + h, y0 = y - h, y1 = y + h, z0 = z - h, z1 = z + h;
         int top = rgb, ns = shade(rgb, 0.8), ew = shade(rgb, 0.6), bot = shade(rgb, 0.5);
         vertex(b, x0, y1, z0, top, alpha); vertex(b, x0, y1, z1, top, alpha); vertex(b, x1, y1, z1, top, alpha); vertex(b, x1, y1, z0, top, alpha);

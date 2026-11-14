@@ -159,7 +159,8 @@ public final class ArmorCoreFx implements LayerRenderer<AbstractClientPlayer> {
     @Override
     public void doRenderLayer(AbstractClientPlayer p, float limb, float limbAmount, float partial, float age, float yaw, float pitch, float scale) {
         int beast = beast(p);
-        if (beast < 0 || p.isInvisible()) return;
+        double lod = VfxBudget.lod(p);
+        if (beast < 0 || p.isInvisible() || lod <= 0) return;
         int core = PALETTE[beast][0], glow = PALETTE[beast][1];
         double t = p.ticksExisted + partial, power = power(p, t);
         double pulse = 0.5 + 0.5 * Math.sin(t * (0.12 + 0.25 * power));
@@ -249,7 +250,7 @@ public final class ArmorCoreFx implements LayerRenderer<AbstractClientPlayer> {
                 VfxDraw.sphere(0, 0, -0.03, px * (4 + 26 * (1 - flash)), core, (float) (0.5 * flash), 10);
                 VfxDraw.sphere(0, 0, -0.03, px * (3 + 8 * (1 - flash)), 0xFFFFFF, (float) (0.6 * flash), 8);
             }
-            if (power > 0.25) {
+            if (power > 0.25 && lod >= 1) {
                 for (int i = 0; i < 6; i++) {
                     double a = i * Math.PI / 3 + t * 0.03, len = px * (4 + 10 * (power - 0.25) * (0.6 + 0.4 * Math.sin(t * 0.3 + i)));
                     double[][] in = {{0, 0, -0.04}, {Math.cos(a) * len, Math.sin(a) * len, -0.06}};
@@ -261,7 +262,7 @@ public final class ArmorCoreFx implements LayerRenderer<AbstractClientPlayer> {
             VfxDraw.end();
             GlStateManager.popMatrix();
         }
-        if (partial < 0.34 && p.ticksExisted != lastBitsTick(p)) { markBits(p); bits(p, beast, power, t); }
+        if (lod >= 1 && partial < 0.34 && p.ticksExisted != lastBitsTick(p)) { markBits(p); bits(p, beast, power, t); }
         // Sparks: voxel bits shed from the core when powered.
         if (power > 0.45 && p.ticksExisted % 3 == 0 && partial < 0.34 && p.world.rand.nextDouble() < power) {
             float body = p.renderYawOffset;

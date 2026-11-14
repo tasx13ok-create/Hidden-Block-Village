@@ -121,6 +121,7 @@ public final class VfxShots {
 
     private void weapons(Minecraft mc, IntegratedServer server, int local) {
         int per = 34, s = local / per, t = local % per;
+        if (local % 20 == 0) System.out.println("VFXPERF tick=" + local + " fps=" + Minecraft.getDebugFPS() + " cubes=" + village.vale.client.VfxBudget.lastUsed + " skipped=" + village.vale.client.VfxBudget.lastSkipped + " budget=" + village.vale.client.VfxBudget.cubeBudget());
         ArsenalSpec[] specs = ArsenalSpec.values();
         if (s >= specs.length) { if (t == 0) mc.shutdown(); return; }
         ArsenalSpec spec = specs[s];
