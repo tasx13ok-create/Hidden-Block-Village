@@ -58,8 +58,8 @@ public final class ValeCommand extends CommandBase {
         }
         if (args.length == 1 && args[0].equals("status")) {
             EntityPlayerMP player = getCommandSenderAsPlayer(sender);
-            sender.sendMessage(new TextComponentString("Vale level " + PlayerState.level(player) +
-                " | Resolve " + PlayerState.resolve(player) + "/100 | XP " + PlayerState.data(player).getInteger("xp") +
+            sender.sendMessage(new TextComponentString("Shinobi level " + PlayerState.level(player) +
+                " | " + village.vale.bridge.ResourceText.balance(player) + " | XP " + PlayerState.data(player).getInteger("xp") +
                 " | Starter " + PlayerState.data(player).getString("starterOrder") +
                 " | Merit " + PlayerState.data(player).getInteger("merit") + " | Contracts " + PlayerState.data(player).getInteger("missionsCompleted") +
                 " | Pending rewards " + RewardLedger.get(player).pendingCount(player.getUniqueID())));

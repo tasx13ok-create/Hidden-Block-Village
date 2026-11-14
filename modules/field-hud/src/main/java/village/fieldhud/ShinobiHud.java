@@ -88,6 +88,7 @@ public final class ShinobiHud extends Gui {
     }
     static String number(double value) {
         if(!Double.isFinite(value))return "?";
+        if(value>=1E12||(value>0&&value<.1))return Double.toString(value);
         if(value>=1000000000)return String.format(Locale.ROOT,"%.1fB",value/1000000000);
         if(value>=1000000)return String.format(Locale.ROOT,"%.1fM",value/1000000);
         if(value>=10000)return String.format(Locale.ROOT,"%.0fk",value/1000);
@@ -104,7 +105,7 @@ public final class ShinobiHud extends Gui {
         ValeSnapshotReader.State vale=ValeBridge.current();
         HEALTH.update(health,maximum,time,motion);
         if(chakra!=null)CHAKRA.update(chakra.amount,chakra.maximum,time,motion);else CHAKRA.reset();
-        if(vale!=null)RESOLVE.update(vale.resolve,vale.resolveMax,time,motion);else RESOLVE.reset();
+        if(ValeBridge.showResolve())RESOLVE.update(vale.resolve,vale.resolveMax,time,motion);else RESOLVE.reset();
         Regions.Zone zone=Regions.at(MC);
         GlassMaterial.slate(b.x,b.y,b.w,b.h,7,low||poison||wither||zone==null?tone:zone.color,255);
         SkinDraw.line(b.x+11,b.y+1.2,b.x+38,b.y+1.2,.7,0x807CA6BA);
@@ -143,18 +144,18 @@ public final class ShinobiHud extends Gui {
             gauge(x,b.y+42,width,2,SkinMath.ratio(absorb,Math.max(4,maximum)),0xFFE8C774,0x50322D2A);
             text("+"+number(absorb),b.x+9,b.y+41,34,0xFFE8C774);
         }
-        int shift=18*((chakra==null?0:1)+(vale==null?0:1));
+        int shift=18*((chakra!=null||ValeBridge.resourceWaiting()?1:0)+(ValeBridge.showResolve()?1:0));
+        if(ValeBridge.resourceWaiting())text(SharedResourceBridge.current()==null?"Resource syncing":"Resource unavailable",x+4,b.y+47,width-8,0xFFE8C77F);
         if(chakra!=null) {
             double ratio=SkinMath.ratio(chakra.amount,chakra.maximum);
             int ct=chakra.warning?0xFFFF8059:chakra.sage?0xFFFF6A2B:chakra.byakugou?0xFFDE91C0:ratio<=0.15?0xFFE8C77F:0xFF08AFFF;
             if(JutsuSignals.casting&&!chakra.warning&&!chakra.sage&&!chakra.byakugou&&ratio>.15)ct=0xFF000000|JutsuSignals.color;
-            String label=(width<145?"CH ":"Chakra ")+number(chakra.amount)+"/"+number(chakra.maximum)+(chakra.warning?" !":chakra.sage?" Sage":chakra.byakugou?(width<145?" Seal":" Byakugou"):"");
+            String label=(width<145?(chakra.label.equals("Chakra")?"CH ":"RE "):chakra.label+" ")+number(chakra.amount)+"/"+number(chakra.maximum)+(chakra.warning?" !":chakra.sage?" Sage":chakra.byakugou?(width<145?" Seal":" Byakugou"):"");
             text(label,x+4,b.y+47,width-8,ct);
             EnergySlate.draw(x+4,b.y+59,width-8,5,CHAKRA.shown(),CHAKRA.trail(),ct,0xFFADC7D1,time,motion);
         }
-        // With NarutoMod linked, add-on energy mirrors chakra, so only the chakra bar is shown.
-        if(vale!=null&&chakra==null) {
-            int row=0;
+        if(ValeBridge.showResolve()) {
+            int row=chakra==null?0:18;
             text("Resolve "+number(vale.resolve)+"/"+number(vale.resolveMax),x+4,b.y+47+row,width-8,0xFF9DD5EF);
             EnergySlate.draw(x+4,b.y+59+row,width-8,5,RESOLVE.shown(),RESOLVE.trail(),0xFF08AFFF,0xFFADC7D1,time,motion);
         }
@@ -171,7 +172,7 @@ public final class ShinobiHud extends Gui {
         gauge(x+31,b.y+76+shift,Math.max(24,width-31),2,SkinMath.ratio(p.getFoodStats().getSaturationLevel(),20),0xFFBBA26C,0xFF27333A);
         seal(b.x+(b.w<170?19:23),b.y+64+shift,low?11:10,low?tone:CYAN,low,time,light);
         if(chakra!=null)SkinDraw.arc(b.x+(b.w<170?19:23),b.y+64+shift,7,1.2,-Math.PI/2,-Math.PI/2+Math.PI*2*SkinMath.ratio(chakra.amount,chakra.maximum),chakra.sage?0xFFFF6A2B:0xFF08AFFF);
-        else if(vale!=null)SkinDraw.arc(b.x+(b.w<170?19:23),b.y+64+shift,7,1.2,-Math.PI/2,-Math.PI/2+Math.PI*2*SkinMath.ratio(vale.resolve,vale.resolveMax),0xFF08AFFF);
+        else if(ValeBridge.showResolve())SkinDraw.arc(b.x+(b.w<170?19:23),b.y+64+shift,7,1.2,-Math.PI/2,-Math.PI/2+Math.PI*2*SkinMath.ratio(vale.resolve,vale.resolveMax),0xFF08AFFF);
     }
     private static void gauge(int x,int y,int width,int height,double ratio,int fill,int back) {
         meter(x,y,width,height,ratio,ratio,fill,back);

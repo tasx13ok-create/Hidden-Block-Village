@@ -1,78 +1,89 @@
 package village.vale.bridge;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.Loader;
 
-/**
- * Reflection-only adapter for base NarutoMod chakra (net.narutomod.Chakra), bound to the exact
- * public signatures observed for the pinned 0.3.1.beta jar:
- *   Chakra.pathway(EntityPlayer), PlayerTracker.isNinja(EntityPlayer),
- *   Pathway.getAmount()D, getMax()D, consume(DZ)Z, clear()V.
- * The float consume overloads (fraction of max) and the client-only isInitialized are never used
- * on the server. Spring/addon duplicate pools are not touched: base NarutoMod is the only provider.
- *
- * Status: ABSENT (NarutoMod not installed: callers may use the Vale resolve fallback),
- * UNSUPPORTED (installed but the API does not match: fail closed, no fallback), READY.
- */
+/** Optional public Naruto API link. Presence, readiness and failure stay distinct. */
 public final class ChakraLink {
-    private ChakraLink() {}
-    public enum Status { UNCHECKED, ABSENT, UNSUPPORTED, READY }
-    private static Status state = Status.UNCHECKED;
-    private static Method pathway, isNinja, getAmount, getMax, consume, clear;
-    public static String status = "not checked";
-
-    static synchronized void init() {
-        if (state != Status.UNCHECKED) return;
-        Class<?> api;
-        try { api = Class.forName("net.narutomod.Chakra"); }
-        catch (ClassNotFoundException | LinkageError absent) { state = Status.ABSENT; status = "NarutoMod not installed: using Vale resolve"; log(); return; }
-        try {
-            pathway = api.getMethod("pathway", EntityPlayer.class);
-            isNinja = Class.forName("net.narutomod.PlayerTracker").getMethod("isNinja", EntityPlayer.class);
-            Class<?> path = Class.forName("net.narutomod.Chakra$Pathway");
-            getAmount = path.getMethod("getAmount"); getMax = path.getMethod("getMax");
-            consume = path.getMethod("consume", double.class, boolean.class); clear = path.getMethod("clear");
-            if (getAmount.getReturnType() != double.class || getMax.getReturnType() != double.class || consume.getReturnType() != boolean.class || isNinja.getReturnType() != boolean.class)
-                throw new NoSuchMethodException("unexpected return types");
-            state = Status.READY;
-            status = "linked to base NarutoMod chakra (consume(double,boolean), clear)";
-        } catch (ReflectiveOperationException | LinkageError mismatch) {
-            state = Status.UNSUPPORTED;
-            status = "NarutoMod present but its chakra API does not match (" + mismatch.getClass().getSimpleName() + ": " + mismatch.getMessage() + "); chakra moves are blocked";
+    public enum State { READY, ABSENT, UNREADY, UNSUPPORTED, WRONG_CONTEXT, ERROR }
+    public static final class View {
+        public final String provider;public final State state,status;public final double amount,maximum,max;public final String detail;
+        View(String provider,State state,double amount,double maximum,String detail){this.provider=provider;this.state=this.status=state;this.amount=amount;this.maximum=this.max=maximum;this.detail=detail;}
+        public boolean ready(){return state==State.READY;}
+    }
+    static final class Open {
+        final ResourceEscrow.Account account;final View view;
+        Open(ResourceEscrow.Account account,View view){this.account=account;this.view=view;}
+    }
+    private static Api api;private static boolean attempted;
+    public static volatile String status="not checked";
+    private ChakraLink(){}
+    /** Installed includes unsupported/unready; callers must never fall back on a read failure. */
+    public static boolean installed(){try{return Loader.isModLoaded("narutomod");}catch(RuntimeException|LinkageError error){status="Provider presence check failed";return true;}}
+    private static synchronized Api api(){
+        if(!installed())return null;
+        if(!attempted){
+            attempted=true;
+            try{
+                ClassLoader loader=ChakraLink.class.getClassLoader();
+                api=new Api(Class.forName("net.narutomod.Chakra",false,loader),Class.forName("net.narutomod.Chakra$Pathway",false,loader),Class.forName("net.narutomod.PlayerTracker",false,loader),EntityPlayer.class);
+                status="Base Naruto public double/clear API linked";
+            }catch(ReflectiveOperationException|RuntimeException|LinkageError failure){status="Installed Naruto public API is unsupported";}
         }
-        log();
+        return api;
     }
-    private static void log() { System.out.println("[naruto bridge] " + status); }
-
-    public static Status state() { init(); return state; }
-    public static boolean available() { return state() == Status.READY; }
-    public static boolean absent() { return state() == Status.ABSENT; }
-
-    /** Server readiness: NarutoMod's own ninja identity. Never creates a pathway for a non-ninja. */
-    public static boolean ready(EntityPlayer p) {
-        if (!available() || p == null || p.world.isRemote) return false;
-        try { return Boolean.TRUE.equals(isNinja.invoke(null, p)); } catch (ReflectiveOperationException | RuntimeException e) { return false; }
+    public static boolean available(){return installed()&&api()!=null;}
+    public static boolean canSpend(){return available();}
+    static Open open(EntityPlayerMP player){
+        if(!installed())return new Open(null,new View("none",State.ABSENT,Double.NaN,Double.NaN,"NarutoMod absent"));
+        Api methods=api();
+        if(methods==null)return new Open(null,new View("narutomod",State.UNSUPPORTED,Double.NaN,Double.NaN,status));
+        try{
+            if(!methods.ninja(player))return new Open(null,new View("narutomod",State.UNREADY,Double.NaN,Double.NaN,"Native ninja account is not ready"));
+            ResourceEscrow.Account account=methods.account(player);double amount=account.amount(),max=account.maximum();
+            if(!ResourceEscrow.finiteBalance(amount,max))return new Open(null,new View("narutomod",State.UNREADY,Double.NaN,Double.NaN,"Native chakra values are not ready"));
+            return new Open(account,new View("narutomod",State.READY,amount,max,"Native chakra"));
+        }catch(RuntimeException|LinkageError failure){return new Open(null,new View("narutomod",State.ERROR,Double.NaN,Double.NaN,"Native chakra API failed"));}
     }
-
-    /** Pool for the player's current body, or null if not ready. Reacquire per action; never cache. */
-    public static ChakraPool pool(EntityPlayer p) {
-        if (!ready(p)) return null;
-        final Object path;
-        try { path = pathway.invoke(null, p); } catch (ReflectiveOperationException | RuntimeException e) { return null; }
-        if (path == null) return null;
-        return new ChakraPool() {
-            public double amount() throws Exception { return (Double) getAmount.invoke(path); }
-            public double max() throws Exception { return (Double) getMax.invoke(path); }
-            public boolean consume(double d, boolean over) throws Exception { return (Boolean) consume.invoke(path, d, over); }
-            public void clear() throws Exception { clear.invoke(path); }
-            public Object identity() { return path; }
-        };
+    static boolean same(EntityPlayerMP player,ResourceEscrow.Account account){
+        Api methods=api();if(methods==null||account==null||!installed())return false;
+        try{return methods.ninja(player)&&methods.path(player)==account.identity();}catch(RuntimeException|LinkageError failure){return false;}
     }
-
-    /** {amount, max} for display, or null. */
-    public static double[] view(EntityPlayer p) {
-        ChakraPool pool = pool(p);
-        if (pool == null) return null;
-        try { return new double[] {pool.amount(), pool.max()}; } catch (Exception e) { return null; }
+    /** Legacy read convenience uses the server-owned view; never a client spending proof. */
+    public static double amount(EntityPlayer player){View v=MoveCost.view(player);return "narutomod".equals(v.provider)&&v.ready()?v.amount:Double.NaN;}
+    public static double max(EntityPlayer player){View v=MoveCost.view(player);return "narutomod".equals(v.provider)&&v.ready()?v.maximum:Double.NaN;}
+    /** Exact reflection surface, package-visible for original synthetic contract checks. */
+    static final class Api {
+        final Method pathway,isNinja,amount,maximum,consume,clear;
+        Api(Class<?> root,Class<?> values,Class<?> tracker,Class<?> player)throws ReflectiveOperationException{
+            pathway=root.getMethod("pathway",player);isNinja=tracker.getMethod("isNinja",player);
+            amount=values.getMethod("getAmount");maximum=values.getMethod("getMax");consume=values.getMethod("consume",double.class,boolean.class);clear=values.getMethod("clear");
+            require(Modifier.isStatic(pathway.getModifiers())&&values.isAssignableFrom(pathway.getReturnType()),"pathway");
+            require(Modifier.isStatic(isNinja.getModifiers())&&isNinja.getReturnType()==boolean.class,"isNinja");
+            require(amount.getReturnType()==double.class&&!Modifier.isStatic(amount.getModifiers()),"getAmount");
+            require(maximum.getReturnType()==double.class&&!Modifier.isStatic(maximum.getModifiers()),"getMax");
+            require(consume.getReturnType()==boolean.class&&!Modifier.isStatic(consume.getModifiers()),"consume(DZ)Z");
+            require(clear.getReturnType()==void.class&&!Modifier.isStatic(clear.getModifiers()),"clear");
+        }
+        private static void require(boolean yes,String method)throws NoSuchMethodException{if(!yes)throw new NoSuchMethodException("Unsupported public signature "+method);}
+        private static Object invoke(Method method,Object receiver,Object...args){
+            try{return method.invoke(receiver,args);}catch(InvocationTargetException wrapped){Throwable t=wrapped.getCause();if(t instanceof VirtualMachineError)throw (VirtualMachineError)t;if(t instanceof ThreadDeath)throw (ThreadDeath)t;throw new IllegalStateException("Native resource method failed",t);}catch(ReflectiveOperationException|RuntimeException failure){throw new IllegalStateException("Native resource access failed",failure);}
+        }
+        boolean ninja(Object player){return Boolean.TRUE.equals(invoke(isNinja,null,player));}
+        Object path(Object player){return invoke(pathway,null,player);}
+        ResourceEscrow.Account account(Object player){
+            final Object value=path(player);if(value==null)throw new IllegalStateException("Null native pathway");
+            return new ResourceEscrow.Account(){
+                public Object identity(){return value;}
+                public double amount(){return (Double)invoke(amount,value);}
+                public double maximum(){return (Double)invoke(maximum,value);}
+                public boolean consume(double cost,boolean overcap){return Boolean.TRUE.equals(invoke(consume,value,cost,overcap));}
+                public void clear(){invoke(clear,value);}
+            };
+        }
     }
 }

@@ -80,7 +80,7 @@ public final class FieldItems {
             boolean bonus=true;
             switch(kind){
                 case 1:p.heal(2);p.removePotionEffect(MobEffects.WEAKNESS);break;
-                case 2:PlayerState.setResolve(p,PlayerState.resolve(p)+12);break;
+                case 2:bonus=p instanceof EntityPlayerMP&&village.vale.bridge.MoveCost.restore((EntityPlayerMP)p,12)>0;break;
                 case 3:p.addPotionEffect(new PotionEffect(MobEffects.SPEED,120,0));break;
                 case 4:p.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE,120,0));break;
                 case 5:p.removePotionEffect(MobEffects.SLOWNESS);p.removePotionEffect(MobEffects.MINING_FATIGUE);break;

@@ -27,12 +27,15 @@ public final class ScrollActor extends EntityCreature {
  @Override public boolean canDespawn(){return false;}
  @Override public boolean canBeLeashedTo(EntityPlayer p){return false;}
  boolean owned(EntityPlayerMP p){return owner!=null&&owner.equals(p.getUniqueID());}
- static ScrollActor spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase t,int life,float power){
+ static ScrollActor spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase t,int life,float power){return spawn(p,kind,at,t,life,power,false,null);}
+ static ScrollActor spawnCast(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase t,int life,float power){return spawn(p,kind,at,t,life,power,true,null);}
+ static ScrollActor spawnPaid(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase t,int life,float power,village.vale.bridge.MoveCost.Ticket payment){return spawn(p,kind,at,t,life,power,false,payment);}
+ private static ScrollActor spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase t,int life,float power,boolean cast,village.vale.bridge.MoveCost.Ticket payment){
   if(!p.world.getWorldBorder().contains(new BlockPos(at))||!p.world.isBlockLoaded(new BlockPos(at)))return null;
   ScrollActor a=new ScrollActor(p.world);a.owner=p.getUniqueID();a.kind=kind;a.dataManager.set(KIND,kind);a.target=t==null?null:t.getUniqueID();if(t!=null)a.dataManager.set(MIRROR,t.getEntityId());a.power=power;a.expires=p.world.getTotalWorldTime()+life;a.anchorX=at.x;a.anchorY=at.y;a.anchorZ=at.z;a.setPosition(at.x,at.y,at.z);a.setCustomNameTag(title(kind));
   if(kind.equals("wall")){a.setSize(3,3);a.setHealth(30);}else if(kind.startsWith("puppet")){a.setHealth(30);}else if(kind.equals("golem")){a.setSize(1.2f,2.4f);}
   if(companionKind(kind)&&!p.world.getCollisionBoxes(a,a.getEntityBoundingBox()).isEmpty())return null;
-  return p.world.spawnEntity(a)?a:null;
+  net.minecraft.world.World world=p.world;boolean spawned=false;try{spawned=world.spawnEntity(a);return spawned&&!a.isDead?a:null;}finally{if(!a.isDead&&a.world==world&&world.getEntityByID(a.getEntityId())==a){if(cast)Scrolls.recordApplied(p);if(payment!=null&&payment.pending())payment.commit();}}
  }
  static String title(String k){return "Vale "+k.replace('_',' ');}
  static boolean companionKind(String k){return k.startsWith("puppet")||k.startsWith("summon_");}
@@ -70,7 +73,7 @@ public final class ScrollActor extends EntityCreature {
   if(kind.equals("mind")||kind.equals("shadow")||kind.equals("chains")||kind.equals("prison")||kind.equals("swarm")){
    if(t==null||!ArsenalAccess.allowed(p,t)||p.getDistanceSq(t)>576){setDead();return;}setPosition(t.posX,t.posY,t.posZ);
    if(ticksExisted%20==0&&ScrollEffects.hit(p,t,Math.max(1,power),null,0,0)){
-    if(kind.equals("swarm")){PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+1));}
+    if(kind.equals("swarm")){village.vale.bridge.MoveCost.restore(p,1);}
     else{t.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,25,kind.equals("chains")?2:4));if(kind.equals("mind"))t.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,25,2));if(kind.equals("prison"))t.motionY=Math.min(0,t.motionY);if(kind.equals("shadow"))t.rotationYaw=p.rotationYaw;}
    }return;
   }

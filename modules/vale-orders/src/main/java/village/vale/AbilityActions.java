@@ -16,7 +16,7 @@ public final class AbilityActions {
         if(PlayerState.data(p).getString("starterOrder").isEmpty())return "Choose an order first.";
         if(PlayerState.level(p)<level)return "Requires level "+level+".";
         if(armor&&Combat.fullSet(p)==null)return "Equip four matching issued armor pieces.";
-        if(PlayerState.resolve(p)<cost)return "Needs "+cost+" resolve.";return "";
+        if(cost>0&&village.vale.bridge.MoveCost.availableUnits(p)<cost)return village.vale.bridge.ResourceText.requirement(p,cost);return "";
     }
     private static int remaining(long now,long ready,int total){return (int)Math.min(total,Math.max(0,ready-now));}
     private static AbilitySnapshot.Entry entry(String id,String title,String kind,String school,String icon,int level,int cost,int count,String reason,int remaining,int total){return new AbilitySnapshot.Entry(id,title,kind,school,icon,0,level,cost,count,reason.isEmpty(),reason,remaining,total,total==0?0:remaining/(float)total);}

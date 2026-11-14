@@ -1,6 +1,7 @@
 package village.vale;
 
 import java.util.List;
+import village.vale.bridge.MoveCost;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -143,7 +144,7 @@ public final class Combat {
         NBTTagCompound state = PlayerState.data(player);
         long time = now(player);
         boolean fighting = state.getLong("lastCombat") > 0 && time - state.getLong("lastCombat") < 100;
-        PlayerState.setResolve(player, PlayerState.resolve(player) + (fighting ? 2 : 5));
+        if (!MoveCost.external()) PlayerState.setResolve(player, PlayerState.resolve(player) + (fighting ? 2 : 5));
         Order order = fullSet(player);
         java.util.UUID healthId = java.util.UUID.fromString("db20c5a6-7fb4-4abf-b1c7-f86c717ef140");
         net.minecraft.entity.ai.attributes.IAttributeInstance health = player.getEntityAttribute(net.minecraft.entity.SharedMonsterAttributes.MAX_HEALTH);
@@ -156,55 +157,57 @@ public final class Combat {
         }
         if (order != null) {
             long seconds = Rules.cooldownSeconds(time, state.getLong("nextSkill"));
-            player.sendStatusMessage(new TextComponentString(order.title + " | Resolve " + PlayerState.resolve(player) +
-                "/100 | " + order.skill + (seconds > 0 ? " " + seconds + "s" : " ready") +
+            player.sendStatusMessage(new TextComponentString(order.title + " | " + resourceLabel(player) + " | " + order.skill + (seconds > 0 ? " " + seconds + "s" : " ready") +
                 " | Technique " + (Rules.cooldownSeconds(time, state.getLong("nextTechnique")) > 0 ?
                     Rules.cooldownSeconds(time, state.getLong("nextTechnique")) + "s" : "ready")), true);
         }
     }
 
-    public static boolean activate(EntityPlayer player, ItemStack weapon, Order order) {
-        if (player.world.isRemote || player.isDead || player.isSpectator()) return false;
-        if (fullSet(player) != order || !issuedWeapon(player, weapon, order))
-            return tell(player, "Equip four matching server-issued armor pieces and an issued matching weapon.");
-        NBTTagCompound state = PlayerState.data(player);
-        long time = now(player);
-        if (time < state.getLong("nextSkill")) return tell(player, "That order skill is cooling down.");
-        int remaining = Rules.spendResolve(PlayerState.resolve(player), ValeOrders.skillCost);
-        if (remaining < 0) return tell(player, "Not enough resolve.");
-        EntityLivingBase target = null;
-        if (order == Order.EMBER || order == Order.RIME || order == Order.STORM) {
-            target = aimedTarget(player);
-            if (target == null) return tell(player, "Aim at a visible permitted target within twelve blocks.");
-            float damage = order == Order.STORM ? 8.0F : order == Order.EMBER ? 6.0F : 4.0F;
-            // Forge can return true after LivingHurtEvent was canceled. Require an
-            // actual impact and inspect the final event cancellation states. Absorption
-            // may already be consumed before a later LivingDamageEvent is canceled.
-            if (!impact(target, DamageSource.causePlayerDamage(player), damage))
-                return tell(player, "The target blocked or rejected the skill.");
-        }
-        if (order == Order.BLOOM && player.getHealth() >= player.getMaxHealth()) return tell(player, "Health is already full.");
-        switch (order) {
-            case EMBER: target.setFire(3); break;
-            case CURRENT: player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, 1)); break;
-            case GALE:
-                Vec3d direction = player.getLookVec();
-                player.addVelocity(direction.x * .7, .2, direction.z * .7);
-                player.velocityChanged = true;
-                break;
-            case FLINT: player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0)); break;
-            case BLOOM: player.heal(6.0F); break;
-            case RIME: target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 1)); break;
-            case STORM: break;
-            case DUSK: player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 80, 0)); break;
-            case DAWN: player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 120, 0)); break;
-        }
-        PlayerState.setResolve(player, remaining);
-        state.setLong("nextSkill", time + ValeOrders.skillCooldown * 20L);
-        state.setLong("lastCombat", time);
-        player.sendStatusMessage(new TextComponentString(order.skill + " activated."), true);
-        return true;
+    private static String resourceLabel(EntityPlayer player) {
+        return player instanceof EntityPlayerMP?village.vale.bridge.ResourceText.balance((EntityPlayerMP)player):"Chakra unavailable";
     }
+    public static boolean activate(EntityPlayer player, ItemStack weapon, Order order) {
+        if (!(player instanceof EntityPlayerMP)||player.world.isRemote||player.isDead||player.isSpectator()) return false;
+        EntityPlayerMP owner=(EntityPlayerMP)player;
+        if (fullSet(player)!=order||!issuedWeapon(player,weapon,order))return tell(player,"Equip four matching server-issued armor pieces and an issued matching weapon.");
+        NBTTagCompound state=PlayerState.data(player);long time=now(player);
+        if(time<state.getLong("nextSkill"))return tell(player,"That order skill is cooling down.");
+        EntityLivingBase target=null;
+        if(order==Order.EMBER||order==Order.RIME||order==Order.STORM){target=aimedTarget(player);if(target==null)return tell(player,"Aim at a visible permitted target within twelve blocks.");}
+        if(order==Order.BLOOM&&player.getHealth()>=player.getMaxHealth())return tell(player,"Health is already full.");
+        MoveCost.Ticket payment=MoveCost.reserve(owner,ValeOrders.skillCost);if(payment==null)return tell(player,"Chakra unavailable or insufficient.");
+        net.minecraft.potion.Potion watched=order==Order.CURRENT?MobEffects.SPEED:order==Order.FLINT?MobEffects.RESISTANCE:order==Order.DUSK?MobEffects.INVISIBILITY:order==Order.DAWN?MobEffects.ABSORPTION:null;
+        PotionEffect previous=watched==null?null:player.getActivePotionEffect(watched);previous=previous==null?null:new PotionEffect(previous);float healthBefore=player.getHealth();
+        long oldReady=state.getLong("nextSkill"),oldCombat=state.getLong("lastCombat"),deadline=time+ValeOrders.skillCooldown*20L;
+        state.setLong("nextSkill",deadline);state.setLong("lastCombat",time);
+        try {
+            if(!payment.valid()||PlayerState.data(player)!=state||fullSet(player)!=order||!issuedWeapon(player,weapon,order))return false;
+            if(target!=null){
+                float damage=order==Order.STORM?8:order==Order.EMBER?6:4;
+                if(!impact(target,DamageSource.causePlayerDamage(player),damage))return tell(player,"The target blocked or rejected the skill.");
+                payment.commit(); // the actual native contact is already irreversible
+            }
+            switch(order){
+                case EMBER:target.setFire(3);break;
+                case CURRENT:player.addPotionEffect(new PotionEffect(MobEffects.SPEED,100,1));if(changedPotion(player,MobEffects.SPEED,previous))payment.commit();break;
+                case GALE:Vec3d direction=player.getLookVec();player.addVelocity(direction.x*.7,.2,direction.z*.7);player.velocityChanged=true;payment.commit();break;
+                case FLINT:player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE,100,0));if(changedPotion(player,MobEffects.RESISTANCE,previous))payment.commit();break;
+                case BLOOM:float before=player.getHealth();player.heal(6);if(player.getHealth()>before)payment.commit();break;
+                case RIME:target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,80,1));break;
+                case STORM:break;
+                case DUSK:player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY,80,0));if(changedPotion(player,MobEffects.INVISIBILITY,previous))payment.commit();break;
+                case DAWN:player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION,120,0));if(changedPotion(player,MobEffects.ABSORPTION,previous))payment.commit();break;
+            }
+            if(payment.pending())return tell(player,"The skill effect was refused.");
+            try{player.sendStatusMessage(new TextComponentString(order.skill+" activated."),true);}catch(RuntimeException|LinkageError cosmeticFailure){}return true;
+        } finally {
+            if(payment.pending()&&(watched!=null&&changedPotion(player,watched,previous)||order==Order.BLOOM&&player.getHealth()>healthBefore))payment.commit();
+            if(payment.pending()&&PlayerState.data(player)==state){if(state.getLong("nextSkill")==deadline)state.setLong("nextSkill",oldReady);if(state.getLong("lastCombat")==time)state.setLong("lastCombat",oldCombat);}
+            payment.close();
+        }
+    }
+
+    private static boolean changedPotion(EntityPlayer player,net.minecraft.potion.Potion potion,PotionEffect before){PotionEffect after=player.getActivePotionEffect(potion);return after!=null&&(before==null||after.getAmplifier()>before.getAmplifier()||after.getDuration()>before.getDuration());}
 
     static EntityLivingBase aimedTarget(EntityPlayer player) { return aimedTarget(player, 12); }
     static EntityLivingBase aimedTarget(EntityPlayer player, double range) {

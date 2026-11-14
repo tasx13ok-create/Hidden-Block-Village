@@ -11,6 +11,9 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -22,6 +25,15 @@ public final class LightningKit {
     public static final int[] COST={20,12,6,10,25,0}, COOLDOWN={40,4,3,5,12,0};
     public static Potion EFFECT;
     private static final Map<UUID,Attempt> CASTS=new HashMap<>();
+    private static final ThreadLocal<PotionAdmission> ADMISSION=new ThreadLocal<>();
+    private static final class PotionAdmission {
+        final EntityPlayerMP player;final PotionEffect effect;PotionEvent.PotionApplicableEvent event;
+        PotionAdmission(EntityPlayerMP p,PotionEffect effect){player=p;this.effect=effect;}
+    }
+    @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)
+    public static void applicable(PotionEvent.PotionApplicableEvent event){
+        PotionAdmission a=ADMISSION.get();if(a!=null&&event.getEntityLiving()==a.player&&event.getPotionEffect()==a.effect)a.event=event;
+    }
     private LightningKit(){}
     @SubscribeEvent public static void register(RegistryEvent.Register<Potion> event){
         EFFECT=new Potion(false,0x79cfff){}.setPotionName("effect.valeorders.lightning_chakra_armor");
@@ -49,34 +61,38 @@ public final class LightningKit {
     }
     private static boolean grounded(EntityPlayerMP p){return p.onGround&&!p.world.getCollisionBoxes(p,p.getEntityBoundingBox().offset(0,-.12,0)).isEmpty();}
     private static final class Attempt {
-        final EntityPlayerMP p;final net.minecraft.world.World world;final int dimension,index;final NBTTagCompound account;boolean applied;
+        final EntityPlayerMP p;final net.minecraft.world.World world;final int dimension,index;final NBTTagCompound account;boolean applied;village.vale.bridge.MoveCost.Ticket payment;
         Attempt(EntityPlayerMP p,int i){this.p=p;world=p.world;dimension=p.dimension;index=i;account=PlayerState.data(p);}
-        boolean valid(){return p.isEntityAlive()&&!p.isSpectator()&&p.world==world&&p.dimension==dimension&&PlayerState.data(p)==account&&!AbilityActions.carried(p,"valeorders:technique_codex").isEmpty()&&gate(p,index).isEmpty();}
+        void accept(){applied=true;if(payment!=null&&payment.pending())payment.commit();}
+        boolean body(){return p.isEntityAlive()&&!p.isSpectator()&&p.world==world&&p.dimension==dimension&&PlayerState.data(p)==account&&p.getServer()!=null&&p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())==p;}
+        boolean valid(){return p.isEntityAlive()&&!p.isSpectator()&&p.world==world&&p.dimension==dimension&&PlayerState.data(p)==account&&(payment==null||(payment.pending()?payment.valid():applied))&&body()&&!AbilityActions.carried(p,"valeorders:technique_codex").isEmpty()&&gate(p,index).isEmpty();}
     }
     public static boolean cast(EntityPlayerMP p,Arts.Art art){
         int i=index(art.key);String reason=gate(p,i);if(!reason.isEmpty())return Adventures.tell(p,reason);
         if(CASTS.containsKey(p.getUniqueID()))return false;
         long now=Adventures.now(p);NBTTagCompound account=PlayerState.data(p),cooldowns=account.getCompoundTag("artCooldowns");
         if(i!=5&&(now<account.getLong("artGlobal")||now<cooldowns.getLong(art.key)))return Adventures.tell(p,"This technique is cooling down.");
-        if(PlayerState.resolve(p)<COST[i])return Adventures.tell(p,"Need "+COST[i]+" chakra.");
         long oldGlobal=account.getLong("artGlobal"),oldReady=cooldowns.getLong(art.key),reservedReady=now+COOLDOWN[i]*20L,reservedGlobal=now+10;
-        Attempt attempt=new Attempt(p,i);CASTS.put(p.getUniqueID(),attempt);PlayerState.setResolve(p,PlayerState.resolve(p)-COST[i]);
-        if(i!=5){cooldowns.setLong(art.key,reservedReady);account.setTag("artCooldowns",cooldowns);account.setLong("artGlobal",reservedGlobal);}
+        Attempt attempt=new Attempt(p,i);CASTS.put(p.getUniqueID(),attempt);boolean reserved=false;
         try{
+            attempt.payment=village.vale.bridge.MoveCost.reserve(p,COST[i]);
+            if(attempt.payment==null)return Adventures.tell(p,village.vale.bridge.ResourceText.requirement(p,COST[i]));
+            if(!attempt.valid())return false;
+            if(i!=5){cooldowns.setLong(art.key,reservedReady);account.setTag("artCooldowns",cooldowns);account.setLong("artGlobal",reservedGlobal);reserved=true;}
             Adventures.save(p);
-            if(!perform(attempt))return Adventures.tell(p,"No permitted contact or safe movement. Chakra kept.");
+            if(!perform(attempt)&&!attempt.applied)return Adventures.tell(p,"No permitted contact or safe movement. Chakra kept.");
             return true;
         }finally{
             try{
-                if(attempt.applied){
+                if(attempt.payment!=null){if(attempt.applied)attempt.payment.commit();else attempt.payment.refund();}
+                if(attempt.applied&&PlayerState.data(p)==account&&p.world==attempt.world&&p.dimension==attempt.dimension){
                     NBTTagCompound live=PlayerState.data(p),cds=live.getCompoundTag("artCooldowns");cds.setLong(art.key,Math.max(cds.getLong(art.key),now+COOLDOWN[i]*20L));live.setTag("artCooldowns",cds);
                     if(i!=5){live.setLong("artGlobal",Math.max(live.getLong("artGlobal"),now+10));live.setLong("lastCombat",now);Missions.art(p);}
                     Adventures.save(p);HudNetwork.cast(p,art.key);Adventures.gesture(p);
-                    p.sendStatusMessage(new TextComponentString(TITLES[i]+" | Chakra "+PlayerState.resolve(p)+"/100"),true);
-                }else if(PlayerState.data(p)==account){
-                    PlayerState.setResolve(p,PlayerState.resolve(p)+COST[i]);
+                    p.sendStatusMessage(new TextComponentString(TITLES[i]+" | "+village.vale.bridge.ResourceText.balance(p)),true);
+                }else if(!attempt.applied&&reserved){
                     if(i!=5){NBTTagCompound current=account.getCompoundTag("artCooldowns");if(current.getLong(art.key)==reservedReady)current.setLong(art.key,oldReady);if(account.getLong("artGlobal")==reservedGlobal)account.setLong("artGlobal",oldGlobal);}
-                    Adventures.save(p);
+                    if(PlayerState.data(p)==account)Adventures.save(p);
                 }
             }finally{CASTS.remove(p.getUniqueID(),attempt);}
         }
@@ -84,37 +100,49 @@ public final class LightningKit {
     private static boolean perform(Attempt a){
         if(!a.valid())return false;EntityPlayerMP p=a.p;NBTTagCompound s=state(p);long now=Adventures.now(p);
         switch(a.index){
-            case 0:
-                s.setLong("modeStarted",now);s.setLong("modeUntil",now+600);s.setLong("nextDrain",now+20);
-                try{p.addPotionEffect(new PotionEffect(EFFECT,600,0,false,false));}finally{a.applied=p.isPotionActive(EFFECT);}
-                if(!a.applied){s.removeTag("modeUntil");return false;}
-                burst(p,24);sound(p,1.2F);WorldReactions.power(p,"lightning_armor",2);return true;
+            case 0:{
+                String[] keys={"modeStarted","modeUntil","nextDrain"};long[] own={now,now+600,now+20},old=new long[3];boolean[] had=new boolean[3];
+                for(int n=0;n<3;n++){had[n]=s.hasKey(keys[n]);old[n]=s.getLong(keys[n]);s.setLong(keys[n],own[n]);}
+                PotionEffect previousEffect=p.getActivePotionEffect(EFFECT),effect=new PotionEffect(EFFECT,600,0,false,false);
+                int oldDuration=previousEffect==null?0:previousEffect.getDuration(),oldAmplifier=previousEffect==null?-1:previousEffect.getAmplifier();
+                PotionAdmission receipt=new PotionAdmission(p,effect),previous=ADMISSION.get();ADMISSION.set(receipt);
+                try{p.addPotionEffect(effect);}
+                finally{
+                    if(previous==null)ADMISSION.remove();else ADMISSION.set(previous);
+                    PotionEffect present=p.getActivePotionEffect(EFFECT);
+                    boolean changed=present==effect||(present!=null&&present==previousEffect&&(present.getDuration()>oldDuration||present.getAmplifier()>oldAmplifier));
+                    if(receipt.event!=null&&receipt.event.getResult()!=Event.Result.DENY&&changed)a.accept();
+                    if(!a.applied)for(int n=0;n<3;n++)if(s.getLong(keys[n])==own[n]){if(had[n])s.setLong(keys[n],old[n]);else s.removeTag(keys[n]);}
+                }
+                if(!a.applied)return false;
+                if(a.body()&&state(p)==s&&active(p)){burst(p,24);sound(p,1.2F);WorldReactions.power(p,"lightning_armor",2);}return true;
+            }
             case 1:{
                 boolean hit=false;for(EntityLivingBase target:targets(p,3.75,true,3)){
                     if(!a.valid())break;boolean applied=impact(a,target,12);hit=applied||hit;
-                    if(applied&&a.valid()&&contact(p,target,3.75)){Arts.push(p,target,.85);target.addPotionEffect(new PotionEffect(net.minecraft.init.MobEffects.SLOWNESS,12,0));}
+                    if(applied&&a.valid()&&contact(p,target,3.75)){Arts.push(p,target,.85);if(!a.valid()||!contact(p,target,3.75))continue;target.addPotionEffect(new PotionEffect(net.minecraft.init.MobEffects.SLOWNESS,12,0));}
                 }
-                if(hit){burst(p,18);sound(p,.8F);WorldReactions.power(p,"lariat",2);}return hit;
+                if(hit&&a.valid()){burst(p,18);sound(p,.8F);WorldReactions.power(p,"lariat",2);}return hit;
             }
             case 2:{
                 Vec3d look=p.getLookVec();Vec3d horizontal=new Vec3d(look.x,0,look.z);if(horizontal.lengthSquared()<.001)return false;horizontal=horizontal.normalize();
                 AxisAlignedBB next=p.getEntityBoundingBox().offset(horizontal.x*1.15,0,horizontal.z*1.15);
                 if(!p.world.getWorldBorder().contains(next)||!p.world.isAreaLoaded(new BlockPos(next.minX,next.minY,next.minZ),new BlockPos(next.maxX,next.maxY,next.maxZ))||!p.world.getCollisionBoxes(p,next).isEmpty())return false;
-                p.motionX=horizontal.x*1.15;p.motionZ=horizontal.z*1.15;p.motionY=Math.max(p.motionY,.10);p.velocityChanged=true;a.applied=true;burst(p,12);return true;
+                p.motionX=horizontal.x*1.15;p.motionZ=horizontal.z*1.15;p.motionY=Math.max(p.motionY,.10);p.velocityChanged=true;a.accept();burst(p,12);return true;
             }
-            case 3:s.setLong("counterUntil",now+20);a.applied=true;burst(p,10);return true;
+            case 3:s.setLong("counterUntil",now+20);a.accept();burst(p,10);return true;
             case 4:
                 if(!p.world.getCollisionBoxes(p,p.getEntityBoundingBox().offset(0,.6,0)).isEmpty())return false;
                 s.setLong("slamUntil",now+60);s.setLong("slamStarted",now);s.setDouble("slamX",p.posX);s.setDouble("slamY",p.posY);s.setDouble("slamZ",p.posZ);s.setBoolean("slamAirborne",false);
-                p.motionY=Math.max(.72,p.motionY);p.onGround=false;p.velocityChanged=true;p.fallDistance=0;a.applied=true;burst(p,16);return true;
-            case 5:end(p);a.applied=true;return true;
+                p.motionY=Math.max(.72,p.motionY);p.onGround=false;p.velocityChanged=true;p.fallDistance=0;a.accept();burst(p,16);return true;
+            case 5:try{end(p);}finally{if(!s.hasKey("modeUntil"))a.accept();}return true;
             default:return false;
         }
     }
     private static boolean impact(Attempt a,EntityLivingBase target,float damage){
         float before=target.getHealth()+target.getAbsorptionAmount();
         try{return Combat.impact(target,DamageSource.causePlayerDamage(a.p),damage);}
-        finally{if(target.getHealth()+target.getAbsorptionAmount()<before)a.applied=true;}
+        finally{if(target.getHealth()+target.getAbsorptionAmount()<before)a.accept();}
     }
     public static void tick(EntityPlayerMP p){
         NBTTagCompound s=state(p);if(!readable(s))return;long now=Adventures.now(p);
@@ -122,9 +150,19 @@ public final class LightningKit {
         if(!active(p))return;
         if(now<s.getLong("modeStarted")||now>=s.getLong("modeUntil")){end(p);return;}
         if(now>=s.getLong("nextDrain")){
-            int drains=(int)Math.min(30,1+(now-s.getLong("nextDrain"))/20);int cost=drains*4;
-            if(PlayerState.resolve(p)<cost){end(p);return;}
-            PlayerState.setResolve(p,PlayerState.resolve(p)-cost);s.setLong("nextDrain",now+20);PlayerState.data(p).setLong("lastCombat",now);
+            if(village.vale.bridge.MoveCost.busy(p))return; // A concurrent escrow is not chakra exhaustion.
+            long due=s.getLong("nextDrain"),started=s.getLong("modeStarted"),until=s.getLong("modeUntil");
+            int drains=(int)Math.min(30,1+(now-due)/20);int cost=drains*4;
+            NBTTagCompound account=PlayerState.data(p);net.minecraft.world.World world=p.world;int dimension=p.dimension;
+            village.vale.bridge.MoveCost.Ticket upkeep=village.vale.bridge.MoveCost.reserve(p,cost);
+            if(upkeep==null){if(!village.vale.bridge.MoveCost.busy(p)&&sameMode(p,s,account,world,dimension,started,until))end(p);return;}
+            try{
+                if(!upkeep.valid()||!sameMode(p,s,account,world,dimension,started,until))return;
+                boolean paid=upkeep.commit();
+                if(!sameMode(p,s,account,world,dimension,started,until))return;
+                if(!paid){end(p);return;}
+                s.setLong("nextDrain",due+drains*20L);account.setLong("lastCombat",now);
+            }finally{upkeep.close();}
         }
         if(p.ticksExisted%4==0)((WorldServer)p.world).spawnParticle(EnumParticleTypes.CRIT_MAGIC,p.posX,p.posY+1,p.posZ,3,.35,.7,.35,.04);
         if(s.hasKey("slamUntil")){
@@ -143,6 +181,9 @@ public final class LightningKit {
                 sound(p,.55F);WorldReactions.power(p,"guillotine_drop",3);
             }
         }
+    }
+    private static boolean sameMode(EntityPlayerMP p,NBTTagCompound s,NBTTagCompound account,net.minecraft.world.World world,int dimension,long started,long until){
+        return p.world==world&&p.dimension==dimension&&PlayerState.data(p)==account&&state(p)==s&&s.getLong("modeStarted")==started&&s.getLong("modeUntil")==until&&active(p);
     }
     public static void end(EntityPlayerMP p){
         NBTTagCompound s=state(p);if(!readable(s))return;

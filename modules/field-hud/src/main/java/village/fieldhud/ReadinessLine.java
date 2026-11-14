@@ -12,15 +12,16 @@ public final class ReadinessLine {
     };
     private static final Pattern[] PATTERNS=new Pattern[ORDERS.length];
     static {
-        String timer="(ready|[1-9][0-9]{0,5}s)";
-        for(int i=0;i<ORDERS.length;i++)PATTERNS[i]=Pattern.compile("^"+Pattern.quote(ORDERS[i][0])+" \\| Resolve (0|[1-9][0-9]{0,2})/100 \\| "+Pattern.quote(ORDERS[i][1])+" "+timer+" \\| Technique "+timer+"$");
+        String number="(?:0|[1-9][0-9]{0,17})(?:\\.[0-9]{1,17})?(?:[eE][+-]?[0-9]{1,3})?";
+        String resource="(?<resource>Resolve (?<resolve>0|[1-9][0-9]{0,2})/100|Chakra (?:(?<amount>"+number+")/(?<max>"+number+")|unavailable))";
+        for(int i=0;i<ORDERS.length;i++)PATTERNS[i]=Pattern.compile("^"+Pattern.quote(ORDERS[i][0])+" \\| "+resource+" \\| "+Pattern.quote(ORDERS[i][1])+" (?<skill>ready|[1-9][0-9]{0,5}s) \\| Technique (?<weapon>ready|[1-9][0-9]{0,5}s)$");
     }
     public static final class State {
         public final String order,skill,skillState,weaponState;
         public final int resolve;
         private final String skillLabel,weaponLabel;
         private State(String[] order,Matcher match) {
-            this.order=order[0];skill=order[1];resolve=Integer.parseInt(match.group(1));skillState=match.group(2);weaponState=match.group(3);
+            this.order=order[0];skill=order[1];resolve=match.group("resolve")==null?0:Integer.parseInt(match.group("resolve"));skillState=match.group("skill");weaponState=match.group("weapon");
             skillLabel=skill+" "+skillState;weaponLabel="Weapon tech "+weaponState;
         }
         public String skillLabel(){return skillLabel;}
@@ -31,7 +32,7 @@ public final class ReadinessLine {
         if(text==null||text.length()>180)return null;
         for(int i=0;i<PATTERNS.length;i++) {
             Matcher match=PATTERNS[i].matcher(text);
-            if(match.matches()) { State s=new State(ORDERS[i],match);return s.resolve<=100?s:null; }
+            if(match.matches()) {if(match.group("amount")!=null){double amount=Double.parseDouble(match.group("amount")),maximum=Double.parseDouble(match.group("max"));if(!Double.isFinite(amount)||!Double.isFinite(maximum)||amount<0||maximum<=0)return null;} State s=new State(ORDERS[i],match);return s.resolve<=100?s:null; }
         }
         return null;
     }

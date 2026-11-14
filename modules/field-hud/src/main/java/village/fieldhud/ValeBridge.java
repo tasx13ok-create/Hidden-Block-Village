@@ -20,7 +20,9 @@ public final class ValeBridge {
         try { return READER.read(getter.invoke(null),MC.player.getUniqueID(),MC.player.dimension)!=null; }
         catch(ReflectiveOperationException|RuntimeException|LinkageError unavailable) { return false; }
     }
-    public static int resourceRows() { return (ChakraBridge.current()==null?0:1)+(state==null?0:1); }
+    static boolean showResolve(){return state!=null&&!ChakraBridge.ownsResource();}
+    static boolean resourceWaiting(){return HudConfig.chakra&&SharedResourceBridge.authoritative()&&ChakraBridge.current()==null;}
+    public static int resourceRows() { return (ChakraBridge.current()!=null||resourceWaiting()?1:0)+(showResolve()?1:0); }
     private static void reset() { state=null;previous=null;primed=false;lastSequence=0;confirmedAt=-1000; }
     public static void tick() {
         if(player!=MC.player||world!=MC.world) { player=MC.player;world=MC.world;reset(); }

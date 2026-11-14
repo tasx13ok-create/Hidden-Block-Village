@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.vale'
-version = '0.3.15'
+version = '0.3.16'
 base { archivesName = 'vale-orders' }
 java {
     toolchain {
@@ -20,6 +20,7 @@ minecraft {
     extraRunJvmArguments.add('-Dvaleorders.selftest=true')
     extraRunJvmArguments.add('-Dfml.coreMods.load=village.vale.PoseCorePlugin')
 }
+tasks.withType(JavaExec).matching { it.name.startsWith('verify') }.configureEach { maxHeapSize = '512m' }
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     if(name in ['compileJava','compileRuleChecksJava','compileWorldChecksJava','compileClientChecksJava']) options.incremental = false
@@ -228,6 +229,7 @@ for (entry in [verifyAcademy: 'village.vale.AcademyChecks',
                verifyWeaponVfx: 'village.vale.WeaponMathTest',
                verifyGates: 'village.vale.expedition.GateRulesChecks',
                verifyDodge: 'village.vale.DodgeChecks',
+               verifyResourceBridge: 'village.vale.bridge.ResourceContractChecks',
                verifyGateContent: 'village.vale.expedition.GateBookChecks',
                verifyJeiCatalog: 'village.vale.JeiCatalogChecks',
                verifyScrollCompanions: 'village.vale.arsenal.ScrollCompanionChecks038',

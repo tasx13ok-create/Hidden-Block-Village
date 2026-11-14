@@ -16,7 +16,7 @@ public final class KitchenFood extends ItemFood {
   if(key.equals("dashi_soup"))p.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING,400,0));
   if(key.equals("okayu"))p.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST,200,0));
   if(key.equals("yakisoba")||key.equals("ramen"))p.getFoodStats().addStats(1,.1f);
-  PlayerState.setResolve(p,Math.min(100,PlayerState.resolve(p)+(key.equals("ramen")?12:4)));n.setLong("kitchenMealReady",now+600);
+  if(p instanceof EntityPlayerMP)village.vale.bridge.MoveCost.restore((EntityPlayerMP)p,key.equals("ramen")?12:4);n.setLong("kitchenMealReady",now+600);
  }
  @Override public ItemStack onItemUseFinish(ItemStack s,World w,EntityLivingBase e){ItemStack out=super.onItemUseFinish(s,w,e);if((!bowl&&!bottle)||!(e instanceof EntityPlayer)||((EntityPlayer)e).capabilities.isCreativeMode)return out;ItemStack returned=new ItemStack(bowl?Items.BOWL:Items.GLASS_BOTTLE);if(out.isEmpty())return returned;EntityPlayer p=(EntityPlayer)e;if(!w.isRemote&&!p.inventory.addItemStackToInventory(returned))p.dropItem(returned,false);return out;}
 }

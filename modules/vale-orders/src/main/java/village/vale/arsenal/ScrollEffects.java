@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 final class ScrollEffects {
  static boolean buff(EntityPlayerMP p,Potion potion,int ticks,int strength){
   if(p.isPotionActive(potion))return false;
-  PotionEffect effect=new PotionEffect(potion,ticks,strength);p.addPotionEffect(effect);
+  PotionEffect effect=new PotionEffect(potion,ticks,strength);try{p.addPotionEffect(effect);}finally{if(p.getActivePotionEffect(potion)==effect&&effect.getDuration()>0)Scrolls.recordApplied(p);}
   // Native PotionApplicableEvent can deny or replace the attempted addition.
   // Charge only for this actual application, not an unrelated existing effect.
   return p.getActivePotionEffect(potion)==effect&&effect.getDuration()>0;
@@ -25,11 +25,12 @@ final class ScrollEffects {
   EntityLivingBase t=friendlyAim(p,3);if(t==null)t=p;
   if(!t.isEntityAlive()||(t instanceof EntityPlayer&&((EntityPlayer)t).isSpectator())||(t!=p&&!p.isOnSameTeam(t)))return false;
   float before=t.getHealth();if(!Float.isFinite(before)||before>=t.getMaxHealth())return false;
-  t.heal(6);float after=t.getHealth();return Float.isFinite(after)&&after>before;
+  try{t.heal(6);}finally{if(Float.isFinite(t.getHealth())&&t.getHealth()>before)Scrolls.recordApplied(p);}float after=t.getHealth();return Float.isFinite(after)&&after>before;
  }
  static boolean hit(EntityPlayerMP p,EntityLivingBase t,float amount,Potion status,int ticks,int amp){if(t==null||!ArsenalAccess.hit(p,t,amount))return false;if(status!=null)t.addPotionEffect(new PotionEffect(status,ticks,amp));return true;}
+ private static boolean castHit(EntityPlayerMP p,EntityLivingBase t,float amount,Potion status,int ticks,int amp){if(t==null)return false;float before=t.getHealth()+t.getAbsorptionAmount();boolean accepted;try{accepted=ArsenalAccess.hit(p,t,amount);}finally{if(Float.isFinite(before)&&t.getHealth()+t.getAbsorptionAmount()<before)Scrolls.recordApplied(p);}if(!accepted||!Scrolls.castStillValid(p)||t.world!=p.world||!ArsenalAccess.allowed(p,t))return false;if(status!=null)t.addPotionEffect(new PotionEffect(status,ticks,amp));return true;}
  static Vec3d ground(EntityPlayerMP p,int range){Vec3d eye=p.getPositionEyes(1);RayTraceResult r=p.world.rayTraceBlocks(eye,eye.add(p.getLookVec().scale(range)),false,true,false);return r!=null&&r.typeOfHit==RayTraceResult.Type.BLOCK&&r.sideHit==EnumFacing.UP?r.hitVec.add(0,.1,0):null;}
- static boolean spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase target,int life,float power){return ScrollActor.spawn(p,kind,at,target,life,power)!=null;}
+ static boolean spawn(EntityPlayerMP p,String kind,Vec3d at,EntityLivingBase target,int life,float power){return ScrollActor.spawnCast(p,kind,at,target,life,power)!=null;}
  static boolean mode(EntityPlayerMP p,String kind,int ticks){
   NBTTagCompound s=Scrolls.state(p);String current=s.getString("mode");long now=ArsenalAccess.now(p);
   s.setLong("modeVersion",s.getLong("modeVersion")+1);
@@ -67,7 +68,7 @@ final class ScrollEffects {
    case "clasp":case "thorns":case "swamp":at=ground(p,24);if(at==null)return false;return spawn(p,k,at,null,k.equals("clasp")?80:160,k.equals("thorns")?5:2);
    case "ash":case "mist":case "poison":case "ring":case "shockwave":
     if(ScrollActor.dismiss(p,k))return true;return spawn(p,k,p.getPositionVector(),null,160,k.equals("poison")?2:k.equals("ring")?4:1);
-   case "illusion":t=ArsenalAccess.aimedTarget(p,16);return hit(p,t,1,MobEffects.BLINDNESS,80,0)&&slow(t,80,2);
+   case "illusion":t=ArsenalAccess.aimedTarget(p,16);return castHit(p,t,1,MobEffects.BLINDNESS,80,0)&&slow(t,80,2);
    case "mind":t=ArsenalAccess.aimedTarget(p,20);if(t==null||!spawn(p,k,t.getPositionVector(),t,100,0))return false;p.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,100,3));return true;
    case "chains":if(ScrollActor.dismiss(p,k))return true;t=ArsenalAccess.aimedTarget(p,24);return t!=null&&spawn(p,k,t.getPositionVector(),t,120,1);
    case "shadow":t=ArsenalAccess.aimedTarget(p,20);return t!=null&&spawn(p,k,t.getPositionVector(),t,100,1);
@@ -75,9 +76,9 @@ final class ScrollEffects {
    case "swarm":t=ArsenalAccess.aimedTarget(p,24);return t!=null&&!ScrollActor.exists(p,k)&&spawn(p,k,t.getPositionVector(),t,140,2);
    case "thunder":t=ArsenalAccess.aimedTarget(p,24);if(t==null)return false;if(!spawn(p,k,t.getPositionVector().add(0,6,0),t,60,12))return false;p.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,300,0));return true;
    case "hound":case "panther":t=ArsenalAccess.aimedTarget(p,24);return t!=null&&spawn(p,k,p.getPositionVector(),t,100,k.equals("hound")?5:9);
-   case "gust":{int n=0;for(EntityLivingBase e:ArsenalAccess.targets(p,6,true,6))if(hit(p,e,2,null,0,0)){push(p,e,.8,.25);n++;}return n>0;}
-   case "fork":t=ArsenalAccess.aimedTarget(p,20);if(!hit(p,t,7,MobEffects.SLOWNESS,30,1))return false;for(EntityLivingBase e:ArsenalAccess.targets(p,8,true,3))if(e!=t)hit(p,e,3,null,0,0);return true;
-   case "wave":{int n=0;for(EntityLivingBase e:ArsenalAccess.targets(p,10,true,8))if(hit(p,e,5,null,0,0)){push(p,e,.35,.1);n++;}return n>0;}
+   case "gust":{int n=0;for(EntityLivingBase e:ArsenalAccess.targets(p,6,true,6))if(castHit(p,e,2,null,0,0)){push(p,e,.8,.25);n++;}return n>0;}
+   case "fork":t=ArsenalAccess.aimedTarget(p,20);if(!castHit(p,t,7,MobEffects.SLOWNESS,30,1))return false;for(EntityLivingBase e:ArsenalAccess.targets(p,8,true,3))if(e!=t)castHit(p,e,3,null,0,0);return true;
+   case "wave":{int n=0;for(EntityLivingBase e:ArsenalAccess.targets(p,10,true,8))if(castHit(p,e,5,null,0,0)){push(p,e,.35,.1);n++;}return n>0;}
    case "dragon":if(!p.onGround)return false;t=ArsenalAccess.aimedTarget(p,24);return t!=null&&spawn(p,k,p.getPositionVector().add(0,1,0),t,100,10);
    case "front":return projectile(p,k,18,10,60);
    case "firestream":return projectile(p,k,16,3,80);
