@@ -4,7 +4,7 @@ import tempfile
 import unittest
 
 from tools.arenas.audit import AuditError
-from tools.arenas.stage import _store_chunk, _reserve_empty, stage_world, restore_snapshot, _files, _new_world_destination
+from tools.arenas.stage import _store_chunk, _reserve_empty, stage_world, restore_snapshot, _files, _new_world_destination, _stage_empty_buffers, verify_empty_buffers, _new_level
 from tools.world_merge import nbt
 from tools.world_merge.anvil import Region, new_chunk, read_block, chunk_tiles, _world_tiles
 
@@ -45,6 +45,25 @@ class StagingTests(unittest.TestCase):
                 self.assertEqual(chunk_tiles(world,2,3),[transformed[0][1]])
                 self.assertEqual(tile.scalar('x'),1)
 
+    def test_void_buffers_preserve_existing_plot_region_and_audit_all_height(self):
+        import numpy as np
+        with tempfile.TemporaryDirectory() as temp:
+            world=Path(temp);(world/'region').mkdir()
+            region=Region(world/'region/r.125.125.mca')
+            blocks=np.zeros((256,16,16),dtype=np.uint16);meta=np.zeros_like(blocks,dtype=np.uint8)
+            blocks[4,2,2]=98
+            _store_chunk(region,4000,4000,blocks,meta);region.save_atomic()
+            before=region.path.read_bytes()
+            manifest={'arenas':[{'id':'test','world_min':[64000,3,64000],'dimensions':[500,250,500]}]}
+            result=_stage_empty_buffers(world,manifest,2)
+            self.assertEqual(result['status'],'PASS');self.assertEqual(result['buffer_chunks'],272)
+            self.assertEqual(result['verified_zero_cells'],272*65536)
+            self.assertEqual(region.path.read_bytes(),before)
+            cx,cz=result['chunks'][0]['chunk'];other=Region(world/'region'/('r.%d.%d.mca'%(cx>>5,cz>>5)))
+            damaged=np.zeros((256,16,16),dtype=np.uint16);damaged[255,0,0]=1
+            _store_chunk(other,cx,cz,damaged,meta);other.save_atomic()
+            self.assertEqual(verify_empty_buffers(world,manifest,2)['status'],'FAIL')
+
     def test_reserved_saved_entities_fail_before_edit(self):
         with tempfile.TemporaryDirectory() as temp:
             world=Path(temp);(world/'region').mkdir()
@@ -68,6 +87,15 @@ class StagingTests(unittest.TestCase):
             result=_reserve_empty(Path(temp),[64000,3,64000],[500,250,500])
             self.assertEqual(result['existing_chunks_inspected'],0)
             self.assertEqual(result['status'],'PASS')
+
+    def test_fresh_preview_has_explicit_native_xp_death_policy(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            _new_level(root,{'world_min':[64000,3,64000],'anchors':{'entry':[250,77,40]}},20261114)
+            _,level=nbt.load(root/'level.dat')
+            rules=level['Data']['GameRules']
+            self.assertEqual(rules.scalar('keepNinjaXp'),'true')
+            self.assertEqual(rules.scalar('keepInventory'),'true')
 
     def test_new_world_cannot_be_nested_in_owner_world_or_runtime(self):
         with tempfile.TemporaryDirectory() as temp:

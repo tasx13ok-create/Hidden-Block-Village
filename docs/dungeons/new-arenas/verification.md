@@ -59,6 +59,22 @@ an existing world or server runtime are refused. The newly created empty world
 gets a complete hash-verified snapshot before the first placement; the finished
 five-site world gets a second complete cold snapshot before native boot.
 
+Final staging also authors a two-chunk empty void buffer around each plot's
+32×32 chunk AABB. The 1,360 additional chunks are independently reopened and
+checked for zero blocks/metadata over all256 layers and no tiles/entities/ticks.
+Each raw typed chunk NBT receives a SHA256 and the sorted inventory is hashed.
+Already staged neighboring region slots are read before atomic region rewrites;
+their bytes are preserved. The cold snapshot includes these buffers. They enable
+bounded native prewarm of existing chunks without generating unseen terrain;
+they do not force-load all6,480 plot/buffer chunks.
+
+The fresh preview explicitly stores `keepInventory=true` and the original
+NarutoMod `keepNinjaXp=true` rule. This preserves a legitimately earned once-only
+awakening through death. It does not repeatedly grant battle XP, alter an
+original world or change a global server config. Native acceptance must call
+the actual `PlayerTracker.keepNinjaXp(world)` API after boot; the level.dat string
+alone is not that acceptance.
+
 Chunk conversion uses bounded NumPy arrays per 16×256×16 chunk. Alpha metadata is
 repacked into Anvil low-even/high-odd nibbles. Empty sections are omitted. Existing
 Anvil/NBT defensive writers serialize output atomically; no hostile-input limits
@@ -83,6 +99,28 @@ tile payload uses the existing typed NBT decoder so unknown tags and numeric
 types survive coordinate remapping. Staging installs each tile in its correct
 world chunk; the full Anvil comparison checks typed payloads as well as every
 block and metadata cell. Native container opening remains a separate gate.
+
+Private `ServicesNativeChecks` uses real native villagers and an officially
+registered player. It tests exact three-role UUID stability, rejected template
+and missing-UUID cases without replacement, non-adoption of an unrelated same-
+class actor, native typed entity NBT and real process-restart UUID retention.
+Aid checks dispatch through Forge's actual interaction hook and measure healing,
+cooldown, player.dat durability and preservation of stronger effects. Keeper/
+stores checks establish actual interaction routing; they do not establish client
+chat presentation or imported NPC compatibility.
+
+Private asynchronous `PartyNativeChecks` creates official registered survival
+bodies with legitimate physical two-node introductions. It exercises party sizes
+one through four, rejection of an introduced fifth player, spectator/fake and
+actual other-run membership rejection, final cancellation/proximity credit
+negatives and old-contact rejection across logout/new-body login. It uses an
+accepted physical objective to create a genuine secondary contributor. The
+bounded live phase equips real Core-owned armor and retains four actual survival
+participants near the authentic updating boss before leaving the contributor
+offline for the driver's actual clear/archive case. Positions are QA guidance;
+these are not human walking, client input, full cooperative-clear or sustained
+load acceptance. Accepted healing/damage contribution still requires the shared
+authority surface; no intent-only credit is fabricated.
 
 Private authoring dependencies: NumPy 2.2.6 for bounded full-output scans and chunk
 conversion; Pillow 11.2.1 for the integrator's offline raster previews. They are

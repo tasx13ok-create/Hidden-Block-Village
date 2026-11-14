@@ -108,6 +108,9 @@ class IndependentReadbackTests(unittest.TestCase):
                 report=audit_stadium(v)
                 self.assertEqual(report['architecture_non_air'],1)
                 self.assertEqual(report['status'],'FAIL')
+            fixture(path,blocks=bytes([9])*45,owners=bytes([2])*45,names={'2':'stadium_structure'})
+            with readback(path) as v:
+                self.assertEqual(audit_stadium(v)['architecture_non_air'],0)
 
     def test_layer_array_must_match_full_cell_count(self):
         with tempfile.TemporaryDirectory() as temp:

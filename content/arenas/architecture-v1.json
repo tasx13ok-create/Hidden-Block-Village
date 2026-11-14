@@ -1,10 +1,11 @@
 {
   "schema": 1,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dimensions": [500, 250, 500],
   "stadium_itself_dimensions": [500, 250, 500],
   "latest_owner_clarification": "The stadium proper itself occupies the full500x500x250, including spectator construction and structural enclosure; the active combat court stays136 blocks useful for jutsu.",
   "enclosing_stadium_profiles": {"forest": "Timber/plaster square with Leaf eaves and original sweeping root gate", "cloud": "Asymmetric pale fortress banks with indigo roofs, unequal grounded signal pylons", "sand": "Full circular sandstone Sun-Sand spectator bowl, turquoise scholar bays and gourd seal", "mist": "Beveled piled coastal spectator banks with fin-shaped canopies, shark mouth and real contained sea", "fire": "Grounded octagonal charcoal citadel, heavy eaves and original Uchiha fan gate relief"},
+  "exterior_arcades": {"depth": 64, "bearing_pier_spacing": 40, "strategy": "Entered stacked exterior galleries, real stair flights and open bays below seating. Leaf timber/plaster bearings, alternating colossal Cloud colonnades, circular Sand scholar bays, source-water marine piles and deeply buttressed Fire service streets."},
   "world_min_y": 3,
   "world_max_y": 252,
   "coordinate_convention": "Local x,y,z; anchors are standing feet; floor occupies y-1.",
@@ -56,7 +57,7 @@
       "environment": {"fractured_floating_base": false, "contained_lava_source_id": 11, "preview_dimension": 0, "nether_acceptance": "NOT_RUN"}
     }
   },
-  "light_policy": "Actual sea-lantern floor sources at <=6-cell route intervals; native block-light acceptance remains separate.",
+  "light_policy": "Actual exposed floor sources on flat middle treads and supported head-height side emitters outside narrow walking envelopes. Sources hidden below stairs were rejected by native light checks; every declared light position is rechecked against final actual sea-lantern bytes. Final native block-light acceptance remains required.",
   "route_policy": "Primary11, alternative9, ordinary room/lower7, tower5, giant19 with24 headroom; four outer stadium stair aisles9wide and two service/upper galleries. Distinct elevations are unioned before carving, with flat landings and actual normal-half vanilla stairs on each higher tread.",
   "fluid_policy": "All fluid cells source metadata0. After authored dry cuts, leaking fluid cells become glass lining. Independent output scan and native updates remain mandatory."
 }

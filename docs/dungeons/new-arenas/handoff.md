@@ -1,61 +1,74 @@
-# Arena execution checkpoint
+# Five stadiums: current checkpoint
 
-The direct14November owner clarification requires the **stadiums themselves** to
-span500wide×500long×250high. The prior smaller-bowl interpretation is superseded.
-Five136-block combat courts remain inside the larger spectator structures.
+The owner's 14 November clarification requires the stadium structures themselves
+to span 500 wide × 500 long × 250 high. All five build04 exports pass measured
+architectural occupancy at the six extreme planes, substantial perimeter bands,
+all four quadrants and the upper 50 layers. The combat courts remain compact
+inside monumental stands, functional wings, galleries and original landmarks.
+The Leaf timber/tree, fractured Cloud plates, Sand gourd, Mist water/piles and
+Uchiha fan/citadel compositions follow the adapted project research.
 
-Branch `codex/five-new-naruto-coliseums` owns only arena paths. Base main is
-8681bb9219e065eeadb1b85915d21a33183d5b76. Other workers' Core/HUD/Rack/compat changes
-remain in their original checkouts. Minecraft stays closed.
+Work is on `codex/five-new-naruto-coliseums`; the original dirty checkout and
+protected shared modules remain untouched. Main was fetched again and currently
+points to 7baca5c7115355e5b737ec3602ebaed0e458eef8. This checkpoint still has the
+8681bb9 base; integration is pending without discarding source changes.
+Minecraft was not opened or controlled by this arena worker.
 
-Private candidate02 is `D:/HiddenBlockVillage-Arenas-20261114/build-02/`.
-Its five full-size Alpha exports, exact source snapshot, JSON anchor/encounter
-metadata, route maps, three voxel silhouette projections and interior sections are
-present. Source fingerprint53269d2a0b1dfbbcc30e0581c930710eaac9f4685c5b079a31186b8e9ab83e8a
-was unchanged across generation. Peak generation working set481,333,248bytes.
+Private outputs: `D:/HiddenBlockVillage-Arenas-20261114/build-04`. Each arena
+subdirectory has its Alpha schematic, metadata, route map, three silhouettes and
+interior/foundation sections. `index.html` and `five-stadiums.png` are labeled
+offline voxel projections. The exact generator snapshot is in `source-snapshot`.
+Source fingerprint: 50c3642af36f21feb630d3db7be4ec521b0e548686b27022c5e0214a197d7fb9.
+Measured generation peak: 537,960,448 bytes. Build04 has the same five schematic
+bytes as build03; build04 also includes stricter unsafe-brief validation.
 
-Independent strict readback passed all five: architectural last-writer occupancy
-itself spans0..499×0..249×0..499 and passes substantial edge/upper-mass guards;
-routes, headroom, standing anchors, actual stair metadata, gravity/source-fluid
-enclosure and25real accessible chest tile entities pass their offline checks.
-The source layer owner map is an extra bounded Alpha NBT array, ignored by normal
-clipboard consumers. Bounds cannot pass from terrain padding or marker blocks.
+All five strict independent readbacks PASS. `preview-world-04` is a fresh void
+world with Y 3..252 placement, five distinct regions and two-chunk void buffers.
+All 312,500,000 cells and 25 typed chests match its Anvil bytes with zero
+block/metadata differences. 1,360 buffer chunks contain 89,128,960 zero cells.
+A whole 35-file cold snapshot was restored and hash/byte checked. Safe hashes
+and measured architecture are in `release/evidence/arenas-build04-offline.json`.
+No original save, NPC, private player or reference distribution is published.
 
-Fresh preview-world-01 has5regions/5,120chunks/25typedchests. Independent Anvil
-readback compared312,500,000block+metadata cells and every typed chest payload
-against the exports with zero differences. A complete7file cold snapshot was
-restored byte/hash-identically into preview-world-rollback-01. Original worlds and
-player data were not imported or modified. Reports and exact export hashes are
-in `release/evidence/arenas-build02-offline.json`; complete private reports remain
-beside the candidate. These results do not accept native physics/gameplay.
+The original server-only `modules/naruto-arenas` implements physical introduction,
+canonical native awakening, party admission, three original environmental phases,
+per-run bounded conditional cell journals, an explicitly original sealing ending,
+real native and public Core reward outboxes, offline reward archives, camp
+services, exit and empty-instance reset. Named environmental adaptations do not
+claim to call native named jutsu. Actual native boss behavior remains installed.
+Normal policies are closed until each pinned native adapter passes its gates.
+The private QA JAR is opt-in and must never be installed as production content.
 
-Visual inspection of the actual voxel projections found the full-size exterior
-walls too blank. Candidate02 is preserved, including its exact original source
-snapshot. The geometry worker is replacing those facades with supported deep
-arcades, usable galleries and distinct Leaf/Cloud/Sand/marine/Uchiha articulation.
-That repair requires a new build03, fresh independent audits and a new stage.
-Do not describe candidate02 as final architectural/presentation acceptance.
+Actual native diagnostics resolved and spawned all five matching boss classes.
+Earlier real-world geometry/container/service tests and 33 native outbox / 128
+Core outbox assertions passed their stated scope. The full-inventory outbox loaded
+and delivered once after a process restart. A real 2,048-cell journal exceeded
+Java's NBT string size; the production store was repaired to a strict UTF8 byte
+array envelope. Its 297,567-byte payload now saves and conditionally restores
+exactly across two processes. Unknown future envelopes remain opaque/read-only.
 
-The separate original server-only controller is under active implementation and
-has not yet been published as an accepted final runtime. Real isolated Magma tests
-resolved/spawned all five exact boss classes and matched vanilla palettes. Gaara's
-initial failure was repaired with spawn-monsters=true and doMobSpawning=false.
-Earlier lethal probes with zero actual body ticks were invalid and preserved;
-bounded5×5prewarm repaired that precondition. Individual dodge/source rejections
-must not be described as universal immunity or terminal acceptance.
+Current final-world gameplay candidate `preview-world-04-native-01` is FAILED and
+preserved. Hashirama and Gaara first clears exercised real physical seals, loaded
+observation, earned inventory outbox/archive, exit/reset and receipt replay.
+Hashirama second run died; Ay closed on ambiguous sealing; Gaara second exit and
+Kisame first exit found unloaded landings; Madara combat failed. Measured overall
+p99 exceeded the 100 ms target. These are failures, not complete playability.
 
-The native/vanilla reward outbox passed33real inventory/player-file tests, and a
-second process loaded a real full-inventory pending case, delivered it once and
-rejected replay. This used private synthetic entitlements, not an earned boss
-clear. Core reward bundles now use the existing public RewardLedger with genuine
-issued serials; their separate native checks are being run. Three original camp
-villager services, real aid and actual storage are being added without repurposing
-imported CustomNPCs. Seals/native terminal, full encounters, party/reconnect/reset,
-restart-per-phase, load, client/shader and hosting remain separate gates.
+Source repairs now test the registered synthetic player's actual native network
+lifecycle, join atomicity, existing-chunk landing prewarm, seal-phase sequence and
+legitimate camp recovery. New reports must bind the exact repaired source and
+runtime bytes. Final-world native lighting, full solo/cooperative clears, normal
+native terminal/drop coexistence, restart DURING each phase and pending reward,
+Nether presentation, load targets and final package remain active work. Client/
+shader acceptance is unavailable while the owner keeps the client closed.
 
-Next: finish facade repair and regenerate all five; strict audit/stage/full world
-comparison/rollback; run the exact arena controller on the matching world copy,
-fix every observed failure, then package final private outputs and update this
-handoff with exact accepted scope and verified remote commit. Shared API requests
-are in the orchestration directory. Never promote a diagnostic or render into an
-unobserved gameplay PASS.
+The accepted after-unwind DPS/heal/protection observer is a protected shared Core
+API request in `collaboration/arena-build-orchestration/INTEGRATION-REQUESTS.md`.
+Physical objective credit and authenticated final native killer are implemented;
+proximity and intent never become contribution. The Core owner has been informed.
+Do not replay `ArsenalAccess.hit` to manufacture an observation.
+
+Continue the mandatory native repair loop, retain failed candidates, publish
+further checkpoints, then package all five exact artifacts and update this handoff.
+This checkpoint is original source and offline construction acceptance, not a
+production or hosting release. The old sprint deadline is not an arena finish time.

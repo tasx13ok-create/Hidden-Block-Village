@@ -14,6 +14,14 @@ scholar bays/gourd, marine fin/shark-mouth/piled stands and a grounded octagonal
 Uchiha fan/moon-gate citadel. No reference artwork, NPC, schematic or world cells
 are copied. Minecraft1.12.2vanilla materials retain their native provider assets.
 
+The first full-size exterior was rejected in visual review because its filled
+retaining facades looked like blank boxes. Version1.2cuts actual64-block-deep
+arcades through that substructure, retaining40-block bearing bays and lintel
+beams. The exterior galleries have real floors and connected stair flights;
+Leaf timber/plaster frames, colossal Cloud colonnades and separated plates,
+Sand scholar galleries, open marine piles and grounded Uchiha buttresses extend
+their regional identity down the facades. Earlier exports remain preserved.
+
 The generator records exact standing anchors, densely sampled paths, service
 room entries, actual normal-half stair samples, owned source-fluid volumes,
 light sources and original geometry/config hashes. Exported semantic last-writer
@@ -30,3 +38,16 @@ their own native acceptance gates. Wood blocks remain native flammable wood;
 arena fire/jutsu protection must pass its actual runtime tests. Gallery lights
 are real source blocks, but a source count does not establish native block-light
 levels or shader acceptance.
+
+The native fixture also rejected dark monument stair samples. Lamps hidden
+below stair blocks were insufficient. The repaired output adds actual exposed
+flat-tread sources and supported head-height side emitters outside walking
+envelopes, and checks every listed source against final sea-lantern bytes.
+Native light must still be measured on the final matching export.
+
+Kisame's optional prison is a separate15×15basin on the northeast dry island.
+It retains two3-wide physical stair exits over the rim and leaves the main boss
+anchor and approach clear. Metadata records the bounded two-layer fill target.
+The runtime must journal only eligible baseline air, preserving the real solid
+egress stairs; native containment, drowning recovery and restart checks remain
+mandatory.

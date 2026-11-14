@@ -39,9 +39,10 @@ class FullSizeGeometryTests(unittest.TestCase):
             report=audit_arena(row,directory)
             self.assertEqual("PASS",report["status"],json.dumps({
                 "failures":report["failures"],
-                "routes":{k:v for k,v in report["routes"].items() if v["status"]!="PASS"},
-                "stadium":report.get("stadium_geometry",{}),
-                "layer_checks":report.get("layer_checks",{})},indent=2))
+                "routes":{k:{"failures":v["failures"][:3],"width_failures":v["width_failures"][:3]}
+                          for k,v in report["routes"].items() if v["status"]!="PASS"},
+                "stadium":{k:v for k,v in report.get("stadium_geometry",{}).items() if k!="architecture_by_y"},
+                "layer_checks":{k:v for k,v in report.get("layer_checks",{}).get("layers",{}).items() if v["status"]!="PASS"}},indent=2))
             self.assertEqual([500,250,500],report["dimensions"])
             self.assertEqual([0,0,0],report["occupied_min"])
             self.assertEqual([499,249,499],report["occupied_max"])
@@ -71,8 +72,18 @@ class FullSizeGeometryTests(unittest.TestCase):
                 for container in geometry["containers"]:
                     self.assertEqual(54,volume.block(*container["position"]))
                     self.assertEqual(2,volume.meta(*container["position"]))
+                for source in geometry["light_sources"]:
+                    self.assertEqual(169,volume.block(*source))
                 if kind=="mist":
                     self.assertGreater(report["block_counts"].get("9",0),1000000)
+                    prison=geometry["water_prison"]
+                    self.assertEqual([278,63,208],prison["min"])
+                    self.assertEqual([292,64,222],prison["max"])
+                    for y in (63,64):
+                        for x in range(277,294):
+                            for z in (207,223):self.assertNotIn(volume.block(x,y,z),(0,8,9,10,11))
+                        for z in range(207,224):
+                            for x in (277,293):self.assertNotIn(volume.block(x,y,z),(0,8,9,10,11))
                 if kind=="fire":
                     self.assertGreater(report["block_counts"].get("11",0),0)
 

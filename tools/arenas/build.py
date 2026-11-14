@@ -4,6 +4,7 @@ import ctypes
 import json
 from pathlib import Path
 import subprocess
+import shutil
 import time
 
 from .volume import Volume, safe_new_directory, sha256
@@ -74,12 +75,40 @@ def write_json(path,data):
     Path(path).write_text(json.dumps(data,indent=2,sort_keys=True)+'\n',encoding='utf-8')
 
 
+def validate_brief(brief):
+    """Validate all write destinations/placements before making any directory."""
+    expected={'arena_forest_root_coliseum_v1','arena_cloud_storm_coliseum_v1',
+              'arena_sand_kazekage_coliseum_v1','arena_mist_shark_coliseum_v1','arena_fire_ashen_coliseum_v1'}
+    geometry=brief.get('geometry',{})
+    if brief.get('schema')!=1 or [geometry.get(k) for k in ('width','height','length')]!=[500,250,500]:
+        raise ValueError('Unsupported brief schema or full-size envelope')
+    arenas=brief.get('arenas',[])
+    if len(arenas)!=5 or any(not isinstance(a,dict) or type(a.get('id')) is not str for a in arenas) or {a.get('id') for a in arenas}!=expected:
+        raise ValueError('Exactly five known safe arena IDs are required; paths/aliases are refused')
+    regions=set()
+    for spec in arenas:
+        minimum=spec.get('proposed_world_min',[])
+        if len(minimum)!=3 or any(type(v) is not int for v in minimum) or minimum[1]!=3:
+            raise ValueError('World minimum must be an integer coordinate at Y3')
+        if minimum[0]%512 or minimum[2]%512 or max(abs(minimum[0]),abs(minimum[2]))>29999000:
+            raise ValueError('Reservations must be region-aligned and inside world limits')
+        region=(minimum[0]//512,minimum[2]//512)
+        if any(abs(region[0]-r[0])<2 and abs(region[1]-r[1])<2 for r in regions):
+            raise ValueError('Overlapping arena reservations or required empty buffers')
+        regions.add(region)
+        if spec.get('proposed_world_max_inclusive')!=[minimum[0]+499,252,minimum[2]+499]:
+            raise ValueError('World maximum does not match the full-size export')
+        for key in ('entry','prep','checkpoint','boss','reward','exit'):
+            at=spec.get(key+'_local',[])
+            if len(at)!=3 or any(type(v) is not int for v in at) or not(5<=at[0]<=494 and 3<=at[1]<=239 and 5<=at[2]<=494):
+                raise ValueError('Unsafe standing pad envelope: '+key)
+
+
 def build_all(brief_path,output,seed=20261114,dry_run=False):
     from .geometry import build_geometry
     brief_path=Path(brief_path).resolve()
     brief=json.loads(brief_path.read_text(encoding='utf-8'))
-    if len(brief['arenas']) != 5 or [brief['geometry'][k] for k in ('width','height','length')] != [500,250,500]:
-        raise ValueError('The five-arena full-size contract is mandatory')
+    validate_brief(brief)
     source=source_identity()
     plan={'schema':1,'source':source,'brief_sha256':sha256(brief_path),'seed':seed,
           'arenas':[a['id'] for a in brief['arenas']], 'owner_client_preference':'KEEP_CLOSED',
@@ -89,6 +118,16 @@ def build_all(brief_path,output,seed=20261114,dry_run=False):
     if dry_run:
         return plan
     out=safe_new_directory(output)
+    # Preserve exact authoring source alongside every failed/successful candidate.
+    # A later repair must not make its predecessor impossible to reproduce.
+    for row in source['files']:
+        src=ROOT/row['path'];target=out/'source-snapshot'/row['path']
+        target.parent.mkdir(parents=True,exist_ok=True)
+        if sha256(src)!=row['sha256']:raise ValueError('Source changed before snapshot copy')
+        shutil.copyfile(src,target)
+        if sha256(src)!=row['sha256'] or sha256(target)!=row['sha256']:
+            raise ValueError('Source drift during snapshot copy')
+    write_json(out/'source-snapshot'/'IDENTITY.json',source)
     write_json(out/'run-plan.json',plan)
     manifest={'schema':1,'status':'BUILDING','started_utc':datetime.now(timezone.utc).isoformat(),
               'source':source,'seed':seed,'brief_sha256':sha256(brief_path),'base_commit':plan['base_commit'],

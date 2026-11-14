@@ -306,7 +306,7 @@ def audit_stadium(volume):
     total=upper=unmapped=0;by_y=[]
     for y in range(volume.height):
         unmapped+=int(np.count_nonzero((blocks[y]!=0)&~np.isin(owners[y],known)))
-        mask=(blocks[y]!=0)&np.isin(owners[y],labels)
+        mask=(blocks[y]!=0)&~np.isin(blocks[y],list(FLUIDS))&np.isin(owners[y],labels)
         count=int(np.count_nonzero(mask));by_y.append(count);total+=count
         if y>=volume.height-50: upper+=count
         z,x=np.nonzero(mask)

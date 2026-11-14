@@ -247,6 +247,179 @@ class Architecture:
                 if outer[0]<inner[0]:self.box(outer[0],y0,z,inner[0]-1,y1,z,block,meta,layer=layer)
                 if inner[1]<outer[1]:self.box(inner[1]+1,y0,z,outer[1],y1,z,block,meta,layer=layer)
 
+    def exterior_articulation(self,kind,fy):
+        """Deep open arcades, bearing piers and entered exterior service tiers.
+
+        Apertures cut through64 blocks of bleacher substructure. The remaining
+        piers and continuous floor/lintel beams carry the seating, rather than
+        disguising a solid podium with colored strips or surface windows.
+        """
+        levels=[]
+        if kind=="mist":levels=[self.entry_y,fy]
+        else:
+            for level in range(14,fy-15,32):
+                if abs(level-self.entry_y)<=10:level=self.entry_y
+                if self.entry_y<level<self.entry_y+30:continue
+                levels.append(level)
+            levels.extend((self.entry_y,fy))
+        levels=sorted(set(levels))
+        if kind=="sand":levels=sorted(set(44 if level==46 else level for level in levels))
+        # Coordinate spans follow each enclosing footprint, including the circular
+        # sandstone bowl and clipped fortress/citadel/marine corners.
+        vertical=[]
+        for x in range(500):
+            zs=[z for z in range(500) if (s:=self.stadium_span(kind,0,z)) and s[0]<=x<=s[1]]
+            vertical.append((min(zs),max(zs)) if zs else None)
+        apertures=[]
+        windows=[(a,b-7) for a,b in zip(levels,levels[1:]) if b-a>=14]
+        windows.append((fy,fy+26))
+        if kind=="mist":windows.insert(0,(14,self.entry_y-3))
+        width=22 if kind=="fire" else 32 if kind in ("cloud","mist") else 28
+        for start in range(24,460,40):
+            end=start+width
+            for y0,y1 in windows:
+                for z in range(start,end+1):
+                    s=self.stadium_span(kind,0,z)
+                    if not s:continue
+                    for left,right in ((s[0],min(s[0]+64,s[1])),(max(s[0],s[1]-64),s[1])):
+                        self.box(left,y0,z,right,y1,z,AIR,layer="stadium_structure")
+                for x in range(start,end+1):
+                    s=vertical[x]
+                    if not s:continue
+                    for near,far in ((s[0],min(s[0]+64,s[1])),(max(s[0],s[1]-64),s[1])):
+                        self.box(x,y0,near,x,y1,far,AIR,layer="stadium_structure")
+                apertures.append({"horizontal_span":[start,end],"clear_y":[y0,y1],"depth":64})
+        if kind=="cloud":
+            # Alternate bays are colossal open Cloud colonnades under the three
+            # plates, rather than a repeated office-window facade.
+            for start in range(24,460,80):
+                for c in range(start,start+33):
+                    for x0,x1 in ((0,64),(435,499)):
+                        self.box(x0,14,c,x1,self.entry_y-12,c,AIR,layer="stadium_structure")
+                    self.box(c,14,0,c,self.entry_y-12,64,AIR,layer="stadium_structure")
+                    self.box(c,14,435,c,self.entry_y-12,499,AIR,layer="stadium_structure")
+        # Marine undercroft is genuinely open on piles. Restore source sea inside
+        # the plot after cutting the old solid wall; the final conditional liner
+        # seals only liquid cells exposed at dry cuts/export boundaries.
+        if kind=="mist":
+            import numpy as np
+            b=np.frombuffer(self.v.blocks,dtype=np.uint8).reshape(250,500,500)
+            metadata=np.frombuffer(self.v.data,dtype=np.uint8).reshape(250,500,500)
+            high=np.frombuffer(self.v.high,dtype=np.uint8).reshape(250,500,500)
+            owners=np.frombuffer(self.v.owners,dtype=np.uint8).reshape(250,500,500)
+            count=0
+            for y in range(14,61):
+                air=b[y]==AIR
+                count+=int(air.sum())
+                b[y][air]=9
+                metadata[y][air]=0
+                high[y][air]=0
+                owners[y][air]=self.v.layer_ids["fluids"]
+            self.v.layers["fluids"]+=count
+            del b,metadata,high,owners
+            self.v.used.add((9,0))
+            # Actual piles are separated, extend to seabed and support long beams.
+            for z in range(20,481,40):
+                s=self.stadium_span(kind,5,z)
+                for x in (s[0]+4,s[1]-4):self.pillar(x,z,fy-2,LOG,width=7,bottom=13,layer="stadium_structure")
+        # Each exterior tier is an actual walkable gallery with lit floor sources.
+        def ring_points(level):
+            i=24
+            if kind=="sand":
+                return [[round(249.5+245.5*math.cos(math.radians(a))),level,
+                         round(249.5+245.5*math.sin(math.radians(a)))] for a in range(0,361,2)]
+            if kind in ("fire","mist"):
+                cut=70 if kind=="fire" else 36
+                return [[i+cut,level,i],[499-i-cut,level,i],[499-i,level,i+cut],
+                        [499-i,level,499-i-cut],[499-i-cut,level,499-i],[i+cut,level,499-i],
+                        [i,level,499-i-cut],[i,level,i+cut],[i+cut,level,i]]
+            if kind=="cloud":
+                return [[i,level,i],[499-i,level,i],[499-i,level,434-i],
+                        [434-i,level,499-i],[i,level,499-i],[i,level,i]]
+            return [[i,level,i],[499-i,level,i],[499-i,level,499-i],[i,level,499-i],[i,level,i]]
+        for index,level in enumerate(levels):
+            self.path("exterior_gallery_"+str(index),ring_points(level),width=9,clearance=9)
+        # The flights use the exterior side of the east arcade. This keeps them
+        # away from the existing west maintenance stair and the inner service ring.
+        def east(z):return self.stadium_span(kind,4 if kind=="sand" else 24,z)[1]
+        stair_offset=-20 if kind=="sand" else 12
+        for index,(low,high) in enumerate(zip(levels,levels[1:])):
+            if kind=="sand":
+                self.path("exterior_tier_stair_"+str(index),
+                          [[east(185),high,185],[472,high,185],[472,high,195],
+                           [472,low,285],[472,low,295],[east(295),low,295]],width=7,clearance=7)
+                continue
+            points=[[east(300),high,300],[east(300)+stair_offset,high,300],[east(310)+stair_offset,high,310]]
+            for z in range(311,391):
+                level=round(high+(low-high)*(z-310)/80)
+                points.append([east(z)+stair_offset,level,z])
+            points.extend([[east(400)+stair_offset,low,400],[east(400),low,400]])
+            self.path("exterior_tier_stair_"+str(index),points,width=7,clearance=7)
+        self.path("exterior_service_link",[[435,fy,300],[east(300),fy,300]],width=9,clearance=9)
+        # Structural identity extends down the facade, rather than stopping at a
+        # recolored roof. All roots/buttresses touch their own real footing.
+        if kind=="forest":
+            # Actual load-bearing timber facade frames and white plaster floor
+            # spandrels: a Leaf archive structure, not gray concrete with green trim.
+            for c in range(53,464,40):
+                for x0,x1 in ((0,8),(491,499)):
+                    self.box(x0,0,c,x1,fy+34,c+10,LOG,layer="stadium_structure")
+                    self.box(x0,14,c+3,x1,fy+25,c+7,CONCRETE,0,layer="stadium_structure")
+                for z0,z1 in ((0,8),(491,499)):
+                    self.box(c,0,z0,c+10,fy+34,z1,LOG,layer="stadium_structure")
+                    self.box(c+3,14,z0,c+7,fy+25,z1,CONCRETE,0,layer="stadium_structure")
+            for level in levels:
+                for x0,x1 in ((0,8),(491,499)):
+                    self.box(x0,level-4,0,x1,level-2,499,LOG,8,layer="stadium_structure")
+                for z0,z1 in ((0,8),(491,499)):
+                    self.box(0,level-4,z0,499,level-2,z1,LOG,4,layer="stadium_structure")
+            for z in (76,196,316,436):
+                for x,sign in ((7,1),(492,-1)):
+                    self.v.line(x,0,z-14,x+sign*17,28,z,9,LOG,layer="landmark_masses")
+                    self.v.line(x+sign*17,28,z,x+sign*44,fy+20,z+10,7,LOG,layer="landmark_masses")
+            for z in range(16,481,40):
+                for x in (6,493):
+                    self.box(x-2,14,z,x+2,fy+25,z+5,LOG,layer="stadium_structure")
+        elif kind=="cloud":
+            # Two open fractures separate the three original pale plate masses;
+            # later circulation supplies explicit supported bridge crossings.
+            self.box(241,10,14,260,fy-18,220,AIR,layer="stadium_structure")
+            self.box(261,10,239,485,fy-18,260,AIR,layer="stadium_structure")
+            for z in (94,354,434):
+                for x in (8,491):
+                    self.box(x-3,0,z-4,x+3,fy+10,z+4,QUARTZ,layer="stadium_structure")
+                    self.box(x-5,fy+10,z-9,x+5,fy+14,z+9,CLAY,11,layer="stadium_roof")
+        elif kind=="sand":
+            for z in range(40,461,40):
+                s=self.stadium_span(kind,2,z)
+                for x in (s[0]+3,s[1]-3):
+                    for level in levels[:-1]:
+                        self.box(x-2,level+3,z-5,x+2,level+12,z+5,CLAY,9,layer="stadium_galleries")
+        elif kind=="mist":
+            for c in range(57,438,40):
+                for x0,x1 in ((0,8),(491,499)):
+                    self.box(x0,13,c,x1,fy+31,c+6,LOG,layer="stadium_structure")
+                for z0,z1 in ((0,8),(491,499)):
+                    self.box(c,13,z0,c+6,fy+31,z1,LOG,layer="stadium_structure")
+        elif kind=="fire":
+            for z in (116,196,316,396):
+                for x,sign in ((6,1),(493,-1)):
+                    for tier in range(5):
+                        self.box(x-3 if sign==1 else x-4-tier*3,0,z-8,
+                                 x+4+tier*3 if sign==1 else x+3,fy+30-tier*8,z+8,NETHER,layer="stadium_structure")
+            # Deep civilian/service streets under the grounded citadel walls.
+            for x in (104,394):
+                self.box(x-8,self.entry_y,0,x+8,self.entry_y+15,67,AIR,layer="stadium_structure")
+                self.box(x-8,self.entry_y,432,x+8,self.entry_y+15,499,AIR,layer="stadium_structure")
+            for x0,x1 in ((0,7),(492,499)):
+                self.box(x0,0,246,x1,self.entry_y+5,254,NETHER,layer="landmark_masses")
+                for yy in range(self.entry_y+5,self.entry_y+54):
+                    half=40-abs(yy-(self.entry_y+29))
+                    self.box(x0,yy,250-half,x1,yy,250+half,CLAY,
+                             14 if yy>self.entry_y+29 else 0,layer="landmark_masses")
+        self.exterior_galleries={"standing_levels":levels,"apertures":apertures,
+                                  "depth":64,"bearing_pier_spacing":40,"entered_tiers":len(levels)}
+
     def enclosing_stadium(self,kind):
         """The stadium proper, rather than merely its plot, spans500x500x250.
 
@@ -309,6 +482,7 @@ class Architecture:
                         self.box(x-2,roof_y-2,z+dz,x+2,high,z+dz,CLAY,9,layer="stadium_roof")
                 else:
                     self.box(x-4,fy+5,z-4,x+4,roof_y+10,z+4,NETHER,layer="stadium_structure")
+        self.exterior_articulation(kind,fy)
         # Full-size stadium has a continuous connected service ring; the geometry of
         # the independent route is square inside all five enclosing footprints.
         inner=[[64,fy,64],[435,fy,64],[435,fy,435],[64,fy,435],[64,fy,64]]
@@ -450,9 +624,10 @@ class Architecture:
         # Lower maintenance route has two independent exits, plus actual rooms in the base.
         low=max(14,min(44,self.f-26))
         a,door=self.room("Lower maintenance and stores",(80,170,125,215),low,service="workshop")
+        top_z=345 if "_sand_" in self.spec["id"] else 360
         self.path("lower_service",[[185,self.f,175],[145,self.f,130],[45,low,130],[35,low,130],
                                    [35,low,150],door,a,[145,low,220],[35,low,220],[35,low,235],
-                                   [35,self.f,360],[35,self.f,370],[185,self.f,370],[185,self.f,270]],width=7)
+                                   [35,self.f,top_z],[35,self.f,370],[185,self.f,370],[185,self.f,270]],width=7)
         ry=self.spec["reward_local"][1]
         self.path("alternative",[[250,self.f,150],[165,self.f,150],[165,self.f,320],
                                  [250,self.f,320],[250,self.f,332],[250,ry,363],[250,ry,370]],width=9)
@@ -480,6 +655,7 @@ class Architecture:
             nodes.append([x,f+1,z])
         self._seal_authored_fluids()
         stair_report=self._walking_stairs()
+        self._route_lamps()
         containers=self._storage_containers()
         # Retain genuine seating cross sections as occupancy witnesses after paths
         # remove the north concourse edge. No geometry is added for these witnesses.
@@ -492,12 +668,22 @@ class Architecture:
                     i=((sy-1)*500+z)*500+x
                     if self.v.blocks[i]==self.solid and self.v.data[i]==0:
                         samples.append((x,sy-1,z,self.solid,0))
+            # Opening the upper facade can erase the last-recorded window samples;
+            # witness the actual surviving gallery floor on all four bank sides.
+            gallery=self.v.layer_samples["stadium_galleries"]
+            for x,z in ((15,150),(15,350),(484,150),(484,350),(150,15),(350,15),(150,484),(350,484)):
+                gy=f+65
+                i=(gy*500+z)*500+x
+                if self.v.blocks[i] and self.v.owners[i]==self.v.layer_ids["stadium_galleries"]:
+                    gallery.append((x,gy,z,self.v.blocks[i],self.v.data[i]))
         return {"schema":1,"architecture_version":self.config["version"],"anchors":anchors,
                 "architecture_config_sha256":self.config_hash,
                 "routes":self.routes,"rooms":self.rooms,"landmarks":self.landmarks,
                 "mechanic_nodes":nodes,
                 "walking_stairs":stair_report,
                 "containers":containers,
+                "exterior_galleries":getattr(self,"exterior_galleries",{}),
+                "water_prison":getattr(self,"water_prison",None),
                 "route_specs":{name:{"width":width,"clearance":head,"kind":"dry"}
                                for name,_,width,head,_ in self.path_specs},
                 "fluid_volumes":self.fluids,"light_sources":self.lights,
@@ -510,6 +696,47 @@ class Architecture:
                                      "stadium_structure","stadium_galleries","stadium_roof"],
                 "provenance":"Original procedural block architecture; vanilla 1.12.2 palette; no imported artwork or world cells."}
 
+    def _route_lamps(self):
+        """Visible emitters on flat treads and supported narrow-route side lamps.
+
+        Sources hidden under normal stairs did not satisfy native block light.
+        This repairs actual output geometry; the native light gate remains strict.
+        """
+        stairs={53,67,108,109,114,128,134,135,136,156,163,164,180,203}
+        for _,cells,width,_,_ in self.path_specs:
+            for index in range(2,max(2,len(cells)-2),4):
+                x,y,z=cells[index]
+                prev,nxt=cells[index-1],cells[index+1]
+                i=((y-1)*500+z)*500+x
+                if prev[1]==y==nxt[1] and self.v.blocks[i] not in stairs|{0,9,11,41,54}:
+                    self.light(x,y-1,z)
+                if width>9:continue
+                d=width//2+1
+                for dx,dz in ((d,0),(-d,0),(0,d),(0,-d)):
+                    tx,tz=x+dx,z+dz
+                    if not (0<=tx<500 and 0<=tz<500 and y+1<250):continue
+                    spans=self.walk_envelopes.get((tx,tz),())
+                    if any(lo<=y+1 and lo+head-1>=y-1 for lo,head in spans):continue
+                    target=((y+1)*500+tz)*500+tx
+                    if self.v.blocks[target] in (9,11,41,54):continue
+                    if self.v.blocks[target]!=AIR:
+                        self.light(tx,y+1,tz)
+                        break
+                    # A two-block cantilever and upright support the real emitter.
+                    beam=[]
+                    count=max(abs(dx),abs(dz))
+                    for n in range(1,count+1):
+                        bx=x+round(dx*n/count);bz=z+round(dz*n/count)
+                        if any(lo<=y-1<=lo+head-1 for lo,head in self.walk_envelopes.get((bx,bz),())):break
+                        beam.append((bx,bz))
+                    else:
+                        for bx,bz in beam:self.v.set(bx,y-1,bz,self.trim,layer="lighting")
+                        self.v.set(tx,y,tz,self.trim,layer="lighting")
+                        self.light(tx,y+1,tz)
+                        break
+        self.lights=[list(p) for p in dict.fromkeys(map(tuple,self.lights))
+                     if self.v.blocks[(p[1]*500+p[2])*500+p[0]]==SEA]
+
     def _storage_containers(self):
         """Real native empty chest inventories with matching tile payloads."""
         from tools.world_merge.blocks import FLOOR_TABLE
@@ -521,7 +748,8 @@ class Architecture:
             chosen=None
             for x,z in ((x0+8,z0+8),(x1-8,z0+8),(x0+8,z1-10),(x1-8,z1-10)):
                 def block(px,py,pz):return self.v.blocks[(py*500+pz)*500+px]
-                if all(block(x,y+dy,z)==AIR for dy in (0,1)) and all(block(x,y+dy,z-1)==AIR for dy in (0,1,2)):
+                walkway=any(lo<=y+1 and lo+head-1>=y for lo,head in self.walk_envelopes.get((x,z),()))
+                if not walkway and all(block(x,y+dy,z)==AIR for dy in (0,1)) and all(block(x,y+dy,z-1)==AIR for dy in (0,1,2)):
                     below=block(x,y-1,z-1)
                     if below<256 and FLOOR_TABLE[below]:
                         chosen=(x,z);break
@@ -664,6 +892,8 @@ class Architecture:
             self.box(x,y-3,z,x,y-1,z,material,layer="circulation")
         for x,z,(y,_,head,_) in surfaces:
             self.box(x,y,z,x,min(249,y+head-1),z,AIR,layer="circulation")
+        self.walk_envelopes=defaultdict(list)
+        for x,z,(y,_,head,_) in surfaces:self.walk_envelopes[(x,z)].append((y,head))
         for _,cells,_,_,_ in self.path_specs:
             for i,(x,y,z) in enumerate(cells):
                 if i%6==0:self.light(x,y-1,z)
@@ -794,6 +1024,16 @@ def _mist(a):
     a.rooms.append({"name":"Contained underwater passage","service":"optional wet route",
                     "standing":[155,47,245],"bounds":[145,42,175,165,56,315],
                     "native_breathing_acceptance":"NOT_RUN","water_route":True})
+    # A separate dry-island prison basin retains the main boss and giant route.
+    for x0,z0,x1,z1 in ((277,207,293,207),(277,223,293,223),(277,207,277,223),(293,207,293,223)):
+        a.box(x0,62,z0,x1,66,z1,GLASS,layer="arena_mechanics")
+    a.path("water_prison_egress",[[250,y,215],[267,y,215],[273,y,215],[277,y+4,215],
+                                  [281,y,215],[285,y,215],[289,y,215],[293,y+4,215],
+                                  [297,y,215],[306,y,215]],width=3,clearance=5)
+    a.water_prison={"min":[278,63,208],"max":[292,64,222],
+                    "wall_min":[277,62,207],"wall_max":[293,66,223],
+                    "exits":[[277,67,215],[293,67,215]],
+                    "fill_policy":"Journal and fill baseline air cells only; protect actual solid stair egress. Native fluid update/restart acceptance required."}
     # Rigging masts are original connected timber structures, not floating decorations.
     for x,z,h in ((100,350,165),(360,390,192)):
         a.pillar(x,z,h,LOG,width=5,bottom=13)

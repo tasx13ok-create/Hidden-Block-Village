@@ -6,6 +6,7 @@ cold snapshot are hash joined. Native lighting/physics remain separate gates.
 from __future__ import annotations
 
 import gzip
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -50,7 +51,7 @@ def _new_level(world, first, seed):
         'Time':nbt.Tag(nbt.LONG,6000),'DayTime':nbt.Tag(nbt.LONG,6000),'LastPlayed':nbt.Tag(nbt.LONG,0),
         'SizeOnDisk':nbt.Tag(nbt.LONG,0),'raining':nbt.Tag(nbt.BYTE,0),'thundering':nbt.Tag(nbt.BYTE,0),
         'GameRules':nbt.compound({key:nbt.Tag(nbt.STRING,value) for key,value in {
-            'doFireTick':'false','doMobSpawning':'false','keepInventory':'true',
+            'doFireTick':'false','doMobSpawning':'false','keepInventory':'true','keepNinjaXp':'true',
             'mobGriefing':'false','doDaylightCycle':'false','doWeatherCycle':'false',
             'commandBlockOutput':'false','logAdminCommands':'false'}.items()})})
     _atomic_write(world/'level.dat',nbt.dumps(nbt.compound({'Data':data}),compression='gzip'))
@@ -131,6 +132,63 @@ def _reserve_empty(world, world_min, dims):
                             raise AuditError('Reservation contains blocks')
     return {'status':'PASS','existing_chunks_inspected':inspected,'volume':[world_min,[x1,y1,z1]],
             'scope':'new isolated world has no imported claims/player/NPC data; no production vacancy claim'}
+
+
+def _buffer_coordinates(manifest,distance=2):
+    plots=set();buffer=set();reservations=[]
+    for row in manifest['arenas']:
+        mx,_,mz=row['world_min'];width,_,length=row.get('dimensions',[500,250,500])
+        cx0,cz0=mx>>4,mz>>4;cx1,cz1=(mx+width-1)>>4,(mz+length-1)>>4
+        own={(cx,cz) for cx in range(cx0,cx1+1) for cz in range(cz0,cz1+1)};plots.update(own)
+        expanded={(cx,cz) for cx in range(cx0-distance,cx1+distance+1) for cz in range(cz0-distance,cz1+distance+1)}
+        buffer.update(expanded-own)
+        reservations.append({'id':row['id'],'chunk_min':[cx0-distance,cz0-distance],
+            'chunk_max_inclusive':[cx1+distance,cz1+distance],'plot_chunks':len(own),'buffer_chunks':len(expanded-own),
+            'world_min':[16*(cx0-distance),0,16*(cz0-distance)],
+            'world_max_inclusive':[16*(cx1+distance)+15,255,16*(cz1+distance)+15]})
+    if buffer&plots: raise AuditError('Native buffer overlaps another authored plot')
+    return sorted(buffer),reservations
+
+
+def verify_empty_buffers(world,manifest,distance=2):
+    coords,reservations=_buffer_coordinates(manifest,distance);cache={};failures=[];rows=[]
+    for cx,cz in coords:
+        key=(cx>>5,cz>>5)
+        if key not in cache: cache[key]=Region(Path(world)/'region'/('r.%d.%d.mca'%key))
+        loaded=cache[key].load_chunk((cz&31)*32+(cx&31))
+        if loaded is None:
+            failures.append({'chunk':[cx,cz],'reason':'missing generated void buffer'});continue
+        name,root=loaded;level=root['Level'];blank=True
+        if level.scalar('xPos')!=cx or level.scalar('zPos')!=cz: blank=False
+        if level['Entities'].value or level['TileEntities'].value: blank=False
+        for section in level['Sections'].value:
+            for tag in ('Blocks','Data','Add'):
+                if tag in section and any(section[tag].value): blank=False
+        if level.get('TileTicks') and level['TileTicks'].value: blank=False
+        if not blank: failures.append({'chunk':[cx,cz],'reason':'buffer contains blocks/meta/entities/tiles/ticks or wrong coordinates'})
+        rows.append({'chunk':[cx,cz],'nbt_sha256':hashlib.sha256(nbt.dumps(root,name,compression=None)).hexdigest()})
+    digest=hashlib.sha256(json.dumps(rows,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    return {'schema':1,'status':'FAIL' if failures else 'PASS','world':str(_safe_path(world)),
+        'verification_source_sha256':file_hash(__file__),'buffer_distance_chunks':distance,
+        'buffer_chunks':len(coords),'verified_zero_cells':len(rows)*65536,'reservations':reservations,
+        'chunk_inventory_sha256':digest,'chunks':rows,'failures':failures,
+        'scope':'fresh private void chunks only; all256Y layers logically zero blocks/meta/tiles/entities; no copied player/claim/world data'}
+
+
+def _stage_empty_buffers(world,manifest,distance=2):
+    coords,_=_buffer_coordinates(manifest,distance);cache={}
+    for cx,cz in coords:
+        key=(cx>>5,cz>>5)
+        if key not in cache: cache[key]=Region(world/'region'/('r.%d.%d.mca'%key))
+        region=cache[key];slot=(cz&31)*32+(cx&31)
+        if slot in region.chunks: raise AuditError('Expected an unoccupied fresh-world buffer chunk')
+        root=new_chunk(cx,cz)
+        root['Level'].value['LightPopulated']=nbt.Tag(nbt.BYTE,1)
+        region.store_chunk(slot,'',root)
+    for region in cache.values(): region.save_atomic()
+    result=verify_empty_buffers(world,manifest,distance)
+    if result['status']!='PASS': raise AuditError('Independent void buffer readback failed')
+    return result
 
 
 def stage_world(manifest_path, source=None, dest=None):
@@ -214,11 +272,15 @@ def stage_world(manifest_path, source=None, dest=None):
                     chunk_count+=1
             for region in region_cache.values(): region.save_atomic()
         staged.append({'id':row['id'],'chunks':chunk_count,'regions':len(region_cache),'tiles':len(world_tiles),'schematic_sha256':row['sha256']})
+    buffers=_stage_empty_buffers(world,manifest,distance=2)
     report={'schema':1,'stage_uuid':uuid.uuid4().hex,'status':'PASS_OFFLINE_STAGING',
         'world':str(world),'manifest_path':str(manifest_path),'manifest_sha256':manifest_hash,'created_unix':int(time.time()),
         'stage_source_sha256':file_hash(__file__),'prerequisite_audit':str(prerequisite_path),
         'source':'fresh void preview, no production world imported','reservations':reservations,'arenas':staged,
         'before_paste_snapshot':str(empty_snapshot),
+        'native_prewarm_empty_buffers':buffers,
+        'fresh_preview_death_policy':{'keepInventory':True,'keepNinjaXp':True,
+            'scope':'Only this newly generated arena preview world; no original world/global config edits; no repeated awakening XP grant'},
         'native_lighting':'NOT_RUN; LightPopulated=0; initial arrays zero','native_physics':'NOT_RUN',
         'native_gameplay':'NOT_RUN','graphical':'NOT_RUN_OWNER_KEEP_CLOSED'}
     _atomic_json(world/'ARENA-STAGE.json',report)
@@ -268,6 +330,7 @@ def restore_snapshot(receipt_path, dest):
     shutil.copytree(snapshot,dest)
     if _files(dest)!=receipt['files']: raise AuditError('Whole-copy restoration mismatch')
     report={'schema':1,'status':'PASS','snapshot':str(snapshot),'restored_world':str(dest),
+            'receipt_sha256':file_hash(receipt_path),'manifest_sha256':receipt.get('manifest_sha256'),
             'files':len(receipt['files']),'all_bytes_hash_verified':True,'original_failed_candidate_preserved':True}
     _atomic_json(dest.parent/(dest.name+'.restore-report.json'),report)
     return report
@@ -341,4 +404,7 @@ def verify_world_full(manifest_path,world):
         rows.append({'id':row['id'],'status':'FAIL' if failures else 'PASS','compared_cells':cells,
             'expected_cells':62500000,'chunks':chunks,'tiles_checked':tiles_checked,'failures':failures})
     return {'schema':1,'status':'PASS' if all(row['status']=='PASS' and row['compared_cells']==62500000 for row in rows) else 'FAIL',
+        'manifest_path':str(manifest_path),'manifest_sha256':file_hash(manifest_path),'world':str(world),
+        'world_stage_marker_sha256':file_hash(world/'ARENA-STAGE.json') if (world/'ARENA-STAGE.json').exists() else None,
+        'verification_source_sha256':file_hash(__file__),
         'arenas':rows,'scope':'all exported block IDs and metadata in actual Anvil; no native lighting/physics acceptance'}

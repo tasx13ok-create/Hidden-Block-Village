@@ -87,21 +87,22 @@ def make_previews(volume,record,directory):
         yy,zz,xx=np.nonzero(visible)
         order=np.argsort(xx+zz+yy*1.7,kind='stable')
         voxel_colors=color(ids,meta)
-        canvas=Image.new('RGB',(1100,790),(27,37,50))
-        dr=ImageDraw.Draw(canvas)
+        canvas=Image.new('RGB',(1100,1000),(27,37,50))
+        dr=ImageDraw.Draw(canvas,'RGBA')
         scale=1.05; rise=1.7
         q=step*scale; drop=step*rise
         for i in order:
                 y,z,x=int(yy[i]),int(zz[i]),int(xx[i])
                 rgb=tuple(int(v) for v in voxel_colors[y,z,x])
+                alpha=70 if int(ids[y,z,x]) in (20,95,102,160) else 155 if int(ids[y,z,x]) in (8,9) else 255
                 px=550+(x-z)*step*scale
-                py=210+(x+z)*step*scale*.48-(y+1)*step*rise
+                py=430+(x+z)*step*scale*.48-(y+1)*step*rise
                 if not front[y,z,x]:
-                    dr.polygon([(px-q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px-q,py+q*.48+drop)],fill=tuple(int(v*.65) for v in rgb))
+                    dr.polygon([(px-q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px-q,py+q*.48+drop)],fill=tuple(int(v*.65) for v in rgb)+(alpha,))
                 if not right[y,z,x]:
-                    dr.polygon([(px+q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px+q,py+q*.48+drop)],fill=tuple(int(v*.8) for v in rgb))
+                    dr.polygon([(px+q,py+q*.48),(px,py+q*.96),(px,py+q*.96+drop),(px+q,py+q*.48+drop)],fill=tuple(int(v*.8) for v in rgb)+(alpha,))
                 if not above[y,z,x]:
-                    dr.polygon([(px,py),(px+q,py+q*.48),(px,py+q*.96),(px-q,py+q*.48)],fill=rgb)
+                    dr.polygon([(px,py),(px+q,py+q*.48),(px,py+q*.96),(px-q,py+q*.48)],fill=rgb+(alpha,))
         save('silhouette-'+name,canvas,'Elevated '+name+' / sampled actual geometry / neutral unlit block colors')
     del a,d
     return files

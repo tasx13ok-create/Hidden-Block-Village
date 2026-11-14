@@ -1,0 +1,2568 @@
+{
+  "schema": 1,
+  "scope": "FIVE_FULL_SIZE_STADIUMS_OFFLINE_BUILD04_INTERIM",
+  "status": "PASS_OFFLINE_ONLY",
+  "source": {
+    "files": [
+      {
+        "bytes": 29129,
+        "path": "collaboration/arena-build-orchestration/arena-brief.json",
+        "sha256": "7ccfa6cc29eb99e6a5465637c57fac3afd9da006157caa7da8a216ca59f1d2b6"
+      },
+      {
+        "bytes": 5608,
+        "path": "content/arenas/architecture-v1.json",
+        "sha256": "bf03ebd7a1f306a25ac287fd9d02713f64e3b77278c104d21210f88526403537"
+      },
+      {
+        "bytes": 3392,
+        "path": "content/arenas/README.md",
+        "sha256": "b2a5e6f40c7443f9c9ed80bb2236f887a9bfea2c0af5fd1fb95a1ba1db1d7af6"
+      },
+      {
+        "bytes": 64,
+        "path": "tools/arenas/__init__.py",
+        "sha256": "b3395d6102be6d033963a569c9a2f09fd7aa064943114d735409eb0914093ca7"
+      },
+      {
+        "bytes": 2858,
+        "path": "tools/arenas/__main__.py",
+        "sha256": "a360445a68eb133206ad91c04edea3dde3279a798bb2362bad93629fbc6478d7"
+      },
+      {
+        "bytes": 10529,
+        "path": "tools/arenas/build.py",
+        "sha256": "4db12d1742ae6229fb598d473cd342b9d594590fd1f1e9e841aefe7e74149bdf"
+      },
+      {
+        "bytes": 3514,
+        "path": "tools/arenas/gallery.py",
+        "sha256": "c9f423750357bf771d305d4c50032c9e86cde0fdefe2b5d0f16c7ded1344ef8b"
+      },
+      {
+        "bytes": 62829,
+        "path": "tools/arenas/geometry.py",
+        "sha256": "5368109475dd128225bc5394678cb2791c9b8975ede0a80b935b12f397ac98de"
+      },
+      {
+        "bytes": 3020,
+        "path": "tools/arenas/intake.py",
+        "sha256": "a44fe4233bf07ff337eefea642f16b5c7b768d969ee1bc2ac00889452b828229"
+      },
+      {
+        "bytes": 3434,
+        "path": "tools/arenas/package.py",
+        "sha256": "dedb00e7851a9d93007205643783ef8bbca8ac1b105c5a3d47e9b957e0be0e4a"
+      },
+      {
+        "bytes": 6075,
+        "path": "tools/arenas/preview.py",
+        "sha256": "1940ad330f34ccbe7b4b9e6e80a10674e22407d1e4f0c5dc34c0b066df63c4b2"
+      },
+      {
+        "bytes": 8751,
+        "path": "tools/arenas/volume.py",
+        "sha256": "2321aff69c86a6558c49298c07ee8719aa36e188c1891b59a86d111a5d599986"
+      }
+    ],
+    "sha256": "50c3642af36f21feb630d3db7be4ec521b0e548686b27022c5e0214a197d7fb9"
+  },
+  "source_drift": false,
+  "peak_process_working_set_bytes": 537960448,
+  "native_encounter_acceptance": "IN_REPAIR_NOT_ACCEPTED",
+  "graphical_acceptance": "NOT_RUN_OWNER_KEEP_MINECRAFT_CLOSED",
+  "production_world_modified": false,
+  "arenas": [
+    {
+      "id": "arena_forest_root_coliseum_v1",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "cells": 62500000,
+      "world_min": [
+        64000,
+        3,
+        64000
+      ],
+      "sha256": "2695a98b98f1ab449c582bb1a9e4ea738df6a6ce97c28346c41be74a0bdb1e8b",
+      "bytes": 1599886,
+      "anchors": {
+        "boss": [
+          250,
+          77,
+          250
+        ],
+        "checkpoint": [
+          250,
+          77,
+          150
+        ],
+        "entry": [
+          250,
+          77,
+          40
+        ],
+        "exit": [
+          270,
+          77,
+          64
+        ],
+        "prep": [
+          250,
+          77,
+          92
+        ],
+        "reward": [
+          250,
+          89,
+          370
+        ]
+      },
+      "palette": {
+        "0": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:air"
+        },
+        "1": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stone"
+        },
+        "118": {
+          "metadata": [
+            3
+          ],
+          "name": "minecraft:cauldron"
+        },
+        "155": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:quartz_block"
+        },
+        "159": {
+          "metadata": [
+            0,
+            4,
+            11,
+            13
+          ],
+          "name": "minecraft:stained_hardened_clay"
+        },
+        "169": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sea_lantern"
+        },
+        "17": {
+          "metadata": [
+            0,
+            4,
+            8
+          ],
+          "name": "minecraft:log"
+        },
+        "170": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:hay_block"
+        },
+        "18": {
+          "metadata": [
+            4
+          ],
+          "name": "minecraft:leaves"
+        },
+        "2": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:grass"
+        },
+        "20": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:glass"
+        },
+        "251": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:concrete"
+        },
+        "35": {
+          "metadata": [
+            0,
+            14
+          ],
+          "name": "minecraft:wool"
+        },
+        "41": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:gold_block"
+        },
+        "47": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        "5": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:planks"
+        },
+        "53": {
+          "metadata": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "name": "minecraft:oak_stairs"
+        },
+        "54": {
+          "metadata": [
+            2
+          ],
+          "name": "minecraft:chest"
+        },
+        "58": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:crafting_table"
+        },
+        "98": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stonebrick"
+        }
+      },
+      "status": "PASS",
+      "architecture": {
+        "status": "PASS",
+        "failures": [],
+        "architecture_non_air": 5814086,
+        "occupied_min": [
+          0,
+          0,
+          0
+        ],
+        "occupied_max": [
+          499,
+          249,
+          499
+        ],
+        "outer_band_width": 16,
+        "outer_band_counts": {
+          "west": 626248,
+          "east": 613152,
+          "north": 630619,
+          "south": 622347
+        },
+        "outer_band_minimum": 50000,
+        "quadrant_counts": {
+          "north_west": 1265217,
+          "north_east": 1323785,
+          "south_west": 1302354,
+          "south_east": 1922730
+        },
+        "quadrant_minimum": 100000,
+        "extreme_plane_counts": {
+          "min_x": 39686,
+          "max_x": 39686,
+          "min_y": 60572,
+          "max_y": 1961,
+          "min_z": 40184,
+          "max_z": 39686
+        },
+        "extreme_plane_minimum": 500,
+        "upper50_non_air": 402357,
+        "upper50_minimum": 10000,
+        "unknown_layer_nonair": 0,
+        "architecture_by_y": [
+          60572,
+          63031,
+          63031,
+          63031,
+          63031,
+          63030,
+          63030,
+          63030,
+          63030,
+          63030,
+          63030,
+          59306,
+          59292,
+          59344,
+          25330,
+          25268,
+          25190,
+          25160,
+          25086,
+          25015,
+          25014,
+          24936,
+          24937,
+          26273,
+          26284,
+          26305,
+          26319,
+          26340,
+          26344,
+          26082,
+          26068,
+          26047,
+          26036,
+          26021,
+          26013,
+          26014,
+          26013,
+          26007,
+          26032,
+          26032,
+          63121,
+          64760,
+          64779,
+          60748,
+          59188,
+          59170,
+          25016,
+          24990,
+          24860,
+          24898,
+          24884,
+          25038,
+          25158,
+          25273,
+          25271,
+          28020,
+          28131,
+          28656,
+          28684,
+          28508,
+          28375,
+          28196,
+          28003,
+          27806,
+          26065,
+          26044,
+          26045,
+          26047,
+          26048,
+          26041,
+          26046,
+          63108,
+          63117,
+          63139,
+          73460,
+          73462,
+          74660,
+          29471,
+          28597,
+          28596,
+          26677,
+          25656,
+          28281,
+          28244,
+          29237,
+          27277,
+          27718,
+          31170,
+          41149,
+          41599,
+          41212,
+          40560,
+          42991,
+          42062,
+          41292,
+          38236,
+          36702,
+          30226,
+          29728,
+          29731,
+          26692,
+          26129,
+          30175,
+          30745,
+          30727,
+          64330,
+          67429,
+          95846,
+          81244,
+          80417,
+          79794,
+          24006,
+          19450,
+          19513,
+          19513,
+          18660,
+          18334,
+          18343,
+          18646,
+          29528,
+          31580,
+          31564,
+          26847,
+          27642,
+          29352,
+          29313,
+          29149,
+          21973,
+          20849,
+          20201,
+          19547,
+          12299,
+          11911,
+          11922,
+          11870,
+          11416,
+          11422,
+          11504,
+          31113,
+          29350,
+          34792,
+          44792,
+          39480,
+          37698,
+          21232,
+          19426,
+          2006,
+          2005,
+          2005,
+          2005,
+          2006,
+          2498,
+          2498,
+          2497,
+          2005,
+          2005,
+          1918,
+          22994,
+          22732,
+          22568,
+          22425,
+          22401,
+          22488,
+          1600,
+          1716,
+          1804,
+          1931,
+          1975,
+          2065,
+          2142,
+          2210,
+          2240,
+          2281,
+          2323,
+          2339,
+          2370,
+          2400,
+          2400,
+          2422,
+          2915,
+          2915,
+          2916,
+          2424,
+          2424,
+          2336,
+          2335,
+          2335,
+          2335,
+          2336,
+          1327,
+          1327,
+          1326,
+          1326,
+          1414,
+          1415,
+          1415,
+          1415,
+          1415,
+          1414,
+          1414,
+          1415,
+          1415,
+          1415,
+          1415,
+          1414,
+          1414,
+          1414,
+          1907,
+          1907,
+          1907,
+          1414,
+          17550,
+          17462,
+          17463,
+          17463,
+          17463,
+          17463,
+          17462,
+          17462,
+          359,
+          359,
+          14159,
+          14159,
+          14158,
+          14158,
+          14158,
+          15362,
+          15370,
+          14319,
+          607,
+          7644,
+          7644,
+          7644,
+          12865,
+          12865,
+          12865,
+          12865,
+          12901,
+          8418,
+          8418,
+          6586,
+          1961,
+          1961,
+          1961,
+          1961,
+          1961,
+          1961,
+          1961,
+          1961,
+          1961
+        ],
+        "included_layer_names": [
+          "bowl_and_stands",
+          "functional_interiors",
+          "galleries",
+          "landmark_masses",
+          "roof_transitions",
+          "stadium_galleries",
+          "stadium_roof",
+          "stadium_structure"
+        ],
+        "scope": "actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability"
+      },
+      "walking_network": {
+        "nodes": 115781,
+        "reachable": 115781,
+        "unreachable_anchors": {}
+      },
+      "tile_count": 5,
+      "gravity_failure_count": 0,
+      "fluid_failure_count": 0
+    },
+    {
+      "id": "arena_cloud_storm_coliseum_v1",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "cells": 62500000,
+      "world_min": [
+        65024,
+        3,
+        64000
+      ],
+      "sha256": "f0fb1ea94066c4886fc683d2c9cb9259e4ec6586531a1a995ad3d790bafa491a",
+      "bytes": 1938468,
+      "anchors": {
+        "boss": [
+          250,
+          125,
+          250
+        ],
+        "checkpoint": [
+          250,
+          125,
+          150
+        ],
+        "entry": [
+          250,
+          109,
+          40
+        ],
+        "exit": [
+          270,
+          109,
+          64
+        ],
+        "prep": [
+          250,
+          109,
+          92
+        ],
+        "reward": [
+          250,
+          141,
+          370
+        ]
+      },
+      "palette": {
+        "0": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:air"
+        },
+        "1": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stone"
+        },
+        "118": {
+          "metadata": [
+            3
+          ],
+          "name": "minecraft:cauldron"
+        },
+        "155": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:quartz_block"
+        },
+        "156": {
+          "metadata": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "name": "minecraft:quartz_stairs"
+        },
+        "159": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:stained_hardened_clay"
+        },
+        "169": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sea_lantern"
+        },
+        "17": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:log"
+        },
+        "170": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:hay_block"
+        },
+        "20": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:glass"
+        },
+        "251": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:concrete"
+        },
+        "35": {
+          "metadata": [
+            0,
+            14
+          ],
+          "name": "minecraft:wool"
+        },
+        "41": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:gold_block"
+        },
+        "47": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        "5": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:planks"
+        },
+        "54": {
+          "metadata": [
+            2
+          ],
+          "name": "minecraft:chest"
+        },
+        "58": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:crafting_table"
+        },
+        "98": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stonebrick"
+        }
+      },
+      "status": "PASS",
+      "architecture": {
+        "status": "PASS",
+        "failures": [],
+        "architecture_non_air": 6076030,
+        "occupied_min": [
+          0,
+          0,
+          0
+        ],
+        "occupied_max": [
+          499,
+          249,
+          499
+        ],
+        "outer_band_width": 16,
+        "outer_band_counts": {
+          "west": 730828,
+          "east": 567119,
+          "north": 709782,
+          "south": 548231
+        },
+        "outer_band_minimum": 50000,
+        "quadrant_counts": {
+          "north_west": 1557605,
+          "north_east": 1609003,
+          "south_west": 1567262,
+          "south_east": 1342160
+        },
+        "quadrant_minimum": 100000,
+        "extreme_plane_counts": {
+          "min_x": 43578,
+          "max_x": 34291,
+          "min_y": 60536,
+          "max_y": 797,
+          "min_z": 44460,
+          "max_z": 34291
+        },
+        "extreme_plane_minimum": 500,
+        "upper50_non_air": 248522,
+        "upper50_minimum": 10000,
+        "unknown_layer_nonair": 0,
+        "architecture_by_y": [
+          60536,
+          63912,
+          63912,
+          63912,
+          63912,
+          63912,
+          63912,
+          63912,
+          63912,
+          63912,
+          63157,
+          59522,
+          59508,
+          59488,
+          20457,
+          20436,
+          20422,
+          20422,
+          20421,
+          20422,
+          20421,
+          20422,
+          20422,
+          21056,
+          21061,
+          21073,
+          21081,
+          21075,
+          21074,
+          21074,
+          21061,
+          21039,
+          21029,
+          21029,
+          21034,
+          21044,
+          21049,
+          21056,
+          21056,
+          21056,
+          39913,
+          41218,
+          41217,
+          39065,
+          37547,
+          37535,
+          20246,
+          20224,
+          20111,
+          20111,
+          20110,
+          20357,
+          20481,
+          20543,
+          20539,
+          22810,
+          22899,
+          23299,
+          23296,
+          23134,
+          23036,
+          22891,
+          22743,
+          22589,
+          21056,
+          21058,
+          21065,
+          21079,
+          21088,
+          21097,
+          21097,
+          21104,
+          39969,
+          39968,
+          39978,
+          37862,
+          37861,
+          37859,
+          20451,
+          20436,
+          20423,
+          20421,
+          20416,
+          20415,
+          20410,
+          20470,
+          20470,
+          21101,
+          21113,
+          21118,
+          21126,
+          21124,
+          21129,
+          21123,
+          21107,
+          21094,
+          21091,
+          21094,
+          21099,
+          21108,
+          21115,
+          21118,
+          21118,
+          63060,
+          63059,
+          63065,
+          66799,
+          66798,
+          66629,
+          20508,
+          20471,
+          20445,
+          20436,
+          20016,
+          20017,
+          20016,
+          20338,
+          20771,
+          21406,
+          21427,
+          29077,
+          29449,
+          35640,
+          35656,
+          37148,
+          29730,
+          30694,
+          30152,
+          29564,
+          19391,
+          18916,
+          21431,
+          22291,
+          22427,
+          19914,
+          20022,
+          63946,
+          67423,
+          68054,
+          64180,
+          61285,
+          60386,
+          21851,
+          25623,
+          25465,
+          23681,
+          20366,
+          19031,
+          22860,
+          22830,
+          22702,
+          20322,
+          19618,
+          62182,
+          65764,
+          94890,
+          81482,
+          80758,
+          80193,
+          18242,
+          13442,
+          14205,
+          14205,
+          13943,
+          13693,
+          14580,
+          14857,
+          24550,
+          26285,
+          27615,
+          23677,
+          23124,
+          25051,
+          26049,
+          24162,
+          19095,
+          17835,
+          17306,
+          16382,
+          7613,
+          7613,
+          7613,
+          7246,
+          6994,
+          6994,
+          7082,
+          30160,
+          28380,
+          33842,
+          44630,
+          39317,
+          37535,
+          21947,
+          20139,
+          2983,
+          2983,
+          4015,
+          3823,
+          3639,
+          4051,
+          3883,
+          24455,
+          21876,
+          21700,
+          21446,
+          21588,
+          21720,
+          21839,
+          21810,
+          22210,
+          2102,
+          2102,
+          2102,
+          1798,
+          1798,
+          1798,
+          1798,
+          1262,
+          1262,
+          1262,
+          1262,
+          536,
+          536,
+          536,
+          536,
+          536,
+          536,
+          1124,
+          1124,
+          1124,
+          536,
+          536,
+          448,
+          448,
+          448,
+          2400,
+          2458,
+          688,
+          688,
+          516,
+          516,
+          516,
+          516,
+          516,
+          516,
+          516,
+          552,
+          3625,
+          3625,
+          797
+        ],
+        "included_layer_names": [
+          "bowl_and_stands",
+          "functional_interiors",
+          "galleries",
+          "landmark_masses",
+          "roof_transitions",
+          "stadium_galleries",
+          "stadium_roof",
+          "stadium_structure"
+        ],
+        "scope": "actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability"
+      },
+      "walking_network": {
+        "nodes": 146142,
+        "reachable": 145372,
+        "unreachable_anchors": {}
+      },
+      "tile_count": 5,
+      "gravity_failure_count": 0,
+      "fluid_failure_count": 0
+    },
+    {
+      "id": "arena_sand_kazekage_coliseum_v1",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "cells": 62500000,
+      "world_min": [
+        66048,
+        3,
+        64000
+      ],
+      "sha256": "4c185ce4fd4c7ab0488e30732244bf79f0c8002b739ba5d5bd2e1397b8117d5f",
+      "bytes": 2979313,
+      "anchors": {
+        "boss": [
+          250,
+          87,
+          250
+        ],
+        "checkpoint": [
+          250,
+          87,
+          150
+        ],
+        "entry": [
+          250,
+          87,
+          40
+        ],
+        "exit": [
+          270,
+          87,
+          64
+        ],
+        "prep": [
+          250,
+          87,
+          92
+        ],
+        "reward": [
+          250,
+          91,
+          370
+        ]
+      },
+      "palette": {
+        "0": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:air"
+        },
+        "1": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stone"
+        },
+        "118": {
+          "metadata": [
+            3
+          ],
+          "name": "minecraft:cauldron"
+        },
+        "128": {
+          "metadata": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "name": "minecraft:sandstone_stairs"
+        },
+        "155": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:quartz_block"
+        },
+        "159": {
+          "metadata": [
+            0,
+            4,
+            9,
+            11
+          ],
+          "name": "minecraft:stained_hardened_clay"
+        },
+        "169": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sea_lantern"
+        },
+        "17": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:log"
+        },
+        "170": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:hay_block"
+        },
+        "20": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:glass"
+        },
+        "24": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sandstone"
+        },
+        "251": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:concrete"
+        },
+        "35": {
+          "metadata": [
+            0,
+            14
+          ],
+          "name": "minecraft:wool"
+        },
+        "41": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:gold_block"
+        },
+        "47": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        "5": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:planks"
+        },
+        "54": {
+          "metadata": [
+            2
+          ],
+          "name": "minecraft:chest"
+        },
+        "58": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:crafting_table"
+        },
+        "9": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:water"
+        }
+      },
+      "status": "PASS",
+      "architecture": {
+        "status": "PASS",
+        "failures": [],
+        "architecture_non_air": 3643410,
+        "occupied_min": [
+          0,
+          0,
+          0
+        ],
+        "occupied_max": [
+          499,
+          249,
+          499
+        ],
+        "outer_band_width": 16,
+        "outer_band_counts": {
+          "west": 103768,
+          "east": 102234,
+          "north": 109769,
+          "south": 101058
+        },
+        "outer_band_minimum": 50000,
+        "quadrant_counts": {
+          "north_west": 829926,
+          "north_east": 853985,
+          "south_west": 910032,
+          "south_east": 1049467
+        },
+        "quadrant_minimum": 100000,
+        "extreme_plane_counts": {
+          "min_x": 1808,
+          "max_x": 1808,
+          "min_y": 47491,
+          "max_y": 797,
+          "min_z": 2512,
+          "max_z": 1808
+        },
+        "extreme_plane_minimum": 500,
+        "upper50_non_air": 36575,
+        "upper50_minimum": 10000,
+        "unknown_layer_nonair": 0,
+        "architecture_by_y": [
+          47491,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          46264,
+          31850,
+          31844,
+          31805,
+          11175,
+          11158,
+          11175,
+          11177,
+          11175,
+          11169,
+          11163,
+          11217,
+          11215,
+          15059,
+          15059,
+          15059,
+          15059,
+          13982,
+          16952,
+          16958,
+          16964,
+          16967,
+          14767,
+          14764,
+          14758,
+          14754,
+          14754,
+          14754,
+          46996,
+          46993,
+          46990,
+          33928,
+          33914,
+          33798,
+          11995,
+          11974,
+          11998,
+          14045,
+          13920,
+          13899,
+          11116,
+          11334,
+          11452,
+          15292,
+          15284,
+          16905,
+          16984,
+          16428,
+          16432,
+          16252,
+          16085,
+          15922,
+          15770,
+          15618,
+          14009,
+          14007,
+          13998,
+          13995,
+          13986,
+          13984,
+          13981,
+          13975,
+          13967,
+          13965,
+          13966,
+          13960,
+          13968,
+          13970,
+          13977,
+          13982,
+          13985,
+          46242,
+          46243,
+          46241,
+          43462,
+          43393,
+          47107,
+          14152,
+          13267,
+          11508,
+          13510,
+          13010,
+          12994,
+          11034,
+          14650,
+          15218,
+          18945,
+          19627,
+          28964,
+          29426,
+          28100,
+          31093,
+          30199,
+          29355,
+          29382,
+          28149,
+          27403,
+          15240,
+          18337,
+          22980,
+          22755,
+          24167,
+          18597,
+          19143,
+          15797,
+          51479,
+          51333,
+          74131,
+          56391,
+          55510,
+          55061,
+          13049,
+          7877,
+          7913,
+          7802,
+          7018,
+          6773,
+          6648,
+          7166,
+          18644,
+          26173,
+          26152,
+          21163,
+          21573,
+          23349,
+          23157,
+          22723,
+          19267,
+          18197,
+          17432,
+          16566,
+          9624,
+          8642,
+          8517,
+          8563,
+          8211,
+          8023,
+          8085,
+          26531,
+          25081,
+          28758,
+          37154,
+          33017,
+          31473,
+          18488,
+          16920,
+          3344,
+          3031,
+          2863,
+          3064,
+          2937,
+          19564,
+          19165,
+          19027,
+          18157,
+          961,
+          882,
+          629,
+          629,
+          629,
+          629,
+          629,
+          432,
+          432,
+          432,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          1100,
+          1100,
+          1100,
+          520,
+          520,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          520,
+          1100,
+          1100,
+          1100,
+          520,
+          520,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          432,
+          520,
+          520,
+          520,
+          520,
+          2279,
+          2337,
+          712,
+          712,
+          500,
+          500,
+          500,
+          500,
+          500,
+          500,
+          500,
+          536,
+          3409,
+          3409,
+          797
+        ],
+        "included_layer_names": [
+          "bowl_and_stands",
+          "functional_interiors",
+          "galleries",
+          "landmark_masses",
+          "roof_transitions",
+          "stadium_galleries",
+          "stadium_roof",
+          "stadium_structure"
+        ],
+        "scope": "actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability"
+      },
+      "walking_network": {
+        "nodes": 99699,
+        "reachable": 99090,
+        "unreachable_anchors": {}
+      },
+      "tile_count": 5,
+      "gravity_failure_count": 0,
+      "fluid_failure_count": 0
+    },
+    {
+      "id": "arena_mist_shark_coliseum_v1",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "cells": 62500000,
+      "world_min": [
+        67072,
+        3,
+        64000
+      ],
+      "sha256": "93c16b6d14dce915d414e1fc68df5e7a5b8ad30b43e5dcdf7841fec2e5a5cb7f",
+      "bytes": 1565136,
+      "anchors": {
+        "boss": [
+          250,
+          63,
+          250
+        ],
+        "checkpoint": [
+          250,
+          63,
+          150
+        ],
+        "entry": [
+          250,
+          63,
+          40
+        ],
+        "exit": [
+          270,
+          63,
+          64
+        ],
+        "prep": [
+          250,
+          63,
+          92
+        ],
+        "reward": [
+          250,
+          67,
+          370
+        ]
+      },
+      "palette": {
+        "0": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:air"
+        },
+        "1": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stone"
+        },
+        "118": {
+          "metadata": [
+            3
+          ],
+          "name": "minecraft:cauldron"
+        },
+        "155": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:quartz_block"
+        },
+        "159": {
+          "metadata": [
+            9
+          ],
+          "name": "minecraft:stained_hardened_clay"
+        },
+        "169": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sea_lantern"
+        },
+        "17": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:log"
+        },
+        "170": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:hay_block"
+        },
+        "20": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:glass"
+        },
+        "251": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:concrete"
+        },
+        "35": {
+          "metadata": [
+            0,
+            14
+          ],
+          "name": "minecraft:wool"
+        },
+        "41": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:gold_block"
+        },
+        "47": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        "5": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:planks"
+        },
+        "53": {
+          "metadata": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "name": "minecraft:oak_stairs"
+        },
+        "54": {
+          "metadata": [
+            2
+          ],
+          "name": "minecraft:chest"
+        },
+        "58": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:crafting_table"
+        },
+        "9": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:water"
+        },
+        "98": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stonebrick"
+        }
+      },
+      "status": "PASS",
+      "architecture": {
+        "status": "PASS",
+        "failures": [],
+        "architecture_non_air": 3702824,
+        "occupied_min": [
+          0,
+          0,
+          0
+        ],
+        "occupied_max": [
+          499,
+          249,
+          499
+        ],
+        "outer_band_width": 16,
+        "outer_band_counts": {
+          "west": 353358,
+          "east": 348529,
+          "north": 352325,
+          "south": 341823
+        },
+        "outer_band_minimum": 50000,
+        "quadrant_counts": {
+          "north_west": 902842,
+          "north_east": 924488,
+          "south_west": 891331,
+          "south_east": 984163
+        },
+        "quadrant_minimum": 100000,
+        "extreme_plane_counts": {
+          "min_x": 21122,
+          "max_x": 21122,
+          "min_y": 60536,
+          "max_y": 797,
+          "min_z": 21716,
+          "max_z": 21122
+        },
+        "extreme_plane_minimum": 500,
+        "upper50_non_air": 30828,
+        "upper50_minimum": 10000,
+        "unknown_layer_nonair": 0,
+        "architecture_by_y": [
+          60536,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          60011,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          16618,
+          18367,
+          18367,
+          18334,
+          16797,
+          16795,
+          16782,
+          16778,
+          16677,
+          19479,
+          19472,
+          19656,
+          19781,
+          18073,
+          18063,
+          19687,
+          19789,
+          20320,
+          20327,
+          20118,
+          19999,
+          21378,
+          21197,
+          21024,
+          16618,
+          16626,
+          16626,
+          30538,
+          70343,
+          71482,
+          20465,
+          19593,
+          19587,
+          17747,
+          16750,
+          19362,
+          19338,
+          20319,
+          18378,
+          18366,
+          21804,
+          31785,
+          32258,
+          32160,
+          35040,
+          34093,
+          33187,
+          29582,
+          28462,
+          31415,
+          21181,
+          20716,
+          17746,
+          16918,
+          21200,
+          21088,
+          21547,
+          18450,
+          60525,
+          64581,
+          93629,
+          81083,
+          79380,
+          78785,
+          16081,
+          11036,
+          11077,
+          11072,
+          10203,
+          9985,
+          9980,
+          10100,
+          21075,
+          22989,
+          22968,
+          18176,
+          18993,
+          20932,
+          20905,
+          20273,
+          15889,
+          14843,
+          14168,
+          13545,
+          6342,
+          6342,
+          6342,
+          6361,
+          6081,
+          6081,
+          6170,
+          29139,
+          27362,
+          32820,
+          43755,
+          38442,
+          36661,
+          20197,
+          18389,
+          997,
+          996,
+          996,
+          2536,
+          2537,
+          22747,
+          22101,
+          22132,
+          2536,
+          2536,
+          2449,
+          2229,
+          2009,
+          1789,
+          1568,
+          1348,
+          1129,
+          907,
+          684,
+          549,
+          436,
+          439,
+          441,
+          446,
+          447,
+          447,
+          446,
+          446,
+          446,
+          447,
+          447,
+          447,
+          447,
+          938,
+          938,
+          939,
+          447,
+          447,
+          359,
+          358,
+          358,
+          358,
+          359,
+          359,
+          359,
+          358,
+          358,
+          446,
+          447,
+          447,
+          447,
+          447,
+          446,
+          446,
+          447,
+          447,
+          447,
+          447,
+          446,
+          446,
+          446,
+          939,
+          939,
+          939,
+          446,
+          446,
+          358,
+          359,
+          359,
+          359,
+          359,
+          358,
+          358,
+          359,
+          359,
+          447,
+          447,
+          446,
+          446,
+          446,
+          447,
+          447,
+          447,
+          446,
+          446,
+          446,
+          447,
+          447,
+          447,
+          939,
+          938,
+          938,
+          447,
+          447,
+          359,
+          359,
+          358,
+          358,
+          358,
+          359,
+          359,
+          359,
+          358,
+          1629,
+          1642,
+          607,
+          607,
+          472,
+          607,
+          607,
+          607,
+          608,
+          608,
+          608,
+          472,
+          2629,
+          2629,
+          797
+        ],
+        "included_layer_names": [
+          "bowl_and_stands",
+          "functional_interiors",
+          "galleries",
+          "landmark_masses",
+          "roof_transitions",
+          "stadium_galleries",
+          "stadium_roof",
+          "stadium_structure"
+        ],
+        "scope": "actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability"
+      },
+      "walking_network": {
+        "nodes": 82363,
+        "reachable": 82363,
+        "unreachable_anchors": {}
+      },
+      "tile_count": 5,
+      "gravity_failure_count": 0,
+      "fluid_failure_count": 0
+    },
+    {
+      "id": "arena_fire_ashen_coliseum_v1",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "cells": 62500000,
+      "world_min": [
+        68096,
+        3,
+        64000
+      ],
+      "sha256": "b7e984aeb03d4290ad42fb35184a4b6c9136207d83ced26b2a2b2bb37ae62d5d",
+      "bytes": 2226963,
+      "anchors": {
+        "boss": [
+          250,
+          93,
+          250
+        ],
+        "checkpoint": [
+          250,
+          93,
+          150
+        ],
+        "entry": [
+          250,
+          93,
+          40
+        ],
+        "exit": [
+          270,
+          93,
+          64
+        ],
+        "prep": [
+          250,
+          93,
+          92
+        ],
+        "reward": [
+          250,
+          121,
+          370
+        ]
+      },
+      "palette": {
+        "0": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:air"
+        },
+        "1": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stone"
+        },
+        "11": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:lava"
+        },
+        "112": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:nether_brick"
+        },
+        "114": {
+          "metadata": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "name": "minecraft:nether_brick_stairs"
+        },
+        "118": {
+          "metadata": [
+            3
+          ],
+          "name": "minecraft:cauldron"
+        },
+        "155": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:quartz_block"
+        },
+        "159": {
+          "metadata": [
+            0,
+            4,
+            11,
+            14,
+            15
+          ],
+          "name": "minecraft:stained_hardened_clay"
+        },
+        "169": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:sea_lantern"
+        },
+        "17": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:log"
+        },
+        "170": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:hay_block"
+        },
+        "20": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:glass"
+        },
+        "251": {
+          "metadata": [
+            0,
+            4,
+            11
+          ],
+          "name": "minecraft:concrete"
+        },
+        "35": {
+          "metadata": [
+            0,
+            14
+          ],
+          "name": "minecraft:wool"
+        },
+        "41": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:gold_block"
+        },
+        "47": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        "5": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:planks"
+        },
+        "54": {
+          "metadata": [
+            2
+          ],
+          "name": "minecraft:chest"
+        },
+        "58": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:crafting_table"
+        },
+        "98": {
+          "metadata": [
+            0
+          ],
+          "name": "minecraft:stonebrick"
+        }
+      },
+      "status": "PASS",
+      "architecture": {
+        "status": "PASS",
+        "failures": [],
+        "architecture_non_air": 8328176,
+        "occupied_min": [
+          0,
+          0,
+          0
+        ],
+        "occupied_max": [
+          499,
+          249,
+          499
+        ],
+        "outer_band_width": 16,
+        "outer_band_counts": {
+          "west": 688623,
+          "east": 661352,
+          "north": 565718,
+          "south": 556897
+        },
+        "outer_band_minimum": 50000,
+        "quadrant_counts": {
+          "north_west": 1866017,
+          "north_east": 1941644,
+          "south_west": 2258039,
+          "south_east": 2262476
+        },
+        "quadrant_minimum": 100000,
+        "extreme_plane_counts": {
+          "min_x": 36182,
+          "max_x": 36182,
+          "min_y": 60944,
+          "max_y": 5846,
+          "min_z": 34926,
+          "max_z": 34540
+        },
+        "extreme_plane_minimum": 500,
+        "upper50_non_air": 179483,
+        "upper50_minimum": 10000,
+        "unknown_layer_nonair": 0,
+        "architecture_by_y": [
+          60944,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          60301,
+          56325,
+          56311,
+          56296,
+          29312,
+          29271,
+          29277,
+          29256,
+          29247,
+          29230,
+          29215,
+          29336,
+          29344,
+          31000,
+          31012,
+          31033,
+          31047,
+          31068,
+          31076,
+          45488,
+          45488,
+          45467,
+          45456,
+          45441,
+          45426,
+          46990,
+          46975,
+          46971,
+          46961,
+          46036,
+          79771,
+          80776,
+          80764,
+          75952,
+          74433,
+          74417,
+          43670,
+          43623,
+          43534,
+          43529,
+          43529,
+          43867,
+          43995,
+          44213,
+          44221,
+          47609,
+          47706,
+          48210,
+          48964,
+          48820,
+          48718,
+          48572,
+          48413,
+          46874,
+          45423,
+          45402,
+          45380,
+          45355,
+          45341,
+          45341,
+          45334,
+          45328,
+          79076,
+          79093,
+          79103,
+          74341,
+          74334,
+          74314,
+          43421,
+          43364,
+          43394,
+          43407,
+          43419,
+          43436,
+          43417,
+          43598,
+          43567,
+          78951,
+          78948,
+          78949,
+          86138,
+          86143,
+          90028,
+          45480,
+          44582,
+          42790,
+          44898,
+          44382,
+          44634,
+          45588,
+          46846,
+          47450,
+          50024,
+          49365,
+          59298,
+          57259,
+          62624,
+          62641,
+          61834,
+          62523,
+          61132,
+          60698,
+          60775,
+          51167,
+          50792,
+          47434,
+          50810,
+          51112,
+          50984,
+          52695,
+          51666,
+          84437,
+          77650,
+          103207,
+          88742,
+          87088,
+          86604,
+          39283,
+          33621,
+          33758,
+          33755,
+          32967,
+          31402,
+          31400,
+          33596,
+          39913,
+          42658,
+          42610,
+          40523,
+          33074,
+          36638,
+          36579,
+          37204,
+          28073,
+          26535,
+          26096,
+          25111,
+          17393,
+          17414,
+          17413,
+          16732,
+          16108,
+          16126,
+          16213,
+          33782,
+          32004,
+          37395,
+          47762,
+          42322,
+          39368,
+          23476,
+          21686,
+          5010,
+          4992,
+          4992,
+          4974,
+          4974,
+          5464,
+          5464,
+          5212,
+          4704,
+          4704,
+          4616,
+          4616,
+          24792,
+          21868,
+          21562,
+          21638,
+          21936,
+          22182,
+          24788,
+          4704,
+          4704,
+          4704,
+          4704,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          3430,
+          3430,
+          3430,
+          2922,
+          2922,
+          2834,
+          2834,
+          2834,
+          2834,
+          2834,
+          2834,
+          2834,
+          2834,
+          2834,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          2922,
+          472,
+          472,
+          472,
+          472,
+          472,
+          2922,
+          2922,
+          2922,
+          3430,
+          3430,
+          3430,
+          2922,
+          2922,
+          3098,
+          3098,
+          3098,
+          3098,
+          3098,
+          3098,
+          3098,
+          4472,
+          4481,
+          5895,
+          5895,
+          5719,
+          5719,
+          5719,
+          5719,
+          5719,
+          5513,
+          5513,
+          5549,
+          7870,
+          7870,
+          5846
+        ],
+        "included_layer_names": [
+          "bowl_and_stands",
+          "functional_interiors",
+          "galleries",
+          "landmark_masses",
+          "roof_transitions",
+          "stadium_galleries",
+          "stadium_roof",
+          "stadium_structure"
+        ],
+        "scope": "actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability"
+      },
+      "walking_network": {
+        "nodes": 120434,
+        "reachable": 120434,
+        "unreachable_anchors": {}
+      },
+      "tile_count": 5,
+      "gravity_failure_count": 0,
+      "fluid_failure_count": 0
+    }
+  ],
+  "reports": [
+    {
+      "file": "manifest.json",
+      "sha256": "7a7adcb0967742a70533d0fff2cb9012ce29e4706282293d254937482cbfa03f",
+      "bytes": 10851778,
+      "status": "OFFLINE_EXPORTS_COMPLETE"
+    },
+    {
+      "file": "audit.json",
+      "sha256": "9525d7824d278758f58bdec5c07bce062461600881e6f650a8f654b080b42fe8",
+      "bytes": 132574,
+      "status": "PASS"
+    },
+    {
+      "file": "stage.json",
+      "sha256": "aa77d213da34f5af571e326275e0390e46498a384a5f829444a4a67389d28a69",
+      "bytes": 249723,
+      "status": "PASS_OFFLINE_STAGING"
+    },
+    {
+      "file": "world-full.json",
+      "sha256": "240937526894401c17cb0516337ebd39dccfbfa21a49fe1c2fa7f1b7aa11d9c0",
+      "bytes": 1758,
+      "status": "PASS"
+    },
+    {
+      "file": "buffer-audit.json",
+      "sha256": "007aafb3463ff490720ba6522576010b7821b45ab3ff13ae24d26033fbb3a480",
+      "bytes": 220265,
+      "status": "PASS"
+    },
+    {
+      "file": "rollback.json",
+      "sha256": "67e9fc062adf68bda12265b75b8745e3b5cb1f7cb51c70ea054f00a2c55d8c8b",
+      "bytes": 500,
+      "status": "PASS"
+    }
+  ],
+  "world_readback": {
+    "compared_cells": 312500000,
+    "typed_chests": 25,
+    "differences": 0,
+    "plot_chunks": 5120,
+    "zero_buffer_chunks": 1360,
+    "zero_buffer_cells": 89128960
+  },
+  "rollback": {
+    "files": 35,
+    "all_bytes_hash_verified": true,
+    "scope": "whole new fresh preview world; failed worlds preserved"
+  }
+}
