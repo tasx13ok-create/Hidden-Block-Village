@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public final class VfxShots {
     private int tick, phase = -1, styleIndex;
     private EntityArmorStand cam;
+    private int titleWait;
     private boolean launched;
     private EntityArmorStand target;
     private final List<String> log = new ArrayList<>();
@@ -38,6 +39,7 @@ public final class VfxShots {
         Minecraft mc = Minecraft.getMinecraft();
         if (!launched) {
             if (mc.currentScreen instanceof GuiMainMenu) {
+                if (Boolean.getBoolean("valeorders.vfxshots.menus") && titleWait++ < 60) { if (titleWait == 59) shot(mc, "menu_00_title"); return; }
                 launched = true;
                 WorldSettings s = new WorldSettings(1234L, GameType.CREATIVE, false, false, WorldType.FLAT);
                 mc.launchIntegratedServer("vfxshots-" + System.currentTimeMillis(), "vfxshots", s);
@@ -48,7 +50,7 @@ public final class VfxShots {
         tick++;
         mc.gameSettings.hideGUI = true;
         mc.gameSettings.pauseOnLostFocus = false;
-        if (mc.currentScreen != null) mc.displayGuiScreen(null);
+        if (mc.currentScreen != null && !Boolean.getBoolean("valeorders.vfxshots.menus")) mc.displayGuiScreen(null);
         mc.gameSettings.renderDistanceChunks = 4;
         mc.gameSettings.gammaSetting = 1.0f;
         IntegratedServer server = mc.getIntegratedServer();
@@ -64,6 +66,7 @@ public final class VfxShots {
             p.world.spawnEntity(target);
         });
         if (tick < 300) return;
+        if (Boolean.getBoolean("valeorders.vfxshots.menus")) { menus(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.hud")) { hud(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.dodge")) { dodges(mc, server, tick - 300); return; }
         if (Boolean.getBoolean("valeorders.vfxshots.weapons")) { weapons(mc, server, tick - 300); return; }
@@ -160,6 +163,24 @@ public final class VfxShots {
         if (t == 18) { mc.setRenderViewEntity(cam); mc.gameSettings.thirdPersonView = 0; }
         if (t == 20) { server.addScheduledTask(() -> WeaponPulse.swing(server.getPlayerList().getPlayers().get(0), spec, spec.role == ArsenalSpec.Role.SWEEP)); }
         if (t == 24) shot(mc, name + "_d_swing");
+    }
+
+    private void menus(Minecraft mc, IntegratedServer server, int t) {
+        mc.gameSettings.hideGUI = false;
+        if (t == 0) server.addScheduledTask(() -> { EntityPlayerMP p = server.getPlayerList().getPlayers().get(0); p.setGameType(GameType.SURVIVAL); p.inventory.setInventorySlotContents(0, new net.minecraft.item.ItemStack(net.minecraft.init.Items.DIAMOND_SWORD)); p.world.setWorldTime(12600); });
+        if (t == 10) mc.displayGuiScreen(new net.minecraft.client.gui.GuiIngameMenu());
+        if (t == 14) shot(mc, "menu_01_pause_opening");
+        if (t == 40) shot(mc, "menu_02_pause");
+        if (t == 50) mc.displayGuiScreen(new net.minecraft.client.gui.GuiOptions(mc.currentScreen, mc.gameSettings));
+        if (t == 80) shot(mc, "menu_03_options");
+        if (t == 90) mc.displayGuiScreen(new net.minecraft.client.gui.inventory.GuiInventory(mc.player));
+        if (t == 120) shot(mc, "menu_04_inventory");
+        if (t == 125) mc.displayGuiScreen(new net.minecraft.client.gui.GuiChat("/vale"));
+        if (t == 140) shot(mc, "menu_05_chat");
+        if (t == 145) mc.displayGuiScreen(null);
+        if (t == 150) server.addScheduledTask(() -> server.getPlayerList().getPlayers().get(0).attackEntityFrom(net.minecraft.util.DamageSource.OUT_OF_WORLD, 100));
+        if (t == 200) shot(mc, "menu_06_death");
+        if (t == 230) mc.shutdown();
     }
 
     private void hud(Minecraft mc, IntegratedServer server, int t) {

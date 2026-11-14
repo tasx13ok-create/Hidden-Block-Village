@@ -101,3 +101,17 @@ The bridge works by reflection and registry name only. No licensed code or asset
 - `bridge-moves.json`: maps a licensed item or entity id to a Vale style (spiral, charge, fireedge, windedge, lava, lightmode, `weapon:<arsenal key>`). It plays Vale visuals only, via `HandTechnique.visual` (a visual-only carrier) and `WeaponPulse.cast`.
 - Hooks in shared files: one line each in `ValeOrders.preInit` (`Bridge.init`) and `Dodge.perform` (`MoveCost.pay`).
 - Still needed: the licensed jars, to fill the move map, and a check of the chakra spend method against them.
+
+## Menu and screen immersion (field-hud `MenuFx`, config `menuEffects`)
+All vanilla and modded screens keep their layout; this only adds presentation.
+- **Pause, options and other in-world menus:** layered ink-and-chakra backdrop with a slow rotating seal watermark, brush-stroke frame bands, chakra wisps, falling leaves and rising motes. Colour follows the time of day (dusk orange, night indigo), rain and low health.
+- **Opening a screen:** brush ink reveal.
+- **Buttons:** on hover, a brush underline sweeps in with a kunai marker and a soft tick. On click, an ink splash and a wooden clack with varied pitch.
+- **Title screen:** petals and chakra motes.
+- **Death screen:** red ink bleeds in from the edges and drips, with a slowing heartbeat halo and drum.
+- **Loading terrain:** a spinning seal and a "Gathering chakra" line.
+- **Inventories:** edge vignette and margin-only motes that never cover slots.
+- **Chat:** ink band under the input.
+- **Tooltips:** brush-ink colours by rarity, gold for Vale items, kunai corner marks.
+
+Motion off or Quiet mode keeps only the static colouring. Evidence: `release/evidence/menu-immersion-20261113.png`. The probe flag is `-Dvaleorders.vfxshots.menus=true`.
