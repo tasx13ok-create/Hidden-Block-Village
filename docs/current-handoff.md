@@ -195,6 +195,25 @@ short optional basics/first-field-mission progression and restart-safe course
 provisioning. No new-player end-to-end route is accepted yet. Preserve the
 current four manual upload packages while that candidate is developed.
 
+Threshold fixture02 exited0 but failed its harness before any XP measurement:
+the broad reflective capabilities name selected Forge's CapabilityDispatcher
+instead of PlayerCapabilities. Fixture03 corrected that lookup and exited0,
+but its final numeric report could not serialize a not-ready NaN value. Do not
+claim a measured native awakening floor from either run. A new finite-safe04
+fixture is being prepared; it must record exact raw native and canonical values,
+including a diagnostic2000positive control if smaller floors stay unready.
+
+Fixture03 did independently capture complete real post-Magma EntityLivingBase
+and EntityPlayer input bytes, with unchanged hashes matching earlier native
+damage traces. Private bytes/traces remain on D. Root inspected the real health/
+absorption/heal ABI: player HP goes through CraftPlayer.setRealHealth, ordinary
+mob HP through the data manager, and player absorption through a different data
+parameter than mob absorption. Safe facts are in
+`release/evidence/sealed-outcome-storage-abi-0317.json`. This is evidence for the
+pending arena observer, not an implemented observer or enabled contribution API.
+Next capture the actual data-manager/DataEntry stores and Bukkit wrapper origin
+in the next necessary fixture, preserving native bytes and event ordering.
+
 ## Next work and honest limits
 
 The final source checkpoint includes these receipts and this handoff. Fetch and verify origin/main before continuing; the session's final reply reports the verified GitHub commit. Binary ZIPs and private PC inputs do not transfer through Git automatically.
