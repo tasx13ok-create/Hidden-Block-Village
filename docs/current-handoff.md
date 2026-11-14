@@ -49,10 +49,30 @@ bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016.
 Safe receipt: release/evidence/client-mixed-jar-cleanup-0316.json.
 The installed current mods now have no duplicate old HUD/control/compat JARs.
 The owned JAR asset-namespace audit found no variedcommodities texture namespace.
-Options and resourcepacks were left unchanged for the next one-folder step:
-remove the active retired reference overlay so original unowned icons/armor show.
-The old overlay is still active until that next step; do not claim restored
-runtime icons from the mods cleanup alone. No game or host restart was performed.
+The resourcepacks step is now complete. The owner renamed the imported profile
+to `Hidden Block VillageSL`; its current directory is
+`C:/Users/Steal/curseforge/minecraft/Instances/Hidden Block VillageSL`.
+The obsolete Friend Test directory no longer exists. Bind future work to this
+new path and verify the exact current JAR cohort rather than guessing an old name.
+The previous cleanup script intentionally targets the old reviewed profile name;
+do not rerun it blindly against another profile.
+
+Computer-use initialization still fails with Windows path error3. Root detected
+the new client running and requested that the owner close it; the owner confirmed
+closed. Root verified no profile process, then moved only
+`resourcepacks/Vale-Reference-Flat-Icons-v3.zip` to
+`D:/HiddenBlockVillage-Sprint-20261113/client-retired-icon-pack-01`.
+The828,165byte pack retained exact SHA256
+ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e.
+The active resourcepacks folder is empty; all58current mod hashes remain exact,
+including the original VariedCommodities JAR. No JAR, option/config, world/player
+or host file was written. The supplied server has no resource-pack URL configured.
+Safe receipt: release/evidence/client-original-art-restoration-0316.json.
+No new graphics test is claimed. Original native mod artwork is available on the
+next client resource load; options.txt may still name the now-absent old pack until
+normal Minecraft options reconciliation. The shaderpacks directory was untouched.
+Next one-folder step is review/update client config so the current HUD/settings
+are consistently enabled, preserving controls and the original-mod-art policy.
 The Source13preview client exited at12:22:47local; process30120 is no longer
 present. Preview server31524 remains alive. Preserve it; historical join/dodge
 evidence below does not mean a client is currently connected.

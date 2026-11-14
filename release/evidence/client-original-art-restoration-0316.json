@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "scope": "ACTUAL_CLIENT_RESOURCEPACKS_ORIGINAL_ART_RESTORATION",
+  "profile_name": "Hidden Block VillageSL",
+  "retired_file": "Vale-Reference-Flat-Icons-v3.zip",
+  "bytes": 828165,
+  "sha256": "ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e",
+  "retained_bytes_match": true,
+  "active_resourcepack_folder_files": 0,
+  "original_varied_commodities_jar_sha256": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016",
+  "client_mod_jars_modified": false,
+  "options_or_config_modified": false,
+  "world_server_or_player_data_modified": false,
+  "owner_game_stopped_by_agent": false,
+  "owner_confirmed_client_closed": true,
+  "supplied_server_resource_pack_url_present": false,
+  "computer_use_unavailable": "failed to write kernel assets: Windows path error3",
+  "fresh_graphical_acceptance_claimed": false,
+  "completed": true,
+  "all_58_current_mod_hashes_unchanged_after_resourcepack_retirement": true
+}
