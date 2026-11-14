@@ -26,9 +26,16 @@ All127files, including53JARs, match the accepted unpacked server manifest;
 every ZIP member passed CRC/SHA256 readback. It contains a top-level `mods/`
 folder, so stop the host, remove the old mods folder, upload/unarchive at the
 server root, and keep stopped until config/plugins replacements follow.
-Only this first folder was packaged/delivered in this step; no hosted changes
-were performed. Next requested folder is config, followed by plugins including
-the final stamina plugin. The client/world need not be reuploaded for these.
+The owner briefly requested a combined ZIP, then explicitly returned to this
+one-folder-at-a-time approach. `02 - config.zip` is next,900,249bytes with66files,
+SHA256 `ac98fb18479929c1bc1a156d4dc7dbddc9b5c3b30fb0f9b1c95da874ef0436c7`.
+`03 - plugins.zip` is also prepared in the same replacement directory and includes
+the final stamina plugin. Both passed manifest/CRC/SHA256 readback; receipts are
+`release/evidence/server-folder-config-0316.json` and
+`release/evidence/server-folder-plugins-0316.json`. No hosted changes were performed.
+Deliver config next, then plugins; keep the server stopped between replacements.
+The client/world need not be reuploaded for these. Root spigot.yml is available
+in the separate final stamina overlay; the plugin enforces stamina independently.
 Tool: `tools/package_server_folder.py`; safe receipt:
 `release/evidence/server-folder-mods-0316.json`. Do not start another full6GB ZIP.
 
