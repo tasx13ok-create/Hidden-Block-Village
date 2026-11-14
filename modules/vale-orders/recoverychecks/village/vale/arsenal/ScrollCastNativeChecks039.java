@@ -183,15 +183,24 @@ public final class ScrollCastNativeChecks039 {
             // invoking native sendStatusMessage. Use a normal server player here
             // so the failure really traverses the native status packet path.
             EntityPlayerMP nativePlayer=new EntityPlayerMP(p.getServer(),world,new GameProfile(UUID.randomUUID(),"ScrollCast039"),new PlayerInteractionManager(world));
-            new QuietConnection(nativePlayer);Rig nativeRig=new Rig(nativePlayer);MinecraftForge.EVENT_BUS.register(nativeRig.gate);
+            QuietConnection quiet=new QuietConnection(nativePlayer);
             try{
-                nativeRig.reset("iron_focus");nativeRig.gate.denyPotion=true;final int[] reentry={0};ConnectionProbe connection=new ConnectionProbe(nativePlayer);
+                nativePlayer.getServer().getPlayerList().playerLoggedIn(nativePlayer);
+                net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerLoggedIn(nativePlayer);
+                check(nativePlayer.getServer().getPlayerList().getPlayerByUUID(nativePlayer.getUniqueID())==nativePlayer,"Failure-status fixture requires an actual registered server player");
+                Rig nativeRig=new Rig(nativePlayer);MinecraftForge.EVENT_BUS.register(nativeRig.gate);
                 try{
-                    connection.statusAction=()->{if(nativeRig.use().getType()==EnumActionResult.FAIL)reentry[0]++;};
-                    check(nativeRig.use().getType()==EnumActionResult.FAIL&&reentry[0]==1&&nativeRig.gate.potions==1,"Failure status callback reentered a reserved cast");
-                    nativeRig.unchanged("Failure-status reentry leaked the reservation");
-                }finally{connection.close();}
-            }finally{MinecraftForge.EVENT_BUS.unregister(nativeRig.gate);nativeRig.close();}
+                    nativeRig.reset("iron_focus");nativeRig.gate.denyPotion=true;final int[] reentry={0};ConnectionProbe connection=new ConnectionProbe(nativePlayer);
+                    try{
+                        connection.statusAction=()->{if(nativeRig.use().getType()==EnumActionResult.FAIL)reentry[0]++;};
+                        check(nativeRig.use().getType()==EnumActionResult.FAIL&&reentry[0]==1&&nativeRig.gate.potions==1,"Failure status callback reentered a reserved cast");
+                        nativeRig.unchanged("Failure-status reentry leaked the reservation");
+                    }finally{connection.close();}
+                }finally{MinecraftForge.EVENT_BUS.unregister(nativeRig.gate);nativeRig.close();}
+            }finally{
+                try{if(nativePlayer.getServer().getPlayerList().getPlayerByUUID(nativePlayer.getUniqueID())==nativePlayer)nativePlayer.getServer().getPlayerList().playerLoggedOut(nativePlayer);}
+                finally{quiet.netManager.closeChannel(new net.minecraft.util.text.TextComponentString("Scroll status fixture complete"));}
+            }
         }
         void serpentAndDisguise(){
             reset("river_serpent");PlayerState.setResolve(p,47);

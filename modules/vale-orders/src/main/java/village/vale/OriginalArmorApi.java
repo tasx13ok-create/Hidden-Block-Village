@@ -100,7 +100,7 @@ public final class OriginalArmorApi {
         ItemStack held=player.getHeldItemMainhand();
         if(!(held.getItem() instanceof Gear.WardBlade)||((Gear.WardBlade)held.getItem()).order()!=OriginalArmorRegistry.order(expected)||!RewardLedger.get(player).valid(player,held))return "Hold your issued matching ward weapon.";
         if(remaining>0)return "The shared ward skill is cooling down.";
-        if(PlayerState.resolve(player)<cost)return "Not enough resolve.";return "";
+        if(village.vale.bridge.MoveCost.availableUnits(player)<cost)return village.vale.bridge.ResourceText.requirement(player,cost);return "";
     }
     private static String flightReason(EntityPlayerMP player,ArmorProfile full,OriginalArmorRuntime.State state,int remaining){
         if(!player.isEntityAlive()||player.isSpectator()||player.capabilities.isCreativeMode)return "Stamina flight is available in survival play.";

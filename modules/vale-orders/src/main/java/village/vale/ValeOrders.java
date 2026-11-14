@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ValeOrders.ID, name = "Vale Orders", version = "0.3.15", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(modid = ValeOrders.ID, name = "Naruto Core", version = "0.3.16", acceptedMinecraftVersions = "[1.12.2]")
 public final class ValeOrders {
     @net.minecraftforge.fml.common.SidedProxy(clientSide="village.vale.ClientProxy", serverSide="village.vale.CommonProxy")
     public static CommonProxy proxy;
@@ -43,6 +43,7 @@ public final class ValeOrders {
         village.vale.arsenal.Scrolls.registerEntities(this);
         village.vale.expedition.GateRuntime.registerSkiff(this,123);
         HudNetwork.register();
+        village.vale.bridge.ResourceNetwork.register();
         AbilityNetwork.register();
         Dodge.register();
         OriginalArmorRuntime.initialize();

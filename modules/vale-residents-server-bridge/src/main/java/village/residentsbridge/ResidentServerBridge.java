@@ -11,7 +11,7 @@ import java.util.*;
 import net.minecraft.server.MinecraftServer;
 
 /** Optional hybrid entry metadata for our level0 token command; no Bukkit binary dependency. */
-@Mod(modid="residentserverbridge",name="Vale Residents Server Bridge",version="0.1.0",serverSideOnly=true,acceptableRemoteVersions="*",dependencies="required-after:valeresidents@[0.2.0,0.3.0)",acceptedMinecraftVersions="[1.12.2]")
+@Mod(modid="residentserverbridge",name="Naruto Residents Server Bridge",version="0.1.0",serverSideOnly=true,acceptableRemoteVersions="*",dependencies="required-after:valeresidents@[0.2.0,0.3.0)",acceptedMinecraftVersions="[1.12.2]")
 public final class ResidentServerBridge {
     @Mod.EventHandler public void started(FMLServerStartedEvent e){install(FMLCommonHandler.instance().getMinecraftServerInstance());}
     public static void install(MinecraftServer server){

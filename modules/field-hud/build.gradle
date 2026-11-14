@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.fieldhud'
-version = '0.17.0'
+version = '0.18.0'
 base { archivesName = 'field-hud' }
 java {
     toolchain {
@@ -73,3 +73,18 @@ tasks.register('verifyFreshSlotLookup', JavaExec) {
     javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
 }
 tasks.named('check') { dependsOn 'verifyFreshSlotLookup' }
+
+def sharedResourceClasses = layout.buildDirectory.dir('shared-resource-checks')
+tasks.register('compileSharedResourceChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/SharedResourceReader.java', 'src/main/java/village/fieldhud/ReadinessLine.java', 'tests/village/fieldhud/SharedResourceChecks.java')
+    classpath = files()
+    destinationDirectory = sharedResourceClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.register('verifySharedResourceHud', JavaExec) {
+    dependsOn 'compileSharedResourceChecks'
+    classpath = files(sharedResourceClasses)
+    mainClass = 'village.fieldhud.SharedResourceChecks'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+tasks.named('check') { dependsOn 'verifySharedResourceHud' }

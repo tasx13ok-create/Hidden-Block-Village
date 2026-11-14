@@ -25,7 +25,7 @@ public final class ScrollEvents {
  }
  @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true) public static void preserveHealedContact(LivingHealEvent e){for(ModeContact c:CONTACTS)if(c.target==e.getEntityLiving())c.observeNativeLoss();}
  /** Academy constructs refill directly rather than emitting LivingHealEvent. Preserve their real completed contact first. */
- public static void beforeHealthReset(EntityLivingBase target){for(ModeContact c:CONTACTS)if(c.target==target)c.observeNativeLoss();}
+ public static void beforeHealthReset(EntityLivingBase target){village.vale.FocusTransactions.beforeHealthReset(target);for(ModeContact c:CONTACTS)if(c.target==target)c.observeNativeLoss();}
  /** Add through the native attack, never recursively attack inside LivingDamageEvent. */
  @SubscribeEvent(priority=EventPriority.HIGH) public static void modeBonus(LivingHurtEvent e){
   if(e.isCanceled()||!Float.isFinite(e.getAmount())||e.getAmount()<=0||e.getEntityLiving().world.isRemote||CONTACTS.size()>=512)return;

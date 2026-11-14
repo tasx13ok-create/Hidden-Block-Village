@@ -78,6 +78,19 @@ public final class LightningNativeChecks {
         ready();gate.denyMode=true;long oldGlobal=PlayerState.data(p).getLong("artGlobal"),oldReady=PlayerState.data(p).getCompoundTag("artCooldowns").getLong(LightningKit.KEYS[0]);
         check(!cast(0)&&PlayerState.resolve(p)==100&&!p.isPotionActive(LightningKit.EFFECT),"Denied native mode consumed chakra or retained effect");
         check(PlayerState.data(p).getLong("artGlobal")==oldGlobal&&PlayerState.data(p).getCompoundTag("artCooldowns").getLong(LightningKit.KEYS[0])==oldReady,"Denied mode did not roll back its escrow deadlines");gate.reset();
+        // An old native effect is not proof that the requested application was admitted.
+        ready();p.addPotionEffect(new net.minecraft.potion.PotionEffect(LightningKit.EFFECT,1200,0,false,false));gate.denyMode=true;
+        check(!cast(0)&&PlayerState.resolve(p)==100&&p.getActivePotionEffect(LightningKit.EFFECT).getDuration()==1200,"Denied application with an old effect consumed chakra");
+        check(!LightningKit.state(p).hasKey("modeUntil")&&!LightningKit.state(p).hasKey("nextDrain"),"Denied old-effect activation retained reserved mode stamps");
+        gate.reset();check(!cast(0)&&PlayerState.resolve(p)==100&&!LightningKit.state(p).hasKey("modeUntil"),"Unchanged stronger/longer effect counted as a fresh activation");
+        ready();gate.throwMode=true;boolean threw=false;try{cast(0);}catch(IllegalStateException expected){threw=true;}
+        check(threw&&PlayerState.resolve(p)==100&&!p.isPotionActive(LightningKit.EFFECT)&&!LightningKit.state(p).hasKey("modeUntil"),"Throwing native pre-admission callback retained charge or mode");
+        gate.reset();check(cast(0)&&PlayerState.resolve(p)==80&&LightningKit.active(p),"Failed potion callback leaked admission/escrow context");
+        mode();step(10);long due=LightningKit.state(p).getLong("nextDrain");
+        village.vale.bridge.MoveCost.Ticket pending=village.vale.bridge.MoveCost.reserve(p,2);check(pending!=null,"Busy-upkeep fixture could not reserve a real native ticket");
+        try{step(40);LightningKit.tick(p);check(LightningKit.active(p)&&LightningKit.state(p).getLong("nextDrain")==due&&PlayerState.resolve(p)==78,"Pending cast incorrectly ended or advanced Lightning upkeep");}
+        finally{pending.close();}
+        LightningKit.tick(p);check(LightningKit.active(p)&&PlayerState.resolve(p)==68&&LightningKit.state(p).getLong("nextDrain")==due+60,"Deferred Lightning upkeep lost elapsed periods or charged twice");
         mode();p.interactionManager.setGameType(GameType.SPECTATOR);
         try{LightningKit.tick(p);check(!LightningKit.active(p)&&!p.isPotionActive(LightningKit.EFFECT),"Spectator switch retained mode potion");}
         finally{p.interactionManager.setGameType(GameType.SURVIVAL);}
@@ -170,11 +183,12 @@ public final class LightningNativeChecks {
         erase();
     }
     public static final class Gate {
-        EntityLivingBase target;int stage;boolean denyMode;
-        void reset(){target=null;stage=0;denyMode=false;}
+        EntityLivingBase target;int stage;boolean denyMode,throwMode;
+        void reset(){target=null;stage=0;denyMode=false;throwMode=false;}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void attack(LivingAttackEvent e){if(e.getEntityLiving()==target&&stage==1)e.setCanceled(true);}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void hurt(LivingHurtEvent e){if(e.getEntityLiving()==target&&stage==2)e.setCanceled(true);}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void damage(LivingDamageEvent e){if(e.getEntityLiving()==target&&stage==3)e.setCanceled(true);}
         @SubscribeEvent(priority=EventPriority.LOWEST)public void potion(PotionEvent.PotionApplicableEvent e){if(denyMode&&e.getPotionEffect().getPotion()==LightningKit.EFFECT)e.setResult(Event.Result.DENY);}
+        @SubscribeEvent(priority=EventPriority.LOWEST)public void adding(PotionEvent.PotionAddedEvent e){if(throwMode&&e.getPotionEffect().getPotion()==LightningKit.EFFECT)throw new IllegalStateException("Intentional native potion pre-admission failure");}
     }
 }

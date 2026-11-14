@@ -22,8 +22,9 @@ public final class ChakraBridge {
     private static final Minecraft MC=Minecraft.getMinecraft();
     public static final class Snapshot {
         public final double amount,maximum;
-        public final boolean warning,sage,byakugou;
-        Snapshot(double a,double m,boolean w,boolean s,boolean b) { amount=a;maximum=m;warning=w;sage=s;byakugou=b; }
+        public final boolean warning,sage,byakugou;public final String label;
+        Snapshot(double a,double m,boolean w,boolean s,boolean b) {this(a,m,w,s,b,"Chakra");}
+        Snapshot(double a,double m,boolean w,boolean s,boolean b,String label) { amount=a;maximum=m;warning=w;sage=s;byakugou=b;this.label=label; }
     }
     private static Method initialized,isNinja,pathway,amount,maximum,restore;
     private static Field overlayInstance,warning,sage;
@@ -51,6 +52,7 @@ public final class ChakraBridge {
     private static Snapshot snapshot;
     ChakraBridge() {}
     public static Snapshot current() { return HudConfig.chakra?snapshot:null; }
+    static boolean ownsResource(){return SharedResourceBridge.authoritative()||net.minecraftforge.fml.common.Loader.isModLoaded("narutomod");}
     private static void prepare() throws ReflectiveOperationException {
         Class<?> api=Class.forName("net.narutomod.Chakra");
         initialized=api.getMethod("isInitialized",EntityPlayer.class);
@@ -88,6 +90,7 @@ public final class ChakraBridge {
         System.out.println("FIELD_HUD_CHAKRA_GUI: "+(hide?"integrated":"restored")+" overlays="+bindings.size());
     }
     public static void tick() {
+        SharedResourceReader.State shared=SharedResourceBridge.current();
         try {
             if(!ready&&!unavailable)prepare();
             snapshot=null;
@@ -103,6 +106,7 @@ public final class ChakraBridge {
                 if(Double.isFinite(a)&&Double.isFinite(m)&&m>0&&a>=0)
                     snapshot=new Snapshot(a,m,warn,gui!=null&&sage.getBoolean(gui),boost);
             }
+            if(SharedResourceBridge.authoritative())snapshot=shared!=null&&shared.ready&&HudConfig.chakra?new Snapshot(shared.amount,shared.maximum,snapshot!=null&&snapshot.warning,snapshot!=null&&snapshot.sage,snapshot!=null&&snapshot.byakugou,"narutomod".equals(shared.provider)?"Chakra":"Resolve"):null;
             hook(ShinobiHud.active()&&MC.playerController.shouldDrawHUD()&&snapshot!=null);
         } catch(ClassNotFoundException error) { unavailable=true; }
         catch(ReflectiveOperationException|LinkageError|RuntimeException error) {
@@ -110,6 +114,7 @@ public final class ChakraBridge {
             try { hook(false); }catch(Exception ignored) {}
             System.out.println("FIELD_HUD_CHAKRA_DISABLED: "+error.getClass().getSimpleName());
         }
+        if(SharedResourceBridge.authoritative()&&(!ready||unavailable))snapshot=shared!=null&&shared.ready&&HudConfig.chakra?new Snapshot(shared.amount,shared.maximum,false,false,false,"narutomod".equals(shared.provider)?"Chakra":"Resolve"):null;
     }
     @SubscribeEvent public void legacy(RenderGameOverlayEvent event) {
         if(!retired||event.isCancelable()||event.getType()!=RenderGameOverlayEvent.ElementType.HELMET)return;

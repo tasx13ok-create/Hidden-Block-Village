@@ -1,6 +1,7 @@
 package village.vale;
 
 import java.util.*;
+import village.vale.bridge.MoveCost;
 import village.vale.nature.NatureMoves;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -56,7 +57,7 @@ public final class Arts {
     public static void show(EntityPlayerMP p){
         p.sendMessage(new TextComponentString("Technique academy | Level "+PlayerState.level(p)+" | Merit "+PlayerState.data(p).getInteger("merit")+" | Sneak + use codex to cycle."));
         for(Art a:available(p)){
-            TextComponentString line=new TextComponentString("[Select] "+a.title+" | "+a.cost+" resolve | "+a.cooldown+"s");
+            TextComponentString line=new TextComponentString("[Select] "+a.title+" | "+a.cost+" chakra units | "+a.cooldown+"s");
             line.getStyle().setColor(TextFormatting.AQUA).setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/vale art select "+a.key));p.sendMessage(line);
         }
         for(Order o:Order.values())if(!o.key.equals(PlayerState.data(p).getString("starterOrder"))&&!PlayerState.data(p).getBoolean("study_"+o.key)){
@@ -89,11 +90,23 @@ public final class Arts {
         NBTTagCompound s=PlayerState.data(p);long now=Adventures.now(p);NBTTagCompound cds=s.getCompoundTag("artCooldowns");
         if(now<s.getLong("artGlobal")||now<cds.getLong(a.key))return Adventures.tell(p,"This technique is cooling down.");
         int cost=Forms.active(p)==2?Math.max(1,a.cost*3/4):a.cost;
-        if(PlayerState.resolve(p)<cost)return Adventures.tell(p,"Not enough resolve for "+a.title+".");
-        boolean success=a.order==null?utility(p,a):school(p,a);
-        if(!success)return Adventures.tell(p,"No valid effect: aim at a visible permitted enemy or check your space/health.");
-        PlayerState.setResolve(p,PlayerState.resolve(p)-cost);cds.setLong(a.key,now+a.cooldown*20L);s.setTag("artCooldowns",cds);s.setLong("artGlobal",now+20);s.setLong("lastCombat",now);
-        Missions.art(p);Adventures.gesture(p);HudNetwork.cast(p,a.key);p.sendStatusMessage(new TextComponentString(a.title+" | Resolve "+PlayerState.resolve(p)+"/100"),true);return true;
+        MoveCost.Ticket payment=MoveCost.reserve(p,cost);if(payment==null)return Adventures.tell(p,"Chakra unavailable or insufficient for "+a.title+".");
+        net.minecraft.world.World world=p.world;int dimension=p.dimension;ItemStack held=p.getHeldItemMainhand();
+        java.util.function.BooleanSupplier legal=()->p.isEntityAlive()&&!p.isSpectator()&&p.world==world&&p.dimension==dimension&&p.getServer()!=null&&p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())==p&&PlayerState.data(p)==s&&Combat.fullSet(p)!=null&&(carriedCodex?!AbilityActions.carried(p,"valeorders:technique_codex").isEmpty():p.getHeldItemMainhand()==held&&Gear.key(held).equals("valeorders:technique_codex"));
+        long oldGlobal=s.getLong("artGlobal"),oldCooldown=cds.getLong(a.key),oldCombat=s.getLong("lastCombat"),deadline=now+a.cooldown*20L;
+        cds.setLong(a.key,deadline);s.setTag("artCooldowns",cds);s.setLong("artGlobal",now+20);s.setLong("lastCombat",now);
+        try{
+            if(!payment.valid()||!legal.getAsBoolean())return false;
+            boolean success=a.order==null?utility(p,a,payment,legal):school(p,a,payment);
+            if(!success)return Adventures.tell(p,"No valid effect: aim at a visible permitted enemy or check your space/health.");
+            payment.commit(); // helpers settle earlier at irreversible native contacts
+            Missions.art(p);
+            try{Adventures.gesture(p);HudNetwork.cast(p,a.key);p.sendStatusMessage(new TextComponentString(a.title+" | Chakra units "+MoveCost.availableUnits(p)),true);}catch(RuntimeException|LinkageError cosmeticFailure){}
+            return true;
+        }finally{
+            if(payment.pending()&&PlayerState.data(p)==s){if(cds.getLong(a.key)==deadline)cds.setLong(a.key,oldCooldown);if(s.getLong("artGlobal")==now+20)s.setLong("artGlobal",oldGlobal);if(s.getLong("lastCombat")==now)s.setLong("lastCombat",oldCombat);}
+            payment.close();
+        }
     }
     public static List<EntityLivingBase> near(EntityPlayerMP p,double radius,boolean frontal,int limit){
         List<EntityLivingBase> all=p.world.getEntitiesWithinAABB(EntityLivingBase.class,p.getEntityBoundingBox().grow(radius));
@@ -103,23 +116,25 @@ public final class Arts {
             result.add(e);if(result.size()>=limit)break;
         }return result;
     }
-    private static boolean school(EntityPlayerMP p,Art a){
+    private static boolean school(EntityPlayerMP p,Art a,MoveCost.Ticket payment){
         if(a.shape==2){
-            if(a.order==Order.BLOOM){if(p.getHealth()>=p.getMaxHealth())return false;p.heal(4);p.removePotionEffect(MobEffects.POISON);return true;}
-            if(a.order==Order.DAWN){p.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION,120,0));return true;}
-            RuneField field=new RuneField(p.world);field.configure(p,a.order.ordinal(),p.getPositionVector());return p.world.spawnEntity(field);
+            if(a.order==Order.BLOOM){if(p.getHealth()>=p.getMaxHealth())return false;return mend(p,4,MobEffects.POISON,payment);}
+            if(a.order==Order.DAWN)return buff(p,MobEffects.ABSORPTION,120,0,payment);
+            RuneField field=new RuneField(p.world);field.configure(p,a.order.ordinal(),p.getPositionVector());boolean spawned=p.world.spawnEntity(field);if(spawned&&!field.isDead)payment.commit();return spawned&&!field.isDead;
         }
         List<EntityLivingBase> targets;
         if(a.shape==0){EntityLivingBase e=Combat.aimedTarget(p,12);targets=e==null?Collections.emptyList():Collections.singletonList(e);}
         else targets=near(p,6,true,3);
-        boolean ok=false;for(EntityLivingBase e:targets){boolean contact=hit(p,e,a.order,a.shape==0?6:4);if(contact)AcademyCampaign.art(p,a.key,e);ok=contact||ok;}
+        boolean ok=false;for(EntityLivingBase e:targets){boolean contact=hit(p,e,a.order,a.shape==0?6:4,DamageSource.causePlayerDamage(p),payment);if(contact)AcademyCampaign.art(p,a.key,e);ok=contact||ok;}
         return ok;
     }
     public static boolean hit(EntityPlayerMP p,EntityLivingBase e,Order order,float damage){
         return hit(p,e,order,damage,DamageSource.causePlayerDamage(p));
     }
-    public static boolean hit(EntityPlayerMP p,EntityLivingBase e,Order order,float damage,DamageSource source){
+    public static boolean hit(EntityPlayerMP p,EntityLivingBase e,Order order,float damage,DamageSource source){return hit(p,e,order,damage,source,null);}
+    private static boolean hit(EntityPlayerMP p,EntityLivingBase e,Order order,float damage,DamageSource source,MoveCost.Ticket payment){
         if(!OwnedSkills.allowed(p,e)||!Combat.impact(e,source,order==Order.STORM?damage+1:damage))return false;
+        if(payment!=null)payment.commit();
         switch(order){
             case EMBER:e.setFire(3);break;
             case CURRENT:e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,50,0));push(p,e,.6);break;
@@ -133,26 +148,41 @@ public final class Arts {
         }return true;
     }
     static void push(EntityPlayerMP p,EntityLivingBase e,double force){double x=p.posX-e.posX,z=p.posZ-e.posZ;if(x*x+z*z<.0001){x=-p.getLookVec().x;z=-p.getLookVec().z;if(x*x+z*z<.0001)z=1;}e.knockBack(p,(float)force,x,z);e.velocityChanged=true;}
-    private static boolean utility(EntityPlayerMP p,Art a){
+    private static boolean changed(EntityPlayerMP p,net.minecraft.potion.Potion potion,PotionEffect before){PotionEffect after=p.getActivePotionEffect(potion);return after!=null&&(before==null||after.getAmplifier()>before.getAmplifier()||after.getDuration()>before.getDuration());}
+    private static boolean buff(EntityPlayerMP p,net.minecraft.potion.Potion potion,int ticks,int strength,MoveCost.Ticket payment){
+        PotionEffect before=p.getActivePotionEffect(potion);before=before==null?null:new PotionEffect(before);
+        try{p.addPotionEffect(new PotionEffect(potion,ticks,strength));return changed(p,potion,before);}
+        finally{if(changed(p,potion,before))payment.commit();}
+    }
+    private static boolean mend(EntityPlayerMP p,float amount,net.minecraft.potion.Potion cure,MoveCost.Ticket payment){
+        float before=p.getHealth();boolean afflicted=p.isPotionActive(cure);
+        try{p.heal(amount);if(p.getHealth()>before)payment.commit();p.removePotionEffect(cure);return p.getHealth()>before||afflicted&&!p.isPotionActive(cure);}
+        finally{if(p.getHealth()>before||afflicted&&!p.isPotionActive(cure))payment.commit();}
+    }
+    private static boolean utility(EntityPlayerMP p,Art a,MoveCost.Ticket payment,java.util.function.BooleanSupplier legal){
         switch(a.shape){
-            case 10:{RuneField f=new RuneField(p.world);f.configure(p,Order.RIME.ordinal(),p.getPositionVector());return p.world.spawnEntity(f);}
-            case 11:{EntityLivingBase e=Combat.aimedTarget(p,12);if(e==null||!Combat.impact(e,DamageSource.causePlayerDamage(p),2))return false;e.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,100,1));return true;}
-            case 12:PlayerState.data(p).setLong("guardUntil",p.world.getTotalWorldTime()+50);p.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE,60,0));return true;
-            case 13:{Vec3d d=p.getLookVec();return teleport(p,p.posX+d.x*4,p.posY,p.posZ+d.z*4);}
-            case 14:p.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION,200,0));for(EntityLivingBase e:near(p,12,false,6))if(Combat.impact(e,DamageSource.causePlayerDamage(p),1))e.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0));return true;
-            case 15:if(p.getHealth()>=p.getMaxHealth())return false;p.heal(4);p.removePotionEffect(MobEffects.WEAKNESS);return true;
-            case 16:{boolean ok=false;for(EntityLivingBase e:near(p,5,false,4))if(Combat.impact(e,DamageSource.causePlayerDamage(p),4)){push(p,e,1.1);ok=true;}return ok;}
-            case 17:{NBTTagCompound s=PlayerState.data(p);if(!s.hasKey("recall",10)){NBTTagCompound mark=new NBTTagCompound();mark.setInteger("dim",p.dimension);mark.setDouble("x",p.posX);mark.setDouble("y",p.posY);mark.setDouble("z",p.posZ);s.setTag("recall",mark);return true;}NBTTagCompound m=s.getCompoundTag("recall");if(m.getInteger("dim")!=p.dimension||p.getDistanceSq(m.getDouble("x"),m.getDouble("y"),m.getDouble("z"))>32*32)return false;boolean ok=teleport(p,m.getDouble("x"),m.getDouble("y"),m.getDouble("z"));if(ok)s.removeTag("recall");return ok;}
-            case 18:return Summons.decoy(p);
+            case 10:{RuneField f=new RuneField(p.world);f.configure(p,Order.RIME.ordinal(),p.getPositionVector());boolean spawned=p.world.spawnEntity(f);if(spawned&&!f.isDead)payment.commit();return spawned&&!f.isDead;}
+            case 11:{EntityLivingBase e=Combat.aimedTarget(p,12);if(e==null||!Combat.impact(e,DamageSource.causePlayerDamage(p),2))return false;payment.commit();e.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,100,1));return true;}
+            case 12:PlayerState.data(p).setLong("guardUntil",p.world.getTotalWorldTime()+50);payment.commit();buff(p,MobEffects.RESISTANCE,60,0,payment);return true;
+            case 13:{Vec3d d=p.getLookVec();boolean moved=teleport(p,p.posX+d.x*4,p.posY,p.posZ+d.z*4,legal,payment);if(moved)payment.commit();return moved;}
+            case 14:{boolean ok=buff(p,MobEffects.NIGHT_VISION,200,0,payment);for(EntityLivingBase e:near(p,12,false,6))if(Combat.impact(e,DamageSource.causePlayerDamage(p),1)){payment.commit();e.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0));ok=true;}return ok;}
+            case 15:if(p.getHealth()>=p.getMaxHealth())return false;return mend(p,4,MobEffects.WEAKNESS,payment);
+            case 16:{boolean ok=false;for(EntityLivingBase e:near(p,5,false,4))if(Combat.impact(e,DamageSource.causePlayerDamage(p),4)){payment.commit();push(p,e,1.1);ok=true;}return ok;}
+            case 17:{NBTTagCompound s=PlayerState.data(p);if(!s.hasKey("recall",10)){NBTTagCompound mark=new NBTTagCompound();mark.setInteger("dim",p.dimension);mark.setDouble("x",p.posX);mark.setDouble("y",p.posY);mark.setDouble("z",p.posZ);s.setTag("recall",mark);payment.commit();return true;}NBTTagCompound m=s.getCompoundTag("recall");if(m.getInteger("dim")!=p.dimension||p.getDistanceSq(m.getDouble("x"),m.getDouble("y"),m.getDouble("z"))>32*32)return false;boolean ok=teleport(p,m.getDouble("x"),m.getDouble("y"),m.getDouble("z"),legal,payment);if(ok){payment.commit();s.removeTag("recall");}return ok;}
+            case 18:return Summons.decoy(p,payment);
             default:return false;
         }
     }
-    static boolean teleport(EntityPlayerMP p,double x,double y,double z){
-        EnderTeleportEvent event=new EnderTeleportEvent(p,x,y,z,0);if(MinecraftForge.EVENT_BUS.post(event))return false;
+    static boolean teleport(EntityPlayerMP p,double x,double y,double z){return teleport(p,x,y,z,()->true,null);}
+    private static boolean teleport(EntityPlayerMP p,double x,double y,double z,java.util.function.BooleanSupplier legal,MoveCost.Ticket payment){
+        if(!legal.getAsBoolean())return false;
+        EnderTeleportEvent event=new EnderTeleportEvent(p,x,y,z,0);if(MinecraftForge.EVENT_BUS.post(event)||!legal.getAsBoolean())return false;
         x=event.getTargetX();y=event.getTargetY();z=event.getTargetZ();BlockPos at=new BlockPos(x,y,z);
         if(!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(z)||p.getDistanceSq(x,y,z)>32*32)return false;
         AxisAlignedBB box=p.getEntityBoundingBox().offset(x-p.posX,y-p.posY,z-p.posZ);
         if(y<1||y>254||!p.world.isBlockLoaded(at)||!p.world.getWorldBorder().contains(at)||!p.world.getCollisionBoxes(p,box).isEmpty()||p.world.containsAnyLiquid(box)||!p.world.getBlockState(at.down()).getMaterial().isSolid())return false;
-        p.setPositionAndUpdate(x,y,z);p.fallDistance=0;return true;
+        double beforeX=p.posX,beforeY=p.posY,beforeZ=p.posZ;net.minecraft.world.World world=p.world;
+        try{p.setPositionAndUpdate(x,y,z);p.fallDistance=0;return true;}
+        finally{if(payment!=null&&p.world==world&&(p.posX!=beforeX||p.posY!=beforeY||p.posZ!=beforeZ))payment.commit();}
     }
 }

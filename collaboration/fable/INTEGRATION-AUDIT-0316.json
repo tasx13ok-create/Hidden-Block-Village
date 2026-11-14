@@ -1,0 +1,1274 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_CLAUDE_FEATURE_INTEGRATION_AUDIT",
+  "requested_pin": "49d7a4b",
+  "fetched_pin": "bea21d389ccfe8e142099e2d217449abe84c12f8",
+  "comparison_main": "e562d65935cf8cc4b5a82a95c6833a562f275161",
+  "canonical_head": "4bb508e05f64ea0209548a719681d98abc8df84a",
+  "canonical_source_not_modified": true,
+  "counts": {
+    "claude_unique_paths": 54,
+    "missing_current": 37,
+    "different_current": 17,
+    "exact_current": 0,
+    "protected_current_only_or_older_branch_paths": 72
+  },
+  "groups": {
+    "handoff": 2,
+    "hud-art": 4,
+    "hud-hooks": 6,
+    "menu-art": 1,
+    "hud-tests": 1,
+    "tail-provenance": 3,
+    "actor-skins": 7,
+    "private-probe": 1,
+    "shared-hooks": 2,
+    "bridge-presentation": 3,
+    "bridge-runtime": 2,
+    "bridge-resource": 5,
+    "armor-core": 1,
+    "combat-art": 3,
+    "bridge-tests": 2,
+    "claude-evidence": 6,
+    "bridge-tools": 2,
+    "skin-tools": 3
+  },
+  "validation": {
+    "actual_isolated_java8_FableHudMath": 550,
+    "actual_isolated_java8_BridgeMath_old_economics_not_current_acceptance": 45,
+    "actual_isolated_java8_ChakraLedger_fake_only": 23,
+    "game_launched": false,
+    "UI_controlled": false,
+    "tail_source_reused": false,
+    "build_or_native_source_changed": false
+  },
+  "commits": [
+    {
+      "commit": "8753b4313636d7c6fb951fb932df392712d98ff5",
+      "author": "Claude",
+      "subject": "Add a layered, dynamically lit chest power core for Bijuu Armor chestplates"
+    },
+    {
+      "commit": "49d7a4bf65af375cafd09fc333316f1d3eff2287",
+      "author": "Claude",
+      "subject": "Bijuu Armor tail physics pass 2: momentum, sub-steps, bend limit, friction, length lock"
+    },
+    {
+      "commit": "b57da7bbb03a6f0e1fb02ee9b984d2fe98b3507c",
+      "author": "Claude",
+      "subject": "Add an armor tail-motion pass to the client screenshot probe"
+    },
+    {
+      "commit": "73ba880347af5a36a5fea0a661801a6fcd0d1ed7",
+      "author": "Claude",
+      "subject": "Add a private-input generator for proposed Naruto bridge move mappings"
+    },
+    {
+      "commit": "17501d5cfc46f4d4ad200484b9754f866fd43eb1",
+      "author": "Claude",
+      "subject": "Rebuild the Naruto chakra bridge to the pinned API facts"
+    },
+    {
+      "commit": "24c1f67921319079822a7f5390129d23c70b1af9",
+      "author": "Claude",
+      "subject": "Add /narutobridge status, reload, map, unmap and test for in-game bridge tuning"
+    },
+    {
+      "commit": "59fde97b9c2b8d6a7f73613ad29989495f33e3e7",
+      "author": "Claude",
+      "subject": "HUD side of the bridge: chakra-only energy bar, chakra cost labels, cast pulse for licensed jutsu"
+    },
+    {
+      "commit": "7588b9f04f389bacb9f31f2d02538dd4a5df0bf2",
+      "author": "Claude",
+      "subject": "Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping"
+    },
+    {
+      "commit": "af18ce1495e8b90ab2b406e4b58039204595e2a5",
+      "author": "Claude",
+      "subject": "Make menus, title, death, loading, inventory, chat and tooltips immersive"
+    },
+    {
+      "commit": "f5f402dca57bcdf1c25217a3d9a2e238fd9ab6ba",
+      "author": "Claude",
+      "subject": "Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+    },
+    {
+      "commit": "3cb8b2f89c8dd562edf9ae1352e06485e84b8857",
+      "author": "Claude",
+      "subject": "Give encounter actors original 256x256 shinobi skins"
+    },
+    {
+      "commit": "56af8f056b74bd5a1d5d60256ce49d478e1cfe7e",
+      "author": "Claude",
+      "subject": "Revert the original skins set (owner will use the existing mod NPCs)"
+    },
+    {
+      "commit": "ea1f9649815e25fd360b9021b682b822cf8415a3",
+      "author": "Claude",
+      "subject": "Add six original anime-style shinobi skins with generator"
+    },
+    {
+      "commit": "8c11a3229ccac2eae6c068a9b9160f6448427220",
+      "author": "Claude",
+      "subject": "Brighten hotbar chakra aura and add zoomed hotbar evidence"
+    },
+    {
+      "commit": "c9b377ee9d2a3a2c5444aaa0080e2963006f42fe",
+      "author": "Claude",
+      "subject": "Layer anime chakra art onto the scroll hotbar and jutsu rail"
+    },
+    {
+      "commit": "cb67842d6d42138aba813446407314da99a03648",
+      "author": "Claude",
+      "subject": "Enhance the original scroll hotbar and jutsu rail instead of a new skin"
+    },
+    {
+      "commit": "acdf2ed1dfc72418c1833ba8fae8bfe1f7445869",
+      "author": "Claude",
+      "subject": "Add animated pixel hotbar and six-slot jutsu bar skin"
+    },
+    {
+      "commit": "ac6b7fa38cbfce90084e3cda9258604b65185caa",
+      "author": "Claude",
+      "subject": "Give dodge and all weapon effects a blocky Minecraft pixel style"
+    },
+    {
+      "commit": "45c0c92119159af5fddf5441ce4749c913205805",
+      "author": "Claude",
+      "subject": "Make the dodge an anime flash step with afterimages"
+    },
+    {
+      "commit": "734329628cb9b3fe74e46a432b6797c083cb33d4",
+      "author": "Claude",
+      "subject": "Add four-way dodge on a rebindable key with its own animations"
+    },
+    {
+      "commit": "c280dbfae53f647dda6814d2294de5def9d61f00",
+      "author": "Claude",
+      "subject": "Add opt-in client screenshot probe for technique and weapon VFX"
+    }
+  ],
+  "files": [
+    {
+      "path": "collaboration/fable/STATUS.md",
+      "claude_sha256": "14252cc33589990a913657bd6a5f9ed9d71b2e33bf2ac3b40dedf8b1684ad495",
+      "claude_bytes": 8794,
+      "current_sha256": "37a5b93c7499a2da035370c2ccdb76db1162f86b4194a4d5a49a4a80d11ae7a1",
+      "exact_current": false,
+      "commits": [
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin",
+        "7343296 Add four-way dodge on a rebindable key with its own animations"
+      ],
+      "group": "handoff",
+      "disposition": "merge-append",
+      "required_adaptation": "Preserve attributed Claude notes/claims without overwriting canonical latest handoff or converting claimed tests to local acceptance."
+    },
+    {
+      "path": "collaboration/fable/VFX-REVIEW-FOR-CODEX.md",
+      "claude_sha256": "379298692ad93f2d7d3a5a0a65ca85c019c7d3a7d1d70ddee5819e6d639987dd",
+      "claude_bytes": 14204,
+      "current_sha256": "ae60b6137f15667b3a9530626e0c513eac84be1952544e78b0b3caef94631335",
+      "exact_current": false,
+      "commits": [
+        "8753b43 Add a layered, dynamically lit chest power core for Bijuu Armor chestplates",
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts",
+        "7588b9f Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping",
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map",
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins",
+        "c9b377e Layer anime chakra art onto the scroll hotbar and jutsu rail",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin",
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style",
+        "45c0c92 Make the dodge an anime flash step with afterimages",
+        "7343296 Add four-way dodge on a rebindable key with its own animations",
+        "c280dbf Add opt-in client screenshot probe for technique and weapon VFX"
+      ],
+      "group": "handoff",
+      "disposition": "merge-append",
+      "required_adaptation": "Preserve attributed Claude notes/claims without overwriting canonical latest handoff or converting claimed tests to local acceptance."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/AnimeDraw.java",
+      "claude_sha256": "c6d7e6665b6e0daf21319972f6a4f30b215f2c92c89b1ee65ed1ab3bed9934b1",
+      "claude_bytes": 7953,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "c9b377e Layer anime chakra art onto the scroll hotbar and jutsu rail"
+      ],
+      "group": "hud-art",
+      "disposition": "adapt",
+      "required_adaptation": "Original procedural gradients, glows, flames, seals and ribbons; preserve incoming GL/matrix/depth/alpha/blend state with existing guarded renderer, including exceptions."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ClientHud.java",
+      "claude_sha256": "967cf664b315a23895bb5ea77b9112b1a045273a4e5325fc7a11898c463e83bc",
+      "claude_bytes": 10165,
+      "current_sha256": "dcf877e21b751b75fb65b7a1e35ed87423ff23d791fdad8be08096663fca8555",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Register MenuFx exactly once on client only; retain every current HUD18/inventory/settings/resource hook."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FableEnv.java",
+      "claude_sha256": "208b7c0290abbb6e48417e758c2dc8552f70e2c83ecf8b21a286e1c24135ad55",
+      "claude_bytes": 7217,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-art",
+      "disposition": "adapt",
+      "required_adaptation": "Motion springs, weather/biome/health/lightning reactions and capped2Dparticles. Reset all state on body/world/disconnect; update once per frame, avoid stale landing/hurt/accumulator across sessions."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FableHudMath.java",
+      "claude_sha256": "d0ac7aa537b03d66b049e53237f9cfd6eb49688fa508c201a7fe32f48b67b37d",
+      "claude_bytes": 3881,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-art",
+      "disposition": "merge-with-tests",
+      "required_adaptation": "Original pure spring/easing/noise/temperature helpers; retain550actual passing checks and add finite/dt edge coverage before runtime use."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HotbarFx.java",
+      "claude_sha256": "f3010bb8502d982fee325981792b3778370376e9f2f2d9b51dafdd31a67531ee",
+      "claude_bytes": 23535,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "59fde97 HUD side of the bridge: chakra-only energy bar, chakra cost labels, cast pulse for licensed jutsu",
+        "c9b377e Layer anime chakra art onto the scroll hotbar and jutsu rail",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin"
+      ],
+      "group": "hud-art",
+      "disposition": "adapt",
+      "required_adaptation": "Original anime art, spring lift, pickup pop, selector ghosts, cast/readiness bursts, weather. Make every geometry/decorative pass count-aware6/9, retain current curve=false combat mode/live physical stacks; bind animations to real Rack renderer and reset count/body/world."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HudConfig.java",
+      "claude_sha256": "7da235f3eb7944653dd94dc9166109a6faeb64dedf99cfc1ad81899f4af35f38",
+      "claude_bytes": 5142,
+      "current_sha256": "2ec518cd25c2a8691da3b12aa0c827054f42294beeca47db728375187586f58a",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Add persisted menuEffects switch and expose through existing unified settings, preserving every current config field and motion/Quiet semantics."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuRail.java",
+      "claude_sha256": "2341d43e9348709be90c04aa84e2b4a1aec223d1144d6ff091d3cd026e3ecff1",
+      "claude_bytes": 8857,
+      "current_sha256": "ca0be2d69f8dbd782739bb1ccf52d6c1ab5c83aefe45f1a3e68db62a53fd75d8",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "c9b377e Layer anime chakra art onto the scroll hotbar and jutsu rail",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "New animated legacy rail code lies after RackAccess.loaded early return; attach equivalent effects to actual RackRailDraw path too, with real cache/readiness and unchanged input/nonce protocol."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuSnapshotReader.java",
+      "claude_sha256": "39f8ea617a0bc4ca76ceba55e675732e5d94214f7c0fedae5a003b9f65660fd4",
+      "claude_bytes": 3451,
+      "current_sha256": "ab3d881dd88098f103933d8516d88ef9719c6f26aac78d74bf7471297e7c9456",
+      "exact_current": false,
+      "commits": [
+        "59fde97 HUD side of the bridge: chakra-only energy bar, chakra cost labels, cast pulse for licensed jutsu"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Intent is Chakra labels; current authoritative owner telemetry already supersedes native-client snapshot inference. Preserve schema validation, exact units and unavailable state."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/MenuFx.java",
+      "claude_sha256": "476d6a6385bc772b4a702a7efa09a81cb11e1995383e45d2624a5f8b6b3505c5",
+      "claude_bytes": 20579,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "59fde97 HUD side of the bridge: chakra-only energy bar, chakra cost labels, cast pulse for licensed jutsu",
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive"
+      ],
+      "group": "menu-art",
+      "disposition": "adapt",
+      "required_adaptation": "Original backgrounds/reveal/button sounds+ink, title petals, death bleed/beat, loading seal, container margins, chat ink, rarity tooltips. Preserve GL state and canceled GUI events; gate all animation/sounds under motion/Quiet/settings, separate intent pulse from accepted cast."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ScrollHotbar.java",
+      "claude_sha256": "2b9fbecb04d1079e3951c013e0d99bdb65c693ccd9d94b92a1a449826fac4be6",
+      "claude_bytes": 8010,
+      "current_sha256": "19d69206c1fbab5fc649d3b9fc10d22f0f2a9bc0105beeb389090d5d06131a31",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "c9b377e Layer anime chakra art onto the scroll hotbar and jutsu rail",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Latest bea retains current six/nine physical count. Merge FX calls only; fix helper hardcoded9 and combat curve usage; preserve offhand, vanilla item callbacks and real selected stacks."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ShinobiHud.java",
+      "claude_sha256": "b214c2a03562f6208fed78f11fd09b30f30e502549fea16feb1b59c22108d819",
+      "claude_bytes": 15431,
+      "current_sha256": "4449774eb7ea14aaadf7d645c0df265b1c0e6e0268ca669a14018fe06b359adf",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "59fde97 HUD side of the bridge: chakra-only energy bar, chakra cost labels, cast pulse for licensed jutsu",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Adds environment tint/heartbeat and native Chakra-only energy rendering. Retain current HUD18 SharedResourceReader raw-double owner telemetry, unavailable state and fallback semantics."
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/FableHudMathTest.java",
+      "claude_sha256": "72e7affe0cd9f8a18bc2e8b05752a8c770ed546fa12b71d0944cd4077ba4f46e",
+      "claude_bytes": 2668,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "hud-tests",
+      "disposition": "merge-with-tests",
+      "required_adaptation": "Actual isolated Java8 run550PASS; wire new original test into current module check without replacing existing resource/menu tests."
+    },
+    {
+      "path": "modules/hvbijuu-physics/README.md",
+      "claude_sha256": "dc59f8c47564e82cdc4fba416853cc77c1f23605fa68b3213b9bc85757b35cad",
+      "claude_bytes": 2587,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "49d7a4b Bijuu Armor tail physics pass 2: momentum, sub-steps, bend limit, friction, length lock"
+      ],
+      "group": "tail-provenance",
+      "disposition": "preserve-claim-only",
+      "required_adaptation": "Claims recovered/decompiled0.16.2rc1 source; exact claim/provenance must be retained as evidence, not treated as redistribution permission."
+    },
+    {
+      "path": "modules/hvbijuu-physics/src/village/bijuu/TailPhysics.java",
+      "claude_sha256": "d6b30d649d1f785ad1bad60d9ff128b9bad9eaf7a044cd1d9ccb81f29a8fd00e",
+      "claude_bytes": 16722,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "49d7a4b Bijuu Armor tail physics pass 2: momentum, sub-steps, bend limit, friction, length lock"
+      ],
+      "group": "tail-provenance",
+      "disposition": "original-reimplementation-required",
+      "required_adaptation": "README expressly claims recovered/decompiled JAR source. Do not import file or parent history into main. Specify independent behavior and author replacement original solver with clean provenance."
+    },
+    {
+      "path": "modules/hvbijuu-physics/tests/TailBench.java",
+      "claude_sha256": "b7c6a245c4b361b485f90e2d33c9f0e5eb390b16b2b660187668e2b73df67ab8",
+      "claude_bytes": 3479,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "49d7a4b Bijuu Armor tail physics pass 2: momentum, sub-steps, bend limit, friction, length lock"
+      ],
+      "group": "tail-provenance",
+      "disposition": "review-test-provenance",
+      "required_adaptation": "Depends on missing TailProfile/owner JAR API; not covered by current11module build. Review independent authored test provenance and rebuild tests against original replacement, never recover missing implementation bodies."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/ClientProxy.java",
+      "claude_sha256": "39cb796745f73e6e34dcdf95ea010cecd7ec3a513e1a7fa874801aa1e9d5a4be",
+      "claude_bytes": 2098,
+      "current_sha256": "eee306bb37c7ea188001dfe1592457ead20ae2edfe35dea3cf2815dbf9238547",
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Apply later3cb256px skins ONLY to existing Encounter actors with stable profile-to-skin mapping. Do not replace imported CustomNPC residents; preserve owner existing-NPC choice."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/ash_regent_boss.png",
+      "claude_sha256": "e7566917209b4fd4aa1d18c71d940ef3e60596e0671a734e85bef6b368630833",
+      "claude_bytes": 18924,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/garran_flint_jonin.png",
+      "claude_sha256": "4a22bc7562ceea1835cdd007a2c4af4db08827c09792b7cf717ea00212e25eff",
+      "claude_bytes": 20120,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/kaito_ember_genin.png",
+      "claude_sha256": "be44be992cb3522d9beebd0c451638a825bfa6c548cef9b1841b4c270372200a",
+      "claude_bytes": 21812,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/lantern_sage_dawn.png",
+      "claude_sha256": "0c01249a5b65f49db7c5c970174d415abff04e95134745a531dfcb9f5feb4452",
+      "claude_bytes": 23875,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/rook_dusk_operative.png",
+      "claude_sha256": "9ede9ba5eb73063696d6286b3a7b2b9d6dcff07606ef7b9a681a7cc4a3692096",
+      "claude_bytes": 18104,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/resources/assets/valeencounters/textures/entity/sayo_current_kunoichi.png",
+      "claude_sha256": "d49b8c2aad189a95b329e14d1b70f57c792392fc38cf3dabeadf6707cec97de0",
+      "claude_bytes": 23951,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "actor-skins",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Later3cb original256px Encounter texture; distinct from earlier64px set explicitly reverted56af. Verify UV/render and author provenance; no CustomNPC replacement."
+    },
+    {
+      "path": "modules/vale-orders/clientchecks/village/vale/arsenal/VfxShots.java",
+      "claude_sha256": "0b7e5547d0cd7f658621b92668f06985809168bda6533b838a1198ace45e99c7",
+      "claude_bytes": 20066,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "8753b43 Add a layered, dynamically lit chest power core for Bijuu Armor chestplates",
+        "b57da7b Add an armor tail-motion pass to the client screenshot probe",
+        "24c1f67 Add /narutobridge status, reload, map, unmap and test for in-game bridge tuning",
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin",
+        "7343296 Add four-way dodge on a rebindable key with its own animations",
+        "c280dbf Add opt-in client screenshot probe for technique and weapon VFX"
+      ],
+      "group": "private-probe",
+      "disposition": "preserve-private-opt-in",
+      "required_adaptation": "Clientchecks only; property-gated but can start integrated world, force camera/settings/menu, capture screenshots, spawn/equip and shut down client. Never production bundle or run against user session; add disposable isolation if used later."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ClientProxy.java",
+      "claude_sha256": "9c3a83d99ec5fb240a94a700e6e38ca82c26fb85645a0744c41162b9cd90ae4c",
+      "claude_bytes": 1361,
+      "current_sha256": "c253f243fa6ce2266b3d8f4d77af8560f9ad02193d651b33eeb7c773669cad70",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "8753b43 Add a layered, dynamically lit chest power core for Bijuu Armor chestplates",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "7343296 Add four-way dodge on a rebindable key with its own animations"
+      ],
+      "group": "shared-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Add optional client ArmorCoreFx registration only, preserving ResourceSnapshots/Dodge/Gate/originalarmor/accepted current hooks."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ValeOrders.java",
+      "claude_sha256": "40d2057af5bc19fc795c90265c4536ab0b1e24727c6a20e30fa166d19355b984",
+      "claude_bytes": 4328,
+      "current_sha256": "d5f0ea2d85f9a074e461d04d3da52c16fc2ffb6de2dd952d42e95ab374145373",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "24c1f67 Add /narutobridge status, reload, map, unmap and test for in-game bridge tuning",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "7343296 Add four-way dodge on a rebindable key with its own animations"
+      ],
+      "group": "shared-hooks",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Add reviewed Bridge init/command wiring only. Preserve Core16 version, existing Gate loader123, all registrations/resource telemetry/callers and native hardened code."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/BridgeHooks.java",
+      "claude_sha256": "942c6747d04179972245efbc89c7b92ab2558ef3e654c923e8caaff7131ad3dd",
+      "claude_bytes": 436,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-presentation",
+      "disposition": "adapt",
+      "required_adaptation": "WeaponPulse cosmetic call usable with bounds; hand hook currently shares actual HandTechnique lifecycle and can fizzle a real carrier. Use separate bounded cosmetic presentation authority."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/HandTechnique.java",
+      "claude_sha256": "41bde8333cce133ea3e61f8ccd7f9443d871a91e2ad47e13405487867b05a8b3",
+      "claude_bytes": 11812,
+      "current_sha256": "aca9be622e1f89a8721758927fd4073d3569ed2475150935bdf09f1e22827b11",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-presentation",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Add visual-only bridge feature without copying older body: current accepted-hit carrier guards/cancellation/lifecycle remain authoritative. Cosmetic intent must not replace/fizzle active earned carrier."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/Bridge.java",
+      "claude_sha256": "07d07bf8d3e394d713154b8113fd8e936632c2f475f1b1f382c5935aaef0f67b",
+      "claude_bytes": 11094,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts",
+        "24c1f67 Add /narutobridge status, reload, map, unmap and test for in-game bridge tuning",
+        "7588b9f Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-runtime",
+      "disposition": "adapt",
+      "required_adaptation": "Discovery, optional mappings/config and visual routing. Bound/validate all JSON+IDs+styles+counts; atomic all-or-nothing reload/write; item-use intent is not native success; defer spawn visuals through final cancellation/admission and exact owner/context proof. No extra cost for native cast."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/BridgeCommand.java",
+      "claude_sha256": "c1ba958949e083c062958d0cc67ab9623555d050e8710beb89daa39957eb3c67",
+      "claude_bytes": 4596,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "24c1f67 Add /narutobridge status, reload, map, unmap and test for in-game bridge tuning"
+      ],
+      "group": "bridge-runtime",
+      "disposition": "adapt",
+      "required_adaptation": "Keep permission2 status/reload/map/unmap/test UX, exact registered ID/style validation, bounded atomic persistence and accurate canonical provider status. Test is cosmetic admin preview, never an earn/cast bypass."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/BridgeMath.java",
+      "claude_sha256": "84af23a322bff275ec1615942a50434dffc42b9c7ef3385548751153d438f846",
+      "claude_bytes": 3006,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "7588b9f Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping"
+      ],
+      "group": "bridge-resource",
+      "disposition": "split-superseded",
+      "required_adaptation": "Original style keyword inference can remain disabled proposal helper. percent/chakraFor(max%) are stale economics; current absolute double unit scale supersedes them and must not be reintroduced."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ChakraLedger.java",
+      "claude_sha256": "5bf6249e440060bdcdc6394890b5b3ceac236a8d83a86069765558ee9ac4a07a",
+      "claude_bytes": 4266,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts"
+      ],
+      "group": "bridge-resource",
+      "disposition": "superseded-hardened",
+      "required_adaptation": "Receipt functionality is implemented/hardened in current ResourceEscrow/MoveCost. Preserve Claude provenance, adapt useful adversarial cases; do not install competing resource ledger or lose session/registration/refund guards."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ChakraLink.java",
+      "claude_sha256": "1a4f1cb31834e8aa657f37dc665f8d009f2cad86704985a719a8ac88c9ec6786",
+      "claude_bytes": 4421,
+      "current_sha256": "052d1bbf4ccd38e25d9584ed7f99bb36ae34ce93b7f24196450084c692aca258",
+      "exact_current": false,
+      "commits": [
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-resource",
+      "disposition": "superseded-hardened",
+      "required_adaptation": "Current file is adapted from Fable path with exact API facts, server admission/optional absent handling. Preserve current interface and guards instead of overwriting with branch variant."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ChakraPool.java",
+      "claude_sha256": "fb5a99364da749d35782cfbe454a921233018b34451dfc354ff0527a9e0ce230",
+      "claude_bytes": 811,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts"
+      ],
+      "group": "bridge-resource",
+      "disposition": "superseded-hardened",
+      "required_adaptation": "Equivalent provider abstraction already current ResourceEscrow.Account; no duplicate canonical provider or dual charge. Retain provenance/API notes without introducing second runtime account model."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/MoveCost.java",
+      "claude_sha256": "35ce9af927255743a93a30103d043fb20f9a0fe73dd1d87e9e71822823b9e320",
+      "claude_bytes": 4892,
+      "current_sha256": "45d1e7342901a42866191842cd42c4d43a415a53b582ca8cb5dcb547c9783845",
+      "exact_current": false,
+      "commits": [
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts",
+        "7588b9f Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping",
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-resource",
+      "disposition": "superseded-hardened",
+      "required_adaptation": "Current tickets add current PlayerList/thread/body/session/immutableUUID authority, exact raw receipts, busy upkeeps, trusted gains and original captured-NBT refund. Branch version lacks these; preserve complete current source."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/MoveVisuals.java",
+      "claude_sha256": "8d60c872456f40489bc34b57ed3d91b0ba9cd152caf39f254563c891755cd69a",
+      "claude_bytes": 725,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "f5f402d Add licensed-mod bridge: chakra link, unified move cost, discovery and move map"
+      ],
+      "group": "bridge-presentation",
+      "disposition": "adapt",
+      "required_adaptation": "Fixed allowlisted style router, bounded per-owner cosmetic budget and current server context. Never call native Jutsu create callbacks or spend twice. Invalid/none/dodge styles explicit no-op."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ArmorCoreFx.java",
+      "claude_sha256": "8c77ce7b62b0b50c0e48e87c870a8fe3ef62da0a88c351c7e58f494711c75f4f",
+      "claude_bytes": 12627,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "8753b43 Add a layered, dynamically lit chest power core for Bijuu Armor chestplates"
+      ],
+      "group": "armor-core",
+      "disposition": "adapt",
+      "required_adaptation": "Original optional Bijuu chest layered socket, studs, veins, tumbling cube, orbit rings, bloom/shafts/sparks/ground glow. Exact reflected class+beast contract; bound weak body/world cache, tick-once sparks, restore GL/matrices on all exits. Current floor annuli are drawn glow, not proven dynamic light API."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VfxDraw.java",
+      "claude_sha256": "17764b0b64bd45806afe425836b675a7ba13299582256c41f3f5b899a2971727",
+      "claude_bytes": 17506,
+      "current_sha256": "c2b6bd7a87045100a4a6b9e79464b8f04397bd685855f1cd9de30f5f5cc22016",
+      "exact_current": false,
+      "commits": [
+        "bea21d3 Merge origin/main into claude/upbeat-ride-nyxq23",
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style"
+      ],
+      "group": "combat-art",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Original voxel cube/line/sphere/ribbon primitives and color/pixel helpers. Retain hardened nested Frame GL restoration, scope voxel flag, finite+geometry vertex budgets and detail levels."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/VoxelBits.java",
+      "claude_sha256": "cefced5166f37fc328dadf6771fa351222db885c56b82ced0591d6b0e31db8e9",
+      "claude_bytes": 5222,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style"
+      ],
+      "group": "combat-art",
+      "disposition": "adapt",
+      "required_adaptation": "Original bounded600clientparticles/gravity/bounce. Add body/world identity reset on direct swaps, finite/life inputs, range/loaded geometry and detail/Quiet budgets; no authority/damage/state."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/WeaponVfx.java",
+      "claude_sha256": "76af83970ddc346f4eea5118b5fce475af4249947a4b3dc034d59df058ce8742",
+      "claude_bytes": 42191,
+      "current_sha256": "df7c9b836250a16cd72efed149668dd5d2086ba1b6467db20dc90a19dd2d01cf",
+      "exact_current": false,
+      "commits": [
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style"
+      ],
+      "group": "combat-art",
+      "disposition": "adapt-hunk",
+      "required_adaptation": "Original voxel weapon presentation/debris. Replace WeakHashMap<Integer> burst tracking with bounded entity/body/world once marker; render must not spawn every frame. Preserve current accepted pulse authority27lifecycles/cosmetic failure isolation."
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/BridgeMathTest.java",
+      "claude_sha256": "986d201da6c07d14d361cb91e52ed046bce259a5ec05960b90de6cc6459e7834",
+      "claude_bytes": 1914,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "7588b9f Bridge: chakra mirror, dodge evasion of licensed attacks, registry-name auto-mapping"
+      ],
+      "group": "bridge-tests",
+      "disposition": "adapt-test",
+      "required_adaptation": "Actual45PASS for old percent math/style inference; these do not validate current absolute scale. Keep inferred-style cases, replace stale economic expectations with current contract56/63cases."
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/ChakraLedgerTest.java",
+      "claude_sha256": "aa6cf22e999910ae66993208142a1e303aa2dd4ab78c8d5d14ab6f648b80530a",
+      "claude_bytes": 5442,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "17501d5 Rebuild the Naruto chakra bridge to the pinned API facts"
+      ],
+      "group": "bridge-tests",
+      "disposition": "adapt-test",
+      "required_adaptation": "Actual23PASS against own fake pool only. Migrate useful cases to current stronger ResourceContractChecks; no native/full54 proof implied."
+    },
+    {
+      "path": "release/evidence/dodge-4way-20261113.png",
+      "claude_sha256": "30e9434f2d24123586159d9a74b70901d5890fc069498c83fdee349ca8d3201a",
+      "claude_bytes": 2001072,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style",
+        "45c0c92 Make the dodge an anime flash step with afterimages",
+        "7343296 Add four-way dodge on a rebindable key with its own animations"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "release/evidence/fable-hotbar-zoom-20261113.png",
+      "claude_sha256": "cff7009682bcc36810428cccd2eaa286357f47b50620e24427a34b308401265c",
+      "claude_bytes": 24959,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "8c11a32 Brighten hotbar chakra aura and add zoomed hotbar evidence"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "release/evidence/fable-hotbars-20261113.png",
+      "claude_sha256": "759f658fe77958017cdd267c50f1a6cae748b1224d16a396cbe43e3e5e6ce95b",
+      "claude_bytes": 801883,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "8c11a32 Brighten hotbar chakra aura and add zoomed hotbar evidence",
+        "cb67842 Enhance the original scroll hotbar and jutsu rail instead of a new skin",
+        "acdf2ed Add animated pixel hotbar and six-slot jutsu bar skin"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "release/evidence/menu-immersion-20261113.png",
+      "claude_sha256": "c4963768175c1e452feb3ccc541f0038a1ac68bbabd3c8cc228ef39b554f068a",
+      "claude_bytes": 1037978,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "af18ce1 Make menus, title, death, loading, inventory, chat and tooltips immersive"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "release/evidence/original-shinobi-skins-256-20261113.png",
+      "claude_sha256": "c2b3973440631cf60b7029c67c50873aff8a7857d074ccdfb8be7605e1590750",
+      "claude_bytes": 90378,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "release/evidence/vfx-arsenal-weapons-20261113.png",
+      "claude_sha256": "f27b9dfbb7ceffe32c0111ebecc691aa56dfc9141987eeae85d3b33d738900d0",
+      "claude_bytes": 1289833,
+      "current_sha256": "a97cd4cde9f60c66f4d9100ee4ed2232c8a463873c062db1f7dc946817a5d72b",
+      "exact_current": false,
+      "commits": [
+        "ac6b7fa Give dodge and all weapon effects a blocky Minecraft pixel style"
+      ],
+      "group": "claude-evidence",
+      "disposition": "preserve-attributed",
+      "required_adaptation": "Claude-authored contact-sheet evidence from its own probe/environment. Preserve exact PNG/provenance; not independent local/full58/host acceptance."
+    },
+    {
+      "path": "tools/bridge/README.md",
+      "claude_sha256": "8e13daf71cda8e8d5657284176f3d476444e27ca7dab1799e6684616c1967dda",
+      "claude_bytes": 1001,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "73ba880 Add a private-input generator for proposed Naruto bridge move mappings"
+      ],
+      "group": "bridge-tools",
+      "disposition": "merge-doc",
+      "required_adaptation": "Preserve private-input/proposal-only usage; update exact reviewed runtime acceptance instructions and avoid license-grant implication."
+    },
+    {
+      "path": "tools/bridge/propose_moves.py",
+      "claude_sha256": "69e148263fe45f82a77d7010679351cf8cc6a6f60ddcd9378866b72e7f4fbc71",
+      "claude_bytes": 4738,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "73ba880 Add a private-input generator for proposed Naruto bridge move mappings"
+      ],
+      "group": "bridge-tools",
+      "disposition": "merge-with-tests",
+      "required_adaptation": "Original private-input proposal generator; no runtime mutation or trusted mappings. Add JSON/schema/namespace/kind/duplicate bounds and deterministic output tests; verified:false proposal must not silently activate through loader rename."
+    },
+    {
+      "path": "tools/skins/README.md",
+      "claude_sha256": "41592406d9eb86f9ee7652b2af563fecf77a017370d9ee5cac5f08d0eedd0633",
+      "claude_bytes": 1418,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "skin-tools",
+      "disposition": "merge-doc",
+      "required_adaptation": "Preserve original procedural256px provenance and later Encounter scope; earlier64px owner-reverted set remains excluded."
+    },
+    {
+      "path": "tools/skins/hdcast.py",
+      "claude_sha256": "ea978aef3ff604df9c44d9c96639018eaa9d9369d7c3af36a0cacfea31f4a687",
+      "claude_bytes": 11982,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "skin-tools",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Original skin generator/projection utility; preserve author and six exact texture hashes, dependencies/input/output safety. No private actor UUID/source art should enter public output."
+    },
+    {
+      "path": "tools/skins/hdpaint.py",
+      "claude_sha256": "31ea861336861f86a4d1a9ede39da41d7d91d10d96ca97270788c01b50618716",
+      "claude_bytes": 12908,
+      "current_sha256": null,
+      "exact_current": false,
+      "commits": [
+        "3cb8b2f Give encounter actors original 256x256 shinobi skins"
+      ],
+      "group": "skin-tools",
+      "disposition": "review-original-assets",
+      "required_adaptation": "Original procedural painter for256px skinset; retain source and author, verify reproducible images/UV before enabling actor texture binding."
+    }
+  ],
+  "protected_canonical_paths": [
+    {
+      "path": "collaboration/claude-naruto-bridge/START-HERE.md",
+      "current_sha256": "cdd0697392b62f5c47c4189fa312c5088dad79900e3be4a5119b063c7083aa0d",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "docs/core0316-resource-integration.md",
+      "current_sha256": "3c5f81fbe6ba28351b804e3ac67ee3b1151cbf09b99b76acfa4e480521f0c395",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "gradle/vale-mod-build.gradle",
+      "current_sha256": "72aec2b7fc213176b7445888691ea39cf3dd16900dcbcd350e41e96b282d90aa",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/build.gradle",
+      "current_sha256": "9ce36a563c020390fa4a488f849866a50ea649f091f2b4f27ef68d586820b66f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ChakraBridge.java",
+      "current_sha256": "3ae0ad9ace999bc8b4acd04af7799c1a1465221e4e9287cb984cfea26073b560",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java",
+      "current_sha256": "af4846833d2f0a5b5cdd67babc2ecd9f084d4b4cb371a5df70cd7b4d91c6f236",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuLoadoutScreen.java",
+      "current_sha256": "3277b9885c99e724e27bbc9e8e7da79154f984d99acae8878a603d773b1cf8f8",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ReadinessLine.java",
+      "current_sha256": "4e7c851ef1e496aa7d9f5f59e5a009fe12addd79ee52831b115f05efd7be4214",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/SharedResourceBridge.java",
+      "current_sha256": "83c4e3555a7d9c7ffd950fa29dc5cf8d8ce9e8bae2b914bf9351d62de6798a58",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/SharedResourceReader.java",
+      "current_sha256": "526094ec0839a2c12b077a4b7b4a4902e4c5fa0c1be10e986e5326ae7814b11f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ValeBridge.java",
+      "current_sha256": "99aad4795fb2b63726ce1f9b543e297c7463c328475a856055f4b8855b5f4f96",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/mcmod.info",
+      "current_sha256": "6b765d522136938c70d5be2fe39ec33ba8136a233007b34e07a9466f42e1d0a1",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/SharedResourceChecks.java",
+      "current_sha256": "89e0087f83061f5cee3905e5b29b56339a2c9ec76c8c8be14142e526c5a2a70b",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/SOURCE-SHA256.json",
+      "current_sha256": "cb854fa9a0a87467422a404f9923b7a106ea644a671eea10c1d59aebeaead1be",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/clientcompat/ClientLifecycleMod.java",
+      "current_sha256": "7daf45e7acb4b9240f5bd63db83e551cd839b8c2e21d86ba84c724d94ce23e46",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/damagecompat/DamageCompatMod.java",
+      "current_sha256": "eae71015d4e5c1f5d1781486879ec73aff7a16c2812147e9327a1d476d559535",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-compatibility-helpers/src/village/vale/serverbridge/ValeServerBridge.java",
+      "current_sha256": "96134992b4c097bc6c87e125b8e710879308d0265b1ccc88e5e8162bebf0fbda",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-encounters/src/main/java/village/encounters/Encounters.java",
+      "current_sha256": "8aef9e6205cc65754cb644ca865d50c12c46e7ddc3d35de6448934bdfd9479e3",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/build.gradle",
+      "current_sha256": "ca6294390a62f6ce5e5547605c51b43c797f5e828de3cb547ac2a061996fb501",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/LightningNativeChecks.java",
+      "current_sha256": "2ae6061911515edb5d38e713cbe90d96b1c4aa3b4c6d0e661e6d5759ba19bc4a",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ArsenalResourceNativeChecks.java",
+      "current_sha256": "650f4a5096e879e11e7683455862b480c3da06c1c8e228f8cbb1e3afebe0d5b6",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/RecoveryNativeChecks.java",
+      "current_sha256": "b367327c471ae0ae4cdc9e97322550625b8a8962d8ae75f18ccd16277067e65a",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/arsenal/ScrollCastNativeChecks039.java",
+      "current_sha256": "3cbea373a9a6b0466ed9bdfd8fb7f244d20269b5391fe2e3fe1f3fcc1910f538",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/bridge/ResourceCodecNativeChecks.java",
+      "current_sha256": "e76963dbbc0405e7539b42ab1d45ebf1c2288bbb4a181515c854482913421cf7",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/recoverychecks/village/vale/bridge/SharedCostNativeChecks.java",
+      "current_sha256": "b81fd94e4bda21fac0e47d932c73cfe0fc3bc8d3ab23f986e61865c522a70b35",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/AbilityActions.java",
+      "current_sha256": "760b97c9a930fa652a9eb4d6239d20ed68430771e58dbda10e84ef6e5f7377e8",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Arts.java",
+      "current_sha256": "90748fca862e7d6fb89d279f2e8ae1b9de6f31e577faf4fd2be3ac5b94a6f43c",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Combat.java",
+      "current_sha256": "e58ee03a915658053642a27fb0fd2d6945bd536ac06ae4e51e6937353d6bfb39",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Dodge.java",
+      "current_sha256": "6d93b22767ce53f0e7813ef357f83a22ad5a1366cfb9952bd5622d557ac11ff3",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FieldItems.java",
+      "current_sha256": "e9ee382fbfd01d6a8917fa37c4c97972e75edea920115f886e19577653ad644f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FocusPayment.java",
+      "current_sha256": "2efe80070396e80c2fe016e9378dc6a72bd1513d2e38ddb8da93f15b8e9e882d",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/FocusTransactions.java",
+      "current_sha256": "2204d9d6418c329e8ccb14bc9a1e3f510bb14620e0622d46487a7405f88cbbc2",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Forms.java",
+      "current_sha256": "a2d525c98a91c3208f95f4e62770213b6bab5b865b2447347b36b563365a1da7",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/LightningKit.java",
+      "current_sha256": "bfc379ec68d9da6f9940146e908cc73764d07f797fb56096c4d989c0e6042a39",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OriginalArmorApi.java",
+      "current_sha256": "c3e7f51b4d326f4786e685d393e85e7121878e2f5c955275dee7a3d2b8f60ca6",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OriginalFieldTools.java",
+      "current_sha256": "0b3e4e32d93ed9370615557a0140b88ff60b36181dc4d5f1b50606ceb7594f43",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/OriginalFocusGear.java",
+      "current_sha256": "1bf4b96c4322a55aad90fbc8b63acd6f243d22b91d7e80f0e5479db5cc5f75c8",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Summons.java",
+      "current_sha256": "fc374bdf8c976a927372b693a5ad554579f1e93660082e9098328cdb298f6f27",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/Techniques.java",
+      "current_sha256": "7ae15aa9f2a2569cd9631ee87c5e26b31ee0b614f347877b37c79da9e3c31bae",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/ValeCommand.java",
+      "current_sha256": "68f30a39619be128473c6b60a657ec81ed3d9692bd14e1fc0950e07f90b98346",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/AbilityCarriers036.java",
+      "current_sha256": "acf0baf128fc9777c86a4e19961a0576a3114b3747f4e0f8419918e2eebf5450",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ArsenalCharge.java",
+      "current_sha256": "1ca7ec7a6687b54b97d348350ef1c9bf5beba1500663bcf10ca537113a8934dc",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ArsenalLogic.java",
+      "current_sha256": "7f804b3832d2d05fce40309836d69e669d622abdafadc93b2615df12ab1a928e",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ClawCombat.java",
+      "current_sha256": "e318aa8dc7f1a564ac603d083f10561ca06c40b068d7731c8cf26d3033140ce1",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollActor.java",
+      "current_sha256": "cc323e34e36cb560513a899775cc6d0e2a0e5ea544337c8b8ab1bbbf7a01399f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollEffects.java",
+      "current_sha256": "a9302aa28b4eb8c00622e1a6dcdd868f23041e164f831d9fe7d35c23d22ca05b",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollEvents.java",
+      "current_sha256": "c2dd35359774b2937e953a1e8087050a8d06336a971642aac22a461d2362682f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/ScrollSupport.java",
+      "current_sha256": "030bbd2ed9e63dfda5b3d9446b0db4f1f1d3d90795ae7a3a4247e2d420052d8f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/arsenal/Scrolls.java",
+      "current_sha256": "4acb0441e355e4503accf0aed11622e32d2d90180ca4ec7834bc6988e72cd1f8",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ResourceEscrow.java",
+      "current_sha256": "4c86645d8c70273f9f00ff73cfec0222541fd125c8c493979f367299eb5efd18",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ResourceNetwork.java",
+      "current_sha256": "e34753c3e74fa5f508ccb3b279ad53457770696b791a8b8634557ecf021d774c",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ResourceSnapshot.java",
+      "current_sha256": "812da14248925238f17651068e684462a80910686c356db6632d126a75d4dc90",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/bridge/ResourceText.java",
+      "current_sha256": "abed646e1079cf6118fc2d602c05a8910b546785cc68134e9cc35123696a888f",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/client/ResourceSnapshots.java",
+      "current_sha256": "fbd4c5084894c6c9624f55588af94187a9593488784e80ac144a917b89656354",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/culinary/KitchenFood.java",
+      "current_sha256": "bc287d8873c7bf8b253bebc06ace5cf2d6d396c3bd445c1bf9ab0b9f09235049",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/culinary/KitchenTonic.java",
+      "current_sha256": "64eb43676de61b06b33786012e8486d7149545d6f8be8f6eb6e7496b65a552d0",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/melee/MeleeCombos.java",
+      "current_sha256": "1a446586f1130f32882c0156b00bcf0b0685886d1f9c866434a44ab3f8ddb601",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/java/village/vale/nature/NatureMoves.java",
+      "current_sha256": "7a40ffc052aa26568bdc880fb463badb9e259fa8fb750c590100649fd6779ae9",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/assets/valeorders/lang/en_us.lang",
+      "current_sha256": "feedbaeceb46448d94f02848753361beda8b7e0b3d38406379bfda7bbefb1b7a",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/src/main/resources/mcmod.info",
+      "current_sha256": "741dfe8d233a1eb7dd10847fa4d0bf631bab307d1bddeccd8e8899915da12ce2",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-orders/tests/village/vale/bridge/ResourceContractChecks.java",
+      "current_sha256": "1d9220519a0c1db7bf3a7dee7e644113e12d279767106a55b1a2a064b4776214",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-rack/src/main/java/village/valerack/RackMod.java",
+      "current_sha256": "0e9561990754733fd9a8d9103f98ddd121c69c17391ad95fc1dbd990c2761909",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-rack/src/main/resources/mcmod.info",
+      "current_sha256": "e639844cbbe9afd6db4f0501dbdab10e7c23c1c5e7ecba7e77a40fbbe57079da",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-residents-server-bridge/src/main/java/village/residentsbridge/ResidentServerBridge.java",
+      "current_sha256": "0c6810e1898f2a6a80a1695b97f8d64f22ea3a3f731fabf503d6dc3f60e817e8",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-residents/src/main/java/village/residents/ValeResidents.java",
+      "current_sha256": "4b6c47552dbf83ed2a08cc873b59ee0d80d13990039158a1b03669e0b551199c",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-residents/src/main/resources/assets/valeresidents/lang/en_us.lang",
+      "current_sha256": "59a656cd8da835a7be8635af8b250d0685b7f29bec548997d65e733547808ea5",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-world-compat/src/main/java/village/vale/worldcompat/WorldCompat.java",
+      "current_sha256": "e8b6a32be7bce7a06d29fef089e33f92fdc879b4edc1c883a68eeeb343e0d205",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "modules/vale-world-compat/src/main/resources/mcmod.info",
+      "current_sha256": "822b9d845f07f0584854145058c20730047c229256046e4926e3f1ce98e9e419",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "release/evidence/core0316-component-candidate.json",
+      "current_sha256": "a7c746b2d04984be8ae8a73c1fef024bf965dc137bc059cce617a9abf5c2edee",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "tests/test_run_native_checks.py",
+      "current_sha256": "1d962a9c231f00df4c02af148155d01a7e3caccd2b31d72315cd0eb9fde085bc",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "tools/export_build_snapshot.py",
+      "current_sha256": "cf312ac570785d189f3409506c3405ce8158b5aee5d04db237d301dc18fb0b4a",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    },
+    {
+      "path": "tools/run_native_checks.py",
+      "current_sha256": "0545557533a1de0fecfc178e6844a8394317a7ec6d0a2af391bf3161bdb60cf1",
+      "action": "Preserve canonical content; branch absence/older bytes are not requested feature removal."
+    }
+  ]
+}

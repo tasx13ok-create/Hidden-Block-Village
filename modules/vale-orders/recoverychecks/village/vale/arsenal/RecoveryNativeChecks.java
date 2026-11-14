@@ -55,7 +55,7 @@ import village.vale.RewardLedger;
 import village.vale.ValeOrders;
 
 /** Disposable native acceptance mod. Never packaged into the production Core jar. */
-@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.15",
+@Mod(modid="valerecoverychecks", name="Private Vale Recovery Checks", version="0.3.16",
      dependencies="required-after:valeorders;required-after:valerack;required-after:valestandardschecks", acceptableRemoteVersions="*", serverSideOnly=true)
 public final class RecoveryNativeChecks {
     private final List<String> passed = new ArrayList<>();
@@ -155,6 +155,8 @@ public final class RecoveryNativeChecks {
             passed("Native Lightning Armor acquisition, mode, movement, accepted counters, owned trial and mastery");
             assertions += village.vale.WornArmorNativeChecks.run(player);
             passed("Native worn armor registered getters, conditional Lightning and packaged assets");
+            assertions += village.vale.bridge.SharedCostNativeChecks.run(player);
+            passed("Native shared-resource accepted casts, canceled effects, mode upkeep and callback settlement");
             report.addProperty("passed", true);
         } catch (Throwable error) {
             failure = error;

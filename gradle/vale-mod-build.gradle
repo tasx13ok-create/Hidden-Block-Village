@@ -1,5 +1,9 @@
 import groovy.json.JsonOutput
 
+// Check JVM ergonomics must not claim several GB while the owner plays.
+// Minecraft launch tasks retain their independent runtime heap settings.
+tasks.withType(JavaExec).matching { it.name.startsWith('verify') }.configureEach { maxHeapSize = '512m' }
+
 // This script is applied only to a Java/RFG mod project after its own tasks are
 // declared. Metadata names actual task outputs; it never selects a stale JAR by
 // globbing build/libs or by guessing the current Core version.

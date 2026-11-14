@@ -366,7 +366,7 @@ tile.valeorders.kitchen_soybean_crop.name=Soybean Crop
 tile.valeorders.kitchen_redbean_crop.name=Redbean Crop
 item.valeorders.crescent_talons.name=Crescent Talons
 
-key.categories.valeorders=Vale Orders
+key.categories.valeorders=Naruto Core
 key.valeorders.dodge=Dodge / Flash Step (hold W/A/S/D)
 message.valeorders.dodge_conflict=Dodge shares its key with %s. Rebind Dodge in Settings to use it.
-message.valeorders.dodge_server=This server needs Vale Core 0.3.14 for Dodge.
+message.valeorders.dodge_server=This server needs Naruto Core 0.3.14 for Dodge.

@@ -153,20 +153,28 @@ public final class MeleeCombos {
         // Dead targets may finish a chain but can never receive secondary control effects.
         int step=s.rules.accept(i.serial,i.target.getUniqueID().toString(),i.at);
         if(step==0)return;
+        // Recovery is gameplay state: persist it before gain/status/render callbacks.
+        if(step==3){PlayerState.data(p).setLong("meleeReady",s.rules.readyAt());EFFECT.set(true);try{finish(p,i.target,i.kind,i.stack);}finally{EFFECT.set(false);}}
         feedback(p,i.target,i.kind,step);
-        if(step==3){PlayerState.data(p).setLong("meleeReady",s.rules.readyAt());EFFECT.set(true);try{finish(p,i.target,i.kind);}finally{EFFECT.set(false);}}
     }
-    private static void finish(EntityPlayerMP p,EntityLivingBase target,String kind){
+    private static boolean finisherContext(EntityPlayerMP p,ItemStack stack,net.minecraft.world.World world,net.minecraft.nbt.NBTTagCompound account){
+        return p.world==world&&PlayerState.data(p)==account&&p.getHeldItemMainhand()==stack&&proof(p,stack)
+            &&p.getServer()!=null&&p.getServer().getPlayerList().getPlayerByUUID(p.getUniqueID())==p;
+    }
+    private static void finish(EntityPlayerMP p,EntityLivingBase target,String kind,ItemStack stack){
+        net.minecraft.world.World world=p.world;net.minecraft.nbt.NBTTagCompound account=PlayerState.data(p);
+        if(!finisherContext(p,stack,world,account))return;
         if("saber".equals(kind))p.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE,24,0));
         else if("dagger".equals(kind))p.addPotionEffect(new PotionEffect(MobEffects.SPEED,30,1));
         else if("glaive".equals(kind)){
             int struck=0;for(EntityLivingBase other:ArsenalAccess.targets(p,3,true,8)){
-                if(other==target||!p.canEntityBeSeen(other))continue;
+                if(!finisherContext(p,stack,world,account))break;
+                if(other==target||other.world!=world||!ArsenalAccess.allowed(p,other)||!p.canEntityBeSeen(other))continue;
                 if(ArsenalAccess.hit(p,other,4)){struck++;if(struck==2)break;}
             }
         }else if("staff".equals(kind)){
-            PlayerState.setResolve(p,PlayerState.resolve(p)+4);
-            if(ArsenalAccess.allowed(p,target))target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,40,0));
+            village.vale.bridge.MoveCost.restore(p,4);
+            if(finisherContext(p,stack,world,account)&&target.world==world&&ArsenalAccess.allowed(p,target))target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS,40,0));
         }else if("spear".equals(kind)&&ArsenalAccess.allowed(p,target)){
             double dx=target.posX-p.posX,dz=target.posZ-p.posZ;
             if(dx*dx+dz*dz>.001)target.knockBack(p,.85f,-dx,-dz);

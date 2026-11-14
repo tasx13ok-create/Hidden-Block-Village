@@ -1,8 +1,8 @@
 [
   {
     "modid": "valeorders",
-    "name": "Vale Orders",
-    "version": "0.3.15",
+    "name": "Naruto Core",
+    "version": "0.3.16",
     "mcversion": "1.12.2",
     "description": "Original order equipment, resolve-based combat, progression and server-issued rewards.",
     "authorList": [
