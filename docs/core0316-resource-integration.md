@@ -79,3 +79,19 @@ This compiled source is saved on `codex/core0316-resource-integration` for
 collaboration and continuation. It is a work-in-progress branch. It is not a
 deployment-ready release, and neither runtime failure is a passing acceptance
 gate. The stable owner profiles were not upgraded to this candidate.
+
+## Detached fallback refund correction
+
+The next full11area/36artifact build also passed, source
+`991520318b82236d87a66876136edda5361f117cb7252b7db55744d7ab547d9c`,
+report `b66a753bb2765590631a872a2bfca5f30f6f5c773310d115230e60164e1083c6`,
+Core `60fb144db8caf324b30477cd0f41d87ef9cd220a5aa4f89388e82eefc2ae8346`.
+Captured fallback NBT accounts can now receive their own once-only bounded
+refund without touching a replacement account. Native Naruto refunds retain
+the strict live-account checks. All56resource component assertions pass.
+
+The next native run passed the unchanged detached-account assertion and then
+FAILED on UUID mutation cleanup: a callback changes the player's UUID before
+the transaction removes its runtime guard. Cleanup must use the original
+captured owner key. That production correction is ongoing; no assertion was
+relaxed and no native/full-pack/deployment acceptance is claimed.

@@ -6,10 +6,10 @@
   "full54_mod_acceptance": false,
   "graphical_acceptance": false,
   "deployment_ready": false,
-  "compiled_source_sha256": "c1651743f1f832587f8b362579ddd90ea1d59b3c9e435dbfa8c73ce6a89ef136",
-  "build_report_sha256": "224ab58f97fe9d74a7b728941a9456c9ea7ad72c31a619e5b4792fcd00e1519c",
+  "compiled_source_sha256": "991520318b82236d87a66876136edda5361f117cb7252b7db55744d7ab547d9c",
+  "build_report_sha256": "b66a753bb2765590631a872a2bfca5f30f6f5c773310d115230e60164e1083c6",
   "source_drift_during_build": [],
-  "source_base_git_commit": "700f8b5244f7ec10ea89d13c486bc2c20fa5cdea",
+  "source_base_git_commit": "f93f15827b824455332ab2dfe9286eb5eb4c610b",
   "modules": {
     "vale-orders": {
       "status": "PASS",
@@ -18,20 +18,20 @@
         {
           "role": "runtime_mod",
           "name": "vale-orders-0.3.16.jar",
-          "bytes": 2736947,
-          "sha256": "e417b9f00540e3a9ac97d85aa533a0e15f7eff913f8b22a55e3939c2541ae473"
+          "bytes": 2738064,
+          "sha256": "60fb144db8caf324b30477cd0f41d87ef9cd220a5aa4f89388e82eefc2ae8346"
         },
         {
           "role": "development_api",
           "name": "vale-orders-0.3.16-dev.jar",
-          "bytes": 2701647,
-          "sha256": "1c8503ae44bb179b54e032c65d938ee5f7a0c6029df94ecda690d18942e7109a"
+          "bytes": 2702732,
+          "sha256": "7245713d714234a3c465e343f326502a26064ee1c8fca64b6d2d03ae31a4d8a4"
         },
         {
           "role": "sources",
           "name": "vale-orders-0.3.16-sources.jar",
-          "bytes": 2216022,
-          "sha256": "3d1ffc283689f3041508d0b9a275a2372d2bd3f7515efdfa2cb182d6fbf297f9"
+          "bytes": 2216401,
+          "sha256": "b7627dfa7694bfe1753dc014c0a041136f6ccaffd8cab9b70f7e0a944d577529"
         }
       ]
     },
@@ -332,20 +332,40 @@
       "report_sha256": "a6be8329e66c1156c30ff02f3573c666da4c9ba04d06d5b0652a574eb0fb54fb",
       "result_sha256": "d4357cc1db6f8df4f483e1bfd2d250c86c9f835b59657a23fe4290134b474cb2",
       "runtime_removed": true
+    },
+    {
+      "passed": false,
+      "assertions_reported": 134,
+      "completed_groups": [
+        "556 live registered items and current diagnostic category checks",
+        "Native result-slot pickup remains issued after expired preview timeout",
+        "Stale proof is recomputed by native container before actual crafting",
+        "Native weapon cast, saved player logout/reload and longer per-specialist cooldown",
+        "Native Party Charter leave/rejoin preserves the existing expedition",
+        "Native companion distance cleanup, immediate redeploy, stale actor rejection and recall",
+        "Quartermaster Spirit eligibility,36 entries, actual purchase, full-inventory outbox and paid-receipt idempotency",
+        "Native companion orders, target protection, unloaded recall, stale leases, repair and allied support"
+      ],
+      "error": "Native fixture did not pass: java.lang.AssertionError: UUID mutation leaked the original owner's cast guard",
+      "interpretation": "Detached original-NBT refund assertion now passed; subsequent UUID mutation exposed resource guard cleanup using the mutated UUID. Captured-owner cleanup fix pending.",
+      "report_sha256": "42e07c688fca28357970a0692ad44c358c3a98a370d0c30b18ba20bad78fdb6e",
+      "result_sha256": "a7a18bf013ca9489021e383d14a37803cf30626f48665724472d58617d51d765",
+      "runtime_removed": true
     }
   ],
   "separate_component_checks": {
-    "resource_contract": 46,
+    "resource_contract": 56,
     "hud_projection_cost_readiness": 42,
     "packet_codec": 127,
     "client_cache_actual_source_with_isolated_client_API": 30,
     "real_prepared_client_API_compile": true
   },
   "pending": [
-    "Detached legacy-account rejected-effect refund regression",
+    "Immutable owner-key cleanup after callback UUID mutation",
     "Full inherited/native shared-resource checks",
     "Base/Spring coexistence client/lifecycle/independent-pool proof",
     "Full original-pack fresh-character admission and gameplay",
     "Five map campaigns and hosting"
-  ]
+  ],
+  "previous_component_source_sha256": "c1651743f1f832587f8b362579ddd90ea1d59b3c9e435dbfa8c73ce6a89ef136"
 }

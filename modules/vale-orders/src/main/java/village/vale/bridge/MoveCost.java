@@ -8,6 +8,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.minecraft.nbt.NBTTagCompound;
+import village.vale.HudNetwork;
+import village.vale.Rules;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -59,11 +62,17 @@ public final class MoveCost {
         // Keep the final event reference; another LOWEST listener may still cancel death.
         if(held!=null&&held.player==p)held.death=e;
     }
-    private static ResourceEscrow.Account legacy(final EntityPlayerMP p){
-        final Object data=PlayerState.data(p);
-        return new ResourceEscrow.Account(){public Object identity(){return data;}public double amount(){return PlayerState.resolve(p);}public double maximum(){return 100;}
-            public boolean consume(double cost,boolean overcap){int before=PlayerState.resolve(p);if(!Double.isFinite(cost)||cost!=Math.rint(cost)||cost>before)return false;PlayerState.setResolve(p,(int)Math.max(0,Math.min(100,before-cost)));return before!=PlayerState.resolve(p);}
-            public void clear(){PlayerState.setResolve(p,0);}};
+    private static LegacyAccount legacy(final EntityPlayerMP p){return new LegacyAccount(p,PlayerState.data(p));}
+    /** Own original NBT object: detaching player state must never redirect a rollback to its replacement. */
+    static final class LegacyAccount implements ResourceEscrow.CapturedLegacyAccount {
+        private final EntityPlayerMP player;private final NBTTagCompound data;
+        LegacyAccount(EntityPlayerMP player,NBTTagCompound data){this.player=player;this.data=data;}
+        public Object identity(){return data;}
+        public double amount(){return Rules.clampResolve(data.getInteger("resolve"));}
+        public double maximum(){return 100;}
+        private void set(int value){data.setInteger("resolve",Rules.clampResolve(value));if(player!=null)HudNetwork.dirty(player);}
+        public boolean consume(double cost,boolean overcap){int before=(int)amount();if(!Double.isFinite(cost)||cost!=Math.rint(cost)||cost>before)return false;set((int)Math.max(0,Math.min(100,before-cost)));return before!=amount();}
+        public void clear(){set(0);}
     }
     public static ChakraLink.View view(EntityPlayer player){
         if(!(player instanceof EntityPlayerMP)||!current((EntityPlayerMP)player))return new ChakraLink.View(external()?"narutomod":"resolve",ChakraLink.State.WRONG_CONTEXT,Double.NaN,Double.NaN,"Current server player required");
@@ -91,7 +100,9 @@ public final class MoveCost {
                 ticket.account=opened.account;ticket.provider="narutomod";
             }else{ticket.account=legacy(p);ticket.provider="resolve";}
             double raw=units*("narutomod".equals(ticket.provider)?ticket.costScale:1);
-            ResourceEscrow.Result result=ResourceEscrow.reserve(ticket.account,raw,ticket::context);
+            ResourceEscrow.Result result=ticket.account instanceof LegacyAccount
+                ?ResourceEscrow.reserveCapturedLegacy((LegacyAccount)ticket.account,raw,ticket::context,ticket::legacyRefundContext)
+                :ResourceEscrow.reserve(ticket.account,raw,ticket::context);
             if(result.debit==null)return null;
             ticket.payment=result.debit;ticket.ready=true;retained=true;return ticket;
         }catch(RuntimeException|LinkageError failure){return null;}
@@ -134,8 +145,10 @@ public final class MoveCost {
         private LivingDeathEvent death;
         private ResourceEscrow.Account account;private ResourceEscrow.Debit payment;private String provider="pending";private boolean ready,closed,gainBusy,checking;
         Ticket(EntityPlayerMP player,int units,double scale){this.player=player;server=player.getServer();world=player.world;dimension=player.dimension;connection=player.connection;session=session(player);this.units=units;costScale=scale;at=now(player);}
+        private boolean bodyContext(){return !checking&&SESSIONS.get(player)==session&&current(player)&&player.getServer()==server&&player.world==world&&player.dimension==dimension&&player.connection==connection&&ACTIVE.get(player.getUniqueID())==this;}
+        private boolean legacyRefundContext(){return account instanceof LegacyAccount&&"resolve".equals(provider)&&!external()&&bodyContext();}
         private boolean context(){
-            if(checking||SESSIONS.get(player)!=session||!current(player)||player.getServer()!=server||player.world!=world||player.dimension!=dimension||player.connection!=connection||ACTIVE.get(player.getUniqueID())!=this)return false;
+            if(!bodyContext())return false;
             if(account==null)return units==0;
             checking=true;
             try{return "narutomod".equals(provider)?external()&&ChakraLink.same(player,account):!external()&&PlayerState.data(player)==account.identity();}finally{checking=false;}

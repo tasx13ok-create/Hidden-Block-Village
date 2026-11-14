@@ -46,6 +46,35 @@ public final class ResourceContractChecks {
         try{new ChakraLink.Api(WrongRoot.class,WrongResult.class,Tracker.class,Actor.class);throw new AssertionError("Wrong return type accepted");}catch(NoSuchMethodException expected){assertions++;}
         ChakraLink.Api api=new ChakraLink.Api(ApiRoot.class,Pool.class,Tracker.class,Actor.class);Actor actor=new Actor();actor.ninja=false;int paths=ApiRoot.paths;check(!api.ninja(actor)&&ApiRoot.paths==paths,"Readiness created a non-ninja pathway");
         p=new Pool();final boolean[] valid={true};d=ResourceEscrow.reserve(account(p),10,()->valid[0]).debit;valid[0]=false;check(!d.commit()&&p.value==90&&!d.refund(),"Invalid commit became refundable on a later body");
+        // Captured legacy NBT rollback is a separate explicit path. It never relaxes native/API refunds.
+        net.minecraft.nbt.NBTTagCompound saved=new net.minecraft.nbt.NBTTagCompound();saved.setInteger("resolve",100);
+        net.minecraft.nbt.NBTTagCompound replacement=new net.minecraft.nbt.NBTTagCompound();replacement.setInteger("resolve",23);
+        MoveCost.LegacyAccount legacy=new MoveCost.LegacyAccount(null,saved);
+        final boolean[] attached={true},session={true};
+        ResourceEscrow.Debit legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,16,()->attached[0]&&session[0],()->session[0]).debit;
+        check(legacyDebit!=null&&saved.getInteger("resolve")==84,"Captured legacy debit did not target original NBT");attached[0]=false;
+        check(legacyDebit.refund()&&saved.getInteger("resolve")==100&&replacement.getInteger("resolve")==23,"Detached legacy rollback changed replacement or left original debit");
+        check(!legacyDebit.refund()&&saved.getInteger("resolve")==100,"Detached legacy rollback replay minted resource");
+        saved.setInteger("resolve",100);attached[0]=true;
+        legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,16,()->attached[0]&&session[0],()->session[0]).debit;
+        saved.setInteger("resolve",77);replacement.setInteger("resolve",19);attached[0]=false;
+        check(legacyDebit.refund()&&saved.getInteger("resolve")==93&&replacement.getInteger("resolve")==19,"Detached refund overwrote independent seven-unit debit");
+        saved.setInteger("resolve",100);attached[0]=true;
+        legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,16,()->attached[0]&&session[0],()->session[0]).debit;
+        saved.setInteger("resolve",89);attached[0]=false;
+        check(legacyDebit.refund()&&saved.getInteger("resolve")==100&&legacyDebit.refunded()==11,"Detached gain plus refund exceeded legacy cap");
+        saved.setInteger("resolve",100);attached[0]=true;
+        legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,100,()->attached[0]&&session[0],()->session[0]).debit;attached[0]=false;
+        check(saved.getInteger("resolve")==0&&legacyDebit.refund()&&saved.getInteger("resolve")==100,"Detached exact-zero legacy rollback failed");
+        saved.setInteger("resolve",100);attached[0]=true;
+        legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,16,()->attached[0]&&session[0],()->session[0]).debit;attached[0]=false;session[0]=false;
+        check(!legacyDebit.refund()&&saved.getInteger("resolve")==84&&replacement.getInteger("resolve")==19,"Detached legacy refund crossed session epoch");session[0]=true;
+        check(!legacyDebit.refund()&&saved.getInteger("resolve")==84,"Rejected stale legacy receipt revived");
+        saved.setInteger("resolve",100);attached[0]=true;
+        legacyDebit=ResourceEscrow.reserveCapturedLegacy(legacy,16,()->attached[0]&&session[0],()->session[0]).debit;attached[0]=false;
+        check(!legacyDebit.commit()&&!legacyDebit.refund()&&saved.getInteger("resolve")==84,"Detached commit became a later free action");
+        saved.setInteger("resolve",100);ResourceEscrow.Result strictLegacy=ResourceEscrow.reserve(legacy,16,()->attached[0]);
+        check(strictLegacy.debit==null&&saved.getInteger("resolve")==100,"Detached account acquired new reservation authority");
         check(!MoveCost.busy(null),"Null body reported a resource operation");
         System.out.println("RESOURCE_CONTRACT_PASS: "+assertions);
     }
