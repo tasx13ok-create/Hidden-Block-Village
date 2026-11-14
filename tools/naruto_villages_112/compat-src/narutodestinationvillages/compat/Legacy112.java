@@ -27,5 +27,5 @@ public final class Legacy112 {
   world.playSound(null,entity.posX,entity.posY,entity.posZ,sound,SoundCategory.PLAYERS,volume,pitch);
  }
  public static int height(World world,int x,int z){return world.getHeight(x,z);}
- public static Item findItem(String mod,String name){return ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod,name));}
+ public static Item findItem(String mod,String name){return NativeRewardItems.supports(mod+":"+name)?net.minecraft.init.Items.PAPER:ForgeRegistries.ITEMS.getValue(new ResourceLocation(mod,name));}
 }

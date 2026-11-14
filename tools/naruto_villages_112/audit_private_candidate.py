@@ -10,7 +10,8 @@ import zipfile
 
 
 INPUT_SHA256 = 'c4a5e4c96b597efe4b76a4d562307c4ae837fe299abe91a127d0169b8d3e8fe3'
-FIXTURE_SCOPE = 'PRIVATE_NATIVE_ADMITTED_PLAYER_BANK_GUI_RELATION_DATA_PAYMENT'
+FIXTURE_SCOPES = {'PRIVATE_NATIVE_ADMITTED_PLAYER_BANK_GUI_RELATION_DATA_PAYMENT',
+                  'PRIVATE_NATIVE_ADMITTED_PLAYER_BANK_XP_PVP'}
 
 
 def sha(path: Path) -> str:
@@ -35,7 +36,7 @@ def audit(original: Path, runtime: Path, native_result: Path, run_receipt: Path,
     result = json.loads(native_result.read_text(encoding='utf-8'))
     run = json.loads(run_receipt.read_text(encoding='utf-8'))
     stage = json.loads(stage_receipt.read_text(encoding='utf-8'))
-    if result.get('scope') != FIXTURE_SCOPE or result.get('original_world_or_real_player_used') is not False:
+    if result.get('scope') not in FIXTURE_SCOPES or result.get('original_world_or_real_player_used') is not False:
         raise ValueError('Unexpected native fixture scope')
     if run.get('scope') != 'PRIVATE_NATIVE_FEATURE_FIXTURE' or run.get('original_world_or_player_used') is not False:
         raise ValueError('Unexpected native run scope')
@@ -73,7 +74,7 @@ def audit(original: Path, runtime: Path, native_result: Path, run_receipt: Path,
                     'version': metadata['version'], 'minecraft': '1.12.2', 'class_major_versions': majors,
                     'original_class_names_missing': missing, 'old_base_or_fml_linkage_classes': old_links,
                     'sqlite_driver_and_licenses_present': True, 'sqlite_native_library_count': len(native_libraries)},
-        'native': {'fixture_scope': FIXTURE_SCOPE, 'passed': result.get('passed') is True,
+        'native': {'fixture_scope': result['scope'], 'passed': result.get('passed') is True,
                    'assertions_attempted': result.get('assertions'), 'checks_passed': result.get('checks', []),
                    'failure': result.get('error'), 'result_sha256': sha(native_result),
                    'run_receipt_sha256': sha(run_receipt), 'qa_jar_sha256': run.get('qa_sha256'),
@@ -82,15 +83,23 @@ def audit(original: Path, runtime: Path, native_result: Path, run_receipt: Path,
                    'explicit_test_config_max_bank_pages': stage.get('test_config_max_bank_pages'),
                    'carried_item_inventory_cursor_ground_counts': result.get('carried_item_after_hub_open'),
                    'default_loot_mapping_complete': result.get('default_loot_mapping_complete'),
-                   'unresolved_original_loot_ids': result.get('unresolved_original_loot_ids')},
+                   'unresolved_original_loot_ids': result.get('unresolved_original_loot_ids'),
+                   'native_xp_redemption_verified': result.get('native_xp_redemption_verified', False),
+                   'native_pvp_damage_death_respawn_antifarm_verified': result.get('native_pvp_damage_death_respawn_antifarm_verified', False),
+                   'same_village_native_damage': result.get('same_village_native_damage'),
+                   'war_native_damage': result.get('war_native_damage'),
+                   'earned_xp_token_redemption': result.get('earned_xp_token_redemption'),
+                   'partial_pvp_reward_inventory_count': result.get('partial_pvp_reward_inventory_count'),
+                   'partial_pvp_reward_ground_delta': result.get('partial_pvp_reward_ground_delta')},
         'private_reference_bodies_or_runtime_distributed_in_git': False,
         'original_world_or_real_player_data_used': False,
         'real_network_client_or_graphical_acceptance': False,
+        'native_xp_callback_failure_refund_exercised': False,
         'full_restart_migration_acceptance': False,
         'full_feature_parity_or_production_readiness_claimed': False,
-        'unfinished': ['legacy PvP reward item semantics', 'legacy-only character statistics and clan/senjutsu bindings',
+        'unfinished': ['remaining legacy PvP reward item semantics', 'legacy-only character statistics and clan/senjutsu bindings',
                        'rank caps and promotion authority acceptance', 'full transport execution',
-                       'PvP damage/drop/anti-farm acceptance', 'territory capture acceptance',
+                       'PvP cooldown restart persistence', 'territory capture acceptance',
                        'real network client and optional mirror', 'copied deployment-world restart/migration'],
     }
 

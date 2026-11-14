@@ -10,14 +10,18 @@ import narutodestinationvillages.data.*;import narutodestinationvillages.gui.*;i
 /** Original private acceptance fixture, never part of the delivered addon. */
 @Mod(modid="hbv_villages_checks",name="Private villages native checks",version="1",serverSideOnly=true,acceptableRemoteVersions="*",dependencies="required-after:narutodestinationvillages")
 public final class VillagesFixture {
- private boolean pending;private MinecraftServer server;private EntityPlayerMP player;private int assertions;private List<String> checks=new ArrayList<>();
+ private int state,ticks;private MinecraftServer server;private EntityPlayerMP player,victim;private int assertions;private List<String> checks=new ArrayList<>();
  private Map<String,Object> result=new LinkedHashMap<>();
- @Mod.EventHandler public void started(FMLServerStartedEvent e){pending=true;MinecraftForge.EVENT_BUS.register(this);}
+ private net.minecraftforge.event.entity.living.LivingHurtEvent lastHurt;
+ @SubscribeEvent(priority=net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST,receiveCanceled=true) public void hurt(net.minecraftforge.event.entity.living.LivingHurtEvent e){if(e.getEntityLiving()==victim&&e.getSource().getTrueSource()==player)lastHurt=e;}
+ @Mod.EventHandler public void started(FMLServerStartedEvent e){state=1;MinecraftForge.EVENT_BUS.register(this);}
  private void check(boolean condition,String label){assertions++;if(!condition)throw new AssertionError(label);checks.add(label);}
- @SubscribeEvent public void tick(TickEvent.ServerTickEvent e){if(!pending||e.phase!=TickEvent.Phase.END)return;pending=false;
-  try{run();result.put("passed",true);}catch(Throwable failure){result.put("passed",false);result.put("error",failure.toString());try{StringWriter w=new StringWriter();failure.printStackTrace(new PrintWriter(w));Files.write(Paths.get("PRIVATE-VILLAGES-NATIVE-FAILURE.txt"),w.toString().getBytes(StandardCharsets.UTF_8));}catch(Exception ignored){}}
-  finally{try{if(player!=null)server.getPlayerList().playerLoggedOut(player);}catch(Throwable f){result.put("logout_failure",f.toString());}result.put("assertions",assertions);result.put("checks",checks);result.put("scope","PRIVATE_NATIVE_ADMITTED_PLAYER_BANK_GUI_RELATION_DATA_PAYMENT");result.put("original_world_or_real_player_used",false);try{Files.write(Paths.get("PRIVATE-VILLAGES-NATIVE-RESULT.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result).getBytes(StandardCharsets.UTF_8));}catch(Exception failure){failure.printStackTrace();}if(server!=null)server.initiateShutdown();}
+ @SubscribeEvent public void tick(TickEvent.ServerTickEvent e){if(state==0||e.phase!=TickEvent.Phase.END)return;
+  try{if(state==1){run();state=2;ticks=0;return;}player.connection.update();victim.connection.update();if(++ticks<80)return;
+   if(state==2){firstKill();state=3;ticks=0;return;}if(state==3){repeatKill();state=4;ticks=0;return;}partialInventoryKill();result.put("passed",true);finish();
+  }catch(Throwable failure){result.put("passed",false);result.put("error",failure.toString());try{StringWriter w=new StringWriter();failure.printStackTrace(new PrintWriter(w));Files.write(Paths.get("PRIVATE-VILLAGES-NATIVE-FAILURE.txt"),w.toString().getBytes(StandardCharsets.UTF_8));}catch(Exception ignored){}finish();}
  }
+ private void finish(){state=0;try{if(victim!=null)server.getPlayerList().playerLoggedOut(victim);if(player!=null)server.getPlayerList().playerLoggedOut(player);}catch(Throwable f){result.put("logout_failure",f.toString());}result.put("assertions",assertions);result.put("checks",checks);result.put("scope","PRIVATE_NATIVE_ADMITTED_PLAYER_BANK_XP_PVP");result.put("original_world_or_real_player_used",false);try{Files.write(Paths.get("PRIVATE-VILLAGES-NATIVE-RESULT.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result).getBytes(StandardCharsets.UTF_8));}catch(Exception failure){failure.printStackTrace();}if(server!=null)server.initiateShutdown();}
  private static Method method(Class<?> c,String[] names,Class<?>... signature)throws Exception{for(String name:names)try{return c.getMethod(name,signature);}catch(NoSuchMethodException ignored){}throw new NoSuchMethodException(c+Arrays.toString(names));}
  private void run()throws Exception {
   server=FMLCommonHandler.instance().getMinecraftServerInstance();Path cwd=Paths.get("").toAbsolutePath().normalize();
@@ -84,7 +88,61 @@ public final class VillagesFixture {
   check(TransportData.unlockForPlayer(player.getUniqueID().toString(),"Suna"),"existing transport destination can be unlocked");TransportData.reload();check(TransportData.isUnlockedForPlayer(player.getUniqueID().toString(),"Suna")&&TransportData.getPlayerUnlocks(player.getUniqueID().toString()).contains("Suna"),"transport unlock survives reload");
   List<String> unresolved=new ArrayList<>();for(PvPConfig.LootEntry entry:PvPConfig.getLootPool()){String[] parts=entry.itemId.split(":");if(Legacy112.findItem(parts[0],parts[1])==null)unresolved.add(entry.itemId);}
   result.put("unresolved_original_loot_ids",unresolved);result.put("default_loot_mapping_complete",unresolved.isEmpty());
+  xpRewards();prepareCombat();
  }
+ private void xpRewards()throws Exception {
+  check(server.getCommandManager().getCommands().containsKey("villagereward"),"XP reward issuer registered");
+  check(!server.getCommandManager().getCommands().get("villagereward").checkPermission(server,player),"ordinary player cannot issue reward tokens");
+  check(XpRankMultipliers.defaults().size()==45&&NativeXpRewards.awardFor("Kage",50,2)==200,"original rank bonus metadata and whole-stack rounding retained");
+  for(int value:new int[]{1,5,10,50})check(NativeRewardItems.xpValue(NativeRewardItems.create("NarutoDestination:xptoken",value,1))==value,"legacy XP denomination creates marked native reward "+value);
+  player.inventory.clear();player.inventory.currentItem=0;player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,NativeRewardItems.create("NarutoDestination:xptoken",5,3));
+  double xp=net.narutomod.PlayerTracker.getBattleXp(player);
+  net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem(player,net.minecraft.util.EnumHand.MAIN_HAND);MinecraftForge.EVENT_BUS.post(click);
+  check(click.isCanceled()&&player.getHeldItemMainhand().getCount()==2&&net.narutomod.PlayerTracker.getBattleXp(player)==xp+5,"ordinary right-click consumes one token and awards actual Naruto battle XP");
+  xp=net.narutomod.PlayerTracker.getBattleXp(player);player.setSneaking(true);click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem(player,net.minecraft.util.EnumHand.MAIN_HAND);MinecraftForge.EVENT_BUS.post(click);player.setSneaking(false);
+  check(click.isCanceled()&&player.getHeldItemMainhand().isEmpty()&&net.narutomod.PlayerTracker.getBattleXp(player)==xp+11,"sneak-right-click consumes remaining stack with original rank rounding");
+  xp=net.narutomod.PlayerTracker.getBattleXp(player);player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,new ItemStack(Items.PAPER,3));click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem(player,net.minecraft.util.EnumHand.MAIN_HAND);MinecraftForge.EVENT_BUS.post(click);
+  check(!click.isCanceled()&&player.getHeldItemMainhand().getCount()==3&&net.narutomod.PlayerTracker.getBattleXp(player)==xp,"ordinary paper cannot grant native XP");
+  ItemStack invalid=NativeRewardItems.create("NarutoDestination:xptoken",5,2);invalid.getTagCompound().getCompoundTag(NativeRewardItems.TAG).setInteger("value",2);player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND,invalid);
+  check(!NativeXpRewards.redeem(player,net.minecraft.util.EnumHand.MAIN_HAND)&&player.getHeldItemMainhand().getCount()==2&&net.narutomod.PlayerTracker.getBattleXp(player)==xp,"invalid XP token value is refused without consumption");
+  result.put("native_xp_redemption_verified",true);player.inventory.clear();
+ }
+ private void prepareCombat()throws Exception {
+  net.minecraftforge.common.config.Configuration cfg=new net.minecraftforge.common.config.Configuration(new File(narutodestinationvillages.NarutoDestinationVillages.instance.getConfigDir(),"PvP.cfg"));cfg.load();
+  cfg.get("loot_pool","lootPool",new String[0]).set(new String[]{"NarutoDestination:xptoken:5:8:1"});cfg.get("loot_drops","maxDropsPerKill",1).set(1);
+  cfg.get("multipliers_relation","useRelationMultipliers",false).set(false);cfg.get("multipliers_strength","useStrengthMultipliers",false).set(false);cfg.save();PvPConfig.reload();
+  check(PvPConfig.getLootPool().size()==1&&!PvPConfig.useRelationMultipliers&&!PvPConfig.useStrengthMultipliers,"explicit private XP-only pool loaded through actual config reload");
+  WorldServer world=server.getWorld(0);victim=new EntityPlayerMP(server,world,new GameProfile(UUID.nameUUIDFromBytes("HiddenBlockVillage:VillagesPortVictim01".getBytes(StandardCharsets.UTF_8)),"VillagesVictim"),new PlayerInteractionManager(world));QuietConnection connection=new QuietConnection(server,victim);victim.connection=connection;
+  method(server.getPlayerList().getClass(),new String[]{"initializeConnectionToPlayer","func_72355_a"},NetworkManager.class,EntityPlayerMP.class,NetHandlerPlayServer.class).invoke(server.getPlayerList(),connection.manager,victim,connection);
+  check(server.getPlayerList().getCurrentPlayerCount()==2&&!server.getPlayerList().canSendCommands(victim.getGameProfile()),"second official non-OP player admitted for real native damage");
+  ExtendedPlayer.get(victim).setAffiliation(9);ExtendedPlayer.get(victim).setRank("Genin");net.narutomod.PlayerTracker.addBattleXp(victim,200);
+ }
+ private void firstKill(){
+  player.setPositionAndUpdate(0.5,4,0.5);victim.setPositionAndUpdate(2.5,4,0.5);float before=victim.getHealth();boolean hit=victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),2);
+  result.put("same_village_native_damage",Arrays.asList(before,victim.getHealth(),hit));check(victim.getHealth()==before&&lastHurt!=null&&lastHurt.isCanceled(),"same-village protection cancels native hurt with no HP loss even when attack returns true");
+  ExtendedPlayer.get(victim).setAffiliation(16);hit=victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),4);
+  result.put("war_native_damage",Arrays.asList(before,victim.getHealth(),hit));check(hit&&victim.getHealth()<before,"war relation permits actual native player damage");
+  victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),1000);check(!victim.isEntityAlive(),"actual native player death occurred");
+  check(tokenCount(false)==8,"real native death callback delivers exact configured XP reward once");
+  int rewardSlot=-1;for(int i=0;i<36;i++)if(NativeRewardItems.xpValue(player.inventory.getStackInSlot(i))==5){rewardSlot=i;break;}check(rewardSlot>=0,"earned token remains an identifiable inventory stack");
+  if(rewardSlot<9)player.inventory.currentItem=rewardSlot;else{ItemStack previous=player.inventory.getStackInSlot(0);player.inventory.setInventorySlotContents(0,player.inventory.getStackInSlot(rewardSlot));player.inventory.setInventorySlotContents(rewardSlot,previous);player.inventory.currentItem=0;}
+  double xp=net.narutomod.PlayerTracker.getBattleXp(player);boolean redeemed=NativeXpRewards.redeem(player,net.minecraft.util.EnumHand.MAIN_HAND);result.put("earned_xp_token_redemption",Arrays.asList(xp,net.narutomod.PlayerTracker.getBattleXp(player),tokenCount(false),redeemed));check(redeemed&&net.narutomod.PlayerTracker.getBattleXp(player)==xp+5&&tokenCount(false)==7,"selected PvP-earned reward redeems into actual Naruto XP");
+  victim=server.getPlayerList().recreatePlayerEntity(victim,0,false);check(server.getPlayerList().getPlayerByUUID(victim.getUniqueID())==victim&&ExtendedPlayer.get(victim).getAffiliation()==16,"native respawn preserves village identity for same profile");
+ }
+ private void repeatKill(){
+  victim.setPositionAndUpdate(2.5,4,0.5);int before=tokenCount(false);victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),1000);
+  check(!victim.isEntityAlive()&&tokenCount(false)==before,"anti-farm prevents another reward across real respawn and repeated native kill");
+  victim=server.getPlayerList().recreatePlayerEntity(victim,0,false);
+  net.minecraftforge.common.config.Configuration cfg=new net.minecraftforge.common.config.Configuration(new File(narutodestinationvillages.NarutoDestinationVillages.instance.getConfigDir(),"PvP.cfg"));cfg.load();cfg.get("anti_farm","antiFarmEnabled",false).set(false);cfg.save();PvPConfig.reload();
+  check(!PvPConfig.antiFarmEnabled,"explicit private anti-farm override loaded for partial-insert regression");
+  player.inventory.clear();for(int i=0;i<36;i++)player.inventory.setInventorySlotContents(i,new ItemStack(Items.DIAMOND,64));player.inventory.setInventorySlotContents(0,NativeRewardItems.create("NarutoDestination:xptoken",5,60));
+ }
+ private void partialInventoryKill(){
+  victim.setPositionAndUpdate(2.5,4,0.5);int ground=tokenCount(true);victim.attackEntityFrom(net.minecraft.util.DamageSource.causePlayerDamage(player),1000);
+  check(!victim.isEntityAlive()&&tokenCount(false)==64&&tokenCount(true)-ground==4,"partial inventory insert keeps four and drops only four of eight earned tokens");
+  result.put("native_pvp_damage_death_respawn_antifarm_verified",true);result.put("partial_pvp_reward_inventory_count",tokenCount(false));result.put("partial_pvp_reward_ground_delta",tokenCount(true)-ground);
+ }
+ private int tokenCount(boolean ground){int count=0;if(ground){for(net.minecraft.entity.Entity entity:player.world.loadedEntityList)if(entity instanceof net.minecraft.entity.item.EntityItem){ItemStack stack=((net.minecraft.entity.item.EntityItem)entity).getItem();if(NativeRewardItems.xpValue(stack)==5)count+=stack.getCount();}}else for(int i=0;i<player.inventory.getSizeInventory();i++){ItemStack stack=player.inventory.getStackInSlot(i);if(NativeRewardItems.xpValue(stack)==5)count+=stack.getCount();}return count;}
  private int inventoryCount(Item item){int count=0;for(int i=0;i<player.inventory.getSizeInventory();i++){ItemStack s=player.inventory.getStackInSlot(i);if(!s.isEmpty()&&s.getItem()==item)count+=s.getCount();}return count;}
  private int groundCount(Item item){int count=0;for(net.minecraft.entity.Entity entity:player.world.loadedEntityList)if(entity instanceof net.minecraft.entity.item.EntityItem){ItemStack s=((net.minecraft.entity.item.EntityItem)entity).getItem();if(!s.isEmpty()&&s.getItem()==item)count+=s.getCount();}return count;}
  public static final class QuietConnection extends NetHandlerPlayServer {

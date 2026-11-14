@@ -17,7 +17,7 @@ binaries and private test worlds remain outside this public repository.
   says version 1.2.0 and requires `NarutoDestination@[1.24.0,)`.
 - Target: Forge/Magma Minecraft 1.12.2, Java 8, stable-39 mappings,
   RetrofuturaGradle 2.0.3, existing `narutomod` and `variedcommodities`.
-- Private port version: `1.4.2-hbv112.1`. Modern FML mod ID is lowercase
+- Current private candidate version: `1.4.2-hbv112.2`. Modern FML mod ID is lowercase
   `narutodestinationvillages`; the original configuration directory is retained.
 
 ## What the original adapters do
@@ -43,6 +43,23 @@ The currently tested private port also preserves carried items when opening a
 GUI, fixes the original repeated sort-lock acquisition, and drops only remaining
 loot after a partial inventory insert.
 
+The XP token adapter retains denominations1/5/10/50, the original45rank bonus
+defaults, integer rounding and sneak-to-consume behavior. Rewards grant actual
+AHZNB battle XP, its native progression resource, through the public API. The
+old base's chakra-experience curve is a different model; this is a documented
+target-base adaptation, not a port of that base mod. The token is a server-owned
+marked vanilla paper stack with its own name/lore. It needs no replacement
+resource pack or client item registry. Unmarked paper and invalid token values
+cannot redeem. The operator issuer is `/villagereward xp <1|5|10|50> [count]
+[player]`; `/villagereward reload` reloads the new NativeRewards.cfg. The general
+villages reload also reloads these settings.
+
+Only the four XP rows of the16-row original default pool have this provider so
+far. SP, JP, reset-point, DNA and randomizer entries remain explicitly unfinished.
+They have not been silently replaced by unrelated native items. Recovered
+provider meanings and the remaining binding requirements are recorded in
+`reward-semantics.json`.
+
 ## Build boundary
 
 The adapter library can be compiled with the repository Gradle wrapper using
@@ -61,13 +78,14 @@ results and missing checks belong in the release receipt and current handoff.
 
 ## Remaining work before an intact port can be claimed
 
-1. Adapt all original PvP reward entries whose item providers do not exist in
+1. Adapt remaining original PvP reward entries whose item providers do not exist in
    AHZNB NarutoMod, preserving meaningful reward semantics rather than silently
    dropping entries or replacing them with unrelated filler.
 2. Resolve the legacy character-stat/clan/senjutsu model against actual installed
    providers. Do not invent a native binding for an unsupported field.
 3. Verify rank-cap enforcement, promotion authority, full transport execution,
-   PvP event/drop/anti-farm behavior and territory capture, including restart.
+   territory capture and PvP cooldown persistence across restart. Version-specific
+   native XP/death/respawn/drop results must come from the matching release receipt.
 4. Verify a real network client, chest-window interaction and optional client
    mirror. A synthetic admitted player and discarded packets prove only their
    documented server-side scope.

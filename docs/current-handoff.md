@@ -2,7 +2,87 @@
 
 Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
-## Latest direct-work checkpoint: villages port preview
+## Latest direct-work checkpoint: native XP rewards and PvP
+
+The newest local preview is now
+`C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-3.jar`,
+7,000,342bytes, SHA256
+`10e0d605d75f183983fb03c174d6f0958ba74614547b6e50fa18b82d3686e5a0`.
+Internal port version is1.4.2-hbv112.2. Replace an earlier villages addon when
+testing; do not install duplicate versions. No actual owner client/server was
+updated or launched for this checkpoint. Original artwork/resourcepacks remain
+unchanged. The live private preview server31524/25594 was preserved.
+
+Recovered the original token provider APIs privately. XP grants chakra
+experience with1/5/10/50denominations, general/rank bonuses, integer truncation
+and sneak whole-stack consumption. RP is RESET points, not rank currency; SP
+and JP are separate spendable resources. Nature/KG/sage randomizers have
+specific roll/application semantics. Public safe metadata and unfinished
+binding obligations: `tools/naruto_villages_112/reward-semantics.json`.
+No reference implementation bodies/art were added to Git.
+
+Implemented original native XP reward adapters under the existing public tool:
+`NativeRewardItems`, `NativeXpRewards`, `XpRankMultipliers`,
+`CommandVillageRewards`. The new reward stacks are marked vanilla paper with
+name/lore, require no client item registry or resource pack, and use the actual
+NarutoMod PlayerTracker.addBattleXp API. This is the deliberate native progression
+adaptation, not a reproduction of the old base's XP curve. All45original rank
+multiplier defaults are retained as compatibility metadata. Normal paper and
+invalid denominations do not grant XP. Server inventory determines the redeemed
+stack; a per-player guard prevents reentrant use. Tokens are reserved before
+the native call, with a refund when an exception/refusal leaves XP unchanged.
+Failure/refund branches were not injected in this native acceptance run.
+Operator issuer: `/villagereward xp <1|5|10|50> [count] [player]`;
+`/villagereward reload` and the general villages reload refresh NativeRewards.cfg.
+
+Native run09 PASSED its server-side scope with the same53current server JARs,
+the new addon and a separate private fixture, in a new disposable flat world.
+It retains the bank/currency/data checks below, then admits a second non-OP
+synthetic player. Real native player damage/death and actual native respawn were
+used, not manually posted death events. Friendly native hurt was canceled with
+HP21->21 even though attackEntityFrom returned true; the fixture checks the
+actual hurt cancellation and HP outcome. War damage reduced HP21->19.
+An actual lethal hit awarded exactly8configured XP tokens once. The selected
+earned token raised native XP216->221 and left7tokens. A second lethal hit after
+native respawn awarded none because anti-farm recognized the same UUID. After
+an explicit private anti-farm config override, another real kill with60tokens
+already stacked and a full inventory ended at64stored plus4ground tokens: no
+partial-insert duplication. Ordinary and sneak-right-click XP redemption,
+rank rounding, invalid-token refusal and issuer permission were also checked.
+132assertions include54nonnull-slot checks; this is not132unique game features.
+Exit0, all staged JAR hashes unchanged, no forced termination, no real player
+or original world used. Safe version-bound receipt:
+`release/evidence/naruto-villages-112-native-xp-pvp.json`.
+
+The actual PvP kill/drop regression used an explicitly configured private
+XP-only pool, loaded through the real config reload, so randomness could not
+hide a failure. It is NOT proof of the entire default reward pool. Only the
+four XP rows of the16-row original default pool now have providers; the other
+12rows (SP, JP, reset points, DNA, KG/nature/clan/sage randomizers) remain
+unresolved, preserved and explicitly unfinished. Do not turn SP/JP/reset points
+into unrelated XP or currency to make a mapping count pass. Native jutsu damage
+owner attribution, cooldown persistence across server restart, promotion/rank
+caps, full teleport execution, territory capture, real client/mirror and copied
+deployment-world acceptance also remain open. The full game goal remains active.
+
+Intermediate native07failed because its assertion incorrectly expected a false
+attack return on a canceled hurt despite observed zero HP loss. Native08earned
+the proper reward but attempted to redeem a different selected item after native
+starter items populated the inventory. The09fixture observes actual cancellation
+and explicitly selects the earned stack; no production logic was changed to
+fake either setup correction. These failed private candidates are retained.
+Public adapter0.1.1-draft component build and current native-fixture source
+compilation passed; the public adapter reobfuscated classes are compared with
+the exact native-tested port in the receipt. Derivative addon sources, runtime
+JARs, reference API recovery and synthetic worlds remain private.
+
+Next: implement faithful SP allocation/reset and JP learning before enabling
+their preserved default rewards, recover all randomizer/DNA provider outcomes,
+add the outstanding native event/restart/client checks, then integrate accepted
+artifacts into the one-folder release workflow. Do not call this port intact or
+the full Naruto game finished from the XP/PvP subset.
+
+## Prior checkpoint: villages port preview (5d5c078)
 
 Owner asked to decompile the supplied NarutoDestinationVillages1.4.2 addon,
 port it from1.7.10 to1.12.2, and connect it to the existing AHZNB NarutoMod.
@@ -27,7 +107,7 @@ were authored independently. The full private port uses RFG2.0.3, Java8 and
 stable39, version1.4.2-hbv112.1; FML modid is lowercase
 narutodestinationvillages, with the original config directory retained.
 
-NEWEST local preview delivered:
+Prior local preview delivered:
 `C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-2.jar`,
 6,989,815bytes, SHA256
 `d814b429bca938ad9896a02aefb191564799dbdbebf3ab0034e14f3d34b5c02d`.
