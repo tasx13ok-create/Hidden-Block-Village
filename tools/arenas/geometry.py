@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import math
 import heapq
-from collections import defaultdict
+from collections import defaultdict, deque
 import hashlib
 import json
 from pathlib import Path
@@ -656,6 +656,12 @@ class Architecture:
         self._seal_authored_fluids()
         stair_report=self._walking_stairs()
         self._route_lamps()
+        if hasattr(self,"wet_routes"):
+            # Place after circulation's gallery-bearing piers. The strip replaces
+            # only the bottom water/stone layer, retaining the solid floor below
+            # and every existing pier above the native wet traversal.
+            for z in range(179,312):
+                for x in range(154,157):self.light(x,46,z)
         containers=self._storage_containers()
         # Retain genuine seating cross sections as occupancy witnesses after paths
         # remove the north concourse edge. No geometry is added for these witnesses.
@@ -687,6 +693,9 @@ class Architecture:
                 "route_specs":{name:{"width":width,"clearance":head,"kind":"dry"}
                                for name,_,width,head,_ in self.path_specs},
                 "fluid_volumes":self.fluids,"light_sources":self.lights,
+                "route_light_fixtures":self.route_light_fixtures,
+                "route_light_path_design":self.route_light_path_design,
+                "wet_routes":getattr(self,"wet_routes",{}),
                 "court_diameter":136,"giant_route_envelope_design":[19,24],
                 "stadium_bounds":[0,0,0,499,249,499],"stadium_dimensions":[500,250,500],
                 "stadium_layers":["stadium_structure","stadium_galleries","stadium_roof","bowl_and_stands","landmark_masses","functional_interiors","roof_transitions","galleries"],
@@ -697,43 +706,94 @@ class Architecture:
                 "provenance":"Original procedural block architecture; vanilla 1.12.2 palette; no imported artwork or world cells."}
 
     def _route_lamps(self):
-        """Visible emitters on flat treads and supported narrow-route side lamps.
+        """Attach exposed emitters with real transparent paths to every route.
 
-        Sources hidden under normal stairs did not satisfy native block light.
-        This repairs actual output geometry; the native light gate remains strict.
+        Vanilla1.12 stair opacity is255, including its visually empty half. An
+        under-tread source is therefore never treated as shining through stairs.
+        Fixtures are recessed into existing walls/floors or touch a real bearing
+        block outside every reserved walking envelope. No stair is replaced and
+        neither human nor giant route headroom is narrowed. This conservative
+        seven-edge AIR/glass path design is not native block-light acceptance.
         """
         stairs={53,67,108,109,114,128,134,135,136,156,163,164,180,203}
-        for _,cells,width,_,_ in self.path_specs:
-            for index in range(2,max(2,len(cells)-2),4):
-                x,y,z=cells[index]
-                prev,nxt=cells[index-1],cells[index+1]
-                i=((y-1)*500+z)*500+x
-                if prev[1]==y==nxt[1] and self.v.blocks[i] not in stairs|{0,9,11,41,54}:
-                    self.light(x,y-1,z)
-                if width>9:continue
-                d=width//2+1
-                for dx,dz in ((d,0),(-d,0),(0,d),(0,-d)):
-                    tx,tz=x+dx,z+dz
-                    if not (0<=tx<500 and 0<=tz<500 and y+1<250):continue
-                    spans=self.walk_envelopes.get((tx,tz),())
-                    if any(lo<=y+1 and lo+head-1>=y-1 for lo,head in spans):continue
-                    target=((y+1)*500+tz)*500+tx
-                    if self.v.blocks[target] in (9,11,41,54):continue
-                    if self.v.blocks[target]!=AIR:
-                        self.light(tx,y+1,tz)
-                        break
-                    # A two-block cantilever and upright support the real emitter.
-                    beam=[]
-                    count=max(abs(dx),abs(dz))
-                    for n in range(1,count+1):
-                        bx=x+round(dx*n/count);bz=z+round(dz*n/count)
-                        if any(lo<=y-1<=lo+head-1 for lo,head in self.walk_envelopes.get((bx,bz),())):break
-                        beam.append((bx,bz))
-                    else:
-                        for bx,bz in beam:self.v.set(bx,y-1,bz,self.trim,layer="lighting")
-                        self.v.set(tx,y,tz,self.trim,layer="lighting")
-                        self.light(tx,y+1,tz)
-                        break
+        transmitting={AIR,GLASS,95,102,160}
+        bearing={STONE,GRASS,DIRT,PLANK,LOG,SANDSTONE,WOOL,BOOKS,BRICK,CLAY,
+                 NETHER,QUARTZ,CONCRETE,4,45,48,49,82,87,88,121,170}|stairs
+        replaceable=bearing-stairs
+        blocks=self.v.blocks
+        stride=500*500
+        levels=bytearray(250*stride)
+        offsets=((0,-1,0),(1,0,0),(-1,0,0),(0,0,1),(0,0,-1),(0,1,0))
+
+        def flat(p):return (p[1]*500+p[2])*500+p[0]
+        def neighbors(p):
+            x,y,z=p
+            for dx,dy,dz in offsets:
+                q=(x+dx,y+dy,z+dz)
+                if 0<=q[0]<500 and 0<=q[1]<250 and 0<=q[2]<500:yield q
+        def reserved(p):
+            x,y,z=p
+            if any(lo<=y<lo+head for lo,head in self.walk_envelopes.get((x,z),())):return True
+            return any(abs(x-a[0])<=5 and abs(z-a[2])<=5 and a[1]<=y<a[1]+10
+                       for a in self.anchor_positions.values())
+        def attachment(p):
+            return next((q for q in neighbors(p) if blocks[flat(q)] in bearing),None)
+        def spread(sources):
+            queue=deque()
+            for p in sources:
+                i=flat(p)
+                if levels[i]<15:levels[i]=15;queue.append(i)
+            while queue:
+                i=queue.popleft();value=levels[i]-1
+                if value<8:continue
+                x=i%500;z=(i//500)%500;y=i//stride
+                for j in ((i-1 if x else -1),(i+1 if x<499 else -1),
+                          (i-500 if z else -1),(i+500 if z<499 else -1),
+                          (i-stride if y else -1),(i+stride if y<249 else -1)):
+                    if j>=0 and levels[j]<value and blocks[j] in transmitting:
+                        levels[j]=value;queue.append(j)
+
+        sources=[tuple(p) for p in self.lights if blocks[flat(p)]==SEA]
+        spread(sources)
+        self.route_light_fixtures=[]
+        nodes={}
+        for name,cells,_,_,_ in self.path_specs:
+            for p in cells:nodes.setdefault(tuple(p),name)
+        for point,name in nodes.items():
+            if levels[flat(point)]>=8:continue
+            # Search actual exposed paths, including the solid receiving face
+            # of an existing wall/floor. Merely being close in L1 is insufficient.
+            queue=deque([(point,0)]);parents={point:None};fixture=None
+            while queue and fixture is None:
+                p,distance=queue.popleft()
+                if distance>=7:continue
+                for q in neighbors(p):
+                    if q in parents:continue
+                    block=blocks[flat(q)]
+                    support=attachment(q) if not reserved(q) else None
+                    if support is not None and block in replaceable|transmitting:
+                        fixture=(q,support,p,distance+1);break
+                    if block in transmitting:
+                        parents[q]=p;queue.append((q,distance+1))
+            if fixture is None:
+                raise ValueError("No supported exposed route light within7 clear edges: %s %s"%(name,point))
+            q,support,last,distance=fixture
+            path=[q,last]
+            while parents[path[-1]] is not None:path.append(parents[path[-1]])
+            path.reverse()
+            self.light(*q)
+            self.route_light_fixtures.append({"position":list(q),"block":SEA,"meta":0,
+                "attached_to":list(support),"route":name,"served_at":list(point),
+                "air_path":[list(p) for p in path],"distance":distance})
+            # Replacing an AIR node with an emitter can only increase this
+            # conservative light field; no opaque support is introduced in air.
+            spread([q])
+        minimum=min(levels[flat(p)] for p in nodes)
+        self.route_light_path_design={"schema":1,"route_center_points":len(nodes),
+            "added_exposed_fixtures":len(self.route_light_fixtures),
+            "conservative_minimum":minimum,"maximum_transparent_edges":7,
+            "stair_opacity":255,"native_block_light_acceptance":"NOT_RUN"}
+        del levels
         self.lights=[list(p) for p in dict.fromkeys(map(tuple,self.lights))
                      if self.v.blocks[(p[1]*500+p[2])*500+p[0]]==SEA]
 
@@ -1023,7 +1083,21 @@ def _mist(a):
     a.fluids.append({"kind":"water","shape":"box","min":[149,46,179],"max":[161,53,311],"contained_baseline":True})
     a.rooms.append({"name":"Contained underwater passage","service":"optional wet route",
                     "standing":[155,47,245],"bounds":[145,42,175,165,56,315],
-                    "native_breathing_acceptance":"NOT_RUN","water_route":True})
+                    "native_breathing_acceptance":"NOT_RUN","water_route":True,
+                    "wet_route":"underwater_passage"})
+    a.wet_routes={"underwater_passage":{
+        # Preserve the existing gallery pier at x153..155,z249..251. Its east
+        # side already has the full3-wide source-water envelope; no carve needed.
+        "points":_dense([[155,47,179],[155,47,245],[157,47,247],
+                         [157,47,253],[155,47,255],[155,47,311]]),
+        "width":3,"clearance":4,
+        "kind":"source_water","human_only":True,
+        "light_floor":[154,46,179,156,46,311],
+        "supported_below_y":45,"water_body":[149,47,179,161,53,311],
+        "water_light_opacity":3,"feet_light_design_minimum":9,
+        "air_pockets":[[151,54,181,159,58,188],[151,54,301,159,58,308]],
+        "dry_recovery_route":"underwater_dry_recovery",
+        "native_light_and_breathing_acceptance":"NOT_RUN"}}
     # A separate dry-island prison basin retains the main boss and giant route.
     for x0,z0,x1,z1 in ((277,207,293,207),(277,223,293,223),(277,207,277,223),(293,207,293,223)):
         a.box(x0,62,z0,x1,66,z1,GLASS,layer="arena_mechanics")

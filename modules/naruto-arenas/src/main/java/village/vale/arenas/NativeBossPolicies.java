@@ -14,8 +14,10 @@ final class NativeBossPolicies {
  private static final String SPRING="49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c",NARUTO="6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",KABUTO="c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59";
  // Promotion changes require a new matching source/build/native receipt. Config
  // cannot declare its own terminal acceptance or accept a changed provider.
- private static final boolean[] ACCEPTED={false,false,false,false,false};
- private static final boolean[] NATIVE_DEATH_ACCEPTED={false,false,false,false,false};
+ // Native per-provider sealing receipts:03/04 Forest/Sand/Fire and current13-09
+ // Cloud/Mist; final candidate must re-observe actual startup/ordinary entry.
+ private static final boolean[] ACCEPTED={true,true,true,true,true};
+ private static final boolean[] NATIVE_DEATH_ACCEPTED={false,false,true,false,false};
  private static final String[][] ROWS={
   {"ahznbcursemarkaddon:edotensei_hashirama","net.mcreator.ahznbcursemarkaddon.entity.EntityEdotenseiHashirama$EntityCustom","406e57247f0ef06c6879305ef7fb97b5bf0f63e0a78dd05ba1830d49cacb2ac5",SPRING},
   {"kabutoaddon:ay","net.mcreator.kabutoaddon.entity.EntityAy$EntityCustom","1308e94a487661e973710564bf90a5ab3350f689768e46c2a985e54d51106f95",KABUTO},

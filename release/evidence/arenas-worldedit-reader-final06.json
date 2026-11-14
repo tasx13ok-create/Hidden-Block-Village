@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "scope": "INSTALLED_ORIGINAL_WORLDEDIT_6_1_10_MCEDIT_FULL_CLIPBOARD_READ_ONLY",
+  "reader": "SchematicFormat.MCEDIT.load(File)",
+  "reader_class": "com.sk89q.worldedit.schematic.MCEditSchematicFormat",
+  "passed": true,
+  "worldedit_jar_sha256": "cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75",
+  "java8_executable_sha256": "2941c4fe4ceef54e40556c1cc13991ce7f56b627856ecb8506ffdc49ad258706",
+  "probe_source_sha256": "7a36ed8cb33e19f7e79d059937bb77469b4729caa0e3e1bf720fb7ef9a5e321e",
+  "runner_source_sha256": "e575a5d163776a44dbc3af8acfceef360523c42df5a9fd0ab780703ca201065b",
+  "manifest_sha256": "15c20b1eb54f0767d50fed07700036218dcbc32c1c5594e37daabfe985fd544d",
+  "configured_heap_setting": "-Xmx3072m; -Xms128m; SerialGC",
+  "minimum_heap_required": "NOT_MEASURED; allfive passed at configured3GiB maximum; livepaste/server overhead not tested",
+  "server_or_client_started": false,
+  "world_paste_attempted": false,
+  "original_sources_unchanged": true,
+  "arenas": [
+    {
+      "id": "arena_forest_root_coliseum_v1",
+      "schematic_sha256": "87b6fd29ed78949aad0e9e051ab324ee00cd3168c16a961f734a6c0f85b69f70",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "origin": [
+        64000,
+        3,
+        64000
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "full_clipboard_cells": 62500000,
+      "anchor_and_seal_block_metadata_checks": 22,
+      "typed_chest_nbt_checks": 5,
+      "full_load_elapsed_ms": 5611,
+      "process_peak_working_set_bytes": 2705891328,
+      "process_sampled_peak_private_bytes": 2957721600,
+      "used_heap_after_load_bytes": 2208577296,
+      "sum_nonconcurrent_heap_pool_peaks_bytes": 2570013056,
+      "passed": true
+    },
+    {
+      "id": "arena_cloud_storm_coliseum_v1",
+      "schematic_sha256": "1437d16111ae9b1a10efb1963bfffc4144269d7bb4b0325d68451e43b3ab425f",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "origin": [
+        65024,
+        3,
+        64000
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "full_clipboard_cells": 62500000,
+      "anchor_and_seal_block_metadata_checks": 22,
+      "typed_chest_nbt_checks": 5,
+      "full_load_elapsed_ms": 5497,
+      "process_peak_working_set_bytes": 2705924096,
+      "process_sampled_peak_private_bytes": 2957783040,
+      "used_heap_after_load_bytes": 2208744880,
+      "sum_nonconcurrent_heap_pool_peaks_bytes": 2570138616,
+      "passed": true
+    },
+    {
+      "id": "arena_sand_kazekage_coliseum_v1",
+      "schematic_sha256": "139249aedd1e4f100d3378cd1d45d96e020f210e0aa868d2e19f54cdbb859dfc",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "origin": [
+        66048,
+        3,
+        64000
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "full_clipboard_cells": 62500000,
+      "anchor_and_seal_block_metadata_checks": 22,
+      "typed_chest_nbt_checks": 5,
+      "full_load_elapsed_ms": 9347,
+      "process_peak_working_set_bytes": 2706669568,
+      "process_sampled_peak_private_bytes": 2956066816,
+      "used_heap_after_load_bytes": 2208577312,
+      "sum_nonconcurrent_heap_pool_peaks_bytes": 2570013072,
+      "passed": true
+    },
+    {
+      "id": "arena_mist_shark_coliseum_v1",
+      "schematic_sha256": "34d4bbe2c668820ae15c2676b8af80dad2fd5b7078d1609bb2219145a4da74b5",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "origin": [
+        67072,
+        3,
+        64000
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "full_clipboard_cells": 62500000,
+      "anchor_and_seal_block_metadata_checks": 22,
+      "typed_chest_nbt_checks": 5,
+      "full_load_elapsed_ms": 5577,
+      "process_peak_working_set_bytes": 2706411520,
+      "process_sampled_peak_private_bytes": 2957545472,
+      "used_heap_after_load_bytes": 2208576624,
+      "sum_nonconcurrent_heap_pool_peaks_bytes": 2570012600,
+      "passed": true
+    },
+    {
+      "id": "arena_fire_ashen_coliseum_v1",
+      "schematic_sha256": "4d4d71ae0563c72a7f4aa9285bbfbb9d2c90fb15d4687535c7fbf1f74273bf11",
+      "dimensions": [
+        500,
+        250,
+        500
+      ],
+      "origin": [
+        68096,
+        3,
+        64000
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "full_clipboard_cells": 62500000,
+      "anchor_and_seal_block_metadata_checks": 22,
+      "typed_chest_nbt_checks": 5,
+      "full_load_elapsed_ms": 5624,
+      "process_peak_working_set_bytes": 2706001920,
+      "process_sampled_peak_private_bytes": 2957619200,
+      "used_heap_after_load_bytes": 2208577000,
+      "sum_nonconcurrent_heap_pool_peaks_bytes": 2570012976,
+      "passed": true
+    }
+  ]
+}

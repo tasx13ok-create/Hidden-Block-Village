@@ -41,6 +41,7 @@ public final class CombatNativeChecks {
  private static Set<UUID> baseline;private static double beforeContribution;private static float beforeHealth,beforeAbsorption;
  private static int respawns;private static LivingDeathEvent participantDeath;private static long lastDodge;
  private static boolean respawnInProgress,respawnEventSeen,nativeDeathTrust;
+ private static int cleanupTicks,preparationPlayerTicks;
  private CombatNativeChecks(){}
 
  public static void begin(MinecraftServer s,List<ArenaDirector.Definition> all,EntityPlayerMP p){
@@ -52,7 +53,8 @@ public final class CombatNativeChecks {
   report.addProperty("physical_client_weapon_range_or_dodge_acceptance",false);
   report.addProperty("boss_health_or_paid_contribution_assigned",false);
   report.addProperty("production_terminal_policy_promoted",false);
-  report.addProperty("participant_health_assignment_or_immunity",false);
+  report.addProperty("participant_healing_during_active_membership_or_immunity",false);
+  report.addProperty("initial_profile_native_heal_outside_membership",true);
   savedInventory=p.inventory.writeToNBT(new NBTTagList());savedMode=p.interactionManager.getGameType();savedX=p.posX;savedY=p.posY;savedZ=p.posZ;
   MinecraftForge.EVENT_BUS.register(observer);
  }
@@ -104,10 +106,21 @@ public final class CombatNativeChecks {
   warm(new BlockPos(d.boss_anchor[0],d.boss_anchor[1],d.boss_anchor[2]));
   JsonObject previous=ArenaDirector.run(d);require(previous==null||ArenaDirector.text(previous,"state").equals("AVAILABLE"),"Combat requires genuinely empty reset instance");
   if(variantIndex==3)require(ArenaIntro.complete(player,d),"Real saved physical introduction is unavailable; normal terminal test not run");
+  // A separate independent case starts with its real owned equipment and a
+  // healthy private profile. The native heal API is used only after checking
+  // absence from EVERY run, before admitting the player or spawning this boss.
+  for(ArenaDirector.Definition other:definitions){JsonObject active=ArenaDirector.run(other);require(active==null||!active.getAsJsonObject("members").has(player.getUniqueID().toString()),"Initial combat profile cannot heal an active run member");}
+  loanKit();preparationPlayerTicks=player.ticksExisted;stage=5;wait=0;
+ }
+ private static void admitPreparedVariant(){
+  // Attribute modifiers settle through actual native player ticks, not a
+  // synthetic tick call or a speculative immediate equipment maximum.
+  variant.addProperty("actual_native_equipment_preparation_player_ticks",player.ticksExisted-preparationPlayerTicks);
+  for(ArenaDirector.Definition other:definitions){JsonObject active=ArenaDirector.run(other);require(active==null||!active.getAsJsonObject("members").has(player.getUniqueID().toString()),"Prepared profile acquired active membership before initial heal");}
+  variant.addProperty("initial_profile_health_before_native_heal",player.getHealth());player.heal(player.getMaxHealth());variant.addProperty("initial_profile_health_after_native_heal",player.getHealth());variant.addProperty("initial_profile_native_heal_before_any_admission",true);require(player.getHealth()>=player.getMaxHealth()-.01F,"Native initial-profile heal was refused or incomplete");
   d.terminal_verified=variantIndex==3;setNativeDeathTrust(variantIndex==3&&!d.id.contains("forest")&&!d.id.contains("fire"));ArenaDirector.admit(player,d,variantIndex!=3);run=ArenaDirector.run(d);ownedRun=ArenaDirector.text(run,"run");
   Entity actual=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(run,"boss_uuid")));
   require(actual instanceof EntityLivingBase,"Exact admitted native body missing");body=(EntityLivingBase)actual;bodyStart=body.ticksExisted;savedRun=body.getEntityData().getString("HbvArenaRun");
-  loanKit();
   boolean approach=false;for(int[] offset:new int[][]{{12,0},{-12,0},{0,12},{0,-12}}){int[] at={d.boss_anchor[0]+offset[0],d.floor,d.boss_anchor[2]+offset[1]};if(ArenaDirector.safe(server.getWorld(0),at)){guide(at);approach=true;break;}}require(approach,"No supported native activation approach");
   variant.addProperty("run_uuid",ArenaDirector.text(run,"run"));variant.addProperty("native_uuid",body.getUniqueID().toString());variant.addProperty("native_class",body.getClass().getName());variant.addProperty("native_class_sha256",ArenaTerminals.classHash(body));
   variant.addProperty("native_maximum",body.getMaxHealth());variant.addProperty("native_ai_disabled",body instanceof EntityLiving&&((EntityLiving)body).isAIDisabled());
@@ -157,22 +170,40 @@ public final class CombatNativeChecks {
   // Restore only the tag changed on this exact QA-owned body, after retaining
   // wrong-run callback evidence. Unknown/replacement actors are never deleted.
   if(variantIndex==1)body.getEntityData().setString("HbvArenaRun",savedRun);
-  guide(d.exit);ArenaDirector.exit(player,d,run);ArenaDirector.reset(d,run);require(state().equals("AVAILABLE"),"Combat variant empty reset failed");
-  if(control!=null&&!control.isDead)control.setDead();control=null;body=null;variantIndex++;stage=0;wait=3;
+  beginCleanup();
+ }
+ private static void beginCleanup(){cleanupTicks=0;stage=80;wait=0;}
+ private static void cleanupTick(){
+  try{
+   require(++cleanupTicks<=160,"Owned combat cleanup exceeded bounded160ticks");JsonObject own=ArenaDirector.run(d);
+   require(own==null||ownedRun.equals(ArenaDirector.text(own,"run")),"Preexisting or replacement run preserved; cleanup ownership changed");
+   if(own!=null){Entity actor=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(own,"boss_uuid")));if(actor==body&&variantIndex==1)actor.getEntityData().setString("HbvArenaRun",savedRun);}
+   officialRespawn("owned combat case cleanup");player.setGameType(GameType.SURVIVAL);
+   if(own!=null&&own.getAsJsonObject("members").has(player.getUniqueID().toString())){guide(d.exit);ArenaDirector.exit(player,d,own);}
+   if(own!=null&&!ArenaDirector.text(own,"state").equals("AVAILABLE")){
+    Entity loaded=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(own,"boss_uuid")));
+    if(loaded==null&&!ArenaDirector.courtReady(d,own)){if(variant!=null)variant.addProperty("cleanup_bounded_native_prewarm_pending_ticks",cleanupTicks);return;}
+    ArenaDirector.reset(d,own);require(ArenaDirector.text(own,"state").equals("AVAILABLE"),"Owned combat cleanup did not reach empty AVAILABLE");
+   }
+   if(variant!=null){variant.addProperty("owned_empty_cleanup_completed",true);variant.addProperty("actual_cleanup_ticks",cleanupTicks);}
+   if(control!=null&&!control.isDead)control.setDead();control=null;body=null;run=null;attempt=null;ownedRun="";variantIndex++;stage=0;wait=3;
+  }catch(Throwable cleanup){failures.add("Owned cleanup: "+cleanup);row.addProperty("failure_recovery_observation",cleanup.toString());finishArena();wait=3;}
  }
  private static boolean nativeDeathTrust(){try{java.lang.reflect.Field field=d.getClass().getDeclaredField("native_death_verified");field.setAccessible(true);return field.getBoolean(d);}catch(ReflectiveOperationException unavailable){throw new IllegalStateException("Separate native-death authority absent",unavailable);}}
  private static void setNativeDeathTrust(boolean value){try{java.lang.reflect.Field field=d.getClass().getDeclaredField("native_death_verified");field.setAccessible(true);field.setBoolean(d,value);}catch(ReflectiveOperationException unavailable){throw new IllegalStateException("Separate native-death authority absent",unavailable);}}
  private static void finishArena(){d.terminal_verified=trust;setNativeDeathTrust(nativeDeathTrust);row.addProperty("passed",failures.size()==0);rows.add(row);d=null;index++;variantIndex=stage=total=0;}
  private static void finish(){cancelAttack=cancelDamage=cancelDeath=inAttempt=false;if(d!=null){d.terminal_verified=trust;setNativeDeathTrust(nativeDeathTrust);}officialRespawn("final synthetic inventory/session handback");MinecraftForge.EVENT_BUS.unregister(observer);player.inventory.readFromNBT(savedInventory);player.setGameType(savedMode);player.connection.setPlayerLocation(savedX,savedY,savedZ,player.rotationYaw,player.rotationPitch);RewardOutbox.flush(player);boolean pass=rows.size()==definitions.size();for(JsonElement e:rows)pass&=e.getAsJsonObject().get("passed").getAsBoolean();report.addProperty("official_respawn_count",respawns);report.addProperty("passed",pass);report.addProperty("physical_client_or_dodge_acceptance",false);report.addProperty("process_restart_during_native_lethal",false);done=true;}
  public static boolean tick(){
-  if(done)return true;if(d!=null){total++;age++;if(player.isEntityAlive())defend();}if(player.isEntityAlive()&&--wait>0)return false;
+  if(done)return true;if(d!=null){total++;age++;if(stage!=80&&player.isEntityAlive())defend();}if(player.isEntityAlive()&&--wait>0)return false;
   if(index>=definitions.size()){finish();return true;}
   if(d==null){d=definitions.get(index);trust=d.terminal_verified;nativeDeathTrust=nativeDeathTrust();row=new JsonObject();variants=new JsonArray();failures=new JsonArray();row.addProperty("id",d.id);row.addProperty("startup_terminal_authority",trust);row.addProperty("startup_native_death_authority",nativeDeathTrust);row.add("variants",variants);row.add("failures",failures);total=0;run=null;variant=null;attempt=null;body=null;control=null;ownedRun="";}
+  if(stage==80){cleanupTick();return false;}
   try{
    require(total<1200,"Bounded native combat budget1200ticks exceeded");require(server.getPlayerList().getPlayerByUUID(player.getUniqueID())==player,"Registered synthetic combat identity changed");if(!player.isEntityAlive()){if(stage==0){officialRespawn("before independent combat case");wait=10;return false;}throw new IllegalStateException("Participant died during genuine native combat; failed case retained and official recreation follows");}
    if(body!=null)warm(body.getPosition());
    if(variantIndex>=VARIANTS.length){finishArena();return false;}
    if(stage==0){beginVariant();return false;}
+   if(stage==5){if(player.ticksExisted-preparationPlayerTicks<3)return false;admitPreparedVariant();return false;}
    if(stage==10){if(variantIndex==0){attack("cancel_attack",DamageSource.causePlayerDamage(player),1F,true,false,false);stage=11;wait=2;return false;}if(variantIndex==1)body.getEntityData().setString("HbvArenaRun",UUID.randomUUID().toString());if(variantIndex==3){attack("native_high_power_phase_skip",DamageSource.causePlayerDamage(player),Math.max(1,body.getMaxHealth()*.75F),false,false,false);stage=19;wait=22;return false;}attack("native_player_lethal",DamageSource.causePlayerDamage(player),Math.min(1000000F,body.getMaxHealth()*4+100),false,false,false);stage=30;wait=180;return false;}
    if(stage==11){settleAttempt();stage=12;wait=22;return false;}
    if(stage==12){attack("cancel_damage",DamageSource.causePlayerDamage(player),1F,false,true,false);stage=13;wait=2;return false;}
@@ -184,9 +215,7 @@ public final class CombatNativeChecks {
    if(stage==30){settleAttempt();if((d.id.contains("forest")||d.id.contains("fire"))&&body.isEntityAlive()&&variantIndex==3){attack("edo_administrative_source_diagnostic_NOT_NORMAL_VICTORY",DamageSource.OUT_OF_WORLD,1000000F,false,false,false);coveredRetreat();stage=31;wait=180;return false;}endVariant();return false;}
    if(stage==31){settleAttempt();variant.addProperty("administrative_source_is_normal_player_terminal",false);endVariant();return false;}
   }catch(Throwable error){failures.add(error.toString());row.addProperty("failed_stage",stage);row.addProperty("failed_variant",variantIndex);if(run!=null)row.addProperty("retained_run_state",state());if(variant!=null){variant.addProperty("passed",false);variant.addProperty("native_failure",error.toString());variant.addProperty("participant_health_at_failure",player.getHealth());try{if(attempt!=null)settleAttempt();}catch(Throwable trace){variant.addProperty("final_event_trace_error",trace.toString());}}
-   cancelAttack=cancelDamage=cancelDeath=inAttempt=false;boolean recovered=false;
-   try{JsonObject own=ArenaDirector.run(d);if(own!=null&&!ownedRun.equals(ArenaDirector.text(own,"run")))throw new IllegalStateException("Preexisting failed fixture retained; clean isolated combat candidate required");if(own!=null){Entity actor=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(own,"boss_uuid")));if(actor==body&&variantIndex==1)actor.getEntityData().setString("HbvArenaRun",savedRun);}officialRespawn("failed variant"+variantIndex+" "+d.id);player.setGameType(GameType.SURVIVAL);guide(d.exit);if(own!=null&&own.getAsJsonObject("members").has(player.getUniqueID().toString()))ArenaDirector.exit(player,d,own);if(own!=null)ArenaDirector.reset(d,own);recovered=own==null||ArenaDirector.text(own,"state").equals("AVAILABLE");if(variant!=null)variant.addProperty("failed_case_official_respawn_empty_reset",recovered);}catch(Throwable cleanup){row.addProperty("failure_recovery_observation",cleanup.toString());}
-   body=null;control=null;run=null;attempt=null;if(recovered){variantIndex++;stage=0;wait=10;}else{finishArena();wait=3;}}
+   cancelAttack=cancelDamage=cancelDeath=inAttempt=false;beginCleanup();}
   return false;
  }
  private static final class Loot {Entity entity;LivingDropsEvent drop;LivingExperienceDropEvent xp;int before;}

@@ -340,6 +340,50 @@ def audit_stadium(volume):
         'scope':'actual exported nonair architecture with bounded last-writer layer labels; excludes terrain/foundation, supports-only, routes, fluids, anchors and markers; not native support/playability'}
 
 
+def audit_route_light_fixtures(volume, geometry):
+    """Read declared exposed fixture paths from output, without simulating native light."""
+    fixtures=geometry.get('route_light_fixtures')
+    if fixtures is None:
+        return {'status':'NOT_PROVIDED','count':0,'scope':'no exposed-fixture metadata in this candidate'}
+    failures=[]
+    if not isinstance(fixtures,list) or len(fixtures)>50000:
+        return {'status':'FAIL','count':0,'failures':['Invalid or excessive exposed-fixture list']}
+    route_nodes={name:set(_sample_route(points.get('points',[]) if isinstance(points,dict) else points))
+                 for name,points in geometry.get('routes',{}).items()}
+    transmitting={0,20,95,102,160,169}
+    def point(value):
+        return (isinstance(value,(list,tuple)) and len(value)==3 and
+                all(type(v) is int for v in value) and volume.in_bounds(*value))
+    for index,fixture in enumerate(fixtures):
+        issue=None
+        if not isinstance(fixture,dict): issue='invalid fixture object'
+        else:
+            pos=fixture.get('position');support=fixture.get('attached_to')
+            served=fixture.get('served_at');path=fixture.get('air_path')
+            distance=fixture.get('distance')
+            if not all(point(p) for p in (pos,support,served)):
+                issue='invalid fixture/support/served coordinate'
+            elif fixture.get('block')!=169 or fixture.get('meta')!=0 or volume.block(*pos)!=169 or volume.meta(*pos)!=0:
+                issue='fixture is not actual expected sea lantern/meta0'
+            elif sum(abs(a-b) for a,b in zip(pos,support))!=1 or volume.block(*support) in NO_COLLISION|FLUIDS|{18,161}:
+                issue='fixture lacks adjacent solid non-leaf bearing'
+            elif tuple(served) not in route_nodes.get(fixture.get('route'),set()):
+                issue='served point is absent from authored dense route'
+            elif (type(distance) is not int or not 1<=distance<=7 or not isinstance(path,list) or
+                  len(path)!=distance+1 or not all(point(p) for p in path) or path[0]!=served or path[-1]!=pos):
+                issue='invalid bounded path or endpoints'
+            elif any(sum(abs(a-b) for a,b in zip(p,q))!=1 for p,q in zip(path,path[1:])):
+                issue='path includes nonadjacent step'
+            elif any(volume.block(*p) not in transmitting for p in path[:-1]):
+                issue='opaque output block interrupts exposed path'
+        if issue and len(failures)<100: failures.append({'index':index,'reason':issue})
+    design=geometry.get('route_light_path_design',{})
+    if design.get('added_exposed_fixtures')!=len(fixtures):
+        failures.append({'reason':'fixture count differs from design metadata'})
+    return {'status':'FAIL' if failures else 'PASS','count':len(fixtures),'failures':failures,
+            'maximum_path_edges':7,'scope':'every declared added fixture, bearing and transparent path checked against actual output bytes; native block light and whole-route light coverage NOT PROVEN'}
+
+
 def audit_arena(row, manifest_dir):
     relative = row.get('schematic', row.get('file'))
     path = _safe_path(Path(manifest_dir)/relative)
@@ -457,6 +501,8 @@ def audit_arena(row, manifest_dir):
         if layer_report['status']!='PASS': failures.append('missing or corrupt structural layer occupancy witnesses')
         stair_report=audit_stairs(v,geometry)
         if stair_report['status']!='PASS': failures.append('missing or corrupt walking stair geometry')
+        fixture_report=audit_route_light_fixtures(v,geometry)
+        if fixture_report['status']=='FAIL': failures.append('invalid exposed route light fixture or opaque path')
         stadium_report=audit_stadium(v)
         if stadium_report['status']!='PASS': failures.append('stadium itself does not satisfy full500x500x250 architectural occupancy')
         routes = geometry.get('routes',{})
@@ -527,6 +573,7 @@ def audit_arena(row, manifest_dir):
             'walking_network':{'nodes':len(walk_nodes),'reachable':len(connected),'unreachable_anchors':unreachable},
             'layer_checks':layer_report,
             'walking_stairs':stair_report,
+            'route_light_fixtures':fixture_report,
             'stadium_geometry':stadium_report,
             'scope':'independent offline output bytes; native collision/light/physics/boss/gameplay NOT RUN'}
 

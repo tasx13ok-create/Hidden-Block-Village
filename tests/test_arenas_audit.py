@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from tools.world_merge import nbt
-from tools.arenas.audit import AuditError, Reader, readback, _standing, audit_layer_checks, audit_stairs, audit_stadium
+from tools.arenas.audit import AuditError, Reader, readback, _standing, audit_layer_checks, audit_stairs, audit_stadium, audit_route_light_fixtures
 
 
 def fixture(path, blocks=None, data=None, add=None, size=(3,5,3),owners=None,names=None,tiles=None):
@@ -118,6 +118,29 @@ class IndependentReadbackTests(unittest.TestCase):
             fixture(path,owners=bytes(44),names={'1':'stadium_structure'})
             with self.assertRaisesRegex(AuditError,'ArenaLayers length'):
                 with readback(path): pass
+
+    def test_exposed_light_path_rejects_opaque_stairs_and_lost_bearing(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)/'t.schematic';blocks=bytearray(45)
+            blocks[13]=169;blocks[4]=98
+            geometry={'routes':{'primary':[[0,1,1]]},
+                'route_light_path_design':{'added_exposed_fixtures':1},
+                'route_light_fixtures':[{'position':[1,1,1],'block':169,'meta':0,
+                    'attached_to':[1,0,1],'route':'primary','served_at':[0,1,1],
+                    'air_path':[[0,1,1],[1,1,1]],'distance':1}]}
+            fixture(path,blocks=blocks)
+            with readback(path) as v:
+                self.assertEqual(audit_route_light_fixtures(v,geometry)['status'],'PASS')
+            blocks[12]=53
+            fixture(path,blocks=blocks)
+            with readback(path) as v:
+                report=audit_route_light_fixtures(v,geometry)
+                self.assertEqual(report['status'],'FAIL')
+                self.assertIn('opaque',report['failures'][0]['reason'])
+            blocks[12]=0;blocks[4]=9
+            fixture(path,blocks=blocks)
+            with readback(path) as v:
+                self.assertEqual(audit_route_light_fixtures(v,geometry)['status'],'FAIL')
 
     def test_tile_unknown_tags_and_numeric_types_preserved(self):
         with tempfile.TemporaryDirectory() as temp:

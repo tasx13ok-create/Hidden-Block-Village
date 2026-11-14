@@ -105,8 +105,23 @@ def config_from_manifest(manifest_path):
         services=[anchor('prep'),room_point('aid','prep'),room_point('workshop','prep')]
         samples=[]
         for name,points in a.get('geometry',{}).get('routes',{}).items():
-            for p in points[::8]+points[-1:]:samples.append({'name':name,'at':[int(v)+minimum[i] for i,v in enumerate(p)]})
-        for room in rooms:samples.append({'name':room['name'],'at':[int(v)+minimum[i] for i,v in enumerate(room['standing'])]})
+            for p in points[::8]+points[-1:]:samples.append({'name':name,'traversal':'walk','at':[int(v)+minimum[i] for i,v in enumerate(p)]})
+        for room in rooms:
+            wet=bool(room.get('water_route'))
+            sample={'name':room['name'],'traversal':'swim' if wet else 'walk','at':[int(v)+minimum[i] for i,v in enumerate(room['standing'])]}
+            if wet:
+                sample.update(wet_bounds=[int(v)+minimum[i%3] for i,v in enumerate(room['bounds'])],dry_exit=anchor('entry'))
+                wet_definitions=list(a.get('geometry',{}).get('wet_routes',{}).values())
+                if len(wet_definitions)==1:sample['wet_path']=[[int(v)+minimum[i] for i,v in enumerate(p)] for p in wet_definitions[0]['points']]
+                elif len(wet_definitions)>1:raise ValueError('Multiple wet routes require explicit room association')
+            samples.append(sample)
+        wet_rooms=[r for r in rooms if r.get('water_route')]
+        for name,route in a.get('geometry',{}).get('wet_routes',{}).items():
+            points=route['points']
+            for p in points[::8]+points[-1:]:
+                sample={'name':'wet:'+name,'traversal':'swim','at':[int(v)+minimum[i] for i,v in enumerate(p)],'dry_exit':anchor('entry'),'wet_path':[[int(v)+minimum[i] for i,v in enumerate(point)] for point in points]}
+                if wet_rooms:sample['wet_bounds']=[int(v)+minimum[i%3] for i,v in enumerate(wet_rooms[0]['bounds'])]
+                samples.append(sample)
         containers=[{'name':c['room'],'at':[int(v)+minimum[i] for i,v in enumerate(c['position'])], 'front':[int(v)+minimum[i] for i,v in enumerate(c['front'])]} for c in a.get('geometry',{}).get('containers',[])]
         lights=[[int(v)+minimum[i] for i,v in enumerate(p)] for p in a.get('geometry',{}).get('light_sources',[])]
         prison=a.get('geometry',{}).get('water_prison')
@@ -153,7 +168,7 @@ def stage_runtime(world,manifest_path,dest,registry_only=False,pending_sources=F
     save(dest/'config/naruto-arenas.json',config_from_manifest(manifest_path))
     if not registry_only:
         world=no_links(world)
-        if not (world/'level.dat').is_file() or (world/'playerdata').exists():raise ValueError('Only fresh staged arena world without playerdata is accepted')
+        if not (world/'level.dat').is_file() or any(p.is_file() for p in (world/'playerdata').glob('**/*')):raise ValueError('Only fresh staged arena world without playerdata is accepted')
         before=tree(world)
         for r in before:verified_copy(world/r['path'],dest/'arena-preview'/r['path'],r['sha256'])
         if tree(world)!=before:raise ValueError('Staged world changed during copy')
@@ -171,7 +186,7 @@ def stage_runtime(world,manifest_path,dest,registry_only=False,pending_sources=F
     save(dest/'PRIVATE-ARENA-NATIVE-INPUTS.json',result);return result
 
 
-def boot(runtime,iteration,registry_only=False,controller_only=False,restart_only=False,port=None,nether_only=False,boat_only=False):
+def boot(runtime,iteration,registry_only=False,controller_only=False,restart_only=False,port=None,nether_only=False,boat_only=False,wet_only=False,lighting_only=False,gaara_only=False,load_only=False):
     runtime=no_links(runtime)
     inputs=json.loads((runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json').read_text())
     if digest(runtime/MAGMA)!=MAGMA_SHA:raise ValueError('Runtime drift')
@@ -179,6 +194,7 @@ def boot(runtime,iteration,registry_only=False,controller_only=False,restart_onl
         if digest(runtime/'mods'/r['file'])!=r['sha256']:raise ValueError('Production module drift')
     arena=inputs['arena_module']
     if digest(runtime/'mods'/Path(arena['runtime_mod']).name)!=arena['sha256']:raise ValueError('Arena module drift')
+    if digest(runtime/'mods'/Path(arena['private_qa']['path']).name)!=arena['private_qa']['sha256']:raise ValueError('Private QA module drift')
     port=inputs.get('loopback_port',25612) if port is None else port
     if not isinstance(port,int) or not 1024<=port<=65535:raise ValueError('Invalid loopback port')
     props=dict(line.split('=',1) for line in (runtime/'server.properties').read_text().splitlines() if '=' in line and not line.startswith('#'))
@@ -192,6 +208,10 @@ def boot(runtime,iteration,registry_only=False,controller_only=False,restart_onl
     if restart_only:argv.append('-Dhbv.arenas.restartOnly=true')
     if nether_only:argv.append('-Dhbv.arenas.netherOnly=true')
     if boat_only:argv.append('-Dhbv.arenas.boatOnly=true')
+    if wet_only:argv.append('-Dhbv.arenas.wetOnly=true')
+    if lighting_only:argv.append('-Dhbv.arenas.lightingOnly=true')
+    if gaara_only:argv.append('-Dhbv.arenas.gaaraOnly=true')
+    if load_only:argv.append('-Dhbv.arenas.loadOnly=true')
     argv+=['-jar',str(runtime/MAGMA),'nogui']
     log=runtime/f'PRIVATE-ARENA-BOOT-{iteration}.log';started=time.monotonic();receipt={'started_utc':datetime.now(timezone.utc).isoformat(),'iteration':iteration,'forced_termination':False}
     with log.open('xb') as out:
@@ -211,6 +231,39 @@ def boot(runtime,iteration,registry_only=False,controller_only=False,restart_onl
     return receipt
 
 
+def saved_light_arrays(world,manifest_path):
+    """Read actual saved Anvil nibbles while stopped, before any second boot."""
+    from collections import OrderedDict
+    from tools.world_merge import nbt
+    from tools.world_merge.anvil import Region
+    world=no_links(world);regions=OrderedDict();chunks=OrderedDict();failures=[];tested=0
+    def level_at(x,z):
+        key=(x>>4,z>>4)
+        if key not in chunks:
+            region_key=(x>>9,z>>9)
+            if region_key not in regions:
+                regions[region_key]=Region(world/'region'/('r.%d.%d.mca'%region_key))
+                if len(regions)>2:regions.popitem(last=False)
+            found=regions[region_key].load_chunk(((z>>4)&31)*32+((x>>4)&31))
+            if found is None:raise ValueError('Saved initialization chunk missing')
+            chunks[key]=found[1]['Level']
+            if len(chunks)>64:chunks.popitem(last=False)
+        return chunks[key]
+    for d in config_from_manifest(manifest_path)['arenas']:
+        points=[{'name':'anchor:'+k,'at':d[k]} for k in ('entry','boss_anchor','reward','exit')]+d['samples']
+        for sample in points:
+            x,y,z=sample['at'];level=level_at(x,z);section=next((s for s in level['Sections'].value if s.scalar('Y')==y>>4),None);light=0
+            if section is not None and 'BlockLight' in section:
+                packed=section['BlockLight'].value
+                if len(packed)!=2048:raise ValueError('Unexpected native saved light nibble length')
+                i=((y&15)*16+(z&15))*16+(x&15);light=(packed[i>>1]>>(4*(i&1)))&15
+            tested+=1
+            if light<8:failures.append({'arena':d['id'],'name':sample['name'],'at':sample['at'],'saved_block_light':light})
+    profile_files=[p.relative_to(world).as_posix() for p in (world/'playerdata').glob('**/*') if p.is_file()]
+    _,root=nbt.load(world/'level.dat');rules=root['Data']['GameRules'];random_tick_speed=rules['randomTickSpeed'].value if 'randomTickSpeed' in rules else None
+    return {'scope':'ACTUAL_SAVED_ANVIL_BLOCKLIGHT_BEFORE_NEXT_PROCESS_NO_RELIGHT','tested_points':tested,'failures':failures,'playerdata_files':profile_files,'randomTickSpeed_saved':random_tick_speed,'passed':not failures and not profile_files and random_tick_speed=='3'}
+
+
 def run_checks(candidate,cases='all',pending_sources=False,port=25612):
     candidate=no_links(candidate)
     stage_path=candidate/'ARENA-STAGE.json'
@@ -222,8 +275,12 @@ def run_checks(candidate,cases='all',pending_sources=False,port=25612):
     restart_only=cases=='restart'
     nether_only=cases=='nether'
     boat_only=cases=='boat'
+    wet_only=cases=='wet'
+    lighting_only=cases=='lighting'
+    gaara_only=cases=='gaara'
+    load_only=cases=='load'
     if nether_only and not (candidate/'ARENA-NETHER-STAGE.json').is_file():raise ValueError('Exact cold Nether stage marker required')
-    if cases not in ('all','registry','controller','restart','nether','boat'):raise ValueError('Unknown native case selection')
+    if cases not in ('all','registry','controller','restart','nether','boat','wet','lighting','gaara','load'):raise ValueError('Unknown native case selection')
     for index in range(1,100):
         runtime=candidate.parent/(candidate.name+f'-native-{index:02d}')
         if not runtime.exists():break
@@ -232,12 +289,16 @@ def run_checks(candidate,cases='all',pending_sources=False,port=25612):
     staged=stage_runtime(candidate,manifest,runtime,registry_only,pending_sources,port)
     boots=[]
     for iteration in range(1,8 if restart_only else 3):
-        receipt=boot(runtime,iteration,registry_only,controller_only,restart_only,port,nether_only,boat_only)
+        receipt=boot(runtime,iteration,registry_only,controller_only,restart_only,port,nether_only,boat_only,wet_only,lighting_only,gaara_only,load_only)
+        if lighting_only and receipt['clean_shutdown']:
+            receipt['saved_native_light_arrays']=saved_light_arrays(runtime/'arena-preview',manifest)
+            save(runtime/f'PRIVATE-SAVED-LIGHT-{iteration}.json',receipt['saved_native_light_arrays'])
         boots.append(receipt)
-        if not receipt['clean_shutdown'] or not receipt['native_result'] or (restart_only and not receipt['native_result'].get('passed',False)):break
+        if not receipt['clean_shutdown'] or not receipt['native_result'] or (restart_only and not receipt['native_result'].get('passed',False)) or (lighting_only and not receipt.get('saved_native_light_arrays',{}).get('passed',False)):break
     passed=len(boots)==(7 if restart_only else 2) and all(b['clean_shutdown'] and b['native_result'] and b['native_result'].get('passed',False) for b in boots)
     if restart_only:passed=passed and boots[-1]['native_result'].get('native_restart_cases',{}).get('all_seven_boots_complete',False)
-    report={'schema':1,'scope':'ISOLATED_NATIVE_BOAT_ONLY' if boat_only else 'ISOLATED_NATIVE_NETHER_ONLY' if nether_only else 'REAL_SEVEN_PROCESS_RESTART_ONLY' if restart_only else 'REGISTRY_ONLY' if registry_only else 'FOCUSED_CONTROLLER_ONLY_NO_GEOMETRY_ACCEPTANCE' if controller_only else 'NATIVE_GEOMETRY_CONTROLLER_DIAGNOSTIC','runtime':str(runtime),'inputs_sha256':digest(runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json'),
+    if lighting_only:passed=passed and all(b.get('saved_native_light_arrays',{}).get('passed',False) for b in boots)
+    report={'schema':1,'scope':'STANDALONE_ACTIVE_ENCOUNTER_LOAD_ONLY_COLD_PREP_SEPARATE' if load_only else 'TARGETED_PRODUCTION_NATIVE_GAARA_TERMINAL_ONLY' if gaara_only else 'PROFILE_FREE_NATIVE_LIGHT_INITIALIZATION_ONLY' if lighting_only else 'ISOLATED_NATIVE_WET_ONLY' if wet_only else 'ISOLATED_NATIVE_BOAT_ONLY' if boat_only else 'ISOLATED_NATIVE_NETHER_ONLY' if nether_only else 'REAL_SEVEN_PROCESS_RESTART_ONLY' if restart_only else 'REGISTRY_ONLY' if registry_only else 'FOCUSED_CONTROLLER_ONLY_NO_GEOMETRY_ACCEPTANCE' if controller_only else 'NATIVE_GEOMETRY_CONTROLLER_DIAGNOSTIC','runtime':str(runtime),'inputs_sha256':digest(runtime/'PRIVATE-ARENA-NATIVE-INPUTS.json'),
             'boots':boots,'passed':bool(passed),'loopback_port':port,
             'full_encounter_acceptance':False,'graphical_acceptance':'NOT_RUN_OWNER_KEEP_CLOSED','remaining':['native full encounter and protection gates','client rendering']}
     save(runtime/'PRIVATE-ARENA-NATIVE-SUMMARY.json',report)

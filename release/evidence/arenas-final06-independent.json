@@ -1,0 +1,431 @@
+{
+  "schema": 1,
+  "scope": "FINAL06_INDEPENDENT_OFFLINE_AND_EXPLICITLY_BOUNDED_NATIVE_EVIDENCE",
+  "status": "PASS_RECORDED_SCOPES_ONLY",
+  "created_utc": "2026-11-14T19:28:50.590332+00:00",
+  "full_suite_acceptance": "NOT_CLAIMED",
+  "load_acceptance": "NOT_CLAIMED",
+  "client_and_shader_acceptance": "NOT_RUN_OWNER_KEEP_MINECRAFT_CLOSED",
+  "privacy": {
+    "aggregate_metadata_and_hashes_only": true,
+    "private_world_or_player_records_included": false,
+    "player_or_entity_UUIDs_included": false,
+    "artifact_references_are_private_labels_not_public_file_locations": true
+  },
+  "identity": {
+    "manifest_sha256": "15c20b1eb54f0767d50fed07700036218dcbc32c1c5594e37daabfe985fd544d",
+    "generator_source_sha256": "5abb0df448b3dfde1019c571164cf54c9f9c38d315891a66dcf470c02a7a6c46",
+    "source_drift": false,
+    "arenas": [
+      {
+        "id": "arena_forest_root_coliseum_v1",
+        "dimensions_xyz": [
+          500,
+          250,
+          500
+        ],
+        "cells": 62500000,
+        "schematic_sha256": "87b6fd29ed78949aad0e9e051ab324ee00cd3168c16a961f734a6c0f85b69f70",
+        "schematic_bytes": 1575345
+      },
+      {
+        "id": "arena_cloud_storm_coliseum_v1",
+        "dimensions_xyz": [
+          500,
+          250,
+          500
+        ],
+        "cells": 62500000,
+        "schematic_sha256": "1437d16111ae9b1a10efb1963bfffc4144269d7bb4b0325d68451e43b3ab425f",
+        "schematic_bytes": 1908684
+      },
+      {
+        "id": "arena_sand_kazekage_coliseum_v1",
+        "dimensions_xyz": [
+          500,
+          250,
+          500
+        ],
+        "cells": 62500000,
+        "schematic_sha256": "139249aedd1e4f100d3378cd1d45d96e020f210e0aa868d2e19f54cdbb859dfc",
+        "schematic_bytes": 2958948
+      },
+      {
+        "id": "arena_mist_shark_coliseum_v1",
+        "dimensions_xyz": [
+          500,
+          250,
+          500
+        ],
+        "cells": 62500000,
+        "schematic_sha256": "34d4bbe2c668820ae15c2676b8af80dad2fd5b7078d1609bb2219145a4da74b5",
+        "schematic_bytes": 1546188
+      },
+      {
+        "id": "arena_fire_ashen_coliseum_v1",
+        "dimensions_xyz": [
+          500,
+          250,
+          500
+        ],
+        "cells": 62500000,
+        "schematic_sha256": "4d4d71ae0563c72a7f4aa9285bbfbb9d2c90fb15d4687535c7fbf1f74273bf11",
+        "schematic_bytes": 2202576
+      }
+    ]
+  },
+  "offline": {
+    "strict_audit": {
+      "status": "PASS",
+      "source_sha256": "dfcfeb458ef04d08c64709d8cdd53f93a126c0006043bbad7326a31e2b23fd8a",
+      "full_written_cells": 312500000,
+      "exposed_fixture_paths": 1007,
+      "scope": "Independent streamed output NBT: palette/meta, dimensions/architectural occupancy, fluids/gravity, anchors/routes/headroom, tiles and sampled surviving structural witnesses. Not native collision, light or whole-game acceptance."
+    },
+    "fresh_stage": {
+      "status": "PASS_OFFLINE_STAGING",
+      "source_sha256": "c0849b0fca9dba4ba7ddf0b78232173d79516bb8ddd3f207f15dd1d458fc524e",
+      "world_marker_sha256": "68a7a04aa95890ef465ba452273de41e6eecc4a175ca0f6286d29808ee1db7fc",
+      "original_world_imported": false,
+      "fresh_world_only_keepInventory_and_keepNinjaXp": true
+    },
+    "full_anvil_roundtrip": {
+      "status": "PASS",
+      "compared_cells": 312500000,
+      "typed_chests": 25,
+      "plot_chunks": 5120
+    },
+    "zero_buffers": {
+      "status": "PASS",
+      "chunks": 1360,
+      "all_256_height_block_meta_cells": 89128960,
+      "no_tiles_entities_or_ticks": true,
+      "inventory_sha256": "3e8bb88fe099e005aae48f513e1a512f48c8b25772cd23b9ec7227695e7ff004"
+    },
+    "whole_cold_restore": {
+      "status": "PASS",
+      "all_file_hashes_verified": true,
+      "files": 35,
+      "receipt_sha256": "73fa3f08f3c2ea62f31c5fc9a3877464c76f45f0353b548b8d64a2aa7b2f957e",
+      "new_destination_and_failed_candidates_preserved": true
+    },
+    "exact_05_to_06_diff": {
+      "status": "PASS",
+      "other_four_schematics_byte_identical": true,
+      "only_mist_floor_changes": 399,
+      "source_water_to_sea_lantern": 393,
+      "stonebrick_to_sea_lantern": 6,
+      "anchors_container_metadata_and_25_typed_chests_exact": true
+    },
+    "wet_bytes": {
+      "status": "PASS",
+      "authored_points": 133,
+      "width": 3,
+      "clearance": 4,
+      "source_water_cell_checks_including_overlap": 1596,
+      "supported_light_floor_cells": 399,
+      "native_breathing_or_light_claimed_by_this_byte_check": false
+    },
+    "evidence": [
+      {
+        "private_artifact_label": "build-06/manifest.json",
+        "sha256": "15c20b1eb54f0767d50fed07700036218dcbc32c1c5594e37daabfe985fd544d"
+      },
+      {
+        "private_artifact_label": "build-06/audit.json",
+        "sha256": "8d13153c1eae1fbc76212d60de9a567af028534321f2af4f023bb7c04201d1e5"
+      },
+      {
+        "private_artifact_label": "build-06/stage.json",
+        "sha256": "840f29e9fde0ab6c46968e64033d0ac26a26e592c9d9093f95147efe29da391a"
+      },
+      {
+        "private_artifact_label": "build-06/world-full.json",
+        "sha256": "fd0b0858291168221000d487dac22dc8d81523b507c313d073ffb1fd13deb46c"
+      },
+      {
+        "private_artifact_label": "build-06/buffer-audit.json",
+        "sha256": "56bd02da3c54fc2339325fd88a438a0e05667d8cd96bb39fd1266f7a157b2091"
+      },
+      {
+        "private_artifact_label": "build-06/rollback.json",
+        "sha256": "4197e89965dd52980cb692478f9c8cc7f0e0c638dd5f6794fc067953f868e14e"
+      },
+      {
+        "private_artifact_label": "build-06/exact-light-floor-diff-to-05.json",
+        "sha256": "089dbd1baa6c6a9cd74b7aea276810438bed1ab8bf77a789eb0e1a37f12802a3"
+      },
+      {
+        "private_artifact_label": "build-06/wet-route-readback.json",
+        "sha256": "98d6d5f604c8355332cee75088ea0dae93e7d6bb9da8777a57e2947927c35105"
+      },
+      {
+        "private_artifact_label": "preview-world-06.cold-snapshot.json",
+        "sha256": "73fa3f08f3c2ea62f31c5fc9a3877464c76f45f0353b548b8d64a2aa7b2f957e"
+      }
+    ]
+  },
+  "earlier_full_native_candidate_readback": {
+    "candidate_label": "preview-world-06-native-01",
+    "context": "Retained candidate had earlier QA context failures; this structural readback does not accept its entire suite.",
+    "raw_exact_match_status": "FAIL",
+    "classification": {
+      "status": "PASS_BOUNDED_CLASSIFICATION_RAW_EXACT_MATCH_FAIL_RETAINED",
+      "compared_block_meta_cells": 312500000,
+      "typed_chests_compared": 25,
+      "forest_grass_to_dirt_cells": 13383,
+      "all_changed_grass_source_layer": "terrain_and_foundation",
+      "all_changed_grass_native_block_and_sky_light": [
+        0,
+        0
+      ],
+      "actual_above_block_counts": {
+        "2": 12827,
+        "5": 222,
+        "98": 105,
+        "3": 73,
+        "17": 156
+      },
+      "other_authored_block_meta_changes": 0,
+      "chests_only_adding_native_empty_Lock": 25,
+      "all_other_typed_tile_fields_exact": true,
+      "candidate_unchanged_during_readback": true,
+      "verification_source_sha256": "7b0689a4aa47ad32524bfff6301e376969e9d5b0b05961d0dd897d6839cdfe18",
+      "cause_limit": "Covered dark terrain is consistent with native grass decay. No exclusive cause or universal jutsu grief protection inferred."
+    },
+    "evidence": [
+      {
+        "private_artifact_label": "preview-world-06-native-01/PRIVATE-ARENA-BOOT-2.json",
+        "sha256": "bc93508ce31eecde4d522bf20ec615d913935f461ddcac372a97c7833bcf2b7b"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-01/PRIVATE-POST-NATIVE-FULL-READBACK.json",
+        "sha256": "9645456ee72e20e233531461c2eb225c566376af835f5bd2a68c24b29831b9f3"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-01/PRIVATE-POST-NATIVE-DIFFERENCES.json",
+        "sha256": "f6b6c09b0d5c3a9f2c330fcd28b64001f29056992a47069a32a1cfac6ee555fb"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-01/PRIVATE-GRASS-COVER-LIGHT-LAYERS.json",
+        "sha256": "4d04a9a055a82a18df4c79a5bec3b21d89fda4e4c75a0d63889c63006053e4b2"
+      }
+    ]
+  },
+  "seven_semantic_restart_boots": {
+    "status": "PASS_RESTART_AND_SAVED_ENTITY_CLEANUP_SCOPES",
+    "candidate_label": "preview-world-06-restart-resume-01",
+    "successful_clean_processes": 7,
+    "logical_boots": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "clean_boot_receipts": [
+      {
+        "process_iteration": 1,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 2,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 4,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 5,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 6,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 7,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 8,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      }
+    ],
+    "one_failed_process_retained": {
+      "phase": "JVM resource/commit failure during FML initialization before world load",
+      "counted_as_success": false,
+      "resumed_in_new_whole_hash_verified_copy": true,
+      "rollback_claimed_for_resume": false
+    },
+    "final_five_states": "AVAILABLE",
+    "final_five_member_counts": 0,
+    "final_five_journal_cell_counts": 0,
+    "entity_scan": {
+      "status": "PASS",
+      "saved_overworld_chunks": 6681,
+      "required_plot_buffer_chunks": 6480,
+      "additional_saved_chunks": 201,
+      "recursive_passengers_included": true,
+      "exact_last_owned_bosses_absent": 5,
+      "exact_owned_Ay_allies_absent": 1,
+      "unexpected_new_living_actors": 0,
+      "orphan_replacement_services": 0,
+      "duplicate_UUIDs": 0,
+      "saved_player_entities": 0,
+      "authentic_registered_services": 10,
+      "recorded_service_identity_checks_exact": true,
+      "known_pre_run_baseline_Residents_preserved": 3,
+      "service_role_capacity": 15,
+      "provisioning_scope": "Restart-only fixture provisioned10/15 roles; no claim all15 existed. Three preserved baseline Residents are distinct. Offline player saves are not live chunk entities.",
+      "candidate_unchanged_during_readback": true
+    },
+    "raw_exact_match_status": "FAIL",
+    "structural_classification": {
+      "status": "PASS_BOUNDED_CLASSIFICATION_RAW_EXACT_MATCH_FAIL_RETAINED",
+      "compared_block_meta_cells": 312500000,
+      "typed_chests_compared": 25,
+      "forest_grass_to_dirt_cells": 3563,
+      "all_changed_grass_source_layer": "terrain_and_foundation",
+      "all_changed_grass_native_block_and_sky_light": [
+        0,
+        0
+      ],
+      "actual_above_block_counts": {
+        "2": 2900,
+        "3": 174,
+        "5": 354,
+        "98": 117,
+        "17": 18
+      },
+      "other_authored_block_meta_changes": 0,
+      "chests_only_adding_native_empty_Lock": 6,
+      "all_other_typed_tile_fields_exact": true,
+      "candidate_unchanged_during_readback": true,
+      "verification_source_sha256": "7b0689a4aa47ad32524bfff6301e376969e9d5b0b05961d0dd897d6839cdfe18",
+      "cause_limit": "Covered dark terrain is consistent with native grass decay. No exclusive cause or universal jutsu grief protection inferred."
+    },
+    "evidence": [
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-RESTART-RESUME-SUMMARY.json",
+        "sha256": "e2039ea6b431bc594f9fcf9eb5aa106807fdc76aee1019aa5bf8a8101a8813e8"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-RESUME-COLD-COPY.json",
+        "sha256": "a0c56af755d6ea0614bc337f8cb1dbb03f8c79a71bc4997e17c6973ab34a3355"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-ARENA-BOOT-8.json",
+        "sha256": "81b7dc1767a281e84241758120dc4e45be2d66b3bfd87e76d28df1e2e1db4e34"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-POST-RESTART-ENTITY-SCAN.json",
+        "sha256": "5c2951db8c5e1d7b6a3dbc47eda69301bcf9f57ce5ffb5f30c096a3c735676b9"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-POST-RESTART-FULL-READBACK.json",
+        "sha256": "bbfd3511117b9275abb9db2c27ccc9394fbb73a6d974dc198144fb695e437d5c"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-POST-RESTART-STRUCTURE-DIFFERENCES.json",
+        "sha256": "81c1d4f6b1b3b9691fa62f3b4870624ca5127923a9bca9cb9d82bf2bb5f6fa93"
+      },
+      {
+        "private_artifact_label": "preview-world-06-restart-resume-01/PRIVATE-POST-RESTART-GRASS-CLASSIFICATION.json",
+        "sha256": "1227701ed470fcdf6032b18c2884d269b5638c0470fd8310436e4232415c7a02"
+      }
+    ]
+  },
+  "focused_wet": {
+    "status": "PASS_FOCUSED_WET_ONLY",
+    "candidate_label": "preview-world-06-native-04",
+    "summary_scope": "ISOLATED_NATIVE_WET_ONLY",
+    "inputs_sha256": "98758818107b46bb81f9cd78410c6981b81f0fb9320d885c910cf38576096d32",
+    "component_identity": {
+      "production_runtime_sha256": "7cf7275ea70dad7d8c273e1fbe24ce2e2b3d201bb0ed65508f4986421f9c8578",
+      "private_qa_sha256": "12de886859b67d9b020c171ea793a6d107299f963d3abab50881a2fe28b2dd20",
+      "excluded_sources": [],
+      "production53_cohort_sha256": "ac239179489d9c5d77f9e6e55b5e08f7dfc6f586ce93cefcb49a998faf95952e"
+    },
+    "clean_boot_receipts": [
+      {
+        "process_iteration": 1,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      },
+      {
+        "process_iteration": 2,
+        "clean_shutdown": true,
+        "exit_code": 0,
+        "forced_termination": false
+      }
+    ],
+    "each_of_two_boots": {
+      "authored_points": 133,
+      "native_connected_points": 137,
+      "submerged_body_and_world_ticks": 681,
+      "submerged_FML_END_ticks": 682,
+      "body_ticks_before_actual_reconnect": 180,
+      "body_ticks_after_actual_reconnect": 501,
+      "minimum_air": 300,
+      "health_before_and_after": 20,
+      "genuine_aid_breathing_duration": 2400,
+      "actual_stronger_existing_and_unrelated_effect_controls": true,
+      "actual_underwater_save_new_body_relogin_and_dry_recovery": true,
+      "health_air_setters_or_immunity": false,
+      "blocks_or_liquids_written": false
+    },
+    "movement_scope": "Server-guided MoverType.SELF, full native human AABB water/clearance and foot block light>=8, including pier detour and clear authored dry recovery. Not physical client input, unassisted swimming/jumping, or process restart.",
+    "retained_original_NBT_assertion": "FAIL: only typed Duration changed by one measured native FML player update inside logout; all other typed/unknown potion and curative capability tags matched.",
+    "corrected_duration_rule": "Subtract exactly measured FML player END updates, with all other typed/unknown tags byte-equal; no arbitrary tolerance. Both boots measured logout1/relogin0.",
+    "evidence": [
+      {
+        "private_artifact_label": "preview-world-06-native-04/PRIVATE-ARENA-NATIVE-INPUTS.json",
+        "sha256": "98758818107b46bb81f9cd78410c6981b81f0fb9320d885c910cf38576096d32"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-04/PRIVATE-ARENA-NATIVE-SUMMARY.json",
+        "sha256": "c758ed7a68aa36ebd56e9b03610c22932ae998a5a3dc7df059192746511efefd"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-04/PRIVATE-ARENA-CASE-1-native_wet_cases.json",
+        "sha256": "2b362f1766263a1f491ac00f8f5db7c228210e2e85ffbe855249fe9b373b36e3"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-04/PRIVATE-ARENA-CASE-2-native_wet_cases.json",
+        "sha256": "5811bb1bc4e8b7f00a5c847fe072460d3379d8b7122e6044d122b63d46a5d45b"
+      },
+      {
+        "private_artifact_label": "preview-world-06-native-03/PRIVATE-ARENA-CASE-1-native_wet_cases.json",
+        "sha256": "e9ed918d5e041228b83d7a88c9c499eb45bc210c5bf2f03a4ba7de1fe9b6c79b"
+      }
+    ]
+  },
+  "native_initialized_world_readback": {
+    "status": "PENDING_EXACT_RUNTIME_CLEAN_STOP_AND_INDEPENDENT_READBACK",
+    "full_suite_or_load_pass_inferred": false
+  },
+  "limits": [
+    "Each native candidate has its own exact identity; bounded historical/component evidence is not interchangeable with a final coherent suite.",
+    "Full-suite/load acceptance is neither established nor inferred by this receipt.",
+    "Universal native jutsu grief immunity and client/shader acceptance are not proved."
+  ]
+}

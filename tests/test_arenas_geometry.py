@@ -74,8 +74,37 @@ class FullSizeGeometryTests(unittest.TestCase):
                     self.assertEqual(2,volume.meta(*container["position"]))
                 for source in geometry["light_sources"]:
                     self.assertEqual(169,volume.block(*source))
+                lighting=geometry["route_light_path_design"]
+                self.assertGreaterEqual(lighting["conservative_minimum"],8)
+                self.assertEqual(255,lighting["stair_opacity"])
+                self.assertEqual("NOT_RUN",lighting["native_block_light_acceptance"])
+                self.assertGreater(lighting["added_exposed_fixtures"],0)
+                for fixture in geometry["route_light_fixtures"]:
+                    self.assertEqual(169,volume.block(*fixture["position"]))
+                    self.assertEqual(0,volume.meta(*fixture["position"]))
+                    self.assertNotIn(volume.block(*fixture["attached_to"]),(0,8,9,10,11,18))
+                    route=fixture["air_path"]
+                    self.assertEqual(fixture["served_at"],route[0])
+                    self.assertEqual(fixture["position"],route[-1])
+                    self.assertLessEqual(len(route)-1,7)
+                    for a,b in zip(route,route[1:]):
+                        self.assertEqual(1,sum(abs(a[i]-b[i]) for i in range(3)))
+                    for cell in route[:-1]:
+                        self.assertIn(volume.block(*cell),(0,20,95,102,160,169))
                 if kind=="mist":
                     self.assertGreater(report["block_counts"].get("9",0),1000000)
+                    wet=geometry["wet_routes"]["underwater_passage"]
+                    self.assertEqual(3,wet["width"])
+                    self.assertEqual(133,len(wet["points"]))
+                    for z in range(179,312):
+                        for x in range(154,157):
+                            self.assertEqual(169,volume.block(x,46,z))
+                            self.assertEqual(98,volume.block(x,45,z))
+                    for x,y,z in wet["points"]:
+                        for dx in (-1,0,1):
+                            for dy in range(4):self.assertEqual(9,volume.block(x+dx,y+dy,z))
+                    for z in (249,250,251):
+                        self.assertEqual(98,volume.block(155,47,z))
                     prison=geometry["water_prison"]
                     self.assertEqual([278,63,208],prison["min"])
                     self.assertEqual([292,64,222],prison["max"])

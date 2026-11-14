@@ -39,11 +39,14 @@ arena fire/jutsu protection must pass its actual runtime tests. Gallery lights
 are real source blocks, but a source count does not establish native block-light
 levels or shader acceptance.
 
-The native fixture also rejected dark monument stair samples. Lamps hidden
-below stair blocks were insufficient. The repaired output adds actual exposed
-flat-tread sources and supported head-height side emitters outside walking
-envelopes, and checks every listed source against final sea-lantern bytes.
-Native light must still be measured on the final matching export.
+The native fixture rejected dark stair samples because vanilla stairs have
+opacity255. Version1.2.1checks actual AIR/glass light paths to every dense route
+center and adds exposed emitters touching existing bearing blocks outside all
+walking and giant-form envelopes. It keeps the real stairs intact. Each added
+fixture records its source bytes, attachment and a transparent path of at most
+seven edges; the independent regression reopens and checks those cells.
+This conservative light-path design still requires native block-light measurement
+on the final matching export.
 
 Kisame's optional prison is a separate15×15basin on the northeast dry island.
 It retains two3-wide physical stair exits over the rim and leaves the main boss

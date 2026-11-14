@@ -32,6 +32,8 @@ public final class RestartNativeChecks {
  private static Path checkpoint;private static int boot,index,stage,wait,clock;
  private static boolean done;
  private static int engagementStart;
+ private static int batchStage;
+ private static final Map<String,Integer> batchStarts=new HashMap<>();
  private static final Map<String,Boolean> trust=new HashMap<>();
  private static final Set<String> startupResetSeen=new HashSet<>();
  private RestartNativeChecks(){}
@@ -53,7 +55,7 @@ public final class RestartNativeChecks {
    check(saved.getAsJsonObject("members").equals(current.getAsJsonObject("members")),"Saved party/outbox changed at load: "+d.id);
    if(ArenaDirector.text(current,"state").equals("SEALING_OBSERVE"))check(startupResetSeen.contains(d.id)&&ArenaDirector.number(current,"seal_observation_ticks")<=ArenaDirector.ticks,"Loaded observation did not restart at zero before real elapsed ticks");
   }}
-  index=stage=wait=clock=0;done=false;
+  index=stage=wait=clock=batchStage=0;batchStarts.clear();done=false;
  }
  private static JsonObject prior(ArenaDirector.Definition d){return previous.getAsJsonObject("runs").getAsJsonObject(d.id);}
  public static JsonObject result(){return report;}
@@ -97,8 +99,29 @@ public final class RestartNativeChecks {
   for(EntityPlayerMP p:new ArrayList<>(players.values()))if(server.getPlayerList().getPlayerByUUID(p.getUniqueID())==p)server.getPlayerList().playerLoggedOut(p);
   for(ArenaDirector.Definition d:definitions)d.terminal_verified=trust.get(d.id);done=true;
  }
+ /** Charge phase three together, then bind within a few ticks. Sequential
+  * forty-tick engagements could legitimately finish an early arena's 200-tick
+  * observation before the fifth arena was sealed, missing that restart gate. */
+ private static void sealBatch()throws Exception{
+  if(batchStage==0){
+   if(index>=definitions.size()){index=0;stage=0;batchStage=1;return;}
+   ArenaDirector.Definition d=definitions.get(index);JsonObject out;
+   if(stage==0){out=new JsonObject();out.addProperty("id",d.id);out.addProperty("template_sha256",d.template_sha256);rows.add(out);stage=1;}else out=rows.get(index).getAsJsonObject();
+   if(!warmSaved(d))return;
+   if(stage==1){verifyLoaded(d,out);EntityPlayerMP p=login(d);guide(p,d.entry);check(ArenaDirector.text(ArenaDirector.run(d),"state").equals("PHASE3"),"Phase3 batch did not reload actual phase");click(p,d,0);stage=2;wait=3;return;}
+   if(stage==2){JsonObject r=ArenaDirector.run(d);check(r.has("objectives")&&r.getAsJsonObject("objectives").has("3:0"),"Phase3 first physical counter missing");guide(players.get(d.id),d.entry);out.addProperty("official_reconnected_current_body",true);index++;stage=0;return;}
+  }
+  if(batchStage==1){for(ArenaDirector.Definition d:definitions){engage(players.get(d.id),d);batchStarts.put(d.id,boss(d).ticksExisted);}batchStage=2;return;}
+  if(batchStage==2){boolean charged=true;for(int i=0;i<definitions.size();i++){ArenaDirector.Definition d=definitions.get(i);defend(players.get(d.id),d);JsonObject r=ArenaDirector.run(d);int charge=r.has("seal_pressure_ticks")?ArenaDirector.number(r.getAsJsonObject("seal_pressure_ticks"),"3"):0;if(charge<40){charged=false;continue;}check(boss(d).ticksExisted>batchStarts.get(d.id),"No genuine phase3 body advance");JsonObject out=rows.get(i).getAsJsonObject();out.addProperty("actual_sequence_pressure_ticks",charge);out.addProperty("actual_pressure_body_tick_advance",boss(d).ticksExisted-batchStarts.get(d.id));}if(charged){index=stage=0;batchStage=3;}return;}
+  if(batchStage==3){if(index>=definitions.size()){for(ArenaDirector.Definition d:definitions)check(ArenaDirector.text(ArenaDirector.run(d),"state").equals("SEALING_OBSERVE"),"All five must still be actively observing at process checkpoint");finish(true,null);return;}
+   ArenaDirector.Definition d=definitions.get(index);EntityPlayerMP p=players.get(d.id);JsonObject out=rows.get(index).getAsJsonObject();
+   if(stage==0){click(p,d,1);stage=1;wait=3;return;}
+   if(stage==1){JsonObject r=ArenaDirector.run(d);check(ArenaDirector.text(r,"state").equals("SEALING_OBSERVE"),"Phase3 physical counters failed genuine sealing");guide(p,d.entry);out.addProperty("physical_seal_progress_after_reconnect",true);out.addProperty("actual_saved_state","SEALING_OBSERVE");out.addProperty("observed_before_checkpoint",ArenaDirector.number(r,"seal_observation_ticks"));out.addProperty("passed",true);index++;stage=0;}
+  }
+ }
  public static boolean tick(){if(done)return true;try{
   check(++clock<18000,"Restart boot bounded tick budget exceeded");if(--wait>0)return false;
+  if(boot==3){sealBatch();return done;}
   if(index>=definitions.size()){finish(true,null);return true;}
   ArenaDirector.Definition d=definitions.get(index);JsonObject out;if(stage==0){out=new JsonObject();out.addProperty("id",d.id);out.addProperty("template_sha256",d.template_sha256);rows.add(out);stage=1;}else out=rows.get(rows.size()-1).getAsJsonObject();
   if(!warmSaved(d))return false;JsonObject r=ArenaDirector.run(d);

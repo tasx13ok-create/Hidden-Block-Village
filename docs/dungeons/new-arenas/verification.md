@@ -81,6 +81,14 @@ Anvil/NBT defensive writers serialize output atomically; no hostile-input limits
 are increased. Initial lighting arrays are zero and LightPopulated=0: native
 relighting is a required later check, not precomputed acceptance.
 
+The exposed route-fixture audit reopens every declared new sea lantern and
+checks its exact block/meta, adjacent solid bearing, served authored route point
+and actual transparent cardinal path of at most seven edges. An opaque stair
+interrupts that path even when the source is close in Manhattan distance. This
+checks the declared added fixtures; it does not establish whole-route native
+block light. The negative test corrupts an actual path with a stair and removes
+its bearing.
+
 After staging, a separate whole-world cold snapshot is copied and every relative
 file, size and SHA256 matched. `restore_snapshot(receipt,new_destination)` verifies
 that exact complete source inventory and restores all files into a new directory.
@@ -146,6 +154,76 @@ That candidate's arena runtime JAR:
 `dc86d0ad20f57214b8fee2f3a38a03f101f9810790a3040f2306db8428474d2f`;
 private QA JAR:
 `e457d467c082afeec80335ad34dad7a3bbaf000fea089d1dcdc26c24a5c7731d`.
+
+Build05 independently passed the five-output strict audit, including 1,007 added
+exposed-fixture paths. The complete04-to05 block/meta comparison found no changed
+cell outside the old or new lighting layer. Replacing the previous lighting pass
+also removes its trim cantilevers/uprights and restores the underlying authored
+cells; an initial add-only comparison failed and remains retained. All anchors,
+container metadata and 25 typed chest payloads are identical. The scoped lighting
+replacement comparison and the raw failed assertion are separate evidence files.
+
+The pristine `preview-world-05` passed 312.5 million block/meta comparisons and all
+25 typed tile round trips, plus 89,128,960 zero-cell checks across its 1,360 buffer
+chunks. A new whole-world restore into `preview-world-rollback-05` matched all 35
+file hashes. Its manifest SHA256 is
+`4113e1f45b505c9c96637383c1311a5a1c73158df6510494ed7d1ba2033e3a8e`;
+the cold receipt SHA256 is
+`6afdaaf8b4cc9ed3bf70fb5e5aa19862c32209d1f3481fd28549ac0784730782`.
+These are offline results. Native lighting/gameplay and post-native structural
+readback must bind a cleanly terminated copy of this exact candidate.
+
+The [final06 independent receipt](../../../release/evidence/arenas-final06-independent.json)
+consolidates safe aggregate results and exact hashes of the private evidence.
+It accepts only its named scopes; it does not claim a complete native suite,
+load acceptance, physical client input or shader acceptance.
+
+Build06 passed the independent strict audit and fresh-world staging. Every one
+of the 312.5 million block/meta pairs and all 25 typed chest payloads matched
+the staged Anvil world. The 1,360 buffer chunks contained 89,128,960 zero
+block/meta cells and no entities, tiles or ticks. A whole cold restore matched
+all 35 file hashes. The exact05-to06 comparison found only the intended 399
+Mist floor lights: 393 water cells and six stonebrick cells became sea lanterns.
+The other four schematics, every anchor and all typed chest payloads were
+unchanged. Independent wet-route readback checked all 133 authored points
+across the three-wide, four-high source-water envelope and supported light strip.
+
+Two stopped native snapshots retain raw exact-match failures rather than being
+presented as byte-identical worlds. The earlier full-controller candidate had
+13,383 Forest grass-to-dirt changes; the seven-boot restart candidate had 3,563.
+Every changed cell belonged to terrain/foundation, was covered by an opaque
+block and had native saved block/sky light zero. All other authored blocks/meta
+matched. Chest differences were only native empty `Lock` strings, on 25 and six
+chests respectively; inventories and all other typed fields matched. These
+observations are consistent with covered-grass decay and establish the bounded
+absence of architectural changes in those snapshots. They do not prove an
+exclusive cause or universal native jutsu grief immunity.
+
+The restart case completed seven successful logical boots, zero through six.
+One separate JVM resource failure before world load remains retained; continuation
+used a new whole-hash-verified copy, without claiming a rollback. At final save,
+all five runs were AVAILABLE with no members or journal cells. Independent entity
+readback covered every 6,480 plot/buffer chunk and 201 additional saved Overworld
+chunks, including passengers. All five exact last-owned boss UUIDs and the owned
+Ay ally UUID were absent, with no replacement actors, duplicates or saved players.
+The actual saved actors were ten authentic registered service villagers and
+three preserved baseline Residents. The restart-only fixture had provisioned
+ten of fifteen possible service roles; the receipt does not infer fifteen actors.
+
+Focused Wet checks passed on both clean boots: each official survival body
+traversed every authored point, spent 681 real body/world ticks submerged,
+reconnected underwater and reached an actual supported dry recovery. Genuine
+camp aid supplied 2,400 ticks of breathing, preserved stronger existing and
+unrelated effects, and respected its cooldown. Health remained 20 and air 300;
+the case used no health/air setters, immunity or world writes. Movement was
+explicit server-guided `MoverType.SELF`, not client swimming input. The retained
+original potion equality failure was traced to one real FML player update inside
+logout. The corrected check subtracts exactly measured updates from Duration and
+requires every other typed and unknown potion/curative capability tag to match.
+
+The initialized native world still needs its own independent readback after the
+runtime owner announces its exact clean stop. That pending row is kept separate
+from the completed offline, stopped-snapshot, restart and focused Wet evidence.
 
 Private authoring dependencies: NumPy 2.2.6 for bounded full-output scans and chunk
 conversion; Pillow 11.2.1 for the integrator's offline raster previews. They are

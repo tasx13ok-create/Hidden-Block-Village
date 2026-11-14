@@ -5,7 +5,9 @@ import java.util.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.*;
 import net.minecraft.world.WorldServer;
@@ -97,6 +99,7 @@ public final class ArenaServices {
    }else if(key.endsWith("/stores")){
     ArenaDirector.tell(p,"The workshop and stadium service rooms have ordinary usable storage chests. Prepare supplies before the court. Your inventory stays yours; preview does not grant earned economy.");
    }else{
+    if(!ArenaDirector.eligible(p,false)){ArenaDirector.tell(p,"Camp treatment is available in Survival mode.");return;}
     boolean fighting=run!=null&&run.getAsJsonObject("members").has(p.getUniqueID().toString())&&(state.startsWith("PHASE")||state.startsWith("SEALING"));
     if(fighting){ArenaDirector.tell(p,"Return after leaving the active fight for camp treatment. The short return remains marked.");return;}
     NBTTagCompound data=RewardOutbox.receipts(p);long now=p.world.getTotalWorldTime();String timer="campAid/"+d.id;
@@ -108,7 +111,15 @@ public final class ArenaServices {
     if(view.ready()&&"narutomod".equals(view.provider)&&Double.isFinite(view.amount)&&Double.isFinite(view.maximum)){
      double restored=MoveCost.restore(p,40);if(Double.isFinite(restored)&&restored>0)chakra=restored;
     }
-    if(p.getHealth()>before||chakra>0){data.setLong(timer,now+300);RewardOutbox.flush(p);ArenaDirector.tell(p,String.format(java.util.Locale.ROOT,"Camp treatment: +%.1f health, +%.1f chakra.",Math.max(0,p.getHealth()-before),chakra));}
+    // A legitimate timed camp benefit for the optional submerged passage.
+    // Existing effects are never combined, downgraded, replaced or removed.
+    // This is not a phase-owned effect: it expires normally after two minutes.
+    boolean breathing=false;
+    if(d.water&&!p.isPotionActive(MobEffects.WATER_BREATHING)){
+     p.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING,2400,0));
+     breathing=p.isPotionActive(MobEffects.WATER_BREATHING);
+    }
+    if(p.getHealth()>before||chakra>0||breathing){data.setLong(timer,now+300);RewardOutbox.flush(p);ArenaDirector.tell(p,String.format(java.util.Locale.ROOT,"Camp treatment: +%.1f health, +%.1f chakra.%s",Math.max(0,p.getHealth()-before),chakra,breathing?" Two minutes of water breathing will help with the submerged passage.":""));}
     else ArenaDirector.tell(p,"You are ready. Use the preparation veranda and marked stairs to reach the court.");
    }
    return;

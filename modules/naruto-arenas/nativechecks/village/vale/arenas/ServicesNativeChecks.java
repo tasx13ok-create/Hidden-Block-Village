@@ -14,6 +14,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.*;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.GameType;
 import net.minecraftforge.common.ForgeHooks;
 
 /** Real registered-player, world-actor and Forge interaction checks. Private QA only. */
@@ -36,11 +37,13 @@ public final class ServicesNativeChecks {
   result.addProperty("scope","REAL_NATIVE_SERVICE_ACTORS_AND_REGISTERED_PLAYER_INTERACTION; not encounter or imported-world acceptance");
   EntityVillager untagged=null;WorldServer world=(WorldServer)player.world;
   double x=player.posX,y=player.posY,z=player.posZ;float yaw=player.rotationYaw,pitch=player.rotationPitch,health=player.getHealth();
+  GameType oldMode=player.interactionManager.getGameType();boolean modeTouched=false;
   JsonObject originalRun=null;boolean hadRun=false,runSnapshotTaken=false,timerSnapshotTaken=false,effectTouched=false;NBTBase oldTimer=null;String timer="campAid/"+d.id;
   PotionEffect oldBreathing=player.getActivePotionEffect(MobEffects.WATER_BREATHING);if(oldBreathing!=null)oldBreathing=new PotionEffect(oldBreathing);
   try{
    Path cwd=Paths.get("").toAbsolutePath().normalize();
    if(!Boolean.getBoolean("hbv.arenas.nativeProbe")||!Files.isRegularFile(cwd.resolve(".hbv-arenas-native-probe"))||!ArenaDirector.server.getFolderName().equals("arena-preview")||ArenaDirector.server.getPlayerList().getPlayerByUUID(player.getUniqueID())!=player||!ArenaDirector.server.isCallingFromMinecraftThread())throw new IllegalStateException("Service QA requires isolated official native player");
+   player.setGameType(GameType.SURVIVAL);modeTouched=true;result.addProperty("original_game_mode",oldMode.getName());result.addProperty("actual_service_game_mode",player.interactionManager.getGameType().getName());
    if(d.services==null||d.services.length!=3)throw new IllegalStateException("Missing three service standing positions");
    for(int[] at:d.services){load(world,at);if(!ArenaDirector.safe(world,at))throw new IllegalStateException("Unsafe service actor landing");}
    if(!d.id.matches("[a-z0-9_]{1,100}"))throw new IllegalStateException("Unsafe private receipt ID");
@@ -128,8 +131,10 @@ public final class ServicesNativeChecks {
     if(runSnapshotTaken){if(hadRun)ArenaDirector.store().runs().add(d.id,originalRun);else ArenaDirector.store().runs().remove(d.id);ArenaDirector.store().dirty();}
     if(timerSnapshotTaken){NBTTagCompound receipts=RewardOutbox.receipts(player);if(oldTimer==null)receipts.removeTag(timer);else receipts.setTag(timer,oldTimer);}
     if(effectTouched){player.removePotionEffect(MobEffects.WATER_BREATHING);if(oldBreathing!=null)player.addPotionEffect(oldBreathing);}
-    player.setHealth(health);player.connection.setPlayerLocation(x,y,z,yaw,pitch);world.getPlayerChunkMap().updateMovingPlayer(player);RewardOutbox.flush(player);
+    player.setHealth(health);player.connection.setPlayerLocation(x,y,z,yaw,pitch);world.getPlayerChunkMap().updateMovingPlayer(player);
    }catch(Throwable cleanup){failures.add("Service fixture cleanup: "+cleanup);}
+   try{if(modeTouched){player.setGameType(oldMode);boolean restored=player.interactionManager.getGameType()==oldMode;result.addProperty("original_game_mode_restored",restored);check(failures,restored,"Service QA did not restore original game mode");}RewardOutbox.flush(player);}
+   catch(Throwable cleanup){failures.add("Service fixture mode/save cleanup: "+cleanup);}
   }
   result.addProperty("passed",failures.size()==0);return result;
  }

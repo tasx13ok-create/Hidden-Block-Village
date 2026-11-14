@@ -1,128 +1,137 @@
-# Five stadiums: current checkpoint
+# Five Naruto stadiums: build06 handoff
 
-The owner's 14 November clarification requires the stadium structures themselves
-to span 500 wide Ã— 500 long Ã— 250 high. All five build04 exports pass measured
-architectural occupancy at the six extreme planes, substantial perimeter bands,
-all four quadrants and the upper 50 layers. The combat courts remain compact
-inside monumental stands, functional wings, galleries and original landmarks.
-The Leaf timber/tree, fractured Cloud plates, Sand gourd, Mist water/piles and
-Uchiha fan/citadel compositions follow the adapted project research.
+Updated 2026-11-14. Branch: `codex/five-new-naruto-coliseums`.
+Latest main integrated: `d6a3060c813479458d5f587c97075ad221030db5`.
+The arena worker preserved the shared handoff and other owners' changes, and
+never controlled the owner's client/live server or changed original worlds.
+Public Git holds original source and safe evidence; binaries/worlds stay on D:.
 
-Work is on `codex/five-new-naruto-coliseums`; the original dirty checkout and
-protected shared modules remain untouched. Main was fetched again and currently
-points to 7baca5c7115355e5b737ec3602ebaed0e458eef8. The fetched main was merged without conflicts and saved as verified remote
-70a345189340fdba3f6b0fc655be6899da0eef6a; local source changes were preserved.
-Minecraft was not opened or controlled by this arena worker.
+## Structures and downloads
 
-Private outputs: `D:/HiddenBlockVillage-Arenas-20261114/build-04`. Each arena
-subdirectory has its Alpha schematic, metadata, route map, three silhouettes and
-interior/foundation sections. `index.html` and `five-stadiums.png` are labeled
-offline voxel projections. The exact generator snapshot is in `source-snapshot`.
-Source fingerprint: 50c3642af36f21feb630d3db7be4ec521b0e548686b27022c5e0214a197d7fb9.
-Measured generation peak: 537,960,448 bytes. Build04 has the same five schematic
-bytes as build03; build04 also includes stricter unsafe-brief validation.
+All FIVE stadium structures themselves occupy 500 wide x500 long x250 high,
+with substantial perimeter and upper-volume architecture. Each schematic is
+500x250x500 in width/height/length order, occupying worldY3..252.
 
-All five strict independent readbacks PASS. `preview-world-04` is a fresh void
-world with Y 3..252 placement, five distinct regions and two-chunk void buffers.
-All 312,500,000 cells and 25 typed chests match its Anvil bytes with zero
-block/metadata differences. 1,360 buffer chunks contain 89,128,960 zero cells.
-A whole 35-file cold snapshot was restored and hash/byte checked. Safe hashes
-and measured architecture are in `release/evidence/arenas-build04-offline.json`.
-No original save, NPC, private player or reference distribution is published.
+| Export | Architecture | World minimum |
+| --- | --- | --- |
+| arena_forest_root_coliseum_v1 | Leaf timber, roots, great tree and archive | 64000,3,64000 |
+| arena_cloud_storm_coliseum_v1 | Fractured pale plates, indigo galleries and pylons | 65024,3,64000 |
+| arena_sand_kazekage_coliseum_v1 | Sand gourd, circular court and turquoise bazaar | 66048,3,64000 |
+| arena_mist_shark_coliseum_v1 | Real water, piers, lighthouse and prison exits | 67072,3,64000 |
+| arena_fire_ashen_coliseum_v1 | Grounded octagonal citadel, Uchiha fan and moon gate | 68096,3,64000 |
 
-The original server-only `modules/naruto-arenas` implements physical introduction,
-canonical native awakening, party admission, three original environmental phases,
-per-run bounded conditional cell journals, an explicitly original sealing ending,
-real native and public Core reward outboxes, offline reward archives, camp
-services, exit and empty-instance reset. Named environmental adaptations do not
-claim to call native named jutsu. Actual native boss behavior remains installed.
-Normal policies are closed until each pinned native adapter passes its gates.
-The private QA JAR is opt-in and must never be installed as production content.
+Final private geometry: `D:/HiddenBlockVillage-Arenas-20261114/build-06`.
+Manifest SHA256: `15c20b1eb54f0767d50fed07700036218dcbc32c1c5594e37daabfe985fd544d`.
+Generator fingerprint: `5abb0df448b3dfde1019c571164cf54c9f9c38d315891a66dcf470c02a7a6c46`.
+Generation peak working set:529,358,848bytes. Eight previews/site are labeled
+offline voxel projections, not Minecraft/client screenshots.
 
-Actual native diagnostics resolved and spawned all five matching boss classes.
-Earlier real-world geometry/container/service tests and 33 native outbox / 128
-Core outbox assertions passed their stated scope. The full-inventory outbox loaded
-and delivered once after a process restart. A real 2,048-cell journal exceeded
-Java's NBT string size; the production store was repaired to a strict UTF8 byte
-array envelope. Its 297,567-byte payload now saves and conditionally restores
-exactly across two processes. Unknown future envelopes remain opaque/read-only.
+Delivered private-root archives, verified by member CRC/SHA readback:
 
-Current final-world gameplay candidate `preview-world-04-native-01` is FAILED and
-preserved. Hashirama and Gaara first clears exercised real physical seals, loaded
-observation, earned inventory outbox/archive, exit/reset and receipt replay.
-Hashirama second run died; Ay closed on ambiguous sealing; Gaara second exit and
-Kisame first exit found unloaded landings; Madara combat failed. Measured overall
-p99 exceeded the 100 ms target. These are failures, not complete playability.
+- `ALL 10 Schematics - Server Upload.zip`: five new plus five unchanged original
+  v17 dungeons; SHA256 `56d34d89a0a643623ef4a5fe03fa74d5621245fe2b6a16dc7e331830d4533599`.
+- `Stadium Schematics - Build06 - Server Upload.zip`: five new only; SHA256
+  `b238add44420add3d95d592240ba15fa1ffd5b759518cf78a48ee6783a8ba01f`.
 
-Source repairs now test the registered synthetic player's actual native network
-lifecycle, join atomicity, existing-chunk landing prewarm, seal-phase sequence and
-legitimate camp recovery. New reports must bind the exact repaired source and
-runtime bytes. Final-world native lighting, full solo/cooperative clears, normal
-native terminal/drop coexistence, restart DURING each phase and pending reward,
-Nether presentation, load targets and final package remain active work. Client/
-shader acceptance is unavailable while the owner keeps the client closed.
+These structures-only ZIPs use `config/worldedit/schematics/`. No QA module or
+reference distribution is hidden inside. Original v17 sizes/files are preserved.
+New exports have verified WEOrigin at the listed minima and WEOffset0: in an
+empty arena world, `//schem load mcedit <filename.schematic>` then `//paste -a -o`.
+Originals have different offsets: use the exact explicit teleport/paste commands
+in ALL10. Do not apply the new origin convention to original dungeons.
+Actual original WorldEdit6.1.10 loaded all five final62.5M-cell clipboards and
+checked110 anchors and25 typed chests. Peak working set was about2.71GB; this
+proves the reader, not live paste or minimum hosting heap.
 
-The accepted after-unwind DPS/heal/protection observer is a protected shared Core
-API request in `collaboration/arena-build-orchestration/INTEGRATION-REQUESTS.md`.
-Physical objective credit and authenticated final native killer are implemented;
-proximity and intent never become contribution. The Core owner has been informed.
-Do not replay `ArsenalAccess.hit` to manufacture an observation.
+## Actual verification
 
-Continue the mandatory native repair loop, retain failed candidates, publish
-further checkpoints, then package all five exact artifacts and update this handoff.
-This checkpoint is original source and offline construction acceptance, not a
-production or hosting release. The old sprint deadline is not an arena finish time.
+All five strict independent schematic audits PASS, including architectural
+occupancy, routes, exposed fixtures, fluid containment and25 typed chests.
+Fresh `preview-world-06` matches every312,500,000 block/metadata cell and25 tiles.
+Its1,360 buffer chunks contain89,128,960 zero cells. Whole35-file cold restore
+PASS. Build06 adds a supported seabed lamp strip for Mist's genuine wet route;
+the other four exports equal build05. See final06 independent evidence.
 
+Immutable `preview-world-06-native-01`, production
+`7cf7275ea70dad7d8c273e1fbe24ce2e2b3d201bb0ed65508f4986421f9c8578`,
+passed all FIVE controller rows in BOTH clean processes, TWO consecutive clears
+per arena/process:20 real original seal clears. These used native AI, all three
+40-update pressure sequences, official four-player admission, actual physical
+objectives, nonoperator entry, full-inventory earned outboxes, offline archives,
+exit, conditional empty reset and receipt replay. Native route collision,
+support/light samples and actual boat buoyancy/riding/dismount PASS. Broader
+fixture aggregate remains FAIL for separate retained combat/helper failures.
 
-## Current13 native repair checkpoint
+Seven successful separate-process phase/reward checkpoints PASS: PHASE1/2/3,
+all five genuinely SEALING, actual startup observation reset, pending full-inventory
+reward, delivery once, replay and saved AVAILABLE. Original boot3 failed JVM
+allocation before world load and remains failed. A new whole428-file cold copy
+resumed that stopped checkpoint; remaining logical boots passed. This is a
+recorded continuation, not a rollback or a claim the failed process passed.
+Read-only scanning all6,681 saved Overworld chunks found no last-run boss/owned
+Ay ally UUIDs, replacements, duplicate/orphan actors or saved players. It found
+10 authentic arena services and3 identified baseline Vale Residents.
 
-The server-only module now compiles against the exact Source13 Core development
-API, SHA256 17aed767c851d7359e33f37e15dbefa3d4de4693ce8be6462e808e49cc037815.
-Current server mods are the53 exact original/project files independently compared
-to the accepted root server ZIP. No original world, host setting or live session
-is changed. See `arenas-current13-native-repair.json` for safe exact module,
-server/source and package identities and retained failure scopes.
+Full post-native readback found only13,383 Forest grass-to-dirt changes; the
+restart fixture found3,563. All were covered terrain with saved blocklight0/
+skylight0. Other four stadiums had zero block changes; chest differences were
+only added empty Lock strings. Raw exact comparisons remain FAIL. This is
+consistent with covered-grass decay in these runs, not universal jutsu protection.
 
-Native08 measured9,261 actual route collision/support samples, all passing, but
-126 native block-light samples failed. Actual stairs have opacity255: some buried
-fixtures cannot illuminate the walking volume. Build05 is now repairing exposed
-supported fixtures across all five; it must get new independent and native gates.
-Build04 and every old failure remain preserved. Downloaded04 schematics install
-the full structures; do not promote them into accepted encounter/lighting scope.
+Focused wet traversal PASS both clean boots:681 real submerged body/world
+updates each, actual underwater logout and official fresh-body relogin,133
+wet route points plus connection points, health20/air300 and safe dry return.
+Genuine camp Water Breathing duration changed by exactly one measured native
+FML update inside official logout; other typed effect NBT was preserved.
 
-The optional starter genuinely passed45 first-process and51 second-process
-assertions, including five real Core owner serials, full-inventory pending,
-delivery once, retry, choice locking and unchanged native XP/nature/Core order.
-Exact public-leader native Ay ally ownership controls passed in both processes;
-Magma's class-entry CodeSource URLs were normalized to their actual JAR before
-comparison. No same-class or baseline actor is removed simply for proximity.
+Final production candidate:
+`48d82032c2c9c42eea1af76531c5ac4bcc815eaefe213689975918f7302e129e`.
+Private QA: `acbf68e2c8c0dae9a4615871485bb21e708c91638e897a980c137ce84cc910dc`.
+`preview-world-06-native-06` PASS both clean boots: actual normal uncancelled
+Gaara native finisher,120 quiet ticks, real earned delivery/replay/reset. Actual
+emitted native drops/XP were zero and retained as observed. Preview kills,
+Creative-at-death changed to Survival before END, and a genuine same-object
+official respawn all correctly refused normal reward authority. These production
+fixes postdate the20-clear cohort; final-byte controller/Nether/lighting/load
+reruns need their own exact receipts. Older PASS reports never replace them.
 
-Current source adds explicit public command permission (operator reset remains
-protected), automatic strict empty reset, saved-body chunk prewarm, and separate
-sealing/admission versus native-death acceptance policies. Each physical sequence
-must charge under40 real updating-boss ticks with an eligible participant within
-32 blocks; this is not reward contribution. Native lethal remains independent.
-Restart tests observe the real FML startup before warmup and exercise actual
-pressure, saved phases and pending rewards; a faulty zero assertion after80 real
-ticks is retained as failed QA evidence and repaired, not removed from the gate.
+## Runtime and remaining gates
 
-The isolated actual Nether pass has exercised13975 lava source cells, native
-flow/containment and a real bed explosion in a separately journaled obsidian cage;
-all2197 sacrificial cells restored. Its route light gate failed and remains FAIL.
-No Nether encounter production controller, portal8:1 or shader acceptance follows.
-A real vanilla boat buoyancy/riding/dismount helper is implemented for the final
-Mist physics pass; no client steering or giant-form acceptance is claimed.
+`modules/naruto-arenas` is server-only Forge1.12.2: no new block/item/entity/
+renderer registry. It uses original native providers and exact class/JAR
+policies with Source13 Core API. Tested stopped53-mod roster SHA256:
+`ac239179489d9c5d77f9e6e55b5e08f7dfc6f586ce93cefcb49a998faf95952e`.
+Arena module makes54 production JARs; never install PRIVATE QA on a host.
+Matching Core runtime:
+`387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766`.
+Later main/config/plugin changes are not automatically accepted by source merge.
 
-Post-native03 independent comparison covered every312.5million cell again. It
-found7095 covered-grass→dirt changes and eight new empty chest Lock fields, with
-no other structural block changes. All12 retained grass samples were buried at
-blocklight0/skylight0, consistent with vanilla grass decay. The raw exact comparison
-stays FAIL. This measured limited native run is not universal jutsu-grief proof.
+Implemented: physical introduction/native awakening, optional genuine once-only
+Core starter, parties4, three original mechanics/boss, physical credit, native/
+Core outboxes, offline archives, conditional terrain journals, recovery/reset.
+Original sealing is separate from native Edo death. Native-death authorization
+is independent: Gaara accepted on its exact policy; other endings stay closed
+until their own evidence passes. No boss HP inflation, universal immunity or
+global Biju/vessel manager reset. WorldSavedData uses a bounded4MiB UTF8 byte
+array, preserves future envelopes read-only;2,048-cell297,567-byte restore PASS.
+Earlier starter/outbox/owned-Ay checks retain their precise recorded scopes.
 
-For the owner's supplied Forge server, `Stadium Schematics - Upload to Server
-Root.zip` places only five files under `config/worldedit/schematics/`. Unarchive
-it at the server root, load one with `//schem load mcedit <filename.schematic>`,
-stand at the intended minimum atY3 and use `//paste` in an empty arena world.
-The current download contains04 geometry; a final05 replacement follows the
-required repair loop. No arena controller or third-party distribution is hidden
-inside that structures-only upload.
+Broad functional fixtures missed p99 target:203.0208ms and149.8945ms against
+100ms despite about20TPS. These FAILs remain. A standalone actual active
+five-arena/party-size benchmark is separate; idle windows do not prove it.
+Actual Nether tests exercised Hell provider,13,975 lava sources, flow/containment,
+real bed explosion and2,197-cell restoration. Raw restart diff found52 level0
+lava10-to11 and52 reverse only. Narrow canonical/persisted-light rerun remains a
+separate gate; no production Nether controller, portal8:1 or shader claim follows.
+
+The authoritative after-unwind accepted NONLETHAL damage/heal/protection observer
+is still unavailable. See orchestration integration request; Core owner informed.
+Physical objectives and confirmed native finishers are implemented contribution;
+proximity, intent and unrelated later HP changes earn nothing. Never replay
+ArsenalAccess.hit to fabricate observation.
+
+Client/shader/human traversal and hosted deployment acceptance remain unavailable
+to this worker. Core chat owns the live inspection session. These are Alpha
+structures and measured native candidates, not a100% campaign/deployment-ready
+claim. Preserve old builds, failed reports, worlds, v17 inputs and profiles.
+Core owner reviews this branch and performs final production integration.

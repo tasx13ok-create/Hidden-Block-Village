@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "dimensions": [500, 250, 500],
   "stadium_itself_dimensions": [500, 250, 500],
   "latest_owner_clarification": "The stadium proper itself occupies the full500x500x250, including spectator construction and structural enclosure; the active combat court stays136 blocks useful for jutsu.",
@@ -9,6 +9,7 @@
   "world_min_y": 3,
   "world_max_y": 252,
   "coordinate_convention": "Local x,y,z; anchors are standing feet; floor occupies y-1.",
+  "route_lighting": "Exposed bearing-attached sources with actual AIR/glass paths of at most7 edges to every dense route center. Stair opacity255 is respected; walking stairs, full widths and giant headroom stay reserved. Native block-light acceptance remains separately required.",
   "asset_provenance": "Original procedural block geometry authored for Hidden Block Village. No original world cells, external artwork or models are copied.",
   "profiles": {
     "forest": {

@@ -1,0 +1,328 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "scope": "FINAL06_STRUCTURES_AND_TARGETED_NATIVE_CHECKPOINT_NOT_PRODUCTION_ACCEPTANCE",
+  "latest_integrated_main": "d6a3060c813479458d5f587c97075ad221030db5",
+  "private_root": "D:\\HiddenBlockVillage-Arenas-20261114",
+  "manifest_sha256": "15c20b1eb54f0767d50fed07700036218dcbc32c1c5594e37daabfe985fd544d",
+  "generator_fingerprint": "5abb0df448b3dfde1019c571164cf54c9f9c38d315891a66dcf470c02a7a6c46",
+  "exports": [
+    {
+      "id": "arena_forest_root_coliseum_v1",
+      "sha256": "87b6fd29ed78949aad0e9e051ab324ee00cd3168c16a961f734a6c0f85b69f70",
+      "bytes": 1575345,
+      "size_width_height_length": [
+        500,
+        250,
+        500
+      ],
+      "world_min": [
+        64000,
+        3,
+        64000
+      ],
+      "max_world_y": 252
+    },
+    {
+      "id": "arena_cloud_storm_coliseum_v1",
+      "sha256": "1437d16111ae9b1a10efb1963bfffc4144269d7bb4b0325d68451e43b3ab425f",
+      "bytes": 1908684,
+      "size_width_height_length": [
+        500,
+        250,
+        500
+      ],
+      "world_min": [
+        65024,
+        3,
+        64000
+      ],
+      "max_world_y": 252
+    },
+    {
+      "id": "arena_sand_kazekage_coliseum_v1",
+      "sha256": "139249aedd1e4f100d3378cd1d45d96e020f210e0aa868d2e19f54cdbb859dfc",
+      "bytes": 2958948,
+      "size_width_height_length": [
+        500,
+        250,
+        500
+      ],
+      "world_min": [
+        66048,
+        3,
+        64000
+      ],
+      "max_world_y": 252
+    },
+    {
+      "id": "arena_mist_shark_coliseum_v1",
+      "sha256": "34d4bbe2c668820ae15c2676b8af80dad2fd5b7078d1609bb2219145a4da74b5",
+      "bytes": 1546188,
+      "size_width_height_length": [
+        500,
+        250,
+        500
+      ],
+      "world_min": [
+        67072,
+        3,
+        64000
+      ],
+      "max_world_y": 252
+    },
+    {
+      "id": "arena_fire_ashen_coliseum_v1",
+      "sha256": "4d4d71ae0563c72a7f4aa9285bbfbb9d2c90fb15d4687535c7fbf1f74273bf11",
+      "bytes": 2202576,
+      "size_width_height_length": [
+        500,
+        250,
+        500
+      ],
+      "world_min": [
+        68096,
+        3,
+        64000
+      ],
+      "max_world_y": 252
+    }
+  ],
+  "packages": [
+    {
+      "private_filename": "ALL 10 Schematics - Server Upload.zip",
+      "bytes": 8510671,
+      "sha256": "56d34d89a0a643623ef4a5fe03fa74d5621245fe2b6a16dc7e331830d4533599"
+    },
+    {
+      "private_filename": "Stadium Schematics - Build06 - Server Upload.zip",
+      "bytes": 7658845,
+      "sha256": "b238add44420add3d95d592240ba15fa1ffd5b759518cf78a48ee6783a8ba01f"
+    },
+    {
+      "private_filename": "Five Naruto Stadiums - Build06 Geometry.zip",
+      "bytes": 14763284,
+      "sha256": "b2ec6427de0c7a70eabdfd043f38b99e45f856ffe660f1c28990ccc4a19a0f0e"
+    }
+  ],
+  "targeted_gaara": {
+    "passed": true,
+    "clean_processes": 2,
+    "production_sha256": "48d82032c2c9c42eea1af76531c5ac4bcc815eaefe213689975918f7302e129e",
+    "private_qa_sha256": "acbf68e2c8c0dae9a4615871485bb21e708c91638e897a980c137ce84cc910dc",
+    "inputs_sha256": "e536374c4e477a09ab996a020bc15352600ab06fae91de39a96f0074eed15907",
+    "summary_sha256": "f9762c54fa7141e348a7deb7d0782f9bfe926f9bfc025f2849d8d674292ae957",
+    "source_files": [
+      {
+        "path": "build.gradle",
+        "sha256": "d82b6b85e748f8f609bd92b777384793217f0b23ca4e8f51d56d811a4657329f"
+      },
+      {
+        "path": "gradle.properties",
+        "sha256": "8f331a3ec0dfa6928717a7c8e8009e7da8624d236ba0adec5a05447aaf7c04fb"
+      },
+      {
+        "path": "nativechecks/village/vale/ArenaDodgeNativeAccess.java",
+        "sha256": "dc3321d3342587499809d7dc49b804f6ba4c545ea0d5ca9bdcf2c9d3a1cfdfe1"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ActorNativeChecks.java",
+        "sha256": "6120fcb99ef0f413b29405137f6b76f24534e24c682e100fd3df53661343892c"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/BoatNativeChecks.java",
+        "sha256": "502643911811ef39d71444a88156dbca701416b7efc99c9bdf04e26de684cfce"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/CombatNativeChecks.java",
+        "sha256": "dcc2046b4471383b01876fc8d1fafd6b023d418112165b0dfdfdb4b94962fb21"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ControllerNativeChecks.java",
+        "sha256": "3f6dad47e27d3ca7987012048bf298d9e7e2604db70be39b10cbeb58a8a1dda6"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/CoreRewardNativeChecks.java",
+        "sha256": "4f57660be3bd8ac7253b042ad679a5cf1b9e56e3b6949e42098fab4c1fd78deb"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/GaaraPolicyNegativeNativeChecks.java",
+        "sha256": "dc76b398ed889d09dd739c495f0f747caaf9f54f41020a9a4b2e0004fb7005a1"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/GaaraTerminalNativeChecks.java",
+        "sha256": "be1740a19787ed55641937880df962f53c0a12fc07c7125199cecfa95300fbf1"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/LargeStateNativeChecks.java",
+        "sha256": "c6569f4a014bcb187adc8b890d9364dfa28433ca7bcf3c54f98a4148953be4da"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/LightingNativeChecks.java",
+        "sha256": "0a94a176aa487a0c484d9dd51cdc55e9cc2486551259045fa23c6bd142dbd794"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/LoadNativeChecks.java",
+        "sha256": "9a2c7aee1211fde7e114342d3d07322703d89246f9ecb1291ca30b61d8bdd7af"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/NativeNetherChecks.java",
+        "sha256": "3d11eab4ca1ad695017f12b8e27b180287ba8cbd54dfe898718114c1546b8336"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/NativeProbe.java",
+        "sha256": "bb5627d6be45478caff1c00b2cc4ce9163efe7d5411a0b952c79e837ae29ddb7"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/OutboxNativeChecks.java",
+        "sha256": "b71a31b64fdcebc019e78262c728851f9cddfb45d892b57914424e9698ab58b6"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/PartyNativeChecks.java",
+        "sha256": "2b9a6785303ac0efea08a9b69921e17884964261b18678bb3854a6c2d5be0823"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/RestartNativeChecks.java",
+        "sha256": "d34c455dbe64ee782e5060511699ab4756133e3be354d368b0d737a71b963877"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/ServicesNativeChecks.java",
+        "sha256": "248862a2af744d2493526db5439e304ae5a098b2d65b9d02b6c4384b0bbd06a0"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/StarterKitNativeChecks.java",
+        "sha256": "09355de617d1271a85275e5ee3535b6d053ad851fbee6413dd3f877d18d72eb5"
+      },
+      {
+        "path": "nativechecks/village/vale/arenas/WetNativeChecks.java",
+        "sha256": "40f3e1cd47e709d84310d21630b5c141b2f3fd7ba06e11a3b531cf8c03e3e051"
+      },
+      {
+        "path": "settings.gradle",
+        "sha256": "5d6bb7c1f88bd80bed974c1370b35077af540cfa6017b532db9764037e22684a"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaActors.java",
+        "sha256": "d313eefdb85fea8beec1e72a2e2e63aa01331a1fff0871f2d6ed5e73eb46ec85"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaDirector.java",
+        "sha256": "0d3a12b3a3901fee1a6eee9ee66a6514f452dd1190dc9504139401363a24b42c"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaIntro.java",
+        "sha256": "9e3cca9bec9a85dc459321aafba42c7b8f59a48373d53a1fc99dc62cc261e9cc"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaServices.java",
+        "sha256": "64ad66dca0d2283875533ddd290c556b9a5f0f77051c79c232b49468661e99a3"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaStarterKits.java",
+        "sha256": "d735a48daebd678246841b03f328f9eedc66b30ceb7a700dcc0ae4ad66524e02"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/ArenaTerminals.java",
+        "sha256": "cf2f865aa0fc67d926b0b0f62634db800eb12de27c8933b13d2be70a7a22406f"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/BeatSculptures.java",
+        "sha256": "a2ac9fa1d2421b38c8c6e46b47addced866ef6ff9ad18185943352e0b09f7bd9"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/CoreRewardOutbox.java",
+        "sha256": "41ade502f261d634ee76c65b85e4b167ef1a6c62521b332709a7e8e1d3068ad4"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/EnvironmentalBeats.java",
+        "sha256": "f0bc246e5b15a879661a19c2cd1af2234c8bf20380674eaaed1a7e94146ffd03"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/NativeBossPolicies.java",
+        "sha256": "28dcfa9e6110e1110d5bd4527ed474dabe8fbd6c6ce098bf4e30ff72d369e2f1"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RewardArchive.java",
+        "sha256": "ebe6e880f8a6fb9cb6e5077da0ad2e1358246185bd84eb691f7233faa5c9f96f"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RewardOutbox.java",
+        "sha256": "2c5ed9b4d1b80d11bef09eedadee14aaa89b1c0ffbac186ed887d3e06a1f40c4"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/RunRules.java",
+        "sha256": "b38f0584ef71978de509fc0384b2bc22c78913acfa17fac14f35f211b7178f28"
+      },
+      {
+        "path": "src/main/java/village/vale/arenas/WaterPrison.java",
+        "sha256": "3c57bf736071bb883651af92cebe590aa60e716607bacda239c857e683426575"
+      },
+      {
+        "path": "src/main/resources/mcmod.info",
+        "sha256": "57c476ef33d72e81293b45e7e8b7204815d538020706cc44cdd20b4905849c4e"
+      },
+      {
+        "path": "tests/village/vale/arenas/RunRulesChecks.java",
+        "sha256": "ac25c2105542513fc39309fc1e4eeb330ffe0fbac7679678eafdebaa0e73ef74"
+      },
+      {
+        "path": "tooling/worldedit-reader/README.md",
+        "sha256": "2ebb5e4e016fe4af5c6bc2eeded7629f25d15719303741be7cc8c1ace3f00907"
+      },
+      {
+        "path": "tooling/worldedit-reader/run_probe.py",
+        "sha256": "4a944427961f2ad8120a3b610407c41a07cf1cc089bfeed93dd5de34ba50ffc4"
+      },
+      {
+        "path": "tooling/worldedit-reader/WorldEditReadProbe.java",
+        "sha256": "7a36ed8cb33e19f7e79d059937bb77469b4729caa0e3e1bf720fb7ef9a5e321e"
+      }
+    ],
+    "checkpoint_source_differences": [
+      {
+        "path": "nativechecks/village/vale/arenas/LoadNativeChecks.java",
+        "fixture_source_sha256": "9a2c7aee1211fde7e114342d3d07322703d89246f9ecb1291ca30b61d8bdd7af",
+        "checkpoint_source_sha256": "d17f07c7ae433af8e49bae8e88cda1504d252ccf5393a9b3697afc621c514d6d"
+      }
+    ],
+    "difference_scope": "Private Load measurement guards only; production source unchanged after exact Gaara tests",
+    "normal_native_finisher": true,
+    "native_quiet_ticks": 120,
+    "normal_reward_replay_reset": true,
+    "preview_no_normal_reward": true,
+    "creative_at_death_survival_before_end_refused": true,
+    "official_same_object_respawn_stale_epoch_refused": true,
+    "actual_emitted_native_xp": 0,
+    "actual_emitted_native_drop_count": 0,
+    "scope": "Actual native player damage API; no client weapon or cast acceptance"
+  },
+  "runtime_cohort": {
+    "base53_mod_roster_sha256": "ac239179489d9c5d77f9e6e55b5e08f7dfc6f586ce93cefcb49a998faf95952e",
+    "core_runtime_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+    "core_development_api_sha256": "17aed767c851d7359e33f37e15dbefa3d4de4693ce8be6462e808e49cc037815",
+    "magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "production_jars": 54,
+    "private_qa_not_for_distribution": true
+  },
+  "independent_evidence": "release/evidence/arenas-final06-independent.json",
+  "original_worldedit_reader_evidence": "release/evidence/arenas-worldedit-reader-final06.json",
+  "retained_failures": [
+    "Broad native01 aggregate remains FAIL despite20 passing controller clears; exact module7cf cohort is identified in independent evidence",
+    "Broad native01 p99 203.0208ms /149.8945ms exceeds100ms",
+    "Raw post-native cell equality FAIL: covered Forest grass-to-dirt; chest empty Lock fields documented separately",
+    "Original third restart JVM failed allocation before world load; resumed whole-copy continuation retained",
+    "Previous lighting/Nether/helper/combat candidates remain failed and preserved"
+  ],
+  "pending_at_checkpoint": [
+    "Final-byte five-arena controller rerun after native death mode/epoch authority fix",
+    "Profile-free native initialized-world persistence/readback",
+    "Standalone active native attack/add/hazard party-size load benchmark",
+    "Separate canonical Nether save/restart result publication",
+    "Authoritative shared Core accepted nonlethal damage/healing/protection observer unavailable",
+    "Non-Gaara native-death adapters not accepted by Gaara evidence",
+    "Client/shaders/human traversal and hosted deployment not run"
+  ],
+  "full_encounter_acceptance": false,
+  "graphical_acceptance": false,
+  "hosted_acceptance": false
+}

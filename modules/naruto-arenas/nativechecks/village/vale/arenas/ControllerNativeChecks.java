@@ -102,7 +102,7 @@ public final class ControllerNativeChecks {
   row.addProperty("run"+repeat+"_actual_camp_chakra_recovery",after-before);return true;
  }
  private static void defend(){
-  if(stage!=3||d==null||!player.isEntityAlive()||player.isCreative()||!state().startsWith("PHASE"))return;
+  if((stage!=3&&stage!=52)||d==null||!player.isEntityAlive()||player.isCreative()||!state().startsWith("PHASE"))return;
   Entity body=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(current(),"boss_uuid")));if(body==null)return;
   double rx=player.posX-body.posX,rz=player.posZ-body.posZ,distance=Math.sqrt(rx*rx+rz*rz);if(distance<.01)return;
   player.rotationYaw=(float)Math.toDegrees(Math.atan2(-(body.posX-player.posX),body.posZ-player.posZ));player.rotationPitch=0;
@@ -146,6 +146,7 @@ public final class ControllerNativeChecks {
     if(!camp()){wait=2;return false;}
     d.terminal_verified=true;check(!server.getPlayerList().canSendCommands(player.getGameProfile()),"Private flow body unexpectedly has operator privilege");server.getCommandManager().executeCommand(player,"narutoarena enter "+d.id);check(state().equals("PHASE1"),"Non-operator normal admission command did not start phase1");
     row.addProperty("actual_native_boss_normal_admission",true);phase=1;
+    row.addProperty("run"+repeat+"_uuid",ArenaDirector.text(current(),"run"));row.addProperty("run"+repeat+"_boss_uuid",ArenaDirector.text(current(),"boss_uuid"));
     if(repeat==0){PartyNativeChecks.begin(server,d,current(),player);stage=20;wait=1;return false;}
     engage();stage=3;wait=48;return false;
    }
@@ -161,7 +162,7 @@ public final class ControllerNativeChecks {
     check(active!=null&&active.ticksExisted>bodyTicks,"Native boss did not actually update during phase");
     row.addProperty("run"+repeat+"_phase"+phase+"_actual_body_ticks",active.ticksExisted-bodyTicks);
     check(!(active instanceof EntityLiving)||!((EntityLiving)active).isAIDisabled(),"Native boss AI was disabled during encounter");
-    phase=ArenaDirector.number(current(),"phase");
+    phase=ArenaDirector.sealPhase(current());
     int before=current().has("objectives")?current().getAsJsonObject("objectives").size():0;row.addProperty("cancel_objectives_before",before);click(2,true);stage=4;wait=3;return false;
    }
    if(stage==4){
@@ -169,10 +170,20 @@ public final class ControllerNativeChecks {
     check(now==row.get("cancel_objectives_before").getAsInt(),"Later canceled physical interaction advanced objective");row.addProperty("final_cancelled_seal_rejected",true);
     click(0,false);stage=5;wait=3;return false;
    }
-   if(stage==5){click(1,false);stage=6;wait=3;return false;}
+   if(stage==5){
+    check(current().has("objectives")&&current().getAsJsonObject("objectives").has(phase+":0"),"First physical sequence node was not accepted");
+    if(ArenaDirector.pressure(current(),phase)<40){engage();stage=52;wait=1;return false;}
+    row.addProperty("run"+repeat+"_sequence"+phase+"_actual_pressure",ArenaDirector.pressure(current(),phase));click(1,false);stage=6;wait=3;return false;
+   }
+   if(stage==52){
+    check(state().startsWith("PHASE")&&ArenaDirector.sealPhase(current())==phase,"Physical sequence changed while genuinely charging");
+    Entity body=server.getWorld(0).getEntityFromUuid(UUID.fromString(ArenaDirector.text(current(),"boss_uuid")));check(body!=null&&body.isEntityAlive(),"Live boss disappeared while charging physical counter");
+    if(ArenaDirector.pressure(current(),phase)<40){if(player.getDistanceSq(body)>28*28)engage();wait=1;return false;}
+    row.addProperty("run"+repeat+"_sequence"+phase+"_actual_pressure",ArenaDirector.pressure(current(),phase));click(1,false);stage=6;wait=3;return false;
+   }
    if(stage==6){
     String status=state();check(!status.equals("SAFE_CLOSED"),"Seal/actor restoration closed the run");
-    if(phase<3){check(status.equals("PHASE"+(phase+1)),"Two distinct physical nodes did not advance phase");phase++;engage();stage=3;wait=48;return false;}
+    if(phase<3){check(status.startsWith("PHASE")&&ArenaDirector.sealPhase(current())==phase+1,"Two distinct physical nodes did not advance the seal sequence");phase++;engage();stage=3;wait=48;return false;}
     check(status.equals("SEALING_OBSERVE")||status.equals("REWARD_PENDING"),"Final phase did not begin authenticated sealing");stage=7;wait=5;return false;
    }
    if(stage==7){
@@ -204,7 +215,7 @@ public final class ControllerNativeChecks {
     if(repeat==0){repeat=1;row.addProperty("first_run_complete",true);player.resetActiveHand();equip();stage=22;wait=20;return false;}
     row.addProperty("clean_second_run_complete",true);finishArena();wait=3;return false;
    }
-   if(stage==22){player.setHealth(player.getMaxHealth());if(!camp()){wait=2;return false;}check(!server.getPlayerList().canSendCommands(player.getGameProfile()),"Repeat body unexpectedly has operator privilege");server.getCommandManager().executeCommand(player,"narutoarena enter "+d.id);check(state().equals("PHASE1"),"Actual non-operator repeat admission failed");row.addProperty("non_operator_second_admission",true);phase=1;engage();stage=3;wait=48;return false;}
+   if(stage==22){player.setHealth(player.getMaxHealth());if(!camp()){wait=2;return false;}check(!server.getPlayerList().canSendCommands(player.getGameProfile()),"Repeat body unexpectedly has operator privilege");server.getCommandManager().executeCommand(player,"narutoarena enter "+d.id);check(state().equals("PHASE1"),"Actual non-operator repeat admission failed");row.addProperty("non_operator_second_admission",true);row.addProperty("run"+repeat+"_uuid",ArenaDirector.text(current(),"run"));row.addProperty("run"+repeat+"_boss_uuid",ArenaDirector.text(current(),"boss_uuid"));phase=1;engage();stage=3;wait=48;return false;}
   }catch(Throwable error){failures.add(error.toString());row.addProperty("failed_stage",stage);row.addProperty("last_state",d==null?"":ArenaDirector.run(d)==null?"NO_RUN":state());
    // Preserve failed arena state and actor/cell evidence. Do not blind-reset it.
    damageLog.flush();try{if(row.has("native_party_cases")&&!row.has("party_live_phase_closed"))PartyNativeChecks.endCombat();}catch(Throwable cleanup){row.addProperty("party_cleanup_observation",cleanup.toString());}
