@@ -2,6 +2,91 @@
 
 Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
+## Latest direct-work checkpoint: villages port preview
+
+Owner asked to decompile the supplied NarutoDestinationVillages1.4.2 addon,
+port it from1.7.10 to1.12.2, and connect it to the existing AHZNB NarutoMod.
+Work remains direct: no new sub-agents were spawned or resumed. This is an
+unfinished port, not full parity or a production-ready deployment.
+
+Private workspace:
+`D:/HiddenBlockVillage-Sprint-20261113/naruto-destination-villages-112-port-01`.
+Original input in Downloads remains unchanged,284,189bytes, SHA256
+`c4a5e4c96b597efe4b76a4d562307c4ae837fe299abe91a127d0169b8d3e8fe3`.
+All83original class names are present in the rebuilt candidate; that is a
+structural check, not evidence of complete behavior preservation. The candidate
+has no remaining old FML or old NarutoDestination base-class linkage. Java
+class majors are50/52. SQLite3.21.0.1 driver, its licenses and Windows/Linux
+native libraries are bundled. Private derivative addon source/JARs are NOT in Git.
+
+Original adapter source, its portable component build, acceptance fixture and
+safe audit tool are now under `tools/naruto_villages_112/`. The adapters alone
+have no mod entrypoint and must not be installed separately. The original
+rank IDs/legacy numbers are compatibility metadata; adapter implementations
+were authored independently. The full private port uses RFG2.0.3, Java8 and
+stable39, version1.4.2-hbv112.1; FML modid is lowercase
+narutodestinationvillages, with the original config directory retained.
+
+NEWEST local preview delivered:
+`C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-2.jar`,
+6,989,815bytes, SHA256
+`d814b429bca938ad9896a02aefb191564799dbdbebf3ab0034e14f3d34b5c02d`.
+This supersedes the earlier PREVIEW.jar (SHA039d53ab...). Neither was installed
+in the owner's actual client or server. Replace an earlier villages addon when
+trying the preview; do not load duplicate versions. It targets existing
+narutomod and variedcommodities, not the1.7.10 NarutoDestination base.
+
+Native run06 passed its documented SERVER SUBSET in a new flat-world Magma
+process:53exact current server mod JARs plus the port, and a separate private
+fixture. An officially admitted synthetic non-OP player exercised command
+registration, native bank GUI/container, normal/shift deposit/withdraw, page
+restrictions/navigation, item NBT and disk reload, sort locking/item count,
+real SQLite identity/offline data, native battle XP/Biju reads, currency
+deduction/change/full-inventory refusal, symmetric war data reload and transport
+location/unlock reload.109assertions include54nonnull inventory-slot checks;
+do not market that count as109distinct gameplay features. Actual source and
+checked cases are in the fixture. All staged mod hashes stayed unchanged;
+exit0, no forced termination, no real player/original world used.
+Safe receipt: `release/evidence/naruto-villages-112-preview-server-subset.json`.
+Private result/run hashes are bound there. The native carried-item check
+observed inventory0/cursor0/ground6: vanilla close handling dropped all6items,
+and the old explicit cursor erasure was removed. Do not claim automatic return
+to inventory. Fixed original repeated sort-lock acquisition and partial-insert
+loot duplication; the new currency planner changes nothing if change cannot fit.
+It accepts retained base-nine VC coins and actual installed Naruto Ryo notes.
+
+Failed intermediate fixtures are retained:01/02had insufficient test page
+configuration (MAX_PAGES captures configuration at startup);03found the real
+repeated sort-lock bug;04asserted an inventory return whereas native close drops
+carried items;05tried unlocking an undefined test destination.06sets the two-page
+config before startup, counts carried world drops, defines the destination, and
+passes those server-side cases. The production83-class candidate was not changed
+to fake these fixture setup fixes.
+
+CRITICAL UNFINISHED: all16default PvP reward entries still point to old
+NarutoDestination items. They are preserved in config but do not resolve in
+the selected target base. Do not claim that loot works or silently replace it
+with unrelated filler. Legacy-only clan/skill/senjutsu fields are not actual
+native integrations. Rank caps/promotion authority, full teleport execution,
+PvP damage/drop/anti-farm, territory capture, real network client/mirror and
+copied deployment-world restart remain unverified. Next: recover exact original
+reward semantics/public APIs, implement meaningful target-provider bindings,
+and add native event/restart acceptance before a full port/release claim.
+The full requested Naruto game and prior incomplete packages below remain in scope.
+
+The previous one-folder client config step is also complete:
+`Hidden Block VillageSL/config/valeorders-client.cfg` enables armorPowerCore and
+jutsuDetail2. Keybinds, original mod textures, server/worlds and other config
+hashes were preserved. Receipt:
+`release/evidence/client-config-feature-enablement-0316.json`.
+Resourcepacks stays empty; original icons/armor come from the original mod JARs.
+No replacement resource pack is required on server or client. Supplied server's
+resource-pack URL is empty. No new graphical acceptance is claimed.
+
+Sprint clock record: active goal created2026-11-13T17:32:41Z; its20-hour deadline
+was2026-11-14T13:32:41Z (08:32:41America/New_York). That target elapsed; the full
+goal remains incomplete and active. These timestamps do not reset the sprint.
+
 ## Current owner request and live session
 
 PRIORITY owner correction: work directly, no sub-agents, one folder at a time.
@@ -71,8 +156,8 @@ Safe receipt: release/evidence/client-original-art-restoration-0316.json.
 No new graphics test is claimed. Original native mod artwork is available on the
 next client resource load; options.txt may still name the now-absent old pack until
 normal Minecraft options reconciliation. The shaderpacks directory was untouched.
-Next one-folder step is review/update client config so the current HUD/settings
-are consistently enabled, preserving controls and the original-mod-art policy.
+The client config review/update is complete as recorded in the newest checkpoint
+above, preserving controls and the original-mod-art policy.
 The Source13preview client exited at12:22:47local; process30120 is no longer
 present. Preview server31524 remains alive. Preserve it; historical join/dodge
 evidence below does not mean a client is currently connected.

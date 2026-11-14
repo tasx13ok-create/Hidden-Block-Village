@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+group = 'village.compatibility'
+version = '0.1.0-draft'
+base { archivesName = 'Naruto-Villages-Port-Adapters' }
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+}
+def nativeApi = providers.gradleProperty('narutoModJar').map { file(it) }
+if (!nativeApi.isPresent() || !nativeApi.get().isFile()) {
+    throw new GradleException('Supply the private installed NarutoMod with -PnarutoModJar; no third-party JAR is distributed here.')
+}
+sourceSets.main.java.srcDirs = ['compat-src']
+dependencies { compileOnly files(nativeApi) }
+sourceSets {
+    nativeChecks {
+        java.srcDirs = ['tests-src']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+    }
+}
+if (providers.gradleProperty('villagesPortDevJar').isPresent()) {
+    dependencies { nativeChecksCompileOnly files(providers.gradleProperty('villagesPortDevJar').map { file(it) }) }
+}
+tasks.named('compileNativeChecksJava') {
+    doFirst {
+        if (!providers.gradleProperty('villagesPortDevJar').isPresent()) {
+            throw new GradleException('Native fixture compilation requires the private port development API with -PvillagesPortDevJar.')
+        }
+    }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.incremental = false
+}
+apply from: file('../../gradle/vale-mod-build.gradle')
