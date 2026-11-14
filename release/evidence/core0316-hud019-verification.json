@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "scope": "SOURCE_COMPONENT_AND_DISPOSABLE_FORGE_NATIVE_CHECKPOINT",
+  "core_version": "0.3.16",
+  "hud_version": "0.19.0",
+  "source_snapshot_sha256": "8b5ac108319049bfa86cf490ec1c4fd4f372a655b14d32f6781b8e57f349232d",
+  "source_changed_during_build": false,
+  "component_build": {
+    "passed": true,
+    "source_areas": 11,
+    "artifacts_verified": 36,
+    "report_sha256": "679a7755db4280b51656c5383a1fd18f0373a1d7d82b4d6e672528619780a46b",
+    "core_runtime_sha256": "840d44ec6db5355aeec0402de6d74350cd36d18d350a4e7f5ce14e4e6bf21014",
+    "hud_runtime_sha256": "54b09ee318e5f97dd285a205a41dabde8cffd66d980ad95316689a2500a54d8b"
+  },
+  "disposable_forge_native": {
+    "passed": true,
+    "assertions": 3665,
+    "report_sha256": "cd9e198203efef3c2dfc82e69e91a32bc4edb8cf31527049ab7cec174e0bd69b",
+    "private_fixture_inputs_sha256": "35538e6dd98c2576ddafd6e8197fcff8b5a051c815f019d23dcf91a434d1ee2d",
+    "runtime_removed": true,
+    "all_inherited_checks_retained": true,
+    "paired_absorption_regression_assertions_added": 16
+  },
+  "claude_original_hotbar": {
+    "source_pin": "bea21d389ccfe8e142099e2d217449abe84c12f8",
+    "whole_parent_history_imported": false,
+    "recovered_tail_source_imported": false,
+    "provenance": "collaboration/fable/FIELD-HUD-019-INTEGRATION.json",
+    "original_math_checks": 550,
+    "bank_tick_and_particle_bound_checks": 427,
+    "synthetic_gl_state_checks": 41,
+    "real_gpu_verified": false
+  },
+  "full_pack_magma_paired_regressions": {
+    "passed": true,
+    "scope": "BOUNDED_PRIVATE_FULL54_FLAT_WORLD_FIXTURE",
+    "evidence": "release/evidence/core0316-magma-paired-receipts.json",
+    "native_result_sha256": "ba9873435c172a5d31c0e39e1a605edcd65e2b04faf2ef3cc88ac2a75af10ce9",
+    "actual_fully_absorbed_ward_five_unit_payment": true,
+    "zero_loss_unrelated_damage_and_final_cancel_controls_passed": true,
+    "private_spring_delegation_prototype_used": true,
+    "private_prototype_uses_protected_base_set_reflection": true,
+    "production_base_spring_integration_accepted": false,
+    "production_saved_world_or_client_acceptance": false
+  },
+  "saved_world_acceptance": false,
+  "network_client_acceptance": false,
+  "graphical_client_acceptance": false,
+  "hosted_acceptance": false,
+  "deployment_ready": false,
+  "complete_game_delivered": false,
+  "sprint_deadline_utc": "2026-11-14T13:32:41Z",
+  "completed_by_sprint_deadline": false,
+  "owner_client_preference": "KEEP_MINECRAFT_CLOSED",
+  "notes": [
+    "The previous07 build failed before compilation because a compiler JVM could not reserve its heap.",
+    "The interrupted first08 attempt had a successful Core log but no complete report; it was not counted as a full pass.",
+    "A recovered complete08 build and matching fresh native run produced the results above.",
+    "Claude menus, armor/VFX, original tail replacement, Base/Spring client canonicalization and campaign adoption remain separate unfinished work."
+  ]
+}

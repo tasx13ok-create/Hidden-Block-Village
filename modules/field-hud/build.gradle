@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.fieldhud'
-version = '0.18.0'
+version = '0.19.0'
 base { archivesName = 'field-hud' }
 java {
     toolchain {
@@ -88,3 +88,21 @@ tasks.register('verifySharedResourceHud', JavaExec) {
     javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
 }
 tasks.named('check') { dependsOn 'verifySharedResourceHud' }
+
+// Original Claude animation math plus bounded real-bank/tick/particle rules.
+def fableFxClasses = layout.buildDirectory.dir('fable-fx-checks')
+tasks.register('compileFableFxChecks', JavaCompile) {
+    source files('src/main/java/village/fieldhud/FableHudMath.java', 'tests/village/fieldhud/FableHudMathTest.java', 'tests/village/fieldhud/HotbarFxRulesChecks.java')
+    classpath = files()
+    destinationDirectory = fableFxClasses
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }
+}
+['verifyFableHudMath': 'village.fieldhud.FableHudMathTest', 'verifyHotbarFxRules': 'village.fieldhud.HotbarFxRulesChecks'].each { taskName, testClass ->
+    tasks.register(taskName, JavaExec) {
+        dependsOn 'compileFableFxChecks'
+        classpath = files(fableFxClasses)
+        mainClass = testClass
+        javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(8) }
+    }
+    tasks.named('check') { dependsOn taskName }
+}

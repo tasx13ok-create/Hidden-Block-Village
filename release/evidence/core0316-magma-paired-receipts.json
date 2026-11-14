@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "scope": "BOUNDED_FULL54_MAGMA_PAIRED_RECEIPT_NATIVE_CHECKS",
+  "passed": true,
+  "recorded_utc": "2026-11-14T13:53:06.327961+00:00",
+  "source_snapshot_sha256": "8b5ac108319049bfa86cf490ec1c4fd4f372a655b14d32f6781b8e57f349232d",
+  "build_report": {
+    "bytes": 33403,
+    "sha256": "679a7755db4280b51656c5383a1fd18f0373a1d7d82b4d6e672528619780a46b"
+  },
+  "core_runtime": {
+    "bytes": 2738651,
+    "sha256": "840d44ec6db5355aeec0402de6d74350cd36d18d350a4e7f5ce14e4e6bf21014"
+  },
+  "private_fixture": {
+    "bytes": 85334,
+    "sha256": "eea1bec06d6fbde59170094aec71c457fae66dbbbec6601791a7e1499977d944"
+  },
+  "native_result": {
+    "bytes": 67215,
+    "sha256": "ba9873435c172a5d31c0e39e1a605edcd65e2b04faf2ef3cc88ac2a75af10ce9"
+  },
+  "run_receipt": {
+    "bytes": 1272,
+    "sha256": "bff901fc273f8fd9153473fa5a629432227f8a3430e8a5763c3727f778bd12ec"
+  },
+  "native_log": {
+    "bytes": 104990,
+    "sha256": "fe9bc799441495d5ef14f18d05172283e3cfac0e7fe14387ed3048000917c354"
+  },
+  "process_exit_code": 0,
+  "forced_termination": false,
+  "production_server_jars": 54,
+  "private_qa_jars": 1,
+  "native_api_assertions": 18,
+  "native_overload_assertions": 20,
+  "facade_and_lifecycle_assertions": 49,
+  "caller_assertions": 82,
+  "paired_absorption_assertions": 16,
+  "actual_fully_absorbed_ward_five_unit_payment": true,
+  "ward_zero_then_unrelated_loss_rejected": true,
+  "ward_final_damage_zero_cancellation_rejected": true,
+  "paired_mode_cases_passed": true,
+  "native_same_object_respawn": true,
+  "native_session_old_ticket_rejected": true,
+  "original_sage_byakugou_callbacks_passed": true,
+  "base_spring_bounded_sequence_uses_one_pool": true,
+  "base_spring_prototype_is_private_not_production_accepted": true,
+  "private_prototype_uses_protected_base_set_reflection": true,
+  "original_world_used": false,
+  "live_player_profile_used": false,
+  "new_flat_world_only": true,
+  "graphical_client_tested": false,
+  "real_network_client_endpoint_tested": false,
+  "saved_world_migration_tested": false,
+  "hosted_acceptance": false,
+  "deployment_ready": false,
+  "started_utc": "2026-11-14T13:51:33.046410+00:00",
+  "finished_utc": "2026-11-14T13:51:59.613396+00:00",
+  "sprint_deadline_utc": "2026-11-14T13:32:41+00:00",
+  "error_type": null,
+  "error_message": null
+}

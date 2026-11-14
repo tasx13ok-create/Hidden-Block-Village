@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "feature": "Original Claude anime hotbar presentation adapted to real six/nine physical banks",
+  "field_hud_version": "0.19.0",
+  "core_version_preserved": "0.3.16",
+  "source_commit": "bea21d389ccfe8e142099e2d217449abe84c12f8",
+  "authored_commits": [
+    "acdf2ed",
+    "cb67842",
+    "c9b377e",
+    "8c11a32"
+  ],
+  "coauthor_credit": "Claude Opus 5.5 <noreply@anthropic.com>",
+  "adaptation_credit": "Codex: reviewed count/cache/lifecycle/budget/GL/accepted-signal integration",
+  "private_draft_manifest_sha256": "ed7205ac0c1f330f6d08a5832d9b3423e66aa2ff74986b546bf048fbec594c42",
+  "promotion_checks": "Canonical preimages and every frozen draft byte verified before writing; line endings normalized LF",
+  "tail_or_recovered_code_imported": false,
+  "claude_parent_history_merged": false,
+  "native_or_graphical_acceptance_claimed": false,
+  "files": [
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/AnimeDraw.java",
+      "before_sha256": null,
+      "draft_sha256": "cab6021509f31c5654ac5ff87409616539dd0657b9a34caefd2dd4e16fcf183c",
+      "promoted_sha256": "cab6021509f31c5654ac5ff87409616539dd0657b9a34caefd2dd4e16fcf183c",
+      "claude_pin_sha256": "c6d7e6665b6e0daf21319972f6a4f30b215f2c92c89b1ee65ed1ab3bed9934b1",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FableEnv.java",
+      "before_sha256": null,
+      "draft_sha256": "03030a5b5b545ff2d36e0e6d4fe0ac1af7feca25108431a3178fa3b34c6611c3",
+      "promoted_sha256": "03030a5b5b545ff2d36e0e6d4fe0ac1af7feca25108431a3178fa3b34c6611c3",
+      "claude_pin_sha256": "208b7c0290abbb6e48417e758c2dc8552f70e2c83ecf8b21a286e1c24135ad55",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FableHudMath.java",
+      "before_sha256": null,
+      "draft_sha256": "be1d4ab755a5d89441b5a0cb8034b8db140ecc29c5c58c744869bf4bf6e321d4",
+      "promoted_sha256": "be1d4ab755a5d89441b5a0cb8034b8db140ecc29c5c58c744869bf4bf6e321d4",
+      "claude_pin_sha256": "d0ac7aa537b03d66b049e53237f9cfd6eb49688fa508c201a7fe32f48b67b37d",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/HotbarFx.java",
+      "before_sha256": null,
+      "draft_sha256": "25d1a959fa6b7fe41d32eaeea485059d4dedc76dfc1b4a1d2c18c6a8fed9bf8d",
+      "promoted_sha256": "25d1a959fa6b7fe41d32eaeea485059d4dedc76dfc1b4a1d2c18c6a8fed9bf8d",
+      "claude_pin_sha256": "f3010bb8502d982fee325981792b3778370376e9f2f2d9b51dafdd31a67531ee",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/JutsuRail.java",
+      "before_sha256": "ca0be2d69f8dbd782739bb1ccf52d6c1ab5c83aefe45f1a3e68db62a53fd75d8",
+      "draft_sha256": "f2e4eeb0c5e155a40e3bac452ec5e4d954fb64550e345147186279ca2267f769",
+      "promoted_sha256": "f2e4eeb0c5e155a40e3bac452ec5e4d954fb64550e345147186279ca2267f769",
+      "claude_pin_sha256": "2341d43e9348709be90c04aa84e2b4a1aec223d1144d6ff091d3cd026e3ecff1",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/RackRailDraw.java",
+      "before_sha256": "5aed5db625b1b6c890d97d4b0c53b9e462fd0e79daa14a7d0bdda80d91e16bbf",
+      "draft_sha256": "936d90fdf4ac512eaef167030c615f5c3cb1197bd4af6a142013c557fe33a46c",
+      "promoted_sha256": "936d90fdf4ac512eaef167030c615f5c3cb1197bd4af6a142013c557fe33a46c",
+      "claude_pin_sha256": null,
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/ScrollHotbar.java",
+      "before_sha256": "19d69206c1fbab5fc649d3b9fc10d22f0f2a9bc0105beeb389090d5d06131a31",
+      "draft_sha256": "7703eccb94d97224a9693aa45db4622e4084c884349c658638bb51b5c0366c8a",
+      "promoted_sha256": "7703eccb94d97224a9693aa45db4622e4084c884349c658638bb51b5c0366c8a",
+      "claude_pin_sha256": "2b9fbecb04d1079e3951c013e0d99bdb65c693ccd9d94b92a1a449826fac4be6",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/FableHudMathTest.java",
+      "before_sha256": null,
+      "draft_sha256": "72e7affe0cd9f8a18bc2e8b05752a8c770ed546fa12b71d0944cd4077ba4f46e",
+      "promoted_sha256": "72e7affe0cd9f8a18bc2e8b05752a8c770ed546fa12b71d0944cd4077ba4f46e",
+      "claude_pin_sha256": "72e7affe0cd9f8a18bc2e8b05752a8c770ed546fa12b71d0944cd4077ba4f46e",
+      "normalization": "LF"
+    },
+    {
+      "path": "modules/field-hud/tests/village/fieldhud/HotbarFxRulesChecks.java",
+      "before_sha256": null,
+      "draft_sha256": "700f2a15ec71ebce7cb0c138df08dd259b040d65acbd9effcb1874ee04ed4766",
+      "promoted_sha256": "d9d9f67a204b79d6ff686ad6b4939e322d2d2f2417691694576384bae4fd14ec",
+      "claude_pin_sha256": null,
+      "normalization": "LF"
+    }
+  ],
+  "verification": {
+    "all_main_classes_java8_compile": 79,
+    "original_pure_math_checks": 550,
+    "count_tick_budget_checks": 427,
+    "actual_source_synthetic_GL_checks": 41,
+    "real_GPU_checked": false,
+    "promoted_actual_main_classes_compile": 79,
+    "promoted_original_math_checks": 550,
+    "promoted_bounds_checks": 427,
+    "git_diff_check": "PASS"
+  },
+  "metadata_files": [
+    {
+      "path": "modules/field-hud/build.gradle",
+      "sha256": "360cedd20f711b9db40496faa190edf980e41765b5cf0d8f6ae5fa86ae9a10fb"
+    },
+    {
+      "path": "modules/field-hud/src/main/java/village/fieldhud/FieldHud.java",
+      "sha256": "9cf038b087e47fbb9cdbb83480d265ed586e6ad7a467bf67af7ee6574d36cc02"
+    },
+    {
+      "path": "modules/field-hud/src/main/resources/mcmod.info",
+      "sha256": "28d7cac7bd2f4580709dd12a8f350631f3ac7e484cda5f5543ea3b09190f41d7"
+    }
+  ]
+}

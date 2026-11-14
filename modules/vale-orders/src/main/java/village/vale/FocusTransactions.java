@@ -32,15 +32,23 @@ public final class FocusTransactions {
     }
     private static final class Contact {
         final EntityPlayerMP player;final EntityLivingBase target;final LivingHurtEvent hurt;final FocusPayment payment;
-        final float before,absBefore,modified;final boolean increase;LivingDamageEvent damage;float absorptionLoss,observed;
+        final float before,absBefore,modified;final boolean increase;LivingDamageEvent damage;float absorptionLoss,observed;boolean sealed;
         Contact(EntityPlayerMP p,LivingHurtEvent event,FocusPayment payment,float amount,boolean increase){player=p;target=event.getEntityLiving();hurt=event;this.payment=payment;modified=amount;this.increase=increase;before=target.getHealth()+target.getAbsorptionAmount();absBefore=target.getAbsorptionAmount();}
         boolean admitted(){return damage!=null&&!hurt.isCanceled()&&!damage.isCanceled()&&Float.isFinite(hurt.getAmount())&&hurt.getAmount()>0&&Float.isFinite(damage.getAmount())&&damage.getAmount()>=0&&(damage.getAmount()>0||absorptionLoss>0)&&(increase?hurt.getAmount()>=modified:hurt.getAmount()<=modified);}
-        void observe(){float now=target.getHealth()+target.getAbsorptionAmount();if(admitted()&&Float.isFinite(before)&&Float.isFinite(now))observed=Math.max(observed,before-now);}
-        void finish(){try{observe();if(admitted()&&observed>0)payment.accepted();}finally{payment.close();}}
+        void observe(boolean seal){
+            if(sealed)return;
+            // Magma emits final Damage before debiting absorption. Observe after unwind,
+            // before the next attack/heal/reset can contribute an unrelated loss.
+            float absorption=target.getAbsorptionAmount(),now=target.getHealth()+absorption;
+            if(damage!=null&&Float.isFinite(absBefore)&&Float.isFinite(absorption))absorptionLoss=Math.max(absorptionLoss,Math.max(0,absBefore-absorption));
+            if(admitted()&&Float.isFinite(before)&&Float.isFinite(now))observed=Math.max(observed,before-now);
+            if(seal)sealed=true; // Seal zero too; a later hit cannot inherit this receipt.
+        }
+        void finish(){try{observe(false);if(admitted()&&observed>0)payment.accepted();}finally{payment.close();}}
     }
     @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true) public static void damage(LivingDamageEvent event){for(Contact c:PENDING)if(c.damage==null&&c.target==event.getEntityLiving()&&c.hurt.getSource()==event.getSource()){c.damage=event;c.absorptionLoss=Math.max(0,c.absBefore-c.target.getAbsorptionAmount());}}
     @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true) public static void attack(LivingAttackEvent event){beforeHealthReset(event.getEntityLiving());}
     @SubscribeEvent(priority=EventPriority.HIGH,receiveCanceled=true) public static void heal(LivingHealEvent event){beforeHealthReset(event.getEntityLiving());}
-    public static void beforeHealthReset(EntityLivingBase target){for(Contact c:PENDING)if(c.target==target)c.observe();}
+    public static void beforeHealthReset(EntityLivingBase target){for(Contact c:PENDING)if(c.target==target)c.observe(true);}
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event){if(event.phase!=TickEvent.Phase.END)return;List<Contact> batch=new ArrayList<>(PENDING);PENDING.clear();for(Contact c:batch)try{c.finish();}catch(RuntimeException|LinkageError failure){org.apache.logging.log4j.LogManager.getLogger("NarutoFocus").warn("Focus receipt settlement failed",failure);}}
 }

@@ -74,6 +74,7 @@ public final class SharedCostNativeChecks {
             require(threw&&p.isPotionActive(Forms.EFFECTS[0])&&balance()==40&&state().getLong("formReady")>Adventures.now(p),"Accepted potion before callback throw became free");require(Forms.activate(p,0)&&Forms.active(p)<0&&balance()==40,"Form startup guard leaked after callback failure");
             prepare(Order.RIME,"saber");PlayerState.setResolve(p,50);p.ticksExisted=20;state().setLong("lastCombat",Adventures.now(p));new Combat().tick(new net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent(net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END,p));require(balance()==(Adventures.now(p)>0?52:55),"Absent-mod legacy regeneration changed");
             lifecycle(gate);
+            checks+=village.vale.arsenal.PairedAbsorptionNativeChecks.run(p);
             return checks;
         }finally{
             MinecraftForge.EVENT_BUS.unregister(gate);if(victim!=null){victim.setDead();world.removeEntity(victim);}if(p!=null){Forms.end(p,false);Summons.dismiss(p);if(server.getPlayerList().getPlayerByUUID(p.getUniqueID())==p)server.getPlayerList().playerLoggedOut(p);if(p.connection instanceof Quiet)((Quiet)p.connection).stop();}p=null;victim=null;
