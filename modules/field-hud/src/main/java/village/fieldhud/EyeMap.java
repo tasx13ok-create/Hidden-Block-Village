@@ -13,10 +13,12 @@ public final class EyeMap {
     private static Object module,original,proxy,world;
     private static Field rendererField;
     private static int lastTick=-10,x,y,w,h,screenW,screenH;
-    private static boolean unavailable=false,reported=false;
+    private static boolean unavailable=false,reported=false,circle=false,shapeTried=false;
+    private static double unit=1;   // GUI pixels per Xaero frame unit (minimap UI scale / screen scale)
+    private static int configured;  // Xaero frame size in its own units: mapSize/2 + 18
     private static long lastAttempt=-100;
     private EyeMap() {}
-    public static void resetWorld() { world=null;lastTick=-10;lastAttempt=-100; }
+    public static void resetWorld() { world=null;lastTick=-10;lastAttempt=-100;shapeTried=false; }
     private static Object call(Object target,String name) throws ReflectiveOperationException {
         return target.getClass().getMethod(name).invoke(target);
     }
@@ -53,8 +55,15 @@ public final class EyeMap {
                         Class<?> c=context.getClass();
                         x=c.getField("x").getInt(context);y=c.getField("y").getInt(context);w=c.getField("w").getInt(context);h=c.getField("h").getInt(context);
                         screenW=c.getField("screenWidth").getInt(context);screenH=c.getField("screenHeight").getInt(context);
+                        int scale=c.getField("screenScale").getInt(context);
+                        try { configured=(Integer)session.getClass().getMethod("getConfiguredWidth",double.class).invoke(session,(double)scale); }
+                        catch(ReflectiveOperationException|RuntimeException older) { configured=w; }
+                        if(configured<=18)configured=w;
+                        unit=w/(double)configured;
+                        try { circle=shape(true)==1; }
+                        catch(ReflectiveOperationException|RuntimeException older) { circle=true; }
                         lastTick=MC.player.ticksExisted;
-                        if(!reported) { reported=true;System.out.println("FIELD_HUD_EYE_BOUNDS: "+x+","+y+" width="+w+" screen="+screenW+"x"+screenH); }
+                        if(!reported) { reported=true;System.out.println("FIELD_HUD_EYE_BOUNDS: "+x+","+y+" width="+w+" frame="+configured+" circle="+circle+" screen="+screenW+"x"+screenH); }
                     }
                   } catch(ReflectiveOperationException|RuntimeException error) {
                       unavailable=true;lastTick=-10;
@@ -70,10 +79,32 @@ public final class EyeMap {
             unavailable=true;System.out.println("FIELD_HUD_EYE_DISABLED: Xaero adapter unavailable: "+e.getClass().getSimpleName());
         }
     }
+    /** Xaero's effective minimap shape (0 square, 1 circle). The bezel is round, so while it is
+     *  enabled the local profile is switched to circle once per world; a server-enforced square
+     *  shape is respected and the bezel then hides instead of framing a square map. */
+    private static int shape(boolean enforce) throws ReflectiveOperationException {
+        Object root=Class.forName("xaero.common.HudMod").getField("INSTANCE").get(null);
+        Object manager=call(call(root,"getHudConfigs"),"getClientConfigManager");
+        Class<?> optionType=Class.forName("xaero.lib.common.config.option.ConfigOption");
+        Object option=Class.forName("xaero.hud.minimap.common.config.option.MinimapProfiledConfigOptions").getField("SHAPE").get(null);
+        Method effective=manager.getClass().getMethod("getEffective",optionType);
+        Object value=effective.invoke(manager,option);
+        if(enforce&&HudConfig.eyeCircle&&!shapeTried&&!Integer.valueOf(1).equals(value)) {
+            shapeTried=true;
+            Object profile=call(manager,"getCurrentProfile");
+            if(profile!=null) {
+                profile.getClass().getMethod("set",optionType,Object.class).invoke(profile,option,1);
+                value=effective.invoke(manager,option);
+                System.out.println("FIELD_HUD_EYE_SHAPE: Xaero minimap shape set to circle for the eye bezel (now "+value+")");
+            }
+        }
+        return value instanceof Integer?(Integer)value:0;
+    }
     public static void draw(ScaledResolution sr,double time) {
         ensure();
-        if(lastTick!=MC.player.ticksExisted||screenW!=sr.getScaledWidth()||screenH!=sr.getScaledHeight()||w<40||w>220)return;
-        double cx=x+w/2.0,cy=y+w/2.0,r=(w-12)/2.0;
+        if(!circle||lastTick!=MC.player.ticksExisted||screenW!=sr.getScaledWidth()||screenH!=sr.getScaledHeight()||w<40||w>220)return;
+        // Xaero's circle: left/top at x+9 units, diameter mapSize/2 units, frame 4 units thick.
+        double half=configured*unit/2,cx=x+half,cy=y+half,r=(configured-18)/2.0*unit+3*unit;
         // Inner shadow stays at the rim; the actual terrain/waypoints remain visible.
         for(int i=0;i<4;i++)SkinDraw.ring(cx,cy,r-i,1,SkinDraw.alpha(0x0C1727,62-i*13));
         SkinDraw.ring(cx,cy,r+3.5,2.5,0x502E4157);

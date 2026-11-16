@@ -7,7 +7,7 @@ public final class HudConfig {
     public static Configuration file;
     public static int mode=0,margin=8;
     public static boolean location=true,target=true,arrivals=true,warning=true,chime=false;
-    public static boolean shinobi=true,motion=true,curve=true,eyeMap=true;
+    public static boolean shinobi=true,motion=true,curve=true,eyeMap=true,eyeCircle=true;
     public static boolean chakra=true,slim=false;
     public static boolean glassBlur=true;
     public static boolean narutoInventory=true,menuSounds=true,menuEffects=true;
@@ -35,6 +35,7 @@ public final class HudConfig {
         jutsuRail=file.getBoolean("jutsuBar","hud",true,"Six local shortcuts to server-owned attacks and equipment below the minimap. Focus routes scrolling; menus retain normal input.");
         curve=file.getBoolean("curvedHotbar","hud",true,"Subtle two-pixel scroll curve; items follow their slots.");
         eyeMap=file.getBoolean("eyeBezel","hud",true,"Optional Xaero 26.6 circular-map eye bezel using live module bounds.");
+        eyeCircle=file.getBoolean("eyeBezelCircleMap","hud",true,"Switch Xaero's minimap to its circle shape while the eye bezel is on, so the map stays inside the ring.");
         chakra=file.getBoolean("chakra","hud",true,"Integrate NarutoMod's real synchronized chakra and warning/Sage flags when available.");
         slim=file.getBoolean("slimPlate","hud",false,"Narrower status plate. Can be changed in the layout editor.");
         positionX=file.getInt("statusX","hud",-1,-1,1000,"Normalized status position; -1 uses the default margin.");
