@@ -49,4 +49,22 @@ public final class ImmersionMath {
 
     public static double wrap(double deg) { deg %= 360; if (deg >= 180) deg -= 360; if (deg < -180) deg += 360; return deg; }
     static double clamp(double v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+    /** Ambience layer for a listener: 0 none, 1 forest birds (day), 2 night insects-like rustle, 3 cave drips/bats, 4 water lapping, 5 high wind. */
+    public static int ambience(boolean underground, boolean nearWater, boolean forest, boolean day, double height) {
+        if (underground) return 3;
+        if (height > 110) return 5;
+        if (nearWater) return 4;
+        if (forest) return day ? 1 : 2;
+        return day ? 0 : 2;
+    }
+
+    /** Seconds between ambience cues for a layer (randomised by the caller within +-50%). */
+    public static int ambienceGap(int layer) { return layer == 0 ? 0 : layer == 5 ? 6 : layer == 3 ? 9 : 7; }
+
+    /** Small pitch variation for repeated combat sounds, deterministic from a seed in [0,1). */
+    public static float vary(float pitch, double seed) { return pitch * (float) (0.94 + 0.12 * seed); }
+
+    /** Whether a sound is loud enough to earn a low "weight" tail. */
+    public static boolean heavy(float volume) { return volume >= 0.6f; }
 }

@@ -26,6 +26,14 @@ public final class ImmersionChecks {
         check(Math.abs(ImmersionMath.bearing(0, 0, 0, 10)) < 1e-9, "south (+z) is yaw 0");
         check(Math.abs(Math.abs(ImmersionMath.bearing(0, 0, 0, -10)) - 180) < 1e-9, "north is yaw 180");
         check(Math.abs(ImmersionMath.bearing(0, 0, -10, 0) - 90) < 1e-9, "west (-x) is yaw 90");
+        check(ImmersionMath.ambience(true, true, true, true, 40) == 3, "underground wins");
+        check(ImmersionMath.ambience(false, false, false, true, 130) == 5, "high wind");
+        check(ImmersionMath.ambience(false, true, true, true, 64) == 4, "water near shore");
+        check(ImmersionMath.ambience(false, false, true, true, 64) == 1 && ImmersionMath.ambience(false, false, true, false, 64) == 2, "forest day/night");
+        check(ImmersionMath.ambience(false, false, false, true, 64) == 0, "plain daytime is quiet");
+        for (int l = 1; l <= 5; l++) check(ImmersionMath.ambienceGap(l) >= 5, "ambience is sparse");
+        for (double sd = 0; sd < 1; sd += 0.1) { float v = ImmersionMath.vary(1f, sd); check(v >= 0.94f && v <= 1.06f, "pitch variation bounded"); }
+        check(ImmersionMath.heavy(1f) && !ImmersionMath.heavy(0.3f), "heavy threshold");
         System.out.println("PASS: " + checks + " immersion checks (water-walk, wall-run, sound, compass).");
     }
 }

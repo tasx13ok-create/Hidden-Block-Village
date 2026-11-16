@@ -40,6 +40,19 @@ final class SoundFx {
         Sound resolved = s.getSound();
         if (resolved == null || resolved == net.minecraft.client.audio.SoundHandler.MISSING_SOUND) return;
         float vol = s.getVolume(), pitch = s.getPitch();
+        String ns = s.getSoundLocation().getNamespace();
+        if (Config.combatLayers && (ns.equals("narutomod") || ns.equals("valeorders") || ns.equals("hvbijuu") || ns.equals("kabutoaddon") || ns.equals("ahznbswordsplus")) && s.getAttenuationType() != ISound.AttenuationType.NONE) {
+            pitch = ImmersionMath.vary(pitch, mc.world.rand.nextDouble());
+            ISound varied = new PositionedSoundRecord(s.getSoundLocation(), cat, vol, pitch, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
+            ours.add(varied);
+            e.setResultSound(varied);
+            s = varied;
+            if (ImmersionMath.heavy(vol)) {   // low weight tail just after the hit
+                ISound tail = new PositionedSoundRecord(net.minecraft.init.SoundEvents.ENTITY_GENERIC_EXPLODE.getSoundName(), cat, vol * 0.18f, 0.55f, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
+                ours.add(tail);
+                mc.getSoundHandler().playDelayedSound(tail, 2);
+            }
+        }
         Entity cam = mc.getRenderViewEntity() == null ? mc.player : mc.getRenderViewEntity();
         if (Config.underwaterSound && cam.isInsideOfMaterial(Material.WATER)) {
             float[] m = ImmersionMath.underwater(vol, pitch);
