@@ -1,0 +1,268 @@
+{
+  "status": "PASS",
+  "assertions": 65,
+  "failed": 0,
+  "scope": "Real registered Forge commands, native player interaction/event paths, connected synthetic OP/non-OP and disposable world; outgoing clickable chat structures inspected without a graphical client.",
+  "checks": [
+    {
+      "name": "setup command registers dungeon and dg aliases for the original command",
+      "pass": true
+    },
+    {
+      "name": "non-operator gets the public clickable dungeon menu",
+      "pass": true
+    },
+    {
+      "name": "non-operator cannot use new setup action: setup",
+      "pass": true
+    },
+    {
+      "name": "non-operator cannot use new setup action: wand",
+      "pass": true
+    },
+    {
+      "name": "non-operator cannot use new setup action: setspawn",
+      "pass": true
+    },
+    {
+      "name": "non-operator cannot use new setup action: create",
+      "pass": true
+    },
+    {
+      "name": "non-operator cannot use new setup action: boss",
+      "pass": true
+    },
+    {
+      "name": "denied setup actions change neither configuration nor inventory",
+      "pass": true
+    },
+    {
+      "name": "operator setup presents clickable spawn wand and boss steps",
+      "pass": true
+    },
+    {
+      "name": "wand command grants a marked vanilla stick in the main hand",
+      "pass": true
+    },
+    {
+      "name": "repeated wand command reuses the existing tool",
+      "pass": true
+    },
+    {
+      "name": "full creative hotbar grants the wand into a free inventory slot without replacing hotbar items",
+      "pass": true
+    },
+    {
+      "name": "full inventory refuses wand without overwriting held items",
+      "pass": true
+    },
+    {
+      "name": "a copied marked stick gives non-operators no selection or destruction",
+      "pass": true
+    },
+    {
+      "name": "operator wand left-click selects the exact first block without breaking it",
+      "pass": true
+    },
+    {
+      "name": "operator wand right-click selects without opening or changing a container",
+      "pass": true
+    },
+    {
+      "name": "wand suppresses offhand follow-up placement and corner changes",
+      "pass": true
+    },
+    {
+      "name": "wand also cancels direct operator harvesting through the break event",
+      "pass": true
+    },
+    {
+      "name": "selection command reports inclusive corners and volume",
+      "pass": true
+    },
+    {
+      "name": "create refuses an unbound spawn without starting a capture",
+      "pass": true
+    },
+    {
+      "name": "setspawn links the looked-at Waystone without coordinate arguments",
+      "pass": true
+    },
+    {
+      "name": "ordinary player dungeon spawn command reaches the exact safe bound landing",
+      "pass": true
+    },
+    {
+      "name": "simple create accepts an element and multiword display name",
+      "pass": true
+    },
+    {
+      "name": "wand selection becomes the exact inclusive capture bounds",
+      "pass": true
+    },
+    {
+      "name": "create keeps both region and auto label unpublished until capture verifies",
+      "pass": true
+    },
+    {
+      "name": "boss creation refuses a parent whose clean copy is still saving",
+      "pass": true
+    },
+    {
+      "name": "verified capture persists its region and automatic element label together",
+      "pass": true
+    },
+    {
+      "name": "simple create writes a durable complete clean snapshot",
+      "pass": true
+    },
+    {
+      "name": "capture sends its connected creator one ready notification",
+      "pass": true
+    },
+    {
+      "name": "ready notification is not repeated on later ticks",
+      "pass": true
+    },
+    {
+      "name": "automatic dungeon label survives settings reload",
+      "pass": true
+    },
+    {
+      "name": "simple boss command infers its saved parent from selected bounds",
+      "pass": true
+    },
+    {
+      "name": "simple boss persists parent identity name and chamber bounds",
+      "pass": true
+    },
+    {
+      "name": "reusing exact boss corners updates the encounter without duplicates",
+      "pass": true
+    },
+    {
+      "name": "partial boss overlap is rejected without changing saved metadata",
+      "pass": true
+    },
+    {
+      "name": "boss bounds crossing a dungeon boundary are rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid element cannot start an unlabelled capture",
+      "pass": true
+    },
+    {
+      "name": "overlong display name is rejected before capture or label changes",
+      "pass": true
+    },
+    {
+      "name": "invalid boss display characters leave saved encounter unchanged",
+      "pass": true
+    },
+    {
+      "name": "out-of-world corner coordinates cannot replace a valid selection",
+      "pass": true
+    },
+    {
+      "name": "oversized setup selection creates no region or orphan label",
+      "pass": true
+    },
+    {
+      "name": "setup refuses a dungeon containing the spawn Waystone landing",
+      "pass": true
+    },
+    {
+      "name": "labelled capture does not publish an orphan label while pending",
+      "pass": true
+    },
+    {
+      "name": "pending capture owns a defensive copy of region and display metadata",
+      "pass": true
+    },
+    {
+      "name": "invalid pending metadata is rejected before creating any arena or file",
+      "pass": true
+    },
+    {
+      "name": "capture validation failure publishes neither a region nor its label",
+      "pass": true
+    },
+    {
+      "name": "failed labelled capture keeps its selected terrain locked",
+      "pass": true
+    },
+    {
+      "name": "failed capture notifies the creator without a false ready message",
+      "pass": true
+    },
+    {
+      "name": "legacy capture still accepts an explicit dungeon ID",
+      "pass": true
+    },
+    {
+      "name": "legacy label command updates the saved element and caption",
+      "pass": true
+    },
+    {
+      "name": "legacy explicit bossarea and bosslabel commands still persist",
+      "pass": true
+    },
+    {
+      "name": "legacy bossremove still removes the named encounter",
+      "pass": true
+    },
+    {
+      "name": "legacy reset still queues a real verified restoration",
+      "pass": true
+    },
+    {
+      "name": "legacy remove unregisters metadata while preserving its baseline",
+      "pass": true
+    },
+    {
+      "name": "remove clears automatic labels and boss zones but retains clean copy",
+      "pass": true
+    },
+    {
+      "name": "same display name can create another dungeon after removal",
+      "pass": true
+    },
+    {
+      "name": "automatic ID skips retained baselines instead of overwriting them",
+      "pass": true
+    },
+    {
+      "name": "element-only create supplies a readable default dungeon name",
+      "pass": true
+    },
+    {
+      "name": "default dungeon caption and element persist together",
+      "pass": true
+    },
+    {
+      "name": "all three registered command routes retain public status access",
+      "pass": true
+    },
+    {
+      "name": "advanced help retains the existing capture label and boss commands",
+      "pass": true
+    },
+    {
+      "name": "clear removes only session corners and preserves saved dungeons",
+      "pass": true
+    },
+    {
+      "name": "registered dimension-change event clears the old selection",
+      "pass": true
+    },
+    {
+      "name": "actual logout clears selection and revokes connected operator access",
+      "pass": true
+    },
+    {
+      "name": "setup fixture leaves no players new arenas or operator permissions",
+      "pass": true
+    }
+  ]
+}

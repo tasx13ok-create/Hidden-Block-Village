@@ -1,0 +1,10 @@
+{
+  "status": "RESOLVED",
+  "initial_attempt": "The explicit offline build stopped before addon compilation because the RFG downloadFernflower predicate throws in offline mode before the Minecraft1.12 skip condition.",
+  "resolution": "Used the previously proven normal Gradle launcher with the same verified cache. The final log records download/decompile tasks skipped; no Magma dependency or graphical retry was attempted.",
+  "preserved_logs": [
+    "failed-build-offline.log",
+    "failed-build-offline-diagnostic.log"
+  ],
+  "final_build": "PASS"
+}

@@ -1,4 +1,8 @@
-# Dungeon Guard 1.1.1 compatibility notes
+# Dungeon Guard compatibility notes
+
+The compatibility adapters below were introduced in 1.1.1 and are retained in
+1.2.0. The easier setup commands do not broaden their compatibility claims.
+Use each version's own verification receipt for checks run on that exact JAR.
 
 ## Inspected dependencies
 
@@ -9,12 +13,12 @@ These dependencies are external inspection/test inputs. Their implementations, s
 | AHZNB Naruto 0.3.1-beta | `6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0` | Actual release class inspection, external-byte transformer execution, optional real-mod native fixture |
 | Waystones 4.1.0 | `5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15` | Actual block, item, tile, discovery and travel APIs in the isolated real-mod native fixture |
 | Magma 1.12.2 b4c01d2 | `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce` | Actual wrapper bytecode, official mapping/hierarchy inspection, independent JVM fixtures; no live Magma acceptance |
-| WorldEdit Forge 6.1.10 | `cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75` | Actual release and official source audit; no WorldEdit integration in 1.1.1 |
+| WorldEdit Forge 6.1.10 | `cd4768ded9e2b527e3fc093fdf4ce07f058187de7961bdc0d7fa821c1b756f75` | Actual release and official source audit; no live protected-edit integration |
 | WorldEdit Bukkit 6.1.9 | `5a7b88f6f75b4a0b6efd47ae03e9c26a2036ecd122b03a45ca635dde386d6186` | Actual release available; Bukkit classloader/integration design audit only |
 
 Final acceptance counts and artifact identities are recorded separately in the release verification receipts.
 
-The final real-mod run passed 60 assertions: 25 for Naruto's helper, 33 for
+The final 1.1.1 real-mod run passed 60 assertions: 25 for Naruto's helper, 33 for
 Waystones behavior and two exact binary identity checks. The first run retained
 two failed travel/reset assertions and a subsequent fixture-completion failure
 because its test player had not discovered the destination stone. The original fixture was corrected to register and check

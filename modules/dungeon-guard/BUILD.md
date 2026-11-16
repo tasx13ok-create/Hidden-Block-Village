@@ -21,17 +21,17 @@ against the separate, exact Forge 14.23.5.2859 runtime.
 Install only the production output:
 
 ```text
-build/libs/Dungeon-Guard-1.12.2-1.1.1.jar
+build/libs/Dungeon-Guard-1.12.2-1.2.0.jar
 ```
 
 The development, sources, and private native-test JARs are not install files.
 Check the actual distributable with:
 
 ```text
-python tools/verify_artifact.py build/libs/Dungeon-Guard-1.12.2-1.1.1.jar
+python tools/verify_artifact.py build/libs/Dungeon-Guard-1.12.2-1.2.0.jar
 ```
 
-This checks the Java 8 class version, the coremod manifest and 1.1.1 metadata,
+This checks the Java 8 class version, the coremod manifest and 1.2.0 metadata,
 archive integrity, required area/HUD implementation classes, and that the addon
 contains neither upstream game classes nor test classes. It also verifies the
 embedded transparent PNG's format, dimensions, and exact original image hash.
@@ -49,7 +49,7 @@ directory with its installer. The following command uses that directory only
 as a source of the official server JAR and libraries:
 
 ```text
-python tools/run_native.py --server-template /path/to/empty-forge-install --java-home /path/to/jdk8 --mod build/libs/Dungeon-Guard-1.12.2-1.1.1.jar --tests build/private-native-tests/dungeon-guard-native-tests-1.1.1.jar
+python tools/run_native.py --server-template /path/to/empty-forge-install --java-home /path/to/jdk8 --mod build/libs/Dungeon-Guard-1.12.2-1.2.0.jar --tests build/private-native-tests/dungeon-guard-native-tests-1.2.0.jar
 ```
 
 The runner verifies the Forge and Minecraft binary hashes and creates a new
@@ -82,7 +82,7 @@ It uses the original, externally supplied NarutoMod 0.3.1-beta and Waystones
 upstream binaries are not included in the source or installation package.
 
 ```text
-python tools/run_native.py --server-template /path/to/empty-forge-install --java-home /path/to/jdk8 --mod build/libs/Dungeon-Guard-1.12.2-1.1.1.jar --tests build/private-native-tests/dungeon-guard-actual-mod-tests-1.1.1.jar --extra-mod /path/to/NarutoMod-1.12.2-0.3.1.beta.jar --extra-mod /path/to/Waystones_1.12.2-4.1.0.jar --result-name actual-mod-result.json --pass-marker DUNGEON_GUARD_ACTUAL_MOD_PASS --timeout 300
+python tools/run_native.py --server-template /path/to/empty-forge-install --java-home /path/to/jdk8 --mod build/libs/Dungeon-Guard-1.12.2-1.2.0.jar --tests build/private-native-tests/dungeon-guard-actual-mod-tests-1.2.0.jar --extra-mod /path/to/NarutoMod-1.12.2-0.3.1.beta.jar --extra-mod /path/to/Waystones_1.12.2-4.1.0.jar --result-name actual-mod-result.json --pass-marker DUNGEON_GUARD_ACTUAL_MOD_PASS --timeout 300
 ```
 
 This is a separate run from the ordinary native fixture. **Do not combine the
@@ -117,10 +117,11 @@ malformed-input checks, plus pure HUD placement checks.
 The exact Magma base matching the recorded PC server has SHA-256
 `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce`.
 Its manifest identifies `b4c01d2`, although the recorded PC filename used
-`8cc35ed`. The external bytecode check does not start Magma. A live 1.1.1 Magma
+`8cc35ed`. The external bytecode check does not start Magma. The earlier live 1.1.1 Magma
 run could not start because required runtime dependencies were unavailable;
 consult the version-specific receipt rather than inferring acceptance from
-a matching filename or successful class transformation.
+a matching filename or successful class transformation. Version 1.2.0 does
+not add a live Magma acceptance result.
 
 ## Installation archive
 

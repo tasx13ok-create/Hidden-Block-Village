@@ -1,0 +1,41 @@
+{
+  "status": "RESOLVED",
+  "first_artifact_sha256": "b67d23f01ffaeb637ef43ce4bfabc66998ee065e34e2a0259003c969a2601629",
+  "first_native_passed": 236,
+  "first_native_failed": 5,
+  "first_219_baseline_assertions_passed": true,
+  "first_real_mod_assertions_passed": 60,
+  "original_failed_assertion_names": [
+    "non-operator gets the public clickable dungeon menu",
+    "full inventory refuses wand without overwriting held items",
+    "setspawn links the looked-at Waystone without coordinate arguments",
+    "simple create accepts an element and multiword display name",
+    "fixture completes without exception"
+  ],
+  "original_menu_inventory_look_at_create_assertions_retained_and_passed": true,
+  "production_corrections": [
+    {
+      "file": "GuardCommand.java",
+      "issue": "Minecraft1.12.2 EntityPlayerMP denies most non-OP command names even at requested permission level0.",
+      "fix": "Allow command dispatch explicitly, then retain strict execute-level authority checks for every setup/admin action."
+    },
+    {
+      "file": "GuardCommand.java",
+      "issue": "Entity.rayTrace is client-only and absent on the dedicated runtime; look-at spawn binding threw NoSuchMethodError.",
+      "fix": "Use common/server world ray tracing from the player eye position and look vector."
+    },
+    {
+      "file": "GuardWand.java",
+      "issue": "Vanilla inventory insertion can discard an uninsertable item and report success for Creative players.",
+      "fix": "Grant only into an actually empty slot; refuse a full inventory before inserting or overwriting anything."
+    }
+  ],
+  "targeted_positive_assertions_added": [
+    "full creative hotbar grants the wand into a free inventory slot without replacing hotbar items",
+    "ordinary player dungeon spawn command reaches the exact safe bound landing"
+  ],
+  "final_artifact_sha256": "737f24a2dbc6745536e9403915beb6ac99fe7686b9f5bec36ec9f1dea32f5da7",
+  "final_native_assertions": 284,
+  "final_actual_mod_assertions": 60,
+  "failed_candidate_binaries_worlds_and_private_fixture_jars_in_public_evidence": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "source_inventory_sha256": "7fadd838c4a28d8a16c5540d29372037977924b4dd3df8b05e974fa240f6698c",
+  "input_files": 53,
+  "all_final_inputs_unchanged_across_corrected_full_build_and_both_native_runs": true,
+  "main_source_inventory_sha256": "fe800a20cc17a76a294df37e426a2a3c1060dbd87607111536d4047cd9ea5ffe",
+  "main_source_files": 28,
+  "first_candidate_inventory_sha256": "84964fd4fbfb9b802fbc2099fd03f6c3b89a204aae4346e06fb67edea8072ca9",
+  "bounded_correction_files_since_first_candidate": [
+    "src/main/java/village/dungeonguard/GuardCommand.java",
+    "src/main/java/village/dungeonguard/GuardWand.java",
+    "src/nativeTest/java/village/dungeonguard/test/SetupNativeChecks.java"
+  ]
+}

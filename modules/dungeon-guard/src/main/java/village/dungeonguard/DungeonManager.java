@@ -24,6 +24,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
@@ -48,6 +49,8 @@ public final class DungeonManager {
         List<Integer> tileIndexes = Collections.emptyList();
         String failure;
         boolean durableMarker;
+        GuardConfig.DungeonLabel pendingLabel;
+        UUID captureRequester;
         Arena(GuardRegion region) { this.region = DungeonSnapshot.copyRegion(region); }
     }
 
@@ -75,22 +78,66 @@ public final class DungeonManager {
     public void close() { closed = true; io.shutdown(); }
 
     public String register(GuardRegion requested) throws IOException {
+        return register(requested, null, null);
+    }
+
+    public String register(GuardRegion requested, GuardConfig.DungeonLabel label) throws IOException {
+        return register(requested, label, null);
+    }
+
+    /** The optional display label becomes visible only with a verified, durable baseline. */
+    public String register(GuardRegion requested, GuardConfig.DungeonLabel label, UUID notifyPlayer) throws IOException {
         ensureOpen();
+        if (requested == null) throw new IllegalArgumentException("Select both dungeon corners first with /dungeon wand.");
+        requested = DungeonSnapshot.copyRegion(requested);
         requested.validate();
         GuardConfig config = GuardRuntime.settings();
         if (requested.volume() > config.maxSnapshotBlocks) throw new IllegalArgumentException("Dungeon exceeds maxSnapshotBlocks");
         if (arenas.containsKey(requested.name)) throw new IllegalArgumentException("Dungeon name already exists: " + requested.name);
         for (Arena existing : arenas.values()) if (requested.overlaps(existing.region)) throw new IllegalArgumentException("Dungeon overlaps " + existing.region.name);
-        if (snapshotFile(requested.name).exists() || checksumFile(requested.name).exists() || markerFile(requested.name).exists()) {
+        if (hasSavedFiles(requested.name)) {
             throw new IOException("Existing baseline/recovery files for " + requested.name + "; refusing to overwrite them");
         }
+        GuardConfig.DungeonLabel pendingLabel = copyLabel(label);
+        // Validate the complete future definition before locking the selected area or writing bytes.
+        config.regions.add(DungeonSnapshot.copyRegion(requested));
+        if (pendingLabel != null) config.dungeonLabels.put(requested.name, copyLabel(pendingLabel));
+        config.validate();
         WorldServer world = server.getWorld(requested.dimension);
         if (world == null) throw new IllegalArgumentException("Dungeon dimension is not available: " + requested.dimension);
         Arena arena = new Arena(requested);
         arena.snapshot = new DungeonSnapshot(requested);
         arena.state = State.CAPTURING;
+        arena.pendingLabel = pendingLabel;
+        arena.captureRequester = notifyPlayer;
         arenas.put(requested.name, arena);
-        return "Capturing " + requested.name + " (" + requested.volume() + " blocks). Keep the dungeon empty until IDLE.";
+        return "Saving " + requested.name + " (" + requested.volume() + " blocks). Keep this area empty until Ready; check /dungeon list.";
+    }
+
+    /** Auto names never reuse an active name or a retained baseline from a removed dungeon. */
+    public String nextAvailableName(String base) {
+        ensureOpen();
+        if (base == null || !base.matches("[a-z0-9][a-z0-9_-]{0,47}"))
+            throw new IllegalArgumentException("Use a short name with letters, numbers, underscores or hyphens.");
+        if (nameAvailable(base)) return base;
+        for (int number = 2; number <= 100000; number++) {
+            String suffix = "-" + number;
+            String candidate = base.substring(0, Math.min(base.length(), 48 - suffix.length())) + suffix;
+            if (nameAvailable(candidate)) return candidate;
+        }
+        throw new IllegalArgumentException("Too many dungeons use that name. Choose a different name.");
+    }
+
+    private boolean nameAvailable(String name) { return !arenas.containsKey(name) && !hasSavedFiles(name); }
+    private boolean hasSavedFiles(String name) {
+        return snapshotFile(name).exists() || checksumFile(name).exists() || markerFile(name).exists();
+    }
+    private static GuardConfig.DungeonLabel copyLabel(GuardConfig.DungeonLabel label) {
+        if (label == null) return null;
+        GuardConfig.DungeonLabel result = new GuardConfig.DungeonLabel();
+        result.element = label.element;
+        result.displayName = label.displayName;
+        return result;
     }
 
     /** Reconfiguration is explicit and cannot discard an in-progress fight/capture/reset. */
@@ -268,12 +315,16 @@ public final class DungeonManager {
             throw new IOException("Dungeon settings changed during capture; baseline kept without activation");
         }
         next.regions.add(DungeonSnapshot.copyRegion(arena.region));
+        if (arena.pendingLabel != null) next.dungeonLabels.put(arena.region.name, copyLabel(arena.pendingLabel));
         GuardRuntime.saveAndInstall(next);
         arena.snapshot = saved;
         arena.tileIndexes = saved.tileIndexes();
         arena.state = State.IDLE;
         arena.ioJob = null;
         LOG.info("Dungeon {} baseline saved and verified: {} blocks, {} tile entities", arena.region.name, saved.size(), saved.tileCount());
+        String title = arena.pendingLabel == null ? arena.region.name : arena.pendingLabel.displayName;
+        captureNotice(arena, "Ready: " + title + " (" + arena.region.name + "). The dungeon will restore after the last player leaves.");
+        arena.pendingLabel = null;
     }
 
     private void beginReset(final Arena arena) throws IOException {
@@ -393,15 +444,30 @@ public final class DungeonManager {
     }
     public List<String> statusLines() {
         List<String> result = new ArrayList<String>();
+        GuardConfig config = GuardRuntime.settings();
         for (Arena arena : arenas.values()) {
-            String extra = arena.state == State.WAITING ? ", reset in " + arena.countdown + " ticks" : "";
-            if (arena.state == State.CAPTURING) extra = ", " + arena.snapshot.captured() + "/" + arena.snapshot.size() + " blocks";
-            if (isRestoring(arena.state)) extra = ", progress " + arena.cursor;
-            if (arena.failure != null) extra += ", " + arena.failure;
-            result.add(arena.region.name + ": " + arena.state + ", occupants=" + arena.occupants.size() + extra);
+            GuardConfig.DungeonLabel label = config.dungeonLabels.get(arena.region.name);
+            if (label == null) label = arena.pendingLabel;
+            String title = label == null ? arena.region.name : label.displayName + " (" + arena.region.name + ")";
+            String extra = arena.state == State.WAITING ? "; reset in " + ((arena.countdown + 19) / 20) + "s" : "";
+            if (arena.state == State.CAPTURING) extra = "; " + arena.snapshot.captured() + "/" + arena.snapshot.size() + " blocks saved";
+            if (arena.failure != null) extra += "; " + arena.failure;
+            result.add(title + ": " + friendlyState(arena.state) + " | Players: " + arena.occupants.size() + extra);
         }
-        if (result.isEmpty()) result.add("No dungeon baselines registered. Outside terrain is protected by default.");
+        if (result.isEmpty()) result.add("No dungeons yet. World protection is on by default. Start with /dungeon setup.");
         return result;
+    }
+
+    private static String friendlyState(State state) {
+        switch (state) {
+            case CAPTURING: return "Saving original";
+            case SAVING: return "Checking saved original";
+            case IDLE: return "Ready";
+            case ACTIVE: return "In use";
+            case WAITING: return "Waiting to reset";
+            case FAILED: return "Needs attention (entry locked)";
+            default: return "Rebuilding (entry locked)";
+        }
     }
 
     private Arena find(World world, BlockPos pos) {
@@ -419,6 +485,14 @@ public final class DungeonManager {
         arena.state = State.FAILED;
         arena.failure = error.getMessage() == null ? error.getClass().getSimpleName() : error.getMessage();
         LOG.error("Dungeon {} locked after failure: {}", arena.region.name, arena.failure, error);
+        captureNotice(arena, "Could not finish saving " + arena.region.name + ". Entry stays locked: " + arena.failure + ". Check /dungeon status.");
+    }
+    private void captureNotice(Arena arena, String message) {
+        UUID recipient = arena.captureRequester;
+        arena.captureRequester = null;
+        if (recipient == null) return;
+        EntityPlayerMP player = server.getPlayerList().getPlayerByUUID(recipient);
+        if (player != null) player.sendMessage(new TextComponentString("[Dungeon Guard] " + message));
     }
     private void ensureOpen() { if (closed) throw new IllegalStateException("Dungeon manager has stopped"); }
     private static boolean isRestoring(State state) { return state == State.VALIDATING || state == State.RESTORING_BLOCKS || state == State.VERIFYING || state == State.RESTORING_TILES; }

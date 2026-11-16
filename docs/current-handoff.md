@@ -2,7 +2,54 @@
 
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
-## Latest addon checkpoint: Dungeon Guard 1.1.1
+## Latest addon checkpoint: Dungeon Guard 1.2.0
+
+The owner requested a final JAR and much simpler commands. Version1.2.0 adds
+the `/dungeon` alias, a clickable chat menu and setup guide, a vanilla-stick
+selection wand, look-at `/dungeon setspawn`, one-step
+`/dungeon create <element> [display name...]`, and
+`/dungeon boss <boss name...>` with automatic parent-dungeon selection.
+Existing `/dg` commands, captures, labels and spawn settings remain compatible.
+The short owner route is in the module's `QUICK-START.md` and `START-HERE.txt`.
+The addon remains optional and is not added to the default candidate roster.
+
+The production artifact is `Dungeon-Guard-1.12.2-1.2.0.jar`, 966,018 bytes,
+SHA-256 `737f24a2dbc6745536e9403915beb6ac99fe7686b9f5bec36ec9f1dea32f5da7`.
+Capture holds a copied label until the baseline is saved and verified, then
+installs the region and label together. Names skip existing and retained
+baseline files. The requester receives a single Ready or failure notice.
+Normal status is readable, and management buttons prefill the correct IDs.
+Selections clear on logout, dimension change and server lifecycle changes.
+Wand clicks leave terrain and containers unchanged and grant no OP exception.
+
+Observed current acceptance: **606 passing assertions**:220 transformer,
+42 pure HUD layout,284 native (all219 prior assertions plus65 setup checks),
+and60 native checks with exact Naruto0.3.1-beta/Waystones4.1.0 inputs. The final
+JAR ran on standalone Forge14.23.5.2859/Java8 in fresh disposable worlds; both
+server runs exited0 (19.574s regression,24.206s real mods). Thirteen relevant
+core/permission class files are byte-identical to1.1.1. That version's44 external
+Naruto and9 exact Magma bytecode checks are historical evidence, not added to606.
+See [the version-bound receipt](../release/evidence/dungeon-guard-1.2.0.json).
+
+The first candidate's native run retained236passes/5failures, including a
+downstream creation failure and fixture abort. It exposed three real command
+issues: level0 alone did not allow non-OP public dispatch, Creative inventory
+pickup could discard an uninsertable wand while reporting success, and the
+look-at command used a client-only ray-trace method. Production fixes preserve
+the original failing assertions; all now pass, together with new positive
+checks for a full hotbar/free inventory slot and ordinary-player spawn travel.
+The failed candidate's real-mod60-check run also passed but is not counted as
+acceptance of the final bytes. Safe failed-run evidence remains with the receipt.
+
+Limits remain: no live Magma/plugins, full installed roster, graphical client
+or real saved-world/Bisect acceptance. WorldEdit still needs its own protected
+edit adapter. Snapshots restore block states and tile NBT, not boss entities or
+quest state. Next acceptance is the exact JAR on a copy of the complete target
+server, followed by visible HUD/menu checks with the owner's client. Preserve
+all existing worlds/captures and the owner's inspection session. The separate
+villages-training and broader Naruto gameplay work below remains active.
+
+## Previous addon checkpoint: Dungeon Guard 1.1.1
 
 The owner's separate protection/reset/banner request now has maintained original
 source in `modules/dungeon-guard/`. It remains an optional addon, separate from

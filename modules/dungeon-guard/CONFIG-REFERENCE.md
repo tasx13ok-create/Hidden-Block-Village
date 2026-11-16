@@ -1,6 +1,6 @@
 # Dungeon Guard settings
 
-The mod creates `<world>/dungeon-guard/settings.json`. Use the in-game commands for spawn binding and dungeon definitions. Before manual edits, stop the server or use `/dg reload` for non-region settings; running region definitions cannot be swapped during a fight.
+The mod creates `<world>/dungeon-guard/settings.json`. Ordinary setup needs no file editing: start with `/dungeon setup`, use the wand and save with `/dungeon create`. Use the in-game commands for spawn binding and dungeon definitions. Before manual edits, stop the server or use `/dg reload` for non-region settings; running region definitions cannot be swapped during a fight.
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
@@ -16,13 +16,16 @@ The mod creates `<world>/dungeon-guard/settings.json`. Use the in-game commands 
 | `blocksPerTick` | `4096` | Shared maximum block work across all captures/resets each server tick. The engine also yields cooperatively after about 8 ms of work. Allowed 1–65536. One Minecraft operation cannot be preempted halfway. |
 | `maxSnapshotBlocks` | `2000000` | Maximum inclusive selected volume per dungeon. AIR counts. Allowed 1–16000000; raising it increases memory and disk use. |
 | `regions` | `[]` | Persisted only after a new capture has been saved and verified. Each entry contains a unique name, dimension and inclusive min/max coordinates. |
-| `dungeonLabels` | `{}` | Map from registered dungeon ID to `element` and `displayName`; `/dg label` manages it. |
-| `bossAreas` | `[]` | Up to 256 disjoint boss zones, each contained in its parent dungeon; `/dg bossarea` and `/dg bosslabel` manage them. |
-| `spawn` | unbound | Populated by `/dg bindspawn`; contains the actual Waystone base and the validated adjacent landing. |
+| `dungeonLabels` | `{}` | Map from registered dungeon ID to `element` and `displayName`; `/dungeon create` saves it with the verified capture, and `/dg label` edits an existing label. |
+| `bossAreas` | `[]` | Up to 256 disjoint boss zones, each contained in its parent dungeon; `/dungeon boss` handles ordinary setup, with `/dg bossarea` and `/dg bosslabel` for advanced control. |
+| `spawn` | unbound | Populated by `/dungeon setspawn` or `/dg bindspawn`; contains the actual Waystone base and the validated adjacent landing. |
 
 For a selected cuboid, volume is `(maxX - minX + 1) × (maxY - minY + 1) × (maxZ - minZ + 1)`. A 100 × 100 × 150 selection contains 1,500,000 blocks and fits the default cap. Selection size affects capture/reset duration, so include the whole dungeon and necessary combat air space without selecting an entire map.
 
 ## Arena states
+
+Normal chat translates these internal states into **Saving original**, **Ready**,
+**In use**, **Waiting to reset**, **Rebuilding** or **Needs attention**.
 
 | State | Behavior |
 | --- | --- |

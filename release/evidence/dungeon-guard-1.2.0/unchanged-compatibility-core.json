@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": "Historical external Naruto44 and Magma9 checks remain version-bound1.1.1 evidence; their production core/permission input classes are byte-identical in1.2.0. These53 old checks were not rerun and are excluded from the new total.",
+  "previous_production_sha256": "eb8e2a2700f3619bf3ceb7a2c936e83a3981cb15e41361feda839f2e40bcef27",
+  "current_production_sha256": "737f24a2dbc6745536e9403915beb6ac99fe7686b9f5bec36ec9f1dea32f5da7",
+  "historical_evidence": "release/evidence/dungeon-guard-1.1.1/external-bytecode.json",
+  "classes": [
+    {
+      "class": "village/dungeonguard/GuardHooks.class",
+      "sha256": "2c48e1e547ac58881df4c4f52e6bf7928c370f8849c9d0bc059c6c68eeafa38d",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$1.class",
+      "sha256": "96121ede67c44d2bd8aa4f307b510065402dfdd1558d16d9bc670045f3b5ff51",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$Bounds.class",
+      "sha256": "3cbdf77a74d2d986115b3dc0f27d0df7747949d143dabb62b0e369353069a5df",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$Box.class",
+      "sha256": "34ead351b5640df555c19abb3e4b8695bbd61fcd9b15631329d0af9cae9866f6",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$Cells.class",
+      "sha256": "17ffb1879ca37e8983fb31f755dd07d02e239d1056bedf715fdac96a78c1579d",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$Scope.class",
+      "sha256": "de98c6013b6a89e715064381848218140843a5f2b024c9cd3f6a4a3e1fc09553",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess$Union.class",
+      "sha256": "2ffee5099540037cdd3554ffce8a5e3144297c1d8c17e126597e46244c27c9ea",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/OperatorAccess.class",
+      "sha256": "4cc116cafcfe28daca815b292876078f19cf13e8632fe7f5df132145614fef75",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/core/GuardLoadingPlugin.class",
+      "sha256": "52945d80156c6b1e922ae36ef0bae819105bc6d5062fecb10c2985b4c5c6ed27",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/core/GuardTransformer$Gate.class",
+      "sha256": "13644bd8dc1779c7d6f66792fde98982745652d0a3f7233c146b6efd7835a5dc",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/core/GuardTransformer$PortalWrite.class",
+      "sha256": "489eac58ce3a05ab3d6c19ab8fca2ac695cbdc1016a04f6da9bdb15131ec473f",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/core/GuardTransformer.class",
+      "sha256": "422e9e4d5af7ae689166a9afee5cf528126a83ce295ebc6573801be7b4a7d18c",
+      "byte_identical_to_1_1_1": true
+    },
+    {
+      "class": "village/dungeonguard/core/HookStatus.class",
+      "sha256": "8e5aa4b1598dcc996f6a56fcff303295d45581e9d9177b691f98d565fcbc95f3",
+      "byte_identical_to_1_1_1": true
+    }
+  ]
+}

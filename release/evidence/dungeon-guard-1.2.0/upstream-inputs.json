@@ -1,0 +1,36 @@
+{
+  "scope": "Private acceptance inputs; upstream binaries are not distributed",
+  "mods": [
+    {
+      "modid": "narutomod",
+      "version": "0.3.1-beta",
+      "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "bytes": 29778441,
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+      "official_file_page": "https://www.curseforge.com/minecraft/mc-mods/naruto-mod/files/5967126",
+      "download": "https://edge.forgecdn.net/files/5967/126/NarutoMod-1.12.2-0.3.1.beta.jar",
+      "final_download": "https://mediafilez.forgecdn.net/files/5967/126/NarutoMod-1.12.2-0.3.1.beta.jar"
+    },
+    {
+      "modid": "waystones",
+      "version": "4.1.0",
+      "file": "Waystones_1.12.2-4.1.0.jar",
+      "bytes": 178994,
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15",
+      "official_file_page": "https://www.curseforge.com/minecraft/mc-mods/waystones/files/2859589",
+      "download": "https://edge.forgecdn.net/files/2859/589/Waystones_1.12.2-4.1.0.jar",
+      "final_download": "https://mediafilez.forgecdn.net/files/2859/589/Waystones_1.12.2-4.1.0.jar"
+    }
+  ],
+  "magma": {
+    "tag": "b4c01d2",
+    "asset_id": 204369890,
+    "source_url": "https://github.com/magmamaintained/MagmaMaintained-1.12.2/releases/download/b4c01d2/Magma-1.12.2-b4c01d2-server.jar",
+    "file": "Magma-1.12.2-b4c01d2-server.jar",
+    "bytes": 7056996,
+    "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "manifest_version": "1.12.2-b4c01d2",
+    "wrapper_sha256": "624cef60599db39e8700b709a51907a109e9865e7a20357dacffaaa0a8a609d5",
+    "wrapper_bytes": 8429
+  }
+}
