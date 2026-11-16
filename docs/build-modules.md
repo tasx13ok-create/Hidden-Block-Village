@@ -219,6 +219,24 @@ single checked run. The exact PC Magma base used for the 0.3.1 evidence has
 SHA-256 `2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce`;
 the same version filename from a fresh upstream download has different bytes.
 
+## Optional Dungeon Guard addon
+
+`modules/dungeon-guard/` has its own pinned source build. It is intentionally
+separate from this script's default module list and the existing candidate's
+assembly contracts because installing it activates world-wide adventure-map
+protection. See [the integration guide](dungeon-guard.md) before adding it to a
+copied runtime.
+
+From that module directory, run:
+
+```text
+python tools/build.py --java25 /path/to/jdk25 --java8 /path/to/jdk8
+```
+
+Its `BUILD.md` documents the separate original native fixture and tests with
+external, pinned Naruto and Waystones releases. None of those upstream JARs or
+private test JARs are included in the production addon.
+
 ## Continuous integration
 
 `.github/workflows/source-checks.yml` defines two read-only jobs:

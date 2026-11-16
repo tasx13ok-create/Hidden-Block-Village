@@ -1,0 +1,149 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+
+group = 'village.dungeonguard'
+version = '1.1.1'
+base { archivesName = 'Dungeon-Guard-1.12.2' }
+java {
+    toolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
+    withSourcesJar()
+}
+minecraft {
+    mcVersion.set('1.12.2')
+    mcpMappingChannel.set('stable')
+    mcpMappingVersion.set('39')
+}
+sourceSets {
+    transformerTest {
+        java.srcDirs = ['src/transformerTest/java']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+    nativeTest {
+        java.srcDirs = ['src/nativeTest/java']
+        resources.srcDirs = ['src/nativeTest/resources']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+    actualModTest {
+        java.srcDirs = ['src/actualModTest/java', 'src/nativeTest/java']
+        java.include '**/ActualModChecks.java', '**/RealWaystonesNativeChecks.java', '**/RealNarutoNativeChecks.java'
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+tasks.register('verifyTransformer', JavaExec) {
+    dependsOn tasks.named('transformerTestClasses')
+    classpath = sourceSets.transformerTest.runtimeClasspath
+    mainClass.set('village.dungeonguard.test.TransformerChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)) })
+}
+tasks.register('verifyAreaLayout', JavaExec) {
+    dependsOn tasks.named('transformerTestClasses')
+    classpath = sourceSets.transformerTest.runtimeClasspath
+    mainClass.set('village.dungeonguard.test.AreaLayoutChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)) })
+}
+tasks.register('verifyNarutoRelease', JavaExec) {
+    dependsOn tasks.named('transformerTestClasses')
+    classpath = sourceSets.transformerTest.runtimeClasspath
+    mainClass.set('village.dungeonguard.test.KamuiTransformerChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)) })
+    doFirst {
+        def reference = providers.gradleProperty('narutoReferenceJar').orNull
+        if (reference == null || reference.trim().isEmpty()) {
+            throw new GradleException('Supply -PnarutoReferenceJar=/path/to/NarutoMod-1.12.2-0.3.1.beta.jar. The optional check requires the original pinned upstream JAR.')
+        }
+        def referenceFile = file(reference)
+        if (!referenceFile.isFile()) throw new GradleException('Naruto reference JAR does not exist: ' + referenceFile)
+        setArgs([referenceFile.absolutePath])
+    }
+}
+tasks.register('verifyMagmaRelease', JavaExec) {
+    dependsOn tasks.named('transformerTestClasses')
+    classpath = sourceSets.transformerTest.runtimeClasspath
+    mainClass.set('village.dungeonguard.test.MagmaCommandTransformerChecks')
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(8)) })
+    doFirst {
+        def reference = providers.gradleProperty('magmaReferenceJar').orNull
+        if (reference == null || reference.trim().isEmpty()) {
+            throw new GradleException('Supply -PmagmaReferenceJar=/path/to/Magma-1.12.2-b4c01d2-server.jar. This optional static check requires the original pinned upstream JAR.')
+        }
+        def referenceFile = file(reference)
+        def mappingFile = file(providers.gradleProperty('magmaSrgFile').getOrElse(
+            new File(gradle.gradleUserHomeDir, 'caches/minecraft/de/oceanlabs/mcp/mcp_stable/39/joined.srg').absolutePath))
+        def serverFile = file(providers.gradleProperty('minecraftServerJar').getOrElse(
+            new File(gradle.gradleUserHomeDir, 'caches/retro_futura_gradle/mc-vanilla/1.12.2/server.jar').absolutePath))
+        if (!referenceFile.isFile()) throw new GradleException('Magma reference JAR does not exist: ' + referenceFile)
+        if (!mappingFile.isFile()) throw new GradleException('Official stable-39 joined.srg is missing; supply -PmagmaSrgFile=/path/to/joined.srg.')
+        if (!serverFile.isFile()) throw new GradleException('Official Minecraft 1.12.2 server JAR is missing; supply -PminecraftServerJar=/path/to/minecraft_server.1.12.2.jar.')
+        setArgs([referenceFile.absolutePath, mappingFile.absolutePath, serverFile.absolutePath])
+    }
+}
+tasks.named('check') { dependsOn tasks.named('verifyTransformer'), tasks.named('verifyAreaLayout') }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.incremental = false
+}
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+tasks.named('jar') {
+    manifest.attributes(
+        'FMLCorePlugin': 'village.dungeonguard.core.GuardLoadingPlugin',
+        'FMLCorePluginContainsFMLMod': 'true',
+        'ForceLoadAsMod': 'true',
+        'Implementation-Title': 'Dungeon Guard',
+        'Implementation-Version': project.version
+    )
+}
+def nativeJar = tasks.register('nativeTestJar', Jar) {
+    dependsOn tasks.named('nativeTestClasses')
+    from sourceSets.nativeTest.output
+    archiveBaseName.set('dungeon-guard-native-tests')
+    archiveClassifier.set('dev')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-tests'))
+}
+def productionReobf = tasks.named('reobfJar', com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar)
+tasks.register('reobfNativeTestJar', com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar) {
+    dependsOn productionReobf
+    setInputJarFromTask(nativeJar)
+    archiveBaseName.set('dungeon-guard-native-tests')
+    archiveClassifier.set('')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-tests'))
+    mcVersion.set(productionReobf.flatMap { it.mcVersion })
+    srg.set(productionReobf.flatMap { it.srg })
+    fieldCsv.set(productionReobf.flatMap { it.fieldCsv })
+    methodCsv.set(productionReobf.flatMap { it.methodCsv })
+    exceptorCfg.set(productionReobf.flatMap { it.exceptorCfg })
+    recompMcJar.set(productionReobf.flatMap { it.recompMcJar })
+    extraSrgEntries.set(productionReobf.flatMap { it.extraSrgEntries })
+    extraSrgFiles.from(productionReobf.map { it.extraSrgFiles })
+    referenceClasspath.from(sourceSets.nativeTest.compileClasspath)
+}
+def actualModJar = tasks.register('actualModTestJar', Jar) {
+    dependsOn tasks.named('actualModTestClasses')
+    from sourceSets.actualModTest.output
+    archiveBaseName.set('dungeon-guard-actual-mod-tests')
+    archiveClassifier.set('dev')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-tests'))
+}
+tasks.register('reobfActualModTestJar', com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar) {
+    dependsOn productionReobf
+    setInputJarFromTask(actualModJar)
+    archiveBaseName.set('dungeon-guard-actual-mod-tests')
+    archiveClassifier.set('')
+    destinationDirectory.set(layout.buildDirectory.dir('private-native-tests'))
+    mcVersion.set(productionReobf.flatMap { it.mcVersion })
+    srg.set(productionReobf.flatMap { it.srg })
+    fieldCsv.set(productionReobf.flatMap { it.fieldCsv })
+    methodCsv.set(productionReobf.flatMap { it.methodCsv })
+    exceptorCfg.set(productionReobf.flatMap { it.exceptorCfg })
+    recompMcJar.set(productionReobf.flatMap { it.recompMcJar })
+    extraSrgEntries.set(productionReobf.flatMap { it.extraSrgEntries })
+    extraSrgFiles.from(productionReobf.map { it.extraSrgFiles })
+    referenceClasspath.from(sourceSets.actualModTest.compileClasspath)
+}

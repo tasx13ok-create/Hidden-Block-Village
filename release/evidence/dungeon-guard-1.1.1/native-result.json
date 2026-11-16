@@ -1,0 +1,886 @@
+{
+  "suite": "Dungeon Guard real Forge arena lifecycle",
+  "passed": 219,
+  "failed": 0,
+  "success": true,
+  "checks": [
+    {
+      "name": "outside direct World erasure is blocked",
+      "pass": true
+    },
+    {
+      "name": "outside synthetic ability erasure is blocked",
+      "pass": true
+    },
+    {
+      "name": "outside direct Chunk write is blocked",
+      "pass": true
+    },
+    {
+      "name": "outside protected block survives all paths",
+      "pass": true
+    },
+    {
+      "name": "registration queues capture rather than unlocking",
+      "pass": true
+    },
+    {
+      "name": "capture blocks entry and mutations",
+      "pass": true
+    },
+    {
+      "name": "region is not persisted before capture completes",
+      "pass": true
+    },
+    {
+      "name": "capture honors per-tick budget",
+      "pass": true
+    },
+    {
+      "name": "completed captures persist both region definitions",
+      "pass": true
+    },
+    {
+      "name": "empty captured dungeon remains protected",
+      "pass": true
+    },
+    {
+      "name": "overlapping dungeon registration is rejected",
+      "pass": true
+    },
+    {
+      "name": "oversized dungeon registration is rejected",
+      "pass": true
+    },
+    {
+      "name": "baseline gzip and checksum exist",
+      "pass": true
+    },
+    {
+      "name": "baseline persists complete bounded volume including air",
+      "pass": true
+    },
+    {
+      "name": "snapshot rejects dimension mismatch",
+      "pass": true
+    },
+    {
+      "name": "two occupants activate the dungeon",
+      "pass": true
+    },
+    {
+      "name": "durable recovery marker precedes writable arena",
+      "pass": true
+    },
+    {
+      "name": "ability destroyBlock works during fight",
+      "pass": true
+    },
+    {
+      "name": "fight destruction actually removes terrain",
+      "pass": true
+    },
+    {
+      "name": "destroyed dungeon terrain produces no farmable drops",
+      "pass": true
+    },
+    {
+      "name": "direct Chunk setter works in occupied dungeon",
+      "pass": true
+    },
+    {
+      "name": "ability can place temporary terrain inside active arena",
+      "pass": true
+    },
+    {
+      "name": "neighboring empty dungeon remains locked",
+      "pass": true
+    },
+    {
+      "name": "outside boundary remains locked while arena active",
+      "pass": true
+    },
+    {
+      "name": "minimum corner is included",
+      "pass": true
+    },
+    {
+      "name": "maximum corner is included",
+      "pass": true
+    },
+    {
+      "name": "one block beyond X is outside arena",
+      "pass": true
+    },
+    {
+      "name": "one block below Y is outside arena",
+      "pass": true
+    },
+    {
+      "name": "one block beyond Z is outside arena",
+      "pass": true
+    },
+    {
+      "name": "same coordinates in another dimension are outside arena",
+      "pass": true
+    },
+    {
+      "name": "container block survives active fight by default",
+      "pass": true
+    },
+    {
+      "name": "block-state property damage is allowed during combat",
+      "pass": true
+    },
+    {
+      "name": "active arena accepts explosion test block",
+      "pass": true
+    },
+    {
+      "name": "explosion destroys terrain inside active dungeon",
+      "pass": true
+    },
+    {
+      "name": "same explosion cannot damage outside world",
+      "pass": true
+    },
+    {
+      "name": "explosion still damages combat entity",
+      "pass": true
+    },
+    {
+      "name": "explosion still applies knockback",
+      "pass": true
+    },
+    {
+      "name": "synthetic ability direct combat damage remains functional",
+      "pass": true
+    },
+    {
+      "name": "active arena accepts boundary piston head",
+      "pass": true
+    },
+    {
+      "name": "opt-in vulnerable tile setting allows furnace removal",
+      "pass": true
+    },
+    {
+      "name": "first player\u0027s exit does not reset while second remains",
+      "pass": true
+    },
+    {
+      "name": "last exit enters delayed reset",
+      "pass": true
+    },
+    {
+      "name": "reentry during grace period cancels reset",
+      "pass": true
+    },
+    {
+      "name": "reset locks entry and all terrain writes",
+      "pass": true
+    },
+    {
+      "name": "unexpected occupant pauses in-progress restoration",
+      "pass": true
+    },
+    {
+      "name": "reset restores World-deleted floor",
+      "pass": true
+    },
+    {
+      "name": "reset restores directly changed chunk block",
+      "pass": true
+    },
+    {
+      "name": "reset removes placed terrain by restoring baseline air",
+      "pass": true
+    },
+    {
+      "name": "reset restores exact stair orientation and half",
+      "pass": true
+    },
+    {
+      "name": "reset restores complete chest inventory and custom name NBT",
+      "pass": true
+    },
+    {
+      "name": "reset restores complete sign text NBT",
+      "pass": true
+    },
+    {
+      "name": "reset removes temporary piston head inside arena",
+      "pass": true
+    },
+    {
+      "name": "restoration callbacks cannot remove outside piston base",
+      "pass": true
+    },
+    {
+      "name": "reset restores exact furnace facing despite vanilla placement callback",
+      "pass": true
+    },
+    {
+      "name": "reset restores exact furnace tile NBT",
+      "pass": true
+    },
+    {
+      "name": "reset preserves existing Forge snapshot buffer reference and entries",
+      "pass": true
+    },
+    {
+      "name": "reset preserves preexisting Forge snapshot NBT exactly",
+      "pass": true
+    },
+    {
+      "name": "reset keeps dungeon locked until next occupant",
+      "pass": true
+    },
+    {
+      "name": "repeated reset is idempotent",
+      "pass": true
+    },
+    {
+      "name": "production online-player scan counts both occupants",
+      "pass": true
+    },
+    {
+      "name": "spectator presence is counted",
+      "pass": true
+    },
+    {
+      "name": "manual reset refuses a currently occupied arena",
+      "pass": true
+    },
+    {
+      "name": "teleport to spawn leaves second fighter active",
+      "pass": true
+    },
+    {
+      "name": "teleport into different dungeon exits old and enters new",
+      "pass": true
+    },
+    {
+      "name": "disconnect triggers empty-dungeon reset path",
+      "pass": true
+    },
+    {
+      "name": "body overlapping boundary still counts as occupied",
+      "pass": true
+    },
+    {
+      "name": "whole body beyond boundary leaves the dungeon",
+      "pass": true
+    },
+    {
+      "name": "pre-restart fight mutates a block",
+      "pass": true
+    },
+    {
+      "name": "dirty restart schedules locked recovery",
+      "pass": true
+    },
+    {
+      "name": "dirty restart does not expose damaged arena",
+      "pass": true
+    },
+    {
+      "name": "restart recovery restores clean terrain",
+      "pass": true
+    },
+    {
+      "name": "restart reload preserves exact chest inventory NBT",
+      "pass": true
+    },
+    {
+      "name": "corrupt baseline fails closed on restart",
+      "pass": true
+    },
+    {
+      "name": "corrupt baseline never unlocks destructive writes",
+      "pass": true
+    },
+    {
+      "name": "restoring valid baseline permits explicit recovery",
+      "pass": true
+    },
+    {
+      "name": "missing baseline fails closed instead of capturing damage",
+      "pass": true
+    },
+    {
+      "name": "unregister persists removal and retains original snapshot",
+      "pass": true
+    },
+    {
+      "name": "register refuses overwrite of preserved baseline",
+      "pass": true
+    },
+    {
+      "name": "spawn fixture registers the exact Waystones block identity",
+      "pass": true
+    },
+    {
+      "name": "lower Waystone binding records its real base and Overworld",
+      "pass": true
+    },
+    {
+      "name": "Waystone landing uses the safe facing-side block",
+      "pass": true
+    },
+    {
+      "name": "binding moves actual world spawn to the Waystone landing",
+      "pass": true
+    },
+    {
+      "name": "binding removes randomized spawn radius",
+      "pass": true
+    },
+    {
+      "name": "Forge spawn provider repeatedly chooses the exact bound landing",
+      "pass": true
+    },
+    {
+      "name": "Waystone binding persists base and centered landing to settings",
+      "pass": true
+    },
+    {
+      "name": "saved Waystone binding survives configuration reload",
+      "pass": true
+    },
+    {
+      "name": "targeting the upper Waystone half normalizes to the lower base",
+      "pass": true
+    },
+    {
+      "name": "new player constructor starts at the bound Waystone landing",
+      "pass": true
+    },
+    {
+      "name": "spawn command uses the real network handler to move the player",
+      "pass": true
+    },
+    {
+      "name": "spawn teleport clears fall damage, motion and burning",
+      "pass": true
+    },
+    {
+      "name": "spawn teleport creates no portal or landing terrain",
+      "pass": true
+    },
+    {
+      "name": "binding rejects an ordinary block",
+      "pass": true
+    },
+    {
+      "name": "rejected binding preserves previous saved spawn",
+      "pass": true
+    },
+    {
+      "name": "binding rejects hazardous magma around every landing",
+      "pass": true
+    },
+    {
+      "name": "binding rejects landings without headroom",
+      "pass": true
+    },
+    {
+      "name": "binding rejects a Waystone with its upper half missing",
+      "pass": true
+    },
+    {
+      "name": "binding rejects a player outside the Overworld",
+      "pass": true
+    },
+    {
+      "name": "spawn rejection fixture has an existing dungeon with two air blocks",
+      "pass": true
+    },
+    {
+      "name": "binding rejects a Waystone inside an existing dungeon",
+      "pass": true
+    },
+    {
+      "name": "periodic synchronization repairs a displaced world spawn",
+      "pass": true
+    },
+    {
+      "name": "periodic synchronization restores zero spawn radius",
+      "pass": true
+    },
+    {
+      "name": "blocked landing does not silently select another world spawn",
+      "pass": true
+    },
+    {
+      "name": "spawn command refuses an obstructed landing",
+      "pass": true
+    },
+    {
+      "name": "refused unsafe teleport leaves player coordinates unchanged",
+      "pass": true
+    },
+    {
+      "name": "missing Waystone does not invent a replacement spawn",
+      "pass": true
+    },
+    {
+      "name": "spawn command refuses a missing Waystone",
+      "pass": true
+    },
+    {
+      "name": "repairing the Waystone resumes the same persisted binding",
+      "pass": true
+    },
+    {
+      "name": "old 1.0 settings gain empty area metadata without losing protection",
+      "pass": true
+    },
+    {
+      "name": "area metadata survives settings JSON roundtrip",
+      "pass": true
+    },
+    {
+      "name": "dungeon resolves configured element and display title",
+      "pass": true
+    },
+    {
+      "name": "dungeon minimum and maximum corners are included",
+      "pass": true
+    },
+    {
+      "name": "one block outside each dungeon axis clears the label",
+      "pass": true
+    },
+    {
+      "name": "same coordinates in another dimension do not leak area labels",
+      "pass": true
+    },
+    {
+      "name": "boss area overrides parent title while retaining dungeon element",
+      "pass": true
+    },
+    {
+      "name": "boss zone inclusive corners resolve the same encounter",
+      "pass": true
+    },
+    {
+      "name": "leaving boss zone restores parent dungeon label",
+      "pass": true
+    },
+    {
+      "name": "separate boss areas show their own boss names",
+      "pass": true
+    },
+    {
+      "name": "unconfigured element stays general instead of guessing from dungeon ID",
+      "pass": true
+    },
+    {
+      "name": "dungeon and boss headings identify area kind",
+      "pass": true
+    },
+    {
+      "name": "renaming an occupied area changes display value without changing identity",
+      "pass": true
+    },
+    {
+      "name": "leaving every region returns the explicit empty state",
+      "pass": true
+    },
+    {
+      "name": "missing location input produces no stale label",
+      "pass": true
+    },
+    {
+      "name": "orphan dungeon label is rejected",
+      "pass": true
+    },
+    {
+      "name": "boss area with missing parent is rejected",
+      "pass": true
+    },
+    {
+      "name": "boss zone extending outside parent is rejected",
+      "pass": true
+    },
+    {
+      "name": "boss zone in wrong dimension is rejected",
+      "pass": true
+    },
+    {
+      "name": "overlapping boss zones cannot create ambiguous display priority",
+      "pass": true
+    },
+    {
+      "name": "duplicate boss identities are rejected",
+      "pass": true
+    },
+    {
+      "name": "unknown element metadata is rejected",
+      "pass": true
+    },
+    {
+      "name": "blank boss name is rejected",
+      "pass": true
+    },
+    {
+      "name": "overlong area title is rejected",
+      "pass": true
+    },
+    {
+      "name": "formatted or multiline labels are rejected",
+      "pass": true
+    },
+    {
+      "name": "explicitly null metadata cannot disable validation",
+      "pass": true
+    },
+    {
+      "name": "unpaired UTF16 surrogate in a label is rejected",
+      "pass": true
+    },
+    {
+      "name": "dungeon display packet roundtrips all fields",
+      "pass": true
+    },
+    {
+      "name": "boss display packet roundtrips all fields",
+      "pass": true
+    },
+    {
+      "name": "clear-area packet is compact and explicitly empty",
+      "pass": true
+    },
+    {
+      "name": "maximum allowed Unicode labels survive UTF8 without truncation",
+      "pass": true
+    },
+    {
+      "name": "unsupported area protocol is rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid area-presence flag is rejected",
+      "pass": true
+    },
+    {
+      "name": "truncated area header is rejected",
+      "pass": true
+    },
+    {
+      "name": "truncated string length is rejected",
+      "pass": true
+    },
+    {
+      "name": "declared string beyond packet bytes is rejected",
+      "pass": true
+    },
+    {
+      "name": "huge unsigned string length is rejected before allocation",
+      "pass": true
+    },
+    {
+      "name": "ASCII key exceeding character limit is rejected",
+      "pass": true
+    },
+    {
+      "name": "unknown wire element is rejected",
+      "pass": true
+    },
+    {
+      "name": "active wire area cannot omit its title",
+      "pass": true
+    },
+    {
+      "name": "wire control characters cannot reach HUD labels",
+      "pass": true
+    },
+    {
+      "name": "invalid UTF8 is rejected rather than silently replaced",
+      "pass": true
+    },
+    {
+      "name": "trailing packet data is rejected",
+      "pass": true
+    },
+    {
+      "name": "clear packet cannot smuggle a trailing payload",
+      "pass": true
+    },
+    {
+      "name": "connected creative non-operator has no edit permission",
+      "pass": true
+    },
+    {
+      "name": "non-operator manual break cannot remove protected block",
+      "pass": true
+    },
+    {
+      "name": "non-operator manual placement cannot alter protected air",
+      "pass": true
+    },
+    {
+      "name": "non-operator native setblock remains permission denied",
+      "pass": true
+    },
+    {
+      "name": "connected real operator receives edit permission",
+      "pass": true
+    },
+    {
+      "name": "FakePlayer sharing an operator profile receives no permission",
+      "pass": true
+    },
+    {
+      "name": "unconnected duplicate profile cannot impersonate online operator",
+      "pass": true
+    },
+    {
+      "name": "operator scope allows only its selected cell",
+      "pass": true
+    },
+    {
+      "name": "operator scope is bound to its exact world",
+      "pass": true
+    },
+    {
+      "name": "unauthorized nested action shadows operator scope",
+      "pass": true
+    },
+    {
+      "name": "closing nested action restores outer scope",
+      "pass": true
+    },
+    {
+      "name": "deop immediately revokes an already open scope",
+      "pass": true
+    },
+    {
+      "name": "closing operator scope keeps later world writes protected",
+      "pass": true
+    },
+    {
+      "name": "known Waystone placement permits its two-block contract only",
+      "pass": true
+    },
+    {
+      "name": "legacy global edit window cannot unlock other players or abilities",
+      "pass": true
+    },
+    {
+      "name": "operator native harvest destroys selected outside block",
+      "pass": true
+    },
+    {
+      "name": "operator manual harvest retains ordinary block drops",
+      "pass": true
+    },
+    {
+      "name": "operator harvest does not authorize a later ability write",
+      "pass": true
+    },
+    {
+      "name": "operator native placement builds outside dungeons",
+      "pass": true
+    },
+    {
+      "name": "operator door placement includes both intended halves",
+      "pass": true
+    },
+    {
+      "name": "operator door removal removes both intended halves",
+      "pass": true
+    },
+    {
+      "name": "operator bed placement includes both intended halves",
+      "pass": true
+    },
+    {
+      "name": "operator bed removal removes both intended halves",
+      "pass": true
+    },
+    {
+      "name": "operator can place a vanilla sign outside dungeons",
+      "pass": true
+    },
+    {
+      "name": "operator can remove the selected sign without opening nearby terrain",
+      "pass": true
+    },
+    {
+      "name": "operator can place a vanilla banner outside dungeons",
+      "pass": true
+    },
+    {
+      "name": "operator can remove the selected banner without opening nearby terrain",
+      "pass": true
+    },
+    {
+      "name": "operator can place a vanilla skull outside dungeons",
+      "pass": true
+    },
+    {
+      "name": "operator can remove the selected skull without opening nearby terrain",
+      "pass": true
+    },
+    {
+      "name": "operator can place a vanilla fire charge outside dungeons",
+      "pass": true
+    },
+    {
+      "name": "operator can remove the selected fire charge without opening nearby terrain",
+      "pass": true
+    },
+    {
+      "name": "lily-pad scope includes only the cell above its ray-traced water",
+      "pass": true
+    },
+    {
+      "name": "operator native right-click places a lily pad above water",
+      "pass": true
+    },
+    {
+      "name": "operator lily-pad removal preserves the protected water source",
+      "pass": true
+    },
+    {
+      "name": "operator ItemBlock placement completes both Waystone fixture halves",
+      "pass": true
+    },
+    {
+      "name": "upper Waystone harvest scope includes its lower half only",
+      "pass": true
+    },
+    {
+      "name": "harvesting the upper Waystone fixture half removes both halves",
+      "pass": true
+    },
+    {
+      "name": "harvesting the lower Waystone fixture half removes both halves",
+      "pass": true
+    },
+    {
+      "name": "operator right-click ability receives no global terrain bypass",
+      "pass": true
+    },
+    {
+      "name": "operator synchronous tool callback cannot destroy neighboring terrain",
+      "pass": true
+    },
+    {
+      "name": "native player-action exception closes operator permission",
+      "pass": true
+    },
+    {
+      "name": "operator native bucket can place water at selected ray target",
+      "pass": true
+    },
+    {
+      "name": "operator native bucket can collect its selected water source",
+      "pass": true
+    },
+    {
+      "name": "server-console native fill edits only its explicit box",
+      "pass": true
+    },
+    {
+      "name": "operator native setblock preserves relative coordinates",
+      "pass": true
+    },
+    {
+      "name": "operator native clone edits its destination",
+      "pass": true
+    },
+    {
+      "name": "operator native clone move permits its explicit source and destination",
+      "pass": true
+    },
+    {
+      "name": "permission-claiming mod command sender cannot bypass protected world",
+      "pass": true
+    },
+    {
+      "name": "custom command named fill cannot inherit an operator edit scope",
+      "pass": true
+    },
+    {
+      "name": "console setblock reaches original mod block callbacks",
+      "pass": true
+    },
+    {
+      "name": "command callback cannot write beyond declared command bounds",
+      "pass": true
+    },
+    {
+      "name": "native command exception does not report success",
+      "pass": true
+    },
+    {
+      "name": "native command exception closes operator permission",
+      "pass": true
+    },
+    {
+      "name": "operator cannot manually break a capturing dungeon",
+      "pass": true
+    },
+    {
+      "name": "operator setblock cannot clear inventory during capture",
+      "pass": true
+    },
+    {
+      "name": "console fill preflights entire locked intersection during capture",
+      "pass": true
+    },
+    {
+      "name": "clone move cannot clear a locked source during capture",
+      "pass": true
+    },
+    {
+      "name": "ordinary clone may read a locked source without mutating it during capture",
+      "pass": true
+    },
+    {
+      "name": "restoration suppresses even an existing operator scope",
+      "pass": true
+    },
+    {
+      "name": "operator setblock cannot clear inventory during reset",
+      "pass": true
+    },
+    {
+      "name": "console fill preflights entire locked intersection during reset",
+      "pass": true
+    },
+    {
+      "name": "clone move cannot clear a locked source during reset",
+      "pass": true
+    },
+    {
+      "name": "ordinary clone may read a locked source without mutating it during reset",
+      "pass": true
+    },
+    {
+      "name": "operator setblock cannot clear inventory during failed recovery",
+      "pass": true
+    },
+    {
+      "name": "console fill preflights entire locked intersection during failed recovery",
+      "pass": true
+    },
+    {
+      "name": "clone move cannot clear a locked source during failed recovery",
+      "pass": true
+    },
+    {
+      "name": "ordinary clone may read a locked source without mutating it during failed recovery",
+      "pass": true
+    },
+    {
+      "name": "operator checks leave no online player or leaked edit scope",
+      "pass": true
+    }
+  ],
+  "java": "1.8.0_472",
+  "scope": "Real Forge with synthetic ability caller and simulated occupants; not acceptance of the user\u0027s Naruto or Magma binaries"
+}

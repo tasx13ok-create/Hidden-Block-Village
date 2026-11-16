@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "path": "VERIFICATION.json",
+      "bytes": 8574,
+      "sha256": "8b67a5fb5572f3e85daf51da691313c00e14c03a61c98b1622c7ce06d5e23457"
+    },
+    {
+      "path": "actual-fixture-rebuild.log",
+      "bytes": 2569,
+      "sha256": "919fc45a4b3729a0618c7eda9ba990c7382ad8927f607e6a9b391cb7935c800a"
+    },
+    {
+      "path": "actual-mod-console.log",
+      "bytes": 22534,
+      "sha256": "4a1400570be4dfc51a7a338f89fd4fadeeef7a6a45b321e266268adb81d7abe4"
+    },
+    {
+      "path": "actual-mod-result.json",
+      "bytes": 7423,
+      "sha256": "cd497001860f033e93185d8868e51716fc08b064e83e53c1b9c9e4a0f2fb4168"
+    },
+    {
+      "path": "actual-mod-runner-result.json",
+      "bytes": 9180,
+      "sha256": "7226e2499aad96be808c7282ed1a0cf769d16a85589ec403a50e2b1ffd4bde55"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 636,
+      "sha256": "4199edda649e1878c533c0468401fbd34c7ca4de56436d7d0b53c8d6079c832a"
+    },
+    {
+      "path": "baseline-native-comparison.json",
+      "bytes": 18960,
+      "sha256": "10571e1d3ca5fa44ec44d393e753c2f95867892773fe8de7d593f8131eba8b41"
+    },
+    {
+      "path": "client-review.json",
+      "bytes": 8451,
+      "sha256": "32b3fcc4fc41ab2b1ed8607467ca5ce33c82c2a2b852cdcae2060d90475767b7"
+    },
+    {
+      "path": "environment-verification.json",
+      "bytes": 1434,
+      "sha256": "e88eb6a3e85a3212d2dfb7ad8a7d9312e006554975364e07a62bb4f0d5b18916"
+    },
+    {
+      "path": "external-bytecode.json",
+      "bytes": 996,
+      "sha256": "04cb212cf7fcfe51609b6dd499c70be798431ba61939675d9d3e259bc3b30ee8"
+    },
+    {
+      "path": "external-bytecode.log",
+      "bytes": 2770,
+      "sha256": "350d1b8845c98fc24f4691e9cc634a519cf83841fd58ea082a77c7df0abce9ed"
+    },
+    {
+      "path": "failed-actual-mod-discovery/actual-mod-result.json",
+      "bytes": 6460,
+      "sha256": "a4c0d9ce41c3097573e308357775dce16a985cd5748e296c9a281dd6214a98f2"
+    },
+    {
+      "path": "failed-actual-mod-discovery/console.log",
+      "bytes": 27452,
+      "sha256": "783207cff7662c2cd699f1383c3dd2aba7353a816b3d647a2b2dd73d775106eb"
+    },
+    {
+      "path": "failed-actual-mod-discovery/runner-result.json",
+      "bytes": 8135,
+      "sha256": "1443900e4cc20a6e7049b59fcd4ffba2df9d994d08eb689c789be0ce0d41f582"
+    },
+    {
+      "path": "field-hud-api-review.json",
+      "bytes": 387,
+      "sha256": "dfa8d29504554065363e87bc3995dd0458c6c0e0650278d9ec281a80a85d5fd2"
+    },
+    {
+      "path": "final-build.log",
+      "bytes": 3301,
+      "sha256": "6c5938f4e96c74a9dcf0126b8a432811f3fbed0e7d15b9411ec3ef9047151662"
+    },
+    {
+      "path": "fixture-correction.json",
+      "bytes": 1493,
+      "sha256": "32984845d2647b71b77dee7991b9e2ba84e6769f943bc087b2bb2beeeda0929b"
+    },
+    {
+      "path": "full-build-source-inventory.json",
+      "bytes": 9351,
+      "sha256": "bcbd73bce59e8fd8e818e5dd421e4ebd680839f1b6d1f81c9978b46213f75c7e"
+    },
+    {
+      "path": "magma-runtime-status.json",
+      "bytes": 4285,
+      "sha256": "8dcb167afdc3cd605ba07dffcd591e6a78fb2ed604817ee7f8a155496710334c"
+    },
+    {
+      "path": "native-console.log",
+      "bytes": 70387,
+      "sha256": "49263856ad6913846bd37718a17b2752f6d1bb347961ac99dd9113c42a55f11f"
+    },
+    {
+      "path": "native-result.json",
+      "bytes": 22233,
+      "sha256": "724d71088a8c26f2c28708639a6475c04cad6dab8f5a053ba9d35e27d8c1071f"
+    },
+    {
+      "path": "runner-result.json",
+      "bytes": 24909,
+      "sha256": "1fe3a40ad54eca17717c4f17461f963e15d100a819b141bf90fc251384d5cfc6"
+    },
+    {
+      "path": "source-inventory-comparison.json",
+      "bytes": 834,
+      "sha256": "f3a969f8fbd7cec1e70d301c2de1f548980332f112114abfd7c0256ddafee077"
+    },
+    {
+      "path": "source-inventory.json",
+      "bytes": 9351,
+      "sha256": "857fca0987d96465b124206789300efbc4e1b25a68b932e11c0b94f314b85249"
+    },
+    {
+      "path": "sources-jar.json",
+      "bytes": 230,
+      "sha256": "71fa2f96bc72823443dea5bcf83f645251c8315cb57e6530a31db2bc0940c029"
+    },
+    {
+      "path": "upstream-inputs.json",
+      "bytes": 1648,
+      "sha256": "3fe378b0b1afe4b656c8bf03b13ca814cadfd85cb5b90072d3b12ef518067074"
+    }
+  ]
+}

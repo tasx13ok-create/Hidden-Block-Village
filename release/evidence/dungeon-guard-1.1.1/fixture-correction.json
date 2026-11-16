@@ -1,0 +1,27 @@
+{
+  "status": "RESOLVED",
+  "failed_run": "20261116T165535Z-a131d933",
+  "passed_before_failure": 48,
+  "failed_assertions": 3,
+  "failed_assertion_names": [
+    "the actual Waystones teleport service moves the player to its spawn landing",
+    "actual Waystones travel empties and locks the old dungeon",
+    "actual-mod fixture completes without exception"
+  ],
+  "cause": "The original fixture placed and owned the destination Waystone, but did not add it to the player discovered-waystone list required by Waystones4.1.0 before teleportation.",
+  "correction": "The original fixture now invokes the real WaystoneManager.addPlayerWaystone API and explicitly checks the discovered destination before travel.",
+  "source_files_changed": [
+    "src/actualModTest/java/village/dungeonguard/test/RealWaystonesNativeChecks.java"
+  ],
+  "production_source_changed": false,
+  "original_failed_travel_and_reset_assertions_retained_and_passed": true,
+  "new_prerequisite_assertion": "actual Waystones destination is recorded as discovered before travel",
+  "successful_run": "20261116T165730Z-9fc0f126",
+  "successful_assertions": 60,
+  "rerun_scope": "Only the changed actual-mod fixture was rebuilt and its isolated server run repeated. The production JAR and all other tested inputs were unchanged.",
+  "failed_evidence_retained": [
+    "failed-actual-mod-discovery/actual-mod-result.json",
+    "failed-actual-mod-discovery/runner-result.json",
+    "failed-actual-mod-discovery/console.log"
+  ]
+}

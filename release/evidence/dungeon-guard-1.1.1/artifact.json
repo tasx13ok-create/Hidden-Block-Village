@@ -1,0 +1,22 @@
+{
+  "file": "Dungeon-Guard-1.12.2-1.1.1.jar",
+  "bytes": 948047,
+  "sha256": "eb8e2a2700f3619bf3ceb7a2c936e83a3981cb15e41361feda839f2e40bcef27",
+  "version": "1.1.1",
+  "class_count": 53,
+  "class_major_version": 52,
+  "archive_crc": "PASS",
+  "foreign_classes": false,
+  "test_classes": false,
+  "manifest": "PASS",
+  "mod_metadata": "PASS",
+  "banner": {
+    "path": "assets/dungeonguard/textures/gui/area_banner.png",
+    "bytes": 1000750,
+    "sha256": "47f97697d6687bc888b19659c563a6b2a3dcb5ef4b1a43aa3e4a9c1297fb60ac",
+    "width": 2172,
+    "height": 724,
+    "format": "PNG RGBA 8-bit",
+    "matches_original_image": true
+  }
+}

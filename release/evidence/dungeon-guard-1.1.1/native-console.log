@@ -1,0 +1,527 @@
+2026-11-16 08:55:37,827 main WARN Disabling terminal, you're running in an unsupported environment.
+[08:55:38] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[08:55:38] [main/INFO] [FML]: Forge Mod Loader version 14.23.5.2859 for Minecraft 1.12.2 loading
+[08:55:38] [main/INFO] [FML]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_472, running on Linux:amd64:6.18.57, installed at /workspace/scratch/4dc681d2e2f3/build-env/zulu8.90.0.19-ca-jdk8.0.472-linux_x64/jre
+[08:55:38] [main/INFO] [FML]: Searching /workspace/scratch/4dc681d2e2f3/dungeon-guard/build/native-runs/20261116T165535Z-f05fe200/./mods for mods
+[08:55:38] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in Dungeon-Guard-1.12.2-1.1.1.jar. This is not recommended, @Mods should be in a separate jar from the coremod.
+[08:55:38] [main/WARN] [FML]: The coremod DungeonGuardCore (village.dungeonguard.core.GuardLoadingPlugin) is not signed!
+[08:55:38] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:55:38] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:55:40] [main/INFO] [FML]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557
+[08:55:40] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:55:40] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[08:55:41] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:55:41] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[08:55:41] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[08:55:42] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[08:55:50] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 1.12.2
+[08:55:50] [Server thread/INFO] [FML]: MinecraftForge v14.23.5.2859 Initialized
+[08:55:50] [Server thread/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients.
+[08:55:50] [Server thread/INFO] [FML]: Invalid recipe found with multiple oredict ingredients in the same ingredient...
+[08:55:50] [Server thread/INFO] [FML]: Replaced 1227 ore ingredients
+[08:55:50] [Server thread/INFO] [FML]: Config directory created successfully
+[08:55:51] [Server thread/INFO] [FML]: Searching /workspace/scratch/4dc681d2e2f3/dungeon-guard/build/native-runs/20261116T165535Z-f05fe200/./mods for mods
+[08:55:51] [Server thread/INFO] [FML]: Forge Mod Loader has identified 6 mods to load
+[08:55:51] [Server thread/WARN] [FML]: Missing English translation for FML: assets/fml/lang/en_us.lang
+[08:55:51] [Server thread/WARN] [FML]: Missing English translation for dungeonguard: assets/dungeonguard/lang/en_us.lang
+[08:55:51] [Server thread/WARN] [FML]: Missing English translation for dungeonguard_nativechecks: assets/dungeonguard_nativechecks/lang/en_us.lang
+[08:55:52] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, dungeonguard, dungeonguard_nativechecks] at CLIENT
+[08:55:52] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, dungeonguard, dungeonguard_nativechecks] at SERVER
+[08:55:53] [Server thread/INFO] [FML]: Processing ObjectHolder annotations
+[08:55:53] [Server thread/INFO] [FML]: Found 1168 ObjectHolder annotations
+[08:55:53] [Server thread/INFO] [FML]: Identifying ItemStackHolder annotations
+[08:55:53] [Server thread/INFO] [FML]: Found 0 ItemStackHolder annotations
+[08:55:53] [Server thread/INFO] [FML]: Configured a dormant chunk cache size of 0
+[08:55:53] [Forge Version Check/INFO] [forge.VersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[08:55:53] [Server thread/WARN] [FML]: Potentially Dangerous alternative prefix `waystones` for name `waystone`, expected `dungeonguard_nativechecks`. This could be a intended override, but in most cases indicates a broken mod.
+[08:55:53] [Server thread/INFO] [FML]: Applying holder lookups
+[08:55:53] [Server thread/INFO] [FML]: Holder lookups applied
+[08:55:53] [Server thread/INFO] [FML]: Applying holder lookups
+[08:55:53] [Server thread/INFO] [FML]: Holder lookups applied
+[08:55:53] [Server thread/INFO] [FML]: Applying holder lookups
+[08:55:53] [Server thread/INFO] [FML]: Holder lookups applied
+[08:55:53] [Server thread/INFO] [FML]: Applying holder lookups
+[08:55:53] [Server thread/INFO] [FML]: Holder lookups applied
+[08:55:53] [Server thread/INFO] [FML]: Injecting itemstacks
+[08:55:53] [Server thread/INFO] [FML]: Itemstack injection complete
+[08:55:53] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
+[08:55:53] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
+[08:55:53] [Server thread/INFO] [minecraft/DedicatedServer]: Generating keypair
+[08:55:54] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on 127.0.0.1:0
+[08:55:54] [Server thread/INFO] [minecraft/NetworkSystem]: Using epoll channel type
+Nov 16, 2026 8:55:54 AM io.netty.util.internal.MacAddressUtil defaultMachineId
+WARNING: Failed to find a usable hardware address from the network interfaces; using random bytes: ae:fe:ad:be:36:a4:7e:49
+[08:55:54] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[08:55:54] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
+[08:55:54] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[08:55:54] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
+[08:55:54] [Server thread/INFO] [FML]: Applying holder lookups
+[08:55:54] [Server thread/INFO] [FML]: Holder lookups applied
+[08:55:54] [Server thread/INFO] [FML]: Injecting itemstacks
+[08:55:54] [Server thread/INFO] [FML]: Itemstack injection complete
+[08:55:54] [Server thread/INFO] [FML]: Forge Mod Loader has successfully loaded 6 mods
+[08:55:54] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "disposable-test-world"
+[08:55:54] [Server thread/INFO] [FML]: Loading dimension 0 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@2d28aa5a)
+[08:55:55] [Server thread/INFO] [minecraft/AdvancementList]: Loaded 488 advancements
+[08:55:56] [Server thread/INFO] [FML]: Loading dimension -1 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@2d28aa5a)
+[08:55:56] [Server thread/INFO] [FML]: Loading dimension 1 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@2d28aa5a)
+[08:55:56] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for level 0
+[08:55:57] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing spawn area: 24%
+[08:55:58] [Server thread/INFO] [minecraft/DedicatedServer]: Done (3.549s)! For help, type "help" or "?"
+[08:55:58] [Server thread/INFO] [Dungeon Guard]: Dungeon Guard started: operator-scoped outside editing, durable dungeon baselines and optional area HUD. core 11/11: [Block.dropBlockAsItemWithChance, Block.spawnAsEntity, BlockPistonBase.doMove, Chunk.setBlockState, CommandHandler.operatorEdits, PlayerInteractionManager.operatorHarvest, PlayerInteractionManager.operatorUse, PlayerInteractionManager.operatorUseOn, World.destroyBlock, World.setBlockState, World.spawnEntity]
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS outside direct World erasure is blocked
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS outside synthetic ability erasure is blocked
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS outside direct Chunk write is blocked
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS outside protected block survives all paths
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS registration queues capture rather than unlocking
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS capture blocks entry and mutations
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS region is not persisted before capture completes
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS capture honors per-tick budget
+[08:55:58] [Server thread/INFO] [DungeonGuard]: Dungeon native_a baseline saved and verified: 60 blocks, 3 tile entities
+[08:55:58] [Server thread/INFO] [DungeonGuard]: Dungeon native_b baseline saved and verified: 36 blocks, 0 tile entities
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS completed captures persist both region definitions
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS empty captured dungeon remains protected
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS overlapping dungeon registration is rejected
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS oversized dungeon registration is rejected
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS baseline gzip and checksum exist
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS baseline persists complete bounded volume including air
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS snapshot rejects dimension mismatch
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS two occupants activate the dungeon
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS durable recovery marker precedes writable arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ability destroyBlock works during fight
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS fight destruction actually removes terrain
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS destroyed dungeon terrain produces no farmable drops
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS direct Chunk setter works in occupied dungeon
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ability can place temporary terrain inside active arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS neighboring empty dungeon remains locked
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS outside boundary remains locked while arena active
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS minimum corner is included
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS maximum corner is included
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS one block beyond X is outside arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS one block below Y is outside arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS one block beyond Z is outside arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS same coordinates in another dimension are outside arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS container block survives active fight by default
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS block-state property damage is allowed during combat
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS active arena accepts explosion test block
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS explosion destroys terrain inside active dungeon
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS same explosion cannot damage outside world
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS explosion still damages combat entity
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS explosion still applies knockback
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS synthetic ability direct combat damage remains functional
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS active arena accepts boundary piston head
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS opt-in vulnerable tile setting allows furnace removal
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS first player's exit does not reset while second remains
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS last exit enters delayed reset
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reentry during grace period cancels reset
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset locks entry and all terrain writes
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unexpected occupant pauses in-progress restoration
+[08:55:58] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores World-deleted floor
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores directly changed chunk block
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset removes placed terrain by restoring baseline air
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores exact stair orientation and half
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores complete chest inventory and custom name NBT
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores complete sign text NBT
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset removes temporary piston head inside arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS restoration callbacks cannot remove outside piston base
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores exact furnace facing despite vanilla placement callback
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset restores exact furnace tile NBT
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset preserves existing Forge snapshot buffer reference and entries
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset preserves preexisting Forge snapshot NBT exactly
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS reset keeps dungeon locked until next occupant
+[08:55:58] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS repeated reset is idempotent
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS production online-player scan counts both occupants
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spectator presence is counted
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS manual reset refuses a currently occupied arena
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS teleport to spawn leaves second fighter active
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS teleport into different dungeon exits old and enters new
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS disconnect triggers empty-dungeon reset path
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS body overlapping boundary still counts as occupied
+[08:55:58] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS whole body beyond boundary leaves the dungeon
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS pre-restart fight mutates a block
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_a will restore its clean baseline before entry
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b will restore its clean baseline before entry
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dirty restart schedules locked recovery
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dirty restart does not expose damaged arena
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS restart recovery restores clean terrain
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS restart reload preserves exact chest inventory NBT
+[08:55:59] [Server thread/ERROR] [DungeonGuard]: Dungeon native_a locked after failure: Baseline checksum mismatch for native_a
+java.io.IOException: Baseline checksum mismatch for native_a
+	at village.dungeonguard.DungeonSnapshot.load(DungeonSnapshot.java:168) ~[DungeonSnapshot.class:1.1.1]
+	at village.dungeonguard.DungeonManager.loadConfiguredRegions(DungeonManager.java:111) [DungeonManager.class:1.1.1]
+	at village.dungeonguard.DungeonManager.<init>(DungeonManager.java:72) [DungeonManager.class:1.1.1]
+	at village.dungeonguard.GuardRuntime.start(GuardRuntime.java:42) [GuardRuntime.class:1.1.1]
+	at village.dungeonguard.test.NativeChecks.runChecks(NativeChecks.java:280) [NativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.onStarted(NativeChecks.java:74) [NativeChecks.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:637) [FMLModContainer.class:?]
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:219) [LoadController.class:?]
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:197) [LoadController.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:136) [LoadController.class:?]
+	at net.minecraftforge.fml.common.Loader.serverStarted(Loader.java:804) [Loader.class:?]
+	at net.minecraftforge.fml.common.FMLCommonHandler.handleServerStarted(FMLCommonHandler.java:302) [FMLCommonHandler.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:488) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_472]
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b will restore its clean baseline before entry
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS corrupt baseline fails closed on restart
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS corrupt baseline never unlocks destructive writes
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS restoring valid baseline permits explicit recovery
+[08:55:59] [Server thread/ERROR] [DungeonGuard]: Dungeon native_a locked after failure: Baseline or checksum is missing for native_a
+java.io.IOException: Baseline or checksum is missing for native_a
+	at village.dungeonguard.DungeonSnapshot.load(DungeonSnapshot.java:161) ~[DungeonSnapshot.class:1.1.1]
+	at village.dungeonguard.DungeonManager.loadConfiguredRegions(DungeonManager.java:111) [DungeonManager.class:1.1.1]
+	at village.dungeonguard.DungeonManager.<init>(DungeonManager.java:72) [DungeonManager.class:1.1.1]
+	at village.dungeonguard.GuardRuntime.start(GuardRuntime.java:42) [GuardRuntime.class:1.1.1]
+	at village.dungeonguard.test.NativeChecks.runChecks(NativeChecks.java:293) [NativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.onStarted(NativeChecks.java:74) [NativeChecks.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:637) [FMLModContainer.class:?]
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:219) [LoadController.class:?]
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:197) [LoadController.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:136) [LoadController.class:?]
+	at net.minecraftforge.fml.common.Loader.serverStarted(Loader.java:804) [Loader.class:?]
+	at net.minecraftforge.fml.common.FMLCommonHandler.handleServerStarted(FMLCommonHandler.java:302) [FMLCommonHandler.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:488) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_472]
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b will restore its clean baseline before entry
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS missing baseline fails closed instead of capturing damage
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_a reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [DungeonGuard]: Dungeon native_b reset and block/tile baseline verified
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unregister persists removal and retains original snapshot
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS register refuses overwrite of preserved baseline
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn fixture registers the exact Waystones block identity
+[08:55:59] [Server thread/INFO] [DungeonGuard/Spawn]: Bound world spawn to Waystone at BlockPos{x=320, y=100, z=320}, landing at BlockPos{x=320, y=100, z=319}
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS lower Waystone binding records its real base and Overworld
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS Waystone landing uses the safe facing-side block
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding moves actual world spawn to the Waystone landing
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding removes randomized spawn radius
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS Forge spawn provider repeatedly chooses the exact bound landing
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS Waystone binding persists base and centered landing to settings
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS saved Waystone binding survives configuration reload
+[08:55:59] [Server thread/INFO] [DungeonGuard/Spawn]: Bound world spawn to Waystone at BlockPos{x=320, y=100, z=320}, landing at BlockPos{x=320, y=100, z=319}
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS targeting the upper Waystone half normalizes to the lower base
+[08:55:59] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS new player constructor starts at the bound Waystone landing
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn command uses the real network handler to move the player
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn teleport clears fall damage, motion and burning
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn teleport creates no portal or landing terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects an ordinary block
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS rejected binding preserves previous saved spawn
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects hazardous magma around every landing
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects landings without headroom
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects a Waystone with its upper half missing
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects a player outside the Overworld
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn rejection fixture has an existing dungeon with two air blocks
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS binding rejects a Waystone inside an existing dungeon
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS periodic synchronization repairs a displaced world spawn
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS periodic synchronization restores zero spawn radius
+[08:56:00] [Server thread/WARN] [DungeonGuard/Spawn]: Waystone spawn binding is unavailable: The bound landing is unloaded, obstructed, hazardous, or inside a dungeon arena. No new spawn was chosen; repair the Waystone/landing or rebind.
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS blocked landing does not silently select another world spawn
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn command refuses an obstructed landing
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS refused unsafe teleport leaves player coordinates unchanged
+[08:56:00] [Server thread/WARN] [DungeonGuard/Spawn]: Waystone spawn binding is unavailable: The target is not a waystones:waystone block; point at the actual spawn Waystone. No new spawn was chosen; repair the Waystone/landing or rebind.
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS missing Waystone does not invent a replacement spawn
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS spawn command refuses a missing Waystone
+[08:56:00] [Server thread/INFO] [DungeonGuard/Spawn]: The bound Waystone and its safe spawn landing are available again.
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS repairing the Waystone resumes the same persisted binding
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS old 1.0 settings gain empty area metadata without losing protection
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS area metadata survives settings JSON roundtrip
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dungeon resolves configured element and display title
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dungeon minimum and maximum corners are included
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS one block outside each dungeon axis clears the label
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS same coordinates in another dimension do not leak area labels
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss area overrides parent title while retaining dungeon element
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss zone inclusive corners resolve the same encounter
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS leaving boss zone restores parent dungeon label
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS separate boss areas show their own boss names
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unconfigured element stays general instead of guessing from dungeon ID
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dungeon and boss headings identify area kind
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS renaming an occupied area changes display value without changing identity
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS leaving every region returns the explicit empty state
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS missing location input produces no stale label
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS orphan dungeon label is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss area with missing parent is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss zone extending outside parent is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss zone in wrong dimension is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS overlapping boss zones cannot create ambiguous display priority
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS duplicate boss identities are rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unknown element metadata is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS blank boss name is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS overlong area title is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS formatted or multiline labels are rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS explicitly null metadata cannot disable validation
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unpaired UTF16 surrogate in a label is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS dungeon display packet roundtrips all fields
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS boss display packet roundtrips all fields
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS clear-area packet is compact and explicitly empty
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS maximum allowed Unicode labels survive UTF8 without truncation
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unsupported area protocol is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS invalid area-presence flag is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS truncated area header is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS truncated string length is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS declared string beyond packet bytes is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS huge unsigned string length is rejected before allocation
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ASCII key exceeding character limit is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unknown wire element is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS active wire area cannot omit its title
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS wire control characters cannot reach HUD labels
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS invalid UTF8 is rejected rather than silently replaced
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS trailing packet data is rejected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS clear packet cannot smuggle a trailing payload
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS connected creative non-operator has no edit permission
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS non-operator manual break cannot remove protected block
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS non-operator manual placement cannot alter protected air
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS non-operator native setblock remains permission denied
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS connected real operator receives edit permission
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS FakePlayer sharing an operator profile receives no permission
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unconnected duplicate profile cannot impersonate online operator
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator scope allows only its selected cell
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator scope is bound to its exact world
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS unauthorized nested action shadows operator scope
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS closing nested action restores outer scope
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS deop immediately revokes an already open scope
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS closing operator scope keeps later world writes protected
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS known Waystone placement permits its two-block contract only
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS legacy global edit window cannot unlock other players or abilities
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native harvest destroys selected outside block
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator manual harvest retains ordinary block drops
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator harvest does not authorize a later ability write
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native placement builds outside dungeons
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator door placement includes both intended halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator door removal removes both intended halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator bed placement includes both intended halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator bed removal removes both intended halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can place a vanilla sign outside dungeons
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can remove the selected sign without opening nearby terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can place a vanilla banner outside dungeons
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can remove the selected banner without opening nearby terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can place a vanilla skull outside dungeons
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can remove the selected skull without opening nearby terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can place a vanilla fire charge outside dungeons
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator can remove the selected fire charge without opening nearby terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS lily-pad scope includes only the cell above its ray-traced water
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native right-click places a lily pad above water
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator lily-pad removal preserves the protected water source
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator ItemBlock placement completes both Waystone fixture halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS upper Waystone harvest scope includes its lower half only
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS harvesting the upper Waystone fixture half removes both halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS harvesting the lower Waystone fixture half removes both halves
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator right-click ability receives no global terrain bypass
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator synchronous tool callback cannot destroy neighboring terrain
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS native player-action exception closes operator permission
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native bucket can place water at selected ray target
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native bucket can collect its selected water source
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: 2 blocks filled
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS server-console native fill edits only its explicit box
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: [NativeOperator: Block placed]
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native setblock preserves relative coordinates
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: [NativeOperator: 2 blocks cloned]
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native clone edits its destination
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: [NativeOperator: 2 blocks cloned]
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator native clone move permits its explicit source and destination
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS permission-claiming mod command sender cannot bypass protected world
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS custom command named fill cannot inherit an operator edit scope
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: Block placed
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS console setblock reaches original mod block callbacks
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS command callback cannot write beyond declared command bounds
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: An unknown error occurred while attempting to perform this command
+[08:56:00] [Server thread/WARN] [minecraft/CommandHandler]: Couldn't process command: setblock 409 100 403 dungeonguard_nativechecks:operator_callback
+java.lang.IllegalStateException: Expected native fixture command failure
+	at village.dungeonguard.test.OperatorNativeChecks$CallbackBlock.func_176213_c(OperatorNativeChecks.java:422) ~[OperatorNativeChecks$CallbackBlock.class:?]
+	at net.minecraft.world.chunk.Chunk.func_177436_a(Chunk.java:614) ~[axw.class:?]
+	at net.minecraft.world.World.func_180501_a(World.java:343) ~[amu.class:?]
+	at net.minecraft.command.server.CommandSetBlock.func_184881_a(CommandSetBlock.java:113) ~[di.class:?]
+	at village.dungeonguard.OperatorAccess.runCommand(OperatorAccess.java:208) ~[OperatorAccess.class:1.1.1]
+	at net.minecraft.command.CommandHandler.func_175786_a(CommandHandler.java:119) [bj.class:?]
+	at net.minecraft.command.CommandHandler.func_71556_a(CommandHandler.java:91) [bj.class:?]
+	at village.dungeonguard.test.OperatorNativeChecks.command(OperatorNativeChecks.java:395) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.OperatorNativeChecks.commandChecks(OperatorNativeChecks.java:312) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.OperatorNativeChecks.run(OperatorNativeChecks.java:201) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.runChecks(NativeChecks.java:307) [NativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.onStarted(NativeChecks.java:74) [NativeChecks.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:637) [FMLModContainer.class:?]
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:219) [LoadController.class:?]
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:197) [LoadController.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:136) [LoadController.class:?]
+	at net.minecraftforge.fml.common.Loader.serverStarted(Loader.java:804) [Loader.class:?]
+	at net.minecraftforge.fml.common.FMLCommonHandler.handleServerStarted(FMLCommonHandler.java:302) [FMLCommonHandler.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:488) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_472]
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS native command exception does not report success
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS native command exception closes operator permission
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator cannot manually break a capturing dungeon
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator setblock cannot clear inventory during capture
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS console fill preflights entire locked intersection during capture
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:00] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS clone move cannot clear a locked source during capture
+[08:56:00] [Server thread/INFO] [minecraft/DedicatedServer]: 1 blocks cloned
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ordinary clone may read a locked source without mutating it during capture
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS restoration suppresses even an existing operator scope
+[08:56:01] [Server thread/INFO] [DungeonGuard]: Dungeon operator_locked baseline saved and verified: 4 blocks, 1 tile entities
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator setblock cannot clear inventory during reset
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS console fill preflights entire locked intersection during reset
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS clone move cannot clear a locked source during reset
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: 1 blocks cloned
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ordinary clone may read a locked source without mutating it during reset
+[08:56:01] [Server thread/INFO] [DungeonGuard]: Dungeon operator_locked reset and block/tile baseline verified
+[08:56:01] [Server thread/ERROR] [DungeonGuard]: Dungeon operator_locked locked after failure: java.io.IOException: Baseline or checksum is missing for operator_locked
+java.util.concurrent.ExecutionException: java.io.IOException: Baseline or checksum is missing for operator_locked
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_472]
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_472]
+	at village.dungeonguard.DungeonManager.tickResets(DungeonManager.java:180) [DungeonManager.class:1.1.1]
+	at village.dungeonguard.test.OperatorNativeChecks.await(OperatorNativeChecks.java:403) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.OperatorNativeChecks.lockedChecks(OperatorNativeChecks.java:353) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.OperatorNativeChecks.run(OperatorNativeChecks.java:202) [OperatorNativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.runChecks(NativeChecks.java:307) [NativeChecks.class:?]
+	at village.dungeonguard.test.NativeChecks.onStarted(NativeChecks.java:74) [NativeChecks.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:637) [FMLModContainer.class:?]
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:219) [LoadController.class:?]
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:197) [LoadController.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_472]
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116) [minecraft_server.1.12.2.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217) [minecraft_server.1.12.2.jar:?]
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:136) [LoadController.class:?]
+	at net.minecraftforge.fml.common.Loader.serverStarted(Loader.java:804) [Loader.class:?]
+	at net.minecraftforge.fml.common.FMLCommonHandler.handleServerStarted(FMLCommonHandler.java:302) [FMLCommonHandler.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:488) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_472]
+Caused by: java.io.IOException: Baseline or checksum is missing for operator_locked
+	at village.dungeonguard.DungeonSnapshot.load(DungeonSnapshot.java:161) ~[DungeonSnapshot.class:1.1.1]
+	at village.dungeonguard.DungeonManager$5.call(DungeonManager.java:285) ~[DungeonManager$5.class:1.1.1]
+	at village.dungeonguard.DungeonManager$5.call(DungeonManager.java:283) ~[DungeonManager$5.class:1.1.1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_472]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_472]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_472]
+	... 1 more
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator setblock cannot clear inventory during failed recovery
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS console fill preflights entire locked intersection during failed recovery
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: Dungeon Guard: operator_locked is locked for capture, reset or recovery; this edit was not applied.
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS clone move cannot clear a locked source during failed recovery
+[08:56:01] [Server thread/INFO] [minecraft/DedicatedServer]: 1 blocks cloned
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS ordinary clone may read a locked source without mutating it during failed recovery
+[08:56:01] [Server thread/INFO] [DungeonGuard]: Dungeon operator_locked reset and block/tile baseline verified
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:check:419]: DUNGEON_GUARD_CHECK PASS operator checks leave no online player or leaked edit scope
+[08:56:01] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.NativeChecks:onStarted:95]: DUNGEON_GUARD_NATIVE_PASS passed=219 failed=0
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/overworld
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/the_nether
+[08:56:01] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/the_end
+[08:56:02] [Server thread/INFO] [FML]: Unloading dimension 0
+[08:56:02] [Server thread/INFO] [FML]: Unloading dimension -1
+[08:56:02] [Server thread/INFO] [FML]: Unloading dimension 1
+[08:56:02] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[08:56:02] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving players
+[08:56:02] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving worlds

@@ -1,0 +1,43 @@
+{
+  "build_archives": [
+    {
+      "name": "forge-installer.jar",
+      "bytes": 4681890,
+      "sha256": "dbba1cd1bf34a4b82148bac50a6150f63ffcb2d5dc7d88a0508c27fdcff15b76"
+    },
+    {
+      "name": "gradle-9.5.0-bin.zip",
+      "bytes": 140319124,
+      "sha256": "553c78f50dafcd54d65b9a444649057857469edf836431389695608536d6b746"
+    },
+    {
+      "name": "zulu25.38.109-ca-jdk25.0.5.0.3-linux_x64.tar.gz",
+      "bytes": 232013501,
+      "sha256": "bb633b566fd501911a850d604d7d3abdfee657a88f2bbacb12e5ebc34727356f"
+    },
+    {
+      "name": "zulu8.90.0.19-ca-jdk8.0.472-linux_x64.tar.gz",
+      "bytes": 107139765,
+      "sha256": "6f9e3fa773829ac2553411fb0cdeb394980627c47c9ab8f8892d4b917b70e2dd"
+    }
+  ],
+  "native_runtime_binaries": [
+    {
+      "file": "forge-server/forge-1.12.2-14.23.5.2859.jar",
+      "sha256": "bd8314729d787e35164476d75afb337afb9783917e4f6fa1f77f049adba22f2d",
+      "bytes": 4466108
+    },
+    {
+      "file": "forge-server/minecraft_server.1.12.2.jar",
+      "sha1": "886945bfb2b978778c3a0288fd7fab09d315b25f",
+      "bytes": 30222121
+    }
+  ],
+  "official_sources": [
+    "https://api.azul.com/metadata/v1/zulu/packages/",
+    "https://cdn.azul.com/zulu/bin/",
+    "https://services.gradle.org/distributions/gradle-9.5.0-bin.zip",
+    "https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar"
+  ],
+  "included_in_user_mod": false
+}

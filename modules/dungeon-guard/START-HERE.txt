@@ -1,0 +1,36 @@
+Dungeon Guard 1.1.1 — Minecraft Java 1.12.2 / Java 8
+
+1. Stop your server and back up the world.
+2. Replace the old Dungeon Guard JAR with
+   mods/Dungeon-Guard-1.12.2-1.1.1.jar in the SERVER mods folder.
+   Keep your existing world/dungeon-guard folder and snapshots.
+3. Put the SAME JAR in each player's Forge CLIENT mods folder for the PNG HUD.
+   Clients without it can still join and see plain area entry titles.
+4. Start the server. Use /dg status as an operator (core11/11).
+5. Look at the Overworld spawn Waystone and run /dg bindspawn if not already bound.
+6. Ensure each dungeon is clean before capturing a new baseline.
+   Operators may mine/build directly. Non-OPs remain blocked.
+7. Select the whole dungeon with /dg pos1 x y z and /dg pos2 x y z.
+8. Run /dg capture fire (choose the proper unique name). Wait for IDLE.
+   Existing captured dungeons do not need to be captured again on upgrade.
+9. Set the label: /dg label fire FIRE Fire Dungeon
+10. Select a boss chamber with pos1/pos2, then run:
+    /dg bossarea fire fire_boss ACTUAL BOSS NAME
+    /dg bosslabel fire_boss Inner Sanctuary
+    Replace ACTUAL BOSS NAME with your configured boss's real name.
+
+The art uses real transparency. The mod draws live area text over the blank scroll.
+Each player may use /dghud on or /dghud off to toggle the banner.
+
+Players can use /dg spawn. Any exit or teleport is detected automatically.
+An arena resets five seconds after its LAST player leaves. Other players
+remaining inside prevent a reset. Outside terrain stays protected.
+OP permissions apply only to checked building actions, not delayed jutsu effects.
+The old global /dg edit window no longer opens the map to other players.
+
+The clean copy includes chest contents, so saved loot restocks after reset.
+Bosses, NPCs, quest progress and entity respawning are separate systems.
+
+Read README.md for full setup, supported OP commands and precise limitations.
+Verification uses a fresh Forge server; this has not been installed/tested
+on your live Bisect/Magma world or with every actual Naruto-addon JAR.

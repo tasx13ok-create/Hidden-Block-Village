@@ -1,0 +1,302 @@
+{
+  "schema": 1,
+  "passed": true,
+  "run_directory": "/workspace/scratch/4dc681d2e2f3/dungeon-guard/build/native-runs/20261116T165730Z-9fc0f126",
+  "minecraft": "1.12.2",
+  "forge": "14.23.5.2859",
+  "java_version": "openjdk version \"1.8.0_472\"\nOpenJDK Runtime Environment (Zulu 8.90.0.19-CA-linux64) (build 1.8.0_472-b08)\nOpenJDK 64-Bit Server VM (Zulu 8.90.0.19-CA-linux64) (build 25.472-b08, mixed mode)",
+  "mod": {
+    "filename": "Dungeon-Guard-1.12.2-1.1.1.jar",
+    "sha256": "eb8e2a2700f3619bf3ceb7a2c936e83a3981cb15e41361feda839f2e40bcef27"
+  },
+  "test_mod": {
+    "filename": "dungeon-guard-actual-mod-tests-1.1.1.jar",
+    "sha256": "d616056c57346a88f7cbdfeaaf9f484005acf7e82ae28834975d0ba95271f9db"
+  },
+  "extra_mods": [
+    {
+      "filename": "NarutoMod-1.12.2-0.3.1.beta.jar",
+      "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+    },
+    {
+      "filename": "Waystones_1.12.2-4.1.0.jar",
+      "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15"
+    }
+  ],
+  "seconds": 19.714,
+  "exit_code": 0,
+  "timed_out": false,
+  "native_result": {
+    "suite": "Pinned real Naruto and Waystones releases on a fresh Forge server",
+    "success": true,
+    "passed": 60,
+    "failed": 0,
+    "groups": {
+      "actual_naruto_kamui": {
+        "passed": 25,
+        "failed": 0
+      },
+      "actual_waystones": {
+        "passed": 33,
+        "failed": 0
+      }
+    },
+    "checks": [
+      {
+        "name": "actual mod identity is exact: narutomod 0.3.1-beta",
+        "pass": true
+      },
+      {
+        "name": "actual mod identity is exact: waystones 4.1.0",
+        "pass": true
+      },
+      {
+        "name": "real Naruto Kamui helper installs its compatibility gate",
+        "pass": true
+      },
+      {
+        "name": "real Kamui repeated protected calls emit no items or dimension transfers",
+        "pass": true
+      },
+      {
+        "name": "real Kamui leaves protected outside stone intact",
+        "pass": true
+      },
+      {
+        "name": "real Kamui cannot emit a protected container as an item",
+        "pass": true
+      },
+      {
+        "name": "real Kamui preserves outside container contents exactly",
+        "pass": true
+      },
+      {
+        "name": "real Kamui does nothing while baseline capture is locked",
+        "pass": true
+      },
+      {
+        "name": "real Kamui cannot destroy or loot an empty captured dungeon",
+        "pass": true
+      },
+      {
+        "name": "real Kamui test arena becomes writable with an occupant",
+        "pass": true
+      },
+      {
+        "name": "real Kamui removes permitted terrain in an active dungeon",
+        "pass": true
+      },
+      {
+        "name": "real Kamui no-loot result counts zero emitted stacks",
+        "pass": true
+      },
+      {
+        "name": "real Kamui no-loot destruction creates no item entities",
+        "pass": true
+      },
+      {
+        "name": "real Kamui no-loot destruction makes no dimension transfers",
+        "pass": true
+      },
+      {
+        "name": "real Kamui respects protected active-dungeon tile entities",
+        "pass": true
+      },
+      {
+        "name": "real Kamui remains contained at the active dungeon boundary",
+        "pass": true
+      },
+      {
+        "name": "real Kamui retains explicitly enabled dungeon drops",
+        "pass": true
+      },
+      {
+        "name": "real Kamui original allowed path still erases its target",
+        "pass": true
+      },
+      {
+        "name": "real Kamui cannot loot terrain during the departure grace period",
+        "pass": true
+      },
+      {
+        "name": "real Kamui cannot mutate or loot a resetting dungeon",
+        "pass": true
+      },
+      {
+        "name": "real Kamui damage is replaced by the captured baseline after departure",
+        "pass": true
+      },
+      {
+        "name": "real Kamui compatibility leaves baseline container data intact",
+        "pass": true
+      },
+      {
+        "name": "real Kamui retains original return and item behavior when policy is disabled",
+        "pass": true
+      },
+      {
+        "name": "real Kamui retains original terrain behavior when policy is disabled",
+        "pass": true
+      },
+      {
+        "name": "real Kamui retains original item behavior with no guard runtime",
+        "pass": true
+      },
+      {
+        "name": "real Kamui retains original terrain behavior with no guard runtime",
+        "pass": true
+      },
+      {
+        "name": "real Naruto fixture restores the active guard runtime",
+        "pass": true
+      },
+      {
+        "name": "real Waystones block and ItemBlock come from the installed release",
+        "pass": true
+      },
+      {
+        "name": "non-operator cannot place the actual Waystones item outside a dungeon",
+        "pass": true
+      },
+      {
+        "name": "actual Waystones builder has connected operator permission",
+        "pass": true
+      },
+      {
+        "name": "operator placement creates both actual Waystone halves",
+        "pass": true
+      },
+      {
+        "name": "actual Waystone base owns its real TileWaystone",
+        "pass": true
+      },
+      {
+        "name": "actual Waystone upper half has its dummy tile",
+        "pass": true
+      },
+      {
+        "name": "actual Waystone placement records the operator as owner",
+        "pass": true
+      },
+      {
+        "name": "non-operator cannot harvest either actual Waystone half",
+        "pass": true
+      },
+      {
+        "name": "blocked actual Waystone harvesting preserves exact tile data",
+        "pass": true
+      },
+      {
+        "name": "unattributed world writes cannot erase the actual spawn Waystone",
+        "pass": true
+      },
+      {
+        "name": "real Waystone binding selects its facing-side safe landing",
+        "pass": true
+      },
+      {
+        "name": "real Waystone binding sets the actual world spawn and zero radius",
+        "pass": true
+      },
+      {
+        "name": "actual upper Waystone target normalizes to the real base",
+        "pass": true
+      },
+      {
+        "name": "real Waystone world-spawn binding persists to settings",
+        "pass": true
+      },
+      {
+        "name": "real Waystone synchronization repairs displaced world spawn",
+        "pass": true
+      },
+      {
+        "name": "spawn service reaches the actual Waystone landing",
+        "pass": true
+      },
+      {
+        "name": "real spawn travel clears fall damage and burning",
+        "pass": true
+      },
+      {
+        "name": "real Waystone can be built inside an uncaptured future dungeon",
+        "pass": true
+      },
+      {
+        "name": "actual-mod dungeon becomes active for its connected occupant",
+        "pass": true
+      },
+      {
+        "name": "combat can erase ordinary terrain beside an actual Waystone",
+        "pass": true
+      },
+      {
+        "name": "active-dungeon protection keeps actual Waystone tiles intact",
+        "pass": true
+      },
+      {
+        "name": "actual Waystones destination is recorded as discovered before travel",
+        "pass": true
+      },
+      {
+        "name": "the actual Waystones teleport service moves the player to its spawn landing",
+        "pass": true
+      },
+      {
+        "name": "actual Waystones travel empties and locks the old dungeon",
+        "pass": true
+      },
+      {
+        "name": "actual Waystones departure triggers clean dungeon terrain restoration",
+        "pass": true
+      },
+      {
+        "name": "reset preserves both actual Waystone halves and exact base tile data",
+        "pass": true
+      },
+      {
+        "name": "actual spawn Waystone stays unchanged during the remote dungeon reset",
+        "pass": true
+      },
+      {
+        "name": "operator harvesting the real upper Waystone removes both halves",
+        "pass": true
+      },
+      {
+        "name": "spawn service refuses a deleted actual bound Waystone",
+        "pass": true
+      },
+      {
+        "name": "operator can repair the same actual bound Waystone",
+        "pass": true
+      },
+      {
+        "name": "repair resumes the saved actual Waystone spawn binding",
+        "pass": true
+      },
+      {
+        "name": "operator harvesting the real lower Waystone removes both halves",
+        "pass": true
+      },
+      {
+        "name": "actual Waystones fixture leaves no player or leaked operator scope",
+        "pass": true
+      }
+    ],
+    "mods": {
+      "narutomod": {
+        "version": "0.3.1-beta",
+        "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+        "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+      },
+      "waystones": {
+        "version": "4.1.0",
+        "file": "Waystones_1.12.2-4.1.0.jar",
+        "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15"
+      }
+    },
+    "java": "1.8.0_472",
+    "scope": "Real mod binaries with native server entities and a synthetic connected player; no graphical client, actual saved map, hosted server or live Magma acceptance."
+  },
+  "acceptance_scope": "Fresh local Forge server; not the user's Magma modpack or saved map."
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "runtime": "Java 8.0.472",
+  "naruto": {
+    "task": "verifyNarutoRelease",
+    "assertions": 44,
+    "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+    "scope": "Pinned original release helper bytes read only in memory; transformed paths, original return/side effects, idempotence and mutations."
+  },
+  "magma": {
+    "task": "verifyMagmaRelease",
+    "assertions": 9,
+    "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "scope": "Static transformed exact command-wrapper bytes. No live Magma startup, Bukkit permission or plugin acceptance.",
+    "official_joined_srg_sha256": "ca7b12a50e7eea671c129b45a3d430d9873c4ee4b9eb3fcdee52ef48e382b38c",
+    "official_minecraft_server_sha256": "fe1f9274e6dad9191bf6e6e8e36ee6ebc737f373603df0946aafcded0d53167e",
+    "official_minecraft_server_sha1": "886945bfb2b978778c3a0288fd7fab09d315b25f"
+  },
+  "third_party_classes_or_method_bodies_in_deliverable": false
+}

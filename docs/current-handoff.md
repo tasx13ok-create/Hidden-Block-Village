@@ -1,6 +1,60 @@
 # Current project handoff
 
-Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
+Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
+
+## Latest addon checkpoint: Dungeon Guard 1.1.1
+
+The owner's separate protection/reset/banner request now has maintained original
+source in `modules/dungeon-guard/`. It remains an optional addon, separate from
+the existing default candidate roster and assembly contracts. Installing it on
+a dedicated server activates adventure-world protection; see
+[the integration guide](dungeon-guard.md) for its placement and setup boundary.
+
+The production artifact is `Dungeon-Guard-1.12.2-1.1.1.jar`, 948,047 bytes,
+SHA-256 `eb8e2a2700f3619bf3ceb7a2c936e83a3981cb15e41361feda839f2e40bcef27`.
+It retains OP-scoped direct construction, last-player dungeon restoration,
+existing clean baselines/labels and the Overworld spawn Waystone binding.
+New corrections guard the actual Naruto public Kamui block helper before early
+item effects, protect the verified Magma vanilla-command route before container
+clearing, and move the transparent banner around boss bars and available public
+Field HUD bounds. Crowded GUIs use compact text; Shinobi Immersion reserves its
+compass strip. A present Bukkit wrapper without the verified guard stops startup.
+
+Observed acceptance: 594 assertions passed: 220 general transformer, 42 pure
+layout, 44 external Naruto bytecode, 9 exact Magma static-bytecode, 219 native
+regression and 60 real-mod native checks. Both native runs used standalone
+Forge14.23.5.2859 / Java8 and the exact production JAR, exited0, and used fresh
+synthetic worlds. All219 prior regression assertion names/order remain intact.
+The real-mod profile used exact Naruto0.3.1-beta and Waystones4.1.0 binaries;
+its groups are25 Naruto helper,33 Waystones and2 identity assertions. The first
+run retained48passes/3failures from a missing discovered-waystone fixture
+prerequisite. Only that fixture was corrected, the original travel/reset checks
+were retained, and the60-check rerun passed with unchanged production bytes.
+Eighteen public Field HUD API signatures and three negative release-package
+checks passed separately and are not added to594.
+
+Version-bound [verification](../release/evidence/dungeon-guard-1.1.1.json),
+original fixture sources, safe logs, input hashes and the retained failed-run
+receipt are committed. External dependency JARs, private QA JARs and generated
+worlds remain outside Git. Positive reference tests read pinned external JARs
+at execution time; no reference implementation bodies/art are published.
+
+Limits: live Magma startup did not run because required Bukkit/BungeeCord Chat
+downloads returned403 and SnakeYAML1.19 is absent. The recovered b4c01d2 base
+exactly matches the recorded PC hash despite the older8cc35ed filename. Static
+wrapper checks are not live Magma acceptance. Graphical client rendering/live
+HUD packet dispatch, the complete addon roster, the real saved map and Bisect
+acceptance remain open. The real Naruto helper is invoked directly; no in-JAR
+call site was found, so no player-hotkey exploit is claimed. WorldEdit remains
+unsupported for protected edits because its container/NBT mutations need their
+own adapter; details are in the module's compatibility notes.
+
+Next for this addon: run the exact JAR in a copied complete target Magma/plugins
+runtime, verify its optional command hook and OP/locked-container behavior,
+then inspect banner placement and area transitions with the actual graphical
+client and saved dungeon bounds. Preserve all existing world/capture data and
+the owner's inspection session. The separate villages-training and broader
+Naruto gameplay work recorded below remains active.
 
 ## Latest direct-work checkpoint: training and actual process restart
 

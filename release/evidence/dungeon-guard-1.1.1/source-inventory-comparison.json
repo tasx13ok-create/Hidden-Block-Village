@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "initial_full_build_input_sha256": "49fdbd7cc7ee441eabe090e09f5790ea07369421cb1e54c91a0979b2bda5e61a",
+  "initial_inputs_unchanged_through_full_build_regression_and_external_checks": true,
+  "final_input_sha256": "6d9260254411173f505afaf0c52bef2de769c8a6fab2eadb52ce356a0c4d263c",
+  "final_inputs_unchanged_through_actual_fixture_rebuild_and_successful_run": true,
+  "fixture_only_correction_between_runs": [
+    "src/actualModTest/java/village/dungeonguard/test/RealWaystonesNativeChecks.java"
+  ],
+  "production_sources_build_configuration_and_tools_unchanged_across_all_runs": true,
+  "production_artifact_unchanged_across_all_runs": true,
+  "main_source_inventory_sha256": "6ea3b388528bae7dcd758dcef9ea8f983edbab1fe8b6a8477e56c39905acb997",
+  "main_source_file_count": 25,
+  "total_input_file_count": 49
+}

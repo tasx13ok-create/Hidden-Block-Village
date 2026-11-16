@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "production_jar_sha256": "eb8e2a2700f3619bf3ceb7a2c936e83a3981cb15e41361feda839f2e40bcef27",
+  "production_jar_unchanged": true,
+  "checks": [
+    {
+      "class": "village/dungeonguard/test/AreaLayoutChecks.class",
+      "status": "PASS",
+      "result": "Private QA entry rejected"
+    },
+    {
+      "class": "village/dungeonguard/test/TransformerChecks.class",
+      "status": "PASS",
+      "result": "Private QA entry rejected"
+    },
+    {
+      "class": "village/dungeonguard/test/ActualModChecks.class",
+      "status": "PASS",
+      "result": "Private QA entry rejected"
+    }
+  ]
+}

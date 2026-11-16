@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "status": "NOT_RUN",
+  "scope": "Dungeon Guard 1.1.1 actual Magma runtime acceptance",
+  "reason": "The exact published actual-PC Magma base was recovered, but required Bukkit and BungeeCord Chat downloads returned HTTP403. The required SnakeYAML1.19 artifact is also absent. No Magma JVM was launched; no Magma runtime or Bukkit permission behavior is claimed.",
+  "actual_pc_base": {
+    "tag": "b4c01d2",
+    "asset_id": 204369890,
+    "source_url": "https://github.com/magmamaintained/MagmaMaintained-1.12.2/releases/download/b4c01d2/Magma-1.12.2-b4c01d2-server.jar",
+    "file": "Magma-1.12.2-b4c01d2-server.jar",
+    "bytes": 7056996,
+    "sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "manifest_version": "1.12.2-b4c01d2",
+    "wrapper_sha256": "624cef60599db39e8700b709a51907a109e9865e7a20357dacffaaa0a8a609d5",
+    "wrapper_bytes": 8429
+  },
+  "upstream_8cc35ed_comparison": {
+    "tag": "8cc35ed",
+    "asset_id": 148198669,
+    "source_url": "https://github.com/magmamaintained/MagmaMaintained-1.12.2/releases/download/8cc35ed/Magma-1.12.2-8cc35ed-server.jar",
+    "file": "Magma-1.12.2-8cc35ed-server.jar",
+    "bytes": 7057102,
+    "sha256": "b82fbca20bd4f73d7e791da79f4b5625a33ec176b8b018ac44a8e6e0eb7fc05c",
+    "manifest_version": "1.12.2-8cc35ed",
+    "wrapper_sha256": "624cef60599db39e8700b709a51907a109e9865e7a20357dacffaaa0a8a609d5",
+    "wrapper_bytes": 8429
+  },
+  "identity_evidence": {
+    "repository": "https://github.com/tasx13ok-create/Hidden-Block-Village",
+    "commit": "d74cd6afdcc31edc49295edb2e2447584a3c48be",
+    "path": "release/evidence/magma-smoke-20261113.json",
+    "sha256": "e72be13f26821e5e1a78dccd1ed4ad8573ce31fc8ac9573b1db1295a1e133ee6",
+    "published_magma_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+    "published_manifest_version": "1.12.2-b4c01d2",
+    "actual_pc_filename_recorded_in_prior_evidence": "Magma-1.12.2-8cc35ed-server.jar",
+    "conclusion": "The prior filename differs from its manifest and bytes; the recovered official b4c01d2 binary matches the published actual-PC SHA256 exactly. The official true8cc35ed binary is different."
+  },
+  "dependencies": {
+    "passed_checksum_checks": 45,
+    "blocked_downloads": [
+      {
+        "target": "libraries/net/md-5/bungeecord-chat/1.12-SNAPSHOT/bungeecord-chat-1.12-SNAPSHOT.jar",
+        "url": "https://hub.spigotmc.org/nexus/content/groups/public/net/md-5/bungeecord-chat/1.12-SNAPSHOT/bungeecord-chat-1.12-20180712.114550-97.jar",
+        "algorithm": "md5",
+        "expected": "3227092125953bd4b82e80958e24695f",
+        "identity_origin": "exact Magma b4c01d2 bundled magma_libs.json",
+        "status": "BLOCKED",
+        "error": "HTTP Error 403: Forbidden"
+      },
+      {
+        "target": "libraries/org/bukkit/bukkit/1.12.2-R0.1-SNAPSHOT/bukkit-1.12.2-R0.1-SNAPSHOT.jar",
+        "url": "https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/bukkit/bukkit/1.12.2-R0.1-SNAPSHOT/bukkit-1.12.2-R0.1-20180712.012114-155.jar",
+        "algorithm": "sha1",
+        "expected": "ebb39bc230e588e660c100b507f55af34ba7ea70",
+        "identity_origin": "official Spigot snapshot timestamp20180712.012114 build155; missing original snapshot identity was not supplied",
+        "status": "BLOCKED",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "missing_manifest_targets": [
+      "libraries/org/bukkit/bukkit/1.12.2-R0.1-SNAPSHOT/bukkit-1.12.2-R0.1-SNAPSHOT.jar",
+      "libraries/net/md-5/bungeecord-chat/1.12-SNAPSHOT/bungeecord-chat-1.12-SNAPSHOT.jar",
+      "libraries/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"
+    ]
+  },
+  "command_wrapper_static_review": {
+    "class": "org/bukkit/craftbukkit/v1_12_R1/command/VanillaCommandWrapper",
+    "native_command_call_sites": 2,
+    "method": "dispatchVanillaCommand",
+    "raw_descriptor": "(Lorg/bukkit/command/CommandSender;Lbn;[Ljava/lang/String;)I",
+    "wrapper_bytes_identical_between_recovered_releases": true,
+    "hardcoded_bukkit_classloader_exclusion_found": false,
+    "scope": "Exact-JAR static inspection only. Dynamic plugin exclusions and actual transformer execution require live startup."
+  },
+  "upstream_binaries_in_delivery": false,
+  "source_method_bodies_in_receipt": false
+}

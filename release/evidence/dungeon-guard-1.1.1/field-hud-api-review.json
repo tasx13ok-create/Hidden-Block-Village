@@ -1,0 +1,10 @@
+{
+  "scope": "Public signature shapes only; no class initialization, Minecraft launch, or rendered coexistence",
+  "examined_commit": "e4c6daa65af2ce00f5836ce38c4f31ea2deb224d",
+  "examined_declared_version": "0.20.1",
+  "source_file_count": 82,
+  "compilation_exit_code": 0,
+  "status": "pass",
+  "shape_check_exit_code": 0,
+  "output": "FIELD_HUD_PUBLIC_API_SHAPES_PASS checks=18\n"
+}

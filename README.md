@@ -12,6 +12,7 @@ Vale is a Minecraft 1.12.2 ninja simulation project with original gameplay syste
 | [Recovery status](docs/recovery-status.md) | Distinguishes the existing package, later candidate, historical evidence, and remaining acceptance work. |
 | [Core build instructions](docs/build-core.md) | Reproduce the recovered Core source with the pinned wrapper and correct Java toolchains. |
 | [All component builds](docs/build-modules.md) | Build the recovered source areas in dependency order, inspect artifact roles and retain exact source/output hashes. |
+| [Dungeon Guard addon](docs/dungeon-guard.md) | Optional OP-only world building, dungeon baseline resets, spawn Waystone binding and transparent element/boss area banners. |
 | [Candidate assembly](tools/ASSEMBLY.md) | Build a new full server/client candidate from the complete frozen input while preserving the original world and rollback. |
 | [Client and Bisect installation](docs/client-and-bisect-039.md) | Contents and installation steps for a completed matching Core 0.3.9 candidate, including the preserved world and separate hosting test. |
 | [Windows assembly status](docs/windows-assembly-status.md) | Observe the current assembly in a second window without interrupting it or rehashing the saved world. |

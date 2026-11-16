@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "module": "dungeon-guard",
+  "origin": "Original addon implementation created for the owner's dungeon restoration, operator building, spawn Waystone and area banner request.",
+  "production_namespace": "village.dungeonguard",
+  "upstream_implementation_bodies_included": false,
+  "upstream_game_or_mod_distributions_included": false,
+  "worlds_or_player_data_included": false,
+  "private_qa_runtime_jars_included": false,
+  "test_source": "Original test fixtures are kept in separate source sets and never enter the production JAR. The net.narutomod.guardfixture test namespace is an original compatibility double, not recovered Naruto source.",
+  "artwork": {
+    "path": "src/main/resources/assets/dungeonguard/textures/gui/area_banner.png",
+    "origin": "Generated original fox-shinobi pixel-art scroll for this addon; dynamic labels are rendered separately by the client.",
+    "sha256": "47f97697d6687bc888b19659c563a6b2a3dcb5ef4b1a43aa3e4a9c1297fb60ac",
+    "width": 2172,
+    "height": 724,
+    "format": "RGBA PNG",
+    "third_party_extracted_artwork": false
+  },
+  "build_component": {
+    "name": "Gradle wrapper",
+    "license": "Apache-2.0",
+    "notice": "GRADLE-WRAPPER-LICENSE.txt"
+  },
+  "inspection_references": [
+    "https://github.com/MinecraftForge/MinecraftForge/tree/1.12.x",
+    "https://github.com/AHZNB/naruto_mod/tree/0.3.1-beta",
+    "https://github.com/TwelveIterations/Waystones/tree/1.12",
+    "https://github.com/magmafoundation/Magma-Forge/tree/1.12.2"
+  ],
+  "prior_delivery": {
+    "version": "1.1.0",
+    "production_jar_sha256": "9d3a40b6329bbe2f725f4cb31b0685df6ef498618a7cffd4716990818d5a9ed6",
+    "production_jar_bytes": 935279,
+    "verified_scope": "Exact standalone Forge 14.23.5.2859 / Java 8; 171 transformer assertions and 219 native assertions. This historical result does not establish later-version acceptance."
+  }
+}
