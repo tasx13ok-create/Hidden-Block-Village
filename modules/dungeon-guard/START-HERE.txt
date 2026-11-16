@@ -1,36 +1,55 @@
-Dungeon Guard 1.1.1 — Minecraft Java 1.12.2 / Java 8
+Dungeon Guard 1.2.0 — easy setup
+Minecraft Java 1.12.2
+
+INSTALL THE ONE JAR
 
 1. Stop your server and back up the world.
-2. Replace the old Dungeon Guard JAR with
-   mods/Dungeon-Guard-1.12.2-1.1.1.jar in the SERVER mods folder.
-   Keep your existing world/dungeon-guard folder and snapshots.
-3. Put the SAME JAR in each player's Forge CLIENT mods folder for the PNG HUD.
-   Clients without it can still join and see plain area entry titles.
-4. Start the server. Use /dg status as an operator (core11/11).
-5. Look at the Overworld spawn Waystone and run /dg bindspawn if not already bound.
-6. Ensure each dungeon is clean before capturing a new baseline.
-   Operators may mine/build directly. Non-OPs remain blocked.
-7. Select the whole dungeon with /dg pos1 x y z and /dg pos2 x y z.
-8. Run /dg capture fire (choose the proper unique name). Wait for IDLE.
-   Existing captured dungeons do not need to be captured again on upgrade.
-9. Set the label: /dg label fire FIRE Fire Dungeon
-10. Select a boss chamber with pos1/pos2, then run:
-    /dg bossarea fire fire_boss ACTUAL BOSS NAME
-    /dg bosslabel fire_boss Inner Sanctuary
-    Replace ACTUAL BOSS NAME with your configured boss's real name.
+2. Put this JAR in the server's mods folder:
+   Dungeon-Guard-1.12.2-1.2.0.jar
+   Remove any older Dungeon Guard JAR. Keep your world, dungeon-guard folder
+   and saved snapshots.
+3. Put the SAME JAR in each player's client mods folder for the illustrated
+   dungeon/boss banner. Players without it can still join and see plain titles.
+4. Start the server and join as an operator.
 
-The art uses real transparency. The mod draws live area text over the blank scroll.
-Each player may use /dghud on or /dghud off to toggle the banner.
+OPEN YOUR MENU
 
-Players can use /dg spawn. Any exit or teleport is detected automatically.
-An arena resets five seconds after its LAST player leaves. Other players
-remaining inside prevent a reset. Outside terrain stays protected.
-OP permissions apply only to checked building actions, not delayed jutsu effects.
-The old global /dg edit window no longer opens the map to other players.
+Type /dungeon
 
-The clean copy includes chest contents, so saved loot restocks after reset.
-Bosses, NPCs, quest progress and entity respawning are separate systems.
+Open chat with T to click the buttons. Use /dungeon setup for the guided steps.
+Existing dungeons and spawn settings carry over; set up only new areas.
 
-Read README.md for full setup, supported OP commands and precise limitations.
-Verification uses a fresh Forge server; this has not been installed/tested
-on your live Bisect/Magma world or with every actual Naruto-addon JAR.
+SAVE A NEW DUNGEON
+
+Start with the finished, undamaged dungeon already in your world.
+
+1. Stand near your existing Overworld spawn Waystone, look at it, and type:
+   /dungeon setspawn
+2. Get the selection stick:
+   /dungeon wand
+3. Hold that stick. Left-click a low corner block, then right-click the
+   diagonally opposite high corner block. Include the whole dungeon and its
+   fighting space inside that box.
+4. Save it and name its banner in one command:
+   /dungeon create fire Fire Dungeon
+   Change the element and display name for your dungeon.
+5. Keep everyone out while it saves. Wait for the Ready message before fighting.
+
+ADD A BOSS ROOM
+
+Select the boss chamber's two corners with the stick, entirely inside a saved
+dungeon. Then type /dungeon boss followed by the actual boss's name.
+The mod finds the parent dungeon for you. This labels the room; your existing
+boss system handles spawning the boss.
+
+EVERYDAY USE
+
+/dungeon       Open the menu and see what to do next.
+/dungeon spawn Return to the spawn Waystone.
+/dghud off     Hide your banner. Use /dghud on to show it again.
+
+After the LAST player leaves, the dungeon automatically rebuilds from its
+saved clean copy. Outside terrain stays protected; operators can build.
+Saved chest contents return too, so captured loot will restock.
+
+QUICK-START.md has the same steps with a little more help.

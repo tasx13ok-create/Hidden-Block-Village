@@ -1,5 +1,33 @@
 # Dungeon Guard changes
 
+## 1.2.0
+
+Simpler setup with the same saved-world format and protection rules.
+
+- Added `/dungeon` as an alias and a clickable chat menu with setup guidance.
+- Added a selection wand made from a marked vanilla stick: left-click the
+  first corner and right-click the opposite corner without damaging either.
+- Added `/dungeon setspawn` for the existing spawn Waystone.
+- Use a server-side ray trace for look-at Waystone binding, including the
+  existing `bindspawn` command, so it works on a dedicated server.
+- Explicitly allow ordinary players to reach the public menu, spawn and
+  information commands; all setup actions retain separate operator checks.
+- Added `/dungeon create <element> [display name...]` to capture the selected
+  clean dungeon and set its banner in one step. IDs are generated automatically
+  and never reuse retained baseline files.
+- Save the region and its display label together only after the clean baseline
+  is durably saved and verified. Tell the owner when the dungeon is Ready.
+- Added `/dungeon boss <boss name...>` to label the selected boss chamber and
+  find its enclosing saved dungeon automatically.
+- Replaced raw internal states in normal status output with Ready, In use,
+  Saving original and Rebuilding. Existing `/dg` commands remain supported.
+- Clear selections on logout, dimension change and server restart. Setup still
+  requires a real connected operator; a wand grants no editing permission.
+- Insert the wand only into an empty inventory slot. A full Creative inventory
+  receives a clear refusal instead of a false success message.
+- Preserve existing captures, boss labels, spawn binding and the transparent
+  fox-shinobi banner. No recapture is needed for this upgrade.
+
 ## 1.1.1
 
 Compatibility and HUD corrections following the 1.1.0 release. Exact completed

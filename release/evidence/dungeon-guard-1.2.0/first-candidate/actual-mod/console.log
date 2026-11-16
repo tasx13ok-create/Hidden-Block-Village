@@ -1,0 +1,160 @@
+2026-11-16 09:56:25,315 main WARN Disabling terminal, you're running in an unsupported environment.
+[09:56:25] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[09:56:25] [main/INFO] [FML]: Forge Mod Loader version 14.23.5.2859 for Minecraft 1.12.2 loading
+[09:56:25] [main/INFO] [FML]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_472, running on Linux:amd64:6.18.57, installed at /workspace/scratch/4dc681d2e2f3/build-env/zulu8.90.0.19-ca-jdk8.0.472-linux_x64/jre
+[09:56:25] [main/INFO] [FML]: Searching /workspace/scratch/4dc681d2e2f3/hidden-block-village/modules/dungeon-guard/build/native-runs/20261116T175622Z-f737bd25/./mods for mods
+[09:56:25] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in Dungeon-Guard-1.12.2-1.2.0.jar. This is not recommended, @Mods should be in a separate jar from the coremod.
+[09:56:25] [main/WARN] [FML]: The coremod DungeonGuardCore (village.dungeonguard.core.GuardLoadingPlugin) is not signed!
+[09:56:25] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[09:56:25] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[09:56:28] [main/INFO] [FML]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557
+[09:56:28] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[09:56:28] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[09:56:28] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[09:56:28] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[09:56:28] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[09:56:29] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[09:56:33] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 1.12.2
+[09:56:33] [Server thread/INFO] [FML]: MinecraftForge v14.23.5.2859 Initialized
+[09:56:33] [Server thread/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients.
+[09:56:33] [Server thread/INFO] [FML]: Invalid recipe found with multiple oredict ingredients in the same ingredient...
+[09:56:34] [Server thread/INFO] [FML]: Replaced 1227 ore ingredients
+[09:56:34] [Server thread/INFO] [FML]: Config directory created successfully
+[09:56:34] [Server thread/INFO] [FML]: Searching /workspace/scratch/4dc681d2e2f3/hidden-block-village/modules/dungeon-guard/build/native-runs/20261116T175622Z-f737bd25/./mods for mods
+[09:56:35] [Server thread/WARN] [FML]: Mod waystones is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version 4.1.0
+[09:56:35] [Server thread/INFO] [FML]: Forge Mod Loader has identified 8 mods to load
+[09:56:35] [Server thread/WARN] [FML]: Missing English translation for FML: assets/fml/lang/en_us.lang
+[09:56:35] [Server thread/WARN] [FML]: Missing English translation for dungeonguard: assets/dungeonguard/lang/en_us.lang
+[09:56:35] [Server thread/WARN] [FML]: Missing English translation for dungeonguard_actualchecks: assets/dungeonguard_actualchecks/lang/en_us.lang
+[09:56:35] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, dungeonguard, dungeonguard_actualchecks, narutomod, waystones] at CLIENT
+[09:56:35] [Server thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, dungeonguard, dungeonguard_actualchecks, narutomod, waystones] at SERVER
+[09:56:36] [Server thread/INFO] [FML]: Processing ObjectHolder annotations
+[09:56:36] [Server thread/INFO] [FML]: Found 1421 ObjectHolder annotations
+[09:56:36] [Server thread/INFO] [FML]: Identifying ItemStackHolder annotations
+[09:56:36] [Server thread/INFO] [FML]: Found 0 ItemStackHolder annotations
+[09:56:36] [Server thread/INFO] [FML]: Configured a dormant chunk cache size of 0
+[09:56:36] [Forge Version Check/INFO] [forge.VersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[09:56:39] [Server thread/INFO] [FML]: Applying holder lookups
+[09:56:39] [Server thread/INFO] [FML]: Holder lookups applied
+[09:56:39] [Server thread/INFO] [FML]: Applying holder lookups
+[09:56:39] [Server thread/INFO] [FML]: Holder lookups applied
+[09:56:39] [Server thread/INFO] [FML]: Applying holder lookups
+[09:56:39] [Server thread/INFO] [FML]: Holder lookups applied
+[09:56:39] [Server thread/INFO] [FML]: Applying holder lookups
+[09:56:39] [Server thread/INFO] [FML]: Holder lookups applied
+[09:56:39] [Server thread/INFO] [FML]: Injecting itemstacks
+[09:56:39] [Server thread/INFO] [FML]: Itemstack injection complete
+[09:56:39] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
+[09:56:39] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
+[09:56:39] [Server thread/INFO] [minecraft/DedicatedServer]: Generating keypair
+[09:56:39] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on 127.0.0.1:0
+[09:56:39] [Server thread/INFO] [minecraft/NetworkSystem]: Using epoll channel type
+Nov 16, 2026 9:56:39 AM io.netty.util.internal.MacAddressUtil defaultMachineId
+WARNING: Failed to find a usable hardware address from the network interfaces; using random bytes: 27:7a:07:e4:3c:90:4f:dc
+[09:56:40] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[09:56:40] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
+[09:56:40] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[09:56:40] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
+[09:56:40] [Server thread/INFO] [FML]: Applying holder lookups
+[09:56:40] [Server thread/INFO] [FML]: Holder lookups applied
+[09:56:40] [Server thread/INFO] [FML]: Injecting itemstacks
+[09:56:40] [Server thread/INFO] [FML]: Itemstack injection complete
+[09:56:40] [Server thread/INFO] [FML]: Forge Mod Loader has successfully loaded 8 mods
+[09:56:40] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "disposable-test-world"
+[09:56:40] [Server thread/INFO] [FML]: Loading dimension 0 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@30c05036)
+[09:56:40] [Server thread/INFO] [minecraft/AdvancementList]: Loaded 510 advancements
+[09:56:41] [Server thread/INFO] [FML]: Loading dimension -1 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@30c05036)
+[09:56:41] [Server thread/INFO] [FML]: Loading dimension 1 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@30c05036)
+[09:56:41] [Server thread/INFO] [FML]: Loading dimension 3 (disposable-test-world) (net.minecraft.server.dedicated.DedicatedServer@30c05036)
+[09:56:41] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for level 0
+[09:56:42] [Server thread/INFO] [minecraft/DedicatedServer]: Done (2.030s)! For help, type "help" or "?"
+[09:56:42] [Server thread/INFO] [Dungeon Guard]: Dungeon Guard started: operator-scoped outside editing, durable dungeon baselines and optional area HUD. core 11/11: [AHZNB.breakBlockAndDropWithChance, AHZNB.kamuiBlock, AHZNB.portalPreflight, Block.dropBlockAsItemWithChance, Block.spawnAsEntity, BlockPistonBase.doMove, Chunk.setBlockState, CommandHandler.operatorEdits, PlayerInteractionManager.operatorHarvest, PlayerInteractionManager.operatorUse, PlayerInteractionManager.operatorUseOn, World.destroyBlock, World.setBlockState, World.spawnEntity]
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual mod identity is exact: narutomod 0.3.1-beta
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual mod identity is exact: waystones 4.1.0
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Naruto Kamui helper installs its compatibility gate
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui repeated protected calls emit no items or dimension transfers
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui leaves protected outside stone intact
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui cannot emit a protected container as an item
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui preserves outside container contents exactly
+[09:56:42] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui does nothing while baseline capture is locked
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_kamui_native baseline saved and verified: 36 blocks, 1 tile entities
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui cannot destroy or loot an empty captured dungeon
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui test arena becomes writable with an occupant
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui removes permitted terrain in an active dungeon
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui no-loot result counts zero emitted stacks
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui no-loot destruction creates no item entities
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui no-loot destruction makes no dimension transfers
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui respects protected active-dungeon tile entities
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui remains contained at the active dungeon boundary
+[09:56:43] [Server thread/INFO] [STDOUT]: [net.narutomod.SaveData$EventHook:onEntityJoinWorld:90]: Loading all save data for mod narutomod
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui retains explicitly enabled dungeon drops
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui original allowed path still erases its target
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui cannot loot terrain during the departure grace period
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui cannot mutate or loot a resetting dungeon
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_kamui_native reset and block/tile baseline verified
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui damage is replaced by the captured baseline after departure
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui compatibility leaves baseline container data intact
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui retains original return and item behavior when policy is disabled
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui retains original terrain behavior when policy is disabled
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui retains original item behavior with no guard runtime
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Kamui retains original terrain behavior with no guard runtime
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_kamui_native will restore its clean baseline before entry
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Naruto fixture restores the active guard runtime
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_kamui_native reset and block/tile baseline verified
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystones block and ItemBlock come from the installed release
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS non-operator cannot place the actual Waystones item outside a dungeon
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystones builder has connected operator permission
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS operator placement creates both actual Waystone halves
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystone base owns its real TileWaystone
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystone upper half has its dummy tile
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystone placement records the operator as owner
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS non-operator cannot harvest either actual Waystone half
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS blocked actual Waystone harvesting preserves exact tile data
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS unattributed world writes cannot erase the actual spawn Waystone
+[09:56:43] [Server thread/INFO] [DungeonGuard/Spawn]: Bound world spawn to Waystone at BlockPos{x=880, y=100, z=880}, landing at BlockPos{x=880, y=100, z=879}
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystone binding selects its facing-side safe landing
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystone binding sets the actual world spawn and zero radius
+[09:56:43] [Server thread/INFO] [DungeonGuard/Spawn]: Bound world spawn to Waystone at BlockPos{x=880, y=100, z=880}, landing at BlockPos{x=880, y=100, z=879}
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual upper Waystone target normalizes to the real base
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystone world-spawn binding persists to settings
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystone synchronization repairs displaced world spawn
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS spawn service reaches the actual Waystone landing
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real spawn travel clears fall damage and burning
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS real Waystone can be built inside an uncaptured future dungeon
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_waystone baseline saved and verified: 125 blocks, 2 tile entities
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual-mod dungeon becomes active for its connected occupant
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS combat can erase ordinary terrain beside an actual Waystone
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS active-dungeon protection keeps actual Waystone tiles intact
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystones destination is recorded as discovered before travel
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS the actual Waystones teleport service moves the player to its spawn landing
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystones travel empties and locks the old dungeon
+[09:56:43] [Server thread/INFO] [DungeonGuard]: Dungeon real_waystone reset and block/tile baseline verified
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystones departure triggers clean dungeon terrain restoration
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS reset preserves both actual Waystone halves and exact base tile data
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual spawn Waystone stays unchanged during the remote dungeon reset
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS operator harvesting the real upper Waystone removes both halves
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS spawn service refuses a deleted actual bound Waystone
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS operator can repair the same actual bound Waystone
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS repair resumes the saved actual Waystone spawn binding
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS operator harvesting the real lower Waystone removes both halves
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:check:104]: DUNGEON_GUARD_ACTUAL_CHECK PASS actual Waystones fixture leaves no player or leaked operator scope
+[09:56:43] [Server thread/INFO] [STDOUT]: [village.dungeonguard.test.ActualModChecks:started:66]: DUNGEON_GUARD_ACTUAL_MOD_PASS passed=60 failed=0
+[09:56:43] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[09:56:43] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[09:56:43] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[09:56:43] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/overworld
+[09:56:44] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/the_nether
+[09:56:44] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/the_end
+[09:56:44] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'disposable-test-world'/kamuidimension
+[09:56:44] [Server thread/INFO] [FML]: Unloading dimension 0
+[09:56:44] [Server thread/INFO] [FML]: Unloading dimension -1
+[09:56:44] [Server thread/INFO] [FML]: Unloading dimension 1
+[09:56:44] [Server thread/INFO] [FML]: Unloading dimension 3
+[09:56:44] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[09:56:44] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving players
+[09:56:44] [Server Shutdown Thread/INFO] [minecraft/MinecraftServer]: Saving worlds

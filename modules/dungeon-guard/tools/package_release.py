@@ -42,7 +42,7 @@ def main():
     if any(p.exists() for p in (jar_out, zip_out, manifest_out)):
         parser.error('Choose an output directory without an existing release')
     files = {'mods/' + jar_out.name: args.jar.read_bytes()}
-    for name in ('README.md', 'CONFIG-REFERENCE.md', 'START-HERE.txt', 'ARTWORK.md', 'CHANGELOG.md'):
+    for name in ('README.md', 'QUICK-START.md', 'CONFIG-REFERENCE.md', 'START-HERE.txt', 'ARTWORK.md', 'CHANGELOG.md'):
         files[name] = (ROOT / name).read_bytes()
     files['art/dungeon-area-banner.png'] = (ROOT / 'src/main/resources/assets/dungeonguard/textures/gui/area_banner.png').read_bytes()
     files['verification/VERIFICATION.json'] = args.verification.read_bytes()

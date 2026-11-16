@@ -1,6 +1,8 @@
-# Dungeon Guard 1.1.1
+# Dungeon Guard 1.2.0
 
-Minecraft Java **1.12.2**, Forge, Java 8. Intended for the existing Naruto/Bisect/Magma server. The production JAR belongs in **mods**, not **plugins**. Install it on the server for protection and resets. Install the same JAR on each player's client for the transparent dungeon/boss HUD. Clients without it can still connect and receive plain Minecraft entry titles. It adds no items or blocks.
+Minecraft Java **1.12.2**, Forge, Java 8. Intended for the existing Naruto/Bisect/Magma server. The production JAR belongs in **mods**, not **plugins**. Install it on the server for protection and resets. Install the same JAR on each player's client for the transparent dungeon/boss HUD. Clients without it can still connect and receive plain Minecraft entry titles. It registers no new items or blocks; the selection wand uses a marked vanilla stick.
+
+**Start here:** [Quick start](QUICK-START.md). In game, run **`/dungeon`** for the clickable menu or **`/dungeon setup`** for the next setup step. Existing `/dg` commands still work, and upgrades keep your saved dungeons and labels.
 
 ## What it does
 
@@ -20,10 +22,10 @@ The clean copy is captured from your already-built dungeon. **Paste the original
 ## Install on BisectHosting
 
 1. Stop the server and make a backup of the existing world.
-2. Remove the old Dungeon Guard JAR if upgrading, then copy `mods/Dungeon-Guard-1.12.2-1.1.1.jar` into the server's `mods/` directory. Keep the existing world's `dungeon-guard` folder and snapshots. Do not put the full ZIP or any private test JAR in `mods/`.
+2. Remove the old Dungeon Guard JAR if upgrading, then copy `Dungeon-Guard-1.12.2-1.2.0.jar` into the server's `mods/` directory. Keep the existing world's `dungeon-guard` folder and snapshots. Only the production JAR belongs in `mods/`.
 3. Start with the existing **Java 8 / Minecraft 1.12.2 Forge or Magma** setup. Check the log for `Dungeon Guard started` and `core 11/11`.
-4. For the illustrated HUD, add the same 1.1.1 JAR to each player's Minecraft 1.12.2 Forge client `mods/` folder and restart the client.
-5. Join as an operator. Run `/dg status`.
+4. For the illustrated HUD, add the same 1.2.0 JAR to each player's Minecraft 1.12.2 Forge client `mods/` folder and restart the client.
+5. Join as an operator. Run `/dungeon setup`.
 
 The world becomes protected immediately after the mod starts. Dungeon combat damage becomes available only after a valid baseline exists and players occupy that dungeon. Ordinary doors, buttons, redstone state changes, chest access, movement and combat are not globally disabled. Automatic placement/removal of other blocks outside arenas is blocked. This is an adventure-map policy; crops, fire, fluid spread, falling blocks and new terrain decoration can be affected when they would change protected blocks.
 
@@ -32,13 +34,13 @@ The world becomes protected immediately after the mod starts. Dungeon combat dam
 Stand in the **Overworld**, look directly at your existing spawn Waystone and run:
 
 ```text
-/dg bindspawn
+/dungeon setspawn
 ```
 
 Or identify it explicitly:
 
 ```text
-/dg bindspawn <x> <y> <z>
+/dungeon bindspawn <x> <y> <z>
 ```
 
 Either half of the Waystone works. The implementation recognizes the official 1.12 Waystones block ID `waystones:waystone` and verifies its two-block layout. Leave a solid, safe floor and two clear blocks beside it. The landing and Waystone must be outside every dungeon.
@@ -48,7 +50,7 @@ This changes the actual world-spawn location, synchronizes it periodically, and 
 Every player can use:
 
 ```text
-/dg spawn
+/dungeon spawn
 ```
 
 This command returns to the bound Waystone, including from another dimension, without creating Nether portals. An existing Bukkit `/spawn` command is not replaced. Any teleport that moves someone out of a dungeon still triggers the same occupancy/reset logic.
@@ -57,24 +59,45 @@ If the bound stone is missing or the landing becomes unsafe, the mod reports the
 
 ## Register each dungeon
 
-First make sure the dungeon is in its clean condition. Then select opposite **inclusive** block corners around the entire combat volume, including its lower terrain, upper structures, and the air where attacks may construct temporary blocks.
+First make sure the dungeon is in its clean condition. Get a selection wand:
 
 ```text
-/dg pos1 <minimum-x> <minimum-y> <minimum-z>
-/dg pos2 <maximum-x> <maximum-y> <maximum-z>
-/dg capture fire
-/dg status
+/dungeon wand
 ```
 
-Coordinates may use normal Minecraft `~` notation. Without coordinates, `pos1` or `pos2` selects the block at your feet. Both corners must belong to the current dimension. Overlapping dungeons, out-of-height bounds, duplicate names, and oversized captures are rejected.
+Hold that stick, **left-click the first corner block**, then **right-click the opposite corner block**. Neither click breaks the selected block. Select a box around the entire combat volume, including lower terrain, upper structures, and the air where attacks may construct temporary blocks. Both corner blocks are included. Then run:
 
-Capture runs in batches and then saves and checks its durable file. The dungeon remains closed during `CAPTURING` and `SAVING`. **Wait for `IDLE` before using it.** Entering it changes the state to `ACTIVE`; after everyone leaves, the state progresses through the reset and returns to `IDLE`.
+```text
+/dungeon create fire
+```
 
-Repeat with names such as `mist`, `sand`, `cloud`, and `earth`. Use a separate region for the Nether dungeon while standing in that dimension. The Overworld spawn binding still provides the common exit.
+That saves the original and sets the Fire Dungeon banner together. You can give it a custom title in the same command, for example `/dungeon create water Hidden Mist Dungeon`. The mod creates a safe internal ID and skips any name already used by a dungeon or retained capture file.
+
+Keep the area empty until you receive **Ready**. `/dungeon list` shows progress in plain language. Saving runs in batches, verifies the saved copy, and activates the dungeon and its label together. If saving fails, entry stays locked and no incomplete dungeon or orphan label is activated. Entering a ready dungeon changes its display to **In use**; after everyone leaves and rebuilding finishes, it returns to **Ready**.
+
+Supported elements are `fire`, `water`, `wind`, `earth`, `lightning`, `sand`, `ice`, and `general`. Repeat for each clean dungeon. Stand in the correct dimension when selecting, including for a Nether dungeon. Changing dimension or disconnecting clears an unfinished selection. The Overworld spawn binding provides the common exit.
+
+For exact coordinates or a corner in empty air, `/dungeon pos1 [x y z]` and `/dungeon pos2 [x y z]` still work and share the wand's selection. Coordinates accept normal Minecraft `~` notation; without coordinates they use the block at your feet. The original `/dg capture <id>` remains available for a deliberately chosen internal ID and a separate label. Overlapping dungeons, invalid bounds and oversized captures are rejected.
 
 There are no guessed coordinates or automatically selected builds in this package. The saved bounds are the authority for what may be destroyed and what will be restored.
 
-## Administrator commands
+## Everyday commands
+
+| Command | Purpose |
+| --- | --- |
+| `/dungeon` | Open the clickable chat menu. |
+| `/dungeon setup` | See the next setup step. |
+| `/dungeon wand` | Get the corner-selection stick. |
+| `/dungeon setspawn` | Bind the existing Overworld Waystone you are looking at. |
+| `/dungeon create fire` | Save the selected clean dungeon and its Fire Dungeon label. |
+| `/dungeon create water Hidden Mist Dungeon` | Save a dungeon with a custom display title. |
+| `/dungeon boss Orochimaru` | Label the selected chamber inside its saved parent dungeon. |
+| `/dungeon list` | Show dungeons, player counts and saving/reset progress. |
+| `/dungeon spawn` | Return to the bound spawn Waystone. Available to every player. |
+| `/dungeon reset <id>` | Manually restore an empty dungeon; normal exits reset automatically. |
+| `/dghud [on\|off]` | Toggle the personal banner on a client with the addon installed. |
+
+## Advanced and existing commands
 
 Configuration commands require a verified online server operator. The server console can use applicable commands; selection/binding requires a player. `/dg spawn`, `/dg help`, and status are available to ordinary players. Vanilla editing commands still enforce their normal Minecraft permission levels.
 
@@ -104,28 +127,27 @@ WorldEdit and arbitrary third-party construction commands do not automatically i
 
 Do not use live WorldEdit edits as a protection test on a valuable save: the inspected WorldEdit versions can clear container data before a blocked terrain write, and some same-state NBT operations do not use that block-write boundary. WorldEdit needs a separate adapter. The source's `COMPATIBILITY-NOTES.md` records the inspected versions and exact remaining integration work.
 
-To replace an existing baseline deliberately, empty and unregister that dungeon, repair the clean build, and capture it under a new name such as `fire_v2`. Old baseline files are retained and are never silently overwritten. A normal upgrade from 1.0.0 retains existing baselines and adds empty label settings automatically.
+To replace an existing baseline deliberately, empty and unregister that dungeon, repair the clean build, and capture it again. The easy `create` command chooses a new available ID; the advanced `capture` command requires you to choose a new name such as `fire_v2`. Old baseline files are retained and are never silently overwritten. Upgrades from 1.0.x and 1.1.x retain existing baselines; old worlds receive empty label settings where needed.
 
 ## Element and boss area banners
 
 The supplied `art/dungeon-area-banner.png` has a real alpha channel and an invisible background. It contains a cute orange fox shinobi, a gold parchment scroll, red cord and kunai. Text is drawn in Minecraft's font by the mod so every area uses its own names. The PNG intentionally has no fixed lettering.
 
-After capturing a clean dungeon and waiting for IDLE, set its banner:
+The easy `create` command assigns the element and title while saving the dungeon. To change a saved dungeon's label later, use its ID from `/dungeon list`:
 
 ```text
-/dg label fire FIRE Fire Dungeon
+/dungeon label fire_dungeon FIRE Fire Dungeon
 ```
 
 Supported elements: `FIRE`, `WATER`, `WIND`, `EARTH`, `LIGHTNING`, `SAND`, `ICE`, and `GENERAL`. The element changes the heading and text color. Without a label, the dungeon's ID becomes a readable title and its element stays GENERAL; the mod does not guess your map's element or boss.
 
-For a boss chamber, select its two opposite corners **inside that dungeon** and assign the actual boss name:
+For a boss chamber, use the wand to select its two opposite corners **inside a ready dungeon** and assign the actual boss name:
 
 ```text
-/dg pos1 <boss-min-x> <boss-min-y> <boss-min-z>
-/dg pos2 <boss-max-x> <boss-max-y> <boss-max-z>
-/dg bossarea fire fire_boss <actual boss name>
-/dg bosslabel fire_boss Inner Sanctuary
+/dungeon boss Orochimaru
 ```
+
+The parent dungeon and a new boss-area ID are chosen automatically. To set a separate chamber title or control the ID yourself, the existing `bossarea` and `bosslabel` commands remain available.
 
 For a standalone boss arena, capture it as its own dungeon region, then make its boss area cover that whole region. Use `GENERAL` when it has no elemental theme.
 
@@ -190,7 +212,7 @@ The attached verification report distinguishes actual automated Forge tests from
 
 ## Build and source
 
-The original source, build tools and original test fixtures are maintained in `modules/dungeon-guard/` in [Hidden Block Village](https://github.com/tasx13ok-create/Hidden-Block-Village). The installation package's `SOURCE-CODE.txt` links to its exact committed source. Follow `BUILD.md` in that checkout for the pinned build. Production classes target Java 8. The modern build tool uses a separate Java 25 JDK; the Minecraft server uses Java 8. Private test JARs are excluded from the installation package.
+The original source, build tools and original test fixtures are maintained in `modules/dungeon-guard/` in [Hidden Block Village](https://github.com/tasx13ok-create/Hidden-Block-Village). Version-specific receipts under `release/evidence/` identify the exact checked production JAR. Follow `BUILD.md` in that checkout for the pinned build. Production classes target Java 8. The modern build tool uses a separate Java 25 JDK; the Minecraft server uses Java 8. Private test JARs are excluded from the production download.
 
 The deliverable contains original addon code. It does not bundle Minecraft, Forge, Magma, Naruto mods, Waystones or any world. The transparent banner was generated for this project and is included as an original addon asset.
 

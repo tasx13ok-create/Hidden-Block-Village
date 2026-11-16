@@ -1,0 +1,175 @@
+{
+  "schema": 4,
+  "generated_at_utc": "2026-11-16T18:02:35.071456+00:00",
+  "status": "PASS",
+  "version": "1.2.0",
+  "production_artifact": {
+    "file": "Dungeon-Guard-1.12.2-1.2.0.jar",
+    "bytes": 966018,
+    "sha256": "737f24a2dbc6745536e9403915beb6ac99fe7686b9f5bec36ec9f1dea32f5da7",
+    "version": "1.2.0",
+    "class_count": 57,
+    "class_major_version": 52,
+    "archive_crc": "PASS",
+    "foreign_classes": false,
+    "test_classes": false,
+    "manifest": "PASS",
+    "mod_metadata": "PASS",
+    "banner": {
+      "path": "assets/dungeonguard/textures/gui/area_banner.png",
+      "bytes": 1000750,
+      "sha256": "47f97697d6687bc888b19659c563a6b2a3dcb5ef4b1a43aa3e4a9c1297fb60ac",
+      "width": 2172,
+      "height": 724,
+      "format": "PNG RGBA 8-bit",
+      "matches_original_image": true
+    }
+  },
+  "source_artifact": {
+    "file": "Dungeon-Guard-1.12.2-1.2.0-sources.jar",
+    "bytes": 885090,
+    "sha256": "83d11b447d60c0338c02c161ec8f72a0a22fbd0fe2b76a585ee5ba443a2c308c",
+    "main_files": 28,
+    "all_current_main_sources_and_resources_match": true
+  },
+  "build": {
+    "status": "PASS",
+    "tasks": [
+      "check",
+      "reobfJar",
+      "sourcesJar",
+      "reobfNativeTestJar",
+      "reobfActualModTestJar"
+    ],
+    "gradle": "9.5.0",
+    "retrofuturagradle": "2.0.3",
+    "tool_java": "Azul Java25.0.5.0.3",
+    "compiler_java": "Azul Java8.0.472",
+    "compile_api": "Minecraft1.12.2 / Forge14.23.5.2847 / MCP stable39"
+  },
+  "suite_counts": {
+    "default_transformer": 220,
+    "pure_client_layout": 42,
+    "native_regression_and_setup": 284,
+    "native_actual_mods": 60
+  },
+  "combined_assertions": 606,
+  "native_checks": {
+    "status": "PASS",
+    "assertions": 284,
+    "previous_assertions_retained": 219,
+    "original_107_retained": true,
+    "all_219_names_and_order_unchanged": true,
+    "new_setup_assertions": 65,
+    "failures": 0,
+    "minecraft": "1.12.2",
+    "forge": "14.23.5.2859",
+    "runtime_java": "1.8.0_472",
+    "exit_code": 0,
+    "seconds": 19.574,
+    "timed_out": false,
+    "private_fixture_sha256": "7691506387661c3ad3021ecd0119f41b479663708dfcdfac5de2058fed03dbcd",
+    "exact_production_artifact_tested": true,
+    "core_hooks": "11/11",
+    "core_hook_receipt": "[10:00:30] [Server thread/INFO] [Dungeon Guard]: Dungeon Guard started: operator-scoped outside editing, durable dungeon baselines and optional area HUD. core 11/11: [Block.dropBlockAsItemWithChance, Block.spawnAsEntity, BlockPistonBase.doMove, Chunk.setBlockState, CommandHandler.operatorEdits, PlayerInteractionManager.operatorHarvest, PlayerInteractionManager.operatorUse, PlayerInteractionManager.operatorUseOn, World.destroyBlock, World.setBlockState, World.spawnEntity]",
+    "scope": "Fresh disposable Forge server with connected synthetic player, registered commands, actual interaction event handlers, bounded snapshots and preserved219 prior regression assertions.",
+    "expected_adversarial_diagnostics": "Prior corrupt/missing baseline and throwing command fixtures remain; the new intentional capture limit change also fails closed and emits the expected failed-save notice."
+  },
+  "actual_mod_checks": {
+    "status": "PASS",
+    "assertions": 60,
+    "failures": 0,
+    "identity_assertions": 2,
+    "groups": {
+      "actual_naruto_kamui": {
+        "passed": 25,
+        "failed": 0
+      },
+      "actual_waystones": {
+        "passed": 33,
+        "failed": 0
+      }
+    },
+    "mods": {
+      "narutomod": {
+        "version": "0.3.1-beta",
+        "file": "NarutoMod-1.12.2-0.3.1.beta.jar",
+        "sha256": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+      },
+      "waystones": {
+        "version": "4.1.0",
+        "file": "Waystones_1.12.2-4.1.0.jar",
+        "sha256": "5e79f329154d9a6225130f2b29dbcb0f603e2e622637e39ca566f8179b02ca15"
+      }
+    },
+    "minecraft": "1.12.2",
+    "forge": "14.23.5.2859",
+    "runtime_java": "1.8.0_472",
+    "exit_code": 0,
+    "seconds": 24.206,
+    "timed_out": false,
+    "private_fixture_sha256": "bf3afc75a775190ee04ecc0cec42db39ee8e9a31fd140a17f0668f9410e76f9f",
+    "exact_production_artifact_tested": true,
+    "scope": "Real mod binaries with native server entities and a synthetic connected player; no graphical client, actual saved map, hosted server or live Magma acceptance."
+  },
+  "historical_compatibility_evidence": {
+    "source_release": "1.1.1",
+    "not_rerun_or_included_in606": true,
+    "naruto_external_bytecode_assertions": 44,
+    "magma_external_static_bytecode_assertions": 9,
+    "evidence": "release/evidence/dungeon-guard-1.1.1/external-bytecode.json",
+    "relevant_production_class_files_byte_identical": 13,
+    "identity_receipt": "unchanged-compatibility-core.json",
+    "live_magma_runtime": "NOT_RUN; historical dependency blocker remains, no retry in this release."
+  },
+  "source_inventory_sha256": "7fadd838c4a28d8a16c5540d29372037977924b4dd3df8b05e974fa240f6698c",
+  "source_file_count": 53,
+  "main_source_inventory_sha256": "fe800a20cc17a76a294df37e426a2a3c1060dbd87607111536d4047cd9ea5ffe",
+  "all_final_inputs_unchanged_across_build_and_both_native_runs": true,
+  "embedded_banner_matches_original": true,
+  "failed_attempts_preserved": true,
+  "corrections_receipt": "acceptance-corrections.json",
+  "acceptance_limits": {
+    "actual_magma_startup_and_bukkit_permissions": "NOT_RUN; prior exact-runtime dependency blocker remains.",
+    "graphical_client_chat_menu_and_HUD_rendering": "NOT_RUN; clickable command structures and pure layout are tested on server/Java8, without rendered client acceptance.",
+    "saved_user_world_complete_modpack_hosted_server": "NOT_RUN",
+    "all_naruto_abilities_and_addons": "NOT_EXHAUSTIVE; actual helper and general guarded mutation paths are covered.",
+    "worldedit_integration": "DEFERRED, unchanged from1.1.1; see COMPATIBILITY-NOTES.md."
+  },
+  "upstream_binaries_private_fixture_jars_or_worlds_in_evidence": false,
+  "evidence_files": [
+    "acceptance-corrections.json",
+    "actual-mod-console.log",
+    "actual-mod-result.json",
+    "actual-mod-runner-result.json",
+    "artifact.json",
+    "baseline-native-comparison.json",
+    "build-environment-note.json",
+    "client-review.json",
+    "environment-verification.json",
+    "failed-build-offline-diagnostic.log",
+    "failed-build-offline.log",
+    "final-build.log",
+    "first-candidate/actual-mod/console.log",
+    "first-candidate/actual-mod/result.json",
+    "first-candidate/actual-mod/runner-result.json",
+    "first-candidate/artifact.json",
+    "first-candidate/build.log",
+    "first-candidate/native/console.log",
+    "first-candidate/native/result.json",
+    "first-candidate/native/runner-result.json",
+    "first-candidate/source-inventory.json",
+    "first-candidate/sources-jar.json",
+    "native-console.log",
+    "native-result.json",
+    "runner-result.json",
+    "setup-native-result.json",
+    "source-inventory-comparison.json",
+    "source-inventory.json",
+    "sources-jar.json",
+    "unchanged-compatibility-core.json",
+    "upstream-inputs.json"
+  ],
+  "evidence_directory": "dungeon-guard-1.2.0",
+  "local_evidence_paths_relative_to_evidence_directory": true
+}

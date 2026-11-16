@@ -8,7 +8,7 @@ import struct
 import zipfile
 
 
-VERSION = '1.1.1'
+VERSION = '1.2.0'
 BANNER = 'assets/dungeonguard/textures/gui/area_banner.png'
 BANNER_SHA256 = '47f97697d6687bc888b19659c563a6b2a3dcb5ef4b1a43aa3e4a9c1297fb60ac'
 
@@ -54,6 +54,7 @@ def verify(path):
         assert 'village/dungeonguard/DungeonGuard.class' in classes
         assert 'village/dungeonguard/core/GuardLoadingPlugin.class' in classes
         for required in ('AreaMessage', 'AreaNetwork', 'AreaResolver', 'OperatorAccess',
+                         'GuardCommand', 'GuardMenus', 'GuardSelections', 'GuardWand',
                          'client/AreaBannerHud', 'client/AreaBannerLayout',
                          'client/FieldHudReservations', 'client/ClientProxy'):
             assert 'village/dungeonguard/' + required + '.class' in classes, 'Missing implementation: ' + required

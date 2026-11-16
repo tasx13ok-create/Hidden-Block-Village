@@ -35,7 +35,7 @@ import village.dungeonguard.core.HookStatus;
      acceptableRemoteVersions = "*")
 public final class DungeonGuard {
     public static final String ID = "dungeonguard";
-    public static final String VERSION = "1.1.1";
+    public static final String VERSION = "1.2.0";
     @SidedProxy(clientSide = "village.dungeonguard.client.ClientProxy", serverSide = "village.dungeonguard.CommonProxy")
     public static CommonProxy proxy;
     private static final Logger LOG = LogManager.getLogger("Dungeon Guard");
@@ -48,7 +48,7 @@ public final class DungeonGuard {
         MinecraftForge.EVENT_BUS.register(this); AreaNetwork.init(); proxy.preInit(event.getModConfigurationDirectory());
     }
     @Mod.EventHandler public void serverStarting(FMLServerStartingEvent event) {
-        server = event.getServer(); ticks = 0; noticeTimes.clear(); areaTracker.clear();
+        server = event.getServer(); ticks = 0; noticeTimes.clear(); areaTracker.clear(); GuardSelections.clear();
         HookStatus.assertInstalled();
         try {
             File root = server.getWorld(0).getSaveHandler().getWorldDirectory();
@@ -64,7 +64,7 @@ public final class DungeonGuard {
         LOG.info("Dungeon Guard started: operator-scoped outside editing, durable dungeon baselines and optional area HUD. {}", HookStatus.summary());
     }
     @Mod.EventHandler public void serverStopped(FMLServerStoppedEvent event) {
-        GuardRuntime.stop(); server = null; noticeTimes.clear(); areaTracker.clear();
+        GuardRuntime.stop(); server = null; noticeTimes.clear(); areaTracker.clear(); GuardSelections.clear();
     }
     @SubscribeEvent public void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || server == null || !GuardRuntime.ready()) return;
@@ -98,7 +98,10 @@ public final class DungeonGuard {
         }
     }
     @SubscribeEvent public void logout(PlayerEvent.PlayerLoggedOutEvent event) {
-        areaTracker.forget(event.player.getUniqueID()); noticeTimes.remove(event.player.getUniqueID());
+        areaTracker.forget(event.player.getUniqueID()); noticeTimes.remove(event.player.getUniqueID()); GuardSelections.forget(event.player.getUniqueID());
+    }
+    @SubscribeEvent public void changedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        GuardSelections.forget(event.player.getUniqueID());
     }
     @SubscribeEvent(priority = EventPriority.LOWEST) public void explosion(ExplosionEvent.Detonate event) {
         if (event.getWorld().isRemote) return;
@@ -107,6 +110,7 @@ public final class DungeonGuard {
         // Entity list is intentionally preserved: damage and knockback still run.
     }
     @SubscribeEvent(priority = EventPriority.HIGHEST) public void breaking(BlockEvent.BreakEvent event) {
+        if (GuardWand.breaking(event)) return;
         if (event.getWorld().isRemote || playerEditing(event.getPlayer(), event.getWorld(), event.getPos())) return;
         boolean arena = GuardRuntime.manager() != null && GuardRuntime.manager().isArena(event.getWorld(), event.getPos());
         if (GuardRuntime.guarded(event.getWorld(), event.getPos()) || (arena && !GuardRuntime.policy().allowPlayerMiningInDungeons)) {
@@ -127,11 +131,13 @@ public final class DungeonGuard {
         }
     }
     @SubscribeEvent(priority = EventPriority.HIGHEST) public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
+        if (GuardWand.leftClick(event)) return;
         if (event.getWorld().isRemote || playerEditing(event.getEntityPlayer(), event.getWorld(), event.getPos())) return;
         boolean arena = GuardRuntime.manager() != null && GuardRuntime.manager().isArena(event.getWorld(), event.getPos());
         if (GuardRuntime.guarded(event.getWorld(), event.getPos()) || (arena && !GuardRuntime.policy().allowPlayerMiningInDungeons)) event.setCanceled(true);
     }
     @SubscribeEvent(priority = EventPriority.HIGHEST) public void rightClick(PlayerInteractEvent.RightClickBlock event) {
+        if (GuardWand.rightClick(event)) return;
         DungeonManager manager = GuardRuntime.manager();
         if (!event.getWorld().isRemote && manager != null && manager.isEntryLocked(event.getWorld(), event.getPos())) event.setCanceled(true);
     }

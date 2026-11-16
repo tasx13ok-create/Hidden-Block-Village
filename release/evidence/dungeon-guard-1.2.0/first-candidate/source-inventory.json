@@ -1,0 +1,272 @@
+{
+  "schema": 1,
+  "hash_encoding": "SHA-256 of UTF-8 JSON records, sorted keys, compact separators",
+  "source_inventory_sha256": "84964fd4fbfb9b802fbc2099fd03f6c3b89a204aae4346e06fb67edea8072ca9",
+  "files": [
+    {
+      "path": "build.gradle",
+      "bytes": 7642,
+      "sha256": "848ddb18dc750acbc5930e56ae4584f178886563f8de6d8756104f1f32ce2db6"
+    },
+    {
+      "path": "gradle.properties",
+      "bytes": 125,
+      "sha256": "efb0980e6e0742e94c428d99c959a7db86755a1b9a74eabf5251c738ea29fca9"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "bytes": 48462,
+      "sha256": "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "bytes": 368,
+      "sha256": "2cb0f9ddf992a26fc4947c91019136bff5e1ccfbf93bd905402b1abf69d15bc5"
+    },
+    {
+      "path": "gradlew",
+      "bytes": 8654,
+      "sha256": "ab5c0cad16305af2e619c159c1f58dd68d07fab9c11e36701e109c0277407f7a"
+    },
+    {
+      "path": "gradlew.bat",
+      "bytes": 2846,
+      "sha256": "475c4f08cd57cf2faa819e7f36d72aa93f0ad646ea23a8f7fa3ef54dee1cbc52"
+    },
+    {
+      "path": "settings.gradle",
+      "bytes": 208,
+      "sha256": "65625938721dbe828c5c1b6f4b4cc96d6bb5f62825271c33d10f8a977ea448a5"
+    },
+    {
+      "path": "src/actualModTest/java/village/dungeonguard/test/ActualModChecks.java",
+      "bytes": 6014,
+      "sha256": "0460135bc03f85e34eb5557f4ddc968175e2eb20b22491c0586f6149d881ca1e"
+    },
+    {
+      "path": "src/actualModTest/java/village/dungeonguard/test/RealWaystonesNativeChecks.java",
+      "bytes": 16914,
+      "sha256": "b09510eb67058f2973f0113f349db2e3fff2d822899e668aa4047fcd9d301d43"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/AreaMessage.java",
+      "bytes": 3030,
+      "sha256": "37a4163c58c7ef4883192ba7b88b28dc418cfe7ced9c79d77e34e770bd4de640"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/AreaNetwork.java",
+      "bytes": 1683,
+      "sha256": "15ac4bd60d8077d21d076832742bd5eb10d32e541eb9a61577508377b6c7601d"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/AreaResolver.java",
+      "bytes": 1597,
+      "sha256": "8fe4cb61a6afec694a5cf562443dbca93735deb91578036c52fe88afb88ffc97"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/AreaState.java",
+      "bytes": 3200,
+      "sha256": "5ea37fb2d2cd86ad944d5d6572c71fb8212632f84d5240e70aeb2571d9d8a058"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/AreaTracker.java",
+      "bytes": 1073,
+      "sha256": "0a9843ae4afdd5d67780417c1d8d6cab5bfa3d9536a4df6d7886178350098e0b"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/CommonProxy.java",
+      "bytes": 274,
+      "sha256": "7a896d26bea712536611c06ecf4613b53fabafcb11c54db8cb4e3afb57ff0a25"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/DungeonGuard.java",
+      "bytes": 10771,
+      "sha256": "96f1daa6349e5d1d7566a2fd27c3cd73c9e7c05d208eb6de3f116d2f4c1f6c4b"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/DungeonManager.java",
+      "bytes": 27655,
+      "sha256": "fdc0cdbd659781f47f880f89cc451e0c3e358427c3c802690addd1f8f5294e25"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/DungeonSnapshot.java",
+      "bytes": 14518,
+      "sha256": "3931ebfa0cc42de35f35b156dfb9ef54604baab6331fe7bd002593009aa60e4d"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardCommand.java",
+      "bytes": 22796,
+      "sha256": "e7ec339720590ee57e895907f2cf856cc34788a83c5359a48b0abdd80d8c6ac5"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardConfig.java",
+      "bytes": 5330,
+      "sha256": "be16facaea81d61ff67510613ecbc061e7d6aa3e7c9bb87fc05d6a199b9b448b"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardHooks.java",
+      "bytes": 6696,
+      "sha256": "05c07a8950668b41cf3fd56cd1db4fb9fbdcbd2f66e6867f8b340d72b7a74356"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardMenus.java",
+      "bytes": 5444,
+      "sha256": "01d1191919e93b6dfa8d62b1fb73e548ddd60d2b11c9f805ba75d30f97c34b9c"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardRegion.java",
+      "bytes": 1947,
+      "sha256": "5f4628091493ea10f1e00fc06f6546a1ed6cff3b8df43545029bfb1878d3bdb8"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardRuntime.java",
+      "bytes": 7618,
+      "sha256": "f3f7b2fb3679c5eab0bf01d888c22bd633e7b0eef7bb0bde3bd10af24ec2397f"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardSelections.java",
+      "bytes": 3757,
+      "sha256": "e7b0fe5f00af954ec545291ef7b4d30df276360e10ce7a9ae69fe1ad6bdbc0af"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/GuardWand.java",
+      "bytes": 6660,
+      "sha256": "b9efca29fb75331525e5d9646d813c879caf25d436bd911814590ceffc03e535"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/OperatorAccess.java",
+      "bytes": 16727,
+      "sha256": "fc621c4ede0c0d417a499fbcbc29fc393bc76c6723209d4432b029e9922249be"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/SpawnBinding.java",
+      "bytes": 19480,
+      "sha256": "a5791dcb474dd9410a490af349e270db3df80d8d3bedeefbee677f7e04ec825c"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/client/AreaBannerHud.java",
+      "bytes": 7634,
+      "sha256": "623116e79c959b280ab690a1e6e12529a75a0bfe1fd9f37d266933f9d22ec2db"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/client/AreaBannerLayout.java",
+      "bytes": 4795,
+      "sha256": "a40e35873f1d1688fb89e73b1bc9a83e8487d0c3eaa94497bd2cd406cbcb8b82"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/client/ClientProxy.java",
+      "bytes": 3322,
+      "sha256": "9d9b662c8d2d19213c22d2876ab26e8139c9e06903f70961a44b392dc0bbb238"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/client/FieldHudReservations.java",
+      "bytes": 6025,
+      "sha256": "022c1aad3588bfd4e35c52edec76c274c09b4b346d179822d80218be5ee0c1c2"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/core/GuardLoadingPlugin.java",
+      "bytes": 872,
+      "sha256": "fb3583689446e73e62fe0bb5e64c3da078a9f604b757acc2ccd1e2a93430f22f"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/core/GuardTransformer.java",
+      "bytes": 40069,
+      "sha256": "ece972e2bb2e30934a3342ed82fb463a5b10e635b126c131ac7df874124b98f2"
+    },
+    {
+      "path": "src/main/java/village/dungeonguard/core/HookStatus.java",
+      "bytes": 3351,
+      "sha256": "191ce7ed652877b90942d2673d0fd060af8a240ab355f29c37f31d49d42e87de"
+    },
+    {
+      "path": "src/main/resources/assets/dungeonguard/textures/gui/area_banner.png",
+      "bytes": 1000750,
+      "sha256": "47f97697d6687bc888b19659c563a6b2a3dcb5ef4b1a43aa3e4a9c1297fb60ac"
+    },
+    {
+      "path": "src/main/resources/mcmod.info",
+      "bytes": 372,
+      "sha256": "aeb3652b931b9a0eaa37363a7ce17f2d4145c24edc23d24ea99066b4a2084b11"
+    },
+    {
+      "path": "src/nativeTest/java/net/narutomod/guardfixture/FakeAbility.java",
+      "bytes": 1650,
+      "sha256": "45d7641edb2f6d09b710ee4183405af57cb0f27d2ec6cf5c674dbc8dac227590"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/AreaNativeChecks.java",
+      "bytes": 11592,
+      "sha256": "abc2b2538cebd1509511381298029fd28c94a04ce8fb6bdf7fc208659f0580c8"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/test/NativeChecks.java",
+      "bytes": 27663,
+      "sha256": "06b7a7d032c164e2ffac2a6e54f8873b62548d7b29cf08fe5fc975ba0aa485c7"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/test/OperatorNativeChecks.java",
+      "bytes": 29964,
+      "sha256": "b34f41b5a5ba4f60642a2be911c4bd0123be6e1c16b8bb9f7ce7ee5bf708c371"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/test/RealNarutoNativeChecks.java",
+      "bytes": 12930,
+      "sha256": "e54cf63a8ac4f95ef79d8ed333cb69e2815fdf8d4f14402357f970e41c7896d8"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/test/SetupNativeChecks.java",
+      "bytes": 32968,
+      "sha256": "e4927686c6f27abba5a6fc9f5174104902e0b8e53dd141f131ceb551b17a12bf"
+    },
+    {
+      "path": "src/nativeTest/java/village/dungeonguard/test/SpawnNativeChecks.java",
+      "bytes": 19388,
+      "sha256": "4f777e7549a7276be55d2c18ea59dcc0062488daea250377bb210c698ffa726d"
+    },
+    {
+      "path": "src/transformerTest/java/village/dungeonguard/test/AreaLayoutChecks.java",
+      "bytes": 6376,
+      "sha256": "1e0aa79b45f765247e60a12a94c899d84edcbb30e723bc493477c83c1b3452c3"
+    },
+    {
+      "path": "src/transformerTest/java/village/dungeonguard/test/KamuiTransformerChecks.java",
+      "bytes": 19912,
+      "sha256": "565072f3f74e71dd0cda5f3446c379cf3c582ea55f081184923543ad64fee5f4"
+    },
+    {
+      "path": "src/transformerTest/java/village/dungeonguard/test/MagmaCommandTransformerChecks.java",
+      "bytes": 22456,
+      "sha256": "2b6363096b003d60356f16b7f13ad93733b6a0c6b073ffc1c8ccb609ccbce4f4"
+    },
+    {
+      "path": "src/transformerTest/java/village/dungeonguard/test/OperatorTransformerChecks.java",
+      "bytes": 15806,
+      "sha256": "d9819106a8f4a5474d745884c5f5031638a9607d737a783a670c56d8fab328be"
+    },
+    {
+      "path": "src/transformerTest/java/village/dungeonguard/test/TransformerChecks.java",
+      "bytes": 22169,
+      "sha256": "ff86356abb222adab0335ff0dd87a98eee608f34f00e77b5fb1fe16e079c4054"
+    },
+    {
+      "path": "tools/build.py",
+      "bytes": 1567,
+      "sha256": "d6c3c2760297e7b35ee4756cbd93eb95922e45ccfcd799358f964dbe1a931897"
+    },
+    {
+      "path": "tools/package_release.py",
+      "bytes": 4357,
+      "sha256": "c66b899f5bec08cacc187db24734ce802e60ac64be61a7d096fd6c1ada47977b"
+    },
+    {
+      "path": "tools/run_native.py",
+      "bytes": 6458,
+      "sha256": "d2b71631822f92ee32ea424433804083b71796fb4d977b57c55f298631d641f6"
+    },
+    {
+      "path": "tools/verify_artifact.py",
+      "bytes": 4428,
+      "sha256": "2974b9d7de184639b4d9c02ef589eef8f501168ef34dcacf83cfd2334b8368ce"
+    }
+  ]
+}

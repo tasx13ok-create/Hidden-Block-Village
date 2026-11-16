@@ -6,7 +6,7 @@ clean-baseline restoration after the last player leaves, world spawn beside an
 existing Waystone, and transparent element/boss area banners.
 
 The original source is maintained under `modules/dungeon-guard/`. Read that
-module's `README.md`, `CONFIG-REFERENCE.md`, `BUILD.md` and `CHANGELOG.md` for
+module's `QUICK-START.md`, `README.md`, `CONFIG-REFERENCE.md`, `BUILD.md` and `CHANGELOG.md` for
 commands, capture limits, data format and build instructions.
 
 ## Installation boundary
@@ -25,16 +25,20 @@ is confined to checked direct actions and supported native editing commands.
 
 ## Dungeon and spawn setup
 
-Bind the existing Overworld spawn Waystone with `/dg bindspawn`. Define the
-complete clean dungeon volume using `/dg pos1` and `/dg pos2`, then capture it
-with `/dg capture <name>`. An existing schematic must first be pasted in its
+Open `/dungeon` for the clickable menu, or `/dungeon setup` for guidance.
+Look at the existing Overworld spawn Waystone and run `/dungeon setspawn`.
+Get `/dungeon wand`, left-click one corner of the complete clean dungeon and
+right-click the opposite corner, then run `/dungeon create fire` (or another
+element). An existing schematic must first be pasted in its
 undamaged form. Dungeon Guard captures the placed world blocks; it does not
 import a schematic file or infer a damaged building's original shape.
 
-Wait until capture finishes and the dungeon reports `IDLE`. Use `/dg label`,
-`/dg bossarea` and `/dg bosslabel` to assign the actual element, area and boss
-names. Labels describe configured regions; they do not spawn or identify a
-moving boss entity.
+Wait until capture finishes and the dungeon reports **Ready**. Its element and
+title are saved together with the verified capture. Select a chamber inside
+that saved dungeon and run `/dungeon boss <boss name...>`; the parent dungeon
+and internal area ID are found automatically. Existing `/dg` commands, manual
+coordinates and advanced labels remain supported. Labels describe configured
+regions; they do not spawn or identify a moving boss entity.
 
 Players still inside prevent restoration. When the final player walks out,
 teleports away or disconnects, the default five-second grace period begins.

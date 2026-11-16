@@ -3,7 +3,7 @@
     "modid": "dungeonguard",
     "name": "Dungeon Guard",
     "description": "Operator-only outside building, destructible dungeon arenas, clean-copy restoration, spawn Waystone binding and an optional transparent element/boss area HUD.",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "mcversion": "1.12.2",
     "authorList": ["Collin's server project"],
     "dependencies": []

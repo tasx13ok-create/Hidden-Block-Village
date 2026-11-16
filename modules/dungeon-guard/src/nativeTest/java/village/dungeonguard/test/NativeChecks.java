@@ -53,7 +53,7 @@ import village.dungeonguard.GuardRuntime;
 
 /** Real Forge block/tile/ability checks, restricted to a disposable server world. */
 @Mod(modid = "dungeonguard_nativechecks", name = "Dungeon Guard Native Checks",
-        version = "1.1.0", serverSideOnly = true, acceptableRemoteVersions = "*")
+        version = "1.2.0", serverSideOnly = true, acceptableRemoteVersions = "*")
 public final class NativeChecks {
     private static final String MARKER = "DUNGEON_GUARD_DISPOSABLE_TEST_WORLD";
     private static final UUID ONE = UUID.fromString("10000000-0000-0000-0000-000000000001");
@@ -305,6 +305,7 @@ public final class NativeChecks {
         SpawnNativeChecks.run(server, this::check);
         village.dungeonguard.AreaNativeChecks.run(server, this::check);
         OperatorNativeChecks.run(server, this::check);
+        SetupNativeChecks.run(server, this::check);
     }
 
     private void realPresenceChecks(MinecraftServer server, WorldServer world, DungeonManager manager,

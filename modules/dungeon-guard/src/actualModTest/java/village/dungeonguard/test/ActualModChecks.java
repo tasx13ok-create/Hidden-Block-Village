@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import village.dungeonguard.GuardRuntime;
 
 /** Private, doubly gated acceptance of pinned real third-party mod releases. */
-@Mod(modid = "dungeonguard_actualchecks", name = "Dungeon Guard Actual Mod Checks", version = "1.1.1",
+@Mod(modid = "dungeonguard_actualchecks", name = "Dungeon Guard Actual Mod Checks", version = "1.2.0",
         dependencies = "required-after:dungeonguard;required-after:narutomod;required-after:waystones",
         serverSideOnly = true, acceptableRemoteVersions = "*")
 public final class ActualModChecks {
