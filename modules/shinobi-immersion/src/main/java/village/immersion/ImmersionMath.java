@@ -67,4 +67,39 @@ public final class ImmersionMath {
 
     /** Whether a sound is loud enough to earn a low "weight" tail. */
     public static boolean heavy(float volume) { return volume >= 0.6f; }
+
+    // ---- perfect dodge ----
+    /** A horizontal speed this high in one tick means a dodge burst (Core dodge speed is ~1.55). */
+    public static boolean dodgeBurst(double speedXZ, double previousSpeedXZ) { return speedXZ > 1.0 && speedXZ - previousSpeedXZ > 0.6; }
+    /** Ticks after a dodge starts during which a cancelled hit counts as a perfect dodge (Core grace is 6). */
+    public static final int PERFECT_WINDOW = 6;
+    public static boolean perfect(long now, long dodgeAt, boolean cancelled) { return cancelled && dodgeAt >= 0 && now - dodgeAt >= 0 && now - dodgeAt <= PERFECT_WINDOW; }
+
+    // ---- elements ----
+    public static final int NONE = 0, FIRE = 1, WATER = 2, LIGHTNING = 3, WIND = 4, EARTH = 5;
+    /** Element from a damage type and the attacking entity's registry id/class name (keywords, lower case). */
+    public static int element(String damageType, String sourceId, boolean fireDamage) {
+        String k = ((damageType == null ? "" : damageType) + " " + (sourceId == null ? "" : sourceId)).toLowerCase(java.util.Locale.ROOT);
+        if (k.contains("lightning") || k.contains("raiton") || k.contains("chidori") || k.contains("thunder") || k.contains("storm")) return LIGHTNING;
+        if (fireDamage || k.contains("fire") || k.contains("katon") || k.contains("flame") || k.contains("ember") || k.contains("lava")) return FIRE;
+        if (k.contains("water") || k.contains("suiton") || k.contains("mist") || k.contains("bubble") || k.contains("shark")) return WATER;
+        if (k.contains("wind") || k.contains("futon") || k.contains("gale") || k.contains("vacuum")) return WIND;
+        if (k.contains("earth") || k.contains("doton") || k.contains("stone") || k.contains("rock") || k.contains("flint")) return EARTH;
+        return NONE;
+    }
+    public static final int R_NONE = 0, R_STEAM = 1, R_CHAIN = 2, R_SPREAD = 3, R_SNUFF = 4;
+    /** Reaction for an element hitting a target that is wet and/or burning. */
+    public static int reaction(int element, boolean wet, boolean burning) {
+        if (element == FIRE && wet) return R_STEAM;
+        if (element == LIGHTNING && wet) return R_CHAIN;
+        if (element == WIND && burning) return R_SPREAD;
+        if (element == EARTH && burning) return R_SNUFF;
+        return R_NONE;
+    }
+    /** Damage multiplier for the triggering hit. */
+    public static float reactionDamage(int reaction) { return reaction == R_STEAM ? 0.7f : reaction == R_CHAIN ? 1.1f : 1.0f; }
+
+    // ---- bosses ----
+    /** Health phase: 0 above 65%, 1 between 30% and 65%, 2 below 30%. */
+    public static int phase(float health, float max) { if (!(max > 0)) return 0; float f = health / max; return f > 0.65f ? 0 : f > 0.30f ? 1 : 2; }
 }
