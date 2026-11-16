@@ -7,5 +7,6 @@ public final class ClientSetup extends CommonSetup {
         MinecraftForge.EVENT_BUS.register(new SoundFx());
         MinecraftForge.EVENT_BUS.register(new CompassBar());
         MinecraftForge.EVENT_BUS.register(new MovementFx());
+        MinecraftForge.EVENT_BUS.register(new AmbienceFx());
     }
 }
