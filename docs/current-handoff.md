@@ -2,7 +2,309 @@
 
 Updated 2026-11-14. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
+## Latest direct-work checkpoint: training and actual process restart
+
+Latest owner preview: `C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-4.jar`,
+7,026,160bytes, internal1.4.2-hbv112.3, SHA256
+`63bb2d8d3a46e50bf827d83fa223f28063beb87851a55e42077e221d3dc1d0e1`.
+It replaces earlier villages addon versions when testing; never install
+duplicate versions. This is still an unfinished port, not deployment acceptance.
+No live owner profile/server/world was changed or launched. Original mod art
+remains supplied by its JARs; the old flat-icon resource pack stays disabled.
+No new agents were spawned or resumed.
+
+SP/JP/reset now have separate long balances and real spending behavior. Original
+adapters implement four SP disciplines (ninjutsu/taijutsu/kenjutsu/speed), real
+native hurt/health/movement effects, canonical native chakra-capacity bonuses,
+reset-credit spending/refund, and actual owned native technique learning. Open
+`/shinobitraining` or the village hub training button. Left/right clicks spend
+1/10SP; the learn button cycles on right and learns on left. OP issuance is
+`/villagereward <xp|sp|jp|reset> <1|5|10|50> [count] [player]`.
+Tokens require marked paper, use server inventory, and preserve installed
+original providers before aliases. The supported stat formulas and JP rank
+costs are documented target-base adaptations, not parity with the old base.
+
+Native warm run12 in disposable runtime13 PASSED163assertions with the current
+53server mods plus this exact .3 addon and private QA. Actual native damage
+increased2->2.199999809for each supported unarmed/weapon/jutsu damage category;
+movement/health modifiers, SP allocation/refusals, JP learning/duplicate refusal,
+reset credit/refund and prior bank/currency/XP/PvP/respawn/drop checks passed.
+The count includes54nonnull inventory-slot checks, not163distinct features.
+Canonical chakra maximum remained120.5from base108after80native updates with
+10ninjutsu/10taijutsu points, without stacking. It uses an original structurally
+guarded two-point ASM hook, not periodic setMax calls or a shadow chakra pool.
+
+Separate cold process on that actual saved synthetic world PASSED15assertions:
+SP50/JP47/reset0, native battle XP221, actual ender-chest saved technique owner
+and learned state, and another player's allocated speed5/real movement effect
+survived a full shutdown/restart and native respawn. No rewards were reissued.
+Both processes exited0 without forced termination; all54staged gameplay JAR
+hashes stayed unchanged. No real player or original world used. This proves
+training persistence, not PvP cooldown restart persistence or production-world
+migration. Safe version-bound receipt:
+`release/evidence/naruto-villages-112-training.json`.
+
+Current public adapter0.1.2-draft component build, five provider-structure checks
+and native-fixture source compilation passed. Its reobfuscated adapter classes
+are compared to the exact native-tested .3 port in the receipt. Private original
+and transformed reference bodies, input/runtime JARs, logs/worlds remain outside
+Git. Original83class names, Java8 linkage and SQLite licenses/natives are audited.
+
+Retained failures: runtime10's fixture damage target was outside loaded geometry;
+one intermediate fixture compile used the wrong MCP method name. Runtime12's
+real capacity check stayed108because the first hook modified only the setter
+argument, after NarutoMod's cache comparison. The .3 final hook changes the
+desired local before that comparison; runtime13 then passed. Failed candidates
+remain private and were not relabeled successes.
+
+Eleven of16original default loot rows now have meaningful providers. The five
+DNA/KG/nature/clan/sage rows still lack complete providers. Other legacy training
+disciplines, clan/senjutsu bindings, promotion/rank caps, complete teleport,
+territory capture, jutsu kill-owner attribution, PvP cooldown restart persistence,
+real network/client GUI/casting acceptance and copied deployment-world migration
+remain open. The full game goal remains active. Next: recover/apply the five
+remaining provider outcome tables, preserve their actual powers/persistence,
+then finish native/client/migration acceptance before deployment packaging.
+
+## Prior direct-work checkpoint: native XP rewards and PvP (d6a3060)
+
+The newest local preview is now
+`C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-3.jar`,
+7,000,342bytes, SHA256
+`10e0d605d75f183983fb03c174d6f0958ba74614547b6e50fa18b82d3686e5a0`.
+Internal port version is1.4.2-hbv112.2. Replace an earlier villages addon when
+testing; do not install duplicate versions. No actual owner client/server was
+updated or launched for this checkpoint. Original artwork/resourcepacks remain
+unchanged. The live private preview server31524/25594 was preserved.
+
+Recovered the original token provider APIs privately. XP grants chakra
+experience with1/5/10/50denominations, general/rank bonuses, integer truncation
+and sneak whole-stack consumption. RP is RESET points, not rank currency; SP
+and JP are separate spendable resources. Nature/KG/sage randomizers have
+specific roll/application semantics. Public safe metadata and unfinished
+binding obligations: `tools/naruto_villages_112/reward-semantics.json`.
+No reference implementation bodies/art were added to Git.
+
+Implemented original native XP reward adapters under the existing public tool:
+`NativeRewardItems`, `NativeXpRewards`, `XpRankMultipliers`,
+`CommandVillageRewards`. The new reward stacks are marked vanilla paper with
+name/lore, require no client item registry or resource pack, and use the actual
+NarutoMod PlayerTracker.addBattleXp API. This is the deliberate native progression
+adaptation, not a reproduction of the old base's XP curve. All45original rank
+multiplier defaults are retained as compatibility metadata. Normal paper and
+invalid denominations do not grant XP. Server inventory determines the redeemed
+stack; a per-player guard prevents reentrant use. Tokens are reserved before
+the native call, with a refund when an exception/refusal leaves XP unchanged.
+Failure/refund branches were not injected in this native acceptance run.
+Operator issuer: `/villagereward xp <1|5|10|50> [count] [player]`;
+`/villagereward reload` and the general villages reload refresh NativeRewards.cfg.
+
+Native run09 PASSED its server-side scope with the same53current server JARs,
+the new addon and a separate private fixture, in a new disposable flat world.
+It retains the bank/currency/data checks below, then admits a second non-OP
+synthetic player. Real native player damage/death and actual native respawn were
+used, not manually posted death events. Friendly native hurt was canceled with
+HP21->21 even though attackEntityFrom returned true; the fixture checks the
+actual hurt cancellation and HP outcome. War damage reduced HP21->19.
+An actual lethal hit awarded exactly8configured XP tokens once. The selected
+earned token raised native XP216->221 and left7tokens. A second lethal hit after
+native respawn awarded none because anti-farm recognized the same UUID. After
+an explicit private anti-farm config override, another real kill with60tokens
+already stacked and a full inventory ended at64stored plus4ground tokens: no
+partial-insert duplication. Ordinary and sneak-right-click XP redemption,
+rank rounding, invalid-token refusal and issuer permission were also checked.
+132assertions include54nonnull-slot checks; this is not132unique game features.
+Exit0, all staged JAR hashes unchanged, no forced termination, no real player
+or original world used. Safe version-bound receipt:
+`release/evidence/naruto-villages-112-native-xp-pvp.json`.
+
+The actual PvP kill/drop regression used an explicitly configured private
+XP-only pool, loaded through the real config reload, so randomness could not
+hide a failure. It is NOT proof of the entire default reward pool. Only the
+four XP rows of the16-row original default pool now have providers; the other
+12rows (SP, JP, reset points, DNA, KG/nature/clan/sage randomizers) remain
+unresolved, preserved and explicitly unfinished. Do not turn SP/JP/reset points
+into unrelated XP or currency to make a mapping count pass. Native jutsu damage
+owner attribution, cooldown persistence across server restart, promotion/rank
+caps, full teleport execution, territory capture, real client/mirror and copied
+deployment-world acceptance also remain open. The full game goal remains active.
+
+Intermediate native07failed because its assertion incorrectly expected a false
+attack return on a canceled hurt despite observed zero HP loss. Native08earned
+the proper reward but attempted to redeem a different selected item after native
+starter items populated the inventory. The09fixture observes actual cancellation
+and explicitly selects the earned stack; no production logic was changed to
+fake either setup correction. These failed private candidates are retained.
+Public adapter0.1.1-draft component build and current native-fixture source
+compilation passed; the public adapter reobfuscated classes are compared with
+the exact native-tested port in the receipt. Derivative addon sources, runtime
+JARs, reference API recovery and synthetic worlds remain private.
+
+Next: implement faithful SP allocation/reset and JP learning before enabling
+their preserved default rewards, recover all randomizer/DNA provider outcomes,
+add the outstanding native event/restart/client checks, then integrate accepted
+artifacts into the one-folder release workflow. Do not call this port intact or
+the full Naruto game finished from the XP/PvP subset.
+
+## Prior checkpoint: villages port preview (5d5c078)
+
+Owner asked to decompile the supplied NarutoDestinationVillages1.4.2 addon,
+port it from1.7.10 to1.12.2, and connect it to the existing AHZNB NarutoMod.
+Work remains direct: no new sub-agents were spawned or resumed. This is an
+unfinished port, not full parity or a production-ready deployment.
+
+Private workspace:
+`D:/HiddenBlockVillage-Sprint-20261113/naruto-destination-villages-112-port-01`.
+Original input in Downloads remains unchanged,284,189bytes, SHA256
+`c4a5e4c96b597efe4b76a4d562307c4ae837fe299abe91a127d0169b8d3e8fe3`.
+All83original class names are present in the rebuilt candidate; that is a
+structural check, not evidence of complete behavior preservation. The candidate
+has no remaining old FML or old NarutoDestination base-class linkage. Java
+class majors are50/52. SQLite3.21.0.1 driver, its licenses and Windows/Linux
+native libraries are bundled. Private derivative addon source/JARs are NOT in Git.
+
+Original adapter source, its portable component build, acceptance fixture and
+safe audit tool are now under `tools/naruto_villages_112/`. The adapters alone
+have no mod entrypoint and must not be installed separately. The original
+rank IDs/legacy numbers are compatibility metadata; adapter implementations
+were authored independently. The full private port uses RFG2.0.3, Java8 and
+stable39, version1.4.2-hbv112.1; FML modid is lowercase
+narutodestinationvillages, with the original config directory retained.
+
+Prior local preview delivered:
+`C:/Users/Steal/Downloads/NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-2.jar`,
+6,989,815bytes, SHA256
+`d814b429bca938ad9896a02aefb191564799dbdbebf3ab0034e14f3d34b5c02d`.
+This supersedes the earlier PREVIEW.jar (SHA039d53ab...). Neither was installed
+in the owner's actual client or server. Replace an earlier villages addon when
+trying the preview; do not load duplicate versions. It targets existing
+narutomod and variedcommodities, not the1.7.10 NarutoDestination base.
+
+Native run06 passed its documented SERVER SUBSET in a new flat-world Magma
+process:53exact current server mod JARs plus the port, and a separate private
+fixture. An officially admitted synthetic non-OP player exercised command
+registration, native bank GUI/container, normal/shift deposit/withdraw, page
+restrictions/navigation, item NBT and disk reload, sort locking/item count,
+real SQLite identity/offline data, native battle XP/Biju reads, currency
+deduction/change/full-inventory refusal, symmetric war data reload and transport
+location/unlock reload.109assertions include54nonnull inventory-slot checks;
+do not market that count as109distinct gameplay features. Actual source and
+checked cases are in the fixture. All staged mod hashes stayed unchanged;
+exit0, no forced termination, no real player/original world used.
+Safe receipt: `release/evidence/naruto-villages-112-preview-server-subset.json`.
+Private result/run hashes are bound there. The native carried-item check
+observed inventory0/cursor0/ground6: vanilla close handling dropped all6items,
+and the old explicit cursor erasure was removed. Do not claim automatic return
+to inventory. Fixed original repeated sort-lock acquisition and partial-insert
+loot duplication; the new currency planner changes nothing if change cannot fit.
+It accepts retained base-nine VC coins and actual installed Naruto Ryo notes.
+
+Failed intermediate fixtures are retained:01/02had insufficient test page
+configuration (MAX_PAGES captures configuration at startup);03found the real
+repeated sort-lock bug;04asserted an inventory return whereas native close drops
+carried items;05tried unlocking an undefined test destination.06sets the two-page
+config before startup, counts carried world drops, defines the destination, and
+passes those server-side cases. The production83-class candidate was not changed
+to fake these fixture setup fixes.
+
+CRITICAL UNFINISHED: all16default PvP reward entries still point to old
+NarutoDestination items. They are preserved in config but do not resolve in
+the selected target base. Do not claim that loot works or silently replace it
+with unrelated filler. Legacy-only clan/skill/senjutsu fields are not actual
+native integrations. Rank caps/promotion authority, full teleport execution,
+PvP damage/drop/anti-farm, territory capture, real network client/mirror and
+copied deployment-world restart remain unverified. Next: recover exact original
+reward semantics/public APIs, implement meaningful target-provider bindings,
+and add native event/restart acceptance before a full port/release claim.
+The full requested Naruto game and prior incomplete packages below remain in scope.
+
+The previous one-folder client config step is also complete:
+`Hidden Block VillageSL/config/valeorders-client.cfg` enables armorPowerCore and
+jutsuDetail2. Keybinds, original mod textures, server/worlds and other config
+hashes were preserved. Receipt:
+`release/evidence/client-config-feature-enablement-0316.json`.
+Resourcepacks stays empty; original icons/armor come from the original mod JARs.
+No replacement resource pack is required on server or client. Supplied server's
+resource-pack URL is empty. No new graphical acceptance is claimed.
+
+Sprint clock record: active goal created2026-11-13T17:32:41Z; its20-hour deadline
+was2026-11-14T13:32:41Z (08:32:41America/New_York). That target elapsed; the full
+goal remains incomplete and active. These timestamps do not reset the sprint.
+
 ## Current owner request and live session
+
+PRIORITY owner correction: work directly, no sub-agents, one folder at a time.
+All three remaining sub-agents were interrupted and verified interrupted. Do not
+restart or delegate to them without fresh owner authorization. The owner reports
+the delivered setup looks about two hours behind and reverted icons are replaced.
+
+Root found an actual client mismatch: the new CurseForge profile
+`Naruto Complete Client - Friend Test` contains field-hud0.18.0 and enables
+Vale-Reference-Flat-Icons-v3.zip in options.txt. It also contains the newer server
+mod cohort, which does not replace old client-only HUD/control/compat JARs.
+The older unpacked D:/Bisect server upload/Hidden Block Village client tree is
+also stale (HUD0.20.0 / Source11Core). Do not package from that unpacked tree.
+The sealed Hidden Block Village.zip passes its recorded SHA and contains
+HUD0.20.1 / Source13Core. Use explicit sealed inputs, not a stale folder/glob.
+
+ONE-FOLDER correction delivered now:
+`D:/Bisect server upload/CLIENT UPDATE - Hidden Block Village/01 - mods.zip`
+203,555,669bytes, SHA256
+`78296d26effdc60096ced953becdf4394deb930eaa52678bc5aa1e684053d72d`.
+It contains58complete client JARs at mods/, including HUD0.20.1 and a new Source14
+Core0.3.16 built from current main with Claude's chest-crouch correction.
+Core SHA `12eb3d63e13b817648eaabb001bf4d21abdfad0f43b89d70c2e4b2375045a93c`;
+only ArmorCoreFx.class differs from accepted Source13. All nonclient Core bytes
+and57other JARs are identical. All nested JARs and ZIP CRC/SHA readbacks passed.
+Tool: tools/package_client_mods.py; safe receipt:
+release/evidence/current-client-mods-0316.json. Server gameplay is identical, so
+this renderer-only Core difference does not require another server upload.
+The complete Source14Core build passed without source drift; private report:
+D:/HiddenBlockVillage-Sprint-20261113/core016-build-snapshot-14/build/source-builds/20261114T173840Z-599cba7a/report.json,
+SHA493df853658c54a3542cb8b6329902c047c190265adff44081d3ba6db092a437.
+No new graphical/native/server-hosted acceptance is claimed for the renderer delta.
+
+The owner copied all58matching new client JARs into the Friend Test profile,
+but nine old extra roots remained, including old HUD/controls/client-compat and
+three server-only JARs. Root completed ONLY the mods-folder cleanup with
+`tools/clean_mixed_client_mods.ps1`: six reviewed stale/server-only JARs and three
+loose metadata/image files moved to the private D retention directory
+`D:/HiddenBlockVillage-Sprint-20261113/client-mixed-jar-cleanup-01/retired`.
+No ordinary original mod JAR was removed. The tool refused a running profile,
+checked all58new JAR hashes before any move and verified the final inventory.
+Root independently rehashed all58installed JARs after cleanup: PASS, exact archive
+match. Original VariedCommodities SHA remains
+bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016.
+Safe receipt: release/evidence/client-mixed-jar-cleanup-0316.json.
+The installed current mods now have no duplicate old HUD/control/compat JARs.
+The owned JAR asset-namespace audit found no variedcommodities texture namespace.
+The resourcepacks step is now complete. The owner renamed the imported profile
+to `Hidden Block VillageSL`; its current directory is
+`C:/Users/Steal/curseforge/minecraft/Instances/Hidden Block VillageSL`.
+The obsolete Friend Test directory no longer exists. Bind future work to this
+new path and verify the exact current JAR cohort rather than guessing an old name.
+The previous cleanup script intentionally targets the old reviewed profile name;
+do not rerun it blindly against another profile.
+
+Computer-use initialization still fails with Windows path error3. Root detected
+the new client running and requested that the owner close it; the owner confirmed
+closed. Root verified no profile process, then moved only
+`resourcepacks/Vale-Reference-Flat-Icons-v3.zip` to
+`D:/HiddenBlockVillage-Sprint-20261113/client-retired-icon-pack-01`.
+The828,165byte pack retained exact SHA256
+ed45b2f8aab0840b236aef97cfcec42c452a43a84a7c6119fbb622ce617ee39e.
+The active resourcepacks folder is empty; all58current mod hashes remain exact,
+including the original VariedCommodities JAR. No JAR, option/config, world/player
+or host file was written. The supplied server has no resource-pack URL configured.
+Safe receipt: release/evidence/client-original-art-restoration-0316.json.
+No new graphics test is claimed. Original native mod artwork is available on the
+next client resource load; options.txt may still name the now-absent old pack until
+normal Minecraft options reconciliation. The shaderpacks directory was untouched.
+The client config review/update is complete as recorded in the newest checkpoint
+above, preserving controls and the original-mod-art policy.
+The Source13preview client exited at12:22:47local; process30120 is no longer
+present. Preview server31524 remains alive. Preserve it; historical join/dodge
+evidence below does not mean a client is currently connected.
 
 The owner wants Claude's reviewed work merged, the requested Bisect archive updated, named client/full ZIPs, and a playable creative inspection session.
 This explicitly revokes the earlier request to keep Minecraft closed.
@@ -16,6 +318,55 @@ Root owns final logs/process observations, Git sync, archives and the final stat
 The owner requested no new backup for the target update because backups already exist. Do not create another one automatically.
 
 ## Exact current component cohort
+
+The owner's latest deployment preference is one server folder at a time in chat.
+The first delivered replacement is
+`D:/Bisect server upload/Hidden Block Village - Folder Replacements/01 - mods.zip`:
+200,992,059bytes, SHA256
+`62daa2a27644d07f5a192afd78c85c7761a5e93db2e653d2f5daa82278dea60d`.
+All127files, including53JARs, match the accepted unpacked server manifest;
+every ZIP member passed CRC/SHA256 readback. It contains a top-level `mods/`
+folder, so stop the host, remove the old mods folder, upload/unarchive at the
+server root, and keep stopped until config/plugins replacements follow.
+The owner briefly requested a combined ZIP, then explicitly returned to this
+one-folder-at-a-time approach. `02 - config.zip` was delivered,900,249bytes with66files,
+SHA256 `ac98fb18479929c1bc1a156d4dc7dbddc9b5c3b30fb0f9b1c95da874ef0436c7`.
+`03 - plugins.zip` is the next delivered folder,3,272,247bytes with1,602files/3JARs;
+SHA256 `6e18573aa590721a16ef549cce3d486566729ab02f96220ecf1809452995b4e6`.
+It includes the final native-verified stamina plugin enabled. Both passed
+manifest/CRC/SHA256 readback; receipts are
+`release/evidence/server-folder-config-0316.json` and
+`release/evidence/server-folder-plugins-0316.json`. No hosted changes were performed.
+The plugin ZIP was rechecked against its whole-archive SHA/CRC and exact stamina
+JAR SHA/config before delivery. Keep the server stopped between replacements.
+`04 - server settings.zip` is prepared in the same directory:1,657bytes, containing
+only spigot.yml; SHA256 `b79c58c33957f233d1ee73406f868e4363701854455f04bff51de8aed80737cc`.
+It passed manifest/CRC/SHA readback, with safe receipt
+`release/evidence/server-root-stamina-settings-0316.json`. No connection, operator,
+whitelist or player files are included. Deliver this final root-settings ZIP next.
+The client/world need not be reuploaded for these. The plugin enforces stamina
+independently of Magma's partly inert legacy multipliers. See
+`docs/bisect-stepwise-replacement.md` for the concise operator sequence.
+Tool: `tools/package_server_folder.py`; safe receipt:
+`release/evidence/server-folder-mods-0316.json`. Do not start another full6GB ZIP.
+
+Latest owner steering: near-infinite stamina and finish this release now. The final
+server-only overlay is `Hidden Block Village - Final Stamina Settings.zip` in
+D:/Bisect server upload:5,212bytes, SHA256
+`48cac3a8134d25986f073a98e1c5cf3dc218716486eaf251c3a546d96f3b8e21`.
+Extract this LAST after the base server ZIP/eight upload parts, then start/restart
+the server. No world reupload or client reinstall is required. The unpacked server
+folder, original selected archive folder and preview's future startup files are
+already updated; the currently running owner session was not restarted.
+Dodge cost is0. Original Naruto-Stamina1.0.0 maintains20food/20saturation/0exhaustion
+for current Survival/Adventure players every20ticks and cancels only hunger decreases.
+The exact plugin passed22real CraftPlayer/native checks in a new flat Magma fixture,
+including scheduling, mode/session exclusions and disable cleanup. No health/chakra/XP
+calls are added. Native jutsu chakra remains separate. Some Magma movement hunger
+config values are inert, so the plugin, not YAML alone, provides the guarantee.
+Safe receipts: `release/evidence/final-stamina-profile-0316.json` and
+`release/evidence/stamina-native-0316.json`. Other unfinished candidate work stays
+private/uninstalled; this change does not claim the full campaign is complete.
 
 The owner's later request for a separate ready-to-upload server is also fulfilled.
 `D:/Bisect server upload/Hidden Block Village Server` is a new standalone server folder;
@@ -36,6 +387,10 @@ Official upload guide: https://help.bisecthosting.com/hc/en-us/articles/40124893
 Current filenames use Naruto branding while stable technical mod, registry and save IDs remain unchanged.
 Current Core is Naruto-Core-0.3.16.jar from Source13; current HUD is Naruto-HUD-0.20.1.jar from Source12.
 The remaining production components use the complete Source11 cohort.
+External main merge c970ce0 later adds Claude's small chest-crouch visual tweak.
+That source update is preserved, but was not rebuilt into the Source13 binary
+archives during this final config/plugin update. Select the recorded release
+artifact hashes rather than assuming every later source edit is in those ZIPs.
 Read [the composite proof](../release/evidence/core0316-hud0201-dodge-client.json) before claiming what this mixed correction cohort proves.
 Core SHA256: `387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766`.
 HUD SHA256: `a0e2a25c74bbd26cd5e5ba3a5bdca45439fd26cf01cd17ab43a83c728fb1b474`.
@@ -111,6 +466,55 @@ Recovered upstream tail bodies were removed from the public working tree without
 The proposed hVB tail enhancements remain UNADOPTED; the existing original native tail mod is the baseline.
 The separate five-coliseum chat owns all arena paths and orchestration files. Do not edit them from this chat.
 The requested sealed Core outcome observer for arena damage/support credit remains pending; generic deferred damage is not accepted reward authority.
+
+## Original-model recovery and next playable candidate
+
+The reviewed original recovery tool is now in `tools/native_asset_repair.py` with
+its original synthetic tests and real-parser helpers under `tools/native_assets/`.
+Only original tool source/tests/docs and safe hash metadata were promoted;
+native geometry, private manifests/launch recipes, JARs and generated packs remain
+private on D. The current release ZIPs, owner session and host were not changed.
+
+Root independently ran the promoted21synthetic tests: PASS. Root also compiled
+and ran the promoted Java helper against the exact real prepared Minecraft API:
+38candidate models /41incoming contexts /1,576assertions PASS. Its report SHA256
+`8f11b2426e0696a152537bcf65bf80bdf88e48570ee362392f6dcbdb17c77b15`
+matches the worker's independent run. These are headless parser/geometry/UV/
+texture-binding checks, not an atlas bake or graphical client test.
+Safe records: `release/evidence/original-model-parent-repair-candidate.json` and
+`release/evidence/original-model-parent-repair-root-review.json`.
+
+The private parent-only candidate covers37of39logged missing references while
+preserving original geometry and child texture maps. Medical's unresolved key1
+and missing jiton stay held. Exact native callback selector/field-to-registered-
+item identity and a new disposable real-client bake remain activation gates.
+No corrective overlay is active or included in the delivered client ZIP.
+
+Academy continuation is a separate D-only0.3.17candidate, not a change to the
+accepted0.3.16upload. The worker is measuring fresh actual native-player BXP
+thresholds before implementing an earned, once-only native chakra awakening,
+short optional basics/first-field-mission progression and restart-safe course
+provisioning. No new-player end-to-end route is accepted yet. Preserve the
+current four manual upload packages while that candidate is developed.
+
+Threshold fixture02 exited0 but failed its harness before any XP measurement:
+the broad reflective capabilities name selected Forge's CapabilityDispatcher
+instead of PlayerCapabilities. Fixture03 corrected that lookup and exited0,
+but its final numeric report could not serialize a not-ready NaN value. Do not
+claim a measured native awakening floor from either run. A new finite-safe04
+fixture is being prepared; it must record exact raw native and canonical values,
+including a diagnostic2000positive control if smaller floors stay unready.
+
+Fixture03 did independently capture complete real post-Magma EntityLivingBase
+and EntityPlayer input bytes, with unchanged hashes matching earlier native
+damage traces. Private bytes/traces remain on D. Root inspected the real health/
+absorption/heal ABI: player HP goes through CraftPlayer.setRealHealth, ordinary
+mob HP through the data manager, and player absorption through a different data
+parameter than mob absorption. Safe facts are in
+`release/evidence/sealed-outcome-storage-abi-0317.json`. This is evidence for the
+pending arena observer, not an implemented observer or enabled contribution API.
+Next capture the actual data-manager/DataEntry stores and Bukkit wrapper origin
+in the next necessary fixture, preserving native bytes and event ordering.
 
 ## Next work and honest limits
 

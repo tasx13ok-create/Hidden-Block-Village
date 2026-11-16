@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "scope": "ROOT_REVIEW_OF_ORIGINAL_MODEL_REPAIR_TOOL_ONLY",
+  "source_files": {
+    "release/evidence/original-model-parent-repair-candidate.json": "64a9175603d1f1c6123b7500e48b75ac67dda1b4c0d4e869c856da723b4e6685",
+    "tests/test_native_asset_repair.py": "185406171a86373e72b5672cac9cb3d800c35bc7bc6c31a8f072f64e0a1358f9",
+    "tools/native_asset_repair.py": "24dc1fbd3d461bf24024513946e2632e0754a269056a6b3c049ad9d1232e3949",
+    "tools/native_assets/export_stopped_registry.py": "e477cb51453bc909ae9d4f1d4c78b4334728b5ea927dd2f890323877f491e839",
+    "tools/native_assets/native_checker_negatives.py": "cfc0208721d39def0b52e26f47ee7a37a0fc6d9df7f8a115d2daee2ce36104a5",
+    "tools/native_assets/native_model_proof_driver.py": "5bfcec93c341870e24c75201037cb287d4867a5fd3f7c4063a262d191e77bf8c",
+    "tools/native_assets/NativeModelProof.java": "74aa14963922d28de816efd4e88109a5c37fab5d9ca276c376059203c35b676b",
+    "tools/native_assets/NativeResourceGraph.java": "1488176b700a951187f578b815d6d75ef61516a03bdb4d9441a3dc5946ed4730",
+    "tools/native_assets/prepare_manifest.py": "bcc728d31f1cc80a48c17f05d3c021a3914e25e6e92538ece7de6bccad4082b1",
+    "tools/native_assets/README.md": "4da6e914b720717674155a9e79896f0e4ddb85d23131d0225149f241477c35b5"
+  },
+  "root_synthetic_unittests_passed": 21,
+  "root_actual_prepared_minecraft_parser": {
+    "models": 38,
+    "incoming_contexts": 41,
+    "assertions": 1576,
+    "report_sha256": "8f11b2426e0696a152537bcf65bf80bdf88e48570ee362392f6dcbdb17c77b15",
+    "prepared_api_sha256": "bb7c86e893e668f3aa5402b146eaeccc7474b24317d54b22d1ceb3902744d59b"
+  },
+  "runtime_or_profile_modified": false,
+  "private_geometry_pack_published": false,
+  "activation_allowed": false,
+  "remaining_gates": [
+    "Exact native callback item field-to-registry binding",
+    "New disposable real-client model bake"
+  ],
+  "remaining_native_asset_errors_not_claimed_fixed": true
+}

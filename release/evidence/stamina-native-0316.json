@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "scope": "ACTUAL_MAGMA_SOURCE13_CRAFTPLAYER_FOOD_STAMINA_ONLY",
+  "plugin": {
+    "file": "Naruto-Stamina-1.0.0.jar",
+    "sha256": "f0b29317497180285166bb7a4e2a177c736d96c981dcf3430cab80dc9eb756db",
+    "bytes": 2341
+  },
+  "passed": true,
+  "assertions": 22,
+  "observed_task_period_native_ticks": 20,
+  "actual_official_craftplayer": true,
+  "synthetic_admission": true,
+  "real_player_or_original_world_used": false,
+  "client_started": false,
+  "checks": [
+    "Survival and Adventure low food/saturation/high exhaustion become20/20/0",
+    "Creative and Spectator untouched",
+    "offline and stale CraftPlayer wrappers refused",
+    "FoodLevelChange decrease canceled; increase and equal allowed",
+    "actual scheduler recurrence20ticks",
+    "disable cancels task and unregisters listeners",
+    "fresh non-ninja native HP/BXP/chakra/max unchanged"
+  ],
+  "native_before": {
+    "xp": 0.0,
+    "ninja": false,
+    "hp": 20.0,
+    "path_present": true,
+    "chakra": 0.0,
+    "max": 0.0
+  },
+  "native_after": {
+    "xp": 0.0,
+    "ninja": false,
+    "hp": 20.0,
+    "path_present": true,
+    "chakra": 0.0,
+    "max": 0.0
+  },
+  "native_measurement_limits": "Fresh non-ninja pool0/max0 only; no initialized nonzero chakra pool or named jutsu cast tested",
+  "source13_report_sha256": "8e2d1ee78c9b78e7fb2cdb740cb861a58cc7cccb8d966d563accbea1262f1a36",
+  "source11_report_sha256": "4c9afe3a916f29468e699fb08c92866fc02ef53922e27a740f89b59f97bd356f",
+  "core_sha256": "387dfa432647515193a4d2167aeb1ccba59ab99319cc33a1b3fd8b982d7c1766",
+  "original_native_jars": 45,
+  "own_jars": 9,
+  "all_production_mod_hashes_unchanged": true,
+  "java_heap_mib": 1280,
+  "port": 25596,
+  "process_exit_code": 0,
+  "forced_termination": false,
+  "port_released": true,
+  "source_hashes": [
+    {
+      "path": "src\\village\\vale\\staminachecks\\StaminaNativeProof.java",
+      "sha256": "bf8e26eccee57fe8bffb44b470c2614b1d817c7eec14b053ef2444b0599647f3"
+    },
+    {
+      "path": "stage.py",
+      "sha256": "3db8aa4e3055e7375d70cf62b4543167453e38fef0d79d0a3634b0e0612a9efc"
+    },
+    {
+      "path": "run.py",
+      "sha256": "69249b3f9ecd32e84df618e2b2ea7fd6722e98558463fbeef49dceb8c3d36e34"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "PRIVATE-STAMINA-NATIVE-RESULT.json",
+      "sha256": "8e7db65d885bdb06073c09714c6959a88fe9448957b5cb89e43ea46625e9783f"
+    },
+    {
+      "path": "PRIVATE-RUN-RECEIPT.json",
+      "sha256": "27a77d3186f8aa84dcd34dd1ae2be728c2f09e8485b7b298021f85f2d73a127f"
+    },
+    {
+      "path": "native.console.log",
+      "sha256": "5f86297d0a94756f9ff27325e32746551d83d598156388cc89fda138f958fb05"
+    },
+    {
+      "path": "compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "PRIVATE-STAGE.json",
+      "sha256": "5c4b67a6e68166a3edc37bd9b6fc83d619bd156ab2da4b6dcc6825075db6652c"
+    }
+  ],
+  "normal_earned_academy_route_proof": false,
+  "live_or_target_files_changed": false
+}

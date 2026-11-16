@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "scope": "SINGLE_SERVER_FOLDER_REPLACEMENT",
+  "file": "01 - mods.zip",
+  "folder": "mods",
+  "bytes": 200992059,
+  "sha256": "62daa2a27644d07f5a192afd78c85c7761a5e93db2e653d2f5daa82278dea60d",
+  "files": 127,
+  "jars": 53,
+  "source_manifest_exact_match": true,
+  "all_crc_and_sha256_readbacks_passed": true,
+  "root_layout_preserved": true,
+  "below_browser_upload_bytes": 450000000,
+  "source_and_live_server_modified": false,
+  "instructions": "Stop server; replace old folder; extract ZIP in server root. Keep stopped until all replacements are installed.",
+  "hosted_acceptance_performed": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_REAL_MAGMA_HEALTH_STORAGE_ABI_AUDIT",
+  "observer_implemented_or_ready": false,
+  "magma_executable_sha256": "2c527f054e8db7ab7c716019c6496275c3b4f2aace04107ad6c8cb447d3883ce",
+  "captured_native_input_classes": {
+    "net.minecraft.entity.EntityLivingBase": {
+      "bytes": 86663,
+      "sha256": "1c7654ddaf8a73fdf9a0576130eea710a4cf258fdf323465b0607a9dbb629a34"
+    },
+    "net.minecraft.entity.player.EntityPlayer": {
+      "bytes": 78116,
+      "sha256": "dd59f9c55bf93539e6e875b260a155f4e96bb6ab0323d70c5064fa45e414f9d2"
+    }
+  },
+  "observed_storage_contracts": {
+    "entity_health_getter_is_final": true,
+    "player_health_getter_delegates_to_bukkit_wrapper": true,
+    "player_health_setter_calls": "org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer.setRealHealth(double)",
+    "nonplayer_health_store": "EntityDataManager parameter EntityLivingBase.field_184632_c",
+    "nonplayer_absorption_store": "EntityLivingBase.field_110151_bq float",
+    "player_absorption_store": "EntityDataManager parameter EntityPlayer.field_184829_a",
+    "healing_observes_forge_and_bukkit_events_before_virtual_health_write": true,
+    "before_after_whole_method_health_delta_is_reward_authority": false
+  },
+  "unverified_store_boundaries": [
+    "Actual EntityDataManager and DataEntry store/callback ordering",
+    "Actual CraftPlayer real-health primitive store and wrapper class-loader origin",
+    "Unrecognized virtual setter overrides and native lifecycle transitions",
+    "Per-application native writes and final event snapshots after dispatch unwind"
+  ],
+  "native_bodies_or_class_bytes_published": false,
+  "native_gameplay_changed": false,
+  "arena_credit_enabled": false,
+  "current_upload_archives_or_live_session_modified": false
+}
