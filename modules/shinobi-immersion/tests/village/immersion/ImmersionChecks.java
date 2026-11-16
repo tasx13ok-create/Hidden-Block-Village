@@ -34,6 +34,21 @@ public final class ImmersionChecks {
         for (int l = 1; l <= 5; l++) check(ImmersionMath.ambienceGap(l) >= 5, "ambience is sparse");
         for (double sd = 0; sd < 1; sd += 0.1) { float v = ImmersionMath.vary(1f, sd); check(v >= 0.94f && v <= 1.06f, "pitch variation bounded"); }
         check(ImmersionMath.heavy(1f) && !ImmersionMath.heavy(0.3f), "heavy threshold");
+        check(ImmersionMath.dodgeBurst(1.55, 0.2) && !ImmersionMath.dodgeBurst(0.28, 0.2) && !ImmersionMath.dodgeBurst(1.5, 1.4), "dodge burst detection");
+        check(ImmersionMath.perfect(105, 100, true) && !ImmersionMath.perfect(107, 100, true) && !ImmersionMath.perfect(103, 100, false) && !ImmersionMath.perfect(103, -1, true), "perfect window");
+        check(ImmersionMath.element("onFire", "", true) == ImmersionMath.FIRE, "fire damage");
+        check(ImmersionMath.element("ninjutsu", "narutomod:chidori", false) == ImmersionMath.LIGHTNING, "lightning id");
+        check(ImmersionMath.element("ninjutsu", "narutomod:suiton_shark", false) == ImmersionMath.WATER, "water id");
+        check(ImmersionMath.element("ninjutsu", "narutomod:futon_vacuum", false) == ImmersionMath.WIND, "wind id");
+        check(ImmersionMath.element("ninjutsu", "narutomod:doton_wall", false) == ImmersionMath.EARTH, "earth id");
+        check(ImmersionMath.element("player", "minecraft:zombie", false) == ImmersionMath.NONE, "plain hit has no element");
+        check(ImmersionMath.reaction(ImmersionMath.FIRE, true, false) == ImmersionMath.R_STEAM, "fire+wet steam");
+        check(ImmersionMath.reaction(ImmersionMath.LIGHTNING, true, false) == ImmersionMath.R_CHAIN, "lightning+wet chain");
+        check(ImmersionMath.reaction(ImmersionMath.WIND, false, true) == ImmersionMath.R_SPREAD, "wind+burning spread");
+        check(ImmersionMath.reaction(ImmersionMath.EARTH, false, true) == ImmersionMath.R_SNUFF, "earth+burning snuff");
+        check(ImmersionMath.reaction(ImmersionMath.FIRE, false, false) == ImmersionMath.R_NONE, "no reaction on dry target");
+        check(ImmersionMath.reactionDamage(ImmersionMath.R_STEAM) < 1 && ImmersionMath.reactionDamage(ImmersionMath.R_CHAIN) > 1, "reaction damage");
+        check(ImmersionMath.phase(100, 100) == 0 && ImmersionMath.phase(50, 100) == 1 && ImmersionMath.phase(20, 100) == 2 && ImmersionMath.phase(5, 0) == 0, "boss phases");
         System.out.println("PASS: " + checks + " immersion checks (water-walk, wall-run, sound, compass).");
     }
 }
