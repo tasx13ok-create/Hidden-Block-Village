@@ -95,6 +95,7 @@ public final class KamuiTransformerChecks implements Opcodes {
         convertToMcp(method(isolated));
         exercise(false, bytes(isolated));
         negativeCases(actual);
+        kgEligibility(args[0]);
         System.out.println("DUNGEON_GUARD_REAL_NARUTO_TRANSFORMER_PASS checks=" + checks + " sha256=" + hash);
     }
 
@@ -246,6 +247,38 @@ public final class KamuiTransformerChecks implements Opcodes {
         if (!itf) { MethodVisitor m = writer.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null); m.visitCode(); m.visitVarInsn(ALOAD, 0); call(m, INVOKESPECIAL, parent, "<init>", "()V", false); m.visitInsn(RETURN); finish(m); }
         return writer;
     }
+    /**
+     * The kekkei genkai eligibility gate must install on the released class, stay idempotent,
+     * ignore Minecraft member renaming (development runtimes use MCP names), and leave an
+     * unrecognized class untouched instead of breaking NarutoMod's class loading.
+     */
+    private static void kgEligibility(String jarPath) throws Exception {
+        String kg = "net/narutomod/procedure/ProcedureKGDistribution";
+        byte[] raw;
+        try (JarFile jar = new JarFile(jarPath); InputStream input = jar.getInputStream(jar.getJarEntry(kg + ".class"))) {
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            byte[] buffer = new byte[8192];
+            for (int length; (length = input.read(buffer)) >= 0;) output.write(buffer, 0, length);
+            raw = output.toByteArray();
+        }
+        GuardTransformer transformer = new GuardTransformer();
+        String name = kg.replace('/', '.');
+        byte[] patched = transformer.transform(name, name, raw);
+        check("real KG distribution receives the eligibility gate", !Arrays.equals(raw, patched));
+        check("KG gate is idempotent", transformer.transform(name, name, patched) == patched);
+        ClassNode renamed = read(raw);
+        for (MethodNode m : renamed.methods) for (AbstractInsnNode n = m.instructions.getFirst(); n != null; n = n.getNext()) {
+            if (n instanceof MethodInsnNode && ((MethodInsnNode) n).name.startsWith("func_")) ((MethodInsnNode) n).name = "mcp" + ((MethodInsnNode) n).name.substring(4);
+            if (n instanceof org.objectweb.asm.tree.FieldInsnNode && ((org.objectweb.asm.tree.FieldInsnNode) n).name.startsWith("field_")) ((org.objectweb.asm.tree.FieldInsnNode) n).name = "mcp" + ((org.objectweb.asm.tree.FieldInsnNode) n).name.substring(5);
+        }
+        byte[] mcp = bytes(renamed);
+        check("KG gate installs when Minecraft members carry development names", !Arrays.equals(mcp, transformer.transform(name, name, mcp)));
+        ClassNode changed = read(raw);
+        for (MethodNode m : changed.methods) if (m.name.equals("executeProcedure")) m.instructions.insert(new InsnNode(NOP));
+        byte[] altered = bytes(changed);
+        check("an unrecognized KG class is left untouched rather than failing to load", transformer.transform(name, name, altered) == altered);
+    }
+
     private static void field(ClassWriter writer, String name, String desc) { writer.visitField(ACC_PUBLIC | ACC_STATIC, name, desc, null, null).visitEnd(); }
     private static void increment(MethodVisitor m, String owner, String field) { m.visitFieldInsn(GETSTATIC, owner, field, "I"); m.visitInsn(ICONST_1); m.visitInsn(IADD); m.visitFieldInsn(PUTSTATIC, owner, field, "I"); }
     private static void call(MethodVisitor m, int op, String owner, String name, String desc, boolean itf) { m.visitMethodInsn(op, owner, name, desc, itf); }

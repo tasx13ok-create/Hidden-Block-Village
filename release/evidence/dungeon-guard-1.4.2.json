@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "scope": "DUNGEON_GUARD_1_4_2_SOURCE_RECOVERY_AND_NATIVE_SERVER_SUBSET",
+  "input": {
+    "file": "Dungeon-Guard-1.12.2-1.4.1.jar",
+    "sha256": "31db510dec1289cc079dc999c1840de69f8c64bba2277ade3b067808b0430e5c"
+  },
+  "runtime": {
+    "file": "Dungeon-Guard-1.12.2-1.4.2.jar",
+    "bytes": 1023346,
+    "sha256": "6f25789a73f6d392c1333fb2f57fbe6147596244cbed375c00af66cd772e6329"
+  },
+  "native_dependency": {
+    "NarutoMod-1.12.2-0.3.1.beta.jar": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0"
+  },
+  "component_checks": {
+    "verifyTransformer": 220,
+    "verifyAreaLayout": 42,
+    "verifyNarutoRelease": 48
+  },
+  "native": {
+    "runtime_kind": "RetroFuturaGradle Forge 1.12.2 development dedicated server, fresh flat world, admitted synthetic player",
+    "phase_1_on_1_2_0": [
+      "1.2.0 saves the old-format dungeon and reports Ready (IDLE)"
+    ],
+    "phase_2_upgrade": [
+      "a dungeon saved by 1.2.0 loads as Ready on the new version",
+      "the 1.2.0 baseline is still the old format on disk (1)",
+      "an empty Ready dungeon stays locked (its clean copy can't be changed)",
+      "terrain outside dungeons stays locked",
+      "reset rebuilds the destroyed block from the old-format baseline",
+      "reset restores the chest's original contents",
+      "a player inside makes the dungeon active (ACTIVE)",
+      "ability damage inside an occupied dungeon is allowed",
+      "after the player leaves, the dungeon rebuilds itself and is Ready again",
+      "ninja XP is kept on death (keepNinjaXp)",
+      "kekkei genkai roll waits for 300 battle XP and is throttled (false,true,false)",
+      "a new capture is saved in the packed format (schema 2)"
+    ],
+    "phase_3_restart": [
+      "both dungeons load as Ready after a full restart",
+      "a packed-format baseline rebuilds correctly after restart"
+    ],
+    "all_passed": true,
+    "hooks_installed": "18 mandatory protection/spawn hooks plus AHZNB.kgEligibility; Waystones absent"
+  },
+  "fixed": [
+    "optional NarutoMod/Waystones hooks fail safe instead of breaking those mods' class loading (NarutoMod item registration)",
+    "NarutoMod KG fingerprint independent of SRG/MCP member names",
+    "banner handshake follows the mod version constant"
+  ],
+  "not_verified": [
+    "Waystones travel hook, spawn binding and forced spawn (Waystones mod not supplied)",
+    "dungeon Waystone 300x250x300 upgrades",
+    "Magma runtime",
+    "graphical banner review"
+  ],
+  "original_world_or_real_player_data_used": false
+}

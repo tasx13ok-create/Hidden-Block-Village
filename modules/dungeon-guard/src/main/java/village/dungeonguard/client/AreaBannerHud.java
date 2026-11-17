@@ -12,114 +12,154 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import village.dungeonguard.AreaPresentation;
 import village.dungeonguard.AreaState;
+import village.dungeonguard.client.AreaBannerLayout;
+import village.dungeonguard.client.AreaBannerState;
+import village.dungeonguard.client.FieldHudReservations;
 
-/** Client artwork stays separate from protection. All labels are supplied by the server. */
-@SideOnly(Side.CLIENT)
+@SideOnly(value=Side.CLIENT)
 public final class AreaBannerHud {
     private static final ResourceLocation TEXTURE = new ResourceLocation("dungeonguard", "textures/gui/area_banner.png");
-    private AreaState displayed = AreaState.EMPTY;
-    private boolean wanted;
-    private int remainingTicks;
-    private float opacity;
+    private final AreaBannerState state = new AreaBannerState();
+    private Object displayedWorld;
+    private Object displayedPlayer;
     private final AreaBannerLayout.BossStack bosses = new AreaBannerLayout.BossStack();
     private final FieldHudReservations fieldHud = new FieldHudReservations();
     private Boolean immersionPresent;
     public boolean enabled = true;
 
     public void accept(AreaState incoming) {
-        wanted = !incoming.isEmpty();
-        remainingTicks = wanted ? 200 : 0;
-        if (wanted && !incoming.equals(displayed)) { displayed = incoming; opacity = 0; }
+        Minecraft minecraft = Minecraft.getMinecraft();
+        if (minecraft.world == null || minecraft.player == null) {
+            this.clear();
+            return;
+        }
+        this.synchronizeWorld(minecraft);
+        this.state.accept(incoming);
     }
-    public void clear() { displayed = AreaState.EMPTY; wanted = false; remainingTicks = 0; opacity = 0; bosses.reset(); }
-    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+
+    public void clear() {
+        this.state.clear();
+        this.bosses.reset();
+        this.displayedWorld = null;
+        this.displayedPlayer = null;
+    }
+
+    private void synchronizeWorld(Minecraft minecraft) {
+        if (this.displayedWorld != minecraft.world || this.displayedPlayer != minecraft.player) {
+            this.state.clear();
+            this.bosses.reset();
+            this.displayedWorld = minecraft.world;
+            this.displayedPlayer = minecraft.player;
+        }
+    }
+
+    @SubscribeEvent(priority=EventPriority.HIGHEST, receiveCanceled=true)
     public void beginFrame(RenderGameOverlayEvent.Pre event) {
-        if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) bosses.reset();
+        if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
+            this.bosses.reset();
+        }
     }
-    @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
+
+    @SubscribeEvent(priority=EventPriority.LOWEST, receiveCanceled=true)
     public void bossBar(RenderGameOverlayEvent.BossInfo event) {
-        bosses.observe(event.getY(), event.getIncrement(), event.isCanceled());
+        this.bosses.observe(event.getY(), event.getIncrement(), event.isCanceled());
     }
-    @SubscribeEvent public void tick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+
+    @SubscribeEvent
+    public void tick(TickEvent.ClientTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
         Minecraft minecraft = Minecraft.getMinecraft();
-        if (minecraft.world == null || minecraft.player == null) { clear(); return; }
-        if (remainingTicks > 0 && --remainingTicks == 0) wanted = false;
-        opacity = wanted ? Math.min(1.0F, opacity + 0.1F) : Math.max(0.0F, opacity - 0.1F);
-        if (!wanted && opacity <= 0) displayed = AreaState.EMPTY;
+        if (minecraft.world == null || minecraft.player == null) {
+            this.clear();
+            return;
+        }
+        this.synchronizeWorld(minecraft);
+        this.state.tick();
     }
-    @SubscribeEvent public void render(RenderGameOverlayEvent.Post event) {
-        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL || !enabled || displayed.isEmpty() || opacity <= 0) return;
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @SubscribeEvent
+    public void render(RenderGameOverlayEvent.Post event) {
+        boolean compact;
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL || !this.enabled) {
+            return;
+        }
         Minecraft minecraft = Minecraft.getMinecraft();
-        if (minecraft.gameSettings.hideGUI || minecraft.gameSettings.showDebugInfo || minecraft.currentScreen != null
-                || minecraft.world == null || minecraft.player == null || minecraft.player.isSpectator() || !minecraft.player.isEntityAlive()) return;
-        int screenWidth = event.getResolution().getScaledWidth(), screenHeight = event.getResolution().getScaledHeight();
-        if (immersionPresent == null) immersionPresent = Loader.isModLoaded("shinobiimmersion");
-        // Its compass settings are private; retain this small reserve even when the compass is disabled.
-        int reservedTop = Math.max(bosses.bottom(), immersionPresent ? 32 : 0);
-        AreaBannerLayout.Box[] reserved = fieldHud.bounds(minecraft, screenWidth, screenHeight);
+        if (minecraft.gameSettings.hideGUI || minecraft.gameSettings.showDebugInfo || minecraft.currentScreen != null || minecraft.world == null || minecraft.player == null || minecraft.player.isSpectator() || !minecraft.player.isEntityAlive()) {
+            return;
+        }
+        this.synchronizeWorld(minecraft);
+        AreaState displayed = this.state.area();
+        float opacity = this.state.opacity();
+        if (displayed.isEmpty() || opacity <= 0.0f) {
+            return;
+        }
+        int screenWidth = event.getResolution().getScaledWidth();
+        int screenHeight = event.getResolution().getScaledHeight();
+        if (this.immersionPresent == null) {
+            this.immersionPresent = Loader.isModLoaded((String)"shinobiimmersion");
+        }
+        int reservedTop = Math.max(this.bosses.bottom(), this.immersionPresent != false ? 32 : 0);
+        AreaBannerLayout.Box[] reserved = this.fieldHud.bounds(minecraft, screenWidth, screenHeight);
         AreaBannerLayout.Box box = AreaBannerLayout.place(screenWidth, screenHeight, reservedTop, reserved);
-        boolean compact = box == null;
-        if (compact) box = AreaBannerLayout.compact(screenWidth, screenHeight, reservedTop, displayed.isBoss() ? 3 : 2, reserved);
-        if (box == null) return;
-        int width = box.width, height = box.height, x = box.x, y = box.y;
+        boolean bl = compact = box == null;
+        if (compact) {
+            box = AreaBannerLayout.compact(screenWidth, screenHeight, reservedTop, 1, reserved);
+        }
+        if (box == null) {
+            return;
+        }
+        int width = box.width;
+        int height = box.height;
+        int x = box.x;
+        int y = box.y;
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-                GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
         try {
             int center = x + width / 2;
             if (compact) {
-                Gui.drawRect(x, y, x + width, y + height, (int) (180 * opacity) << 24 | 0x171B23);
-                Gui.drawRect(x, y, x + width, y + 1, (int) (230 * opacity) << 24 | 0xD4AC60);
+                Gui.drawRect((int)x, (int)y, (int)(x + width), (int)(y + height), (int)((int)(180.0f * opacity) << 24 | 0x171B23));
+                Gui.drawRect((int)x, (int)y, (int)(x + width), (int)(y + 1), (int)((int)(230.0f * opacity) << 24 | 0xD4AC60));
                 GlStateManager.enableBlend();
-                line(minecraft.fontRenderer, displayed.heading(), center, y + 4, width - 12, 0xF0CF88, opacity);
-                line(minecraft.fontRenderer, "\u00a7l" + displayed.title, center, y + 15, width - 12, 0xFFF0D6, opacity);
-                if (displayed.isBoss()) line(minecraft.fontRenderer, "Boss: " + displayed.boss, center, y + 26, width - 12, 0xFFB6A1, opacity);
+                AreaBannerHud.line(minecraft.fontRenderer, "\u00a7l" + AreaPresentation.name(displayed), center, y + 4, width - 12, displayed.isBoss() ? 16758433 : 16773334, opacity);
             } else {
-                GlStateManager.color(1, 1, 1, opacity);
+                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)opacity);
                 minecraft.getTextureManager().bindTexture(TEXTURE);
-                Gui.drawScaledCustomSizeModalRect(x, y, 0, 0, 2172, 724, width, height, 2172, 724);
-                int maxTextWidth = (int) (width * 0.64F);
-                if (displayed.isBoss()) {
-                    line(minecraft.fontRenderer, displayed.heading(), center, y + height * 0.53F, maxTextWidth, elementColor(displayed.element), opacity);
-                    line(minecraft.fontRenderer, "\u00a7l" + displayed.title, center, y + height * 0.64F, maxTextWidth, 0x392515, opacity);
-                    line(minecraft.fontRenderer, "Boss: " + displayed.boss, center, y + height * 0.75F, maxTextWidth, 0x832E20, opacity);
-                } else {
-                    line(minecraft.fontRenderer, displayed.heading(), center, y + height * 0.56F, maxTextWidth, elementColor(displayed.element), opacity);
-                    line(minecraft.fontRenderer, "\u00a7l" + displayed.title, center, y + height * 0.71F, maxTextWidth, 0x392515, opacity);
-                }
+                Gui.drawScaledCustomSizeModalRect((int)x, (int)y, (float)0.0f, (float)0.0f, (int)2172, (int)724, (int)width, (int)height, (float)2172.0f, (float)724.0f);
+                int maxTextWidth = (int)((float)width * 0.64f);
+                AreaBannerHud.line(minecraft.fontRenderer, "\u00a7l" + AreaPresentation.name(displayed), center, (float)y + (float)height * 0.65f, maxTextWidth, displayed.isBoss() ? 8597024 : 3745045, opacity);
             }
-        } finally {
-            GlStateManager.color(1, 1, 1, 1);
+        }
+        finally {
+            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
     }
+
     private static void line(FontRenderer font, String text, int center, float y, int maxWidth, int rgb, float opacity) {
         int fullWidth = font.getStringWidth(text);
-        if (fullWidth == 0) return;
-        if (fullWidth > maxWidth / 0.75F) {
-            text = font.trimStringToWidth(text, (int) (maxWidth / 0.75F) - font.getStringWidth("...")) + "...";
+        if (fullWidth == 0) {
+            return;
+        }
+        if ((float)fullWidth > (float)maxWidth / 0.75f) {
+            text = font.trimStringToWidth(text, (int)((float)maxWidth / 0.75f) - font.getStringWidth("...")) + "...";
             fullWidth = font.getStringWidth(text);
         }
-        float scale = Math.min(1.0F, (float) maxWidth / fullWidth);
-        int alpha = Math.max(5, (int) (255 * opacity));
+        float scale = Math.min(1.0f, (float)maxWidth / (float)fullWidth);
+        int alpha = Math.max(5, (int)(255.0f * opacity));
         GlStateManager.pushMatrix();
-        GlStateManager.translate(center - fullWidth * scale / 2.0F, y, 0);
-        GlStateManager.scale(scale, scale, 1);
-        font.drawString(text, 0, 0, alpha << 24 | rgb, false);
+        GlStateManager.translate((float)((float)center - (float)fullWidth * scale / 2.0f), (float)y, (float)0.0f);
+        GlStateManager.scale((float)scale, (float)scale, (float)1.0f);
+        font.drawString(text, 0.0f, 0.0f, alpha << 24 | rgb, false);
         GlStateManager.popMatrix();
     }
-    private static int elementColor(String element) {
-        if (element.equals("FIRE")) return 0xA22A1C;
-        if (element.equals("WATER")) return 0x174B91;
-        if (element.equals("WIND")) return 0x216D59;
-        if (element.equals("EARTH")) return 0x73502C;
-        if (element.equals("LIGHTNING")) return 0x825611;
-        if (element.equals("SAND")) return 0x8A5D25;
-        if (element.equals("ICE")) return 0x276B85;
-        return 0x73502C;
-    }
 }
+

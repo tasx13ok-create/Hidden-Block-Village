@@ -12,24 +12,33 @@ public final class HookStatus {
             "World.setBlockState", "World.destroyBlock", "World.spawnEntity", "Chunk.setBlockState",
             "Block.dropBlockAsItemWithChance", "Block.spawnAsEntity", "BlockPistonBase.doMove",
             "PlayerInteractionManager.operatorHarvest", "PlayerInteractionManager.operatorUseOn",
-            "PlayerInteractionManager.operatorUse", "CommandHandler.operatorEdits"));
+            "PlayerInteractionManager.operatorUse", "CommandHandler.operatorEdits",
+            "EntityPlayer.forceSpawn", "WorldInfo.forceSpawn", "PlayerList.forceRespawn", "PlayerList.firstJoinSpawn"));
     private HookStatus() { }
 
     static void installed(String name) { INSTALLED.add(name); }
 
+    public static boolean hasHook(String name) { return INSTALLED.contains(name); }
+
+    private static final java.util.Map<String, String> FAILED = new ConcurrentHashMap<String, String>();
+    static void failed(String name, String reason) { FAILED.put(name, reason == null ? "unrecognized target" : reason); }
+    /** Why an optional hook was not installed, or null. */
+    public static String failure(String name) { return FAILED.get(name); }
+
     public static void assertInstalled() {
         String[] targets = {"net.minecraft.world.World", "net.minecraft.world.chunk.Chunk",
                 "net.minecraft.block.Block", "net.minecraft.block.BlockPistonBase",
-                "net.minecraft.server.management.PlayerInteractionManager", "net.minecraft.command.CommandHandler"};
+                "net.minecraft.server.management.PlayerInteractionManager", "net.minecraft.command.CommandHandler",
+                "net.minecraft.entity.player.EntityPlayer", "net.minecraft.world.storage.WorldInfo", "net.minecraft.server.management.PlayerList"};
         try {
             for (String target : targets) Class.forName(target, false, HookStatus.class.getClassLoader());
         } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Dungeon Guard cannot load its mandatory terrain-protection target.", e);
+            throw new IllegalStateException("Dungeon Guard cannot load its mandatory terrain/spawn-protection target.", e);
         }
         Set<String> missing = new TreeSet<String>(REQUIRED);
         missing.removeAll(INSTALLED);
         if (!missing.isEmpty()) throw new IllegalStateException("Dungeon Guard coremod did not install required hooks: "
-                + missing + ". Refusing to start without terrain protection.");
+                + missing + ". Refusing to start without terrain and spawn protection.");
         assertMagmaCommands();
     }
 

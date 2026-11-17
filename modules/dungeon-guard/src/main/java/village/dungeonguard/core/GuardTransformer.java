@@ -73,8 +73,27 @@ public final class GuardTransformer implements IClassTransformer {
         }
     }
 
+    private interface Patch { byte[] apply(String transformedName, byte[] original); }
+
+    private static byte[] optional(String hook, String transformedName, byte[] original, Patch patch) {
+        try {
+            return patch.apply(transformedName, original);
+        } catch (RuntimeException unsupported) {
+            HookStatus.failed(hook, unsupported.getMessage());
+            org.apache.logging.log4j.LogManager.getLogger("DungeonGuard").error("Optional hook " + hook + " was not installed; "
+                    + transformedName + " is left unchanged and the features that need it stay off: " + unsupported.getMessage());
+            return original;
+        }
+    }
+
     @Override public byte[] transform(String name, String transformedName, byte[] original) {
         if (original == null || transformedName == null) return original;
+        // Optional compatibility hooks: if the other mod changed, leave it untouched and say so.
+        // Throwing here would stop that mod's class from loading at all (NarutoMod then fails to
+        // register its items). Features that need a hook check HookStatus and refuse cleanly.
+        original = optional("AHZNB.kgEligibility", transformedName, original, NarutoGameplayTransformer::apply);
+        original = optional("Waystones.teleportToWaystone", transformedName, original, WaystonesTransformer::apply);
+        original = ForcedSpawnTransformer.apply(transformedName, original);
         String owner = transformedName.replace('.', '/');
         if (!owner.equals(WORLD) && !owner.equals(CHUNK) && !owner.equals(BLOCK)
                 && !owner.equals(PISTON) && !owner.equals(UTILS) && !owner.equals(PORTAL) && !owner.equals(KAMUI)

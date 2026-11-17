@@ -15,299 +15,484 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import village.dungeonguard.AreaState;
+import village.dungeonguard.DungeonWaystones;
+import village.dungeonguard.GuardConfig;
+import village.dungeonguard.GuardMenus;
+import village.dungeonguard.GuardRegion;
+import village.dungeonguard.GuardRuntime;
+import village.dungeonguard.GuardSelections;
+import village.dungeonguard.GuardWand;
+import village.dungeonguard.NarutoGameplayCompat;
+import village.dungeonguard.OperatorAccess;
 import village.dungeonguard.core.HookStatus;
 
-/** Readable setup commands with backward-compatible advanced administration. */
-public final class GuardCommand extends CommandBase {
-    @Override public String getName() { return "dungeonguard"; }
-    @Override public List<String> getAliases() { return Arrays.asList("dg", "dungeon"); }
-    @Override public int getRequiredPermissionLevel() { return 0; }
-    // Native players reject unknown command names even at level zero. Public
-    // dispatch is intentional; each setup action checks real operator identity.
-    @Override public boolean checkPermission(MinecraftServer server, ICommandSender sender) { return sender != null; }
-    @Override public String getUsage(ICommandSender sender) { return "/dungeon"; }
+public final class GuardCommand
+extends CommandBase {
+    public String getName() {
+        return "dungeonguard";
+    }
 
-    @Override public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-        if (!GuardRuntime.ready()) throw new CommandException("Dungeon Guard has no active world.");
-        String sub = args.length == 0 ? "menu" : args[0].toLowerCase(Locale.ROOT);
+    public List<String> getAliases() {
+        return Arrays.asList("dg", "dungeon");
+    }
+
+    public int getRequiredPermissionLevel() {
+        return 0;
+    }
+
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        return sender != null;
+    }
+
+    public String getUsage(ICommandSender sender) {
+        return "/dungeon";
+    }
+
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+        String sub;
+        if (!GuardRuntime.ready()) {
+            throw new CommandException("Dungeon Guard has no active world.", new Object[0]);
+        }
+        String string = sub = args.length == 0 ? "menu" : args[0].toLowerCase(Locale.ROOT);
         if (sub.equals("menu")) {
-            if (args.length > 1) throw new WrongUsageException("/dungeon");
-            GuardMenus.main(sender, isAdmin(sender)); return;
+            if (args.length > 1) {
+                throw new WrongUsageException("/dungeon", new Object[0]);
+            }
+            GuardMenus.main(sender, GuardCommand.isAdmin(sender));
+            return;
         }
         if (sub.equals("spawn")) {
-            if (args.length != 1) throw new WrongUsageException("/dungeon spawn");
-            GuardRuntime.spawn().teleportToSpawn(getCommandSenderAsPlayer(sender));
-            say(sender, "Returned to the spawn Waystone."); return;
+            if (args.length != 1) {
+                throw new WrongUsageException("/dungeon spawn", new Object[0]);
+            }
+            GuardRuntime.spawn().teleportToSpawn(GuardCommand.getCommandSenderAsPlayer((ICommandSender)sender));
+            GuardRuntime.manager().refreshPresence();
+            GuardMenus.feedback(sender, "Returned to spawn.");
+            return;
         }
         if (sub.equals("help")) {
-            if (args.length > 2 || (args.length == 2 && !args[1].equalsIgnoreCase("advanced")))
-                throw new WrongUsageException("/dungeon help [advanced]");
-            help(sender, args.length == 2); return;
+            if (args.length > 2 || args.length == 2 && !args[1].equalsIgnoreCase("advanced")) {
+                throw new WrongUsageException("/dungeon help [advanced]", new Object[0]);
+            }
+            GuardCommand.help(sender, args.length == 2);
+            return;
         }
         if (sub.equals("status") || sub.equals("list") || sub.equals("info")) {
-            if (args.length != 1) throw new WrongUsageException("/dungeon " + sub);
-            status(sender); return;
+            if (args.length > 2) {
+                throw new WrongUsageException("/dg list [page]", new Object[0]);
+            }
+            GuardCommand.status(sender, args.length == 2 ? GuardCommand.parseInt((String)args[1], (int)1) : 1);
+            return;
         }
-        if (!isAdmin(sender)) throw new CommandException("Only connected server operators can configure dungeons. Use /dungeon for spawn and information.");
+        if (!GuardCommand.isAdmin(sender)) {
+            throw new CommandException("Only connected server operators can configure dungeons. Use /dungeon for spawn and information.", new Object[0]);
+        }
         try {
             if (sub.equals("setup")) {
-                exact(args, 1, "/dungeon setup"); GuardMenus.setup(operator(sender)); return;
+                GuardCommand.exact(args, 1, "/dungeon setup");
+                GuardMenus.setup(GuardCommand.operator(sender));
+                return;
+            }
+            if (sub.equals("dungeon") || sub.equals("waystone")) {
+                GuardMenus.feedback(sender, DungeonWaystones.create(GuardCommand.operator(sender), args.length > 1 ? GuardCommand.join(args, 1) : ""));
+                return;
+            }
+            if (sub.equals("puppets")) {
+                GuardCommand.exact(args, 1, "/dg puppets");
+                NarutoGameplayCompat.givePuppetKit(GuardCommand.operator(sender));
+                GuardMenus.feedback(sender, "Puppet Jutsu, Karasu and Sanshouo scrolls added.");
+                return;
+            }
+            if (sub.equals("xp")) {
+                if (args.length == 1) {
+                    GuardCommand.say(sender, "Ninja XP multiplier: " + NarutoGameplayCompat.nativeXpMultiplier() + ". Set with /dg xp <multiplier>.");
+                    return;
+                }
+                GuardCommand.exact(args, 2, "/dg xp <multiplier|native>");
+                double multiplier = args[1].equalsIgnoreCase("native") ? -1.0 : GuardCommand.parseDouble((String)args[1], (double)0.0, (double)2000.0);
+                NarutoGameplayCompat.nativeXpMultiplier();
+                GuardConfig next = GuardRuntime.settings();
+                next.ninjaXpGainMultiplier = multiplier;
+                GuardRuntime.saveAndInstall(next);
+                NarutoGameplayCompat.applySettings(server);
+                GuardMenus.feedback(sender, "Ninja XP multiplier: " + NarutoGameplayCompat.nativeXpMultiplier());
+                return;
             }
             if (sub.equals("wand")) {
-                exact(args, 1, "/dungeon wand"); GuardWand.give(operator(sender)); return;
+                GuardCommand.exact(args, 1, "/dungeon wand");
+                GuardWand.give(GuardCommand.operator(sender));
+                return;
             }
             if (sub.equals("selection")) {
-                exact(args, 1, "/dungeon selection"); say(sender, GuardSelections.describe(operator(sender))); return;
+                GuardCommand.exact(args, 1, "/dungeon selection");
+                GuardMenus.feedback(sender, GuardSelections.describe(GuardCommand.operator(sender)));
+                return;
             }
             if (sub.equals("clear")) {
-                exact(args, 1, "/dungeon clear"); GuardSelections.forget(operator(sender).getUniqueID());
-                say(sender, "Selection cleared. Saved dungeons and clean copies are unchanged."); return;
+                GuardCommand.exact(args, 1, "/dungeon clear");
+                GuardSelections.forget(GuardCommand.operator(sender).getUniqueID());
+                GuardMenus.feedback(sender, "Selection cleared.");
+                return;
             }
             if (sub.equals("setspawn") || sub.equals("bindspawn")) {
-                EntityPlayerMP player = operator(sender); BlockPos target;
-                if (sub.equals("bindspawn") && args.length == 4) target = parseBlockPos(sender, args, 1, false);
-                else if (args.length == 1) {
-                    Vec3d eyes = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-                    Vec3d end = eyes.add(player.getLookVec().scale(8.0D));
-                    RayTraceResult hit = player.world.rayTraceBlocks(eyes, end, false, false, true);
-                    if (hit == null || hit.typeOfHit != RayTraceResult.Type.BLOCK)
-                        throw new CommandException("Look directly at the spawn Waystone, then click Set spawn or use /dungeon setspawn.");
+                BlockPos target;
+                EntityPlayerMP player = GuardCommand.operator(sender);
+                if (sub.equals("bindspawn") && args.length == 4) {
+                    target = GuardCommand.parseBlockPos((ICommandSender)sender, (String[])args, (int)1, (boolean)false);
+                } else if (args.length == 1) {
+                    Vec3d end;
+                    Vec3d eyes = new Vec3d(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ);
+                    RayTraceResult hit = player.world.rayTraceBlocks(eyes, end = eyes.add(player.getLookVec().scale(8.0)), false, false, true);
+                    if (hit == null || hit.typeOfHit != RayTraceResult.Type.BLOCK) {
+                        throw new CommandException("Look directly at the spawn Waystone, then click Set spawn or use /dungeon setspawn.", new Object[0]);
+                    }
                     target = hit.getBlockPos();
-                } else throw new WrongUsageException(sub.equals("setspawn") ? "/dungeon setspawn" : "/dg bindspawn [x y z]");
+                } else {
+                    throw new WrongUsageException(sub.equals("setspawn") ? "/dungeon setspawn" : "/dg bindspawn [x y z]", new Object[0]);
+                }
                 GuardRuntime.spawn().bind(player, target);
-                say(sender, "World spawn is linked to this Waystone. Players can return with /dungeon spawn.");
-                GuardMenus.buttonLine(sender, "Next: ", "Get selection wand", "/dungeon wand", "Select the full dungeon's opposite corners.", false); return;
+                GuardMenus.feedback(sender, "Spawn linked. Next: look at a dungeon Waystone and use /dg dungeon <name>.");
+                return;
             }
             if (sub.equals("pos1") || sub.equals("pos2")) {
-                EntityPlayerMP player = operator(sender);
-                if (args.length != 1 && args.length != 4) throw new WrongUsageException("/dg " + sub + " [x y z]");
-                BlockPos pos = args.length == 4 ? parseBlockPos(sender, args, 1, false) : player.getPosition();
+                EntityPlayerMP player = GuardCommand.operator(sender);
+                if (args.length != 1 && args.length != 4) {
+                    throw new WrongUsageException("/dg " + sub + " [x y z]", new Object[0]);
+                }
+                BlockPos pos = args.length == 4 ? GuardCommand.parseBlockPos((ICommandSender)sender, (String[])args, (int)1, (boolean)false) : player.getPosition();
                 GuardSelections.select(player, pos, sub.equals("pos1"));
-                say(sender, (sub.equals("pos1") ? "Corner 1" : "Corner 2") + " = " + GuardSelections.coordinates(pos) + " in dimension " + player.dimension + ".");
-                say(sender, GuardSelections.describe(player)); return;
+                GuardMenus.feedback(sender, GuardSelections.describe(player));
+                return;
             }
-            if (sub.equals("create")) {
-                if (args.length < 2) throw new WrongUsageException("/dungeon create <element> [display name...]");
-                EntityPlayerMP player = operator(sender);
+            if (sub.equals("create") || sub.equals("save")) {
+                if (args.length < 2) {
+                    throw new WrongUsageException("/dungeon create <element> [display name...]", new Object[0]);
+                }
+                EntityPlayerMP player = GuardCommand.operator(sender);
                 GuardConfig.DungeonLabel label = new GuardConfig.DungeonLabel();
                 label.element = AreaState.normalizeElement(args[1]);
-                label.displayName = args.length > 2 ? join(args, 2) : GuardMenus.title(label.element) + " Dungeon";
+                label.displayName = args.length > 2 ? GuardCommand.join(args, 2) : GuardMenus.title(label.element) + " Dungeon";
                 AreaState.requireText(label.displayName, 80, false, "dungeon name");
                 GuardSelections.Selection selection = GuardSelections.require(player);
-                String id = GuardRuntime.manager().nextAvailableName(safeId(label.displayName, label.element.toLowerCase(Locale.ROOT) + "_dungeon"));
-                GuardRegion region = selection.region(id); validateCapture(region);
-                say(sender, GuardRuntime.manager().register(region, label, player.getUniqueID()));
-                say(sender, "Name: " + label.displayName + " | Element: " + GuardMenus.title(label.element) + ". You will be told when it is Ready.");
-                say(sender, "Keep everyone outside while the clean copy saves. Anyone inside returns to spawn."); return;
+                String id = GuardRuntime.manager().nextAvailableName(GuardCommand.safeId(label.displayName, label.element.toLowerCase(Locale.ROOT) + "_dungeon"));
+                GuardRegion region = selection.region(id);
+                GuardCommand.validateCapture(region);
+                GuardRuntime.manager().register(region, label, player.getUniqueID());
+                GuardMenus.feedback(sender, "Saving " + label.displayName + ". One Ready notice will follow.");
+                return;
             }
             if (sub.equals("capture")) {
-                exact(args, 2, "/dg capture <name>"); EntityPlayerMP player = operator(sender);
-                GuardRegion region = GuardSelections.require(player).region(args[1]); validateCapture(region);
-                say(sender, GuardRuntime.manager().register(region, null, player.getUniqueID()));
-                say(sender, "The clean copy is saving. Keep the area empty; you will be told when it is Ready."); return;
+                GuardCommand.exact(args, 2, "/dg capture <name>");
+                EntityPlayerMP player = GuardCommand.operator(sender);
+                GuardRegion region = GuardSelections.require(player).region(args[1]);
+                GuardCommand.validateCapture(region);
+                GuardRuntime.manager().register(region, null, player.getUniqueID());
+                GuardMenus.feedback(sender, "Saving the clean dungeon. One Ready notice will follow.");
+                return;
             }
             if (sub.equals("boss")) {
-                if (args.length < 2) throw new WrongUsageException("/dungeon boss <boss name...>");
-                saveEasyBoss(operator(sender), join(args, 1)); return;
+                if (args.length < 2) {
+                    throw new WrongUsageException("/dungeon boss <boss name...>", new Object[0]);
+                }
+                GuardCommand.saveEasyBoss(GuardCommand.operator(sender), GuardCommand.join(args, 1));
+                return;
             }
             if (sub.equals("reset")) {
-                exact(args, 2, "/dg reset <name>"); say(sender, GuardRuntime.manager().forceReset(args[1])); return;
+                GuardCommand.exact(args, 2, "/dg reset <name>");
+                GuardCommand.say(sender, GuardRuntime.manager().forceReset(args[1]));
+                return;
             }
             if (sub.equals("remove")) {
-                exact(args, 2, "/dg remove <name>"); say(sender, GuardRuntime.manager().unregister(args[1])); return;
+                GuardCommand.exact(args, 2, "/dg remove <name>");
+                GuardCommand.say(sender, GuardRuntime.manager().unregister(args[1]));
+                return;
             }
             if (sub.equals("reload")) {
-                exact(args, 1, "/dg reload"); GuardRuntime.reload(); say(sender, "Settings reloaded. Region definitions need a restart if changed by hand."); return;
+                GuardCommand.exact(args, 1, "/dg reload");
+                GuardRuntime.reload();
+                NarutoGameplayCompat.applySettings(server);
+                GuardMenus.feedback(sender, "Settings reloaded.");
+                return;
             }
             if (sub.equals("label")) {
-                if (args.length < 4) throw new WrongUsageException("/dg label <dungeon> <element> <display name...>");
-                GuardConfig next = GuardRuntime.settings(); requireDungeon(next, args[1]);
+                if (args.length < 4) {
+                    throw new WrongUsageException("/dg label <dungeon> <element> <display name...>", new Object[0]);
+                }
+                GuardConfig next = GuardRuntime.settings();
+                GuardCommand.requireDungeon(next, args[1]);
                 GuardConfig.DungeonLabel label = new GuardConfig.DungeonLabel();
-                label.element = AreaState.normalizeElement(args[2]); label.displayName = join(args, 3);
-                next.dungeonLabels.put(args[1], label); GuardRuntime.saveAndInstall(next);
-                say(sender, "Dungeon banner: " + GuardMenus.title(label.element) + " / " + label.displayName + "."); return;
+                label.element = AreaState.normalizeElement(args[2]);
+                label.displayName = GuardCommand.join(args, 3);
+                next.dungeonLabels.put(args[1], label);
+                GuardRuntime.saveAndInstall(next);
+                GuardMenus.feedback(sender, "Dungeon name: " + label.displayName);
+                return;
             }
             if (sub.equals("bossarea")) {
-                if (args.length < 4) throw new WrongUsageException("/dg bossarea <dungeon> <area-id> <boss name...>");
-                GuardConfig next = GuardRuntime.settings(); requireDungeon(next, args[1]);
-                GuardConfig.BossZone zone = new GuardConfig.BossZone();
-                zone.id = args[2]; zone.dungeon = args[1]; zone.bossName = join(args, 3);
-                zone.bounds = GuardSelections.require(operator(sender)).region(zone.id);
-                for (int i = next.bossAreas.size() - 1; i >= 0; i--) {
-                    GuardConfig.BossZone old = next.bossAreas.get(i);
-                    if (zone.id.equals(old.id)) {
-                        if (!zone.dungeon.equals(old.dungeon)) throw new CommandException("That boss area ID belongs to a different dungeon.");
-                        zone.areaName = old.areaName; next.bossAreas.remove(i);
-                    }
+                if (args.length < 4) {
+                    throw new WrongUsageException("/dg bossarea <dungeon> <area-id> <boss name...>", new Object[0]);
                 }
-                next.bossAreas.add(zone); GuardRuntime.saveAndInstall(next);
-                say(sender, "Boss area " + zone.id + " saved inside " + zone.dungeon + "; Boss: " + zone.bossName + ".");
-                say(sender, "Optional area title: /dg bosslabel " + zone.id + " <area name...>"); return;
+                GuardConfig next = GuardRuntime.settings();
+                GuardCommand.requireDungeon(next, args[1]);
+                GuardConfig.BossZone zone = new GuardConfig.BossZone();
+                zone.id = args[2];
+                zone.dungeon = args[1];
+                zone.bossName = GuardCommand.join(args, 3);
+                zone.bounds = GuardSelections.require(GuardCommand.operator(sender)).region(zone.id);
+                for (int i = next.bossAreas.size() - 1; i >= 0; --i) {
+                    GuardConfig.BossZone old = next.bossAreas.get(i);
+                    if (!zone.id.equals(old.id)) continue;
+                    if (!zone.dungeon.equals(old.dungeon)) {
+                        throw new CommandException("That boss area ID belongs to a different dungeon.", new Object[0]);
+                    }
+                    zone.areaName = old.areaName;
+                    next.bossAreas.remove(i);
+                }
+                next.bossAreas.add(zone);
+                GuardRuntime.saveAndInstall(next);
+                GuardMenus.feedback(sender, "Boss area saved: " + zone.bossName);
+                return;
             }
             if (sub.equals("bosslabel") || sub.equals("bossremove")) {
-                if ((sub.equals("bosslabel") && args.length < 3) || (sub.equals("bossremove") && args.length != 2))
-                    throw new WrongUsageException(sub.equals("bosslabel") ? "/dg bosslabel <area-id> <area name...>" : "/dg bossremove <area-id>");
-                GuardConfig next = GuardRuntime.settings(); GuardConfig.BossZone found = null;
-                for (GuardConfig.BossZone zone : next.bossAreas) if (zone.id.equals(args[1])) { found = zone; break; }
-                if (found == null) throw new CommandException("No boss area named " + args[1] + ".");
-                if (sub.equals("bosslabel")) found.areaName = join(args, 2); else next.bossAreas.remove(found);
-                GuardRuntime.saveAndInstall(next); say(sender, "Boss area " + args[1] + (sub.equals("bosslabel") ? " renamed." : " removed.")); return;
+                if (sub.equals("bosslabel") && args.length < 3 || sub.equals("bossremove") && args.length != 2) {
+                    throw new WrongUsageException(sub.equals("bosslabel") ? "/dg bosslabel <area-id> <area name...>" : "/dg bossremove <area-id>", new Object[0]);
+                }
+                GuardConfig next = GuardRuntime.settings();
+                GuardConfig.BossZone found = null;
+                for (GuardConfig.BossZone zone : next.bossAreas) {
+                    if (!zone.id.equals(args[1])) continue;
+                    found = zone;
+                    break;
+                }
+                if (found == null) {
+                    throw new CommandException("No boss area named " + args[1] + ".", new Object[0]);
+                }
+                if (sub.equals("bosslabel")) {
+                    found.areaName = GuardCommand.join(args, 2);
+                } else {
+                    next.bossAreas.remove(found);
+                }
+                GuardRuntime.saveAndInstall(next);
+                GuardCommand.say(sender, "Boss area " + args[1] + (sub.equals("bosslabel") ? " renamed." : " removed."));
+                return;
             }
             if (sub.equals("edit")) {
-                say(sender, "Operators can mine and build directly. Other players and ability damage remain protected outside active dungeons."); return;
+                GuardCommand.say(sender, "Operators can mine and build directly. Other players and ability damage remain protected outside active dungeons.");
+                return;
             }
-            throw new WrongUsageException("Unknown subcommand. Open /dungeon or use /dungeon help.");
-        } catch (CommandException e) { throw e; }
-        catch (Exception e) { throw new CommandException("Dungeon Guard: " + e.getMessage()); }
+            throw new WrongUsageException("Unknown subcommand. Open /dungeon or use /dungeon help.", new Object[0]);
+        }
+        catch (CommandException e) {
+            throw e;
+        }
+        catch (Exception e) {
+            throw new CommandException("Dungeon Guard: " + e.getMessage(), new Object[0]);
+        }
     }
 
     private static void validateCapture(GuardRegion region) throws CommandException {
         region.validate();
-        if (!GuardRuntime.spawn().isBound())
-            throw new CommandException("Link spawn first: look at the spawn Waystone and use /dungeon setspawn.");
+        if (!GuardRuntime.spawn().isBound()) {
+            throw new CommandException("Link spawn first: look at the spawn Waystone and use /dungeon setspawn.", new Object[0]);
+        }
         GuardConfig settings = GuardRuntime.settings();
-        if (region.volume() > settings.maxSnapshotBlocks)
-            throw new CommandException("That selection contains " + region.volume() + " blocks; the limit is " + settings.maxSnapshotBlocks + ". Choose closer corners.");
+        if (region.volume() > (long)settings.maxSnapshotBlocks) {
+            throw new CommandException("That selection contains " + region.volume() + " blocks; the limit is " + settings.maxSnapshotBlocks + ". Choose closer corners.", new Object[0]);
+        }
         GuardConfig.Spawn spawn = settings.spawn;
         BlockPos landing = new BlockPos(spawn.landingX, spawn.landingY, spawn.landingZ);
-        if (region.dimension == spawn.dimension && (region.contains(spawn.x, spawn.y, spawn.z)
-                || region.contains(spawn.x, spawn.y + 1, spawn.z) || region.contains(landing)
-                || region.contains(landing.up()) || region.contains(landing.down())))
-            throw new CommandException("Keep the spawn Waystone and its landing area outside your dungeon selection.");
-    }
-    private static void saveEasyBoss(EntityPlayerMP player, String bossName) throws Exception {
-        AreaState.requireText(bossName, 80, false, "boss name");
-        GuardRegion selected = GuardSelections.require(player).region("boss_selection"); selected.validate();
-        GuardConfig next = GuardRuntime.settings(); GuardRegion parent = null;
-        for (GuardRegion region : next.regions) if (region.dimension == selected.dimension
-                && region.contains(selected.minX, selected.minY, selected.minZ) && region.contains(selected.maxX, selected.maxY, selected.maxZ)) {
-            if (parent != null) throw new CommandException("This chamber matches more than one dungeon; check the saved dungeon bounds.");
-            parent = region;
+        if (region.dimension == spawn.dimension && (region.contains(spawn.x, spawn.y, spawn.z) || region.contains(spawn.x, spawn.y + 1, spawn.z) || region.contains(landing) || region.contains(landing.up()) || region.contains(landing.down()))) {
+            throw new CommandException("Keep the spawn Waystone and its landing area outside your dungeon selection.", new Object[0]);
         }
-        if (parent == null) throw new CommandException("Select a boss chamber completely inside one saved dungeon. If its clean copy is still saving, wait for Ready.");
+    }
+
+    private static void saveEasyBoss(EntityPlayerMP player, String bossName) throws Exception {
+        boolean bl;
+        AreaState.requireText(bossName, 80, false, "boss name");
+        GuardRegion selected = GuardSelections.require(player).region("boss_selection");
+        selected.validate();
+        GuardConfig next = GuardRuntime.settings();
+        GuardRegion parent = null;
+        for (GuardRegion guardRegion : next.regions) {
+            if (guardRegion.dimension != selected.dimension || !guardRegion.contains(selected.minX, selected.minY, selected.minZ) || !guardRegion.contains(selected.maxX, selected.maxY, selected.maxZ)) continue;
+            if (parent != null) {
+                throw new CommandException("This chamber matches more than one dungeon; check the saved dungeon bounds.", new Object[0]);
+            }
+            parent = guardRegion;
+        }
+        if (parent == null) {
+            throw new CommandException("Select a boss chamber completely inside one saved dungeon. If its clean copy is still saving, wait for Ready.", new Object[0]);
+        }
         GuardConfig.BossZone match = null;
         for (GuardConfig.BossZone zone : next.bossAreas) {
-            if (sameBounds(zone.bounds, selected) && zone.dungeon.equals(parent.name)) match = zone;
-            else if (zone.bounds.overlaps(selected))
-                throw new CommandException("That selection overlaps boss area " + zone.id + ". Select its exact corners to rename its boss, or remove it with /dungeon bossremove " + zone.id + ".");
+            if (GuardCommand.sameBounds(zone.bounds, selected) && zone.dungeon.equals(parent.name)) {
+                match = zone;
+                continue;
+            }
+            if (!zone.bounds.overlaps(selected)) continue;
+            throw new CommandException("That selection overlaps boss area " + zone.id + ". Select its exact corners to rename its boss, or remove it with /dungeon bossremove " + zone.id + ".", new Object[0]);
         }
-        boolean updated = match != null;
+        boolean bl2 = bl = match != null;
         if (match == null) {
-            match = new GuardConfig.BossZone(); match.id = bossId(next, safeId(bossName, "boss_area")); match.dungeon = parent.name;
-            selected.name = match.id; match.bounds = selected; next.bossAreas.add(match);
+            match = new GuardConfig.BossZone();
+            match.id = GuardCommand.bossId(next, GuardCommand.safeId(bossName, "boss_area"));
+            match.dungeon = parent.name;
+            selected.name = match.id;
+            match.bounds = selected;
+            next.bossAreas.add(match);
         }
-        match.bossName = bossName; GuardRuntime.saveAndInstall(next);
+        match.bossName = bossName;
+        GuardRuntime.saveAndInstall(next);
         GuardConfig.DungeonLabel label = next.dungeonLabels.get(parent.name);
-        say(player, (updated ? "Boss updated: " : "Boss area saved: ") + bossName + " in " + (label == null ? parent.name : label.displayName) + ".");
-        say(player, "Area ID: " + match.id + ". Its element follows the dungeon.");
-        GuardMenus.buttonLine(player, "Optional area title: ", "Name room...", "/dungeon bosslabel " + match.id + " ", "Type an area title such as Gaara's Chamber.", true);
+        GuardMenus.feedback((ICommandSender)player, (bl ? "Boss updated: " : "Boss area saved: ") + bossName);
     }
+
     private static boolean sameBounds(GuardRegion a, GuardRegion b) {
-        return a.dimension == b.dimension && a.minX == b.minX && a.minY == b.minY && a.minZ == b.minZ
-                && a.maxX == b.maxX && a.maxY == b.maxY && a.maxZ == b.maxZ;
+        return a.dimension == b.dimension && a.minX == b.minX && a.minY == b.minY && a.minZ == b.minZ && a.maxX == b.maxX && a.maxY == b.maxY && a.maxZ == b.maxZ;
     }
+
     private static String safeId(String text, String fallback) {
         String id = text.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "_").replaceAll("^_+|_+$", "");
-        if (id.isEmpty()) id = fallback;
+        if (id.isEmpty()) {
+            id = fallback;
+        }
         return id.length() > 48 ? id.substring(0, 48) : id;
     }
+
     private static String bossId(GuardConfig config, String base) {
-        for (int suffix = 1; suffix < Integer.MAX_VALUE; suffix++) {
+        for (int suffix = 1; suffix < Integer.MAX_VALUE; ++suffix) {
             String tail = suffix == 1 ? "" : "-" + suffix;
             String candidate = base.substring(0, Math.min(base.length(), 48 - tail.length())) + tail;
-            boolean exists = false; for (GuardConfig.BossZone zone : config.bossAreas) if (zone.id.equals(candidate)) { exists = true; break; }
-            if (!exists) return candidate;
+            boolean exists = false;
+            for (GuardConfig.BossZone zone : config.bossAreas) {
+                if (!zone.id.equals(candidate)) continue;
+                exists = true;
+                break;
+            }
+            if (exists) continue;
+            return candidate;
         }
         throw new IllegalStateException("No free boss area ID is available.");
     }
-    private static void status(ICommandSender sender) {
-        GuardMenus.heading(sender, "Dungeon information");
-        say(sender, GuardRuntime.spawn().describe());
-        say(sender, "World protection: " + (GuardRuntime.policy().enabled && GuardRuntime.policy().lockOutsideDungeons
-                ? "outside terrain is protected; operators can build" : "custom settings"));
-        if (!isAdmin(sender) && GuardRuntime.manager().regions().isEmpty()) say(sender, "No dungeons are registered yet.");
-        else for (String line : GuardRuntime.manager().statusLines()) say(sender, line);
-        GuardConfig settings = GuardRuntime.settings();
-        if (!settings.bossAreas.isEmpty()) for (GuardConfig.BossZone zone : settings.bossAreas)
-            say(sender, "Boss: " + zone.bossName + " | " + zone.areaName + " | " + zone.dungeon + (isAdmin(sender) ? " [" + zone.id + "]" : ""));
-        if (isAdmin(sender)) {
-            for (GuardRegion region : settings.regions) {
-                GuardConfig.DungeonLabel label = settings.dungeonLabels.get(region.name);
-                String element = label == null ? "general" : label.element.toLowerCase(Locale.ROOT);
-                ITextComponent actions = new TextComponentString((label == null ? region.name : label.displayName) + ": ");
-                actions.appendSibling(GuardMenus.button("Rename...", "/dungeon label " + region.name + " " + element + " ", "Type the display name; the clean copy stays unchanged.", true));
-                actions.appendText("  ").appendSibling(GuardMenus.button("Reset...", "/dungeon reset " + region.name, "Review and send to restore this empty dungeon.", true));
-                actions.appendText("  ").appendSibling(GuardMenus.button("Unregister...", "/dungeon remove " + region.name, "Review and send to unregister this empty dungeon. Its saved clean copy is retained.", true));
-                sender.sendMessage(actions);
-            }
-            GuardMenus.buttonLine(sender, "", "Guided setup", "/dungeon setup", "Create another dungeon or mark a boss room.", false);
+
+    private static void status(ICommandSender sender, int page) {
+        List<String> lines = GuardRuntime.manager().statusLines();
+        int pages = Math.max(1, (lines.size() + 4) / 5);
+        page = Math.min(page, pages);
+        GuardMenus.heading(sender, "Dungeons " + page + "/" + pages);
+        for (int i = (page - 1) * 5; i < Math.min(lines.size(), page * 5); ++i) {
+            GuardCommand.say(sender, lines.get(i));
+        }
+        if (page < pages) {
+            GuardMenus.buttonLine(sender, "", "Next", "/dg list " + (page + 1), "Next five dungeons.", false);
         }
     }
+
     private static void help(ICommandSender sender, boolean advanced) {
-        GuardMenus.main(sender, isAdmin(sender));
-        say(sender, "/dungeon spawn - return to the linked spawn Waystone");
-        say(sender, "/dungeon list - see clean-copy progress and dungeon activity");
-        if (!isAdmin(sender)) return;
-        if (!advanced) {
-            say(sender, "/dungeon setup - clickable guide for spawn, corners, elements and boss rooms");
-            say(sender, "/dungeon create fire Fire Temple - save the selected clean dungeon and its banner together");
-            say(sender, "/dungeon boss Gaara - mark the selected chamber and name its boss");
-            say(sender, "Elements: general, fire, water, wind, earth, lightning, sand, ice. Existing /dg commands still work.");
-            GuardMenus.buttonLine(sender, "", "Advanced commands", "/dungeon help advanced", "Coordinates, explicit IDs, reset, removal and configuration.", false); return;
+        GuardMenus.main(sender, GuardCommand.isAdmin(sender));
+        GuardCommand.say(sender, "/dungeon spawn - return to the linked spawn Waystone");
+        GuardCommand.say(sender, "/dungeon list - see clean-copy progress and dungeon activity");
+        if (!GuardCommand.isAdmin(sender)) {
+            return;
         }
-        say(sender, "/dg bindspawn [x y z] - bind the targeted or specified spawn Waystone");
-        say(sender, "/dg pos1 [x y z] ; /dg pos2 [x y z] - set inclusive selection corners");
-        say(sender, "/dg capture <id> - save a new clean baseline with an explicit ID");
-        say(sender, "/dg reset <id> ; /dg remove <id> - reset or unregister an empty dungeon; clean copies are retained");
-        say(sender, "/dg label <dungeon> <element> <display name...> - update its banner");
-        say(sender, "/dg bossarea <dungeon> <area-id> <boss name...> - assign the selected boss bounds explicitly");
-        say(sender, "/dg bosslabel <area-id> <area name...> ; /dg bossremove <area-id> - rename/remove a boss area");
-        say(sender, "/dg reload - reload non-region settings. Client banner toggle: /dghud [on|off]");
-        say(sender, "Technical protection check: " + HookStatus.summary());
+        if (!advanced) {
+            GuardCommand.say(sender, "/dg setspawn - look at the spawn Waystone; /dg dungeon Cloud Temple - look at the dungeon Waystone");
+            GuardCommand.say(sender, "/dg boss Gaara - name a selected boss chamber; /dg xp 2 - set the native XP multiplier");
+            GuardCommand.say(sender, "/dg puppets - operator puppet-scroll kit; /dg wand - select a boss chamber or custom region");
+            GuardMenus.buttonLine(sender, "", "Advanced commands", "/dungeon help advanced", "Coordinates, explicit IDs, reset, removal and configuration.", false);
+            return;
+        }
+        GuardCommand.say(sender, "/dg bindspawn [x y z] - bind the targeted or specified spawn Waystone");
+        GuardCommand.say(sender, "/dg pos1 [x y z] ; /dg pos2 [x y z] - set inclusive selection corners");
+        GuardCommand.say(sender, "/dg capture <id> - save a new clean baseline with an explicit ID");
+        GuardCommand.say(sender, "/dg reset <id> ; /dg remove <id> - reset or unregister an empty dungeon; clean copies are retained");
+        GuardCommand.say(sender, "/dg label <dungeon> <element> <display name...> - update its banner");
+        GuardCommand.say(sender, "/dg bossarea <dungeon> <area-id> <boss name...> - assign the selected boss bounds explicitly");
+        GuardCommand.say(sender, "/dg bosslabel <area-id> <area name...> ; /dg bossremove <area-id> - rename/remove a boss area");
+        GuardCommand.say(sender, "/dg reload - reload non-region settings. Client banner toggle: /dghud [on|off]");
+        GuardCommand.say(sender, "Technical protection check: " + HookStatus.summary());
     }
+
     private static EntityPlayerMP operator(ICommandSender sender) throws CommandException {
-        if (!(sender instanceof EntityPlayerMP) || !OperatorAccess.isOperator((EntityPlayerMP) sender))
-            throw new CommandException("Use this setup action in-game as a connected server operator.");
-        return (EntityPlayerMP) sender;
+        if (!(sender instanceof EntityPlayerMP) || !OperatorAccess.isOperator((EntityPlayer)((EntityPlayerMP)sender))) {
+            throw new CommandException("Use this setup action in-game as a connected server operator.", new Object[0]);
+        }
+        return (EntityPlayerMP)sender;
     }
+
     private static boolean isAdmin(ICommandSender sender) {
-        if (sender instanceof EntityPlayer) return OperatorAccess.isOperator((EntityPlayer) sender);
+        if (sender instanceof EntityPlayer) {
+            return OperatorAccess.isOperator((EntityPlayer)sender);
+        }
         return sender != null && sender.getServer() != null && sender == sender.getServer();
     }
+
     private static void requireDungeon(GuardConfig config, String name) throws CommandException {
-        for (GuardRegion region : config.regions) if (region.name.equals(name)) return;
-        throw new CommandException("No saved dungeon named " + name + ". Save its clean copy and wait for Ready first.");
+        for (GuardRegion region : config.regions) {
+            if (!region.name.equals(name)) continue;
+            return;
+        }
+        throw new CommandException("No saved dungeon named " + name + ". Save its clean copy and wait for Ready first.", new Object[0]);
     }
-    private static void exact(String[] args, int count, String usage) throws WrongUsageException { if (args.length != count) throw new WrongUsageException(usage); }
+
+    private static void exact(String[] args, int count, String usage) throws WrongUsageException {
+        if (args.length != count) {
+            throw new WrongUsageException(usage, new Object[0]);
+        }
+    }
+
     private static String join(String[] values, int first) {
         StringBuilder result = new StringBuilder();
-        for (int i = first; i < values.length; i++) { if (i > first) result.append(' '); result.append(values[i]); }
+        for (int i = first; i < values.length; ++i) {
+            if (i > first) {
+                result.append(' ');
+            }
+            result.append(values[i]);
+        }
         return result.toString();
     }
-    private static void say(ICommandSender sender, String message) { GuardMenus.say(sender, message); }
-    @Override public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos target) {
+
+    private static void say(ICommandSender sender, String message) {
+        GuardMenus.say(sender, message);
+    }
+
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos target) {
         if (args.length == 1) {
-            if (!isAdmin(sender)) return getListOfStringsMatchingLastWord(args, "menu", "help", "spawn", "status", "list", "info");
-            return getListOfStringsMatchingLastWord(args, "menu", "setup", "wand", "setspawn", "create", "boss", "selection", "clear", "help", "spawn", "status", "list", "info",
-                    "bindspawn", "pos1", "pos2", "capture", "reset", "remove", "label", "bossarea", "bosslabel", "bossremove", "reload", "edit");
+            if (!GuardCommand.isAdmin(sender)) {
+                return GuardCommand.getListOfStringsMatchingLastWord((String[])args, (String[])new String[]{"menu", "help", "spawn", "status", "list", "info"});
+            }
+            return GuardCommand.getListOfStringsMatchingLastWord((String[])args, (String[])new String[]{"menu", "setup", "wand", "setspawn", "dungeon", "waystone", "save", "create", "boss", "xp", "puppets", "selection", "clear", "help", "spawn", "status", "list", "info", "bindspawn", "pos1", "pos2", "capture", "reset", "remove", "label", "bossarea", "bosslabel", "bossremove", "reload", "edit"});
         }
-        if (args.length == 0 || !isAdmin(sender)) return Collections.emptyList();
+        if (args.length == 0 || !GuardCommand.isAdmin(sender)) {
+            return Collections.emptyList();
+        }
         String sub = args[0].toLowerCase(Locale.ROOT);
-        if ((args.length == 2 && sub.equals("create")) || (args.length == 3 && sub.equals("label"))) {
-            List<String> elements = new ArrayList<String>(); for (String element : AreaState.ELEMENTS) elements.add(element.toLowerCase(Locale.ROOT));
-            return getListOfStringsMatchingLastWord(args, elements);
+        if (args.length == 2 && (sub.equals("create") || sub.equals("save")) || args.length == 3 && sub.equals("label")) {
+            ArrayList<String> elements = new ArrayList<String>();
+            for (String element : AreaState.ELEMENTS) {
+                elements.add(element.toLowerCase(Locale.ROOT));
+            }
+            return GuardCommand.getListOfStringsMatchingLastWord((String[])args, elements);
         }
         if (args.length == 2 && (sub.equals("reset") || sub.equals("remove") || sub.equals("label") || sub.equals("bossarea"))) {
-            List<String> names = new ArrayList<String>(); for (GuardRegion region : GuardRuntime.manager().regions()) names.add(region.name);
-            return getListOfStringsMatchingLastWord(args, names);
+            ArrayList<String> names = new ArrayList<String>();
+            for (GuardRegion region : GuardRuntime.manager().regions()) {
+                names.add(region.name);
+            }
+            return GuardCommand.getListOfStringsMatchingLastWord((String[])args, names);
         }
         if (args.length == 2 && (sub.equals("bosslabel") || sub.equals("bossremove"))) {
-            List<String> names = new ArrayList<String>(); for (GuardConfig.BossZone zone : GuardRuntime.settings().bossAreas) names.add(zone.id);
-            return getListOfStringsMatchingLastWord(args, names);
+            ArrayList<String> names = new ArrayList<String>();
+            for (GuardConfig.BossZone zone : GuardRuntime.settings().bossAreas) {
+                names.add(zone.id);
+            }
+            return GuardCommand.getListOfStringsMatchingLastWord((String[])args, names);
         }
-        if (args.length == 2 && sub.equals("help")) return getListOfStringsMatchingLastWord(args, "advanced");
+        if (args.length == 2 && sub.equals("help")) {
+            return GuardCommand.getListOfStringsMatchingLastWord((String[])args, (String[])new String[]{"advanced"});
+        }
         return Collections.emptyList();
     }
 }
+

@@ -1,5 +1,33 @@
 # Dungeon Guard changes
 
+## 1.4.2
+
+Source recovery and hardening of the 1.4.1 release.
+
+- The 1.3/1.4 work (dungeon Waystones with 300 x 250 x 300 zones and in-place
+  upgrades, forced spawn at the spawn Waystone, packed clean-copy storage, the
+  NarutoMod gameplay layer and the quieter client) existed only as the built
+  1.4.1 JAR. Its source is now recovered into this module from that JAR and
+  verified to decompile to the same program; unchanged classes keep their
+  original 1.2.0 source.
+- Optional NarutoMod and Waystones hooks no longer break those mods when they
+  do not recognise the target. Previously an unrecognised NarutoMod build made
+  the kekkei genkai class fail to load, and NarutoMod then stopped registering
+  its items ("Unknown item narutomod:..." on every recipe). Now the target is
+  left unchanged, the reason is logged once, and the dependent features
+  (KG XP gate, Waystone dungeon registration) stay off.
+- The NarutoMod KG fingerprint ignores Minecraft member renaming, so it matches
+  the same AHZNB 0.3.1-beta class on a real server (SRG names) and in a
+  development runtime (MCP names). The released-JAR check now covers it.
+- The client/server banner handshake follows the mod's own version constant
+  again instead of a hard-coded "1.4.1".
+- Verified on a native development server with the owner's NarutoMod 0.3.1-beta:
+  a dungeon saved by 1.2.0 loads as Ready, rebuilds blocks and chest contents
+  on reset, locks while empty, accepts damage while occupied, rebuilds itself
+  after the player leaves, a new capture uses the packed format, and both load
+  after a restart. Waystone travel, forced spawn and dungeon Waystone upgrades
+  still need the Waystones mod to be checked natively.
+
 ## 1.2.0
 
 Simpler setup with the same saved-world format and protection rules.
