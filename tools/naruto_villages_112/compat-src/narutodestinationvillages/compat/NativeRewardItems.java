@@ -25,7 +25,7 @@ public final class NativeRewardItems {
             case "narutodestination:sptoken":return "skill";
             case "narutodestination:jptoken":return "jutsu";
             case "narutodestination:rptoken":return "reset";
-            default:return null;
+            default:return NativeRandomizers.kindForLegacyId(id.toLowerCase(Locale.ROOT));
         }
     }
 
@@ -38,6 +38,7 @@ public final class NativeRewardItems {
         Item original = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
         if(original!=null)return new ItemStack(original,count,value);
         String kind=legacyKind(id);if(kind==null)return null;
+        if (NativeRandomizers.isKind(kind)) return randomizer(kind, value, count);
         if (!validValue(value)) throw new IllegalArgumentException("Token value must be 1, 5, 10 or 50");
         ItemStack stack = new ItemStack(Items.PAPER, count);
         NBTTagCompound root = new NBTTagCompound(), reward = new NBTTagCompound(), display = new NBTTagCompound();
@@ -57,11 +58,34 @@ public final class NativeRewardItems {
         return stack;
     }
 
+    /** Randomizer and DNA tokens: the value is the legacy form (0 = random), not a point amount. */
+    private static ItemStack randomizer(String kind, int form, int count) {
+        if (!NativeRandomizers.validForm(kind, form)) throw new IllegalArgumentException("Unknown " + kind + " token form " + form);
+        ItemStack stack = new ItemStack(Items.PAPER, count);
+        NBTTagCompound root = new NBTTagCompound(), reward = new NBTTagCompound(), display = new NBTTagCompound();
+        reward.setInteger("version", 1);
+        reward.setString("kind", kind);
+        reward.setInteger("value", form);
+        root.setTag(TAG, reward);
+        display.setString("Name", NativeRandomizers.displayName(kind, form));
+        NBTTagList lore = new NBTTagList();
+        for (String line : NativeRandomizers.lore(kind, form)) lore.appendTag(new NBTTagString(line));
+        display.setTag("Lore", lore);
+        root.setTag("display", display);
+        stack.setTagCompound(root);
+        return stack;
+    }
+
+    /** SP, JP and reset tokens bank points for /shinobitraining. */
+    public static boolean isPointKind(String kind) { return "skill".equals(kind) || "jutsu".equals(kind) || "reset".equals(kind); }
+    /** The legacy form of a valid randomizer or DNA token; -1 otherwise. */
+    public static int formValue(ItemStack stack) { String k = kind(stack); return NativeRandomizers.isKind(k) ? stack.getTagCompound().getCompoundTag(TAG).getInteger("value") : -1; }
+
     /** Zero means ordinary paper or an invalid token. Never trust display text or client arguments. */
     public static int xpValue(ItemStack stack) {
         return "chakra_xp".equals(kind(stack))?pointValue(stack):0;
     }
-    public static int pointValue(ItemStack stack){return kind(stack)==null?0:stack.getTagCompound().getCompoundTag(TAG).getInteger("value");}
+    public static int pointValue(ItemStack stack){String k=kind(stack);return k==null||NativeRandomizers.isKind(k)?0:stack.getTagCompound().getCompoundTag(TAG).getInteger("value");}
     public static String kind(ItemStack stack) {
         if (stack == null || stack.isEmpty() || stack.getItem() != Items.PAPER || !stack.hasTagCompound()) return null;
         NBTTagCompound root = stack.getTagCompound();
@@ -69,6 +93,8 @@ public final class NativeRewardItems {
         NBTTagCompound reward = root.getCompoundTag(TAG);
         int value = reward.getInteger("value");
         String kind=reward.getString("kind");boolean recognized="chakra_xp".equals(kind)||"skill".equals(kind)||"jutsu".equals(kind)||"reset".equals(kind);
-        return reward.getInteger("version")==1&&recognized&&validValue(value)?kind:null;
+        if (reward.getInteger("version") != 1) return null;
+        if (NativeRandomizers.isKind(kind)) return NativeRandomizers.validForm(kind, value) ? kind : null;
+        return recognized&&validValue(value)?kind:null;
     }
 }

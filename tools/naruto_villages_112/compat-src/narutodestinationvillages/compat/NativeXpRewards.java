@@ -33,6 +33,8 @@ public final class NativeXpRewards {
         reload();
         if (!registered) {
             MinecraftForge.EVENT_BUS.register(new NativeXpRewards());
+            NativeRandomizers.initialize();
+            PvPCooldownStore.register();
             registered = true;
         }
     }
@@ -46,6 +48,7 @@ public final class NativeXpRewards {
         for (Map.Entry<String, Float> row : XpRankMultipliers.defaults().entrySet()) {
             MULTIPLIERS.put(row.getKey(), config.getFloat(row.getKey(), "rank_xp", row.getValue(), 0, 2000, "Chakra-experience token rank multiplier."));
         }
+        NativeRandomizers.load(config);
         if (config.hasChanged()) config.save();
     }
 

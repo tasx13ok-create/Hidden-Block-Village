@@ -84,12 +84,12 @@ public final class NativeTraining {
  }
  @SubscribeEvent public void use(PlayerInteractEvent.RightClickItem event){
   if(event.getWorld().isRemote||!(event.getEntityPlayer() instanceof EntityPlayerMP))return;EntityPlayerMP player=(EntityPlayerMP)event.getEntityPlayer();
-  String kind=NativeRewardItems.kind(player.getHeldItem(event.getHand()));if(kind==null||"chakra_xp".equals(kind))return;
+  String kind=NativeRewardItems.kind(player.getHeldItem(event.getHand()));if(!NativeRewardItems.isPointKind(kind))return;
   event.setCanceled(true);event.setCancellationResult(redeem(player,event.getHand())?net.minecraft.util.EnumActionResult.SUCCESS:net.minecraft.util.EnumActionResult.FAIL);
  }
  public static boolean redeem(EntityPlayerMP player,EnumHand hand){
   if(!server(player)||!BUSY.add(player.getUniqueID()))return false;
-  try{ItemStack stack=player.getHeldItem(hand);String kind=NativeRewardItems.kind(stack);if(kind==null||"chakra_xp".equals(kind))return false;
+  try{ItemStack stack=player.getHeldItem(hand);String kind=NativeRewardItems.kind(stack);if(!NativeRewardItems.isPointKind(kind))return false;
    int count=player.isSneaking()?stack.getCount():1;long amount=(long)NativeRewardItems.pointValue(stack)*count;if(count<1||count>64||!credit(player,kind,amount))return false;
    stack.shrink(count);if(player.getHeldItem(hand)==stack&&stack.isEmpty())player.setHeldItem(hand,ItemStack.EMPTY);player.inventory.markDirty();player.inventoryContainer.detectAndSendChanges();statistics(player);
    player.sendMessage(new TextComponentString("\u00a7aAdded "+amount+" "+kind+" point"+(amount==1?"":"s")+". Open /shinobitraining to spend them."));return true;

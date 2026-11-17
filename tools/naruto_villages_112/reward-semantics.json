@@ -1,70 +1,80 @@
 {
-  "schema": 1,
-  "scope": "RECOVERED_REFERENCE_BEHAVIOR_AND_TARGET_BINDINGS",
-  "reference_base_version": "NarutoDestination 1.24.0",
-  "reference_base_sha256": "7067af6a207f7216ee5eed32a239c1266b7f84c0a145b4544c89da0b0c035787",
-  "reference_implementation_or_artwork_in_git": false,
-  "providers": {
-    "NarutoDestination:xptoken": {
-      "reference_effect": "Adds chakra experience; denominations 1/5/10/50; applies general and rank multipliers before integer truncation; sneak consumes the held stack.",
-      "target": "NativeRewardItems marked vanilla paper plus NativeXpRewards calling actual NarutoMod PlayerTracker.addBattleXp.",
-      "deliberate_adaptation": "AHZNB battle XP is the target progression resource; the old base's separate chakra-experience curve is not reproduced.",
-      "original_default_pool_rows": 4,
-      "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT"
-    },
-    "NarutoDestination:sptoken": {
-      "reference_effect": "Adds unspent skill points; denominations 1/5/10/50; supports sneak whole-stack consumption.",
-      "original_default_pool_rows": 4,
-      "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
-      "target": "Marked-paper SP tokens credit a separate long balance; NativeTraining and the server-owned training menu spend it on native ninjutsu, taijutsu, kenjutsu and speed effects.",
-      "deliberate_adaptation": "Four supported target disciplines capped at 500 each; their damage/chakra/health/movement formulas are new target-game rules. Other reference disciplines and the old base formulas are not claimed complete."
-    },
-    "NarutoDestination:jptoken": {
-      "reference_effect": "Adds spendable jutsu points; supports the same four denominations and whole-stack consumption.",
-      "original_default_pool_rows": 2,
-      "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
-      "target": "Marked-paper JP tokens credit a separate long balance; NativeLearning enables and supplies required knowledge for an actual technique on a held owned native ItemJutsu.Base item.",
-      "deliberate_adaptation": "JP learning uses target rank costs D/E1,C3,B5,A10,S20 and native item public APIs. Knowledge XP is supplied as a learning unlock; this is not equivalence with the original base jutsu progression. Native mode/chakra/cast requirements remain."
-    },
-    "NarutoDestination:rpToken": {
-      "reference_effect": "Adds reset points for the original allocation system. It is not rank currency and does not itself immediately reset a character.",
-      "original_default_pool_rows": 1,
-      "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
-      "target": "Marked-paper reset tokens bank separate credits. A menu/command reset spends one, refunds exactly the four supported disciplines and clears actual native chakra amount.",
-      "deliberate_adaptation": "Resets only this adapter allocation system; does not reset unrelated NarutoMod progress, clans, battle XP or learned techniques."
-    },
-    "NarutoDestination:unidentifieddna": {
-      "reference_effect": "Identifies a DNA reward from the original DNA provider.",
-      "original_default_pool_rows": 1,
-      "status": "UNFINISHED",
-      "required_binding": "Recover the complete original DNA identity/effect table and verify installed-provider behavior before mapping."
-    },
-    "NarutoDestination:kgrandomizer": {
-      "reference_effect": "Random form rolls a specific token; specific forms grant corresponding kekkei-genkai ownership and configured token bonuses.",
-      "original_default_pool_rows": 1,
-      "status": "UNFINISHED",
-      "required_binding": "Preserve roll, identity, already-owned checks and actual power acquisition; a random unrelated weapon is not equivalent."
-    },
-    "NarutoDestination:naturerandomizer": {
-      "reference_effect": "Random form rolls wind/water/fire/lightning/earth/yin/yang; specific form grants that nature ownership with configured token bonuses.",
-      "original_default_pool_rows": 1,
-      "status": "UNFINISHED",
-      "required_binding": "Verify actual target affinity/ownership and learning APIs for all seven outcomes."
-    },
-    "NarutoDestination:clanrandomizer": {
-      "reference_effect": "Rolls or applies a specific clan through the original clan provider.",
-      "original_default_pool_rows": 1,
-      "status": "UNFINISHED",
-      "required_binding": "Recover and implement each clan's actual effects, with persistence, rather than only storing a clan label."
-    },
-    "NarutoDestination:sagerandomizer": {
-      "reference_effect": "Random form rolls a specific Snake/JiraiyaToad/Slug/NarutoToad/Dragon token; applying it updates sage version.",
-      "original_default_pool_rows": 1,
-      "status": "UNFINISHED",
-      "required_binding": "Verify the five actual sage-mode providers and preserve specific-form acquisition and already-owned behavior."
-    }
+ "schema": 1,
+ "scope": "RECOVERED_REFERENCE_BEHAVIOR_AND_TARGET_BINDINGS",
+ "reference_base_version": "NarutoDestination 1.24.0",
+ "reference_base_sha256": "7067af6a207f7216ee5eed32a239c1266b7f84c0a145b4544c89da0b0c035787",
+ "reference_implementation_or_artwork_in_git": false,
+ "providers": {
+  "NarutoDestination:xptoken": {
+   "reference_effect": "Adds chakra experience; denominations 1/5/10/50; applies general and rank multipliers before integer truncation; sneak consumes the held stack.",
+   "target": "NativeRewardItems marked vanilla paper plus NativeXpRewards calling actual NarutoMod PlayerTracker.addBattleXp.",
+   "deliberate_adaptation": "AHZNB battle XP is the target progression resource; the old base's separate chakra-experience curve is not reproduced.",
+   "original_default_pool_rows": 4,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT"
   },
-  "current_evidence": "release/evidence/naruto-villages-112-training.json",
-  "default_pool_rows_with_usable_providers": 11,
-  "default_pool_rows_total": 16
+  "NarutoDestination:sptoken": {
+   "reference_effect": "Adds unspent skill points; denominations 1/5/10/50; supports sneak whole-stack consumption.",
+   "original_default_pool_rows": 4,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "target": "Marked-paper SP tokens credit a separate long balance; NativeTraining and the server-owned training menu spend it on native ninjutsu, taijutsu, kenjutsu and speed effects.",
+   "deliberate_adaptation": "Four supported target disciplines capped at 500 each; their damage/chakra/health/movement formulas are new target-game rules. Other reference disciplines and the old base formulas are not claimed complete."
+  },
+  "NarutoDestination:jptoken": {
+   "reference_effect": "Adds spendable jutsu points; supports the same four denominations and whole-stack consumption.",
+   "original_default_pool_rows": 2,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "target": "Marked-paper JP tokens credit a separate long balance; NativeLearning enables and supplies required knowledge for an actual technique on a held owned native ItemJutsu.Base item.",
+   "deliberate_adaptation": "JP learning uses target rank costs D/E1,C3,B5,A10,S20 and native item public APIs. Knowledge XP is supplied as a learning unlock; this is not equivalence with the original base jutsu progression. Native mode/chakra/cast requirements remain."
+  },
+  "NarutoDestination:rpToken": {
+   "reference_effect": "Adds reset points for the original allocation system. It is not rank currency and does not itself immediately reset a character.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "target": "Marked-paper reset tokens bank separate credits. A menu/command reset spends one, refunds exactly the four supported disciplines and clears actual native chakra amount.",
+   "deliberate_adaptation": "Resets only this adapter allocation system; does not reset unrelated NarutoMod progress, clans, battle XP or learned techniques."
+  },
+  "NarutoDestination:unidentifieddna": {
+   "reference_effect": "Identifies a DNA reward from the original DNA provider.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "required_binding": "Recover the complete original DNA identity/effect table and verify installed-provider behavior before mapping.",
+   "target": "NativeRandomizers: marked-paper DNA token; identification needs native ninja level (configurable, default 5) with a level-scaled chance; success yields a specific nature (default 90%) or native kekkei genkai token, failure destroys the DNA.",
+   "deliberate_adaptation": "Intelligence and the separate implant/medical step have no NarutoMod counterpart; Otsutsuki DNA and dojutsu DNA are not produced. Identified DNA becomes the matching specific token instead of a DNA item."
+  },
+  "NarutoDestination:kgrandomizer": {
+   "reference_effect": "Random form rolls a specific token; specific forms grant corresponding kekkei-genkai ownership and configured token bonuses.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "required_binding": "Preserve roll, identity, already-owned checks and actual power acquisition; a random unrelated weapon is not equivalent.",
+   "target": "Random form rolls a specific token; a specific form grants the owned native release item (Futton, Shikotsumyaku, Jinton, Bakuton, Hyoton, Yooton, Jiton, Shakuton, Ranton, Mokuton) with NarutoMod's paired nature affinities and advancement, exactly as ProcedureKGDistribution does. Owned copy refuses and keeps the token; a lost item is restored without a second bonus. Bonus 20 XP/SP/JP.",
+   "deliberate_adaptation": "Crystal and Steel release do not exist in NarutoMod 1.12.2: never rolled; an old specific token re-rolls. XP bonus is native battle XP."
+  },
+  "NarutoDestination:naturerandomizer": {
+   "reference_effect": "Random form rolls wind/water/fire/lightning/earth/yin/yang; specific form grants that nature ownership with configured token bonuses.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "required_binding": "Verify actual target affinity/ownership and learning APIs for all seven outcomes.",
+   "target": "All seven outcomes map to owned affinity jutsu items: wind Futon, water Suiton, fire Katon, lightning Raiton, earth Doton, yin Inton, yang Yoton. Bonus 5 XP/SP/JP."
+  },
+  "NarutoDestination:clanrandomizer": {
+   "reference_effect": "Rolls or applies a specific clan through the original clan provider.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "required_binding": "Recover and implement each clan's actual effects, with persistence, rather than only storing a clan label.",
+   "target": "Persisted clan identity (legacyClan/legacyClanName) plus a one-time native signature power: Uchiha Sharingan+genjutsu, Hyuga Byakugan, Kaguya Shikotsumyaku, Senju Mokuton, Yuki Hyoton, Hatake Raiton, Hozuki Suiton, Sarutobi Katon, Tsuchigumo Doton, Uzumaki Sealing Chains, Aburame Kikaichu, Nara Shadow Imitation, Yamanaka Mind Transfer, Kurama/Chinoike Genjutsu, Namikaze Hiraishin, Iburi Hiding in Ash, Jugo Enhanced Strength, Shirogane Puppet, Lee Eight Gates, Fuma Fuma Shuriken, Inuzuka Claws. Switching clan is allowed; each clan's power and 10 XP/SP/JP bonus are paid once.",
+   "deliberate_adaptation": "Legacy stat bumps (ninjutsu/genjutsu/taijutsu) and curse seal/ketsuryugan/smoke have no native field; the nearest native item is granted instead."
+  },
+  "NarutoDestination:sagerandomizer": {
+   "reference_effect": "Random form rolls a specific Snake/JiraiyaToad/Slug/NarutoToad/Dragon token; applying it updates sage version.",
+   "original_default_pool_rows": 1,
+   "status": "IMPLEMENTED_REQUIRES_VERSION_BOUND_NATIVE_RECEIPT",
+   "required_binding": "Verify the five actual sage-mode providers and preserve specific-form acquisition and already-owned behavior.",
+   "target": "Specific forms grant an owned ItemSenjutsu with the native sage type (Snake SNAKE, Jiraiya/Naruto Toad TOAD, Slug SLUG); a different form switches the owned senjutsu's type, as the legacy token switched sage version; same form refuses.",
+   "deliberate_adaptation": "Dragon sage does not exist in NarutoMod 1.12.2: never rolled; an old Dragon token re-rolls."
+  }
+ },
+ "current_evidence": "release/evidence/naruto-villages-112-randomizers-restart.json",
+ "default_pool_rows_with_usable_providers": 16,
+ "default_pool_rows_total": 16,
+ "reference_base_version_used_for_randomizer_tables": "NarutoDestination 1.25.0 (1.24.0 is not published)"
 }

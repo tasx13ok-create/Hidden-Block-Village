@@ -17,7 +17,7 @@ binaries and private test worlds remain outside this public repository.
   says version 1.2.0 and requires `NarutoDestination@[1.24.0,)`.
 - Target: Forge/Magma Minecraft 1.12.2, Java 8, stable-39 mappings,
   RetrofuturaGradle 2.0.3, existing `narutomod` and `variedcommodities`.
-- Current private candidate version: `1.4.2-hbv112.3`. Modern FML mod ID is lowercase
+- Current private candidate version: `1.4.2-hbv112.4`. Modern FML mod ID is lowercase
   `narutodestinationvillages`; the original configuration directory is retained.
 
 ## What the original adapters do
@@ -82,11 +82,34 @@ this is not a reproduction of the old base's separate jutsu-learning model.
 Duplicate learning does not charge. Ownership, held-stack identity and current
 balance are checked before committing the changed stack and JP debit.
 
-Eleven of the16original default reward rows now have usable providers: XP4,
-SP4,JP2,reset1. The five DNA/KG/nature/clan/sage rows remain unfinished, with
-their original identifiers preserved. Recovered provider meanings and remaining
-binding requirements are recorded in `reward-semantics.json`. Installed original
-providers take precedence over fallback token aliases.
+All 16 original default reward rows now have usable providers (adapters
+0.1.3-draft). `NativeRandomizers` binds the five DNA/kekkei genkai/nature/clan/sage
+rows to what NarutoMod 1.12.2 actually uses for those powers: owned jutsu items
+with their affinity flag, owned dojutsu helmets, sage-typed senjutsu and the
+matching NarutoMod advancements, mirroring its own `ProcedureKGDistribution`.
+Token damage values keep the legacy forms (0 = random, which rolls a specific
+token as before). Holding an owned copy refuses and keeps the token; a power
+whose item was lost is restored without consuming the token or paying the bonus
+again. Crystal/Steel release and Dragon sage have no native counterpart, so they
+are never rolled and an old specific token re-rolls. DNA identification needs a
+native ninja level instead of the legacy Intelligence stat. Outcome tables were
+read from NarutoDestination 1.25.0 (1.24.0 is unpublished); bonuses and DNA odds
+are in the `NativeRewards.cfg` sections `kekkei_genkai_token`, `nature_token`,
+`clan_token` and `dna_identification`. Operators issue them with
+`/villagereward <dna|kg|nature|clan|sage> <form> [count] [player]`. Details per
+row are in `reward-semantics.json`. Installed original providers still take
+precedence over these aliases.
+
+`PvPCooldownStore` keeps the PvP anti-farm kill history across restarts. The
+addon held it in memory only, so every restart reset all cooldowns. It is saved
+per world as `narutovillages_pvp_cooldowns.json` on world save and once a minute
+when changed; kill times are wall-clock milliseconds, so cooldowns resume exactly.
+
+One addon class carries a private patch (kept with the private port, not here):
+transport ignored the saved destination dimension and set facing without
+syncing it. It now changes dimension through Forge's teleporter, syncs position
+and facing, and refuses a destination whose dimension is unavailable before any
+Ryo is taken.
 
 ## Build boundary
 
@@ -117,18 +140,23 @@ graphical acceptance is implied. See the version-bound safe receipt at
 
 ## Remaining work before an intact port can be claimed
 
-1. Adapt remaining original PvP reward entries whose item providers do not exist in
-   AHZNB NarutoMod, preserving meaningful reward semantics rather than silently
-   dropping entries or replacing them with unrelated filler.
-2. Resolve the legacy character-stat/clan/senjutsu model against actual installed
-   providers. Do not invent a native binding for an unsupported field.
-3. Verify rank-cap enforcement, promotion authority, full transport execution,
-   territory capture and PvP cooldown persistence across restart. Version-specific
-   native XP/death/respawn/drop results must come from the matching release receipt.
-4. Verify a real network client, chest-window interaction and optional client
+The 1.4.2-hbv112.4 native run (`release/evidence/naruto-villages-112-randomizers-restart.json`)
+passed 45 assertions and a separate restart of the same world passed 8: all five
+reward bindings and their refusals/restores, promotion authority and caps, rank
+cap enforcement, cross-dimension transport with cooldown and missing-dimension
+refusal, territory capture and cooldown, and restart persistence of PvP
+cooldowns, clan, powers, ranks, territory owner and transport destinations.
+It ran on a RetroFuturaGradle development server with admitted synthetic
+players, not the owner's Magma deployment or a graphical client.
+
+1. Verify a real network client, chest-window interaction and optional client
    mirror. A synthetic admitted player and discarded packets prove only their
    documented server-side scope.
-5. Review redistribution permission before putting derivative addon source or
+2. Legacy-only genjutsu, medical and senjutsu-chakra statistics have no native
+   provider and read 0. Do not invent a native binding for an unsupported field.
+3. Run the exact JAR on a copied owner deployment (Magma/plugins) before
+   production use.
+4. Review redistribution permission before putting derivative addon source or
    its runtime JAR in the public repository. A successful build is not licensing
    evidence. The owner's local preview is not production acceptance.
 
