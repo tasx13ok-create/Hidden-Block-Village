@@ -8,6 +8,21 @@ Updated 2026-11-13 by Fable (Claude Code, cloud session). This records observati
 * Branch: `claude/upbeat-ride-nyxq23`. The task packet suggested `fable/dungeons-v17`, but this session may only push to its assigned branch. Base: `main` @ `b69ec02`.
 * **Not reachable from this session:** `local/v17-intake`, the original v17 download folder, the parent v9 workspace (`../output_v9`, `../source`, `../tools`), the D: world recovery and the CustomNPCs data. No computer folder was shared (`list_computer_folders` returned none). No real v17 or v9 schematic or world byte was read, and no game or server was run.
 
+## Villages port 1.4.2-hbv112.4 (2026-11-17) — rewards, PvP cooldowns, transport fixed; native server run passed
+
+Owner request: finish the NarutoDestinationVillages 1.12.2 preview. Owner supplied NarutoMod 0.3.1-beta, Varied Commodities 31Mar23 and the preview .3 JAR; reference tables came from NarutoDestination 1.25.0 (Modrinth, read only).
+
+| Item | State | Evidence |
+| --- | --- | --- |
+| Five DNA/KG/nature/clan/sage rewards bound to native NarutoMod powers | Done | `tools/naruto_villages_112/compat-src/.../NativeRandomizers.java`, `reward-semantics.json` (16/16 rows) |
+| PvP anti-farm history persists per world across restart | Done | `PvPCooldownStore.java` |
+| Transport ignored destination dimension / facing sync | Fixed (private addon-class patch, kept in `local/`) | receipt below |
+| Native dev-server acceptance, 5 admitted synthetic players | 45/45 phase 1, 8/8 restart phase | `release/evidence/naruto-villages-112-randomizers-restart.json` |
+| Adapters 0.1.3-draft reobf classes identical to the tested runtime | Verified | receipt `original_adapters` |
+| Real graphical client, owner Magma deployment | **Not run** | receipt `unfinished` |
+
+Runtime JAR, patched class source and QA fixture are private (`local/ndv/`, gitignored).
+
 ## Package 1: v17 audit/import tooling — tooling done, real-data run pending
 
 | Item | State | Evidence |

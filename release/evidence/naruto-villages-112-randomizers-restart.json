@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "scope": "NARUTO_VILLAGES_112_RANDOMIZERS_TRANSPORT_RANKS_TERRITORY_RESTART",
+  "input": {
+    "file": "NarutoDestinationVillages-1.12.2-1.4.2-HBV-PREVIEW-4.jar",
+    "bytes": 7026160,
+    "sha256": "63bb2d8d3a46e50bf827d83fa223f28063beb87851a55e42077e221d3dc1d0e1",
+    "version": "1.4.2-hbv112.3"
+  },
+  "runtime": {
+    "file": "NarutoDestinationVillages-1.12.2-1.4.2-hbv112.4.jar",
+    "bytes": 7043184,
+    "sha256": "8aa9834f20f444512cd18a442958994efca4b1d409689c3053ad3c00229c0eb5",
+    "version": "1.4.2-hbv112.4",
+    "minecraft": "1.12.2",
+    "built_as": "owner preview .3 plus rebuilt original adapters 0.1.3-draft and one private patched addon class (transport/TransportContainer); all other addon classes byte-identical to .3"
+  },
+  "native_dependencies": {
+    "NarutoMod-1.12.2-0.3.1.beta.jar": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+    "VariedCommodities_1.12.2-31Mar23.jar": "bb1afc496b25e2afda523ffc02e3883b4f5a8e6c852c6d5818bd2d82afae6016"
+  },
+  "reference_behavior_source": {
+    "file": "NarutoDestinationMod-1.25.0.jar (Modrinth)",
+    "sha256": "603b5db085b493be45baa7585abc9b5f9c3e082ca70470133cb300af50fa5a14",
+    "note": "1.24.0 is not published; 1.25.0 is the nearest version satisfying the addon's NarutoDestination@[1.24.0,) requirement. Read for randomizer/DNA outcome tables only; never run."
+  },
+  "native": {
+    "runtime_kind": "RetroFuturaGradle Forge 1.12.2 development dedicated server, fresh flat world in a scratch directory, five admitted synthetic non-OP players on embedded connections",
+    "phase_1": {
+      "passed": true,
+      "assertions": 45,
+      "checks": [
+        "five synthetic players admitted",
+        "all 16 default PvP loot rows resolve to a usable reward (16/16)",
+        "random KG token is consumed",
+        "random KG rolls a specific native form (12)",
+        "ice token redeems",
+        "ice grants owned Hyoton plus Futon and Suiton affinities",
+        "ice grants NarutoMod's hyoton_acquired advancement",
+        "ice pays the 20 XP / 20 SP / 20 JP bonus",
+        "second ice token is refused and kept",
+        "lost Hyoton is restored without consuming the token or paying again",
+        "crystal (no native form) re-rolls into an available form",
+        "yin token grants owned Inton",
+        "yang token grants owned Yoton",
+        "uchiha token sets the clan identity",
+        "uchiha grants an owned Sharingan and its advancement",
+        "same clan token is refused and kept",
+        "senju switches clan and grants Mokuton",
+        "hyuga grants an owned Byakugan",
+        "jiraiya toad grants owned toad senjutsu",
+        "snake token switches the sage type",
+        "same sage token is refused",
+        "dragon sage re-rolls into an available sage token",
+        "DNA is refused and kept below the ninja level requirement",
+        "40 DNA identifications consume each token and yield a nature/KG token or a failure",
+        "non-leader cannot promote",
+        "leader cannot promote another village's member",
+        "Hokage promotes two Advisors",
+        "third Advisor refused at the Konoha cap (2)",
+        "remove restores the previous rank and frees the slot",
+        "freed slot can be filled",
+        "over-cap state prepared",
+        "nether is available for cross-dimension transport",
+        "probe player moved to the nether",
+        "Konoha appears in the transport menu",
+        "transport from the nether arrives in the overworld at the saved spot and facing (0 40.5,-30.5)",
+        "second transport inside the cooldown is refused",
+        "destination in a missing dimension is refused without moving or charging",
+        "Konoha and Suna are at war",
+        "Konoha owns the test territory",
+        "Suna attacker is inside the territory",
+        "kill starts an anti-farm cooldown (119s)",
+        "world save writes the cooldown file",
+        "enforcement removes the oldest holder (B) and keeps the cap",
+        "undefended territory is captured by Suna (Suna 0)",
+        "captured territory starts its recapture cooldown"
+      ],
+      "dna_identified_of_40": 38,
+      "dna_failed_of_40": 2,
+      "ranks_after": "Hokage,Advisor,Genin,Advisor"
+    },
+    "phase_2_restart": {
+      "passed": true,
+      "assertions": 8,
+      "checks": [
+        "five synthetic players admitted",
+        "anti-farm cooldown survives a full restart (86s left)",
+        "clan identity survives restart",
+        "granted native powers survive restart",
+        "awakened KG is still recognised after restart",
+        "ranks survive restart (Hokage,Advisor,Genin,Advisor)",
+        "captured territory owner survives restart",
+        "transport destinations survive restart"
+      ]
+    },
+    "result_sha256": {
+      "phase_1": "77141124f4345b53920c6ddf615bc8c2807ee8f9daac63d0307fdc418f151868",
+      "phase_2": "b985e3759b5d25df44df289b48479005a6fbb4b56deef37f58ecbd5a299a5c70"
+    },
+    "villages_or_narutomod_errors_in_server_logs": 0
+  },
+  "fixed": [
+    "Five legacy reward rows (DNA, kekkei genkai, nature, clan, sage) now grant NarutoMod-native powers; all 16 default PvP loot rows resolve",
+    "PvP anti-farm kill history persists per world across restarts (was memory-only, so a restart reset every cooldown)",
+    "Transport ignored the destination dimension and did not sync facing; it now changes dimension, syncs position and facing, and refuses an unavailable dimension before charging"
+  ],
+  "deliberate_adaptations": [
+    "DNA identification is gated by native ninja level (default 5) instead of the legacy Intelligence stat; failure still destroys the DNA",
+    "Crystal and Steel release and Dragon sage have no NarutoMod 1.12.2 counterpart: never rolled, and an old specific token re-rolls into an available form",
+    "Clan powers use the nearest native item for each clan (dojutsu, release, nature or signature scroll); see reward-semantics.json"
+  ],
+  "original_adapters": {
+    "version": "0.1.3-draft",
+    "source_files_sha256": {
+      "compat-src/narutodestinationvillages/compat/AddedItems.java": "d2aedf2ea22ee65bfe8322cd835b3dbade6f48b1eafec4891d2b97c8c45ccb48",
+      "compat-src/narutodestinationvillages/compat/CommandAffiliation.java": "66fa272e69496ac7998d6a4649274ce7fdbf0b29d89d633020b244e99f65fc11",
+      "compat-src/narutodestinationvillages/compat/CommandShinobiTraining.java": "501709f8d134212dd7cbe55306fd9e0808199c574b00ba72113c8efc65c8fec7",
+      "compat-src/narutodestinationvillages/compat/CommandVillageRewards.java": "622601735f30c2830204a4feb8c07cadd003d3970d95bfda79559a030122df03",
+      "compat-src/narutodestinationvillages/compat/ExtendedPlayer.java": "a4fe4b91c0a462af42cc85b8402a85d4f0ac0096c2f2775331564845f429d0e6",
+      "compat-src/narutodestinationvillages/compat/Legacy112.java": "9fa45a7d84d55ad5498c2fa641681899037193d0c3e6c953c8c84b1051c43371",
+      "compat-src/narutodestinationvillages/compat/LegacyCommand.java": "47335140a8fe835d6acdd07c6a52bff3e920ab436d2907a950613eab5ea44660",
+      "compat-src/narutodestinationvillages/compat/LegacyContainer.java": "c4aef29eaa2372da5aee65a17eb4537a1b987bd68ab9e23fe55fdc845d0624fe",
+      "compat-src/narutodestinationvillages/compat/LegacyGameData.java": "bf96f557c35221fb8346265642a16dfb09c62b2082c5d6406e1fd17ab7d88a9d",
+      "compat-src/narutodestinationvillages/compat/LegacyInventory.java": "84405ec331123f0a8451ae461b8292b77e31d2f5e471ad6c16c89b340f20fa09",
+      "compat-src/narutodestinationvillages/compat/LegacyUsageException.java": "9773e49b25d72acafd5d195763ab5db3282dea36af730175bde84f64efb4a1ad",
+      "compat-src/narutodestinationvillages/compat/NarutoRank.java": "99f1b470d5c1ef539fb5081c47db4f7ac8b19a67e2d437757423113bf360ead2",
+      "compat-src/narutodestinationvillages/compat/NativeLearning.java": "2a52ee86ca85176c827f5862cf800dfebd377ff0d4b378e82450a9c99a2265a7",
+      "compat-src/narutodestinationvillages/compat/NativeRandomizers.java": "2f71d3fa91910458f36ad64f374537c6b796188b8f71e9afb3befbb9ca134863",
+      "compat-src/narutodestinationvillages/compat/NativeRewardItems.java": "6ee3985d87aba720860ba1d6bb70930370dc7c3bb6ecda3ec697f1e38fb17691",
+      "compat-src/narutodestinationvillages/compat/NativeTraining.java": "d3704476002746992863168263aec3e548bb487f05dbc9bddda21164573daa0a",
+      "compat-src/narutodestinationvillages/compat/NativeTrainingMenu.java": "2b73fd202b72ce976a1597971764d61ceee246a85dfd0df8852c3395ae2ef38d",
+      "compat-src/narutodestinationvillages/compat/NativeXpRewards.java": "1d7c144928791d71728af4bdfe0f47f9802859618cf474d19b7b457881c43822",
+      "compat-src/narutodestinationvillages/compat/PacketDispatcher.java": "a9562d395ada25a39e1bcf7f1c62b175faf1b88c8d303a544988b0ef1576120b",
+      "compat-src/narutodestinationvillages/compat/PvPCooldownStore.java": "4eb180cb2f16a1900a66df61f43b46be573b82c19e653006d3252adf7f276227",
+      "compat-src/narutodestinationvillages/compat/SyncRankMessage.java": "944467c82a12d8703c36941a9fe4df8f460256e9a39c63fd4ed7a3b6382223c2",
+      "compat-src/narutodestinationvillages/compat/XpRankMultipliers.java": "9b6222983fdd553c773a410c67c4d68f12f0925d4590e7037d4d812f8cc56ff0",
+      "compat-src/narutodestinationvillages/util/RyoPaymentHelper.java": "4ac9f11db6e642ae143379dcf95cbabfb546736bd41d12dc777e8075e5c1ac98"
+    },
+    "reobfuscated_classes_identical_to_tested_runtime": true,
+    "standalone_installable_mod": false
+  },
+  "private_reference_bodies_or_runtime_distributed_in_git": false,
+  "original_world_or_real_player_data_used": false,
+  "real_network_client_or_graphical_acceptance": false,
+  "production_magma_runtime_acceptance": false,
+  "unfinished": [
+    "real network client and graphical chest-window acceptance",
+    "legacy-only genjutsu/medical/senjutsu-chakra statistics have no native provider and read 0",
+    "owner deployment-world copy and Magma/plugins runtime acceptance",
+    "redistribution permission for the derivative addon runtime"
+  ]
+}
