@@ -19,6 +19,10 @@ final class MovementFx {
         if (mc.world == null || mc.isGamePaused()) return;
         for (EntityPlayer p : mc.world.playerEntities) {
             int water = Movement.waterTicks(p), wall = Movement.wallTicks(p);
+            if (Movement.ledgeAge(p) == 10) {   // the tick a ledge grab fires
+                p.world.playSound(p.posX, p.posY, p.posZ, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.PLAYERS, 0.5f, 1.3f, false);
+                for (int i = 0; i < 6; i++) p.world.spawnParticle(EnumParticleTypes.CLOUD, p.posX + (p.world.rand.nextDouble() - 0.5) * 0.6, p.posY + 1.6, p.posZ + (p.world.rand.nextDouble() - 0.5) * 0.6, 0, 0.02, 0);
+            }
             java.util.Random r = p.world.rand;
             if (water > 0 && (water % 4 == 0 || p.distanceWalkedModified != p.prevDistanceWalkedModified)) {
                 for (int i = 0; i < 3; i++) {

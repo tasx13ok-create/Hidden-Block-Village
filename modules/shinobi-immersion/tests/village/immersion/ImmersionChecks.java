@@ -49,6 +49,32 @@ public final class ImmersionChecks {
         check(ImmersionMath.reaction(ImmersionMath.FIRE, false, false) == ImmersionMath.R_NONE, "no reaction on dry target");
         check(ImmersionMath.reactionDamage(ImmersionMath.R_STEAM) < 1 && ImmersionMath.reactionDamage(ImmersionMath.R_CHAIN) > 1, "reaction damage");
         check(ImmersionMath.phase(100, 100) == 0 && ImmersionMath.phase(50, 100) == 1 && ImmersionMath.phase(20, 100) == 2 && ImmersionMath.phase(5, 0) == 0, "boss phases");
-        System.out.println("PASS: " + checks + " immersion checks (water-walk, wall-run, sound, compass).");
+        check(ImmersionMath.impact(3, 6, false) == 0 && ImmersionMath.impact(6, 6, false) == 0.5f && ImmersionMath.impact(30, 6, false) == 1f && ImmersionMath.impact(1, 6, true) == 1f, "impact strength");
+        check(ImmersionMath.holdMs(0) == 0 && ImmersionMath.holdMs(0.5f) >= 30 && ImmersionMath.holdMs(1f) <= 50, "hold is 2-3 frames");
+        check(ImmersionMath.kick(1f, 40, 50) == 0 && ImmersionMath.kick(1f, 50, 50) > 1.5 && ImmersionMath.kick(1f, 300, 50) == 0, "kick after hold then decays");
+        check(ImmersionMath.pressure(3, 100, 130, 60) == 4 && ImmersionMath.pressure(3, 100, 200, 60) == 1 && ImmersionMath.pressure(0, -1, 5, 60) == 1, "pressure builds and resets");
+        check(ImmersionMath.staggerHits(true) > ImmersionMath.staggerHits(false), "bosses resist stagger");
+        check(ImmersionMath.danger(20, 20) == 0 && ImmersionMath.danger(5, 20) == 0 && ImmersionMath.danger(4.9f, 20) > 0 && ImmersionMath.danger(0.5f, 20) > 0.9f && ImmersionMath.danger(0, 20) == 0, "danger range");
+        check(ImmersionMath.heartbeatGap(0) == 0 && ImmersionMath.heartbeatGap(0.2f) > ImmersionMath.heartbeatGap(1f) && ImmersionMath.heartbeatGap(1f) == 16, "heartbeat speeds up");
+        check(ImmersionMath.dangerMuffle(0) == 1f && ImmersionMath.dangerMuffle(1) >= 0.7f, "muffle gentle");
+        check(!ImmersionMath.exhausted(false, 10, 100) && ImmersionMath.exhausted(false, 4, 100) && ImmersionMath.exhausted(true, 10, 100) && !ImmersionMath.exhausted(true, 16, 100), "exhaustion hysteresis");
+        check(!ImmersionMath.exhausted(false, Double.NaN, 100) && !ImmersionMath.exhausted(false, 0, 0), "no chakra data is not exhaustion");
+        check(!ImmersionMath.ledgeReach(1.0) && ImmersionMath.ledgeReach(2.0) && !ImmersionMath.ledgeReach(3.0), "ledge reach");
+        for (double h = 1.2; h <= 2.6; h += 0.2) { double v = ImmersionMath.ledgeLift(h), rise = 0; for (double m = v; m > 0; m = (m - 0.08) * 0.98) rise += m; check(rise >= h + 0.1, "ledge lift clears " + h); check(v <= 0.8, "ledge lift bounded"); }
+        check(ImmersionMath.roll(true, 6) && !ImmersionMath.roll(false, 6) && !ImmersionMath.roll(true, 3) && !ImmersionMath.roll(true, 40), "roll window");
+        check(ImmersionMath.rollDamage(5) == 0.4f && ImmersionMath.rollDamage(20) <= 0.7f && ImmersionMath.rollDamage(20) > 0.4f, "roll damage");
+        check(ImmersionMath.compassRange(false, false) == 128 && ImmersionMath.compassRange(true, false) == 64 && ImmersionMath.compassRange(true, true) == 32, "fog shortens compass");
+        check(ImmersionMath.chain(true)[0] > ImmersionMath.chain(false)[0] && ImmersionMath.chain(true)[1] > ImmersionMath.chain(false)[1], "rain widens chains");
+        check(Math.abs(ImmersionMath.windAngle(100) - ImmersionMath.windAngle(120)) < 0.01, "wind turns slowly");
+        check(ImmersionMath.isStep("block.grass.step") && !ImmersionMath.isStep("block.grass.break"), "step detection");
+        check(ImmersionMath.stepVolume("block.grass.step") < 1 && ImmersionMath.stepVolume("block.stone.step") == 1, "soft ground quieter");
+        check(ImmersionMath.village(1, true, 0.1) == 0 && ImmersionMath.village(3, false, 0.1) == 0 && ImmersionMath.village(3, true, 0.1) == 1 && ImmersionMath.village(3, true, 0.7) == 2 && ImmersionMath.village(3, true, 0.9) == 3, "village cues");
+        check(ImmersionMath.villageGap(1) == 0 && ImmersionMath.villageGap(20) >= 5, "village sparse");
+        check(ImmersionMath.pips(20, 20) == 5 && ImmersionMath.pips(0.5f, 20) == 1 && ImmersionMath.pips(0, 20) == 0, "squad pips");
+        check(ImmersionMath.downed(3, 20) && !ImmersionMath.downed(10, 20) && !ImmersionMath.downed(0, 20), "downed state");
+        float[] cap = ImmersionMath.sparCap(30, 12); check(cap[0] == 11 && cap[1] == 1, "spar stops at one health");
+        cap = ImmersionMath.sparCap(4, 12); check(cap[0] == 4 && cap[1] == 0, "spar normal hit");
+        cap = ImmersionMath.sparCap(4, 0.8f); check(cap[0] == 0 && cap[1] == 1, "spar never kills a nearly downed player");
+        System.out.println("PASS: " + checks + " immersion checks (movement, sound, combat, squad, sparring).");
     }
 }

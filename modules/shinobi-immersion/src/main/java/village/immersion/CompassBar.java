@@ -43,9 +43,15 @@ final class CompassBar {
         }
         BlockPos spawn = p.getBedLocation(p.dimension) != null ? p.getBedLocation(p.dimension) : mc.world.getSpawnPoint();
         marker(f, cx, y, half, field, yaw, p, spawn.getX() + 0.5, spawn.getZ() + 0.5, 0xFF9DDDDC, "⌂");
+        int range = Config.weather ? ImmersionMath.compassRange(mc.world.isRainingAt(new BlockPos(p).up()), mc.world.isThundering()) : 128;
         for (EntityPlayer o : mc.world.playerEntities) {
-            if (o == p || o.isInvisibleToPlayer(p) || o.getDistanceSq(p) > 128 * 128) continue;
+            if (o == p || o.isInvisibleToPlayer(p) || o.getDistanceSq(p) > range * range || SquadHud.isMate(o.getName())) continue;
             marker(f, cx, y, half, field, yaw, p, o.posX, o.posZ, 0xFF7FD8FF, "▲");
+        }
+        if (Config.squad) for (Net.Member m : SquadHud.current()) {   // squadmates: any distance, same dimension
+            if (m.dim != p.dimension) continue;
+            int col = ImmersionMath.downed(m.health, m.max) ? (Math.sin(System.currentTimeMillis() / 160.0) > 0 ? 0xFFFF6060 : 0xFF902828) : 0xFF6FD08C;
+            marker(f, cx, y, half, field, yaw, p, m.x, m.z, col, "◆");
         }
         Gui.drawRect(cx, y - 1, cx + 1, y + 12, 0xFFFFFFFF);
     }

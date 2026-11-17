@@ -104,12 +104,14 @@ final class Combat {
                 w.playSound(null, x, y, z, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.8f, 1.2f);
                 break;
             case ImmersionMath.R_CHAIN: {
-                List<EntityLivingBase> near = w.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(x - 4, y - 3, z - 4, x + 4, y + 3, z + 4), o -> o != t && o != src.getTrueSource() && o.isWet() && o.isEntityAlive() && !(o instanceof EntityPlayer && src.getTrueSource() instanceof EntityPlayer && !((EntityPlayer) src.getTrueSource()).canAttackPlayer((EntityPlayer) o)));
+                double[] reach = ImmersionMath.chain(Config.weather && w.isRainingAt(new net.minecraft.util.math.BlockPos(t.posX, t.posY + t.height, t.posZ)));
+                double cr = reach[0];
+                List<EntityLivingBase> near = w.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(x - cr, y - 3, z - cr, x + cr, y + 3, z + cr), o -> o != t && o != src.getTrueSource() && o.isWet() && o.isEntityAlive() && !(o instanceof EntityPlayer && src.getTrueSource() instanceof EntityPlayer && !((EntityPlayer) src.getTrueSource()).canAttackPlayer((EntityPlayer) o)));
                 CHAINING.set(true);
                 try {
                     int n = 0;
                     for (EntityLivingBase o : near) {
-                        if (n++ >= 3) break;
+                        if (n++ >= (int) reach[1]) break;
                         o.attackEntityFrom(src, e.getAmount() * 0.3f);
                         for (int i = 0; i <= 8; i++) { double f = i / 8.0; w.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, x + (o.posX - x) * f, y + (o.posY + o.height * 0.5 - y) * f, z + (o.posZ - z) * f, 1, 0.05, 0.05, 0.05, 0); }
                     }
