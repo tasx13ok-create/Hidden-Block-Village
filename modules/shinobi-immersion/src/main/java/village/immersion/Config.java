@@ -9,6 +9,10 @@ final class Config {
     static float ambienceVolume = 0.5f;
     static boolean perfectDodge = true, reactions = true, bossCues = true;
     static int perfectRefund = 3;
+    static boolean hitStop = true, guardBreak = true, stagger = true, lowHealth = true, exhaustion = true;
+    static boolean ledgeGrab = true, landingRoll = true, canopyRun = true, weather = true, footsteps = true, villageLife = true, squad = true, sparring = true;
+    static float hitStopDamage = 6f;
+    static int ledgeCost = 1;
     static int waterCost = 1, wallCost = 2;
 
     static void load(File dir) {
@@ -27,6 +31,21 @@ final class Config {
         perfectRefund = c.getInt("perfectDodgeRefund", "combat", 3, 0, 20, "Chakra units refunded on a perfect dodge.");
         reactions = c.getBoolean("elementalReactions", "combat", true, "Fire+wet steam, lightning+wet chains, wind+burning spreads fire, earth+burning snuffs it.");
         bossCues = c.getBoolean("bossCues", "combat", true, "Red warning ring when a boss attacks; roar and harmless shockwave at 65% and 30% health.");
+        hitStop = c.getBoolean("hitStop", "combat", true, "Heavy and finishing blows briefly hold the camera (2-3 frames) and kick it.");
+        hitStopDamage = c.getFloat("hitStopDamage", "combat", 6f, 1f, 100f, "Damage (after armor) that counts as a heavy blow.");
+        guardBreak = c.getBoolean("guardBreak", "combat", true, "Five blocked hits within three seconds break a raised shield for three seconds.");
+        stagger = c.getBoolean("stagger", "combat", true, "Four hits on a mob within two seconds stagger it briefly (bosses need eight).");
+        lowHealth = c.getBoolean("lowHealth", "combat", true, "Below 25% health: a quickening heartbeat, a dark edge and slightly muffled world sound.");
+        exhaustion = c.getBoolean("chakraExhaustion", "combat", true, "Below 5% chakra you move a little slower and breathe hard until you recover to 15%.");
+        ledgeGrab = c.getBoolean("ledgeGrab", "movement", true, "Jump at a ledge just out of reach and hold jump to pull up onto it.");
+        ledgeCost = c.getInt("ledgeGrabCost", "movement", 1, 0, 20, "Chakra units per ledge grab.");
+        landingRoll = c.getBoolean("landingRoll", "movement", true, "Sneak as you land a 3.5-24 block fall to roll forward and take much less fall damage.");
+        canopyRun = c.getBoolean("canopyRun", "movement", true, "Sprinting on leaves or rooftops (stairs and slabs) is 15% faster.");
+        weather = c.getBoolean("weather", "world", true, "Rain widens lightning chains, wind carries dust, and rain or storms shorten compass player range.");
+        footsteps = c.getBoolean("footsteps", "sound", true, "Softer steps on grass, sand and snow; gravel crunch; splashes in shallow water.");
+        villageLife = c.getBoolean("villageLife", "sound", true, "Distant chatter, smithing and doors by day near villagers or NPCs.");
+        squad = c.getBoolean("squads", "social", true, "/squad: teammates on the compass at any distance and a squad health panel.");
+        sparring = c.getBoolean("sparring", "social", true, "/spar: agreed duels where nobody drops below one health. Needs PvP on.");
         compass = c.getBoolean("compassBar", "hud", true, "Compass strip at the top of the screen with directions, spawn and nearby players.");
         if (c.hasChanged()) c.save();
     }

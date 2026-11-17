@@ -24,7 +24,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 @SideOnly(Side.CLIENT)
 final class SoundFx {
-    private final Set<ISound> ours = Collections.newSetFromMap(new WeakHashMap<>());
+    private static final Set<ISound> ours = Collections.newSetFromMap(new WeakHashMap<>());
+    /** Sounds this mod plays itself, so they are never re-processed (heartbeat, layers, echoes). */
+    static void mark(ISound s) { synchronized (ours) { ours.add(s); } }
     private double enclosure;
     private long enclosureAt;
 
@@ -32,7 +34,8 @@ final class SoundFx {
     public void play(PlaySoundEvent e) {
         ISound s = e.getResultSound();
         Minecraft mc = Minecraft.getMinecraft();
-        if (s == null || mc.player == null || mc.world == null || ours.contains(s)) return;
+        if (s == null || mc.player == null || mc.world == null) return;
+        synchronized (ours) { if (ours.contains(s)) return; }
         SoundCategory cat = s.getCategory();
         if (cat == SoundCategory.MUSIC || cat == SoundCategory.RECORDS || cat == SoundCategory.MASTER || cat == SoundCategory.WEATHER) return;
         if (s.getAttenuationType() == ISound.AttenuationType.NONE && cat == SoundCategory.AMBIENT) return;
@@ -44,20 +47,35 @@ final class SoundFx {
         if (Config.combatLayers && (ns.equals("narutomod") || ns.equals("valeorders") || ns.equals("hvbijuu") || ns.equals("kabutoaddon") || ns.equals("ahznbswordsplus")) && s.getAttenuationType() != ISound.AttenuationType.NONE) {
             pitch = ImmersionMath.vary(pitch, mc.world.rand.nextDouble());
             ISound varied = new PositionedSoundRecord(s.getSoundLocation(), cat, vol, pitch, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
-            ours.add(varied);
+            mark(varied);
             e.setResultSound(varied);
             s = varied;
             if (ImmersionMath.heavy(vol)) {   // low weight tail just after the hit
                 ISound tail = new PositionedSoundRecord(net.minecraft.init.SoundEvents.ENTITY_GENERIC_EXPLODE.getSoundName(), cat, vol * 0.18f, 0.55f, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
-                ours.add(tail);
+                mark(tail);
                 mc.getSoundHandler().playDelayedSound(tail, 2);
             }
+        }
+        String path = s.getSoundLocation().getPath();
+        if (Config.footsteps && ImmersionMath.isStep(path) && near(mc, s)) {
+            float stepVol = vol * ImmersionMath.stepVolume(path);
+            ISound step = new PositionedSoundRecord(s.getSoundLocation(), cat, stepVol, pitch, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
+            mark(step); e.setResultSound(step); s = step; vol = stepVol;
+            if (path.contains("gravel")) layer(mc, net.minecraft.init.SoundEvents.BLOCK_GRAVEL_BREAK, cat, vol * 0.15f, 1.6f, s);
+            boolean feetWet = mc.player.world.getBlockState(new BlockPos(mc.player.posX, mc.player.posY + 0.1, mc.player.posZ)).getMaterial() == Material.WATER;
+            if (feetWet && !mc.player.isInsideOfMaterial(Material.WATER)) layer(mc, net.minecraft.init.SoundEvents.ENTITY_GENERIC_SWIM, cat, 0.12f, 1.5f + mc.world.rand.nextFloat() * 0.2f, s);
+        }
+        float danger = ImpactFx.danger();
+        if (danger > 0 && s.getAttenuationType() != ISound.AttenuationType.NONE) {
+            float dv = vol * ImmersionMath.dangerMuffle(danger);
+            ISound low = new PositionedSoundRecord(s.getSoundLocation(), cat, dv, pitch, false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
+            mark(low); e.setResultSound(low); s = low; vol = dv;
         }
         Entity cam = mc.getRenderViewEntity() == null ? mc.player : mc.getRenderViewEntity();
         if (Config.underwaterSound && cam.isInsideOfMaterial(Material.WATER)) {
             float[] m = ImmersionMath.underwater(vol, pitch);
             ISound muffled = new PositionedSoundRecord(s.getSoundLocation(), cat, m[0], m[1], false, 0, s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
-            ours.add(muffled);
+            mark(muffled);
             e.setResultSound(muffled);
             return;
         }
@@ -65,10 +83,19 @@ final class SoundFx {
             double enc = enclosure(mc, cam);
             if (enc > 0.55) {
                 ISound echo = new PositionedSoundRecord(s.getSoundLocation(), cat, ImmersionMath.echoVolume(vol, enc), pitch * 0.97f, false, ImmersionMath.echoDelay(enc), s.getAttenuationType(), s.getXPosF(), s.getYPosF(), s.getZPosF());
-                ours.add(echo);
+                mark(echo);
                 mc.getSoundHandler().playDelayedSound(echo, ImmersionMath.echoDelay(enc));
             }
         }
+    }
+
+    private static boolean near(Minecraft mc, ISound s) {
+        double dx = s.getXPosF() - mc.player.posX, dy = s.getYPosF() - mc.player.posY, dz = s.getZPosF() - mc.player.posZ;
+        return dx * dx + dz * dz < 2.25 && Math.abs(dy) < 1.6;
+    }
+    private static void layer(Minecraft mc, net.minecraft.util.SoundEvent ev, SoundCategory cat, float vol, float pitch, ISound at) {
+        ISound l = new PositionedSoundRecord(ev.getSoundName(), cat, vol, pitch, false, 0, ISound.AttenuationType.LINEAR, at.getXPosF(), at.getYPosF(), at.getZPosF());
+        mark(l); mc.getSoundHandler().playSound(l);
     }
 
     /** Share of probe columns around the listener that have a solid roof within 12 blocks (cached 1 s). */
