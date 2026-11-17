@@ -15,12 +15,14 @@ import net.minecraftforge.fml.relauncher.Side;
 /** Server-to-client cues and squad updates. Clients without the mod simply never receive them. */
 final class Net {
     private Net() {}
-    static final int PERFECT = 1, IMPACT = 2, GUARD_BREAK = 3, EXHAUSTED = 4, STAGGER = 5;
+    static final int PERFECT = 1, IMPACT = 2, GUARD_BREAK = 3, EXHAUSTED = 4, STAGGER = 5, PARKOUR_DENY = 6;
     static SimpleNetworkWrapper CH;
     static void register() {
         CH = NetworkRegistry.INSTANCE.newSimpleChannel("shinobiimm");
         CH.registerMessage(CueHandler.class, Cue.class, 0, Side.CLIENT);
         CH.registerMessage(SquadHandler.class, SquadMsg.class, 1, Side.CLIENT);
+        CH.registerMessage(WallHandler.class, Wall.class, 2, Side.SERVER);
+        CH.registerMessage(WallFxHandler.class, WallFx.class, 3, Side.CLIENT);
     }
     static void cue(EntityPlayerMP p, int kind, float value) { if (CH != null && p.connection != null) CH.sendTo(new Cue(kind, value), p); }
     static void perfect(EntityPlayerMP p) { cue(p, PERFECT, 1); }
@@ -65,5 +67,32 @@ final class Net {
     }
     public static final class SquadHandler implements IMessageHandler<SquadMsg, IMessage> {
         @Override public IMessage onMessage(SquadMsg m, MessageContext ctx) { ShinobiImmersion.proxy.squad(m.members); return null; }
+    }
+
+    /** Client to server: entered a wall state (event 0) or wall-jumped (event 1). Normal is a cardinal direction. */
+    public static final class Wall implements IMessage {
+        int state, nx, nz, event;
+        public Wall() {}
+        Wall(int state, int nx, int nz, int event) { this.state = state; this.nx = nx; this.nz = nz; this.event = event; }
+        @Override public void fromBytes(ByteBuf b) { state = b.readByte(); nx = b.readByte(); nz = b.readByte(); event = b.readByte(); }
+        @Override public void toBytes(ByteBuf b) { b.writeByte(state); b.writeByte(nx); b.writeByte(nz); b.writeByte(event); }
+    }
+    public static final class WallHandler implements IMessageHandler<Wall, IMessage> {
+        @Override public IMessage onMessage(Wall m, MessageContext ctx) {
+            EntityPlayerMP p = ctx.getServerHandler().player;
+            p.getServerWorld().addScheduledTask(() -> Parkour.handle(p, m.state, m.nx, m.nz, m.event));
+            return null;
+        }
+    }
+    /** Server to nearby clients: another player's wall state, for their particles, sounds and body lean. */
+    public static final class WallFx implements IMessage {
+        int entity, state, nx, nz, event;
+        public WallFx() {}
+        WallFx(int entity, int state, int nx, int nz, int event) { this.entity = entity; this.state = state; this.nx = nx; this.nz = nz; this.event = event; }
+        @Override public void fromBytes(ByteBuf b) { entity = b.readInt(); state = b.readByte(); nx = b.readByte(); nz = b.readByte(); event = b.readByte(); }
+        @Override public void toBytes(ByteBuf b) { b.writeInt(entity); b.writeByte(state); b.writeByte(nx); b.writeByte(nz); b.writeByte(event); }
+    }
+    public static final class WallFxHandler implements IMessageHandler<WallFx, IMessage> {
+        @Override public IMessage onMessage(WallFx m, MessageContext ctx) { ShinobiImmersion.proxy.wallFx(m.entity, m.state, m.nx, m.nz, m.event); return null; }
     }
 }

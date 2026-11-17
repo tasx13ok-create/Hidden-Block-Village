@@ -43,6 +43,21 @@ final class Combat {
     private static Method restore;
     private static boolean triedRestore;
 
+    /**
+     * Core announces every dodge it is about to perform with its public Dodge.Pre event (a
+     * PlayerEvent). Listening to the parent type picks it up without a compile-time link to Core;
+     * it marks the exact tick the dodge starts, on the server, where the speed-burst fallback
+     * below is unreliable because server players don't integrate their own motion.
+     */
+    private static Class<?> corePre;
+    private static boolean lookedPre;
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void coreDodge(net.minecraftforge.event.entity.player.PlayerEvent e) {
+        if (!lookedPre) { lookedPre = true; try { corePre = Class.forName("village.vale.Dodge$Pre"); } catch (ClassNotFoundException | LinkageError absent) { corePre = null; } }
+        if (corePre == null || e.getClass() != corePre || e.isCanceled() || e.getEntityPlayer().world.isRemote) return;
+        DODGE.computeIfAbsent(e.getEntityPlayer().getUniqueID(), k -> new double[] {0, -1})[1] = e.getEntityPlayer().world.getTotalWorldTime();
+    }
+
     @SubscribeEvent public void tick(TickEvent.PlayerTickEvent e) {
         if (e.phase != TickEvent.Phase.END || e.player.world.isRemote) return;
         EntityPlayer p = e.player;

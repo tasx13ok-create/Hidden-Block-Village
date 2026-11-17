@@ -9,12 +9,6 @@ public final class ImmersionChecks {
         check(!ImmersionMath.waterWalk(true, false, false, true, true, -0.1), "not when submerged");
         check(!ImmersionMath.waterWalk(true, false, false, true, false, 0.4), "not while jumping up");
         check(!ImmersionMath.waterWalk(false, false, false, true, false, -0.1), "config off");
-        check(ImmersionMath.wallRun(true, true, false, true, 0, true), "wall-run starts");
-        check(!ImmersionMath.wallRun(true, false, false, true, 0, true), "needs sprint");
-        check(!ImmersionMath.wallRun(true, true, true, true, 0, true), "needs to be airborne");
-        check(!ImmersionMath.wallRun(true, true, false, true, ImmersionMath.WALL_RUN_TICKS, true), "bounded duration");
-        double prev = 1;
-        for (int t = 0; t <= ImmersionMath.WALL_RUN_TICKS; t++) { double l = ImmersionMath.wallLift(t); check(l <= prev && l >= 0, "lift eases off"); prev = l; }
         float[] u = ImmersionMath.underwater(1, 1);
         check(u[0] < 0.6 && u[1] < 0.8 && u[1] >= 0.5, "underwater muffles");
         check(ImmersionMath.echoVolume(1, 0) == 0 && ImmersionMath.echoVolume(1, 1) < 0.35, "echo bounded");
@@ -75,6 +69,35 @@ public final class ImmersionChecks {
         float[] cap = ImmersionMath.sparCap(30, 12); check(cap[0] == 11 && cap[1] == 1, "spar stops at one health");
         cap = ImmersionMath.sparCap(4, 12); check(cap[0] == 4 && cap[1] == 0, "spar normal hit");
         cap = ImmersionMath.sparCap(4, 0.8f); check(cap[0] == 0 && cap[1] == 1, "spar never kills a nearly downed player");
+        // ---- wall movement and dodge feel ----
+        check(Math.abs(ParkourMath.facing(0, 1, 0, -1) - 1) < 1e-9 && Math.abs(ParkourMath.facing(1, 0, 0, -1)) < 1e-9, "facing into vs along a wall");
+        check(ParkourMath.side(0, 1, 1, 0) == 1 && ParkourMath.side(0, 1, -1, 0) == -1 && ParkourMath.side(0, 1, 0, -1) == 0, "wall side from look and normal");
+        check(Math.abs(ParkourMath.along(0.3, 0.4, 1, 0) - 0.4) < 1e-9, "along-wall speed drops the normal part");
+        check(ParkourMath.choose(true, true, true, false, 0.9, 0, false, false) == ParkourMath.RUN_UP, "facing a wall and jumping runs up it");
+        check(ParkourMath.choose(true, true, false, true, 0.1, 0.25, false, false) == ParkourMath.RUN_SIDE, "a buffered jump alongside a wall runs along it");
+        check(ParkourMath.choose(true, true, true, false, 0.1, 0.05, false, false) == ParkourMath.NONE, "too slow along the wall does not side-run");
+        check(ParkourMath.choose(true, false, false, false, 0.9, 0, true, true) == ParkourMath.SLIDE, "falling while pressing into a wall slides");
+        check(ParkourMath.choose(false, true, true, true, 0.9, 0.3, false, true) == ParkourMath.NONE, "nothing starts on the ground");
+        check(ParkourMath.choose(true, true, false, false, 0.9, 0.3, false, false) == ParkourMath.NONE, "no jump intent, no wall run");
+        double prevLift = 1;
+        for (int t = 0; t < ParkourMath.RUN_UP_TICKS; t++) { double l = ParkourMath.runUpLift(t); check(l <= prevLift && l > 0.15, "run-up lift eases but keeps climbing"); prevLift = l; }
+        check(ParkourMath.runUpLift(ParkourMath.RUN_UP_TICKS) == 0, "run-up ends");
+        double climb = 0; for (int t = 0; t < ParkourMath.RUN_UP_TICKS; t++) climb += ParkourMath.runUpLift(t);
+        check(climb > 4 && climb < 7, "a full run-up climbs about five blocks (" + climb + ")");
+        check(ParkourMath.sideFloor(0) > 0 && ParkourMath.sideFloor(20) < 0 && ParkourMath.sideFloor(ParkourMath.RUN_SIDE_TICKS) >= -0.1, "side run rises a little then sinks gently");
+        double[] g = ParkourMath.alongWall(0.1, 0.05, 1, 0, 0, 1, 0.3);
+        check(Math.abs(g[1]) >= 0.3 - 1e-9 && g[0] < 0, "side run keeps at least the minimum along-wall speed and grips the wall");
+        double[] g0 = ParkourMath.alongWall(0, 0, 1, 0, 0, 1, 0.3);
+        check(Math.abs(g0[1] - 0.3) < 1e-9, "a standing start runs the way the player looks");
+        double[] j = ParkourMath.wallJump(ParkourMath.RUN_SIDE, 1, 0, 0, 1);
+        check(j[0] > 0.3 && j[1] > 0.4 && j[2] > 0.2, "wall jump pushes away, up and onward");
+        check(ParkourMath.wallJump(ParkourMath.RUN_UP, 0, -1, 0, 1)[2] < -0.4, "run-up wall jump kicks straight back off the wall");
+        check(ParkourMath.sameWall(1, 0, 0.95, 0.31) && !ParkourMath.sameWall(1, 0, -1, 0), "same-wall detection");
+        check(ParkourMath.tilt(1, 0, -1) == 0 && ParkourMath.tilt(1, 5, -1) == 8 && ParkourMath.tilt(-1, 10, -1) == -8 && ParkourMath.tilt(1, 10, 3) == 4 && ParkourMath.tilt(1, 10, 6) == 0, "camera tilt eases in and out");
+        check(ParkourMath.fov(0, false) > 1.08f && ParkourMath.fov(300, false) == 1f && ParkourMath.fov(-1, true) == 1.05f, "fov punch and side-run widening");
+        check(ParkourMath.dodgeDirection(1, 0) == 0 && ParkourMath.dodgeDirection(0, 0) == 1 && ParkourMath.dodgeDirection(0, 1) == 2 && ParkourMath.dodgeDirection(0.5f, -1) == 3, "dodge direction matches Core");
+        check(ParkourMath.dodgeRoll(2, 110) < -4 && ParkourMath.dodgeRoll(3, 110) > 4 && ParkourMath.dodgeRoll(0, 110) == 0 && ParkourMath.dodgeRoll(2, 300) == 0, "dodge roll leans into side dodges only");
+        check(ParkourMath.hopSpeed(1.55, 0.2) > 1.0 && ParkourMath.hopSpeed(1.55, 1.2) == 1.2 && ParkourMath.hopSpeed(3, 0) == 1.1, "dodge hop keeps bounded momentum");
         System.out.println("PASS: " + checks + " immersion checks (movement, sound, combat, squad, sparring).");
     }
 }

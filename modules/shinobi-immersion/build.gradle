@@ -3,7 +3,7 @@ plugins {
     id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
 }
 group = 'village.immersion'
-version = '0.4.0'
+version = '0.5.0'
 base { archivesName = 'shinobi-immersion' }
 java {
     toolchain {
@@ -23,7 +23,7 @@ tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 // Pure movement and sound rules, independent of Minecraft.
 def immersionClasses = layout.buildDirectory.dir('immersion-checks')
 tasks.register('compileImmersionChecks', JavaCompile) {
-    source files('src/main/java/village/immersion/ImmersionMath.java', 'tests/village/immersion/ImmersionChecks.java')
+    source files('src/main/java/village/immersion/ImmersionMath.java', 'src/main/java/village/immersion/ParkourMath.java', 'tests/village/immersion/ImmersionChecks.java')
     classpath = files()
     destinationDirectory = immersionClasses
     javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(8) }

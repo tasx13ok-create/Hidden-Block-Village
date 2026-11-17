@@ -13,15 +13,22 @@ final class Config {
     static boolean ledgeGrab = true, landingRoll = true, canopyRun = true, weather = true, footsteps = true, villageLife = true, squad = true, sparring = true;
     static float hitStopDamage = 6f;
     static int ledgeCost = 1;
-    static int waterCost = 1, wallCost = 2;
+    static int waterCost = 1, wallCost = 2, sideRunCost = 2, wallJumpCost = 1, maxWallJumps = 3;
+    static boolean wallSideRun = true, wallJump = true, wallSlide = true, cameraTilt = true, dodgeFeel = true, dodgeHop = true;
 
     static void load(File dir) {
         Configuration c = new Configuration(new File(dir, "shinobi-immersion.cfg"));
         c.load();
         waterWalk = c.getBoolean("waterWalk", "movement", true, "Walk on water while not sneaking (sneak to dive). Spends chakra each second.");
         waterCost = c.getInt("waterWalkCost", "movement", 1, 0, 20, "Chakra units per second of water-walking.");
-        wallRun = c.getBoolean("wallRun", "movement", true, "Sprint-jump into a wall and hold jump to run up it briefly.");
-        wallCost = c.getInt("wallRunCost", "movement", 2, 0, 20, "Chakra units per wall-run.");
+        wallRun = c.getBoolean("wallRun", "movement", true, "Run up a wall you face: sprint or dodge into it and hold jump. Pulls you onto the ledge at the top.");
+        wallCost = c.getInt("wallRunCost", "movement", 2, 0, 20, "Chakra units per run up a wall.");
+        wallSideRun = c.getBoolean("wallSideRun", "movement", true, "Run along a wall beside you: jump toward it at speed while holding forward. Lasts up to 2 seconds.");
+        sideRunCost = c.getInt("wallSideRunCost", "movement", 2, 0, 20, "Chakra units to start a run along a wall, plus 1 per second.");
+        wallJump = c.getBoolean("wallJump", "movement", true, "Press jump on a wall (or just after leaving it) to kick off it.");
+        wallJumpCost = c.getInt("wallJumpCost", "movement", 1, 0, 20, "Chakra units per wall jump.");
+        maxWallJumps = c.getInt("maxWallJumps", "movement", 3, 0, 10, "Wall jumps allowed before you land again.");
+        wallSlide = c.getBoolean("wallSlide", "movement", true, "Falling while pressing into a wall slows you to a slide and limits fall damage.");
         underwaterSound = c.getBoolean("underwaterSound", "sound", true, "Muffle and lower sounds while your head is underwater.");
         caveEcho = c.getBoolean("caveEcho", "sound", true, "A soft delayed echo on sounds in enclosed spaces.");
         ambience = c.getBoolean("ambience", "sound", true, "Quiet biome and time-of-day ambience: forest birds, night rustle, cave drips, water, high wind.");
@@ -46,6 +53,9 @@ final class Config {
         villageLife = c.getBoolean("villageLife", "sound", true, "Distant chatter, smithing and doors by day near villagers or NPCs.");
         squad = c.getBoolean("squads", "social", true, "/squad: teammates on the compass at any distance and a squad health panel.");
         sparring = c.getBoolean("sparring", "social", true, "/spar: agreed duels where nobody drops below one health. Needs PvP on.");
+        cameraTilt = c.getBoolean("cameraTilt", "feel", true, "Lean the camera away from a wall you run along, and into side dodges.");
+        dodgeFeel = c.getBoolean("dodgeFeel", "feel", true, "Instant feel when you press Core's dodge key (lean, view punch, whoosh) and an afterimage trail once it lands.");
+        dodgeHop = c.getBoolean("dodgeHop", "feel", true, "Jumping right after a ground dodge keeps the dodge's momentum.");
         compass = c.getBoolean("compassBar", "hud", true, "Compass strip at the top of the screen with directions, spawn and nearby players.");
         if (c.hasChanged()) c.save();
     }
