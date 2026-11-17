@@ -32,11 +32,11 @@ import net.minecraft.world.World;
 
 /** A bounded arena baseline using registry names, exact properties and full tile NBT. */
 public final class DungeonSnapshot {
-    private static final int SCHEMA = 1;
+    private static final int SCHEMA = 2;   // 2: packed palette indexes (1 = legacy int array, still readable)
     private static final long MAX_COMPRESSED_BYTES = 256L * 1024L * 1024L;
     private static final long MAX_NBT_BYTES = 768L * 1024L * 1024L;
     private final GuardRegion region;
-    private final int[] states;
+    private final PackedBlockStates states;
     private final List<IBlockState> palette;
     private final Map<IBlockState, Integer> paletteLookup;
     private final LinkedHashMap<Integer, NBTTagCompound> tiles;
@@ -49,28 +49,28 @@ public final class DungeonSnapshot {
             throw new IllegalArgumentException("Snapshot exceeds the supported array size");
         }
         this.region = copyRegion(region);
-        this.states = new int[(int) region.volume()];
+        this.states = new PackedBlockStates((int) region.volume());
         this.palette = new ArrayList<IBlockState>();
         this.paletteLookup = new HashMap<IBlockState, Integer>();
         this.tiles = new LinkedHashMap<Integer, NBTTagCompound>();
     }
 
-    private DungeonSnapshot(GuardRegion region, int[] states, List<IBlockState> palette,
+    private DungeonSnapshot(GuardRegion region, PackedBlockStates states, List<IBlockState> palette,
             LinkedHashMap<Integer, NBTTagCompound> tiles, String checksum) {
         this.region = copyRegion(region);
         this.states = states;
         this.palette = palette;
         this.paletteLookup = new HashMap<IBlockState, Integer>();
         this.tiles = tiles;
-        this.captured = states.length;
+        this.captured = states.length();
         this.checksum = checksum;
     }
 
     public GuardRegion region() { return copyRegion(region); }
-    public int size() { return states.length; }
+    public int size() { return states.length(); }
     public int captured() { return captured; }
     public String checksum() { return checksum; }
-    public IBlockState stateAt(int index) { return palette.get(states[index]); }
+    public IBlockState stateAt(int index) { return palette.get(states.get(index)); }
     public int tileCount() { return tiles.size(); }
     public List<Integer> tileIndexes() { return new ArrayList<Integer>(tiles.keySet()); }
     public NBTTagCompound tileAt(int index) {
@@ -78,9 +78,16 @@ public final class DungeonSnapshot {
         return nbt == null ? null : nbt.copy();
     }
 
+    /** Snapshot index of a position inside the region (inverse of {@link #positionAt}). */
+    public int indexAt(BlockPos pos) {
+        if (pos == null || !region.contains(pos)) throw new IllegalArgumentException("Position outside snapshot bounds");
+        long width = (long) region.maxX - region.minX + 1, depth = (long) region.maxZ - region.minZ + 1;
+        return (int) (((long) pos.getY() - region.minY) * width * depth + ((long) pos.getZ() - region.minZ) * width + (long) pos.getX() - region.minX);
+    }
+
     /** X changes fastest, then Z, then Y; restoration therefore proceeds bottom-up. */
     public BlockPos positionAt(int index) {
-        if (index < 0 || index >= states.length) throw new IndexOutOfBoundsException();
+        if (index < 0 || index >= states.length()) throw new IndexOutOfBoundsException();
         int width = region.maxX - region.minX + 1;
         int depth = region.maxZ - region.minZ + 1;
         int layer = width * depth;
@@ -95,7 +102,7 @@ public final class DungeonSnapshot {
     int capture(World world, int budget, long deadlineNanos) {
         requireWorld(world);
         int used = 0;
-        while (captured < states.length && used < budget && System.nanoTime() < deadlineNanos) {
+        while (captured < states.length() && used < budget && System.nanoTime() < deadlineNanos) {
             BlockPos pos = positionAt(captured);
             IBlockState state = world.getBlockState(pos);
             Integer entry = paletteLookup.get(state);
@@ -104,7 +111,7 @@ public final class DungeonSnapshot {
                 paletteLookup.put(state, entry);
                 palette.add(state);
             }
-            states[captured] = entry;
+            states.set(captured, entry);
             TileEntity tile = world.getTileEntity(pos);
             if (tile != null) {
                 NBTTagCompound nbt = tile.writeToNBT(new NBTTagCompound());
@@ -119,14 +126,16 @@ public final class DungeonSnapshot {
 
     /** Called on the snapshot I/O worker only after capture is complete. */
     public String save(File file) throws IOException {
-        if (captured != states.length) throw new IOException("Cannot save an incomplete baseline");
+        if (captured != states.length()) throw new IOException("Cannot save an incomplete baseline");
         NBTTagCompound root = new NBTTagCompound();
         root.setInteger("Schema", SCHEMA);
         root.setTag("Region", regionTag(region));
         NBTTagList paletteTag = new NBTTagList();
         for (IBlockState state : palette) paletteTag.appendTag(NBTUtil.writeBlockState(new NBTTagCompound(), state));
         root.setTag("Palette", paletteTag);
-        root.setIntArray("Blocks", states);
+        root.setInteger("BlockCount", states.length());
+        root.setInteger("BlockIndexBytes", states.indexBytes());
+        root.setByteArray("Blocks", states.bytesForSerialization());
         NBTTagList tileTags = new NBTTagList();
         for (Map.Entry<Integer, NBTTagCompound> tile : tiles.entrySet()) {
             NBTTagCompound item = new NBTTagCompound();
@@ -173,17 +182,20 @@ public final class DungeonSnapshot {
         } catch (RuntimeException invalid) {
             throw new IOException("Invalid baseline NBT", invalid);
         }
-        if (root.getInteger("Schema") != SCHEMA || !root.hasKey("Region", 10)
-                || !root.hasKey("Blocks", 11) || !root.hasKey("Palette", 9) || !root.hasKey("Tiles", 9)) {
+        int schema = root.getInteger("Schema");
+        boolean blockFormat = schema == 1 ? root.hasKey("Blocks", 11)
+                : schema == 2 && root.hasKey("Blocks", 7) && root.hasKey("BlockCount", 3) && root.hasKey("BlockIndexBytes", 3);
+        if (!blockFormat || !root.hasKey("Region", 10) || !root.hasKey("Palette", 9) || !root.hasKey("Tiles", 9)) {
             throw new IOException("Unsupported or incomplete baseline format");
         }
         GuardRegion region = readRegion(root.getCompoundTag("Region"));
         if (!regionTag(region).equals(regionTag(expected))) throw new IOException("Baseline bounds differ from configured dungeon " + expected.name);
-        if (region.volume() > maxBlocks) throw new IOException("Baseline exceeds configured maximum block count");
-        int[] states = root.getIntArray("Blocks");
-        if (states.length != region.volume()) throw new IOException("Baseline block count does not match bounds");
+        if (region.volume() > maxBlocks || region.volume() > Integer.MAX_VALUE) throw new IOException("Baseline exceeds configured maximum block count");
+        int blockCount = (int) region.volume();
+        if (schema == 1 && root.getIntArray("Blocks").length != blockCount || schema == 2 && root.getInteger("BlockCount") != blockCount)
+            throw new IOException("Baseline block count does not match bounds");
         NBTTagList savedPalette = root.getTagList("Palette", 10);
-        if (savedPalette.tagCount() == 0 || savedPalette.tagCount() > states.length) throw new IOException("Invalid baseline palette length");
+        if (savedPalette.tagCount() == 0 || savedPalette.tagCount() > blockCount) throw new IOException("Invalid baseline palette length");
         List<IBlockState> palette = new ArrayList<IBlockState>();
         for (int i = 0; i < savedPalette.tagCount(); i++) {
             NBTTagCompound saved = savedPalette.getCompoundTagAt(i);
@@ -194,15 +206,22 @@ public final class DungeonSnapshot {
             }
             palette.add(decoded);
         }
-        for (int index : states) if (index < 0 || index >= palette.size()) throw new IOException("Invalid baseline palette index");
+        PackedBlockStates states;
+        try {
+            states = schema == 1 ? PackedBlockStates.fromLegacy(root.getIntArray("Blocks"), palette.size())
+                    : PackedBlockStates.takeBytes(blockCount, root.getInteger("BlockIndexBytes"), root.getByteArray("Blocks"), palette.size());
+        } catch (IllegalArgumentException invalid) {
+            throw new IOException("Invalid baseline packed block data", invalid);
+        }
+        root.removeTag("Blocks");   // release the large array before tiles are decoded
         LinkedHashMap<Integer, NBTTagCompound> tiles = new LinkedHashMap<Integer, NBTTagCompound>();
         DungeonSnapshot snapshot = new DungeonSnapshot(region, states, palette, tiles, actual);
         NBTTagList savedTiles = root.getTagList("Tiles", 10);
-        if (savedTiles.tagCount() > states.length) throw new IOException("Too many baseline tile entities");
+        if (savedTiles.tagCount() > states.length()) throw new IOException("Too many baseline tile entities");
         for (int i = 0; i < savedTiles.tagCount(); i++) {
             NBTTagCompound entry = savedTiles.getCompoundTagAt(i);
             int index = entry.getInteger("Index");
-            if (index < 0 || index >= states.length || tiles.containsKey(index) || !entry.hasKey("Data", 10)) {
+            if (index < 0 || index >= states.length() || tiles.containsKey(index) || !entry.hasKey("Data", 10)) {
                 throw new IOException("Invalid or duplicated baseline tile index");
             }
             NBTTagCompound data = entry.getCompoundTag("Data");
