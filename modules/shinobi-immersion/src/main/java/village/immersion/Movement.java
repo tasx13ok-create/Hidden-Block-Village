@@ -17,14 +17,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 /**
- * Water-walking and wall-running. Runs on both sides with the same rules so client prediction and
+ * Water-walking, ledge grabs and canopy running. Runs on both sides with the same rules so client prediction and
  * the server agree; chakra is paid on the server only. Movement is the player's own motion, so
  * anti-cheat and other mods see normal velocity.
  */
 final class Movement {
     // Separate client and server state: in single player both sides tick the same player UUID.
     private static final Map<UUID, int[]> SERVER = new HashMap<>(), CLIENT = new HashMap<>();
-    private static Map<UUID, int[]> state(EntityPlayer p) { return p.world.isRemote ? CLIENT : SERVER; }   // {waterTicks, wallTicks, wallArmed, paidWall, ledgeArmed, ledgeAge}
+    private static Map<UUID, int[]> state(EntityPlayer p) { return p.world.isRemote ? CLIENT : SERVER; }   // {waterTicks, unused, unused, unused, ledgeArmed, ledgeAge}
     private static final UUID CANOPY = UUID.fromString("6f1c2b6e-3d1a-4c55-9b7e-5a8e0c4f2d10");
 
     @SubscribeEvent public void tick(TickEvent.PlayerTickEvent e) {
@@ -54,14 +54,14 @@ final class Movement {
         // Everything below reads the jump key, so on a client only the local player runs it.
         if (p.world.isRemote && !ClientInput.local(p)) return;
 
-        // Wall-running: sprint + airborne + pressing into a wall + holding jump.
-        if (p.onGround) { st[1] = 0; st[2] = 1; st[3] = 0; st[4] = 1; }
+        // Wall running, climbing and wall jumps live in Parkour; it also owns ledges reached from a run.
+        if (p.onGround) st[4] = 1;
         if (st[5] > 0) st[5]--;
         canopy(p);
         boolean jump = jumpHeld(p);
 
         // Ledge grab: airborne against a wall whose top is just out of jump reach, holding jump.
-        if (Config.ledgeGrab && st[4] == 1 && !p.onGround && p.collidedHorizontally && jump && p.motionY < 0.25 && !p.capabilities.isFlying && !p.isInWater()) {
+        if (Config.ledgeGrab && st[4] == 1 && Parkour.state(p) == ParkourMath.NONE && !p.onGround && p.collidedHorizontally && jump && p.motionY < 0.25 && !p.capabilities.isFlying && !p.isInWater()) {
             double top = ledgeTop(p);
             if (!Double.isNaN(top) && ImmersionMath.ledgeReach(top - p.posY)) {
                 st[4] = 0;
@@ -74,18 +74,10 @@ final class Movement {
                 return;
             }
         }
-        if (st[2] == 1 && ImmersionMath.wallRun(Config.wallRun, p.isSprinting(), p.onGround, p.collidedHorizontally, st[1], jump)) {
-            if (server && st[3] == 0) { if (!ChakraCost.pay(p, Config.wallCost)) { st[2] = 0; return; } st[3] = 1; }
-            p.motionY = Math.max(p.motionY, ImmersionMath.wallLift(st[1]));
-            p.fallDistance = 0;
-            st[1]++;
-        } else if (st[1] > 0 && !p.collidedHorizontally) {
-            st[2] = 0;   // one run per jump
-        }
     }
 
     /** Top of a climbable ledge in front of the player (world Y), or NaN. Needs two free blocks above it. */
-    private static double ledgeTop(EntityPlayer p) {
+    static double ledgeTop(EntityPlayer p) {
         EnumFacing f = p.getHorizontalFacing();
         BlockPos front = new BlockPos(p.posX + f.getXOffset() * 0.8, p.posY, p.posZ + f.getZOffset() * 0.8);
         BlockPos head = new BlockPos(p.posX, p.posY, p.posZ);
@@ -123,6 +115,5 @@ final class Movement {
         return p.motionY > -0.2;
     }
 
-    static int wallTicks(EntityPlayer p) { int[] st = state(p).get(p.getUniqueID()); return st == null ? 0 : st[1]; }
     static int waterTicks(EntityPlayer p) { int[] st = state(p).get(p.getUniqueID()); return st == null ? 0 : st[0]; }
 }

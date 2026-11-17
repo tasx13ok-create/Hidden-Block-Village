@@ -6,25 +6,12 @@ public final class ImmersionMath {
 
     /** Ticks between chakra payments while water-walking. */
     public static final int WATER_PAY_EVERY = 20;
-    /** Maximum continuous wall-run time (ticks) and upward speed. */
-    public static final int WALL_RUN_TICKS = 18;
-    public static final double WALL_RUN_LIFT = 0.32;
 
     /** Water-walk: allowed only when not sneaking (sneak to dive), not flying, with the feet at the surface. */
     public static boolean waterWalk(boolean enabled, boolean sneaking, boolean flying, boolean feetInWater, boolean headInWater, double motionY) {
         return enabled && !sneaking && !flying && feetInWater && !headInWater && motionY <= 0.1;
     }
 
-    /** Wall-run starts when sprinting, airborne, jumping and pressing into a wall; lasts a bounded time. */
-    public static boolean wallRun(boolean enabled, boolean sprinting, boolean onGround, boolean collidedHorizontally, int ticksRunning, boolean jumpHeld) {
-        return enabled && sprinting && !onGround && collidedHorizontally && jumpHeld && ticksRunning < WALL_RUN_TICKS;
-    }
-
-    /** Upward speed during a wall-run, easing off toward the end. */
-    public static double wallLift(int ticksRunning) {
-        double u = Math.max(0, Math.min(1, ticksRunning / (double) WALL_RUN_TICKS));
-        return WALL_RUN_LIFT * (1 - u * u);
-    }
 
     /** Underwater muffle: volume and pitch multipliers. */
     public static float[] underwater(float volume, float pitch) {

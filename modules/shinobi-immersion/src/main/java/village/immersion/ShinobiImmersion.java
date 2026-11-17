@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = ShinobiImmersion.ID, name = "Shinobi Immersion", version = "0.4.0", acceptedMinecraftVersions = "[1.12.2]", dependencies = "after:valeorders;after:narutomod")
+@Mod(modid = ShinobiImmersion.ID, name = "Shinobi Immersion", version = "0.5.0", acceptedMinecraftVersions = "[1.12.2]", dependencies = "after:valeorders;after:narutomod")
 public final class ShinobiImmersion {
     public static final String ID = "shinobiimmersion";
     @SidedProxy(clientSide = "village.immersion.ClientSetup", serverSide = "village.immersion.CommonSetup")
@@ -23,6 +23,7 @@ public final class ShinobiImmersion {
         MinecraftForge.EVENT_BUS.register(new Feel());
         MinecraftForge.EVENT_BUS.register(new Squad());
         MinecraftForge.EVENT_BUS.register(new Spar());
+        MinecraftForge.EVENT_BUS.register(new Parkour());
         Net.register();
         proxy.client();
     }
