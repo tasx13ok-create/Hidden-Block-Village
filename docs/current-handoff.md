@@ -1,5 +1,41 @@
 # Current project handoff
 
+## Current narrow fix: Dungeon Guard 1.4.3 (2026-11-18)
+
+The owner reported Nether portals returning to the trading hub. Inspection of
+their uploaded 1.4.2 JAR and the exact pinned Magma b4c01d2 binary confirmed that
+Magma uses `recreatePlayerEntity` for prepared live portal/plugin transfers as
+well as respawns. The old transformer forced both cases to the hub.
+
+The 1.4.3 transformer captures the prepared destination before Magma clears it,
+and skips both mandatory spawn hooks for that transfer. Genuine respawns without
+a prepared destination retain the hub policy. Ordinary Forge behavior remains.
+Details, reproduction, scope and installation: [portal fix](dungeon-guard-portal-fix.md).
+
+Final JAR: `Dungeon-Guard-1.12.2-1.4.3.jar`, 1,024,554 bytes, SHA256
+`e63bda10d86cbdb3d85d2f7a7270f9a3e1017e7fa0ae3a8b7fb1a4408e2a0d3e`.
+It is a narrow Java 8 build against the exact inspected 1.4.2 artifact, preserving
+all unrelated entry payloads byte-for-byte; it is not a complete Gradle rebuild.
+
+Observed gates on the assembled JAR: **57 Java 8 JVM regression assertions and
+21 actual pinned-Magma bytecode/dataflow assertions passed**, zero failed.
+A separate **42-assertion reproduction** confirms the old bug and is not counted
+as fixed-release acceptance. The artifact verifier also passed. See
+[exact receipt](../release/evidence/dungeon-guard-1.4.3-portal-fix.json).
+No live Magma startup, graphical portal playthrough, owner-world or Bisect
+acceptance was performed. The owner must replace the old server JAR and test
+both Nether directions, death respawn and Waystone travel.
+
+The old invalid-hub login lockout and WorldEdit integration are separate issues
+and are not fixed by this patch. Existing world data/snapshots were never touched.
+The source was recovered from public commit `80f8c30`; original temporary
+workspaces had been removed by automatic workspace maintenance. The uploaded
+base was recovered with its original SHA256, not rebuilt or inferred from its
+filename. Changes are on `fix/magma-portal-spawn-20261118`; remote publication
+must be explicitly verified before claiming cross-PC availability.
+
+## Historical handoff below
+
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
 ## Latest addon checkpoint: Dungeon Guard 1.2.0

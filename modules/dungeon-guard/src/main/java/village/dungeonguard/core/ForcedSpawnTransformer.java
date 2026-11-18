@@ -9,7 +9,10 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.FrameNode;
+import org.objectweb.asm.tree.IincInsnNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.JumpInsnNode;
@@ -28,6 +31,8 @@ implements Opcodes {
     private static final String INFO = "net/minecraft/world/storage/WorldInfo";
     private static final String POS = "Lnet/minecraft/util/math/BlockPos;";
     private static final String NBT = "Lnet/minecraft/nbt/NBTTagCompound;";
+    private static final String MAGMA_LOCATION = "Lorg/bukkit/Location;";
+    private static final String OBJECT = "java/lang/Object";
 
     private ForcedSpawnTransformer() {
     }
@@ -57,7 +62,9 @@ implements Opcodes {
         } else if (owner.equals(LIST)) {
             changed |= ForcedSpawnTransformer.patch(type, ForcedSpawnTransformer.require(type, "readPlayerDataFromFile", "func_72380_a", "(Lnet/minecraft/entity/player/EntityPlayerMP;)Lnet/minecraft/nbt/NBTTagCompound;"), Kind.LOAD);
             changed |= ForcedSpawnTransformer.patch(type, ForcedSpawnTransformer.require(type, "initializeConnectionToPlayer", "func_72355_a", "(Lnet/minecraft/network/NetworkManager;Lnet/minecraft/entity/player/EntityPlayerMP;Lnet/minecraft/network/NetHandlerPlayServer;)V"), Kind.LOGIN);
-            changed |= ForcedSpawnTransformer.patch(type, ForcedSpawnTransformer.require(type, "recreatePlayerEntity", "func_72368_a", "(Lnet/minecraft/entity/player/EntityPlayerMP;IZ)Lnet/minecraft/entity/player/EntityPlayerMP;"), Kind.RESPAWN);
+            MethodNode recreation = ForcedSpawnTransformer.require(type, "recreatePlayerEntity", "func_72368_a", "(Lnet/minecraft/entity/player/EntityPlayerMP;IZ)Lnet/minecraft/entity/player/EntityPlayerMP;");
+            changed |= magmaPreparedTravel(type) ? patchMagmaRespawn(type, recreation)
+                    : ForcedSpawnTransformer.patch(type, recreation, Kind.RESPAWN);
         } else {
             changed |= ForcedSpawnTransformer.patch(type, ForcedSpawnTransformer.require(type, "setSpawn", "func_176143_a", "(Lnet/minecraft/util/math/BlockPos;)V"), Kind.WORLD_POS);
             changed |= ForcedSpawnTransformer.optional(type, "setSpawnX", "func_76058_a", Kind.WORLD_X);
@@ -96,7 +103,8 @@ implements Opcodes {
 
     private static MethodNode find(ClassNode type, String mcp, String srg, String desc) {
         MethodNode found = null;
-        for (MethodNode method : type.methods) {
+        for (Object entry : type.methods) {
+            MethodNode method = (MethodNode) entry;
             if (!method.name.equals(mcp) && !method.name.equals(srg) || !method.desc.equals(desc)) continue;
             if (found != null) {
                 throw ForcedSpawnTransformer.unsupported(type.name, "ambiguous " + mcp + desc);
@@ -107,6 +115,234 @@ implements Opcodes {
             found = method;
         }
         return found;
+    }
+
+    /**
+     * Magma uses the same recreation method for deaths and live portal/Bukkit
+     * transfers. Its explicit prepared destination distinguishes the latter;
+     * the conqueredEnd argument does not (and is also used for real End return).
+     */
+    private static boolean magmaPreparedTravel(ClassNode type) {
+        FieldNode location = null;
+        int locationNames = 0;
+        boolean namedPrepare = false;
+        for (Object entry : type.fields) {
+            FieldNode field = (FieldNode) entry;
+            if (!"location".equals(field.name)) continue;
+            ++locationNames;
+            if (MAGMA_LOCATION.equals(field.desc)) location = field;
+        }
+        for (Object entry : type.methods) {
+            MethodNode method = (MethodNode) entry;
+            if ("prepareRecreatePlayerEntity".equals(method.name)) namedPrepare = true;
+        }
+        // An unrelated field named location is not evidence of Magma.
+        if (location == null && !namedPrepare) return false;
+        if (location == null || locationNames != 1 || (location.access & (ACC_STATIC | ACC_FINAL)) != 0) {
+            throw unsupported(type.name, "unsupported Magma prepared destination field");
+        }
+        MethodNode prepare = require(type, "prepareRecreatePlayerEntity", null, "(" + MAGMA_LOCATION + "Z)V");
+        List<AbstractInsnNode> code = meaningful(prepare.instructions);
+        if (code.size() < 3 || !variable(code.get(0), ALOAD, 0) || !variable(code.get(1), ALOAD, 1)
+                || !locationField(code.get(2), PUTFIELD, type.name)
+                || locationFields(code, GETFIELD, type.name) != 0
+                || locationFields(code, PUTFIELD, type.name) != 1) {
+            throw unsupported(type.name, "unsupported Magma prepared destination setter");
+        }
+        return true;
+    }
+
+    private static boolean patchMagmaRespawn(ClassNode type, MethodNode method) {
+        List<AbstractInsnNode> real = meaningful(method.instructions);
+        int returns = 0;
+        for (AbstractInsnNode instruction : real) if (instruction.getOpcode() == ARETURN) ++returns;
+        if (returns == 0) throw unsupported(type.name, "no completed return in " + method.name);
+        if (hooks(real) != 0) {
+            verifyMagmaRespawn(type, method, real, returns);
+            return false;
+        }
+
+        int captured = method.maxLocals;
+        requireMagmaReadAndClear(type.name, real, 0, captured);
+        if (captured < 4 || captured >= 65535
+                || locationFields(real, GETFIELD, type.name) != 1
+                || locationFields(real, PUTFIELD, type.name) != 1) {
+            throw unsupported(type.name, "unsupported Magma recreation destination lifetime");
+        }
+
+        // This local belongs to one invocation and survives Magma clearing its
+        // shared field, nested transfers and exception handlers. No global or
+        // ThreadLocal bypass can leak into a later respawn.
+        for (AbstractInsnNode instruction : method.instructions.toArray()) {
+            if (instruction instanceof FrameNode) {
+                FrameNode frame = (FrameNode) instruction;
+                if (frame.type != F_NEW) throw unsupported(type.name, "Magma recreation frames were not expanded");
+                frame.local = withCapturedLocal(type.name, frame.local, captured);
+            }
+        }
+        for (AbstractInsnNode instruction : method.instructions.toArray()) {
+            if (instruction.getOpcode() == ARETURN) method.instructions.insertBefore(instruction, magmaSuffix(captured));
+        }
+        method.instructions.insert(magmaPrefix(type.name, method, captured));
+        method.maxLocals = captured + 1;
+        return true;
+    }
+
+    private static void requireMagmaReadAndClear(String owner, List<AbstractInsnNode> code, int start, int captured) {
+        if (start + 6 > code.size() || !variable(code.get(start), ALOAD, 0)
+                || !locationField(code.get(start + 1), GETFIELD, owner)
+                || !(code.get(start + 2) instanceof VarInsnNode)
+                || code.get(start + 2).getOpcode() != ASTORE
+                || ((VarInsnNode) code.get(start + 2)).var < 4
+                || ((VarInsnNode) code.get(start + 2)).var >= captured
+                || !variable(code.get(start + 3), ALOAD, 0)
+                || code.get(start + 4).getOpcode() != ACONST_NULL
+                || !locationField(code.get(start + 5), PUTFIELD, owner)) {
+            throw unsupported(owner, "unsupported Magma recreation destination read/clear entry");
+        }
+    }
+
+    private static InsnList magmaPrefix(String owner, MethodNode method, int captured) {
+        InsnList code = new InsnList();
+        code.add(new VarInsnNode(ALOAD, 0));
+        code.add(new FieldInsnNode(GETFIELD, owner, "location", MAGMA_LOCATION));
+        code.add(new VarInsnNode(ASTORE, captured));
+        code.add(new VarInsnNode(ALOAD, captured));
+        LabelNode original = new LabelNode();
+        code.add(new JumpInsnNode(IFNONNULL, original));
+        code.add(prefix(owner, method, Kind.RESPAWN));
+        code.add(original);
+        List<Object> initial = new ArrayList<Object>();
+        for (Object local : initialLocals(owner, method)) initial.add(local);
+        List<Object> locals = withCapturedLocal(owner, initial, captured);
+        code.add(new FrameNode(F_NEW, locals.size(), locals.toArray(), 0, new Object[0]));
+        return code;
+    }
+
+    private static InsnList magmaSuffix(int captured) {
+        InsnList code = new InsnList();
+        code.add(new VarInsnNode(ALOAD, captured));
+        LabelNode complete = new LabelNode();
+        code.add(new JumpInsnNode(IFNONNULL, complete));
+        code.add(suffix(Kind.RESPAWN));
+        code.add(complete);
+        // The only following instruction is ARETURN. Forgetting other locals
+        // is valid at this merge and avoids guessing the body's live locals.
+        Object[] locals = new Object[captured + 1];
+        for (int i = 0; i < captured; ++i) locals[i] = TOP;
+        locals[captured] = OBJECT;
+        code.add(new FrameNode(F_NEW, locals.length, locals, 1, new Object[] {MP}));
+        return code;
+    }
+
+    private static List<Object> withCapturedLocal(String owner, List<Object> original, int captured) {
+        List<Object> locals = original == null ? new ArrayList<Object>() : new ArrayList<Object>(original);
+        int slots = localSlots(locals);
+        if (slots > captured) throw unsupported(owner, "Magma captured destination overlaps original locals");
+        while (slots++ < captured) locals.add(TOP);
+        locals.add(OBJECT);
+        return locals;
+    }
+
+    private static int localSlots(List<Object> locals) {
+        int slots = 0;
+        if (locals != null) for (Object local : locals) slots += LONG.equals(local) || DOUBLE.equals(local) ? 2 : 1;
+        return slots;
+    }
+
+    /** Refuse partial, older unconditional, or externally modified hooks. */
+    private static void verifyMagmaRespawn(ClassNode type, MethodNode method, List<AbstractInsnNode> real, int returns) {
+        if (real.size() < 3 || !(real.get(2) instanceof VarInsnNode) || real.get(2).getOpcode() != ASTORE) {
+            throw unsupported(type.name, "modified Magma spawn entry hook");
+        }
+        int captured = ((VarInsnNode) real.get(2)).var;
+        if (captured < 4 || captured != method.maxLocals - 1) {
+            throw unsupported(type.name, "modified Magma captured destination local");
+        }
+        InsnList entry = magmaPrefix(type.name, method, captured);
+        List<AbstractInsnNode> prefix = meaningful(entry);
+        List<AbstractInsnNode> suffix = meaningful(magmaSuffix(captured));
+        if (!matches(real, 0, prefix) || real.size() <= prefix.size()
+                || nextReal(((JumpInsnNode) real.get(4)).label) != real.get(prefix.size())) {
+            throw unsupported(type.name, "modified Magma spawn entry guard");
+        }
+        requireMagmaReadAndClear(type.name, real, prefix.size(), captured);
+        verifyMergeFrame(type.name, ((JumpInsnNode) real.get(4)).label, frameAfter(entry), "entry");
+        if (hooks(real) != 1 + returns || locationFields(real, GETFIELD, type.name) != 2
+                || locationFields(real, PUTFIELD, type.name) != 1) {
+            throw unsupported(type.name, "unexpected Magma spawn hooks or destination accesses");
+        }
+
+        List<AbstractInsnNode> permittedLocalUses = new ArrayList<AbstractInsnNode>();
+        permittedLocalUses.add(real.get(2));
+        permittedLocalUses.add(real.get(3));
+        for (int i = 0; i < real.size(); ++i) {
+            if (real.get(i).getOpcode() != ARETURN) continue;
+            if (!matches(real, i - suffix.size(), suffix)) {
+                throw unsupported(type.name, "missing guarded final Magma spawn hook");
+            }
+            JumpInsnNode skip = (JumpInsnNode) real.get(i - suffix.size() + 1);
+            if (nextReal(skip.label) != real.get(i)) throw unsupported(type.name, "modified Magma spawn completion branch");
+            verifyMergeFrame(type.name, skip.label, frameAfter(magmaSuffix(captured)), "completion");
+            permittedLocalUses.add(real.get(i - suffix.size()));
+        }
+        for (AbstractInsnNode instruction : method.instructions.toArray()) {
+            if (instruction instanceof VarInsnNode) {
+                VarInsnNode variable = (VarInsnNode) instruction;
+                boolean wide = variable.getOpcode() == LLOAD || variable.getOpcode() == DLOAD
+                        || variable.getOpcode() == LSTORE || variable.getOpcode() == DSTORE;
+                if ((variable.var == captured || wide && variable.var + 1 == captured)
+                        && !permittedLocalUses.contains(instruction)) {
+                    throw unsupported(type.name, "modified Magma captured destination lifetime");
+                }
+            } else if (instruction instanceof IincInsnNode && ((IincInsnNode) instruction).var == captured) {
+                throw unsupported(type.name, "modified Magma captured destination lifetime");
+            } else if (instruction instanceof FrameNode) {
+                FrameNode frame = (FrameNode) instruction;
+                if (frame.type != F_NEW || frame.local == null || localSlots(frame.local) != captured + 1
+                        || !OBJECT.equals(frame.local.get(frame.local.size() - 1))) {
+                    throw unsupported(type.name, "modified Magma captured destination frame");
+                }
+            }
+        }
+    }
+
+    private static FrameNode frameAfter(InsnList code) {
+        for (AbstractInsnNode instruction : code.toArray()) if (instruction instanceof FrameNode) return (FrameNode) instruction;
+        throw new IllegalStateException("Missing generated Magma spawn frame");
+    }
+
+    private static void verifyMergeFrame(String owner, LabelNode label, FrameNode expected, String phase) {
+        FrameNode found = null;
+        for (AbstractInsnNode instruction = label; instruction != null && instruction.getOpcode() < 0; instruction = instruction.getNext()) {
+            if (!(instruction instanceof FrameNode)) continue;
+            if (found != null) throw unsupported(owner, "duplicate Magma " + phase + " frame");
+            found = (FrameNode) instruction;
+        }
+        if (found == null || found.type != F_NEW || !sameFrameValues(found.local, expected.local)
+                || !sameFrameValues(found.stack, expected.stack)) {
+            throw unsupported(owner, "modified Magma " + phase + " frame");
+        }
+    }
+
+    private static boolean sameFrameValues(List<Object> a, List<Object> b) {
+        return a == null || a.isEmpty() ? b == null || b.isEmpty() : a.equals(b);
+    }
+
+    private static boolean variable(AbstractInsnNode instruction, int opcode, int slot) {
+        return instruction instanceof VarInsnNode && instruction.getOpcode() == opcode && ((VarInsnNode) instruction).var == slot;
+    }
+
+    private static boolean locationField(AbstractInsnNode instruction, int opcode, String owner) {
+        if (!(instruction instanceof FieldInsnNode) || instruction.getOpcode() != opcode) return false;
+        FieldInsnNode field = (FieldInsnNode) instruction;
+        return owner.equals(field.owner) && "location".equals(field.name) && MAGMA_LOCATION.equals(field.desc);
+    }
+
+    private static int locationFields(List<AbstractInsnNode> code, int opcode, String owner) {
+        int count = 0;
+        for (AbstractInsnNode instruction : code) if (locationField(instruction, opcode, owner)) ++count;
+        return count;
     }
 
     /*
@@ -258,6 +494,11 @@ implements Opcodes {
             }
             if (a instanceof VarInsnNode && ((VarInsnNode)a).var != ((VarInsnNode)b).var) {
                 return false;
+            }
+            if (a instanceof FieldInsnNode) {
+                FieldInsnNode x = (FieldInsnNode) a;
+                FieldInsnNode y = (FieldInsnNode) b;
+                if (!x.owner.equals(y.owner) || !x.name.equals(y.name) || !x.desc.equals(y.desc)) return false;
             }
             if (!(a instanceof MethodInsnNode)) continue;
             MethodInsnNode x = (MethodInsnNode)a;

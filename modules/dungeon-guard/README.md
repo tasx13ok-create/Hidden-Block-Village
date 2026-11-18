@@ -1,4 +1,15 @@
-# Dungeon Guard 1.2.0
+# Dungeon Guard 1.4.3
+
+**Current portal hotfix:** 1.4.3 separates Magma's prepared Nether/plugin travel
+from genuine respawning, so the hub override no longer captures that travel
+path. It preserves unrelated behavior from the exact uploaded 1.4.2 JAR.
+See [the fix and installation guide](../../docs/dungeon-guard-portal-fix.md)
+and [version-specific evidence](../../release/evidence/dungeon-guard-1.4.3-portal-fix.json).
+Java 8 JVM and pinned-Magma static checks passed; live Bisect acceptance remains.
+The older missing-hub login lockout and WorldEdit issues are separate.
+
+The guide below is retained historical 1.2.0 documentation; use the current
+fix guide for this release's build and verification scope.
 
 Minecraft Java **1.12.2**, Forge, Java 8. Intended for the existing Naruto/Bisect/Magma server. The production JAR belongs in **mods**, not **plugins**. Install it on the server for protection and resets. Install the same JAR on each player's client for the transparent dungeon/boss HUD. Clients without it can still connect and receive plain Minecraft entry titles. It registers no new items or blocks; the selection wand uses a marked vanilla stick.
 

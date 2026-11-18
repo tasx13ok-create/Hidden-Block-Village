@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'village.dungeonguard'
-version = '1.4.2'
+version = '1.4.3'
 base { archivesName = 'Dungeon-Guard-1.12.2' }
 java {
     toolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
