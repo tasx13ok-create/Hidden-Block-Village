@@ -9,7 +9,7 @@ from PIL import Image, ImageChops, ImageDraw
 
 from material import rgba_map
 from outfit import DESIGNS, PART_NAMES, uv_rects, sample_colors
-from proof import comparison, icon_sheet, make_icon
+from proof import comparison, helmet_sheet, icon_sheet, make_icon
 from trace import WORK_SCALE, UV_WIDTH, biped_work
 
 UV_SIZE=(UV_WIDTH,UV_WIDTH//2)
@@ -55,6 +55,18 @@ def verify_layer(layer,num):
         assert not ImageChops.multiply(color,ImageChops.invert(alpha)).getbbox()
 
 
+def verify_helmet_front(image,key):
+    x,y,w,h=uv_rects("head")["front"]
+    face=image.getchannel("A").crop(
+        tuple(value*WORK_SCALE for value in (x,y,x+w,y+h)))
+    bounds=ImageChops.invert(face).getbbox()
+    if key=="isobu":
+        assert bounds is None, "Do not cut a hole in Isobu's central guard"
+    else:
+        assert bounds and bounds[0]+bounds[2]==face.width, (
+            f"{key} lower opening is off the helmet centerline", bounds)
+
+
 def archive(out):
     files=sorted(path for path in out.rglob("*") if path.is_file())
     target=out.with_suffix(".zip")
@@ -87,6 +99,7 @@ def build(reference_path,out):
     seen=set()
     for key,design in DESIGNS.items():
         layers=biped_work(reference,key,palettes[key])
+        verify_helmet_front(layers[0],key)
         all_layers[key]=layers
         all_icons[key]=[]
         layer_receipts=[]
@@ -119,6 +132,7 @@ def build(reference_path,out):
         print(f"Painted and checked {key}",flush=True)
     comparison(reference,all_layers,all_icons,palettes,proofs)
     icon_sheet(all_icons,proofs)
+    helmet_sheet(reference,all_layers,proofs)
     (out/"palette-and-validation.json").write_text(json.dumps({
         "reference_sha256":sha(reference_path), "reference_size":list(reference.size),
         "layout":"Minecraft 1.12.2 ModelBiped 64x32 grid at 4096x2048",
@@ -130,6 +144,7 @@ def build(reference_path,out):
         "Nine sets with 4096x2048 layer_1 and layer_2 color textures, matching LabPBR "
         "normal and specular maps, and 32x32 inventory icons.\n"
         "previews/Compare-all-nine.png shows the reference crop next to each outfit.\n"
+        "previews/Helmet-alignment.png compares a straight-on helmet with an angled view.\n"
         "The original drawing supplies the markings, visible edges and colors. Details on "
         "hidden faces continue the colors and patterns from the pictured views.\n\n"
         "These are the vanilla-layout texture files. The separate Art-Match JAR adapts "

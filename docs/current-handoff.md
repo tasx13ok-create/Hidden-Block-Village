@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Bijuu armor 4K helmet fit and detail, 19 November 2026
+
+The owner reported that the helmets looked slightly turned. In the first export, the visor openings were 8 to 24 pixels right of center on most 512-pixel front cells. The crop for some helmets also included the cheek or background. The painter now maps the front and cheek separately and centers all eight openings. Isobu keeps the continuous shell guard in the reference. Higher detail sleeve, cuff, knee and boot features come from the larger reference images. Geometry and gameplay remain stock.
+
+Private outputs are the Bijuu-Armor-4K-Refined ZIP and matching 0.16.2-rc1 replacement JAR. Both rebuilt byte for byte. The ZIP has 104 entries and a straight-on versus angled helmet sheet. All 101 changes in the JAR are PNGs. Forge with OptiFine and BSL verified 36 armor models, 10 main atlases and 73 root draws and captured a fixed straight-on image of each equipped set. See [the version-specific verification record](../release/evidence/bijuu-armor-4k-refined.json). The attachment, previews, local shader screenshots and binary artifacts remain private.
+
 ## Bijuu armor 4K reference edition, 19 November 2026
 
 The owner requested a texture-only match to their nine-outfit reference, with richer detail and 4K shader support. The final painter uses the actual visible outfit pixels for the front of the helmet and chest and the small outfit views for the sleeves, pants and boots. Hidden sides continue the pictured designs. See [build and shader instructions](../tools/bijuu_reference/README.md).

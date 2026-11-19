@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-19",
+  "baseline_jar_sha256": "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b",
+  "reference_sha256": "868f07404682de09ef6657a14f7860184af90344b34d8181da29492645b83d77",
+  "vanilla_archive": {
+    "name": "Bijuu-Armor-4K-Refined.zip",
+    "sha256": "4bc67b70d3ebf277f034361efa33f2321ebd8787a76bbac6604ca9b82d8a09d4",
+    "bytes": 3894645,
+    "entries": 104,
+    "armor_size": [
+      4096,
+      2048
+    ],
+    "item_icons": [
+      32,
+      32
+    ]
+  },
+  "runtime_jar": {
+    "name": "HiddenVillage-BijuuArmor-0.16.2-rc1-4K-Refined.jar",
+    "sha256": "81d369a9a3afe46664716e042a02a7a5a4ef730200d4b2f1e6357a367f30c17d",
+    "bytes": 1646321,
+    "entries": 273,
+    "png_replacements": 101,
+    "albedo_size": [
+      4096,
+      4096
+    ]
+  },
+  "identical_rebuild": true,
+  "visor_opening_center_x_512px_face": {
+    "chomei": {
+      "before": 272,
+      "after": 256
+    },
+    "gyuki": {
+      "before": 272,
+      "after": 256
+    },
+    "isobu": {
+      "before": 308,
+      "after": null
+    },
+    "kokuo": {
+      "before": 280,
+      "after": 256
+    },
+    "kurama": {
+      "before": 272,
+      "after": 256
+    },
+    "matatabi": {
+      "before": 272,
+      "after": 256
+    },
+    "saiken": {
+      "before": 264,
+      "after": 256
+    },
+    "shukaku": {
+      "before": 272,
+      "after": 256
+    },
+    "son_goku": {
+      "before": 272,
+      "after": 256
+    }
+  },
+  "isolated_render": {
+    "forge": "14.23.5.2859",
+    "optifine": "1.12.2_HD_U_G5",
+    "bsl": "10.1.8",
+    "models": 36,
+    "atlases": 10,
+    "root_draws": 73,
+    "equipped_stands": 9,
+    "front_screenshot_sha256": {
+      "shukaku": "42ebfdf80590b4ee5c677d933d0a07454302d864a85da17636bb3e243145c2a1",
+      "matatabi": "b66f6ace497c2e7d02d6665db190dd229258178f0e1ebb0143c3b95f7f8fe868",
+      "isobu": "7e476cc2ad47aa19663356c8dfb7d07301ef88a72661a66c0c4197a5e2d49eb5",
+      "son_goku": "f48da5ad8e7b1041c5a6aa68419dd0fb2cded41b7ca7acbd7396198736529cf2",
+      "kokuo": "566e5fd9164eb7a3fde15f68110decf938f25bcef6c317eb96b305d5d7356d06",
+      "saiken": "a6936f29c2347c98954c44b7d7f54b785741fee7e4c7ce7d6825bc810b7e5ec7",
+      "chomei": "76e71ec2b688b3f214e4177acd0a4933193f20968ffb1ebc9f9242543bdc0ec8",
+      "gyuki": "2dfae13a282de014a57c8c92c1c5c9c2eca74834151fe27d7d89289333a97829",
+      "kurama": "23279e1df8a1ecab97b6f0087a182659c8713bb20db8d4af3ec62db6130b33c1"
+    },
+    "scope": "Disposed client with fixed camera. No deployed profile or multiplayer verification."
+  }
+}

@@ -19,6 +19,8 @@ public class ArmorProbe {
     private Object client;
     private int galleryStage;
     private int worldTicks;
+    private int frontIndex;
+    private int nextFrontFrame;
     private static Class<?> type(String name) throws ClassNotFoundException {
         return Class.forName(name);
     }
@@ -135,7 +137,7 @@ public class ArmorProbe {
                          + "{id:\"hvbijuu:"+armor+"_chestplate\",Count:1b},"
                          + "{id:\"hvbijuu:"+armor+"_helmet\",Count:1b}";
                     chat("summon armor_stand "+(3*(i-4))+" 4 0 "
-                         +"{ShowArms:1b,Rotation:[180f],ArmorItems:[" +slots+"]}");
+                         +"{ShowArms:1b,Rotation:[0f],ArmorItems:[" +slots+"]}");
                 }
                 chat("tp @p 0 4 -16 0 2");
                 Object options=game.getField("field_71474_y").get(client);
@@ -151,11 +153,25 @@ public class ArmorProbe {
                 }
                 if (stands!=9) throw new AssertionError("Expected nine equipped stands, found "+stands);
                 screenshot("bijuu-4k-bsl-roster.png");
-                chat("tp @p 11.4 4 -3.2 -8 9");
+                frontCamera();
             }
-            if (galleryStage==4 && worldTicks>=235) {
+            if (galleryStage==4) {
+                // Lock the fixture's look direction while the teleported frame
+                // settles. This removes variance from GUI focus/mouse input.
+                Object player=game.getField("field_71439_g").get(client);
+                Class<?> entity=player.getClass();
+                entity.getField("field_70177_z").setFloat(player,180.0f);
+                entity.getField("field_70126_B").setFloat(player,180.0f);
+                entity.getField("field_70125_A").setFloat(player,8.0f);
+                entity.getField("field_70127_C").setFloat(player,8.0f);
+                if (worldTicks<nextFrontFrame) return;
+                screenshot("front-"+roster[frontIndex]+".png");
+                frontIndex++;
+                if (frontIndex<roster.length) {
+                    frontCamera();
+                    return;
+                }
                 galleryStage++;
-                screenshot("bijuu-4k-bsl-kurama.png");
                 System.out.println("BIJUU_BSL_GALLERY_PASS");
                 FMLCommonHandler.instance().exitJava(0,false);
             }
@@ -163,6 +179,12 @@ public class ArmorProbe {
             failure.printStackTrace();
             FMLCommonHandler.instance().exitJava(1,false);
         }
+    }
+
+    private void frontCamera() throws Exception {
+        double x=3*(frontIndex-4)+0.5;
+        chat("tp @p "+x+" 4 3.7 180 8");
+        nextFrontFrame=worldTicks+30;
     }
 
     private void chat(String command) throws Exception {

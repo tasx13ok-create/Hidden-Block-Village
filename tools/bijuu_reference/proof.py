@@ -198,3 +198,35 @@ def icon_sheet(icons,out):
             sheet.alpha_composite(image,(x+2,y+2))
             sheet.alpha_composite(image.resize((16,16),N),(x+50,y+10))
     sheet.save(out/"Icons-32-and-16.png")
+
+def helmet_sheet(reference, layers, out):
+    """Pair a zero-yaw render with a deliberately angled view for each helmet."""
+    from landmarks import HELMET_FRONT
+
+    sheet=Image.new("RGBA",(1260,1020),BG)
+    d=ImageDraw.Draw(sheet)
+    text(d,(30,24),"HELMET ALIGNMENT",39,bold=True)
+    text(d,(32,77),"Reference crop  /  straight on  /  32 degrees",16,FAINT)
+    for i,(key,design) in enumerate(DESIGNS.items()):
+        x,y=30+i%3*410,124+i//3*290
+        d.rounded_rectangle((x,y,x+380,y+264),radius=9,fill=CARD)
+        text(d,(x+16,y+13),design.title.upper(),23,bold=True)
+        ox,oy=ORIGINS[i]
+        points=HELMET_FRONT[key]
+        left,top=min(a for a,_ in points)-16,min(b for _,b in points)-3
+        right,bottom=max(a for a,_ in points)+4,max(b for _,b in points)+2
+        ref=reference.crop((ox+left,oy+top,ox+right,oy+bottom)).convert("RGBA")
+        ref.thumbnail((105,125),N)
+        zoom=min(105/ref.width,125/ref.height)
+        ref=ref.resize((round(ref.width*zoom),round(ref.height*zoom)),N)
+        sheet.alpha_composite(ref,(x+66-ref.width//2,y+66+(125-ref.height)//2))
+        for j,(label,yaw) in enumerate((("FRONT",0),("ANGLE",32))):
+            px=x+126+119*j
+            view=render(layers[key],112,144,yaw=yaw,pitch=0,pixels=8.5,slot=0)
+            sheet.alpha_composite(view,(px,y+54))
+            if not yaw:
+                for yy in (y+72,y+180):
+                    d.line((px+56,yy,px+56,yy+5),fill="#e5b471",width=1)
+            d.text((px+56,y+218),label,font=font(13),fill=FAINT,anchor="mt")
+        text(d,(x+25,y+218),"REFERENCE",13,FAINT)
+    sheet.save(out/"Helmet-alignment.png")

@@ -1,8 +1,9 @@
 """Trace the pictured costume panels directly into the vanilla armor skin UV."""
 from dataclasses import dataclass
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 
+from landmarks import HELMET_CHEEK, HELMET_FRONT, HERO_LIMBS
 from outfit import DESIGNS, ORIGINS, uv_rects
 
 WORK_SCALE = 8   # intermediate 512x256. Retains the source pixels on the armor.
@@ -15,30 +16,20 @@ class Crop:
     torso: tuple[int, int, int, int]
     arm: tuple[int, int, int, int]
     leg: tuple[int, int, int, int]
-    hero_head: tuple[tuple[int, int], ...]  # TL, BL, BR, TR from the actual worn shot.
 
 
 # Each cell refers to the first small model under the hero of the same set.
 # Only the outfit is sampled. The surrounding creature and scenery stay out.
 CROPS = {
-    "shukaku": Crop((28,6,47,24),(29,25,45,49),(22,24,29,47),(29,49,37,73),
-                    ((70,11),(69,49),(107,52),(108,18))),
-    "matatabi": Crop((28,6,47,24),(30,25,45,49),(22,24,29,47),(28,49,36,74),
-                     ((72,9),(69,54),(104,57),(103,13))),
-    "isobu": Crop((26,6,46,24),(28,25,44,49),(21,24,28,47),(27,49,36,74),
-                  ((72,10),(69,53),(105,56),(103,17))),
-    "son_goku": Crop((27,6,47,24),(29,25,45,49),(21,25,29,47),(28,49,36,73),
-                     ((72,9),(70,52),(106,55),(108,18))),
-    "kokuo": Crop((26,7,46,24),(28,25,44,49),(21,24,28,47),(27,49,35,73),
-                   ((72,9),(70,52),(105,57),(105,15))),
-    "saiken": Crop((27,8,47,26),(29,27,45,52),(22,26,29,50),(28,52,36,75),
-                    ((71,11),(68,58),(105,57),(105,17))),
-    "chomei": Crop((28,10,48,28),(30,29,46,53),(22,28,30,51),(29,53,37,77),
-                    ((72,12),(68,62),(107,58),(105,15))),
-    "gyuki": Crop((26,10,46,27),(28,28,44,54),(22,28,28,51),(27,54,35,77),
-                   ((71,12),(69,58),(102,56),(105,14))),
-    "kurama": Crop((27,10,47,28),(29,29,45,53),(22,28,29,51),(29,53,37,77),
-                    ((75,11),(70,57),(106,59),(109,14))),
+    "shukaku": Crop((28,6,47,24),(29,25,45,49),(22,24,29,47),(29,49,37,73)),
+    "matatabi": Crop((28,6,47,24),(30,25,45,49),(22,24,29,47),(28,49,36,74)),
+    "isobu": Crop((26,6,46,24),(28,25,44,49),(21,24,28,47),(27,49,36,74)),
+    "son_goku": Crop((27,6,47,24),(29,25,45,49),(21,25,29,47),(28,49,36,73)),
+    "kokuo": Crop((26,7,46,24),(28,25,44,49),(21,24,28,47),(27,49,35,73)),
+    "saiken": Crop((27,8,47,26),(29,27,45,52),(22,26,29,50),(28,52,36,75)),
+    "chomei": Crop((28,10,48,28),(30,29,46,53),(22,28,30,51),(29,53,37,77)),
+    "gyuki": Crop((26,10,46,27),(28,28,44,54),(22,28,28,51),(27,54,35,77)),
+    "kurama": Crop((27,10,47,28),(29,29,45,53),(22,28,29,51),(29,53,37,77)),
 }
 
 THUMBNAILS=[(4+166*i,803) for i in range(5)]+[(4+166*i,1175) for i in range(4)]
@@ -79,20 +70,30 @@ def hero_face(reference,index,points,size):
     return reference.transform(size,Image.Transform.QUAD,coords,N).convert("RGBA")
 
 
-def paint_head(reference,index,key,part,side,faces):
+def paint_head(reference,index,key,side,faces):
+    if side in ("west", "east"):
+        cheek=hero_face(reference,index,HELMET_CHEEK[key],(36,48))
+        return cheek if side=="west" else ImageOps.mirror(cheek)
     if side!="front":
         return faces[side]
-    main=hero_face(reference,index,part.hero_head,(34,40))
-    # Keep the source's visor and its readable dark shading. Remove the
-    # synthetic skin under the lower slit so the player shows through.
-    d=ImageDraw.Draw(main)
-    holes = {
-        "isobu": (18,29,22,34), "kokuo": (12,29,24,37),
-        "kurama": (12,27,23,34), "saiken": (12,29,22,35),
-    }
-    hole=holes.get(key,(12,29,23,36))
-    d.rectangle(hole,fill=(0,0,0,0))
+    main=hero_face(reference,index,HELMET_FRONT[key],(40,48))
+    # The lower opening belongs on the model centerline. Keep its corners
+    # narrow so the face plate shading and any central guard stay intact.
+    width,height=main.size
+    center=width//2
+    if key=="isobu":
+        # The reference has an uninterrupted central shell guard.
+        return main
+    half=5 if key=="kokuo" else 4
+    top=height-11
+    end=height-4
+    ImageDraw.Draw(main).polygon(
+        [(center-half,top+2), (center-half+1,top),
+         (center+half-2,top), (center+half-1,top+2),
+         (center+half-1,end-2), (center+half-2,end),
+         (center-half+1,end), (center-half,end-2)],fill=(0,0,0,0))
     return main
+
 
 def projected_faces(reference,index,box,palette):
     front=thumbnail(reference,index,box)
@@ -116,12 +117,21 @@ def biped_work(reference,key,palette):
     layers=[Image.new("RGBA",sizes),Image.new("RGBA",sizes)]
     for name,box in (("head",art.head),("body",art.torso),("arm",art.arm),("leg",art.leg)):
         faces=projected_faces(reference,index,box,palette)
+        if name in ("arm","leg"):
+            points=HERO_LIMBS[key][0 if name=="arm" else 1]
+            limb=hero_face(reference,index,points,(24,54))
+            faces["front"]=limb
+            # The outer edge of the larger pose still shows stitching and
+            # marks that disappear when a two-pixel thumbnail strip is blown up.
+            side_panel=limb.crop((0,0,10,limb.height))
+            faces["west"]=side_panel
+            faces["east"]=ImageOps.mirror(side_panel)
         for side,(u,v,w,h) in uv_rects(name).items():
             x,y,W,H=(n*WORK_SCALE for n in (u,v,w,h))
             face=faces[side]
             cap=side in ("top","bottom")
             if name=="head":
-                face=paint_head(reference,index,key,art,side,faces)
+                face=paint_head(reference,index,key,side,faces)
             if name=="body" and side=="front":
                 face=hero_face(reference,index,HERO_BODY[key],(36,54))
             placed=rescale(face,(W,H))
