@@ -21,6 +21,8 @@ public class ArmorProbe {
     private int worldTicks;
     private int frontIndex;
     private int nextFrontFrame;
+    private boolean angled;
+    private float galleryYaw;
     private static Class<?> type(String name) throws ClassNotFoundException {
         return Class.forName(name);
     }
@@ -137,7 +139,7 @@ public class ArmorProbe {
                          + "{id:\"hvbijuu:"+armor+"_chestplate\",Count:1b},"
                          + "{id:\"hvbijuu:"+armor+"_helmet\",Count:1b}";
                     chat("summon armor_stand "+(3*(i-4))+" 4 0 "
-                         +"{ShowArms:1b,Rotation:[0f],ArmorItems:[" +slots+"]}");
+                         +"{Rotation:[0f],ArmorItems:[" +slots+"]}");
                 }
                 chat("tp @p 0 4 -16 0 2");
                 Object options=game.getField("field_71474_y").get(client);
@@ -153,22 +155,23 @@ public class ArmorProbe {
                 }
                 if (stands!=9) throw new AssertionError("Expected nine equipped stands, found "+stands);
                 screenshot("bijuu-4k-bsl-roster.png");
-                frontCamera();
+                positionCamera();
             }
             if (galleryStage==4) {
                 // Lock the fixture's look direction while the teleported frame
                 // settles. This removes variance from GUI focus/mouse input.
                 Object player=game.getField("field_71439_g").get(client);
                 Class<?> entity=player.getClass();
-                entity.getField("field_70177_z").setFloat(player,180.0f);
-                entity.getField("field_70126_B").setFloat(player,180.0f);
+                entity.getField("field_70177_z").setFloat(player,galleryYaw);
+                entity.getField("field_70126_B").setFloat(player,galleryYaw);
                 entity.getField("field_70125_A").setFloat(player,8.0f);
                 entity.getField("field_70127_C").setFloat(player,8.0f);
                 if (worldTicks<nextFrontFrame) return;
-                screenshot("front-"+roster[frontIndex]+".png");
-                frontIndex++;
+                screenshot((angled ? "angle-" : "front-")+roster[frontIndex]+".png");
+                if (angled) frontIndex++;
+                angled=!angled;
                 if (frontIndex<roster.length) {
-                    frontCamera();
+                    positionCamera();
                     return;
                 }
                 galleryStage++;
@@ -181,9 +184,10 @@ public class ArmorProbe {
         }
     }
 
-    private void frontCamera() throws Exception {
-        double x=3*(frontIndex-4)+0.5;
-        chat("tp @p "+x+" 4 3.7 180 8");
+    private void positionCamera() throws Exception {
+        double x=3*(frontIndex-4)+0.5+(angled ? 2.0 : 0.0);
+        galleryYaw=angled ? 148.0f : 180.0f;
+        chat("tp @p "+x+" 4 3.7 "+galleryYaw+" 8");
         nextFrontFrame=worldTicks+30;
     }
 

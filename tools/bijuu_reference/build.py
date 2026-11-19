@@ -67,6 +67,21 @@ def verify_helmet_front(image,key):
             f"{key} lower opening is off the helmet centerline", bounds)
 
 
+def verify_worn_seams(layers):
+    joined=Image.alpha_composite(layers[1],layers[0])
+    for part in ("body","arm","leg"):
+        faces={}
+        for side in ("front","east","west"):
+            x,y,w,h=uv_rects(part)[side]
+            tile=joined.crop(tuple(n*WORK_SCALE for n in (x,y,x+w,y+h)))
+            faces[side]=tile
+        front,east,west=(faces[side] for side in ("front","east","west"))
+        assert front.crop((0,0,1,front.height)).tobytes()==west.crop(
+            (west.width-1,0,west.width,west.height)).tobytes(),f"{part} west seam"
+        assert front.crop((front.width-1,0,front.width,front.height)).tobytes()==east.crop(
+            (0,0,1,east.height)).tobytes(),f"{part} east seam"
+
+
 def archive(out):
     files=sorted(path for path in out.rglob("*") if path.is_file())
     target=out.with_suffix(".zip")
@@ -100,6 +115,7 @@ def build(reference_path,out):
     for key,design in DESIGNS.items():
         layers=biped_work(reference,key,palettes[key])
         verify_helmet_front(layers[0],key)
+        verify_worn_seams(layers)
         all_layers[key]=layers
         all_icons[key]=[]
         layer_receipts=[]

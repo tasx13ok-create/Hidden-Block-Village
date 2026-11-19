@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-19",
+  "reference_sha256": "868f07404682de09ef6657a14f7860184af90344b34d8181da29492645b83d77",
+  "baseline_jar_sha256": "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b",
+  "zip": {
+    "name": "Bijuu-Armor-4K-Detail-Pass.zip",
+    "bytes": 3909086,
+    "sha256": "3e4740529041377a2b067ef0f6a802fc414920b4fc2f52b35c9baa1a6b00a162",
+    "entries": 104,
+    "armor_size": [
+      4096,
+      2048
+    ]
+  },
+  "jar": {
+    "name": "HiddenVillage-BijuuArmor-0.16.2-rc1-4K-Detail-Pass.jar",
+    "bytes": 2443812,
+    "sha256": "3421f2812eddea042a451a40a4b300c4f8c657ee8ac3ae427c251ad5bb727961",
+    "entries": 273,
+    "changed_pngs": 101,
+    "armor_size": [
+      4096,
+      4096
+    ]
+  },
+  "independent_rebuild": "Both packages match byte-for-byte.",
+  "body_arm_leg_front_edge_matches": 54,
+  "visor_center_check": "Eight open visors centered. Isobu face remains continuous.",
+  "authored_tail_alpha_matches_stock_at_output_scale": 10,
+  "projected_helmet_all_set_unique_sample_sum": {
+    "refined_pass": 7603,
+    "detail_pass": 13391
+  },
+  "renderer": {
+    "forge": "14.23.5.2859",
+    "optifine": "1.12.2_HD_U_G5",
+    "bsl": "10.1.8",
+    "models": 36,
+    "atlases": 10,
+    "native_root_draws": 73,
+    "equipped_stands": 9,
+    "process_exit": 0,
+    "screenshots_sha256": {
+      "front-shukaku.png": "265b5ba431a3c53c322ed574b49b6e7e887eeb4c92bd6087da2bdcc3933b23d7",
+      "angle-shukaku.png": "3f9ac5798e5fa3245c59d757720b62486ad7a864006e9d739bc19b6c608a35a7",
+      "front-matatabi.png": "5d07dde6fe405b0843b47698ebc17cbdcc9cade8d0b2775c7ca5e0261994c215",
+      "angle-matatabi.png": "ce45cb0589adafce78f6d85c5bd5c1bc285c5a1a18f99f680f17d169b4aef798",
+      "front-isobu.png": "667111fec6d84b856696492ae25253a3be907b46ca8f06eb4f4f97147a2fc52e",
+      "angle-isobu.png": "88216c18e8f3aa439e4531539cf3c80236db60339989f369316979efaedc49fd",
+      "front-son_goku.png": "da114bff746ffd6ff3517b9c5d1b78a5a765a895ab5e0652d2f35d4297244684",
+      "angle-son_goku.png": "820ec47cd458ddeef4ef0cea60aea5039212e865c24f8ec8d500e8b088613fc4",
+      "front-kokuo.png": "696af57bd78c87a1cd852c990d710bec340058f8cb46d55fe27337f9e92ab91b",
+      "angle-kokuo.png": "44da014d66daebecf93f7adf8c1cd5957438ea0dfeedfd1373e521d9db3a59c3",
+      "front-saiken.png": "35488d9a03d00d27c01cbfa8fad497e09e500e75fed6969eac3df3bac608ff1f",
+      "angle-saiken.png": "a4ea2bf7def4ac51f8a4c9bafa17c35ce6a24888cddac6dfaeda8c958c8a8f95",
+      "front-chomei.png": "923ab6f36ca3d32eb9292c6522c260e371ebf1d2b0c1224458583d9c011ea396",
+      "angle-chomei.png": "f3bf168688abd625fd53712f8821f959f07aa8b5ecbf56690a94da13c9e7b7d8",
+      "front-gyuki.png": "f90f9eb44168008ce027a3d64423eaaf3944a8a6ff8d470bffbf110812cfb073",
+      "angle-gyuki.png": "630b3accb48044468351ec65cdd7e23d4629cc0c0121903aab6cde954b70cb45",
+      "front-kurama.png": "d23448200d34b746f637dc21353b3f1ef1141c499d58ee63b7fe8a0b7007c68d",
+      "angle-kurama.png": "659db8bfd8bcdbba35a26e224b66ee31df9a5528d14e7b3d5bc40530bbf0f9b4"
+    }
+  },
+  "scope": "Private texture and local shader gallery acceptance. Full installed profile and multiplayer were not used."
+}

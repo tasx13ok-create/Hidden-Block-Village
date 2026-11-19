@@ -110,6 +110,18 @@ def projected_faces(reference,index,box,palette):
     return dict(front=front,back=rear,west=west,east=east,top=top,bottom=bottom)
 
 
+def wrap_front_edges(faces, front, margin):
+    """Use the pictured outer material instead of stretching a thumbnail row.
+
+    The west UV meets the left edge of the front at its right boundary.
+    The east UV meets the right edge at its left boundary.
+    """
+    width,height=front.size
+    faces["front"]=front
+    faces["west"]=ImageOps.mirror(front.crop((0,0,margin,height)))
+    faces["east"]=ImageOps.mirror(front.crop((width-margin,0,width,height)))
+
+
 def biped_work(reference,key,palette):
     index=list(DESIGNS).index(key)
     art=CROPS[key]
@@ -120,20 +132,16 @@ def biped_work(reference,key,palette):
         if name in ("arm","leg"):
             points=HERO_LIMBS[key][0 if name=="arm" else 1]
             limb=hero_face(reference,index,points,(24,54))
-            faces["front"]=limb
-            # The outer edge of the larger pose still shows stitching and
-            # marks that disappear when a two-pixel thumbnail strip is blown up.
-            side_panel=limb.crop((0,0,10,limb.height))
-            faces["west"]=side_panel
-            faces["east"]=ImageOps.mirror(side_panel)
+            wrap_front_edges(faces,limb,9)
+        if name=="body":
+            chest=hero_face(reference,index,HERO_BODY[key],(36,54))
+            wrap_front_edges(faces,chest,7)
         for side,(u,v,w,h) in uv_rects(name).items():
             x,y,W,H=(n*WORK_SCALE for n in (u,v,w,h))
             face=faces[side]
             cap=side in ("top","bottom")
             if name=="head":
                 face=paint_head(reference,index,key,side,faces)
-            if name=="body" and side=="front":
-                face=hero_face(reference,index,HERO_BODY[key],(36,54))
             placed=rescale(face,(W,H))
             if name=="body":
                 ysplit=9*WORK_SCALE

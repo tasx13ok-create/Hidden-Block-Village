@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Bijuu armor 4K seam and tail detail pass, 19 November 2026
+
+The owner requested another refinement round after the helmet fit correction. Front trim and markings now continue around the chest, arm and leg sides without a hard color jump. All 54 side-edge joins match their neighboring front cells. The exporter projects the color textures directly into the 4096 × 4096 atlas. It keeps the scratch detail and small marks that went missing in the previous projection. The original tail patterns and opacity are restored in the reference colors. This includes Shukaku's seals, Isobu's scales, Son Goku's lava cracks and Kurama's tail and cage details. Helmets stay centered and the geometry is byte-identical to stock.
+
+Private outputs are the Bijuu-Armor-4K-Detail-Pass ZIP and matching 0.16.2-rc1 JAR. Both rebuilt byte for byte. Only 101 PNG entries change in the JAR. Forge with OptiFine and BSL verified 36 models and captured all nine equipped sets head on and at a 32-degree angle. See [the version-specific receipt](../release/evidence/bijuu-armor-4k-detail-pass.json). The source attachment, screenshots and binary outputs remain private.
+
 ## Bijuu armor 4K helmet fit and detail, 19 November 2026
 
 The owner reported that the helmets looked slightly turned. In the first export, the visor openings were 8 to 24 pixels right of center on most 512-pixel front cells. The crop for some helmets also included the cheek or background. The painter now maps the front and cheek separately and centers all eight openings. Isobu keeps the continuous shell guard in the reference. Higher detail sleeve, cuff, knee and boot features come from the larger reference images. Geometry and gameplay remain stock.

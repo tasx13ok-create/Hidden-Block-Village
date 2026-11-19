@@ -6,7 +6,7 @@ The painter maps each helmet front separately from its visible cheek and centers
 
 The vanilla export contains 18 RGBA color textures at **4096 × 2048**, 36 LabPBR maps at the same dimensions, and 36 distinct **32 × 32** item icons. It uses the standard 64 × 32 Minecraft 1.12.2 armor UV proportions and binary alpha. The comparison sheets show front, side, back and three-quarter offline views. Helmet-alignment.png pairs each reference head crop with fixed straight-on and angled helmet views.
 
-The private JAR exporter adapts the colors to the original mod’s **4096 × 4096** atlases. It validates the exact 0.16.2-rc1 input and checks all 273 entries after export. Only 101 texture PNGs change. Original model definitions, code, registry, tail physics and configurations remain byte-identical. The mod ID and version remain hvbijuu / 0.16.2-rc1.
+The private JAR exporter projects the color faces directly into the original mod’s **4096 × 4096** atlases. Chest, sleeve and leg patterns wrap through matching front-to-side edges. The existing tail patterns and opacity are preserved and tinted with sampled reference colors. It validates the exact 0.16.2-rc1 input and checks all 273 entries after export. Only 101 texture PNGs change. Original model definitions, code, registry, tail physics and configurations remain byte-identical. The mod ID and version remain hvbijuu / 0.16.2-rc1.
 
 Use [LabPBR](https://shaderlabs.org/wiki/LabPBR_Material_Standard) in BSL’s material format with Advanced Materials active and OptiFine’s Normal Map and Specular Map toggles on. The albedo carries the pictured shading. The maps vary surface gloss and add restrained highlights. The height field is flat. See [BSL’s official FAQ](https://capttatsu.com/bslshaders/faqs.html).
 
@@ -23,6 +23,6 @@ The isolated Windows Forge check uses installed launcher libraries, Java 8 and a
 
     py -3.12 tools/bijuu_reference/qa/client.py --install <launcher-install> --java <java8.exe> --javac <javac.exe> --artifact <new-jar> --output <fresh-trial-directory>
 
-Supply the optional **--optifine** and **--bsl** inputs to render the isolated gallery and capture all nine sets with a fixed straight-on camera. The probe is separate from the deliverable JAR and uses a synthetic singleplayer world.
+Supply the optional **--optifine** and **--bsl** inputs to render the isolated gallery and capture all nine sets with fixed straight-on and 32-degree cameras. The probe is separate from the deliverable JAR and uses a synthetic singleplayer world.
 
 Share original source, documentation and safe verification metadata in Git. Keep the input and derived JARs, owner artwork, rendered comparisons and local screenshots private.

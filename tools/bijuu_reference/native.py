@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import zipfile
 
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageOps
 
 from material import rgba_map
 from outfit import DESIGNS, FACE_ORDER, PART_NAMES, uv_rects
@@ -14,6 +14,9 @@ from outfit import DESIGNS, FACE_ORDER, PART_NAMES, uv_rects
 BASE_SHA = "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b"
 PREFIX = "assets/hvbijuu"
 NEAREST = Image.Resampling.NEAREST
+ATLAS_UNITS = 256
+ATLAS_SIZE = 4096
+ATLAS_SCALE = ATLAS_SIZE // ATLAS_UNITS
 
 
 class Band:
@@ -23,7 +26,7 @@ class Band:
     def box(self,w,h,d):
         out=[]
         for W,H in ((d,h),(d,h),(w,d),(w,d),(w,h),(w,h)):
-            if self.x+W>256:
+            if self.x+W>ATLAS_UNITS:
                 self.x,self.y,self.height=0,self.y+self.height+1,0
             if self.y+H>self.end:
                 raise ValueError("Native model band overflow")
@@ -50,7 +53,7 @@ def crop_face(image,part,side,mirror=False):
 
 def put_box(atlas,rects,faces):
     for bounds,image in zip(rects,faces):
-        x,y,X,Y=(k*4 for k in bounds)
+        x,y,X,Y=(k*ATLAS_SCALE for k in bounds)
         atlas.paste(image.resize((X-x,Y-y),NEAREST),(x,y))
 
 
@@ -58,8 +61,8 @@ def sampled_faces(source,part,mirror=False):
     return [crop_face(source,part,side,mirror) for side in FACE_ORDER]
 
 
-def make_atlas(index,key,layers,palette,specs,cage=False):
-    atlas=Image.new("RGBA",(1024,1024))
+def make_atlas(index,layers,palette,specs,stock):
+    atlas=Image.new("RGBA",(ATLAS_SIZE,ATLAS_SIZE))
     one,two=layers
     joint=Image.alpha_composite(two,one)
     colors={k:v+ (255,) for k,v in palette.items()}
@@ -112,37 +115,27 @@ def make_atlas(index,key,layers,palette,specs,cage=False):
             if not faces[i].getbbox():
                 faces[i]=Image.new("RGBA",face.size,colors["S"])
         put_box(atlas,uv,faces)
-    # Tails retain their rig and animation. Sampled colors also shade the
-    # native strips and tip swatches so the outfit and tail effects agree.
-    draw=ImageDraw.Draw(atlas)
-    start=180 if key=="chomei" else 160
-    stop=(190 if key=="chomei" else 188)
-    if key!="isobu":
-        for side,base in enumerate(("A","M","S","M") if key=="kurama" else ("M","M","S","S")):
-            x,y=side*128,start*4
-            if cage:
-                base=("M","S","T","S")[side]
-            height=(stop-start)*4
-            draw.rectangle((x,y,x+127,y+height-1),fill=colors[base])
-            intervals=(.18,.47,.78)
-            for f in intervals:
-                row=y+int(f*height/4)*4
-                ink="O" if key in ("shukaku","kurama","chomei","kokuo") else "A"
-                draw.rectangle((x,row,x+127,row+2),fill=colors[ink])
-    for variant in range(1 if key=="chomei" else 2):
-        for mat in range(4):
-            for side in range(6):
-                x,width,height=(64*mat+10*side,8,6) if key=="isobu" else (
-                    128+32*mat+5*side,5,9 if key=="chomei" else 12)
-                y=(start+14*variant)*4
-                code=("M","A","S","T")[mat]
-                if side in (3,5):
-                    code="S" if mat==0 else "T"
-                X,Y=(x+width)*4-1,y+height*4-1
-                draw.rectangle((x*4,y,X,Y),fill=colors[code])
-                if side not in (3,5):
-                    draw.line((x*4,y,X,y),fill=colors["A"],width=2)
+    # The stock tail band already contains the beast-specific marks: scales,
+    # rings, chakra strokes, cap shading and the cage textures. Keep the
+    # authored pattern and opacity while bringing it into the outfit palette.
+    tail=match_tail_palette(stock,palette)
+    height=30*ATLAS_SCALE
+    atlas.paste(tail.resize((ATLAS_SIZE,height),NEAREST),(0,160*ATLAS_SCALE))
     return atlas
+
+
+def match_tail_palette(stock,palette):
+    scale=stock.width//ATLAS_UNITS
+    band=stock.crop((0,160*scale,stock.width,190*scale)).convert("RGBA")
+    rgb=band.convert("RGB")
+    light=ImageOps.grayscale(rgb)
+    # Order the sampled colors by luminance. The palette roles can have
+    # different tonal ordering between beasts, so do not assume A is bright.
+    colors=tuple(sorted(palette.values(),key=lambda c: 299*c[0]+587*c[1]+114*c[2]))
+    target=ImageOps.colorize(light,colors[0],colors[-1],colors[len(colors)//2])
+    toned=Image.blend(rgb,target,.24)
+    toned.putalpha(band.getchannel("A"))
+    return toned
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -167,13 +160,17 @@ def build(vanilla,base,output):
             palette={char:tuple(bytes.fromhex(row["color"][1:])) for char,row in
                      zip("OSMTAG",record["sets"][key]["colors"].values())}
             for state in (("", "_cage") if key=="kurama" else ("",)):
-                atlas=make_atlas(index,key,layers,palette,specs,cage=bool(state))
-                normal,specular=rgba_map(atlas,key)
                 atlas_path=f"{PREFIX}/textures/armor/{key}{state}"
+                stock=Image.open(io.BytesIO(original.read(atlas_path+".png")))
+                atlas=make_atlas(index,layers,palette,specs,stock)
+                # Keep the new color projection in its final 4K atlas. Smooth
+                # channel gradients operate at the earlier material-map scale.
+                maps=rgba_map(atlas.resize((1024,1024),NEAREST),key)
+                normal,specular=(image.resize(atlas.size,NEAREST) for image in maps)
                 for suffix,texture in (("",atlas),("_n",normal),("_s",specular)):
                     name=atlas_path+suffix+".png"
                     if name in original.namelist():
-                        assets[name]=png(texture.resize((4096,4096),NEAREST))
+                        assets[name]=png(texture)
             for part in PART_NAMES:
                 with Image.open(vanilla/f"textures/items/{key}_{part}.png") as icon:
                     assets[f"{PREFIX}/textures/items/{key}_{part}.png"]=png(icon.resize((128,128),NEAREST))
