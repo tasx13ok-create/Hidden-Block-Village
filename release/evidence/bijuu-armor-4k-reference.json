@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-19",
+  "baseline_jar_sha256": "98671ca366b3f00099b8562306d64a27462c0875496f39bedfc083064b1c223b",
+  "reference_sha256": "868f07404682de09ef6657a14f7860184af90344b34d8181da29492645b83d77",
+  "vanilla_archive": {
+    "sha256": "41b4aabb10827eb4093168ab5bee9088c925bfd56ca2a988dd045a65cf6a3d1b",
+    "bytes": 2843475,
+    "entries": 103,
+    "albedo": [
+      4096,
+      2048
+    ],
+    "icons": [
+      32,
+      32
+    ]
+  },
+  "runtime_jar": {
+    "sha256": "56ced342c30c1a4123fed20b11c874105e9fb0ddb9f30ec49111387cc5e5595d",
+    "bytes": 1279576,
+    "entries": 273,
+    "png_replacements": 101,
+    "albedo": [
+      4096,
+      4096
+    ]
+  },
+  "identical_rebuild": true,
+  "native": {
+    "forge": "14.23.5.2859",
+    "minecraft": "1.12.2",
+    "java": "1.8.0_51",
+    "optifine": "1.12.2_HD_U_G5",
+    "shader_pack": "BSL_v10.1.8",
+    "models": 36,
+    "color_atlases": 10,
+    "native_root_draws": 73,
+    "equipped_stands_visible": 9,
+    "process_exit": 0,
+    "art_direction": "Visible outfits traced from owner art. Hidden faces continue the visible patterns.",
+    "screenshot_sha256": {
+      "bijuu-4k-bsl-roster.png": "4a2a8762c1c2449a8775031a1f168686cf664966ee177bd45875705117ed1b3d",
+      "bijuu-4k-bsl-kurama.png": "52080f51f90cba164bab872e31d1f807a504d021394b4b3ba17624712c64135a"
+    },
+    "scope": "Local synthetic shader gallery and main texture binding. Gameplay, the full client pack and hosted multiplayer were outside this verification."
+  }
+}

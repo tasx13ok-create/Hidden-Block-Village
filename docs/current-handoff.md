@@ -1,5 +1,13 @@
 # Current project handoff
 
+## Bijuu armor 4K reference edition, 19 November 2026
+
+The owner requested a texture-only match to their nine-outfit reference, with richer detail and 4K shader support. The final painter uses the actual visible outfit pixels for the front of the helmet and chest and the small outfit views for the sleeves, pants and boots. Hidden sides continue the pictured designs. See [build and shader instructions](../tools/bijuu_reference/README.md).
+
+The private vanilla ZIP contains 18 color textures at 4096 × 2048, 36 matching LabPBR maps and 36 inventory icons at 32 × 32. The separate hvbijuu 0.16.2-rc1 replacement uses 4096 × 4096 atlases. All 101 changed entries are PNGs. Stock models, tails, gameplay code, IDs and all other entries are byte-identical to the supplied JAR. Both final packages rebuilt byte-for-byte.
+
+Forge 14.23.5.2859 with OptiFine G5 and BSL 10.1.8 rendered a disposable gallery with nine equipped stands, with normal and specular maps active. The native probe verified 36 models, ten main atlases and 73 root draws and exited 0. The owner art, comparisons, screenshots and both binary deliverables are private. See [verification and hashes](../release/evidence/bijuu-armor-4k-reference.json). Next if requested: try the separate replacement JAR in the owner’s copied full client profile and inspect outfit details under their usual shader preset.
+
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
 ## Latest addon checkpoint: Dungeon Guard 1.2.0
