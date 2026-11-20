@@ -8,6 +8,10 @@ Updated 2026-11-13 by Fable (Claude Code, cloud session). This records observati
 * Branch: `claude/upbeat-ride-nyxq23`. The task packet suggested `fable/dungeons-v17`, but this session may only push to its assigned branch. Base: `main` @ `b69ec02`.
 * **Not reachable from this session:** `local/v17-intake`, the original v17 download folder, the parent v9 workspace (`../output_v9`, `../source`, `../tools`), the D: world recovery and the CustomNPCs data. No computer folder was shared (`list_computer_folders` returned none). No real v17 or v9 schematic or world byte was read, and no game or server was run.
 
+## Steam Dash Punch 1.0.0 (2026-11-20) — built into the owner's 8K v3 Bijuu jar; real-client QA 23/23
+
+Owner request: a cut-scene-style blink dash for Kurama + Kokuo (telegraph, blink, sonic tunnel, hit-stop with impact frames, boil launch through mountains, wall splatter, spike crater, wall springboard), plus "send it to the repo, deliver to Codex with videos/screenshots, have him send it back". Original source in `modules/hvbijuu-steamdash/`; the owner's jar stays private. Rules 395/395; scripted real 1.12.2 client 23/23 (`release/evidence/hvbijuu-steamdash-1.0.0.json`). Handoff with build commands, expected hash and media: [`STEAM-DASH-HANDOFF-FOR-CODEX.md`](STEAM-DASH-HANDOFF-FOR-CODEX.md). Not run: dedicated/Magma server with real players, audio playback, GPU pacing.
+
 ## Dungeon Guard 1.4.2 (2026-11-17) — 1.4.1 source recovered, hook crash fixed
 
 Owner supplied the 1.4.1 JAR (no 1.3/1.4 source was in git). Recovered source into `modules/dungeon-guard`, verified equivalent to the JAR, then fixed: optional NarutoMod/Waystones hooks now fail safe (an unrecognised target previously broke NarutoMod's class loading and item registration), KG fingerprint is SRG/MCP independent, banner handshake uses the version constant. Checks 220/42/48 pass; native server 1.2.0 → 1.4.2 → restart 1/12/2 pass (`release/evidence/dungeon-guard-1.4.2.json`). Waystone flows wait for the Waystones JAR.

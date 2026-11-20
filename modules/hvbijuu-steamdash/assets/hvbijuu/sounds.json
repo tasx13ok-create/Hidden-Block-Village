@@ -1,0 +1,62 @@
+{
+  "steamdash.charge": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.charge",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/charge",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.blink": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.blink",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/blink",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.impact": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.impact",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/impact",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.launch": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.launch",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/launch",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.crash": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.crash",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/crash",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.hiss": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.hiss",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/hiss",
+        "stream": false
+      }
+    ]
+  }
+}
