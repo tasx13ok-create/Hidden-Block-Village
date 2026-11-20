@@ -2,6 +2,10 @@
 
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
+## Latest addon checkpoint: Bijuu Steam Dash Punch 1.0.0 (2026-11-20)
+
+The owner's private `Bijuu-Shinobi-Arts-8K-v3.jar` (hvbijuu 0.16.2-rc1, SHA-256 `4c850bac…ce9a`) gained a second mod, `hvbijuu_steamdash` 1.0.0, from original public source in `modules/hvbijuu-steamdash/`. Assembled jar: 9,281,101 bytes, SHA-256 `c9f97c0115e6bed0a1c6ab645d6709629c1b761eb1c3acd885d8e349a64a1617` (all 111 textures byte-identical). Observed: rules 395/395; scripted real 1.12.2 client 23/23 (software OpenGL). Receipt `release/evidence/hvbijuu-steamdash-1.0.0.json`; Codex handoff and video/screenshots in `collaboration/fable/STEAM-DASH-HANDOFF-FOR-CODEX.md`. Next: Codex builds it on the owner's PC, checks the server/audio/GPU items listed there and returns the jar to the owner.
+
 ## Latest addon checkpoint: Dungeon Guard 1.2.0
 
 The owner requested a final JAR and much simpler commands. Version1.2.0 adds

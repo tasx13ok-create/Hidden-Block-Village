@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.3'
+}
+// Client acceptance mod for the Steam Dash (QA only, never shipped in a release).
+version = '1'
+java { toolchain { languageVersion.set(JavaLanguageVersion.of(8)); vendor.set(JvmVendorSpec.AZUL) } }
+minecraft { mcVersion.set('1.12.2'); mcpMappingChannel.set('stable'); mcpMappingVersion.set('39') }
+sourceSets.main.java.srcDirs = ['src']
+dependencies { compileOnly files(providers.gradleProperty('dashDevJar').get(), providers.gradleProperty('hvbJar').get()) }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

@@ -1,0 +1,7 @@
+key.hvbijuu.steamdash=Steam Dash Punch
+subtitles.hvbijuu.steamdash.charge=Steam overheats
+subtitles.hvbijuu.steamdash.blink=Sonic blink
+subtitles.hvbijuu.steamdash.impact=Steam punch lands
+subtitles.hvbijuu.steamdash.launch=Steam roars
+subtitles.hvbijuu.steamdash.crash=Rock shatters
+subtitles.hvbijuu.steamdash.hiss=Steam hisses

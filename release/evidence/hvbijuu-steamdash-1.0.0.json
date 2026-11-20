@@ -1,0 +1,136 @@
+{
+  "schema": "hbv-evidence/1",
+  "subject": "hvbijuu_steamdash 1.0.0 (Steam Dash Punch) overlaid on the owner's Bijuu Shinobi Arts 8K v3 jar",
+  "date": "2026-11-20",
+  "author": "Fable (Claude Code cloud session)",
+  "inputs": {
+    "owner_jar": {
+      "name": "Bijuu-Shinobi-Arts-8K-v3.jar",
+      "modid": "hvbijuu",
+      "version": "0.16.2-rc1",
+      "bytes": 9093274,
+      "sha256": "4c850bac6f6c91689223cd0acdcc97d2ab99de42177a0e283a4acefce956ce9a",
+      "disposition": "private owner input; never committed; textures and classes not redistributed here"
+    }
+  },
+  "outputs": {
+    "assembled_jar": {
+      "name": "Bijuu-Shinobi-Arts-8K-v3-SteamDash.jar",
+      "bytes": 9281101,
+      "sha256": "c9f97c0115e6bed0a1c6ab645d6709629c1b761eb1c3acd885d8e349a64a1617",
+      "disposition": "delivered to the owner privately; rebuildable from modules/hvbijuu-steamdash with the owner jar"
+    },
+    "overlay_reobf_jar_sha256": "c40afa0c67c6fa22c28759899b6c7db0000be0b173bca3d5cffc7c26cb4d73ef"
+  },
+  "jar_diff": {
+    "original_entries": 290,
+    "byte_identical": 288,
+    "changed": [
+      "assets/hvbijuu/lang/en_us.lang (7 lines appended)",
+      "mcmod.info (second mod entry)"
+    ],
+    "added_entries": 30,
+    "png_textures_identical": "111/111"
+  },
+  "checks": {
+    "pure_rules": "DashChecks 395/395 pass (javac/java 8)",
+    "real_client": "23/23 pass: scripted 1.12.2 Forge dev client (software OpenGL, Xvfb, integrated server), real key binding, three runs",
+    "client_result": {
+      "channeling": true,
+      "full_set": 8,
+      "energy_start_regen_ok": true,
+      "phase0_target_spawned": true,
+      "phase0_settle_ticks": 0,
+      "phase0_server_tick_ms": 3.496287,
+      "phase0_fps": 27,
+      "run1_blink_after_ms": 258,
+      "run1_hitstop_ms": 2,
+      "run1_mountain_blocks_smashed": 156,
+      "run1_splatter_cobble": 19,
+      "run1_splatter_cracked": 16,
+      "run1_target": "x=0.5 y=4.0 z=59.7 hp=353 alive=true",
+      "run1_hp_after_impact": 384.0,
+      "run1_ridge_blocks_smashed": 72,
+      "run1_freeze_spread": 0.0,
+      "phase1_target_spawned": true,
+      "phase1_settle_ticks": 0,
+      "phase1_server_tick_ms": 1.0672146999999998,
+      "phase1_fps": 30,
+      "run2_blink_after_ms": 218,
+      "run2_hitstop_ms": 394,
+      "run2_spike_pressed": 425,
+      "run2_target": "x=-39.5 y=1.0 z=58.9 hp=366",
+      "run2_crater_air_blocks": 311,
+      "phase2_settle_ticks": 0,
+      "phase2_server_tick_ms": 1.67729005,
+      "phase2_fps": 31,
+      "run3_on_ground_at_press": false,
+      "run3_x_t9": 29.65,
+      "run3_x_t10": 28.076999999999998,
+      "run3_x_t11": 26.64556995874643,
+      "run3_x_t14": 23.078917037298726,
+      "run3_wall_cobble": 5,
+      "run3_wall_cracked": 4,
+      "passed": true,
+      "pass_count": 23,
+      "fail_count": 0,
+      "failed": [],
+      "passed_checks": [
+        "full Kurama set + carried Kokuo piece channels the steam dash",
+        "the punch lands for the configured 16 damage (16.0)",
+        "the boil launch tunnels through the 7-deep stone mountain (156 blocks)",
+        "the target flies out through the mountain and the second ridge (z=59.7)",
+        "the wall splatter leaves a spiderweb of cobblestone/cracked bricks (19+16)",
+        "gravity is restored on both fighters",
+        "server sequence finished and nothing is left frozen",
+        "boilLaunchedTicks tag is cleared after the launch",
+        "the target hangs motionless during the hit-stop (spread 0.0)",
+        "the cut-scene camera goes third-person during the move",
+        "the camera returns to first person afterwards",
+        "a white contact flash frame is drawn (1)",
+        "the ink silhouette shader frame is drawn (1)",
+        "the ink shader is removed after the hit-stop",
+        "letterbox bars frame the move",
+        "the spike blasts a crater into the ground (311 blocks)",
+        "punch + spike + crater damage all land (34.0)",
+        "spike run finishes cleanly",
+        "the attacker takes no fall or blast damage from the spike (hp 25.499998 -> 25.499998)",
+        "the client saw the spike cue",
+        "the springboard launches off the wall (x 29.65 -> 23.078917037298726)",
+        "the springboard cracks the wall behind the feet (5+4)",
+        "the springboard costs resonance (100 -> 90)"
+      ],
+      "shots": [
+        "run1-1-telegraph",
+        "run1-10-aftermath",
+        "run1-2-blink",
+        "run1-3-dash",
+        "run1-6-release",
+        "run1-7-launch",
+        "run1-8-through-mountain",
+        "run2-1-telegraph",
+        "run2-10-aftermath",
+        "run2-2-blink",
+        "run2-4-contact-white",
+        "run2-6-release",
+        "run2-7-launch",
+        "run2-9-spike"
+      ],
+      "chat": [],
+      "white_frames_drawn": 2,
+      "ink_state": "shadersSupported=true group=true failed=false skips=[0, 0] otherShaderActive=none",
+      "ink_frames_drawn": 1
+    }
+  },
+  "environment_notes": [
+    "Dev client uses MCP names; hvbijuu ReferenceTails reflects on SRG field names, so QA ran on a copy with SRG constants rewritten (qa/qa-devnames.py). The delivered jar is unchanged SRG.",
+    "Software rendering at about 27-30 fps: impact frames verified by drawn-frame counters (white 2, ink 1 true shader frame in the final run); a GPU client shows about 6 ink frames per hit.",
+    "Earlier runs exposed and fixed: dash missing under client hitches (server now owns the dash path), center-line tunnel leaving a head-height row (now hitbox sweep), spike drilling to bedrock (now surface crater), ink shader compile stall (now precompiled and swapped)."
+  ],
+  "not_verified": [
+    "Dedicated server with real players and latency",
+    "Magma/Bukkit protection plugins (Forge BreakEvent is honored; plugin behavior not run)",
+    "Sound playback (no audio device in the container; files and registry verified)",
+    "GPU client frame pacing"
+  ]
+}
