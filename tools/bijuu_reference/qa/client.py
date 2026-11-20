@@ -85,6 +85,9 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
     if "8K" in artifact.name:
         flags.append("-Dbijuu.atlasSize=8192")
 
+    if "Turnaround" in artifact.name:
+        flags.append("-Dbijuu.turnaround=true")
+
     command = [
         str(java), "-Xmx7G" if "8K" in artifact.name else "-Xmx3G", *flags, f"-Djava.library.path={native}", "-cp", os.pathsep.join(map(str, classpath)),
         "net.minecraft.launchwrapper.Launch", "--username", "BijuuQA", "--version", FORGE,

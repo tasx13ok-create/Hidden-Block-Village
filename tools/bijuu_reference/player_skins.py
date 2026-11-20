@@ -21,8 +21,10 @@ def export(source,target):
                     dx,dy=((-8,32) if part=="arm" else (16,32)) if mirrored else (0,0)
                     for side,(x,y,w,h) in uv_rects(part).items():
                         tile=crop_face(joined,part,side,mirrored)
-                        if mirrored and side=="front":
-                            with Image.open(source/"native-limb-faces"/f"{key}_{part}.png") as distinct:
+                        suffix="" if side=="front" else "_"+side
+                        panel=source/"native-limb-faces"/f"{key}_{part}{suffix}.png"
+                        if mirrored and panel.exists():
+                            with Image.open(panel) as distinct:
                                 tile=distinct.convert("RGBA")
                         skin.paste(tile.resize((w,h),Image.Resampling.BOX),(x+dx,y+dy))
             data=BytesIO()

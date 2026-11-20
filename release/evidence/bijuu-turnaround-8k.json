@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-20",
+  "input_sha256": {
+    "front_master": "e2b9a544d80b3ce6343bd81b1be9cb4be3a85acd61e1bf67137596de731fa71a",
+    "side_and_back_master": "997c85b0e399f17848b1e42a8e2e3395194ef984a6ef6405914f6f80fe7d84ff"
+  },
+  "output_sha256": {
+    "merged_jar": "7ec1f0cc494c14f68a25ea9239d4d7a2068c103eeca07d10b0b0c159d33b1d26",
+    "classic_skins": "e01af513f8036397387cd262f8771f4944e595a1acc0301e625e6c603a40cc2e",
+    "vanilla_textures": "ae91b3a13a62d300a1e042b76d8d767b8eb172e1a4bb152f8e672bce92af3422"
+  },
+  "checks": {
+    "native_corner_pairs_equal": 288,
+    "master_front_panels_equal": 72,
+    "changes_relative_to_front_release": "101 PNG entries only",
+    "tail_color_regions_equal": 10
+  }
+}

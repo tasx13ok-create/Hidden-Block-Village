@@ -52,11 +52,20 @@ def crop_face(image,part,side,mirror=False):
     return ImageOps.mirror(face) if mirror else face
 
 
-def put_box(atlas,rects,faces):
+def put_box(atlas,rects,faces,wrap=False):
     for side,bounds,image in zip(FACE_ORDER,rects,faces):
         x,y,X,Y=(k*ATLAS_SCALE for k in bounds)
         tile=image.resize((X-x,Y-y),NEAREST) if side=="front" else resize_albedo(image,(X-x,Y-y))
         atlas.paste(tile,(x,y))
+    if wrap:
+        cells={side:tuple(v*ATLAS_SCALE for v in rect) for side,rect in zip(FACE_ORDER,rects)}
+        for side,left,right in (("east","front","back"),("west","back","front")):
+            x,y,X,Y=cells[side]
+            for dx,src,end in ((x,left,True),(X-1,right,False)):
+                sx,sy,SX,SY=cells[src]
+                u=SX-1 if end else sx
+                atlas.paste(atlas.crop((u,sy,u+1,SY)),(dx,y))
+
 
 
 def sampled_faces(source,part,mirror=False):
@@ -107,24 +116,26 @@ def make_atlas(index,layers,palette,specs,stock,opposite):
     one,two=layers
     joint=Image.alpha_composite(two,one)
     colors={k:v+ (255,) for k,v in palette.items()}
+    wrap=("arm","back") in opposite
     head,chest,leg,boot=[Band(y,160) for y in (80,100,132,145)]
-    put_box(atlas,head.box(8,8,8),sampled_faces(one,"head"))
+    put_box(atlas,head.box(8,8,8),sampled_faces(one,"head"),wrap)
     # Kurama and Matatabi already have ear slots. The drawing has a squared
     # hood on both, so those slots intentionally sample transparent pixels.
-    put_box(atlas,chest.box(8,12,4),sampled_faces(joint,"body"))
+    put_box(atlas,chest.box(8,12,4),sampled_faces(joint,"body"),wrap)
     for mirror in (False,True):
         arms=sampled_faces(one,"arm",mirror)
         if mirror and opposite:
-            arms[FACE_ORDER.index("front")]=opposite["arm"]
-        put_box(atlas,chest.box(4,12,4),arms)
+            for n,side in enumerate(FACE_ORDER):
+                arms[n]=opposite.get(("arm",side),arms[n])
+        put_box(atlas,chest.box(4,12,4),arms,wrap)
         chest.box(4,2,4)
         chest.box(4,3,1)
         slices=[]
         for i,band,height in ((1,leg,7),(0,boot,5)):
             for side in FACE_ORDER:
                 face=crop_face(layers[i],"leg",side,mirror)
-                if mirror and opposite and side=="front":
-                    face=opposite["leg"]
+                if mirror and opposite:
+                    face=opposite.get(("leg",side),face)
                 if side not in ("top","bottom"):
                     scale=one.width//64
                     y=0 if i else 7*scale
@@ -132,7 +143,7 @@ def make_atlas(index,layers,palette,specs,stock,opposite):
                 elif not face.getbbox():
                     face=Image.new("RGBA",face.size,colors["S"])
                 slices.append(face)
-            put_box(atlas,band.box(4,height,4),slices)
+            put_box(atlas,band.box(4,height,4),slices,wrap)
             band.box(*( (4,3,1) if i else (4,2,5) ))
             slices=[]
     starts=(190,204,224,240,256)
@@ -150,8 +161,8 @@ def make_atlas(index,layers,palette,specs,stock,opposite):
         stock_faces=sampled_faces(source,part,bone.startswith("left_"))
         faces=[]
         for side,face in zip(FACE_ORDER,stock_faces):
-            if opposite and bone.startswith("left_") and side=="front":
-                face=opposite[part]
+            if opposite and bone.startswith("left_"):
+                face=opposite.get((part,side),face)
             tile=panel_crop(face,side,spec,origin,extent)
             if not tile.getbbox():
                 tile=Image.new("RGBA",tile.size,colors["S"])
@@ -206,7 +217,12 @@ def build(vanilla,base,output):
                 path=vanilla/"native-limb-faces"/f"{key}_{part}.png"
                 if path.exists():
                     with Image.open(path) as image:
-                        opposite[part]=image.convert("RGBA")
+                        opposite[(part,"front")]=image.convert("RGBA")
+                for side in ("east","west","back"):
+                    extra=path.with_name(f"{key}_{part}_{side}.png")
+                    if extra.exists():
+                        with Image.open(extra) as image:
+                            opposite[(part,side)]=image.convert("RGBA")
             for state in (("", "_cage") if key=="kurama" else ("",)):
                 atlas_path=f"{PREFIX}/textures/armor/{key}{state}"
                 stock=Image.open(io.BytesIO(original.read(atlas_path+".png")))

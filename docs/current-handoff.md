@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Nine 8K armor turnarounds, 20 November 2026
+
+The current private candidate is Bijuu-Turnaround-Final-8K-v3.jar. The generated side and rear guide continues the approved outfit designs. Chest flanks concealed by the arms use the adjacent rear cloth. All 288 vertical native corner pairs matched at every pixel. All 72 front panels matched the approved front master. The 101 changed entries relative to the previous merged JAR are PNGs. All native code and v3 tail model records matched. See [the version-specific receipt](../release/evidence/bijuu-turnaround-8k.json).
+
+The final isolated BSL gallery passed with 36 models, ten atlases, 73 native root draws and exit code zero. It produced 36 outfit screenshots plus a roster. The reference comparisons use the level front, side and rear captures. The test temporarily hid the tails for unobstructed side and rear views and restored them for the extra rear captures. Next acceptance is player movement and strikes in a copy of the full pack. Private outputs include the 8K JAR, texture ZIP, Classic skin ZIP and individual comparison sheets.
+
 ## Nine outfits from the front-view master, 20 November 2026
 
 The current private candidate is Bijuu-Master-Skins-8K-v3.jar. The owner requested a generated orthographic interpretation of their poster, followed by direct placement on the skin. All 72 native front panels match the sampled master after resizing. The complete nine-set tail geometry and authored textures match the v3 input. The export also produced 54 vanilla-layout 8K maps and nine Classic player skins. The fronts use the new master. Hidden surfaces continue the original design. See [the verification record](../release/evidence/bijuu-front-master-8k.json).

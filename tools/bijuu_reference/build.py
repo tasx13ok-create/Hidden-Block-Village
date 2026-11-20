@@ -98,8 +98,12 @@ def archive(out):
     print(target,sha(target))
 
 
-def build(reference_path,out,master_path=None):
+def build(reference_path,out,master_path=None,turn_path=None):
     from front_master import FrontMaster
+    from turnaround import Turnaround,place
+    turn=Turnaround(turn_path) if turn_path else None
+    if turn and not master_path:
+        raise ValueError("Turnaround requires the registered front master")
     master=FrontMaster(master_path) if master_path else None
     reference=Image.open(reference_path).convert("RGB")
     if reference.size!=(828,1792):
@@ -119,8 +123,16 @@ def build(reference_path,out,master_path=None):
     seen=set()
     for key,design in DESIGNS.items():
         layers=biped_work(reference,key,palettes[key],master)
+        if turn:
+            for part in ("head","body","arm","leg"):
+                _,_,w,h=uv_rects(part)["front"]
+                front=master.panel(key,part,(w*64,h*64))
+                place(layers,part,turn.faces(key,part,front))
         for part in ("arm","leg"):
             panel=master.panel(key,part,(256,768),True) if master else opposite_front(reference,list(DESIGNS).index(key),key,part)
+            if turn:
+                for side,tile in turn.faces(key,part,panel,True).items():
+                    tile.save(native_faces/f"{key}_{part}_{side}.png")
             panel.save(native_faces/f"{key}_{part}.png")
         if master:
             x,y,w,h=uv_rects("head")["front"]
@@ -189,8 +201,9 @@ def main():
     parser.add_argument("reference",type=Path)
     parser.add_argument("output",type=Path)
     parser.add_argument("--front-master",type=Path)
+    parser.add_argument("--turnaround",type=Path)
     args=parser.parse_args()
-    build(args.reference,args.output,args.front_master)
+    build(args.reference,args.output,args.front_master,args.turnaround)
 
 
 if __name__=="__main__":

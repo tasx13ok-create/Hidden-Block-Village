@@ -22,6 +22,10 @@ public class ArmorProbe {
     private int frontIndex;
     private int nextFrontFrame;
     private boolean angled;
+    private final boolean turnaround=Boolean.getBoolean("bijuu.turnaround");
+    private final Object[] tailMounts=new Object[9];
+    private final String[] bearings={"front","side","back","back-tails"};
+    private int bearing;
     private float galleryYaw;
     private static Class<?> type(String name) throws ClassNotFoundException {
         return Class.forName(name);
@@ -61,6 +65,11 @@ public class ArmorProbe {
                 textures++;
                 for (Object slot : slots) {
                     Object armor=model.invoke(proxy,i,slot,base);
+                    if(turnaround && slot.toString().equalsIgnoreCase("chest")) {
+                        Object body=modelType.getField("field_78115_e").get(armor);
+                        java.util.List<?> children=(java.util.List<?>)renderer.getField("field_78805_m").get(body);
+                        tailMounts[i]=children.get(children.size()-1);
+                    }
                     int before=draws;
                     for (String root : roots) {
                         Object bone=modelType.getField(root).get(armor);
@@ -173,9 +182,15 @@ public class ArmorProbe {
                 entity.getField("field_70125_A").setFloat(player,0.0f);
                 entity.getField("field_70127_C").setFloat(player,0.0f);
                 if (worldTicks<nextFrontFrame) return;
+                if(turnaround) {
+                    screenshot(bearings[bearing]+"-"+roster[frontIndex]+".png");
+                    bearing=(bearing+1)%bearings.length;
+                    if(bearing==0)frontIndex++;
+                } else {
                 screenshot((angled ? "angle-" : "front-")+roster[frontIndex]+".png");
                 if (angled) frontIndex++;
                 angled=!angled;
+                }
                 if (frontIndex<roster.length) {
                     positionCamera();
                     return;
@@ -191,6 +206,17 @@ public class ArmorProbe {
     }
 
     private void positionCamera() throws Exception {
+        if(turnaround) {
+            double center=3*(frontIndex-4)+0.5;
+            int rotation=bearing==0?0:bearing==1?90:180;
+            Object mount=tailMounts[frontIndex];
+            mount.getClass().getField("field_78807_k").setBoolean(mount,bearing==1 || bearing==2);
+            chat("entitydata @e[type=armor_stand,x="+(int)Math.floor(center)+",y=4,z=0,r=2,c=1] {Rotation:["+rotation+"f,0f]}");
+            galleryYaw=180f;
+            chat("tp @p "+center+" 4 3.7 180 0");
+            nextFrontFrame=worldTicks+32;
+            return;
+        }
         double x=3*(frontIndex-4)+0.5+(angled ? 2.0 : 0.0);
         galleryYaw=angled ? 148.0f : 180.0f;
         chat("tp @p "+x+" 4 3.7 "+galleryYaw+" 0");
