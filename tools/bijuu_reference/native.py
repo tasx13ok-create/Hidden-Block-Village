@@ -53,9 +53,10 @@ def crop_face(image,part,side,mirror=False):
 
 
 def put_box(atlas,rects,faces):
-    for bounds,image in zip(rects,faces):
+    for side,bounds,image in zip(FACE_ORDER,rects,faces):
         x,y,X,Y=(k*ATLAS_SCALE for k in bounds)
-        atlas.paste(resize_albedo(image,(X-x,Y-y)),(x,y))
+        tile=image.resize((X-x,Y-y),NEAREST) if side=="front" else resize_albedo(image,(X-x,Y-y))
+        atlas.paste(tile,(x,y))
 
 
 def sampled_faces(source,part,mirror=False):
@@ -101,7 +102,7 @@ def panel_crop(image,side,spec,origin,extent):
     return image.crop((left,top,right,bottom))
 
 
-def make_atlas(index,layers,palette,specs,stock):
+def make_atlas(index,layers,palette,specs,stock,opposite):
     atlas=Image.new("RGBA",(ATLAS_SIZE,ATLAS_SIZE))
     one,two=layers
     joint=Image.alpha_composite(two,one)
@@ -112,13 +113,18 @@ def make_atlas(index,layers,palette,specs,stock):
     # hood on both, so those slots intentionally sample transparent pixels.
     put_box(atlas,chest.box(8,12,4),sampled_faces(joint,"body"))
     for mirror in (False,True):
-        put_box(atlas,chest.box(4,12,4),sampled_faces(one,"arm",mirror))
+        arms=sampled_faces(one,"arm",mirror)
+        if mirror and opposite:
+            arms[FACE_ORDER.index("front")]=opposite["arm"]
+        put_box(atlas,chest.box(4,12,4),arms)
         chest.box(4,2,4)
         chest.box(4,3,1)
         slices=[]
         for i,band,height in ((1,leg,7),(0,boot,5)):
             for side in FACE_ORDER:
                 face=crop_face(layers[i],"leg",side,mirror)
+                if mirror and opposite and side=="front":
+                    face=opposite["leg"]
                 if side not in ("top","bottom"):
                     scale=one.width//64
                     y=0 if i else 7*scale
@@ -144,6 +150,8 @@ def make_atlas(index,layers,palette,specs,stock):
         stock_faces=sampled_faces(source,part,bone.startswith("left_"))
         faces=[]
         for side,face in zip(FACE_ORDER,stock_faces):
+            if opposite and bone.startswith("left_") and side=="front":
+                face=opposite[part]
             tile=panel_crop(face,side,spec,origin,extent)
             if not tile.getbbox():
                 tile=Image.new("RGBA",tile.size,colors["S"])
@@ -193,10 +201,16 @@ def build(vanilla,base,output):
                     layers.append(image.convert("RGBA"))
             palette={char:tuple(bytes.fromhex(row["color"][1:])) for char,row in
                      zip("OSMTAG",record["sets"][key]["colors"].values())}
+            opposite={}
+            for part in ("arm","leg"):
+                path=vanilla/"native-limb-faces"/f"{key}_{part}.png"
+                if path.exists():
+                    with Image.open(path) as image:
+                        opposite[part]=image.convert("RGBA")
             for state in (("", "_cage") if key=="kurama" else ("",)):
                 atlas_path=f"{PREFIX}/textures/armor/{key}{state}"
                 stock=Image.open(io.BytesIO(original.read(atlas_path+".png")))
-                atlas=make_atlas(index,layers,palette,specs,stock)
+                atlas=make_atlas(index,layers,palette,specs,stock,opposite)
                 # Keep the new color projection in its final 4K atlas. Smooth
                 # channel gradients operate at the earlier material-map scale.
                 maps=rgba_map(atlas.resize((1024,1024),NEAREST),key)

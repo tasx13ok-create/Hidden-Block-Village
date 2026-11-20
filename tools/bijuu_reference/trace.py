@@ -3,10 +3,12 @@ from dataclasses import dataclass
 
 from PIL import Image, ImageDraw, ImageOps
 
+from ink import cel_surface
+from retouch import finish_chest
 from finish import align_border, clean_thumbnail, render_plane, resize_albedo
 from landmarks import HELMET_CHEEK, HELMET_FRONT, HERO_LIMBS
 from outfit import DESIGNS, ORIGINS, uv_rects
-from retouch import finish_chest
+
 
 WORK_SCALE = 64  # 4096x2048 vanilla UV; source planes render at their final size.
 UV_WIDTH = 4096
@@ -66,9 +68,33 @@ HERO_BODY = {
 }
 
 
+
+# Horizontal center of the pictured chest motif near the collar and waist.
+# Mesh rows undo the remaining camera lean without cropping either side.
+CHEST_AXES = {
+    "shukaku": (.63,.60), "matatabi": (.53,.53), "isobu": (.54,.56),
+    "son_goku": (.47,.49), "kokuo": (.37,.41), "saiken": (.58,.58),
+    "chomei": (.57,.59), "gyuki": (.46,.48), "kurama": (.38,.416),
+}
+
+
+def straighten_front(image, top, bottom):
+    w,h=image.size
+    a,b=top*w,bottom*w
+    # Translate the entire seal at constant width. Only the outer cloth
+    # absorbs perspective correction, so a round ring stays round.
+    margin=round(w*.20)
+    lt,lb=margin+a-w/2,margin+b-w/2
+    rt,rb=w-margin+a-w/2,w-margin+b-w/2
+    mesh=[((0,0,margin,h),(0,0,0,h,lb,h,lt,0)),
+          ((margin,0,w-margin,h),(lt,0,lb,h,rb,h,rt,0)),
+          ((w-margin,0,w,h),(rt,0,rb,h,w,h,w,0))]
+    return image.transform(image.size,Image.Transform.MESH,mesh,Image.Resampling.BICUBIC)
+
+
 def hero_face(reference,index,points,size):
     x,y=ORIGINS[index]
-    return render_plane(reference,tuple((px+x,py+y) for px,py in points),size)
+    return cel_surface(render_plane(reference,tuple((px+x,py+y) for px,py in points),size))
 
 
 def paint_head(reference,index,key,side,faces,size):
@@ -76,7 +102,7 @@ def paint_head(reference,index,key,side,faces,size):
         cheek=hero_face(reference,index,HELMET_CHEEK[key],size)
         return cheek if side=="west" else ImageOps.mirror(cheek)
     if side!="front":
-        return clean_thumbnail(faces[side],size)
+        return cel_surface(clean_thumbnail(faces[side],size))
     main=hero_face(reference,index,HELMET_FRONT[key],size)
     # The lower opening belongs on the model centerline. Keep its corners
     # narrow so the face plate shading and any central guard stay intact.
@@ -126,7 +152,27 @@ def wrap_front_edges(faces, front, margin, side_width):
     faces["east"]=align_border(east,front,west=False)
 
 
-def biped_work(reference,key,palette):
+# Opposite front surfaces in the original hero view (TL, BL, BR, TR).
+# The native model has independent limb cells, unlike the vanilla atlas.
+OPPOSITE_LIMBS = {
+    "shukaku": (((103,58),(100,111),(117,108),(114,55)),((84,118),(78,161),(97,161),(99,115))),
+    "matatabi": (((104,61),(105,111),(119,106),(114,58)),((85,117),(87,162),(104,161),(103,114))),
+    "isobu": (((104,59),(103,112),(118,109),(114,53)),((85,116),(85,163),(102,162),(101,114))),
+    "son_goku": (((104,59),(106,113),(119,109),(114,54)),((85,117),(87,161),(103,160),(102,114))),
+    "kokuo": (((104,59),(105,112),(114,109),(110,55)),((84,114),(86,160),(100,160),(99,113))),
+    "saiken": (((103,61),(103,109),(117,106),(114,56)),((83,118),(82,161),(100,162),(99,114))),
+    "chomei": (((104,60),(106,112),(120,109),(113,56)),((85,117),(86,162),(103,162),(101,114))),
+    "gyuki": (((104,62),(105,112),(119,109),(114,59)),((86,117),(87,162),(104,161),(101,115))),
+    "kurama": (((104,63),(105,113),(115,110),(112,61)),((85,117),(84,162),(101,162),(101,114))),
+}
+
+
+def opposite_front(reference,index,key,part):
+    points=OPPOSITE_LIMBS[key][0 if part=="arm" else 1]
+    return hero_face(reference,index,points,(256,768))
+
+
+def biped_work(reference,key,palette,master=None):
     index=list(DESIGNS).index(key)
     art=CROPS[key]
     sizes=(64*WORK_SCALE,32*WORK_SCALE)
@@ -136,21 +182,28 @@ def biped_work(reference,key,palette):
         if name in ("arm","leg"):
             points=HERO_LIMBS[key][0 if name=="arm" else 1]
             limb=hero_face(reference,index,points,(4*WORK_SCALE,12*WORK_SCALE))
+            if master:
+                limb=master.panel(key,name,limb.size)
             wrap_front_edges(faces,limb,round(limb.width*9/24),4*WORK_SCALE)
         if name=="body":
             chest=hero_face(reference,index,HERO_BODY[key],(8*WORK_SCALE,12*WORK_SCALE))
             finish_chest(chest,key)
+            chest=straighten_front(chest,*CHEST_AXES[key])
+            if master:
+                chest=master.panel(key,name,chest.size)
             wrap_front_edges(faces,chest,round(chest.width*7/36),4*WORK_SCALE)
         for side,(u,v,w,h) in uv_rects(name).items():
             x,y,W,H=(n*WORK_SCALE for n in (u,v,w,h))
             face=faces[side]
             cap=side in ("top","bottom")
-            if name=="head":
+            if name=="head" and master and side=="front":
+                placed=master.panel(key,name,(W,H))
+            elif name=="head":
                 placed=paint_head(reference,index,key,side,faces,(W,H))
             elif face.size==(W,H):
                 placed=face
             else:
-                placed=clean_thumbnail(face,(W,H))
+                placed=cel_surface(clean_thumbnail(face,(W,H)))
             if name=="body":
                 ysplit=9*WORK_SCALE
                 if cap:
@@ -167,7 +220,7 @@ def biped_work(reference,key,palette):
                     layers[0].paste(placed.crop((0,ysplit,W,H)),(x,y+ysplit))
             else:
                 layers[0].paste(placed,(x,y))
-    if key=="gyuki":
+    if key=="gyuki" and not master:
         # Purple horn marks visible on the reference, contained within
         # the existing vanilla helmet overlay and its standard UV cells.
         rect=uv_rects("hat")["front"]

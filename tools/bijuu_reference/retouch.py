@@ -75,7 +75,33 @@ def reinforce_stroke(surface,dx,weight,path):
     surface.paste(ink.convert("RGBA"),box,alpha)
 
 
+# Small breaks inside identifying marks, read from the enlarged torso panels.
+# Paths are in the original camera plane, before centerline correction.
+INK_REPAIRS = {
+    "shukaku": ((.613,.49), .017, ellipse(.614,.558,.072,.069,170,514)),
+    "matatabi": ((.302,.568), .015, ((.205,.663),(.253,.600),(.275,.528),(.313,.575))),
+    "isobu": ((.557,.63), .013, ((.396,.649),(.49,.630),(.565,.635),(.639,.62))),
+    "son_goku": ((.734,.427), .018, ((.785,.309),(.749,.377),(.716,.413),(.748,.457))),
+    "kokuo": ((.388,.612), .017, ellipse(.398,.665,.078,.076,0,360)),
+    "saiken": ((.585,.36), .016, ((.581,.214),(.581,.35),(.575,.455),(.577,.563))),
+    "chomei": ((.579,.508), .011, ((.584,.347),(.579,.473),(.583,.588),(.589,.677))),
+    "gyuki": ((.461,.351), .017, ((.317,.413),(.379,.354),(.465,.344),(.548,.358),(.602,.402))),
+    "kurama": ((.388,.45), .017, ellipse(.397,.59,.168,.145,0,360)),
+}
+
+
+def repair_contour(surface,key):
+    sample,weight,path=INK_REPAIRS[key]
+    width,height=surface.size
+    ink=surface.getpixel((round(sample[0]*width),round(sample[1]*height)))
+    overlay=Image.new("RGBA",surface.size)
+    points=[(round(x*width),round(y*height)) for x,y in path]
+    ImageDraw.Draw(overlay).line(points,fill=(*ink[:3],170),width=max(1,round(width*weight)),joint="curve")
+    surface.alpha_composite(overlay)
+
+
 def finish_chest(surface,key):
     for sample,weight,path in CHEST_TRACES[key]:
         reinforce_stroke(surface,sample,weight,path)
+    repair_contour(surface,key)
     return surface

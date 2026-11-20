@@ -120,6 +120,12 @@ public class ArmorProbe {
                 return;
             }
             if (game.getField("field_71439_g").get(client)==null) return;
+            Object screen=game.getField("field_71462_r").get(client);
+            if(screen!=null && screen.getClass().getSimpleName().equals("GuiIngameMenu")) {
+                game.getMethod("func_147108_a",type("net.minecraft.client.gui.GuiScreen")).invoke(client,new Object[]{null});
+                nextFrontFrame=worldTicks+12;
+                return;
+            }
             worldTicks++;
             if (galleryStage==1 && worldTicks>=35) {
                 galleryStage++;
@@ -164,8 +170,8 @@ public class ArmorProbe {
                 Class<?> entity=player.getClass();
                 entity.getField("field_70177_z").setFloat(player,galleryYaw);
                 entity.getField("field_70126_B").setFloat(player,galleryYaw);
-                entity.getField("field_70125_A").setFloat(player,8.0f);
-                entity.getField("field_70127_C").setFloat(player,8.0f);
+                entity.getField("field_70125_A").setFloat(player,0.0f);
+                entity.getField("field_70127_C").setFloat(player,0.0f);
                 if (worldTicks<nextFrontFrame) return;
                 screenshot((angled ? "angle-" : "front-")+roster[frontIndex]+".png");
                 if (angled) frontIndex++;
@@ -187,7 +193,7 @@ public class ArmorProbe {
     private void positionCamera() throws Exception {
         double x=3*(frontIndex-4)+0.5+(angled ? 2.0 : 0.0);
         galleryYaw=angled ? 148.0f : 180.0f;
-        chat("tp @p "+x+" 4 3.7 "+galleryYaw+" 8");
+        chat("tp @p "+x+" 4 3.7 "+galleryYaw+" 0");
         nextFrontFrame=worldTicks+30;
     }
 
@@ -219,7 +225,8 @@ public class ArmorProbe {
     private static void checkImage(Class<?> owner,String path) throws Exception {
         try (InputStream stream=owner.getResourceAsStream("/assets/hvbijuu/"+path)) {
             BufferedImage image=ImageIO.read(stream);
-            if (image.getWidth()!=4096 || image.getHeight()!=4096 || !image.getColorModel().hasAlpha()) {
+            int expected=Integer.getInteger("bijuu.atlasSize",4096);
+            if (image.getWidth()!=expected || image.getHeight()!=expected || !image.getColorModel().hasAlpha()) {
                 throw new AssertionError("Invalid atlas "+path);
             }
         }

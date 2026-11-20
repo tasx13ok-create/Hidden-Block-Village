@@ -146,9 +146,9 @@ def comparison(reference,finished,icons,palettes,out):
         ref=crop_reference(reference,i).resize((152,188),N)
         sheet.alpha_composite(ref,(x+18,y+69))
         text(d,(x+18,y+264),"YOUR ART",13,FAINT)
-        model=render(finished[key],245,220,yaw=14,pitch=8,pixels=5.8)
+        model=render(finished[key],245,220,yaw=0,pitch=0,pixels=5.8)
         sheet.alpha_composite(model,(x+182,y+52))
-        text(d,(x+194,y+264),"VANILLA ARMOR PREVIEW",13,FAINT)
+        text(d,(x+194,y+264),"STRAIGHT-ON ARMOR",13,FAINT)
         for j,image in enumerate(icons[key]):
             xx=x+192+j*46
             d.rectangle((xx,y+285,xx+34,y+320),fill="#575c65")

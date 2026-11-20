@@ -1,0 +1,19 @@
+{
+  "input_sha256": {
+    "original": "868f07404682de09ef6657a14f7860184af90344b34d8181da29492645b83d77",
+    "generated_front_master": "e2b9a544d80b3ce6343bd81b1be9cb4be3a85acd61e1bf67137596de731fa71a",
+    "owner_tail_archive": "dca1c8de99f707aacfde937e4cb700ccba02a5a7e3509f2f541d127261ad7137"
+  },
+  "output_sha256": {
+    "merged_8k_jar": "8049f5a01772dcc95e454460e832e131ac8d8710eaa0e150991ce9a27ba63e2e",
+    "vanilla_layout_zip": "952b82ffa087709a8cc8f4b103ed23ef3f8a32842470e5de064c1198733cdeb8",
+    "classic_player_skins_zip": "e6de0553b645103619367b4aa810a380a1a367cfa67edeecfca34f00ce04f64d"
+  },
+  "pixel_checks": {
+    "native_base_front_panels": 72,
+    "tail_hierarchies": 9,
+    "tail_atlas_regions": 9,
+    "wearable_skin_front_regions": 54
+  },
+  "scope": "Front master is an interpretation of the supplied poster. Exact checks compare registered master crops after nearest sampling to the native atlas. Side and back surfaces continue the original artwork."
+}

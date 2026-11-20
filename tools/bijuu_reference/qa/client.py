@@ -82,8 +82,11 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
             "pauseOnLostFocus:false\nrenderDistance:6\nfov:0.0\n",encoding="utf8")
         flags=["-Dbijuu.gallery=true"]
 
+    if "8K" in artifact.name:
+        flags.append("-Dbijuu.atlasSize=8192")
+
     command = [
-        str(java), "-Xmx3G", *flags, f"-Djava.library.path={native}", "-cp", os.pathsep.join(map(str, classpath)),
+        str(java), "-Xmx7G" if "8K" in artifact.name else "-Xmx3G", *flags, f"-Djava.library.path={native}", "-cp", os.pathsep.join(map(str, classpath)),
         "net.minecraft.launchwrapper.Launch", "--username", "BijuuQA", "--version", FORGE,
         "--gameDir", str(trial), "--assetsDir", str(install / "assets"), "--assetIndex", "1.12",
         "--uuid", "f4ea74d9a25f4f30b3ed82605aee9188", "--accessToken", "0", "--userType", "legacy",
@@ -93,7 +96,7 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
     console = trial / "client-console.log"
     with console.open("w", encoding="utf8") as log:
         result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, cwd=trial,
-                                creationflags=subprocess.CREATE_NO_WINDOW, timeout=200, check=False)
+                                creationflags=subprocess.CREATE_NO_WINDOW, timeout=420 if "8K" in artifact.name else 200, check=False)
     lines = console.read_text(encoding="utf8", errors="replace").splitlines()
     for line in lines:
         if "BIJUU_VISUAL_QA_PASS" in line or "BIJUU_BSL_GALLERY_PASS" in line:

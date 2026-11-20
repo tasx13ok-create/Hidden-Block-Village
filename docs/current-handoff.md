@@ -1,5 +1,15 @@
 # Current project handoff
 
+## Nine outfits from the front-view master, 20 November 2026
+
+The current private candidate is Bijuu-Master-Skins-8K-v3.jar. The owner requested a generated orthographic interpretation of their poster, followed by direct placement on the skin. All 72 native front panels match the sampled master after resizing. The complete nine-set tail geometry and authored textures match the v3 input. The export also produced 54 vanilla-layout 8K maps and nine Classic player skins. The fronts use the new master. Hidden surfaces continue the original design. See [the verification record](../release/evidence/bijuu-front-master-8k.json).
+
+The final Forge and BSL run passed with 36 armor models, ten atlases, 73 native root draws and exit code zero. All nine equipped front captures were inspected in the original/master/in-game comparison. Four frames of the superseded Inked comparison showed the pause menu. The final camera stays level and dismisses that menu before capture. Next acceptance is movement and strikes on a player in a copied full profile. The owner art, binaries and comparison sheets are private.
+
+## Bijuu armor alignment and owner v3 tails, 20 November 2026
+
+The private Inked build uses the reference panel centerlines to straighten all nine chest motifs. Small missing contours were inferred from each panel. The level armor comparison and the separate in-game BSL comparison stay private. The merged JAR incorporates all nine v3 model hierarchies and their authored UVs and textures. Verified nine binary geometry records and pixel equality in all nine tail texture regions. The first merged test caught an obsolete Kurama root count. The corrected build counted replacement roots, passed the Forge probe with 36 models, ten atlases and 73 draws, and saved 18 individual BSL captures plus the roster. Exit 0. Source ZIP SHA-256 dca1c8de99f707aacfde937e4cb700ccba02a5a7e3509f2f541d127261ad7137. Merged JAR SHA-256 e794cf308d7519158dfa7d32dc8269611574e06fcdb1cb37f59f63cc6a8a357b. Next acceptance is player movement and strikes in a copied full pack. The isolated gallery tests equipped stands.
+
 ## Bijuu armor precision pass, 20 November 2026
 
 The private Precision JAR replaces 101 textures. The vanilla ZIP contains 104 entries. The builder projects 45 marked surfaces at output resolution, retouches nine chest motifs and positions trim from the model coordinates. All 552 panel crop windows passed validation. The isolated Forge and BSL test passed with 36 models, 10 atlases and 73 native root draws. It saved front and angled screenshots for each set. The test disabled temporal smoothing and FXAA. Next, compare those captures against the owner's preferred shader preset.

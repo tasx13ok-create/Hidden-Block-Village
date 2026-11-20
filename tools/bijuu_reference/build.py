@@ -98,7 +98,9 @@ def archive(out):
     print(target,sha(target))
 
 
-def build(reference_path,out):
+def build(reference_path,out,master_path=None):
+    from front_master import FrontMaster
+    master=FrontMaster(master_path) if master_path else None
     reference=Image.open(reference_path).convert("RGB")
     if reference.size!=(828,1792):
         raise ValueError("Expected the owner's 828x1792 reference. The crop coordinates are image-specific.")
@@ -111,10 +113,20 @@ def build(reference_path,out):
     for folder in (armor,items,proofs):
         folder.mkdir(parents=True)
     all_layers,all_icons,report={},{},{}
+    from trace import opposite_front
+    native_faces=out/"native-limb-faces"
+    native_faces.mkdir()
     seen=set()
     for key,design in DESIGNS.items():
-        layers=biped_work(reference,key,palettes[key])
-        verify_helmet_front(layers[0],key)
+        layers=biped_work(reference,key,palettes[key],master)
+        for part in ("arm","leg"):
+            panel=master.panel(key,part,(256,768),True) if master else opposite_front(reference,list(DESIGNS).index(key),key,part)
+            panel.save(native_faces/f"{key}_{part}.png")
+        if master:
+            x,y,w,h=uv_rects("head")["front"]
+            assert layers[0].crop(tuple(n*WORK_SCALE for n in (x,y,x+w,y+h))).tobytes()==master.panel(key,"head",(w*WORK_SCALE,h*WORK_SCALE)).tobytes()
+        else:
+            verify_helmet_front(layers[0],key)
         verify_worn_seams(layers)
         all_layers[key]=[im.resize((1024,512),NEAREST) for im in layers]
         all_icons[key]=[]
@@ -150,7 +162,7 @@ def build(reference_path,out):
     icon_sheet(all_icons,proofs)
     helmet_sheet(reference,all_layers,proofs)
     (out/"palette-and-validation.json").write_text(json.dumps({
-        "reference_sha256":sha(reference_path), "reference_size":list(reference.size),
+        "front_master_sha256":master.sha if master else None, "reference_sha256":sha(reference_path), "reference_size":list(reference.size),
         "layout":"Minecraft 1.12.2 ModelBiped 64x32 grid at 4096x2048",
         "atlas_count":18,"shader_map_count":36,"unique_icon_count":len(seen),"sets":report,
         "preview_scope":"Offline vanilla geometry. Hidden faces continue the pictured colors."
@@ -176,8 +188,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("reference",type=Path)
     parser.add_argument("output",type=Path)
+    parser.add_argument("--front-master",type=Path)
     args=parser.parse_args()
-    build(args.reference,args.output)
+    build(args.reference,args.output,args.front_master)
 
 
 if __name__=="__main__":
