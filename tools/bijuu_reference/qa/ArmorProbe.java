@@ -245,6 +245,12 @@ public class ArmorProbe {
         if(diagnosticControl && Boolean.getBoolean("bijuu.neutralSkin"))rgb=0xffdddddd;
         BufferedImage skin=new BufferedImage(64,64,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<64;y++)for(int x=0;x<64;x++)skin.setRGB(x,y,rgb);
+        if(diagnosticControl && Boolean.getBoolean("bijuu.visorFace")){
+            try(java.io.InputStream stream=ArmorProbe.class.getResourceAsStream("/assets/minecraft/textures/entity/steve.png")){
+                BufferedImage steve=javax.imageio.ImageIO.read(stream);
+                for(int y=0;y<16;y++)for(int x=0;x<64;x++)skin.setRGB(x,y,steve.getRGB(x,y));
+            }
+        }
         Object id=player.getClass().getMethod("func_110306_p").invoke(player);
         Object texture=type("net.minecraft.client.renderer.texture.DynamicTexture").getConstructor(BufferedImage.class).newInstance(skin);
         Object manager=client.getClass().getMethod("func_110434_K").invoke(client);

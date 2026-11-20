@@ -82,3 +82,7 @@ The current merge uses the V3 artwork as the color reference. It remaps existing
 The converter seats each root inside the mount and shortens the spacing only where a segment needs more overlap. The renderer shares each original motion channel's bend across the connected sections, limits the angle at the base, and concentrates Chomei's wing motion at each hinge. The behavior follows the existing animation inputs. It does not implement world collision.
 
 After the 8K export, run `tails/check_fit.py <exported-jar> <v3-zip>` to check the actual encoded pivots against both adjoining solids and compare every tail texture to the source archive. Then run the equipped-player shader gallery.
+
+## Transparent helmet visors
+
+The visor step changes the alpha channel inside the existing stepped front lens. Isobu has two separate panes. Each helmet retains its original RGB data, bridge and frame. The equipped renderer keeps both vanilla head layers available behind the lens. Use `tails/check_visors.py <flush-motion-8k-jar> <clear-visor-8k-jar>` for the full pixel and asset comparison. Run the shader player gallery with `--player-motion --visor-face` to use Steve's real head and a fluorescent body beneath the armor. These captures are private.

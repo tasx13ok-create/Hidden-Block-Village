@@ -13,7 +13,6 @@ import net.minecraftforge.fml.relauncher.Side;
  * normally, including their child renderers and held-item attachment transforms. */
 @Mod.EventBusSubscriber(modid="hvbijuu",value=Side.CLIENT)
 public final class ArmorCoverage {
-    private static final String[] HEAD={"field_78116_c","field_178720_f"};
     private static final String[] CHEST={"field_78115_e","field_178730_v","field_178723_h","field_178724_i","field_178732_b","field_178734_a"};
     private static final String[] LEGS={"field_178721_j","field_178722_k","field_178731_d","field_178733_c"};
     private static final Deque<List<Hidden>> frames=new ArrayDeque<>();
@@ -81,7 +80,7 @@ public final class ArmorCoverage {
             Object player=event.getClass().getMethod("getEntityPlayer").invoke(event);
             Object renderer=event.getClass().getMethod("getRenderer").invoke(event);
             Object model=renderer.getClass().getMethod("func_177087_b").invoke(renderer);
-            if(wears(player,"HEAD","helmet"))hide(frame,model,HEAD);
+            // Keep the real skin and its outer head layer behind the visor.
             if(wears(player,"CHEST","chestplate"))hide(frame,model,CHEST);
             if(wears(player,"LEGS","leggings") && wears(player,"FEET","boots"))hide(frame,model,LEGS);
         }catch(ReflectiveOperationException e){restore();throw new IllegalStateException(e);}

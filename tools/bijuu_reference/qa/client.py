@@ -47,7 +47,7 @@ def libraries(install, native):
     return classpath
 
 
-def run(install, java, javac, artifact, trial, optifine=None, bsl=None, player_motion=False, neutral_skin=False):
+def run(install, java, javac, artifact, trial, optifine=None, bsl=None, player_motion=False, neutral_skin=False, visor_face=False):
     if os.name != "nt":
         raise RuntimeError("This launch recipe uses Windows client natives")
     trial.mkdir(parents=True, exist_ok=False)
@@ -92,6 +92,8 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None, player_m
         if not bsl:
             raise ValueError("The player motion gallery requires the shader capture inputs")
         flags.append("-Dbijuu.motion=true")
+    if visor_face:
+        flags.append("-Dbijuu.visorFace=true")
     if neutral_skin:
         if not player_motion:
             raise ValueError("The neutral-skin control requires --player-motion")
@@ -127,8 +129,9 @@ def main():
         parser.add_argument(f"--{option}",type=lambda s: Path(s).resolve())
     parser.add_argument("--player-motion",action="store_true")
     parser.add_argument("--neutral-skin",action="store_true")
+    parser.add_argument("--visor-face",action="store_true")
     args = parser.parse_args()
-    return run(args.install, args.java, args.javac, args.artifact, args.output, args.optifine, args.bsl, args.player_motion, args.neutral_skin)
+    return run(args.install, args.java, args.javac, args.artifact, args.output, args.optifine, args.bsl, args.player_motion, args.neutral_skin, args.visor_face)
 
 
 if __name__ == "__main__":

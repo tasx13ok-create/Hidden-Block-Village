@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Clear helmet visors, 20 November 2026
+
+The private candidate is `Bijuu-Clear-Visors-8K-v3.jar`. Its SHA-256 is `1dfd857afc73116ea692fa564a1ee0e466d6db6e1d053c99f8217dad0674939f`. The helmet front opens inside the existing painted lens. Isobu retains the solid central bridge. The player renderer now draws both head layers so the wearer's real skin shows through. Torso and leg coverage still use the previous fitted behavior.
+
+The complete atlas comparison against the flush-motion build verified identical RGB channels in every helmet, with alpha changes restricted to the specified pane interiors. All nine sets and the alternate Kurama cage atlas passed. The before/after sheet `Bijuu-Visors-Before-and-After.png` uses actual equipped-player screenshots from the separate Forge 1.12.2 BSL test instance. All nine standard helmets were exercised with Steve's face during a walk, turn and crouch. The alternate cage received an atlas check. Next integration check is custom outer-head cosmetics in a copy of the intended pack. Private screenshots, source artwork and game binaries stay outside the public repository.
+
 ## Flush tail and wing joints and V3-matched outfits, 20 November 2026
 
 The private candidate is `Bijuu-Flush-Motion-8K-v3.jar` with a matching nine-file `Bijuu-Flush-Matching-Classic-Skins.zip`. The V3 tail art supplies the pigments for the armor and inventory art. The July 2025 [official G.E.M. lineup](https://naruto-official.com/en/news/01_2376) is a visual reference for broad color families. No official artwork was imported. All nine V3 tail textures and the Kurama cage variant passed exact pixel comparison within the final atlas. All 288 vertical armor seams matched, with the alpha channels and material maps preserved.

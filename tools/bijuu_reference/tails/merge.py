@@ -9,6 +9,7 @@ import sys
 import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 from PIL import Image
+from visors import open_visor
 from fit import fit_sockets, tint
 
 BEASTS = "shukaku matatabi isobu son_goku kokuo saiken chomei gyuki kurama".split()
@@ -78,6 +79,7 @@ def merge(armor,reference,out,jdk,asm,forge=None):
                 atlas=Image.open(io.BytesIO(original.read(name))).convert("RGBA")
                 assert not atlas.crop((0,0,*texture.size)).getbbox()
                 atlas=tint(atlas,texture,key)
+                open_visor(atlas,key)
                 atlas.paste(texture,(0,0))
                 buf=io.BytesIO()
                 atlas.save(buf,format="PNG")
