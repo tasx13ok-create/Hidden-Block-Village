@@ -1,0 +1,51 @@
+{
+  "provider_jars_sha256": {
+    "ahznb weapons plus 1.2.1.jar": "e9dd2d94303301184b8f42a8827df48abf4a43da4d944d9fdb404b1814d08ea3",
+    "BorutoMod Addon byAnimeSupremeTeam v1.0.jar": "633c49ebab5b815e02eb6fb39b3a0b0b17adc89d002968a3627c38738f9aca28",
+    "kabutoaddon 5.5.8-beta.jar": "c5c56886982f266fac68898b86b9261a34a13ea9818216d221e212f34c7b8b59",
+    "NarutoMod-1.12.2-0.3.1.beta.jar": "6cb62642e995b90f1cf1fc3eecd8b8b68361469460b681384f1fd16d69e378c0",
+    "NarutoMod-Addon_byAnimeSupremeTeam-v1.0.jar": "c22338b137b9042b328a21b5d4e303df09bf6b0741a6d2a33cdc7df53d586b05",
+    "SpringAddon7.0.jar": "49e08a36c9b5584a637743ac3cf2c53de00da1b3fb64e47bb51d67d0aba8760c"
+  },
+  "private_candidate": "Bijuu-Shinobi-Arts-8K-v3.jar",
+  "sha256": "4c850bac6f6c91689223cd0acdcc97d2ab99de42177a0e283a4acefce956ce9a",
+  "base_sha256": "1dfd857afc73116ea692fa564a1ee0e466d6db6e1d053c99f8217dad0674939f",
+  "fixture": "Forge 14.23.5.2859 dedicated server; loopback; synthetic EntityPlayerMP, real AHZNB objects and native registry. 53 reported mods including test harness and builtins.",
+  "active_tests": {
+    "sets": 9,
+    "chakra_max": 400,
+    "chakra_debit": 20,
+    "resonance_debit": 40,
+    "denials": [
+      "unfunded",
+      "non-ninja",
+      "cooldown retry"
+    ]
+  },
+  "hit_tests": {
+    "on_hit_effects": 9,
+    "damage_types": [
+      "ninjutsu",
+      "senjutsu"
+    ],
+    "positive_damage_pipeline": true,
+    "resonance_gain": 8,
+    "resonance_cap": 100,
+    "sword_registry_counts": {
+      "ahznbcursemarkaddon": 2,
+      "ahznbswordsplus": 2,
+      "borutomodaddononero": 3,
+      "kabutoaddon": 2,
+      "narutomod": 13,
+      "narutomodaddononero": 22
+    },
+    "negative_controls": [
+      "unissued equipment",
+      "canceled damage",
+      "vanilla sword",
+      "player damage without matching swing",
+      "same-tick duplicate"
+    ]
+  },
+  "unverified": "Two connected clients, every individual native jutsu cast, and non-standard damage or ownership provided by addons."
+}

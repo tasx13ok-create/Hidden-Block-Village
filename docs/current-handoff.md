@@ -1,5 +1,11 @@
 # Current project handoff
 
+## AHZNB combat and armor abilities, 20 November 2026
+
+The private candidate is `Bijuu-Shinobi-Arts-8K-v3.jar`. The old chakra bridge required a client-only initialization predicate. The new bridge uses the equipped server player's native AHZNB ninja status, pathway and absolute chakra debit. A qualifying native jutsu hit or direct Naruto sword strike grants one beast-specific follow-through plus up to eight resonance per eight seconds. See the [nine effects and player controls](../tools/bijuu_reference/abilities/README.md) and [tested version receipt](../release/evidence/bijuu-native-arts.json).
+
+A disposable Forge dedicated server loaded 53 mods including Forge components and the test probe. All nine full-set activations and hit effects passed with a synthetic server player. The run exercised AHZNB's damage factories, a real living damage call, all 44 registered swords in the supported namespaces, insufficient funds, cooldown retry, an unissued set and canceled damage. No changes were made to the active game profile. Next test is a two-client duel using normal casts, including any addon that reports its own damage type or owner. The native technique catalog, transformations and every addon-specific attack have not been playtested individually.
+
 ## Clear helmet visors, 20 November 2026
 
 The private candidate is `Bijuu-Clear-Visors-8K-v3.jar`. Its SHA-256 is `1dfd857afc73116ea692fa564a1ee0e466d6db6e1d053c99f8217dad0674939f`. The helmet front opens inside the existing painted lens. Isobu retains the solid central bridge. The player renderer now draws both head layers so the wearer's real skin shows through. Torso and leg coverage still use the previous fitted behavior.
