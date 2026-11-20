@@ -9,6 +9,7 @@ import sys
 import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 from PIL import Image
+from fit import fit_sockets, tint
 
 BEASTS = "shukaku matatabi isobu son_goku kokuo saiken chomei gyuki kurama".split()
 
@@ -64,12 +65,19 @@ def merge(armor,reference,out,jdk,asm,forge=None):
         for idx,key in enumerate(BEASTS):
             prefix="Naruto_Canon_Tails_v3/"
             model=json.loads(ref.read(prefix+"geometry/"+key+".json"))
+            fit_sockets(model)
             updates[f"assets/hvbijuu/tails/{idx}.bin"]=encode(model)
             texture=Image.open(io.BytesIO(ref.read(prefix+model["texture"]["file"]))).convert("RGBA")
+            for name in original.namelist():
+                if name.startswith("assets/hvbijuu/textures/items/") and name.split("/")[-1].startswith(key+"_") and name.endswith(".png"):
+                    buf=io.BytesIO()
+                    tint(Image.open(io.BytesIO(original.read(name))),texture,key).save(buf,format="PNG")
+                    updates[name]=buf.getvalue()
             for state in (("", "_cage") if idx==8 else ("",)):
                 name="assets/hvbijuu/textures/armor/"+key+state+".png"
                 atlas=Image.open(io.BytesIO(original.read(name))).convert("RGBA")
                 assert not atlas.crop((0,0,*texture.size)).getbbox()
+                atlas=tint(atlas,texture,key)
                 atlas.paste(texture,(0,0))
                 buf=io.BytesIO()
                 atlas.save(buf,format="PNG")

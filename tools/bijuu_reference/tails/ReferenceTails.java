@@ -24,7 +24,9 @@ public final class ReferenceTails {
         Object from,to;
         final Field[] fields=new Field[3];
         final float[] rest=new float[3],base=new float[3];
-        Link(Object from,Object to) throws Exception {
+        final float gain, limit;
+        Link(Object from,Object to,float gain,float limit) throws Exception {
+            this.gain=gain; this.limit=limit;
             this.from=from; this.to=to;
             for(int i=0;i<3;i++){
                 fields[i]=to.getClass().getField(angles[i]);
@@ -33,7 +35,10 @@ public final class ReferenceTails {
             }
         }
         void apply() throws Exception {
-            for(int i=0;i<3;i++) fields[i].setFloat(to,rest[i]+fields[i].getFloat(from)-base[i]);
+            for(int i=0;i<3;i++){
+                float delta=fields[i].getFloat(from)-base[i];
+                fields[i].setFloat(to,rest[i]+gain*limit*(float)Math.tanh(delta/limit));
+            }
         }
     }
     public static void pose(Object model) {
@@ -80,8 +85,14 @@ public final class ReferenceTails {
                     if(k==0)visible.add(target);
                     if(chain!=null && chain.length>0){
                         int source=k*chain.length/n;
-                        if((k==0 || (k-1)*chain.length/n!=source) && chain[source]!=null)
-                            list.add(new Link(chain[source],target));
+                        boolean wing=beast==6 && a<6;
+                        int first=(source*n+chain.length-1)/chain.length;
+                        int end=((source+1)*n+chain.length-1)/chain.length;
+                        // Share a source bend across its sections. Wings rotate at the
+                        // hinge and retain a stiff blade, with a small amount of tip flex.
+                        float gain=wing?(k==0?.9f:.07f):(k==0?.48f:.85f);
+                        if(!wing || k>0)gain/=Math.max(1,end-first);
+                        if(chain[source]!=null)list.add(new Link(chain[source],target,gain,wing?.38f:.62f));
                     }
                 }
             }

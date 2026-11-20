@@ -74,3 +74,11 @@ The player gallery installs a conspicuous test skin locally, takes an unarmored 
 For this fitted merge, pass the Forge 1.12.2 universal JAR as the final argument after ASM. The client coverage hook temporarily omits the vanilla skin cubes under each covered part and restores the original geometry and display list after the player draw. It keeps bone transforms available to item layers. Complete leg coverage applies when both leggings and boots are worn. Run `qa/skin_check.py <motion-screenshots>` to count fluorescent test colors in the sampled poses and verify the unarmored positive control.
 
 For any flagged pixels, repeat the player-motion run in a fresh folder with `--neutral-skin`. This keeps the unarmored control fluorescent and switches the equipped player's base and outer skin textures to gray. Pass `--neutral-control <second-screenshots>` to the color check to verify whether the same colors persist at the same pixel coordinates with the gray skin.
+
+## Flush V3 joints and matched armor colors
+
+The current merge uses the V3 artwork as the color reference. It remaps existing outfit colors and inventory icons while preserving texture coordinates, opacity and normal/specular maps. Each tail texture is copied directly. The official Naruto site's July 2025 G.E.M. lineup provides a visual cross-check for hue families. The Minecraft armor shading is an interpretation.
+
+The converter seats each root inside the mount and shortens the spacing only where a segment needs more overlap. The renderer shares each original motion channel's bend across the connected sections, limits the angle at the base, and concentrates Chomei's wing motion at each hinge. The behavior follows the existing animation inputs. It does not implement world collision.
+
+After the 8K export, run `tails/check_fit.py <exported-jar> <v3-zip>` to check the actual encoded pivots against both adjoining solids and compare every tail texture to the source archive. Then run the equipped-player shader gallery.

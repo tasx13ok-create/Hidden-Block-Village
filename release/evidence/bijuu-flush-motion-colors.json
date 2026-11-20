@@ -1,0 +1,67 @@
+{
+  "private_jar_sha256": "c0854d5cf0d2b9d9716198ba4ea0e1bbb732fdf76fbb321c0f5411c89bc15d87",
+  "private_classic_skins_sha256": "0c354a1db244522a0f7e8fc29e165305d9495e8a06aeceac04aa27bae76699ba",
+  "tested": "Forge 1.12.2, OptiFine G5, BSL. Flat ground walk, turn, crouch, straighten.",
+  "joints_inside_both_solids": 759,
+  "repositioned_mount_children": 39,
+  "shortened_segment_spacings": 232,
+  "exact_v3_atlas_regions": 10,
+  "preserved_vertical_seams": 288,
+  "recolored_inventory_textures": 81,
+  "unchanged_material_maps": 19,
+  "model_slots": 36,
+  "waist_anchor_model_pixels": [
+    0,
+    10,
+    2.5
+  ],
+  "movement_frames": 135,
+  "player_measurements": {
+    "shukaku": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.1691313236951828
+    },
+    "matatabi": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.36114048957824707
+    },
+    "isobu": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.26328957080841064
+    },
+    "son_goku": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.1752074956893921
+    },
+    "kokuo": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.25853003561496735
+    },
+    "saiken": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.13040244579315186
+    },
+    "chomei": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.4814128875732422
+    },
+    "gyuki": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.2612604796886444
+    },
+    "kurama": {
+      "distance_blocks": 7.603318136254353,
+      "torso_pitch_radians": 0.5,
+      "root_angle_sum_max_delta": 0.16064706444740295
+    }
+  },
+  "limitations": "Articulated animation, no environment or inter-tail collision solver. Color families are an adaptation of V3 artwork."
+}

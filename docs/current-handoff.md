@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Flush tail and wing joints and V3-matched outfits, 20 November 2026
+
+The private candidate is `Bijuu-Flush-Motion-8K-v3.jar` with a matching nine-file `Bijuu-Flush-Matching-Classic-Skins.zip`. The V3 tail art supplies the pigments for the armor and inventory art. The July 2025 [official G.E.M. lineup](https://naruto-official.com/en/news/01_2376) is a visual reference for broad color families. No official artwork was imported. All nine V3 tail textures and the Kurama cage variant passed exact pixel comparison within the final atlas. All 288 vertical armor seams matched, with the alpha channels and material maps preserved.
+
+The converter seats each waist or abdomen connection inside the adjoining solid and reduces overlong segment spacing. The renderer spreads existing animated bends across the chain, limits base swing and keeps the six wing blades stiff around their moving hinges. All 759 joints in the shipped binary are inside both adjoining parts. This addresses joint separation and covers flat-ground walk, turn and crouch on the local player. Terrain, wall and inter-tail collision are outside this animation implementation. Next test is sprint, jump and swim in a copy of the intended modpack; the active profile and prior candidate were preserved. See [the build receipt](../release/evidence/bijuu-flush-motion-colors.json).
+
 ## Full shoulder pads, player coverage and moving v3 tails, 20 November 2026
 
 The private fitted candidate is `Bijuu-Shoulder-Fit-8K-v3.jar`. All nine sets have two closed shoulder pads, each six model pixels across and front to back, with individually textured faces. The full suit suppresses the covered vanilla player geometry during that player's draw. The previous shell-only fit still exposed small patches of the fluorescent test skin. The original turnaround JAR and active inspection instance were preserved.
