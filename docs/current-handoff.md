@@ -1,5 +1,9 @@
 # Current project handoff
 
+## Claude Steam Dash Punch delivery, 20 November 2026
+
+PR #11 landed on main at c6c8c32. Rebuilt the f7df527 overlay locally against the private Shinobi Arts JAR and assembled `Bijuu-Shinobi-Arts-8K-v3-SteamDash.jar`. The overlay matched Claude's hash. Normalizing the ZIP writer platform byte on the 30 added entries reproduced the entire receipt exactly: 9,281,101 bytes, SHA-256 `c9f97c0115e6bed0a1c6ab645d6709629c1b761eb1c3acd885d8e349a64a1617`. The local pure-rule run passed 395 checks. All 111 original PNGs matched. The 23 scripted client checks and videos are Claude's evidence from PR #11. The active profile was not changed. Next deployment check is real-player timing and region protection on Magma in a copied world.
+
 ## AHZNB combat and armor abilities, 20 November 2026
 
 The private candidate is `Bijuu-Shinobi-Arts-8K-v3.jar`. The old chakra bridge required a client-only initialization predicate. The new bridge uses the equipped server player's native AHZNB ninja status, pathway and absolute chakra debit. A qualifying native jutsu hit or direct Naruto sword strike grants one beast-specific follow-through plus up to eight resonance per eight seconds. See the [nine effects and player controls](../tools/bijuu_reference/abilities/README.md) and [tested version receipt](../release/evidence/bijuu-native-arts.json).
