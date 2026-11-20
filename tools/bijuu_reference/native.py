@@ -194,7 +194,21 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def build(vanilla,base,output):
+def fit_shoulders(specs):
+    # All rear/front/sleeve crops use the same upper-arm frame. Center each
+    # solid on the arm pivot and retain the outline treatment of each outfit.
+    count=0
+    for spec in specs:
+        if spec["kind"]!="shoulder":
+            continue
+        spec.update(x=-4 if spec["bone"]=="right_arm" else -2,y=-3.1,z=-3,
+                    w=6,h=3 if spec["h"]==1 else 4,d=6)
+        count+=1
+    if count!=18:
+        raise ValueError(f"Expected both pads for every set, got {count}")
+
+
+def build(vanilla,base,output,shoulders=False):
     if sha(base)!=BASE_SHA:
         raise ValueError("Unexpected Bijuu Armor JAR baseline")
     record=json.loads((vanilla/"palette-and-validation.json").read_bytes())
@@ -202,6 +216,9 @@ def build(vanilla,base,output):
     with zipfile.ZipFile(base) as original:
         assert original.testzip() is None
         specs=json.loads(original.read(f"{PREFIX}/models/armor_layers.json"))
+        if shoulders:
+            fit_shoulders(specs)
+            assets[f"{PREFIX}/models/armor_layers.json"]=json.dumps(specs,separators=(",",":")).encode()
         for index,key in enumerate(DESIGNS):
             layers=[]
             for i in (1,2):
@@ -243,7 +260,7 @@ def build(vanilla,base,output):
 
         entries=original.namelist()
         assert len(entries)==len(set(entries))
-        assert set(assets)<=set(entries) and all(name.endswith(".png") for name in assets)
+        assert set(assets)<=set(entries) and all(name.endswith(".png") or (shoulders and name==f"{PREFIX}/models/armor_layers.json") for name in assets)
         with zipfile.ZipFile(output,"x",compression=zipfile.ZIP_DEFLATED) as jar:
             for name in entries:
                 info=zipfile.ZipInfo(name,(2026,11,19,0,0,0))
@@ -252,7 +269,7 @@ def build(vanilla,base,output):
         with zipfile.ZipFile(output) as jar:
             assert jar.testzip() is None and jar.namelist()==entries
             assert all(jar.read(n)==(assets[n] if n in assets else original.read(n)) for n in entries)
-    print(f"{len(assets)} texture-only replacements validated")
+    print(f"{len(assets)} asset replacements validated")
     print(output,sha(output))
 
 
@@ -261,8 +278,9 @@ def main():
     parser.add_argument("vanilla",type=Path)
     parser.add_argument("original_jar",type=Path)
     parser.add_argument("output",type=Path)
+    parser.add_argument("--full-shoulders",action="store_true")
     args=parser.parse_args()
-    build(args.vanilla,args.original_jar,args.output)
+    build(args.vanilla,args.original_jar,args.output,args.full_shoulders)
 
 
 if __name__=="__main__":

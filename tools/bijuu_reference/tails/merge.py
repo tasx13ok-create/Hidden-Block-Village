@@ -35,12 +35,26 @@ def encode(model):
     return buf.getvalue()
 
 
-def merge(armor,reference,out,jdk,asm):
+def merge(armor,reference,out,jdk,asm,forge=None):
     source=Path(__file__).parent
     with tempfile.TemporaryDirectory() as work,ZipFile(reference) as ref,ZipFile(armor) as original:
         root=Path(work)
-        subprocess.run([jdk/"javac","--release","8","-cp",asm,"-d",work,source/"TailPatch.java",source/"ReferenceTails.java"],check=True)
+        specs=json.loads(original.read("assets/hvbijuu/models/armor_layers.json"))
+        fitted=all(s["w"]==6 and s["d"]==6 for s in specs if s["kind"]=="shoulder")
+        fit_sources=[source/"ShellFitPatch.java",source/"ShellClearance.java"] if fitted else []
+        if fitted:
+            if not forge:
+                raise ValueError("Provide the Forge 1.12.2 universal JAR for the fitted player coverage hook")
+            fit_sources.append(source/"ArmorCoverage.java")
+        compile_path=str(asm) if not forge else os.pathsep.join(map(str,(asm,forge)))
+        subprocess.run([jdk/"javac","--release","8","-cp",compile_path,"-d",work,source/"TailPatch.java",source/"ReferenceTails.java",*fit_sources],check=True)
         updates={p.relative_to(root).as_posix():p.read_bytes() for p in (root/"village").rglob("*.class")}
+        if fitted:
+            name="village/bijuu/ArmorShapes.class"
+            target=root/name
+            target.write_bytes(original.read(name))
+            subprocess.run([jdk/"java","-cp",work+os.pathsep+str(asm),"ShellFitPatch",target],check=True)
+            updates[name]=target.read_bytes()
         for cls,idx in [("ClientProxy$BeastModel",-1),("ModelKuramaArmor",8),("ModelShukakuArmor",0),("ModelMatatabiArmor",1)]:
             name="village/bijuu/"+cls+".class"
             target=root/name

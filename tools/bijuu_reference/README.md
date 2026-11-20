@@ -58,3 +58,19 @@ After building the native JAR, apply the v3 merge and 8K exporter above. Run `ch
 Pass `--turnaround <registered-side-back-sheet>` with `--front-master` to build all four horizontal faces. This private drawing supplies distinct helmet, sleeve, rear torso, trouser and boot art. The arm covers the torso in the profile drawing, so that narrow side continues the corresponding rear flank. Each torso and sleeve maps the same vertical range between neckline and hem. Side edges take the adjacent front and back samples at their corners. The native export handles each limb independently and pins corners again at the native resolution.
 
 Run `check_turnaround.py <8k-jar>` and `check_master.py <front-master> <8k-jar>`. The Turnaround shader gallery rotates each equipped stand through front, side and rear. For side and unobstructed rear captures the QA fixture hides the replacement tail mount, then restores it for a second rear screenshot. This display control is confined to the disposable test client. Use `turnaround_compare.py <front-master> <side-back-master> <screenshots> <output-folder>` for the six-view comparison sheets.
+
+## Equipped-player tail and waist check
+
+Add `--player-motion` to the isolated shader client invocation to equip the local player with all four pieces of each set. The test uses normal forward and crouch inputs during a 90-degree turn. It records displacement, torso pitch, appendage rotation changes and the mount's torso parent and local coordinates during movement. The QA camera orbits the player while the renderer continues to use the actual player's pose. The test leaves all v3 tail mounts visible.
+
+Run `qa/player_gallery.py <screenshots> <fresh-output-directory>` to assemble the three-angle sheets and animated motion sequences. Keep the raw frames and generated sheets private. This test covers flat-ground traversal in an isolated client.
+
+## Full shoulder fit
+
+Pass `--full-shoulders` to the native exporter before merging the v3 tails. Each pad is centered on its own upper-arm pivot, six model pixels wide and deep, with a three- or four-pixel height and the per-set bevel. The exporter reallocates all six UV faces against those dimensions. The merge tool adjusts base clearance for the matching geometry. Leggings and boots have different shell depths to keep the join from flickering. The fitted helmet and upper sleeves accommodate the raised outer skin layer.
+
+The player gallery installs a conspicuous test skin locally, takes an unarmored control, then captures the equipped character from all sides and above the shoulders. The private fixture leaves all tail roots visible.
+
+For this fitted merge, pass the Forge 1.12.2 universal JAR as the final argument after ASM. The client coverage hook temporarily omits the vanilla skin cubes under each covered part and restores the original geometry and display list after the player draw. It keeps bone transforms available to item layers. Complete leg coverage applies when both leggings and boots are worn. Run `qa/skin_check.py <motion-screenshots>` to count fluorescent test colors in the sampled poses and verify the unarmored positive control.
+
+For any flagged pixels, repeat the player-motion run in a fresh folder with `--neutral-skin`. This keeps the unarmored control fluorescent and switches the equipped player's base and outer skin textures to gray. Pass `--neutral-control <second-screenshots>` to the color check to verify whether the same colors persist at the same pixel coordinates with the gray skin.

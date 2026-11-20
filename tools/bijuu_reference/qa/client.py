@@ -47,7 +47,7 @@ def libraries(install, native):
     return classpath
 
 
-def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
+def run(install, java, javac, artifact, trial, optifine=None, bsl=None, player_motion=False, neutral_skin=False):
     if os.name != "nt":
         raise RuntimeError("This launch recipe uses Windows client natives")
     trial.mkdir(parents=True, exist_ok=False)
@@ -88,6 +88,15 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
     if "Turnaround" in artifact.name:
         flags.append("-Dbijuu.turnaround=true")
 
+    if player_motion:
+        if not bsl:
+            raise ValueError("The player motion gallery requires the shader capture inputs")
+        flags.append("-Dbijuu.motion=true")
+    if neutral_skin:
+        if not player_motion:
+            raise ValueError("The neutral-skin control requires --player-motion")
+        flags.append("-Dbijuu.neutralSkin=true")
+
     command = [
         str(java), "-Xmx7G" if "8K" in artifact.name else "-Xmx3G", *flags, f"-Djava.library.path={native}", "-cp", os.pathsep.join(map(str, classpath)),
         "net.minecraft.launchwrapper.Launch", "--username", "BijuuQA", "--version", FORGE,
@@ -116,8 +125,10 @@ def main():
         parser.add_argument(f"--{option}", type=lambda s: Path(s).resolve(), required=True)
     for option in ("optifine","bsl"):
         parser.add_argument(f"--{option}",type=lambda s: Path(s).resolve())
+    parser.add_argument("--player-motion",action="store_true")
+    parser.add_argument("--neutral-skin",action="store_true")
     args = parser.parse_args()
-    return run(args.install, args.java, args.javac, args.artifact, args.output, args.optifine, args.bsl)
+    return run(args.install, args.java, args.javac, args.artifact, args.output, args.optifine, args.bsl, args.player_motion, args.neutral_skin)
 
 
 if __name__ == "__main__":

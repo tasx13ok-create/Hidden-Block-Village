@@ -1,0 +1,94 @@
+{
+  "private_artifact": "Bijuu-Shoulder-Fit-8K-v3.jar",
+  "sha256": "6b2f32ef7a0366a253e4cef41ef8a0f7fcf5959920a93b1fee3d5b768c3ecf5b",
+  "prior_turnaround_sha256": "7ec1f0cc494c14f68a25ea9239d4d7a2068c103eeca07d10b0b0c159d33b1d26",
+  "native_checks": {
+    "slots": 36,
+    "atlases_8192_square": 10,
+    "root_draws": 73,
+    "closed_pads": 18,
+    "opaque_texture_faces": 108,
+    "edges_per_pad": 28,
+    "nonmanifold_edges_per_pad": 0,
+    "matched_front_panels": 72,
+    "matched_vertical_corner_pairs": 288
+  },
+  "motion_test": {
+    "client": "Forge 1.12.2 / OptiFine G5 / BSL",
+    "subject": "Fully equipped local player",
+    "scenario": "Flat-ground walking, 90-degree turn, crouch and straighten",
+    "waist_attachment_model_pixels": [
+      0,
+      10,
+      2.5
+    ],
+    "sampled_ticks_per_set": 59,
+    "motion_by_set": {
+      "shukaku": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.0744304955005646
+      },
+      "matatabi": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 2.248143047094345
+      },
+      "isobu": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 0.8411089777946472
+      },
+      "son_goku": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.8111372292041779
+      },
+      "kokuo": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.7048779129981995
+      },
+      "saiken": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.818131610751152
+      },
+      "chomei": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 0.7089027762413025
+      },
+      "gyuki": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.8057365417480469
+      },
+      "kurama": {
+        "distance_blocks": 7.603318136254353,
+        "max_body_bend_radians": 0.5,
+        "first_appendage_angle_sum_max_delta": 1.9658639132976532
+      }
+    }
+  },
+  "skin_test": {
+    "unarmored_control_pixels": 21594,
+    "equipped_frames": 171,
+    "test_hue_pixels_by_set": {
+      "shukaku": 1,
+      "matatabi": 2,
+      "isobu": 0,
+      "son_goku": 0,
+      "kokuo": 0,
+      "saiken": 0,
+      "chomei": 3,
+      "gyuki": 0,
+      "kurama": 0
+    },
+    "motion_frames_with_test_color": 0,
+    "total_motion_frames": 135,
+    "matching_pixels_in_gray_skin_pair": 5,
+    "strict_coordinate_check": "5 of 6 persisted at the identical pixel. The remaining Chomei front pixel was on the outer sleeve. A separate gray-skin front sequence reproduced magenta on the same sleeve edge at a different arm angle. The Chomei armor atlas contains opaque pure magenta texels in that arm region.",
+    "interpretation": "No confirmed exposed player skin in the sampled full-set poses."
+  }
+}

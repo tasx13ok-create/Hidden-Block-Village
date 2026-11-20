@@ -1,5 +1,13 @@
 # Current project handoff
 
+## Full shoulder pads, player coverage and moving v3 tails, 20 November 2026
+
+The private fitted candidate is `Bijuu-Shoulder-Fit-8K-v3.jar`. All nine sets have two closed shoulder pads, each six model pixels across and front to back, with individually textured faces. The full suit suppresses the covered vanilla player geometry during that player's draw. The previous shell-only fit still exposed small patches of the fluorescent test skin. The original turnaround JAR and active inspection instance were preserved.
+
+An isolated Forge 1.12.2 client with BSL rendered front, side, back, shoulder and motion views on the equipped player. Each set traveled 7.60 blocks, turned 90 degrees, crouched and straightened. The waist mount stayed parented to the torso at (0, 10, 2.5) throughout all 59 movement ticks per set. Among 171 equipped captures six isolated pixels matched the fluorescent test hues. Five persisted at identical screen coordinates with gray skin. The sixth appeared on Chomei's sleeve edge. A separate gray-skin capture reproduced the pink edge on the same sleeve under a different arm angle. The fitted Chomei atlas contains opaque magenta texels on that arm. The strict same-coordinate comparison yielded 5/6. All 135 movement captures had zero flagged pixels. No skin breakthrough was identified in the tested full-set poses. Mixed equipment, other render mods and first-person arms were outside this test.
+
+The private `Bijuu-Shoulders-and-Tails-Gallery` folder contains the original reference beside the three game views, shoulder closeups and individual and combined movement loops. The next integration check is the intended modpack's player renderer with its normal cosmetic layers before publishing a distribution. See [the fitted-build receipt](../release/evidence/bijuu-shoulder-fit-player-motion.json).
+
 ## Nine 8K armor turnarounds, 20 November 2026
 
 The current private candidate is Bijuu-Turnaround-Final-8K-v3.jar. The generated side and rear guide continues the approved outfit designs. Chest flanks concealed by the arms use the adjacent rear cloth. All 288 vertical native corner pairs matched at every pixel. All 72 front panels matched the approved front master. The 101 changed entries relative to the previous merged JAR are PNGs. All native code and v3 tail model records matched. See [the version-specific receipt](../release/evidence/bijuu-turnaround-8k.json).
