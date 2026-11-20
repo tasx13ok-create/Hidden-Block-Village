@@ -75,7 +75,7 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
         (shader_folder / (bsl.name+".txt")).write_text(
             "ADVANCED_MATERIALS=true\nMATERIAL_FORMAT=1\nPARALLAX=false\n"
             "SHADOW=true\nshadowDistance=48.0\nshadowMapResolution=1024\n"
-            "DOF=false\nMOTION_BLUR=false\nBLOOM_STRENGTH=0.6\n",encoding="utf8")
+            "DOF=false\nMOTION_BLUR=false\nTAA=false\nFXAA=false\nBLOOM_STRENGTH=0.6\n",encoding="utf8")
         (trial/"optionsshaders.txt").write_text(
             f"shaderPack={bsl.name}\nnormalMapEnabled=true\nspecularMapEnabled=true\n",encoding="utf8")
         (trial/"options.txt").write_text(
@@ -88,7 +88,7 @@ def run(install, java, javac, artifact, trial, optifine=None, bsl=None):
         "--gameDir", str(trial), "--assetsDir", str(install / "assets"), "--assetIndex", "1.12",
         "--uuid", "f4ea74d9a25f4f30b3ed82605aee9188", "--accessToken", "0", "--userType", "legacy",
         "--tweakClass", "net.minecraftforge.fml.common.launcher.FMLTweaker", "--versionType", "Forge",
-        "--width", "1440", "--height", "900",
+        "--width", "1920", "--height", "1080",
     ]
     console = trial / "client-console.log"
     with console.open("w", encoding="utf8") as log:

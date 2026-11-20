@@ -3,10 +3,12 @@ from dataclasses import dataclass
 
 from PIL import Image, ImageDraw, ImageOps
 
+from finish import align_border, clean_thumbnail, render_plane, resize_albedo
 from landmarks import HELMET_CHEEK, HELMET_FRONT, HERO_LIMBS
 from outfit import DESIGNS, ORIGINS, uv_rects
+from retouch import finish_chest
 
-WORK_SCALE = 8   # intermediate 512x256. Retains the source pixels on the armor.
+WORK_SCALE = 64  # 4096x2048 vanilla UV; source planes render at their final size.
 UV_WIDTH = 4096
 N = Image.Resampling.NEAREST
 
@@ -66,17 +68,16 @@ HERO_BODY = {
 
 def hero_face(reference,index,points,size):
     x,y=ORIGINS[index]
-    coords=tuple(float(c) for px,py in points for c in (px+x,py+y))
-    return reference.transform(size,Image.Transform.QUAD,coords,N).convert("RGBA")
+    return render_plane(reference,tuple((px+x,py+y) for px,py in points),size)
 
 
-def paint_head(reference,index,key,side,faces):
+def paint_head(reference,index,key,side,faces,size):
     if side in ("west", "east"):
-        cheek=hero_face(reference,index,HELMET_CHEEK[key],(36,48))
+        cheek=hero_face(reference,index,HELMET_CHEEK[key],size)
         return cheek if side=="west" else ImageOps.mirror(cheek)
     if side!="front":
-        return faces[side]
-    main=hero_face(reference,index,HELMET_FRONT[key],(40,48))
+        return clean_thumbnail(faces[side],size)
+    main=hero_face(reference,index,HELMET_FRONT[key],size)
     # The lower opening belongs on the model centerline. Keep its corners
     # narrow so the face plate shading and any central guard stay intact.
     width,height=main.size
@@ -84,14 +85,15 @@ def paint_head(reference,index,key,side,faces):
     if key=="isobu":
         # The reference has an uninterrupted central shell guard.
         return main
-    half=5 if key=="kokuo" else 4
-    top=height-11
-    end=height-4
+    half=width//8 if key=="kokuo" else width//10
+    bevel=max(2,width//36)
+    upper=round(height*37/48)
+    lower=round(height*44/48)
+    left,right=center-half,center+half-1
     ImageDraw.Draw(main).polygon(
-        [(center-half,top+2), (center-half+1,top),
-         (center+half-2,top), (center+half-1,top+2),
-         (center+half-1,end-2), (center+half-2,end),
-         (center-half+1,end), (center-half,end-2)],fill=(0,0,0,0))
+        [(left,upper+bevel),(left+bevel,upper),(right-bevel,upper),(right,upper+bevel),
+         (right,lower-bevel),(right-bevel,lower),(left+bevel,lower),(left,lower-bevel)],
+        fill=(0,0,0,0))
     return main
 
 
@@ -110,7 +112,7 @@ def projected_faces(reference,index,box,palette):
     return dict(front=front,back=rear,west=west,east=east,top=top,bottom=bottom)
 
 
-def wrap_front_edges(faces, front, margin):
+def wrap_front_edges(faces, front, margin, side_width):
     """Use the pictured outer material instead of stretching a thumbnail row.
 
     The west UV meets the left edge of the front at its right boundary.
@@ -118,8 +120,10 @@ def wrap_front_edges(faces, front, margin):
     """
     width,height=front.size
     faces["front"]=front
-    faces["west"]=ImageOps.mirror(front.crop((0,0,margin,height)))
-    faces["east"]=ImageOps.mirror(front.crop((width-margin,0,width,height)))
+    west=resize_albedo(ImageOps.mirror(front.crop((0,0,margin,height))),(side_width,height))
+    east=resize_albedo(ImageOps.mirror(front.crop((width-margin,0,width,height))),(side_width,height))
+    faces["west"]=align_border(west,front,west=True)
+    faces["east"]=align_border(east,front,west=False)
 
 
 def biped_work(reference,key,palette):
@@ -131,18 +135,22 @@ def biped_work(reference,key,palette):
         faces=projected_faces(reference,index,box,palette)
         if name in ("arm","leg"):
             points=HERO_LIMBS[key][0 if name=="arm" else 1]
-            limb=hero_face(reference,index,points,(24,54))
-            wrap_front_edges(faces,limb,9)
+            limb=hero_face(reference,index,points,(4*WORK_SCALE,12*WORK_SCALE))
+            wrap_front_edges(faces,limb,round(limb.width*9/24),4*WORK_SCALE)
         if name=="body":
-            chest=hero_face(reference,index,HERO_BODY[key],(36,54))
-            wrap_front_edges(faces,chest,7)
+            chest=hero_face(reference,index,HERO_BODY[key],(8*WORK_SCALE,12*WORK_SCALE))
+            finish_chest(chest,key)
+            wrap_front_edges(faces,chest,round(chest.width*7/36),4*WORK_SCALE)
         for side,(u,v,w,h) in uv_rects(name).items():
             x,y,W,H=(n*WORK_SCALE for n in (u,v,w,h))
             face=faces[side]
             cap=side in ("top","bottom")
             if name=="head":
-                face=paint_head(reference,index,key,side,faces)
-            placed=rescale(face,(W,H))
+                placed=paint_head(reference,index,key,side,faces,(W,H))
+            elif face.size==(W,H):
+                placed=face
+            else:
+                placed=clean_thumbnail(face,(W,H))
             if name=="body":
                 ysplit=9*WORK_SCALE
                 if cap:

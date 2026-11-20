@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Bijuu armor precision pass, 20 November 2026
+
+The private Precision JAR replaces 101 textures. The vanilla ZIP contains 104 entries. The builder projects 45 marked surfaces at output resolution, retouches nine chest motifs and positions trim from the model coordinates. All 552 panel crop windows passed validation. The isolated Forge and BSL test passed with 36 models, 10 atlases and 73 native root draws. It saved front and angled screenshots for each set. The test disabled temporal smoothing and FXAA. Next, compare those captures against the owner's preferred shader preset.
+
+Private ZIP SHA-256 is c4295188b4dfcf99da0a265337cdad0a5e5b5ed0ccea8e8dc2859b00396a14a1. Private JAR SHA-256 is 0d7dc7f18ace35b4b011d8b0f24b75fe78c945586e94ae0d43e3115d856b9f44.
+
 ## Bijuu armor 4K seam and tail detail pass, 19 November 2026
 
 The owner requested another refinement round after the helmet fit correction. Front trim and markings now continue around the chest, arm and leg sides without a hard color jump. All 54 side-edge joins match their neighboring front cells. The exporter projects the color textures directly into the 4096 × 4096 atlas. It keeps the scratch detail and small marks that went missing in the previous projection. The original tail patterns and opacity are restored in the reference colors. This includes Shukaku's seals, Isobu's scales, Son Goku's lava cracks and Kurama's tail and cage details. Helmets stay centered and the geometry is byte-identical to stock.

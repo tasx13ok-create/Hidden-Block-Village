@@ -8,6 +8,7 @@ import zipfile
 
 from PIL import Image, ImageOps
 
+from finish import resize_albedo
 from material import rgba_map
 from outfit import DESIGNS, FACE_ORDER, PART_NAMES, uv_rects
 
@@ -54,11 +55,50 @@ def crop_face(image,part,side,mirror=False):
 def put_box(atlas,rects,faces):
     for bounds,image in zip(rects,faces):
         x,y,X,Y=(k*ATLAS_SCALE for k in bounds)
-        atlas.paste(image.resize((X-x,Y-y),NEAREST),(x,y))
+        atlas.paste(resize_albedo(image,(X-x,Y-y)),(x,y))
 
 
 def sampled_faces(source,part,mirror=False):
     return [crop_face(source,part,side,mirror) for side in FACE_ORDER]
+
+
+# The stock model's dimensions relative to each bone, in UV model units.
+# The native head, body, arms and legs use these boxes before adding panels.
+BONE_SURFACE = {
+    "head": ("head",(-4,-8,-4),(8,8,8)),
+    "body": ("body",(-4,0,-2),(8,12,4)),
+    "right_arm": ("arm",(-3,-2,-2),(4,12,4)),
+    "left_arm": ("arm",(-1,-2,-2),(4,12,4)),
+    "right_leg": ("leg",(-2,0,-2),(4,12,4)),
+    "left_leg": ("leg",(-2,0,-2),(4,12,4)),
+}
+# U and V axis indices with the direction of the matching native quad.
+FACE_AXES = {
+    "east": ((2,False),(1,False)),
+    "west": ((2,True),(1,False)),
+    "top": ((0,False),(2,True)),
+    "bottom": ((0,False),(2,False)),
+    "front": ((0,False),(1,False)),
+    "back": ((0,True),(1,False)),
+}
+
+
+def panel_crop(image,side,spec,origin,extent):
+    start=tuple(spec[k] for k in ("x","y","z"))
+    size=tuple(spec[k] for k in ("w","h","d"))
+    bounds=[]
+    for (axis,reverse),pixels in zip(FACE_AXES[side],image.size):
+        lo=(start[axis]-origin[axis])/extent[axis]
+        hi=(start[axis]+size[axis]-origin[axis])/extent[axis]
+        if reverse:
+            lo,hi=1-hi,1-lo
+        # Shallow trim can overhang the base box. Reuse the nearest edge
+        # when a face projects entirely outside the underlying art.
+        first=min(pixels-1,max(0,round(lo*pixels)))
+        last=min(pixels,max(first+1,round(hi*pixels)))
+        bounds.append((first,last))
+    (left,right),(top,bottom)=bounds
+    return image.crop((left,top,right,bottom))
 
 
 def make_atlas(index,layers,palette,specs,stock):
@@ -99,21 +139,15 @@ def make_atlas(index,layers,palette,specs,stock):
         if spec["kind"] in ("bracer","thigh"):
             continue
         bone=spec["bone"]
-        part=("head" if bone=="head" else "body" if bone=="body" else
-              "arm" if bone.endswith("_arm") else "leg")
+        part,origin,extent=BONE_SURFACE[bone]
         source=joint if part in ("leg","body") else one
-        faces=sampled_faces(source,part,bone.startswith("left_"))
-        # The stock panel sockets take the same cloth and markings as their
-        # matching worn face. Stock geometry and animation are never rewritten.
-        for i,face in enumerate(faces):
-            if slot==1 and part=="arm" and FACE_ORDER[i] not in ("top","bottom"):
-                faces[i]=face.crop((0,0,face.width,max(1,face.height//4)))
-            if slot==0 and FACE_ORDER[i] in ("front","east","west","back"):
-                faces[i]=face.crop((0,0,face.width,max(1,face.height//3)))
-            if slot==3 and FACE_ORDER[i] in ("front","east","west","back"):
-                faces[i]=face.crop((0,7*one.width//64,face.width,face.height))
-            if not faces[i].getbbox():
-                faces[i]=Image.new("RGBA",face.size,colors["S"])
+        stock_faces=sampled_faces(source,part,bone.startswith("left_"))
+        faces=[]
+        for side,face in zip(FACE_ORDER,stock_faces):
+            tile=panel_crop(face,side,spec,origin,extent)
+            if not tile.getbbox():
+                tile=Image.new("RGBA",tile.size,colors["S"])
+            faces.append(tile)
         put_box(atlas,uv,faces)
     # The stock tail band already contains the beast-specific marks: scales,
     # rings, chakra strokes, cap shading and the cage textures. Keep the
@@ -156,7 +190,7 @@ def build(vanilla,base,output):
                 assert sha(path)==record["sets"][key]["layers"][i-1]["color"]
                 with Image.open(path) as image:
                     assert image.size==(4096,2048)
-                    layers.append(image.convert("RGBA").resize((512,256),NEAREST))
+                    layers.append(image.convert("RGBA"))
             palette={char:tuple(bytes.fromhex(row["color"][1:])) for char,row in
                      zip("OSMTAG",record["sets"][key]["colors"].values())}
             for state in (("", "_cage") if key=="kurama" else ("",)):

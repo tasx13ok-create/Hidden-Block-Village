@@ -116,12 +116,12 @@ def build(reference_path,out):
         layers=biped_work(reference,key,palettes[key])
         verify_helmet_front(layers[0],key)
         verify_worn_seams(layers)
-        all_layers[key]=layers
+        all_layers[key]=[im.resize((1024,512),NEAREST) for im in layers]
         all_icons[key]=[]
         layer_receipts=[]
         for i,image in enumerate(layers,1):
             verify_layer(image,i-1)
-            normal,spec=rgba_map(image,key)
+            normal,spec=rgba_map(image.resize((1024,512),NEAREST),key)
             files={}
             for suffix,texture in (("",image),("_n",normal),("_s",spec)):
                 scaled=texture.resize(UV_SIZE,NEAREST)
