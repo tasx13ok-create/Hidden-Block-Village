@@ -8,6 +8,16 @@ Updated 2026-11-13 by Fable (Claude Code, cloud session). This records observati
 * Branch: `claude/upbeat-ride-nyxq23`. The task packet suggested `fable/dungeons-v17`, but this session may only push to its assigned branch. Base: `main` @ `b69ec02`.
 * **Not reachable from this session:** `local/v17-intake`, the original v17 download folder, the parent v9 workspace (`../output_v9`, `../source`, `../tools`), the D: world recovery and the CustomNPCs data. No computer folder was shared (`list_computer_folders` returned none). No real v17 or v9 schematic or world byte was read, and no game or server was run.
 
+## Steam Dash Punch 2.0.0 (2026-11-21): overcharge, barrage, juggle, pin, scars, bubble, cut-scene camera; real-client QA 27/27
+
+The owner asked for it to be "crazier" and for non-laggy video. All eight proposed features are built (see `modules/hvbijuu-steamdash/README.md`). Results:
+- rules 424/424
+- scripted real 1.12.2 client 27/27 across four scenes, recorded at 1/5 speed and assembled to 60 fps with the in-game sound mixed back in
+- receipt: `release/evidence/hvbijuu-steamdash-2.0.0.json`
+- Codex handoff updated, with the showreel in `media/steam-dash-2/`
+
+Not run: a dedicated/Magma server with players, or a GPU client.
+
 ## Steam Dash Punch 1.0.0 (2026-11-20) — built into the owner's 8K v3 Bijuu jar; real-client QA 23/23
 
 Owner request: a cut-scene-style blink dash for Kurama + Kokuo (telegraph, blink, sonic tunnel, hit-stop with impact frames, boil launch through mountains, wall splatter, spike crater, wall springboard), plus "send it to the repo, deliver to Codex with videos/screenshots, have him send it back". Original source in `modules/hvbijuu-steamdash/`; the owner's jar stays private. Rules 395/395; scripted real 1.12.2 client 23/23 (`release/evidence/hvbijuu-steamdash-1.0.0.json`). Handoff with build commands, expected hash and media: [`STEAM-DASH-HANDOFF-FOR-CODEX.md`](STEAM-DASH-HANDOFF-FOR-CODEX.md). Not run: dedicated/Magma server with real players, audio playback, GPU pacing.

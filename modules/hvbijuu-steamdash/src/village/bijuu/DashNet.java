@@ -10,18 +10,24 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 final class DashNet {
     private DashNet() {}
 
-    static final int START = 1, BLINK = 2, IMPACT = 3, RELEASE = 4, DEBRIS = 5, SPIKE = 6, CRATER = 7, END = 8, SPRING = 9, SPLATTER = 10;
+    static final int START = 1, BLINK = 2, IMPACT = 3, RELEASE = 4, DEBRIS = 5, SPIKE = 6, CRATER = 7, END = 8, SPRING = 9, SPLATTER = 10,
+            CHARGE = 11, CHARGE_END = 12, BARRAGE = 13, PASS = 14, RELAY = 15, PIN = 16, STAB = 17, BUBBLE = 18;
 
+    /** The dash key: PRESS when it goes down, RELEASE when it comes up (holding it overcharges). */
     public static final class Request implements IMessage {
+        static final int PRESS = 0, RELEASE = 1;
+        int action;
         public Request() {}
-        @Override public void fromBytes(ByteBuf b) { b.readByte(); }
-        @Override public void toBytes(ByteBuf b) { b.writeByte(1); }
+        Request(int action) { this.action = action; }
+        @Override public void fromBytes(ByteBuf b) { action = b.readByte(); }
+        @Override public void toBytes(ByteBuf b) { b.writeByte(action); }
     }
 
     public static final class RequestHandler implements IMessageHandler<Request, IMessage> {
         @Override public IMessage onMessage(Request m, MessageContext ctx) {
             EntityPlayerMP p = ctx.getServerHandler().player;
-            p.getServerWorld().addScheduledTask(() -> DashServer.request(p));
+            int action = m.action;
+            p.getServerWorld().addScheduledTask(() -> { if (action == Request.RELEASE) DashServer.release(p); else DashServer.press(p); });
             return null;
         }
     }
