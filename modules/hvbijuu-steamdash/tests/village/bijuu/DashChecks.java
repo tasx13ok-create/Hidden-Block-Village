@@ -65,6 +65,38 @@ public final class DashChecks {
         double flown = 0; for (int i = 0; i < DashMath.LAUNCH; i++) flown += DashMath.boilSpeed(i, false);
         check(flown > 45 && flown < 60, "the boil carries a body about 50 blocks (" + flown + ")");
         check(DashMath.boilSpeed(0, false) == DashMath.LAUNCH_SPEED && DashMath.boilSpeed(10, true) < DashMath.boilSpeed(10, false), "boil decays and bosses fly less");
+        // 2.0
+        check(DashMath.tier(0) == 1 && DashMath.tier(6) == 1 && DashMath.tier(7) == 2 && DashMath.tier(19) == 2 && DashMath.tier(20) == 3 && DashMath.tier(99) == 3, "charge tiers");
+        check(DashMath.tierCost(1, 50) == 50 && DashMath.tierCost(3, 50) == 80, "tier costs");
+        check(DashMath.tierDamage(3) > DashMath.tierDamage(2) && DashMath.tierDamage(2) > DashMath.tierDamage(1), "tier damage rises");
+        check(DashMath.tierMargin(3) == 1.0 && DashMath.tierFreeze(3) == DashMath.FREEZE + 1, "tier 3 bores wider and holds longer");
+        double[] rs = DashMath.relaySpot(0, 64, 0, new double[] {0, 0.5, 4});
+        check(rs[0] == 0 && rs[2] == 3 && rs[1] > 64, "relay lands ahead of the body");
+        double[] rl = DashMath.relayLaunch(new double[] {3, 1, 0}, false);
+        check(rl[0] < 0 && rl[1] == DashMath.LAUNCH_LIFT && Math.abs(Math.hypot(rl[0], rl[2]) - DashMath.LAUNCH_SPEED * 0.9) < 1e-9, "relay reverses the flight");
+        double[][] stabs = DashMath.pinStabs(10, 64, 10);
+        check(stabs.length == 9, "nine tail stabs");
+        for (double[] st : stabs) { double r = Math.hypot(st[0] - 10, st[2] - 10); check(r > 1.5 && r < 2.6 && st[1] == 64, "stab ring around the target"); }
+        check(Math.abs(DashMath.dollyDistance(4, 70, 70) - 4) < 1e-9 && DashMath.dollyDistance(4, 70, 100) < 4, "dolly zoom closes in as the view widens");
+        double size0 = 1 / (4 * Math.tan(Math.toRadians(35))), size1 = 1 / (DashMath.dollyDistance(4, 70, 100) * Math.tan(Math.toRadians(50)));
+        check(Math.abs(size0 - size1) < 1e-9, "dolly zoom keeps the subject the same size");
+        float[] la = DashMath.lookAngles(0, 0, 0, 0, 0, 5);
+        check(Math.abs(la[0]) < 1e-4 && Math.abs(la[1]) < 1e-4, "looking down +Z is yaw 0");
+        check(Math.abs(DashMath.lookAngles(0, 0, 0, -5, 0, 0)[0] - 90) < 1e-4, "looking -X is yaw 90");
+        check(DashMath.lookAngles(0, 10, 0, 0, 0, 0.001)[1] > 89, "looking straight down is pitch 90");
+        double[] ob = DashMath.orbit(0, 0, 0, 4, 0, 1);
+        check(Math.abs(ob[2] - 4) < 1e-9 && ob[1] == 1, "orbit starts on +Z");
+        double[] ob90 = DashMath.orbit(0, 0, 0, 4, 90, 0);
+        float[] back = DashMath.lookAngles(ob90[0], ob90[1], ob90[2], 0, 0, 0);
+        check(Math.abs(Math.hypot(ob90[0], ob90[2]) - 4) < 1e-9 && Math.abs(back[1]) < 1e-4, "orbit stays on the circle");
+        check(DashMath.ease(0) == 0 && DashMath.ease(1) == 1 && DashMath.ease(0.5) == 0.5 && DashMath.ease(2) == 1, "ease");
+        check(DashMath.thunderDelayMs(10) == 0 && DashMath.thunderDelayMs(343) == 1000 && DashMath.thunderDelayMs(100) > 200, "thunder delay by distance");
+        check(DashMath.rippleRadius(0) == 0 && DashMath.rippleRadius(500) == 8 && DashMath.rippleRadius(5000) == 14, "ripple front");
+        int lets = 0; for (long tk = 0; tk < 40; tk++) if (DashMath.bubbleLets(tk)) lets++;
+        check(lets == 10, "bubble runs mobs at a quarter rate");
+        check(DashMath.bubbleBlend(0, 4) == 1 && DashMath.bubbleBlend(2, 2) == 2, "bubble keeps a quarter of each step");
+        int cobble = 0; for (int x = 0; x < 100; x++) cobble += DashMath.coolTo(x, 64, x * 3) == 0 ? 1 : 0;
+        check(cobble > 55 && cobble < 85 && DashMath.coolTo(5, 6, 7) == DashMath.coolTo(5, 6, 7), "scars cool mostly to cobblestone, stably");
         System.out.println("PASS: " + n + " steam dash checks");
     }
 }

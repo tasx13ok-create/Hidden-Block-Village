@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
  */
 @Mod(modid = SteamDash.ID, name = "Bijuu Steam Dash", version = SteamDash.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = "required-after:hvbijuu")
 public final class SteamDash {
-    public static final String ID = "hvbijuu_steamdash", VERSION = "1.0.0";
+    public static final String ID = "hvbijuu_steamdash", VERSION = "2.0.0";
 
     @SidedProxy(clientSide = "village.bijuu.DashClient$Proxy", serverSide = "village.bijuu.SteamDash$Proxy")
     public static Proxy proxy;
@@ -31,10 +31,14 @@ public final class SteamDash {
 
     // Settings (hvbijuu_steamdash.cfg).
     static int cost = 50, spikeCost = 20, springCost = 10, springCooldownTicks = 20, cooldownSeconds = 25, blockBudget = 450, craterRadius = 8;
+    static int relayCost = 15, moltenSeconds = 8, moltenMax = 160;
     static float punchDamage = 16, spikeDamage = 10, craterDamage = 8, wallDamage = 6, maxHardness = 3.0f;
+    static float barrageDamage = 2, relayDamage = 6, pierceDamageShare = 0.75f;
     static boolean breakBlocks = true, dropBlocks = false, crackWalls = true, letterbox = true, cameraEffects = true, impactFrames = true;
+    static boolean overcharge = true, afterimageBarrage = true, juggle = true, moltenScars = true, timeBubble = true, delayedThunder = true;
+    static boolean cinematicCamera = true, hideHudInCutscene = true, groundRipple = true;
 
-    static SoundEvent CHARGE, BLINK, IMPACT, LAUNCH, CRASH, HISS;
+    static SoundEvent CHARGE, BLINK, IMPACT, LAUNCH, CRASH, HISS, JAB, TIMEWARP, SIZZLE, STAB, RELAY;
 
     public static class Proxy {
         public void preInit() {}
@@ -48,6 +52,8 @@ public final class SteamDash {
         NET.registerMessage(DashNet.FxHandler.class, DashNet.Fx.class, 1, Side.CLIENT);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new DashServer());
+        MinecraftForge.EVENT_BUS.register(new MoltenScars());
+        MinecraftForge.EVENT_BUS.register(new TimeBubble());
         proxy.preInit();
     }
 
@@ -71,6 +77,21 @@ public final class SteamDash {
         craterRadius = c.getInt("craterRadius", "terrain", 8, 0, 12, "Spike crater radius in blocks.");
         letterbox = c.getBoolean("letterbox", "client", true, "Cinematic black bars during the move.");
         cameraEffects = c.getBoolean("cameraEffects", "client", true, "Field-of-view snap and impact camera shake.");
+        relayCost = c.getInt("relayResonanceCost", "combo", 15, 0, 100, "Resonance for each juggle relay (press again while they fly; sneak + press to pin and spike instead).");
+        barrageDamage = c.getFloat("barrageDamage", "combo", 2, 0, 50, "Damage of each of the four afterimage clone punches.");
+        relayDamage = c.getFloat("relayDamage", "combo", 6, 0, 100, "Damage of each juggle relay punch.");
+        pierceDamageShare = c.getFloat("pierceDamageShare", "combo", 0.75f, 0, 2, "Share of punch damage dealt to each body a full-charge dash passes through.");
+        overcharge = c.getBoolean("overcharge", "combo", true, "Hold the key to charge: tier 2 at 0.35 s, tier 3 at 1 s (pierces a whole line, bores 5x5).");
+        afterimageBarrage = c.getBoolean("afterimageBarrage", "combo", true, "The four golden trail clones each punch before the real hit.");
+        juggle = c.getBoolean("juggle", "combo", true, "Press again while the target flies to blink ahead and punch them back (twice), then pin and spike.");
+        moltenScars = c.getBoolean("moltenScars", "terrain", true, "Tunnels and craters glow as magma, vent steam that pops people into the air, then cool to cobblestone and andesite.");
+        moltenSeconds = c.getInt("moltenSeconds", "terrain", 8, 1, 120, "How long scars stay molten.");
+        moltenMax = c.getInt("moltenMax", "terrain", 160, 0, 1000, "Most blocks one dash can turn molten.");
+        timeBubble = c.getBoolean("timeBubble", "world", true, "Bullet time: for about a second around the hit, nearby mobs and projectiles run at quarter speed (never players).");
+        delayedThunder = c.getBoolean("delayedThunder", "client", true, "Far-away players hear the thunder late, by the speed of sound.");
+        cinematicCamera = c.getBoolean("cinematicCamera", "client", true, "Cut-scene camera shots for the attacker: front angle, dolly zoom, hit-stop orbit, chase cam, overhead crater shot.");
+        hideHudInCutscene = c.getBoolean("hideHudInCutscene", "client", true, "Hide the HUD while the cut-scene camera runs.");
+        groundRipple = c.getBoolean("groundRipple", "client", true, "A shock ripple of rising and falling blocks rolls out from big impacts (visual only).");
         impactFrames = c.getBoolean("impactFrames", "client", true, "White flash and ink-silhouette frames on contact (turn off if flashing images bother you).");
         if (c.hasChanged()) c.save();
     }
@@ -78,6 +99,7 @@ public final class SteamDash {
     @SubscribeEvent public void sounds(RegistryEvent.Register<SoundEvent> e) {
         CHARGE = sound(e, "charge"); BLINK = sound(e, "blink"); IMPACT = sound(e, "impact");
         LAUNCH = sound(e, "launch"); CRASH = sound(e, "crash"); HISS = sound(e, "hiss");
+        JAB = sound(e, "jab"); TIMEWARP = sound(e, "timewarp"); SIZZLE = sound(e, "sizzle"); STAB = sound(e, "stab"); RELAY = sound(e, "relay");
     }
 
     private static SoundEvent sound(RegistryEvent.Register<SoundEvent> e, String name) {

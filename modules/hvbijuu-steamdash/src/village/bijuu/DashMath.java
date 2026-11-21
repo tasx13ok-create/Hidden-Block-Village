@@ -169,6 +169,83 @@ public final class DashMath {
         return new double[] {ax + dx * t, ay + dy * t, az + dz * t};
     }
 
+    // ---- 2.0: charge tiers, juggle, pin, camera, world-scale effects ----
+
+    /** Charge tier from ticks the key was held: a tap is 1, a short hold 2, a full overcharge (1 s) 3. */
+    public static int tier(int heldTicks) { return heldTicks >= 20 ? 3 : heldTicks >= 7 ? 2 : 1; }
+    public static final int CHARGE_MAX = 50;
+    public static int tierCost(int tier, int base) { return base + 15 * (tier - 1); }
+    public static double tierDamage(int tier) { return tier >= 3 ? 1.5 : tier == 2 ? 1.25 : 1.0; }
+    public static double tierLaunch(int tier) { return tier >= 3 ? 1.3 : tier == 2 ? 1.15 : 1.0; }
+    /** Extra clearance around the tunnelling hitbox: tier 3 bores a 5x5. */
+    public static double tierMargin(int tier) { return tier >= 3 ? 1.0 : tier == 2 ? 0.5 : 0.0; }
+    public static int tierFreeze(int tier) { return tier >= 3 ? FREEZE + 1 : FREEZE; }
+
+    /** Afterimage barrage: the four trail clones strike, one per tick, before the real punch. */
+    public static final int BARRAGE = 4, RELAYS = 2, RELAY_FREEZE = 2, PIN = 6, PIERCE_FREEZE = 2, PIERCE_MAX = 6;
+    public static final double PIERCE_WIDTH = 1.8;
+
+    /** Where a relay blink lands: 3 blocks ahead of the flying body along its horizontal heading. */
+    public static double[] relaySpot(double tx, double ty, double tz, double[] flight) {
+        double hx = flight[0], hz = flight[2], l = Math.sqrt(hx * hx + hz * hz);
+        if (l < 1e-6) { hx = 0; hz = 1; l = 1; }
+        return new double[] {tx + hx / l * 3, ty + 0.2, tz + hz / l * 3};
+    }
+
+    /** The relay punch sends the body back the way it came, a little slower, lifted again. */
+    public static double[] relayLaunch(double[] flight, boolean boss) {
+        double hx = -flight[0], hz = -flight[2], l = Math.sqrt(hx * hx + hz * hz);
+        if (l < 1e-6) { hx = 0; hz = -1; l = 1; }
+        double s = LAUNCH_SPEED * 0.9 * (boss ? 0.5 : 1);
+        return new double[] {hx / l * s, LAUNCH_LIFT * (boss ? 0.6 : 1), hz / l * s};
+    }
+
+    /** Ground points for the nine tail stabs that pin the target before the spike. */
+    public static double[][] pinStabs(double tx, double ty, double tz) {
+        double[][] out = new double[9][];
+        for (int i = 0; i < 9; i++) {
+            double a = i * 2 * Math.PI / 9 + 0.35, r = 1.6 + (i % 3) * 0.45;
+            out[i] = new double[] {tx + Math.cos(a) * r, ty, tz + Math.sin(a) * r};
+        }
+        return out;
+    }
+
+    /** Camera distance that keeps the subject the same size while the field of view changes (dolly zoom). */
+    public static double dollyDistance(double d0, double fov0, double fov) {
+        return d0 * Math.tan(Math.toRadians(fov0) / 2) / Math.tan(Math.toRadians(fov) / 2);
+    }
+
+    /** Minecraft yaw and pitch (degrees) to look from a to b. */
+    public static float[] lookAngles(double ax, double ay, double az, double bx, double by, double bz) {
+        double dx = bx - ax, dy = by - ay, dz = bz - az, h = Math.sqrt(dx * dx + dz * dz);
+        return new float[] {(float) Math.toDegrees(Math.atan2(-dx, dz)), (float) -Math.toDegrees(Math.atan2(dy, h))};
+    }
+
+    /** A point on a horizontal circle around c at `deg` (0 = +Z), raised by `up`. */
+    public static double[] orbit(double cx, double cy, double cz, double radius, double deg, double up) {
+        double a = Math.toRadians(deg);
+        return new double[] {cx - Math.sin(a) * radius, cy + up, cz + Math.cos(a) * radius};
+    }
+
+    /** Smoothstep easing on [0, 1]. */
+    public static double ease(double u) { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u); }
+
+    /** Thunder heard far away arrives late: sound travels about 343 m/s, one block a metre. */
+    public static long thunderDelayMs(double distance) { return distance <= 24 ? 0 : Math.round(distance / 343.0 * 1000); }
+
+    /** Ground ripple front radius after `ms`: 16 blocks a second out to 14 blocks. */
+    public static double rippleRadius(double ms) { return Math.min(14, Math.max(0, ms) / 1000.0 * 16); }
+
+    /** Time bubble: radius, life and rate (a slowed mob only updates on every fourth tick). */
+    public static final double BUBBLE_RADIUS = 12;
+    public static final int BUBBLE_TICKS = 24, BUBBLE_EVERY = 4;
+    public static boolean bubbleLets(long tick) { return tick % BUBBLE_EVERY == 0; }
+    /** A projectile in the bubble keeps only a quarter of each tick's movement and velocity change. */
+    public static double bubbleBlend(double before, double after) { return before + (after - before) / BUBBLE_EVERY; }
+
+    /** Molten scars: how a cooled scar block ends up (0 = cobblestone, 1 = andesite), stable per position. */
+    public static int coolTo(int x, int y, int z) { return (int) (((x * 73856093L) ^ (y * 19349663L) ^ (z * 83492791L)) & 0x7fffffff) % 10 < 7 ? 0 : 1; }
+
     static double[] cross(double[] a, double[] b) { return new double[] {a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]}; }
     static double[] norm(double[] a) { double l = Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]); return l < 1e-9 ? new double[] {0, 0, 1} : new double[] {a[0] / l, a[1] / l, a[2] / l}; }
 }

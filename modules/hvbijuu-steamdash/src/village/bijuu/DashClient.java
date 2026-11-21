@@ -71,6 +71,7 @@ public final class DashClient {
             KEY = new KeyBinding("key.hvbijuu.steamdash", Keyboard.KEY_B, "key.categories.hvbijuu");
             ClientRegistry.registerKeyBinding(KEY);
             MinecraftForge.EVENT_BUS.register(new DashClient());
+            MinecraftForge.EVENT_BUS.register(new DashCamera());
             RenderingRegistry.registerEntityRenderingHandler(Rubble.class, RubbleRender::new);
         }
         @Override public void fx(DashNet.Fx m) { Minecraft.getMinecraft().addScheduledTask(() -> handle(m)); }
@@ -83,9 +84,12 @@ public final class DashClient {
         final int attacker, target;
         final long start = now();
         long blink = -1, impact = -1, release = -1, spike = -1, end = -1;
-        int telegraph = DashMath.TELEGRAPH;
-        double[] dir = {0, 0, 1};
-        double hx, hy, hz;
+        long barrage = -1, launch = -1, relay = -1, pin = -1, spikeFall = -1, crater = -1, splatter = -1;
+        int telegraph = DashMath.TELEGRAPH, tier = 1, relays;
+        double[] dir = {0, 0, 1}, flight = {0, 0, 1}, splatNormal = {0, 0, 1};
+        double hx, hy, hz, sx, sy, sz, cx, cy, cz, groundY;
+        int[] line = new int[0];
+        long jab = -1;   // last small hit (clone jab, pierce pass, relay): a brief flash
         int whiteDrawn, inkDrawn;
         final ArrayDeque<Pose> trail = new ArrayDeque<>();
         Cue(int attacker, int target) { this.attacker = attacker; this.target = target; }
@@ -102,12 +106,15 @@ public final class DashClient {
     }
 
     /** A ghost that is not tied to the trail: the blink-off point, a springboard, the spike teleport. */
-    static final class Ghost { int entity; Pose pose; long born; }
+    static final class Ghost { int entity; Pose pose; long born; double tx, ty, tz; long lunge; }
 
     static final Map<Integer, Cue> CUES = new HashMap<>();
     private static final List<Boom> BOOMS = new ArrayList<>();
     private static final List<Ghost> GHOSTS = new ArrayList<>();
     private static final List<long[]> SHAKES = new ArrayList<>();   // {startMs, strength x100}
+    private static final List<double[]> BUBBLES = new ArrayList<>();   // {x, y, z, radius, bornMs, untilMs}
+    private static final List<double[]> THUNDER = new ArrayList<>();   // {dueMs, x, y, z, volume, pitch}
+    private static final List<double[]> RIPPLES = new ArrayList<>();   // {x, y, z, maxRadius, bornMs, lastRadius}
     private static long springKick = -1;
     static boolean inkOn, cinematic, forcedThirdPerson;
     static int whiteFrames, inkFrames;   // frames actually drawn (diagnostics)
@@ -115,7 +122,33 @@ public final class DashClient {
     private static long cinematicUntil = -1;
     private static boolean rendering;   // re-entrancy guard for the tinted passes
 
-    static long now() { return Minecraft.getSystemTime(); }
+    /** Charging players seen by this client: entity id -> {start ms, tier}. */
+    static final Map<Integer, long[]> CHARGES = new HashMap<>();
+    private static boolean keyWasDown;
+
+    // The effect clock follows game time, not the wall clock: if the game runs slower (a heavy frame,
+    // or a slow-motion capture), every ring, flash and camera move slows with it and stays in sync.
+    private static long virtual, lastReal = -1;
+    private static Field timerField, tickLengthField;
+
+    static long now() {
+        long real = Minecraft.getSystemTime();
+        if (lastReal < 0) { lastReal = real; virtual = real; }
+        virtual += Math.round((real - lastReal) * (50.0 / tickLength()));
+        lastReal = real;
+        return virtual;
+    }
+
+    private static float tickLength() {
+        try {
+            if (tickLengthField == null) {
+                timerField = field(Minecraft.class, "field_71428_T", "timer");
+                tickLengthField = field(net.minecraft.util.Timer.class, "field_194149_e", "tickLength");
+            }
+            float l = tickLengthField.getFloat(timerField.get(Minecraft.getMinecraft()));
+            return l > 1 ? l : 50f;
+        } catch (ReflectiveOperationException e) { return 50f; }
+    }
     private static Minecraft mc() { return Minecraft.getMinecraft(); }
     private static boolean local(int id) { return mc().player != null && mc().player.getEntityId() == id; }
 
@@ -132,7 +165,10 @@ public final class DashClient {
             case DashNet.START:
                 c = new Cue(m.attacker, m.target);
                 if (m.data.length > 0) c.telegraph = m.data[0];
+                if (m.data.length > 1) c.tier = m.data[1];
+                if (m.data.length > 2) c.line = java.util.Arrays.copyOfRange(m.data, 2, m.data.length);
                 c.dir = DashMath.norm(d);
+                CHARGES.remove(m.attacker);
                 CUES.put(m.attacker, c);
                 if (local(m.attacker)) beginCinematic();
                 break;
@@ -147,16 +183,86 @@ public final class DashClient {
             case DashNet.IMPACT:
                 if (c == null) break;
                 c.impact = t; c.hx = m.x; c.hy = m.y; c.hz = m.z;
+                if (m.data.length > 0) c.tier = m.data[0];
                 tailStrike(m.attacker, m.target);
                 boom(m.x, m.y, m.z, d, 0.2, 1.6, 150, 1f, 1f, 1f, 0.9f);
                 break;
-            case DashNet.RELEASE:
+            case DashNet.RELEASE: {
                 if (c == null) break;
-                c.release = t;
-                double hy = c.impact >= 0 ? c.hy + 0.6 : m.y + 1;
-                boom(c.impact >= 0 ? c.hx : m.x, hy, c.impact >= 0 ? c.hz : m.z, d, 0.5, 6.5, 520, 1f, 1f, 1f, 0.85f);
-                boom(c.impact >= 0 ? c.hx : m.x, hy, c.impact >= 0 ? c.hz : m.z, new double[] {0, 1, 0}, 0.5, 5.0, 600, 1f, 0.7f, 0.15f, 0.6f);
-                shake(t, 150);
+                boolean relayLaunch = m.data.length > 1;
+                if (!relayLaunch) c.release = t;
+                c.launch = t; c.flight = d;
+                double hy = c.hy + 0.6;
+                boom(c.hx, hy, c.hz, d, 0.5, 6.5 + c.tier, 520, 1f, 1f, 1f, 0.85f);
+                boom(c.hx, hy, c.hz, new double[] {0, 1, 0}, 0.5, 5.0 + c.tier, 600, 1f, 0.7f, 0.15f, 0.6f);
+                shake(t, relayLaunch ? 110 : 150);
+                if (!relayLaunch) {
+                    thunder(c.hx, c.hy, c.hz, 2.0f, 0.75f);
+                    ripple(c.hx, c.hy - 1, c.hz, 6 + c.tier * 2);
+                    if (c.tier >= 2) skyFlash();
+                }
+                break;
+            }
+            case DashNet.BARRAGE: {
+                if (c == null) break;
+                int i = m.data.length > 0 ? m.data[0] : 1;
+                if (c.barrage < 0) { c.barrage = t; c.hx = m.x; c.hy = m.y; c.hz = m.z; }
+                lunge(c, a, i, m.x, m.y, m.z);
+                boom(m.x, m.y, m.z, d, 0.15, 1.1 + i * 0.2, 160, 1f, 0.85f, 0.45f, 0.8f);
+                c.jab = t;
+                shake(t, 30 + i * 10);
+                break;
+            }
+            case DashNet.PASS:
+                if (c == null) break;
+                boom(m.x, m.y, m.z, d, 0.2, 2.4, 220, 1f, 1f, 1f, 0.9f);
+                boom(m.x, m.y, m.z, new double[] {0, 1, 0}, 0.2, 2.0, 260, 1f, 0.7f, 0.2f, 0.7f);
+                c.jab = t;
+                shake(t, 80);
+                break;
+            case DashNet.RELAY:
+                if (c == null) break;
+                c.relay = t; c.relays = m.data.length > 0 ? m.data[0] : c.relays + 1;
+                c.hx = m.x; c.hy = m.y; c.hz = m.z;
+                if (a instanceof AbstractClientPlayer) ghost(m.attacker, pose((AbstractClientPlayer) a, 1f, m.dx, m.dy, m.dz));
+                boom(m.x, m.y, m.z, c.flight, 0.3, 4.0, 300, 1f, 1f, 1f, 0.9f);
+                boom(m.x, m.y, m.z, new double[] {0, 1, 0}, 0.3, 3.0, 360, 1f, 0.75f, 0.2f, 0.7f);
+                tailStrike(m.attacker, m.target);
+                c.jab = t;
+                shake(t, 120);
+                break;
+            case DashNet.PIN:
+                if (c == null) break;
+                if (m.data.length > 0 && m.data[0] == 1) { c.spikeFall = t; shake(t, 120); break; }   // the slam itself
+                c.pin = t; c.hx = m.x; c.hy = m.y; c.hz = m.z; c.flight = d;
+                c.groundY = mc.world.getHeight(new BlockPos(m.x, 0, m.z)).getY();
+                tailStrikeDown(m.attacker);
+                boom(m.x, m.y + 1, m.z, new double[] {0, 1, 0}, 0.4, 3.2, 400, 1f, 0.8f, 0.3f, 0.7f);
+                break;
+            case DashNet.STAB:
+                for (int i = 0; i + 1 < m.data.length; i += 2) {
+                    double sx = m.data[i] / 8.0, sz = m.data[i + 1] / 8.0;
+                    boom(sx, m.y + 0.1, sz, new double[] {0, 1, 0}, 0.1, 1.5, 260, 1f, 0.9f, 0.6f, 0.85f);
+                    IBlockState g = mc.world.getBlockState(new BlockPos(sx, m.y - 0.5, sz));
+                    for (int k = 0; k < 2; k++) rubble(sx, m.y + 0.3, sz, g, (RAND.nextDouble() - 0.5) * 0.3, 0.45 + RAND.nextDouble() * 0.3, (RAND.nextDouble() - 0.5) * 0.3);
+                }
+                shake(t, 45);
+                break;
+            case DashNet.CHARGE: {
+                int tier = m.data.length > 0 ? m.data[0] : 1;
+                long[] ch = CHARGES.get(m.attacker);
+                CHARGES.put(m.attacker, new long[] {ch != null ? ch[0] : t, tier});
+                if (tier > 1) {
+                    boom(m.x, m.y + 0.1, m.z, new double[] {0, 1, 0}, 0.4, 1.2 + tier * 1.2, 360, 1f, 0.85f, 0.5f, 0.8f);
+                    if (local(m.attacker)) shake(t, 30 * tier);
+                }
+                break;
+            }
+            case DashNet.CHARGE_END:
+                CHARGES.remove(m.attacker);
+                break;
+            case DashNet.BUBBLE:
+                if (SteamDash.timeBubble) BUBBLES.add(new double[] {m.x, m.y, m.z, m.dx, t, t + (long) (m.dy * 50)});
                 break;
             case DashNet.DEBRIS:
                 for (int i = 0; i + 3 < m.data.length; i += 4) {
@@ -170,6 +276,7 @@ public final class DashClient {
                 if (a instanceof AbstractClientPlayer) ghost(m.attacker, pose((AbstractClientPlayer) a, 1f, m.x, m.y, m.z));
                 if (m.data.length >= 3) {
                     double tx = m.data[0] / 8.0, ty = m.data[1] / 8.0, tz = m.data[2] / 8.0;
+                    if (c != null) { c.hx = tx; c.hy = ty + 1; c.hz = tz; }
                     mc.world.addWeatherEffect(new EntityLightningBolt(mc.world, tx, ty, tz, true));
                     boom(tx, ty + 1, tz, new double[] {0, 1, 0}, 0.3, 3.2, 300, 1f, 0.85f, 0.4f, 0.8f);
                 }
@@ -178,6 +285,10 @@ public final class DashClient {
                 break;
             case DashNet.CRATER: {
                 double r = Math.max(4, m.dx);
+                if (c != null) { c.crater = t; c.cx = m.x; c.cy = m.y; c.cz = m.z; }
+                thunder(m.x, m.y, m.z, 2.0f, 0.6f);
+                ripple(m.x, m.y - 1, m.z, r + 6);
+                skyFlash();
                 boom(m.x, m.y + 0.2, m.z, new double[] {0, 1, 0}, 1.0, r * 1.35, 700, 1f, 1f, 1f, 0.8f);
                 boom(m.x, m.y + 0.4, m.z, new double[] {0, 1, 0}, 0.5, r, 900, 1f, 0.65f, 0.15f, 0.6f);
                 for (int i = 0; i + 3 < m.data.length; i += 4) {
@@ -191,6 +302,7 @@ public final class DashClient {
             }
             case DashNet.SPLATTER: {
                 double[] n = DashMath.norm(d);
+                if (c != null) { c.splatter = t; c.sx = m.x; c.sy = m.y; c.sz = m.z; c.splatNormal = n; }
                 boom(m.x - n[0] * 0.4, m.y, m.z - n[2] * 0.4, n, 0.4, 4.5, 420, 1f, 1f, 1f, 0.8f);
                 for (int i = 0; i < 12; i++)
                     rubble(m.x - n[0] * 0.8, m.y + (RAND.nextDouble() - 0.5) * 2, m.z - n[2] * 0.8, i % 3 == 0 ? Blocks.STONE.getDefaultState() : Blocks.COBBLESTONE.getDefaultState(),
@@ -245,6 +357,37 @@ public final class DashClient {
         if (SHAKES.size() > 12) SHAKES.remove(0);
     }
 
+    /** One afterimage clone lunges from its trail pose into the target and punches. */
+    private static void lunge(Cue c, Entity a, int i, double tx, double ty, double tz) {
+        if (!(a instanceof AbstractClientPlayer)) return;
+        Pose[] trail = c.trail.toArray(new Pose[0]);
+        Pose from = trail.length > 0 ? trail[Math.max(0, Math.min(trail.length - 1, trail.length - i))] : pose((AbstractClientPlayer) a, 1f, a.posX, a.posY, a.posZ);
+        Pose p = new Pose();
+        p.x = from.x; p.y = from.y; p.z = from.z; p.yawOffset = p.yawHead = DashMath.lookAngles(from.x, 0, from.z, tx, 0, tz)[0];
+        p.pitch = 0; p.limbSwing = from.limbSwing; p.limbAmount = 0.6f; p.swing = 0.45f; p.lean = 24; p.leanDir = c.dir;
+        Ghost g = new Ghost();
+        g.entity = c.attacker; g.pose = p; g.born = now(); g.lunge = 90;
+        // Each clone strikes from a slightly different side.
+        double side = (i % 2 == 0 ? 1 : -1) * 0.5 * ((i + 1) / 2);
+        g.tx = tx - c.dir[0] * 0.9 - c.dir[2] * side; g.ty = from.y; g.tz = tz - c.dir[2] * 0.9 + c.dir[0] * side;
+        GHOSTS.add(g);
+        if (GHOSTS.size() > 16) GHOSTS.remove(0);
+    }
+
+    /** Thunder for the listener, late by the distance sound travels when they are far away. */
+    private static void thunder(double x, double y, double z, float volume, float pitch) {
+        if (!SteamDash.delayedThunder) return;
+        Entity l = mc().getRenderViewEntity();
+        double dist = l == null ? 0 : Math.sqrt(l.getDistanceSq(x, y, z));
+        THUNDER.add(new double[] {now() + DashMath.thunderDelayMs(dist), x, y, z, volume, pitch});
+    }
+
+    private static void ripple(double x, double y, double z, double max) {
+        if (SteamDash.groundRipple) RIPPLES.add(new double[] {x, y, z, Math.min(14, max), now(), 0});
+    }
+
+    private static void skyFlash() { if (mc().world != null) mc().world.setLastLightningBolt(2); }
+
     private static Rubble rubble(double x, double y, double z, IBlockState s, double mx, double my, double mz) {
         Rubble r = new Rubble(mc().world, x, y, z, s == null || s.getBlock() == Blocks.AIR ? Blocks.COBBLESTONE.getDefaultState() : s);
         r.motionX = mx; r.motionY = my; r.motionZ = mz;
@@ -254,7 +397,7 @@ public final class DashClient {
 
     private static void beginCinematic() {
         cinematic = true; cinematicUntil = -1;
-        if (SteamDash.cameraEffects && mc().gameSettings.thirdPersonView == 0) { mc().gameSettings.thirdPersonView = 1; forcedThirdPerson = true; }
+        if (SteamDash.cameraEffects && !SteamDash.cinematicCamera && mc().gameSettings.thirdPersonView == 0) { mc().gameSettings.thirdPersonView = 1; forcedThirdPerson = true; }
     }
 
     private static void endCinematic() {
@@ -274,8 +417,8 @@ public final class DashClient {
         return null;
     }
 
-    private static boolean dashing(Cue c) { return c.blink >= 0 && c.impact < 0 && c.end < 0; }
-    private static boolean held(Cue c, long t) { return c.impact >= 0 && c.release < 0 && c.end < 0 && t - c.impact < 1000; }
+    private static boolean dashing(Cue c) { return c.blink >= 0 && c.barrage < 0 && c.impact < 0 && c.end < 0; }
+    private static boolean held(Cue c, long t) { long s = c.barrage >= 0 ? c.barrage : c.impact; return s >= 0 && c.release < 0 && c.end < 0 && t - s < 1200; }
 
     // ---- ticking ----
 
@@ -283,7 +426,13 @@ public final class DashClient {
         if (e.phase != TickEvent.Phase.END) return;
         Minecraft mc = mc();
         if (mc.world == null || mc.player == null) { CUES.clear(); BOOMS.clear(); GHOSTS.clear(); stopInk(); if (cinematic) endCinematic(); return; }
-        while (KEY.isPressed()) if (mc.currentScreen == null) SteamDash.NET.sendToServer(new DashNet.Request());
+        // The key sends PRESS when it goes down and RELEASE when it comes up; holding it overcharges.
+        boolean down = KEY.isKeyDown() && mc.currentScreen == null;
+        boolean tapped = false;
+        while (KEY.isPressed()) tapped = true;
+        if (down && !keyWasDown || tapped && !keyWasDown) SteamDash.NET.sendToServer(new DashNet.Request(DashNet.Request.PRESS));
+        if (!down && (keyWasDown || tapped)) SteamDash.NET.sendToServer(new DashNet.Request(DashNet.Request.RELEASE));
+        keyWasDown = down;
         long t = now();
         if (inkGroup == null && !inkFailed && mc.player.ticksExisted >= 100) prepareInk();
         for (Iterator<Cue> it = CUES.values().iterator(); it.hasNext();) {
@@ -301,10 +450,42 @@ public final class DashClient {
         BOOMS.removeIf(b -> t - b.born > b.life);
         GHOSTS.removeIf(g -> t - g.born > 400);
         SHAKES.removeIf(s -> t - s[0] > 450);
+        BUBBLES.removeIf(b -> t > b[5] + 400);
+        CHARGES.keySet().removeIf(id -> mc.world.getEntityByID(id) == null);
+        for (Iterator<double[]> it = THUNDER.iterator(); it.hasNext();) {
+            double[] th = it.next();
+            if (t < th[0]) continue;
+            mc.world.playSound(th[1], th[2], th[3], net.minecraft.init.SoundEvents.ENTITY_LIGHTNING_THUNDER, net.minecraft.util.SoundCategory.WEATHER, (float) th[4], (float) th[5], false);
+            it.remove();
+        }
+        for (Iterator<double[]> it = RIPPLES.iterator(); it.hasNext();) {
+            double[] rp = it.next();
+            double r = Math.min(rp[3], DashMath.rippleRadius(t - rp[4]));
+            if (r >= rp[5] + 0.8) { rippleRing(rp[0], rp[1], rp[2], r); rp[5] = r; }
+            if (r >= rp[3]) it.remove();
+        }
         if (cinematic && (cinematicUntil >= 0 && t > cinematicUntil || mine() == null && cinematicUntil < 0 && t - lastSeenMine > 500)) endCinematic();
         if (mine() != null) lastSeenMine = t;
     }
     private static long lastSeenMine;
+
+    /** One ring of the shock ripple: the ground blocks on the circle hop up and settle back. */
+    private static void rippleRing(double x, double y, double z, double r) {
+        Minecraft mc = mc();
+        int n = Math.min(44, (int) (2 * Math.PI * r * 1.1));
+        for (int i = 0; i < n && Rubble.ripples < 520; i++) {
+            double a = i * 2 * Math.PI / n;
+            BlockPos top = mc.world.getHeight(new BlockPos(x + Math.cos(a) * r, 0, z + Math.sin(a) * r));
+            if (Math.abs(top.getY() - 1 - y) > 6) continue;
+            BlockPos ground = top.down();
+            IBlockState st = mc.world.getBlockState(ground);
+            if (st.getRenderType() != net.minecraft.util.EnumBlockRenderType.MODEL || st.getMaterial().isLiquid()) continue;
+            Rubble b = new Rubble(mc.world, ground.getX() + 0.5, ground.getY(), ground.getZ() + 0.5, st);
+            b.ripple(ground.getY(), 0.35 + Math.min(0.5, 2.5 / Math.max(1, r)));
+            mc.world.spawnEntity(b);
+            Rubble.ripples++;
+        }
+    }
 
     @SubscribeEvent public void unload(WorldEvent.Unload e) {
         if (e.getWorld().isRemote) { CUES.clear(); BOOMS.clear(); GHOSTS.clear(); stopInk(); Rubble.alive = 0; }
@@ -324,7 +505,7 @@ public final class DashClient {
     // ---- camera ----
 
     @SubscribeEvent public void fov(EntityViewRenderEvent.FOVModifier e) {
-        if (!SteamDash.cameraEffects) return;
+        if (!SteamDash.cameraEffects || DashCamera.active()) return;
         long t = now();
         Cue c = mine();
         float k = 1f;
@@ -396,6 +577,16 @@ public final class DashClient {
             int bar = (int) (h * 0.11f * Math.min(in, out));
             if (bar > 0) { Gui.drawRect(0, 0, w, bar, 0xFF000000); Gui.drawRect(0, h - bar, w, h, 0xFF000000); }
         }
+        // Time bubble: a cold, slightly drained tint while you stand inside one.
+        Entity view = mc.getRenderViewEntity();
+        for (double[] b : BUBBLES) {
+            if (view == null || t < b[4] || view.getDistanceSq(b[0], b[1], b[2]) > b[3] * b[3]) continue;
+            float k = (float) Math.min(1, Math.min((t - b[4]) / 150.0, Math.max(0, (b[5] + 300 - t) / 300.0)));
+            if (k > 0) Gui.drawRect(0, 0, w, h, ((int) (0x38 * k) << 24) | 0x5A7FA8);
+            break;
+        }
+        // A short white tick for each small hit (clone jabs, pierce passes, relays) you are part of.
+        for (Cue jc : CUES.values()) if (jc.jab >= 0 && t - jc.jab < 45 && (local(jc.attacker) || local(jc.target))) { Gui.drawRect(0, 0, w, h, 0x50FFFFFF); break; }
         int frame = impactFrame(t);
         if (frame == 1) { Gui.drawRect(0, 0, w, h, 0xF8FFFFFF); whiteFrames++; if (lastFrameCue != null) lastFrameCue.whiteDrawn++; }
         if (frame == 2) { if (inkInstalled && inkActive()) inkFrames++; if (lastFrameCue != null) lastFrameCue.inkDrawn++; }
@@ -521,9 +712,10 @@ public final class DashClient {
         if (rendering) return;
         EntityPlayer p = e.getEntityPlayer();
         Cue c = CUES.get(p.getEntityId());
-        if (c == null) return;
+        if (c == null && !CHARGES.containsKey(p.getEntityId())) return;
         long t = now();
         double[] save = {p.prevPosX, p.prevPosY, p.prevPosZ, p.swingProgress, p.prevSwingProgress};
+        if (c == null) { RESTORE.put(p.getEntityId(), save); GlStateManager.pushMatrix(); return; }
         RESTORE.put(p.getEntityId(), save);
         double dx = p.posX - p.prevPosX, dy = p.posY - p.prevPosY, dz = p.posZ - p.prevPosZ;
         if (dx * dx + dy * dy + dz * dz > 15) {   // the tails reset on >4 blocks a tick; show them streaming back instead
@@ -542,11 +734,20 @@ public final class DashClient {
         if (save == null) return;
         Cue c = CUES.get(p.getEntityId());
         long t = now();
+        long[] ch = CHARGES.get(p.getEntityId());
+        if (c == null && ch != null && p instanceof AbstractClientPlayer) {
+            // Overcharge: the armor and tails flare white-hot, pulsing faster as the tier climbs.
+            float k = (float) Math.min(1, (t - ch[0]) / 1000.0);
+            float heat = 0.12f + 0.45f * k + 0.08f * (float) Math.sin(t * (0.012 + 0.008 * ch[1]));
+            Pose pose = pose((AbstractClientPlayer) p, e.getPartialRenderTick(), 0, 0, 0);
+            pose.x = e.getX(); pose.y = e.getY(); pose.z = e.getZ(); pose.lean = 0;
+            tinted((AbstractClientPlayer) p, e.getRenderer(), pose, 0, 0, 0, 1.0f, 0.85f, 0.75f, heat, e.getPartialRenderTick());
+        }
         if (c != null && p instanceof AbstractClientPlayer) {
             float heat = 0;
-            if (c.blink < 0) heat = Math.min(1f, (t - c.start) / (c.telegraph * 50f)) * 0.9f;
-            else if (t - c.blink < 260) heat = 0.9f * (1 - (t - c.blink) / 260f) + 0.25f;
-            else if (dashing(c)) heat = 0.25f;
+            if (c.blink < 0) heat = Math.min(1f, (t - c.start) / (c.telegraph * 50f)) * 0.72f;
+            else if (t - c.blink < 160) heat = 0.75f * (1 - (t - c.blink) / 160f) + 0.15f;
+            else if (dashing(c)) heat = 0.15f;
             if (heat > 0.01f) {
                 Pose pose = pose((AbstractClientPlayer) p, e.getPartialRenderTick(), 0, 0, 0);
                 pose.x = e.getX(); pose.y = e.getY(); pose.z = e.getZ(); pose.lean = 0;
@@ -714,7 +915,7 @@ public final class DashClient {
 
     @SubscribeEvent public void world(RenderWorldLastEvent e) {
         Minecraft mc = mc();
-        if (mc.world == null || CUES.isEmpty() && BOOMS.isEmpty() && GHOSTS.isEmpty()) return;
+        if (mc.world == null || CUES.isEmpty() && BOOMS.isEmpty() && GHOSTS.isEmpty() && BUBBLES.isEmpty()) return;
         RenderManager rm = mc.getRenderManager();
         double cx = rm.viewerPosX, cy = rm.viewerPosY, cz = rm.viewerPosZ;
         float pt = e.getPartialTicks();
@@ -729,6 +930,8 @@ public final class DashClient {
             for (Pose p : c.trail) {
                 if (nearOwnCamera(a, p, cx, cy, cz)) { i++; continue; }
                 float alpha = DashMath.trailAlpha(i++) * (c.impact >= 0 ? Math.max(0, 1 - (t - c.impact) / 300f) : 1);
+                double cd = Math.sqrt((p.x - cx) * (p.x - cx) + (p.y + 1 - cy) * (p.y + 1 - cy) + (p.z - cz) * (p.z - cz));
+                alpha *= (float) Math.max(0, Math.min(1, (cd - 2.2) / 4.0));   // a clone close to the lens fades instead of blooming
                 tinted((AbstractClientPlayer) a, (RenderPlayer) r, p, cx, cy, cz, 1.0f, 0.6f, 0.1f, alpha, pt);
             }
         }
@@ -736,7 +939,19 @@ public final class DashClient {
             Entity a = mc.world.getEntityByID(g.entity);
             if (!(a instanceof AbstractClientPlayer)) continue;
             Object r = rm.getEntityRenderObject(a);
-            if (r instanceof RenderPlayer && !nearOwnCamera(a, g.pose, cx, cy, cz)) tinted((AbstractClientPlayer) a, (RenderPlayer) r, g.pose, cx, cy, cz, 1.0f, 0.6f, 0.1f, DashMath.ghostAlpha((t - g.born) / 50.0), pt);
+            if (!(r instanceof RenderPlayer) || nearOwnCamera(a, g.pose, cx, cy, cz)) continue;
+            float alpha = DashMath.ghostAlpha((t - g.born) / 50.0);
+            Pose p = g.pose;
+            if (g.lunge > 0) {   // a barrage clone: dart in, punch, fade
+                double u = DashMath.ease((t - g.born) / (double) g.lunge);
+                Pose q = new Pose();
+                q.x = p.x + (g.tx - p.x) * u; q.y = p.y + (g.ty - p.y) * u; q.z = p.z + (g.tz - p.z) * u;
+                q.yawOffset = p.yawOffset; q.yawHead = p.yawHead; q.pitch = p.pitch; q.limbSwing = p.limbSwing; q.limbAmount = p.limbAmount;
+                q.swing = (float) (0.15 + 0.5 * u); q.lean = p.lean; q.leanDir = p.leanDir;
+                p = q;
+                alpha = 0.42f * (float) Math.max(0, 1 - Math.max(0, t - g.born - g.lunge) / 220.0);
+            }
+            tinted((AbstractClientPlayer) a, (RenderPlayer) r, p, cx, cy, cz, 1.0f, 0.6f, 0.1f, alpha, pt);
         }
         GlStateManager.pushMatrix();
         GlStateManager.translate(-cx, -cy, -cz);
@@ -757,6 +972,23 @@ public final class DashClient {
             cone(f[0], f[1], f[2], d, 0.95, 1.7, 1.15, spin, 1f, 0.78f, 0.25f, 0.55f * k);
             cone(f[0], f[1], f[2], d, 0.75, 1.3, 0.75, -spin * 1.4, 1f, 1f, 1f, 0.7f * k);
         }
+        for (double[] bb : BUBBLES) {   // the time bubble: a faint shell of latitude and longitude rings
+            if (t < bb[4]) continue;
+            double grow = DashMath.ease((t - bb[4]) / 220.0), fade = Math.max(0, Math.min(1, (bb[5] + 300 - t) / 300.0));
+            double rr = bb[3] * grow;
+            float al = (float) (0.22 * fade);
+            for (int k = -2; k <= 2; k++) {
+                double yy = rr * k / 3.0, rad = Math.sqrt(Math.max(0, rr * rr - yy * yy));
+                ring(bb[0], bb[1] + yy, bb[2], new double[] {0, 1, 0}, rad, 0.12, 0.75f, 0.88f, 1f, al);
+            }
+            double spin = t * 0.0006;
+            for (int k = 0; k < 3; k++) {
+                double a = spin + k * Math.PI / 3;
+                ring(bb[0], bb[1], bb[2], new double[] {Math.cos(a), 0, Math.sin(a)}, rr, 0.12, 0.75f, 0.88f, 1f, al);
+            }
+            double pulse = ((t - bb[4]) % 600) / 600.0;   // slow pulses travelling outward
+            ring(bb[0], bb[1], bb[2], new double[] {0, 1, 0}, rr * pulse, 0.3, 0.85f, 0.95f, 1f, (float) (0.25 * (1 - pulse) * fade));
+        }
         for (Boom b : BOOMS) {
             double u = (t - b.born) / (double) b.life;
             if (u < 0 || u > 1) continue;
@@ -770,11 +1002,11 @@ public final class DashClient {
         GlStateManager.popMatrix();
     }
 
-    /** In first person your own afterimage right at the lens would just fill the screen; skip it there. */
+    /** An afterimage right at the lens would just fill the screen (first person, or a cut-scene shot); skip it there. */
     private static boolean nearOwnCamera(Entity a, Pose p, double cx, double cy, double cz) {
-        if (a != mc().getRenderViewEntity() || mc().gameSettings.thirdPersonView != 0) return false;
-        double dx = p.x - cx, dy = p.y + 1.0 - cy, dz = p.z - cz;
-        return dx * dx + dy * dy + dz * dz < 3.0 * 3.0;
+        double dx = p.x - cx, dy = p.y + 1.0 - cy, dz = p.z - cz, d2 = dx * dx + dy * dy + dz * dz;
+        if (a == mc().getRenderViewEntity() && mc().gameSettings.thirdPersonView == 0) return d2 < 3.0 * 3.0;
+        return d2 < 2.2 * 2.2;
     }
 
     /** A rotating, striped pressure cone: apex ahead of the fist, opening backward along the arm. */
@@ -828,7 +1060,23 @@ public final class DashClient {
             maxLife = 34 + RAND.nextInt(14);
         }
 
+        static int ripples;
+        boolean ripple; double baseY, height;
+
+        /** Ripple mode: no flight, just a hop of `h` blocks over 8 ticks, exactly over its own ground block. */
+        void ripple(double y, double h) {
+            ripple = true; baseY = y; height = h; scale = 1.003f; spinSpeed = 0; maxLife = 8;
+            setPosition(posX, y, posZ); prevPosY = y;
+        }
+
+        float lift(float pt) { return ripple ? (float) (Math.sin(Math.PI * Math.min(1, (life + pt) / maxLife)) * height) : 0f; }
+
         @Override public void onUpdate() {
+            if (ripple) {
+                prevPosX = posX; prevPosY = posY; prevPosZ = posZ;
+                if (++life > maxLife) setDead();
+                return;
+            }
             prevPosX = posX; prevPosY = posY; prevPosZ = posZ; prevSpin = spin;
             spin += spinSpeed;
             motionY -= 0.045;
@@ -837,7 +1085,7 @@ public final class DashClient {
             if (onGround) { motionX *= 0.55; motionZ *= 0.55; motionY *= -0.35; spinSpeed *= 0.5f; }
             if (++life > maxLife) setDead();
         }
-        @Override public void setDead() { if (!isDead) alive = Math.max(0, alive - 1); super.setDead(); }
+        @Override public void setDead() { if (!isDead) { if (ripple) ripples = Math.max(0, ripples - 1); else alive = Math.max(0, alive - 1); } super.setDead(); }
         @Override public boolean canBeCollidedWith() { return false; }
         @Override public boolean canBePushed() { return false; }
         @Override public boolean canBeAttackedWithItem() { return false; }
@@ -852,9 +1100,12 @@ public final class DashClient {
             bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
-            float fade = e.life > e.maxLife - 6 ? Math.max(0.05f, (e.maxLife - e.life) / 6f) : 1f;
+            float fade = e.ripple ? 1f : e.life > e.maxLife - 6 ? Math.max(0.05f, (e.maxLife - e.life) / 6f) : 1f;
+            float lift = e.lift(pt);
+            if (e.ripple && lift < 0.04f) { GlStateManager.enableLighting(); GlStateManager.popMatrix(); return; }   // at rest it would just overlap its own block
             BlockPos at = new BlockPos(e.posX, e.posY, e.posZ);
-            GlStateManager.translate(x, y + 0.5 * e.scale, z);
+            if (e.ripple) at = at.up();   // light a lifted ground block from the air above, not from inside the ground
+            GlStateManager.translate(x, y + 0.5 * e.scale + lift, z);
             GlStateManager.rotate(e.prevSpin + (e.spin - e.prevSpin) * pt, e.axisX, 0.35f, e.axisZ);
             GlStateManager.scale(e.scale * fade, e.scale * fade, e.scale * fade);
             GlStateManager.translate(-at.getX() - 0.5, -at.getY() - 0.5, -at.getZ() - 0.5);

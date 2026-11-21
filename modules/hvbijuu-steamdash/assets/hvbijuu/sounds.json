@@ -58,5 +58,55 @@
         "stream": false
       }
     ]
+  },
+  "steamdash.jab": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.jab",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/jab",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.timewarp": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.timewarp",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/timewarp",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.sizzle": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.sizzle",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/sizzle",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.stab": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.stab",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/stab",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.relay": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.relay",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/relay",
+        "stream": false
+      }
+    ]
   }
 }
