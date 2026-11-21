@@ -185,7 +185,7 @@ final class DashCamera {
 
     private static Shot splat(DashClient.Cue c, long t) {
         double[] n = c.splatNormal;
-        Vec3d wall = new Vec3d(c.sx, c.sy, c.sz);
+        Vec3d wall = new Vec3d(c.sx - n[0] * 1.6, c.sy, c.sz - n[2] * 1.6);   // aim just off the wall face, not inside the rock
         Vec3d pos = wall.add(-n[0] * 11 + n[2] * 5.5, 2.4, -n[2] * 11 - n[0] * 5.5);
         return look("splatter", pos, wall, 0.95f);
     }
@@ -217,10 +217,14 @@ final class DashCamera {
 
     /** Pulls a camera position in front of any wall between it and what it is looking at. */
     private static Vec3d clear(Vec3d focus, Vec3d pos) {
-        RayTraceResult hit = mc().world.rayTraceBlocks(focus, pos, false, true, false);
-        if (hit == null || hit.hitVec == null) return pos;
         Vec3d d = pos.subtract(focus);
-        double len = d.length(), keep = Math.max(0.6, hit.hitVec.distanceTo(focus) - 0.35);
-        return len < 1e-6 ? pos : focus.add(d.scale(keep / len));
+        double len = d.length();
+        if (len < 1e-6) return pos;
+        // Start the check a little out from the focus, so a focus touching a block face never pins the camera to it.
+        Vec3d from = focus.add(d.scale(Math.min(0.6, len) / len));
+        RayTraceResult hit = mc().world.rayTraceBlocks(from, pos, false, true, false);
+        if (hit == null || hit.hitVec == null) return pos;
+        double keep = Math.max(0.6, hit.hitVec.distanceTo(focus) - 0.35);
+        return focus.add(d.scale(keep / len));
     }
 }

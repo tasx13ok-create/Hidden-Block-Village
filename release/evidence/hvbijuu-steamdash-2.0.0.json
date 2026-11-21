@@ -1,0 +1,120 @@
+{
+  "schema": "hbv-evidence/1",
+  "subject": "hvbijuu_steamdash 2.0.0 (Steam Dash Punch 2.0) overlaid on the owner's Bijuu Shinobi Arts 8K v3 jar",
+  "date": "2026-11-21",
+  "author": "Fable (Claude Code cloud session)",
+  "inputs": {
+    "owner_jar": {
+      "name": "Bijuu-Shinobi-Arts-8K-v3.jar",
+      "modid": "hvbijuu",
+      "version": "0.16.2-rc1",
+      "bytes": 9093274,
+      "sha256": "4c850bac6f6c91689223cd0acdcc97d2ab99de42177a0e283a4acefce956ce9a",
+      "disposition": "private owner input; never committed"
+    }
+  },
+  "outputs": {
+    "assembled_jar": {
+      "name": "Bijuu-Shinobi-Arts-8K-v3-SteamDash.jar",
+      "bytes": 9405700,
+      "sha256": "7e09af3cbedfc3494b48d73952dd61be80bfa1679ba6d3a4633e07cf84587042",
+      "disposition": "delivered to the owner privately; rebuildable from modules/hvbijuu-steamdash with the owner jar"
+    },
+    "overlay_reobf_jar_sha256": "93a3ed3b994620d335231c40cefcbf9eb9f8427aeef0e898369cce4c92855a9a",
+    "note": "The client run below used this exact overlay (class bytes identical); the assembled jar was re-made afterwards only to set the mcmod.info entry to 2.0.0."
+  },
+  "jar_diff": {
+    "original_entries": 290,
+    "changed": [
+      "assets/hvbijuu/lang/en_us.lang (12 lines appended)",
+      "mcmod.info (second mod entry)"
+    ],
+    "added_entries": 44,
+    "png_textures_identical": "111/111"
+  },
+  "checks": {
+    "pure_rules": "DashChecks 424/424 pass",
+    "real_client": "27/27 pass: scripted 1.12.2 Forge dev client (software OpenGL, Xvfb, integrated server), real key binding (tap, 1.3 s hold, mid-flight presses), four scenes recorded at 1/5 speed",
+    "client_result": {
+      "channeling": true,
+      "phase0_settle_ticks": 0,
+      "phase0_fps": 25,
+      "A_target": "z=59.7 hp=345",
+      "A_mountain_air": 147,
+      "A_ridge_air": 72,
+      "A_splatter": "17+18",
+      "A_molten_blocks": 0,
+      "A_molten_max_seen": "158 (first at phase*100000+t = 81)",
+      "A_bystander_updates": "6 of 24 bubble ticks",
+      "A_arrow_step_in_out": "0.292 / 0.953",
+      "A_after_cooling": "magma=0 andesite=43",
+      "phase1_settle_ticks": 0,
+      "phase1_fps": 20,
+      "B_line": "[x=-93.4 z=13.6 hp=381] [x=-92.4 z=20.7 hp=381] [x=-80.1 z=88.8 hp=363]",
+      "B_wall_air": 164,
+      "phase2_settle_ticks": 0,
+      "phase2_fps": 29,
+      "C_target": "x=80.5 y=1.0 z=59.5 dmg=54 crater=311",
+      "C_juggle_presses": [
+        "0@1795280515585",
+        "1@1795280515585",
+        "2@1795280516065"
+      ],
+      "phase3_settle_ticks": 0,
+      "phase3_fps": 30,
+      "D_x_after": 23.078917037298726,
+      "passed": true,
+      "pass_count": 27,
+      "fail_count": 0,
+      "failed": [],
+      "passed_checks": [
+        "barrage + punch land: 4 clone jabs (2) and the punch (16) (55.0)",
+        "the launch tunnels through the mountain",
+        "the boil ends in a cliff splatter (17+18)",
+        "the tunnel lining glows as molten scars (158 molten blocks, 0 still molten at this check)",
+        "sequence A finished cleanly",
+        "hit-stop ran",
+        "the time bubble opened around the hit",
+        "a bystander mob in the bubble updates at a quarter rate (6 of 24)",
+        "an arrow in the bubble moves at about a quarter speed",
+        "cut-scene shots: dolly, hit orbit, chase ([telegraph, dash-dolly, hit-orbit, chase, splatter])",
+        "the ground ripple rolls out (183 blocks)",
+        "impact frames drawn (white 2, ink 3)",
+        "molten scars cool to cobblestone and andesite (0 left, 43 andesite)",
+        "a tier 3 dash hits every body in the line (3/3)",
+        "the bodies it passes through are knocked aside (2/2)",
+        "the last one takes the finish and is launched (z=88.8)",
+        "sequence B finished cleanly",
+        "holding the key charges through tiers 1, 2, 3 (max 3)",
+        "the charge has its own camera shot",
+        "punch, barrage, two relays, spike and crater all land (54.0)",
+        "the spike leaves a crater (311)",
+        "sequence C finished cleanly",
+        "three presses while they flew: relay, relay, pin",
+        "relay, pin and crater shots ([telegraph, dash-dolly, hit-orbit, chase, splatter, charge, relay-orbit, pin-low, overhead])",
+        "the springboard launches off the wall (x 29.65 -> 14.17)",
+        "the springboard cracks the wall",
+        "the camera and HUD are back to normal afterwards"
+      ],
+      "chat": [],
+      "white_frames_drawn": 5,
+      "ink_frames_drawn": 11,
+      "max_rubble": 68
+    }
+  },
+  "media": {
+    "method": "each scene runs at 1/5 game speed (client tick timer and integrated server tick slowed together; effect clock follows game time); magenta sync frame per scene; x11grab at 60 fps; sped up 5x to 60 fps; client sound events (OpenAL Soft null driver) mixed to stereo with Minecraft linear attenuation and camera-relative panning",
+    "unique_frame_ratio": "about 59 unique frames per second in the scene clips (mpdecimate)",
+    "files": "collaboration/fable/media/steam-dash-2/"
+  },
+  "environment_notes": [
+    "QA ran on an SRG->MCP-renamed copy of the jar (qa/qa-devnames.py) because hvbijuu's ReferenceTails reflects on SRG names; the delivered jar is unchanged SRG.",
+    "Render distance 8 in the QA client: at 4 chunks the integrated server stopped ticking the launched body near the edge of the loaded area (a test-environment limit, not a mod behaviour)."
+  ],
+  "not_verified": [
+    "Dedicated/Magma server with real players and latency",
+    "Bukkit protection plugins (Forge BreakEvent honoured; plugins not run)",
+    "GPU client frame pacing (four tinted clone passes of the 8K armor per frame)",
+    "Audible playback on real speakers (sounds verified through the engine's event log and offline mix)"
+  ]
+}

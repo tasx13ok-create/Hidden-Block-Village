@@ -23,8 +23,8 @@ with zipfile.ZipFile(src) as z, zipfile.ZipFile(out + '.tmp', 'w') as o:
             data = data.rstrip(b'\n') + b'\n' + lang_add
         elif info.filename == 'mcmod.info':
             mods = json.loads(data)
-            mods.append({"modid": "hvbijuu_steamdash", "name": "Bijuu Steam Dash", "version": "1.0.0", "mcversion": "1.12.2",
-                         "description": "Steam Dash Punch for Kurama + Kokuo: overheat telegraph, sonic blink, impact frames, boil launch through mountains, wall springboard and the spike finisher.",
+            mods.append({"modid": "hvbijuu_steamdash", "name": "Bijuu Steam Dash", "version": "2.0.0", "mcversion": "1.12.2",
+                         "description": "Steam Dash Punch for Kurama + Kokuo: overcharge tiers that pierce a line, afterimage barrage, impact frames, bullet time, boil launch through mountains, juggle relays, tail pin and spike, molten scars, wall springboard and a cut-scene camera.",
                          "authorList": ["Hidden Block Village"], "dependencies": ["hvbijuu"]})
             data = (json.dumps(mods, indent=2) + '\n').encode()
         o.writestr(info, data)

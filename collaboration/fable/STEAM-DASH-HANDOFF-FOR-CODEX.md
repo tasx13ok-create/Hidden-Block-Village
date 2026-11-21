@@ -1,6 +1,56 @@
 # Codex: Steam Dash Punch is ready, please build it and send the jar back to the owner
 
-From Fable (Claude Code cloud session), 2026-11-20. The owner asked for this to be delivered to you and for you to **send the finished jar back to them**.
+From Fable (Claude Code cloud session). The owner asked for this to be delivered to you and for you to **send the finished jar back to them**.
+
+## Update 2026-11-21: Steam Dash 2.0, please build and return this version
+
+The owner asked for it to be made "crazier" and for smooth video. 2.0 adds:
+- **Hold-to-overcharge tiers.** Tier 3 pierces a whole line of enemies and bores a 5x5 tunnel.
+- **A four-clone afterimage barrage** before the real punch.
+- **Juggle.** Up to two relays, where you blink ahead and punch them back, then the tail pin with nine tail stabs and the spike into a crater.
+- **Molten scars.** The tunnel and crater lining turns to magma, vents steam that pops people into the air, then cools to cobblestone and andesite.
+- **A bullet-time bubble** where mobs and projectiles run at quarter speed. Players are never slowed.
+- **World effects.** Ground ripple, sky flash and distance-delayed thunder.
+- **A free cut-scene camera** with composed shots: charge, telegraph, dolly-zoom dash, hit orbit, side chase, relay orbit, splatter, low pin shot and overhead crater.
+- **Five new synthesized sounds.**
+
+Config: `config/hvbijuu_steamdash.cfg`. Every feature can be switched off.
+
+**Build** with the same two commands as below. Expected results:
+
+| Output | Size | SHA-256 |
+| --- | --- | --- |
+| Overlay reobf jar | | `93a3ed3b…5a9a` |
+| Assembled jar | 9,405,700 bytes | `7e09af3cbedfc3494b48d73952dd61be80bfa1679ba6d3a4633e07cf84587042` |
+
+The jar contents:
+- All 111 textures are byte-identical.
+- `en_us.lang` gets 12 appended lines, and `mcmod.info` gets its second entry, now version 2.0.0.
+- 44 entries are added.
+
+**Evidence** (receipt: `release/evidence/hvbijuu-steamdash-2.0.0.json`):
+- Rules: 424/424 pass.
+- Real 1.12.2 client: 27/27 pass across four scenes.
+  - **Tap dash.** The barrage and punch land 24 damage. The target tunnels through the mountain and the ridge, then splatters on the cliff (17 cobblestone + 18 cracked). 160 blocks went molten and later cooled.
+  - **Time bubble.** A bystander pig updated 6 of 24 ticks. An arrow moved 0.29 blocks/tick inside against 0.95 outside.
+  - **Tier 3.** All three bodies in a line are hit, two are knocked aside, and the last is launched to z=89.
+  - **Juggle.** Relay, relay, then pin: 54 damage and a 311-block crater.
+  - **Springboard.**
+  - **Impact frames.** The client drew 5 white and 10 ink frames.
+
+**Smooth video:** each scene was recorded at 1/5 game speed and sped back up, about 59 unique frames per second at 60 fps, with the client's real sound events mixed in.
+- Repo copies: `media/steam-dash-2/steam-dash-2-showreel.mp4` (20 s) and `steam-dash-A-impact-replay-slowmo.mp4`, plus scene contact sheets.
+- The owner has the full-quality clips.
+
+**Please check on the real setup:**
+- a dedicated/Magma server with players and latency
+- frame pacing on a GPU client (the afterimage passes re-render the 8K armor)
+- the cut-scene camera with OptiFine
+- with OptiFine shaders on, the ink frame should fall back to the dark hold frame
+
+The original 1.0 handoff follows.
+
+---
 
 ## What it is
 
