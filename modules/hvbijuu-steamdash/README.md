@@ -84,3 +84,21 @@ Each scene runs at 1/5 game speed for recording. The client tick timer and the i
 `tools/make_media.py` cuts each scene at its sync frame and speeds it up 5x into a 60 fps clip with about 60 unique frames per second. It mixes the logged sounds into stereo with Minecraft's attenuation and camera-relative panning, then adds a 1/2-speed impact replay and a showreel. In a container with no sound card, start OpenAL with `ALSOFT_DRIVERS=null` so the sound engine still runs.
 
 The dev client uses readable (MCP) names, but hvbijuu's `ReferenceTails` reflects on SRG names. QA therefore runs on a copy made by `qa/qa-devnames.py`; the release jar keeps the SRG names.
+
+## Test world
+
+`qa/src/village/bijuu/ArenaBuilder.java` builds the owner's "Steam Dash Arena" save in three client passes:
+
+| Pass | Property | What it does |
+| --- | --- | --- |
+| Build | `-Dhvb.buildarena=true` | Creates a deep-stone superflat world. Writes the `arena:*` functions into the save. Builds the hub, signs, pads and reset buttons. Issues the armor through the mod's own `bijuureward` console command, so the ledger serials are real. Equips one set and stores the rest in the hub chest. |
+| Finish | `-Dhvb.finisharena=true` | Reopens the world so its functions load, then runs `arena:reset_all` to build the stations and spawn the dummies. |
+| Verify | `-Dhvb.testarena=true` | Runs on a copy. Checks the armor and dummies, performs a real dash at the mountain station, and checks that RESET ARENA rebuilds the terrain. |
+
+`qa/package-arena.py` drops the QA-only mods from `level.dat` and removes the test player's files. It then zips the save with a README and an optional rapid-testing config.
+
+Stations, with S, E, W and N measured from the hub:
+- **S: mountain run.** A target dummy, mountain, ridge and cliff, plus a pig pen to show bullet time.
+- **E: overcharge line.** Three dummies in a row and a wall.
+- **W: juggle field.** One dummy in open ground.
+- **N: springboard wall.**
