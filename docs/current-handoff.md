@@ -1,5 +1,11 @@
 # Current project handoff
 
+## Cloud floating island Itachi playtest, 22 November 2026
+
+An isolated singleplayer instance loaded the full pack with the private Steam Dash 2.0.0 assembly identified below. Forge reported 69 mods including the local encounter helper. A copied v17 Cloud island region supplied the arena. The first join disconnected when Damage Indicators tried to notify a player before the client player existed. The test copy now skips that early notification and retains its permission flags.
+
+The server confirmed a valid full Kurama set, a carried Kokuo helmet, 500 chakra and AHZNB's real Itachi at 122 HP, spawned 18 blocks in front of the player. The client opened its pause menu at the encounter. The test profile binds Steam Dash to H. The next check is the player's first dash and boss response after resuming. This session verified setup and handoff only. The world, local player data and third-party binaries stay private.
+
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
 ## Latest addon checkpoint: Bijuu Steam Dash Punch 2.0.0 (2026-11-21)
