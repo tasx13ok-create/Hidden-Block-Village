@@ -88,6 +88,7 @@ final class DashServer {
 
     /** The dash key went down. Mid-sequence it is a juggle input; otherwise it springboards or starts a charge. */
     static void press(EntityPlayerMP p) {
+        if (LariatServer.wearing(p)) { LariatServer.press(p); return; }   // one signature key: each set has its own move
         Seq running = RUNNING.get(p.getUniqueID());
         if (running != null) { juggle(running); return; }
         if (CHARGING.containsKey(p.getUniqueID())) return;

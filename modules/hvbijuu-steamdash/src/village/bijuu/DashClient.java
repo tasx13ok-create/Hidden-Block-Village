@@ -63,6 +63,7 @@ import org.lwjgl.opengl.GL14;
 public final class DashClient {
     static KeyBinding KEY;
     private static final ResourceLocation INK = new ResourceLocation(BijuuArmor.ID, "shaders/post/inkframe.json");
+    private static final ResourceLocation INVERT = new ResourceLocation(BijuuArmor.ID, "shaders/post/impactinvert.json");
     private static final Random RAND = new Random();
     private static final int CONSTANT_COLOR = 0x8001;
 
@@ -72,6 +73,7 @@ public final class DashClient {
             ClientRegistry.registerKeyBinding(KEY);
             MinecraftForge.EVENT_BUS.register(new DashClient());
             MinecraftForge.EVENT_BUS.register(new DashCamera());
+            MinecraftForge.EVENT_BUS.register(new LariatClient());
             RenderingRegistry.registerEntityRenderingHandler(Rubble.class, RubbleRender::new);
         }
         @Override public void fx(DashNet.Fx m) { Minecraft.getMinecraft().addScheduledTask(() -> handle(m)); }
@@ -321,7 +323,7 @@ public final class DashClient {
                 if (c != null) c.end = t;
                 if (local(m.attacker)) cinematicUntil = t + 700;
                 break;
-            default: break;
+            default: if (m.kind >= DashNet.LARIAT_START) LariatClient.handle(m); break;
         }
     }
 
@@ -338,7 +340,7 @@ public final class DashClient {
         try { KuramaTailAnimator.strike(attacker, a.rotationYaw, -1.1f); } catch (Throwable ignored) {}
     }
 
-    private static void boom(double x, double y, double z, double[] n, double r0, double r1, int life, float r, float g, float b, float alpha) {
+    static void boom(double x, double y, double z, double[] n, double r0, double r1, int life, float r, float g, float b, float alpha) {
         Boom o = new Boom();
         o.x = x; o.y = y; o.z = z; o.n = DashMath.norm(n); o.born = now(); o.life = life; o.r0 = r0; o.r1 = r1; o.red = r; o.green = g; o.blue = b; o.alpha = alpha;
         BOOMS.add(o);
@@ -352,7 +354,7 @@ public final class DashClient {
         if (GHOSTS.size() > 16) GHOSTS.remove(0);
     }
 
-    private static void shake(long at, int strength) {
+    static void shake(long at, int strength) {
         SHAKES.add(new long[] {at, strength});
         if (SHAKES.size() > 12) SHAKES.remove(0);
     }
@@ -375,20 +377,20 @@ public final class DashClient {
     }
 
     /** Thunder for the listener, late by the distance sound travels when they are far away. */
-    private static void thunder(double x, double y, double z, float volume, float pitch) {
+    static void thunder(double x, double y, double z, float volume, float pitch) {
         if (!SteamDash.delayedThunder) return;
         Entity l = mc().getRenderViewEntity();
         double dist = l == null ? 0 : Math.sqrt(l.getDistanceSq(x, y, z));
         THUNDER.add(new double[] {now() + DashMath.thunderDelayMs(dist), x, y, z, volume, pitch});
     }
 
-    private static void ripple(double x, double y, double z, double max) {
+    static void ripple(double x, double y, double z, double max) {
         if (SteamDash.groundRipple) RIPPLES.add(new double[] {x, y, z, Math.min(14, max), now(), 0});
     }
 
-    private static void skyFlash() { if (mc().world != null) mc().world.setLastLightningBolt(2); }
+    static void skyFlash() { if (mc().world != null) mc().world.setLastLightningBolt(2); }
 
-    private static Rubble rubble(double x, double y, double z, IBlockState s, double mx, double my, double mz) {
+    static Rubble rubble(double x, double y, double z, IBlockState s, double mx, double my, double mz) {
         Rubble r = new Rubble(mc().world, x, y, z, s == null || s.getBlock() == Blocks.AIR ? Blocks.COBBLESTONE.getDefaultState() : s);
         r.motionX = mx; r.motionY = my; r.motionZ = mz;
         if (Rubble.alive < 160) { mc().world.spawnEntity(r); Rubble.alive++; }
@@ -559,9 +561,9 @@ public final class DashClient {
         long t = now();
         if (e.phase == TickEvent.Phase.START) {
             warmInk();
-            int f = impactFrame(t);
-            if (f == 2) { if (!inkInstalled) startInk(); }   // retried every ink frame until it is really in place
-            else if (inkOn || inkInstalled) stopInk();
+            net.minecraft.client.shader.ShaderGroup want = LariatClient.invertWanted(t) ? invertGroup : impactFrame(t) == 2 ? inkGroup : null;
+            if (want != null) { if (installed != want) install(want); }   // retried every frame until it is really in place
+            else if (installed != null || inkOn) stopInk();
             return;
         }
         if (mc.currentScreen != null && !(mc.currentScreen instanceof net.minecraft.client.gui.GuiChat)) return;
@@ -590,6 +592,7 @@ public final class DashClient {
         int frame = impactFrame(t);
         if (frame == 1) { Gui.drawRect(0, 0, w, h, 0xF8FFFFFF); whiteFrames++; if (lastFrameCue != null) lastFrameCue.whiteDrawn++; }
         if (frame == 2) { if (inkInstalled && inkActive()) inkFrames++; if (lastFrameCue != null) lastFrameCue.inkDrawn++; }
+        if (LariatClient.invertWanted(t) && invertActive()) invertFrames++;
         if (frame == 2 && !inkInstalled) Gui.drawRect(0, 0, w, h, 0x99000000);   // no shader support: a dark hold instead
     }
 
@@ -612,7 +615,9 @@ public final class DashClient {
 
     // The ink frame is a post shader. It is compiled once ahead of time and swapped into the renderer for
     // the hold frames, so the impact never waits on a shader compile (and is never deleted mid-fight).
-    static net.minecraft.client.shader.ShaderGroup inkGroup;
+    static net.minecraft.client.shader.ShaderGroup inkGroup, invertGroup;
+    private static net.minecraft.client.shader.ShaderGroup installed;
+    static int invertFrames;   // inverted lariat frames actually drawn (diagnostics)
     static boolean inkFailed, inkInstalled;
     private static int inkW, inkH;
     private static Field rendererShader, rendererUse;
@@ -625,6 +630,8 @@ public final class DashClient {
             rendererUse = field(net.minecraft.client.renderer.EntityRenderer.class, "field_175083_ad", "useShader");
             inkGroup = new net.minecraft.client.shader.ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), INK);
             inkGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+            invertGroup = new net.minecraft.client.shader.ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), INVERT);
+            invertGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
             inkW = mc.displayWidth; inkH = mc.displayHeight;
         } catch (Exception | LinkageError failed) {
             inkFailed = true; inkGroup = null;
@@ -641,9 +648,10 @@ public final class DashClient {
         try {
             GlStateManager.matrixMode(GL11.GL_TEXTURE); GlStateManager.pushMatrix(); GlStateManager.loadIdentity();
             inkGroup.render(0f);
+            invertGroup.render(0f);
             GlStateManager.popMatrix(); GlStateManager.matrixMode(GL11.GL_MODELVIEW);
             mc().getFramebuffer().bindFramebuffer(true);
-        } catch (RuntimeException e) { inkFailed = true; inkGroup = null; }
+        } catch (RuntimeException e) { inkFailed = true; inkGroup = null; invertGroup = null; }
     }
 
     private static Field field(Class<?> c, String srg, String mcp) throws NoSuchFieldException {
@@ -653,37 +661,45 @@ public final class DashClient {
         return f;
     }
 
-    private static void startInk() {
+    private static void install(net.minecraft.client.shader.ShaderGroup group) {
         inkOn = true;
         Minecraft mc = mc();
         prepareInk();
-        if (inkGroup == null) { inkSkips[0]++; return; }
+        if (group == null) group = installed;   // (prepareInk may have just created it)
+        if (group == null) { inkSkips[0]++; return; }
         try {
             Object current = rendererShader.get(mc.entityRenderer);
-            if (current != null && current != inkGroup) { inkSkips[1]++; return; }   // never replace someone else's shader
-            if (inkW != mc.displayWidth || inkH != mc.displayHeight) { inkGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight); inkW = mc.displayWidth; inkH = mc.displayHeight; }
-            rendererShader.set(mc.entityRenderer, inkGroup);
+            if (current != null && current != inkGroup && current != invertGroup) { inkSkips[1]++; return; }   // never replace someone else's shader
+            if (inkW != mc.displayWidth || inkH != mc.displayHeight) {
+                inkGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+                invertGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+                inkW = mc.displayWidth; inkH = mc.displayHeight;
+            }
+            rendererShader.set(mc.entityRenderer, group);
             rendererUse.setBoolean(mc.entityRenderer, true);
-            inkInstalled = true;
+            installed = group;
+            inkInstalled = group == inkGroup;
         } catch (IllegalAccessException e) { inkFailed = true; }
     }
 
     static final int[] inkSkips = new int[2];   // diagnostics: {no shader group, another shader active}
 
-    private static boolean inkActive() {
-        try { return rendererShader != null && rendererShader.get(mc().entityRenderer) == inkGroup && rendererUse.getBoolean(mc().entityRenderer); }
+    static boolean inkActive() { return active(inkGroup); }
+    static boolean invertActive() { return invertGroup != null && active(invertGroup); }
+
+    private static boolean active(net.minecraft.client.shader.ShaderGroup g) {
+        try { return g != null && rendererShader != null && rendererShader.get(mc().entityRenderer) == g && rendererUse.getBoolean(mc().entityRenderer); }
         catch (IllegalAccessException e) { return false; }
     }
 
     private static void stopInk() {
-        if (inkInstalled) {
-            try { if (rendererShader.get(mc().entityRenderer) == inkGroup) rendererShader.set(mc().entityRenderer, null); } catch (IllegalAccessException ignored) {}
-            inkInstalled = false;
+        if (installed != null) {
+            try { Object cur = rendererShader.get(mc().entityRenderer); if (cur == inkGroup || cur == invertGroup) rendererShader.set(mc().entityRenderer, null); } catch (IllegalAccessException ignored) {}
         }
-        inkOn = false;
+        installed = null; inkInstalled = false; inkOn = false;
     }
 
-    private static void speedLines(int w, int h, float alpha) {
+    static void speedLines(int w, int h, float alpha) {
         if (alpha <= 0) return;
         GlStateManager.disableTexture2D(); GlStateManager.enableBlend(); GlStateManager.disableAlpha();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
@@ -1010,7 +1026,7 @@ public final class DashClient {
     }
 
     /** A rotating, striped pressure cone: apex ahead of the fist, opening backward along the arm. */
-    private static void cone(double x, double y, double z, double[] d, double ahead, double back, double radius, double spin, float r, float g, float b, float a) {
+    static void cone(double x, double y, double z, double[] d, double ahead, double back, double radius, double spin, float r, float g, float b, float a) {
         double[][] base = DashMath.ring(d, 1, 24);
         Tessellator ts = Tessellator.getInstance(); BufferBuilder buf = ts.getBuffer();
         buf.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
@@ -1025,7 +1041,7 @@ public final class DashClient {
         ts.draw();
     }
 
-    private static void ring(double x, double y, double z, double[] n, double radius, double width, float r, float g, float b, float a) {
+    static void ring(double x, double y, double z, double[] n, double radius, double width, float r, float g, float b, float a) {
         if (a <= 0.003f) return;
         double[][] pts = DashMath.ring(n, 1, 48);
         Tessellator ts = Tessellator.getInstance(); BufferBuilder buf = ts.getBuffer();

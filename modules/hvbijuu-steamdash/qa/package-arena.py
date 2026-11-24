@@ -25,7 +25,7 @@ if fml is not None and 'ModList' in fml:
     print('mods kept:', [(m.scalar('ModId'), m.scalar('ModVersion')) for m in keep])
 open(os.path.join(w, 'level.dat'), 'wb').write(nbt.dumps(root, name))
 print('removed from mod list:', removed)
-readme = """STEAM DASH ARENA - test world for the Steam Dash Punch 2.0
+readme = """STEAM DASH ARENA - test world for the Steam Dash Punch 2.0 and the Gyuki Lariat
 
 1. Unzip. Put the SteamDashArena folder in your .minecraft/saves folder
    (or your instance's saves folder) and open it from Singleplayer.
@@ -42,6 +42,11 @@ Stations (signs at each gold pad):
   WEST   Juggle - tap B, press B again while it flies (twice), then once
          more (or sneak + B) for the tail pin and spike crater.
   NORTH  Springboard - jump into the wall and press B while touching it.
+  GYUKI LARIAT (west then south of the hub, x -30 z 18) - put on the Gyuki
+         set from the hub chest, stand on the gold pad, look at the dummy
+         and tap B: crouch, blink through the glass and hedge, hit-stop,
+         and the dummy flies through the fence, glass and snow. Everything
+         it breaks grows back after 20 seconds.
 
 Buttons: RESET ARENA (hub) rebuilds all terrain and respawns dummies;
 RESPAWN DUMMIES; and a RESET button at each station.
@@ -53,7 +58,7 @@ again before normal play).
 """
 open(os.path.join(stage, 'README-STEAM-DASH-ARENA.txt'), 'w').write(readme)
 os.makedirs(os.path.join(stage, 'test-config'), exist_ok=True)
-open(os.path.join(stage, 'test-config', 'hvbijuu_steamdash.cfg'), 'w').write("""# Steam Dash rapid-testing settings (copy into config/, remove for normal play)
+open(os.path.join(stage, 'test-config', 'hvbijuu_steamdash.cfg'), 'w').write("""# Steam Dash and Lariat rapid-testing settings (copy into config/, remove for normal play)
 dash {
     I:cooldownSeconds=3
     I:resonanceCost=10
@@ -62,6 +67,10 @@ dash {
 }
 combo {
     I:relayResonanceCost=5
+}
+lariat {
+    I:lariatCooldownSeconds=3
+    I:lariatResonanceCost=10
 }
 """)
 if os.path.exists(OUT): os.remove(OUT)

@@ -2,6 +2,61 @@
 
 From Fable (Claude Code cloud session). The owner asked for this to be delivered to you and for you to **send the finished jar back to them**.
 
+## Update 2026-11-24: 2.1 adds the Gyuki Lariat, built on your Native Tails jar
+
+The owner gave Fable your latest jar, `Bijuu-Shinobi-Arts-8K-v3-Native-Tails.jar` (9,410,513 bytes, SHA-256 `11b08bc9…df1f`), to build on. Intake was clean:
+- The 2.0 overlay rebuilt onto it reproduces it byte for byte (337 entries).
+- The 2.0 client acceptance passed 27/27 on it before anything changed.
+- None of your classes (`ArmorSprint`, `SprintCurve`, `ReferenceTails` and the rest) is touched.
+
+`assemble.py` now has an update mode. On a base that already carries an earlier overlay, it replaces only the overlay's own files. The lang and `mcmod.info` merges are idempotent.
+
+**What 2.1 adds: the Gyuki Lariat (phase 1).** Wear the full Gyuki set and press B; B stays the signature key per set. It plays in four beats:
+1. **Anticipation, 6 ticks:** the caster is rooted, with a crimson glaze, eight ribbons and cracked ground.
+2. **Blink, up to 18 blocks:** it crashes through soft blocks, with a vacuum ring, mach cones, six afterimages and forearm lightning.
+3. **Hit-stop, 4 ticks:** 24 damage, two inverted black-and-white frames, a lightning web, the victim's spine thrown back, and a Dutch roll.
+4. **Release:** the victim flies through soft blocks and gouges a trench, and the caster skids 1.5 blocks.
+
+Everything it breaks grows back after 20 s (`TerrainRegen`). It is also restored on unload and on server stop. Config category: `lariat`.
+
+There are four cut-scene shots (crouch, side-on blink, hit orbit, over-the-shoulder trail). Full table: `modules/hvbijuu-steamdash/README.md`.
+
+**A fix that touches the Steam Dash camera too.** Vanilla only sends a player's position while they are the view entity. Now the view goes back to the player during client ticks, and the free camera keeps it for rendered frames. Before this, the server could not see the skid.
+
+**Build**, on the Native Tails jar:
+```
+./gradlew -p modules/hvbijuu-steamdash -PhvbJar=<Native Tails jar> reobfJar
+python modules/hvbijuu-steamdash/assemble.py <Native Tails jar> modules/hvbijuu-steamdash/build/libs/hvb-steamdash-private-1.jar Bijuu-Shinobi-Arts-8K-v3-SteamDash.jar
+```
+
+Expected results:
+
+| Output | Size | SHA-256 |
+| --- | --- | --- |
+| Reobf jar | | `933f8887…5747` |
+| Assembled jar | 9,509,087 bytes | `cf9a6b82a7c94efee236b677131f8df2528f8e362f801505e5606918fa4c44aa` |
+
+Fable rebuilt both from the public module and got identical bytes. The assembled jar has 350 entries: 13 added, 21 overlay-owned entries changed, and 111/111 textures identical.
+
+**Evidence** (receipt: `release/evidence/hvbijuu-steamdash-2.1.0.json`):
+- Rules: 424 + 32 pass.
+- Real client: 42/42 across five scenes. In the Lariat scene:
+  - 26 damage
+  - the blink smashes a glass wall and a hedge, then the body smashes a fence and a second glass wall
+  - a trench of 4 gouged blocks plus 8 torn-up blocks
+  - a 1.54-block skid
+  - 41 blocks queued, and every one back exactly after 20 s
+- Test world: 15/15. The new Gyuki lane is at x -30, z 18, with the set in the hub chest.
+- Media: [`media/gyuki-lariat/`](media/gyuki-lariat/) has a 60 fps clip with sound, a 1/2-speed impact replay and a contact sheet.
+
+**Please check on the real setup:**
+- **A GPU client.** Six afterimages re-render the 8K armor. The first third-person frame of the Gyuki set uploads its 8K textures once.
+- **A Magma server with players.**
+- **OptiFine shaders.** The inverted frame steps aside, as the ink frame does.
+- **How it reads alongside your native Gyuki tails.** The ribbons come out of the tail base.
+
+Phases 2 and 3 (resonance forms, variants, grapple, vortex on N, HUD; apex form, sweep charge, orb) wait for the owner's sign-off on this one.
+
 ## Update 2026-11-21: Steam Dash 2.0, please build and return this version
 
 The owner asked for it to be made "crazier" and for smooth video. 2.0 adds:

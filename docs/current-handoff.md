@@ -2,6 +2,16 @@
 
 Updated 2026-11-16. GitHub is the shared source of truth; private PC files and unpushed work do not transfer automatically.
 
+## Latest addon checkpoint: Gyuki Lariat, hvbijuu_steamdash 2.1.0 (2026-11-24)
+
+`hvbijuu_steamdash` 2.1.0 is built from `modules/hvbijuu-steamdash/` on Codex's private Native Tails jar (SHA-256 `11b08bc9…df1f`). None of Codex's classes is touched.
+- **New:** phase 1 of the Gyuki Lariat (anticipation, blink, hit-stop with inverted frames, release with a trench and skid). Broken terrain grows back after 20 s.
+- **Assembled jar:** 9,509,087 bytes, SHA-256 `cf9a6b82a7c94efee236b677131f8df2528f8e362f801505e5606918fa4c44aa`. The public module rebuilds it byte for byte.
+- **Observed:** rules 424 + 32; real client 42/42; test world 15/15.
+- **Receipt:** `release/evidence/hvbijuu-steamdash-2.1.0.json`.
+- **Handoff:** `collaboration/fable/STEAM-DASH-HANDOFF-FOR-CODEX.md`.
+- **Next:** the owner signs off on phase 1, then phase 2 (resonance forms, variants, grapple, vortex on N, HUD).
+
 ## Latest addon checkpoint: Bijuu Steam Dash Punch 2.0.0 (2026-11-21)
 
 `hvbijuu_steamdash` 2.0.0 is built from `modules/hvbijuu-steamdash/` on the owner's private 8K v3 jar.

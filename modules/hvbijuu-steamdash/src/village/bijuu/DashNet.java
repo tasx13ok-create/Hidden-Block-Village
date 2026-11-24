@@ -11,7 +11,8 @@ final class DashNet {
     private DashNet() {}
 
     static final int START = 1, BLINK = 2, IMPACT = 3, RELEASE = 4, DEBRIS = 5, SPIKE = 6, CRATER = 7, END = 8, SPRING = 9, SPLATTER = 10,
-            CHARGE = 11, CHARGE_END = 12, BARRAGE = 13, PASS = 14, RELAY = 15, PIN = 16, STAB = 17, BUBBLE = 18;
+            CHARGE = 11, CHARGE_END = 12, BARRAGE = 13, PASS = 14, RELAY = 15, PIN = 16, STAB = 17, BUBBLE = 18,
+            LARIAT_START = 20, LARIAT_BLINK = 21, LARIAT_IMPACT = 22, LARIAT_RELEASE = 23, LARIAT_END = 24;
 
     /** The dash key: PRESS when it goes down, RELEASE when it comes up (holding it overcharges). */
     public static final class Request implements IMessage {
