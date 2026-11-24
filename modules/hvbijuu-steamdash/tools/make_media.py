@@ -20,7 +20,14 @@ TITLES = {
     "B-overcharge-pierce": ("OVERCHARGE  TIER 3", "hold to charge - pierces the whole line"),
     "C-juggle-pin-spike": ("JUGGLE  >  TAIL PIN  >  SPIKE", "two relays, nine tails, one crater"),
     "D-springboard": ("WALL SPRINGBOARD", "off the wall at 1.4x"),
+    "E-lariat": ("GYUKI  LARIAT", "crouch - blink - hit-stop - release"),
 }
+# Scenes that get a 1/2-speed replay of the hit: the sound that marks contact.
+REPLAYS = {
+    "A-tap-dash": lambda e: "anvil" in e["file"] and e["pitch"] > 1.5,
+    "E-lariat": lambda e: "lariat_impact" in e["file"],
+}
+REEL = os.environ.get("REEL", "steam-dash-2-showreel.mp4")
 os.makedirs(OUT, exist_ok=True)
 result = json.load(open(RESULT))
 sounds = json.load(open(SOUNDS))
@@ -151,15 +158,15 @@ for w in result["windows"]:
     clips.append(mp4)
     print(name, f"flash at {t0:.2f}s, {real_len:.1f}s recorded -> {out_len:.2f}s at 60 fps, {len(events)} sounds")
 
-    if name == "A-tap-dash":   # a 2x slow-motion replay of the hit with deeper, stretched sound
-        imp = [e for e in events if "anvil" in e["file"] and e["pitch"] > 1.5]
+    if name in REPLAYS:   # a 2x slow-motion replay of the hit with deeper, stretched sound
+        imp = [e for e in events if REPLAYS[name](e)]
         if imp:
             hit_v = imp[0]["v"]
             rs = (hit_v - v0) / 1000.0 - 0.6          # replay from 0.6 s of game time before contact
             rl = 2.6
             wav = os.path.join(OUT, "replay.wav")
             write_wav(wav, mix(events, v0 + rs * 1000, rl * 2, stretch=2.0))
-            rmp4 = os.path.join(OUT, "steam-dash-A-impact-replay-slowmo.mp4")
+            rmp4 = os.path.join(OUT, f"steam-dash-{name[0]}-impact-replay-slowmo.mp4")
             vf = (f"setpts=(PTS-STARTPTS)*2/{scale},fps=60,drawtext=fontfile={FONT}:text='REPLAY  1/2 speed':fontcolor=white:fontsize=22:x=w-tw-40:y=40:shadowcolor=black@0.7:shadowx=2:shadowy=2,"
                   f"fade=t=in:st=0:d=0.2,fade=t=out:st={rl * 2 - 0.3:.3f}:d=0.3")
             run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", f"{t0 + lead + rs * scale:.3f}", "-t", f"{rl * scale:.3f}", "-i", REC, "-i", wav,
@@ -167,7 +174,7 @@ for w in result["windows"]:
                  "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "60",
                  "-c:a", "aac", "-b:a", "192k", "-t", f"{rl * 2:.3f}", "-movflags", "+faststart", rmp4])
             os.remove(wav)
-            clips.insert(1, rmp4)
+            clips.insert(clips.index(mp4) + 1, rmp4)
             print("replay", f"{rl * 2:.1f}s")
 
 # The showreel: every scene back to back.
@@ -175,7 +182,7 @@ lst = os.path.join(OUT, "concat.txt")
 with open(lst, "w") as f:
     for c in clips:
         f.write(f"file '{os.path.abspath(c)}'\n")
-reel = os.path.join(OUT, "steam-dash-2-showreel.mp4")
+reel = os.path.join(OUT, REEL)
 run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst,
      "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "60", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", reel])
 os.remove(lst)

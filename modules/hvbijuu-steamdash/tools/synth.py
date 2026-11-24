@@ -155,3 +155,47 @@ at(x, onepole_hp(noise(0.006), 3000) * expdecay(int(SR * 0.006), 0.0015) * 6, 0.
 tb = t(0.6); bm = np.sin(2 * np.pi * np.cumsum(40 + 60 * np.exp(-tb / 0.08)) / SR) * expdecay(len(tb), 0.2)
 at(x, sat(bm * 1.4, 2), 0.15)
 finish("relay", x)
+
+# 12. lariat_charge: the crouch before the blink — a sub-bass drop under a rising, crackling hum
+d = 0.9; n = int(SR * d); tt = t(d)
+f_drop = 70 * np.exp(-tt / 0.5) + 32
+drop = np.sin(2 * np.pi * np.cumsum(f_drop) / SR) * env(n, 0.02, 0.25)
+hum = np.sin(2 * np.pi * np.cumsum(180 + 520 * (tt / d) ** 1.4) / SR) * 0.18 * (tt / d)
+hum += np.sin(2 * np.pi * np.cumsum(361 + 1040 * (tt / d) ** 1.4) / SR) * 0.07 * (tt / d)
+crk = np.zeros(n)
+for k in range(60):
+    st = rng.uniform(0.15, d - 0.02); g = rng.uniform(0.002, 0.006)
+    at(crk, onepole_hp(noise(g), 4000) * expdecay(int(SR * g), g / 3) * rng.uniform(0.3, 1.0) * (st / d), st)
+x = sat(drop * 1.4 + hum + crk * 0.8, 1.6) * env(n, 0.01, 0.08)
+finish("lariat_charge", x)
+
+# 13. lariat_blink: breaking the sound barrier — a whip-crack boom with an electric chirp riding it
+d = 0.8; n = int(SR * d); x = np.zeros(n)
+at(x, onepole_hp(noise(0.004), 3500) * expdecay(int(SR * 0.004), 0.001) * 8, 0.0)
+tb = t(0.6); boom = np.sin(2 * np.pi * np.cumsum(55 + 140 * np.exp(-tb / 0.03)) / SR) * expdecay(len(tb), 0.16)
+at(x, sat(boom * 1.6, 2.2), 0.003)
+tr = t(0.35); _, rb, _ = svf(noise(0.35), 7000 * (0.06 ** (tr / 0.35)), 2.2)
+at(x, rb * env(len(rb), 0.002, 0.2) * 0.9, 0.0)
+tc = t(0.18); chirp = np.sin(2 * np.pi * np.cumsum(5200 - 3800 * (tc / 0.18)) / SR) * expdecay(len(tc), 0.06) * (np.sin(2 * np.pi * 90 * tc) > 0)
+at(x, chirp * 0.35, 0.01)
+finish("lariat_blink", x)
+
+# 14. lariat_impact: the clothesline lands — 60 Hz thump, thunder crackle, shattering stone
+d = 2.4; n = int(SR * d); x = np.zeros(n)
+at(x, onepole_hp(noise(0.015), 1800) * expdecay(int(SR * 0.015), 0.003) * 6, 0.0)
+tb = t(0.7); thump = np.sin(2 * np.pi * np.cumsum(60 + 90 * np.exp(-tb / 0.025)) / SR) * expdecay(len(tb), 0.2)
+at(x, sat(thump * 2.0, 2.6), 0.0)
+tt2 = t(2.2); thunder = onepole_lp(noise(2.2), 380) * expdecay(len(tt2), 0.7) * (1 + 0.6 * (np.sin(2 * np.pi * 7.3 * tt2) > 0.3)) * 6
+at(x, thunder, 0.03)
+for k in range(110):   # crackle on top of the thunder
+    st = rng.exponential(0.35)
+    if st > d - 0.05: continue
+    g = rng.uniform(0.002, 0.01)
+    at(x, onepole_hp(noise(g), 2500) * expdecay(int(SR * g), g / 3) * rng.uniform(0.2, 0.9) * np.exp(-st / 0.8), st)
+for k in range(50):    # stone shattering
+    st = 0.02 + rng.exponential(0.12)
+    if st > d - 0.1: continue
+    g = rng.uniform(0.01, 0.04); gn = noise(g) * expdecay(int(SR * g), g / 3)
+    _, gb, _ = svf(gn, rng.uniform(900, 4200), 1.6)
+    at(x, gb * rng.uniform(0.3, 1.0) * np.exp(-st / 0.4) * 1.3, st)
+finish("lariat_impact", sat(x * 0.9, 1.4))

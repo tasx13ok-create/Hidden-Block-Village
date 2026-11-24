@@ -1,4 +1,4 @@
-key.hvbijuu.steamdash=Steam Dash Punch
+key.hvbijuu.steamdash=Signature Move (Steam Dash / Lariat)
 subtitles.hvbijuu.steamdash.charge=Steam overheats
 subtitles.hvbijuu.steamdash.blink=Sonic blink
 subtitles.hvbijuu.steamdash.impact=Steam punch lands
@@ -10,3 +10,6 @@ subtitles.hvbijuu.steamdash.timewarp=Time slows
 subtitles.hvbijuu.steamdash.sizzle=Magma sizzles
 subtitles.hvbijuu.steamdash.stab=Tail spears the ground
 subtitles.hvbijuu.steamdash.relay=Blink relay
+subtitles.hvbijuu.steamdash.lariat_charge=Resonance builds
+subtitles.hvbijuu.steamdash.lariat_blink=Lariat breaks the sound barrier
+subtitles.hvbijuu.steamdash.lariat_impact=Lariat lands

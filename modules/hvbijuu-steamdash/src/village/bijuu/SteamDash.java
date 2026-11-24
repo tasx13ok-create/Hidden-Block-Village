@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
  */
 @Mod(modid = SteamDash.ID, name = "Bijuu Steam Dash", version = SteamDash.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = "required-after:hvbijuu")
 public final class SteamDash {
-    public static final String ID = "hvbijuu_steamdash", VERSION = "2.0.0";
+    public static final String ID = "hvbijuu_steamdash", VERSION = "2.1.0";
 
     @SidedProxy(clientSide = "village.bijuu.DashClient$Proxy", serverSide = "village.bijuu.SteamDash$Proxy")
     public static Proxy proxy;
@@ -32,13 +32,16 @@ public final class SteamDash {
     // Settings (hvbijuu_steamdash.cfg).
     static int cost = 50, spikeCost = 20, springCost = 10, springCooldownTicks = 20, cooldownSeconds = 25, blockBudget = 450, craterRadius = 8;
     static int relayCost = 15, moltenSeconds = 8, moltenMax = 160;
+    static int lariatCost = 40, lariatCooldownSeconds = 12, regenSeconds = 20;
+    static float lariatDamage = 24, lariatRange = 18;
+    static boolean lariatTerrain = true;
     static float punchDamage = 16, spikeDamage = 10, craterDamage = 8, wallDamage = 6, maxHardness = 3.0f;
     static float barrageDamage = 2, relayDamage = 6, pierceDamageShare = 0.75f;
     static boolean breakBlocks = true, dropBlocks = false, crackWalls = true, letterbox = true, cameraEffects = true, impactFrames = true;
     static boolean overcharge = true, afterimageBarrage = true, juggle = true, moltenScars = true, timeBubble = true, delayedThunder = true;
     static boolean cinematicCamera = true, hideHudInCutscene = true, groundRipple = true;
 
-    static SoundEvent CHARGE, BLINK, IMPACT, LAUNCH, CRASH, HISS, JAB, TIMEWARP, SIZZLE, STAB, RELAY;
+    static SoundEvent CHARGE, BLINK, IMPACT, LAUNCH, CRASH, HISS, JAB, TIMEWARP, SIZZLE, STAB, RELAY, LARIAT_CHARGE, LARIAT_BLINK, LARIAT_IMPACT;
 
     public static class Proxy {
         public void preInit() {}
@@ -54,6 +57,8 @@ public final class SteamDash {
         MinecraftForge.EVENT_BUS.register(new DashServer());
         MinecraftForge.EVENT_BUS.register(new MoltenScars());
         MinecraftForge.EVENT_BUS.register(new TimeBubble());
+        MinecraftForge.EVENT_BUS.register(new LariatServer());
+        MinecraftForge.EVENT_BUS.register(new TerrainRegen());
         proxy.preInit();
     }
 
@@ -92,14 +97,23 @@ public final class SteamDash {
         cinematicCamera = c.getBoolean("cinematicCamera", "client", true, "Cut-scene camera shots for the attacker: front angle, dolly zoom, hit-stop orbit, chase cam, overhead crater shot.");
         hideHudInCutscene = c.getBoolean("hideHudInCutscene", "client", true, "Hide the HUD while the cut-scene camera runs.");
         groundRipple = c.getBoolean("groundRipple", "client", true, "A shock ripple of rising and falling blocks rolls out from big impacts (visual only).");
+        lariatCost = c.getInt("lariatResonanceCost", "lariat", 40, 0, 100, "Resonance for the Gyuki lariat (full Gyuki set, signature key).");
+        lariatCooldownSeconds = c.getInt("lariatCooldownSeconds", "lariat", 12, 0, 600, "Cooldown between lariats.");
+        lariatDamage = c.getFloat("lariatDamage", "lariat", 24, 0, 200, "Damage of the lariat on contact.");
+        lariatRange = c.getFloat("lariatRange", "lariat", 18, 4, 32, "Longest blink, in blocks.");
+        lariatTerrain = c.getBoolean("lariatTerrain", "lariat", true, "The lariat crashes through glass, leaves, plants, snow and fences, cracks the ground and gouges a trench. All of it grows back.");
+        regenSeconds = c.getInt("regenSeconds", "lariat", 20, 1, 600, "Seconds until terrain the lariat broke grows back.");
         impactFrames = c.getBoolean("impactFrames", "client", true, "White flash and ink-silhouette frames on contact (turn off if flashing images bother you).");
         if (c.hasChanged()) c.save();
     }
+
+    @Mod.EventHandler public void stopping(net.minecraftforge.fml.common.event.FMLServerStoppingEvent e) { TerrainRegen.restoreAll(); }
 
     @SubscribeEvent public void sounds(RegistryEvent.Register<SoundEvent> e) {
         CHARGE = sound(e, "charge"); BLINK = sound(e, "blink"); IMPACT = sound(e, "impact");
         LAUNCH = sound(e, "launch"); CRASH = sound(e, "crash"); HISS = sound(e, "hiss");
         JAB = sound(e, "jab"); TIMEWARP = sound(e, "timewarp"); SIZZLE = sound(e, "sizzle"); STAB = sound(e, "stab"); RELAY = sound(e, "relay");
+        LARIAT_CHARGE = sound(e, "lariat_charge"); LARIAT_BLINK = sound(e, "lariat_blink"); LARIAT_IMPACT = sound(e, "lariat_impact");
     }
 
     private static SoundEvent sound(RegistryEvent.Register<SoundEvent> e, String name) {

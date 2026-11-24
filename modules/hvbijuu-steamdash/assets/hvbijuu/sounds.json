@@ -108,5 +108,35 @@
         "stream": false
       }
     ]
+  },
+  "steamdash.lariat_charge": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.lariat_charge",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/lariat_charge",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.lariat_blink": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.lariat_blink",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/lariat_blink",
+        "stream": false
+      }
+    ]
+  },
+  "steamdash.lariat_impact": {
+    "category": "player",
+    "subtitle": "subtitles.hvbijuu.steamdash.lariat_impact",
+    "sounds": [
+      {
+        "name": "hvbijuu:steamdash/lariat_impact",
+        "stream": false
+      }
+    ]
   }
 }

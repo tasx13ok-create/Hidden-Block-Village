@@ -265,6 +265,7 @@ public final class DashQa {
     private void serverSample() {
         WorldServer w = sw();
         int molten = MoltenScars.active();
+        if (phase == 4) lariatSample();
         if (molten > maxMolten) { maxMolten = molten; if (moltenAt < 0) moltenAt = phase * 100000 + t; }
         if (TimeBubble.active(w)) {
             sawBubble = true;
@@ -287,6 +288,7 @@ public final class DashQa {
 
     private void course() {
         Minecraft mc = mc();
+        if (phase == 0 && t == 0) phase = Integer.getInteger("hvb.dashqa.from", 0);   // QA iteration: start at a later scene
         t++;
         int pressAt = 40;
         if (t == pressAt - 10 && !settled() && waited < 900) { t--; waited++; return; }   // before slow motion starts
@@ -415,11 +417,121 @@ public final class DashQa {
                 }
                 if (t == pressAt + 30) {
                     check(!DashCamera.active() && mc.getRenderViewEntity() == mc.player && !mc.gameSettings.hideGUI, "the camera and HUD are back to normal afterwards");
-                    finish();
+                    next();
                 }
                 break;
             }
+
+            case 4: {   // E: Gyuki lariat — crouch, blink through glass and leaves, hit-stop, launch through a fence, glass and snow, trench, skid, regrowth
+                if (t == 1) server(() -> {
+                    EntityPlayerMP p = sp(); WorldServer w = sw();
+                    p.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(item("gyuki_helmet")));
+                    p.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(item("gyuki_chestplate")));
+                    p.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(item("gyuki_leggings")));
+                    p.setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(item("gyuki_boots")));
+                    p.inventory.setInventorySlotContents(8, ItemStack.EMPTY);
+                    // On the blink path: a glass wall and a leaf hedge. Behind the target: a fence, a glass wall, snow on the ground.
+                    fill(w, LX - 2, 4, LZ + 5, LX + 2, 6, LZ + 5, Blocks.GLASS.getDefaultState());
+                    fill(w, LX - 1, 4, LZ + 8, LX + 1, 5, LZ + 8, Blocks.LEAVES.getDefaultState().withProperty(net.minecraft.block.BlockLeaves.DECAYABLE, false));
+                    fill(w, LX - 2, 4, LZ + 15, LX + 2, 4, LZ + 15, Blocks.OAK_FENCE.getDefaultState());
+                    fill(w, LX - 2, 4, LZ + 19, LX + 2, 7, LZ + 19, Blocks.GLASS.getDefaultState());
+                    fill(w, LX - 2, 4, LZ + 22, LX + 2, 4, LZ + 30, Blocks.SNOW_LAYER.getDefaultState());
+                    lariatBefore = snapshot(w);
+                });
+                if (t == 4) { out.put("E_wearing_gyuki", LariatServer.wearing(mc.player)); mc.gameSettings.thirdPersonView = 1; }   // warm the Gyuki 8K textures
+                if (t > 4 && t < pressAt - 12 && t % 6 == 0) DashClient.ghost(mc.player.getEntityId(), DashClient.pose(mc.player, 1f, mc.player.posX + 2, mc.player.posY, mc.player.posZ + 2));
+                if (t == pressAt - 12) mc.gameSettings.thirdPersonView = 0;
+                if (t == 8) server(() -> { target = dummy(LX + 0.5, 4, LZ + 12.5); });
+                if (t == pressAt - 8) record("E-lariat");
+                if (t == pressAt - 6) ready(LX + 0.5, 4, LZ + 0.5, 0, 2);
+                if (t == pressAt - 6) server(() -> BijuuArmor.state(sp()).setLong("lariatReady", 0));
+                if (t == pressAt) key(1);
+                if (t == pressAt + 45) {
+                    stopRecord();
+                    server(() -> {
+                        WorldServer w = sw();
+                        float dmg = 400 - target.getHealth();
+                        out.put("E_damage", dmg);
+                        out.put("E_trace", new ArrayList<>(lariatTrace));
+                        out.put("E_path_blocks", w.getBlockState(new BlockPos(LX, 4, LZ + 5)) + " / " + w.getBlockState(new BlockPos(LX, 5, LZ + 5)) + " / " + w.getBlockState(new BlockPos(LX, 4, LZ + 8)));
+                        check(dmg >= SteamDash.lariatDamage - 0.1, "the lariat lands its blow (" + dmg + ")");
+                        check(lariatStages.contains(3) && lariatHeld >= LariatMath.HITSTOP - 1, "hit-stop: both fighters held for the beat (" + lariatHeld + " ticks, spread " + String.format(Locale.ROOT, "%.3f", lariatSpread) + ")");
+                        check(lariatSpread < 0.05, "nothing drifts during the hit-stop");
+                        double fly = target.posZ - (LZ + 12.5);
+                        out.put("E_target", String.format(Locale.ROOT, "x=%.1f y=%.1f z=%.1f", target.posX, target.posY, target.posZ));
+                        check(fly > 12, String.format(Locale.ROOT, "the victim is launched along the blow (%.1f blocks)", fly));
+                        int glass1 = count(w, LX - 2, 4, LZ + 5, LX + 2, 6, LZ + 5, st -> st.getBlock() == Blocks.AIR);
+                        int leaves = count(w, LX - 1, 4, LZ + 8, LX + 1, 5, LZ + 8, st -> st.getBlock() == Blocks.AIR);
+                        int fence = count(w, LX - 2, 4, LZ + 15, LX + 2, 4, LZ + 15, st -> st.getBlock() == Blocks.AIR);
+                        int glass2 = count(w, LX - 2, 4, LZ + 19, LX + 2, 7, LZ + 19, st -> st.getBlock() == Blocks.AIR);
+                        out.put("E_broken", "glass " + glass1 + ", leaves " + leaves + ", fence " + fence + ", far glass " + glass2);
+                        check(glass1 >= 2 && leaves >= 2, "the blink crashes through the glass wall and the hedge (" + glass1 + ", " + leaves + ")");
+                        check(fence >= 1 && glass2 >= 2, "the flying body smashes the fence and the far glass (" + fence + ", " + glass2 + ")");
+                        int trench = count(w, LX - 2, 3, LZ + 10, LX + 2, 3, LZ + 40, st -> st.getBlock() == Blocks.AIR);
+                        int rough = count(w, LX - 2, 3, LZ + 10, LX + 2, 3, LZ + 40, st -> st.getBlock() == Blocks.DIRT);
+                        out.put("E_trench", trench + " gouged + " + rough + " torn up");
+                        check(trench >= 2, "a trench is gouged where it skims the ground (" + trench + " + " + rough + ")");
+                        double skid = lariatSkidEnd - lariatSkidStart;
+                        out.put("E_skid", String.format(Locale.ROOT, "%.2f", skid));
+                        check(skid > 0.9 && skid < 2.4, String.format(Locale.ROOT, "the caster skids about 1.5 blocks after the blow (%.2f)", skid));
+                        out.put("E_regen_pending", TerrainRegen.pending());
+                        check(TerrainRegen.pending() >= 10, "every broken block is queued to grow back (" + TerrainRegen.pending() + ")");
+                        check(LariatServer.RUNNING.isEmpty() && !DashServer.FROZEN.contains(target.getEntityId()), "the lariat finished cleanly");
+                    });
+                    check(LariatClient.afterimageFrames > 0 && LariatClient.ribbonFrames > 0, "afterimages and ribbons drawn (" + LariatClient.afterimageFrames + ", " + LariatClient.ribbonFrames + ")");
+                    check(DashClient.invertFrames > 0 && LariatClient.webFrames > 0, "inverted frames and the lightning web drawn (" + DashClient.invertFrames + ", " + LariatClient.webFrames + ")");
+                    check(shotNames.contains("lariat-crouch") && shotNames.contains("lariat-blink") && shotNames.contains("lariat-hit") && shotNames.contains("lariat-trail"), "lariat shots: crouch, blink, hit, trail (" + shotNames + ")");
+                }
+                if (t == pressAt + 50) server(() -> { if (target != null) target.setDead(); sp().connection.setPlayerLocation(LX + 4.5, 4, LZ - 2.5, 0, 0); });   // nothing left standing on a block that should grow back
+                // The terrain grows back after regenSeconds (20 s) of game time.
+                if (t == pressAt + 60 + SteamDash.regenSeconds * 20) server(() -> {
+                    WorldServer w = sw();
+                    int diff = 0; List<String> diffs = new ArrayList<>();
+                    for (Map.Entry<BlockPos, IBlockState> en : lariatBefore.entrySet()) if (w.getBlockState(en.getKey()) != en.getValue()) { diff++; if (diffs.size() < 6) diffs.add(en.getKey() + " " + en.getValue() + " -> " + w.getBlockState(en.getKey())); }
+                    out.put("E_regen_left", TerrainRegen.pending() + " queued, " + diff + " differ " + diffs);
+                    check(TerrainRegen.pending() == 0 && diff == 0, "after " + SteamDash.regenSeconds + " s every block is back exactly (" + diff + " differ)");
+                    // Restore on unload/stop: break one block through the queue and restore everything at once.
+                    BlockPos g = new BlockPos(LX + 4, 3, LZ);
+                    IBlockState was = w.getBlockState(g);
+                    boolean took = TerrainRegen.breakTemporarily(w, g, sp());
+                    TerrainRegen.restoreAll();
+                    check(took && w.getBlockState(g) == was && TerrainRegen.pending() == 0, "restoreAll (server stop / unload) puts the ground back");
+                });
+                if (t == pressAt + 70 + SteamDash.regenSeconds * 20) finish();
+                break;
+            }
             default: break;
+        }
+    }
+    private static final int LX = -40, LZ = -70;
+    private Map<BlockPos, IBlockState> lariatBefore = new HashMap<>();
+    private final Set<Integer> lariatStages = new HashSet<>();
+    private final List<String> lariatTrace = Collections.synchronizedList(new ArrayList<>());
+    private int lariatHeld; private double lariatSpread, lariatSkidStart = Double.NaN, lariatSkidEnd;
+    private double[] lariatHoldAt;
+
+    private Map<BlockPos, IBlockState> snapshot(WorldServer w) {
+        Map<BlockPos, IBlockState> m = new HashMap<>();
+        for (int x = LX - 4; x <= LX + 4; x++) for (int y = 2; y <= 8; y++) for (int z = LZ - 3; z <= LZ + 45; z++) { BlockPos b = new BlockPos(x, y, z); m.put(b, w.getBlockState(b)); }
+        return m;
+    }
+
+    /** Server side, every tick of the lariat: stages seen, the hit-stop hold, the skid. */
+    private void lariatSample() {
+        LariatServer.L l = LariatServer.RUNNING.get(sp().getUniqueID());
+        if (l == null) return;
+        if (lariatStages.add(l.stage) || l.stage == 1 && lariatTrace.size() < 3)
+            lariatTrace.add(String.format(Locale.ROOT, "stage=%d age=%d pos=%.2f,%.2f,%.2f dir=%.2f,%.2f,%.2f start=%s end=%s broken=%d victim=%s", l.stage, l.age, sp().posX, sp().posY, sp().posZ, l.dir[0], l.dir[1], l.dir[2], l.start, l.end, l.broken, l.victim));
+        if (l.stage == 3 && target != null) {
+            double[] now = {target.posX, target.posY, target.posZ, sp().posX, sp().posY, sp().posZ};
+            if (lariatHoldAt == null) lariatHoldAt = now;
+            else for (int i = 0; i < 6; i++) lariatSpread = Math.max(lariatSpread, Math.abs(now[i] - lariatHoldAt[i]));
+            lariatHeld++;
+        }
+        if (l.stage == 4) {
+            double along = sp().posZ;
+            if (Double.isNaN(lariatSkidStart)) lariatSkidStart = along;
+            lariatSkidEnd = along;
         }
     }
     private double springX0;

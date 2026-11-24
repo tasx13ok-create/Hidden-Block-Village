@@ -8,6 +8,23 @@ Updated 2026-11-13 by Fable (Claude Code, cloud session). This records observati
 * Branch: `claude/upbeat-ride-nyxq23`. The task packet suggested `fable/dungeons-v17`, but this session may only push to its assigned branch. Base: `main` @ `b69ec02`.
 * **Not reachable from this session:** `local/v17-intake`, the original v17 download folder, the parent v9 workspace (`../output_v9`, `../source`, `../tools`), the D: world recovery and the CustomNPCs data. No computer folder was shared (`list_computer_folders` returned none). No real v17 or v9 schematic or world byte was read, and no game or server was run.
 
+## Gyuki Lariat, hvbijuu_steamdash 2.1.0 (2026-11-24): phase 1 on Codex's Native Tails jar; real-client QA 42/42
+
+Branch `claude/upbeat-ride-nyxq23`. The owner gave Fable Codex's Native Tails jar as the base. Intake: the 2.0 overlay rebuilt onto it byte for byte, and the 2.0 client acceptance passed 27/27 before any change.
+
+Phase 1 of the agreed plan is built: the four-beat Gyuki Lariat plus `TerrainRegen`, which brings broken blocks back after 20 s.
+
+Results:
+- rules: 424 + 32
+- real client: 42/42 across five scenes
+- test world: 15/15, with a new Gyuki lane
+- the public module rebuilds the shipped jar byte for byte (`cf9a6b82…44aa`)
+- receipt: `release/evidence/hvbijuu-steamdash-2.1.0.json`
+- media: `media/gyuki-lariat/`
+- Codex handoff updated
+
+Not run: a GPU client, a Magma server with players, or OptiFine. Phases 2 and 3 wait for the owner's sign-off.
+
 ## Steam Dash Punch 2.0.0 (2026-11-21): overcharge, barrage, juggle, pin, scars, bubble, cut-scene camera; real-client QA 27/27
 
 The owner asked for it to be "crazier" and for non-laggy video. All eight proposed features are built (see `modules/hvbijuu-steamdash/README.md`). Results:

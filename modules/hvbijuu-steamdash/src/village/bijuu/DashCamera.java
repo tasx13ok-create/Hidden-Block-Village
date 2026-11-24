@@ -77,6 +77,16 @@ final class DashCamera {
         shot = s.name;
     }
 
+    /**
+     * Vanilla only sends your position and reads your movement keys while you are the view entity, so
+     * during client ticks the view goes back to you; the free camera has it for every rendered frame.
+     * Without this the server would not see a skid or a step taken while a shot is up.
+     */
+    @SubscribeEvent(priority = EventPriority.HIGHEST) public void tickView(TickEvent.ClientTickEvent e) {
+        if (!active || cam == null || mc().player == null) return;
+        setView(e.phase == TickEvent.Phase.START ? mc().player : cam);
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW) public void fov(EntityViewRenderEvent.FOVModifier e) {
         if (active) e.setFOV(e.getFOV() * fovMult);
     }
@@ -117,6 +127,8 @@ final class DashCamera {
     private static Shot choose(long t, float pt) {
         Minecraft mc = mc();
         int me = mc.player.getEntityId();
+        LariatClient.C lar = LariatClient.CUES.get(me);
+        if (lar != null) return lariat(lar, t, pt);
         DashClient.Cue c = DashClient.CUES.get(me);
         long[] charge = DashClient.CHARGES.get(me);
         if (c == null) {
@@ -138,6 +150,45 @@ final class DashCamera {
         }
         if (c.blink >= 0) return dolly(c, t, pt, a);
         return front("telegraph", a, pt, 4.6 - Math.min(1, (t - c.start) / 250.0) * 0.6, 0);
+    }
+
+    /**
+     * The Lariat's four beats: a low crouch shot, a wide side-on frame for the blink (the whole path in
+     * view), a tight orbit through the hit-stop, then a low trailing shot behind the caster as the
+     * victim flies off and the caster skids.
+     */
+    private static Shot lariat(LariatClient.C c, long t, float pt) {
+        Minecraft mc = mc();
+        if (c.end >= 0 && t - c.end > 300) return null;
+        Entity a = mc.world.getEntityByID(c.caster), v = c.victim >= 0 ? mc.world.getEntityByID(c.victim) : null;
+        if (a == null) return null;
+        double[] d = c.dir;
+        double hx = d[0], hz = d[2], l = Math.max(1e-4, Math.sqrt(hx * hx + hz * hz)); hx /= l; hz /= l;
+        if (c.release >= 0 || c.blink >= 0 && c.impact < 0 && t - c.blink > 320) {
+            // Over the shoulder at head height: the caster skidding in the foreground, the body flying off beyond.
+            Vec3d p = at(a, pt);
+            Vec3d ahead = p.add(hx * 4, 1.1, hz * 4);
+            Vec3d focus = v != null ? ahead.add(at(v, pt).add(0, v.height * 0.5, 0).subtract(ahead).scale(0.3)) : ahead;
+            Vec3d pos = p.add(-hx * 5.2 - hz * 1.6, 1.7, -hz * 5.2 + hx * 1.6);
+            return look("lariat-trail", pos, focus, 1.05f);
+        }
+        if (c.blink >= 0 && t - c.blink < 90) return blinkShot(c, hx, hz);   // holds through the blink and the first inverted frame
+        if (c.impact >= 0) return orbit("lariat-hit", c.cx, c.cy, c.cz, d, t - c.impact, 70, LariatMath.HITSTOP * 50 + 250, 4.2);
+        if (c.blink >= 0) return blinkShot(c, hx, hz);
+        Vec3d p = at(a, pt);
+        double u = Math.min(1, (t - c.start) / (LariatMath.ANTICIPATION * 50.0));
+        float yaw = DashMath.lookAngles(0, 0, 0, hx, 0, hz)[0];
+        double[] o = DashMath.orbit(p.x, p.y, p.z, 4.4 - 0.8 * u, yaw + 30, 0.25);
+        Shot s = look("lariat-crouch", new Vec3d(o[0], o[1], o[2]), p.add(0, 1.0, 0), 0.88f);
+        return s;
+    }
+
+    /** Wide and side-on, the whole blink path in frame. */
+    private static Shot blinkShot(LariatClient.C c, double hx, double hz) {
+        double mx = (c.sx + c.ex) / 2, my = (c.sy + c.ey) / 2 + 1.0, mz = (c.sz + c.ez) / 2;
+        double len = Math.sqrt((c.ex - c.sx) * (c.ex - c.sx) + (c.ez - c.sz) * (c.ez - c.sz));
+        double side = Math.max(7, len * 0.75);
+        return look("lariat-blink", new Vec3d(mx + hz * side, my + 1.6, mz - hx * side), new Vec3d(mx, my, mz), 1.05f);
     }
 
     /** How long to keep the last shot after the move ends: craters get a beat to settle. */
