@@ -1,5 +1,13 @@
 # Current project handoff
 
+## Original tail engine restored to the v3 models, 24 November 2026
+
+The previous v3 renderer bypassed the original armor engine's finished poses. The new adapter reads its rotations and joint spacing after the native animator and terrain solver run. Chomei's six wing blades and abdomen and Gyuki's alternating tentacles now follow their corresponding native roles. Naruto Core 0.3.16 supplies armor effects and the running pose. The armor assembly contains the tail personalities, strikes, tick driver and terrain solver.
+
+A Forge client and integrated server loaded the 70-mod test pack. All nine joint-transfer checks passed, covering 385 native joints across 45 appendages. All nine sets reached their tail-count sprint cap and released the bonus. The private candidate preserves all 35 original tail/dynamics class files checked against 0.16.2-rc1, all 111 textures and all nine v3 rigs. Its SHA-256 is `11b08bc95eb2c415c547290b93d45e0be8e13c80aa3188bb863e4cd301addf1f`. The Cloud Island test instance and a separate Downloads copy have that digest. The previous private build remains available for rollback.
+
+The local 42.3-second in-game clip covers all nine sets on a flat test lane. For the next playtest, inspect tight corners and slopes on Cloud Island, then check a remote player's animation on a dedicated server. Different stock and v3 rest shapes can place the visible tips at different points on terrain. See the [adapter and build notes](../tools/bijuu_reference/tails/README.md).
+
 ## Reactive tails and progressive armor sprint, 23 November 2026
 
 The private Steam Dash 2.0 assembly now has an original per-wearer joint driver for all nine v3 sets and a server-owned sprint wind-up. All 111 textures and nine geometry binaries matched the previous assembly byte for byte. The Cloud island test instance has the new private JAR installed and retains the previous assembly as a rollback copy.

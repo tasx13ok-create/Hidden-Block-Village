@@ -3,12 +3,10 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 
 /** Attach the reference hierarchy once, then transfer local motion around its rest pose. */
 public final class ReferenceTails {
-    private static final Map<Object,List<Link>> links=new IdentityHashMap<>();
+    private static final Map<Object,List<Chain>> links=new IdentityHashMap<>();
     private static final Map<Object,List<Object>> rendered=new IdentityHashMap<>();
     public static int visibleRoots(Object model) {
         List<Object> parts=rendered.get(model);
@@ -23,83 +21,89 @@ public final class ReferenceTails {
         } catch(Exception e){throw new IllegalStateException(e);}
     }
     private static final String[] angles={"field_78795_f","field_78796_g","field_78808_h"};
-    // Flexibility and propagation time reflect each reference silhouette: sand club, flame
-    // forks, plated tails, muscular tails, plumes, slug, beetle, tentacles and fox brush.
-    private static final double[] FLEX={.58,1.05,.42,.78,.94,1.08,.72,1.24,1.0};
-    private static final double[] LAG={7,3,8,5,4,9,4,7,5};
-    private static class Link {
-        final ModelRenderer joint;
-        final int beast,arm;
-        final boolean wing,root;
-        final double along,weight,side,delay;
-        final float pitch,yaw,roll;
+    // Native identity order is left-to-right. V3 stores wings by side with the keel last,
+    // and stores tentacles as alternating left/right pairs.
+    private static final int[] CHOMEI={0,1,2,6,5,4,3};
+    private static final int[] GYUKI={0,7,1,6,2,5,3,4};
 
-        Link(Object node,int beast,int arm,int index,int count,double side) {
-            this.joint=(ModelRenderer)node; this.beast=beast; this.arm=arm;
-            this.side=side; wing=beast==6 && arm<6; root=index==0;
-            along=index/(double)Math.max(1,count-1);
-            // Integrated bend stays bounded when hierarchies have different joint counts.
-            weight=root?.23:.77*(.6+.8*along)/Math.max(1,count-1);
-            delay=LAG[beast]*along;
-            pitch=joint.field_78795_f; yaw=joint.field_78796_g; roll=joint.field_78808_h;
-        }
+    private static float[] anglesOf(ModelRenderer part) {
+        return new float[]{part.field_78795_f,part.field_78796_g,part.field_78808_h};
+    }
 
-        void pose(WearerMotion m,double time,double partial,float stride,float amount,int seed) {
-            double air=m.at(WearerMotion.AIR,delay,partial), water=m.at(WearerMotion.WATER,delay,partial);
-            double speed=m.at(WearerMotion.SPEED,delay,partial), bend=m.at(WearerMotion.PITCH,delay,partial);
-            double bank=m.at(WearerMotion.SIDE,delay,partial), spread=m.at(WearerMotion.FAN,delay,partial);
-            double strike=m.at(WearerMotion.STRIKE,delay,partial), wall=m.at(WearerMotion.WALL,delay,partial);
-            double wave=time*(.066+.012*FLEX[beast])+seed*.17+arm*1.35-along*2.7;
-            double gait=Math.sin(stride*.65-along*2.3+arm*.35)*Math.min(1,amount);
-            double x,y,z;
-            if(wing) {
-                double beat=Math.sin(time*.91+(arm%3)*.45-along*.55);
-                double hinge=root?1:.09*weight;
-                x=hinge*(.10*bend+.13*wall);
-                y=hinge*(.19*bank+side*.12*strike);
-                z=hinge*side*(beat*(.035+.43*air+.12*speed)+.13*spread-.26*water-.26*wall);
-            } else {
-                double flex=FLEX[beast], ripple=Math.sin(wave);
-                double curl=(beast==7?.68:beast==5?.40:.14)*along*along;
-                x=weight*(flex*(bend+.10*gait+.11*ripple)+wall*.94+.22*spread+
-                    curl*(Math.cos(wave)+Math.abs(strike))+.14*air);
-                y=weight*(flex*(bank+.17*ripple+.21*gait+.40*strike)+side*(spread-.38*wall)
-                    +water*.46*Math.sin(time*.24+arm*.65-along*4));
-                z=weight*(.29*bank+.26*strike+.14*side*spread+curl*.40*ripple);
-            }
-            // The long axis of a reference joint is local +Z; +pitch lifts its tip.
-            double flank=m.at(WearerMotion.FLANK,delay,partial);
-            double clearance=m.at(WearerMotion.CLEARANCE,delay,partial);
-            if(wing){
-                z+=side*(root?.34:.04*weight)*Math.min(0,clearance);
-            }else{
-                x+=weight*.62*clearance;
-                y+=weight*.66*flank;
-                switch(beast){
-                    case 0: x+=weight*(.28*Math.max(0,bend)-.16*speed); break;
-                    case 1: y+=weight*side*(.23*Math.sin(wave+along)+.22*Math.abs(bank)); break;
-                    case 2: y+=weight*side*.56*spread; x+=weight*.21*spread; break;
-                    case 3: x+=weight*.28*Math.abs(strike); y-=weight*.34*strike; break;
-                    case 4: y-=weight*.34*side*speed; x+=weight*.15*gait; break;
-                    case 5: x+=weight*along*.32*Math.sin(time*.13-arm*.65-along*4); break;
-                    case 6: y-=weight*.38*bank*air; break;
-                    case 7: y+=weight*side*along*.65*(Math.abs(strike)+spread); break;
-                    case 8: y+=weight*side*(.50*spread-.15*speed); x+=weight*.23*Math.abs(strike); break;
-                    default: throw new IllegalArgumentException("Unknown beast "+beast);
+    private static double wrapped(double radians) {
+        return Math.IEEEremainder(radians, 2*Math.PI);
+    }
+
+    static final class Chain {
+        final ModelRenderer[] source, target;
+        final float[][] sourceRest, targetRest;
+        final float[][] weights;
+        final float[] sourceZ,targetZ;
+        final double lengthRatio;
+
+        Chain(ModelRenderer[] source,ModelRenderer[] target) {
+            this.source=source;
+            this.target=target;
+            sourceRest=new float[source.length][];
+            targetRest=new float[target.length][];
+            for(int i=0;i<source.length;i++)sourceRest[i]=anglesOf(source[i]);
+            for(int i=0;i<target.length;i++)targetRest[i]=anglesOf(target[i]);
+            sourceZ=new float[source.length];
+            targetZ=new float[target.length];
+            for(int i=0;i<source.length;i++)sourceZ[i]=source[i].field_78798_e;
+            for(int i=0;i<target.length;i++)targetZ[i]=target[i].field_78798_e;
+            weights=new float[target.length][source.length];
+            weights[0][0]=1;
+            // Distribute a native joint's bend across the corresponding length of
+            // the reference chain. Every source column sums to one.
+            double[] from=lengths(source), to=lengths(target);
+            double nativeLength=from[from.length-1], visibleLength=to[to.length-1];
+            lengthRatio=nativeLength>0?visibleLength/nativeLength:0;
+            for(int j=1;j<from.length;j++)from[j]/=nativeLength;
+            for(int i=1;i<to.length;i++)to[i]/=visibleLength;
+            for(int j=1;j<source.length;j++){
+                if(target.length==1){weights[0][j]=1;continue;}
+                for(int i=1;i<target.length;i++){
+                    double overlap=Math.min(from[j],to[i])-Math.max(from[j-1],to[i-1]);
+                    if(overlap>0)weights[i][j]=(float)(overlap/(from[j]-from[j-1]));
                 }
             }
-            joint.field_78795_f=pitch+(float)x; joint.field_78796_g=yaw+(float)y;
-            joint.field_78808_h=roll+(float)z;
+        }
+
+        private static double[] lengths(ModelRenderer[] chain) {
+            double[] ends=new double[chain.length];
+            for(int i=1;i<chain.length;i++){
+                ModelRenderer p=chain[i];
+                double x=p.field_78800_c,y=p.field_78797_d,z=p.field_78798_e;
+                ends[i]=ends[i-1]+Math.max(.001,Math.sqrt(x*x+y*y+z*z));
+            }
+            return ends;
+        }
+
+        void apply() {
+            for(int i=0;i<target.length;i++){
+                double x=targetRest[i][0],y=targetRest[i][1],z=targetRest[i][2];
+                double spacing=targetZ[i];
+                for(int j=0;j<source.length;j++){
+                    float w=weights[i][j];
+                    if(w==0)continue;
+                    ModelRenderer p=source[j];
+                    if(i>0 && j>0)spacing+=w*lengthRatio*(p.field_78798_e-sourceZ[j]);
+                    x+=w*wrapped(p.field_78795_f-sourceRest[j][0]);
+                    y+=w*wrapped(p.field_78796_g-sourceRest[j][1]);
+                    z+=w*wrapped(p.field_78808_h-sourceRest[j][2]);
+                }
+                target[i].field_78798_e=(float)spacing;
+                target[i].field_78795_f=(float)x;
+                target[i].field_78796_g=(float)y;
+                target[i].field_78808_h=(float)z;
+            }
         }
     }
 
-    public static void pose(Object model,Entity wearer,float stride,float amount,float age) {
-        List<Link> list=links.get(model);
-        if(list==null || !(wearer instanceof EntityLivingBase))return;
-        EntityLivingBase actor=(EntityLivingBase)wearer;
-        WearerMotion state=WearerMotion.sample(actor);
-        double partial=age-actor.field_70173_aa;
-        for(Link link:list)link.pose(state,age,partial,stride,amount,actor.func_145782_y());
+    public static void pose(Object model) {
+        List<Chain> chains=links.get(model);
+        if(chains!=null)for(Chain chain:chains)chain.apply();
     }
     public static void install(Object model,int beast,Object slot) {
         if(!((Enum<?>)slot).name().equals("CHEST"))return;
@@ -128,20 +132,16 @@ public final class ReferenceTails {
                 }
                 child.invoke(parent<0?body:nodes[parent],node);
             }
-            List<Link> list=new ArrayList<>();
+            List<Chain> list=new ArrayList<>();
             List<Object> visible=new ArrayList<>();
             int appendages=in.readInt();
+            if(appendages!=chains.length)throw new IOException("Native/reference appendage count differs");
             for(int a=0;a<appendages;a++){
-                int n=in.readInt();
-                double side=0;
-                for(int k=0;k<n;k++){
-                    Object target=nodes[in.readInt()];
-                    if(k==0){
-                        visible.add(target);
-                        side=Math.signum(((ModelRenderer)target).field_78800_c);
-                    }
-                    list.add(new Link(target,beast,a,k,n,side));
-                }
+                ModelRenderer[] target=new ModelRenderer[in.readInt()];
+                for(int i=0;i<target.length;i++)target[i]=(ModelRenderer)nodes[in.readInt()];
+                int index=beast==6?CHOMEI[a]:beast==7?GYUKI[a]:a;
+                list.add(new Chain((ModelRenderer[])chains[index],target));
+                visible.add(target[0]);
             }
             for(Object[] chain:chains)if(chain!=null && chain.length>0 && chain[0]!=null)
                 part.getField("field_78807_k").setBoolean(chain[0],true);

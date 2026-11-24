@@ -23,7 +23,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public final class RunProbe {
     static volatile int t=-1,beast=Integer.getInteger("bijuu.firstBeast",0);
     static int warmup;
-    static boolean opened, checked;
+    static boolean opened;
+    static int checked=-1;
     static int captured=-1, lastMovieFrame=-1;
     static final boolean MOVIE=Boolean.getBoolean("bijuu.motionMovie");
     static final UUID ID=UUID.fromString("93ab39b2-5d9f-48ec-88bd-8ef2b18a3a2d");
@@ -55,7 +56,6 @@ public final class RunProbe {
         mc.field_71474_y.field_74320_O=1;
         mc.field_71439_g.field_70177_z=0;
         if(t<10 || beast>=9)return;
-        if(!checked){PoseChecks.run(mc.field_71439_g);checked=true;}
         if(t>=147 && t<155 && captured!=beast){
             captured=beast;
             net.minecraft.util.ScreenShotHelper.func_148259_a(mc.field_71412_D,"sprint-"+beast+".png",
@@ -77,6 +77,7 @@ public final class RunProbe {
         ModelBiped model=proxy.model(beast,EntityEquipmentSlot.CHEST,base);
         model.func_78087_a(mc.field_71439_g.field_184619_aG,mc.field_71439_g.field_70721_aZ,
              mc.field_71439_g.field_70173_aa+.5f,0,0,.0625f,mc.field_71439_g);
+        if(checked!=beast){PoseChecks.run(model,beast);checked=beast;}
         Field f=ReferenceTails.class.getDeclaredField("rendered");f.setAccessible(true);
         List<?> roots=(List<?>)((Map<?,?>)f.get(null)).get(model);
         check(roots.size()==beast+1,"appendage count");
