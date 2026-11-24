@@ -1,0 +1,84 @@
+{
+  "minecraft": "1.12.2",
+  "forge": "14.23.5.2859",
+  "input_sha256": "7e09af3cbedfc3494b48d73952dd61be80bfa1679ba6d3a4633e07cf84587042",
+  "private_candidate_sha256": "f446f237b73ea9185be5195c1cdc09cb07d84ccccc9fb9685c77046ee3e79a60",
+  "copied_pack_loaded_mod_count_including_fixture": 70,
+  "identical_png_files": 111,
+  "identical_reference_rigs": 9,
+  "scope": "Singleplayer with integrated server and the copied pack. A flat lane measured equipped runners with and without this modifier. Each measurement averages 30 ticks. The cap is the peak modifier, distinct from average distance traveled. The first nine-tail run peaked at 1.54631. A longer independent run reached 1.62. No multiplayer latency or dedicated-server acceptance.",
+  "runs": [
+    {
+      "tails": 1,
+      "max_observed_bonus": 0.18,
+      "control_blocks_per_tick": 0.28997,
+      "running_blocks_per_tick": 0.32009,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 2,
+      "max_observed_bonus": 0.36,
+      "control_blocks_per_tick": 0.34796,
+      "running_blocks_per_tick": 0.47323,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 3,
+      "max_observed_bonus": 0.54,
+      "control_blocks_per_tick": 0.27126,
+      "running_blocks_per_tick": 0.44655,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 4,
+      "max_observed_bonus": 0.72,
+      "control_blocks_per_tick": 0.28997,
+      "running_blocks_per_tick": 0.46657,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 5,
+      "max_observed_bonus": 0.9,
+      "control_blocks_per_tick": 0.34796,
+      "running_blocks_per_tick": 0.65703,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 6,
+      "max_observed_bonus": 1.08,
+      "control_blocks_per_tick": 0.27126,
+      "running_blocks_per_tick": 0.59202,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 7,
+      "max_observed_bonus": 1.26,
+      "control_blocks_per_tick": 0.28997,
+      "running_blocks_per_tick": 0.58294,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 8,
+      "max_observed_bonus": 1.44,
+      "control_blocks_per_tick": 0.28062,
+      "running_blocks_per_tick": 0.64187,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    },
+    {
+      "tails": 9,
+      "max_observed_bonus": 1.62,
+      "control_blocks_per_tick": 0.33674,
+      "running_blocks_per_tick": 0.70395,
+      "bonus_cleared": true,
+      "root_motion_observed": true
+    }
+  ]
+}

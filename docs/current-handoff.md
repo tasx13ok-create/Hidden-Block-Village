@@ -1,5 +1,13 @@
 # Current project handoff
 
+## Reactive tails and progressive armor sprint, 23 November 2026
+
+The private Steam Dash 2.0 assembly now has an original per-wearer joint driver for all nine v3 sets and a server-owned sprint wind-up. All 111 textures and nine geometry binaries matched the previous assembly byte for byte. The Cloud island test instance has the new private JAR installed and retains the previous assembly as a rollback copy.
+
+Forge loaded 70 mods including the disposable fixture. The real client and integrated server confirmed all nine bonus caps, higher measured forward speed and removal of the bonus after release. Kurama needed a longer test window for its full cap in the copied pack. The first full-pack checks exposed batched player movement packets that falsely drained charge. The released build credits a short packet gap only when forward travel resumes. The QA lane now loads and checks its floor before teleporting a test character. The client pose checks covered delayed joints, repeated rendering, turn, airborne motion, landing, attack, hit, water, climb, teleport and separate wearers. See the [measured results](../release/evidence/bijuu-reactive-motion.json) and [per-beast movement and build notes](../tools/bijuu_reference/tails/README.md).
+
+Next check on the owner's server is remote-player movement under latency, region restrictions and anti-cheat interaction during long sprints and Steam Dash. Obstacle response is approximate and animation timing is tuned for Minecraft. Source and measurements are public. Private assembled JARs, world saves and captured game frames stay on the owner's PC.
+
 ## Cloud floating island Itachi playtest, 22 November 2026
 
 An isolated singleplayer instance loaded the full pack with the private Steam Dash 2.0.0 assembly identified below. Forge reported 69 mods including the local encounter helper. A copied v17 Cloud island region supplied the arena. The first join disconnected when Damage Indicators tried to notify a player before the client player existed. The test copy now skips that early notification and retains its permission flags.
